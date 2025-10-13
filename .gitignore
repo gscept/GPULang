@@ -14,3 +14,6 @@ node_modules/
 node_modules/
 bin/
 runtime
+vs-extension/gpulang-vsix/.vs
+vs-extension/gpulang-vsix/gpulang-vsix/.vs
+vs-extension/gpulang-vsix/gpulang-vsix/obj

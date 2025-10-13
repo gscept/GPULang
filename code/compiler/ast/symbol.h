@@ -38,7 +38,6 @@ struct Symbol
         RenderStateInstanceType,
         SamplerStateInstanceType,
         VariableType,
-        SubroutineType,
         FunctionType,
         StructureType,
         EnumerationType,

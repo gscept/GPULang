@@ -61,7 +61,7 @@ namespace GPULang
 */
 static StaticSet scalarQualifiers =
 std::array{
-    "const"_c, "var"_c
+    "const"_c, "var"_c, "no_reflect"_c
 };
 
 static StaticSet bindingQualifiers =
@@ -555,14 +555,14 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             stateResolved->addressW = (GPULang::Serialization::AddressMode)value.i[0];
             break;
         case SamplerStateInstance::__Resolved::AllFilterType:
-            if (stateResolved->isInline && (value.i[0] != 0x7 && value.i[0] != 0x0))
+            if (stateResolved->isInline && (value.i[0] != 0x1 && value.i[0] != 0x0))
             {
                 compiler->Error(Format("inline_sampler requires filter mode to either be FilterMode.Linear or FilterMode.Point"), assignEntry);
                 return false;
             }
-            stateResolved->minFilter = (GPULang::Serialization::Filter)((value.i[0] & 0x1) + 1);
-            stateResolved->magFilter = (GPULang::Serialization::Filter)(((value.i[0] >> 1) & 0x1) + 1);
-            stateResolved->mipFilter = (GPULang::Serialization::Filter)(((value.i[0] >> 2) & 0x1) + 1);
+            stateResolved->minFilter = (GPULang::Serialization::Filter)(value.i[0] & 0x1);
+            stateResolved->magFilter = (GPULang::Serialization::Filter)((value.i[0] >> 1) & 0x1);
+            stateResolved->mipFilter = (GPULang::Serialization::Filter)((value.i[0] >> 2) & 0x1);
             break;
         case SamplerStateInstance::__Resolved::MinFilterType:
             if (stateResolved->isInline)
@@ -1088,6 +1088,18 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 if (matchingFunction->symbolType == Symbol::FunctionType)
                 {
                     Function* otherFunction = static_cast<Function*>(matchingFunction);
+                    Function::__Resolved* otherFunRes = Symbol::Resolved(otherFunction);
+
+                    if (funResolved->isEntryPoint)
+                    {
+                        compiler->Error(Format("Function '%s' can't be overloaded because it's marked as entry_point, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+                        return false;
+                    }
+                    if (otherFunRes->isEntryPoint)
+                    {
+                        compiler->Error(Format("Function '%s' can't be overloaded because it's marked as entry_point, previous definition at %s(%d)", otherFunRes->signature.c_str(), fun->location.file.c_str(), fun->location.line), fun);
+                        return false;
+                    }
 
                     if (!fun->IsCompatible(otherFunction, false))
                         continue;
@@ -1097,6 +1109,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                         compiler->Error(Format("Function '%s' can not be overloaded because it only differs by return type when trying to overload previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
                     else
                         compiler->Error(Format("Function '%s' redefinition, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+
 
                     return false;
                 }
@@ -1197,6 +1210,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 {
     ProgramInstance* prog = static_cast<ProgramInstance*>(symbol);
     ProgramInstance::__Resolved* progResolved = Symbol::Resolved(prog);
+    compiler->currentState.prog = prog;
 
     Type* progType = &ProgramType;
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &progType->scope);
@@ -1212,7 +1226,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         const BinaryExpression* assignEntry = static_cast<const BinaryExpression*>(entry);
         BinaryExpression::__Resolved* binExp = Symbol::Resolved(assignEntry);
 
-        if (entry->symbolType != Symbol::BinaryExpressionType)
+        if (entry->symbolType != Symbol::BinaryExpressionType && assignEntry->op != '=')
         {
             compiler->Error(Format("Program entry '%s' must be an assignment expression", assignEntry->EvalString().c_str()), symbol);
             return false;
@@ -1222,6 +1236,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         ProgramInstance::__Resolved::EntryType entryType = ProgramInstance::__Resolved::StringToEntryType(entryStr);
         if (entryType == ProgramInstance::__Resolved::InvalidProgramEntryType)
         {
+            // TODO: I think we don't need function overrides anymore, so designate this one for deletion
             Symbol* overrideSymbol = compiler->GetSymbol(entryStr);
             if (overrideSymbol->symbolType == Symbol::FunctionType)
             {
@@ -1418,7 +1433,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     return false;
 
                 compiler->currentState.sideEffects.bits = 0x0;
-                compiler->shaderValueExpressions[entryType].value = true;
+                ShaderValueExpressions[entryType].value = true;
                 compiler->currentState.function = fun;
                 
                 Function::__Resolved* funRes = Symbol::Resolved(fun);
@@ -1452,7 +1467,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     originalVariableValues.Find(it2->first)->second = it2->second;
                 }
                 
-                compiler->shaderValueExpressions[entryType].value = false;
+                ShaderValueExpressions[entryType].value = false;
                 compiler->currentState.function = nullptr;
 
                 if (entryType == ProgramInstance::__Resolved::VertexShader)
@@ -1500,6 +1515,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         progResolved->mappings[ProgramInstance::__Resolved::EntryType::RenderState] = &compiler->defaultRenderState;
         progResolved->usage.flags.hasRenderState = true;
     }
+    compiler->currentState.prog = nullptr;
 
     return true;
 }
@@ -1794,8 +1810,8 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderStateInstance::__Resolved::NoPixelsType:
                     value.Store(stateResolved->noPixels);
                     break;
-                case RenderStateInstance::__Resolved::PolygonModeType:
-                    stateResolved->polygonMode = (GPULang::Serialization::PolygonMode)value.i[0];
+                case RenderStateInstance::__Resolved::RasterizationModeType:
+                    stateResolved->rasterizationMode = (GPULang::Serialization::RasterizationMode)value.i[0];
                     break;
                 case RenderStateInstance::__Resolved::CullModeType:
                     stateResolved->cullMode = (GPULang::Serialization::CullMode)value.i[0];
@@ -2308,6 +2324,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             varResolved->usageBits.flags.isVar = true;
             var->type.literal = false;
         }
+        else if (attr->name == "no_reflect")
+        {
+            varResolved->usageBits.flags.isNoReflect = true;
+        }
         else if (attr->name == "link_defined")
         {
             if (varResolved->storage != Storage::Default)
@@ -2381,9 +2401,23 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         if (set_contains(parameterAccessFlags, attr->name))
         {
             if (attr->name == "in")
+            {
+                if (!varResolved->usageBits.flags.isEntryPointParameter)
+                {
+                    compiler->Error(Format("'in' storage only supported on functions marked as entry_point"), symbol);
+                    return false;
+                }
                 varResolved->storage = Storage::Input;
+            }
             else if (attr->name == "out")
+            {
+                if (!varResolved->usageBits.flags.isEntryPointParameter)
+                {
+                    compiler->Error(Format("'out' storage only supported on functions marked as entry_point"), symbol);
+                    return false;
+                }
                 varResolved->storage = Storage::Output;
+            }
             else if (attr->name == "ray_payload")
             {
                 if (varResolved->storage == Storage::Input)
@@ -2432,6 +2466,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->parameterBits.flags.isNoInterpolate = true;
             else if (attr->name == "centroid")
                 varResolved->parameterBits.flags.isCentroid = true;
+            else if (attr->name == "sample")
+                varResolved->parameterBits.flags.isSample = true;
         }
     }
 
@@ -3525,21 +3561,59 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             if (varResolved->parameterBits.flags.isPatch
                 && !(compiler->currentState.shaderType == ProgramInstance::__Resolved::HullShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::DomainShader))
             {
-                compiler->Error(Format("Parameter '%s' can not use 'patch' if function is not being used as a HullShader/TessellationControlShader or DomainShader/TessellationEvaluationShader", var->name.c_str(), fun->name.c_str()), var);
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'patch' if function is not being used as a HullShader/TessellationControlShader or DomainShader/TessellationEvaluationShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoInterpolate
                 && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
             {
-                compiler->Error(Format("Parameter '%s' can not use 'no_interpolate' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'no_interpolate' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
+            else
+            {
+                if (varResolved->parameterBits.flags.isNoInterpolate && varResolved->parameterBits.flags.isNoPerspective)
+                {
+                    compiler->Error(Format("Parameter '%s' in shader '%s' can not use both 'no_interpolate' and 'no_perspective'", var->name.c_str(), fun->name.c_str()), var);
+                    return false;
+                }
+            }
+
+
 
             if (varResolved->parameterBits.flags.isNoPerspective
                 && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
             {
-                compiler->Error(Format("Parameter '%s' can not use 'no_perspective' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'no_perspective' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                return false;
+            }
+            else
+            {
+                if (varResolved->parameterBits.flags.isNoInterpolate && varResolved->parameterBits.flags.isNoPerspective)
+                {
+                    compiler->Error(Format("Parameter '%s' in shader '%s' can not use both 'no_interpolate' and 'no_perspective'", var->name.c_str(), fun->name.c_str()), var);
+                    return false;
+                }
+            }
+
+            if (varResolved->parameterBits.flags.isSample
+                && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
+            {
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'sample' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                return false;
+            }
+
+            if (varResolved->parameterBits.flags.isCentroid
+                && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
+            {
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'centroid' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                return false;
+            }
+
+            if (varResolved->parameterBits.flags.isSample && varResolved->parameterBits.flags.isCentroid)
+            {
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use both 'sample' and 'centroid'", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
         }
@@ -3759,6 +3833,24 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
         Variable::__Resolved* outResolved = Symbol::Resolved(var);
         Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[iterator]);
 
+        // Add transient modifiers from the next stages in parameters to the previous stages out parameters
+        ProgramInstance::__Resolved* progRes = Symbol::Resolved(compiler->currentState.prog);
+        progRes->variablesWithTransientModifiers.Insert(var, inResolved->parameterBits.bits);
+
+        if (outResolved->parameterBits.flags.isPatch)
+        {
+            if (inResolved->parameterBits.flags.isCentroid)
+            {
+                compiler->Error(Format("Can't match 'patch' output '%s' in shader %s with 'centroid' input in shader %s", var->name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                return false;
+            }
+            if (inResolved->parameterBits.flags.isSample)
+            {
+                compiler->Error(Format("Can't match 'patch' output '%s' in shader %s with 'sample' input in shader %s", var->name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                return false;
+            }
+        }
+
         if (rules.inputIsArray && !rules.previousOutputIsArray)
         {
             // If in type is removed 1 array level, the types must match
@@ -3767,13 +3859,13 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
             inType.modifierValues.size--;
             if (var->type != inType)
             {
-                compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.ToString().c_str(), inParams.ptr[iterator]->type.ToString().c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                compiler->Error(Format("Can't match types for %s ('%s') in shader %s and %s ('%s') in shader '%s'", var->name.c_str(), var->type.ToString().c_str(), outFunc->name.c_str(), inParams.ptr[iterator]->name.c_str(), inParams.ptr[iterator]->type.ToString().c_str(), inFunc->name.c_str()), outFunc);
                 return false;
             }
         }
         else if (var->type != inParams.ptr[iterator]->type)
         {
-            compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.ToString().c_str(), inParams.ptr[iterator]->type.ToString().c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+            compiler->Error(Format("Can't match types for %s ('%s') in shader '%s' and %s ('%s') in shader '%s'", var->name.c_str(), var->type.ToString().c_str(), outFunc->name.c_str(), inParams.ptr[iterator]->name.c_str(), inParams.ptr[iterator]->type.ToString().c_str(), inFunc->name.c_str()), outFunc);
             return false;
         }
     }
@@ -3964,6 +4056,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Invalid program setup, PixelShader needs either a VertexShader, a VertexShader-GeometryShader, a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader or a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader-GeometryShader setup"), symbol);
                 return false;
             }
+            // TODO: use the parameter sets to create transient parameter attributes
             Function* ps = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::PixelShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ps))
                 return false;
@@ -4111,12 +4204,20 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             IfStatement* ifStat = static_cast<IfStatement*>(symbol);
             ValueUnion val;
+
             if (ifStat->condition->EvalValue(val))
             {
+                Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
                 if (val.b[0])
+                {
                     res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
+                    entryRes->visibleSymbols.Insert(ifStat->ifStatement);
+                }
                 else if (ifStat->elseStatement != nullptr)
+                {
                     res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
+                    entryRes->visibleSymbols.Insert(ifStat->elseStatement);
+                }
             }
             else
             {
@@ -4124,7 +4225,9 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
 
                 res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
                 if (ifStat->elseStatement != nullptr)
+                {
                     res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
+                }
             }
             break;
         }
@@ -4134,10 +4237,17 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             ValueUnion val;
             if (ternExp->lhs->EvalValue(val))
             {
+                Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
                 if (val.b[0])
+                {
                     res |= this->ResolveVisibility(compiler, ternExp->ifExpression);
+                    entryRes->visibleSymbols.Insert(ternExp->ifExpression);
+                }
                 else
+                {
                     res |= this->ResolveVisibility(compiler, ternExp->elseExpression);
+                    entryRes->visibleSymbols.Insert(ternExp->elseExpression);
+                }
             }
             else
             {
@@ -4153,10 +4263,17 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             ValueUnion val;
             if (switchStat->switchExpression->EvalValue(val))
             {
+                Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
                 if (val.i[0] < switchStat->caseExpressions.size)
+                {
                     res |= this->ResolveVisibility(compiler, switchStat->caseStatements[val.i[0]]);
+                    entryRes->visibleSymbols.Insert(switchStat->caseStatements[val.i[0]]);
+                }
                 else if (switchStat->defaultStatement != nullptr)
+                {
                     res |= this->ResolveVisibility(compiler, switchStat->defaultStatement);
+                    entryRes->visibleSymbols.Insert(switchStat->defaultStatement);
+                }
             }
             else
             {
@@ -4319,19 +4436,26 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
 
                 if (fun == GeometryGetTriangle.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyTriangles_value)
                 {
-                    compiler->Error(Format("geometry shader must use input topology 'triangles' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    compiler->Error(Format("geometry shader must use input topology 'InputTopology.Triangles' to support %s", GeometryGetTriangle.name.c_str()), expr);
                     return false;
                 }
                 else if (fun == GeometryGetLine.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyLines_value)
                 {
-                    compiler->Error(Format("geometry shader must use input topology 'lines' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    compiler->Error(Format("geometry shader must use input topology 'InputTopology.Lines' to support %s", GeometryGetTriangle.name.c_str()), expr);
                     return false;
                 }
                 else if (fun == GeometryGetPoint.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyPoints_value)
                 {
-                    compiler->Error(Format("geometry shader must use input topology 'points' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    compiler->Error(Format("geometry shader must use input topology 'InputTopology.Points' to support %s", GeometryGetTriangle.name.c_str()), expr);
                     return false;
                 }
+                return true;
+            };
+
+            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> layerViewportFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
+            {
+                Function::__Resolved* funResolved = Symbol::Resolved(compiler->currentState.function);
+                funResolved->executionModifiers.layerOrViewportOutput = true;
                 return true;
             };
             
@@ -4353,6 +4477,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 , std::pair{ GeometryGetPoint_name, geometryTypeConditionFunction }
                 , std::pair{ GeometryGetLine_name, geometryTypeConditionFunction }
                 , std::pair{ GeometryGetTriangle_name, geometryTypeConditionFunction }
+                , std::pair{ VertexSetOutputLayer_UInt16_name, layerViewportFunction }
+                , std::pair{ VertexSetOutputLayer_UInt32_name, layerViewportFunction }
+                , std::pair{ VertexSetOutputViewport_UInt16_name, layerViewportFunction }
+                , std::pair{ VertexSetOutputViewport_UInt32_name, layerViewportFunction }
                 , std::pair{ "ddx"_c, derivativeConditionFunction }
                 , std::pair{ "ddy"_c, derivativeConditionFunction }
                 , std::pair{ "fwidth"_c, derivativeConditionFunction }

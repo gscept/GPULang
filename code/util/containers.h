@@ -786,7 +786,6 @@ struct PinnedArray
  
  Does not need to free its memory.
  */
-extern size_t LeakedStaticArrayBytes;
 template<typename T, size_t SIZE>
 struct StaticArray
 {
@@ -855,11 +854,6 @@ struct StaticArray
     StaticArray(const TransientArray<U>& vec)
     {
         static_assert(std::is_assignable<T, U>::value, "No explicit assignment exists between types");
-        if (this->buf != nullptr)
-        {
-            // leak memory
-            LeakedStaticArrayBytes += this->capacity;
-        }
         this->buf = StaticAllocArray<T>(vec.capacity);
         
         if (vec.size > 0)

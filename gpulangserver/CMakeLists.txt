@@ -43,6 +43,13 @@ if (NOT DEPLOY)
             "${EXTENSION_BIN_DIR}/$<TARGET_FILE_NAME:gpulang_server>"
         COMMENT "Copying language server binary to vscode extension folder"
     )
+    set(EXTENSION_BIN_DIR "${CMAKE_SOURCE_DIR}/vs-extension/gpulang-vsix/gpulang-vsix")
+    add_custom_command(TARGET gpulang_server POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+            $<TARGET_FILE:gpulang_server>
+            "${EXTENSION_BIN_DIR}/$<TARGET_FILE_NAME:gpulang_server>"
+        COMMENT "Copying language server binary to msvc extension folder"
+    )
 else()
     install(TARGETS gpulang_server
         RUNTIME DESTINATION ${CMAKE_SOURCE_DIR}/bin/

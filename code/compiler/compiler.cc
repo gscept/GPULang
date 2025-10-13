@@ -31,6 +31,8 @@
 namespace GPULang
 {
 
+thread_local BoolExpression ShaderValueExpressions[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -55,6 +57,8 @@ Compiler::Compiler()
     this->options.validate = true;
     this->options.optimize = false;
     this->options.emitTimings = true;
+    this->currentState.prog = nullptr;
+    this->currentState.function = nullptr;
 
     this->branchReturns = false;
     this->defaultRenderState.name = "__DefaultRenderState";
@@ -145,31 +149,11 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
     this->intrinsicScope->symbolLookup = DefaultIntrinsics;
 
     this->ignoreReservedWords = true;
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::DomainShader].name = "gplIsDomainShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::GeometryShader].name = "gplIsGeometryShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::PixelShader].name = "gplIsPixelShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::ComputeShader].name = "gplIsComputeShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::TaskShader].name = "gplIsTaskShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::MeshShader].name = "gplIsMeshShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayMissShader].name = "gplIsRayMissShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayCallableShader].name = "gplIsRayCallableShader";
-
     for (uint32_t i = ProgramInstance::__Resolved::EntryType::FirstShader; i <= ProgramInstance::__Resolved::EntryType::LastShader; i++)
     {
-        this->shaderSwitches[i].type = Type::FullType{ ConstantString("b8") };
-        Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
-        res->usageBits.flags.isConst = true;
-        res->builtin = true;
-        res->typeSymbol = &Bool8Type;
-        this->shaderValueExpressions[i].value = false;
-        this->shaderSwitches[i].valueExpression = &this->shaderValueExpressions[i];
-        this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
+        ShaderValueExpressions[i].value = false;
+        TransientString str = TransientString("gplIs", ProgramInstance::__Resolved::EntryTypeToString(ProgramInstance::__Resolved::EntryType(i)));
+        this->intrinsicScope->symbolLookup.Insert(HashString(str), &ShaderValueExpressions[i]);
     }
 
     this->ignoreReservedWords = false;
@@ -225,31 +209,12 @@ Compiler::SetupServer(const Compiler::Language& lang,Options options)
     
     this->ignoreReservedWords = true;
     
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::DomainShader].name = "gplIsDomainShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::GeometryShader].name = "gplIsGeometryShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::PixelShader].name = "gplIsPixelShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::ComputeShader].name = "gplIsComputeShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::TaskShader].name = "gplIsTaskShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::MeshShader].name = "gplIsMeshShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayMissShader].name = "gplIsRayMissShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
-    this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayCallableShader].name = "gplIsRayCallableShader";
-    
     for (uint32_t i = ProgramInstance::__Resolved::EntryType::FirstShader; i <= ProgramInstance::__Resolved::EntryType::LastShader; i++)
     {
-        this->shaderSwitches[i].type = Type::FullType{ ConstantString("b8") };
-        Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
-        res->usageBits.flags.isConst = true;
-        res->builtin = true;
-        res->typeSymbol = &Bool8Type;
-        this->shaderValueExpressions[i].value = false;
-        this->shaderSwitches[i].valueExpression = &this->shaderValueExpressions[i];
-        this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
+        ShaderValueExpressions[i].value = false;
+        TransientString str = TransientString("gplIs", ProgramInstance::__Resolved::EntryTypeToString(ProgramInstance::__Resolved::EntryType(i)));
+        this->intrinsicScope->symbolLookup.Insert(HashString(str), &ShaderValueExpressions[i]);
+
     }
     
     this->ignoreReservedWords = false;
@@ -878,8 +843,12 @@ Compiler::Error(const TransientString& msg, const FixedString& file, int line, i
 /**
 */
 void
-Compiler::Error(const TransientString& msg, const Symbol* sym)
+Compiler::Error(TransientString msg, const Symbol* sym)
 {
+    if (this->currentState.prog != nullptr)
+    {
+        msg.Append(TStr(" in program '", this->currentState.prog->name, "'"));
+    }
     this->Error(msg, sym->location.file, sym->location.line, sym->location.start, sym->location.end - sym->location.start);
 }
 
@@ -1172,7 +1141,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.nameOffset = dynamicDataBlob.Write(symbol->name.c_str(), symbol->name.len);
             output.depthClampEnabled = resolved->depthClampEnabled;
             output.noPixels = resolved->noPixels;
-            output.polygonMode = resolved->polygonMode;
+            output.rasterizationMode = resolved->rasterizationMode;
             output.cullMode = resolved->cullMode;
             output.windingOrderMode = resolved->windingOrderMode;
             output.depthBiasEnabled = resolved->depthBiasEnabled;
@@ -1332,6 +1301,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
         {
             Variable* var = static_cast<Variable*>(symbol);
             Variable::__Resolved* resolved = static_cast<Variable::__Resolved*>(symbol->resolved);
+            if (resolved->usageBits.flags.isNoReflect)
+                continue;
             Serialize::Variable output;
             output.binding = resolved->binding;
             output.group = resolved->group;

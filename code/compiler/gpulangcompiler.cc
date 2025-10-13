@@ -25,7 +25,7 @@
 
 namespace GPULang
 {
-Allocator* StringAllocator;
+thread_local Allocator* StringAllocator;
 }
 
 using namespace GPULang;
@@ -1925,7 +1925,8 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
 
     Compiler compiler;
     compiler.Setup(target, options);
-    
+    GrowingString errorString;
+
     TransientArray<std::string_view> searchPaths(128);
     for (auto& arg : defines)
     {
@@ -1949,15 +1950,12 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
 
     TokenizationResult tokenizationResult;
     Tokenize(file, searchPaths, tokenizationResult);
-    if (tokenizationResult.errors.size > 0)
+    if (tokenizationResult.diagnostics.size > 0)
     {
-        GrowingString str;
-        for (const auto& err : tokenizationResult.errors)
+        for (const auto& err : tokenizationResult.diagnostics)
         {
-            str.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
+            errorString.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
         }
-        errorBuffer = Error(str);
-        return false;
     }
     
     timer.Stop();
@@ -1970,7 +1968,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
-    if (tokenizationResult.errors.size == 0)
+    if (tokenizationResult.diagnostics.size == 0)
     {
         // get the name of the shader
         char* it = file->path.buf + file->path.len - 1;
@@ -2007,15 +2005,12 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
 
         GPULang::TokenStream tokenStream(tokenizationResult);
         ParseResult parseResult = Parse(tokenStream);
-        if (parseResult.errors.size > 0)
+        if (parseResult.diagnostics.size > 0)
         {
-            GrowingString str;
-            for (const auto& err : parseResult.errors)
+            for (const auto& err : parseResult.diagnostics)
             {
-                str.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
+                errorString.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
             }
-            errorBuffer = Error(str);
-            return false;
         }
 
         timer.Stop();
@@ -2040,30 +2035,35 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         // convert error list to string
         if (compiler.messages.size != 0 && !compiler.options.quiet)
         {
-            GrowingString err;
             for (size_t i = 0; i < compiler.messages.size; i++)
             {
                 if (i > 0)
-                    err.Append("\n");
-                err.Append(compiler.messages[i]);
+                    errorString.Append("\n");
+                errorString.Append(compiler.messages[i]);
             }
-            if (err.size == 0 && compiler.hasErrors)
-                err.Append("Unhandled internal compiler error");
-            errorBuffer = Error(err);
+            if (errorString.size == 0 && compiler.hasErrors)
+                errorString.Append("Unhandled internal compiler error");
         }
         if (options.emitTimings)
             timer.TotalTime();
         GPULang::ResetAllocator(&alloc);
+        if (errorString.size > 0) 
+        {
+            errorBuffer = Error(errorString);
+        }
+
         return res;
     }
-    GrowingString err;
     for (auto& diagnostic : diagnostics)
     {
-        err.Append(Format("%s(%d:%d): error: %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str()));
+        errorString.Append(Format("%s(%d:%d): error: %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str()));
     }
-    errorBuffer = Error(err);
 
-    
+    if (errorString.size > 0) 
+    {
+        errorBuffer = Error(errorString);
+    }
+
     GPULang::ResetAllocator(&alloc);
     GPULang::ResetAllocator(&stringAllocator);
     
@@ -2112,10 +2112,10 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     
     TokenizationResult tokenizationResult;
     Tokenize(file, searchPaths, tokenizationResult, true);
-    for (const auto& err : tokenizationResult.errors)
+    for (const auto& err : tokenizationResult.diagnostics)
     {
         result.diagnostics.Append(err);
-        return false;
+        //return false;
     }
     
     timer.Stop();
@@ -2127,7 +2127,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     }
 
     // If lexing is succesful, continue
-    if (tokenizationResult.errors.size == 0)
+    if (tokenizationResult.diagnostics.size == 0)
     {
         // get the name of the shader
         std::locale loc;
@@ -2160,10 +2160,10 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         timer.Start();
         GPULang::TokenStream tokenStream(tokenizationResult);
         ParseResult parseResult = Parse(tokenStream);
-        for (const auto& err : parseResult.errors)
+        for (const auto& err : parseResult.diagnostics)
         {
             result.diagnostics.Append(err);
-            return false;
+            //return false;
         }
         timer.Stop();
         if (options.emitTimings)

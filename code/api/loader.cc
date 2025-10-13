@@ -289,7 +289,7 @@ else\
             deserialized->nameLength = rend->nameLength;
             deserialized->depthClampEnabled = rend->depthClampEnabled;
             deserialized->noPixels = rend->noPixels;
-            deserialized->polygonMode = rend->polygonMode;
+            deserialized->rasterizationMode = rend->rasterizationMode;
             deserialized->cullMode = rend->cullMode;
             deserialized->windingOrderMode = rend->windingOrderMode;
             deserialized->depthBiasEnabled = rend->depthBiasEnabled;

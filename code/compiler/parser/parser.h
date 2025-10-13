@@ -66,8 +66,11 @@ enum class TokenType
     , NonTemporal_Decorator
     , Binding_Decorator
     , Group_Decorator
+    , NoReflect_Decorator
     , NoInterpolate_Modifier
     , NoPerspective_Modifier
+    , Centroid_Modifier
+    , Sample_Modifier
     , Patch_Domain
     , EntryPoint_Attribute
     , Threads_Attribute
@@ -213,7 +216,7 @@ struct TokenizationResult
 {
     PinnedArray<TokenType> tokenTypes = 0xFFFFFF;
     PinnedArray<Token> tokens = 0xFFFFFF;
-    PinnedArray<GPULangDiagnostic> errors = 0xFFFF;
+    PinnedArray<GPULangDiagnostic> diagnostics = 0xFFFF;
     PinnedSet<TransientString> resolvedPaths = 0xFFF;
     TransientArray<GPULangFile*> files = 128;
     size_t lineCount = 0;
@@ -225,7 +228,7 @@ void Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& s
 struct ParseResult
 {
     Effect* ast;
-    PinnedArray<GPULangDiagnostic> errors = 0xFFFF;
+    PinnedArray<GPULangDiagnostic> diagnostics = 0xFFFF;
 };
 extern uint32_t TokenClassTable[(uint32_t)TokenType::NumTokenTypes];
 struct TokenStream

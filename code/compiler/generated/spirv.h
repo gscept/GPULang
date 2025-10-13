@@ -2896,8 +2896,7 @@ SPIRVResult SPIRV_Float32x2_operator_neq_Float32x2(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -2905,9 +2904,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_Float32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -2915,9 +2912,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -3227,18 +3222,16 @@ SPIRVResult SPIRV_UInt32x2_operator_neq_UInt32x2(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 2, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -3247,8 +3240,7 @@ SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -3615,19 +3607,16 @@ SPIRVResult SPIRV_Int32x2_operator_neq_Int32x2(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 2, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -3636,7 +3625,7 @@ SPIRVResult SPIRV_Int32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -4165,8 +4154,7 @@ SPIRVResult SPIRV_Float16x2_operator_neq_Float16x2(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -4174,9 +4162,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_Float16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -4184,9 +4170,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -4496,18 +4480,16 @@ SPIRVResult SPIRV_UInt16x2_operator_neq_UInt16x2(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 2, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -4516,8 +4498,7 @@ SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -4884,19 +4865,16 @@ SPIRVResult SPIRV_Int16x2_operator_neq_Int16x2(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 2, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -4905,7 +4883,7 @@ SPIRVResult SPIRV_Int16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -5285,8 +5263,7 @@ SPIRVResult SPIRV_Float32x3_operator_neq_Float32x3(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -5294,9 +5271,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_Float32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -5304,9 +5279,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -5628,18 +5601,16 @@ SPIRVResult SPIRV_UInt32x3_operator_neq_UInt32x3(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 3, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -5648,8 +5619,7 @@ SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -6028,19 +5998,16 @@ SPIRVResult SPIRV_Int32x3_operator_neq_Int32x3(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 3, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -6049,7 +6016,7 @@ SPIRVResult SPIRV_Int32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -6602,8 +6569,7 @@ SPIRVResult SPIRV_Float16x3_operator_neq_Float16x3(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -6611,9 +6577,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_Float16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -6621,9 +6585,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -6945,18 +6907,16 @@ SPIRVResult SPIRV_UInt16x3_operator_neq_UInt16x3(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 3, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -6965,8 +6925,7 @@ SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -7345,19 +7304,16 @@ SPIRVResult SPIRV_Int16x3_operator_neq_Int16x3(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 3, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -7366,7 +7322,7 @@ SPIRVResult SPIRV_Int16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -7770,8 +7726,7 @@ SPIRVResult SPIRV_Float32x4_operator_neq_Float32x4(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -7779,9 +7734,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_Float32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -7789,9 +7742,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -8137,18 +8088,16 @@ SPIRVResult SPIRV_UInt32x4_operator_neq_UInt32x4(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 4, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -8157,8 +8106,7 @@ SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -8561,19 +8509,16 @@ SPIRVResult SPIRV_Int32x4_operator_neq_Int32x4(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 4, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -8582,7 +8527,7 @@ SPIRVResult SPIRV_Int32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -9183,8 +9128,7 @@ SPIRVResult SPIRV_Float16x4_operator_neq_Float16x4(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -9192,9 +9136,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_Float16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -9202,9 +9144,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -9550,18 +9490,16 @@ SPIRVResult SPIRV_UInt16x4_operator_neq_UInt16x4(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 4, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -9570,8 +9508,7 @@ SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -9974,19 +9911,16 @@ SPIRVResult SPIRV_Int16x4_operator_neq_Int16x4(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 4, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -9995,7 +9929,7 @@ SPIRVResult SPIRV_Int16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -16687,6 +16621,7 @@ SPIRVResult SPIRV_inverse_Float16x4x4(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_VertexGetOutputLayer(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16699,6 +16634,7 @@ SPIRVResult SPIRV_VertexGetOutputLayer(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_VertexGetOutputViewport(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16711,10 +16647,11 @@ SPIRVResult SPIRV_VertexGetOutputViewport(const Compiler* c, SPIRVGenerator* g, 
 
 SPIRVResult SPIRV_VertexGetIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::VertexId);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::VertexIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -16723,10 +16660,11 @@ SPIRVResult SPIRV_VertexGetIndex(const Compiler* c, SPIRVGenerator* g, uint32_t 
 
 SPIRVResult SPIRV_VertexGetInstanceIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InstanceId);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InstanceIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -16735,6 +16673,7 @@ SPIRVResult SPIRV_VertexGetInstanceIndex(const Compiler* c, SPIRVGenerator* g, u
 
 SPIRVResult SPIRV_VertexGetBaseIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetBaseIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16747,6 +16686,7 @@ SPIRVResult SPIRV_VertexGetBaseIndex(const Compiler* c, SPIRVGenerator* g, uint3
 
 SPIRVResult SPIRV_VertexGetBaseInstanceIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetBaseInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16759,6 +16699,7 @@ SPIRVResult SPIRV_VertexGetBaseInstanceIndex(const Compiler* c, SPIRVGenerator* 
 
 SPIRVResult SPIRV_VertexGetDrawIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetDrawIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16771,45 +16712,53 @@ SPIRVResult SPIRV_VertexGetDrawIndex(const Compiler* c, SPIRVGenerator* g, uint3
 
 SPIRVResult SPIRV_VertexSetOutputLayer_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
     g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
 }
 
 SPIRVResult SPIRV_VertexSetOutputLayer_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
     g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
 }
 
 SPIRVResult SPIRV_VertexSetOutputViewport_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
     g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
 }
 
 SPIRVResult SPIRV_VertexSetOutputViewport_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
     g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -16818,7 +16767,7 @@ SPIRVResult SPIRV_VertexExportCoordinates_Float32x4(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
@@ -16831,12 +16780,81 @@ SPIRVResult SPIRV_VertexExportCoordinates_Float16x4(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
     g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
+}
+
+SPIRVResult SPIRV_GeometryExportPrimitiveIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    g->writer->Capability(Capabilities::Geometry);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}
+
+SPIRVResult SPIRV_HullGetPrimitiveIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    g->writer->Capability(Capabilities::Tessellation);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}
+
+SPIRVResult SPIRV_DomainGetPrimitiveIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    g->writer->Capability(Capabilities::Tessellation);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}
+
+SPIRVResult SPIRV_PixelGetPrimitiveIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}
+
+SPIRVResult SPIRV_GeometryGetInvocationIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    g->writer->Capability(Capabilities::Geometry);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryGetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InvocationId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
 }
 
 SPIRVResult SPIRV_GeometryExportVertex_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -16845,7 +16863,7 @@ SPIRVResult SPIRV_GeometryExportVertex_Float32x4(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Geometry);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
@@ -16860,7 +16878,7 @@ SPIRVResult SPIRV_GeometryExportVertex_Float16x4(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Geometry);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
@@ -16876,13 +16894,71 @@ SPIRVResult SPIRV_GeometryExportPrimitive(const Compiler* c, SPIRVGenerator* g, 
     return SPIRVResult::Invalid();
 }
 
+SPIRVResult SPIRV_HullExportOuterTessellationLevels(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    g->writer->Capability(Capabilities::Tessellation);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullOuterTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::TessLevelOuter);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}
+
+SPIRVResult SPIRV_HullExportInnerTessellationLevels(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    g->writer->Capability(Capabilities::Tessellation);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplInnerHullTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::TessLevelInner);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}
+
+SPIRVResult SPIRV_DomainGetTessellationCoordinates(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    g->writer->Capability(Capabilities::Tessellation);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 23);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainTessellationCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::TessCoord);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}
+
+SPIRVResult SPIRV_DomainGetInvocationIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::Shader);
+    g->writer->Capability(Capabilities::Tessellation);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainGetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InvocationId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}
+
 SPIRVResult SPIRV_GeometryGetPoint(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryPoint_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetPoint"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->interfaceVariables.Insert(ret);
-    return SPIRVResult(ret, typePtr);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(returnType);
+    return res;
 }
 
 SPIRVResult SPIRV_GeometryGetLine(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -16891,7 +16967,9 @@ SPIRVResult SPIRV_GeometryGetLine(const Compiler* c, SPIRVGenerator* g, uint32_t
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryLine_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetLine"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->interfaceVariables.Insert(ret);
-    return SPIRVResult(ret, typePtr);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(returnType);
+    return res;
 }
 
 SPIRVResult SPIRV_GeometryGetTriangle(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -16900,7 +16978,9 @@ SPIRVResult SPIRV_GeometryGetTriangle(const Compiler* c, SPIRVGenerator* g, uint
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryTriangle_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetTriangle"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->interfaceVariables.Insert(ret);
-    return SPIRVResult(ret, typePtr);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(returnType);
+    return res;
 }
 
 SPIRVResult SPIRV_PixelGetCoordinates_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -28865,7 +28945,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCubeArray_Int16(const Compiler* c, SPI
 }
 
 using SPIRVIntrinsic = SPIRVResult(*)(const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&);
-constexpr std::array<SPIRVIntrinsic, 2898> SPIRVDefaultIntrinsics = {
+constexpr std::array<SPIRVIntrinsic, 2907> SPIRVDefaultIntrinsics = {
         &SPIRV_Float32_from_UInt32 /* 0 -> 0 */,
         &SPIRV_Float32_from_Int32 /* 1 -> 1 */,
         &SPIRV_Float32_from_Bool8 /* 2 -> 2 */,
@@ -30733,1035 +30813,1044 @@ constexpr std::array<SPIRVIntrinsic, 2898> SPIRVDefaultIntrinsics = {
         &SPIRV_VertexSetOutputViewport_UInt32 /* 1864 -> 1864 */,
         &SPIRV_VertexExportCoordinates_Float32x4 /* 1865 -> 1865 */,
         &SPIRV_VertexExportCoordinates_Float16x4 /* 1866 -> 1866 */,
-        &SPIRV_GeometryExportVertex_Float32x4 /* 1867 -> 1867 */,
-        &SPIRV_GeometryExportVertex_Float16x4 /* 1868 -> 1868 */,
-        &SPIRV_GeometryExportPrimitive /* 1869 -> 1869 */,
-        &SPIRV_GeometryGetPoint /* 1870 -> 1870 */,
-        &SPIRV_GeometryGetLine /* 1871 -> 1871 */,
-        &SPIRV_GeometryGetTriangle /* 1872 -> 1872 */,
-        &SPIRV_PixelGetCoordinates_Float32x4 /* 1873 -> 1873 */,
-        &SPIRV_PixelGetCoordinates_Float16x4 /* 1874 -> 1874 */,
-        &SPIRV_PixelGetFrontFacing /* 1875 -> 1875 */,
-        &SPIRV_PixelGetDepth /* 1876 -> 1876 */,
-        &SPIRV_PixelSetDepth /* 1877 -> 1877 */,
-        &SPIRV_PixelExportColor_Float32_Int32 /* 1878 -> 1878 */,
-        &SPIRV_PixelExportColor_Float32_UInt32 /* 1879 -> 1879 */,
-        &SPIRV_PixelExportColor_Float32_Int16 /* 1880 -> 1880 */,
-        &SPIRV_PixelExportColor_Float32_UInt16 /* 1881 -> 1881 */,
-        &SPIRV_PixelExportColor_Float32x2_Int32 /* 1882 -> 1882 */,
-        &SPIRV_PixelExportColor_Float32x2_UInt32 /* 1883 -> 1883 */,
-        &SPIRV_PixelExportColor_Float32x2_Int16 /* 1884 -> 1884 */,
-        &SPIRV_PixelExportColor_Float32x2_UInt16 /* 1885 -> 1885 */,
-        &SPIRV_PixelExportColor_Float32x3_Int32 /* 1886 -> 1886 */,
-        &SPIRV_PixelExportColor_Float32x3_UInt32 /* 1887 -> 1887 */,
-        &SPIRV_PixelExportColor_Float32x3_Int16 /* 1888 -> 1888 */,
-        &SPIRV_PixelExportColor_Float32x3_UInt16 /* 1889 -> 1889 */,
-        &SPIRV_PixelExportColor_Float32x4_Int32 /* 1890 -> 1890 */,
-        &SPIRV_PixelExportColor_Float32x4_UInt32 /* 1891 -> 1891 */,
-        &SPIRV_PixelExportColor_Float32x4_Int16 /* 1892 -> 1892 */,
-        &SPIRV_PixelExportColor_Float32x4_UInt16 /* 1893 -> 1893 */,
-        &SPIRV_PixelExportColor_Float16_Int32 /* 1894 -> 1894 */,
-        &SPIRV_PixelExportColor_Float16_UInt32 /* 1895 -> 1895 */,
-        &SPIRV_PixelExportColor_Float16_Int16 /* 1896 -> 1896 */,
-        &SPIRV_PixelExportColor_Float16_UInt16 /* 1897 -> 1897 */,
-        &SPIRV_PixelExportColor_Float16x2_Int32 /* 1898 -> 1898 */,
-        &SPIRV_PixelExportColor_Float16x2_UInt32 /* 1899 -> 1899 */,
-        &SPIRV_PixelExportColor_Float16x2_Int16 /* 1900 -> 1900 */,
-        &SPIRV_PixelExportColor_Float16x2_UInt16 /* 1901 -> 1901 */,
-        &SPIRV_PixelExportColor_Float16x3_Int32 /* 1902 -> 1902 */,
-        &SPIRV_PixelExportColor_Float16x3_UInt32 /* 1903 -> 1903 */,
-        &SPIRV_PixelExportColor_Float16x3_Int16 /* 1904 -> 1904 */,
-        &SPIRV_PixelExportColor_Float16x3_UInt16 /* 1905 -> 1905 */,
-        &SPIRV_PixelExportColor_Float16x4_Int32 /* 1906 -> 1906 */,
-        &SPIRV_PixelExportColor_Float16x4_UInt32 /* 1907 -> 1907 */,
-        &SPIRV_PixelExportColor_Float16x4_Int16 /* 1908 -> 1908 */,
-        &SPIRV_PixelExportColor_Float16x4_UInt16 /* 1909 -> 1909 */,
-        &SPIRV_PixelExportColor_Int32_Int32 /* 1910 -> 1910 */,
-        &SPIRV_PixelExportColor_Int32_UInt32 /* 1911 -> 1911 */,
-        &SPIRV_PixelExportColor_Int32_Int16 /* 1912 -> 1912 */,
-        &SPIRV_PixelExportColor_Int32_UInt16 /* 1913 -> 1913 */,
-        &SPIRV_PixelExportColor_Int32x2_Int32 /* 1914 -> 1914 */,
-        &SPIRV_PixelExportColor_Int32x2_UInt32 /* 1915 -> 1915 */,
-        &SPIRV_PixelExportColor_Int32x2_Int16 /* 1916 -> 1916 */,
-        &SPIRV_PixelExportColor_Int32x2_UInt16 /* 1917 -> 1917 */,
-        &SPIRV_PixelExportColor_Int32x3_Int32 /* 1918 -> 1918 */,
-        &SPIRV_PixelExportColor_Int32x3_UInt32 /* 1919 -> 1919 */,
-        &SPIRV_PixelExportColor_Int32x3_Int16 /* 1920 -> 1920 */,
-        &SPIRV_PixelExportColor_Int32x3_UInt16 /* 1921 -> 1921 */,
-        &SPIRV_PixelExportColor_Int32x4_Int32 /* 1922 -> 1922 */,
-        &SPIRV_PixelExportColor_Int32x4_UInt32 /* 1923 -> 1923 */,
-        &SPIRV_PixelExportColor_Int32x4_Int16 /* 1924 -> 1924 */,
-        &SPIRV_PixelExportColor_Int32x4_UInt16 /* 1925 -> 1925 */,
-        &SPIRV_PixelExportColor_Int16_Int32 /* 1926 -> 1926 */,
-        &SPIRV_PixelExportColor_Int16_UInt32 /* 1927 -> 1927 */,
-        &SPIRV_PixelExportColor_Int16_Int16 /* 1928 -> 1928 */,
-        &SPIRV_PixelExportColor_Int16_UInt16 /* 1929 -> 1929 */,
-        &SPIRV_PixelExportColor_Int16x2_Int32 /* 1930 -> 1930 */,
-        &SPIRV_PixelExportColor_Int16x2_UInt32 /* 1931 -> 1931 */,
-        &SPIRV_PixelExportColor_Int16x2_Int16 /* 1932 -> 1932 */,
-        &SPIRV_PixelExportColor_Int16x2_UInt16 /* 1933 -> 1933 */,
-        &SPIRV_PixelExportColor_Int16x3_Int32 /* 1934 -> 1934 */,
-        &SPIRV_PixelExportColor_Int16x3_UInt32 /* 1935 -> 1935 */,
-        &SPIRV_PixelExportColor_Int16x3_Int16 /* 1936 -> 1936 */,
-        &SPIRV_PixelExportColor_Int16x3_UInt16 /* 1937 -> 1937 */,
-        &SPIRV_PixelExportColor_Int16x4_Int32 /* 1938 -> 1938 */,
-        &SPIRV_PixelExportColor_Int16x4_UInt32 /* 1939 -> 1939 */,
-        &SPIRV_PixelExportColor_Int16x4_Int16 /* 1940 -> 1940 */,
-        &SPIRV_PixelExportColor_Int16x4_UInt16 /* 1941 -> 1941 */,
-        &SPIRV_PixelExportColor_UInt32_Int32 /* 1942 -> 1942 */,
-        &SPIRV_PixelExportColor_UInt32_UInt32 /* 1943 -> 1943 */,
-        &SPIRV_PixelExportColor_UInt32_Int16 /* 1944 -> 1944 */,
-        &SPIRV_PixelExportColor_UInt32_UInt16 /* 1945 -> 1945 */,
-        &SPIRV_PixelExportColor_UInt32x2_Int32 /* 1946 -> 1946 */,
-        &SPIRV_PixelExportColor_UInt32x2_UInt32 /* 1947 -> 1947 */,
-        &SPIRV_PixelExportColor_UInt32x2_Int16 /* 1948 -> 1948 */,
-        &SPIRV_PixelExportColor_UInt32x2_UInt16 /* 1949 -> 1949 */,
-        &SPIRV_PixelExportColor_UInt32x3_Int32 /* 1950 -> 1950 */,
-        &SPIRV_PixelExportColor_UInt32x3_UInt32 /* 1951 -> 1951 */,
-        &SPIRV_PixelExportColor_UInt32x3_Int16 /* 1952 -> 1952 */,
-        &SPIRV_PixelExportColor_UInt32x3_UInt16 /* 1953 -> 1953 */,
-        &SPIRV_PixelExportColor_UInt32x4_Int32 /* 1954 -> 1954 */,
-        &SPIRV_PixelExportColor_UInt32x4_UInt32 /* 1955 -> 1955 */,
-        &SPIRV_PixelExportColor_UInt32x4_Int16 /* 1956 -> 1956 */,
-        &SPIRV_PixelExportColor_UInt32x4_UInt16 /* 1957 -> 1957 */,
-        &SPIRV_PixelExportColor_UInt16_Int32 /* 1958 -> 1958 */,
-        &SPIRV_PixelExportColor_UInt16_UInt32 /* 1959 -> 1959 */,
-        &SPIRV_PixelExportColor_UInt16_Int16 /* 1960 -> 1960 */,
-        &SPIRV_PixelExportColor_UInt16_UInt16 /* 1961 -> 1961 */,
-        &SPIRV_PixelExportColor_UInt16x2_Int32 /* 1962 -> 1962 */,
-        &SPIRV_PixelExportColor_UInt16x2_UInt32 /* 1963 -> 1963 */,
-        &SPIRV_PixelExportColor_UInt16x2_Int16 /* 1964 -> 1964 */,
-        &SPIRV_PixelExportColor_UInt16x2_UInt16 /* 1965 -> 1965 */,
-        &SPIRV_PixelExportColor_UInt16x3_Int32 /* 1966 -> 1966 */,
-        &SPIRV_PixelExportColor_UInt16x3_UInt32 /* 1967 -> 1967 */,
-        &SPIRV_PixelExportColor_UInt16x3_Int16 /* 1968 -> 1968 */,
-        &SPIRV_PixelExportColor_UInt16x3_UInt16 /* 1969 -> 1969 */,
-        &SPIRV_PixelExportColor_UInt16x4_Int32 /* 1970 -> 1970 */,
-        &SPIRV_PixelExportColor_UInt16x4_UInt32 /* 1971 -> 1971 */,
-        &SPIRV_PixelExportColor_UInt16x4_Int16 /* 1972 -> 1972 */,
-        &SPIRV_PixelExportColor_UInt16x4_UInt16 /* 1973 -> 1973 */,
-        &SPIRV_ComputeGetLocalThreadIndices /* 1974 -> 1974 */,
-        &SPIRV_ComputeGetGlobalThreadIndices /* 1975 -> 1975 */,
-        &SPIRV_ComputeGetWorkgroupIndices /* 1976 -> 1976 */,
-        &SPIRV_ComputeGetWorkGroupDimensions /* 1977 -> 1977 */,
-        &SPIRV_ComputeGetIndexInWorkgroup /* 1978 -> 1978 */,
-        &SPIRV_SubgroupGetId /* 1979 -> 1979 */,
-        &SPIRV_SubgroupGetSize /* 1980 -> 1980 */,
-        &SPIRV_SubgroupGetNum /* 1981 -> 1981 */,
-        &SPIRV_SubgroupGetThreadMask /* 1982 -> 1982 */,
-        &SPIRV_SubgroupGetThreadAndLowerMask /* 1983 -> 1983 */,
-        &SPIRV_SubgroupGetLowerMask /* 1984 -> 1984 */,
-        &SPIRV_SubgroupGetThreadAndGreaterMask /* 1985 -> 1985 */,
-        &SPIRV_SubgroupGetGreaterMask /* 1986 -> 1986 */,
-        &SPIRV_SubgroupGetFirstActiveThread /* 1987 -> 1987 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Float32 /* 1988 -> 1988 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x2 /* 1989 -> 1989 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x3 /* 1990 -> 1990 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x4 /* 1991 -> 1991 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Float16 /* 1992 -> 1992 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x2 /* 1993 -> 1993 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x3 /* 1994 -> 1994 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x4 /* 1995 -> 1995 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Int32 /* 1996 -> 1996 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x2 /* 1997 -> 1997 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x3 /* 1998 -> 1998 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x4 /* 1999 -> 1999 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Int16 /* 2000 -> 2000 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x2 /* 2001 -> 2001 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x3 /* 2002 -> 2002 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x4 /* 2003 -> 2003 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32 /* 2004 -> 2004 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x2 /* 2005 -> 2005 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x3 /* 2006 -> 2006 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x4 /* 2007 -> 2007 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16 /* 2008 -> 2008 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x2 /* 2009 -> 2009 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x3 /* 2010 -> 2010 */,
-        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x4 /* 2011 -> 2011 */,
-        &SPIRV_SubgroupBallot /* 2012 -> 2012 */,
-        &SPIRV_SubgroupInverseBallot /* 2013 -> 2013 */,
-        &SPIRV_SubgroupBallotBitCount /* 2014 -> 2014 */,
-        &SPIRV_SubgroupBallotFirstOne /* 2015 -> 2015 */,
-        &SPIRV_SubgroupBallotLastOne /* 2016 -> 2016 */,
-        &SPIRV_SubgroupBallotBit /* 2017 -> 2017 */,
-        &SPIRV_SubgroupSwapDiagonal_Float32 /* 2018 -> 2018 */,
-        &SPIRV_SubgroupSwapDiagonal_Float32x2 /* 2019 -> 2019 */,
-        &SPIRV_SubgroupSwapDiagonal_Float32x3 /* 2020 -> 2020 */,
-        &SPIRV_SubgroupSwapDiagonal_Float32x4 /* 2021 -> 2021 */,
-        &SPIRV_SubgroupSwapDiagonal_Float16 /* 2022 -> 2022 */,
-        &SPIRV_SubgroupSwapDiagonal_Float16x2 /* 2023 -> 2023 */,
-        &SPIRV_SubgroupSwapDiagonal_Float16x3 /* 2024 -> 2024 */,
-        &SPIRV_SubgroupSwapDiagonal_Float16x4 /* 2025 -> 2025 */,
-        &SPIRV_SubgroupSwapDiagonal_Int32 /* 2026 -> 2026 */,
-        &SPIRV_SubgroupSwapDiagonal_Int32x2 /* 2027 -> 2027 */,
-        &SPIRV_SubgroupSwapDiagonal_Int32x3 /* 2028 -> 2028 */,
-        &SPIRV_SubgroupSwapDiagonal_Int32x4 /* 2029 -> 2029 */,
-        &SPIRV_SubgroupSwapDiagonal_Int16 /* 2030 -> 2030 */,
-        &SPIRV_SubgroupSwapDiagonal_Int16x2 /* 2031 -> 2031 */,
-        &SPIRV_SubgroupSwapDiagonal_Int16x3 /* 2032 -> 2032 */,
-        &SPIRV_SubgroupSwapDiagonal_Int16x4 /* 2033 -> 2033 */,
-        &SPIRV_SubgroupSwapDiagonal_UInt32 /* 2034 -> 2034 */,
-        &SPIRV_SubgroupSwapDiagonal_UInt32x2 /* 2035 -> 2035 */,
-        &SPIRV_SubgroupSwapDiagonal_UInt32x3 /* 2036 -> 2036 */,
-        &SPIRV_SubgroupSwapDiagonal_UInt32x4 /* 2037 -> 2037 */,
-        &SPIRV_SubgroupSwapDiagonal_UInt16 /* 2038 -> 2038 */,
-        &SPIRV_SubgroupSwapDiagonal_UInt16x2 /* 2039 -> 2039 */,
-        &SPIRV_SubgroupSwapDiagonal_UInt16x3 /* 2040 -> 2040 */,
-        &SPIRV_SubgroupSwapDiagonal_UInt16x4 /* 2041 -> 2041 */,
-        &SPIRV_SubgroupSwapVertical_Float32 /* 2042 -> 2042 */,
-        &SPIRV_SubgroupSwapVertical_Float32x2 /* 2043 -> 2043 */,
-        &SPIRV_SubgroupSwapVertical_Float32x3 /* 2044 -> 2044 */,
-        &SPIRV_SubgroupSwapVertical_Float32x4 /* 2045 -> 2045 */,
-        &SPIRV_SubgroupSwapVertical_Float16 /* 2046 -> 2046 */,
-        &SPIRV_SubgroupSwapVertical_Float16x2 /* 2047 -> 2047 */,
-        &SPIRV_SubgroupSwapVertical_Float16x3 /* 2048 -> 2048 */,
-        &SPIRV_SubgroupSwapVertical_Float16x4 /* 2049 -> 2049 */,
-        &SPIRV_SubgroupSwapVertical_Int32 /* 2050 -> 2050 */,
-        &SPIRV_SubgroupSwapVertical_Int32x2 /* 2051 -> 2051 */,
-        &SPIRV_SubgroupSwapVertical_Int32x3 /* 2052 -> 2052 */,
-        &SPIRV_SubgroupSwapVertical_Int32x4 /* 2053 -> 2053 */,
-        &SPIRV_SubgroupSwapVertical_Int16 /* 2054 -> 2054 */,
-        &SPIRV_SubgroupSwapVertical_Int16x2 /* 2055 -> 2055 */,
-        &SPIRV_SubgroupSwapVertical_Int16x3 /* 2056 -> 2056 */,
-        &SPIRV_SubgroupSwapVertical_Int16x4 /* 2057 -> 2057 */,
-        &SPIRV_SubgroupSwapVertical_UInt32 /* 2058 -> 2058 */,
-        &SPIRV_SubgroupSwapVertical_UInt32x2 /* 2059 -> 2059 */,
-        &SPIRV_SubgroupSwapVertical_UInt32x3 /* 2060 -> 2060 */,
-        &SPIRV_SubgroupSwapVertical_UInt32x4 /* 2061 -> 2061 */,
-        &SPIRV_SubgroupSwapVertical_UInt16 /* 2062 -> 2062 */,
-        &SPIRV_SubgroupSwapVertical_UInt16x2 /* 2063 -> 2063 */,
-        &SPIRV_SubgroupSwapVertical_UInt16x3 /* 2064 -> 2064 */,
-        &SPIRV_SubgroupSwapVertical_UInt16x4 /* 2065 -> 2065 */,
-        &SPIRV_SubgroupSwapHorizontal_Float32 /* 2066 -> 2066 */,
-        &SPIRV_SubgroupSwapHorizontal_Float32x2 /* 2067 -> 2067 */,
-        &SPIRV_SubgroupSwapHorizontal_Float32x3 /* 2068 -> 2068 */,
-        &SPIRV_SubgroupSwapHorizontal_Float32x4 /* 2069 -> 2069 */,
-        &SPIRV_SubgroupSwapHorizontal_Float16 /* 2070 -> 2070 */,
-        &SPIRV_SubgroupSwapHorizontal_Float16x2 /* 2071 -> 2071 */,
-        &SPIRV_SubgroupSwapHorizontal_Float16x3 /* 2072 -> 2072 */,
-        &SPIRV_SubgroupSwapHorizontal_Float16x4 /* 2073 -> 2073 */,
-        &SPIRV_SubgroupSwapHorizontal_Int32 /* 2074 -> 2074 */,
-        &SPIRV_SubgroupSwapHorizontal_Int32x2 /* 2075 -> 2075 */,
-        &SPIRV_SubgroupSwapHorizontal_Int32x3 /* 2076 -> 2076 */,
-        &SPIRV_SubgroupSwapHorizontal_Int32x4 /* 2077 -> 2077 */,
-        &SPIRV_SubgroupSwapHorizontal_Int16 /* 2078 -> 2078 */,
-        &SPIRV_SubgroupSwapHorizontal_Int16x2 /* 2079 -> 2079 */,
-        &SPIRV_SubgroupSwapHorizontal_Int16x3 /* 2080 -> 2080 */,
-        &SPIRV_SubgroupSwapHorizontal_Int16x4 /* 2081 -> 2081 */,
-        &SPIRV_SubgroupSwapHorizontal_UInt32 /* 2082 -> 2082 */,
-        &SPIRV_SubgroupSwapHorizontal_UInt32x2 /* 2083 -> 2083 */,
-        &SPIRV_SubgroupSwapHorizontal_UInt32x3 /* 2084 -> 2084 */,
-        &SPIRV_SubgroupSwapHorizontal_UInt32x4 /* 2085 -> 2085 */,
-        &SPIRV_SubgroupSwapHorizontal_UInt16 /* 2086 -> 2086 */,
-        &SPIRV_SubgroupSwapHorizontal_UInt16x2 /* 2087 -> 2087 */,
-        &SPIRV_SubgroupSwapHorizontal_UInt16x3 /* 2088 -> 2088 */,
-        &SPIRV_SubgroupSwapHorizontal_UInt16x4 /* 2089 -> 2089 */,
-        &SPIRV_AtomicLoad_UInt32 /* 2090 -> 2090 */,
-        &SPIRV_AtomicIncrement_UInt32 /* 2091 -> 2091 */,
-        &SPIRV_AtomicDecrement_UInt32 /* 2092 -> 2092 */,
-        &SPIRV_AtomicLoad_Int32 /* 2093 -> 2093 */,
-        &SPIRV_AtomicIncrement_Int32 /* 2094 -> 2094 */,
-        &SPIRV_AtomicDecrement_Int32 /* 2095 -> 2095 */,
-        &SPIRV_AtomicLoad_UInt16 /* 2096 -> 2096 */,
-        &SPIRV_AtomicIncrement_UInt16 /* 2097 -> 2097 */,
-        &SPIRV_AtomicDecrement_UInt16 /* 2098 -> 2098 */,
-        &SPIRV_AtomicLoad_Int16 /* 2099 -> 2099 */,
-        &SPIRV_AtomicIncrement_Int16 /* 2100 -> 2100 */,
-        &SPIRV_AtomicDecrement_Int16 /* 2101 -> 2101 */,
-        &SPIRV_AtomicLoad_Float32 /* 2102 -> 2102 */,
-        &SPIRV_AtomicLoad_Float16 /* 2103 -> 2103 */,
-        &SPIRV_AtomicStore_UInt32 /* 2104 -> 2104 */,
-        &SPIRV_AtomicExchange_UInt32 /* 2105 -> 2105 */,
-        &SPIRV_AtomicAdd_UInt32 /* 2106 -> 2106 */,
-        &SPIRV_AtomicSubtract_UInt32 /* 2107 -> 2107 */,
-        &SPIRV_AtomicAnd_UInt32 /* 2108 -> 2108 */,
-        &SPIRV_AtomicOr_UInt32 /* 2109 -> 2109 */,
-        &SPIRV_AtomicXor_UInt32 /* 2110 -> 2110 */,
-        &SPIRV_AtomicStore_Int32 /* 2111 -> 2111 */,
-        &SPIRV_AtomicExchange_Int32 /* 2112 -> 2112 */,
-        &SPIRV_AtomicAdd_Int32 /* 2113 -> 2113 */,
-        &SPIRV_AtomicSubtract_Int32 /* 2114 -> 2114 */,
-        &SPIRV_AtomicAnd_Int32 /* 2115 -> 2115 */,
-        &SPIRV_AtomicOr_Int32 /* 2116 -> 2116 */,
-        &SPIRV_AtomicXor_Int32 /* 2117 -> 2117 */,
-        &SPIRV_AtomicStore_UInt16 /* 2118 -> 2118 */,
-        &SPIRV_AtomicExchange_UInt16 /* 2119 -> 2119 */,
-        &SPIRV_AtomicAdd_UInt16 /* 2120 -> 2120 */,
-        &SPIRV_AtomicSubtract_UInt16 /* 2121 -> 2121 */,
-        &SPIRV_AtomicAnd_UInt16 /* 2122 -> 2122 */,
-        &SPIRV_AtomicOr_UInt16 /* 2123 -> 2123 */,
-        &SPIRV_AtomicXor_UInt16 /* 2124 -> 2124 */,
-        &SPIRV_AtomicStore_Int16 /* 2125 -> 2125 */,
-        &SPIRV_AtomicExchange_Int16 /* 2126 -> 2126 */,
-        &SPIRV_AtomicAdd_Int16 /* 2127 -> 2127 */,
-        &SPIRV_AtomicSubtract_Int16 /* 2128 -> 2128 */,
-        &SPIRV_AtomicAnd_Int16 /* 2129 -> 2129 */,
-        &SPIRV_AtomicOr_Int16 /* 2130 -> 2130 */,
-        &SPIRV_AtomicXor_Int16 /* 2131 -> 2131 */,
-        &SPIRV_AtomicStore_Float32 /* 2132 -> 2132 */,
-        &SPIRV_AtomicExchange_Float32 /* 2133 -> 2133 */,
-        &SPIRV_AtomicStore_Float16 /* 2134 -> 2134 */,
-        &SPIRV_AtomicExchange_Float16 /* 2135 -> 2135 */,
-        &SPIRV_AtomicMin_UInt32 /* 2136 -> 2136 */,
-        &SPIRV_AtomicMax_UInt32 /* 2137 -> 2137 */,
-        &SPIRV_AtomicMin_Int32 /* 2138 -> 2138 */,
-        &SPIRV_AtomicMax_Int32 /* 2139 -> 2139 */,
-        &SPIRV_AtomicMin_UInt16 /* 2140 -> 2140 */,
-        &SPIRV_AtomicMax_UInt16 /* 2141 -> 2141 */,
-        &SPIRV_AtomicMin_Int16 /* 2142 -> 2142 */,
-        &SPIRV_AtomicMax_Int16 /* 2143 -> 2143 */,
-        &SPIRV_AtomicCompareExchange_UInt32 /* 2144 -> 2144 */,
-        &SPIRV_AtomicCompareExchange_Int32 /* 2145 -> 2145 */,
-        &SPIRV_AtomicCompareExchange_UInt16 /* 2146 -> 2146 */,
-        &SPIRV_AtomicCompareExchange_Int16 /* 2147 -> 2147 */,
-        &SPIRV_BitInsert_UInt16 /* 2148 -> 2148 */,
-        &SPIRV_BitInsert_UInt32 /* 2149 -> 2149 */,
-        &SPIRV_BitExtract_UInt32 /* 2150 -> 2150 */,
-        &SPIRV_BitExtract_Int32 /* 2151 -> 2151 */,
-        &SPIRV_BitExtract_UInt16 /* 2152 -> 2152 */,
-        &SPIRV_BitExtract_Int16 /* 2153 -> 2153 */,
-        &SPIRV_BitReverse_UInt32 /* 2154 -> 2154 */,
-        &SPIRV_BitReverse_Int32 /* 2155 -> 2155 */,
-        &SPIRV_BitReverse_UInt16 /* 2156 -> 2156 */,
-        &SPIRV_BitReverse_Int16 /* 2157 -> 2157 */,
-        &SPIRV_BitCount_UInt32 /* 2158 -> 2158 */,
-        &SPIRV_BitCount_Int32 /* 2159 -> 2159 */,
-        &SPIRV_BitCount_UInt16 /* 2160 -> 2160 */,
-        &SPIRV_BitCount_Int16 /* 2161 -> 2161 */,
-        &SPIRV_ExecutionBarrier /* 2162 -> 2162 */,
-        &SPIRV_ExecutionBarrierSubgroup /* 2163 -> 2163 */,
-        &SPIRV_ExecutionBarrierWorkgroup /* 2164 -> 2164 */,
-        &SPIRV_MemoryBarrier /* 2165 -> 2165 */,
-        &SPIRV_MemoryBarrierBuffer /* 2166 -> 2166 */,
-        &SPIRV_MemoryBarrierTexture /* 2167 -> 2167 */,
-        &SPIRV_MemoryBarrierAtomic /* 2168 -> 2168 */,
-        &SPIRV_MemoryBarrierSubgroup /* 2169 -> 2169 */,
-        &SPIRV_MemoryBarrierWorkgroup /* 2170 -> 2170 */,
-        &SPIRV_TextureGetSize_Texture1D /* 2171 -> 2171 */,
-        &SPIRV_TextureGetSize_Texture2D /* 2172 -> 2172 */,
-        &SPIRV_TextureGetSize_Texture3D /* 2173 -> 2173 */,
-        &SPIRV_TextureGetSize_TextureCube /* 2174 -> 2174 */,
-        &SPIRV_TextureGetSize_Texture1DArray /* 2175 -> 2175 */,
-        &SPIRV_TextureGetSize_Texture2DArray /* 2176 -> 2176 */,
-        &SPIRV_TextureGetSize_TextureCubeArray /* 2177 -> 2177 */,
-        &SPIRV_TextureGetSizeMip_Texture1D /* 2178 -> 2178 */,
-        &SPIRV_TextureGetSizeMip_Texture2D /* 2179 -> 2179 */,
-        &SPIRV_TextureGetSizeMip_Texture3D /* 2180 -> 2180 */,
-        &SPIRV_TextureGetSizeMip_TextureCube /* 2181 -> 2181 */,
-        &SPIRV_TextureGetSizeMip_Texture1DArray /* 2182 -> 2182 */,
-        &SPIRV_TextureGetSizeMip_Texture2DArray /* 2183 -> 2183 */,
-        &SPIRV_TextureGetSizeMip_TextureCubeArray /* 2184 -> 2184 */,
-        &SPIRV_TextureGetMips_Texture1D /* 2185 -> 2185 */,
-        &SPIRV_TextureGetMips_Texture2D /* 2186 -> 2186 */,
-        &SPIRV_TextureGetMips_Texture3D /* 2187 -> 2187 */,
-        &SPIRV_TextureGetMips_TextureCube /* 2188 -> 2188 */,
-        &SPIRV_TextureGetMips_Texture1DArray /* 2189 -> 2189 */,
-        &SPIRV_TextureGetMips_Texture2DArray /* 2190 -> 2190 */,
-        &SPIRV_TextureGetMips_TextureCubeArray /* 2191 -> 2191 */,
-        &SPIRV_TextureGetSamples_Texture2DMS /* 2192 -> 2192 */,
-        &SPIRV_TextureGetSamples_Texture2DMSArray /* 2193 -> 2193 */,
-        &SPIRV_TextureGetSampledMip_Texture1D /* 2194 -> 2194 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture1D /* 2195 -> 2195 */,
-        &SPIRV_TextureGetSampledMip_Texture2D /* 2196 -> 2196 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture2D /* 2197 -> 2197 */,
-        &SPIRV_TextureGetSampledMip_Texture3D /* 2198 -> 2198 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture3D /* 2199 -> 2199 */,
-        &SPIRV_TextureGetSampledMip_TextureCube /* 2200 -> 2200 */,
-        &SPIRV_SampledTextureGetSampledMip_TextureCube /* 2201 -> 2201 */,
-        &SPIRV_TextureGetSampledMip_Texture1DArray /* 2202 -> 2202 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture1DArray /* 2203 -> 2203 */,
-        &SPIRV_TextureGetSampledMip_Texture2DArray /* 2204 -> 2204 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture2DArray /* 2205 -> 2205 */,
-        &SPIRV_TextureGetSampledMip_TextureCubeArray /* 2206 -> 2206 */,
-        &SPIRV_SampledTextureGetSampledMip_TextureCubeArray /* 2207 -> 2207 */,
-        &SPIRV_TextureLoad_Texture1D /* 2208 -> 2208 */,
-        &SPIRV_TextureLoadMip_Texture1D /* 2209 -> 2209 */,
-        &SPIRV_TextureStore_Texture1D /* 2210 -> 2210 */,
-        &SPIRV_TextureStoreMip_Texture1D /* 2211 -> 2211 */,
-        &SPIRV_TextureLoad_Texture2D /* 2212 -> 2212 */,
-        &SPIRV_TextureLoadMip_Texture2D /* 2213 -> 2213 */,
-        &SPIRV_TextureStore_Texture2D /* 2214 -> 2214 */,
-        &SPIRV_TextureStoreMip_Texture2D /* 2215 -> 2215 */,
-        &SPIRV_TextureLoad_Texture3D /* 2216 -> 2216 */,
-        &SPIRV_TextureLoadMip_Texture3D /* 2217 -> 2217 */,
-        &SPIRV_TextureStore_Texture3D /* 2218 -> 2218 */,
-        &SPIRV_TextureStoreMip_Texture3D /* 2219 -> 2219 */,
-        &SPIRV_TextureLoad_TextureCube /* 2220 -> 2220 */,
-        &SPIRV_TextureLoadMip_TextureCube /* 2221 -> 2221 */,
-        &SPIRV_TextureStore_TextureCube /* 2222 -> 2222 */,
-        &SPIRV_TextureStoreMip_TextureCube /* 2223 -> 2223 */,
-        &SPIRV_TextureLoad_Texture1DArray /* 2224 -> 2224 */,
-        &SPIRV_TextureLoadMip_Texture1DArray /* 2225 -> 2225 */,
-        &SPIRV_TextureStore_Texture1DArray /* 2226 -> 2226 */,
-        &SPIRV_TextureStoreMip_Texture1DArray /* 2227 -> 2227 */,
-        &SPIRV_TextureLoad_Texture2DArray /* 2228 -> 2228 */,
-        &SPIRV_TextureLoadMip_Texture2DArray /* 2229 -> 2229 */,
-        &SPIRV_TextureStore_Texture2DArray /* 2230 -> 2230 */,
-        &SPIRV_TextureStoreMip_Texture2DArray /* 2231 -> 2231 */,
-        &SPIRV_TextureLoad_TextureCubeArray /* 2232 -> 2232 */,
-        &SPIRV_TextureLoadMip_TextureCubeArray /* 2233 -> 2233 */,
-        &SPIRV_TextureStore_TextureCubeArray /* 2234 -> 2234 */,
-        &SPIRV_TextureStoreMip_TextureCubeArray /* 2235 -> 2235 */,
-        &SPIRV_TextureLoad_Texture2DMS /* 2236 -> 2236 */,
-        &SPIRV_TextureLoadMip_Texture2DMS /* 2237 -> 2237 */,
-        &SPIRV_TextureStore_Texture2DMS /* 2238 -> 2238 */,
-        &SPIRV_TextureStoreMip_Texture2DMS /* 2239 -> 2239 */,
-        &SPIRV_TextureLoad_Texture2DMSArray /* 2240 -> 2240 */,
-        &SPIRV_TextureLoadMip_Texture2DMSArray /* 2241 -> 2241 */,
-        &SPIRV_TextureStore_Texture2DMSArray /* 2242 -> 2242 */,
-        &SPIRV_TextureStoreMip_Texture2DMSArray /* 2243 -> 2243 */,
-        &SPIRV_TextureFetch_Texture1D /* 2244 -> 2244 */,
-        &SPIRV_TextureFetchSample_Texture1D /* 2245 -> 2245 */,
-        &SPIRV_TextureFetch_Texture2D /* 2246 -> 2246 */,
-        &SPIRV_TextureFetchSample_Texture2D /* 2247 -> 2247 */,
-        &SPIRV_TextureFetch_Texture3D /* 2248 -> 2248 */,
-        &SPIRV_TextureFetchSample_Texture3D /* 2249 -> 2249 */,
-        &SPIRV_TextureFetch_Texture1DArray /* 2250 -> 2250 */,
-        &SPIRV_TextureFetchSample_Texture1DArray /* 2251 -> 2251 */,
-        &SPIRV_TextureFetch_Texture2DArray /* 2252 -> 2252 */,
-        &SPIRV_TextureFetchSample_Texture2DArray /* 2253 -> 2253 */,
-        &SPIRV_TextureFetch_Texture2DMS /* 2254 -> 2254 */,
-        &SPIRV_TextureFetchSample_Texture2DMS /* 2255 -> 2255 */,
-        &SPIRV_TextureFetch_Texture2DMSArray /* 2256 -> 2256 */,
-        &SPIRV_TextureFetchSample_Texture2DMSArray /* 2257 -> 2257 */,
-        &SPIRV_TextureGather_Texture2D /* 2258 -> 2258 */,
-        &SPIRV_SampledTextureGather_Texture2D /* 2259 -> 2259 */,
-        &SPIRV_TextureGatherOffset_Texture2D /* 2260 -> 2260 */,
-        &SPIRV_SampledTextureGatherOffset_Texture2D /* 2261 -> 2261 */,
-        &SPIRV_TextureGather_TextureCube /* 2262 -> 2262 */,
-        &SPIRV_SampledTextureGather_TextureCube /* 2263 -> 2263 */,
-        &SPIRV_TextureGatherOffset_TextureCube /* 2264 -> 2264 */,
-        &SPIRV_SampledTextureGatherOffset_TextureCube /* 2265 -> 2265 */,
-        &SPIRV_TextureGather_Texture2DArray /* 2266 -> 2266 */,
-        &SPIRV_SampledTextureGather_Texture2DArray /* 2267 -> 2267 */,
-        &SPIRV_TextureGatherOffset_Texture2DArray /* 2268 -> 2268 */,
-        &SPIRV_SampledTextureGatherOffset_Texture2DArray /* 2269 -> 2269 */,
-        &SPIRV_TextureGather_TextureCubeArray /* 2270 -> 2270 */,
-        &SPIRV_SampledTextureGather_TextureCubeArray /* 2271 -> 2271 */,
-        &SPIRV_TextureGatherOffset_TextureCubeArray /* 2272 -> 2272 */,
-        &SPIRV_SampledTextureGatherOffset_TextureCubeArray /* 2273 -> 2273 */,
-        &SPIRV_TexturePixelCacheLoad_PixelCache /* 2274 -> 2274 */,
-        &SPIRV_TexturePixelCacheLoad_PixelCacheMS /* 2275 -> 2275 */,
-        &SPIRV_TextureSample_Texture1D /* 2276 -> 2276 */,
-        &SPIRV_SampledTextureSample_Texture1D /* 2277 -> 2277 */,
-        &SPIRV_TextureSample_Texture2D /* 2278 -> 2278 */,
-        &SPIRV_SampledTextureSample_Texture2D /* 2279 -> 2279 */,
-        &SPIRV_TextureSample_Texture3D /* 2280 -> 2280 */,
-        &SPIRV_SampledTextureSample_Texture3D /* 2281 -> 2281 */,
-        &SPIRV_TextureSample_TextureCube /* 2282 -> 2282 */,
-        &SPIRV_SampledTextureSample_TextureCube /* 2283 -> 2283 */,
-        &SPIRV_TextureSample_Texture1DArray /* 2284 -> 2284 */,
-        &SPIRV_SampledTextureSample_Texture1DArray /* 2285 -> 2285 */,
-        &SPIRV_TextureSample_Texture2DArray /* 2286 -> 2286 */,
-        &SPIRV_SampledTextureSample_Texture2DArray /* 2287 -> 2287 */,
-        &SPIRV_TextureSample_TextureCubeArray /* 2288 -> 2288 */,
-        &SPIRV_SampledTextureSample_TextureCubeArray /* 2289 -> 2289 */,
-        &SPIRV_TextureSampleOffset_Texture1D /* 2290 -> 2290 */,
-        &SPIRV_SampledTextureSampleOffset_Texture1D /* 2291 -> 2291 */,
-        &SPIRV_TextureSampleOffset_Texture2D /* 2292 -> 2292 */,
-        &SPIRV_SampledTextureSampleOffset_Texture2D /* 2293 -> 2293 */,
-        &SPIRV_TextureSampleOffset_Texture3D /* 2294 -> 2294 */,
-        &SPIRV_SampledTextureSampleOffset_Texture3D /* 2295 -> 2295 */,
-        &SPIRV_TextureSampleOffset_Texture1DArray /* 2296 -> 2296 */,
-        &SPIRV_SampledTextureSampleOffset_Texture1DArray /* 2297 -> 2297 */,
-        &SPIRV_TextureSampleOffset_Texture2DArray /* 2298 -> 2298 */,
-        &SPIRV_SampledTextureSampleOffset_Texture2DArray /* 2299 -> 2299 */,
-        &SPIRV_TextureSampleProj_Texture1D /* 2300 -> 2300 */,
-        &SPIRV_SampledTextureSampleProj_Texture1D /* 2301 -> 2301 */,
-        &SPIRV_TextureSampleProj_Texture2D /* 2302 -> 2302 */,
-        &SPIRV_SampledTextureSampleProj_Texture2D /* 2303 -> 2303 */,
-        &SPIRV_TextureSampleProj_Texture3D /* 2304 -> 2304 */,
-        &SPIRV_SampledTextureSampleProj_Texture3D /* 2305 -> 2305 */,
-        &SPIRV_TextureSampleProjOffset_Texture1D /* 2306 -> 2306 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture1D /* 2307 -> 2307 */,
-        &SPIRV_TextureSampleProjOffset_Texture2D /* 2308 -> 2308 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture2D /* 2309 -> 2309 */,
-        &SPIRV_TextureSampleProjOffset_Texture3D /* 2310 -> 2310 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture3D /* 2311 -> 2311 */,
-        &SPIRV_TextureSampleCompare_Texture1D /* 2312 -> 2312 */,
-        &SPIRV_SampledTextureSampleCompare_Texture1D /* 2313 -> 2313 */,
-        &SPIRV_TextureSampleCompare_Texture2D /* 2314 -> 2314 */,
-        &SPIRV_SampledTextureSampleCompare_Texture2D /* 2315 -> 2315 */,
-        &SPIRV_TextureSampleCompare_Texture3D /* 2316 -> 2316 */,
-        &SPIRV_SampledTextureSampleCompare_Texture3D /* 2317 -> 2317 */,
-        &SPIRV_TextureSampleCompare_Texture1DArray /* 2318 -> 2318 */,
-        &SPIRV_SampledTextureSampleCompare_Texture1DArray /* 2319 -> 2319 */,
-        &SPIRV_TextureSampleCompare_Texture2DArray /* 2320 -> 2320 */,
-        &SPIRV_SampledTextureSampleCompare_Texture2DArray /* 2321 -> 2321 */,
-        &SPIRV_TextureSampleCompareOffset_Texture1D /* 2322 -> 2322 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture1D /* 2323 -> 2323 */,
-        &SPIRV_TextureSampleCompareOffset_Texture2D /* 2324 -> 2324 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture2D /* 2325 -> 2325 */,
-        &SPIRV_TextureSampleCompareOffset_Texture3D /* 2326 -> 2326 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture3D /* 2327 -> 2327 */,
-        &SPIRV_TextureSampleCompareOffset_Texture1DArray /* 2328 -> 2328 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture1DArray /* 2329 -> 2329 */,
-        &SPIRV_TextureSampleCompareOffset_Texture2DArray /* 2330 -> 2330 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture2DArray /* 2331 -> 2331 */,
-        &SPIRV_TextureSampleProjCompare_Texture1D /* 2332 -> 2332 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture1D /* 2333 -> 2333 */,
-        &SPIRV_TextureSampleProjCompare_Texture2D /* 2334 -> 2334 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture2D /* 2335 -> 2335 */,
-        &SPIRV_TextureSampleProjCompare_Texture3D /* 2336 -> 2336 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture3D /* 2337 -> 2337 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture1D /* 2338 -> 2338 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture1D /* 2339 -> 2339 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture2D /* 2340 -> 2340 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture2D /* 2341 -> 2341 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture3D /* 2342 -> 2342 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture3D /* 2343 -> 2343 */,
-        &SPIRV_TextureSampleLod_Texture1D /* 2344 -> 2344 */,
-        &SPIRV_SampledTextureSampleLod_Texture1D /* 2345 -> 2345 */,
-        &SPIRV_TextureSampleLod_Texture2D /* 2346 -> 2346 */,
-        &SPIRV_SampledTextureSampleLod_Texture2D /* 2347 -> 2347 */,
-        &SPIRV_TextureSampleLod_Texture3D /* 2348 -> 2348 */,
-        &SPIRV_SampledTextureSampleLod_Texture3D /* 2349 -> 2349 */,
-        &SPIRV_TextureSampleLod_TextureCube /* 2350 -> 2350 */,
-        &SPIRV_SampledTextureSampleLod_TextureCube /* 2351 -> 2351 */,
-        &SPIRV_TextureSampleLod_Texture1DArray /* 2352 -> 2352 */,
-        &SPIRV_SampledTextureSampleLod_Texture1DArray /* 2353 -> 2353 */,
-        &SPIRV_TextureSampleLod_Texture2DArray /* 2354 -> 2354 */,
-        &SPIRV_SampledTextureSampleLod_Texture2DArray /* 2355 -> 2355 */,
-        &SPIRV_TextureSampleLod_TextureCubeArray /* 2356 -> 2356 */,
-        &SPIRV_SampledTextureSampleLod_TextureCubeArray /* 2357 -> 2357 */,
-        &SPIRV_TextureSampleLodOffset_Texture1D /* 2358 -> 2358 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture1D /* 2359 -> 2359 */,
-        &SPIRV_TextureSampleLodOffset_Texture2D /* 2360 -> 2360 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture2D /* 2361 -> 2361 */,
-        &SPIRV_TextureSampleLodOffset_Texture3D /* 2362 -> 2362 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture3D /* 2363 -> 2363 */,
-        &SPIRV_TextureSampleLodOffset_Texture1DArray /* 2364 -> 2364 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture1DArray /* 2365 -> 2365 */,
-        &SPIRV_TextureSampleLodOffset_Texture2DArray /* 2366 -> 2366 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture2DArray /* 2367 -> 2367 */,
-        &SPIRV_TextureSampleLodProj_Texture1D /* 2368 -> 2368 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture1D /* 2369 -> 2369 */,
-        &SPIRV_TextureSampleLodProj_Texture2D /* 2370 -> 2370 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture2D /* 2371 -> 2371 */,
-        &SPIRV_TextureSampleLodProj_Texture3D /* 2372 -> 2372 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture3D /* 2373 -> 2373 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture1D /* 2374 -> 2374 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture1D /* 2375 -> 2375 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture2D /* 2376 -> 2376 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture2D /* 2377 -> 2377 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture3D /* 2378 -> 2378 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture3D /* 2379 -> 2379 */,
-        &SPIRV_TextureSampleLodCompare_Texture1D /* 2380 -> 2380 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture1D /* 2381 -> 2381 */,
-        &SPIRV_TextureSampleLodCompare_Texture2D /* 2382 -> 2382 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture2D /* 2383 -> 2383 */,
-        &SPIRV_TextureSampleLodCompare_Texture3D /* 2384 -> 2384 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture3D /* 2385 -> 2385 */,
-        &SPIRV_TextureSampleLodCompare_Texture1DArray /* 2386 -> 2386 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture1DArray /* 2387 -> 2387 */,
-        &SPIRV_TextureSampleLodCompare_Texture2DArray /* 2388 -> 2388 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture2DArray /* 2389 -> 2389 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture1D /* 2390 -> 2390 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1D /* 2391 -> 2391 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture2D /* 2392 -> 2392 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2D /* 2393 -> 2393 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture3D /* 2394 -> 2394 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture3D /* 2395 -> 2395 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture1DArray /* 2396 -> 2396 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1DArray /* 2397 -> 2397 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture2DArray /* 2398 -> 2398 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2DArray /* 2399 -> 2399 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture1D /* 2400 -> 2400 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture1D /* 2401 -> 2401 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture2D /* 2402 -> 2402 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture2D /* 2403 -> 2403 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture3D /* 2404 -> 2404 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture3D /* 2405 -> 2405 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture1D /* 2406 -> 2406 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture1D /* 2407 -> 2407 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture2D /* 2408 -> 2408 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture2D /* 2409 -> 2409 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture3D /* 2410 -> 2410 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture3D /* 2411 -> 2411 */,
-        &SPIRV_TextureSampleGrad_Texture1D /* 2412 -> 2412 */,
-        &SPIRV_SampledTextureSampleGrad_Texture1D /* 2413 -> 2413 */,
-        &SPIRV_TextureSampleGrad_Texture2D /* 2414 -> 2414 */,
-        &SPIRV_SampledTextureSampleGrad_Texture2D /* 2415 -> 2415 */,
-        &SPIRV_TextureSampleGrad_Texture3D /* 2416 -> 2416 */,
-        &SPIRV_SampledTextureSampleGrad_Texture3D /* 2417 -> 2417 */,
-        &SPIRV_TextureSampleGrad_TextureCube /* 2418 -> 2418 */,
-        &SPIRV_SampledTextureSampleGrad_TextureCube /* 2419 -> 2419 */,
-        &SPIRV_TextureSampleGrad_Texture1DArray /* 2420 -> 2420 */,
-        &SPIRV_SampledTextureSampleGrad_Texture1DArray /* 2421 -> 2421 */,
-        &SPIRV_TextureSampleGrad_Texture2DArray /* 2422 -> 2422 */,
-        &SPIRV_SampledTextureSampleGrad_Texture2DArray /* 2423 -> 2423 */,
-        &SPIRV_TextureSampleGrad_TextureCubeArray /* 2424 -> 2424 */,
-        &SPIRV_SampledTextureSampleGrad_TextureCubeArray /* 2425 -> 2425 */,
-        &SPIRV_TextureSampleGradOffset_Texture1D /* 2426 -> 2426 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture1D /* 2427 -> 2427 */,
-        &SPIRV_TextureSampleGradOffset_Texture2D /* 2428 -> 2428 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture2D /* 2429 -> 2429 */,
-        &SPIRV_TextureSampleGradOffset_Texture3D /* 2430 -> 2430 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture3D /* 2431 -> 2431 */,
-        &SPIRV_TextureSampleGradOffset_Texture1DArray /* 2432 -> 2432 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture1DArray /* 2433 -> 2433 */,
-        &SPIRV_TextureSampleGradOffset_Texture2DArray /* 2434 -> 2434 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture2DArray /* 2435 -> 2435 */,
-        &SPIRV_TextureSampleGradProj_Texture1D /* 2436 -> 2436 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture1D /* 2437 -> 2437 */,
-        &SPIRV_TextureSampleGradProj_Texture2D /* 2438 -> 2438 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture2D /* 2439 -> 2439 */,
-        &SPIRV_TextureSampleGradProj_Texture3D /* 2440 -> 2440 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture3D /* 2441 -> 2441 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture1D /* 2442 -> 2442 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture1D /* 2443 -> 2443 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture2D /* 2444 -> 2444 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture2D /* 2445 -> 2445 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture3D /* 2446 -> 2446 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture3D /* 2447 -> 2447 */,
-        &SPIRV_TextureSampleGradCompare_Texture1D /* 2448 -> 2448 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture1D /* 2449 -> 2449 */,
-        &SPIRV_TextureSampleGradCompare_Texture2D /* 2450 -> 2450 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture2D /* 2451 -> 2451 */,
-        &SPIRV_TextureSampleGradCompare_Texture3D /* 2452 -> 2452 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture3D /* 2453 -> 2453 */,
-        &SPIRV_TextureSampleGradCompare_Texture1DArray /* 2454 -> 2454 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture1DArray /* 2455 -> 2455 */,
-        &SPIRV_TextureSampleGradCompare_Texture2DArray /* 2456 -> 2456 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture2DArray /* 2457 -> 2457 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture1D /* 2458 -> 2458 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1D /* 2459 -> 2459 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture2D /* 2460 -> 2460 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2D /* 2461 -> 2461 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture3D /* 2462 -> 2462 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture3D /* 2463 -> 2463 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture1DArray /* 2464 -> 2464 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1DArray /* 2465 -> 2465 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture2DArray /* 2466 -> 2466 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2DArray /* 2467 -> 2467 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture1D /* 2468 -> 2468 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture1D /* 2469 -> 2469 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture2D /* 2470 -> 2470 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture2D /* 2471 -> 2471 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture3D /* 2472 -> 2472 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture3D /* 2473 -> 2473 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture1D /* 2474 -> 2474 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture1D /* 2475 -> 2475 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture2D /* 2476 -> 2476 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture2D /* 2477 -> 2477 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture3D /* 2478 -> 2478 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture3D /* 2479 -> 2479 */,
-        &SPIRV_TextureSampleBias_Texture1D /* 2480 -> 2480 */,
-        &SPIRV_SampledTextureSampleBias_Texture1D /* 2481 -> 2481 */,
-        &SPIRV_TextureSampleBias_Texture2D /* 2482 -> 2482 */,
-        &SPIRV_SampledTextureSampleBias_Texture2D /* 2483 -> 2483 */,
-        &SPIRV_TextureSampleBias_Texture3D /* 2484 -> 2484 */,
-        &SPIRV_SampledTextureSampleBias_Texture3D /* 2485 -> 2485 */,
-        &SPIRV_TextureSampleBias_TextureCube /* 2486 -> 2486 */,
-        &SPIRV_SampledTextureSampleBias_TextureCube /* 2487 -> 2487 */,
-        &SPIRV_TextureSampleBias_Texture1DArray /* 2488 -> 2488 */,
-        &SPIRV_SampledTextureSampleBias_Texture1DArray /* 2489 -> 2489 */,
-        &SPIRV_TextureSampleBias_Texture2DArray /* 2490 -> 2490 */,
-        &SPIRV_SampledTextureSampleBias_Texture2DArray /* 2491 -> 2491 */,
-        &SPIRV_TextureSampleBias_TextureCubeArray /* 2492 -> 2492 */,
-        &SPIRV_SampledTextureSampleBias_TextureCubeArray /* 2493 -> 2493 */,
-        &SPIRV_TextureSampleBiasOffset_Texture1D /* 2494 -> 2494 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture1D /* 2495 -> 2495 */,
-        &SPIRV_TextureSampleBiasOffset_Texture2D /* 2496 -> 2496 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture2D /* 2497 -> 2497 */,
-        &SPIRV_TextureSampleBiasOffset_Texture3D /* 2498 -> 2498 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture3D /* 2499 -> 2499 */,
-        &SPIRV_TextureSampleBiasOffset_Texture1DArray /* 2500 -> 2500 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture1DArray /* 2501 -> 2501 */,
-        &SPIRV_TextureSampleBiasOffset_Texture2DArray /* 2502 -> 2502 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture2DArray /* 2503 -> 2503 */,
-        &SPIRV_TextureSampleBiasProj_Texture1D /* 2504 -> 2504 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture1D /* 2505 -> 2505 */,
-        &SPIRV_TextureSampleBiasProj_Texture2D /* 2506 -> 2506 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture2D /* 2507 -> 2507 */,
-        &SPIRV_TextureSampleBiasProj_Texture3D /* 2508 -> 2508 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture3D /* 2509 -> 2509 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture1D /* 2510 -> 2510 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture1D /* 2511 -> 2511 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture2D /* 2512 -> 2512 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture2D /* 2513 -> 2513 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture3D /* 2514 -> 2514 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture3D /* 2515 -> 2515 */,
-        &SPIRV_TextureSampleBiasCompare_Texture1D /* 2516 -> 2516 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture1D /* 2517 -> 2517 */,
-        &SPIRV_TextureSampleBiasCompare_Texture2D /* 2518 -> 2518 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture2D /* 2519 -> 2519 */,
-        &SPIRV_TextureSampleBiasCompare_Texture3D /* 2520 -> 2520 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture3D /* 2521 -> 2521 */,
-        &SPIRV_TextureSampleBiasCompare_Texture1DArray /* 2522 -> 2522 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture1DArray /* 2523 -> 2523 */,
-        &SPIRV_TextureSampleBiasCompare_Texture2DArray /* 2524 -> 2524 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture2DArray /* 2525 -> 2525 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture1D /* 2526 -> 2526 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1D /* 2527 -> 2527 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture2D /* 2528 -> 2528 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2D /* 2529 -> 2529 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture3D /* 2530 -> 2530 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture3D /* 2531 -> 2531 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture1DArray /* 2532 -> 2532 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1DArray /* 2533 -> 2533 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture2DArray /* 2534 -> 2534 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2DArray /* 2535 -> 2535 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture1D /* 2536 -> 2536 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture1D /* 2537 -> 2537 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture2D /* 2538 -> 2538 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture2D /* 2539 -> 2539 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture3D /* 2540 -> 2540 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture3D /* 2541 -> 2541 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture1D /* 2542 -> 2542 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture1D /* 2543 -> 2543 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture2D /* 2544 -> 2544 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture2D /* 2545 -> 2545 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture3D /* 2546 -> 2546 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture3D /* 2547 -> 2547 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Float32 /* 2548 -> 2548 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_UInt32 /* 2549 -> 2549 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Int32 /* 2550 -> 2550 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Float16 /* 2551 -> 2551 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_UInt16 /* 2552 -> 2552 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Int16 /* 2553 -> 2553 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Float32 /* 2554 -> 2554 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_UInt32 /* 2555 -> 2555 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Int32 /* 2556 -> 2556 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Float16 /* 2557 -> 2557 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_UInt16 /* 2558 -> 2558 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Int16 /* 2559 -> 2559 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Float32 /* 2560 -> 2560 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_UInt32 /* 2561 -> 2561 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Int32 /* 2562 -> 2562 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Float16 /* 2563 -> 2563 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_UInt16 /* 2564 -> 2564 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Int16 /* 2565 -> 2565 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Float32 /* 2566 -> 2566 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_UInt32 /* 2567 -> 2567 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Int32 /* 2568 -> 2568 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Float16 /* 2569 -> 2569 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_UInt16 /* 2570 -> 2570 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Int16 /* 2571 -> 2571 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Float32 /* 2572 -> 2572 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt32 /* 2573 -> 2573 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Int32 /* 2574 -> 2574 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Float16 /* 2575 -> 2575 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt16 /* 2576 -> 2576 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Int16 /* 2577 -> 2577 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Float32 /* 2578 -> 2578 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt32 /* 2579 -> 2579 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Int32 /* 2580 -> 2580 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Float16 /* 2581 -> 2581 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt16 /* 2582 -> 2582 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Int16 /* 2583 -> 2583 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float32 /* 2584 -> 2584 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt32 /* 2585 -> 2585 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int32 /* 2586 -> 2586 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float16 /* 2587 -> 2587 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt16 /* 2588 -> 2588 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int16 /* 2589 -> 2589 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Float32 /* 2590 -> 2590 */,
-        &SPIRV_TextureAtomicStore_Texture1D_UInt32 /* 2591 -> 2591 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Int32 /* 2592 -> 2592 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Float16 /* 2593 -> 2593 */,
-        &SPIRV_TextureAtomicStore_Texture1D_UInt16 /* 2594 -> 2594 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Int16 /* 2595 -> 2595 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Float32 /* 2596 -> 2596 */,
-        &SPIRV_TextureAtomicStore_Texture2D_UInt32 /* 2597 -> 2597 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Int32 /* 2598 -> 2598 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Float16 /* 2599 -> 2599 */,
-        &SPIRV_TextureAtomicStore_Texture2D_UInt16 /* 2600 -> 2600 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Int16 /* 2601 -> 2601 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Float32 /* 2602 -> 2602 */,
-        &SPIRV_TextureAtomicStore_Texture3D_UInt32 /* 2603 -> 2603 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Int32 /* 2604 -> 2604 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Float16 /* 2605 -> 2605 */,
-        &SPIRV_TextureAtomicStore_Texture3D_UInt16 /* 2606 -> 2606 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Int16 /* 2607 -> 2607 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Float32 /* 2608 -> 2608 */,
-        &SPIRV_TextureAtomicStore_TextureCube_UInt32 /* 2609 -> 2609 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Int32 /* 2610 -> 2610 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Float16 /* 2611 -> 2611 */,
-        &SPIRV_TextureAtomicStore_TextureCube_UInt16 /* 2612 -> 2612 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Int16 /* 2613 -> 2613 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Float32 /* 2614 -> 2614 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_UInt32 /* 2615 -> 2615 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Int32 /* 2616 -> 2616 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Float16 /* 2617 -> 2617 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_UInt16 /* 2618 -> 2618 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Int16 /* 2619 -> 2619 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Float32 /* 2620 -> 2620 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_UInt32 /* 2621 -> 2621 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Int32 /* 2622 -> 2622 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Float16 /* 2623 -> 2623 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_UInt16 /* 2624 -> 2624 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Int16 /* 2625 -> 2625 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Float32 /* 2626 -> 2626 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt32 /* 2627 -> 2627 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Int32 /* 2628 -> 2628 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Float16 /* 2629 -> 2629 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt16 /* 2630 -> 2630 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Int16 /* 2631 -> 2631 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Float32 /* 2632 -> 2632 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_UInt32 /* 2633 -> 2633 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Int32 /* 2634 -> 2634 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Float16 /* 2635 -> 2635 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_UInt16 /* 2636 -> 2636 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Int16 /* 2637 -> 2637 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Float32 /* 2638 -> 2638 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_UInt32 /* 2639 -> 2639 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Int32 /* 2640 -> 2640 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Float16 /* 2641 -> 2641 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_UInt16 /* 2642 -> 2642 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Int16 /* 2643 -> 2643 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Float32 /* 2644 -> 2644 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_UInt32 /* 2645 -> 2645 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Int32 /* 2646 -> 2646 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Float16 /* 2647 -> 2647 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_UInt16 /* 2648 -> 2648 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Int16 /* 2649 -> 2649 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Float32 /* 2650 -> 2650 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_UInt32 /* 2651 -> 2651 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Int32 /* 2652 -> 2652 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Float16 /* 2653 -> 2653 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_UInt16 /* 2654 -> 2654 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Int16 /* 2655 -> 2655 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Float32 /* 2656 -> 2656 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt32 /* 2657 -> 2657 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Int32 /* 2658 -> 2658 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Float16 /* 2659 -> 2659 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt16 /* 2660 -> 2660 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Int16 /* 2661 -> 2661 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Float32 /* 2662 -> 2662 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt32 /* 2663 -> 2663 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Int32 /* 2664 -> 2664 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Float16 /* 2665 -> 2665 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt16 /* 2666 -> 2666 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Int16 /* 2667 -> 2667 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float32 /* 2668 -> 2668 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt32 /* 2669 -> 2669 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int32 /* 2670 -> 2670 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float16 /* 2671 -> 2671 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt16 /* 2672 -> 2672 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int16 /* 2673 -> 2673 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt32 /* 2674 -> 2674 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int32 /* 2675 -> 2675 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt16 /* 2676 -> 2676 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int16 /* 2677 -> 2677 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt32 /* 2678 -> 2678 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int32 /* 2679 -> 2679 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt16 /* 2680 -> 2680 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int16 /* 2681 -> 2681 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt32 /* 2682 -> 2682 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int32 /* 2683 -> 2683 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt16 /* 2684 -> 2684 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int16 /* 2685 -> 2685 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt32 /* 2686 -> 2686 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int32 /* 2687 -> 2687 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt16 /* 2688 -> 2688 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int16 /* 2689 -> 2689 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt32 /* 2690 -> 2690 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int32 /* 2691 -> 2691 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt16 /* 2692 -> 2692 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int16 /* 2693 -> 2693 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt32 /* 2694 -> 2694 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int32 /* 2695 -> 2695 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt16 /* 2696 -> 2696 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int16 /* 2697 -> 2697 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt32 /* 2698 -> 2698 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int32 /* 2699 -> 2699 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt16 /* 2700 -> 2700 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int16 /* 2701 -> 2701 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_UInt32 /* 2702 -> 2702 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_Int32 /* 2703 -> 2703 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_UInt16 /* 2704 -> 2704 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_Int16 /* 2705 -> 2705 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_UInt32 /* 2706 -> 2706 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_Int32 /* 2707 -> 2707 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_UInt16 /* 2708 -> 2708 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_Int16 /* 2709 -> 2709 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_UInt32 /* 2710 -> 2710 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_Int32 /* 2711 -> 2711 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_UInt16 /* 2712 -> 2712 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_Int16 /* 2713 -> 2713 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_UInt32 /* 2714 -> 2714 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_Int32 /* 2715 -> 2715 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_UInt16 /* 2716 -> 2716 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_Int16 /* 2717 -> 2717 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt32 /* 2718 -> 2718 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_Int32 /* 2719 -> 2719 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt16 /* 2720 -> 2720 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_Int16 /* 2721 -> 2721 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt32 /* 2722 -> 2722 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_Int32 /* 2723 -> 2723 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt16 /* 2724 -> 2724 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_Int16 /* 2725 -> 2725 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt32 /* 2726 -> 2726 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int32 /* 2727 -> 2727 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt16 /* 2728 -> 2728 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int16 /* 2729 -> 2729 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_UInt32 /* 2730 -> 2730 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_Int32 /* 2731 -> 2731 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_UInt16 /* 2732 -> 2732 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_Int16 /* 2733 -> 2733 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_UInt32 /* 2734 -> 2734 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_Int32 /* 2735 -> 2735 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_UInt16 /* 2736 -> 2736 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_Int16 /* 2737 -> 2737 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_UInt32 /* 2738 -> 2738 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_Int32 /* 2739 -> 2739 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_UInt16 /* 2740 -> 2740 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_Int16 /* 2741 -> 2741 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_UInt32 /* 2742 -> 2742 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_Int32 /* 2743 -> 2743 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_UInt16 /* 2744 -> 2744 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_Int16 /* 2745 -> 2745 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt32 /* 2746 -> 2746 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int32 /* 2747 -> 2747 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt16 /* 2748 -> 2748 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int16 /* 2749 -> 2749 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt32 /* 2750 -> 2750 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int32 /* 2751 -> 2751 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt16 /* 2752 -> 2752 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int16 /* 2753 -> 2753 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt32 /* 2754 -> 2754 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int32 /* 2755 -> 2755 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt16 /* 2756 -> 2756 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int16 /* 2757 -> 2757 */,
-        &SPIRV_TextureAtomicMin_Texture1D_UInt32 /* 2758 -> 2758 */,
-        &SPIRV_TextureAtomicMin_Texture1D_Int32 /* 2759 -> 2759 */,
-        &SPIRV_TextureAtomicMin_Texture1D_UInt16 /* 2760 -> 2760 */,
-        &SPIRV_TextureAtomicMin_Texture1D_Int16 /* 2761 -> 2761 */,
-        &SPIRV_TextureAtomicMin_Texture2D_UInt32 /* 2762 -> 2762 */,
-        &SPIRV_TextureAtomicMin_Texture2D_Int32 /* 2763 -> 2763 */,
-        &SPIRV_TextureAtomicMin_Texture2D_UInt16 /* 2764 -> 2764 */,
-        &SPIRV_TextureAtomicMin_Texture2D_Int16 /* 2765 -> 2765 */,
-        &SPIRV_TextureAtomicMin_Texture3D_UInt32 /* 2766 -> 2766 */,
-        &SPIRV_TextureAtomicMin_Texture3D_Int32 /* 2767 -> 2767 */,
-        &SPIRV_TextureAtomicMin_Texture3D_UInt16 /* 2768 -> 2768 */,
-        &SPIRV_TextureAtomicMin_Texture3D_Int16 /* 2769 -> 2769 */,
-        &SPIRV_TextureAtomicMin_TextureCube_UInt32 /* 2770 -> 2770 */,
-        &SPIRV_TextureAtomicMin_TextureCube_Int32 /* 2771 -> 2771 */,
-        &SPIRV_TextureAtomicMin_TextureCube_UInt16 /* 2772 -> 2772 */,
-        &SPIRV_TextureAtomicMin_TextureCube_Int16 /* 2773 -> 2773 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_UInt32 /* 2774 -> 2774 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_Int32 /* 2775 -> 2775 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_UInt16 /* 2776 -> 2776 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_Int16 /* 2777 -> 2777 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_UInt32 /* 2778 -> 2778 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_Int32 /* 2779 -> 2779 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_UInt16 /* 2780 -> 2780 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_Int16 /* 2781 -> 2781 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt32 /* 2782 -> 2782 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_Int32 /* 2783 -> 2783 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt16 /* 2784 -> 2784 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_Int16 /* 2785 -> 2785 */,
-        &SPIRV_TextureAtomicMax_Texture1D_UInt32 /* 2786 -> 2786 */,
-        &SPIRV_TextureAtomicMax_Texture1D_Int32 /* 2787 -> 2787 */,
-        &SPIRV_TextureAtomicMax_Texture1D_UInt16 /* 2788 -> 2788 */,
-        &SPIRV_TextureAtomicMax_Texture1D_Int16 /* 2789 -> 2789 */,
-        &SPIRV_TextureAtomicMax_Texture2D_UInt32 /* 2790 -> 2790 */,
-        &SPIRV_TextureAtomicMax_Texture2D_Int32 /* 2791 -> 2791 */,
-        &SPIRV_TextureAtomicMax_Texture2D_UInt16 /* 2792 -> 2792 */,
-        &SPIRV_TextureAtomicMax_Texture2D_Int16 /* 2793 -> 2793 */,
-        &SPIRV_TextureAtomicMax_Texture3D_UInt32 /* 2794 -> 2794 */,
-        &SPIRV_TextureAtomicMax_Texture3D_Int32 /* 2795 -> 2795 */,
-        &SPIRV_TextureAtomicMax_Texture3D_UInt16 /* 2796 -> 2796 */,
-        &SPIRV_TextureAtomicMax_Texture3D_Int16 /* 2797 -> 2797 */,
-        &SPIRV_TextureAtomicMax_TextureCube_UInt32 /* 2798 -> 2798 */,
-        &SPIRV_TextureAtomicMax_TextureCube_Int32 /* 2799 -> 2799 */,
-        &SPIRV_TextureAtomicMax_TextureCube_UInt16 /* 2800 -> 2800 */,
-        &SPIRV_TextureAtomicMax_TextureCube_Int16 /* 2801 -> 2801 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_UInt32 /* 2802 -> 2802 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_Int32 /* 2803 -> 2803 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_UInt16 /* 2804 -> 2804 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_Int16 /* 2805 -> 2805 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_UInt32 /* 2806 -> 2806 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_Int32 /* 2807 -> 2807 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_UInt16 /* 2808 -> 2808 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_Int16 /* 2809 -> 2809 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt32 /* 2810 -> 2810 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_Int32 /* 2811 -> 2811 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt16 /* 2812 -> 2812 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_Int16 /* 2813 -> 2813 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_UInt32 /* 2814 -> 2814 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_Int32 /* 2815 -> 2815 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_UInt16 /* 2816 -> 2816 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_Int16 /* 2817 -> 2817 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_UInt32 /* 2818 -> 2818 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_Int32 /* 2819 -> 2819 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_UInt16 /* 2820 -> 2820 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_Int16 /* 2821 -> 2821 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_UInt32 /* 2822 -> 2822 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_Int32 /* 2823 -> 2823 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_UInt16 /* 2824 -> 2824 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_Int16 /* 2825 -> 2825 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_UInt32 /* 2826 -> 2826 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_Int32 /* 2827 -> 2827 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_UInt16 /* 2828 -> 2828 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_Int16 /* 2829 -> 2829 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt32 /* 2830 -> 2830 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_Int32 /* 2831 -> 2831 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt16 /* 2832 -> 2832 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_Int16 /* 2833 -> 2833 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt32 /* 2834 -> 2834 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_Int32 /* 2835 -> 2835 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt16 /* 2836 -> 2836 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_Int16 /* 2837 -> 2837 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt32 /* 2838 -> 2838 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int32 /* 2839 -> 2839 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt16 /* 2840 -> 2840 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int16 /* 2841 -> 2841 */,
-        &SPIRV_TextureAtomicOr_Texture1D_UInt32 /* 2842 -> 2842 */,
-        &SPIRV_TextureAtomicOr_Texture1D_Int32 /* 2843 -> 2843 */,
-        &SPIRV_TextureAtomicOr_Texture1D_UInt16 /* 2844 -> 2844 */,
-        &SPIRV_TextureAtomicOr_Texture1D_Int16 /* 2845 -> 2845 */,
-        &SPIRV_TextureAtomicOr_Texture2D_UInt32 /* 2846 -> 2846 */,
-        &SPIRV_TextureAtomicOr_Texture2D_Int32 /* 2847 -> 2847 */,
-        &SPIRV_TextureAtomicOr_Texture2D_UInt16 /* 2848 -> 2848 */,
-        &SPIRV_TextureAtomicOr_Texture2D_Int16 /* 2849 -> 2849 */,
-        &SPIRV_TextureAtomicOr_Texture3D_UInt32 /* 2850 -> 2850 */,
-        &SPIRV_TextureAtomicOr_Texture3D_Int32 /* 2851 -> 2851 */,
-        &SPIRV_TextureAtomicOr_Texture3D_UInt16 /* 2852 -> 2852 */,
-        &SPIRV_TextureAtomicOr_Texture3D_Int16 /* 2853 -> 2853 */,
-        &SPIRV_TextureAtomicOr_TextureCube_UInt32 /* 2854 -> 2854 */,
-        &SPIRV_TextureAtomicOr_TextureCube_Int32 /* 2855 -> 2855 */,
-        &SPIRV_TextureAtomicOr_TextureCube_UInt16 /* 2856 -> 2856 */,
-        &SPIRV_TextureAtomicOr_TextureCube_Int16 /* 2857 -> 2857 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_UInt32 /* 2858 -> 2858 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_Int32 /* 2859 -> 2859 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_UInt16 /* 2860 -> 2860 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_Int16 /* 2861 -> 2861 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_UInt32 /* 2862 -> 2862 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_Int32 /* 2863 -> 2863 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_UInt16 /* 2864 -> 2864 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_Int16 /* 2865 -> 2865 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt32 /* 2866 -> 2866 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_Int32 /* 2867 -> 2867 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt16 /* 2868 -> 2868 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_Int16 /* 2869 -> 2869 */,
-        &SPIRV_TextureAtomicXor_Texture1D_UInt32 /* 2870 -> 2870 */,
-        &SPIRV_TextureAtomicXor_Texture1D_Int32 /* 2871 -> 2871 */,
-        &SPIRV_TextureAtomicXor_Texture1D_UInt16 /* 2872 -> 2872 */,
-        &SPIRV_TextureAtomicXor_Texture1D_Int16 /* 2873 -> 2873 */,
-        &SPIRV_TextureAtomicXor_Texture2D_UInt32 /* 2874 -> 2874 */,
-        &SPIRV_TextureAtomicXor_Texture2D_Int32 /* 2875 -> 2875 */,
-        &SPIRV_TextureAtomicXor_Texture2D_UInt16 /* 2876 -> 2876 */,
-        &SPIRV_TextureAtomicXor_Texture2D_Int16 /* 2877 -> 2877 */,
-        &SPIRV_TextureAtomicXor_Texture3D_UInt32 /* 2878 -> 2878 */,
-        &SPIRV_TextureAtomicXor_Texture3D_Int32 /* 2879 -> 2879 */,
-        &SPIRV_TextureAtomicXor_Texture3D_UInt16 /* 2880 -> 2880 */,
-        &SPIRV_TextureAtomicXor_Texture3D_Int16 /* 2881 -> 2881 */,
-        &SPIRV_TextureAtomicXor_TextureCube_UInt32 /* 2882 -> 2882 */,
-        &SPIRV_TextureAtomicXor_TextureCube_Int32 /* 2883 -> 2883 */,
-        &SPIRV_TextureAtomicXor_TextureCube_UInt16 /* 2884 -> 2884 */,
-        &SPIRV_TextureAtomicXor_TextureCube_Int16 /* 2885 -> 2885 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_UInt32 /* 2886 -> 2886 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_Int32 /* 2887 -> 2887 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_UInt16 /* 2888 -> 2888 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_Int16 /* 2889 -> 2889 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_UInt32 /* 2890 -> 2890 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_Int32 /* 2891 -> 2891 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_UInt16 /* 2892 -> 2892 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_Int16 /* 2893 -> 2893 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt32 /* 2894 -> 2894 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_Int32 /* 2895 -> 2895 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt16 /* 2896 -> 2896 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_Int16 /* 2897 -> 2897 */
+        &SPIRV_GeometryExportPrimitiveIndex /* 1867 -> 1867 */,
+        &SPIRV_HullGetPrimitiveIndex /* 1868 -> 1868 */,
+        &SPIRV_DomainGetPrimitiveIndex /* 1869 -> 1869 */,
+        &SPIRV_PixelGetPrimitiveIndex /* 1870 -> 1870 */,
+        &SPIRV_GeometryGetInvocationIndex /* 1871 -> 1871 */,
+        &SPIRV_GeometryExportVertex_Float32x4 /* 1872 -> 1872 */,
+        &SPIRV_GeometryExportVertex_Float16x4 /* 1873 -> 1873 */,
+        &SPIRV_GeometryExportPrimitive /* 1874 -> 1874 */,
+        &SPIRV_HullExportOuterTessellationLevels /* 1875 -> 1875 */,
+        &SPIRV_HullExportInnerTessellationLevels /* 1876 -> 1876 */,
+        &SPIRV_DomainGetTessellationCoordinates /* 1877 -> 1877 */,
+        &SPIRV_DomainGetInvocationIndex /* 1878 -> 1878 */,
+        &SPIRV_GeometryGetPoint /* 1879 -> 1879 */,
+        &SPIRV_GeometryGetLine /* 1880 -> 1880 */,
+        &SPIRV_GeometryGetTriangle /* 1881 -> 1881 */,
+        &SPIRV_PixelGetCoordinates_Float32x4 /* 1882 -> 1882 */,
+        &SPIRV_PixelGetCoordinates_Float16x4 /* 1883 -> 1883 */,
+        &SPIRV_PixelGetFrontFacing /* 1884 -> 1884 */,
+        &SPIRV_PixelGetDepth /* 1885 -> 1885 */,
+        &SPIRV_PixelSetDepth /* 1886 -> 1886 */,
+        &SPIRV_PixelExportColor_Float32_Int32 /* 1887 -> 1887 */,
+        &SPIRV_PixelExportColor_Float32_UInt32 /* 1888 -> 1888 */,
+        &SPIRV_PixelExportColor_Float32_Int16 /* 1889 -> 1889 */,
+        &SPIRV_PixelExportColor_Float32_UInt16 /* 1890 -> 1890 */,
+        &SPIRV_PixelExportColor_Float32x2_Int32 /* 1891 -> 1891 */,
+        &SPIRV_PixelExportColor_Float32x2_UInt32 /* 1892 -> 1892 */,
+        &SPIRV_PixelExportColor_Float32x2_Int16 /* 1893 -> 1893 */,
+        &SPIRV_PixelExportColor_Float32x2_UInt16 /* 1894 -> 1894 */,
+        &SPIRV_PixelExportColor_Float32x3_Int32 /* 1895 -> 1895 */,
+        &SPIRV_PixelExportColor_Float32x3_UInt32 /* 1896 -> 1896 */,
+        &SPIRV_PixelExportColor_Float32x3_Int16 /* 1897 -> 1897 */,
+        &SPIRV_PixelExportColor_Float32x3_UInt16 /* 1898 -> 1898 */,
+        &SPIRV_PixelExportColor_Float32x4_Int32 /* 1899 -> 1899 */,
+        &SPIRV_PixelExportColor_Float32x4_UInt32 /* 1900 -> 1900 */,
+        &SPIRV_PixelExportColor_Float32x4_Int16 /* 1901 -> 1901 */,
+        &SPIRV_PixelExportColor_Float32x4_UInt16 /* 1902 -> 1902 */,
+        &SPIRV_PixelExportColor_Float16_Int32 /* 1903 -> 1903 */,
+        &SPIRV_PixelExportColor_Float16_UInt32 /* 1904 -> 1904 */,
+        &SPIRV_PixelExportColor_Float16_Int16 /* 1905 -> 1905 */,
+        &SPIRV_PixelExportColor_Float16_UInt16 /* 1906 -> 1906 */,
+        &SPIRV_PixelExportColor_Float16x2_Int32 /* 1907 -> 1907 */,
+        &SPIRV_PixelExportColor_Float16x2_UInt32 /* 1908 -> 1908 */,
+        &SPIRV_PixelExportColor_Float16x2_Int16 /* 1909 -> 1909 */,
+        &SPIRV_PixelExportColor_Float16x2_UInt16 /* 1910 -> 1910 */,
+        &SPIRV_PixelExportColor_Float16x3_Int32 /* 1911 -> 1911 */,
+        &SPIRV_PixelExportColor_Float16x3_UInt32 /* 1912 -> 1912 */,
+        &SPIRV_PixelExportColor_Float16x3_Int16 /* 1913 -> 1913 */,
+        &SPIRV_PixelExportColor_Float16x3_UInt16 /* 1914 -> 1914 */,
+        &SPIRV_PixelExportColor_Float16x4_Int32 /* 1915 -> 1915 */,
+        &SPIRV_PixelExportColor_Float16x4_UInt32 /* 1916 -> 1916 */,
+        &SPIRV_PixelExportColor_Float16x4_Int16 /* 1917 -> 1917 */,
+        &SPIRV_PixelExportColor_Float16x4_UInt16 /* 1918 -> 1918 */,
+        &SPIRV_PixelExportColor_Int32_Int32 /* 1919 -> 1919 */,
+        &SPIRV_PixelExportColor_Int32_UInt32 /* 1920 -> 1920 */,
+        &SPIRV_PixelExportColor_Int32_Int16 /* 1921 -> 1921 */,
+        &SPIRV_PixelExportColor_Int32_UInt16 /* 1922 -> 1922 */,
+        &SPIRV_PixelExportColor_Int32x2_Int32 /* 1923 -> 1923 */,
+        &SPIRV_PixelExportColor_Int32x2_UInt32 /* 1924 -> 1924 */,
+        &SPIRV_PixelExportColor_Int32x2_Int16 /* 1925 -> 1925 */,
+        &SPIRV_PixelExportColor_Int32x2_UInt16 /* 1926 -> 1926 */,
+        &SPIRV_PixelExportColor_Int32x3_Int32 /* 1927 -> 1927 */,
+        &SPIRV_PixelExportColor_Int32x3_UInt32 /* 1928 -> 1928 */,
+        &SPIRV_PixelExportColor_Int32x3_Int16 /* 1929 -> 1929 */,
+        &SPIRV_PixelExportColor_Int32x3_UInt16 /* 1930 -> 1930 */,
+        &SPIRV_PixelExportColor_Int32x4_Int32 /* 1931 -> 1931 */,
+        &SPIRV_PixelExportColor_Int32x4_UInt32 /* 1932 -> 1932 */,
+        &SPIRV_PixelExportColor_Int32x4_Int16 /* 1933 -> 1933 */,
+        &SPIRV_PixelExportColor_Int32x4_UInt16 /* 1934 -> 1934 */,
+        &SPIRV_PixelExportColor_Int16_Int32 /* 1935 -> 1935 */,
+        &SPIRV_PixelExportColor_Int16_UInt32 /* 1936 -> 1936 */,
+        &SPIRV_PixelExportColor_Int16_Int16 /* 1937 -> 1937 */,
+        &SPIRV_PixelExportColor_Int16_UInt16 /* 1938 -> 1938 */,
+        &SPIRV_PixelExportColor_Int16x2_Int32 /* 1939 -> 1939 */,
+        &SPIRV_PixelExportColor_Int16x2_UInt32 /* 1940 -> 1940 */,
+        &SPIRV_PixelExportColor_Int16x2_Int16 /* 1941 -> 1941 */,
+        &SPIRV_PixelExportColor_Int16x2_UInt16 /* 1942 -> 1942 */,
+        &SPIRV_PixelExportColor_Int16x3_Int32 /* 1943 -> 1943 */,
+        &SPIRV_PixelExportColor_Int16x3_UInt32 /* 1944 -> 1944 */,
+        &SPIRV_PixelExportColor_Int16x3_Int16 /* 1945 -> 1945 */,
+        &SPIRV_PixelExportColor_Int16x3_UInt16 /* 1946 -> 1946 */,
+        &SPIRV_PixelExportColor_Int16x4_Int32 /* 1947 -> 1947 */,
+        &SPIRV_PixelExportColor_Int16x4_UInt32 /* 1948 -> 1948 */,
+        &SPIRV_PixelExportColor_Int16x4_Int16 /* 1949 -> 1949 */,
+        &SPIRV_PixelExportColor_Int16x4_UInt16 /* 1950 -> 1950 */,
+        &SPIRV_PixelExportColor_UInt32_Int32 /* 1951 -> 1951 */,
+        &SPIRV_PixelExportColor_UInt32_UInt32 /* 1952 -> 1952 */,
+        &SPIRV_PixelExportColor_UInt32_Int16 /* 1953 -> 1953 */,
+        &SPIRV_PixelExportColor_UInt32_UInt16 /* 1954 -> 1954 */,
+        &SPIRV_PixelExportColor_UInt32x2_Int32 /* 1955 -> 1955 */,
+        &SPIRV_PixelExportColor_UInt32x2_UInt32 /* 1956 -> 1956 */,
+        &SPIRV_PixelExportColor_UInt32x2_Int16 /* 1957 -> 1957 */,
+        &SPIRV_PixelExportColor_UInt32x2_UInt16 /* 1958 -> 1958 */,
+        &SPIRV_PixelExportColor_UInt32x3_Int32 /* 1959 -> 1959 */,
+        &SPIRV_PixelExportColor_UInt32x3_UInt32 /* 1960 -> 1960 */,
+        &SPIRV_PixelExportColor_UInt32x3_Int16 /* 1961 -> 1961 */,
+        &SPIRV_PixelExportColor_UInt32x3_UInt16 /* 1962 -> 1962 */,
+        &SPIRV_PixelExportColor_UInt32x4_Int32 /* 1963 -> 1963 */,
+        &SPIRV_PixelExportColor_UInt32x4_UInt32 /* 1964 -> 1964 */,
+        &SPIRV_PixelExportColor_UInt32x4_Int16 /* 1965 -> 1965 */,
+        &SPIRV_PixelExportColor_UInt32x4_UInt16 /* 1966 -> 1966 */,
+        &SPIRV_PixelExportColor_UInt16_Int32 /* 1967 -> 1967 */,
+        &SPIRV_PixelExportColor_UInt16_UInt32 /* 1968 -> 1968 */,
+        &SPIRV_PixelExportColor_UInt16_Int16 /* 1969 -> 1969 */,
+        &SPIRV_PixelExportColor_UInt16_UInt16 /* 1970 -> 1970 */,
+        &SPIRV_PixelExportColor_UInt16x2_Int32 /* 1971 -> 1971 */,
+        &SPIRV_PixelExportColor_UInt16x2_UInt32 /* 1972 -> 1972 */,
+        &SPIRV_PixelExportColor_UInt16x2_Int16 /* 1973 -> 1973 */,
+        &SPIRV_PixelExportColor_UInt16x2_UInt16 /* 1974 -> 1974 */,
+        &SPIRV_PixelExportColor_UInt16x3_Int32 /* 1975 -> 1975 */,
+        &SPIRV_PixelExportColor_UInt16x3_UInt32 /* 1976 -> 1976 */,
+        &SPIRV_PixelExportColor_UInt16x3_Int16 /* 1977 -> 1977 */,
+        &SPIRV_PixelExportColor_UInt16x3_UInt16 /* 1978 -> 1978 */,
+        &SPIRV_PixelExportColor_UInt16x4_Int32 /* 1979 -> 1979 */,
+        &SPIRV_PixelExportColor_UInt16x4_UInt32 /* 1980 -> 1980 */,
+        &SPIRV_PixelExportColor_UInt16x4_Int16 /* 1981 -> 1981 */,
+        &SPIRV_PixelExportColor_UInt16x4_UInt16 /* 1982 -> 1982 */,
+        &SPIRV_ComputeGetLocalThreadIndices /* 1983 -> 1983 */,
+        &SPIRV_ComputeGetGlobalThreadIndices /* 1984 -> 1984 */,
+        &SPIRV_ComputeGetWorkgroupIndices /* 1985 -> 1985 */,
+        &SPIRV_ComputeGetWorkGroupDimensions /* 1986 -> 1986 */,
+        &SPIRV_ComputeGetIndexInWorkgroup /* 1987 -> 1987 */,
+        &SPIRV_SubgroupGetId /* 1988 -> 1988 */,
+        &SPIRV_SubgroupGetSize /* 1989 -> 1989 */,
+        &SPIRV_SubgroupGetNum /* 1990 -> 1990 */,
+        &SPIRV_SubgroupGetThreadMask /* 1991 -> 1991 */,
+        &SPIRV_SubgroupGetThreadAndLowerMask /* 1992 -> 1992 */,
+        &SPIRV_SubgroupGetLowerMask /* 1993 -> 1993 */,
+        &SPIRV_SubgroupGetThreadAndGreaterMask /* 1994 -> 1994 */,
+        &SPIRV_SubgroupGetGreaterMask /* 1995 -> 1995 */,
+        &SPIRV_SubgroupGetFirstActiveThread /* 1996 -> 1996 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Float32 /* 1997 -> 1997 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x2 /* 1998 -> 1998 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x3 /* 1999 -> 1999 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x4 /* 2000 -> 2000 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Float16 /* 2001 -> 2001 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x2 /* 2002 -> 2002 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x3 /* 2003 -> 2003 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x4 /* 2004 -> 2004 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Int32 /* 2005 -> 2005 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x2 /* 2006 -> 2006 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x3 /* 2007 -> 2007 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x4 /* 2008 -> 2008 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Int16 /* 2009 -> 2009 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x2 /* 2010 -> 2010 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x3 /* 2011 -> 2011 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x4 /* 2012 -> 2012 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32 /* 2013 -> 2013 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x2 /* 2014 -> 2014 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x3 /* 2015 -> 2015 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x4 /* 2016 -> 2016 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16 /* 2017 -> 2017 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x2 /* 2018 -> 2018 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x3 /* 2019 -> 2019 */,
+        &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x4 /* 2020 -> 2020 */,
+        &SPIRV_SubgroupBallot /* 2021 -> 2021 */,
+        &SPIRV_SubgroupInverseBallot /* 2022 -> 2022 */,
+        &SPIRV_SubgroupBallotBitCount /* 2023 -> 2023 */,
+        &SPIRV_SubgroupBallotFirstOne /* 2024 -> 2024 */,
+        &SPIRV_SubgroupBallotLastOne /* 2025 -> 2025 */,
+        &SPIRV_SubgroupBallotBit /* 2026 -> 2026 */,
+        &SPIRV_SubgroupSwapDiagonal_Float32 /* 2027 -> 2027 */,
+        &SPIRV_SubgroupSwapDiagonal_Float32x2 /* 2028 -> 2028 */,
+        &SPIRV_SubgroupSwapDiagonal_Float32x3 /* 2029 -> 2029 */,
+        &SPIRV_SubgroupSwapDiagonal_Float32x4 /* 2030 -> 2030 */,
+        &SPIRV_SubgroupSwapDiagonal_Float16 /* 2031 -> 2031 */,
+        &SPIRV_SubgroupSwapDiagonal_Float16x2 /* 2032 -> 2032 */,
+        &SPIRV_SubgroupSwapDiagonal_Float16x3 /* 2033 -> 2033 */,
+        &SPIRV_SubgroupSwapDiagonal_Float16x4 /* 2034 -> 2034 */,
+        &SPIRV_SubgroupSwapDiagonal_Int32 /* 2035 -> 2035 */,
+        &SPIRV_SubgroupSwapDiagonal_Int32x2 /* 2036 -> 2036 */,
+        &SPIRV_SubgroupSwapDiagonal_Int32x3 /* 2037 -> 2037 */,
+        &SPIRV_SubgroupSwapDiagonal_Int32x4 /* 2038 -> 2038 */,
+        &SPIRV_SubgroupSwapDiagonal_Int16 /* 2039 -> 2039 */,
+        &SPIRV_SubgroupSwapDiagonal_Int16x2 /* 2040 -> 2040 */,
+        &SPIRV_SubgroupSwapDiagonal_Int16x3 /* 2041 -> 2041 */,
+        &SPIRV_SubgroupSwapDiagonal_Int16x4 /* 2042 -> 2042 */,
+        &SPIRV_SubgroupSwapDiagonal_UInt32 /* 2043 -> 2043 */,
+        &SPIRV_SubgroupSwapDiagonal_UInt32x2 /* 2044 -> 2044 */,
+        &SPIRV_SubgroupSwapDiagonal_UInt32x3 /* 2045 -> 2045 */,
+        &SPIRV_SubgroupSwapDiagonal_UInt32x4 /* 2046 -> 2046 */,
+        &SPIRV_SubgroupSwapDiagonal_UInt16 /* 2047 -> 2047 */,
+        &SPIRV_SubgroupSwapDiagonal_UInt16x2 /* 2048 -> 2048 */,
+        &SPIRV_SubgroupSwapDiagonal_UInt16x3 /* 2049 -> 2049 */,
+        &SPIRV_SubgroupSwapDiagonal_UInt16x4 /* 2050 -> 2050 */,
+        &SPIRV_SubgroupSwapVertical_Float32 /* 2051 -> 2051 */,
+        &SPIRV_SubgroupSwapVertical_Float32x2 /* 2052 -> 2052 */,
+        &SPIRV_SubgroupSwapVertical_Float32x3 /* 2053 -> 2053 */,
+        &SPIRV_SubgroupSwapVertical_Float32x4 /* 2054 -> 2054 */,
+        &SPIRV_SubgroupSwapVertical_Float16 /* 2055 -> 2055 */,
+        &SPIRV_SubgroupSwapVertical_Float16x2 /* 2056 -> 2056 */,
+        &SPIRV_SubgroupSwapVertical_Float16x3 /* 2057 -> 2057 */,
+        &SPIRV_SubgroupSwapVertical_Float16x4 /* 2058 -> 2058 */,
+        &SPIRV_SubgroupSwapVertical_Int32 /* 2059 -> 2059 */,
+        &SPIRV_SubgroupSwapVertical_Int32x2 /* 2060 -> 2060 */,
+        &SPIRV_SubgroupSwapVertical_Int32x3 /* 2061 -> 2061 */,
+        &SPIRV_SubgroupSwapVertical_Int32x4 /* 2062 -> 2062 */,
+        &SPIRV_SubgroupSwapVertical_Int16 /* 2063 -> 2063 */,
+        &SPIRV_SubgroupSwapVertical_Int16x2 /* 2064 -> 2064 */,
+        &SPIRV_SubgroupSwapVertical_Int16x3 /* 2065 -> 2065 */,
+        &SPIRV_SubgroupSwapVertical_Int16x4 /* 2066 -> 2066 */,
+        &SPIRV_SubgroupSwapVertical_UInt32 /* 2067 -> 2067 */,
+        &SPIRV_SubgroupSwapVertical_UInt32x2 /* 2068 -> 2068 */,
+        &SPIRV_SubgroupSwapVertical_UInt32x3 /* 2069 -> 2069 */,
+        &SPIRV_SubgroupSwapVertical_UInt32x4 /* 2070 -> 2070 */,
+        &SPIRV_SubgroupSwapVertical_UInt16 /* 2071 -> 2071 */,
+        &SPIRV_SubgroupSwapVertical_UInt16x2 /* 2072 -> 2072 */,
+        &SPIRV_SubgroupSwapVertical_UInt16x3 /* 2073 -> 2073 */,
+        &SPIRV_SubgroupSwapVertical_UInt16x4 /* 2074 -> 2074 */,
+        &SPIRV_SubgroupSwapHorizontal_Float32 /* 2075 -> 2075 */,
+        &SPIRV_SubgroupSwapHorizontal_Float32x2 /* 2076 -> 2076 */,
+        &SPIRV_SubgroupSwapHorizontal_Float32x3 /* 2077 -> 2077 */,
+        &SPIRV_SubgroupSwapHorizontal_Float32x4 /* 2078 -> 2078 */,
+        &SPIRV_SubgroupSwapHorizontal_Float16 /* 2079 -> 2079 */,
+        &SPIRV_SubgroupSwapHorizontal_Float16x2 /* 2080 -> 2080 */,
+        &SPIRV_SubgroupSwapHorizontal_Float16x3 /* 2081 -> 2081 */,
+        &SPIRV_SubgroupSwapHorizontal_Float16x4 /* 2082 -> 2082 */,
+        &SPIRV_SubgroupSwapHorizontal_Int32 /* 2083 -> 2083 */,
+        &SPIRV_SubgroupSwapHorizontal_Int32x2 /* 2084 -> 2084 */,
+        &SPIRV_SubgroupSwapHorizontal_Int32x3 /* 2085 -> 2085 */,
+        &SPIRV_SubgroupSwapHorizontal_Int32x4 /* 2086 -> 2086 */,
+        &SPIRV_SubgroupSwapHorizontal_Int16 /* 2087 -> 2087 */,
+        &SPIRV_SubgroupSwapHorizontal_Int16x2 /* 2088 -> 2088 */,
+        &SPIRV_SubgroupSwapHorizontal_Int16x3 /* 2089 -> 2089 */,
+        &SPIRV_SubgroupSwapHorizontal_Int16x4 /* 2090 -> 2090 */,
+        &SPIRV_SubgroupSwapHorizontal_UInt32 /* 2091 -> 2091 */,
+        &SPIRV_SubgroupSwapHorizontal_UInt32x2 /* 2092 -> 2092 */,
+        &SPIRV_SubgroupSwapHorizontal_UInt32x3 /* 2093 -> 2093 */,
+        &SPIRV_SubgroupSwapHorizontal_UInt32x4 /* 2094 -> 2094 */,
+        &SPIRV_SubgroupSwapHorizontal_UInt16 /* 2095 -> 2095 */,
+        &SPIRV_SubgroupSwapHorizontal_UInt16x2 /* 2096 -> 2096 */,
+        &SPIRV_SubgroupSwapHorizontal_UInt16x3 /* 2097 -> 2097 */,
+        &SPIRV_SubgroupSwapHorizontal_UInt16x4 /* 2098 -> 2098 */,
+        &SPIRV_AtomicLoad_UInt32 /* 2099 -> 2099 */,
+        &SPIRV_AtomicIncrement_UInt32 /* 2100 -> 2100 */,
+        &SPIRV_AtomicDecrement_UInt32 /* 2101 -> 2101 */,
+        &SPIRV_AtomicLoad_Int32 /* 2102 -> 2102 */,
+        &SPIRV_AtomicIncrement_Int32 /* 2103 -> 2103 */,
+        &SPIRV_AtomicDecrement_Int32 /* 2104 -> 2104 */,
+        &SPIRV_AtomicLoad_UInt16 /* 2105 -> 2105 */,
+        &SPIRV_AtomicIncrement_UInt16 /* 2106 -> 2106 */,
+        &SPIRV_AtomicDecrement_UInt16 /* 2107 -> 2107 */,
+        &SPIRV_AtomicLoad_Int16 /* 2108 -> 2108 */,
+        &SPIRV_AtomicIncrement_Int16 /* 2109 -> 2109 */,
+        &SPIRV_AtomicDecrement_Int16 /* 2110 -> 2110 */,
+        &SPIRV_AtomicLoad_Float32 /* 2111 -> 2111 */,
+        &SPIRV_AtomicLoad_Float16 /* 2112 -> 2112 */,
+        &SPIRV_AtomicStore_UInt32 /* 2113 -> 2113 */,
+        &SPIRV_AtomicExchange_UInt32 /* 2114 -> 2114 */,
+        &SPIRV_AtomicAdd_UInt32 /* 2115 -> 2115 */,
+        &SPIRV_AtomicSubtract_UInt32 /* 2116 -> 2116 */,
+        &SPIRV_AtomicAnd_UInt32 /* 2117 -> 2117 */,
+        &SPIRV_AtomicOr_UInt32 /* 2118 -> 2118 */,
+        &SPIRV_AtomicXor_UInt32 /* 2119 -> 2119 */,
+        &SPIRV_AtomicStore_Int32 /* 2120 -> 2120 */,
+        &SPIRV_AtomicExchange_Int32 /* 2121 -> 2121 */,
+        &SPIRV_AtomicAdd_Int32 /* 2122 -> 2122 */,
+        &SPIRV_AtomicSubtract_Int32 /* 2123 -> 2123 */,
+        &SPIRV_AtomicAnd_Int32 /* 2124 -> 2124 */,
+        &SPIRV_AtomicOr_Int32 /* 2125 -> 2125 */,
+        &SPIRV_AtomicXor_Int32 /* 2126 -> 2126 */,
+        &SPIRV_AtomicStore_UInt16 /* 2127 -> 2127 */,
+        &SPIRV_AtomicExchange_UInt16 /* 2128 -> 2128 */,
+        &SPIRV_AtomicAdd_UInt16 /* 2129 -> 2129 */,
+        &SPIRV_AtomicSubtract_UInt16 /* 2130 -> 2130 */,
+        &SPIRV_AtomicAnd_UInt16 /* 2131 -> 2131 */,
+        &SPIRV_AtomicOr_UInt16 /* 2132 -> 2132 */,
+        &SPIRV_AtomicXor_UInt16 /* 2133 -> 2133 */,
+        &SPIRV_AtomicStore_Int16 /* 2134 -> 2134 */,
+        &SPIRV_AtomicExchange_Int16 /* 2135 -> 2135 */,
+        &SPIRV_AtomicAdd_Int16 /* 2136 -> 2136 */,
+        &SPIRV_AtomicSubtract_Int16 /* 2137 -> 2137 */,
+        &SPIRV_AtomicAnd_Int16 /* 2138 -> 2138 */,
+        &SPIRV_AtomicOr_Int16 /* 2139 -> 2139 */,
+        &SPIRV_AtomicXor_Int16 /* 2140 -> 2140 */,
+        &SPIRV_AtomicStore_Float32 /* 2141 -> 2141 */,
+        &SPIRV_AtomicExchange_Float32 /* 2142 -> 2142 */,
+        &SPIRV_AtomicStore_Float16 /* 2143 -> 2143 */,
+        &SPIRV_AtomicExchange_Float16 /* 2144 -> 2144 */,
+        &SPIRV_AtomicMin_UInt32 /* 2145 -> 2145 */,
+        &SPIRV_AtomicMax_UInt32 /* 2146 -> 2146 */,
+        &SPIRV_AtomicMin_Int32 /* 2147 -> 2147 */,
+        &SPIRV_AtomicMax_Int32 /* 2148 -> 2148 */,
+        &SPIRV_AtomicMin_UInt16 /* 2149 -> 2149 */,
+        &SPIRV_AtomicMax_UInt16 /* 2150 -> 2150 */,
+        &SPIRV_AtomicMin_Int16 /* 2151 -> 2151 */,
+        &SPIRV_AtomicMax_Int16 /* 2152 -> 2152 */,
+        &SPIRV_AtomicCompareExchange_UInt32 /* 2153 -> 2153 */,
+        &SPIRV_AtomicCompareExchange_Int32 /* 2154 -> 2154 */,
+        &SPIRV_AtomicCompareExchange_UInt16 /* 2155 -> 2155 */,
+        &SPIRV_AtomicCompareExchange_Int16 /* 2156 -> 2156 */,
+        &SPIRV_BitInsert_UInt16 /* 2157 -> 2157 */,
+        &SPIRV_BitInsert_UInt32 /* 2158 -> 2158 */,
+        &SPIRV_BitExtract_UInt32 /* 2159 -> 2159 */,
+        &SPIRV_BitExtract_Int32 /* 2160 -> 2160 */,
+        &SPIRV_BitExtract_UInt16 /* 2161 -> 2161 */,
+        &SPIRV_BitExtract_Int16 /* 2162 -> 2162 */,
+        &SPIRV_BitReverse_UInt32 /* 2163 -> 2163 */,
+        &SPIRV_BitReverse_Int32 /* 2164 -> 2164 */,
+        &SPIRV_BitReverse_UInt16 /* 2165 -> 2165 */,
+        &SPIRV_BitReverse_Int16 /* 2166 -> 2166 */,
+        &SPIRV_BitCount_UInt32 /* 2167 -> 2167 */,
+        &SPIRV_BitCount_Int32 /* 2168 -> 2168 */,
+        &SPIRV_BitCount_UInt16 /* 2169 -> 2169 */,
+        &SPIRV_BitCount_Int16 /* 2170 -> 2170 */,
+        &SPIRV_ExecutionBarrier /* 2171 -> 2171 */,
+        &SPIRV_ExecutionBarrierSubgroup /* 2172 -> 2172 */,
+        &SPIRV_ExecutionBarrierWorkgroup /* 2173 -> 2173 */,
+        &SPIRV_MemoryBarrier /* 2174 -> 2174 */,
+        &SPIRV_MemoryBarrierBuffer /* 2175 -> 2175 */,
+        &SPIRV_MemoryBarrierTexture /* 2176 -> 2176 */,
+        &SPIRV_MemoryBarrierAtomic /* 2177 -> 2177 */,
+        &SPIRV_MemoryBarrierSubgroup /* 2178 -> 2178 */,
+        &SPIRV_MemoryBarrierWorkgroup /* 2179 -> 2179 */,
+        &SPIRV_TextureGetSize_Texture1D /* 2180 -> 2180 */,
+        &SPIRV_TextureGetSize_Texture2D /* 2181 -> 2181 */,
+        &SPIRV_TextureGetSize_Texture3D /* 2182 -> 2182 */,
+        &SPIRV_TextureGetSize_TextureCube /* 2183 -> 2183 */,
+        &SPIRV_TextureGetSize_Texture1DArray /* 2184 -> 2184 */,
+        &SPIRV_TextureGetSize_Texture2DArray /* 2185 -> 2185 */,
+        &SPIRV_TextureGetSize_TextureCubeArray /* 2186 -> 2186 */,
+        &SPIRV_TextureGetSizeMip_Texture1D /* 2187 -> 2187 */,
+        &SPIRV_TextureGetSizeMip_Texture2D /* 2188 -> 2188 */,
+        &SPIRV_TextureGetSizeMip_Texture3D /* 2189 -> 2189 */,
+        &SPIRV_TextureGetSizeMip_TextureCube /* 2190 -> 2190 */,
+        &SPIRV_TextureGetSizeMip_Texture1DArray /* 2191 -> 2191 */,
+        &SPIRV_TextureGetSizeMip_Texture2DArray /* 2192 -> 2192 */,
+        &SPIRV_TextureGetSizeMip_TextureCubeArray /* 2193 -> 2193 */,
+        &SPIRV_TextureGetMips_Texture1D /* 2194 -> 2194 */,
+        &SPIRV_TextureGetMips_Texture2D /* 2195 -> 2195 */,
+        &SPIRV_TextureGetMips_Texture3D /* 2196 -> 2196 */,
+        &SPIRV_TextureGetMips_TextureCube /* 2197 -> 2197 */,
+        &SPIRV_TextureGetMips_Texture1DArray /* 2198 -> 2198 */,
+        &SPIRV_TextureGetMips_Texture2DArray /* 2199 -> 2199 */,
+        &SPIRV_TextureGetMips_TextureCubeArray /* 2200 -> 2200 */,
+        &SPIRV_TextureGetSamples_Texture2DMS /* 2201 -> 2201 */,
+        &SPIRV_TextureGetSamples_Texture2DMSArray /* 2202 -> 2202 */,
+        &SPIRV_TextureGetSampledMip_Texture1D /* 2203 -> 2203 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture1D /* 2204 -> 2204 */,
+        &SPIRV_TextureGetSampledMip_Texture2D /* 2205 -> 2205 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture2D /* 2206 -> 2206 */,
+        &SPIRV_TextureGetSampledMip_Texture3D /* 2207 -> 2207 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture3D /* 2208 -> 2208 */,
+        &SPIRV_TextureGetSampledMip_TextureCube /* 2209 -> 2209 */,
+        &SPIRV_SampledTextureGetSampledMip_TextureCube /* 2210 -> 2210 */,
+        &SPIRV_TextureGetSampledMip_Texture1DArray /* 2211 -> 2211 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture1DArray /* 2212 -> 2212 */,
+        &SPIRV_TextureGetSampledMip_Texture2DArray /* 2213 -> 2213 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture2DArray /* 2214 -> 2214 */,
+        &SPIRV_TextureGetSampledMip_TextureCubeArray /* 2215 -> 2215 */,
+        &SPIRV_SampledTextureGetSampledMip_TextureCubeArray /* 2216 -> 2216 */,
+        &SPIRV_TextureLoad_Texture1D /* 2217 -> 2217 */,
+        &SPIRV_TextureLoadMip_Texture1D /* 2218 -> 2218 */,
+        &SPIRV_TextureStore_Texture1D /* 2219 -> 2219 */,
+        &SPIRV_TextureStoreMip_Texture1D /* 2220 -> 2220 */,
+        &SPIRV_TextureLoad_Texture2D /* 2221 -> 2221 */,
+        &SPIRV_TextureLoadMip_Texture2D /* 2222 -> 2222 */,
+        &SPIRV_TextureStore_Texture2D /* 2223 -> 2223 */,
+        &SPIRV_TextureStoreMip_Texture2D /* 2224 -> 2224 */,
+        &SPIRV_TextureLoad_Texture3D /* 2225 -> 2225 */,
+        &SPIRV_TextureLoadMip_Texture3D /* 2226 -> 2226 */,
+        &SPIRV_TextureStore_Texture3D /* 2227 -> 2227 */,
+        &SPIRV_TextureStoreMip_Texture3D /* 2228 -> 2228 */,
+        &SPIRV_TextureLoad_TextureCube /* 2229 -> 2229 */,
+        &SPIRV_TextureLoadMip_TextureCube /* 2230 -> 2230 */,
+        &SPIRV_TextureStore_TextureCube /* 2231 -> 2231 */,
+        &SPIRV_TextureStoreMip_TextureCube /* 2232 -> 2232 */,
+        &SPIRV_TextureLoad_Texture1DArray /* 2233 -> 2233 */,
+        &SPIRV_TextureLoadMip_Texture1DArray /* 2234 -> 2234 */,
+        &SPIRV_TextureStore_Texture1DArray /* 2235 -> 2235 */,
+        &SPIRV_TextureStoreMip_Texture1DArray /* 2236 -> 2236 */,
+        &SPIRV_TextureLoad_Texture2DArray /* 2237 -> 2237 */,
+        &SPIRV_TextureLoadMip_Texture2DArray /* 2238 -> 2238 */,
+        &SPIRV_TextureStore_Texture2DArray /* 2239 -> 2239 */,
+        &SPIRV_TextureStoreMip_Texture2DArray /* 2240 -> 2240 */,
+        &SPIRV_TextureLoad_TextureCubeArray /* 2241 -> 2241 */,
+        &SPIRV_TextureLoadMip_TextureCubeArray /* 2242 -> 2242 */,
+        &SPIRV_TextureStore_TextureCubeArray /* 2243 -> 2243 */,
+        &SPIRV_TextureStoreMip_TextureCubeArray /* 2244 -> 2244 */,
+        &SPIRV_TextureLoad_Texture2DMS /* 2245 -> 2245 */,
+        &SPIRV_TextureLoadMip_Texture2DMS /* 2246 -> 2246 */,
+        &SPIRV_TextureStore_Texture2DMS /* 2247 -> 2247 */,
+        &SPIRV_TextureStoreMip_Texture2DMS /* 2248 -> 2248 */,
+        &SPIRV_TextureLoad_Texture2DMSArray /* 2249 -> 2249 */,
+        &SPIRV_TextureLoadMip_Texture2DMSArray /* 2250 -> 2250 */,
+        &SPIRV_TextureStore_Texture2DMSArray /* 2251 -> 2251 */,
+        &SPIRV_TextureStoreMip_Texture2DMSArray /* 2252 -> 2252 */,
+        &SPIRV_TextureFetch_Texture1D /* 2253 -> 2253 */,
+        &SPIRV_TextureFetchSample_Texture1D /* 2254 -> 2254 */,
+        &SPIRV_TextureFetch_Texture2D /* 2255 -> 2255 */,
+        &SPIRV_TextureFetchSample_Texture2D /* 2256 -> 2256 */,
+        &SPIRV_TextureFetch_Texture3D /* 2257 -> 2257 */,
+        &SPIRV_TextureFetchSample_Texture3D /* 2258 -> 2258 */,
+        &SPIRV_TextureFetch_Texture1DArray /* 2259 -> 2259 */,
+        &SPIRV_TextureFetchSample_Texture1DArray /* 2260 -> 2260 */,
+        &SPIRV_TextureFetch_Texture2DArray /* 2261 -> 2261 */,
+        &SPIRV_TextureFetchSample_Texture2DArray /* 2262 -> 2262 */,
+        &SPIRV_TextureFetch_Texture2DMS /* 2263 -> 2263 */,
+        &SPIRV_TextureFetchSample_Texture2DMS /* 2264 -> 2264 */,
+        &SPIRV_TextureFetch_Texture2DMSArray /* 2265 -> 2265 */,
+        &SPIRV_TextureFetchSample_Texture2DMSArray /* 2266 -> 2266 */,
+        &SPIRV_TextureGather_Texture2D /* 2267 -> 2267 */,
+        &SPIRV_SampledTextureGather_Texture2D /* 2268 -> 2268 */,
+        &SPIRV_TextureGatherOffset_Texture2D /* 2269 -> 2269 */,
+        &SPIRV_SampledTextureGatherOffset_Texture2D /* 2270 -> 2270 */,
+        &SPIRV_TextureGather_TextureCube /* 2271 -> 2271 */,
+        &SPIRV_SampledTextureGather_TextureCube /* 2272 -> 2272 */,
+        &SPIRV_TextureGatherOffset_TextureCube /* 2273 -> 2273 */,
+        &SPIRV_SampledTextureGatherOffset_TextureCube /* 2274 -> 2274 */,
+        &SPIRV_TextureGather_Texture2DArray /* 2275 -> 2275 */,
+        &SPIRV_SampledTextureGather_Texture2DArray /* 2276 -> 2276 */,
+        &SPIRV_TextureGatherOffset_Texture2DArray /* 2277 -> 2277 */,
+        &SPIRV_SampledTextureGatherOffset_Texture2DArray /* 2278 -> 2278 */,
+        &SPIRV_TextureGather_TextureCubeArray /* 2279 -> 2279 */,
+        &SPIRV_SampledTextureGather_TextureCubeArray /* 2280 -> 2280 */,
+        &SPIRV_TextureGatherOffset_TextureCubeArray /* 2281 -> 2281 */,
+        &SPIRV_SampledTextureGatherOffset_TextureCubeArray /* 2282 -> 2282 */,
+        &SPIRV_TexturePixelCacheLoad_PixelCache /* 2283 -> 2283 */,
+        &SPIRV_TexturePixelCacheLoad_PixelCacheMS /* 2284 -> 2284 */,
+        &SPIRV_TextureSample_Texture1D /* 2285 -> 2285 */,
+        &SPIRV_SampledTextureSample_Texture1D /* 2286 -> 2286 */,
+        &SPIRV_TextureSample_Texture2D /* 2287 -> 2287 */,
+        &SPIRV_SampledTextureSample_Texture2D /* 2288 -> 2288 */,
+        &SPIRV_TextureSample_Texture3D /* 2289 -> 2289 */,
+        &SPIRV_SampledTextureSample_Texture3D /* 2290 -> 2290 */,
+        &SPIRV_TextureSample_TextureCube /* 2291 -> 2291 */,
+        &SPIRV_SampledTextureSample_TextureCube /* 2292 -> 2292 */,
+        &SPIRV_TextureSample_Texture1DArray /* 2293 -> 2293 */,
+        &SPIRV_SampledTextureSample_Texture1DArray /* 2294 -> 2294 */,
+        &SPIRV_TextureSample_Texture2DArray /* 2295 -> 2295 */,
+        &SPIRV_SampledTextureSample_Texture2DArray /* 2296 -> 2296 */,
+        &SPIRV_TextureSample_TextureCubeArray /* 2297 -> 2297 */,
+        &SPIRV_SampledTextureSample_TextureCubeArray /* 2298 -> 2298 */,
+        &SPIRV_TextureSampleOffset_Texture1D /* 2299 -> 2299 */,
+        &SPIRV_SampledTextureSampleOffset_Texture1D /* 2300 -> 2300 */,
+        &SPIRV_TextureSampleOffset_Texture2D /* 2301 -> 2301 */,
+        &SPIRV_SampledTextureSampleOffset_Texture2D /* 2302 -> 2302 */,
+        &SPIRV_TextureSampleOffset_Texture3D /* 2303 -> 2303 */,
+        &SPIRV_SampledTextureSampleOffset_Texture3D /* 2304 -> 2304 */,
+        &SPIRV_TextureSampleOffset_Texture1DArray /* 2305 -> 2305 */,
+        &SPIRV_SampledTextureSampleOffset_Texture1DArray /* 2306 -> 2306 */,
+        &SPIRV_TextureSampleOffset_Texture2DArray /* 2307 -> 2307 */,
+        &SPIRV_SampledTextureSampleOffset_Texture2DArray /* 2308 -> 2308 */,
+        &SPIRV_TextureSampleProj_Texture1D /* 2309 -> 2309 */,
+        &SPIRV_SampledTextureSampleProj_Texture1D /* 2310 -> 2310 */,
+        &SPIRV_TextureSampleProj_Texture2D /* 2311 -> 2311 */,
+        &SPIRV_SampledTextureSampleProj_Texture2D /* 2312 -> 2312 */,
+        &SPIRV_TextureSampleProj_Texture3D /* 2313 -> 2313 */,
+        &SPIRV_SampledTextureSampleProj_Texture3D /* 2314 -> 2314 */,
+        &SPIRV_TextureSampleProjOffset_Texture1D /* 2315 -> 2315 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture1D /* 2316 -> 2316 */,
+        &SPIRV_TextureSampleProjOffset_Texture2D /* 2317 -> 2317 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture2D /* 2318 -> 2318 */,
+        &SPIRV_TextureSampleProjOffset_Texture3D /* 2319 -> 2319 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture3D /* 2320 -> 2320 */,
+        &SPIRV_TextureSampleCompare_Texture1D /* 2321 -> 2321 */,
+        &SPIRV_SampledTextureSampleCompare_Texture1D /* 2322 -> 2322 */,
+        &SPIRV_TextureSampleCompare_Texture2D /* 2323 -> 2323 */,
+        &SPIRV_SampledTextureSampleCompare_Texture2D /* 2324 -> 2324 */,
+        &SPIRV_TextureSampleCompare_Texture3D /* 2325 -> 2325 */,
+        &SPIRV_SampledTextureSampleCompare_Texture3D /* 2326 -> 2326 */,
+        &SPIRV_TextureSampleCompare_Texture1DArray /* 2327 -> 2327 */,
+        &SPIRV_SampledTextureSampleCompare_Texture1DArray /* 2328 -> 2328 */,
+        &SPIRV_TextureSampleCompare_Texture2DArray /* 2329 -> 2329 */,
+        &SPIRV_SampledTextureSampleCompare_Texture2DArray /* 2330 -> 2330 */,
+        &SPIRV_TextureSampleCompareOffset_Texture1D /* 2331 -> 2331 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture1D /* 2332 -> 2332 */,
+        &SPIRV_TextureSampleCompareOffset_Texture2D /* 2333 -> 2333 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture2D /* 2334 -> 2334 */,
+        &SPIRV_TextureSampleCompareOffset_Texture3D /* 2335 -> 2335 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture3D /* 2336 -> 2336 */,
+        &SPIRV_TextureSampleCompareOffset_Texture1DArray /* 2337 -> 2337 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture1DArray /* 2338 -> 2338 */,
+        &SPIRV_TextureSampleCompareOffset_Texture2DArray /* 2339 -> 2339 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture2DArray /* 2340 -> 2340 */,
+        &SPIRV_TextureSampleProjCompare_Texture1D /* 2341 -> 2341 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture1D /* 2342 -> 2342 */,
+        &SPIRV_TextureSampleProjCompare_Texture2D /* 2343 -> 2343 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture2D /* 2344 -> 2344 */,
+        &SPIRV_TextureSampleProjCompare_Texture3D /* 2345 -> 2345 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture3D /* 2346 -> 2346 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture1D /* 2347 -> 2347 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture1D /* 2348 -> 2348 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture2D /* 2349 -> 2349 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture2D /* 2350 -> 2350 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture3D /* 2351 -> 2351 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture3D /* 2352 -> 2352 */,
+        &SPIRV_TextureSampleLod_Texture1D /* 2353 -> 2353 */,
+        &SPIRV_SampledTextureSampleLod_Texture1D /* 2354 -> 2354 */,
+        &SPIRV_TextureSampleLod_Texture2D /* 2355 -> 2355 */,
+        &SPIRV_SampledTextureSampleLod_Texture2D /* 2356 -> 2356 */,
+        &SPIRV_TextureSampleLod_Texture3D /* 2357 -> 2357 */,
+        &SPIRV_SampledTextureSampleLod_Texture3D /* 2358 -> 2358 */,
+        &SPIRV_TextureSampleLod_TextureCube /* 2359 -> 2359 */,
+        &SPIRV_SampledTextureSampleLod_TextureCube /* 2360 -> 2360 */,
+        &SPIRV_TextureSampleLod_Texture1DArray /* 2361 -> 2361 */,
+        &SPIRV_SampledTextureSampleLod_Texture1DArray /* 2362 -> 2362 */,
+        &SPIRV_TextureSampleLod_Texture2DArray /* 2363 -> 2363 */,
+        &SPIRV_SampledTextureSampleLod_Texture2DArray /* 2364 -> 2364 */,
+        &SPIRV_TextureSampleLod_TextureCubeArray /* 2365 -> 2365 */,
+        &SPIRV_SampledTextureSampleLod_TextureCubeArray /* 2366 -> 2366 */,
+        &SPIRV_TextureSampleLodOffset_Texture1D /* 2367 -> 2367 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture1D /* 2368 -> 2368 */,
+        &SPIRV_TextureSampleLodOffset_Texture2D /* 2369 -> 2369 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture2D /* 2370 -> 2370 */,
+        &SPIRV_TextureSampleLodOffset_Texture3D /* 2371 -> 2371 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture3D /* 2372 -> 2372 */,
+        &SPIRV_TextureSampleLodOffset_Texture1DArray /* 2373 -> 2373 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture1DArray /* 2374 -> 2374 */,
+        &SPIRV_TextureSampleLodOffset_Texture2DArray /* 2375 -> 2375 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture2DArray /* 2376 -> 2376 */,
+        &SPIRV_TextureSampleLodProj_Texture1D /* 2377 -> 2377 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture1D /* 2378 -> 2378 */,
+        &SPIRV_TextureSampleLodProj_Texture2D /* 2379 -> 2379 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture2D /* 2380 -> 2380 */,
+        &SPIRV_TextureSampleLodProj_Texture3D /* 2381 -> 2381 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture3D /* 2382 -> 2382 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture1D /* 2383 -> 2383 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture1D /* 2384 -> 2384 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture2D /* 2385 -> 2385 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture2D /* 2386 -> 2386 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture3D /* 2387 -> 2387 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture3D /* 2388 -> 2388 */,
+        &SPIRV_TextureSampleLodCompare_Texture1D /* 2389 -> 2389 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture1D /* 2390 -> 2390 */,
+        &SPIRV_TextureSampleLodCompare_Texture2D /* 2391 -> 2391 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture2D /* 2392 -> 2392 */,
+        &SPIRV_TextureSampleLodCompare_Texture3D /* 2393 -> 2393 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture3D /* 2394 -> 2394 */,
+        &SPIRV_TextureSampleLodCompare_Texture1DArray /* 2395 -> 2395 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture1DArray /* 2396 -> 2396 */,
+        &SPIRV_TextureSampleLodCompare_Texture2DArray /* 2397 -> 2397 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture2DArray /* 2398 -> 2398 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture1D /* 2399 -> 2399 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1D /* 2400 -> 2400 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture2D /* 2401 -> 2401 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2D /* 2402 -> 2402 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture3D /* 2403 -> 2403 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture3D /* 2404 -> 2404 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture1DArray /* 2405 -> 2405 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1DArray /* 2406 -> 2406 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture2DArray /* 2407 -> 2407 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2DArray /* 2408 -> 2408 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture1D /* 2409 -> 2409 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture1D /* 2410 -> 2410 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture2D /* 2411 -> 2411 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture2D /* 2412 -> 2412 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture3D /* 2413 -> 2413 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture3D /* 2414 -> 2414 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture1D /* 2415 -> 2415 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture1D /* 2416 -> 2416 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture2D /* 2417 -> 2417 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture2D /* 2418 -> 2418 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture3D /* 2419 -> 2419 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture3D /* 2420 -> 2420 */,
+        &SPIRV_TextureSampleGrad_Texture1D /* 2421 -> 2421 */,
+        &SPIRV_SampledTextureSampleGrad_Texture1D /* 2422 -> 2422 */,
+        &SPIRV_TextureSampleGrad_Texture2D /* 2423 -> 2423 */,
+        &SPIRV_SampledTextureSampleGrad_Texture2D /* 2424 -> 2424 */,
+        &SPIRV_TextureSampleGrad_Texture3D /* 2425 -> 2425 */,
+        &SPIRV_SampledTextureSampleGrad_Texture3D /* 2426 -> 2426 */,
+        &SPIRV_TextureSampleGrad_TextureCube /* 2427 -> 2427 */,
+        &SPIRV_SampledTextureSampleGrad_TextureCube /* 2428 -> 2428 */,
+        &SPIRV_TextureSampleGrad_Texture1DArray /* 2429 -> 2429 */,
+        &SPIRV_SampledTextureSampleGrad_Texture1DArray /* 2430 -> 2430 */,
+        &SPIRV_TextureSampleGrad_Texture2DArray /* 2431 -> 2431 */,
+        &SPIRV_SampledTextureSampleGrad_Texture2DArray /* 2432 -> 2432 */,
+        &SPIRV_TextureSampleGrad_TextureCubeArray /* 2433 -> 2433 */,
+        &SPIRV_SampledTextureSampleGrad_TextureCubeArray /* 2434 -> 2434 */,
+        &SPIRV_TextureSampleGradOffset_Texture1D /* 2435 -> 2435 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture1D /* 2436 -> 2436 */,
+        &SPIRV_TextureSampleGradOffset_Texture2D /* 2437 -> 2437 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture2D /* 2438 -> 2438 */,
+        &SPIRV_TextureSampleGradOffset_Texture3D /* 2439 -> 2439 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture3D /* 2440 -> 2440 */,
+        &SPIRV_TextureSampleGradOffset_Texture1DArray /* 2441 -> 2441 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture1DArray /* 2442 -> 2442 */,
+        &SPIRV_TextureSampleGradOffset_Texture2DArray /* 2443 -> 2443 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture2DArray /* 2444 -> 2444 */,
+        &SPIRV_TextureSampleGradProj_Texture1D /* 2445 -> 2445 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture1D /* 2446 -> 2446 */,
+        &SPIRV_TextureSampleGradProj_Texture2D /* 2447 -> 2447 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture2D /* 2448 -> 2448 */,
+        &SPIRV_TextureSampleGradProj_Texture3D /* 2449 -> 2449 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture3D /* 2450 -> 2450 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture1D /* 2451 -> 2451 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture1D /* 2452 -> 2452 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture2D /* 2453 -> 2453 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture2D /* 2454 -> 2454 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture3D /* 2455 -> 2455 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture3D /* 2456 -> 2456 */,
+        &SPIRV_TextureSampleGradCompare_Texture1D /* 2457 -> 2457 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture1D /* 2458 -> 2458 */,
+        &SPIRV_TextureSampleGradCompare_Texture2D /* 2459 -> 2459 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture2D /* 2460 -> 2460 */,
+        &SPIRV_TextureSampleGradCompare_Texture3D /* 2461 -> 2461 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture3D /* 2462 -> 2462 */,
+        &SPIRV_TextureSampleGradCompare_Texture1DArray /* 2463 -> 2463 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture1DArray /* 2464 -> 2464 */,
+        &SPIRV_TextureSampleGradCompare_Texture2DArray /* 2465 -> 2465 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture2DArray /* 2466 -> 2466 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture1D /* 2467 -> 2467 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1D /* 2468 -> 2468 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture2D /* 2469 -> 2469 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2D /* 2470 -> 2470 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture3D /* 2471 -> 2471 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture3D /* 2472 -> 2472 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture1DArray /* 2473 -> 2473 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1DArray /* 2474 -> 2474 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture2DArray /* 2475 -> 2475 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2DArray /* 2476 -> 2476 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture1D /* 2477 -> 2477 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture1D /* 2478 -> 2478 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture2D /* 2479 -> 2479 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture2D /* 2480 -> 2480 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture3D /* 2481 -> 2481 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture3D /* 2482 -> 2482 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture1D /* 2483 -> 2483 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture1D /* 2484 -> 2484 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture2D /* 2485 -> 2485 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture2D /* 2486 -> 2486 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture3D /* 2487 -> 2487 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture3D /* 2488 -> 2488 */,
+        &SPIRV_TextureSampleBias_Texture1D /* 2489 -> 2489 */,
+        &SPIRV_SampledTextureSampleBias_Texture1D /* 2490 -> 2490 */,
+        &SPIRV_TextureSampleBias_Texture2D /* 2491 -> 2491 */,
+        &SPIRV_SampledTextureSampleBias_Texture2D /* 2492 -> 2492 */,
+        &SPIRV_TextureSampleBias_Texture3D /* 2493 -> 2493 */,
+        &SPIRV_SampledTextureSampleBias_Texture3D /* 2494 -> 2494 */,
+        &SPIRV_TextureSampleBias_TextureCube /* 2495 -> 2495 */,
+        &SPIRV_SampledTextureSampleBias_TextureCube /* 2496 -> 2496 */,
+        &SPIRV_TextureSampleBias_Texture1DArray /* 2497 -> 2497 */,
+        &SPIRV_SampledTextureSampleBias_Texture1DArray /* 2498 -> 2498 */,
+        &SPIRV_TextureSampleBias_Texture2DArray /* 2499 -> 2499 */,
+        &SPIRV_SampledTextureSampleBias_Texture2DArray /* 2500 -> 2500 */,
+        &SPIRV_TextureSampleBias_TextureCubeArray /* 2501 -> 2501 */,
+        &SPIRV_SampledTextureSampleBias_TextureCubeArray /* 2502 -> 2502 */,
+        &SPIRV_TextureSampleBiasOffset_Texture1D /* 2503 -> 2503 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture1D /* 2504 -> 2504 */,
+        &SPIRV_TextureSampleBiasOffset_Texture2D /* 2505 -> 2505 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture2D /* 2506 -> 2506 */,
+        &SPIRV_TextureSampleBiasOffset_Texture3D /* 2507 -> 2507 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture3D /* 2508 -> 2508 */,
+        &SPIRV_TextureSampleBiasOffset_Texture1DArray /* 2509 -> 2509 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture1DArray /* 2510 -> 2510 */,
+        &SPIRV_TextureSampleBiasOffset_Texture2DArray /* 2511 -> 2511 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture2DArray /* 2512 -> 2512 */,
+        &SPIRV_TextureSampleBiasProj_Texture1D /* 2513 -> 2513 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture1D /* 2514 -> 2514 */,
+        &SPIRV_TextureSampleBiasProj_Texture2D /* 2515 -> 2515 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture2D /* 2516 -> 2516 */,
+        &SPIRV_TextureSampleBiasProj_Texture3D /* 2517 -> 2517 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture3D /* 2518 -> 2518 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture1D /* 2519 -> 2519 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture1D /* 2520 -> 2520 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture2D /* 2521 -> 2521 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture2D /* 2522 -> 2522 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture3D /* 2523 -> 2523 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture3D /* 2524 -> 2524 */,
+        &SPIRV_TextureSampleBiasCompare_Texture1D /* 2525 -> 2525 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture1D /* 2526 -> 2526 */,
+        &SPIRV_TextureSampleBiasCompare_Texture2D /* 2527 -> 2527 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture2D /* 2528 -> 2528 */,
+        &SPIRV_TextureSampleBiasCompare_Texture3D /* 2529 -> 2529 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture3D /* 2530 -> 2530 */,
+        &SPIRV_TextureSampleBiasCompare_Texture1DArray /* 2531 -> 2531 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture1DArray /* 2532 -> 2532 */,
+        &SPIRV_TextureSampleBiasCompare_Texture2DArray /* 2533 -> 2533 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture2DArray /* 2534 -> 2534 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture1D /* 2535 -> 2535 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1D /* 2536 -> 2536 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture2D /* 2537 -> 2537 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2D /* 2538 -> 2538 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture3D /* 2539 -> 2539 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture3D /* 2540 -> 2540 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture1DArray /* 2541 -> 2541 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1DArray /* 2542 -> 2542 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture2DArray /* 2543 -> 2543 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2DArray /* 2544 -> 2544 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture1D /* 2545 -> 2545 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture1D /* 2546 -> 2546 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture2D /* 2547 -> 2547 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture2D /* 2548 -> 2548 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture3D /* 2549 -> 2549 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture3D /* 2550 -> 2550 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture1D /* 2551 -> 2551 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture1D /* 2552 -> 2552 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture2D /* 2553 -> 2553 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture2D /* 2554 -> 2554 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture3D /* 2555 -> 2555 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture3D /* 2556 -> 2556 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Float32 /* 2557 -> 2557 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_UInt32 /* 2558 -> 2558 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Int32 /* 2559 -> 2559 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Float16 /* 2560 -> 2560 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_UInt16 /* 2561 -> 2561 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Int16 /* 2562 -> 2562 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Float32 /* 2563 -> 2563 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_UInt32 /* 2564 -> 2564 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Int32 /* 2565 -> 2565 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Float16 /* 2566 -> 2566 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_UInt16 /* 2567 -> 2567 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Int16 /* 2568 -> 2568 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Float32 /* 2569 -> 2569 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_UInt32 /* 2570 -> 2570 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Int32 /* 2571 -> 2571 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Float16 /* 2572 -> 2572 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_UInt16 /* 2573 -> 2573 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Int16 /* 2574 -> 2574 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Float32 /* 2575 -> 2575 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_UInt32 /* 2576 -> 2576 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Int32 /* 2577 -> 2577 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Float16 /* 2578 -> 2578 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_UInt16 /* 2579 -> 2579 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Int16 /* 2580 -> 2580 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Float32 /* 2581 -> 2581 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt32 /* 2582 -> 2582 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Int32 /* 2583 -> 2583 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Float16 /* 2584 -> 2584 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt16 /* 2585 -> 2585 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Int16 /* 2586 -> 2586 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Float32 /* 2587 -> 2587 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt32 /* 2588 -> 2588 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Int32 /* 2589 -> 2589 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Float16 /* 2590 -> 2590 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt16 /* 2591 -> 2591 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Int16 /* 2592 -> 2592 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float32 /* 2593 -> 2593 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt32 /* 2594 -> 2594 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int32 /* 2595 -> 2595 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float16 /* 2596 -> 2596 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt16 /* 2597 -> 2597 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int16 /* 2598 -> 2598 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Float32 /* 2599 -> 2599 */,
+        &SPIRV_TextureAtomicStore_Texture1D_UInt32 /* 2600 -> 2600 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Int32 /* 2601 -> 2601 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Float16 /* 2602 -> 2602 */,
+        &SPIRV_TextureAtomicStore_Texture1D_UInt16 /* 2603 -> 2603 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Int16 /* 2604 -> 2604 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Float32 /* 2605 -> 2605 */,
+        &SPIRV_TextureAtomicStore_Texture2D_UInt32 /* 2606 -> 2606 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Int32 /* 2607 -> 2607 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Float16 /* 2608 -> 2608 */,
+        &SPIRV_TextureAtomicStore_Texture2D_UInt16 /* 2609 -> 2609 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Int16 /* 2610 -> 2610 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Float32 /* 2611 -> 2611 */,
+        &SPIRV_TextureAtomicStore_Texture3D_UInt32 /* 2612 -> 2612 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Int32 /* 2613 -> 2613 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Float16 /* 2614 -> 2614 */,
+        &SPIRV_TextureAtomicStore_Texture3D_UInt16 /* 2615 -> 2615 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Int16 /* 2616 -> 2616 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Float32 /* 2617 -> 2617 */,
+        &SPIRV_TextureAtomicStore_TextureCube_UInt32 /* 2618 -> 2618 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Int32 /* 2619 -> 2619 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Float16 /* 2620 -> 2620 */,
+        &SPIRV_TextureAtomicStore_TextureCube_UInt16 /* 2621 -> 2621 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Int16 /* 2622 -> 2622 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Float32 /* 2623 -> 2623 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_UInt32 /* 2624 -> 2624 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Int32 /* 2625 -> 2625 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Float16 /* 2626 -> 2626 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_UInt16 /* 2627 -> 2627 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Int16 /* 2628 -> 2628 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Float32 /* 2629 -> 2629 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_UInt32 /* 2630 -> 2630 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Int32 /* 2631 -> 2631 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Float16 /* 2632 -> 2632 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_UInt16 /* 2633 -> 2633 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Int16 /* 2634 -> 2634 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Float32 /* 2635 -> 2635 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt32 /* 2636 -> 2636 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Int32 /* 2637 -> 2637 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Float16 /* 2638 -> 2638 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt16 /* 2639 -> 2639 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Int16 /* 2640 -> 2640 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Float32 /* 2641 -> 2641 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_UInt32 /* 2642 -> 2642 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Int32 /* 2643 -> 2643 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Float16 /* 2644 -> 2644 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_UInt16 /* 2645 -> 2645 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Int16 /* 2646 -> 2646 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Float32 /* 2647 -> 2647 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_UInt32 /* 2648 -> 2648 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Int32 /* 2649 -> 2649 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Float16 /* 2650 -> 2650 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_UInt16 /* 2651 -> 2651 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Int16 /* 2652 -> 2652 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Float32 /* 2653 -> 2653 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_UInt32 /* 2654 -> 2654 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Int32 /* 2655 -> 2655 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Float16 /* 2656 -> 2656 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_UInt16 /* 2657 -> 2657 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Int16 /* 2658 -> 2658 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Float32 /* 2659 -> 2659 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_UInt32 /* 2660 -> 2660 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Int32 /* 2661 -> 2661 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Float16 /* 2662 -> 2662 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_UInt16 /* 2663 -> 2663 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Int16 /* 2664 -> 2664 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Float32 /* 2665 -> 2665 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt32 /* 2666 -> 2666 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Int32 /* 2667 -> 2667 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Float16 /* 2668 -> 2668 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt16 /* 2669 -> 2669 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Int16 /* 2670 -> 2670 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Float32 /* 2671 -> 2671 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt32 /* 2672 -> 2672 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Int32 /* 2673 -> 2673 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Float16 /* 2674 -> 2674 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt16 /* 2675 -> 2675 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Int16 /* 2676 -> 2676 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float32 /* 2677 -> 2677 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt32 /* 2678 -> 2678 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int32 /* 2679 -> 2679 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float16 /* 2680 -> 2680 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt16 /* 2681 -> 2681 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int16 /* 2682 -> 2682 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt32 /* 2683 -> 2683 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int32 /* 2684 -> 2684 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt16 /* 2685 -> 2685 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int16 /* 2686 -> 2686 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt32 /* 2687 -> 2687 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int32 /* 2688 -> 2688 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt16 /* 2689 -> 2689 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int16 /* 2690 -> 2690 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt32 /* 2691 -> 2691 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int32 /* 2692 -> 2692 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt16 /* 2693 -> 2693 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int16 /* 2694 -> 2694 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt32 /* 2695 -> 2695 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int32 /* 2696 -> 2696 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt16 /* 2697 -> 2697 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int16 /* 2698 -> 2698 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt32 /* 2699 -> 2699 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int32 /* 2700 -> 2700 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt16 /* 2701 -> 2701 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int16 /* 2702 -> 2702 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt32 /* 2703 -> 2703 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int32 /* 2704 -> 2704 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt16 /* 2705 -> 2705 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int16 /* 2706 -> 2706 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt32 /* 2707 -> 2707 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int32 /* 2708 -> 2708 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt16 /* 2709 -> 2709 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int16 /* 2710 -> 2710 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_UInt32 /* 2711 -> 2711 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_Int32 /* 2712 -> 2712 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_UInt16 /* 2713 -> 2713 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_Int16 /* 2714 -> 2714 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_UInt32 /* 2715 -> 2715 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_Int32 /* 2716 -> 2716 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_UInt16 /* 2717 -> 2717 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_Int16 /* 2718 -> 2718 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_UInt32 /* 2719 -> 2719 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_Int32 /* 2720 -> 2720 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_UInt16 /* 2721 -> 2721 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_Int16 /* 2722 -> 2722 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_UInt32 /* 2723 -> 2723 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_Int32 /* 2724 -> 2724 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_UInt16 /* 2725 -> 2725 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_Int16 /* 2726 -> 2726 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt32 /* 2727 -> 2727 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_Int32 /* 2728 -> 2728 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt16 /* 2729 -> 2729 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_Int16 /* 2730 -> 2730 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt32 /* 2731 -> 2731 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_Int32 /* 2732 -> 2732 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt16 /* 2733 -> 2733 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_Int16 /* 2734 -> 2734 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt32 /* 2735 -> 2735 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int32 /* 2736 -> 2736 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt16 /* 2737 -> 2737 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int16 /* 2738 -> 2738 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_UInt32 /* 2739 -> 2739 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_Int32 /* 2740 -> 2740 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_UInt16 /* 2741 -> 2741 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_Int16 /* 2742 -> 2742 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_UInt32 /* 2743 -> 2743 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_Int32 /* 2744 -> 2744 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_UInt16 /* 2745 -> 2745 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_Int16 /* 2746 -> 2746 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_UInt32 /* 2747 -> 2747 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_Int32 /* 2748 -> 2748 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_UInt16 /* 2749 -> 2749 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_Int16 /* 2750 -> 2750 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_UInt32 /* 2751 -> 2751 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_Int32 /* 2752 -> 2752 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_UInt16 /* 2753 -> 2753 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_Int16 /* 2754 -> 2754 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt32 /* 2755 -> 2755 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int32 /* 2756 -> 2756 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt16 /* 2757 -> 2757 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int16 /* 2758 -> 2758 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt32 /* 2759 -> 2759 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int32 /* 2760 -> 2760 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt16 /* 2761 -> 2761 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int16 /* 2762 -> 2762 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt32 /* 2763 -> 2763 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int32 /* 2764 -> 2764 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt16 /* 2765 -> 2765 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int16 /* 2766 -> 2766 */,
+        &SPIRV_TextureAtomicMin_Texture1D_UInt32 /* 2767 -> 2767 */,
+        &SPIRV_TextureAtomicMin_Texture1D_Int32 /* 2768 -> 2768 */,
+        &SPIRV_TextureAtomicMin_Texture1D_UInt16 /* 2769 -> 2769 */,
+        &SPIRV_TextureAtomicMin_Texture1D_Int16 /* 2770 -> 2770 */,
+        &SPIRV_TextureAtomicMin_Texture2D_UInt32 /* 2771 -> 2771 */,
+        &SPIRV_TextureAtomicMin_Texture2D_Int32 /* 2772 -> 2772 */,
+        &SPIRV_TextureAtomicMin_Texture2D_UInt16 /* 2773 -> 2773 */,
+        &SPIRV_TextureAtomicMin_Texture2D_Int16 /* 2774 -> 2774 */,
+        &SPIRV_TextureAtomicMin_Texture3D_UInt32 /* 2775 -> 2775 */,
+        &SPIRV_TextureAtomicMin_Texture3D_Int32 /* 2776 -> 2776 */,
+        &SPIRV_TextureAtomicMin_Texture3D_UInt16 /* 2777 -> 2777 */,
+        &SPIRV_TextureAtomicMin_Texture3D_Int16 /* 2778 -> 2778 */,
+        &SPIRV_TextureAtomicMin_TextureCube_UInt32 /* 2779 -> 2779 */,
+        &SPIRV_TextureAtomicMin_TextureCube_Int32 /* 2780 -> 2780 */,
+        &SPIRV_TextureAtomicMin_TextureCube_UInt16 /* 2781 -> 2781 */,
+        &SPIRV_TextureAtomicMin_TextureCube_Int16 /* 2782 -> 2782 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_UInt32 /* 2783 -> 2783 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_Int32 /* 2784 -> 2784 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_UInt16 /* 2785 -> 2785 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_Int16 /* 2786 -> 2786 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_UInt32 /* 2787 -> 2787 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_Int32 /* 2788 -> 2788 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_UInt16 /* 2789 -> 2789 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_Int16 /* 2790 -> 2790 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt32 /* 2791 -> 2791 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_Int32 /* 2792 -> 2792 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt16 /* 2793 -> 2793 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_Int16 /* 2794 -> 2794 */,
+        &SPIRV_TextureAtomicMax_Texture1D_UInt32 /* 2795 -> 2795 */,
+        &SPIRV_TextureAtomicMax_Texture1D_Int32 /* 2796 -> 2796 */,
+        &SPIRV_TextureAtomicMax_Texture1D_UInt16 /* 2797 -> 2797 */,
+        &SPIRV_TextureAtomicMax_Texture1D_Int16 /* 2798 -> 2798 */,
+        &SPIRV_TextureAtomicMax_Texture2D_UInt32 /* 2799 -> 2799 */,
+        &SPIRV_TextureAtomicMax_Texture2D_Int32 /* 2800 -> 2800 */,
+        &SPIRV_TextureAtomicMax_Texture2D_UInt16 /* 2801 -> 2801 */,
+        &SPIRV_TextureAtomicMax_Texture2D_Int16 /* 2802 -> 2802 */,
+        &SPIRV_TextureAtomicMax_Texture3D_UInt32 /* 2803 -> 2803 */,
+        &SPIRV_TextureAtomicMax_Texture3D_Int32 /* 2804 -> 2804 */,
+        &SPIRV_TextureAtomicMax_Texture3D_UInt16 /* 2805 -> 2805 */,
+        &SPIRV_TextureAtomicMax_Texture3D_Int16 /* 2806 -> 2806 */,
+        &SPIRV_TextureAtomicMax_TextureCube_UInt32 /* 2807 -> 2807 */,
+        &SPIRV_TextureAtomicMax_TextureCube_Int32 /* 2808 -> 2808 */,
+        &SPIRV_TextureAtomicMax_TextureCube_UInt16 /* 2809 -> 2809 */,
+        &SPIRV_TextureAtomicMax_TextureCube_Int16 /* 2810 -> 2810 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_UInt32 /* 2811 -> 2811 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_Int32 /* 2812 -> 2812 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_UInt16 /* 2813 -> 2813 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_Int16 /* 2814 -> 2814 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_UInt32 /* 2815 -> 2815 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_Int32 /* 2816 -> 2816 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_UInt16 /* 2817 -> 2817 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_Int16 /* 2818 -> 2818 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt32 /* 2819 -> 2819 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_Int32 /* 2820 -> 2820 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt16 /* 2821 -> 2821 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_Int16 /* 2822 -> 2822 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_UInt32 /* 2823 -> 2823 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_Int32 /* 2824 -> 2824 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_UInt16 /* 2825 -> 2825 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_Int16 /* 2826 -> 2826 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_UInt32 /* 2827 -> 2827 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_Int32 /* 2828 -> 2828 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_UInt16 /* 2829 -> 2829 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_Int16 /* 2830 -> 2830 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_UInt32 /* 2831 -> 2831 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_Int32 /* 2832 -> 2832 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_UInt16 /* 2833 -> 2833 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_Int16 /* 2834 -> 2834 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_UInt32 /* 2835 -> 2835 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_Int32 /* 2836 -> 2836 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_UInt16 /* 2837 -> 2837 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_Int16 /* 2838 -> 2838 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt32 /* 2839 -> 2839 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_Int32 /* 2840 -> 2840 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt16 /* 2841 -> 2841 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_Int16 /* 2842 -> 2842 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt32 /* 2843 -> 2843 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_Int32 /* 2844 -> 2844 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt16 /* 2845 -> 2845 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_Int16 /* 2846 -> 2846 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt32 /* 2847 -> 2847 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int32 /* 2848 -> 2848 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt16 /* 2849 -> 2849 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int16 /* 2850 -> 2850 */,
+        &SPIRV_TextureAtomicOr_Texture1D_UInt32 /* 2851 -> 2851 */,
+        &SPIRV_TextureAtomicOr_Texture1D_Int32 /* 2852 -> 2852 */,
+        &SPIRV_TextureAtomicOr_Texture1D_UInt16 /* 2853 -> 2853 */,
+        &SPIRV_TextureAtomicOr_Texture1D_Int16 /* 2854 -> 2854 */,
+        &SPIRV_TextureAtomicOr_Texture2D_UInt32 /* 2855 -> 2855 */,
+        &SPIRV_TextureAtomicOr_Texture2D_Int32 /* 2856 -> 2856 */,
+        &SPIRV_TextureAtomicOr_Texture2D_UInt16 /* 2857 -> 2857 */,
+        &SPIRV_TextureAtomicOr_Texture2D_Int16 /* 2858 -> 2858 */,
+        &SPIRV_TextureAtomicOr_Texture3D_UInt32 /* 2859 -> 2859 */,
+        &SPIRV_TextureAtomicOr_Texture3D_Int32 /* 2860 -> 2860 */,
+        &SPIRV_TextureAtomicOr_Texture3D_UInt16 /* 2861 -> 2861 */,
+        &SPIRV_TextureAtomicOr_Texture3D_Int16 /* 2862 -> 2862 */,
+        &SPIRV_TextureAtomicOr_TextureCube_UInt32 /* 2863 -> 2863 */,
+        &SPIRV_TextureAtomicOr_TextureCube_Int32 /* 2864 -> 2864 */,
+        &SPIRV_TextureAtomicOr_TextureCube_UInt16 /* 2865 -> 2865 */,
+        &SPIRV_TextureAtomicOr_TextureCube_Int16 /* 2866 -> 2866 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_UInt32 /* 2867 -> 2867 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_Int32 /* 2868 -> 2868 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_UInt16 /* 2869 -> 2869 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_Int16 /* 2870 -> 2870 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_UInt32 /* 2871 -> 2871 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_Int32 /* 2872 -> 2872 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_UInt16 /* 2873 -> 2873 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_Int16 /* 2874 -> 2874 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt32 /* 2875 -> 2875 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_Int32 /* 2876 -> 2876 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt16 /* 2877 -> 2877 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_Int16 /* 2878 -> 2878 */,
+        &SPIRV_TextureAtomicXor_Texture1D_UInt32 /* 2879 -> 2879 */,
+        &SPIRV_TextureAtomicXor_Texture1D_Int32 /* 2880 -> 2880 */,
+        &SPIRV_TextureAtomicXor_Texture1D_UInt16 /* 2881 -> 2881 */,
+        &SPIRV_TextureAtomicXor_Texture1D_Int16 /* 2882 -> 2882 */,
+        &SPIRV_TextureAtomicXor_Texture2D_UInt32 /* 2883 -> 2883 */,
+        &SPIRV_TextureAtomicXor_Texture2D_Int32 /* 2884 -> 2884 */,
+        &SPIRV_TextureAtomicXor_Texture2D_UInt16 /* 2885 -> 2885 */,
+        &SPIRV_TextureAtomicXor_Texture2D_Int16 /* 2886 -> 2886 */,
+        &SPIRV_TextureAtomicXor_Texture3D_UInt32 /* 2887 -> 2887 */,
+        &SPIRV_TextureAtomicXor_Texture3D_Int32 /* 2888 -> 2888 */,
+        &SPIRV_TextureAtomicXor_Texture3D_UInt16 /* 2889 -> 2889 */,
+        &SPIRV_TextureAtomicXor_Texture3D_Int16 /* 2890 -> 2890 */,
+        &SPIRV_TextureAtomicXor_TextureCube_UInt32 /* 2891 -> 2891 */,
+        &SPIRV_TextureAtomicXor_TextureCube_Int32 /* 2892 -> 2892 */,
+        &SPIRV_TextureAtomicXor_TextureCube_UInt16 /* 2893 -> 2893 */,
+        &SPIRV_TextureAtomicXor_TextureCube_Int16 /* 2894 -> 2894 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_UInt32 /* 2895 -> 2895 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_Int32 /* 2896 -> 2896 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_UInt16 /* 2897 -> 2897 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_Int16 /* 2898 -> 2898 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_UInt32 /* 2899 -> 2899 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_Int32 /* 2900 -> 2900 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_UInt16 /* 2901 -> 2901 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_Int16 /* 2902 -> 2902 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt32 /* 2903 -> 2903 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_Int32 /* 2904 -> 2904 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt16 /* 2905 -> 2905 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_Int16 /* 2906 -> 2906 */
 };

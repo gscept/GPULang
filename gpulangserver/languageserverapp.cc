@@ -386,16 +386,19 @@ ValidateFile(ParseContext::ParsedFile* file, ParseContext* context, const std::s
     {
         for (auto& diagnostic : file->result.diagnostics)
         {
-            auto& it = diagnosticsResults[diagnostic.file];
-            it.uri = diagnostic.file.c_str();
-            it.diagnostics.push_back(lsp::Diagnostic{
-                .range = {
-                    .start = { .line = (uint32_t)diagnostic.line, .character = (uint32_t)diagnostic.column },
-                    .end = { .line = (uint32_t)diagnostic.line, .character = (uint32_t)diagnostic.column + diagnostic.length }
-                },
-                .message = diagnostic.error.c_str(),
-                .severity = lsp::DiagnosticSeverity::Error // FIXME, should come from the diagnostic
-            });
+            if (diagnostic.file.buf != nullptr)
+            {
+                auto& it = diagnosticsResults[diagnostic.file];
+                it.uri = diagnostic.file.c_str();
+                it.diagnostics.push_back(lsp::Diagnostic{
+                    .range = {
+                            .start = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column },
+                            .end = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column + diagnostic.length }
+                    },
+                    .message = diagnostic.error.c_str(),
+                    .severity = lsp::DiagnosticSeverity::Error // FIXME, should come from the diagnostic
+                });
+            }
         }
         file->result.diagnostics.Clear();
     }
@@ -1389,7 +1392,7 @@ main(int argc, const char** argv)
             context = &parseContexts[0];
         }
             
-        if (!params.workspaceFolders->isNull())
+        if (params.workspaceFolders)
         {
             for (const auto& workspaceFolder : params.workspaceFolders->value())
             {
@@ -1401,13 +1404,13 @@ main(int argc, const char** argv)
         if (params.initializationOptions.has_value())
         {
             const auto options = params.initializationOptions->object();
-            const auto root = options.get("root").string();
             const auto config = options.get("config").object();
+            const auto proj_dir = config.get("project_root").string();
             const auto dirs = config.get("include_directories").array();
             const auto flags = config.get("flags").array();
                                 
             for (const auto& dir : dirs)
-                context->includePaths.push_back("-I" + root + "/" + dir.string() + "/");
+                context->includePaths.push_back("-I" + proj_dir + "/" + dir.string() + "/");
             
             for (const auto& flag : flags)
             {
@@ -1439,6 +1442,7 @@ main(int argc, const char** argv)
         {
             std::replace(path.begin(), path.end(), '\\', '/');
         }
+        printf("Initialized\n");
 
         result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .change = lsp::TextDocumentSyncKind::Full, .save = true };
         result.capabilities.workspace = lsp::ServerCapabilitiesWorkspace{ .workspaceFolders = lsp::WorkspaceFoldersServerCapabilities{ .supported = true } };
@@ -1603,6 +1607,7 @@ main(int argc, const char** argv)
                         presentationBits = bits;
                     }
                 }
+                presentationBits.flags.symbolLookup = true;
 
                 if (closestSymbol != nullptr)
                 {
@@ -1883,7 +1888,7 @@ main(int argc, const char** argv)
                             auto res = GPULang::Symbol::Resolved(fun);
                             if (res->name.buf != nullptr)
                             {
-                                items.push_back(lsp::CompletionItem{ .label = res->name.c_str(), .insertText = sym->name.c_str(), .commitCharacters = {{"("}} });
+                                items.push_back(lsp::CompletionItem{ .label = res->name.c_str(), .kind = lsp::CompletionItemKind::Function, .insertText = sym->name.c_str(), .commitCharacters = {{"("}} });
                             }
                             break;
                         }
@@ -1897,7 +1902,7 @@ main(int argc, const char** argv)
                             {
                                 if (label.StartsWith(member))
                                 {
-                                    items.push_back(lsp::CompletionItem{ .label = label.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = enu->name.c_str()}, .commitCharacters = {{"."}} });
+                                    items.push_back(lsp::CompletionItem{ .label = label.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = enu->name.c_str()}, .kind = lsp::CompletionItemKind::EnumMember, .commitCharacters = {{"."}} });
                                 }
                             }
                             break;
@@ -1915,18 +1920,18 @@ main(int argc, const char** argv)
                                 {
                                     if (tySym->name.StartsWith(member))
                                     {
-                                        items.push_back(lsp::CompletionItem{ .label = tySym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = type->name.c_str()}, .commitCharacters = {{"."}} });
+                                        items.push_back(lsp::CompletionItem{ .label = tySym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = type->name.c_str()}, .kind = lsp::CompletionItemKind::Field, .commitCharacters = {{"."}} });
                                     }
                                 }
                             }
                             else
                             {
-                                items.push_back(lsp::CompletionItem{ .label = sym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = var->type.name.c_str()}, .commitCharacters = {{"."}} });
+                                items.push_back(lsp::CompletionItem{ .label = sym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = var->type.name.c_str()}, .kind = lsp::CompletionItemKind::Variable, .commitCharacters = {{"."}} });
                             }
                             break;
                         }
                         default:
-                            items.push_back(lsp::CompletionItem{.label = sym->name.c_str()});
+                            items.push_back(lsp::CompletionItem{.label = sym->name.c_str(), .kind = lsp::CompletionItemKind::Keyword});
                         }
                         
                     }

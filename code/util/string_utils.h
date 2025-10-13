@@ -776,7 +776,7 @@ FragmentString(const TransientString& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
-extern Allocator* StringAllocator;
+extern thread_local Allocator* StringAllocator;
 
 struct FixedString
 {

@@ -29,7 +29,7 @@ Function::Function()
 
     Function::__Resolved* thisResolved = static_cast<Function::__Resolved*>(this->resolved);
     thisResolved->isEntryPoint = false;
-    thisResolved->executionModifiers.invocations = Function::__Resolved::INVALID_SIZE;
+    thisResolved->executionModifiers.invocations = 1;
     thisResolved->executionModifiers.maxOutputVertices = Function::__Resolved::INVALID_SIZE;
     thisResolved->executionModifiers.windingOrder = WindingInvalid_value;
     thisResolved->executionModifiers.inputPrimitiveTopology = InputTopologyInvalid_value;
@@ -46,6 +46,7 @@ Function::Function()
     thisResolved->executionModifiers.earlyDepth = false;
     thisResolved->executionModifiers.depthAlwaysGreater = false;
     thisResolved->executionModifiers.depthAlwaysLesser = false;
+    thisResolved->executionModifiers.layerOrViewportOutput = false;
     thisResolved->isPrototype = false;
     thisResolved->scope.type = Scope::ScopeType::Local;
     thisResolved->scope.owningSymbol = this;

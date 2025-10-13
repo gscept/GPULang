@@ -268,7 +268,7 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
             .flags = 0x0,
             .depthClampEnable = prog->renderState->depthClampEnabled,
             .rasterizerDiscardEnable = prog->renderState->noPixels,
-            .polygonMode = polygonModeTable[(uint32_t)prog->renderState->polygonMode],
+            .polygonMode = polygonModeTable[(uint32_t)prog->renderState->rasterizationMode],
             .cullMode = cullModeTable[(uint32_t)prog->renderState->cullMode],
             .frontFace = frontFaceTable[(uint32_t)prog->renderState->windingOrderMode],
             .depthBiasEnable = prog->renderState->depthBiasEnabled,

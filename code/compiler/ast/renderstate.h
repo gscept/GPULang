@@ -26,7 +26,7 @@ struct RenderStateInstance : public State
             InvalidRenderStateEntryType,
             DepthClampEnabledType,
             NoPixelsType,
-            PolygonModeType,
+            RasterizationModeType,
             CullModeType,
             WindingOrderType,
             DepthBiasEnabledType,
@@ -76,9 +76,9 @@ struct RenderStateInstance : public State
         bool noPixels;
 
         /// convert from string
-        static const Serialization::PolygonMode StringToPolygonMode(const TransientString& str);
+        static const Serialization::RasterizationMode StringToPolygonMode(const TransientString& str);
 
-        Serialization::PolygonMode polygonMode;
+        Serialization::RasterizationMode rasterizationMode;
 
         /// convert from string
         static const Serialization::CullMode StringToCullMode(const TransientString& str);

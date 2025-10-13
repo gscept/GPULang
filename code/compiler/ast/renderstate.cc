@@ -17,7 +17,7 @@ RenderStateInstance::RenderStateInstance()
     RenderStateInstance::__Resolved* typeResolved = static_cast<RenderStateInstance::__Resolved*>(this->resolved);
     typeResolved->depthClampEnabled = false;
     typeResolved->noPixels = false;
-    typeResolved->polygonMode = Serialization::PolygonMode::FillMode;
+    typeResolved->rasterizationMode = Serialization::RasterizationMode::FillMode;
     typeResolved->cullMode = Serialization::CullMode::BackMode;
     typeResolved->windingOrderMode = Serialization::WindingOrderMode::CounterClockwiseMode;
     typeResolved->depthBiasEnabled = false;
@@ -74,7 +74,7 @@ constexpr StaticMap stringToRenderStateEntryType =
 std::array{
     std::pair{ "DepthClampEnabled"_c, RenderStateInstance::__Resolved::DepthClampEnabledType },
     std::pair{ "NoPixels"_c, RenderStateInstance::__Resolved::NoPixelsType },
-    std::pair{ "Polygon"_c, RenderStateInstance::__Resolved::PolygonModeType },
+    std::pair{ "Rasterize"_c, RenderStateInstance::__Resolved::RasterizationModeType },
     std::pair{ "Cull"_c, RenderStateInstance::__Resolved::CullModeType },
     std::pair{ "WindingOrder"_c, RenderStateInstance::__Resolved::WindingOrderType },
     std::pair{ "DepthBiasEnabled"_c, RenderStateInstance::__Resolved::DepthBiasEnabledType },
@@ -149,182 +149,6 @@ RenderStateInstance::__Resolved::EntryTypeToString(const RenderStateEntryType ty
             return it.first;
     }
     return NoRenderStateEntry;
-}
-
-constexpr StaticMap stringToPolygonMode =
-std::array{
-    std::pair{ "Fill"_c , Serialization::PolygonMode::FillMode },
-    std::pair{ "Line"_c , Serialization::PolygonMode::LineMode },
-    std::pair{ "Point"_c, Serialization::PolygonMode::PointMode }
-};
-
-//------------------------------------------------------------------------------
-/**
-*/
-const Serialization::PolygonMode
-RenderStateInstance::__Resolved::StringToPolygonMode(const TransientString& str)
-{
-    auto it = stringToPolygonMode.Find(str);
-    if (it != stringToPolygonMode.end())
-        return it->second;
-    else
-        return Serialization::PolygonMode::InvalidPolygonMode;
-}
-
-constexpr StaticMap stringToCullMode =
-std::array{
-    std::pair{ "None"_c, Serialization::CullMode::NoCullMode },
-    std::pair{ "Front"_c, Serialization::CullMode::FrontMode },
-    std::pair{ "Back"_c, Serialization::CullMode::BackMode },
-    std::pair{ "FrontAndBack"_c, Serialization::CullMode::FrontAndBackMode }
-};
-
-//------------------------------------------------------------------------------
-/**
-*/
-const Serialization::CullMode
-RenderStateInstance::__Resolved::StringToCullMode(const TransientString& str)
-{
-    auto it = stringToCullMode.Find(str);
-    if (it != stringToCullMode.end())
-        return it->second;
-    else
-        return Serialization::CullMode::InvalidCullMode;
-}
-
-constexpr StaticMap stringToWindingOrderMode =
-std::array{
-    std::pair{ "Clockwise"_c, Serialization::WindingOrderMode::ClockwiseMode },
-    std::pair{ "CounterClockwise"_c, Serialization::WindingOrderMode::CounterClockwiseMode }
-};
-
-//------------------------------------------------------------------------------
-/**
-*/
-const Serialization::WindingOrderMode
-RenderStateInstance::__Resolved::StringToWindingOrderMode(const TransientString& str)
-{
-    auto it = stringToWindingOrderMode.Find(str);
-    if (it != stringToWindingOrderMode.end())
-        return it->second;
-    else
-        return Serialization::WindingOrderMode::InvalidWindingOrderMode;
-}
-
-constexpr StaticMap stringToLogicOp =
-std::array{
-    std::pair{ "Clear"_c, Serialization::LogicOp::LogicClearOp },
-    std::pair{ "And"_c, Serialization::LogicOp::LogicAndOp },
-    std::pair{ "AndReverse"_c, Serialization::LogicOp::LogicAndReverseOp },
-    std::pair{ "Copy"_c, Serialization::LogicOp::LogicCopyOp },
-    std::pair{ "AndInverted"_c, Serialization::LogicOp::LogicAndInvertedOp },
-    std::pair{ "No"_c, Serialization::LogicOp::LogicNoOp },
-    std::pair{ "Xor"_c, Serialization::LogicOp::LogicXorOp },
-    std::pair{ "Or"_c, Serialization::LogicOp::LogicOrOp },
-    std::pair{ "Nor"_c, Serialization::LogicOp::LogicNorOp },
-    std::pair{ "Equivalent"_c, Serialization::LogicOp::LogicEquivalentOp },
-    std::pair{ "Invert"_c, Serialization::LogicOp::LogicInvertOp },
-    std::pair{ "OrReverse"_c, Serialization::LogicOp::LogicOrReverseOp },
-    std::pair{ "CopyInverted"_c, Serialization::LogicOp::LogicCopyInvertedOp },
-    std::pair{ "OrInverted"_c, Serialization::LogicOp::LogicOrInvertedOp },
-    std::pair{ "Nand"_c, Serialization::LogicOp::LogicNandOp },
-    std::pair{ "Set"_c, Serialization::LogicOp::LogicSetOp }
-};
-
-//------------------------------------------------------------------------------
-/**
-*/
-const Serialization::LogicOp
-RenderStateInstance::__Resolved::StringToLogicOp(const TransientString& str)
-{
-    auto it = stringToLogicOp.Find(str);
-    if (it != stringToLogicOp.end())
-        return it->second;
-    else
-        return Serialization::LogicOp::InvalidLogicOp;
-}
-
-constexpr StaticMap stringToStencilOp =
-std::array{
-    std::pair{ "Keep"_c, Serialization::StencilOp::StencilKeepOp },
-    std::pair{ "Zero"_c, Serialization::StencilOp::StencilZeroOp },
-    std::pair{ "Replace"_c, Serialization::StencilOp::StencilReplaceOp },
-    std::pair{ "IncrementClamp"_c, Serialization::StencilOp::StencilIncrementClampOp },
-    std::pair{ "DecrementClamp"_c, Serialization::StencilOp::StencilDecrementClampOp },
-    std::pair{ "Invert"_c, Serialization::StencilOp::StencilInvertOp },
-    std::pair{ "IncrementWrap"_c, Serialization::StencilOp::StencilIncrementWrapOp },
-    std::pair{ "DecrementWrap"_c, Serialization::StencilOp::StencilDecrementWrapOp }
-};
-
-//------------------------------------------------------------------------------
-/**
-*/
-const Serialization::StencilOp
-RenderStateInstance::__Resolved::StringToStencilOp(const TransientString& str)
-{
-    auto it = stringToStencilOp.Find(str);
-    if (it != stringToStencilOp.end())
-        return it->second;
-    else
-        return Serialization::StencilOp::InvalidStencilOp;
-}
-
-constexpr StaticMap stringToBlendFactor =
-std::array{
-    std::pair{ "Zero"_c,  Serialization::BlendFactor::ZeroFactor },
-    std::pair{ "One"_c,  Serialization::BlendFactor::OneFactor },
-    std::pair{ "SourceColor"_c,  Serialization::BlendFactor::SourceColorFactor },
-    std::pair{ "OneMinusSourceColor"_c,  Serialization::BlendFactor::OneMinusSourceColorFactor },
-    std::pair{ "DestinationColor"_c,  Serialization::BlendFactor::DestinationColorFactor },
-    std::pair{ "OneMinusDestinationColor"_c,  Serialization::BlendFactor::OneMinusDestinationColorFactor },
-    std::pair{ "SourceAlpha"_c,  Serialization::BlendFactor::SourceAlphaFactor },
-    std::pair{ "OneMinusSourceAlpha"_c,  Serialization::BlendFactor::OneMinusSourceAlphaFactor },
-    std::pair{ "DestinationAlpha"_c,  Serialization::BlendFactor::DestinationAlphaFactor },
-    std::pair{ "OneMinusDestinationAlpha"_c,  Serialization::BlendFactor::OneMinusDestinationAlphaFactor },
-    std::pair{ "ConstantColor"_c,  Serialization::BlendFactor::ConstantColorFactor },
-    std::pair{ "OneMinusConstantColor"_c,  Serialization::BlendFactor::OneMinusConstantColorFactor },
-    std::pair{ "ConstantAlpha"_c,  Serialization::BlendFactor::ConstantAlphaFactor },
-    std::pair{ "OneMinusConstantAlpha"_c,  Serialization::BlendFactor::OneMinusConstantAlphaFactor },
-    std::pair{ "SourceAlphaSaturate"_c,  Serialization::BlendFactor::SourceAlphaSaturateFactor },
-    std::pair{ "Source1Color"_c,  Serialization::BlendFactor::Source1ColorFactor },
-    std::pair{ "OneMinusSource1Color"_c,  Serialization::BlendFactor::OneMinusSource1ColorFactor },
-    std::pair{ "Source1Alpha"_c,  Serialization::BlendFactor::Source1AlphaFactor },
-    std::pair{ "OneMinusSource1Alpha"_c,  Serialization::BlendFactor::OneMinusSource1AlphaFactor }
-};
-
-//------------------------------------------------------------------------------
-/**
-*/
-const Serialization::BlendFactor
-RenderStateInstance::__Resolved::StringToBlendFactor(const TransientString& str)
-{
-    auto it = stringToBlendFactor.Find(str);
-    if (it != stringToBlendFactor.end())
-        return it->second;
-    else
-        return Serialization::BlendFactor::InvalidBlendFactor;
-}
-
-constexpr StaticMap stringToBlendOp =
-std::array{
-    std::pair{ "Add"_c, Serialization::BlendOp::AddOp },
-    std::pair{ "Subtract"_c, Serialization::BlendOp::SubtractOp },
-    std::pair{ "ReverseSubtract"_c, Serialization::BlendOp::ReverseSubtractOp },
-    std::pair{ "Min"_c, Serialization::BlendOp::MinOp },
-    std::pair{ "Max"_c, Serialization::BlendOp::MaxOp }
-};
-
-//------------------------------------------------------------------------------
-/**
-*/
-const Serialization::BlendOp
-RenderStateInstance::__Resolved::StringToBlendOp(const TransientString& str)
-{
-    auto it = stringToBlendOp.Find(str);
-    if (it != stringToBlendOp.end())
-        return it->second;
-    else
-        return Serialization::BlendOp::InvalidBlendOp;
 }
 
 } // namespace GPULang
