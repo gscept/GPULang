@@ -432,14 +432,14 @@ Type::FullType::ToString(bool includeLiteral) const
         else if (this->modifiers[i] == Modifier::Array)
         {
             if (this->modifierValues[i] == nullptr)
-                base.Append("[]");
+                base.Append("[]_");
             else
             {
                 uint32_t size;
                 ValueUnion value;
                 this->modifierValues[i]->EvalValue(value);
                 value.Store(size);
-                base.Concatenate<false>("[", size, "]");
+                base.Concatenate<false>("[", size, "]_");
             }
         }
     }

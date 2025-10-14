@@ -87,7 +87,6 @@ def generate_types():
         "Float16": 16,
         "UInt16": 16,
         "Int16": 16,
-        "GeometryVertex": 28
     }
 
     data_type_mapping = {
@@ -137,7 +136,6 @@ def generate_types():
         "Float16x4x2": "f16x4x2",
         "Float16x4x3": "f16x4x3",
         "Float16x4x4": "f16x4x4",
-        "GeometryVertex": "GeometryVertex",
         "GeometryTriangle": "GeometryTriangle",
         "GeometryLine": "GeometryLine",
         "GeometryPoint": "GeometryPoint"
@@ -172,8 +170,7 @@ def generate_types():
         'Bool8': 'Bool8',
         'Bool8x2': 'Bool8',
         'Bool8x3': 'Bool8',
-        'Bool8x4': 'Bool8',
-        'GeometryVertex': 'GeometryVertex',
+        'Bool8x4': 'Bool8'
     }
 
     
@@ -184,8 +181,7 @@ def generate_types():
         'Int16': 1, 'Int16x2': 2, 'Int16x3': 3, 'Int16x4': 4,
         'UInt32': 1, 'UInt32x2': 2, 'UInt32x3': 3, 'UInt32x4': 4,
         'UInt16': 1, 'UInt16x2': 2, 'UInt16x3': 3, 'UInt16x4': 4,
-        'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4,
-        'GeometryVertex': 1
+        'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4
     }
 
 
@@ -1838,9 +1834,11 @@ def generate_types():
                     defn += f'IntExpression {self.name}{member.decl_name}ArraySize({member.array_size});\n'
 
             byte_size = 0
+            offsets = []
             for member in self.members:
                 base_type = base_type_mapping[member.type]
                 row_count = vector_size_mapping[member.type]
+                offsets.append(byte_size)
                 byte_size += bit_width_mapping[base_type] * row_count * member.array_size / 8
             defn += f'{self.name}::{self.name}()\n'
             defn += '{\n'
@@ -1863,6 +1861,7 @@ def generate_types():
             defn += f'    typeResolved->storageFunction = nullptr;\n'
             defn += f'    typeResolved->loadFunction = nullptr;\n'
 
+            size = 0
             for i, member in enumerate(self.members):
                 defn += f'    {self.name}{member.decl_name}.name = "{member.api_name}"_c;\n'
                 if member.array_size > 1:
@@ -1870,6 +1869,7 @@ def generate_types():
                 else:
                     defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {member.type}Type.name }};\n'
                 defn += f'    {self.name}{member.decl_name}.thisResolved->typeSymbol = &{member.type}Type;\n'
+                defn += f'    {self.name}{member.decl_name}.thisResolved->structureOffset = {trunc(offsets[i])};\n'
 
             defn += f'    this->symbols = TransientArray<Symbol*>({{ {", ".join(f"&{self.name}{member.decl_name}" for member in self.members)} }});\n'
             self.members.sort(key=MemberSortKey)
@@ -1890,55 +1890,41 @@ def generate_types():
 
     structs = []
 
-    struct = Struct(
-        name = 'GeometryVertex',
-        members=[
-            StructMember('Position', 'position', 'Float32x4'),
-            StructMember('PointSize', 'pointSize', 'Float32'),
-            StructMember('CullDistance', 'cullDistance', 'Float32'),
-            StructMember('ClipDistance', 'clipDistance', 'Float32')
+    def geometry_polygon(num):
+        return[ StructMember('Position', 'position', 'Float32x4', num),
+            StructMember('PointSize', 'pointSize', 'Float32', num),
+            StructMember('CullDistance', 'cullDistance', 'Float32', num),
+            StructMember('ClipDistance', 'clipDistance', 'Float32', num)
         ]
-    )
-    structs.append(struct)
+
 
     struct = Struct(
         name = 'GeometryPoint',
-        members=[ StructMember('P0', 'p0', 'GeometryVertex')]
+        members= geometry_polygon(1)
     )
     structs.append(struct)
 
     struct = Struct(
         name = 'GeometryLine',
-        members=[ StructMember('P0', 'p0', 'GeometryVertex'),
-                  StructMember('P1', 'p1', 'GeometryVertex')]
+        members=geometry_polygon(2)
     )
     structs.append(struct)
 
     struct = Struct(
         name = 'GeometryLineAdjacency',
-        members=[ StructMember('P0', 'p0', 'GeometryVertex'),
-                  StructMember('P1', 'p1', 'GeometryVertex'), 
-                  StructMember('P2', 'p2', 'GeometryVertex'),
-                  StructMember('P3', 'p3', 'GeometryVertex')]
+        members=geometry_polygon(4)
     )
     structs.append(struct)
 
     struct = Struct(
         name = 'GeometryTriangle',
-        members=[ StructMember('P0', 'p0', 'GeometryVertex'),
-                  StructMember('P1', 'p1', 'GeometryVertex'),
-                  StructMember('P2', 'p2', 'GeometryVertex')]
+        members=geometry_polygon(3)
     )
     structs.append(struct)
 
     struct = Struct(
         name = 'GeometryTriangleAdjacency',
-        members=[ StructMember('P0', 'p0', 'GeometryVertex'),
-                  StructMember('P1', 'p1', 'GeometryVertex'),
-                  StructMember('P2', 'p2', 'GeometryVertex'),
-                  StructMember('P3', 'p3', 'GeometryVertex'),
-                  StructMember('P4', 'p4', 'GeometryVertex'),
-                  StructMember('P5', 'p5', 'GeometryVertex')]
+        members=geometry_polygon(6)
     )
     structs.append(struct)
 
@@ -3285,11 +3271,11 @@ def generate_types():
         # Declare the inputs as the 4 variables Position, PointSize, CullDistance and ClipDistance
         return_function += f'    SPIRVResult arraySizeConstant = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int({size}));\n'
         return_function += '    uint32_t float32Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
-        return_function += f'    uint32_t float32ArrayType = AddType(g, "[{size}]float32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);\n'
-        return_function += f'    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[{size}]float32"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));\n'
+        return_function += f'    uint32_t float32ArrayType = AddType(g, "[{size}]_f32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);\n'
+        return_function += f'    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[{size}]_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));\n'
         return_function += '    uint32_t float32x4Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
-        return_function += f'    uint32_t float32x4ArrayType = AddType(g, "[{size}]float32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);\n'
-        return_function += f'    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[{size}]float32x4"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));\n'
+        return_function += f'    uint32_t float32x4ArrayType = AddType(g, "[{size}]_f32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);\n'
+        return_function += f'    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[{size}]_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));\n'
         return_function += f'    uint32_t positions = GPULang::AddSymbol(g, TStr("gplVertexPosition[{size}]"), SPVWriter::Section::Declarations, OpVariable, float32x4ArrayInputTypePtr, VariableStorage::Input);\n'
         return_function += f'    uint32_t pointSizes = GPULang::AddSymbol(g, TStr("gplPointSize[{size}]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);\n'
         return_function += f'    uint32_t cullDistances = GPULang::AddSymbol(g, TStr("gplCullDistance[{size}]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);\n'
@@ -3304,10 +3290,10 @@ def generate_types():
         return_function += '    SPIRVResult const1 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));\n'
         return_function += '    SPIRVResult const2 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));\n'
         return_function += '    SPIRVResult const3 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(3));\n'
-        return_function += f'    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), {ret}, const0);\n'
-        return_function += f'    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), {ret}, const1);\n'
-        return_function += f'    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), {ret}, const2);\n'
-        return_function += f'    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), {ret}, const3);\n'
+        return_function += f'    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), SPVArg({ret}), const0);\n'
+        return_function += f'    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg({ret}), const1);\n'
+        return_function += f'    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg({ret}), const2);\n'
+        return_function += f'    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg({ret}), const3);\n'
 
         # Copy
         return_function += '    g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPositions), SPVArg(positions));\n'
@@ -3333,7 +3319,7 @@ def generate_types():
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gpl{intrinsic}"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_GeometryPoint_Function"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
     spirv_function += geometry_read_function(1, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
@@ -3356,7 +3342,7 @@ def generate_types():
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gpl{intrinsic}"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_GeometryLine_Function"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
     spirv_function += geometry_read_function(2, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
@@ -3381,7 +3367,7 @@ def generate_types():
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
     
     # Declare return struct
-    spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gpl{intrinsic}"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
+    spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_GeometryTriangle_Function"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
 
     spirv_function += geometry_read_function(3, "ret")

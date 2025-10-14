@@ -16953,15 +16953,15 @@ SPIRVResult SPIRV_DomainGetInvocationIndex(const Compiler* c, SPIRVGenerator* g,
 SPIRVResult SPIRV_GeometryGetPoint(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gpl{intrinsic}"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_GeometryPoint_Function"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetPoint"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);
     SPIRVResult arraySizeConstant = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
     uint32_t float32Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
-    uint32_t float32ArrayType = AddType(g, "[1]float32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);
-    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[1]float32"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));
+    uint32_t float32ArrayType = AddType(g, "[1]_f32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);
+    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[1]_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));
     uint32_t float32x4Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t float32x4ArrayType = AddType(g, "[1]float32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);
-    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[1]float32x4"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));
+    uint32_t float32x4ArrayType = AddType(g, "[1]_f32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);
+    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[1]_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));
     uint32_t positions = GPULang::AddSymbol(g, TStr("gplVertexPosition[1]"), SPVWriter::Section::Declarations, OpVariable, float32x4ArrayInputTypePtr, VariableStorage::Input);
     uint32_t pointSizes = GPULang::AddSymbol(g, TStr("gplPointSize[1]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);
     uint32_t cullDistances = GPULang::AddSymbol(g, TStr("gplCullDistance[1]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);
@@ -16974,10 +16974,10 @@ SPIRVResult SPIRV_GeometryGetPoint(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult const1 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
     SPIRVResult const2 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
     SPIRVResult const3 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(3));
-    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), ret, const0);
-    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const1);
-    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const2);
-    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const3);
+    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), SPVArg(ret), const0);
+    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const1);
+    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const2);
+    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const3);
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPositions), SPVArg(positions));
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPointSizes), SPVArg(pointSizes));
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToCullDistances), SPVArg(cullDistances));
@@ -16994,15 +16994,15 @@ SPIRVResult SPIRV_GeometryGetPoint(const Compiler* c, SPIRVGenerator* g, uint32_
 SPIRVResult SPIRV_GeometryGetLine(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gpl{intrinsic}"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_GeometryLine_Function"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetLine"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);
     SPIRVResult arraySizeConstant = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
     uint32_t float32Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
-    uint32_t float32ArrayType = AddType(g, "[2]float32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);
-    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[2]float32"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));
+    uint32_t float32ArrayType = AddType(g, "[2]_f32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);
+    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[2]_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));
     uint32_t float32x4Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t float32x4ArrayType = AddType(g, "[2]float32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);
-    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[2]float32x4"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));
+    uint32_t float32x4ArrayType = AddType(g, "[2]_f32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);
+    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[2]_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));
     uint32_t positions = GPULang::AddSymbol(g, TStr("gplVertexPosition[2]"), SPVWriter::Section::Declarations, OpVariable, float32x4ArrayInputTypePtr, VariableStorage::Input);
     uint32_t pointSizes = GPULang::AddSymbol(g, TStr("gplPointSize[2]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);
     uint32_t cullDistances = GPULang::AddSymbol(g, TStr("gplCullDistance[2]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);
@@ -17015,10 +17015,10 @@ SPIRVResult SPIRV_GeometryGetLine(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult const1 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
     SPIRVResult const2 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
     SPIRVResult const3 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(3));
-    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), ret, const0);
-    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const1);
-    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const2);
-    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const3);
+    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), SPVArg(ret), const0);
+    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const1);
+    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const2);
+    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const3);
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPositions), SPVArg(positions));
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPointSizes), SPVArg(pointSizes));
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToCullDistances), SPVArg(cullDistances));
@@ -17035,15 +17035,15 @@ SPIRVResult SPIRV_GeometryGetLine(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_GeometryGetTriangle(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGetTriangle"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_GeometryTriangle_Function"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetTriangle"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);
     SPIRVResult arraySizeConstant = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(3));
     uint32_t float32Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
-    uint32_t float32ArrayType = AddType(g, "[3]float32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);
-    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[3]float32"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));
+    uint32_t float32ArrayType = AddType(g, "[3]_f32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);
+    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[3]_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));
     uint32_t float32x4Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t float32x4ArrayType = AddType(g, "[3]float32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);
-    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[3]float32x4"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));
+    uint32_t float32x4ArrayType = AddType(g, "[3]_f32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);
+    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[3]_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));
     uint32_t positions = GPULang::AddSymbol(g, TStr("gplVertexPosition[3]"), SPVWriter::Section::Declarations, OpVariable, float32x4ArrayInputTypePtr, VariableStorage::Input);
     uint32_t pointSizes = GPULang::AddSymbol(g, TStr("gplPointSize[3]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);
     uint32_t cullDistances = GPULang::AddSymbol(g, TStr("gplCullDistance[3]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);
@@ -17056,10 +17056,10 @@ SPIRVResult SPIRV_GeometryGetTriangle(const Compiler* c, SPIRVGenerator* g, uint
     SPIRVResult const1 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
     SPIRVResult const2 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
     SPIRVResult const3 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(3));
-    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), ret, const0);
-    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const1);
-    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const2);
-    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), ret, const3);
+    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), SPVArg(ret), const0);
+    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const1);
+    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const2);
+    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), SPVArg(ret), const3);
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPositions), SPVArg(positions));
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPointSizes), SPVArg(pointSizes));
     g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToCullDistances), SPVArg(cullDistances));

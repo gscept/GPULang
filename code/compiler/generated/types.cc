@@ -28371,13 +28371,13 @@ ComputeDerivatives::ComputeDerivatives()
 };
 ComputeDerivatives ComputeDerivativesType;
 
-Variable GeometryVertexPosition;
-Variable GeometryVertexPointSize;
-Variable GeometryVertexCullDistance;
-Variable GeometryVertexClipDistance;
-GeometryVertex::GeometryVertex()
+Variable GeometryPointPosition;
+Variable GeometryPointPointSize;
+Variable GeometryPointCullDistance;
+Variable GeometryPointClipDistance;
+GeometryPoint::GeometryPoint()
 {
-    this->name = "GeometryVertex"_c;
+    this->name = "GeometryPoint"_c;
     this->resolved = Alloc<Structure::__Resolved>();
     this->category = Type::StructureCategory;
     this->arraySizeExpression = nullptr;
@@ -28394,60 +28394,40 @@ GeometryVertex::GeometryVertex()
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
-    GeometryVertexPosition.name = "position"_c;
-    GeometryVertexPosition.type = Type::FullType{ Float32x4Type.name };
-    GeometryVertexPosition.thisResolved->typeSymbol = &Float32x4Type;
-    GeometryVertexPointSize.name = "pointSize"_c;
-    GeometryVertexPointSize.type = Type::FullType{ Float32Type.name };
-    GeometryVertexPointSize.thisResolved->typeSymbol = &Float32Type;
-    GeometryVertexCullDistance.name = "cullDistance"_c;
-    GeometryVertexCullDistance.type = Type::FullType{ Float32Type.name };
-    GeometryVertexCullDistance.thisResolved->typeSymbol = &Float32Type;
-    GeometryVertexClipDistance.name = "clipDistance"_c;
-    GeometryVertexClipDistance.type = Type::FullType{ Float32Type.name };
-    GeometryVertexClipDistance.thisResolved->typeSymbol = &Float32Type;
-    this->symbols = TransientArray<Symbol*>({ &GeometryVertexPosition, &GeometryVertexPointSize, &GeometryVertexCullDistance, &GeometryVertexClipDistance });
+    GeometryPointPosition.name = "position"_c;
+    GeometryPointPosition.type = Type::FullType{ Float32x4Type.name };
+    GeometryPointPosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryPointPosition.thisResolved->structureOffset = 0;
+    GeometryPointPointSize.name = "pointSize"_c;
+    GeometryPointPointSize.type = Type::FullType{ Float32Type.name };
+    GeometryPointPointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryPointPointSize.thisResolved->structureOffset = 16;
+    GeometryPointCullDistance.name = "cullDistance"_c;
+    GeometryPointCullDistance.type = Type::FullType{ Float32Type.name };
+    GeometryPointCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryPointCullDistance.thisResolved->structureOffset = 20;
+    GeometryPointClipDistance.name = "clipDistance"_c;
+    GeometryPointClipDistance.type = Type::FullType{ Float32Type.name };
+    GeometryPointClipDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryPointClipDistance.thisResolved->structureOffset = 24;
+    this->symbols = TransientArray<Symbol*>({ &GeometryPointPosition, &GeometryPointPointSize, &GeometryPointCullDistance, &GeometryPointClipDistance });
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
-        std::pair{ "cullDistance"_h, &GeometryVertexCullDistance },
-        std::pair{ "position"_h, &GeometryVertexPosition },
-        std::pair{ "clipDistance"_h, &GeometryVertexClipDistance },
-        std::pair{ "pointSize"_h, &GeometryVertexPointSize }
-    };
-};
-GeometryVertex GeometryVertexType;
-
-Variable GeometryPointP0;
-GeometryPoint::GeometryPoint()
-{
-    this->name = "GeometryPoint"_c;
-    this->resolved = Alloc<Structure::__Resolved>();
-    this->category = Type::StructureCategory;
-    this->arraySizeExpression = nullptr;
-    this->isArray = false;
-    this->scope.owningSymbol = this;
-    this->scope.type = Scope::ScopeType::Type;
-    this->baseType = TypeCode::InvalidType;
-    this->builtin = true;
-    Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
-    typeResolved->usageFlags.bits = 0x0;
-    typeResolved->accessBits.bits = 0x0;
-    typeResolved->byteSize = 3;
-    typeResolved->baseAlignment = 0;
-    typeResolved->packMembers = false;
-    typeResolved->storageFunction = nullptr;
-    typeResolved->loadFunction = nullptr;
-    GeometryPointP0.name = "p0"_c;
-    GeometryPointP0.type = Type::FullType{ GeometryVertexType.name };
-    GeometryPointP0.thisResolved->typeSymbol = &GeometryVertexType;
-    this->symbols = TransientArray<Symbol*>({ &GeometryPointP0 });
-    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 1> {
-        std::pair{ "p0"_h, &GeometryPointP0 }
+        std::pair{ "cullDistance"_h, &GeometryPointCullDistance },
+        std::pair{ "position"_h, &GeometryPointPosition },
+        std::pair{ "clipDistance"_h, &GeometryPointClipDistance },
+        std::pair{ "pointSize"_h, &GeometryPointPointSize }
     };
 };
 GeometryPoint GeometryPointType;
 
-Variable GeometryLineP0;
-Variable GeometryLineP1;
+Variable GeometryLinePosition;
+IntExpression GeometryLinePositionArraySize(2);
+Variable GeometryLinePointSize;
+IntExpression GeometryLinePointSizeArraySize(2);
+Variable GeometryLineCullDistance;
+IntExpression GeometryLineCullDistanceArraySize(2);
+Variable GeometryLineClipDistance;
+IntExpression GeometryLineClipDistanceArraySize(2);
 GeometryLine::GeometryLine()
 {
     this->name = "GeometryLine"_c;
@@ -28462,29 +28442,45 @@ GeometryLine::GeometryLine()
     Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
     typeResolved->usageFlags.bits = 0x0;
     typeResolved->accessBits.bits = 0x0;
-    typeResolved->byteSize = 7;
+    typeResolved->byteSize = 56;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
-    GeometryLineP0.name = "p0"_c;
-    GeometryLineP0.type = Type::FullType{ GeometryVertexType.name };
-    GeometryLineP0.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryLineP1.name = "p1"_c;
-    GeometryLineP1.type = Type::FullType{ GeometryVertexType.name };
-    GeometryLineP1.thisResolved->typeSymbol = &GeometryVertexType;
-    this->symbols = TransientArray<Symbol*>({ &GeometryLineP0, &GeometryLineP1 });
-    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 2> {
-        std::pair{ "p1"_h, &GeometryLineP1 },
-        std::pair{ "p0"_h, &GeometryLineP0 }
+    GeometryLinePosition.name = "position"_c;
+    GeometryLinePosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryLinePositionArraySize} };
+    GeometryLinePosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryLinePosition.thisResolved->structureOffset = 0;
+    GeometryLinePointSize.name = "pointSize"_c;
+    GeometryLinePointSize.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLinePointSizeArraySize} };
+    GeometryLinePointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryLinePointSize.thisResolved->structureOffset = 32;
+    GeometryLineCullDistance.name = "cullDistance"_c;
+    GeometryLineCullDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineCullDistanceArraySize} };
+    GeometryLineCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryLineCullDistance.thisResolved->structureOffset = 40;
+    GeometryLineClipDistance.name = "clipDistance"_c;
+    GeometryLineClipDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineClipDistanceArraySize} };
+    GeometryLineClipDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryLineClipDistance.thisResolved->structureOffset = 48;
+    this->symbols = TransientArray<Symbol*>({ &GeometryLinePosition, &GeometryLinePointSize, &GeometryLineCullDistance, &GeometryLineClipDistance });
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
+        std::pair{ "cullDistance"_h, &GeometryLineCullDistance },
+        std::pair{ "position"_h, &GeometryLinePosition },
+        std::pair{ "clipDistance"_h, &GeometryLineClipDistance },
+        std::pair{ "pointSize"_h, &GeometryLinePointSize }
     };
 };
 GeometryLine GeometryLineType;
 
-Variable GeometryLineAdjacencyP0;
-Variable GeometryLineAdjacencyP1;
-Variable GeometryLineAdjacencyP2;
-Variable GeometryLineAdjacencyP3;
+Variable GeometryLineAdjacencyPosition;
+IntExpression GeometryLineAdjacencyPositionArraySize(4);
+Variable GeometryLineAdjacencyPointSize;
+IntExpression GeometryLineAdjacencyPointSizeArraySize(4);
+Variable GeometryLineAdjacencyCullDistance;
+IntExpression GeometryLineAdjacencyCullDistanceArraySize(4);
+Variable GeometryLineAdjacencyClipDistance;
+IntExpression GeometryLineAdjacencyClipDistanceArraySize(4);
 GeometryLineAdjacency::GeometryLineAdjacency()
 {
     this->name = "GeometryLineAdjacency"_c;
@@ -28499,36 +28495,45 @@ GeometryLineAdjacency::GeometryLineAdjacency()
     Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
     typeResolved->usageFlags.bits = 0x0;
     typeResolved->accessBits.bits = 0x0;
-    typeResolved->byteSize = 14;
+    typeResolved->byteSize = 112;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
-    GeometryLineAdjacencyP0.name = "p0"_c;
-    GeometryLineAdjacencyP0.type = Type::FullType{ GeometryVertexType.name };
-    GeometryLineAdjacencyP0.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryLineAdjacencyP1.name = "p1"_c;
-    GeometryLineAdjacencyP1.type = Type::FullType{ GeometryVertexType.name };
-    GeometryLineAdjacencyP1.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryLineAdjacencyP2.name = "p2"_c;
-    GeometryLineAdjacencyP2.type = Type::FullType{ GeometryVertexType.name };
-    GeometryLineAdjacencyP2.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryLineAdjacencyP3.name = "p3"_c;
-    GeometryLineAdjacencyP3.type = Type::FullType{ GeometryVertexType.name };
-    GeometryLineAdjacencyP3.thisResolved->typeSymbol = &GeometryVertexType;
-    this->symbols = TransientArray<Symbol*>({ &GeometryLineAdjacencyP0, &GeometryLineAdjacencyP1, &GeometryLineAdjacencyP2, &GeometryLineAdjacencyP3 });
+    GeometryLineAdjacencyPosition.name = "position"_c;
+    GeometryLineAdjacencyPosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineAdjacencyPositionArraySize} };
+    GeometryLineAdjacencyPosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryLineAdjacencyPosition.thisResolved->structureOffset = 0;
+    GeometryLineAdjacencyPointSize.name = "pointSize"_c;
+    GeometryLineAdjacencyPointSize.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineAdjacencyPointSizeArraySize} };
+    GeometryLineAdjacencyPointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryLineAdjacencyPointSize.thisResolved->structureOffset = 64;
+    GeometryLineAdjacencyCullDistance.name = "cullDistance"_c;
+    GeometryLineAdjacencyCullDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineAdjacencyCullDistanceArraySize} };
+    GeometryLineAdjacencyCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryLineAdjacencyCullDistance.thisResolved->structureOffset = 80;
+    GeometryLineAdjacencyClipDistance.name = "clipDistance"_c;
+    GeometryLineAdjacencyClipDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineAdjacencyClipDistanceArraySize} };
+    GeometryLineAdjacencyClipDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryLineAdjacencyClipDistance.thisResolved->structureOffset = 96;
+    this->symbols = TransientArray<Symbol*>({ &GeometryLineAdjacencyPosition, &GeometryLineAdjacencyPointSize, &GeometryLineAdjacencyCullDistance, &GeometryLineAdjacencyClipDistance });
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
-        std::pair{ "p3"_h, &GeometryLineAdjacencyP3 },
-        std::pair{ "p2"_h, &GeometryLineAdjacencyP2 },
-        std::pair{ "p1"_h, &GeometryLineAdjacencyP1 },
-        std::pair{ "p0"_h, &GeometryLineAdjacencyP0 }
+        std::pair{ "cullDistance"_h, &GeometryLineAdjacencyCullDistance },
+        std::pair{ "position"_h, &GeometryLineAdjacencyPosition },
+        std::pair{ "clipDistance"_h, &GeometryLineAdjacencyClipDistance },
+        std::pair{ "pointSize"_h, &GeometryLineAdjacencyPointSize }
     };
 };
 GeometryLineAdjacency GeometryLineAdjacencyType;
 
-Variable GeometryTriangleP0;
-Variable GeometryTriangleP1;
-Variable GeometryTriangleP2;
+Variable GeometryTrianglePosition;
+IntExpression GeometryTrianglePositionArraySize(3);
+Variable GeometryTrianglePointSize;
+IntExpression GeometryTrianglePointSizeArraySize(3);
+Variable GeometryTriangleCullDistance;
+IntExpression GeometryTriangleCullDistanceArraySize(3);
+Variable GeometryTriangleClipDistance;
+IntExpression GeometryTriangleClipDistanceArraySize(3);
 GeometryTriangle::GeometryTriangle()
 {
     this->name = "GeometryTriangle"_c;
@@ -28543,35 +28548,45 @@ GeometryTriangle::GeometryTriangle()
     Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
     typeResolved->usageFlags.bits = 0x0;
     typeResolved->accessBits.bits = 0x0;
-    typeResolved->byteSize = 10;
+    typeResolved->byteSize = 84;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
-    GeometryTriangleP0.name = "p0"_c;
-    GeometryTriangleP0.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleP0.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryTriangleP1.name = "p1"_c;
-    GeometryTriangleP1.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleP1.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryTriangleP2.name = "p2"_c;
-    GeometryTriangleP2.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleP2.thisResolved->typeSymbol = &GeometryVertexType;
-    this->symbols = TransientArray<Symbol*>({ &GeometryTriangleP0, &GeometryTriangleP1, &GeometryTriangleP2 });
-    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 3> {
-        std::pair{ "p2"_h, &GeometryTriangleP2 },
-        std::pair{ "p1"_h, &GeometryTriangleP1 },
-        std::pair{ "p0"_h, &GeometryTriangleP0 }
+    GeometryTrianglePosition.name = "position"_c;
+    GeometryTrianglePosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryTrianglePositionArraySize} };
+    GeometryTrianglePosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryTrianglePosition.thisResolved->structureOffset = 0;
+    GeometryTrianglePointSize.name = "pointSize"_c;
+    GeometryTrianglePointSize.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTrianglePointSizeArraySize} };
+    GeometryTrianglePointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryTrianglePointSize.thisResolved->structureOffset = 48;
+    GeometryTriangleCullDistance.name = "cullDistance"_c;
+    GeometryTriangleCullDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleCullDistanceArraySize} };
+    GeometryTriangleCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryTriangleCullDistance.thisResolved->structureOffset = 60;
+    GeometryTriangleClipDistance.name = "clipDistance"_c;
+    GeometryTriangleClipDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleClipDistanceArraySize} };
+    GeometryTriangleClipDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryTriangleClipDistance.thisResolved->structureOffset = 72;
+    this->symbols = TransientArray<Symbol*>({ &GeometryTrianglePosition, &GeometryTrianglePointSize, &GeometryTriangleCullDistance, &GeometryTriangleClipDistance });
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
+        std::pair{ "cullDistance"_h, &GeometryTriangleCullDistance },
+        std::pair{ "position"_h, &GeometryTrianglePosition },
+        std::pair{ "clipDistance"_h, &GeometryTriangleClipDistance },
+        std::pair{ "pointSize"_h, &GeometryTrianglePointSize }
     };
 };
 GeometryTriangle GeometryTriangleType;
 
-Variable GeometryTriangleAdjacencyP0;
-Variable GeometryTriangleAdjacencyP1;
-Variable GeometryTriangleAdjacencyP2;
-Variable GeometryTriangleAdjacencyP3;
-Variable GeometryTriangleAdjacencyP4;
-Variable GeometryTriangleAdjacencyP5;
+Variable GeometryTriangleAdjacencyPosition;
+IntExpression GeometryTriangleAdjacencyPositionArraySize(6);
+Variable GeometryTriangleAdjacencyPointSize;
+IntExpression GeometryTriangleAdjacencyPointSizeArraySize(6);
+Variable GeometryTriangleAdjacencyCullDistance;
+IntExpression GeometryTriangleAdjacencyCullDistanceArraySize(6);
+Variable GeometryTriangleAdjacencyClipDistance;
+IntExpression GeometryTriangleAdjacencyClipDistanceArraySize(6);
 GeometryTriangleAdjacency::GeometryTriangleAdjacency()
 {
     this->name = "GeometryTriangleAdjacency"_c;
@@ -28586,37 +28601,33 @@ GeometryTriangleAdjacency::GeometryTriangleAdjacency()
     Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
     typeResolved->usageFlags.bits = 0x0;
     typeResolved->accessBits.bits = 0x0;
-    typeResolved->byteSize = 21;
+    typeResolved->byteSize = 168;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
-    GeometryTriangleAdjacencyP0.name = "p0"_c;
-    GeometryTriangleAdjacencyP0.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleAdjacencyP0.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryTriangleAdjacencyP1.name = "p1"_c;
-    GeometryTriangleAdjacencyP1.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleAdjacencyP1.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryTriangleAdjacencyP2.name = "p2"_c;
-    GeometryTriangleAdjacencyP2.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleAdjacencyP2.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryTriangleAdjacencyP3.name = "p3"_c;
-    GeometryTriangleAdjacencyP3.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleAdjacencyP3.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryTriangleAdjacencyP4.name = "p4"_c;
-    GeometryTriangleAdjacencyP4.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleAdjacencyP4.thisResolved->typeSymbol = &GeometryVertexType;
-    GeometryTriangleAdjacencyP5.name = "p5"_c;
-    GeometryTriangleAdjacencyP5.type = Type::FullType{ GeometryVertexType.name };
-    GeometryTriangleAdjacencyP5.thisResolved->typeSymbol = &GeometryVertexType;
-    this->symbols = TransientArray<Symbol*>({ &GeometryTriangleAdjacencyP0, &GeometryTriangleAdjacencyP1, &GeometryTriangleAdjacencyP2, &GeometryTriangleAdjacencyP3, &GeometryTriangleAdjacencyP4, &GeometryTriangleAdjacencyP5 });
-    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 6> {
-        std::pair{ "p5"_h, &GeometryTriangleAdjacencyP5 },
-        std::pair{ "p4"_h, &GeometryTriangleAdjacencyP4 },
-        std::pair{ "p3"_h, &GeometryTriangleAdjacencyP3 },
-        std::pair{ "p2"_h, &GeometryTriangleAdjacencyP2 },
-        std::pair{ "p1"_h, &GeometryTriangleAdjacencyP1 },
-        std::pair{ "p0"_h, &GeometryTriangleAdjacencyP0 }
+    GeometryTriangleAdjacencyPosition.name = "position"_c;
+    GeometryTriangleAdjacencyPosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleAdjacencyPositionArraySize} };
+    GeometryTriangleAdjacencyPosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryTriangleAdjacencyPosition.thisResolved->structureOffset = 0;
+    GeometryTriangleAdjacencyPointSize.name = "pointSize"_c;
+    GeometryTriangleAdjacencyPointSize.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleAdjacencyPointSizeArraySize} };
+    GeometryTriangleAdjacencyPointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryTriangleAdjacencyPointSize.thisResolved->structureOffset = 96;
+    GeometryTriangleAdjacencyCullDistance.name = "cullDistance"_c;
+    GeometryTriangleAdjacencyCullDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleAdjacencyCullDistanceArraySize} };
+    GeometryTriangleAdjacencyCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryTriangleAdjacencyCullDistance.thisResolved->structureOffset = 120;
+    GeometryTriangleAdjacencyClipDistance.name = "clipDistance"_c;
+    GeometryTriangleAdjacencyClipDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleAdjacencyClipDistanceArraySize} };
+    GeometryTriangleAdjacencyClipDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryTriangleAdjacencyClipDistance.thisResolved->structureOffset = 144;
+    this->symbols = TransientArray<Symbol*>({ &GeometryTriangleAdjacencyPosition, &GeometryTriangleAdjacencyPointSize, &GeometryTriangleAdjacencyCullDistance, &GeometryTriangleAdjacencyClipDistance });
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
+        std::pair{ "cullDistance"_h, &GeometryTriangleAdjacencyCullDistance },
+        std::pair{ "position"_h, &GeometryTriangleAdjacencyPosition },
+        std::pair{ "clipDistance"_h, &GeometryTriangleAdjacencyClipDistance },
+        std::pair{ "pointSize"_h, &GeometryTriangleAdjacencyPointSize }
     };
 };
 GeometryTriangleAdjacency GeometryTriangleAdjacencyType;

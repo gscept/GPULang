@@ -6466,62 +6466,72 @@ inline constexpr auto ComputeDerivativesIndexLinear_value = 0x1;
 extern EnumExpression ComputeDerivativesIndexLinear;
 inline constexpr auto ComputeDerivativesIndexQuad_value = 0x2;
 extern EnumExpression ComputeDerivativesIndexQuad;
-struct GeometryVertex : public Structure
-{
-    GeometryVertex();
-};
-extern GeometryVertex GeometryVertexType;
-
-extern Variable GeometryVertexPosition;
-extern Variable GeometryVertexPointSize;
-extern Variable GeometryVertexCullDistance;
-extern Variable GeometryVertexClipDistance;
 struct GeometryPoint : public Structure
 {
     GeometryPoint();
 };
 extern GeometryPoint GeometryPointType;
 
-extern Variable GeometryPointP0;
+extern Variable GeometryPointPosition;
+extern Variable GeometryPointPointSize;
+extern Variable GeometryPointCullDistance;
+extern Variable GeometryPointClipDistance;
 struct GeometryLine : public Structure
 {
     GeometryLine();
 };
 extern GeometryLine GeometryLineType;
 
-extern Variable GeometryLineP0;
-extern Variable GeometryLineP1;
+extern Variable GeometryLinePosition;
+extern IntExpression GeometryLinePositionArraySize;
+extern Variable GeometryLinePointSize;
+extern IntExpression GeometryLinePointSizeArraySize;
+extern Variable GeometryLineCullDistance;
+extern IntExpression GeometryLineCullDistanceArraySize;
+extern Variable GeometryLineClipDistance;
+extern IntExpression GeometryLineClipDistanceArraySize;
 struct GeometryLineAdjacency : public Structure
 {
     GeometryLineAdjacency();
 };
 extern GeometryLineAdjacency GeometryLineAdjacencyType;
 
-extern Variable GeometryLineAdjacencyP0;
-extern Variable GeometryLineAdjacencyP1;
-extern Variable GeometryLineAdjacencyP2;
-extern Variable GeometryLineAdjacencyP3;
+extern Variable GeometryLineAdjacencyPosition;
+extern IntExpression GeometryLineAdjacencyPositionArraySize;
+extern Variable GeometryLineAdjacencyPointSize;
+extern IntExpression GeometryLineAdjacencyPointSizeArraySize;
+extern Variable GeometryLineAdjacencyCullDistance;
+extern IntExpression GeometryLineAdjacencyCullDistanceArraySize;
+extern Variable GeometryLineAdjacencyClipDistance;
+extern IntExpression GeometryLineAdjacencyClipDistanceArraySize;
 struct GeometryTriangle : public Structure
 {
     GeometryTriangle();
 };
 extern GeometryTriangle GeometryTriangleType;
 
-extern Variable GeometryTriangleP0;
-extern Variable GeometryTriangleP1;
-extern Variable GeometryTriangleP2;
+extern Variable GeometryTrianglePosition;
+extern IntExpression GeometryTrianglePositionArraySize;
+extern Variable GeometryTrianglePointSize;
+extern IntExpression GeometryTrianglePointSizeArraySize;
+extern Variable GeometryTriangleCullDistance;
+extern IntExpression GeometryTriangleCullDistanceArraySize;
+extern Variable GeometryTriangleClipDistance;
+extern IntExpression GeometryTriangleClipDistanceArraySize;
 struct GeometryTriangleAdjacency : public Structure
 {
     GeometryTriangleAdjacency();
 };
 extern GeometryTriangleAdjacency GeometryTriangleAdjacencyType;
 
-extern Variable GeometryTriangleAdjacencyP0;
-extern Variable GeometryTriangleAdjacencyP1;
-extern Variable GeometryTriangleAdjacencyP2;
-extern Variable GeometryTriangleAdjacencyP3;
-extern Variable GeometryTriangleAdjacencyP4;
-extern Variable GeometryTriangleAdjacencyP5;
+extern Variable GeometryTriangleAdjacencyPosition;
+extern IntExpression GeometryTriangleAdjacencyPositionArraySize;
+extern Variable GeometryTriangleAdjacencyPointSize;
+extern IntExpression GeometryTriangleAdjacencyPointSizeArraySize;
+extern Variable GeometryTriangleAdjacencyCullDistance;
+extern IntExpression GeometryTriangleAdjacencyCullDistanceArraySize;
+extern Variable GeometryTriangleAdjacencyClipDistance;
+extern IntExpression GeometryTriangleAdjacencyClipDistanceArraySize;
 extern Variable StencilStateFail;
 extern Variable StencilStatePass;
 extern Variable StencilStateDepthFail;

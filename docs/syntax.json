@@ -126,7 +126,6 @@
         "Partition",
         "PixelOrigin",
         "ComputeDerivatives",
-        "GeometryVertex",
         "GeometryPoint",
         "GeometryLine",
         "GeometryLineAdjacency",
