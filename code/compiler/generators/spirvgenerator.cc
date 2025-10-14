@@ -3519,15 +3519,6 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     if (compiler->options.debugSymbols)
         generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ structName }, struc->name.c_str());
 
-    // Setup decorations for built-in geometry vertex
-    if (struc->name == GeometryVertexType.name)
-    {
-        generator->writer->MemberDecorate(SPVArg{ structName }, 0, Decorations::BuiltIn, Builtins::Position);
-        generator->writer->MemberDecorate(SPVArg{ structName }, 1, Decorations::BuiltIn, Builtins::PointSize);
-        generator->writer->MemberDecorate(SPVArg{ structName }, 2, Decorations::BuiltIn, Builtins::CullDistance);
-        generator->writer->MemberDecorate(SPVArg{ structName }, 3, Decorations::BuiltIn, Builtins::ClipDistance);
-    }
-
     TransientArray<SPVArg> memberTypeArray(struc->symbols.size);
     uint32_t offset = 0;
     std::string memberTypes = "";

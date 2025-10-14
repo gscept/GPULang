@@ -3280,6 +3280,46 @@ def generate_types():
     fun.spirv = spirv_function
     functions.append(fun)
 
+    def geometry_read_function(size, ret):
+        return_function = ''
+        # Declare the inputs as the 4 variables Position, PointSize, CullDistance and ClipDistance
+        return_function += f'    SPIRVResult arraySizeConstant = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int({size}));\n'
+        return_function += '    uint32_t float32Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+        return_function += f'    uint32_t float32ArrayType = AddType(g, "[{size}]float32", OpTypeArray, SPVArg(float32Type), arraySizeConstant);\n'
+        return_function += f'    uint32_t float32ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[{size}]float32"), OpTypePointer, VariableStorage::Input, SPVArg(float32ArrayType));\n'
+        return_function += '    uint32_t float32x4Type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
+        return_function += f'    uint32_t float32x4ArrayType = AddType(g, "[{size}]float32x4", OpTypeArray, SPVArg(float32x4Type), arraySizeConstant);\n'
+        return_function += f'    uint32_t float32x4ArrayInputTypePtr = GPULang::AddType(g, TStr("ptr_[{size}]float32x4"), OpTypePointer, VariableStorage::Input, SPVArg(float32x4ArrayType));\n'
+        return_function += f'    uint32_t positions = GPULang::AddSymbol(g, TStr("gplVertexPosition[{size}]"), SPVWriter::Section::Declarations, OpVariable, float32x4ArrayInputTypePtr, VariableStorage::Input);\n'
+        return_function += f'    uint32_t pointSizes = GPULang::AddSymbol(g, TStr("gplPointSize[{size}]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);\n'
+        return_function += f'    uint32_t cullDistances = GPULang::AddSymbol(g, TStr("gplCullDistance[{size}]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);\n'
+        return_function += f'    uint32_t clipDistances = GPULang::AddSymbol(g, TStr("gplClipDistance[{size}]"), SPVWriter::Section::Declarations, OpVariable, float32ArrayInputTypePtr, VariableStorage::Input);\n'
+        return_function += f'    g->writer->Decorate(SPVArg(positions), Decorations::BuiltIn, Builtins::Position);\n'
+        return_function += f'    g->writer->Decorate(SPVArg(pointSizes), Decorations::BuiltIn, Builtins::PointSize);\n'
+        return_function += f'    g->writer->Decorate(SPVArg(cullDistances), Decorations::BuiltIn, Builtins::CullDistance);\n'
+        return_function += f'    g->writer->Decorate(SPVArg(clipDistances), Decorations::BuiltIn, Builtins::ClipDistance);\n'
+
+        # Get access chains to the members of the struct
+        return_function += '    SPIRVResult const0 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));\n'
+        return_function += '    SPIRVResult const1 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));\n'
+        return_function += '    SPIRVResult const2 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));\n'
+        return_function += '    SPIRVResult const3 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(3));\n'
+        return_function += f'    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32x4ArrayType), {ret}, const0);\n'
+        return_function += f'    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), {ret}, const1);\n'
+        return_function += f'    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), {ret}, const2);\n'
+        return_function += f'    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, SPVArg(float32ArrayType), {ret}, const3);\n'
+
+        # Copy
+        return_function += '    g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPositions), SPVArg(positions));\n'
+        return_function += '    g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPointSizes), SPVArg(pointSizes));\n'
+        return_function += '    g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToCullDistances), SPVArg(cullDistances));\n'
+        return_function += '    g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToClipDistances), SPVArg(clipDistances));\n'
+        return_function += '    g->interfaceVariables.Insert(positions);\n'
+        return_function += '    g->interfaceVariables.Insert(pointSizes);\n'
+        return_function += '    g->interfaceVariables.Insert(cullDistances);\n'
+        return_function += '    g->interfaceVariables.Insert(clipDistances);\n'
+        return return_function
+
     intrinsic = "GetPoint"
     function_name = f'Geometry{intrinsic}'
     fun = Function(
@@ -3293,9 +3333,9 @@ def generate_types():
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryPoint_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
-    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gpl{intrinsic}"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
+    spirv_function += geometry_read_function(1, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
     spirv_function += '    return res;\n'
@@ -3316,9 +3356,9 @@ def generate_types():
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryLine_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
-    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gpl{intrinsic}"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
+    spirv_function += geometry_read_function(2, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
     spirv_function += '    return res;\n'
@@ -3339,9 +3379,13 @@ def generate_types():
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryTriangle_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
-    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    
+    # Declare return struct
+    spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gpl{intrinsic}"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
+
+    spirv_function += geometry_read_function(3, "ret")
+
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
     spirv_function += '    return res;\n'
