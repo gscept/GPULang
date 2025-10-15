@@ -953,22 +953,23 @@ struct FixedArray
     FixedArray(const TYPE* begin, const TYPE* end)
     {
         this->buf = this->smallBuffer.data();
-        size_t repeat = end - begin;
-        if (repeat != 0)
+        size_t size = end - begin;
+        if (size != 0)
         {
-            if (repeat > STACK_SIZE)
+            if (size > STACK_SIZE)
             {
-                this->buf = AllocArray<TYPE>(repeat);
-                this->capacity = repeat;
+                this->buf = AllocArray<TYPE>(size);
+                this->capacity = size;
             }
             const TYPE* it = begin;
             size_t i = 0;
-            while (it != begin)
+            while (it != end)
             {
                 this->buf[i] = *it;
                 i++;
                 it++;
             }
+            this->size = size;
         }
     }
     

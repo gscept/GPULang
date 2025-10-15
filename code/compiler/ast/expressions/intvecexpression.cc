@@ -36,14 +36,22 @@ IntVecExpression::Resolve(Compiler* compiler)
 {
     static ConstantString Types[] =
     {
+        "invalid",
         "i32x2",
         "i32x3",
         "i32x4"
     };
+    static Type* TypeSymbols[] =
+    {
+        nullptr,
+        &Int32x2Type,
+        &Int32x3Type,
+        &Int32x4Type,
+    };
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = &Int32Type;
+    thisResolved->type = TypeSymbols[this->values.size-1];
     return true;
 }
 

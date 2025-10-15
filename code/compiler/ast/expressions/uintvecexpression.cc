@@ -36,14 +36,22 @@ UIntVecExpression::Resolve(Compiler* compiler)
 {
     static ConstantString Types[] =
     {
+        "invalid",
         "u32x2",
         "u32x3",
         "u32x4"
     };
+    static Type* TypeSymbols[] =
+    {
+        nullptr,
+        &UInt32x2Type,
+        &UInt32x3Type,
+        &UInt32x4Type,
+    };
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = &UInt32Type;
+    thisResolved->type = TypeSymbols[this->values.size-1];
     return true;
 }
 

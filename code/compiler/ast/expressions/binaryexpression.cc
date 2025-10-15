@@ -242,7 +242,7 @@ BinaryExpression::Resolve(Compiler* compiler)
 #define X(Type, type, ty)\
     if (value.columnSize > 1)\
     {\
-        this->thisResolved->constValueExpression = Alloc<Type##VecExpression>(FixedArray<ty>(value.type, value.type + value.columnSize));\
+        this->thisResolved->constValueExpression = Alloc<Type##VecExpression>(FixedArray<ty>(&value.type[0], &value.type[value.columnSize]));\
     }\
     else\
     {\
@@ -312,6 +312,15 @@ BinaryExpression::EvalValue(ValueUnion& out) const
     ValueUnion lval, rval;
     if (!(this->left->EvalValue(lval) && this->right->EvalValue(rval)))
         return false;
+
+    if (lval.columnSize > rval.columnSize || lval.rowSize > rval.rowSize)
+    {
+        rval.Expand(lval.columnSize, lval.rowSize);
+    }
+    else if (rval.columnSize > lval.columnSize || rval.rowSize > lval.rowSize)
+    {
+        lval.Expand(rval.columnSize, rval.rowSize);
+    }
 
 #define OPERATOR_EXECUTE(mem, op)\
     out.mem[0] = lval.mem[0] op rval.mem[0];\

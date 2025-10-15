@@ -36,14 +36,22 @@ BoolVecExpression::Resolve(Compiler* compiler)
 {
     static ConstantString Types[] =
     {
+        "invalid",
         "b8x2",
         "b8x3",
         "b8x4"
     };
+    static Type* TypeSymbols[] =
+    {
+        nullptr,
+        &Bool8x2Type,
+        &Bool8x3Type,
+        &Bool8x4Type,
+    };
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = &Bool8Type;
+    thisResolved->type = TypeSymbols[this->values.size-1];
     //thisResolved->text = this->EvalString();
     return true;
 }

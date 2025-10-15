@@ -37,14 +37,22 @@ FloatVecExpression::Resolve(Compiler* compiler)
 {
     static ConstantString Types[] =
     {
+        "invalid",
         "f32x2",
         "f32x3",
         "f32x4"
     };
+    static Type* TypeSymbols[] =
+    {
+        nullptr,
+        &Float32x2Type,
+        &Float32x3Type,
+        &Float32x4Type,
+    };
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = &Float32Type;
+    thisResolved->type = TypeSymbols[this->values.size-1];
     return true;
 }
 

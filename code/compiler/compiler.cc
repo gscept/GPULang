@@ -629,7 +629,6 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
             GPULang::CurrentAllocator = allocator;
             GPULang::StringAllocator = allocator;
             values[programIndex] = gen->Generate(this, program, symbols, writeFunction);
-            
         });
     }
 
