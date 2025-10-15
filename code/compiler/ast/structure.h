@@ -55,7 +55,9 @@ struct Structure : public Type
         bool hasBoolMember = false;
 
         Function* storageFunction = nullptr;
+        Function* storageIndexedFunction = nullptr;
         Function* loadFunction = nullptr;
+        Function* loadIndexedFunction = nullptr;
     };
 };
 

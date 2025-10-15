@@ -86,7 +86,8 @@ UnaryExpression::Resolve(Compiler* compiler)
         TypeCode::UInt,
         TypeCode::UInt16
     };
-
+    Storage storage = Storage::Default;
+    this->expr->EvalStorage(storage);
     
     switch (this->op)
     {
@@ -113,6 +114,11 @@ UnaryExpression::Resolve(Compiler* compiler)
             if (type.modifiers.size == 0 || type.modifiers.front() != Type::FullType::Modifier::Pointer)
             {
                 compiler->Error("Dereferencing is only allowed on a pointer", this);
+                return false;
+            }
+            if (storage == Storage::Uniform)
+            {
+                compiler->Error("Dereferencing variables with 'uniform' storage should be done with bufferLoad", this);
                 return false;
             }
             

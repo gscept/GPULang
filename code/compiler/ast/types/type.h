@@ -520,6 +520,8 @@ struct Type : public Symbol
 
         /// Get the last modifier that is an indirectiom modifier
         const Modifier LastIndirectionModifier() const;
+        /// Get the first modifier
+        const Modifier FirstIndirectionModifier() const;
     };
 
     static FullType TypeFromCode(const TypeCode code, uint8_t columnSize = 0, uint8_t rowSize = 0)

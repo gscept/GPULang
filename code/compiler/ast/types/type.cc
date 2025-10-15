@@ -625,4 +625,24 @@ Type::FullType::LastIndirectionModifier() const
     return Type::FullType::Modifier::Invalid;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+const Type::FullType::Modifier 
+Type::FullType::FirstIndirectionModifier() const
+{
+    auto it = this->modifiers.begin();
+    while (it != this->modifiers.end())
+    {
+        switch (*it)
+        {
+            case Type::FullType::Modifier::Array:
+            case Type::FullType::Modifier::Pointer:
+                return *it;
+        }
+        it++;
+    }
+    return Type::FullType::Modifier::Invalid;
+}
+
 } // namespace GPULang

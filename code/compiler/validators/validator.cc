@@ -152,6 +152,10 @@ Validator::Validator()
     this->allowedPointerAttributes.Insert(bindingQualifiers);
     this->allowedPointerAttributes.Insert(storageQualifiers);
 
+    this->allowedArrayAttributes.Insert(pointerQualifiers);
+    this->allowedArrayAttributes.Insert(bindingQualifiers);
+    this->allowedArrayAttributes.Insert(storageQualifiers);
+
     this->allowedFunctionAttributes.Insert(functionAttributes);
 
     this->allowedParameterAttributes.Insert(parameterQualifiers);
@@ -2192,6 +2196,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         varResolved->typeSymbol = type;
         var->type.name = type->name;        // because we can do an alias lookup, this value might change
     }
+    Type::FullType::Modifier firstIndirectionModifier = var->type.FirstIndirectionModifier();
     Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
 
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
@@ -2269,8 +2274,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             allowedAttributesSet = &this->allowedSamplerAttributes;
         else if (type->category == Type::StructureCategory)
         {
-            if (lastIndirectionModifier == Type::FullType::Modifier::Pointer)
+            if (firstIndirectionModifier == Type::FullType::Modifier::Pointer)
                 allowedAttributesSet = &this->allowedPointerAttributes;
+            else if (firstIndirectionModifier == Type::FullType::Modifier::Array)
+                allowedAttributesSet = &this->allowedArrayAttributes;
             else
                 allowedAttributesSet = &this->allowedScalarAttributes;
         }
@@ -2629,7 +2636,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     else // Local variable
     {
         // Shouldn't be possible
-        if (lastIndirectionModifier == Type::FullType::Modifier::Pointer && !varResolved->usageBits.flags.isParameter)
+        if (firstIndirectionModifier == Type::FullType::Modifier::Pointer && !varResolved->usageBits.flags.isParameter)
         {
             compiler->Error(Format("Pointers are only allowed on variables in the global scope", type->name.c_str()), symbol);
             return false;
@@ -2657,11 +2664,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     if (type->category == Type::StructureCategory)
     {
-        if (lastIndirectionModifier != Type::FullType::Modifier::Pointer)
+        if (firstIndirectionModifier != Type::FullType::Modifier::Pointer && firstIndirectionModifier != Type::FullType::Modifier::Array)
         {
             if (varResolved->storage == Storage::Uniform)
             {
-                compiler->Error(Format("Variable of uniform '%s' type must be pointer", type->name.c_str()), symbol);
+                compiler->Error(Format("Variable of uniform '%s' type must be pointer or array", type->name.c_str()), symbol);
                 return false;
             }
             else if (varResolved->storage == Storage::InlineUniform)
@@ -2817,9 +2824,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             if (compiler->IsScopeGlobal())
             {
-                if (varResolved->storage == Storage::Uniform && lastIndirectionModifier != Type::FullType::Modifier::Pointer)
+                if (varResolved->storage == Storage::Uniform && firstIndirectionModifier != Type::FullType::Modifier::Pointer && firstIndirectionModifier != Type::FullType::Modifier::Array)
                 {
-                    compiler->Error(Format("Global variable '%s' with storage class 'uniform' must be a pointer", type->name.c_str()), var);
+                    compiler->Error(Format("Global variable '%s' with storage class 'uniform' must be a pointer or array", type->name.c_str()), var);
                     return false;
                 }
             }
@@ -2902,21 +2909,22 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             Structure* currentStructure = static_cast<Structure*>(varResolved->typeSymbol);
             Structure::__Resolved* currentStrucResolved = Symbol::Resolved(currentStructure);
+            Type::FullType newType = var->type;
+            Type* newTypeSymbol = varResolved->typeSymbol;
 
             // If the structure is packed, we need to inflate it to adhere to alignment rules
             if (currentStrucResolved->packMembers || currentStrucResolved->hasBoolMember)
             {
                 const char* bufferType = var->type.IsMutable() ? "MutableBuffer" : "Buffer";
                 std::string structName = Format("gpl%s_%s", bufferType, var->name.c_str());
-                if (currentStrucResolved->packMembers && compiler->options.warnOnImplicitBufferPadding)
-                    compiler->Warning(Format("'%s' of packed type '%s' with 'uniform' storage uses a generated struct '%s' with fixed alignment of each member", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
-                if (currentStrucResolved->hasBoolMember && compiler->options.warnOnImplicitBoolPromotion)
-                    compiler->Warning(Format("'%s' of type '%s' with 'uniform' storage uses a generated struct '%s' with a promotion of u8 members to u32", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
+                if (currentStrucResolved->packMembers && compiler->options.uniformBoundStructImplicitPaddingDisallowed)
+                    compiler->Error(Format("'%s' of packed type '%s' with 'uniform' storage uses a generated struct '%s' with fixed alignment of each member. This might cause type issues with bufferStore.", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
+                if (currentStrucResolved->hasBoolMember && compiler->options.uniformBoundStructBoolDisallowed)
+                    compiler->Error(Format("'%s' of type '%s' with 'uniform' storage uses a generated struct '%s' with a promotion of u8 members to u32. This might cause type issues with bufferStore.", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
                 
                  // Generate mutable/uniform variant of struct
                 Structure* generatedStruct = Alloc<Structure>();
                 uint32_t structSize = 0;
-                uint32_t padCounter = 0;
                 uint32_t offset = 0;
                 for (Symbol* sym : type->symbols)
                 {
@@ -2999,7 +3007,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     arg->type = var->type;
                     arg->type.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(Type::FullType::Modifier::Pointer);
                     arg->type.modifierValues = TransientArray<Expression*>::Concatenate((Expression*)nullptr);
-                
+
                     Variable* arg2 = Alloc<Variable>();
                     arg2->name = "value";
                     arg2->type = var->type;
@@ -3007,7 +3015,39 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
                     arg2->type.modifierValues = TransientArray<Expression*>();
                     currentStrucResolved->storageFunction->parameters = { arg, arg2 };
-                    this->ResolveFunction(compiler, currentStrucResolved->storageFunction);    
+                    this->ResolveFunction(compiler, currentStrucResolved->storageFunction);
+                }
+                if (currentStrucResolved->storageIndexedFunction == nullptr)
+                {
+                    currentStrucResolved->storageIndexedFunction = Alloc<Function>();
+                    currentStrucResolved->storageIndexedFunction->name = "bufferStore";
+                    currentStrucResolved->storageIndexedFunction->returnType = Type::FullType{ ConstantString("void") };
+
+                    Variable* arg = Alloc<Variable>();
+                    arg->name = "buffer";
+                    Attribute* attr = Alloc<Attribute>();
+                    attr->name = "uniform";
+                    attr->expression = nullptr;
+                    arg->attributes = { attr };
+                    arg->type = var->type;
+                    arg->type.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(Type::FullType::Modifier::Pointer, Type::FullType::Modifier::Array);
+                    arg->type.modifierValues = TransientArray<Expression*>::Concatenate((Expression*)nullptr, (Expression*)nullptr);
+
+                    Variable* arg2 = Alloc<Variable>();
+                    arg2->name = "index";
+                    arg2->type = Type::FullType{ "u32" };
+                    arg2->type.mut = false;
+                    arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
+                    arg2->type.modifierValues = TransientArray<Expression*>();
+                
+                    Variable* arg3 = Alloc<Variable>();
+                    arg3->name = "value";
+                    arg3->type = var->type;
+                    arg3->type.mut = false;
+                    arg3->type.modifiers = TransientArray<Type::FullType::Modifier>();
+                    arg3->type.modifierValues = TransientArray<Expression*>();
+                    currentStrucResolved->storageIndexedFunction->parameters = { arg, arg2, arg3 };
+                    this->ResolveFunction(compiler, currentStrucResolved->storageIndexedFunction);    
                 }
                 if (currentStrucResolved->loadFunction == nullptr)
                 {
@@ -3027,6 +3067,32 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     
                     currentStrucResolved->loadFunction->parameters = { arg };
                     this->ResolveFunction(compiler, currentStrucResolved->loadFunction);   
+                }
+                if (currentStrucResolved->loadIndexedFunction == nullptr)
+                {
+                    currentStrucResolved->loadIndexedFunction = Alloc<Function>();
+                    currentStrucResolved->loadIndexedFunction->name = "bufferLoad";
+                    currentStrucResolved->loadIndexedFunction->returnType = Type::FullType{currentStructure->name};
+
+                    Variable* arg = Alloc<Variable>();
+                    arg->name = "buffer";
+                    Attribute* attr = Alloc<Attribute>();
+                    attr->name = "uniform";
+                    attr->expression = nullptr;
+                    arg->attributes = { attr };
+                    arg->type = var->type;
+                    arg->type.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(Type::FullType::Modifier::Pointer, Type::FullType::Modifier::Array);
+                    arg->type.modifierValues = TransientArray<Expression*>::Concatenate((Expression*)nullptr, (Expression*)nullptr);
+
+                    Variable* arg2 = Alloc<Variable>();
+                    arg2->name = "index";
+                    arg2->type = Type::FullType{ "u32" };
+                    arg2->type.mut = false;
+                    arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
+                    arg2->type.modifierValues = TransientArray<Expression*>();
+                    
+                    currentStrucResolved->loadIndexedFunction->parameters = { arg, arg2 };
+                    this->ResolveFunction(compiler, currentStrucResolved->loadIndexedFunction);   
                 }
             }
         }

@@ -67,6 +67,7 @@ struct Validator
     PinnedSet<FixedString> allowedSamplerAttributes = 0xFF;
     PinnedSet<FixedString> allowedScalarAttributes = 0xFF;
     PinnedSet<FixedString> allowedPointerAttributes = 0xFF;
+    PinnedSet<FixedString> allowedArrayAttributes = 0xFF;
 
     PinnedSet<FixedString> allowedSamplerStateAttributes = 0xFF;
 

@@ -1836,6 +1836,22 @@ AddType(SPIRVGenerator* gen, const TransientString& name, const SPVOp& op, const
     return ret;
 }
 
+bool
+HasType(SPIRVGenerator* gen, const TransientString& name)
+{
+    auto scope = gen->writer->scopeStack.rbegin();
+    while (scope != gen->writer->scopeStack.rend())
+    {
+        auto it = scope->symbols.find(name.ToString());
+        if (it != scope->symbols.end())
+        {
+            return true;
+        }
+        scope++;
+    }
+    return false;
+}
+
 template<typename ...ARGS>
 uint32_t
 AddType(SPIRVGenerator* gen, const TransientString& name, const SPIRVResult& baseType, const SPVOp& op, const ARGS&... args)
@@ -2418,6 +2434,7 @@ GenerateTypeSPIRV(
     bool isStructPadded = false;
 
     ConstantString scopeString = SPIRVResult::ScopeToString(storage);
+    std::get<1>(baseType) = TStr(std::get<1>(baseType), "_", scopeString);
     SPVEnum scopeEnum = ScopeToEnum(storage);
     for (size_t i = 0; i < type.modifiers.size; i++)
     {
@@ -2425,7 +2442,7 @@ GenerateTypeSPIRV(
         const Type::FullType::Modifier& mod = type.modifiers[i];
         if (mod == Type::FullType::Modifier::Pointer)
         {
-            TStr newBase = TStr("ptr_", gpulangType, "_", scopeString);
+            TStr newBase = TStr("ptr_", gpulangType);
 
             parentType.push_back(typeName);
             typeName = AddType(generator, newBase, OpTypePointer, scopeEnum, SPVArg{ typeName });
@@ -2435,23 +2452,32 @@ GenerateTypeSPIRV(
         {
             if (type.modifierValues[i] == nullptr)
             {
-                TStr newBase = TStr("[]_", gpulangType, scopeString);
+                TStr newBase = TStr("[]_", gpulangType);
                 parentType.push_back(typeName);
+                
+                bool newType = !HasType(generator, newBase);
                 typeName = AddType(generator, newBase, OpTypeRuntimeArray, SPVArg{ typeName });
-                if (typeSymbol->category == Type::StructureCategory)
+                if (newType)
                 {
-                    Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
-                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
-                }
-                else
-                {
-                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
+                    if (typeSymbol->category == Type::StructureCategory)
+                    {
+                        Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
+                        generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
+                    }
+                    else
+                    {
+                        generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
+                    }
                 }
                 newBase = TStr::Compact("struct_", newBase);
                 typeName = AddType(generator, newBase, OpTypeStruct, SPVArg{ typeName });
                 baseType = std::tie(typeName, newBase);
 
-                generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
+                if (newType)
+                {
+                    generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
+                    generator->writer->Decorate(SPVArg(typeName), Decorations::Block);
+                }
                 storage = SPIRVResult::Storage::StorageBuffer;
                 scopeString = SPIRVResult::ScopeToString(storage);
                 scopeEnum = ScopeToEnum(storage);
@@ -2468,16 +2494,20 @@ GenerateTypeSPIRV(
                 uint32_t intType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, 1);
 
                 SPIRVResult arraySizeConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(size));
+                bool newType = !HasType(generator, newBase);
                 typeName = AddType(generator, newBase, OpTypeArray, SPVArg{ typeName }, arraySizeConstant);
                 baseType = std::tie(typeName, newBase);
-                if (typeSymbol->category == Type::StructureCategory)
+                if (newType)
                 {
-                    Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
-                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
-                }
-                else
-                {
-                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
+                    if (typeSymbol->category == Type::StructureCategory)
+                    {
+                        Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
+                        generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
+                    }
+                    else
+                    {
+                        generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
+                    }
                 }
 
                 // if this is an interface, wrap it in a struct to allow interface binding
@@ -2487,7 +2517,8 @@ GenerateTypeSPIRV(
                     typeName = AddType(generator, newBase, OpTypeStruct, SPVArg{ typeName });
                     baseType = std::tie(typeName, newBase);
 
-                    generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
+                    if (newType)
+                        generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
                     isStructPadded = true;
                 }
             }
@@ -3567,6 +3598,31 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             return SPIRVResult::Invalid();
         };
     }
+    if (strucResolved->storageIndexedFunction != nullptr)
+    {
+        generator->generatorIntrinsics[strucResolved->storageIndexedFunction] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 3);
+            assert(!args[0].isValue);
+            std::vector<SPIRVResult> index;
+            SPIRVResult accessedArg = args[0];
+
+            if (args[0].isStructPadded)
+            {
+                SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
+                index = { zero, LoadValueSPIRV(c, g, args[1]) };
+                accessedArg.parentTypes.pop_back();
+                accessedArg.typeName = accessedArg.parentTypes.back();
+            }
+            else
+            {
+                index = { LoadValueSPIRV(c, g, args[1]) };
+            }
+            accessedArg.AddAccessChainLink(index);
+            StoreValueSPIRV(c, g, accessedArg, args[2]);
+            return SPIRVResult::Invalid();
+        };
+    }
     if (strucResolved->loadFunction != nullptr)
     {
         generator->generatorIntrinsics[strucResolved->loadFunction] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -3574,6 +3630,31 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             assert(args.size() == 1);
             assert(!args[0].isValue);
             return LoadValueSPIRV(c, g, args[0]);
+        };
+    }
+    if (strucResolved->loadIndexedFunction != nullptr)
+    {
+        generator->generatorIntrinsics[strucResolved->loadIndexedFunction] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 2);
+            assert(!args[0].isValue);
+            std::vector<SPIRVResult> index;
+            SPIRVResult accessedArg = args[0];
+
+            if (args[0].isStructPadded)
+            {
+                SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
+                index = { zero, LoadValueSPIRV(c, g, args[1]) };
+                accessedArg.parentTypes.pop_back();
+                accessedArg.typeName = accessedArg.parentTypes.back();
+            }
+            else
+            {
+                index = { LoadValueSPIRV(c, g, args[1]) };
+            }
+
+            accessedArg.AddAccessChainLink(index);
+            return LoadValueSPIRV(c, g, accessedArg);
         };
     }
     
