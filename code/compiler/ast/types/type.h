@@ -15,6 +15,41 @@
 namespace GPULang
 {
 
+enum class Storage
+{
+    Default,                                // default storage, on the stack
+    Uniform,                                // variable is uniform (const) across all threads and provided by the CPU
+    Workgroup,                              // variable is shared by workgroup and can be written/read
+    Device,                                 // variable is visible across all workgroups
+    InlineUniform,                          // variable is uniform but read from command buffer
+    Input,                                  // variable is an input from a previous shader stage
+    Output,                                 // variable is an output from the current shader stage
+    Global,                                 // variable is global in the shader
+    LinkDefined,                            // variable value is defined at link time
+    RayPayload,                             // variable is a ray payload
+    RayPayloadInput,                        // variable is a ray payload input
+    RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
+    CallableData,                           // variable is ray tracing callable data
+    CallableDataInput,                      // variable is ray tracing callable data
+};
+constexpr StaticMap StorageToStrings =
+std::array{
+    std::pair{ Storage::Default, ""_c }
+    , std::pair{ Storage::Uniform, "uniform"_c }
+    , std::pair{ Storage::Workgroup, "workgroup"_c }
+    , std::pair{ Storage::Device, "device"_c }
+    , std::pair{ Storage::InlineUniform, "inline_uniform"_c }
+    , std::pair{ Storage::Input, "in"_c }
+    , std::pair{ Storage::Output, "out"_c }
+    , std::pair{ Storage::Global, "global"_c }
+    , std::pair{ Storage::LinkDefined, "link_defined"_c }
+    , std::pair{ Storage::RayPayload, "ray_payload"_c }
+    , std::pair{ Storage::RayPayloadInput, "in ray_payload"_c }
+    , std::pair{ Storage::RayHitAttribute, "ray_hit_attributes"_c }
+    , std::pair{ Storage::CallableData, "ray_callable_data"_c }
+    , std::pair{ Storage::CallableDataInput, "in ray_callable_data"_c }
+};
+
 enum ImageFormat
 {
     InvalidImageFormat,

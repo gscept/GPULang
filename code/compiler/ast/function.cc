@@ -26,6 +26,7 @@ Function::Function()
     this->hasBody = false;
     this->compileTime = false;
     this->ast = nullptr;
+    this->returnTypeStorage = Storage::Default;
 
     Function::__Resolved* thisResolved = static_cast<Function::__Resolved*>(this->resolved);
     thisResolved->isEntryPoint = false;

@@ -31,6 +31,7 @@ struct Function : public Symbol
     Statement* ast;
     Type::FullType returnType;
     Symbol* constructorType = nullptr;
+    Storage returnTypeStorage;
     bool hasBody;
     bool compileTime;
     FixedArray<Variable*> parameters;

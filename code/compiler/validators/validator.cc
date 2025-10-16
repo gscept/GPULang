@@ -2531,6 +2531,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
+
     if (compiler->IsScopeGlobal())
     {
         uint16_t numArrays = 0;
@@ -2722,6 +2723,20 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             compiler->UnrecognizedTypeError(rhs.name, symbol);
             return false;
         }
+
+        Storage rhsStorage;
+        if (!var->valueExpression->EvalStorage(rhsStorage))
+        {
+            compiler->Error("Right hand side has unknown storage class", symbol);
+            return false;
+        }
+
+        if (rhsStorage != varResolved->storage && varResolved->storage != Storage::Default && rhsStorage != Storage::Default)
+        {
+            compiler->Error(Format("Incompatible storage classes '%s' and '%s'", StorageToStrings[varResolved->storage].c_str(), StorageToStrings[rhsStorage].c_str()), symbol);
+            return false;
+        }
+
         Type* lhsType = varResolved->typeSymbol;
         Type* rhsType;
         var->valueExpression->EvalTypeSymbol(rhsType);
@@ -3933,6 +3948,19 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
         {
             compiler->Error(Format("Can't match types for %s ('%s') in shader '%s' and %s ('%s') in shader '%s'", var->name.c_str(), var->type.ToString().c_str(), outFunc->name.c_str(), inParams.ptr[iterator]->name.c_str(), inParams.ptr[iterator]->type.ToString().c_str(), inFunc->name.c_str()), outFunc);
             return false;
+        }
+
+        if (compiler->currentState.shaderType == ProgramInstance::__Resolved::EntryType::PixelShader)
+        {
+            if (!inResolved->parameterBits.flags.isNoInterpolate)
+            {
+                auto baseType = inResolved->typeSymbol->baseType;
+                if (baseType == TypeCode::UInt16 || baseType == TypeCode::UInt32 || baseType == TypeCode::Int16 || baseType == TypeCode::Int32)
+                {
+                    compiler->Error(Format("Shader '%s' outputs '%s' with type '%s' that doesn't support implicit interpolation to pixel shader '%s'", outFunc->name.c_str(), var->name.c_str(), var->type.ToString().c_str(), inFunc->name.c_str()), inFunc);
+                    return false;
+                }
+            }
         }
     }
 

@@ -285,7 +285,7 @@ SymbolExpression::EvalStorage(Storage& out) const
                 break;
         }
     }
-    return false;
+    return true;
 }
 
 } // namespace GPULang

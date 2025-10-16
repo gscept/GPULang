@@ -21,24 +21,6 @@ enum AccessFlags
     LinkTime = 0x2
 };
 
-enum class Storage
-{
-    Default,                                // default storage, on the stack
-    Uniform,                                // variable is uniform (const) across all threads and provided by the CPU
-    Workgroup,                              // variable is shared by workgroup and can be written/read
-    Device,                                 // variable is visible across all workgroups
-    InlineUniform,                          // variable is uniform but read from command buffer
-    Input,                                  // variable is an input from a previous shader stage
-    Output,                                 // variable is an output from the current shader stage
-    Global,                                 // variable is global in the shader
-    LinkDefined,                            // variable value is defined at link time
-    RayPayload,                             // variable is a ray payload
-    RayPayloadInput,                        // variable is a ray payload input
-    RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
-    CallableData,                           // variable is ray tracing callable data
-    CallableDataInput,                      // variable is ray tracing callable data
-};
-
 union AccessBits
 {
     AccessBits(uint32_t mask)
