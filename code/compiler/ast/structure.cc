@@ -29,8 +29,6 @@ Structure::Structure()
     typeResolved->byteSize = 0;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
-    typeResolved->storageFunction = nullptr;
-    typeResolved->loadFunction = nullptr;
 }
 
 //------------------------------------------------------------------------------
@@ -51,10 +49,7 @@ Structure::~Structure()
 */
 Structure::__Resolved::~__Resolved()
 {
-    if (this->storageFunction)
-        this->storageFunction->~Function();
-    if (this->loadFunction)
-        this->loadFunction->~Function();
+
 }
 
 } // namespace GPULang

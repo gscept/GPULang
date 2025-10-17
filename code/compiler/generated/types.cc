@@ -28392,8 +28392,6 @@ GeometryPoint::GeometryPoint()
     typeResolved->byteSize = 28;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
-    typeResolved->storageFunction = nullptr;
-    typeResolved->loadFunction = nullptr;
     GeometryPointPosition.name = "position"_c;
     GeometryPointPosition.type = Type::FullType{ Float32x4Type.name };
     GeometryPointPosition.thisResolved->typeSymbol = &Float32x4Type;
@@ -28445,8 +28443,6 @@ GeometryLine::GeometryLine()
     typeResolved->byteSize = 56;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
-    typeResolved->storageFunction = nullptr;
-    typeResolved->loadFunction = nullptr;
     GeometryLinePosition.name = "position"_c;
     GeometryLinePosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryLinePositionArraySize} };
     GeometryLinePosition.thisResolved->typeSymbol = &Float32x4Type;
@@ -28498,8 +28494,6 @@ GeometryLineAdjacency::GeometryLineAdjacency()
     typeResolved->byteSize = 112;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
-    typeResolved->storageFunction = nullptr;
-    typeResolved->loadFunction = nullptr;
     GeometryLineAdjacencyPosition.name = "position"_c;
     GeometryLineAdjacencyPosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineAdjacencyPositionArraySize} };
     GeometryLineAdjacencyPosition.thisResolved->typeSymbol = &Float32x4Type;
@@ -28551,8 +28545,6 @@ GeometryTriangle::GeometryTriangle()
     typeResolved->byteSize = 84;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
-    typeResolved->storageFunction = nullptr;
-    typeResolved->loadFunction = nullptr;
     GeometryTrianglePosition.name = "position"_c;
     GeometryTrianglePosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryTrianglePositionArraySize} };
     GeometryTrianglePosition.thisResolved->typeSymbol = &Float32x4Type;
@@ -28604,8 +28596,6 @@ GeometryTriangleAdjacency::GeometryTriangleAdjacency()
     typeResolved->byteSize = 168;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
-    typeResolved->storageFunction = nullptr;
-    typeResolved->loadFunction = nullptr;
     GeometryTriangleAdjacencyPosition.name = "position"_c;
     GeometryTriangleAdjacencyPosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleAdjacencyPositionArraySize} };
     GeometryTriangleAdjacencyPosition.thisResolved->typeSymbol = &Float32x4Type;

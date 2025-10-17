@@ -553,7 +553,7 @@ struct PinnedArray
                     void* ptr = ((char*)this->data) + this->committedPages * SystemPageSize;
                     vcommit(ptr, numBytesToCommit);
                     size_t numNewObjects = floor(numBytesToCommit / (float)sizeof(TYPE));
-                    if (std::is_trivially_default_constructible<TYPE>::value)
+                    if (std::is_trivially_constructible<TYPE>::value)
                         std::memset(ptr, 0x0, numBytesToCommit);
                     else
                         new (ptr) TYPE[numNewObjects];
@@ -1968,7 +1968,18 @@ struct PinnedSet
                 if (*it != key)
                 {
                     this->data.Grow(1);
-                    memmove(it+1, it, (this->data.end() - it) * sizeof(K));
+                    if (std::is_trivially_copy_constructible<K>::value)
+                    {
+                        memmove(it + 1, it, (this->data.end() - it) * sizeof(K));
+                    }
+                    else
+                    {
+                        for (auto moveIt = this->data.end(); moveIt != it; moveIt--)
+                        {
+                            *(moveIt) = *(moveIt - 1);
+                        }
+                    }
+                    //
                     *it = key;
                     this->data.size++;
                 }

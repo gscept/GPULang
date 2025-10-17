@@ -1858,8 +1858,6 @@ def generate_types():
             
             defn += f'    typeResolved->baseAlignment = 0;\n'
             defn += f'    typeResolved->packMembers = false;\n'
-            defn += f'    typeResolved->storageFunction = nullptr;\n'
-            defn += f'    typeResolved->loadFunction = nullptr;\n'
 
             size = 0
             for i, member in enumerate(self.members):

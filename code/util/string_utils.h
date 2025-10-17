@@ -385,7 +385,8 @@ FragmentString(ConstantString arg, char* buf, size_t size)
 struct FixedString;
 struct TransientString
 {
-    char buf[2048];
+    char* buf;
+    char chars[2048];
     size_t capacity = 2048;
     size_t size = 0;
 
@@ -393,6 +394,7 @@ struct TransientString
         : capacity(2048)
         , size(0)
     {
+        this->buf = this->chars;
     }
 
     // Copy constructor
@@ -400,6 +402,12 @@ struct TransientString
         : capacity(2048)
         , size(0)
     {
+        this->buf = this->chars;
+        if (rhs.buf != rhs.chars)
+        {
+            this->buf = new char[rhs.capacity];
+            memcpy(this->buf, rhs.buf, rhs.size);
+        }
         *this = rhs;
     }
 
@@ -407,8 +415,14 @@ struct TransientString
         : capacity(2048)
         , size(0)
     {
+        this->buf = this->chars;
         this->size = const_len(buf);
-        memcpy(this->buf, buf, const_len(buf));
+        if (this->size > this->capacity)
+        {
+            this->buf = new char[this->size+1];
+            this->capacity = this->size;
+        }
+        memcpy(this->buf, buf, this->size);
         this->buf[this->size] = '\0';
     }
 
@@ -417,7 +431,13 @@ struct TransientString
         : capacity(2048)
         , size(0)
     {
+        this->buf = this->chars;
         this->size = len;
+        if (this->size > this->capacity)
+        {
+            this->buf = new char[this->size+1];
+            this->capacity = this->size;
+        }
         memcpy(this->buf, buf, len);
         this->buf[this->size] = '\0';
     }
@@ -426,7 +446,13 @@ struct TransientString
         : capacity(2048)
         , size(0)
     {
+        this->buf = this->chars;
         this->size = len;
+        if (this->size > this->capacity)
+        {
+            this->buf = new char[this->size+1];
+            this->capacity = this->size;
+        }
         memcpy(this->buf, buf, len);
         this->buf[this->size] = '\0';
     }
@@ -435,6 +461,8 @@ struct TransientString
         : capacity(2048)
         , size(0)
     {
+        assert(str.size <= sizeof(this->chars));
+        this->buf = this->chars;
         memcpy(this->buf, str.buf, str.size);
         this->size = str.size;
         this->buf[str.size] = '\0';
@@ -445,7 +473,19 @@ struct TransientString
         : capacity(2048)
         , size(0)
     {
+        this->buf = this->chars;
         this->Concatenate<false>(std::forward<const ARGS&>(args)...);
+    }
+
+    ~TransientString()
+    {
+        if (this->buf != nullptr && this->buf != this->chars)
+        {
+            delete[] this->buf;
+        }
+        this->capacity = 2048;
+        this->size = 0;
+        this->buf = this->chars;
     }
 
     template<typename ...ARGS>
@@ -464,10 +504,14 @@ struct TransientString
 
     void operator=(const TransientString& rhs)
     {
+        if (this->buf != nullptr && this->buf != this->chars)
+        {
+            delete[] this->buf;
+        }
+        this->buf = this->chars;
         memcpy(this->buf, rhs.buf, rhs.size * sizeof(char));
         this->size = rhs.size;
         this->buf[this->size] = '\0';
-        
     }
 
     std::string ToString() const
@@ -518,7 +562,11 @@ struct TransientString
             i++;
         } (), ...);
 
-        assert(size + 1 <= this->capacity);
+        if (size + 1 > this->capacity)
+        {
+            this->buf = new char[size + 1];
+            this->capacity = size + 1;
+        }
 
         // Merge strings
         i = 0;

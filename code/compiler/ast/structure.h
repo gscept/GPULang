@@ -54,10 +54,10 @@ struct Structure : public Type
         bool packMembers = false;
         bool hasBoolMember = false;
 
-        Function* storageFunction = nullptr;
-        Function* storageIndexedFunction = nullptr;
-        Function* loadFunction = nullptr;
-        Function* loadIndexedFunction = nullptr;
+        PinnedMap<FixedString, Function*> storageFunctions = 0xFF;
+        PinnedMap<FixedString, Function*> storageIndexedFunctions = 0xFF;
+        PinnedMap<FixedString, Function*> loadFunctions = 0xFF;
+        PinnedMap<FixedString, Function*> loadIndexedFunctions = 0xFF;
     };
 };
 
