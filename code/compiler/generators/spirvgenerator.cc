@@ -3757,7 +3757,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             SPIRVResult accessedArg = args[0];
             accessedArg.typeName = ptrReturnType.typeName;
             accessedArg.parentTypes = ptrReturnType.parentTypes;
-            return LoadValueSPIRV(c, g, accessedArg);
+            return accessedArg;
         };
         loadIt++;
     }
@@ -3788,7 +3788,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             accessedArg.AddAccessChainLink(index);
             accessedArg.typeName = ptrReturnType.typeName;
             accessedArg.parentTypes = ptrReturnType.parentTypes;
-            return LoadValueSPIRV(c, g, accessedArg);
+            return accessedArg;
         };
         loadIndexedIt++;
     }
@@ -3839,6 +3839,38 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
         };
         storeIndexedIt++;
     }
+
+    auto refIndexedIt = strucResolved->getReferenceFunctions.begin();
+    while (refIndexedIt != strucResolved->getReferenceFunctions.end())
+    {
+        generator->generatorIntrinsics[refIndexedIt->second] = [fun = refIndexedIt->second](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 2);
+            assert(!args[0].isValue);
+            std::vector<SPIRVResult> index;
+            SPIRVResult accessedArg = args[0];
+
+            Function::__Resolved* funRes = Symbol::Resolved(fun);
+            SPIRVResult ptrReturnType = GeneratePointerTypeSPIRV(c, g, fun->returnType, funRes->returnTypeSymbol, SPIRVResult::Storage::StorageBuffer);
+
+            if (args[0].isStructPadded)
+            {
+                SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
+                index = { zero, LoadValueSPIRV(c, g, args[1]) };
+            }
+            else
+            {
+                index = { LoadValueSPIRV(c, g, args[1]) };
+            }
+
+            accessedArg.AddAccessChainLink(index);
+            accessedArg.typeName = ptrReturnType.typeName;
+            accessedArg.parentTypes = ptrReturnType.parentTypes;
+            return accessedArg;
+        };
+        refIndexedIt++;
+    }
+
     TransientString nameStr = struc->name;
     if (bound)
     {
@@ -6209,8 +6241,11 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             res = spvValidate(spvContext, &constBin, &diag);
             if (res != SPV_SUCCESS)
             {
-                this->Error(Format("Internal SPIRV generation error: %s", diag->error));
-                printf("%s\n", diag->error);
+                if (diag != nullptr)
+                {
+                    this->Error(Format("Internal SPIRV generation error: %s", diag->error));
+                    printf("%s\n", diag->error);
+                }
                 
                 GrowingString binary;
                 binary.Line("; Entry point", funResolved->name);

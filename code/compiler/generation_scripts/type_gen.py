@@ -3508,7 +3508,7 @@ def generate_types():
             spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
             spirv_function += f'    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::{base_type_mapping[type]}, {vector_size_mapping[type]});\n'
             spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_{data_type_mapping[type]}_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
-            spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+            spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
             spirv_function += '    g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);\n'
             spirv_function += '    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);\n'
             spirv_function += '    g->interfaceVariables.Insert(ret);\n'
@@ -3969,7 +3969,7 @@ def generate_types():
                 spirv_function += f'    g->writer->Instruction({spirv_builtin}, SPVWriter::Section::LocalFunction, ptr, scopeId, semanticsId, valueLoaded);\n'
                 spirv_function += '    return SPIRVResult::Invalid();\n'
             else:
-                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);\n'
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);\n'
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
 
@@ -4019,7 +4019,7 @@ def generate_types():
             spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);\n'
             spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
             spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
-            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
 
@@ -4060,7 +4060,7 @@ def generate_types():
         spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);\n'
         spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
         spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
-        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, semanticsId, value, compare);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, semanticsId, value, compare);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         
 
@@ -4872,7 +4872,7 @@ def generate_types():
                 spirv_function += '    SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));\n'
                 spirv_function += f'    SPIRVResult type = GenerateTypeSPIRV(c, g, {texture_argument_name}.type, Symbol::Resolved(&{texture_argument_name})->typeSymbol, SPIRVResult::Storage::Image);\n'
                 spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);\n'
-                spirv_function += f'    ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, ret, value);\n'
+                spirv_function += f'    ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);\n'
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 
                 fun.spirv = spirv_function

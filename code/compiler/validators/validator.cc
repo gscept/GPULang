@@ -3011,6 +3011,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 TStr storageIndexedFun = TStr(var->type.ToString() + "_bufferStoreIndexed");
                 TStr loadFun = TStr(var->type.ToString() + "_bufferLoad");
                 TStr loadIndexedFun = TStr(var->type.ToString() + "_bufferLoadIndexed");
+                TStr refIndexedFun = TStr(var->type.ToString() + "_bufferPtrIndexed");
                 if (currentStrucResolved->storageFunctions.Find(storageFun) == currentStrucResolved->storageFunctions.end())
                 {
                     Function* storageFunction = Alloc<Function>();
@@ -3037,39 +3038,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     this->ResolveFunction(compiler, storageFunction);
                     currentStrucResolved->storageFunctions.Insert(FixedString(storageFun), storageFunction);
                 }
-                if (currentStrucResolved->storageIndexedFunctions.Find(storageIndexedFun) == currentStrucResolved->storageIndexedFunctions.end())
-                {
-                    Function* storageIndexedFunction = Alloc<Function>();
-                    storageIndexedFunction->name = "bufferStore";
-                    storageIndexedFunction->returnType = Type::FullType{ ConstantString("void") };
 
-                    Variable* arg = Alloc<Variable>();
-                    arg->name = "buffer";
-                    Attribute* attr = Alloc<Attribute>();
-                    attr->name = "uniform";
-                    attr->expression = nullptr;
-                    arg->attributes = { attr };
-                    arg->type = var->type;
-                    arg->type.modifiers = var->type.modifiers;
-                    arg->type.modifierValues = var->type.modifierValues;
-
-                    Variable* arg2 = Alloc<Variable>();
-                    arg2->name = "index";
-                    arg2->type = Type::FullType{ "u32" };
-                    arg2->type.mut = false;
-                    arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
-                    arg2->type.modifierValues = TransientArray<Expression*>();
-                
-                    Variable* arg3 = Alloc<Variable>();
-                    arg3->name = "value";
-                    arg3->type = var->type;
-                    arg3->type.mut = false;
-                    arg3->type.modifiers = TransientArray<Type::FullType::Modifier>();
-                    arg3->type.modifierValues = TransientArray<Expression*>();
-                    storageIndexedFunction->parameters = { arg, arg2, arg3 };
-                    this->ResolveFunction(compiler, storageIndexedFunction);    
-                    currentStrucResolved->storageIndexedFunctions.Insert(FixedString(storageIndexedFun), storageIndexedFunction);
-                }
                 if (currentStrucResolved->loadFunctions.Find(loadFun) == currentStrucResolved->loadFunctions.end())
                 {
                     Function* loadFunction = Alloc<Function>();
@@ -3090,32 +3059,96 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     this->ResolveFunction(compiler, loadFunction);   
                     currentStrucResolved->loadFunctions.Insert(FixedString(loadFun), loadFunction);
                 }
-                if (currentStrucResolved->loadIndexedFunctions.Find(loadIndexedFun) == currentStrucResolved->loadIndexedFunctions.end())
+
+                if (var->type.modifiers.size > 1 && var->type.modifiers[1] == Type::FullType::Modifier::Array)
                 {
-                    Function* loadIndexedFunction = Alloc<Function>();
-                    loadIndexedFunction->name = "bufferLoad";
-                    loadIndexedFunction->returnType = Type::FullType{currentStructure->name};
+                    if (currentStrucResolved->storageIndexedFunctions.Find(storageIndexedFun) == currentStrucResolved->storageIndexedFunctions.end())
+                    {
+                        Function* storageIndexedFunction = Alloc<Function>();
+                        storageIndexedFunction->name = "bufferStore";
+                        storageIndexedFunction->returnType = Type::FullType{ ConstantString("void") };
 
-                    Variable* arg = Alloc<Variable>();
-                    arg->name = "buffer";
-                    Attribute* attr = Alloc<Attribute>();
-                    attr->name = "uniform";
-                    attr->expression = nullptr;
-                    arg->attributes = { attr };
-                    arg->type = var->type;
-                    arg->type.modifiers = var->type.modifiers;
-                    arg->type.modifierValues = var->type.modifierValues;
+                        Variable* arg = Alloc<Variable>();
+                        arg->name = "buffer";
+                        Attribute* attr = Alloc<Attribute>();
+                        attr->name = "uniform";
+                        attr->expression = nullptr;
+                        arg->attributes = { attr };
+                        arg->type = var->type;
+                        arg->type.modifiers = var->type.modifiers;
+                        arg->type.modifierValues = var->type.modifierValues;
 
-                    Variable* arg2 = Alloc<Variable>();
-                    arg2->name = "index";
-                    arg2->type = Type::FullType{ "u32" };
-                    arg2->type.mut = false;
-                    arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
-                    arg2->type.modifierValues = TransientArray<Expression*>();
-                    
-                    loadIndexedFunction->parameters = { arg, arg2 };
-                    this->ResolveFunction(compiler, loadIndexedFunction);   
-                    currentStrucResolved->loadIndexedFunctions.Insert(FixedString(loadIndexedFun), loadIndexedFunction);
+                        Variable* arg2 = Alloc<Variable>();
+                        arg2->name = "index";
+                        arg2->type = Type::FullType{ "u32" };
+                        arg2->type.mut = false;
+                        arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
+                        arg2->type.modifierValues = TransientArray<Expression*>();
+
+                        Variable* arg3 = Alloc<Variable>();
+                        arg3->name = "value";
+                        arg3->type = var->type;
+                        arg3->type.mut = false;
+                        arg3->type.modifiers = TransientArray<Type::FullType::Modifier>();
+                        arg3->type.modifierValues = TransientArray<Expression*>();
+                        storageIndexedFunction->parameters = { arg, arg2, arg3 };
+                        this->ResolveFunction(compiler, storageIndexedFunction);
+                        currentStrucResolved->storageIndexedFunctions.Insert(FixedString(storageIndexedFun), storageIndexedFunction);
+                    }
+                    if (currentStrucResolved->loadIndexedFunctions.Find(loadIndexedFun) == currentStrucResolved->loadIndexedFunctions.end())
+                    {
+                        Function* loadIndexedFunction = Alloc<Function>();
+                        loadIndexedFunction->name = "bufferLoad";
+                        loadIndexedFunction->returnType = Type::FullType{ currentStructure->name };
+
+                        Variable* arg = Alloc<Variable>();
+                        arg->name = "buffer";
+                        Attribute* attr = Alloc<Attribute>();
+                        attr->name = "uniform";
+                        attr->expression = nullptr;
+                        arg->attributes = { attr };
+                        arg->type = var->type;
+                        arg->type.modifiers = var->type.modifiers;
+                        arg->type.modifierValues = var->type.modifierValues;
+
+                        Variable* arg2 = Alloc<Variable>();
+                        arg2->name = "index";
+                        arg2->type = Type::FullType{ "u32" };
+                        arg2->type.mut = false;
+                        arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
+                        arg2->type.modifierValues = TransientArray<Expression*>();
+
+                        loadIndexedFunction->parameters = { arg, arg2 };
+                        this->ResolveFunction(compiler, loadIndexedFunction);
+                        currentStrucResolved->loadIndexedFunctions.Insert(FixedString(loadIndexedFun), loadIndexedFunction);
+                    }
+                    if (currentStrucResolved->getReferenceFunctions.Find(refIndexedFun) == currentStrucResolved->getReferenceFunctions.end())
+                    {
+                        Function* getReferenceFunction = Alloc<Function>();
+                        getReferenceFunction->name = "bufferPtr";
+                        getReferenceFunction->returnType = Type::FullType{ currentStructure->name, { Type::FullType::Modifier::Pointer }, { nullptr } };
+
+                        Variable* arg = Alloc<Variable>();
+                        arg->name = "buffer";
+                        Attribute* attr = Alloc<Attribute>();
+                        attr->name = "uniform";
+                        attr->expression = nullptr;
+                        arg->attributes = { attr };
+                        arg->type = var->type;
+                        arg->type.modifiers = var->type.modifiers;
+                        arg->type.modifierValues = var->type.modifierValues;
+
+                        Variable* arg2 = Alloc<Variable>();
+                        arg2->name = "index";
+                        arg2->type = Type::FullType{ "u32" };
+                        arg2->type.mut = false;
+                        arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
+                        arg2->type.modifierValues = TransientArray<Expression*>();
+
+                        getReferenceFunction->parameters = { arg, arg2 };
+                        this->ResolveFunction(compiler, getReferenceFunction);
+                        currentStrucResolved->getReferenceFunctions.Insert(FixedString(refIndexedFun), getReferenceFunction);
+                    }
                 }
             }
         }

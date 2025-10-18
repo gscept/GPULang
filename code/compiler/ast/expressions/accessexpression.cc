@@ -147,22 +147,8 @@ AccessExpression::Resolve(Compiler* compiler)
     else
     {
         thisResolved->returnType = thisResolved->rightType;
-        thisResolved->retType = thisResolved->rhsType;
         thisResolved->returnType.mut = thisResolved->leftType.mut;
-        /*
-        Variable* memberVar = static_cast<Variable*>(thisResolved->lhsType->GetSymbol(thisResolved->rightSymbol));
-        if (memberVar == nullptr)
-        {
-            compiler->Error(Format("Type does not have member or method '%s'", thisResolved->rightSymbol.c_str()), this);
-            return false;
-        }
-        else
-        {
-            Variable::__Resolved* varResolved = Symbol::Resolved(memberVar);
-            thisResolved->returnType = varResolved->type;
-            thisResolved->returnType.mut = thisResolved->leftType.mut;
-        }
-        */
+        thisResolved->retType = thisResolved->rhsType;
     }
 
     return thisResolved->lhsType != nullptr && thisResolved->rhsType != nullptr;

@@ -17149,7 +17149,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32_Int32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17163,7 +17163,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32_UInt32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17177,7 +17177,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32_Int16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17191,7 +17191,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32_UInt16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17205,7 +17205,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_Int32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17219,7 +17219,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_UInt32(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17233,7 +17233,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_Int16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17247,7 +17247,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_UInt16(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17261,7 +17261,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_Int32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17275,7 +17275,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_UInt32(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17289,7 +17289,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_Int16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17303,7 +17303,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_UInt16(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17317,7 +17317,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_Int32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17331,7 +17331,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_UInt32(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17345,7 +17345,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_Int16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17359,7 +17359,7 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_UInt16(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17373,7 +17373,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16_Int32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17387,7 +17387,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16_UInt32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17401,7 +17401,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16_Int16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17415,7 +17415,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16_UInt16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17429,7 +17429,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_Int32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17443,7 +17443,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_UInt32(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17457,7 +17457,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_Int16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17471,7 +17471,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_UInt16(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17485,7 +17485,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_Int32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17499,7 +17499,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_UInt32(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17513,7 +17513,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_Int16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17527,7 +17527,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_UInt16(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17541,7 +17541,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_Int32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17555,7 +17555,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_UInt32(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17569,7 +17569,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_Int16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17583,7 +17583,7 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_UInt16(const Compiler* c, SPIRVGene
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17597,7 +17597,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32_Int32(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17611,7 +17611,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32_UInt32(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17625,7 +17625,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32_Int16(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17639,7 +17639,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32_UInt16(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17653,7 +17653,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_Int32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17667,7 +17667,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_UInt32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17681,7 +17681,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_Int16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17695,7 +17695,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_UInt16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17709,7 +17709,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_Int32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17723,7 +17723,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_UInt32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17737,7 +17737,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_Int16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17751,7 +17751,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_UInt16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17765,7 +17765,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_Int32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17779,7 +17779,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_UInt32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17793,7 +17793,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_Int16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17807,7 +17807,7 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_UInt16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17821,7 +17821,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16_Int32(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17835,7 +17835,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16_UInt32(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17849,7 +17849,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16_Int16(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17863,7 +17863,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16_UInt16(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17877,7 +17877,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_Int32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17891,7 +17891,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_UInt32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17905,7 +17905,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_Int16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17919,7 +17919,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_UInt16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17933,7 +17933,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_Int32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17947,7 +17947,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_UInt32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17961,7 +17961,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_Int16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17975,7 +17975,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_UInt16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17989,7 +17989,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_Int32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18003,7 +18003,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_UInt32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18017,7 +18017,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_Int16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18031,7 +18031,7 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_UInt16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18045,7 +18045,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_Int32(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18059,7 +18059,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_UInt32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18073,7 +18073,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_Int16(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18087,7 +18087,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_UInt16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18101,7 +18101,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_Int32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18115,7 +18115,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_UInt32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18129,7 +18129,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_Int16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18143,7 +18143,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_UInt16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18157,7 +18157,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_Int32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18171,7 +18171,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_UInt32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18185,7 +18185,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_Int16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18199,7 +18199,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_UInt16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18213,7 +18213,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_Int32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18227,7 +18227,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_UInt32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18241,7 +18241,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_Int16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18255,7 +18255,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_UInt16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18269,7 +18269,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_Int32(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18283,7 +18283,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_UInt32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18297,7 +18297,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_Int16(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18311,7 +18311,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_UInt16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18325,7 +18325,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_Int32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18339,7 +18339,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_UInt32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18353,7 +18353,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_Int16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18367,7 +18367,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_UInt16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18381,7 +18381,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_Int32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18395,7 +18395,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_UInt32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18409,7 +18409,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_Int16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18423,7 +18423,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_UInt16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18437,7 +18437,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_Int32(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18451,7 +18451,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_UInt32(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18465,7 +18465,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_Int16(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -18479,7 +18479,7 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_UInt16(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -19738,7 +19738,7 @@ SPIRVResult SPIRV_AtomicExchange_UInt32(const Compiler* c, SPIRVGenerator* g, ui
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19751,7 +19751,7 @@ SPIRVResult SPIRV_AtomicAdd_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19764,7 +19764,7 @@ SPIRVResult SPIRV_AtomicSubtract_UInt32(const Compiler* c, SPIRVGenerator* g, ui
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19777,7 +19777,7 @@ SPIRVResult SPIRV_AtomicAnd_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19790,7 +19790,7 @@ SPIRVResult SPIRV_AtomicOr_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19803,7 +19803,7 @@ SPIRVResult SPIRV_AtomicXor_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19829,7 +19829,7 @@ SPIRVResult SPIRV_AtomicExchange_Int32(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19842,7 +19842,7 @@ SPIRVResult SPIRV_AtomicAdd_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19855,7 +19855,7 @@ SPIRVResult SPIRV_AtomicSubtract_Int32(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19868,7 +19868,7 @@ SPIRVResult SPIRV_AtomicAnd_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19881,7 +19881,7 @@ SPIRVResult SPIRV_AtomicOr_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t 
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19894,7 +19894,7 @@ SPIRVResult SPIRV_AtomicXor_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19920,7 +19920,7 @@ SPIRVResult SPIRV_AtomicExchange_UInt16(const Compiler* c, SPIRVGenerator* g, ui
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19933,7 +19933,7 @@ SPIRVResult SPIRV_AtomicAdd_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19946,7 +19946,7 @@ SPIRVResult SPIRV_AtomicSubtract_UInt16(const Compiler* c, SPIRVGenerator* g, ui
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19959,7 +19959,7 @@ SPIRVResult SPIRV_AtomicAnd_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19972,7 +19972,7 @@ SPIRVResult SPIRV_AtomicOr_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19985,7 +19985,7 @@ SPIRVResult SPIRV_AtomicXor_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20011,7 +20011,7 @@ SPIRVResult SPIRV_AtomicExchange_Int16(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20024,7 +20024,7 @@ SPIRVResult SPIRV_AtomicAdd_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20037,7 +20037,7 @@ SPIRVResult SPIRV_AtomicSubtract_Int16(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20050,7 +20050,7 @@ SPIRVResult SPIRV_AtomicAnd_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20063,7 +20063,7 @@ SPIRVResult SPIRV_AtomicOr_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t 
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20076,7 +20076,7 @@ SPIRVResult SPIRV_AtomicXor_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20102,7 +20102,7 @@ SPIRVResult SPIRV_AtomicExchange_Float32(const Compiler* c, SPIRVGenerator* g, u
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20128,7 +20128,7 @@ SPIRVResult SPIRV_AtomicExchange_Float16(const Compiler* c, SPIRVGenerator* g, u
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20141,7 +20141,7 @@ SPIRVResult SPIRV_AtomicMin_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20154,7 +20154,7 @@ SPIRVResult SPIRV_AtomicMax_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20167,7 +20167,7 @@ SPIRVResult SPIRV_AtomicMin_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20180,7 +20180,7 @@ SPIRVResult SPIRV_AtomicMax_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20193,7 +20193,7 @@ SPIRVResult SPIRV_AtomicMin_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20206,7 +20206,7 @@ SPIRVResult SPIRV_AtomicMax_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20219,7 +20219,7 @@ SPIRVResult SPIRV_AtomicMin_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20232,7 +20232,7 @@ SPIRVResult SPIRV_AtomicMax_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20246,7 +20246,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_UInt32(const Compiler* c, SPIRVGenerator
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, semanticsId, value, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, semanticsId, value, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20260,7 +20260,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Int32(const Compiler* c, SPIRVGenerator*
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, semanticsId, value, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, semanticsId, value, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20274,7 +20274,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_UInt16(const Compiler* c, SPIRVGenerator
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, semanticsId, value, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, semanticsId, value, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20288,7 +20288,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Int16(const Compiler* c, SPIRVGenerator*
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, semanticsId, value, compare);
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, semanticsId, value, compare);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24848,7 +24848,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1D_Float32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1D_Float32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24860,7 +24860,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1D_UInt32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24872,7 +24872,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1D_Int32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24884,7 +24884,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1D_Float16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1D_Float16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24896,7 +24896,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1D_UInt16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24908,7 +24908,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1D_Int16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24920,7 +24920,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2D_Float32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2D_Float32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24932,7 +24932,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2D_UInt32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24944,7 +24944,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2D_Int32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24956,7 +24956,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2D_Float16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2D_Float16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24968,7 +24968,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2D_UInt16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24980,7 +24980,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2D_Int16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -24992,7 +24992,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture3D_Float32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture3D_Float32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25004,7 +25004,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture3D_UInt32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25016,7 +25016,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture3D_Int32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25028,7 +25028,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture3D_Float16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture3D_Float16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25040,7 +25040,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture3D_UInt16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25052,7 +25052,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture3D_Int16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25064,7 +25064,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCube_Float32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCube_Float32_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25076,7 +25076,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCube_UInt32(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25088,7 +25088,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCube_Int32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25100,7 +25100,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCube_Float16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCube_Float16_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25112,7 +25112,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCube_UInt16(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25124,7 +25124,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCube_Int16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25136,7 +25136,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1DArray_Float32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1DArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25148,7 +25148,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1DArray_UInt32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25160,7 +25160,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1DArray_Int32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25172,7 +25172,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1DArray_Float16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1DArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25184,7 +25184,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1DArray_UInt16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25196,7 +25196,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture1DArray_Int16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25208,7 +25208,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2DArray_Float32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2DArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25220,7 +25220,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2DArray_UInt32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25232,7 +25232,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2DArray_Int32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25244,7 +25244,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2DArray_Float16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2DArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25256,7 +25256,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2DArray_UInt16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25268,7 +25268,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_Texture2DArray_Int16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25280,7 +25280,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCubeArray_Float32(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCubeArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25292,7 +25292,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCubeArray_UInt32(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25304,7 +25304,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCubeArray_Int32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25316,7 +25316,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCubeArray_Float16(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCubeArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25328,7 +25328,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCubeArray_UInt16(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25340,7 +25340,7 @@ SPIRVResult SPIRV_TextureAtomicLoad_TextureCubeArray_Int16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicLoad_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25352,7 +25352,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1D_Float32(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1D_Float32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25364,7 +25364,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1D_UInt32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25376,7 +25376,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1D_Int32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25388,7 +25388,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1D_Float16(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1D_Float16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25400,7 +25400,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1D_UInt16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25412,7 +25412,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1D_Int16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25424,7 +25424,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2D_Float32(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2D_Float32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25436,7 +25436,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2D_UInt32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25448,7 +25448,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2D_Int32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25460,7 +25460,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2D_Float16(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2D_Float16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25472,7 +25472,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2D_UInt16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25484,7 +25484,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2D_Int16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25496,7 +25496,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture3D_Float32(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture3D_Float32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25508,7 +25508,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture3D_UInt32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25520,7 +25520,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture3D_Int32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25532,7 +25532,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture3D_Float16(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture3D_Float16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25544,7 +25544,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture3D_UInt16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25556,7 +25556,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture3D_Int16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25568,7 +25568,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCube_Float32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCube_Float32_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25580,7 +25580,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCube_UInt32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25592,7 +25592,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCube_Int32(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25604,7 +25604,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCube_Float16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCube_Float16_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25616,7 +25616,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCube_UInt16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25628,7 +25628,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCube_Int16(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25640,7 +25640,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1DArray_Float32(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1DArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25652,7 +25652,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1DArray_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25664,7 +25664,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1DArray_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25676,7 +25676,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1DArray_Float16(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1DArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25688,7 +25688,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1DArray_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25700,7 +25700,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture1DArray_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25712,7 +25712,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2DArray_Float32(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2DArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25724,7 +25724,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2DArray_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25736,7 +25736,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2DArray_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25748,7 +25748,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2DArray_Float16(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2DArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25760,7 +25760,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2DArray_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25772,7 +25772,7 @@ SPIRVResult SPIRV_TextureAtomicStore_Texture2DArray_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25784,7 +25784,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCubeArray_Float32(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCubeArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25796,7 +25796,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCubeArray_UInt32(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25808,7 +25808,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCubeArray_Int32(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25820,7 +25820,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCubeArray_Float16(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCubeArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25832,7 +25832,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCubeArray_UInt16(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25844,7 +25844,7 @@ SPIRVResult SPIRV_TextureAtomicStore_TextureCubeArray_Int16(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicStore_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicStore, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25856,7 +25856,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1D_Float32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1D_Float32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25868,7 +25868,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1D_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25880,7 +25880,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1D_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25892,7 +25892,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1D_Float16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1D_Float16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25904,7 +25904,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1D_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25916,7 +25916,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1D_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25928,7 +25928,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2D_Float32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2D_Float32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25940,7 +25940,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2D_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25952,7 +25952,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2D_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25964,7 +25964,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2D_Float16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2D_Float16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25976,7 +25976,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2D_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -25988,7 +25988,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2D_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26000,7 +26000,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture3D_Float32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture3D_Float32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26012,7 +26012,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture3D_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26024,7 +26024,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture3D_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26036,7 +26036,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture3D_Float16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture3D_Float16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26048,7 +26048,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture3D_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26060,7 +26060,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture3D_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26072,7 +26072,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCube_Float32(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCube_Float32_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26084,7 +26084,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCube_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26096,7 +26096,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCube_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26108,7 +26108,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCube_Float16(const Compiler* c, S
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCube_Float16_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26120,7 +26120,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCube_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26132,7 +26132,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCube_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26144,7 +26144,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1DArray_Float32(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1DArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26156,7 +26156,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1DArray_UInt32(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26168,7 +26168,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1DArray_Int32(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26180,7 +26180,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1DArray_Float16(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1DArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26192,7 +26192,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1DArray_UInt16(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26204,7 +26204,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture1DArray_Int16(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26216,7 +26216,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2DArray_Float32(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2DArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26228,7 +26228,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2DArray_UInt32(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26240,7 +26240,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2DArray_Int32(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26252,7 +26252,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2DArray_Float16(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2DArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26264,7 +26264,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2DArray_UInt16(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26276,7 +26276,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_Texture2DArray_Int16(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26288,7 +26288,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCubeArray_Float32(const Compiler*
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCubeArray_Float32_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26300,7 +26300,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCubeArray_UInt32(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26312,7 +26312,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCubeArray_Int32(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26324,7 +26324,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCubeArray_Float16(const Compiler*
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCubeArray_Float16_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26336,7 +26336,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCubeArray_UInt16(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26348,7 +26348,7 @@ SPIRVResult SPIRV_TextureAtomicExchange_TextureCubeArray_Int16(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicExchange_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26360,7 +26360,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture1D_UInt32(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26372,7 +26372,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture1D_Int32(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26384,7 +26384,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture1D_UInt16(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26396,7 +26396,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture1D_Int16(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26408,7 +26408,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture2D_UInt32(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26420,7 +26420,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture2D_Int32(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26432,7 +26432,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture2D_UInt16(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26444,7 +26444,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture2D_Int16(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26456,7 +26456,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture3D_UInt32(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26468,7 +26468,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture3D_Int32(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26480,7 +26480,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture3D_UInt16(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26492,7 +26492,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture3D_Int16(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26504,7 +26504,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_TextureCube_UInt32(const Compiler
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26516,7 +26516,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_TextureCube_Int32(const Compiler*
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26528,7 +26528,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_TextureCube_UInt16(const Compiler
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26540,7 +26540,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_TextureCube_Int16(const Compiler*
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26552,7 +26552,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt32(const Compi
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26564,7 +26564,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int32(const Compil
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26576,7 +26576,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt16(const Compi
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26588,7 +26588,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int16(const Compil
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26600,7 +26600,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt32(const Compi
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26612,7 +26612,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int32(const Compil
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26624,7 +26624,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt16(const Compi
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26636,7 +26636,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int16(const Compil
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26648,7 +26648,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt32(const Com
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26660,7 +26660,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int32(const Comp
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26672,7 +26672,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt16(const Com
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26684,7 +26684,7 @@ SPIRVResult SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int16(const Comp
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicCompareExchange_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicCompareExchange, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26696,7 +26696,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture1D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26708,7 +26708,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture1D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26720,7 +26720,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture1D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26732,7 +26732,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture1D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26744,7 +26744,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture2D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26756,7 +26756,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture2D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26768,7 +26768,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture2D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26780,7 +26780,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture2D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26792,7 +26792,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture3D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26804,7 +26804,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture3D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26816,7 +26816,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture3D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26828,7 +26828,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture3D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26840,7 +26840,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_TextureCube_UInt32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26852,7 +26852,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_TextureCube_Int32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26864,7 +26864,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_TextureCube_UInt16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26876,7 +26876,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_TextureCube_Int16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26888,7 +26888,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture1DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26900,7 +26900,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture1DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26912,7 +26912,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture1DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26924,7 +26924,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture1DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26936,7 +26936,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture2DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26948,7 +26948,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture2DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26960,7 +26960,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture2DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26972,7 +26972,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_Texture2DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26984,7 +26984,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_TextureCubeArray_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -26996,7 +26996,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_TextureCubeArray_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27008,7 +27008,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_TextureCubeArray_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27020,7 +27020,7 @@ SPIRVResult SPIRV_TextureAtomicAdd_TextureCubeArray_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAdd_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicIAdd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27032,7 +27032,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture1D_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27044,7 +27044,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture1D_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27056,7 +27056,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture1D_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27068,7 +27068,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture1D_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27080,7 +27080,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture2D_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27092,7 +27092,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture2D_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27104,7 +27104,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture2D_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27116,7 +27116,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture2D_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27128,7 +27128,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture3D_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27140,7 +27140,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture3D_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27152,7 +27152,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture3D_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27164,7 +27164,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture3D_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27176,7 +27176,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_TextureCube_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27188,7 +27188,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_TextureCube_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27200,7 +27200,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_TextureCube_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27212,7 +27212,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_TextureCube_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27224,7 +27224,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture1DArray_UInt32(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27236,7 +27236,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture1DArray_Int32(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27248,7 +27248,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture1DArray_UInt16(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27260,7 +27260,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture1DArray_Int16(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27272,7 +27272,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture2DArray_UInt32(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27284,7 +27284,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture2DArray_Int32(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27296,7 +27296,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture2DArray_UInt16(const Compiler* c,
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27308,7 +27308,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_Texture2DArray_Int16(const Compiler* c, 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27320,7 +27320,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt32(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27332,7 +27332,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_TextureCubeArray_Int32(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27344,7 +27344,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt16(const Compiler* 
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27356,7 +27356,7 @@ SPIRVResult SPIRV_TextureAtomicSubtract_TextureCubeArray_Int16(const Compiler* c
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicSubtract_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicISub, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27368,7 +27368,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture1D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27380,7 +27380,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture1D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27392,7 +27392,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture1D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27404,7 +27404,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture1D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27416,7 +27416,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture2D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27428,7 +27428,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture2D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27440,7 +27440,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture2D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27452,7 +27452,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture2D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27464,7 +27464,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture3D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27476,7 +27476,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture3D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27488,7 +27488,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture3D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27500,7 +27500,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture3D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27512,7 +27512,7 @@ SPIRVResult SPIRV_TextureAtomicMin_TextureCube_UInt32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27524,7 +27524,7 @@ SPIRVResult SPIRV_TextureAtomicMin_TextureCube_Int32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27536,7 +27536,7 @@ SPIRVResult SPIRV_TextureAtomicMin_TextureCube_UInt16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27548,7 +27548,7 @@ SPIRVResult SPIRV_TextureAtomicMin_TextureCube_Int16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27560,7 +27560,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture1DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27572,7 +27572,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture1DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27584,7 +27584,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture1DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27596,7 +27596,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture1DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27608,7 +27608,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture2DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27620,7 +27620,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture2DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27632,7 +27632,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture2DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27644,7 +27644,7 @@ SPIRVResult SPIRV_TextureAtomicMin_Texture2DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27656,7 +27656,7 @@ SPIRVResult SPIRV_TextureAtomicMin_TextureCubeArray_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27668,7 +27668,7 @@ SPIRVResult SPIRV_TextureAtomicMin_TextureCubeArray_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27680,7 +27680,7 @@ SPIRVResult SPIRV_TextureAtomicMin_TextureCubeArray_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27692,7 +27692,7 @@ SPIRVResult SPIRV_TextureAtomicMin_TextureCubeArray_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMin_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMin, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27704,7 +27704,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture1D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27716,7 +27716,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture1D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27728,7 +27728,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture1D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27740,7 +27740,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture1D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27752,7 +27752,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture2D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27764,7 +27764,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture2D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27776,7 +27776,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture2D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27788,7 +27788,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture2D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27800,7 +27800,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture3D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27812,7 +27812,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture3D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27824,7 +27824,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture3D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27836,7 +27836,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture3D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27848,7 +27848,7 @@ SPIRVResult SPIRV_TextureAtomicMax_TextureCube_UInt32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27860,7 +27860,7 @@ SPIRVResult SPIRV_TextureAtomicMax_TextureCube_Int32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27872,7 +27872,7 @@ SPIRVResult SPIRV_TextureAtomicMax_TextureCube_UInt16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27884,7 +27884,7 @@ SPIRVResult SPIRV_TextureAtomicMax_TextureCube_Int16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27896,7 +27896,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture1DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27908,7 +27908,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture1DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27920,7 +27920,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture1DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27932,7 +27932,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture1DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27944,7 +27944,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture2DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27956,7 +27956,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture2DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27968,7 +27968,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture2DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27980,7 +27980,7 @@ SPIRVResult SPIRV_TextureAtomicMax_Texture2DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -27992,7 +27992,7 @@ SPIRVResult SPIRV_TextureAtomicMax_TextureCubeArray_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28004,7 +28004,7 @@ SPIRVResult SPIRV_TextureAtomicMax_TextureCubeArray_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28016,7 +28016,7 @@ SPIRVResult SPIRV_TextureAtomicMax_TextureCubeArray_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicUMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28028,7 +28028,7 @@ SPIRVResult SPIRV_TextureAtomicMax_TextureCubeArray_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicMax_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicSMax, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28040,7 +28040,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture1D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28052,7 +28052,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture1D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28064,7 +28064,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture1D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28076,7 +28076,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture1D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28088,7 +28088,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture2D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28100,7 +28100,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture2D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28112,7 +28112,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture2D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28124,7 +28124,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture2D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28136,7 +28136,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture3D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28148,7 +28148,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture3D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28160,7 +28160,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture3D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28172,7 +28172,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture3D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28184,7 +28184,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_TextureCube_UInt32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28196,7 +28196,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_TextureCube_Int32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28208,7 +28208,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_TextureCube_UInt16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28220,7 +28220,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_TextureCube_Int16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28232,7 +28232,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture1DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28244,7 +28244,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture1DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28256,7 +28256,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture1DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28268,7 +28268,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture1DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28280,7 +28280,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture2DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28292,7 +28292,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture2DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28304,7 +28304,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture2DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28316,7 +28316,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_Texture2DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28328,7 +28328,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_TextureCubeArray_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28340,7 +28340,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_TextureCubeArray_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28352,7 +28352,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_TextureCubeArray_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28364,7 +28364,7 @@ SPIRVResult SPIRV_TextureAtomicAnd_TextureCubeArray_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicAnd_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicAnd, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28376,7 +28376,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture1D_UInt32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28388,7 +28388,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture1D_Int32(const Compiler* c, SPIRVGenera
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28400,7 +28400,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture1D_UInt16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28412,7 +28412,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture1D_Int16(const Compiler* c, SPIRVGenera
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28424,7 +28424,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture2D_UInt32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28436,7 +28436,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture2D_Int32(const Compiler* c, SPIRVGenera
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28448,7 +28448,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture2D_UInt16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28460,7 +28460,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture2D_Int16(const Compiler* c, SPIRVGenera
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28472,7 +28472,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture3D_UInt32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28484,7 +28484,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture3D_Int32(const Compiler* c, SPIRVGenera
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28496,7 +28496,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture3D_UInt16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28508,7 +28508,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture3D_Int16(const Compiler* c, SPIRVGenera
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28520,7 +28520,7 @@ SPIRVResult SPIRV_TextureAtomicOr_TextureCube_UInt32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicOr_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28532,7 +28532,7 @@ SPIRVResult SPIRV_TextureAtomicOr_TextureCube_Int32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicOr_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28544,7 +28544,7 @@ SPIRVResult SPIRV_TextureAtomicOr_TextureCube_UInt16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicOr_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28556,7 +28556,7 @@ SPIRVResult SPIRV_TextureAtomicOr_TextureCube_Int16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicOr_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28568,7 +28568,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture1DArray_UInt32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28580,7 +28580,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture1DArray_Int32(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28592,7 +28592,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture1DArray_UInt16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28604,7 +28604,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture1DArray_Int16(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28616,7 +28616,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture2DArray_UInt32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28628,7 +28628,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture2DArray_Int32(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28640,7 +28640,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture2DArray_UInt16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28652,7 +28652,7 @@ SPIRVResult SPIRV_TextureAtomicOr_Texture2DArray_Int16(const Compiler* c, SPIRVG
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicOr_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28664,7 +28664,7 @@ SPIRVResult SPIRV_TextureAtomicOr_TextureCubeArray_UInt32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicOr_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28676,7 +28676,7 @@ SPIRVResult SPIRV_TextureAtomicOr_TextureCubeArray_Int32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicOr_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28688,7 +28688,7 @@ SPIRVResult SPIRV_TextureAtomicOr_TextureCubeArray_UInt16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicOr_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28700,7 +28700,7 @@ SPIRVResult SPIRV_TextureAtomicOr_TextureCubeArray_Int16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicOr_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicOr_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicOr, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28712,7 +28712,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture1D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture1D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture1D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28724,7 +28724,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture1D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture1D_Int32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture1D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28736,7 +28736,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture1D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture1D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture1D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28748,7 +28748,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture1D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture1D_Int16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture1D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28760,7 +28760,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture2D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture2D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture2D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28772,7 +28772,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture2D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture2D_Int32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture2D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28784,7 +28784,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture2D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture2D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture2D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28796,7 +28796,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture2D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture2D_Int16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture2D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28808,7 +28808,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture3D_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture3D_UInt32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture3D_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28820,7 +28820,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture3D_Int32(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture3D_Int32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture3D_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28832,7 +28832,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture3D_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture3D_UInt16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture3D_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28844,7 +28844,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture3D_Int16(const Compiler* c, SPIRVGener
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture3D_Int16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture3D_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28856,7 +28856,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCube_UInt32(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_TextureCube_UInt32_texture.type, Symbol::Resolved(&TextureAtomicXor_TextureCube_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28868,7 +28868,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCube_Int32(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_TextureCube_Int32_texture.type, Symbol::Resolved(&TextureAtomicXor_TextureCube_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28880,7 +28880,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCube_UInt16(const Compiler* c, SPIRVGe
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_TextureCube_UInt16_texture.type, Symbol::Resolved(&TextureAtomicXor_TextureCube_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28892,7 +28892,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCube_Int16(const Compiler* c, SPIRVGen
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_TextureCube_Int16_texture.type, Symbol::Resolved(&TextureAtomicXor_TextureCube_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28904,7 +28904,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture1DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture1DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture1DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28916,7 +28916,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture1DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture1DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture1DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28928,7 +28928,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture1DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture1DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture1DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28940,7 +28940,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture1DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture1DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture1DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28952,7 +28952,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture2DArray_UInt32(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture2DArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture2DArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28964,7 +28964,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture2DArray_Int32(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture2DArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture2DArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28976,7 +28976,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture2DArray_UInt16(const Compiler* c, SPIR
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture2DArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture2DArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -28988,7 +28988,7 @@ SPIRVResult SPIRV_TextureAtomicXor_Texture2DArray_Int16(const Compiler* c, SPIRV
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_Texture2DArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicXor_Texture2DArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -29000,7 +29000,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCubeArray_UInt32(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_TextureCubeArray_UInt32_texture.type, Symbol::Resolved(&TextureAtomicXor_TextureCubeArray_UInt32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -29012,7 +29012,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCubeArray_Int32(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_TextureCubeArray_Int32_texture.type, Symbol::Resolved(&TextureAtomicXor_TextureCubeArray_Int32_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -29024,7 +29024,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCubeArray_UInt16(const Compiler* c, SP
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_TextureCubeArray_UInt16_texture.type, Symbol::Resolved(&TextureAtomicXor_TextureCubeArray_UInt16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -29036,7 +29036,7 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCubeArray_Int16(const Compiler* c, SPI
     SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
     SPIRVResult type = GenerateTypeSPIRV(c, g, TextureAtomicXor_TextureCubeArray_Int16_texture.type, Symbol::Resolved(&TextureAtomicXor_TextureCubeArray_Int16_texture)->typeSymbol, SPIRVResult::Storage::Image);
     uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);
-    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, ret, value);
+    ret = g->writer->MappedInstruction(OpAtomicXor, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);
     return SPIRVResult(ret, returnType, true);
 }
 
