@@ -116,9 +116,9 @@ UnaryExpression::Resolve(Compiler* compiler)
                 compiler->Error("Dereferencing is only allowed on a pointer", this);
                 return false;
             }
-            if (storage == Storage::Uniform)
+            if (compiler->options.encourageBufferOps && storage == Storage::Uniform)
             {
-                compiler->Error("Dereferencing variables with 'uniform' storage should be done with bufferLoad", this);
+                compiler->Warning("Dereferencing variables with 'uniform' is better done bufferLoad/bufferPtr", this);
                 return false;
             }
             

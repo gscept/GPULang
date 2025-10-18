@@ -69,6 +69,7 @@ struct Compiler
         uint8_t warnOnMissingColorExport : 1 = 0;
         uint8_t uniformBoundStructBoolDisallowed : 1 = 1;
         uint8_t uniformBoundStructImplicitPaddingDisallowed : 1 = 1;
+        uint8_t encourageBufferOps : 1 = 0;
         uint8_t warnOnUnusedParameter : 1 = 0;
 
         uint8_t validate : 1 = 0;
