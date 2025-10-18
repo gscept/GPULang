@@ -13,6 +13,9 @@
 
 namespace GPULang
 {
+
+extern thread_local Allocator* StringAllocator;
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -405,7 +408,7 @@ struct TransientString
         this->buf = this->chars;
         if (rhs.buf != rhs.chars)
         {
-            this->buf = new char[rhs.capacity];
+            this->buf = AllocArray<char>(StringAllocator, rhs.capacity);
             memcpy(this->buf, rhs.buf, rhs.size);
         }
         *this = rhs;
@@ -419,7 +422,7 @@ struct TransientString
         this->size = const_len(buf);
         if (this->size > this->capacity)
         {
-            this->buf = new char[this->size+1];
+            this->buf = AllocArray<char>(StringAllocator, this->size + 1);
             this->capacity = this->size;
         }
         memcpy(this->buf, buf, this->size);
@@ -435,7 +438,7 @@ struct TransientString
         this->size = len;
         if (this->size > this->capacity)
         {
-            this->buf = new char[this->size+1];
+            this->buf = AllocArray<char>(StringAllocator, this->size + 1);
             this->capacity = this->size;
         }
         memcpy(this->buf, buf, len);
@@ -450,7 +453,7 @@ struct TransientString
         this->size = len;
         if (this->size > this->capacity)
         {
-            this->buf = new char[this->size+1];
+            this->buf = AllocArray<char>(StringAllocator, this->size + 1);
             this->capacity = this->size;
         }
         memcpy(this->buf, buf, len);
@@ -479,10 +482,6 @@ struct TransientString
 
     ~TransientString()
     {
-        if (this->buf != nullptr && this->buf != this->chars)
-        {
-            delete[] this->buf;
-        }
         this->capacity = 2048;
         this->size = 0;
         this->buf = this->chars;
@@ -504,10 +503,6 @@ struct TransientString
 
     void operator=(const TransientString& rhs)
     {
-        if (this->buf != nullptr && this->buf != this->chars)
-        {
-            delete[] this->buf;
-        }
         this->buf = this->chars;
         memcpy(this->buf, rhs.buf, rhs.size * sizeof(char));
         this->size = rhs.size;
@@ -564,7 +559,7 @@ struct TransientString
 
         if (size + 1 > this->capacity)
         {
-            this->buf = new char[size + 1];
+            this->buf = AllocArray<char>(StringAllocator, this->size + 1);
             this->capacity = size + 1;
         }
 
@@ -824,7 +819,6 @@ FragmentString(const TransientString& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
-extern thread_local Allocator* StringAllocator;
 
 struct FixedString
 {

@@ -364,6 +364,7 @@ struct PinnedArray
         , size(0)
         , capacity(0)
         , data(nullptr)
+        , alloc(nullptr)
     {
         
     }
@@ -372,6 +373,8 @@ struct PinnedArray
         : committedPages(0)
         , size(0)
         , capacity(0)
+        , data(nullptr)
+        , alloc(nullptr)
     {
         this->maxAllocationCount = maxAllocationCount;
     }
@@ -1669,10 +1672,23 @@ struct PinnedMap
                 bool operator()(const item& item, const K& key) { return item.first < key; }
             };
             auto it = std::lower_bound(this->data.begin(), this->data.end(), key, Comp{});
+
             if (it != this->data.end())
             {
                 this->data.Grow(1);
-                memmove(it+1, it, (this->data.end() - it) * sizeof(item));
+                if (std::is_trivially_move_constructible<item>::value)
+                {
+                    memmove(it + 1, it, (this->data.end() - it) * sizeof(item));
+                }
+                else
+                {
+                    for (auto moveIt = this->data.end(); moveIt != it; moveIt--)
+                    {
+                        *(moveIt) = std::move(*(moveIt - 1));
+                    }
+                }
+                //
+                //memset(it, 0x0, sizeof(item));
                 *it = std::make_pair(key, value);
                 this->data.size++;
             }
@@ -1968,7 +1984,7 @@ struct PinnedSet
                 if (*it != key)
                 {
                     this->data.Grow(1);
-                    if (std::is_trivially_copy_constructible<K>::value)
+                    if (std::is_trivially_move_constructible<K>::value)
                     {
                         memmove(it + 1, it, (this->data.end() - it) * sizeof(K));
                     }
@@ -1976,10 +1992,11 @@ struct PinnedSet
                     {
                         for (auto moveIt = this->data.end(); moveIt != it; moveIt--)
                         {
-                            *(moveIt) = *(moveIt - 1);
+                            *(moveIt) = std::move(*(moveIt - 1));
                         }
                     }
                     //
+                    //memset(it, 0x0, sizeof(item));
                     *it = key;
                     this->data.size++;
                 }
