@@ -196,7 +196,7 @@ CallExpression::Resolve(Compiler* compiler)
                         
                         if (param->type != this->thisResolved->argumentTypes[i])
                         {
-                            TransientString conversion = TransientString(param->type.name, "(", this->thisResolved->argTypes[i]->name, ")");
+                            TransientString conversion = TransientString(param->type.ToString(), "(", this->thisResolved->argumentTypes[i].ToString(), ")");
                             Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                             // No conversion available for this member, skip to next constructor
