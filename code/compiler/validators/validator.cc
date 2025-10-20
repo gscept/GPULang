@@ -2736,6 +2736,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Incompatible storage classes '%s' and '%s'", StorageToStrings[varResolved->storage].c_str(), StorageToStrings[rhsStorage].c_str()), symbol);
             return false;
         }
+        
+        auto valueExprRes = Symbol::Resolved(var->valueExpression);
+        valueExprRes->storage = varResolved->storage;
 
         Type* lhsType = varResolved->typeSymbol;
         Type* rhsType;
@@ -2798,6 +2801,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
         // Okay, so now when we're done, we'll copy over the modifier values from rhs to lhs
         var->type.modifierValues = rhs.modifierValues;
+
+        // If storage types are compatible, set initializer storage to be that of the variable
+        
     }
 
     // check if image formats have been resolved

@@ -18,6 +18,7 @@ IntExpression::IntExpression(int value) :
 {
     this->thisResolved = &this->intResolved;
     this->symbolType = IntExpressionType;
+    this->resolved = this->thisResolved;
 }
 
 //------------------------------------------------------------------------------
@@ -107,7 +108,8 @@ IntExpression::EvalAccessFlags(unsigned& out) const
 bool
 IntExpression::EvalStorage(Storage& out) const
 {
-    out = Storage::Default;
+    auto res = Symbol::Resolved(this);
+    out = res->storage;
     return true;
 }
 

@@ -35,6 +35,7 @@ BinaryExpression::BinaryExpression(uint32_t op, Expression* left, Expression* ri
     this->thisResolved->rhsType = nullptr;
     this->thisResolved->retType = nullptr;
     this->thisResolved->constValueExpression = nullptr;
+    this->resolved = this->thisResolved;
     this->symbolType = Symbol::BinaryExpressionType;
 }
 

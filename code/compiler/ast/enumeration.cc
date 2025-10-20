@@ -14,6 +14,7 @@ Enumeration::Enumeration()
     this->symbolType = Symbol::EnumerationType;
     this->category = Type::Category::EnumCategory;
     this->thisResolved = &this->enumResolved;
+    this->resolved = this->thisResolved;
 
     this->scope.owningSymbol = this;
     this->scope.type = Scope::ScopeType::Type;

@@ -26,6 +26,7 @@ SymbolExpression::SymbolExpression(const FixedString& symbol)
     this->thisResolved = Alloc<SymbolExpression::__Resolved>();
     this->thisResolved->type = nullptr;
     this->symbolType = SymbolExpressionType;
+    this->resolved = this->thisResolved;
 }
 
 //------------------------------------------------------------------------------

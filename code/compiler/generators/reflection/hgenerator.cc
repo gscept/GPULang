@@ -445,6 +445,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                         {
                             case TypeCode::Bool:
                                 initializer.Append(val.b[size]);
+
                                 break;
                             case TypeCode::Int:
                             case TypeCode::Int16:

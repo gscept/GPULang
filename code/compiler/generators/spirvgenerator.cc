@@ -2465,7 +2465,6 @@ GenerateTypeSPIRV(
         || storage == SPIRVResult::Storage::MutableImage;
 
     ConstantString scopeString = SPIRVResult::ScopeToString(storage);
-    std::get<1>(baseType) = TStr(std::get<1>(baseType), "_", scopeString);
     SPVEnum scopeEnum = ScopeToEnum(storage);
     
     if (type.modifiers.size > 0)
@@ -2476,7 +2475,7 @@ GenerateTypeSPIRV(
             const Type::FullType::Modifier& mod = type.modifiers[i];
             if (mod == Type::FullType::Modifier::Pointer && !logicallyAddressed)
             {
-                TStr newBase = TStr("ptr_", gpulangType);
+                TStr newBase = TStr("ptr_", gpulangType, "_", scopeString);
 
                 parentType.push_back(typeName);
                 typeName = AddType(generator, newBase, OpTypePointer, scopeEnum, SPVArg{ typeName });
@@ -2567,11 +2566,13 @@ GenerateTypeSPIRV(
     if (logicallyAddressed || returnAsPointer)
     {
         auto [typeName, gpulangType] = baseType;
-        TStr newBase = TStr("ptr_", gpulangType);
+        TStr newBase = TStr("ptr_", gpulangType, "_", scopeString);
 
         parentType.push_back(typeName);
         typeName = AddType(generator, newBase, OpTypePointer, scopeEnum, SPVArg{ typeName });
         baseType = std::tie(typeName, newBase);
+
+        // Tack on scope
     }
 
     auto ret = SPIRVResult(INVALID_ARG, std::get<0>(baseType), false, false, storage, parentType);
@@ -4498,7 +4499,9 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
     auto sym = static_cast<ArrayInitializerExpression*>(expr);
     ArrayInitializerExpression::__Resolved* arrayInitializerExpressionResolved = Symbol::Resolved(sym);
 
-    SPIRVResult type = GenerateTypeSPIRV(compiler, generator, arrayInitializerExpressionResolved->fullType, arrayInitializerExpressionResolved->type);
+    SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(arrayInitializerExpressionResolved->fullType, arrayInitializerExpressionResolved->type, arrayInitializerExpressionResolved->storage);
+
+    SPIRVResult type = GenerateTypeSPIRV(compiler, generator, arrayInitializerExpressionResolved->fullType, arrayInitializerExpressionResolved->type, storage);
 
     uint32_t name = INVALID_ARG;
     std::vector<SPIRVResult> initResults;

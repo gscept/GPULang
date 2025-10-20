@@ -643,6 +643,15 @@ struct TransientString
     }
 
     template<>
+    void Append(bool arg)
+    {
+        const char* value = arg ? "true" : "false";
+        memcpy(buf + this->size, value, arg ? 4 : 5);
+        this->size += arg ? 4 : 5;
+        this->buf[this->size] = '\0';
+    }
+
+    template<>
     void Append(std::string arg)
     {
         memcpy(this->buf + this->size, arg.c_str(), arg.size());

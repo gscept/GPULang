@@ -149,7 +149,8 @@ ArrayInitializerExpression::EvalAccessFlags(unsigned& out) const
 bool
 ArrayInitializerExpression::EvalStorage(Storage& out) const
 {
-    out = Storage::Default;
+    auto res = Symbol::Resolved(this);
+    out = res->storage;
     return true;
 }
 

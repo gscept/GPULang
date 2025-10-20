@@ -228,4 +228,5 @@ ArrayIndexExpression::EvalStorage(Storage& out) const
 {
     return this->left->EvalStorage(out);
 }
+
 } // namespace GPULang

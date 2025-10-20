@@ -328,7 +328,7 @@ struct Expression : public Symbol
             float f;
             bool b;
         } value;
-
+        Storage storage = Storage::Default;
         //std::string text;
     };
 }; 

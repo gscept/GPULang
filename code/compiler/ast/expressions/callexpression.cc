@@ -20,6 +20,7 @@ CallExpression::CallExpression(Expression* function, const FixedArray<Expression
     this->thisResolved = Alloc<CallExpression::__Resolved>();
     this->thisResolved->function = nullptr;
     this->thisResolved->retType = nullptr;
+    this->resolved = this->thisResolved;
     this->symbolType = CallExpressionType;
 }
 

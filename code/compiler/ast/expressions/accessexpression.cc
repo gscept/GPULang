@@ -166,6 +166,7 @@ AccessExpression::EvalType(Type::FullType& out) const
     out = thisResolved->returnType;
     return true;
 }
+
 //------------------------------------------------------------------------------
 /**
 */
