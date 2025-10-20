@@ -3003,17 +3003,17 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     }
     else
     {
-        // If what would be loaded from source doesn't match the underlying type of parent, then do a logical copy
+        // If we copy between pointers, there is a chance the storage classes don't match, so we need to handle that
         if (target.parentTypes[0] != source.parentTypes[0])
         {
-            
-            // If types don't match (this should only happen with Block vs non-Block structs), make a logical copy and store from that
+            // Load the source and do a logical copy conversion to the target storage class
             source = LoadValueSPIRV(compiler, generator, source);
             source.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, target.parentTypes.back(), source);
             generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name));
         }
         else
         {
+            // If storages do match, do a simple memory copy
             generator->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name));
         }
     }
