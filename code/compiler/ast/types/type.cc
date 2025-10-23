@@ -546,8 +546,16 @@ Type::FullType::operator==(const FullType& rhs) const
 {
     if (this->literal && !rhs.literal)
         return false;
-    if (this->mut && !rhs.mut)
-        return false;
+    if (this->strict || rhs.strict)
+    {
+        if (this->mut != rhs.mut)
+            return false;
+    }
+    else
+    {
+        if (this->mut && !rhs.mut)
+            return false;
+    }
     if (this->modifiers != rhs.modifiers)
         return false;
     if (this->modifierValues.size != rhs.modifierValues.size)

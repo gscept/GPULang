@@ -517,16 +517,12 @@ struct Type : public Symbol
         {
             return this->swizzleName.len == 0 ? this->name : this->swizzleName;
         }
-        
-        void UpdateValue(Expression* value)
-        {
-            this->modifierValues.back() = value;
-        }
 
         struct
         {
             uint8_t literal: 1 = false;
             uint8_t mut: 1 = false;
+            uint8_t strict: 1 = false;
         };
 
 

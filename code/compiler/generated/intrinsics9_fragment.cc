@@ -2760,6 +2760,8 @@ void SetupIntrinsics9()
     /// textureGetSize with Texture1D
     TextureGetSize_Texture1D_texture.name = "texture"_c;
     TextureGetSize_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureGetSize_Texture1D_texture.type.strict = true;
+    TextureGetSize_Texture1D_texture.type.mut = true;
     TextureGetSize_Texture1D_texture.type.modifiers = TextureGetSize_Texture1D_texture_modifiers;
     TextureGetSize_Texture1D_texture.type.modifierValues = TextureGetSize_Texture1D_texture_modifierValues;
     TextureGetSize_Texture1D.documentation = "Get the size of a texture"_c;
@@ -2769,14 +2771,16 @@ void SetupIntrinsics9()
     TextureGetSize_Texture1D.parameters = TextureGetSize_Texture1D_args;
     Symbol::Resolved(&TextureGetSize_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureGetSize_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->signature = "textureGetSize(uniform *texture1D) u32"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->name = "textureGetSize(uniform *texture1D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->nameWithVarNames = "textureGetSize(texture : uniform *texture1D)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture1D)->signature = "textureGetSize(uniform *mutable texture1D) u32"_c;
+    Symbol::Resolved(&TextureGetSize_Texture1D)->name = "textureGetSize(uniform *mutable texture1D)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture1D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture1D)"_c;
     Symbol::Resolved(&TextureGetSize_Texture1D)->returnTypeSymbol = &UInt32Type;
 
     /// textureGetSize with Texture2D
     TextureGetSize_Texture2D_texture.name = "texture"_c;
     TextureGetSize_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureGetSize_Texture2D_texture.type.strict = true;
+    TextureGetSize_Texture2D_texture.type.mut = true;
     TextureGetSize_Texture2D_texture.type.modifiers = TextureGetSize_Texture2D_texture_modifiers;
     TextureGetSize_Texture2D_texture.type.modifierValues = TextureGetSize_Texture2D_texture_modifierValues;
     TextureGetSize_Texture2D.documentation = "Get the size of a texture"_c;
@@ -2786,14 +2790,16 @@ void SetupIntrinsics9()
     TextureGetSize_Texture2D.parameters = TextureGetSize_Texture2D_args;
     Symbol::Resolved(&TextureGetSize_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureGetSize_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->signature = "textureGetSize(uniform *texture2D) u32x2"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->name = "textureGetSize(uniform *texture2D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->nameWithVarNames = "textureGetSize(texture : uniform *texture2D)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture2D)->signature = "textureGetSize(uniform *mutable texture2D) u32x2"_c;
+    Symbol::Resolved(&TextureGetSize_Texture2D)->name = "textureGetSize(uniform *mutable texture2D)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture2D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture2D)"_c;
     Symbol::Resolved(&TextureGetSize_Texture2D)->returnTypeSymbol = &UInt32x2Type;
 
     /// textureGetSize with Texture3D
     TextureGetSize_Texture3D_texture.name = "texture"_c;
     TextureGetSize_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureGetSize_Texture3D_texture.type.strict = true;
+    TextureGetSize_Texture3D_texture.type.mut = true;
     TextureGetSize_Texture3D_texture.type.modifiers = TextureGetSize_Texture3D_texture_modifiers;
     TextureGetSize_Texture3D_texture.type.modifierValues = TextureGetSize_Texture3D_texture_modifierValues;
     TextureGetSize_Texture3D.documentation = "Get the size of a texture"_c;
@@ -2803,14 +2809,16 @@ void SetupIntrinsics9()
     TextureGetSize_Texture3D.parameters = TextureGetSize_Texture3D_args;
     Symbol::Resolved(&TextureGetSize_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureGetSize_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->signature = "textureGetSize(uniform *texture3D) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->name = "textureGetSize(uniform *texture3D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->nameWithVarNames = "textureGetSize(texture : uniform *texture3D)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture3D)->signature = "textureGetSize(uniform *mutable texture3D) u32x3"_c;
+    Symbol::Resolved(&TextureGetSize_Texture3D)->name = "textureGetSize(uniform *mutable texture3D)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture3D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture3D)"_c;
     Symbol::Resolved(&TextureGetSize_Texture3D)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSize with TextureCube
     TextureGetSize_TextureCube_texture.name = "texture"_c;
     TextureGetSize_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureGetSize_TextureCube_texture.type.strict = true;
+    TextureGetSize_TextureCube_texture.type.mut = true;
     TextureGetSize_TextureCube_texture.type.modifiers = TextureGetSize_TextureCube_texture_modifiers;
     TextureGetSize_TextureCube_texture.type.modifierValues = TextureGetSize_TextureCube_texture_modifierValues;
     TextureGetSize_TextureCube.documentation = "Get the size of a texture"_c;
@@ -2820,14 +2828,16 @@ void SetupIntrinsics9()
     TextureGetSize_TextureCube.parameters = TextureGetSize_TextureCube_args;
     Symbol::Resolved(&TextureGetSize_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureGetSize_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->signature = "textureGetSize(uniform *textureCube) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->name = "textureGetSize(uniform *textureCube)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->nameWithVarNames = "textureGetSize(texture : uniform *textureCube)"_c;
+    Symbol::Resolved(&TextureGetSize_TextureCube)->signature = "textureGetSize(uniform *mutable textureCube) u32x3"_c;
+    Symbol::Resolved(&TextureGetSize_TextureCube)->name = "textureGetSize(uniform *mutable textureCube)"_c;
+    Symbol::Resolved(&TextureGetSize_TextureCube)->nameWithVarNames = "textureGetSize(texture : uniform *mutable textureCube)"_c;
     Symbol::Resolved(&TextureGetSize_TextureCube)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSize with Texture1DArray
     TextureGetSize_Texture1DArray_texture.name = "texture"_c;
     TextureGetSize_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureGetSize_Texture1DArray_texture.type.strict = true;
+    TextureGetSize_Texture1DArray_texture.type.mut = true;
     TextureGetSize_Texture1DArray_texture.type.modifiers = TextureGetSize_Texture1DArray_texture_modifiers;
     TextureGetSize_Texture1DArray_texture.type.modifierValues = TextureGetSize_Texture1DArray_texture_modifierValues;
     TextureGetSize_Texture1DArray.documentation = "Get the size of a texture"_c;
@@ -2837,14 +2847,16 @@ void SetupIntrinsics9()
     TextureGetSize_Texture1DArray.parameters = TextureGetSize_Texture1DArray_args;
     Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->signature = "textureGetSize(uniform *texture1DArray) u32x2"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->name = "textureGetSize(uniform *texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->nameWithVarNames = "textureGetSize(texture : uniform *texture1DArray)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture1DArray)->signature = "textureGetSize(uniform *mutable texture1DArray) u32x2"_c;
+    Symbol::Resolved(&TextureGetSize_Texture1DArray)->name = "textureGetSize(uniform *mutable texture1DArray)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture1DArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture1DArray)"_c;
     Symbol::Resolved(&TextureGetSize_Texture1DArray)->returnTypeSymbol = &UInt32x2Type;
 
     /// textureGetSize with Texture2DArray
     TextureGetSize_Texture2DArray_texture.name = "texture"_c;
     TextureGetSize_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureGetSize_Texture2DArray_texture.type.strict = true;
+    TextureGetSize_Texture2DArray_texture.type.mut = true;
     TextureGetSize_Texture2DArray_texture.type.modifiers = TextureGetSize_Texture2DArray_texture_modifiers;
     TextureGetSize_Texture2DArray_texture.type.modifierValues = TextureGetSize_Texture2DArray_texture_modifierValues;
     TextureGetSize_Texture2DArray.documentation = "Get the size of a texture"_c;
@@ -2854,14 +2866,16 @@ void SetupIntrinsics9()
     TextureGetSize_Texture2DArray.parameters = TextureGetSize_Texture2DArray_args;
     Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->signature = "textureGetSize(uniform *texture2DArray) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->name = "textureGetSize(uniform *texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->nameWithVarNames = "textureGetSize(texture : uniform *texture2DArray)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture2DArray)->signature = "textureGetSize(uniform *mutable texture2DArray) u32x3"_c;
+    Symbol::Resolved(&TextureGetSize_Texture2DArray)->name = "textureGetSize(uniform *mutable texture2DArray)"_c;
+    Symbol::Resolved(&TextureGetSize_Texture2DArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture2DArray)"_c;
     Symbol::Resolved(&TextureGetSize_Texture2DArray)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSize with TextureCubeArray
     TextureGetSize_TextureCubeArray_texture.name = "texture"_c;
     TextureGetSize_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureGetSize_TextureCubeArray_texture.type.strict = true;
+    TextureGetSize_TextureCubeArray_texture.type.mut = true;
     TextureGetSize_TextureCubeArray_texture.type.modifiers = TextureGetSize_TextureCubeArray_texture_modifiers;
     TextureGetSize_TextureCubeArray_texture.type.modifierValues = TextureGetSize_TextureCubeArray_texture_modifierValues;
     TextureGetSize_TextureCubeArray.documentation = "Get the size of a texture"_c;
@@ -2871,14 +2885,15 @@ void SetupIntrinsics9()
     TextureGetSize_TextureCubeArray.parameters = TextureGetSize_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->signature = "textureGetSize(uniform *textureCubeArray) u32x4"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->name = "textureGetSize(uniform *textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->nameWithVarNames = "textureGetSize(texture : uniform *textureCubeArray)"_c;
+    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->signature = "textureGetSize(uniform *mutable textureCubeArray) u32x4"_c;
+    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->name = "textureGetSize(uniform *mutable textureCubeArray)"_c;
+    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable textureCubeArray)"_c;
     Symbol::Resolved(&TextureGetSize_TextureCubeArray)->returnTypeSymbol = &UInt32x4Type;
 
     /// textureGetSizeMip with Texture1D, UInt32
     TextureGetSizeMip_Texture1D_texture.name = "texture"_c;
     TextureGetSizeMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureGetSizeMip_Texture1D_texture.type.strict = true;
     TextureGetSizeMip_Texture1D_texture.type.modifiers = TextureGetSizeMip_Texture1D_texture_modifiers;
     TextureGetSizeMip_Texture1D_texture.type.modifierValues = TextureGetSizeMip_Texture1D_texture_modifierValues;
     TextureGetSizeMip_Texture1D_mip.name = "mip"_c;
@@ -2899,6 +2914,7 @@ void SetupIntrinsics9()
     /// textureGetSizeMip with Texture2D, UInt32
     TextureGetSizeMip_Texture2D_texture.name = "texture"_c;
     TextureGetSizeMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureGetSizeMip_Texture2D_texture.type.strict = true;
     TextureGetSizeMip_Texture2D_texture.type.modifiers = TextureGetSizeMip_Texture2D_texture_modifiers;
     TextureGetSizeMip_Texture2D_texture.type.modifierValues = TextureGetSizeMip_Texture2D_texture_modifierValues;
     TextureGetSizeMip_Texture2D_mip.name = "mip"_c;
@@ -2919,6 +2935,7 @@ void SetupIntrinsics9()
     /// textureGetSizeMip with Texture3D, UInt32
     TextureGetSizeMip_Texture3D_texture.name = "texture"_c;
     TextureGetSizeMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureGetSizeMip_Texture3D_texture.type.strict = true;
     TextureGetSizeMip_Texture3D_texture.type.modifiers = TextureGetSizeMip_Texture3D_texture_modifiers;
     TextureGetSizeMip_Texture3D_texture.type.modifierValues = TextureGetSizeMip_Texture3D_texture_modifierValues;
     TextureGetSizeMip_Texture3D_mip.name = "mip"_c;
@@ -2939,6 +2956,7 @@ void SetupIntrinsics9()
     /// textureGetSizeMip with TextureCube, UInt32
     TextureGetSizeMip_TextureCube_texture.name = "texture"_c;
     TextureGetSizeMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureGetSizeMip_TextureCube_texture.type.strict = true;
     TextureGetSizeMip_TextureCube_texture.type.modifiers = TextureGetSizeMip_TextureCube_texture_modifiers;
     TextureGetSizeMip_TextureCube_texture.type.modifierValues = TextureGetSizeMip_TextureCube_texture_modifierValues;
     TextureGetSizeMip_TextureCube_mip.name = "mip"_c;
@@ -2959,6 +2977,7 @@ void SetupIntrinsics9()
     /// textureGetSizeMip with Texture1DArray, UInt32
     TextureGetSizeMip_Texture1DArray_texture.name = "texture"_c;
     TextureGetSizeMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureGetSizeMip_Texture1DArray_texture.type.strict = true;
     TextureGetSizeMip_Texture1DArray_texture.type.modifiers = TextureGetSizeMip_Texture1DArray_texture_modifiers;
     TextureGetSizeMip_Texture1DArray_texture.type.modifierValues = TextureGetSizeMip_Texture1DArray_texture_modifierValues;
     TextureGetSizeMip_Texture1DArray_mip.name = "mip"_c;
@@ -2979,6 +2998,7 @@ void SetupIntrinsics9()
     /// textureGetSizeMip with Texture2DArray, UInt32
     TextureGetSizeMip_Texture2DArray_texture.name = "texture"_c;
     TextureGetSizeMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureGetSizeMip_Texture2DArray_texture.type.strict = true;
     TextureGetSizeMip_Texture2DArray_texture.type.modifiers = TextureGetSizeMip_Texture2DArray_texture_modifiers;
     TextureGetSizeMip_Texture2DArray_texture.type.modifierValues = TextureGetSizeMip_Texture2DArray_texture_modifierValues;
     TextureGetSizeMip_Texture2DArray_mip.name = "mip"_c;
@@ -2999,6 +3019,7 @@ void SetupIntrinsics9()
     /// textureGetSizeMip with TextureCubeArray, UInt32
     TextureGetSizeMip_TextureCubeArray_texture.name = "texture"_c;
     TextureGetSizeMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureGetSizeMip_TextureCubeArray_texture.type.strict = true;
     TextureGetSizeMip_TextureCubeArray_texture.type.modifiers = TextureGetSizeMip_TextureCubeArray_texture_modifiers;
     TextureGetSizeMip_TextureCubeArray_texture.type.modifierValues = TextureGetSizeMip_TextureCubeArray_texture_modifierValues;
     TextureGetSizeMip_TextureCubeArray_mip.name = "mip"_c;

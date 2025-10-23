@@ -422,7 +422,7 @@ def generate_types():
         return spirv_intrinsic_code
 
     class Variable():
-        def __init__(self, decl_name, api_name, type_name, pointer=False, uniform=False, mutable=False, literal=False):
+        def __init__(self, decl_name, api_name, type_name, pointer=False, uniform=False, mutable=False, literal=False, strict=False):
             self.decl_name = decl_name
             self.api_name = api_name
             self.type_name = type_name
@@ -430,6 +430,7 @@ def generate_types():
             self.uniform = uniform
             self.mutable = mutable
             self.literal = literal
+            self.strict = strict
 
     class Function():
         def __init__(self, decl_name, api_name, return_type, parameters, documentation=None, compile_time=False, is_constructor=False, is_member=False):
@@ -470,6 +471,7 @@ def generate_types():
                 if param.pointer:
                     return_string += f'inline constexpr std::array {param.decl_name}_modifiers = {{Type::FullType::Modifier::Pointer}};\n'
                     return_string += f'inline constexpr std::array {param.decl_name}_modifierValues = {{(Expression*)nullptr}};\n'
+
             return_string += f'Function {self.decl_name};\n'
             if len(self.parameters) > 0:
                 return_string += f'inline constexpr std::array {self.decl_name}_args = {{ {", ".join([f"&{param.decl_name}" for param in self.parameters])} }};\n'
@@ -486,6 +488,10 @@ def generate_types():
                 return_string += f'    {param.decl_name}.type = Type::FullType{{ {param.type_name}Type.name }};\n'
                 if param.literal:
                     return_string += f'    {param.decl_name}.type.literal = true;\n'
+                if param.strict:
+                    return_string += f'    {param.decl_name}.type.strict = true;\n'
+                if param.mutable: 
+                    return_string += f'    {param.decl_name}.type.mut = true;\n'
                 if param.pointer:
                     return_string += f'    {param.decl_name}.type.modifiers = {param.decl_name}_modifiers;\n'
                     return_string += f'    {param.decl_name}.type.modifierValues = {param.decl_name}_modifierValues;\n'
@@ -4320,7 +4326,6 @@ def generate_types():
         'Texture2DMSArray': 4
     }
 
-
     intrinsic = 'GetSize'
     for type in texture_types_no_ms:
         return_type = texture_size_types[type]
@@ -4333,16 +4338,14 @@ def generate_types():
             return_type = return_type,
             documentation = 'Get the size of a texture',
             parameters = [
-                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True)
+                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, mutable=True, strict=True)
             ]
         )
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
         spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += '    SPIRVResult lod = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));\n'
-        # Not a bug, SPIRV OpImageQuerySize requires images to be either Unknown or Sampled, which means it's not supported by generic textures. The LOD version allows any texture.
-        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, lod);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         
 
@@ -4362,7 +4365,7 @@ def generate_types():
             return_type = return_type,
             documentation = 'Get the size of a texture at a specific mip level',
             parameters = [
-                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
+                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, strict=True),
                 Variable(decl_name = mip_argument_name, api_name = "mip", type_name='UInt32')
             ]
         )

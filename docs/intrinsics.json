@@ -5158,25 +5158,25 @@
         ],
         "overloads": [
             {
-                "signature": "textureGetSize(uniform texture: *texture1D) u32"
+                "signature": "textureGetSize(uniform texture: *mutable texture1D) u32"
             },
             {
-                "signature": "textureGetSize(uniform texture: *texture2D) u32x2"
+                "signature": "textureGetSize(uniform texture: *mutable texture2D) u32x2"
             },
             {
-                "signature": "textureGetSize(uniform texture: *texture3D) u32x3"
+                "signature": "textureGetSize(uniform texture: *mutable texture3D) u32x3"
             },
             {
-                "signature": "textureGetSize(uniform texture: *textureCube) u32x3"
+                "signature": "textureGetSize(uniform texture: *mutable textureCube) u32x3"
             },
             {
-                "signature": "textureGetSize(uniform texture: *texture1DArray) u32x2"
+                "signature": "textureGetSize(uniform texture: *mutable texture1DArray) u32x2"
             },
             {
-                "signature": "textureGetSize(uniform texture: *texture2DArray) u32x3"
+                "signature": "textureGetSize(uniform texture: *mutable texture2DArray) u32x3"
             },
             {
-                "signature": "textureGetSize(uniform texture: *textureCubeArray) u32x4"
+                "signature": "textureGetSize(uniform texture: *mutable textureCubeArray) u32x4"
             }
         ]
     },

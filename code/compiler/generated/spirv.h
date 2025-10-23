@@ -20852,8 +20852,7 @@ SPIRVResult SPIRV_TextureGetSize_Texture1D(const Compiler* c, SPIRVGenerator* g,
 {
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult lod = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, lod);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20861,8 +20860,7 @@ SPIRVResult SPIRV_TextureGetSize_Texture2D(const Compiler* c, SPIRVGenerator* g,
 {
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult lod = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, lod);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20870,8 +20868,7 @@ SPIRVResult SPIRV_TextureGetSize_Texture3D(const Compiler* c, SPIRVGenerator* g,
 {
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult lod = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, lod);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20879,8 +20876,7 @@ SPIRVResult SPIRV_TextureGetSize_TextureCube(const Compiler* c, SPIRVGenerator* 
 {
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult lod = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, lod);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20888,8 +20884,7 @@ SPIRVResult SPIRV_TextureGetSize_Texture1DArray(const Compiler* c, SPIRVGenerato
 {
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult lod = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, lod);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20897,8 +20892,7 @@ SPIRVResult SPIRV_TextureGetSize_Texture2DArray(const Compiler* c, SPIRVGenerato
 {
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult lod = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, lod);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20906,8 +20900,7 @@ SPIRVResult SPIRV_TextureGetSize_TextureCubeArray(const Compiler* c, SPIRVGenera
 {
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult lod = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, lod);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
     return SPIRVResult(ret, returnType, true);
 }
 
