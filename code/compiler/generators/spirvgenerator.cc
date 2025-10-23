@@ -2364,11 +2364,6 @@ GenerateTypeSPIRV(
     std::tuple<uint32_t, TStr> baseType;
     std::vector<uint32_t> parentType;
     TransientString typeNameStr;
-    bool bound =
-        generator->typeState.storage == SPIRVResult::Storage::StorageBuffer
-        || generator->typeState.storage == SPIRVResult::Storage::Uniform
-        || generator->typeState.storage == SPIRVResult::Storage::PushConstant
-        || generator->typeState.storage == SPIRVResult::Storage::UniformConstant;
 
     ConstantString scopeString = SPIRVResult::ScopeToString(generator->typeState.storage);
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
@@ -4134,7 +4129,8 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     generator->typeState.storage = storage;
     if (logicallyAddressed
         || storage == SPIRVResult::Storage::StorageBuffer
-        || storage == SPIRVResult::Storage::Uniform)
+        || storage == SPIRVResult::Storage::Uniform
+        || storage == SPIRVResult::Storage::PushConstant)
     {
         generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Interface;
     }
