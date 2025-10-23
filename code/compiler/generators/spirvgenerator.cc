@@ -2069,7 +2069,26 @@ SPIRVResult GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* gene
 SPIRVResult GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Expression* expr);
 bool GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Statement* stat);
 SPIRVResult GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize = 1);
-uint32_t GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool bound);
+
+TransientString 
+FormatExplicitLayout(const TransientString& name, const SPIRVGenerator::TypeState::TypeLayout layout)
+{
+    TransientString nameStr = TransientString(name);
+    switch (layout)
+    {
+        case SPIRVGenerator::TypeState::TypeLayout::Explicit:
+            nameStr = TransientString(nameStr, "_Explicit");
+            break;
+        case SPIRVGenerator::TypeState::TypeLayout::Interface:
+            nameStr = TransientString(nameStr, "_Interface");
+            break;
+        default:
+            break;
+    }
+    return nameStr;
+
+}
+uint32_t GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol);
 
 using ImageFormatter = std::function<TransientString(uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format)>;
 using ImageTypeGenerator = std::function<uint32_t(SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format)>;
@@ -2338,16 +2357,23 @@ GenerateTypeSPIRV(
     , SPIRVGenerator* generator
     , const Type::FullType& type
     , Type* typeSymbol
-    , SPIRVResult::Storage storage = SPIRVResult::Storage::Function
-    , bool isInterface = false
     , bool returnAsPointer = false
 )
 {
+    assert(generator->typeState.storage != SPIRVResult::Storage::Invalid);
     std::tuple<uint32_t, TStr> baseType;
     std::vector<uint32_t> parentType;
+    TransientString typeNameStr;
+    bool bound =
+        generator->typeState.storage == SPIRVResult::Storage::StorageBuffer
+        || generator->typeState.storage == SPIRVResult::Storage::Uniform
+        || generator->typeState.storage == SPIRVResult::Storage::PushConstant
+        || generator->typeState.storage == SPIRVResult::Storage::UniformConstant;
 
+    ConstantString scopeString = SPIRVResult::ScopeToString(generator->typeState.storage);
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
     {
+        typeNameStr = typeSymbol->name;
         baseType = GenerateBaseTypeSPIRV(compiler, generator, typeSymbol->baseType, typeSymbol->columnSize, typeSymbol->rowSize);
     }
     else if (typeSymbol->category == Type::TextureCategory)
@@ -2377,8 +2403,8 @@ GenerateTypeSPIRV(
         auto handleGenerator = generators.find(typeSymbol->baseType);
         uint32_t name = handleGenerator->second(generator, gpuLangStr, floatType, depthBits, sampleBits, format);
 
-        TStr ty = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
         baseType = std::tie(name, gpuLangStr);
+        typeNameStr = gpuLangStr;
     }
     else if (typeSymbol->category == Type::SampledTextureCategory)
     {
@@ -2403,8 +2429,8 @@ GenerateTypeSPIRV(
         auto handleGenerator = generators.find(typeSymbol->baseType);
         uint32_t name = handleGenerator->second(generator, gpuLangStr, floatType, depthBits, sampleBits, format);
 
-        TStr ty = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
         baseType = std::tie(name, gpuLangStr);
+        typeNameStr = gpuLangStr;
     }
     else if (typeSymbol->category == Type::PixelCacheCategory)
     {
@@ -2417,8 +2443,8 @@ GenerateTypeSPIRV(
         auto handleTypeIt = handleTable.find(typeSymbol->baseType);
         auto [gpulangType, spirvFormatter] = handleTypeIt->second;
         
-        TStr ty = spirvFormatter(floatType, 0, 0, nullptr);
         baseType = std::tie(name, gpulangType);
+        typeNameStr = gpulangType;
     }
     else if (typeSymbol->category == Type::SamplerCategory)
     {
@@ -2428,6 +2454,7 @@ GenerateTypeSPIRV(
         auto handleTypeIt = handleTable.find(typeSymbol->baseType);
         auto [gpulangType, spirvFormatter] = handleTypeIt->second;
         baseType = std::tie(name, gpulangType);
+        typeNameStr = gpulangType;
     }
     else if (typeSymbol->category == Type::EnumCategory)
     {
@@ -2435,38 +2462,47 @@ GenerateTypeSPIRV(
     }
     else if (typeSymbol->category == Type::StructureCategory)
     {
-        bool bound =
-            type.IsPointer()
-            && (
-                storage == SPIRVResult::Storage::StorageBuffer
-                || storage == SPIRVResult::Storage::Uniform
-                || storage == SPIRVResult::Storage::PushConstant
-                || storage == SPIRVResult::Storage::UniformConstant
-            );
-        TransientString typeNameStr = typeSymbol->name;
-        if (bound)
+        SPIRVGenerator::TypeState::TypeLayout oldLayout = generator->typeState.layout;
+
+        // If we are generating an interface, but there are array types sitting on top, then the struct is a subtype that needs explicit layout
+        if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface)
         {
-            typeNameStr = TransientString(typeNameStr, "_Block");
+            if (type.modifiers.size > 0)
+            {
+                for (int i = type.modifiers.size - 1; i >= 0; i--)
+                {
+                    if (type.modifiers[i] == Type::FullType::Modifier::Array)
+                    {
+                        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+                        break;
+                    }
+                }
+            }
         }
+        typeNameStr = FormatExplicitLayout(typeSymbol->name, generator->typeState.layout);
+
         auto t = GetSymbol(generator, typeNameStr);
         if (t.value == INVALID_ARG)
         {
-
-            // type is not generated by a previous structure declaration,
-            t.value = GenerateStructureSPIRV(compiler, generator, static_cast<Structure*>(typeSymbol), bound);
+            // type is not generated by a previous structure declaration
+            
+            t.value = GenerateStructureSPIRV(compiler, generator, static_cast<Structure*>(typeSymbol));
         }
-        baseType = std::tie(t.value, typeNameStr);
+        generator->typeState.layout = oldLayout;
+
+        // The scope string is already consumed by the struct
+        baseType = std::tie(t.value, typeSymbol->name);
     }
 
     bool isStructPadded = false;
-    bool logicallyAddressed = storage == SPIRVResult::Storage::UniformConstant
-        || storage == SPIRVResult::Storage::Image
-        || storage == SPIRVResult::Storage::Sampler
-        || storage == SPIRVResult::Storage::MutableImage;
+    bool logicallyAddressed = generator->typeState.storage == SPIRVResult::Storage::UniformConstant
+        || generator->typeState.storage == SPIRVResult::Storage::Image
+        || generator->typeState.storage == SPIRVResult::Storage::Sampler
+        || generator->typeState.storage == SPIRVResult::Storage::MutableImage;
 
-    ConstantString scopeString = SPIRVResult::ScopeToString(storage);
-    SPVEnum scopeEnum = ScopeToEnum(storage);
+    SPVEnum scopeEnum = ScopeToEnum(generator->typeState.storage);
     
+    uint32_t lastStructType = std::get<0>(baseType);
     if (type.modifiers.size > 0)
     {
         for (int i = type.modifiers.size - 1; i >= 0; i--)
@@ -2475,47 +2511,71 @@ GenerateTypeSPIRV(
             const Type::FullType::Modifier& mod = type.modifiers[i];
             if (mod == Type::FullType::Modifier::Pointer && !logicallyAddressed)
             {
-                TStr newBase = TStr("ptr_", gpulangType, "_", scopeString);
+                gpulangType = TStr("ptr_", gpulangType);
+                typeNameStr = TStr("ptr_", typeNameStr, "_", scopeString);
+                if (scopeString != nullptr)
+                {
+                    gpulangType.Append("_");
+                    gpulangType.Append(scopeString);
+                }
 
                 parentType.push_back(typeName);
-                typeName = AddType(generator, newBase, OpTypePointer, scopeEnum, SPVArg{ typeName });
-                baseType = std::tie(typeName, newBase);
+                typeName = AddType(generator, typeNameStr, OpTypePointer, scopeEnum, SPVArg{ typeName });
+                baseType = std::tie(typeName, gpulangType);
             }
             else if (mod == Type::FullType::Modifier::Array)
             {
                 if (type.modifierValues[i] == nullptr)
                 {
-                    TStr newBase = TStr("[]_", gpulangType);
+                    SPIRVGenerator::TypeState::TypeLayout oldLayout = generator->typeState.layout;
+                    if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface)
+                        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+                    gpulangType = TStr("[]_", gpulangType);
+                    typeNameStr = FormatExplicitLayout(gpulangType, generator->typeState.layout);
                     parentType.push_back(typeName);
                     uint32_t structType = typeName;
 
-                    bool newType = !HasType(generator, newBase);
-                    typeName = AddType(generator, newBase, OpTypeRuntimeArray, SPVArg{ typeName });
+                    bool newType = !HasType(generator, typeNameStr);
+                    typeName = AddType(generator, typeNameStr, OpTypeRuntimeArray, SPVArg{ typeName });
                     if (newType)
                     {
-                        if (typeSymbol->category == Type::StructureCategory)
+                        if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Explicit || generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface)
                         {
-                            Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
-                            generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
-                        }
-                        else
-                        {
-                            generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
+                            if (typeSymbol->category == Type::StructureCategory)
+                            {
+                                Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
+                                generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
+                            }
+                            else
+                            {
+                                if (!logicallyAddressed)
+                                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
+                            }
                         }
                     }
-                    newBase = TStr::Compact("struct_", newBase);
-                    typeName = AddType(generator, newBase, OpTypeStruct, SPVArg{ typeName });
-                    baseType = std::tie(typeName, newBase);
 
-                    if (newType)
+                    generator->typeState.layout = oldLayout;
+                    
+                    if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface && typeSymbol->category == Type::StructureCategory)
                     {
-                        generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
-                        generator->writer->Decorate(SPVArg(typeName), Decorations::Block);
+                        gpulangType = TStr("struct_", gpulangType);
+                        typeNameStr = FormatExplicitLayout(gpulangType, generator->typeState.layout);
+                        typeName = AddType(generator, typeNameStr, OpTypeStruct, SPVArg{ typeName });
+                        lastStructType = typeName;
+                        baseType = std::tie(typeName, gpulangType);
+
+                        // If this type is bound (interface), set storage to StorageBuffer
+                        if (newType)
+                        {
+                            generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
+                            generator->writer->Decorate(SPVArg(typeName), Decorations::Block);
+                        }
+                        generator->typeState.storage = SPIRVResult::Storage::StorageBuffer;
+                        scopeString = SPIRVResult::ScopeToString(SPIRVResult::Storage::StorageBuffer);
+                        scopeEnum = ScopeToEnum(generator->typeState.storage);
+                        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+                        isStructPadded = true;
                     }
-                    storage = SPIRVResult::Storage::StorageBuffer;
-                    scopeString = SPIRVResult::ScopeToString(storage);
-                    scopeEnum = ScopeToEnum(storage);
-                    isStructPadded = true;
                 }
                 else
                 {
@@ -2523,39 +2583,58 @@ GenerateTypeSPIRV(
                     ValueUnion val;
                     type.modifierValues[i]->EvalValue(val);
                     val.Store(size);
-                    TStr newBase = TStr("[", size, "]_", gpulangType);
+
+                    SPIRVGenerator::TypeState::TypeLayout oldLayout = generator->typeState.layout;
+                    if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface)
+                        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+
+                    gpulangType = TStr("[", size, "]_", gpulangType);
+                    typeNameStr = FormatExplicitLayout(gpulangType, generator->typeState.layout);
+
                     parentType.push_back(typeName);
                     uint32_t intType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, 1);
 
                     SPIRVResult arraySizeConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(size));
-                    bool newType = !HasType(generator, newBase);
-                    typeName = AddType(generator, newBase, OpTypeArray, SPVArg{ typeName }, arraySizeConstant);
-                    baseType = std::tie(typeName, newBase);
+                    bool newType = !HasType(generator, typeNameStr);
+                    typeName = AddType(generator, typeNameStr, OpTypeArray, SPVArg{ typeName }, arraySizeConstant);
+                    baseType = std::tie(typeName, gpulangType);
+
                     if (newType)
                     {
-                        if (typeSymbol->category == Type::StructureCategory)
+                        if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Explicit || generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface)
                         {
-                            Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
-                            generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
-                        }
-                        else
-                        {
-                            generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
+                            if (typeSymbol->category == Type::StructureCategory)
+                            {
+                                Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
+                                generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
+                            }
+                            else
+                            {
+                                if (!logicallyAddressed)
+                                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
+                            }
                         }
                     }
 
-                    // if this is an interface, wrap it in a struct to allow interface binding
-                    if (isInterface)
-                    {
-                        newBase = TStr("struct_", newBase);
-                        typeName = AddType(generator, newBase, OpTypeStruct, SPVArg{ typeName });
-                        baseType = std::tie(typeName, newBase);
+                    generator->typeState.layout = oldLayout;
 
+                    // if this is an interface, wrap it in a struct to allow interface binding
+                    if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface && typeSymbol->category == Type::StructureCategory)
+                    {
+                        gpulangType = TStr("struct_", gpulangType);
+                        typeNameStr = FormatExplicitLayout(gpulangType, generator->typeState.layout);
+                        typeName = AddType(generator, typeNameStr, OpTypeStruct, SPVArg{ typeName });
+                        lastStructType = typeName;
+                        baseType = std::tie(typeName, gpulangType);
                         if (newType)
                         {
                             generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
                             generator->writer->Decorate(SPVArg(typeName), Decorations::Block);
                         }
+                        generator->typeState.storage = SPIRVResult::Storage::StorageBuffer;
+                        scopeString = SPIRVResult::ScopeToString(SPIRVResult::Storage::StorageBuffer);
+                        scopeEnum = ScopeToEnum(generator->typeState.storage);
+                        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
                         isStructPadded = true;
                     }
                 }
@@ -2566,16 +2645,17 @@ GenerateTypeSPIRV(
     if (logicallyAddressed || returnAsPointer)
     {
         auto [typeName, gpulangType] = baseType;
-        TStr newBase = TStr("ptr_", gpulangType, "_", scopeString);
+        gpulangType = TStr("ptr_", gpulangType);
+        typeNameStr = TStr("ptr_", typeNameStr, "_", scopeString);
 
         parentType.push_back(typeName);
-        typeName = AddType(generator, newBase, OpTypePointer, scopeEnum, SPVArg{ typeName });
-        baseType = std::tie(typeName, newBase);
+        typeName = AddType(generator, typeNameStr, OpTypePointer, scopeEnum, SPVArg{ typeName });
+        baseType = std::tie(typeName, gpulangType);
 
         // Tack on scope
     }
 
-    auto ret = SPIRVResult(INVALID_ARG, std::get<0>(baseType), false, false, storage, parentType);
+    auto ret = SPIRVResult(INVALID_ARG, std::get<0>(baseType), false, false, generator->typeState.storage, parentType);
     ret.isStructPadded = isStructPadded;
     return ret;
 }
@@ -2588,8 +2668,8 @@ ToSPIRVTypeString(
     const Compiler* compiler,
     SPIRVGenerator* generator,
     const Type::FullType& type,
-    Type* typeSymbol,
-    bool isInterface = false)
+    Type* typeSymbol
+)
 {
     TransientString ret;
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
@@ -2655,7 +2735,7 @@ ToSPIRVTypeString(
     }
     else if (typeSymbol->category == Type::StructureCategory)
     {
-        ret = typeSymbol->name;
+        ret = FormatExplicitLayout(typeSymbol->name, generator->typeState.layout);
     }
 
     bool isStructPadded = false;
@@ -2671,8 +2751,7 @@ ToSPIRVTypeString(
         {
             if (type.modifierValues[i] == nullptr)
             {
-                ret = TStr("[]_", ret);
-                ret = TStr("struct_", ret);
+                ret = TStr("[]_struct_", ret);
                 isStructPadded = true;
             }
             else
@@ -2682,12 +2761,6 @@ ToSPIRVTypeString(
                 type.modifierValues[i]->EvalValue(val);
                 val.Store(size);
                 ret = TStr("[", size, "]_", ret);
-
-                // if this is an interface, wrap it in a struct to allow interface binding
-                if (isInterface)
-                {
-                    ret = TStr("struct_", ret);
-                }
             }
         }
     }
@@ -2862,11 +2935,9 @@ GeneratePointerTypeSPIRV(
     , SPIRVGenerator* generator
     , const Type::FullType& type
     , Type* typeSymbol
-    , SPIRVResult::Storage storage = SPIRVResult::Storage::Function
-    , bool isInterface = false
     )
 {
-    SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, type, typeSymbol, storage, isInterface, true);
+    SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, type, typeSymbol, true);
 
     return returnType;
 }
@@ -2999,6 +3070,10 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     // Perform OpStore if source is a value, otherwise copy memory
     if (source.isValue)
     {
+        if (target.parentTypes.back() != source.typeName)
+        {
+            source.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, target.parentTypes.back(), source);
+        }
         generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name));
     }
     else
@@ -3587,7 +3662,9 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 
     if (funcResolved->isPrototype)
         return;
+    generator->typeState.storage = SPIRVResult::Storage::Function;
     SPIRVResult returnName = GenerateTypeSPIRV(compiler, generator, func->returnType, static_cast<Type*>(funcResolved->returnTypeSymbol));
+    generator->typeState.storage = SPIRVResult::Storage::Function;
 
     TStr typeArgs;
     TStr spvTypes;
@@ -3604,8 +3681,11 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         else
         {
             SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
-            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol, storage);
+            assert(generator->typeState.storage == SPIRVResult::Storage::Function);
+            generator->typeState.storage = storage;
+            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
             typeArgs.Append(ToSPIRVTypeString(compiler, generator, param->type, paramResolved->typeSymbol));
+            generator->typeState.storage = SPIRVResult::Storage::Function;
             if (param != func->parameters.back())
                 typeArgs.Append(",");
 
@@ -3628,13 +3708,15 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         {
             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
             SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
-            SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol, storage);
+            generator->typeState.storage = storage;
+            SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+            TransientString type = ToSPIRVTypeString(compiler, generator, param->type, paramResolved->typeSymbol);
+            generator->typeState.storage = SPIRVResult::Storage::Function;
 
             // If value is not a pointer, generate a copy of the value inside the function
             if (!param->type.IsPointer())
             {
                 uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{param->name.c_str()});
-                TransientString type = ToSPIRVTypeString(compiler, generator, param->type, paramResolved->typeSymbol);
                 ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
 
                 TStr argPtrType = TStr::Compact("ptr_", type, "_", scope);
@@ -3686,7 +3768,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 /**
 */
 uint32_t
-GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool bound = false)
+GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
@@ -3703,6 +3785,14 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     }
     uint32_t name = INVALID_ARG;
     uint32_t structName = generator->writer->Reserve();
+
+    // If the generator is set to generate an interface, do so and set the state to emit explicitly laid out sub-types
+    TransientString nameStr = FormatExplicitLayout(struc->name, generator->typeState.layout);
+    if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface)
+    {
+        generator->writer->Decorate(SPVArg(structName), Decorations::Block);
+        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+    }
 
     if (compiler->options.debugSymbols)
         generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ structName }, struc->name.c_str());
@@ -3734,12 +3824,15 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             memberTypes.append(Format("%%%d ", varType.typeName));
             memberTypeArray.Append(SPVArg{ varType.typeName });
 
-            // If this struct is generated for binding 
-            generator->writer->MemberDecorate(SPVArg{ structName }, i, Decorations::Offset, varResolved->structureOffset);
-            if (varResolved->typeSymbol->IsMatrix())
+            // If this struct is generated for binding, decorate with offsets
+            if (generator->typeState.layout == SPIRVGenerator::TypeState::Interface || generator->typeState.layout == SPIRVGenerator::TypeState::Explicit)
             {
-                generator->writer->MemberDecorate(SPVArg{ structName }, i, Decorations::MatrixStride, varResolved->typeSymbol->CalculateStride() / varResolved->typeSymbol->rowSize);
-                generator->writer->MemberDecorate(SPVArg{ structName }, i, Decorations::ColMajor);
+                generator->writer->MemberDecorate(SPVArg{ structName }, i, Decorations::Offset, varResolved->structureOffset);
+                if (varResolved->typeSymbol->IsMatrix())
+                {
+                    generator->writer->MemberDecorate(SPVArg{ structName }, i, Decorations::MatrixStride, varResolved->typeSymbol->CalculateStride() / varResolved->typeSymbol->rowSize);
+                    generator->writer->MemberDecorate(SPVArg{ structName }, i, Decorations::ColMajor);
+                }
             }
             offset += varResolved->typeSymbol->CalculateSize();
         }
@@ -3754,7 +3847,11 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             assert(!args[0].isValue);
 
             Function::__Resolved* funRes = Symbol::Resolved(fun);
-            SPIRVResult ptrReturnType = GeneratePointerTypeSPIRV(c, g, fun->returnType, funRes->returnTypeSymbol, SPIRVResult::Storage::StorageBuffer);
+            g->typeState.storage = SPIRVResult::Storage::StorageBuffer;
+            g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+            SPIRVResult ptrReturnType = GeneratePointerTypeSPIRV(c, g, fun->returnType, funRes->returnTypeSymbol);
+            g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
+            g->typeState.storage = SPIRVResult::Storage::Function;
             SPIRVResult accessedArg = args[0];
             accessedArg.typeName = ptrReturnType.typeName;
             accessedArg.parentTypes = ptrReturnType.parentTypes;
@@ -3774,7 +3871,11 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             SPIRVResult accessedArg = args[0];
 
             Function::__Resolved* funRes = Symbol::Resolved(fun);
-            SPIRVResult ptrReturnType = GeneratePointerTypeSPIRV(c, g, fun->returnType, funRes->returnTypeSymbol, SPIRVResult::Storage::StorageBuffer);
+            g->typeState.storage = SPIRVResult::Storage::StorageBuffer;
+            g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+            SPIRVResult ptrReturnType = GeneratePointerTypeSPIRV(c, g, fun->returnType, funRes->returnTypeSymbol);
+            g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
+            g->typeState.storage = SPIRVResult::Storage::Function;
 
             if (args[0].isStructPadded)
             {
@@ -3821,7 +3922,11 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             Type::FullType temp = fun->parameters[0]->type;
             temp.modifiers.size = 0;
             temp.modifierValues.size = 0;
-            SPIRVResult ptrToDataType = GeneratePointerTypeSPIRV(c, g, temp, firstArgRes->typeSymbol, SPIRVResult::Storage::StorageBuffer);
+            g->typeState.storage = SPIRVResult::Storage::StorageBuffer;
+            g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+            SPIRVResult ptrToDataType = GeneratePointerTypeSPIRV(c, g, temp, firstArgRes->typeSymbol);
+            g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
+            g->typeState.storage = SPIRVResult::Storage::Function;
 
             if (args[0].isStructPadded)
             {
@@ -3852,7 +3957,11 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             SPIRVResult accessedArg = args[0];
 
             Function::__Resolved* funRes = Symbol::Resolved(fun);
-            SPIRVResult ptrReturnType = GeneratePointerTypeSPIRV(c, g, fun->returnType, funRes->returnTypeSymbol, SPIRVResult::Storage::StorageBuffer);
+            g->typeState.storage = SPIRVResult::Storage::StorageBuffer;
+            g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+            SPIRVResult ptrReturnType = GeneratePointerTypeSPIRV(c, g, fun->returnType, funRes->returnTypeSymbol);
+            g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
+            g->typeState.storage = SPIRVResult::Storage::Function;
 
             if (args[0].isStructPadded)
             {
@@ -3872,12 +3981,6 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
         refIndexedIt++;
     }
 
-    TransientString nameStr = struc->name;
-    if (bound)
-    {
-        generator->writer->Decorate(SPVArg(structName), Decorations::Block);
-        nameStr = TransientString(nameStr, "_Block");
-    }
     generator->writer->ReservedType(OpTypeStruct, nameStr, SPVWriter::Section::Declarations, structName, SPVArgList(memberTypeArray), SPVComment{ .str = nameStr.c_str() });
     return structName;
 }
@@ -3897,8 +4000,10 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
     
     Type* samplerTypeSymbol = compiler->GetSymbol<Type>(ConstantString("sampler"));
     Type::FullType fullType = Type::FullType{ ConstantString("sampler") };
-    SPIRVResult::Storage scope = ResolveSPIRVVariableStorage(fullType, samplerTypeSymbol, Storage::Uniform);
-    SPIRVResult samplerType = GeneratePointerTypeSPIRV(compiler, generator, fullType, samplerTypeSymbol, scope);
+    SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(fullType, samplerTypeSymbol, Storage::Uniform);
+    generator->typeState.storage = storage;
+    SPIRVResult samplerType = GeneratePointerTypeSPIRV(compiler, generator, fullType, samplerTypeSymbol);
+    generator->typeState.storage = SPIRVResult::Storage::Function;
 
     // Generate inline sampler
     if (samplerResolved->isInline)
@@ -4026,7 +4131,16 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         || storage == SPIRVResult::Storage::Sampler
         || storage == SPIRVResult::Storage::MutableImage;
     
-    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol, storage, storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::StorageBuffer);
+    generator->typeState.storage = storage;
+    if (logicallyAddressed
+        || storage == SPIRVResult::Storage::StorageBuffer
+        || storage == SPIRVResult::Storage::Uniform)
+    {
+        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Interface;
+    }
+    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol);
+    generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
+    generator->typeState.storage = SPIRVResult::Storage::Function;
     //std::string type = varResolved->type.name;
     ConstantString scope = SPIRVResult::ScopeToString(typeName.scope);
 
@@ -4100,6 +4214,8 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 if (compiler->options.debugSymbols)
                     generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
                 SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
+                if (typeName.parentTypes.back() != loaded.typeName)
+                    loaded.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, typeName.parentTypes.back(), loaded);
                 generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(name), loaded);
             }
         }
@@ -4211,7 +4327,6 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
     {
         funName = sym.value;
 
-
         // If the conversions list is non empty, it means we have to convert every argument
         bool argumentsNeedsConversion = resolvedCall->conversions.size != 0;
         
@@ -4228,7 +4343,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
             SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
             if (!resolvedCall->argumentTypes[i].IsPointer())
                 arg = LoadValueSPIRV(compiler,generator, arg);
-            
+
 
             generator->literalExtract = false;
 
@@ -4248,6 +4363,29 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                     }
                     else
                         arg = it->second(compiler, generator, convertedReturn, { arg });
+                }
+            }
+            
+            Variable* param = resolvedCall->function->parameters[i];
+            Variable::__Resolved* paramResolved = Symbol::Resolved(param);
+            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
+            generator->typeState.storage = storage;
+            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+            generator->typeState.storage = SPIRVResult::Storage::Function;
+
+            // If there is a storage mismatch between call and function, make a logical copy
+            if (arg.isValue)
+            {
+                if (typeName.typeName != arg.typeName)
+                {
+                    arg.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, typeName.typeName, SPVArg(arg.name));
+                }
+            }
+            else
+            {
+                if (typeName.parentTypes.back() != arg.parentTypes.back())
+                {
+                    arg.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, typeName.typeName, SPVArg(arg.name));
                 }
             }
 
@@ -4367,7 +4505,13 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
     arrayIndexExpression->left->EvalType(leftType);
     arrayIndexExpression->right->EvalType(rightType);
 
-    SPIRVResult returnType = GeneratePointerTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType, leftSymbol.scope);
+    generator->typeState.storage = leftSymbol.scope;
+    if (leftSymbol.scope == SPIRVResult::Storage::StorageBuffer
+        || leftSymbol.scope == SPIRVResult::Storage::UniformConstant)
+        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+    SPIRVResult returnType = GeneratePointerTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType);
+    generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
+    generator->typeState.storage = SPIRVResult::Storage::Function;
 
     // Temporarily remove the access chain since the index expression doesn't need it
     auto accessChain = generator->accessChain;
@@ -4501,7 +4645,9 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
 
     SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(arrayInitializerExpressionResolved->fullType, arrayInitializerExpressionResolved->type, arrayInitializerExpressionResolved->storage);
 
-    SPIRVResult type = GenerateTypeSPIRV(compiler, generator, arrayInitializerExpressionResolved->fullType, arrayInitializerExpressionResolved->type, storage);
+    generator->typeState.storage = storage;
+    SPIRVResult type = GenerateTypeSPIRV(compiler, generator, arrayInitializerExpressionResolved->fullType, arrayInitializerExpressionResolved->type);
+    generator->typeState.storage = SPIRVResult::Storage::Function;
 
     uint32_t name = INVALID_ARG;
     std::vector<SPIRVResult> initResults;
@@ -4763,7 +4909,9 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
 
                         // Create an index for the offset in the struct, and a type for the type of that member
                         SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
-                        SPIRVResult typeName = GeneratePointerTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol, lhs.scope);
+                        generator->typeState.storage = lhs.scope;
+                        SPIRVResult typeName = GeneratePointerTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol);
+                        generator->typeState.storage = SPIRVResult::Storage::Function;
                         
                         // Since this is na access chain, we need to be returning a pointer to the type
                         generator->PushAccessChain(lhsSymbol, lhs.scope);
@@ -4839,8 +4987,9 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
     SPIRVResult loadedRight = LoadValueSPIRV(compiler, generator, elseResult);
     uint32_t ret = generator->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, loadedLeft.typeName, loadedCondition, loadedLeft, loadedRight);
 
-    SPIRVResult res = ifResult;
-    res.typeName = ret;
+    // The type of left and right are identical
+    SPIRVResult res = loadedLeft;
+    res.name = ret;
     return res;
 }
 
@@ -5026,7 +5175,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             {
                 SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
                 uint32_t res = generator->writer->MappedInstruction(negOp, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
-                return SPIRVResult(res, rhs.typeName, true);
+                return SPIRVResult(res, loaded.typeName, true);
             }
         }
         case '+':
@@ -5231,7 +5380,9 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                                     SPIRVResult index = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
 
                                     // If part of an access chain, generate a pointer version of the type
-                                    res = GeneratePointerTypeSPIRV(compiler, generator, var->type, varRes->typeSymbol, accessStorage);
+                                    generator->typeState.storage = accessStorage;
+                                    res = GeneratePointerTypeSPIRV(compiler, generator, var->type, varRes->typeSymbol);
+                                    generator->typeState.storage = SPIRVResult::Storage::Function;
                                     res.scope = accessStorage;
                                     res.AddAccessChainLink({ index });
                                     break;
@@ -5255,7 +5406,10 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                 }
                 else
                 {
+                    SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(symResolved->fullType, symResolved->type, symResolved->storage);
+                    generator->typeState.storage = storage;
                     type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type);
+                    generator->typeState.storage = SPIRVResult::Storage::Function;
                     return SPIRVResult(GetSymbol(generator, symbolExpression->symbol).value, type.typeName, false, false, type.scope, type.parentTypes);
                 }
             }

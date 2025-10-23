@@ -797,7 +797,9 @@ def generate_types():
                     is_member=True
                 )
 
-                spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
+                spirv_function = f'    g->typeState.storage = args[0].scope;\n'
+                spirv_function += f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type);\n'
+                spirv_function += f'    g->typeState.storage = SPIRVResult::Storage::Function;\n'
                 spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);\n'
                 spirv_function += '    SPIRVResult ret = args[0];\n'
                 spirv_function += '    ret.AddAccessChainLink({index});\n'
@@ -1191,7 +1193,9 @@ def generate_types():
                         is_member=True
                     )
 
-                    spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{vec_type}Type, args[0].scope);\n'
+                    spirv_function = f'    g->typeState.storage = args[0].scope;\n'
+                    spirv_function += f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{vec_type}Type);\n'
+                    spirv_function += f'    g->typeState.storage = SPIRVResult::Storage::Function;\n'
                     spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);\n'
                     spirv_function += '    SPIRVResult ret = args[0];\n'
                     spirv_function += '    ret.AddAccessChainLink({index});\n'
@@ -4870,7 +4874,9 @@ def generate_types():
                 spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
                 spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);\n'
                 spirv_function += '    SPIRVResult sample = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));\n'
-                spirv_function += f'    SPIRVResult type = GenerateTypeSPIRV(c, g, {texture_argument_name}.type, Symbol::Resolved(&{texture_argument_name})->typeSymbol, SPIRVResult::Storage::Image);\n'
+                spirv_function += f'    g->typeState.storage = SPIRVResult::Storage::Image;\n';
+                spirv_function += f'    SPIRVResult type = GenerateTypeSPIRV(c, g, {texture_argument_name}.type, Symbol::Resolved(&{texture_argument_name})->typeSymbol);\n'
+                spirv_function += f'    g->typeState.storage = SPIRVResult::Storage::Function;\n';
                 spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpImageTexelPointer, SPVWriter::Section::LocalFunction, type.typeName, texture, coord, sample);\n'
                 spirv_function += f'    ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, SPVArg(ret), value);\n'
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'

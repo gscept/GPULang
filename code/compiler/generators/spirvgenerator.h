@@ -482,6 +482,17 @@ public:
     static std::unordered_map<Function*, FunctionToSPIRVMapping> IntrinsicMap;
     std::unordered_map<Function*, FunctionToSPIRVMapping> generatorIntrinsics;
 
+    struct TypeState
+    {
+        enum TypeLayout
+        {
+            Relaxed,    // Typical layout, no specific offsets or strides
+            Explicit,   // Layout is explicitly defined via decorations
+            Interface,  // Layout follows interface block rules (std140/std430), infers explicit
+        } layout;
+        SPIRVResult::Storage storage = SPIRVResult::Storage::Function;
+    } typeState;
+
     uint32_t shaderStage;
 };
 

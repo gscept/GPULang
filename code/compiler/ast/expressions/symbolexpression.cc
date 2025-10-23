@@ -59,6 +59,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             auto varResolved = Symbol::Resolved(var);
             thisResolved->fullType = var->type;
             thisResolved->type = varResolved->typeSymbol;
+            thisResolved->storage = varResolved->storage;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::StructureType)

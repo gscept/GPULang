@@ -624,12 +624,14 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         allocators[programIndex] = CreateAllocator();
         InitAllocator(&allocators[programIndex]);
         generators.Append(gen);
-        new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program = programs[programIndex], allocator = &allocators[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
+        //new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program = programs[programIndex], allocator = &allocators[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
         {
-            GPULang::CurrentAllocator = allocator;
-            GPULang::StringAllocator = allocator;
-            values[programIndex] = gen->Generate(this, program, symbols, writeFunction);
-        });
+            GPULang::CurrentAllocator = &allocators[programIndex];
+            GPULang::StringAllocator = &allocators[programIndex];
+            returnValues[programIndex] = gen->Generate(this, program, symbols, writeFunction);
+            
+        }
+            //);
     }
 
     for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)

@@ -718,6 +718,9 @@ struct TransientString
     
     template<>
     void Append(FixedString arg);
+
+    template<>
+    void Append(ConstantString arg);
     
     template<>
     void Append(const FixedString& arg);
@@ -1347,6 +1350,15 @@ TransientString::Append(FixedString arg)
 {
     memcpy(this->buf + this->size, arg.buf, arg.len);
     this->size += arg.len;
+    this->buf[this->size] = '\0';
+}
+
+template<>
+inline void
+TransientString::Append(ConstantString arg)
+{
+    memcpy(this->buf + this->size, arg.buf, arg.size);
+    this->size += arg.size;
     this->buf[this->size] = '\0';
 }
 
