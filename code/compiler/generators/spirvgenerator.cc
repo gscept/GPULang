@@ -4986,6 +4986,8 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
     // The type of left and right are identical
     SPIRVResult res = loadedLeft;
     res.name = ret;
+    res.isLiteral = false;
+    res.isConst = false;
     return res;
 }
 
