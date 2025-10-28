@@ -60,516 +60,1028 @@ Function SubgroupSwapHorizontal_UInt16x4;
 inline constexpr std::array SubgroupSwapHorizontal_UInt16x4_args = { &SubgroupSwapHorizontal_UInt16x4_value };
 
 /// atomicLoad with UInt32, MemorySemantics
-Variable AtomicLoad_UInt32_ptr;
-inline constexpr std::array AtomicLoad_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_UInt32_semantics;
-Function AtomicLoad_UInt32;
-inline constexpr std::array AtomicLoad_UInt32_args = { &AtomicLoad_UInt32_ptr, &AtomicLoad_UInt32_semantics };
+Variable AtomicLoad_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicLoad_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_UInt32_semantics;
+Function AtomicLoad_Uniform_UInt32;
+inline constexpr std::array AtomicLoad_Uniform_UInt32_args = { &AtomicLoad_Uniform_UInt32_ptr, &AtomicLoad_Uniform_UInt32_semantics };
+
+/// atomicLoad with UInt32, MemorySemantics
+Variable AtomicLoad_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_UInt32_semantics;
+Function AtomicLoad_Workgroup_UInt32;
+inline constexpr std::array AtomicLoad_Workgroup_UInt32_args = { &AtomicLoad_Workgroup_UInt32_ptr, &AtomicLoad_Workgroup_UInt32_semantics };
 
 /// atomicIncrement with UInt32, MemorySemantics
-Variable AtomicIncrement_UInt32_ptr;
-inline constexpr std::array AtomicIncrement_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_UInt32_semantics;
-Function AtomicIncrement_UInt32;
-inline constexpr std::array AtomicIncrement_UInt32_args = { &AtomicIncrement_UInt32_ptr, &AtomicIncrement_UInt32_semantics };
+Variable AtomicIncrement_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicIncrement_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Uniform_UInt32_semantics;
+Function AtomicIncrement_Uniform_UInt32;
+inline constexpr std::array AtomicIncrement_Uniform_UInt32_args = { &AtomicIncrement_Uniform_UInt32_ptr, &AtomicIncrement_Uniform_UInt32_semantics };
+
+/// atomicIncrement with UInt32, MemorySemantics
+Variable AtomicIncrement_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicIncrement_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Workgroup_UInt32_semantics;
+Function AtomicIncrement_Workgroup_UInt32;
+inline constexpr std::array AtomicIncrement_Workgroup_UInt32_args = { &AtomicIncrement_Workgroup_UInt32_ptr, &AtomicIncrement_Workgroup_UInt32_semantics };
 
 /// atomicDecrement with UInt32, MemorySemantics
-Variable AtomicDecrement_UInt32_ptr;
-inline constexpr std::array AtomicDecrement_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_UInt32_semantics;
-Function AtomicDecrement_UInt32;
-inline constexpr std::array AtomicDecrement_UInt32_args = { &AtomicDecrement_UInt32_ptr, &AtomicDecrement_UInt32_semantics };
+Variable AtomicDecrement_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicDecrement_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Uniform_UInt32_semantics;
+Function AtomicDecrement_Uniform_UInt32;
+inline constexpr std::array AtomicDecrement_Uniform_UInt32_args = { &AtomicDecrement_Uniform_UInt32_ptr, &AtomicDecrement_Uniform_UInt32_semantics };
+
+/// atomicDecrement with UInt32, MemorySemantics
+Variable AtomicDecrement_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicDecrement_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Workgroup_UInt32_semantics;
+Function AtomicDecrement_Workgroup_UInt32;
+inline constexpr std::array AtomicDecrement_Workgroup_UInt32_args = { &AtomicDecrement_Workgroup_UInt32_ptr, &AtomicDecrement_Workgroup_UInt32_semantics };
 
 /// atomicLoad with Int32, MemorySemantics
-Variable AtomicLoad_Int32_ptr;
-inline constexpr std::array AtomicLoad_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Int32_semantics;
-Function AtomicLoad_Int32;
-inline constexpr std::array AtomicLoad_Int32_args = { &AtomicLoad_Int32_ptr, &AtomicLoad_Int32_semantics };
+Variable AtomicLoad_Uniform_Int32_ptr;
+inline constexpr std::array AtomicLoad_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_Int32_semantics;
+Function AtomicLoad_Uniform_Int32;
+inline constexpr std::array AtomicLoad_Uniform_Int32_args = { &AtomicLoad_Uniform_Int32_ptr, &AtomicLoad_Uniform_Int32_semantics };
+
+/// atomicLoad with Int32, MemorySemantics
+Variable AtomicLoad_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_Int32_semantics;
+Function AtomicLoad_Workgroup_Int32;
+inline constexpr std::array AtomicLoad_Workgroup_Int32_args = { &AtomicLoad_Workgroup_Int32_ptr, &AtomicLoad_Workgroup_Int32_semantics };
 
 /// atomicIncrement with Int32, MemorySemantics
-Variable AtomicIncrement_Int32_ptr;
-inline constexpr std::array AtomicIncrement_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Int32_semantics;
-Function AtomicIncrement_Int32;
-inline constexpr std::array AtomicIncrement_Int32_args = { &AtomicIncrement_Int32_ptr, &AtomicIncrement_Int32_semantics };
+Variable AtomicIncrement_Uniform_Int32_ptr;
+inline constexpr std::array AtomicIncrement_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Uniform_Int32_semantics;
+Function AtomicIncrement_Uniform_Int32;
+inline constexpr std::array AtomicIncrement_Uniform_Int32_args = { &AtomicIncrement_Uniform_Int32_ptr, &AtomicIncrement_Uniform_Int32_semantics };
+
+/// atomicIncrement with Int32, MemorySemantics
+Variable AtomicIncrement_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicIncrement_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Workgroup_Int32_semantics;
+Function AtomicIncrement_Workgroup_Int32;
+inline constexpr std::array AtomicIncrement_Workgroup_Int32_args = { &AtomicIncrement_Workgroup_Int32_ptr, &AtomicIncrement_Workgroup_Int32_semantics };
 
 /// atomicDecrement with Int32, MemorySemantics
-Variable AtomicDecrement_Int32_ptr;
-inline constexpr std::array AtomicDecrement_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Int32_semantics;
-Function AtomicDecrement_Int32;
-inline constexpr std::array AtomicDecrement_Int32_args = { &AtomicDecrement_Int32_ptr, &AtomicDecrement_Int32_semantics };
+Variable AtomicDecrement_Uniform_Int32_ptr;
+inline constexpr std::array AtomicDecrement_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Uniform_Int32_semantics;
+Function AtomicDecrement_Uniform_Int32;
+inline constexpr std::array AtomicDecrement_Uniform_Int32_args = { &AtomicDecrement_Uniform_Int32_ptr, &AtomicDecrement_Uniform_Int32_semantics };
+
+/// atomicDecrement with Int32, MemorySemantics
+Variable AtomicDecrement_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicDecrement_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Workgroup_Int32_semantics;
+Function AtomicDecrement_Workgroup_Int32;
+inline constexpr std::array AtomicDecrement_Workgroup_Int32_args = { &AtomicDecrement_Workgroup_Int32_ptr, &AtomicDecrement_Workgroup_Int32_semantics };
 
 /// atomicLoad with UInt16, MemorySemantics
-Variable AtomicLoad_UInt16_ptr;
-inline constexpr std::array AtomicLoad_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_UInt16_semantics;
-Function AtomicLoad_UInt16;
-inline constexpr std::array AtomicLoad_UInt16_args = { &AtomicLoad_UInt16_ptr, &AtomicLoad_UInt16_semantics };
+Variable AtomicLoad_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicLoad_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_UInt16_semantics;
+Function AtomicLoad_Uniform_UInt16;
+inline constexpr std::array AtomicLoad_Uniform_UInt16_args = { &AtomicLoad_Uniform_UInt16_ptr, &AtomicLoad_Uniform_UInt16_semantics };
+
+/// atomicLoad with UInt16, MemorySemantics
+Variable AtomicLoad_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_UInt16_semantics;
+Function AtomicLoad_Workgroup_UInt16;
+inline constexpr std::array AtomicLoad_Workgroup_UInt16_args = { &AtomicLoad_Workgroup_UInt16_ptr, &AtomicLoad_Workgroup_UInt16_semantics };
 
 /// atomicIncrement with UInt16, MemorySemantics
-Variable AtomicIncrement_UInt16_ptr;
-inline constexpr std::array AtomicIncrement_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_UInt16_semantics;
-Function AtomicIncrement_UInt16;
-inline constexpr std::array AtomicIncrement_UInt16_args = { &AtomicIncrement_UInt16_ptr, &AtomicIncrement_UInt16_semantics };
+Variable AtomicIncrement_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicIncrement_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Uniform_UInt16_semantics;
+Function AtomicIncrement_Uniform_UInt16;
+inline constexpr std::array AtomicIncrement_Uniform_UInt16_args = { &AtomicIncrement_Uniform_UInt16_ptr, &AtomicIncrement_Uniform_UInt16_semantics };
+
+/// atomicIncrement with UInt16, MemorySemantics
+Variable AtomicIncrement_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicIncrement_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Workgroup_UInt16_semantics;
+Function AtomicIncrement_Workgroup_UInt16;
+inline constexpr std::array AtomicIncrement_Workgroup_UInt16_args = { &AtomicIncrement_Workgroup_UInt16_ptr, &AtomicIncrement_Workgroup_UInt16_semantics };
 
 /// atomicDecrement with UInt16, MemorySemantics
-Variable AtomicDecrement_UInt16_ptr;
-inline constexpr std::array AtomicDecrement_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_UInt16_semantics;
-Function AtomicDecrement_UInt16;
-inline constexpr std::array AtomicDecrement_UInt16_args = { &AtomicDecrement_UInt16_ptr, &AtomicDecrement_UInt16_semantics };
+Variable AtomicDecrement_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicDecrement_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Uniform_UInt16_semantics;
+Function AtomicDecrement_Uniform_UInt16;
+inline constexpr std::array AtomicDecrement_Uniform_UInt16_args = { &AtomicDecrement_Uniform_UInt16_ptr, &AtomicDecrement_Uniform_UInt16_semantics };
+
+/// atomicDecrement with UInt16, MemorySemantics
+Variable AtomicDecrement_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicDecrement_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Workgroup_UInt16_semantics;
+Function AtomicDecrement_Workgroup_UInt16;
+inline constexpr std::array AtomicDecrement_Workgroup_UInt16_args = { &AtomicDecrement_Workgroup_UInt16_ptr, &AtomicDecrement_Workgroup_UInt16_semantics };
 
 /// atomicLoad with Int16, MemorySemantics
-Variable AtomicLoad_Int16_ptr;
-inline constexpr std::array AtomicLoad_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Int16_semantics;
-Function AtomicLoad_Int16;
-inline constexpr std::array AtomicLoad_Int16_args = { &AtomicLoad_Int16_ptr, &AtomicLoad_Int16_semantics };
+Variable AtomicLoad_Uniform_Int16_ptr;
+inline constexpr std::array AtomicLoad_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_Int16_semantics;
+Function AtomicLoad_Uniform_Int16;
+inline constexpr std::array AtomicLoad_Uniform_Int16_args = { &AtomicLoad_Uniform_Int16_ptr, &AtomicLoad_Uniform_Int16_semantics };
+
+/// atomicLoad with Int16, MemorySemantics
+Variable AtomicLoad_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_Int16_semantics;
+Function AtomicLoad_Workgroup_Int16;
+inline constexpr std::array AtomicLoad_Workgroup_Int16_args = { &AtomicLoad_Workgroup_Int16_ptr, &AtomicLoad_Workgroup_Int16_semantics };
 
 /// atomicIncrement with Int16, MemorySemantics
-Variable AtomicIncrement_Int16_ptr;
-inline constexpr std::array AtomicIncrement_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Int16_semantics;
-Function AtomicIncrement_Int16;
-inline constexpr std::array AtomicIncrement_Int16_args = { &AtomicIncrement_Int16_ptr, &AtomicIncrement_Int16_semantics };
+Variable AtomicIncrement_Uniform_Int16_ptr;
+inline constexpr std::array AtomicIncrement_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Uniform_Int16_semantics;
+Function AtomicIncrement_Uniform_Int16;
+inline constexpr std::array AtomicIncrement_Uniform_Int16_args = { &AtomicIncrement_Uniform_Int16_ptr, &AtomicIncrement_Uniform_Int16_semantics };
+
+/// atomicIncrement with Int16, MemorySemantics
+Variable AtomicIncrement_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicIncrement_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Workgroup_Int16_semantics;
+Function AtomicIncrement_Workgroup_Int16;
+inline constexpr std::array AtomicIncrement_Workgroup_Int16_args = { &AtomicIncrement_Workgroup_Int16_ptr, &AtomicIncrement_Workgroup_Int16_semantics };
 
 /// atomicDecrement with Int16, MemorySemantics
-Variable AtomicDecrement_Int16_ptr;
-inline constexpr std::array AtomicDecrement_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Int16_semantics;
-Function AtomicDecrement_Int16;
-inline constexpr std::array AtomicDecrement_Int16_args = { &AtomicDecrement_Int16_ptr, &AtomicDecrement_Int16_semantics };
+Variable AtomicDecrement_Uniform_Int16_ptr;
+inline constexpr std::array AtomicDecrement_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Uniform_Int16_semantics;
+Function AtomicDecrement_Uniform_Int16;
+inline constexpr std::array AtomicDecrement_Uniform_Int16_args = { &AtomicDecrement_Uniform_Int16_ptr, &AtomicDecrement_Uniform_Int16_semantics };
+
+/// atomicDecrement with Int16, MemorySemantics
+Variable AtomicDecrement_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicDecrement_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Workgroup_Int16_semantics;
+Function AtomicDecrement_Workgroup_Int16;
+inline constexpr std::array AtomicDecrement_Workgroup_Int16_args = { &AtomicDecrement_Workgroup_Int16_ptr, &AtomicDecrement_Workgroup_Int16_semantics };
 
 /// atomicLoad with Float32, MemorySemantics
-Variable AtomicLoad_Float32_ptr;
-inline constexpr std::array AtomicLoad_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Float32_semantics;
-Function AtomicLoad_Float32;
-inline constexpr std::array AtomicLoad_Float32_args = { &AtomicLoad_Float32_ptr, &AtomicLoad_Float32_semantics };
+Variable AtomicLoad_Uniform_Float32_ptr;
+inline constexpr std::array AtomicLoad_Uniform_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_Float32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_Float32_semantics;
+Function AtomicLoad_Uniform_Float32;
+inline constexpr std::array AtomicLoad_Uniform_Float32_args = { &AtomicLoad_Uniform_Float32_ptr, &AtomicLoad_Uniform_Float32_semantics };
+
+/// atomicLoad with Float32, MemorySemantics
+Variable AtomicLoad_Workgroup_Float32_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_Float32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_Float32_semantics;
+Function AtomicLoad_Workgroup_Float32;
+inline constexpr std::array AtomicLoad_Workgroup_Float32_args = { &AtomicLoad_Workgroup_Float32_ptr, &AtomicLoad_Workgroup_Float32_semantics };
 
 /// atomicLoad with Float16, MemorySemantics
-Variable AtomicLoad_Float16_ptr;
-inline constexpr std::array AtomicLoad_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Float16_semantics;
-Function AtomicLoad_Float16;
-inline constexpr std::array AtomicLoad_Float16_args = { &AtomicLoad_Float16_ptr, &AtomicLoad_Float16_semantics };
+Variable AtomicLoad_Uniform_Float16_ptr;
+inline constexpr std::array AtomicLoad_Uniform_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_Float16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_Float16_semantics;
+Function AtomicLoad_Uniform_Float16;
+inline constexpr std::array AtomicLoad_Uniform_Float16_args = { &AtomicLoad_Uniform_Float16_ptr, &AtomicLoad_Uniform_Float16_semantics };
+
+/// atomicLoad with Float16, MemorySemantics
+Variable AtomicLoad_Workgroup_Float16_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_Float16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_Float16_semantics;
+Function AtomicLoad_Workgroup_Float16;
+inline constexpr std::array AtomicLoad_Workgroup_Float16_args = { &AtomicLoad_Workgroup_Float16_ptr, &AtomicLoad_Workgroup_Float16_semantics };
 
 /// atomicStore with UInt32, UInt32, MemorySemantics
-Variable AtomicStore_UInt32_ptr;
-inline constexpr std::array AtomicStore_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_UInt32_value;
-Variable AtomicStore_UInt32_semantics;
-Function AtomicStore_UInt32;
-inline constexpr std::array AtomicStore_UInt32_args = { &AtomicStore_UInt32_ptr, &AtomicStore_UInt32_value, &AtomicStore_UInt32_semantics };
+Variable AtomicStore_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicStore_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Uniform_UInt32_value;
+Variable AtomicStore_Uniform_UInt32_semantics;
+Function AtomicStore_Uniform_UInt32;
+inline constexpr std::array AtomicStore_Uniform_UInt32_args = { &AtomicStore_Uniform_UInt32_ptr, &AtomicStore_Uniform_UInt32_value, &AtomicStore_Uniform_UInt32_semantics };
+
+/// atomicStore with UInt32, UInt32, MemorySemantics
+Variable AtomicStore_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicStore_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Workgroup_UInt32_value;
+Variable AtomicStore_Workgroup_UInt32_semantics;
+Function AtomicStore_Workgroup_UInt32;
+inline constexpr std::array AtomicStore_Workgroup_UInt32_args = { &AtomicStore_Workgroup_UInt32_ptr, &AtomicStore_Workgroup_UInt32_value, &AtomicStore_Workgroup_UInt32_semantics };
 
 /// atomicExchange with UInt32, UInt32, MemorySemantics
-Variable AtomicExchange_UInt32_ptr;
-inline constexpr std::array AtomicExchange_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_UInt32_value;
-Variable AtomicExchange_UInt32_semantics;
-Function AtomicExchange_UInt32;
-inline constexpr std::array AtomicExchange_UInt32_args = { &AtomicExchange_UInt32_ptr, &AtomicExchange_UInt32_value, &AtomicExchange_UInt32_semantics };
+Variable AtomicExchange_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicExchange_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Uniform_UInt32_value;
+Variable AtomicExchange_Uniform_UInt32_semantics;
+Function AtomicExchange_Uniform_UInt32;
+inline constexpr std::array AtomicExchange_Uniform_UInt32_args = { &AtomicExchange_Uniform_UInt32_ptr, &AtomicExchange_Uniform_UInt32_value, &AtomicExchange_Uniform_UInt32_semantics };
+
+/// atomicExchange with UInt32, UInt32, MemorySemantics
+Variable AtomicExchange_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicExchange_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Workgroup_UInt32_value;
+Variable AtomicExchange_Workgroup_UInt32_semantics;
+Function AtomicExchange_Workgroup_UInt32;
+inline constexpr std::array AtomicExchange_Workgroup_UInt32_args = { &AtomicExchange_Workgroup_UInt32_ptr, &AtomicExchange_Workgroup_UInt32_value, &AtomicExchange_Workgroup_UInt32_semantics };
 
 /// atomicAdd with UInt32, UInt32, MemorySemantics
-Variable AtomicAdd_UInt32_ptr;
-inline constexpr std::array AtomicAdd_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_UInt32_value;
-Variable AtomicAdd_UInt32_semantics;
-Function AtomicAdd_UInt32;
-inline constexpr std::array AtomicAdd_UInt32_args = { &AtomicAdd_UInt32_ptr, &AtomicAdd_UInt32_value, &AtomicAdd_UInt32_semantics };
+Variable AtomicAdd_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicAdd_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Uniform_UInt32_value;
+Variable AtomicAdd_Uniform_UInt32_semantics;
+Function AtomicAdd_Uniform_UInt32;
+inline constexpr std::array AtomicAdd_Uniform_UInt32_args = { &AtomicAdd_Uniform_UInt32_ptr, &AtomicAdd_Uniform_UInt32_value, &AtomicAdd_Uniform_UInt32_semantics };
+
+/// atomicAdd with UInt32, UInt32, MemorySemantics
+Variable AtomicAdd_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicAdd_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Workgroup_UInt32_value;
+Variable AtomicAdd_Workgroup_UInt32_semantics;
+Function AtomicAdd_Workgroup_UInt32;
+inline constexpr std::array AtomicAdd_Workgroup_UInt32_args = { &AtomicAdd_Workgroup_UInt32_ptr, &AtomicAdd_Workgroup_UInt32_value, &AtomicAdd_Workgroup_UInt32_semantics };
 
 /// atomicSubtract with UInt32, UInt32, MemorySemantics
-Variable AtomicSubtract_UInt32_ptr;
-inline constexpr std::array AtomicSubtract_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_UInt32_value;
-Variable AtomicSubtract_UInt32_semantics;
-Function AtomicSubtract_UInt32;
-inline constexpr std::array AtomicSubtract_UInt32_args = { &AtomicSubtract_UInt32_ptr, &AtomicSubtract_UInt32_value, &AtomicSubtract_UInt32_semantics };
+Variable AtomicSubtract_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicSubtract_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Uniform_UInt32_value;
+Variable AtomicSubtract_Uniform_UInt32_semantics;
+Function AtomicSubtract_Uniform_UInt32;
+inline constexpr std::array AtomicSubtract_Uniform_UInt32_args = { &AtomicSubtract_Uniform_UInt32_ptr, &AtomicSubtract_Uniform_UInt32_value, &AtomicSubtract_Uniform_UInt32_semantics };
+
+/// atomicSubtract with UInt32, UInt32, MemorySemantics
+Variable AtomicSubtract_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicSubtract_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Workgroup_UInt32_value;
+Variable AtomicSubtract_Workgroup_UInt32_semantics;
+Function AtomicSubtract_Workgroup_UInt32;
+inline constexpr std::array AtomicSubtract_Workgroup_UInt32_args = { &AtomicSubtract_Workgroup_UInt32_ptr, &AtomicSubtract_Workgroup_UInt32_value, &AtomicSubtract_Workgroup_UInt32_semantics };
 
 /// atomicAnd with UInt32, UInt32, MemorySemantics
-Variable AtomicAnd_UInt32_ptr;
-inline constexpr std::array AtomicAnd_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_UInt32_value;
-Variable AtomicAnd_UInt32_semantics;
-Function AtomicAnd_UInt32;
-inline constexpr std::array AtomicAnd_UInt32_args = { &AtomicAnd_UInt32_ptr, &AtomicAnd_UInt32_value, &AtomicAnd_UInt32_semantics };
+Variable AtomicAnd_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicAnd_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Uniform_UInt32_value;
+Variable AtomicAnd_Uniform_UInt32_semantics;
+Function AtomicAnd_Uniform_UInt32;
+inline constexpr std::array AtomicAnd_Uniform_UInt32_args = { &AtomicAnd_Uniform_UInt32_ptr, &AtomicAnd_Uniform_UInt32_value, &AtomicAnd_Uniform_UInt32_semantics };
+
+/// atomicAnd with UInt32, UInt32, MemorySemantics
+Variable AtomicAnd_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicAnd_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Workgroup_UInt32_value;
+Variable AtomicAnd_Workgroup_UInt32_semantics;
+Function AtomicAnd_Workgroup_UInt32;
+inline constexpr std::array AtomicAnd_Workgroup_UInt32_args = { &AtomicAnd_Workgroup_UInt32_ptr, &AtomicAnd_Workgroup_UInt32_value, &AtomicAnd_Workgroup_UInt32_semantics };
 
 /// atomicOr with UInt32, UInt32, MemorySemantics
-Variable AtomicOr_UInt32_ptr;
-inline constexpr std::array AtomicOr_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_UInt32_value;
-Variable AtomicOr_UInt32_semantics;
-Function AtomicOr_UInt32;
-inline constexpr std::array AtomicOr_UInt32_args = { &AtomicOr_UInt32_ptr, &AtomicOr_UInt32_value, &AtomicOr_UInt32_semantics };
+Variable AtomicOr_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicOr_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Uniform_UInt32_value;
+Variable AtomicOr_Uniform_UInt32_semantics;
+Function AtomicOr_Uniform_UInt32;
+inline constexpr std::array AtomicOr_Uniform_UInt32_args = { &AtomicOr_Uniform_UInt32_ptr, &AtomicOr_Uniform_UInt32_value, &AtomicOr_Uniform_UInt32_semantics };
+
+/// atomicOr with UInt32, UInt32, MemorySemantics
+Variable AtomicOr_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicOr_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Workgroup_UInt32_value;
+Variable AtomicOr_Workgroup_UInt32_semantics;
+Function AtomicOr_Workgroup_UInt32;
+inline constexpr std::array AtomicOr_Workgroup_UInt32_args = { &AtomicOr_Workgroup_UInt32_ptr, &AtomicOr_Workgroup_UInt32_value, &AtomicOr_Workgroup_UInt32_semantics };
 
 /// atomicXor with UInt32, UInt32, MemorySemantics
-Variable AtomicXor_UInt32_ptr;
-inline constexpr std::array AtomicXor_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_UInt32_value;
-Variable AtomicXor_UInt32_semantics;
-Function AtomicXor_UInt32;
-inline constexpr std::array AtomicXor_UInt32_args = { &AtomicXor_UInt32_ptr, &AtomicXor_UInt32_value, &AtomicXor_UInt32_semantics };
+Variable AtomicXor_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicXor_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Uniform_UInt32_value;
+Variable AtomicXor_Uniform_UInt32_semantics;
+Function AtomicXor_Uniform_UInt32;
+inline constexpr std::array AtomicXor_Uniform_UInt32_args = { &AtomicXor_Uniform_UInt32_ptr, &AtomicXor_Uniform_UInt32_value, &AtomicXor_Uniform_UInt32_semantics };
+
+/// atomicXor with UInt32, UInt32, MemorySemantics
+Variable AtomicXor_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicXor_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Workgroup_UInt32_value;
+Variable AtomicXor_Workgroup_UInt32_semantics;
+Function AtomicXor_Workgroup_UInt32;
+inline constexpr std::array AtomicXor_Workgroup_UInt32_args = { &AtomicXor_Workgroup_UInt32_ptr, &AtomicXor_Workgroup_UInt32_value, &AtomicXor_Workgroup_UInt32_semantics };
 
 /// atomicStore with Int32, Int32, MemorySemantics
-Variable AtomicStore_Int32_ptr;
-inline constexpr std::array AtomicStore_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Int32_value;
-Variable AtomicStore_Int32_semantics;
-Function AtomicStore_Int32;
-inline constexpr std::array AtomicStore_Int32_args = { &AtomicStore_Int32_ptr, &AtomicStore_Int32_value, &AtomicStore_Int32_semantics };
+Variable AtomicStore_Uniform_Int32_ptr;
+inline constexpr std::array AtomicStore_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Uniform_Int32_value;
+Variable AtomicStore_Uniform_Int32_semantics;
+Function AtomicStore_Uniform_Int32;
+inline constexpr std::array AtomicStore_Uniform_Int32_args = { &AtomicStore_Uniform_Int32_ptr, &AtomicStore_Uniform_Int32_value, &AtomicStore_Uniform_Int32_semantics };
+
+/// atomicStore with Int32, Int32, MemorySemantics
+Variable AtomicStore_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicStore_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Workgroup_Int32_value;
+Variable AtomicStore_Workgroup_Int32_semantics;
+Function AtomicStore_Workgroup_Int32;
+inline constexpr std::array AtomicStore_Workgroup_Int32_args = { &AtomicStore_Workgroup_Int32_ptr, &AtomicStore_Workgroup_Int32_value, &AtomicStore_Workgroup_Int32_semantics };
 
 /// atomicExchange with Int32, Int32, MemorySemantics
-Variable AtomicExchange_Int32_ptr;
-inline constexpr std::array AtomicExchange_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Int32_value;
-Variable AtomicExchange_Int32_semantics;
-Function AtomicExchange_Int32;
-inline constexpr std::array AtomicExchange_Int32_args = { &AtomicExchange_Int32_ptr, &AtomicExchange_Int32_value, &AtomicExchange_Int32_semantics };
+Variable AtomicExchange_Uniform_Int32_ptr;
+inline constexpr std::array AtomicExchange_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Uniform_Int32_value;
+Variable AtomicExchange_Uniform_Int32_semantics;
+Function AtomicExchange_Uniform_Int32;
+inline constexpr std::array AtomicExchange_Uniform_Int32_args = { &AtomicExchange_Uniform_Int32_ptr, &AtomicExchange_Uniform_Int32_value, &AtomicExchange_Uniform_Int32_semantics };
+
+/// atomicExchange with Int32, Int32, MemorySemantics
+Variable AtomicExchange_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicExchange_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Workgroup_Int32_value;
+Variable AtomicExchange_Workgroup_Int32_semantics;
+Function AtomicExchange_Workgroup_Int32;
+inline constexpr std::array AtomicExchange_Workgroup_Int32_args = { &AtomicExchange_Workgroup_Int32_ptr, &AtomicExchange_Workgroup_Int32_value, &AtomicExchange_Workgroup_Int32_semantics };
 
 /// atomicAdd with Int32, Int32, MemorySemantics
-Variable AtomicAdd_Int32_ptr;
-inline constexpr std::array AtomicAdd_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Int32_value;
-Variable AtomicAdd_Int32_semantics;
-Function AtomicAdd_Int32;
-inline constexpr std::array AtomicAdd_Int32_args = { &AtomicAdd_Int32_ptr, &AtomicAdd_Int32_value, &AtomicAdd_Int32_semantics };
+Variable AtomicAdd_Uniform_Int32_ptr;
+inline constexpr std::array AtomicAdd_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Uniform_Int32_value;
+Variable AtomicAdd_Uniform_Int32_semantics;
+Function AtomicAdd_Uniform_Int32;
+inline constexpr std::array AtomicAdd_Uniform_Int32_args = { &AtomicAdd_Uniform_Int32_ptr, &AtomicAdd_Uniform_Int32_value, &AtomicAdd_Uniform_Int32_semantics };
+
+/// atomicAdd with Int32, Int32, MemorySemantics
+Variable AtomicAdd_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicAdd_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Workgroup_Int32_value;
+Variable AtomicAdd_Workgroup_Int32_semantics;
+Function AtomicAdd_Workgroup_Int32;
+inline constexpr std::array AtomicAdd_Workgroup_Int32_args = { &AtomicAdd_Workgroup_Int32_ptr, &AtomicAdd_Workgroup_Int32_value, &AtomicAdd_Workgroup_Int32_semantics };
 
 /// atomicSubtract with Int32, Int32, MemorySemantics
-Variable AtomicSubtract_Int32_ptr;
-inline constexpr std::array AtomicSubtract_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Int32_value;
-Variable AtomicSubtract_Int32_semantics;
-Function AtomicSubtract_Int32;
-inline constexpr std::array AtomicSubtract_Int32_args = { &AtomicSubtract_Int32_ptr, &AtomicSubtract_Int32_value, &AtomicSubtract_Int32_semantics };
+Variable AtomicSubtract_Uniform_Int32_ptr;
+inline constexpr std::array AtomicSubtract_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Uniform_Int32_value;
+Variable AtomicSubtract_Uniform_Int32_semantics;
+Function AtomicSubtract_Uniform_Int32;
+inline constexpr std::array AtomicSubtract_Uniform_Int32_args = { &AtomicSubtract_Uniform_Int32_ptr, &AtomicSubtract_Uniform_Int32_value, &AtomicSubtract_Uniform_Int32_semantics };
+
+/// atomicSubtract with Int32, Int32, MemorySemantics
+Variable AtomicSubtract_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicSubtract_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Workgroup_Int32_value;
+Variable AtomicSubtract_Workgroup_Int32_semantics;
+Function AtomicSubtract_Workgroup_Int32;
+inline constexpr std::array AtomicSubtract_Workgroup_Int32_args = { &AtomicSubtract_Workgroup_Int32_ptr, &AtomicSubtract_Workgroup_Int32_value, &AtomicSubtract_Workgroup_Int32_semantics };
 
 /// atomicAnd with Int32, Int32, MemorySemantics
-Variable AtomicAnd_Int32_ptr;
-inline constexpr std::array AtomicAnd_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Int32_value;
-Variable AtomicAnd_Int32_semantics;
-Function AtomicAnd_Int32;
-inline constexpr std::array AtomicAnd_Int32_args = { &AtomicAnd_Int32_ptr, &AtomicAnd_Int32_value, &AtomicAnd_Int32_semantics };
+Variable AtomicAnd_Uniform_Int32_ptr;
+inline constexpr std::array AtomicAnd_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Uniform_Int32_value;
+Variable AtomicAnd_Uniform_Int32_semantics;
+Function AtomicAnd_Uniform_Int32;
+inline constexpr std::array AtomicAnd_Uniform_Int32_args = { &AtomicAnd_Uniform_Int32_ptr, &AtomicAnd_Uniform_Int32_value, &AtomicAnd_Uniform_Int32_semantics };
+
+/// atomicAnd with Int32, Int32, MemorySemantics
+Variable AtomicAnd_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicAnd_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Workgroup_Int32_value;
+Variable AtomicAnd_Workgroup_Int32_semantics;
+Function AtomicAnd_Workgroup_Int32;
+inline constexpr std::array AtomicAnd_Workgroup_Int32_args = { &AtomicAnd_Workgroup_Int32_ptr, &AtomicAnd_Workgroup_Int32_value, &AtomicAnd_Workgroup_Int32_semantics };
 
 /// atomicOr with Int32, Int32, MemorySemantics
-Variable AtomicOr_Int32_ptr;
-inline constexpr std::array AtomicOr_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Int32_value;
-Variable AtomicOr_Int32_semantics;
-Function AtomicOr_Int32;
-inline constexpr std::array AtomicOr_Int32_args = { &AtomicOr_Int32_ptr, &AtomicOr_Int32_value, &AtomicOr_Int32_semantics };
+Variable AtomicOr_Uniform_Int32_ptr;
+inline constexpr std::array AtomicOr_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Uniform_Int32_value;
+Variable AtomicOr_Uniform_Int32_semantics;
+Function AtomicOr_Uniform_Int32;
+inline constexpr std::array AtomicOr_Uniform_Int32_args = { &AtomicOr_Uniform_Int32_ptr, &AtomicOr_Uniform_Int32_value, &AtomicOr_Uniform_Int32_semantics };
+
+/// atomicOr with Int32, Int32, MemorySemantics
+Variable AtomicOr_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicOr_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Workgroup_Int32_value;
+Variable AtomicOr_Workgroup_Int32_semantics;
+Function AtomicOr_Workgroup_Int32;
+inline constexpr std::array AtomicOr_Workgroup_Int32_args = { &AtomicOr_Workgroup_Int32_ptr, &AtomicOr_Workgroup_Int32_value, &AtomicOr_Workgroup_Int32_semantics };
 
 /// atomicXor with Int32, Int32, MemorySemantics
-Variable AtomicXor_Int32_ptr;
-inline constexpr std::array AtomicXor_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Int32_value;
-Variable AtomicXor_Int32_semantics;
-Function AtomicXor_Int32;
-inline constexpr std::array AtomicXor_Int32_args = { &AtomicXor_Int32_ptr, &AtomicXor_Int32_value, &AtomicXor_Int32_semantics };
+Variable AtomicXor_Uniform_Int32_ptr;
+inline constexpr std::array AtomicXor_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Uniform_Int32_value;
+Variable AtomicXor_Uniform_Int32_semantics;
+Function AtomicXor_Uniform_Int32;
+inline constexpr std::array AtomicXor_Uniform_Int32_args = { &AtomicXor_Uniform_Int32_ptr, &AtomicXor_Uniform_Int32_value, &AtomicXor_Uniform_Int32_semantics };
+
+/// atomicXor with Int32, Int32, MemorySemantics
+Variable AtomicXor_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicXor_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Workgroup_Int32_value;
+Variable AtomicXor_Workgroup_Int32_semantics;
+Function AtomicXor_Workgroup_Int32;
+inline constexpr std::array AtomicXor_Workgroup_Int32_args = { &AtomicXor_Workgroup_Int32_ptr, &AtomicXor_Workgroup_Int32_value, &AtomicXor_Workgroup_Int32_semantics };
 
 /// atomicStore with UInt16, UInt16, MemorySemantics
-Variable AtomicStore_UInt16_ptr;
-inline constexpr std::array AtomicStore_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_UInt16_value;
-Variable AtomicStore_UInt16_semantics;
-Function AtomicStore_UInt16;
-inline constexpr std::array AtomicStore_UInt16_args = { &AtomicStore_UInt16_ptr, &AtomicStore_UInt16_value, &AtomicStore_UInt16_semantics };
+Variable AtomicStore_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicStore_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Uniform_UInt16_value;
+Variable AtomicStore_Uniform_UInt16_semantics;
+Function AtomicStore_Uniform_UInt16;
+inline constexpr std::array AtomicStore_Uniform_UInt16_args = { &AtomicStore_Uniform_UInt16_ptr, &AtomicStore_Uniform_UInt16_value, &AtomicStore_Uniform_UInt16_semantics };
+
+/// atomicStore with UInt16, UInt16, MemorySemantics
+Variable AtomicStore_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicStore_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Workgroup_UInt16_value;
+Variable AtomicStore_Workgroup_UInt16_semantics;
+Function AtomicStore_Workgroup_UInt16;
+inline constexpr std::array AtomicStore_Workgroup_UInt16_args = { &AtomicStore_Workgroup_UInt16_ptr, &AtomicStore_Workgroup_UInt16_value, &AtomicStore_Workgroup_UInt16_semantics };
 
 /// atomicExchange with UInt16, UInt16, MemorySemantics
-Variable AtomicExchange_UInt16_ptr;
-inline constexpr std::array AtomicExchange_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_UInt16_value;
-Variable AtomicExchange_UInt16_semantics;
-Function AtomicExchange_UInt16;
-inline constexpr std::array AtomicExchange_UInt16_args = { &AtomicExchange_UInt16_ptr, &AtomicExchange_UInt16_value, &AtomicExchange_UInt16_semantics };
+Variable AtomicExchange_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicExchange_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Uniform_UInt16_value;
+Variable AtomicExchange_Uniform_UInt16_semantics;
+Function AtomicExchange_Uniform_UInt16;
+inline constexpr std::array AtomicExchange_Uniform_UInt16_args = { &AtomicExchange_Uniform_UInt16_ptr, &AtomicExchange_Uniform_UInt16_value, &AtomicExchange_Uniform_UInt16_semantics };
+
+/// atomicExchange with UInt16, UInt16, MemorySemantics
+Variable AtomicExchange_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicExchange_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Workgroup_UInt16_value;
+Variable AtomicExchange_Workgroup_UInt16_semantics;
+Function AtomicExchange_Workgroup_UInt16;
+inline constexpr std::array AtomicExchange_Workgroup_UInt16_args = { &AtomicExchange_Workgroup_UInt16_ptr, &AtomicExchange_Workgroup_UInt16_value, &AtomicExchange_Workgroup_UInt16_semantics };
 
 /// atomicAdd with UInt16, UInt16, MemorySemantics
-Variable AtomicAdd_UInt16_ptr;
-inline constexpr std::array AtomicAdd_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_UInt16_value;
-Variable AtomicAdd_UInt16_semantics;
-Function AtomicAdd_UInt16;
-inline constexpr std::array AtomicAdd_UInt16_args = { &AtomicAdd_UInt16_ptr, &AtomicAdd_UInt16_value, &AtomicAdd_UInt16_semantics };
+Variable AtomicAdd_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicAdd_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Uniform_UInt16_value;
+Variable AtomicAdd_Uniform_UInt16_semantics;
+Function AtomicAdd_Uniform_UInt16;
+inline constexpr std::array AtomicAdd_Uniform_UInt16_args = { &AtomicAdd_Uniform_UInt16_ptr, &AtomicAdd_Uniform_UInt16_value, &AtomicAdd_Uniform_UInt16_semantics };
+
+/// atomicAdd with UInt16, UInt16, MemorySemantics
+Variable AtomicAdd_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicAdd_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Workgroup_UInt16_value;
+Variable AtomicAdd_Workgroup_UInt16_semantics;
+Function AtomicAdd_Workgroup_UInt16;
+inline constexpr std::array AtomicAdd_Workgroup_UInt16_args = { &AtomicAdd_Workgroup_UInt16_ptr, &AtomicAdd_Workgroup_UInt16_value, &AtomicAdd_Workgroup_UInt16_semantics };
 
 /// atomicSubtract with UInt16, UInt16, MemorySemantics
-Variable AtomicSubtract_UInt16_ptr;
-inline constexpr std::array AtomicSubtract_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_UInt16_value;
-Variable AtomicSubtract_UInt16_semantics;
-Function AtomicSubtract_UInt16;
-inline constexpr std::array AtomicSubtract_UInt16_args = { &AtomicSubtract_UInt16_ptr, &AtomicSubtract_UInt16_value, &AtomicSubtract_UInt16_semantics };
+Variable AtomicSubtract_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicSubtract_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Uniform_UInt16_value;
+Variable AtomicSubtract_Uniform_UInt16_semantics;
+Function AtomicSubtract_Uniform_UInt16;
+inline constexpr std::array AtomicSubtract_Uniform_UInt16_args = { &AtomicSubtract_Uniform_UInt16_ptr, &AtomicSubtract_Uniform_UInt16_value, &AtomicSubtract_Uniform_UInt16_semantics };
+
+/// atomicSubtract with UInt16, UInt16, MemorySemantics
+Variable AtomicSubtract_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicSubtract_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Workgroup_UInt16_value;
+Variable AtomicSubtract_Workgroup_UInt16_semantics;
+Function AtomicSubtract_Workgroup_UInt16;
+inline constexpr std::array AtomicSubtract_Workgroup_UInt16_args = { &AtomicSubtract_Workgroup_UInt16_ptr, &AtomicSubtract_Workgroup_UInt16_value, &AtomicSubtract_Workgroup_UInt16_semantics };
 
 /// atomicAnd with UInt16, UInt16, MemorySemantics
-Variable AtomicAnd_UInt16_ptr;
-inline constexpr std::array AtomicAnd_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_UInt16_value;
-Variable AtomicAnd_UInt16_semantics;
-Function AtomicAnd_UInt16;
-inline constexpr std::array AtomicAnd_UInt16_args = { &AtomicAnd_UInt16_ptr, &AtomicAnd_UInt16_value, &AtomicAnd_UInt16_semantics };
+Variable AtomicAnd_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicAnd_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Uniform_UInt16_value;
+Variable AtomicAnd_Uniform_UInt16_semantics;
+Function AtomicAnd_Uniform_UInt16;
+inline constexpr std::array AtomicAnd_Uniform_UInt16_args = { &AtomicAnd_Uniform_UInt16_ptr, &AtomicAnd_Uniform_UInt16_value, &AtomicAnd_Uniform_UInt16_semantics };
+
+/// atomicAnd with UInt16, UInt16, MemorySemantics
+Variable AtomicAnd_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicAnd_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Workgroup_UInt16_value;
+Variable AtomicAnd_Workgroup_UInt16_semantics;
+Function AtomicAnd_Workgroup_UInt16;
+inline constexpr std::array AtomicAnd_Workgroup_UInt16_args = { &AtomicAnd_Workgroup_UInt16_ptr, &AtomicAnd_Workgroup_UInt16_value, &AtomicAnd_Workgroup_UInt16_semantics };
 
 /// atomicOr with UInt16, UInt16, MemorySemantics
-Variable AtomicOr_UInt16_ptr;
-inline constexpr std::array AtomicOr_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_UInt16_value;
-Variable AtomicOr_UInt16_semantics;
-Function AtomicOr_UInt16;
-inline constexpr std::array AtomicOr_UInt16_args = { &AtomicOr_UInt16_ptr, &AtomicOr_UInt16_value, &AtomicOr_UInt16_semantics };
+Variable AtomicOr_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicOr_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Uniform_UInt16_value;
+Variable AtomicOr_Uniform_UInt16_semantics;
+Function AtomicOr_Uniform_UInt16;
+inline constexpr std::array AtomicOr_Uniform_UInt16_args = { &AtomicOr_Uniform_UInt16_ptr, &AtomicOr_Uniform_UInt16_value, &AtomicOr_Uniform_UInt16_semantics };
+
+/// atomicOr with UInt16, UInt16, MemorySemantics
+Variable AtomicOr_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicOr_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Workgroup_UInt16_value;
+Variable AtomicOr_Workgroup_UInt16_semantics;
+Function AtomicOr_Workgroup_UInt16;
+inline constexpr std::array AtomicOr_Workgroup_UInt16_args = { &AtomicOr_Workgroup_UInt16_ptr, &AtomicOr_Workgroup_UInt16_value, &AtomicOr_Workgroup_UInt16_semantics };
 
 /// atomicXor with UInt16, UInt16, MemorySemantics
-Variable AtomicXor_UInt16_ptr;
-inline constexpr std::array AtomicXor_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_UInt16_value;
-Variable AtomicXor_UInt16_semantics;
-Function AtomicXor_UInt16;
-inline constexpr std::array AtomicXor_UInt16_args = { &AtomicXor_UInt16_ptr, &AtomicXor_UInt16_value, &AtomicXor_UInt16_semantics };
+Variable AtomicXor_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicXor_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Uniform_UInt16_value;
+Variable AtomicXor_Uniform_UInt16_semantics;
+Function AtomicXor_Uniform_UInt16;
+inline constexpr std::array AtomicXor_Uniform_UInt16_args = { &AtomicXor_Uniform_UInt16_ptr, &AtomicXor_Uniform_UInt16_value, &AtomicXor_Uniform_UInt16_semantics };
+
+/// atomicXor with UInt16, UInt16, MemorySemantics
+Variable AtomicXor_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicXor_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Workgroup_UInt16_value;
+Variable AtomicXor_Workgroup_UInt16_semantics;
+Function AtomicXor_Workgroup_UInt16;
+inline constexpr std::array AtomicXor_Workgroup_UInt16_args = { &AtomicXor_Workgroup_UInt16_ptr, &AtomicXor_Workgroup_UInt16_value, &AtomicXor_Workgroup_UInt16_semantics };
 
 /// atomicStore with Int16, Int16, MemorySemantics
-Variable AtomicStore_Int16_ptr;
-inline constexpr std::array AtomicStore_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Int16_value;
-Variable AtomicStore_Int16_semantics;
-Function AtomicStore_Int16;
-inline constexpr std::array AtomicStore_Int16_args = { &AtomicStore_Int16_ptr, &AtomicStore_Int16_value, &AtomicStore_Int16_semantics };
+Variable AtomicStore_Uniform_Int16_ptr;
+inline constexpr std::array AtomicStore_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Uniform_Int16_value;
+Variable AtomicStore_Uniform_Int16_semantics;
+Function AtomicStore_Uniform_Int16;
+inline constexpr std::array AtomicStore_Uniform_Int16_args = { &AtomicStore_Uniform_Int16_ptr, &AtomicStore_Uniform_Int16_value, &AtomicStore_Uniform_Int16_semantics };
+
+/// atomicStore with Int16, Int16, MemorySemantics
+Variable AtomicStore_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicStore_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Workgroup_Int16_value;
+Variable AtomicStore_Workgroup_Int16_semantics;
+Function AtomicStore_Workgroup_Int16;
+inline constexpr std::array AtomicStore_Workgroup_Int16_args = { &AtomicStore_Workgroup_Int16_ptr, &AtomicStore_Workgroup_Int16_value, &AtomicStore_Workgroup_Int16_semantics };
 
 /// atomicExchange with Int16, Int16, MemorySemantics
-Variable AtomicExchange_Int16_ptr;
-inline constexpr std::array AtomicExchange_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Int16_value;
-Variable AtomicExchange_Int16_semantics;
-Function AtomicExchange_Int16;
-inline constexpr std::array AtomicExchange_Int16_args = { &AtomicExchange_Int16_ptr, &AtomicExchange_Int16_value, &AtomicExchange_Int16_semantics };
+Variable AtomicExchange_Uniform_Int16_ptr;
+inline constexpr std::array AtomicExchange_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Uniform_Int16_value;
+Variable AtomicExchange_Uniform_Int16_semantics;
+Function AtomicExchange_Uniform_Int16;
+inline constexpr std::array AtomicExchange_Uniform_Int16_args = { &AtomicExchange_Uniform_Int16_ptr, &AtomicExchange_Uniform_Int16_value, &AtomicExchange_Uniform_Int16_semantics };
+
+/// atomicExchange with Int16, Int16, MemorySemantics
+Variable AtomicExchange_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicExchange_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Workgroup_Int16_value;
+Variable AtomicExchange_Workgroup_Int16_semantics;
+Function AtomicExchange_Workgroup_Int16;
+inline constexpr std::array AtomicExchange_Workgroup_Int16_args = { &AtomicExchange_Workgroup_Int16_ptr, &AtomicExchange_Workgroup_Int16_value, &AtomicExchange_Workgroup_Int16_semantics };
 
 /// atomicAdd with Int16, Int16, MemorySemantics
-Variable AtomicAdd_Int16_ptr;
-inline constexpr std::array AtomicAdd_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Int16_value;
-Variable AtomicAdd_Int16_semantics;
-Function AtomicAdd_Int16;
-inline constexpr std::array AtomicAdd_Int16_args = { &AtomicAdd_Int16_ptr, &AtomicAdd_Int16_value, &AtomicAdd_Int16_semantics };
+Variable AtomicAdd_Uniform_Int16_ptr;
+inline constexpr std::array AtomicAdd_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Uniform_Int16_value;
+Variable AtomicAdd_Uniform_Int16_semantics;
+Function AtomicAdd_Uniform_Int16;
+inline constexpr std::array AtomicAdd_Uniform_Int16_args = { &AtomicAdd_Uniform_Int16_ptr, &AtomicAdd_Uniform_Int16_value, &AtomicAdd_Uniform_Int16_semantics };
+
+/// atomicAdd with Int16, Int16, MemorySemantics
+Variable AtomicAdd_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicAdd_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Workgroup_Int16_value;
+Variable AtomicAdd_Workgroup_Int16_semantics;
+Function AtomicAdd_Workgroup_Int16;
+inline constexpr std::array AtomicAdd_Workgroup_Int16_args = { &AtomicAdd_Workgroup_Int16_ptr, &AtomicAdd_Workgroup_Int16_value, &AtomicAdd_Workgroup_Int16_semantics };
 
 /// atomicSubtract with Int16, Int16, MemorySemantics
-Variable AtomicSubtract_Int16_ptr;
-inline constexpr std::array AtomicSubtract_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Int16_value;
-Variable AtomicSubtract_Int16_semantics;
-Function AtomicSubtract_Int16;
-inline constexpr std::array AtomicSubtract_Int16_args = { &AtomicSubtract_Int16_ptr, &AtomicSubtract_Int16_value, &AtomicSubtract_Int16_semantics };
+Variable AtomicSubtract_Uniform_Int16_ptr;
+inline constexpr std::array AtomicSubtract_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Uniform_Int16_value;
+Variable AtomicSubtract_Uniform_Int16_semantics;
+Function AtomicSubtract_Uniform_Int16;
+inline constexpr std::array AtomicSubtract_Uniform_Int16_args = { &AtomicSubtract_Uniform_Int16_ptr, &AtomicSubtract_Uniform_Int16_value, &AtomicSubtract_Uniform_Int16_semantics };
+
+/// atomicSubtract with Int16, Int16, MemorySemantics
+Variable AtomicSubtract_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicSubtract_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Workgroup_Int16_value;
+Variable AtomicSubtract_Workgroup_Int16_semantics;
+Function AtomicSubtract_Workgroup_Int16;
+inline constexpr std::array AtomicSubtract_Workgroup_Int16_args = { &AtomicSubtract_Workgroup_Int16_ptr, &AtomicSubtract_Workgroup_Int16_value, &AtomicSubtract_Workgroup_Int16_semantics };
 
 /// atomicAnd with Int16, Int16, MemorySemantics
-Variable AtomicAnd_Int16_ptr;
-inline constexpr std::array AtomicAnd_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Int16_value;
-Variable AtomicAnd_Int16_semantics;
-Function AtomicAnd_Int16;
-inline constexpr std::array AtomicAnd_Int16_args = { &AtomicAnd_Int16_ptr, &AtomicAnd_Int16_value, &AtomicAnd_Int16_semantics };
+Variable AtomicAnd_Uniform_Int16_ptr;
+inline constexpr std::array AtomicAnd_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Uniform_Int16_value;
+Variable AtomicAnd_Uniform_Int16_semantics;
+Function AtomicAnd_Uniform_Int16;
+inline constexpr std::array AtomicAnd_Uniform_Int16_args = { &AtomicAnd_Uniform_Int16_ptr, &AtomicAnd_Uniform_Int16_value, &AtomicAnd_Uniform_Int16_semantics };
+
+/// atomicAnd with Int16, Int16, MemorySemantics
+Variable AtomicAnd_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicAnd_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Workgroup_Int16_value;
+Variable AtomicAnd_Workgroup_Int16_semantics;
+Function AtomicAnd_Workgroup_Int16;
+inline constexpr std::array AtomicAnd_Workgroup_Int16_args = { &AtomicAnd_Workgroup_Int16_ptr, &AtomicAnd_Workgroup_Int16_value, &AtomicAnd_Workgroup_Int16_semantics };
 
 /// atomicOr with Int16, Int16, MemorySemantics
-Variable AtomicOr_Int16_ptr;
-inline constexpr std::array AtomicOr_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Int16_value;
-Variable AtomicOr_Int16_semantics;
-Function AtomicOr_Int16;
-inline constexpr std::array AtomicOr_Int16_args = { &AtomicOr_Int16_ptr, &AtomicOr_Int16_value, &AtomicOr_Int16_semantics };
+Variable AtomicOr_Uniform_Int16_ptr;
+inline constexpr std::array AtomicOr_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Uniform_Int16_value;
+Variable AtomicOr_Uniform_Int16_semantics;
+Function AtomicOr_Uniform_Int16;
+inline constexpr std::array AtomicOr_Uniform_Int16_args = { &AtomicOr_Uniform_Int16_ptr, &AtomicOr_Uniform_Int16_value, &AtomicOr_Uniform_Int16_semantics };
+
+/// atomicOr with Int16, Int16, MemorySemantics
+Variable AtomicOr_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicOr_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Workgroup_Int16_value;
+Variable AtomicOr_Workgroup_Int16_semantics;
+Function AtomicOr_Workgroup_Int16;
+inline constexpr std::array AtomicOr_Workgroup_Int16_args = { &AtomicOr_Workgroup_Int16_ptr, &AtomicOr_Workgroup_Int16_value, &AtomicOr_Workgroup_Int16_semantics };
 
 /// atomicXor with Int16, Int16, MemorySemantics
-Variable AtomicXor_Int16_ptr;
-inline constexpr std::array AtomicXor_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Int16_value;
-Variable AtomicXor_Int16_semantics;
-Function AtomicXor_Int16;
-inline constexpr std::array AtomicXor_Int16_args = { &AtomicXor_Int16_ptr, &AtomicXor_Int16_value, &AtomicXor_Int16_semantics };
+Variable AtomicXor_Uniform_Int16_ptr;
+inline constexpr std::array AtomicXor_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Uniform_Int16_value;
+Variable AtomicXor_Uniform_Int16_semantics;
+Function AtomicXor_Uniform_Int16;
+inline constexpr std::array AtomicXor_Uniform_Int16_args = { &AtomicXor_Uniform_Int16_ptr, &AtomicXor_Uniform_Int16_value, &AtomicXor_Uniform_Int16_semantics };
+
+/// atomicXor with Int16, Int16, MemorySemantics
+Variable AtomicXor_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicXor_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Workgroup_Int16_value;
+Variable AtomicXor_Workgroup_Int16_semantics;
+Function AtomicXor_Workgroup_Int16;
+inline constexpr std::array AtomicXor_Workgroup_Int16_args = { &AtomicXor_Workgroup_Int16_ptr, &AtomicXor_Workgroup_Int16_value, &AtomicXor_Workgroup_Int16_semantics };
 
 /// atomicStore with Float32, Float32, MemorySemantics
-Variable AtomicStore_Float32_ptr;
-inline constexpr std::array AtomicStore_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Float32_value;
-Variable AtomicStore_Float32_semantics;
-Function AtomicStore_Float32;
-inline constexpr std::array AtomicStore_Float32_args = { &AtomicStore_Float32_ptr, &AtomicStore_Float32_value, &AtomicStore_Float32_semantics };
+Variable AtomicStore_Uniform_Float32_ptr;
+inline constexpr std::array AtomicStore_Uniform_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Uniform_Float32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Uniform_Float32_value;
+Variable AtomicStore_Uniform_Float32_semantics;
+Function AtomicStore_Uniform_Float32;
+inline constexpr std::array AtomicStore_Uniform_Float32_args = { &AtomicStore_Uniform_Float32_ptr, &AtomicStore_Uniform_Float32_value, &AtomicStore_Uniform_Float32_semantics };
+
+/// atomicStore with Float32, Float32, MemorySemantics
+Variable AtomicStore_Workgroup_Float32_ptr;
+inline constexpr std::array AtomicStore_Workgroup_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Workgroup_Float32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Workgroup_Float32_value;
+Variable AtomicStore_Workgroup_Float32_semantics;
+Function AtomicStore_Workgroup_Float32;
+inline constexpr std::array AtomicStore_Workgroup_Float32_args = { &AtomicStore_Workgroup_Float32_ptr, &AtomicStore_Workgroup_Float32_value, &AtomicStore_Workgroup_Float32_semantics };
 
 /// atomicExchange with Float32, Float32, MemorySemantics
-Variable AtomicExchange_Float32_ptr;
-inline constexpr std::array AtomicExchange_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Float32_value;
-Variable AtomicExchange_Float32_semantics;
-Function AtomicExchange_Float32;
-inline constexpr std::array AtomicExchange_Float32_args = { &AtomicExchange_Float32_ptr, &AtomicExchange_Float32_value, &AtomicExchange_Float32_semantics };
+Variable AtomicExchange_Uniform_Float32_ptr;
+inline constexpr std::array AtomicExchange_Uniform_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Uniform_Float32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Uniform_Float32_value;
+Variable AtomicExchange_Uniform_Float32_semantics;
+Function AtomicExchange_Uniform_Float32;
+inline constexpr std::array AtomicExchange_Uniform_Float32_args = { &AtomicExchange_Uniform_Float32_ptr, &AtomicExchange_Uniform_Float32_value, &AtomicExchange_Uniform_Float32_semantics };
+
+/// atomicExchange with Float32, Float32, MemorySemantics
+Variable AtomicExchange_Workgroup_Float32_ptr;
+inline constexpr std::array AtomicExchange_Workgroup_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Workgroup_Float32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Workgroup_Float32_value;
+Variable AtomicExchange_Workgroup_Float32_semantics;
+Function AtomicExchange_Workgroup_Float32;
+inline constexpr std::array AtomicExchange_Workgroup_Float32_args = { &AtomicExchange_Workgroup_Float32_ptr, &AtomicExchange_Workgroup_Float32_value, &AtomicExchange_Workgroup_Float32_semantics };
 
 /// atomicStore with Float16, Float16, MemorySemantics
-Variable AtomicStore_Float16_ptr;
-inline constexpr std::array AtomicStore_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Float16_value;
-Variable AtomicStore_Float16_semantics;
-Function AtomicStore_Float16;
-inline constexpr std::array AtomicStore_Float16_args = { &AtomicStore_Float16_ptr, &AtomicStore_Float16_value, &AtomicStore_Float16_semantics };
+Variable AtomicStore_Uniform_Float16_ptr;
+inline constexpr std::array AtomicStore_Uniform_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Uniform_Float16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Uniform_Float16_value;
+Variable AtomicStore_Uniform_Float16_semantics;
+Function AtomicStore_Uniform_Float16;
+inline constexpr std::array AtomicStore_Uniform_Float16_args = { &AtomicStore_Uniform_Float16_ptr, &AtomicStore_Uniform_Float16_value, &AtomicStore_Uniform_Float16_semantics };
+
+/// atomicStore with Float16, Float16, MemorySemantics
+Variable AtomicStore_Workgroup_Float16_ptr;
+inline constexpr std::array AtomicStore_Workgroup_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Workgroup_Float16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Workgroup_Float16_value;
+Variable AtomicStore_Workgroup_Float16_semantics;
+Function AtomicStore_Workgroup_Float16;
+inline constexpr std::array AtomicStore_Workgroup_Float16_args = { &AtomicStore_Workgroup_Float16_ptr, &AtomicStore_Workgroup_Float16_value, &AtomicStore_Workgroup_Float16_semantics };
 
 /// atomicExchange with Float16, Float16, MemorySemantics
-Variable AtomicExchange_Float16_ptr;
-inline constexpr std::array AtomicExchange_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Float16_value;
-Variable AtomicExchange_Float16_semantics;
-Function AtomicExchange_Float16;
-inline constexpr std::array AtomicExchange_Float16_args = { &AtomicExchange_Float16_ptr, &AtomicExchange_Float16_value, &AtomicExchange_Float16_semantics };
+Variable AtomicExchange_Uniform_Float16_ptr;
+inline constexpr std::array AtomicExchange_Uniform_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Uniform_Float16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Uniform_Float16_value;
+Variable AtomicExchange_Uniform_Float16_semantics;
+Function AtomicExchange_Uniform_Float16;
+inline constexpr std::array AtomicExchange_Uniform_Float16_args = { &AtomicExchange_Uniform_Float16_ptr, &AtomicExchange_Uniform_Float16_value, &AtomicExchange_Uniform_Float16_semantics };
+
+/// atomicExchange with Float16, Float16, MemorySemantics
+Variable AtomicExchange_Workgroup_Float16_ptr;
+inline constexpr std::array AtomicExchange_Workgroup_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Workgroup_Float16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Workgroup_Float16_value;
+Variable AtomicExchange_Workgroup_Float16_semantics;
+Function AtomicExchange_Workgroup_Float16;
+inline constexpr std::array AtomicExchange_Workgroup_Float16_args = { &AtomicExchange_Workgroup_Float16_ptr, &AtomicExchange_Workgroup_Float16_value, &AtomicExchange_Workgroup_Float16_semantics };
 
 /// atomicMin with Float16, Float16, MemorySemantics
-Variable AtomicMin_UInt32_ptr;
-inline constexpr std::array AtomicMin_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_UInt32_compare;
-Variable AtomicMin_UInt32_semantics;
-Function AtomicMin_UInt32;
-inline constexpr std::array AtomicMin_UInt32_args = { &AtomicMin_UInt32_ptr, &AtomicMin_UInt32_compare, &AtomicMin_UInt32_semantics };
-
-/// atomicMax with Float16, Float16, MemorySemantics
-Variable AtomicMax_UInt32_ptr;
-inline constexpr std::array AtomicMax_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_UInt32_compare;
-Variable AtomicMax_UInt32_semantics;
-Function AtomicMax_UInt32;
-inline constexpr std::array AtomicMax_UInt32_args = { &AtomicMax_UInt32_ptr, &AtomicMax_UInt32_compare, &AtomicMax_UInt32_semantics };
+Variable AtomicMin_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicMin_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMin_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMin_Uniform_UInt32_compare;
+Variable AtomicMin_Uniform_UInt32_semantics;
+Function AtomicMin_Uniform_UInt32;
+inline constexpr std::array AtomicMin_Uniform_UInt32_args = { &AtomicMin_Uniform_UInt32_ptr, &AtomicMin_Uniform_UInt32_compare, &AtomicMin_Uniform_UInt32_semantics };
 
 /// atomicMin with Float16, Float16, MemorySemantics
-Variable AtomicMin_Int32_ptr;
-inline constexpr std::array AtomicMin_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Int32_compare;
-Variable AtomicMin_Int32_semantics;
-Function AtomicMin_Int32;
-inline constexpr std::array AtomicMin_Int32_args = { &AtomicMin_Int32_ptr, &AtomicMin_Int32_compare, &AtomicMin_Int32_semantics };
+Variable AtomicMin_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicMin_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMin_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMin_Workgroup_UInt32_compare;
+Variable AtomicMin_Workgroup_UInt32_semantics;
+Function AtomicMin_Workgroup_UInt32;
+inline constexpr std::array AtomicMin_Workgroup_UInt32_args = { &AtomicMin_Workgroup_UInt32_ptr, &AtomicMin_Workgroup_UInt32_compare, &AtomicMin_Workgroup_UInt32_semantics };
 
 /// atomicMax with Float16, Float16, MemorySemantics
-Variable AtomicMax_Int32_ptr;
-inline constexpr std::array AtomicMax_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Int32_compare;
-Variable AtomicMax_Int32_semantics;
-Function AtomicMax_Int32;
-inline constexpr std::array AtomicMax_Int32_args = { &AtomicMax_Int32_ptr, &AtomicMax_Int32_compare, &AtomicMax_Int32_semantics };
+Variable AtomicMax_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicMax_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMax_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMax_Uniform_UInt32_compare;
+Variable AtomicMax_Uniform_UInt32_semantics;
+Function AtomicMax_Uniform_UInt32;
+inline constexpr std::array AtomicMax_Uniform_UInt32_args = { &AtomicMax_Uniform_UInt32_ptr, &AtomicMax_Uniform_UInt32_compare, &AtomicMax_Uniform_UInt32_semantics };
+
+/// atomicMax with Float16, Float16, MemorySemantics
+Variable AtomicMax_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicMax_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMax_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMax_Workgroup_UInt32_compare;
+Variable AtomicMax_Workgroup_UInt32_semantics;
+Function AtomicMax_Workgroup_UInt32;
+inline constexpr std::array AtomicMax_Workgroup_UInt32_args = { &AtomicMax_Workgroup_UInt32_ptr, &AtomicMax_Workgroup_UInt32_compare, &AtomicMax_Workgroup_UInt32_semantics };
 
 /// atomicMin with Float16, Float16, MemorySemantics
-Variable AtomicMin_UInt16_ptr;
-inline constexpr std::array AtomicMin_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_UInt16_compare;
-Variable AtomicMin_UInt16_semantics;
-Function AtomicMin_UInt16;
-inline constexpr std::array AtomicMin_UInt16_args = { &AtomicMin_UInt16_ptr, &AtomicMin_UInt16_compare, &AtomicMin_UInt16_semantics };
-
-/// atomicMax with Float16, Float16, MemorySemantics
-Variable AtomicMax_UInt16_ptr;
-inline constexpr std::array AtomicMax_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_UInt16_compare;
-Variable AtomicMax_UInt16_semantics;
-Function AtomicMax_UInt16;
-inline constexpr std::array AtomicMax_UInt16_args = { &AtomicMax_UInt16_ptr, &AtomicMax_UInt16_compare, &AtomicMax_UInt16_semantics };
+Variable AtomicMin_Uniform_Int32_ptr;
+inline constexpr std::array AtomicMin_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMin_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMin_Uniform_Int32_compare;
+Variable AtomicMin_Uniform_Int32_semantics;
+Function AtomicMin_Uniform_Int32;
+inline constexpr std::array AtomicMin_Uniform_Int32_args = { &AtomicMin_Uniform_Int32_ptr, &AtomicMin_Uniform_Int32_compare, &AtomicMin_Uniform_Int32_semantics };
 
 /// atomicMin with Float16, Float16, MemorySemantics
-Variable AtomicMin_Int16_ptr;
-inline constexpr std::array AtomicMin_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Int16_compare;
-Variable AtomicMin_Int16_semantics;
-Function AtomicMin_Int16;
-inline constexpr std::array AtomicMin_Int16_args = { &AtomicMin_Int16_ptr, &AtomicMin_Int16_compare, &AtomicMin_Int16_semantics };
+Variable AtomicMin_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicMin_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMin_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMin_Workgroup_Int32_compare;
+Variable AtomicMin_Workgroup_Int32_semantics;
+Function AtomicMin_Workgroup_Int32;
+inline constexpr std::array AtomicMin_Workgroup_Int32_args = { &AtomicMin_Workgroup_Int32_ptr, &AtomicMin_Workgroup_Int32_compare, &AtomicMin_Workgroup_Int32_semantics };
 
 /// atomicMax with Float16, Float16, MemorySemantics
-Variable AtomicMax_Int16_ptr;
-inline constexpr std::array AtomicMax_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Int16_compare;
-Variable AtomicMax_Int16_semantics;
-Function AtomicMax_Int16;
-inline constexpr std::array AtomicMax_Int16_args = { &AtomicMax_Int16_ptr, &AtomicMax_Int16_compare, &AtomicMax_Int16_semantics };
+Variable AtomicMax_Uniform_Int32_ptr;
+inline constexpr std::array AtomicMax_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMax_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMax_Uniform_Int32_compare;
+Variable AtomicMax_Uniform_Int32_semantics;
+Function AtomicMax_Uniform_Int32;
+inline constexpr std::array AtomicMax_Uniform_Int32_args = { &AtomicMax_Uniform_Int32_ptr, &AtomicMax_Uniform_Int32_compare, &AtomicMax_Uniform_Int32_semantics };
+
+/// atomicMax with Float16, Float16, MemorySemantics
+Variable AtomicMax_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicMax_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMax_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMax_Workgroup_Int32_compare;
+Variable AtomicMax_Workgroup_Int32_semantics;
+Function AtomicMax_Workgroup_Int32;
+inline constexpr std::array AtomicMax_Workgroup_Int32_args = { &AtomicMax_Workgroup_Int32_ptr, &AtomicMax_Workgroup_Int32_compare, &AtomicMax_Workgroup_Int32_semantics };
+
+/// atomicMin with Float16, Float16, MemorySemantics
+Variable AtomicMin_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicMin_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMin_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMin_Uniform_UInt16_compare;
+Variable AtomicMin_Uniform_UInt16_semantics;
+Function AtomicMin_Uniform_UInt16;
+inline constexpr std::array AtomicMin_Uniform_UInt16_args = { &AtomicMin_Uniform_UInt16_ptr, &AtomicMin_Uniform_UInt16_compare, &AtomicMin_Uniform_UInt16_semantics };
+
+/// atomicMin with Float16, Float16, MemorySemantics
+Variable AtomicMin_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicMin_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMin_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMin_Workgroup_UInt16_compare;
+Variable AtomicMin_Workgroup_UInt16_semantics;
+Function AtomicMin_Workgroup_UInt16;
+inline constexpr std::array AtomicMin_Workgroup_UInt16_args = { &AtomicMin_Workgroup_UInt16_ptr, &AtomicMin_Workgroup_UInt16_compare, &AtomicMin_Workgroup_UInt16_semantics };
+
+/// atomicMax with Float16, Float16, MemorySemantics
+Variable AtomicMax_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicMax_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMax_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMax_Uniform_UInt16_compare;
+Variable AtomicMax_Uniform_UInt16_semantics;
+Function AtomicMax_Uniform_UInt16;
+inline constexpr std::array AtomicMax_Uniform_UInt16_args = { &AtomicMax_Uniform_UInt16_ptr, &AtomicMax_Uniform_UInt16_compare, &AtomicMax_Uniform_UInt16_semantics };
+
+/// atomicMax with Float16, Float16, MemorySemantics
+Variable AtomicMax_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicMax_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMax_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMax_Workgroup_UInt16_compare;
+Variable AtomicMax_Workgroup_UInt16_semantics;
+Function AtomicMax_Workgroup_UInt16;
+inline constexpr std::array AtomicMax_Workgroup_UInt16_args = { &AtomicMax_Workgroup_UInt16_ptr, &AtomicMax_Workgroup_UInt16_compare, &AtomicMax_Workgroup_UInt16_semantics };
+
+/// atomicMin with Float16, Float16, MemorySemantics
+Variable AtomicMin_Uniform_Int16_ptr;
+inline constexpr std::array AtomicMin_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMin_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMin_Uniform_Int16_compare;
+Variable AtomicMin_Uniform_Int16_semantics;
+Function AtomicMin_Uniform_Int16;
+inline constexpr std::array AtomicMin_Uniform_Int16_args = { &AtomicMin_Uniform_Int16_ptr, &AtomicMin_Uniform_Int16_compare, &AtomicMin_Uniform_Int16_semantics };
+
+/// atomicMin with Float16, Float16, MemorySemantics
+Variable AtomicMin_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicMin_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMin_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMin_Workgroup_Int16_compare;
+Variable AtomicMin_Workgroup_Int16_semantics;
+Function AtomicMin_Workgroup_Int16;
+inline constexpr std::array AtomicMin_Workgroup_Int16_args = { &AtomicMin_Workgroup_Int16_ptr, &AtomicMin_Workgroup_Int16_compare, &AtomicMin_Workgroup_Int16_semantics };
+
+/// atomicMax with Float16, Float16, MemorySemantics
+Variable AtomicMax_Uniform_Int16_ptr;
+inline constexpr std::array AtomicMax_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMax_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMax_Uniform_Int16_compare;
+Variable AtomicMax_Uniform_Int16_semantics;
+Function AtomicMax_Uniform_Int16;
+inline constexpr std::array AtomicMax_Uniform_Int16_args = { &AtomicMax_Uniform_Int16_ptr, &AtomicMax_Uniform_Int16_compare, &AtomicMax_Uniform_Int16_semantics };
+
+/// atomicMax with Float16, Float16, MemorySemantics
+Variable AtomicMax_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicMax_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicMax_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicMax_Workgroup_Int16_compare;
+Variable AtomicMax_Workgroup_Int16_semantics;
+Function AtomicMax_Workgroup_Int16;
+inline constexpr std::array AtomicMax_Workgroup_Int16_args = { &AtomicMax_Workgroup_Int16_ptr, &AtomicMax_Workgroup_Int16_compare, &AtomicMax_Workgroup_Int16_semantics };
 
 /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
-Variable AtomicCompareExchange_UInt32_ptr;
-inline constexpr std::array AtomicCompareExchange_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_UInt32_value;
-Variable AtomicCompareExchange_UInt32_compare;
-Variable AtomicCompareExchange_UInt32_semantics;
-Function AtomicCompareExchange_UInt32;
-inline constexpr std::array AtomicCompareExchange_UInt32_args = { &AtomicCompareExchange_UInt32_ptr, &AtomicCompareExchange_UInt32_value, &AtomicCompareExchange_UInt32_compare, &AtomicCompareExchange_UInt32_semantics };
+Variable AtomicCompareExchange_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicCompareExchange_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicCompareExchange_Uniform_UInt32_value;
+Variable AtomicCompareExchange_Uniform_UInt32_compare;
+Variable AtomicCompareExchange_Uniform_UInt32_semantics;
+Function AtomicCompareExchange_Uniform_UInt32;
+inline constexpr std::array AtomicCompareExchange_Uniform_UInt32_args = { &AtomicCompareExchange_Uniform_UInt32_ptr, &AtomicCompareExchange_Uniform_UInt32_value, &AtomicCompareExchange_Uniform_UInt32_compare, &AtomicCompareExchange_Uniform_UInt32_semantics };
 
 /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
-Variable AtomicCompareExchange_Int32_ptr;
-inline constexpr std::array AtomicCompareExchange_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Int32_value;
-Variable AtomicCompareExchange_Int32_compare;
-Variable AtomicCompareExchange_Int32_semantics;
-Function AtomicCompareExchange_Int32;
-inline constexpr std::array AtomicCompareExchange_Int32_args = { &AtomicCompareExchange_Int32_ptr, &AtomicCompareExchange_Int32_value, &AtomicCompareExchange_Int32_compare, &AtomicCompareExchange_Int32_semantics };
+Variable AtomicCompareExchange_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicCompareExchange_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicCompareExchange_Workgroup_UInt32_value;
+Variable AtomicCompareExchange_Workgroup_UInt32_compare;
+Variable AtomicCompareExchange_Workgroup_UInt32_semantics;
+Function AtomicCompareExchange_Workgroup_UInt32;
+inline constexpr std::array AtomicCompareExchange_Workgroup_UInt32_args = { &AtomicCompareExchange_Workgroup_UInt32_ptr, &AtomicCompareExchange_Workgroup_UInt32_value, &AtomicCompareExchange_Workgroup_UInt32_compare, &AtomicCompareExchange_Workgroup_UInt32_semantics };
 
 /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
-Variable AtomicCompareExchange_UInt16_ptr;
-inline constexpr std::array AtomicCompareExchange_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_UInt16_value;
-Variable AtomicCompareExchange_UInt16_compare;
-Variable AtomicCompareExchange_UInt16_semantics;
-Function AtomicCompareExchange_UInt16;
-inline constexpr std::array AtomicCompareExchange_UInt16_args = { &AtomicCompareExchange_UInt16_ptr, &AtomicCompareExchange_UInt16_value, &AtomicCompareExchange_UInt16_compare, &AtomicCompareExchange_UInt16_semantics };
+Variable AtomicCompareExchange_Uniform_Int32_ptr;
+inline constexpr std::array AtomicCompareExchange_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicCompareExchange_Uniform_Int32_value;
+Variable AtomicCompareExchange_Uniform_Int32_compare;
+Variable AtomicCompareExchange_Uniform_Int32_semantics;
+Function AtomicCompareExchange_Uniform_Int32;
+inline constexpr std::array AtomicCompareExchange_Uniform_Int32_args = { &AtomicCompareExchange_Uniform_Int32_ptr, &AtomicCompareExchange_Uniform_Int32_value, &AtomicCompareExchange_Uniform_Int32_compare, &AtomicCompareExchange_Uniform_Int32_semantics };
 
 /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
-Variable AtomicCompareExchange_Int16_ptr;
-inline constexpr std::array AtomicCompareExchange_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Int16_value;
-Variable AtomicCompareExchange_Int16_compare;
-Variable AtomicCompareExchange_Int16_semantics;
-Function AtomicCompareExchange_Int16;
-inline constexpr std::array AtomicCompareExchange_Int16_args = { &AtomicCompareExchange_Int16_ptr, &AtomicCompareExchange_Int16_value, &AtomicCompareExchange_Int16_compare, &AtomicCompareExchange_Int16_semantics };
+Variable AtomicCompareExchange_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicCompareExchange_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicCompareExchange_Workgroup_Int32_value;
+Variable AtomicCompareExchange_Workgroup_Int32_compare;
+Variable AtomicCompareExchange_Workgroup_Int32_semantics;
+Function AtomicCompareExchange_Workgroup_Int32;
+inline constexpr std::array AtomicCompareExchange_Workgroup_Int32_args = { &AtomicCompareExchange_Workgroup_Int32_ptr, &AtomicCompareExchange_Workgroup_Int32_value, &AtomicCompareExchange_Workgroup_Int32_compare, &AtomicCompareExchange_Workgroup_Int32_semantics };
+
+/// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
+Variable AtomicCompareExchange_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicCompareExchange_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicCompareExchange_Uniform_UInt16_value;
+Variable AtomicCompareExchange_Uniform_UInt16_compare;
+Variable AtomicCompareExchange_Uniform_UInt16_semantics;
+Function AtomicCompareExchange_Uniform_UInt16;
+inline constexpr std::array AtomicCompareExchange_Uniform_UInt16_args = { &AtomicCompareExchange_Uniform_UInt16_ptr, &AtomicCompareExchange_Uniform_UInt16_value, &AtomicCompareExchange_Uniform_UInt16_compare, &AtomicCompareExchange_Uniform_UInt16_semantics };
+
+/// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
+Variable AtomicCompareExchange_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicCompareExchange_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicCompareExchange_Workgroup_UInt16_value;
+Variable AtomicCompareExchange_Workgroup_UInt16_compare;
+Variable AtomicCompareExchange_Workgroup_UInt16_semantics;
+Function AtomicCompareExchange_Workgroup_UInt16;
+inline constexpr std::array AtomicCompareExchange_Workgroup_UInt16_args = { &AtomicCompareExchange_Workgroup_UInt16_ptr, &AtomicCompareExchange_Workgroup_UInt16_value, &AtomicCompareExchange_Workgroup_UInt16_compare, &AtomicCompareExchange_Workgroup_UInt16_semantics };
+
+/// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
+Variable AtomicCompareExchange_Uniform_Int16_ptr;
+inline constexpr std::array AtomicCompareExchange_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicCompareExchange_Uniform_Int16_value;
+Variable AtomicCompareExchange_Uniform_Int16_compare;
+Variable AtomicCompareExchange_Uniform_Int16_semantics;
+Function AtomicCompareExchange_Uniform_Int16;
+inline constexpr std::array AtomicCompareExchange_Uniform_Int16_args = { &AtomicCompareExchange_Uniform_Int16_ptr, &AtomicCompareExchange_Uniform_Int16_value, &AtomicCompareExchange_Uniform_Int16_compare, &AtomicCompareExchange_Uniform_Int16_semantics };
+
+/// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
+Variable AtomicCompareExchange_Workgroup_Int16_ptr;
+inline constexpr std::array AtomicCompareExchange_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicCompareExchange_Workgroup_Int16_value;
+Variable AtomicCompareExchange_Workgroup_Int16_compare;
+Variable AtomicCompareExchange_Workgroup_Int16_semantics;
+Function AtomicCompareExchange_Workgroup_Int16;
+inline constexpr std::array AtomicCompareExchange_Workgroup_Int16_args = { &AtomicCompareExchange_Workgroup_Int16_ptr, &AtomicCompareExchange_Workgroup_Int16_value, &AtomicCompareExchange_Workgroup_Int16_compare, &AtomicCompareExchange_Workgroup_Int16_semantics };
 
 /// bitInsert with UInt16, UInt16, UInt16, UInt16
 Variable BitInsert_UInt16_base;
@@ -586,402 +1098,6 @@ Variable BitInsert_UInt32_offset;
 Variable BitInsert_UInt32_count;
 Function BitInsert_UInt32;
 inline constexpr std::array BitInsert_UInt32_args = { &BitInsert_UInt32_base, &BitInsert_UInt32_value, &BitInsert_UInt32_offset, &BitInsert_UInt32_count };
-
-/// bitExtract with UInt32, UInt32, UInt32
-Variable BitExtract_UInt32_base;
-Variable BitExtract_UInt32_offset;
-Variable BitExtract_UInt32_count;
-Function BitExtract_UInt32;
-inline constexpr std::array BitExtract_UInt32_args = { &BitExtract_UInt32_base, &BitExtract_UInt32_offset, &BitExtract_UInt32_count };
-
-/// bitExtract with Int32, Int32, Int32
-Variable BitExtract_Int32_base;
-Variable BitExtract_Int32_offset;
-Variable BitExtract_Int32_count;
-Function BitExtract_Int32;
-inline constexpr std::array BitExtract_Int32_args = { &BitExtract_Int32_base, &BitExtract_Int32_offset, &BitExtract_Int32_count };
-
-/// bitExtract with UInt16, UInt16, UInt16
-Variable BitExtract_UInt16_base;
-Variable BitExtract_UInt16_offset;
-Variable BitExtract_UInt16_count;
-Function BitExtract_UInt16;
-inline constexpr std::array BitExtract_UInt16_args = { &BitExtract_UInt16_base, &BitExtract_UInt16_offset, &BitExtract_UInt16_count };
-
-/// bitExtract with Int16, Int16, Int16
-Variable BitExtract_Int16_base;
-Variable BitExtract_Int16_offset;
-Variable BitExtract_Int16_count;
-Function BitExtract_Int16;
-inline constexpr std::array BitExtract_Int16_args = { &BitExtract_Int16_base, &BitExtract_Int16_offset, &BitExtract_Int16_count };
-
-/// bitReverse with UInt32
-Variable BitReverse_UInt32_base;
-Function BitReverse_UInt32;
-inline constexpr std::array BitReverse_UInt32_args = { &BitReverse_UInt32_base };
-
-/// bitReverse with Int32
-Variable BitReverse_Int32_base;
-Function BitReverse_Int32;
-inline constexpr std::array BitReverse_Int32_args = { &BitReverse_Int32_base };
-
-/// bitReverse with UInt16
-Variable BitReverse_UInt16_base;
-Function BitReverse_UInt16;
-inline constexpr std::array BitReverse_UInt16_args = { &BitReverse_UInt16_base };
-
-/// bitReverse with Int16
-Variable BitReverse_Int16_base;
-Function BitReverse_Int16;
-inline constexpr std::array BitReverse_Int16_args = { &BitReverse_Int16_base };
-
-/// bitCount with UInt32
-Variable BitCount_UInt32_base;
-Function BitCount_UInt32;
-inline constexpr std::array BitCount_UInt32_args = { &BitCount_UInt32_base };
-
-/// bitCount with Int32
-Variable BitCount_Int32_base;
-Function BitCount_Int32;
-inline constexpr std::array BitCount_Int32_args = { &BitCount_Int32_base };
-
-/// bitCount with UInt16
-Variable BitCount_UInt16_base;
-Function BitCount_UInt16;
-inline constexpr std::array BitCount_UInt16_args = { &BitCount_UInt16_base };
-
-/// bitCount with Int16
-Variable BitCount_Int16_base;
-Function BitCount_Int16;
-inline constexpr std::array BitCount_Int16_args = { &BitCount_Int16_base };
-
-/// executionBarrier
-Function ExecutionBarrier;
-
-/// executionBarrierSubgroup
-Function ExecutionBarrierSubgroup;
-
-/// executionBarrierWorkgroup
-Function ExecutionBarrierWorkgroup;
-
-/// memoryBarrier
-Function MemoryBarrier;
-
-/// memoryBarrierBuffer
-Function MemoryBarrierBuffer;
-
-/// memoryBarrierTexture
-Function MemoryBarrierTexture;
-
-/// memoryBarrierAtomic
-Function MemoryBarrierAtomic;
-
-/// memoryBarrierSubgroup
-Function MemoryBarrierSubgroup;
-
-/// memoryBarrierWorkgroup
-Function MemoryBarrierWorkgroup;
-
-/// textureGetSize with Texture1D
-Variable TextureGetSize_Texture1D_texture;
-inline constexpr std::array TextureGetSize_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture1D;
-inline constexpr std::array TextureGetSize_Texture1D_args = { &TextureGetSize_Texture1D_texture };
-
-/// textureGetSize with Texture2D
-Variable TextureGetSize_Texture2D_texture;
-inline constexpr std::array TextureGetSize_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture2D;
-inline constexpr std::array TextureGetSize_Texture2D_args = { &TextureGetSize_Texture2D_texture };
-
-/// textureGetSize with Texture3D
-Variable TextureGetSize_Texture3D_texture;
-inline constexpr std::array TextureGetSize_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture3D;
-inline constexpr std::array TextureGetSize_Texture3D_args = { &TextureGetSize_Texture3D_texture };
-
-/// textureGetSize with TextureCube
-Variable TextureGetSize_TextureCube_texture;
-inline constexpr std::array TextureGetSize_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_TextureCube;
-inline constexpr std::array TextureGetSize_TextureCube_args = { &TextureGetSize_TextureCube_texture };
-
-/// textureGetSize with Texture1DArray
-Variable TextureGetSize_Texture1DArray_texture;
-inline constexpr std::array TextureGetSize_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture1DArray;
-inline constexpr std::array TextureGetSize_Texture1DArray_args = { &TextureGetSize_Texture1DArray_texture };
-
-/// textureGetSize with Texture2DArray
-Variable TextureGetSize_Texture2DArray_texture;
-inline constexpr std::array TextureGetSize_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture2DArray;
-inline constexpr std::array TextureGetSize_Texture2DArray_args = { &TextureGetSize_Texture2DArray_texture };
-
-/// textureGetSize with TextureCubeArray
-Variable TextureGetSize_TextureCubeArray_texture;
-inline constexpr std::array TextureGetSize_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_TextureCubeArray;
-inline constexpr std::array TextureGetSize_TextureCubeArray_args = { &TextureGetSize_TextureCubeArray_texture };
-
-/// textureGetSizeMip with Texture1D, UInt32
-Variable TextureGetSizeMip_Texture1D_texture;
-inline constexpr std::array TextureGetSizeMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture1D_mip;
-Function TextureGetSizeMip_Texture1D;
-inline constexpr std::array TextureGetSizeMip_Texture1D_args = { &TextureGetSizeMip_Texture1D_texture, &TextureGetSizeMip_Texture1D_mip };
-
-/// textureGetSizeMip with Texture2D, UInt32
-Variable TextureGetSizeMip_Texture2D_texture;
-inline constexpr std::array TextureGetSizeMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture2D_mip;
-Function TextureGetSizeMip_Texture2D;
-inline constexpr std::array TextureGetSizeMip_Texture2D_args = { &TextureGetSizeMip_Texture2D_texture, &TextureGetSizeMip_Texture2D_mip };
-
-/// textureGetSizeMip with Texture3D, UInt32
-Variable TextureGetSizeMip_Texture3D_texture;
-inline constexpr std::array TextureGetSizeMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture3D_mip;
-Function TextureGetSizeMip_Texture3D;
-inline constexpr std::array TextureGetSizeMip_Texture3D_args = { &TextureGetSizeMip_Texture3D_texture, &TextureGetSizeMip_Texture3D_mip };
-
-/// textureGetSizeMip with TextureCube, UInt32
-Variable TextureGetSizeMip_TextureCube_texture;
-inline constexpr std::array TextureGetSizeMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_TextureCube_mip;
-Function TextureGetSizeMip_TextureCube;
-inline constexpr std::array TextureGetSizeMip_TextureCube_args = { &TextureGetSizeMip_TextureCube_texture, &TextureGetSizeMip_TextureCube_mip };
-
-/// textureGetSizeMip with Texture1DArray, UInt32
-Variable TextureGetSizeMip_Texture1DArray_texture;
-inline constexpr std::array TextureGetSizeMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture1DArray_mip;
-Function TextureGetSizeMip_Texture1DArray;
-inline constexpr std::array TextureGetSizeMip_Texture1DArray_args = { &TextureGetSizeMip_Texture1DArray_texture, &TextureGetSizeMip_Texture1DArray_mip };
-
-/// textureGetSizeMip with Texture2DArray, UInt32
-Variable TextureGetSizeMip_Texture2DArray_texture;
-inline constexpr std::array TextureGetSizeMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture2DArray_mip;
-Function TextureGetSizeMip_Texture2DArray;
-inline constexpr std::array TextureGetSizeMip_Texture2DArray_args = { &TextureGetSizeMip_Texture2DArray_texture, &TextureGetSizeMip_Texture2DArray_mip };
-
-/// textureGetSizeMip with TextureCubeArray, UInt32
-Variable TextureGetSizeMip_TextureCubeArray_texture;
-inline constexpr std::array TextureGetSizeMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_TextureCubeArray_mip;
-Function TextureGetSizeMip_TextureCubeArray;
-inline constexpr std::array TextureGetSizeMip_TextureCubeArray_args = { &TextureGetSizeMip_TextureCubeArray_texture, &TextureGetSizeMip_TextureCubeArray_mip };
-
-/// textureGetMips with Texture1D
-Variable TextureGetMips_Texture1D_texture;
-inline constexpr std::array TextureGetMips_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture1D;
-inline constexpr std::array TextureGetMips_Texture1D_args = { &TextureGetMips_Texture1D_texture };
-
-/// textureGetMips with Texture2D
-Variable TextureGetMips_Texture2D_texture;
-inline constexpr std::array TextureGetMips_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture2D;
-inline constexpr std::array TextureGetMips_Texture2D_args = { &TextureGetMips_Texture2D_texture };
-
-/// textureGetMips with Texture3D
-Variable TextureGetMips_Texture3D_texture;
-inline constexpr std::array TextureGetMips_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture3D;
-inline constexpr std::array TextureGetMips_Texture3D_args = { &TextureGetMips_Texture3D_texture };
-
-/// textureGetMips with TextureCube
-Variable TextureGetMips_TextureCube_texture;
-inline constexpr std::array TextureGetMips_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_TextureCube;
-inline constexpr std::array TextureGetMips_TextureCube_args = { &TextureGetMips_TextureCube_texture };
-
-/// textureGetMips with Texture1DArray
-Variable TextureGetMips_Texture1DArray_texture;
-inline constexpr std::array TextureGetMips_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture1DArray;
-inline constexpr std::array TextureGetMips_Texture1DArray_args = { &TextureGetMips_Texture1DArray_texture };
-
-/// textureGetMips with Texture2DArray
-Variable TextureGetMips_Texture2DArray_texture;
-inline constexpr std::array TextureGetMips_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture2DArray;
-inline constexpr std::array TextureGetMips_Texture2DArray_args = { &TextureGetMips_Texture2DArray_texture };
-
-/// textureGetMips with TextureCubeArray
-Variable TextureGetMips_TextureCubeArray_texture;
-inline constexpr std::array TextureGetMips_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_TextureCubeArray;
-inline constexpr std::array TextureGetMips_TextureCubeArray_args = { &TextureGetMips_TextureCubeArray_texture };
-
-/// textureGetSamples with Texture2DMS
-Variable TextureGetSamples_Texture2DMS_texture;
-inline constexpr std::array TextureGetSamples_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSamples_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSamples_Texture2DMS;
-inline constexpr std::array TextureGetSamples_Texture2DMS_args = { &TextureGetSamples_Texture2DMS_texture };
-
-/// textureGetSamples with Texture2DMSArray
-Variable TextureGetSamples_Texture2DMSArray_texture;
-inline constexpr std::array TextureGetSamples_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSamples_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSamples_Texture2DMSArray;
-inline constexpr std::array TextureGetSamples_Texture2DMSArray_args = { &TextureGetSamples_Texture2DMSArray_texture };
-
-/// textureGetSampledMip with Texture1D, Sampler, Float32
-Variable TextureGetSampledMip_Texture1D_texture;
-inline constexpr std::array TextureGetSampledMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture1D_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture1D_coordinate;
-Function TextureGetSampledMip_Texture1D;
-inline constexpr std::array TextureGetSampledMip_Texture1D_args = { &TextureGetSampledMip_Texture1D_texture, &TextureGetSampledMip_Texture1D_sampler, &TextureGetSampledMip_Texture1D_coordinate };
-
-/// textureGetSampledMip with SampledTexture1D, Float32
-Variable SampledTextureGetSampledMip_Texture1D_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture1D_coordinate;
-Function SampledTextureGetSampledMip_Texture1D;
-inline constexpr std::array SampledTextureGetSampledMip_Texture1D_args = { &SampledTextureGetSampledMip_Texture1D_texture, &SampledTextureGetSampledMip_Texture1D_coordinate };
-
-/// textureGetSampledMip with Texture2D, Sampler, Float32x2
-Variable TextureGetSampledMip_Texture2D_texture;
-inline constexpr std::array TextureGetSampledMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture2D_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture2D_coordinate;
-Function TextureGetSampledMip_Texture2D;
-inline constexpr std::array TextureGetSampledMip_Texture2D_args = { &TextureGetSampledMip_Texture2D_texture, &TextureGetSampledMip_Texture2D_sampler, &TextureGetSampledMip_Texture2D_coordinate };
-
-/// textureGetSampledMip with SampledTexture2D, Float32x2
-Variable SampledTextureGetSampledMip_Texture2D_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture2D_coordinate;
-Function SampledTextureGetSampledMip_Texture2D;
-inline constexpr std::array SampledTextureGetSampledMip_Texture2D_args = { &SampledTextureGetSampledMip_Texture2D_texture, &SampledTextureGetSampledMip_Texture2D_coordinate };
-
-/// textureGetSampledMip with Texture3D, Sampler, Float32x3
-Variable TextureGetSampledMip_Texture3D_texture;
-inline constexpr std::array TextureGetSampledMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture3D_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture3D_coordinate;
-Function TextureGetSampledMip_Texture3D;
-inline constexpr std::array TextureGetSampledMip_Texture3D_args = { &TextureGetSampledMip_Texture3D_texture, &TextureGetSampledMip_Texture3D_sampler, &TextureGetSampledMip_Texture3D_coordinate };
-
-/// textureGetSampledMip with SampledTexture3D, Float32x3
-Variable SampledTextureGetSampledMip_Texture3D_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture3D_coordinate;
-Function SampledTextureGetSampledMip_Texture3D;
-inline constexpr std::array SampledTextureGetSampledMip_Texture3D_args = { &SampledTextureGetSampledMip_Texture3D_texture, &SampledTextureGetSampledMip_Texture3D_coordinate };
-
-/// textureGetSampledMip with TextureCube, Sampler, Float32x3
-Variable TextureGetSampledMip_TextureCube_texture;
-inline constexpr std::array TextureGetSampledMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_TextureCube_sampler;
-inline constexpr std::array TextureGetSampledMip_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_TextureCube_coordinate;
-Function TextureGetSampledMip_TextureCube;
-inline constexpr std::array TextureGetSampledMip_TextureCube_args = { &TextureGetSampledMip_TextureCube_texture, &TextureGetSampledMip_TextureCube_sampler, &TextureGetSampledMip_TextureCube_coordinate };
-
-/// textureGetSampledMip with SampledTextureCube, Float32x3
-Variable SampledTextureGetSampledMip_TextureCube_texture;
-inline constexpr std::array SampledTextureGetSampledMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_TextureCube_coordinate;
-Function SampledTextureGetSampledMip_TextureCube;
-inline constexpr std::array SampledTextureGetSampledMip_TextureCube_args = { &SampledTextureGetSampledMip_TextureCube_texture, &SampledTextureGetSampledMip_TextureCube_coordinate };
-
-/// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
-Variable TextureGetSampledMip_Texture1DArray_texture;
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture1DArray_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture1DArray_coordinate;
-Function TextureGetSampledMip_Texture1DArray;
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_args = { &TextureGetSampledMip_Texture1DArray_texture, &TextureGetSampledMip_Texture1DArray_sampler, &TextureGetSampledMip_Texture1DArray_coordinate };
-
-/// textureGetSampledMip with SampledTexture1DArray, Float32x2
-Variable SampledTextureGetSampledMip_Texture1DArray_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture1DArray_coordinate;
-Function SampledTextureGetSampledMip_Texture1DArray;
-inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_args = { &SampledTextureGetSampledMip_Texture1DArray_texture, &SampledTextureGetSampledMip_Texture1DArray_coordinate };
-
-/// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
-Variable TextureGetSampledMip_Texture2DArray_texture;
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture2DArray_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture2DArray_coordinate;
-Function TextureGetSampledMip_Texture2DArray;
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_args = { &TextureGetSampledMip_Texture2DArray_texture, &TextureGetSampledMip_Texture2DArray_sampler, &TextureGetSampledMip_Texture2DArray_coordinate };
-
-/// textureGetSampledMip with SampledTexture2DArray, Float32x3
-Variable SampledTextureGetSampledMip_Texture2DArray_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture2DArray_coordinate;
-Function SampledTextureGetSampledMip_Texture2DArray;
-inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_args = { &SampledTextureGetSampledMip_Texture2DArray_texture, &SampledTextureGetSampledMip_Texture2DArray_coordinate };
-
-/// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
-Variable TextureGetSampledMip_TextureCubeArray_texture;
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_TextureCubeArray_sampler;
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_TextureCubeArray_coordinate;
-Function TextureGetSampledMip_TextureCubeArray;
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_args = { &TextureGetSampledMip_TextureCubeArray_texture, &TextureGetSampledMip_TextureCubeArray_sampler, &TextureGetSampledMip_TextureCubeArray_coordinate };
-
-/// textureGetSampledMip with SampledTextureCubeArray, Float32x4
-Variable SampledTextureGetSampledMip_TextureCubeArray_texture;
-inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_TextureCubeArray_coordinate;
-Function SampledTextureGetSampledMip_TextureCubeArray;
-inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_args = { &SampledTextureGetSampledMip_TextureCubeArray_texture, &SampledTextureGetSampledMip_TextureCubeArray_coordinate };
 
 void SetupIntrinsics9()
 {
@@ -1126,1308 +1242,2888 @@ void SetupIntrinsics9()
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// atomicLoad with UInt32, MemorySemantics
-    AtomicLoad_UInt32_ptr.name = "ptr"_c;
-    AtomicLoad_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicLoad_UInt32_ptr.type.modifiers = AtomicLoad_UInt32_ptr_modifiers;
-    AtomicLoad_UInt32_ptr.type.modifierValues = AtomicLoad_UInt32_ptr_modifierValues;
-    AtomicLoad_UInt32_semantics.name = "semantics"_c;
-    AtomicLoad_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_UInt32_semantics.type.literal = true;
-    AtomicLoad_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_UInt32.name = AtomicLoad_UInt32_name;
-    AtomicLoad_UInt32.backendIndex = 2099;
-    AtomicLoad_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicLoad_UInt32.parameters = AtomicLoad_UInt32_args;
-    Symbol::Resolved(&AtomicLoad_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicLoad_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_UInt32)->signature = "atomicLoad(*u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicLoad_UInt32)->name = "atomicLoad(*u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_UInt32)->nameWithVarNames = "atomicLoad(ptr : *u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicLoad_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicLoad_Uniform_UInt32_ptr.type.strict = true;
+    AtomicLoad_Uniform_UInt32_ptr.type.modifiers = AtomicLoad_Uniform_UInt32_ptr_modifiers;
+    AtomicLoad_Uniform_UInt32_ptr.type.modifierValues = AtomicLoad_Uniform_UInt32_ptr_modifierValues;
+    AtomicLoad_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_UInt32_semantics.type.literal = true;
+    AtomicLoad_Uniform_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_UInt32.name = AtomicLoad_Uniform_UInt32_name;
+    AtomicLoad_Uniform_UInt32.backendIndex = 2099;
+    AtomicLoad_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicLoad_Uniform_UInt32.parameters = AtomicLoad_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->signature = "atomicLoad(uniform *u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->name = "atomicLoad(uniform *u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->nameWithVarNames = "atomicLoad(ptr : uniform *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicLoad with UInt32, MemorySemantics
+    AtomicLoad_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicLoad_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicLoad_Workgroup_UInt32_ptr.type.modifiers = AtomicLoad_Workgroup_UInt32_ptr_modifiers;
+    AtomicLoad_Workgroup_UInt32_ptr.type.modifierValues = AtomicLoad_Workgroup_UInt32_ptr_modifierValues;
+    AtomicLoad_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicLoad_Workgroup_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_UInt32.name = AtomicLoad_Workgroup_UInt32_name;
+    AtomicLoad_Workgroup_UInt32.backendIndex = 2100;
+    AtomicLoad_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicLoad_Workgroup_UInt32.parameters = AtomicLoad_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->signature = "atomicLoad(workgroup *u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->name = "atomicLoad(workgroup *u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->nameWithVarNames = "atomicLoad(ptr : workgroup *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicIncrement with UInt32, MemorySemantics
-    AtomicIncrement_UInt32_ptr.name = "ptr"_c;
-    AtomicIncrement_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicIncrement_UInt32_ptr.type.modifiers = AtomicIncrement_UInt32_ptr_modifiers;
-    AtomicIncrement_UInt32_ptr.type.modifierValues = AtomicIncrement_UInt32_ptr_modifierValues;
-    AtomicIncrement_UInt32_semantics.name = "semantics"_c;
-    AtomicIncrement_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_UInt32_semantics.type.literal = true;
-    AtomicIncrement_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_UInt32.name = AtomicIncrement_UInt32_name;
-    AtomicIncrement_UInt32.backendIndex = 2100;
-    AtomicIncrement_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicIncrement_UInt32.parameters = AtomicIncrement_UInt32_args;
-    Symbol::Resolved(&AtomicIncrement_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicIncrement_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_UInt32)->signature = "atomicIncrement(*u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicIncrement_UInt32)->name = "atomicIncrement(*u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_UInt32)->nameWithVarNames = "atomicIncrement(ptr : *u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicIncrement_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicIncrement_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicIncrement_Uniform_UInt32_ptr.type.strict = true;
+    AtomicIncrement_Uniform_UInt32_ptr.type.modifiers = AtomicIncrement_Uniform_UInt32_ptr_modifiers;
+    AtomicIncrement_Uniform_UInt32_ptr.type.modifierValues = AtomicIncrement_Uniform_UInt32_ptr_modifierValues;
+    AtomicIncrement_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicIncrement_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Uniform_UInt32_semantics.type.literal = true;
+    AtomicIncrement_Uniform_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Uniform_UInt32.name = AtomicIncrement_Uniform_UInt32_name;
+    AtomicIncrement_Uniform_UInt32.backendIndex = 2101;
+    AtomicIncrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicIncrement_Uniform_UInt32.parameters = AtomicIncrement_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->signature = "atomicIncrement(uniform *u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->name = "atomicIncrement(uniform *u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->nameWithVarNames = "atomicIncrement(ptr : uniform *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicIncrement with UInt32, MemorySemantics
+    AtomicIncrement_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicIncrement_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicIncrement_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_UInt32_ptr.type.modifiers = AtomicIncrement_Workgroup_UInt32_ptr_modifiers;
+    AtomicIncrement_Workgroup_UInt32_ptr.type.modifierValues = AtomicIncrement_Workgroup_UInt32_ptr_modifierValues;
+    AtomicIncrement_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicIncrement_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicIncrement_Workgroup_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Workgroup_UInt32.name = AtomicIncrement_Workgroup_UInt32_name;
+    AtomicIncrement_Workgroup_UInt32.backendIndex = 2102;
+    AtomicIncrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicIncrement_Workgroup_UInt32.parameters = AtomicIncrement_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->signature = "atomicIncrement(workgroup *u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->name = "atomicIncrement(workgroup *u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicDecrement with UInt32, MemorySemantics
-    AtomicDecrement_UInt32_ptr.name = "ptr"_c;
-    AtomicDecrement_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicDecrement_UInt32_ptr.type.modifiers = AtomicDecrement_UInt32_ptr_modifiers;
-    AtomicDecrement_UInt32_ptr.type.modifierValues = AtomicDecrement_UInt32_ptr_modifierValues;
-    AtomicDecrement_UInt32_semantics.name = "semantics"_c;
-    AtomicDecrement_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_UInt32_semantics.type.literal = true;
-    AtomicDecrement_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_UInt32.name = AtomicDecrement_UInt32_name;
-    AtomicDecrement_UInt32.backendIndex = 2101;
-    AtomicDecrement_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicDecrement_UInt32.parameters = AtomicDecrement_UInt32_args;
-    Symbol::Resolved(&AtomicDecrement_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicDecrement_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_UInt32)->signature = "atomicDecrement(*u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicDecrement_UInt32)->name = "atomicDecrement(*u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_UInt32)->nameWithVarNames = "atomicDecrement(ptr : *u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicDecrement_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicDecrement_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicDecrement_Uniform_UInt32_ptr.type.strict = true;
+    AtomicDecrement_Uniform_UInt32_ptr.type.modifiers = AtomicDecrement_Uniform_UInt32_ptr_modifiers;
+    AtomicDecrement_Uniform_UInt32_ptr.type.modifierValues = AtomicDecrement_Uniform_UInt32_ptr_modifierValues;
+    AtomicDecrement_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicDecrement_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Uniform_UInt32_semantics.type.literal = true;
+    AtomicDecrement_Uniform_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Uniform_UInt32.name = AtomicDecrement_Uniform_UInt32_name;
+    AtomicDecrement_Uniform_UInt32.backendIndex = 2103;
+    AtomicDecrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicDecrement_Uniform_UInt32.parameters = AtomicDecrement_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->signature = "atomicDecrement(uniform *u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->name = "atomicDecrement(uniform *u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->nameWithVarNames = "atomicDecrement(ptr : uniform *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicDecrement with UInt32, MemorySemantics
+    AtomicDecrement_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicDecrement_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicDecrement_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_UInt32_ptr.type.modifiers = AtomicDecrement_Workgroup_UInt32_ptr_modifiers;
+    AtomicDecrement_Workgroup_UInt32_ptr.type.modifierValues = AtomicDecrement_Workgroup_UInt32_ptr_modifierValues;
+    AtomicDecrement_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicDecrement_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicDecrement_Workgroup_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Workgroup_UInt32.name = AtomicDecrement_Workgroup_UInt32_name;
+    AtomicDecrement_Workgroup_UInt32.backendIndex = 2104;
+    AtomicDecrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicDecrement_Workgroup_UInt32.parameters = AtomicDecrement_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->signature = "atomicDecrement(workgroup *u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->name = "atomicDecrement(workgroup *u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicLoad with Int32, MemorySemantics
-    AtomicLoad_Int32_ptr.name = "ptr"_c;
-    AtomicLoad_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicLoad_Int32_ptr.type.modifiers = AtomicLoad_Int32_ptr_modifiers;
-    AtomicLoad_Int32_ptr.type.modifierValues = AtomicLoad_Int32_ptr_modifierValues;
-    AtomicLoad_Int32_semantics.name = "semantics"_c;
-    AtomicLoad_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Int32_semantics.type.literal = true;
-    AtomicLoad_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Int32.name = AtomicLoad_Int32_name;
-    AtomicLoad_Int32.backendIndex = 2102;
-    AtomicLoad_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicLoad_Int32.parameters = AtomicLoad_Int32_args;
-    Symbol::Resolved(&AtomicLoad_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicLoad_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Int32)->signature = "atomicLoad(*i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicLoad_Int32)->name = "atomicLoad(*i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Int32)->nameWithVarNames = "atomicLoad(ptr : *i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicLoad_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicLoad_Uniform_Int32_ptr.type.strict = true;
+    AtomicLoad_Uniform_Int32_ptr.type.modifiers = AtomicLoad_Uniform_Int32_ptr_modifiers;
+    AtomicLoad_Uniform_Int32_ptr.type.modifierValues = AtomicLoad_Uniform_Int32_ptr_modifierValues;
+    AtomicLoad_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_Int32_semantics.type.literal = true;
+    AtomicLoad_Uniform_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_Int32.name = AtomicLoad_Uniform_Int32_name;
+    AtomicLoad_Uniform_Int32.backendIndex = 2105;
+    AtomicLoad_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicLoad_Uniform_Int32.parameters = AtomicLoad_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->signature = "atomicLoad(uniform *i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->name = "atomicLoad(uniform *i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->nameWithVarNames = "atomicLoad(ptr : uniform *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicLoad with Int32, MemorySemantics
+    AtomicLoad_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicLoad_Workgroup_Int32_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Int32_ptr.type.modifiers = AtomicLoad_Workgroup_Int32_ptr_modifiers;
+    AtomicLoad_Workgroup_Int32_ptr.type.modifierValues = AtomicLoad_Workgroup_Int32_ptr_modifierValues;
+    AtomicLoad_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_Int32_semantics.type.literal = true;
+    AtomicLoad_Workgroup_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_Int32.name = AtomicLoad_Workgroup_Int32_name;
+    AtomicLoad_Workgroup_Int32.backendIndex = 2106;
+    AtomicLoad_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicLoad_Workgroup_Int32.parameters = AtomicLoad_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->signature = "atomicLoad(workgroup *i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->name = "atomicLoad(workgroup *i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->nameWithVarNames = "atomicLoad(ptr : workgroup *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicIncrement with Int32, MemorySemantics
-    AtomicIncrement_Int32_ptr.name = "ptr"_c;
-    AtomicIncrement_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicIncrement_Int32_ptr.type.modifiers = AtomicIncrement_Int32_ptr_modifiers;
-    AtomicIncrement_Int32_ptr.type.modifierValues = AtomicIncrement_Int32_ptr_modifierValues;
-    AtomicIncrement_Int32_semantics.name = "semantics"_c;
-    AtomicIncrement_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Int32_semantics.type.literal = true;
-    AtomicIncrement_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Int32.name = AtomicIncrement_Int32_name;
-    AtomicIncrement_Int32.backendIndex = 2103;
-    AtomicIncrement_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicIncrement_Int32.parameters = AtomicIncrement_Int32_args;
-    Symbol::Resolved(&AtomicIncrement_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicIncrement_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Int32)->signature = "atomicIncrement(*i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicIncrement_Int32)->name = "atomicIncrement(*i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Int32)->nameWithVarNames = "atomicIncrement(ptr : *i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicIncrement_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicIncrement_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicIncrement_Uniform_Int32_ptr.type.strict = true;
+    AtomicIncrement_Uniform_Int32_ptr.type.modifiers = AtomicIncrement_Uniform_Int32_ptr_modifiers;
+    AtomicIncrement_Uniform_Int32_ptr.type.modifierValues = AtomicIncrement_Uniform_Int32_ptr_modifierValues;
+    AtomicIncrement_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicIncrement_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Uniform_Int32_semantics.type.literal = true;
+    AtomicIncrement_Uniform_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Uniform_Int32.name = AtomicIncrement_Uniform_Int32_name;
+    AtomicIncrement_Uniform_Int32.backendIndex = 2107;
+    AtomicIncrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicIncrement_Uniform_Int32.parameters = AtomicIncrement_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->signature = "atomicIncrement(uniform *i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->name = "atomicIncrement(uniform *i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->nameWithVarNames = "atomicIncrement(ptr : uniform *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicIncrement with Int32, MemorySemantics
+    AtomicIncrement_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicIncrement_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicIncrement_Workgroup_Int32_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_Int32_ptr.type.modifiers = AtomicIncrement_Workgroup_Int32_ptr_modifiers;
+    AtomicIncrement_Workgroup_Int32_ptr.type.modifierValues = AtomicIncrement_Workgroup_Int32_ptr_modifierValues;
+    AtomicIncrement_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicIncrement_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Workgroup_Int32_semantics.type.literal = true;
+    AtomicIncrement_Workgroup_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Workgroup_Int32.name = AtomicIncrement_Workgroup_Int32_name;
+    AtomicIncrement_Workgroup_Int32.backendIndex = 2108;
+    AtomicIncrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicIncrement_Workgroup_Int32.parameters = AtomicIncrement_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->signature = "atomicIncrement(workgroup *i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->name = "atomicIncrement(workgroup *i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicDecrement with Int32, MemorySemantics
-    AtomicDecrement_Int32_ptr.name = "ptr"_c;
-    AtomicDecrement_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicDecrement_Int32_ptr.type.modifiers = AtomicDecrement_Int32_ptr_modifiers;
-    AtomicDecrement_Int32_ptr.type.modifierValues = AtomicDecrement_Int32_ptr_modifierValues;
-    AtomicDecrement_Int32_semantics.name = "semantics"_c;
-    AtomicDecrement_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Int32_semantics.type.literal = true;
-    AtomicDecrement_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Int32.name = AtomicDecrement_Int32_name;
-    AtomicDecrement_Int32.backendIndex = 2104;
-    AtomicDecrement_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicDecrement_Int32.parameters = AtomicDecrement_Int32_args;
-    Symbol::Resolved(&AtomicDecrement_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicDecrement_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Int32)->signature = "atomicDecrement(*i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicDecrement_Int32)->name = "atomicDecrement(*i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Int32)->nameWithVarNames = "atomicDecrement(ptr : *i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicDecrement_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicDecrement_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicDecrement_Uniform_Int32_ptr.type.strict = true;
+    AtomicDecrement_Uniform_Int32_ptr.type.modifiers = AtomicDecrement_Uniform_Int32_ptr_modifiers;
+    AtomicDecrement_Uniform_Int32_ptr.type.modifierValues = AtomicDecrement_Uniform_Int32_ptr_modifierValues;
+    AtomicDecrement_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicDecrement_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Uniform_Int32_semantics.type.literal = true;
+    AtomicDecrement_Uniform_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Uniform_Int32.name = AtomicDecrement_Uniform_Int32_name;
+    AtomicDecrement_Uniform_Int32.backendIndex = 2109;
+    AtomicDecrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicDecrement_Uniform_Int32.parameters = AtomicDecrement_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->signature = "atomicDecrement(uniform *i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->name = "atomicDecrement(uniform *i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->nameWithVarNames = "atomicDecrement(ptr : uniform *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicDecrement with Int32, MemorySemantics
+    AtomicDecrement_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicDecrement_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicDecrement_Workgroup_Int32_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_Int32_ptr.type.modifiers = AtomicDecrement_Workgroup_Int32_ptr_modifiers;
+    AtomicDecrement_Workgroup_Int32_ptr.type.modifierValues = AtomicDecrement_Workgroup_Int32_ptr_modifierValues;
+    AtomicDecrement_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicDecrement_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Workgroup_Int32_semantics.type.literal = true;
+    AtomicDecrement_Workgroup_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Workgroup_Int32.name = AtomicDecrement_Workgroup_Int32_name;
+    AtomicDecrement_Workgroup_Int32.backendIndex = 2110;
+    AtomicDecrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicDecrement_Workgroup_Int32.parameters = AtomicDecrement_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->signature = "atomicDecrement(workgroup *i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->name = "atomicDecrement(workgroup *i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicLoad with UInt16, MemorySemantics
-    AtomicLoad_UInt16_ptr.name = "ptr"_c;
-    AtomicLoad_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicLoad_UInt16_ptr.type.modifiers = AtomicLoad_UInt16_ptr_modifiers;
-    AtomicLoad_UInt16_ptr.type.modifierValues = AtomicLoad_UInt16_ptr_modifierValues;
-    AtomicLoad_UInt16_semantics.name = "semantics"_c;
-    AtomicLoad_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_UInt16_semantics.type.literal = true;
-    AtomicLoad_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_UInt16.name = AtomicLoad_UInt16_name;
-    AtomicLoad_UInt16.backendIndex = 2105;
-    AtomicLoad_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicLoad_UInt16.parameters = AtomicLoad_UInt16_args;
-    Symbol::Resolved(&AtomicLoad_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicLoad_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_UInt16)->signature = "atomicLoad(*u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicLoad_UInt16)->name = "atomicLoad(*u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_UInt16)->nameWithVarNames = "atomicLoad(ptr : *u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicLoad_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicLoad_Uniform_UInt16_ptr.type.strict = true;
+    AtomicLoad_Uniform_UInt16_ptr.type.modifiers = AtomicLoad_Uniform_UInt16_ptr_modifiers;
+    AtomicLoad_Uniform_UInt16_ptr.type.modifierValues = AtomicLoad_Uniform_UInt16_ptr_modifierValues;
+    AtomicLoad_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_UInt16_semantics.type.literal = true;
+    AtomicLoad_Uniform_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_UInt16.name = AtomicLoad_Uniform_UInt16_name;
+    AtomicLoad_Uniform_UInt16.backendIndex = 2111;
+    AtomicLoad_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicLoad_Uniform_UInt16.parameters = AtomicLoad_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->signature = "atomicLoad(uniform *u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->name = "atomicLoad(uniform *u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->nameWithVarNames = "atomicLoad(ptr : uniform *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicLoad with UInt16, MemorySemantics
+    AtomicLoad_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicLoad_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicLoad_Workgroup_UInt16_ptr.type.modifiers = AtomicLoad_Workgroup_UInt16_ptr_modifiers;
+    AtomicLoad_Workgroup_UInt16_ptr.type.modifierValues = AtomicLoad_Workgroup_UInt16_ptr_modifierValues;
+    AtomicLoad_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicLoad_Workgroup_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_UInt16.name = AtomicLoad_Workgroup_UInt16_name;
+    AtomicLoad_Workgroup_UInt16.backendIndex = 2112;
+    AtomicLoad_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicLoad_Workgroup_UInt16.parameters = AtomicLoad_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->signature = "atomicLoad(workgroup *u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->name = "atomicLoad(workgroup *u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->nameWithVarNames = "atomicLoad(ptr : workgroup *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicIncrement with UInt16, MemorySemantics
-    AtomicIncrement_UInt16_ptr.name = "ptr"_c;
-    AtomicIncrement_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicIncrement_UInt16_ptr.type.modifiers = AtomicIncrement_UInt16_ptr_modifiers;
-    AtomicIncrement_UInt16_ptr.type.modifierValues = AtomicIncrement_UInt16_ptr_modifierValues;
-    AtomicIncrement_UInt16_semantics.name = "semantics"_c;
-    AtomicIncrement_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_UInt16_semantics.type.literal = true;
-    AtomicIncrement_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_UInt16.name = AtomicIncrement_UInt16_name;
-    AtomicIncrement_UInt16.backendIndex = 2106;
-    AtomicIncrement_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicIncrement_UInt16.parameters = AtomicIncrement_UInt16_args;
-    Symbol::Resolved(&AtomicIncrement_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicIncrement_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_UInt16)->signature = "atomicIncrement(*u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicIncrement_UInt16)->name = "atomicIncrement(*u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_UInt16)->nameWithVarNames = "atomicIncrement(ptr : *u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicIncrement_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicIncrement_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicIncrement_Uniform_UInt16_ptr.type.strict = true;
+    AtomicIncrement_Uniform_UInt16_ptr.type.modifiers = AtomicIncrement_Uniform_UInt16_ptr_modifiers;
+    AtomicIncrement_Uniform_UInt16_ptr.type.modifierValues = AtomicIncrement_Uniform_UInt16_ptr_modifierValues;
+    AtomicIncrement_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicIncrement_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Uniform_UInt16_semantics.type.literal = true;
+    AtomicIncrement_Uniform_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Uniform_UInt16.name = AtomicIncrement_Uniform_UInt16_name;
+    AtomicIncrement_Uniform_UInt16.backendIndex = 2113;
+    AtomicIncrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicIncrement_Uniform_UInt16.parameters = AtomicIncrement_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->signature = "atomicIncrement(uniform *u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->name = "atomicIncrement(uniform *u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->nameWithVarNames = "atomicIncrement(ptr : uniform *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicIncrement with UInt16, MemorySemantics
+    AtomicIncrement_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicIncrement_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicIncrement_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_UInt16_ptr.type.modifiers = AtomicIncrement_Workgroup_UInt16_ptr_modifiers;
+    AtomicIncrement_Workgroup_UInt16_ptr.type.modifierValues = AtomicIncrement_Workgroup_UInt16_ptr_modifierValues;
+    AtomicIncrement_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicIncrement_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicIncrement_Workgroup_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Workgroup_UInt16.name = AtomicIncrement_Workgroup_UInt16_name;
+    AtomicIncrement_Workgroup_UInt16.backendIndex = 2114;
+    AtomicIncrement_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicIncrement_Workgroup_UInt16.parameters = AtomicIncrement_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->signature = "atomicIncrement(workgroup *u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->name = "atomicIncrement(workgroup *u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->nameWithVarNames = "atomicIncrement(ptr : workgroup *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicDecrement with UInt16, MemorySemantics
-    AtomicDecrement_UInt16_ptr.name = "ptr"_c;
-    AtomicDecrement_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicDecrement_UInt16_ptr.type.modifiers = AtomicDecrement_UInt16_ptr_modifiers;
-    AtomicDecrement_UInt16_ptr.type.modifierValues = AtomicDecrement_UInt16_ptr_modifierValues;
-    AtomicDecrement_UInt16_semantics.name = "semantics"_c;
-    AtomicDecrement_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_UInt16_semantics.type.literal = true;
-    AtomicDecrement_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_UInt16.name = AtomicDecrement_UInt16_name;
-    AtomicDecrement_UInt16.backendIndex = 2107;
-    AtomicDecrement_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicDecrement_UInt16.parameters = AtomicDecrement_UInt16_args;
-    Symbol::Resolved(&AtomicDecrement_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicDecrement_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_UInt16)->signature = "atomicDecrement(*u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicDecrement_UInt16)->name = "atomicDecrement(*u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_UInt16)->nameWithVarNames = "atomicDecrement(ptr : *u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicDecrement_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicDecrement_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicDecrement_Uniform_UInt16_ptr.type.strict = true;
+    AtomicDecrement_Uniform_UInt16_ptr.type.modifiers = AtomicDecrement_Uniform_UInt16_ptr_modifiers;
+    AtomicDecrement_Uniform_UInt16_ptr.type.modifierValues = AtomicDecrement_Uniform_UInt16_ptr_modifierValues;
+    AtomicDecrement_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicDecrement_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Uniform_UInt16_semantics.type.literal = true;
+    AtomicDecrement_Uniform_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Uniform_UInt16.name = AtomicDecrement_Uniform_UInt16_name;
+    AtomicDecrement_Uniform_UInt16.backendIndex = 2115;
+    AtomicDecrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicDecrement_Uniform_UInt16.parameters = AtomicDecrement_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->signature = "atomicDecrement(uniform *u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->name = "atomicDecrement(uniform *u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->nameWithVarNames = "atomicDecrement(ptr : uniform *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicDecrement with UInt16, MemorySemantics
+    AtomicDecrement_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicDecrement_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicDecrement_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_UInt16_ptr.type.modifiers = AtomicDecrement_Workgroup_UInt16_ptr_modifiers;
+    AtomicDecrement_Workgroup_UInt16_ptr.type.modifierValues = AtomicDecrement_Workgroup_UInt16_ptr_modifierValues;
+    AtomicDecrement_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicDecrement_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicDecrement_Workgroup_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Workgroup_UInt16.name = AtomicDecrement_Workgroup_UInt16_name;
+    AtomicDecrement_Workgroup_UInt16.backendIndex = 2116;
+    AtomicDecrement_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicDecrement_Workgroup_UInt16.parameters = AtomicDecrement_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->signature = "atomicDecrement(workgroup *u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->name = "atomicDecrement(workgroup *u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->nameWithVarNames = "atomicDecrement(ptr : workgroup *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicLoad with Int16, MemorySemantics
-    AtomicLoad_Int16_ptr.name = "ptr"_c;
-    AtomicLoad_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicLoad_Int16_ptr.type.modifiers = AtomicLoad_Int16_ptr_modifiers;
-    AtomicLoad_Int16_ptr.type.modifierValues = AtomicLoad_Int16_ptr_modifierValues;
-    AtomicLoad_Int16_semantics.name = "semantics"_c;
-    AtomicLoad_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Int16_semantics.type.literal = true;
-    AtomicLoad_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Int16.name = AtomicLoad_Int16_name;
-    AtomicLoad_Int16.backendIndex = 2108;
-    AtomicLoad_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicLoad_Int16.parameters = AtomicLoad_Int16_args;
-    Symbol::Resolved(&AtomicLoad_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicLoad_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Int16)->signature = "atomicLoad(*i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicLoad_Int16)->name = "atomicLoad(*i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Int16)->nameWithVarNames = "atomicLoad(ptr : *i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicLoad_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicLoad_Uniform_Int16_ptr.type.strict = true;
+    AtomicLoad_Uniform_Int16_ptr.type.modifiers = AtomicLoad_Uniform_Int16_ptr_modifiers;
+    AtomicLoad_Uniform_Int16_ptr.type.modifierValues = AtomicLoad_Uniform_Int16_ptr_modifierValues;
+    AtomicLoad_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_Int16_semantics.type.literal = true;
+    AtomicLoad_Uniform_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_Int16.name = AtomicLoad_Uniform_Int16_name;
+    AtomicLoad_Uniform_Int16.backendIndex = 2117;
+    AtomicLoad_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicLoad_Uniform_Int16.parameters = AtomicLoad_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->signature = "atomicLoad(uniform *i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->name = "atomicLoad(uniform *i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->nameWithVarNames = "atomicLoad(ptr : uniform *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicLoad with Int16, MemorySemantics
+    AtomicLoad_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicLoad_Workgroup_Int16_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Int16_ptr.type.modifiers = AtomicLoad_Workgroup_Int16_ptr_modifiers;
+    AtomicLoad_Workgroup_Int16_ptr.type.modifierValues = AtomicLoad_Workgroup_Int16_ptr_modifierValues;
+    AtomicLoad_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_Int16_semantics.type.literal = true;
+    AtomicLoad_Workgroup_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_Int16.name = AtomicLoad_Workgroup_Int16_name;
+    AtomicLoad_Workgroup_Int16.backendIndex = 2118;
+    AtomicLoad_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicLoad_Workgroup_Int16.parameters = AtomicLoad_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->signature = "atomicLoad(workgroup *i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->name = "atomicLoad(workgroup *i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->nameWithVarNames = "atomicLoad(ptr : workgroup *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicIncrement with Int16, MemorySemantics
-    AtomicIncrement_Int16_ptr.name = "ptr"_c;
-    AtomicIncrement_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicIncrement_Int16_ptr.type.modifiers = AtomicIncrement_Int16_ptr_modifiers;
-    AtomicIncrement_Int16_ptr.type.modifierValues = AtomicIncrement_Int16_ptr_modifierValues;
-    AtomicIncrement_Int16_semantics.name = "semantics"_c;
-    AtomicIncrement_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Int16_semantics.type.literal = true;
-    AtomicIncrement_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Int16.name = AtomicIncrement_Int16_name;
-    AtomicIncrement_Int16.backendIndex = 2109;
-    AtomicIncrement_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicIncrement_Int16.parameters = AtomicIncrement_Int16_args;
-    Symbol::Resolved(&AtomicIncrement_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicIncrement_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Int16)->signature = "atomicIncrement(*i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicIncrement_Int16)->name = "atomicIncrement(*i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Int16)->nameWithVarNames = "atomicIncrement(ptr : *i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicIncrement_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicIncrement_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicIncrement_Uniform_Int16_ptr.type.strict = true;
+    AtomicIncrement_Uniform_Int16_ptr.type.modifiers = AtomicIncrement_Uniform_Int16_ptr_modifiers;
+    AtomicIncrement_Uniform_Int16_ptr.type.modifierValues = AtomicIncrement_Uniform_Int16_ptr_modifierValues;
+    AtomicIncrement_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicIncrement_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Uniform_Int16_semantics.type.literal = true;
+    AtomicIncrement_Uniform_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Uniform_Int16.name = AtomicIncrement_Uniform_Int16_name;
+    AtomicIncrement_Uniform_Int16.backendIndex = 2119;
+    AtomicIncrement_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicIncrement_Uniform_Int16.parameters = AtomicIncrement_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->signature = "atomicIncrement(uniform *i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->name = "atomicIncrement(uniform *i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->nameWithVarNames = "atomicIncrement(ptr : uniform *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicIncrement with Int16, MemorySemantics
+    AtomicIncrement_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicIncrement_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicIncrement_Workgroup_Int16_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_Int16_ptr.type.modifiers = AtomicIncrement_Workgroup_Int16_ptr_modifiers;
+    AtomicIncrement_Workgroup_Int16_ptr.type.modifierValues = AtomicIncrement_Workgroup_Int16_ptr_modifierValues;
+    AtomicIncrement_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicIncrement_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Workgroup_Int16_semantics.type.literal = true;
+    AtomicIncrement_Workgroup_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Workgroup_Int16.name = AtomicIncrement_Workgroup_Int16_name;
+    AtomicIncrement_Workgroup_Int16.backendIndex = 2120;
+    AtomicIncrement_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicIncrement_Workgroup_Int16.parameters = AtomicIncrement_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->signature = "atomicIncrement(workgroup *i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->name = "atomicIncrement(workgroup *i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->nameWithVarNames = "atomicIncrement(ptr : workgroup *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicDecrement with Int16, MemorySemantics
-    AtomicDecrement_Int16_ptr.name = "ptr"_c;
-    AtomicDecrement_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicDecrement_Int16_ptr.type.modifiers = AtomicDecrement_Int16_ptr_modifiers;
-    AtomicDecrement_Int16_ptr.type.modifierValues = AtomicDecrement_Int16_ptr_modifierValues;
-    AtomicDecrement_Int16_semantics.name = "semantics"_c;
-    AtomicDecrement_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Int16_semantics.type.literal = true;
-    AtomicDecrement_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Int16.name = AtomicDecrement_Int16_name;
-    AtomicDecrement_Int16.backendIndex = 2110;
-    AtomicDecrement_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicDecrement_Int16.parameters = AtomicDecrement_Int16_args;
-    Symbol::Resolved(&AtomicDecrement_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicDecrement_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Int16)->signature = "atomicDecrement(*i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicDecrement_Int16)->name = "atomicDecrement(*i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Int16)->nameWithVarNames = "atomicDecrement(ptr : *i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicDecrement_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicDecrement_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicDecrement_Uniform_Int16_ptr.type.strict = true;
+    AtomicDecrement_Uniform_Int16_ptr.type.modifiers = AtomicDecrement_Uniform_Int16_ptr_modifiers;
+    AtomicDecrement_Uniform_Int16_ptr.type.modifierValues = AtomicDecrement_Uniform_Int16_ptr_modifierValues;
+    AtomicDecrement_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicDecrement_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Uniform_Int16_semantics.type.literal = true;
+    AtomicDecrement_Uniform_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Uniform_Int16.name = AtomicDecrement_Uniform_Int16_name;
+    AtomicDecrement_Uniform_Int16.backendIndex = 2121;
+    AtomicDecrement_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicDecrement_Uniform_Int16.parameters = AtomicDecrement_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->signature = "atomicDecrement(uniform *i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->name = "atomicDecrement(uniform *i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->nameWithVarNames = "atomicDecrement(ptr : uniform *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicDecrement with Int16, MemorySemantics
+    AtomicDecrement_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicDecrement_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicDecrement_Workgroup_Int16_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_Int16_ptr.type.modifiers = AtomicDecrement_Workgroup_Int16_ptr_modifiers;
+    AtomicDecrement_Workgroup_Int16_ptr.type.modifierValues = AtomicDecrement_Workgroup_Int16_ptr_modifierValues;
+    AtomicDecrement_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicDecrement_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Workgroup_Int16_semantics.type.literal = true;
+    AtomicDecrement_Workgroup_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Workgroup_Int16.name = AtomicDecrement_Workgroup_Int16_name;
+    AtomicDecrement_Workgroup_Int16.backendIndex = 2122;
+    AtomicDecrement_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicDecrement_Workgroup_Int16.parameters = AtomicDecrement_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->signature = "atomicDecrement(workgroup *i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->name = "atomicDecrement(workgroup *i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->nameWithVarNames = "atomicDecrement(ptr : workgroup *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicLoad with Float32, MemorySemantics
-    AtomicLoad_Float32_ptr.name = "ptr"_c;
-    AtomicLoad_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicLoad_Float32_ptr.type.modifiers = AtomicLoad_Float32_ptr_modifiers;
-    AtomicLoad_Float32_ptr.type.modifierValues = AtomicLoad_Float32_ptr_modifierValues;
-    AtomicLoad_Float32_semantics.name = "semantics"_c;
-    AtomicLoad_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Float32_semantics.type.literal = true;
-    AtomicLoad_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Float32.name = AtomicLoad_Float32_name;
-    AtomicLoad_Float32.backendIndex = 2111;
-    AtomicLoad_Float32.returnType = Type::FullType { Float32Type.name };
-    AtomicLoad_Float32.parameters = AtomicLoad_Float32_args;
-    Symbol::Resolved(&AtomicLoad_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicLoad_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Float32)->signature = "atomicLoad(*f32,literal MemorySemantics) f32"_c;
-    Symbol::Resolved(&AtomicLoad_Float32)->name = "atomicLoad(*f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Float32)->nameWithVarNames = "atomicLoad(ptr : *f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Float32)->returnTypeSymbol = &Float32Type;
+    AtomicLoad_Uniform_Float32_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_Float32_ptr.type = Type::FullType{ Float32Type.name };
+    AtomicLoad_Uniform_Float32_ptr.type.strict = true;
+    AtomicLoad_Uniform_Float32_ptr.type.modifiers = AtomicLoad_Uniform_Float32_ptr_modifiers;
+    AtomicLoad_Uniform_Float32_ptr.type.modifierValues = AtomicLoad_Uniform_Float32_ptr_modifierValues;
+    AtomicLoad_Uniform_Float32_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_Float32_semantics.type.literal = true;
+    AtomicLoad_Uniform_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_Float32.name = AtomicLoad_Uniform_Float32_name;
+    AtomicLoad_Uniform_Float32.backendIndex = 2123;
+    AtomicLoad_Uniform_Float32.returnType = Type::FullType { Float32Type.name };
+    AtomicLoad_Uniform_Float32.parameters = AtomicLoad_Uniform_Float32_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->signature = "atomicLoad(uniform *f32,literal MemorySemantics) f32"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->name = "atomicLoad(uniform *f32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->nameWithVarNames = "atomicLoad(ptr : uniform *f32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// atomicLoad with Float32, MemorySemantics
+    AtomicLoad_Workgroup_Float32_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_Float32_ptr.type = Type::FullType{ Float32Type.name };
+    AtomicLoad_Workgroup_Float32_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Float32_ptr.type.modifiers = AtomicLoad_Workgroup_Float32_ptr_modifiers;
+    AtomicLoad_Workgroup_Float32_ptr.type.modifierValues = AtomicLoad_Workgroup_Float32_ptr_modifierValues;
+    AtomicLoad_Workgroup_Float32_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_Float32_semantics.type.literal = true;
+    AtomicLoad_Workgroup_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_Float32.name = AtomicLoad_Workgroup_Float32_name;
+    AtomicLoad_Workgroup_Float32.backendIndex = 2124;
+    AtomicLoad_Workgroup_Float32.returnType = Type::FullType { Float32Type.name };
+    AtomicLoad_Workgroup_Float32.parameters = AtomicLoad_Workgroup_Float32_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->signature = "atomicLoad(workgroup *f32,literal MemorySemantics) f32"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->name = "atomicLoad(workgroup *f32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->nameWithVarNames = "atomicLoad(ptr : workgroup *f32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->returnTypeSymbol = &Float32Type;
 
     /// atomicLoad with Float16, MemorySemantics
-    AtomicLoad_Float16_ptr.name = "ptr"_c;
-    AtomicLoad_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicLoad_Float16_ptr.type.modifiers = AtomicLoad_Float16_ptr_modifiers;
-    AtomicLoad_Float16_ptr.type.modifierValues = AtomicLoad_Float16_ptr_modifierValues;
-    AtomicLoad_Float16_semantics.name = "semantics"_c;
-    AtomicLoad_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Float16_semantics.type.literal = true;
-    AtomicLoad_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Float16.name = AtomicLoad_Float16_name;
-    AtomicLoad_Float16.backendIndex = 2112;
-    AtomicLoad_Float16.returnType = Type::FullType { Float16Type.name };
-    AtomicLoad_Float16.parameters = AtomicLoad_Float16_args;
-    Symbol::Resolved(&AtomicLoad_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicLoad_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Float16)->signature = "atomicLoad(*f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicLoad_Float16)->name = "atomicLoad(*f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Float16)->nameWithVarNames = "atomicLoad(ptr : *f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Float16)->returnTypeSymbol = &Float16Type;
+    AtomicLoad_Uniform_Float16_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_Float16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicLoad_Uniform_Float16_ptr.type.strict = true;
+    AtomicLoad_Uniform_Float16_ptr.type.modifiers = AtomicLoad_Uniform_Float16_ptr_modifiers;
+    AtomicLoad_Uniform_Float16_ptr.type.modifierValues = AtomicLoad_Uniform_Float16_ptr_modifierValues;
+    AtomicLoad_Uniform_Float16_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_Float16_semantics.type.literal = true;
+    AtomicLoad_Uniform_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_Float16.name = AtomicLoad_Uniform_Float16_name;
+    AtomicLoad_Uniform_Float16.backendIndex = 2125;
+    AtomicLoad_Uniform_Float16.returnType = Type::FullType { Float16Type.name };
+    AtomicLoad_Uniform_Float16.parameters = AtomicLoad_Uniform_Float16_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->signature = "atomicLoad(uniform *f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->name = "atomicLoad(uniform *f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->nameWithVarNames = "atomicLoad(ptr : uniform *f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicLoad with Float16, MemorySemantics
+    AtomicLoad_Workgroup_Float16_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_Float16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicLoad_Workgroup_Float16_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Float16_ptr.type.modifiers = AtomicLoad_Workgroup_Float16_ptr_modifiers;
+    AtomicLoad_Workgroup_Float16_ptr.type.modifierValues = AtomicLoad_Workgroup_Float16_ptr_modifierValues;
+    AtomicLoad_Workgroup_Float16_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_Float16_semantics.type.literal = true;
+    AtomicLoad_Workgroup_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_Float16.name = AtomicLoad_Workgroup_Float16_name;
+    AtomicLoad_Workgroup_Float16.backendIndex = 2126;
+    AtomicLoad_Workgroup_Float16.returnType = Type::FullType { Float16Type.name };
+    AtomicLoad_Workgroup_Float16.parameters = AtomicLoad_Workgroup_Float16_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->signature = "atomicLoad(workgroup *f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->name = "atomicLoad(workgroup *f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->nameWithVarNames = "atomicLoad(ptr : workgroup *f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->returnTypeSymbol = &Float16Type;
 
     /// atomicStore with UInt32, UInt32, MemorySemantics
-    AtomicStore_UInt32_ptr.name = "ptr"_c;
-    AtomicStore_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_UInt32_ptr.type.modifiers = AtomicStore_UInt32_ptr_modifiers;
-    AtomicStore_UInt32_ptr.type.modifierValues = AtomicStore_UInt32_ptr_modifierValues;
-    AtomicStore_UInt32_value.name = "value"_c;
-    AtomicStore_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_UInt32_semantics.name = "semantics"_c;
-    AtomicStore_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_UInt32_semantics.type.literal = true;
-    AtomicStore_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_UInt32.name = AtomicStore_UInt32_name;
-    AtomicStore_UInt32.backendIndex = 2113;
-    AtomicStore_UInt32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_UInt32.parameters = AtomicStore_UInt32_args;
-    Symbol::Resolved(&AtomicStore_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicStore_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicStore_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_UInt32)->signature = "atomicStore(*u32,u32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_UInt32)->name = "atomicStore(*u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_UInt32)->nameWithVarNames = "atomicStore(ptr : *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_UInt32)->returnTypeSymbol = &VoidType;
+    AtomicStore_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicStore_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicStore_Uniform_UInt32_ptr.type.strict = true;
+    AtomicStore_Uniform_UInt32_ptr.type.mut = true;
+    AtomicStore_Uniform_UInt32_ptr.type.modifiers = AtomicStore_Uniform_UInt32_ptr_modifiers;
+    AtomicStore_Uniform_UInt32_ptr.type.modifierValues = AtomicStore_Uniform_UInt32_ptr_modifierValues;
+    AtomicStore_Uniform_UInt32_value.name = "value"_c;
+    AtomicStore_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicStore_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicStore_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Uniform_UInt32_semantics.type.literal = true;
+    AtomicStore_Uniform_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Uniform_UInt32.name = AtomicStore_Uniform_UInt32_name;
+    AtomicStore_Uniform_UInt32.backendIndex = 2127;
+    AtomicStore_Uniform_UInt32.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Uniform_UInt32.parameters = AtomicStore_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt32)->signature = "atomicStore(uniform *mutable u32,u32,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt32)->name = "atomicStore(uniform *mutable u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt32)->nameWithVarNames = "atomicStore(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// atomicStore with UInt32, UInt32, MemorySemantics
+    AtomicStore_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicStore_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicStore_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicStore_Workgroup_UInt32_ptr.type.modifiers = AtomicStore_Workgroup_UInt32_ptr_modifiers;
+    AtomicStore_Workgroup_UInt32_ptr.type.modifierValues = AtomicStore_Workgroup_UInt32_ptr_modifierValues;
+    AtomicStore_Workgroup_UInt32_value.name = "value"_c;
+    AtomicStore_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicStore_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicStore_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicStore_Workgroup_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Workgroup_UInt32.name = AtomicStore_Workgroup_UInt32_name;
+    AtomicStore_Workgroup_UInt32.backendIndex = 2128;
+    AtomicStore_Workgroup_UInt32.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Workgroup_UInt32.parameters = AtomicStore_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->signature = "atomicStore(workgroup *u32,u32,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->name = "atomicStore(workgroup *u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->nameWithVarNames = "atomicStore(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->returnTypeSymbol = &VoidType;
 
     /// atomicExchange with UInt32, UInt32, MemorySemantics
-    AtomicExchange_UInt32_ptr.name = "ptr"_c;
-    AtomicExchange_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_UInt32_ptr.type.modifiers = AtomicExchange_UInt32_ptr_modifiers;
-    AtomicExchange_UInt32_ptr.type.modifierValues = AtomicExchange_UInt32_ptr_modifierValues;
-    AtomicExchange_UInt32_value.name = "value"_c;
-    AtomicExchange_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_UInt32_semantics.name = "semantics"_c;
-    AtomicExchange_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_UInt32_semantics.type.literal = true;
-    AtomicExchange_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_UInt32.name = AtomicExchange_UInt32_name;
-    AtomicExchange_UInt32.backendIndex = 2114;
-    AtomicExchange_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicExchange_UInt32.parameters = AtomicExchange_UInt32_args;
-    Symbol::Resolved(&AtomicExchange_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_UInt32)->signature = "atomicExchange(*u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicExchange_UInt32)->name = "atomicExchange(*u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_UInt32)->nameWithVarNames = "atomicExchange(ptr : *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicExchange_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicExchange_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicExchange_Uniform_UInt32_ptr.type.strict = true;
+    AtomicExchange_Uniform_UInt32_ptr.type.mut = true;
+    AtomicExchange_Uniform_UInt32_ptr.type.modifiers = AtomicExchange_Uniform_UInt32_ptr_modifiers;
+    AtomicExchange_Uniform_UInt32_ptr.type.modifierValues = AtomicExchange_Uniform_UInt32_ptr_modifierValues;
+    AtomicExchange_Uniform_UInt32_value.name = "value"_c;
+    AtomicExchange_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicExchange_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicExchange_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Uniform_UInt32_semantics.type.literal = true;
+    AtomicExchange_Uniform_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Uniform_UInt32.name = AtomicExchange_Uniform_UInt32_name;
+    AtomicExchange_Uniform_UInt32.backendIndex = 2129;
+    AtomicExchange_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicExchange_Uniform_UInt32.parameters = AtomicExchange_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->signature = "atomicExchange(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->name = "atomicExchange(uniform *mutable u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicExchange with UInt32, UInt32, MemorySemantics
+    AtomicExchange_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicExchange_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicExchange_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicExchange_Workgroup_UInt32_ptr.type.modifiers = AtomicExchange_Workgroup_UInt32_ptr_modifiers;
+    AtomicExchange_Workgroup_UInt32_ptr.type.modifierValues = AtomicExchange_Workgroup_UInt32_ptr_modifierValues;
+    AtomicExchange_Workgroup_UInt32_value.name = "value"_c;
+    AtomicExchange_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicExchange_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicExchange_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicExchange_Workgroup_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Workgroup_UInt32.name = AtomicExchange_Workgroup_UInt32_name;
+    AtomicExchange_Workgroup_UInt32.backendIndex = 2130;
+    AtomicExchange_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicExchange_Workgroup_UInt32.parameters = AtomicExchange_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->signature = "atomicExchange(workgroup *u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->name = "atomicExchange(workgroup *u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->nameWithVarNames = "atomicExchange(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicAdd with UInt32, UInt32, MemorySemantics
-    AtomicAdd_UInt32_ptr.name = "ptr"_c;
-    AtomicAdd_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_UInt32_ptr.type.modifiers = AtomicAdd_UInt32_ptr_modifiers;
-    AtomicAdd_UInt32_ptr.type.modifierValues = AtomicAdd_UInt32_ptr_modifierValues;
-    AtomicAdd_UInt32_value.name = "value"_c;
-    AtomicAdd_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_UInt32_semantics.name = "semantics"_c;
-    AtomicAdd_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_UInt32_semantics.type.literal = true;
-    AtomicAdd_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_UInt32.name = AtomicAdd_UInt32_name;
-    AtomicAdd_UInt32.backendIndex = 2115;
-    AtomicAdd_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAdd_UInt32.parameters = AtomicAdd_UInt32_args;
-    Symbol::Resolved(&AtomicAdd_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_UInt32)->signature = "atomicAdd(*u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAdd_UInt32)->name = "atomicAdd(*u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_UInt32)->nameWithVarNames = "atomicAdd(ptr : *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicAdd_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicAdd_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicAdd_Uniform_UInt32_ptr.type.strict = true;
+    AtomicAdd_Uniform_UInt32_ptr.type.mut = true;
+    AtomicAdd_Uniform_UInt32_ptr.type.modifiers = AtomicAdd_Uniform_UInt32_ptr_modifiers;
+    AtomicAdd_Uniform_UInt32_ptr.type.modifierValues = AtomicAdd_Uniform_UInt32_ptr_modifierValues;
+    AtomicAdd_Uniform_UInt32_value.name = "value"_c;
+    AtomicAdd_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicAdd_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicAdd_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Uniform_UInt32_semantics.type.literal = true;
+    AtomicAdd_Uniform_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Uniform_UInt32.name = AtomicAdd_Uniform_UInt32_name;
+    AtomicAdd_Uniform_UInt32.backendIndex = 2131;
+    AtomicAdd_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicAdd_Uniform_UInt32.parameters = AtomicAdd_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->signature = "atomicAdd(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->name = "atomicAdd(uniform *mutable u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicAdd with UInt32, UInt32, MemorySemantics
+    AtomicAdd_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicAdd_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicAdd_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicAdd_Workgroup_UInt32_ptr.type.modifiers = AtomicAdd_Workgroup_UInt32_ptr_modifiers;
+    AtomicAdd_Workgroup_UInt32_ptr.type.modifierValues = AtomicAdd_Workgroup_UInt32_ptr_modifierValues;
+    AtomicAdd_Workgroup_UInt32_value.name = "value"_c;
+    AtomicAdd_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicAdd_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicAdd_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicAdd_Workgroup_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Workgroup_UInt32.name = AtomicAdd_Workgroup_UInt32_name;
+    AtomicAdd_Workgroup_UInt32.backendIndex = 2132;
+    AtomicAdd_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicAdd_Workgroup_UInt32.parameters = AtomicAdd_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->signature = "atomicAdd(workgroup *u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->name = "atomicAdd(workgroup *u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->nameWithVarNames = "atomicAdd(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicSubtract with UInt32, UInt32, MemorySemantics
-    AtomicSubtract_UInt32_ptr.name = "ptr"_c;
-    AtomicSubtract_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_UInt32_ptr.type.modifiers = AtomicSubtract_UInt32_ptr_modifiers;
-    AtomicSubtract_UInt32_ptr.type.modifierValues = AtomicSubtract_UInt32_ptr_modifierValues;
-    AtomicSubtract_UInt32_value.name = "value"_c;
-    AtomicSubtract_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_UInt32_semantics.name = "semantics"_c;
-    AtomicSubtract_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_UInt32_semantics.type.literal = true;
-    AtomicSubtract_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_UInt32.name = AtomicSubtract_UInt32_name;
-    AtomicSubtract_UInt32.backendIndex = 2116;
-    AtomicSubtract_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicSubtract_UInt32.parameters = AtomicSubtract_UInt32_args;
-    Symbol::Resolved(&AtomicSubtract_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_UInt32)->signature = "atomicSubtract(*u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicSubtract_UInt32)->name = "atomicSubtract(*u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_UInt32)->nameWithVarNames = "atomicSubtract(ptr : *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicSubtract_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicSubtract_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicSubtract_Uniform_UInt32_ptr.type.strict = true;
+    AtomicSubtract_Uniform_UInt32_ptr.type.mut = true;
+    AtomicSubtract_Uniform_UInt32_ptr.type.modifiers = AtomicSubtract_Uniform_UInt32_ptr_modifiers;
+    AtomicSubtract_Uniform_UInt32_ptr.type.modifierValues = AtomicSubtract_Uniform_UInt32_ptr_modifierValues;
+    AtomicSubtract_Uniform_UInt32_value.name = "value"_c;
+    AtomicSubtract_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicSubtract_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicSubtract_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Uniform_UInt32_semantics.type.literal = true;
+    AtomicSubtract_Uniform_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Uniform_UInt32.name = AtomicSubtract_Uniform_UInt32_name;
+    AtomicSubtract_Uniform_UInt32.backendIndex = 2133;
+    AtomicSubtract_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicSubtract_Uniform_UInt32.parameters = AtomicSubtract_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->signature = "atomicSubtract(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->name = "atomicSubtract(uniform *mutable u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicSubtract with UInt32, UInt32, MemorySemantics
+    AtomicSubtract_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicSubtract_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicSubtract_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicSubtract_Workgroup_UInt32_ptr.type.modifiers = AtomicSubtract_Workgroup_UInt32_ptr_modifiers;
+    AtomicSubtract_Workgroup_UInt32_ptr.type.modifierValues = AtomicSubtract_Workgroup_UInt32_ptr_modifierValues;
+    AtomicSubtract_Workgroup_UInt32_value.name = "value"_c;
+    AtomicSubtract_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicSubtract_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicSubtract_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicSubtract_Workgroup_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Workgroup_UInt32.name = AtomicSubtract_Workgroup_UInt32_name;
+    AtomicSubtract_Workgroup_UInt32.backendIndex = 2134;
+    AtomicSubtract_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicSubtract_Workgroup_UInt32.parameters = AtomicSubtract_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->signature = "atomicSubtract(workgroup *u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->name = "atomicSubtract(workgroup *u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->nameWithVarNames = "atomicSubtract(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicAnd with UInt32, UInt32, MemorySemantics
-    AtomicAnd_UInt32_ptr.name = "ptr"_c;
-    AtomicAnd_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_UInt32_ptr.type.modifiers = AtomicAnd_UInt32_ptr_modifiers;
-    AtomicAnd_UInt32_ptr.type.modifierValues = AtomicAnd_UInt32_ptr_modifierValues;
-    AtomicAnd_UInt32_value.name = "value"_c;
-    AtomicAnd_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_UInt32_semantics.name = "semantics"_c;
-    AtomicAnd_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_UInt32_semantics.type.literal = true;
-    AtomicAnd_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_UInt32.name = AtomicAnd_UInt32_name;
-    AtomicAnd_UInt32.backendIndex = 2117;
-    AtomicAnd_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAnd_UInt32.parameters = AtomicAnd_UInt32_args;
-    Symbol::Resolved(&AtomicAnd_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_UInt32)->signature = "atomicAnd(*u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAnd_UInt32)->name = "atomicAnd(*u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_UInt32)->nameWithVarNames = "atomicAnd(ptr : *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicAnd_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicAnd_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicAnd_Uniform_UInt32_ptr.type.strict = true;
+    AtomicAnd_Uniform_UInt32_ptr.type.mut = true;
+    AtomicAnd_Uniform_UInt32_ptr.type.modifiers = AtomicAnd_Uniform_UInt32_ptr_modifiers;
+    AtomicAnd_Uniform_UInt32_ptr.type.modifierValues = AtomicAnd_Uniform_UInt32_ptr_modifierValues;
+    AtomicAnd_Uniform_UInt32_value.name = "value"_c;
+    AtomicAnd_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicAnd_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicAnd_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Uniform_UInt32_semantics.type.literal = true;
+    AtomicAnd_Uniform_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Uniform_UInt32.name = AtomicAnd_Uniform_UInt32_name;
+    AtomicAnd_Uniform_UInt32.backendIndex = 2135;
+    AtomicAnd_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicAnd_Uniform_UInt32.parameters = AtomicAnd_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->signature = "atomicAnd(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->name = "atomicAnd(uniform *mutable u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicAnd with UInt32, UInt32, MemorySemantics
+    AtomicAnd_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicAnd_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicAnd_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicAnd_Workgroup_UInt32_ptr.type.modifiers = AtomicAnd_Workgroup_UInt32_ptr_modifiers;
+    AtomicAnd_Workgroup_UInt32_ptr.type.modifierValues = AtomicAnd_Workgroup_UInt32_ptr_modifierValues;
+    AtomicAnd_Workgroup_UInt32_value.name = "value"_c;
+    AtomicAnd_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicAnd_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicAnd_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicAnd_Workgroup_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Workgroup_UInt32.name = AtomicAnd_Workgroup_UInt32_name;
+    AtomicAnd_Workgroup_UInt32.backendIndex = 2136;
+    AtomicAnd_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicAnd_Workgroup_UInt32.parameters = AtomicAnd_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->signature = "atomicAnd(workgroup *u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->name = "atomicAnd(workgroup *u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->nameWithVarNames = "atomicAnd(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicOr with UInt32, UInt32, MemorySemantics
-    AtomicOr_UInt32_ptr.name = "ptr"_c;
-    AtomicOr_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_UInt32_ptr.type.modifiers = AtomicOr_UInt32_ptr_modifiers;
-    AtomicOr_UInt32_ptr.type.modifierValues = AtomicOr_UInt32_ptr_modifierValues;
-    AtomicOr_UInt32_value.name = "value"_c;
-    AtomicOr_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_UInt32_semantics.name = "semantics"_c;
-    AtomicOr_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_UInt32_semantics.type.literal = true;
-    AtomicOr_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_UInt32.name = AtomicOr_UInt32_name;
-    AtomicOr_UInt32.backendIndex = 2118;
-    AtomicOr_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicOr_UInt32.parameters = AtomicOr_UInt32_args;
-    Symbol::Resolved(&AtomicOr_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_UInt32)->signature = "atomicOr(*u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicOr_UInt32)->name = "atomicOr(*u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_UInt32)->nameWithVarNames = "atomicOr(ptr : *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicOr_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicOr_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicOr_Uniform_UInt32_ptr.type.strict = true;
+    AtomicOr_Uniform_UInt32_ptr.type.mut = true;
+    AtomicOr_Uniform_UInt32_ptr.type.modifiers = AtomicOr_Uniform_UInt32_ptr_modifiers;
+    AtomicOr_Uniform_UInt32_ptr.type.modifierValues = AtomicOr_Uniform_UInt32_ptr_modifierValues;
+    AtomicOr_Uniform_UInt32_value.name = "value"_c;
+    AtomicOr_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicOr_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicOr_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Uniform_UInt32_semantics.type.literal = true;
+    AtomicOr_Uniform_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Uniform_UInt32.name = AtomicOr_Uniform_UInt32_name;
+    AtomicOr_Uniform_UInt32.backendIndex = 2137;
+    AtomicOr_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicOr_Uniform_UInt32.parameters = AtomicOr_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->signature = "atomicOr(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->name = "atomicOr(uniform *mutable u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->nameWithVarNames = "atomicOr(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicOr with UInt32, UInt32, MemorySemantics
+    AtomicOr_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicOr_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicOr_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicOr_Workgroup_UInt32_ptr.type.modifiers = AtomicOr_Workgroup_UInt32_ptr_modifiers;
+    AtomicOr_Workgroup_UInt32_ptr.type.modifierValues = AtomicOr_Workgroup_UInt32_ptr_modifierValues;
+    AtomicOr_Workgroup_UInt32_value.name = "value"_c;
+    AtomicOr_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicOr_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicOr_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicOr_Workgroup_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Workgroup_UInt32.name = AtomicOr_Workgroup_UInt32_name;
+    AtomicOr_Workgroup_UInt32.backendIndex = 2138;
+    AtomicOr_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicOr_Workgroup_UInt32.parameters = AtomicOr_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->signature = "atomicOr(workgroup *u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->name = "atomicOr(workgroup *u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->nameWithVarNames = "atomicOr(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicXor with UInt32, UInt32, MemorySemantics
-    AtomicXor_UInt32_ptr.name = "ptr"_c;
-    AtomicXor_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_UInt32_ptr.type.modifiers = AtomicXor_UInt32_ptr_modifiers;
-    AtomicXor_UInt32_ptr.type.modifierValues = AtomicXor_UInt32_ptr_modifierValues;
-    AtomicXor_UInt32_value.name = "value"_c;
-    AtomicXor_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_UInt32_semantics.name = "semantics"_c;
-    AtomicXor_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_UInt32_semantics.type.literal = true;
-    AtomicXor_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_UInt32.name = AtomicXor_UInt32_name;
-    AtomicXor_UInt32.backendIndex = 2119;
-    AtomicXor_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicXor_UInt32.parameters = AtomicXor_UInt32_args;
-    Symbol::Resolved(&AtomicXor_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_UInt32)->signature = "atomicXor(*u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicXor_UInt32)->name = "atomicXor(*u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_UInt32)->nameWithVarNames = "atomicXor(ptr : *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_UInt32)->returnTypeSymbol = &UInt32Type;
+    AtomicXor_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicXor_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicXor_Uniform_UInt32_ptr.type.strict = true;
+    AtomicXor_Uniform_UInt32_ptr.type.mut = true;
+    AtomicXor_Uniform_UInt32_ptr.type.modifiers = AtomicXor_Uniform_UInt32_ptr_modifiers;
+    AtomicXor_Uniform_UInt32_ptr.type.modifierValues = AtomicXor_Uniform_UInt32_ptr_modifierValues;
+    AtomicXor_Uniform_UInt32_value.name = "value"_c;
+    AtomicXor_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicXor_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicXor_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Uniform_UInt32_semantics.type.literal = true;
+    AtomicXor_Uniform_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Uniform_UInt32.name = AtomicXor_Uniform_UInt32_name;
+    AtomicXor_Uniform_UInt32.backendIndex = 2139;
+    AtomicXor_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicXor_Uniform_UInt32.parameters = AtomicXor_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->signature = "atomicXor(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->name = "atomicXor(uniform *mutable u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->nameWithVarNames = "atomicXor(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicXor with UInt32, UInt32, MemorySemantics
+    AtomicXor_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicXor_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicXor_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicXor_Workgroup_UInt32_ptr.type.modifiers = AtomicXor_Workgroup_UInt32_ptr_modifiers;
+    AtomicXor_Workgroup_UInt32_ptr.type.modifierValues = AtomicXor_Workgroup_UInt32_ptr_modifierValues;
+    AtomicXor_Workgroup_UInt32_value.name = "value"_c;
+    AtomicXor_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    AtomicXor_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicXor_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicXor_Workgroup_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Workgroup_UInt32.name = AtomicXor_Workgroup_UInt32_name;
+    AtomicXor_Workgroup_UInt32.backendIndex = 2140;
+    AtomicXor_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicXor_Workgroup_UInt32.parameters = AtomicXor_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->signature = "atomicXor(workgroup *u32,u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->name = "atomicXor(workgroup *u32,u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->nameWithVarNames = "atomicXor(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicStore with Int32, Int32, MemorySemantics
-    AtomicStore_Int32_ptr.name = "ptr"_c;
-    AtomicStore_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Int32_ptr.type.modifiers = AtomicStore_Int32_ptr_modifiers;
-    AtomicStore_Int32_ptr.type.modifierValues = AtomicStore_Int32_ptr_modifierValues;
-    AtomicStore_Int32_value.name = "value"_c;
-    AtomicStore_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Int32_semantics.name = "semantics"_c;
-    AtomicStore_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Int32_semantics.type.literal = true;
-    AtomicStore_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Int32.name = AtomicStore_Int32_name;
-    AtomicStore_Int32.backendIndex = 2120;
-    AtomicStore_Int32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Int32.parameters = AtomicStore_Int32_args;
-    Symbol::Resolved(&AtomicStore_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Int32)->signature = "atomicStore(*i32,i32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Int32)->name = "atomicStore(*i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Int32)->nameWithVarNames = "atomicStore(ptr : *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Int32)->returnTypeSymbol = &VoidType;
+    AtomicStore_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicStore_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicStore_Uniform_Int32_ptr.type.strict = true;
+    AtomicStore_Uniform_Int32_ptr.type.mut = true;
+    AtomicStore_Uniform_Int32_ptr.type.modifiers = AtomicStore_Uniform_Int32_ptr_modifiers;
+    AtomicStore_Uniform_Int32_ptr.type.modifierValues = AtomicStore_Uniform_Int32_ptr_modifierValues;
+    AtomicStore_Uniform_Int32_value.name = "value"_c;
+    AtomicStore_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicStore_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicStore_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Uniform_Int32_semantics.type.literal = true;
+    AtomicStore_Uniform_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Uniform_Int32.name = AtomicStore_Uniform_Int32_name;
+    AtomicStore_Uniform_Int32.backendIndex = 2141;
+    AtomicStore_Uniform_Int32.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Uniform_Int32.parameters = AtomicStore_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicStore_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicStore_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicStore_Uniform_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicStore_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Uniform_Int32)->signature = "atomicStore(uniform *mutable i32,i32,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Int32)->name = "atomicStore(uniform *mutable i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Int32)->nameWithVarNames = "atomicStore(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Int32)->returnTypeSymbol = &VoidType;
+
+    /// atomicStore with Int32, Int32, MemorySemantics
+    AtomicStore_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicStore_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicStore_Workgroup_Int32_ptr.type.strict = true;
+    AtomicStore_Workgroup_Int32_ptr.type.modifiers = AtomicStore_Workgroup_Int32_ptr_modifiers;
+    AtomicStore_Workgroup_Int32_ptr.type.modifierValues = AtomicStore_Workgroup_Int32_ptr_modifierValues;
+    AtomicStore_Workgroup_Int32_value.name = "value"_c;
+    AtomicStore_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicStore_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicStore_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Workgroup_Int32_semantics.type.literal = true;
+    AtomicStore_Workgroup_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Workgroup_Int32.name = AtomicStore_Workgroup_Int32_name;
+    AtomicStore_Workgroup_Int32.backendIndex = 2142;
+    AtomicStore_Workgroup_Int32.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Workgroup_Int32.parameters = AtomicStore_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->signature = "atomicStore(workgroup *i32,i32,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->name = "atomicStore(workgroup *i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->nameWithVarNames = "atomicStore(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->returnTypeSymbol = &VoidType;
 
     /// atomicExchange with Int32, Int32, MemorySemantics
-    AtomicExchange_Int32_ptr.name = "ptr"_c;
-    AtomicExchange_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Int32_ptr.type.modifiers = AtomicExchange_Int32_ptr_modifiers;
-    AtomicExchange_Int32_ptr.type.modifierValues = AtomicExchange_Int32_ptr_modifierValues;
-    AtomicExchange_Int32_value.name = "value"_c;
-    AtomicExchange_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Int32_semantics.name = "semantics"_c;
-    AtomicExchange_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Int32_semantics.type.literal = true;
-    AtomicExchange_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Int32.name = AtomicExchange_Int32_name;
-    AtomicExchange_Int32.backendIndex = 2121;
-    AtomicExchange_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicExchange_Int32.parameters = AtomicExchange_Int32_args;
-    Symbol::Resolved(&AtomicExchange_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Int32)->signature = "atomicExchange(*i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicExchange_Int32)->name = "atomicExchange(*i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Int32)->nameWithVarNames = "atomicExchange(ptr : *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicExchange_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicExchange_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicExchange_Uniform_Int32_ptr.type.strict = true;
+    AtomicExchange_Uniform_Int32_ptr.type.mut = true;
+    AtomicExchange_Uniform_Int32_ptr.type.modifiers = AtomicExchange_Uniform_Int32_ptr_modifiers;
+    AtomicExchange_Uniform_Int32_ptr.type.modifierValues = AtomicExchange_Uniform_Int32_ptr_modifierValues;
+    AtomicExchange_Uniform_Int32_value.name = "value"_c;
+    AtomicExchange_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicExchange_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicExchange_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Uniform_Int32_semantics.type.literal = true;
+    AtomicExchange_Uniform_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Uniform_Int32.name = AtomicExchange_Uniform_Int32_name;
+    AtomicExchange_Uniform_Int32.backendIndex = 2143;
+    AtomicExchange_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicExchange_Uniform_Int32.parameters = AtomicExchange_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->signature = "atomicExchange(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->name = "atomicExchange(uniform *mutable i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicExchange with Int32, Int32, MemorySemantics
+    AtomicExchange_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicExchange_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicExchange_Workgroup_Int32_ptr.type.strict = true;
+    AtomicExchange_Workgroup_Int32_ptr.type.modifiers = AtomicExchange_Workgroup_Int32_ptr_modifiers;
+    AtomicExchange_Workgroup_Int32_ptr.type.modifierValues = AtomicExchange_Workgroup_Int32_ptr_modifierValues;
+    AtomicExchange_Workgroup_Int32_value.name = "value"_c;
+    AtomicExchange_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicExchange_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicExchange_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Workgroup_Int32_semantics.type.literal = true;
+    AtomicExchange_Workgroup_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Workgroup_Int32.name = AtomicExchange_Workgroup_Int32_name;
+    AtomicExchange_Workgroup_Int32.backendIndex = 2144;
+    AtomicExchange_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicExchange_Workgroup_Int32.parameters = AtomicExchange_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->signature = "atomicExchange(workgroup *i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->name = "atomicExchange(workgroup *i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->nameWithVarNames = "atomicExchange(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicAdd with Int32, Int32, MemorySemantics
-    AtomicAdd_Int32_ptr.name = "ptr"_c;
-    AtomicAdd_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Int32_ptr.type.modifiers = AtomicAdd_Int32_ptr_modifiers;
-    AtomicAdd_Int32_ptr.type.modifierValues = AtomicAdd_Int32_ptr_modifierValues;
-    AtomicAdd_Int32_value.name = "value"_c;
-    AtomicAdd_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Int32_semantics.name = "semantics"_c;
-    AtomicAdd_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Int32_semantics.type.literal = true;
-    AtomicAdd_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Int32.name = AtomicAdd_Int32_name;
-    AtomicAdd_Int32.backendIndex = 2122;
-    AtomicAdd_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicAdd_Int32.parameters = AtomicAdd_Int32_args;
-    Symbol::Resolved(&AtomicAdd_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAdd_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAdd_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Int32)->signature = "atomicAdd(*i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicAdd_Int32)->name = "atomicAdd(*i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Int32)->nameWithVarNames = "atomicAdd(ptr : *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicAdd_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicAdd_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicAdd_Uniform_Int32_ptr.type.strict = true;
+    AtomicAdd_Uniform_Int32_ptr.type.mut = true;
+    AtomicAdd_Uniform_Int32_ptr.type.modifiers = AtomicAdd_Uniform_Int32_ptr_modifiers;
+    AtomicAdd_Uniform_Int32_ptr.type.modifierValues = AtomicAdd_Uniform_Int32_ptr_modifierValues;
+    AtomicAdd_Uniform_Int32_value.name = "value"_c;
+    AtomicAdd_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicAdd_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicAdd_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Uniform_Int32_semantics.type.literal = true;
+    AtomicAdd_Uniform_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Uniform_Int32.name = AtomicAdd_Uniform_Int32_name;
+    AtomicAdd_Uniform_Int32.backendIndex = 2145;
+    AtomicAdd_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicAdd_Uniform_Int32.parameters = AtomicAdd_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->signature = "atomicAdd(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->name = "atomicAdd(uniform *mutable i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicAdd with Int32, Int32, MemorySemantics
+    AtomicAdd_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicAdd_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicAdd_Workgroup_Int32_ptr.type.strict = true;
+    AtomicAdd_Workgroup_Int32_ptr.type.modifiers = AtomicAdd_Workgroup_Int32_ptr_modifiers;
+    AtomicAdd_Workgroup_Int32_ptr.type.modifierValues = AtomicAdd_Workgroup_Int32_ptr_modifierValues;
+    AtomicAdd_Workgroup_Int32_value.name = "value"_c;
+    AtomicAdd_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicAdd_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicAdd_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Workgroup_Int32_semantics.type.literal = true;
+    AtomicAdd_Workgroup_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Workgroup_Int32.name = AtomicAdd_Workgroup_Int32_name;
+    AtomicAdd_Workgroup_Int32.backendIndex = 2146;
+    AtomicAdd_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicAdd_Workgroup_Int32.parameters = AtomicAdd_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int32)->signature = "atomicAdd(workgroup *i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int32)->name = "atomicAdd(workgroup *i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int32)->nameWithVarNames = "atomicAdd(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicSubtract with Int32, Int32, MemorySemantics
-    AtomicSubtract_Int32_ptr.name = "ptr"_c;
-    AtomicSubtract_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicSubtract_Int32_ptr.type.modifiers = AtomicSubtract_Int32_ptr_modifiers;
-    AtomicSubtract_Int32_ptr.type.modifierValues = AtomicSubtract_Int32_ptr_modifierValues;
-    AtomicSubtract_Int32_value.name = "value"_c;
-    AtomicSubtract_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicSubtract_Int32_semantics.name = "semantics"_c;
-    AtomicSubtract_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Int32_semantics.type.literal = true;
-    AtomicSubtract_Int32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Int32.name = AtomicSubtract_Int32_name;
-    AtomicSubtract_Int32.backendIndex = 2123;
-    AtomicSubtract_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicSubtract_Int32.parameters = AtomicSubtract_Int32_args;
-    Symbol::Resolved(&AtomicSubtract_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicSubtract_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicSubtract_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Int32)->signature = "atomicSubtract(*i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicSubtract_Int32)->name = "atomicSubtract(*i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Int32)->nameWithVarNames = "atomicSubtract(ptr : *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicSubtract_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicSubtract_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicSubtract_Uniform_Int32_ptr.type.strict = true;
+    AtomicSubtract_Uniform_Int32_ptr.type.mut = true;
+    AtomicSubtract_Uniform_Int32_ptr.type.modifiers = AtomicSubtract_Uniform_Int32_ptr_modifiers;
+    AtomicSubtract_Uniform_Int32_ptr.type.modifierValues = AtomicSubtract_Uniform_Int32_ptr_modifierValues;
+    AtomicSubtract_Uniform_Int32_value.name = "value"_c;
+    AtomicSubtract_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicSubtract_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicSubtract_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Uniform_Int32_semantics.type.literal = true;
+    AtomicSubtract_Uniform_Int32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Uniform_Int32.name = AtomicSubtract_Uniform_Int32_name;
+    AtomicSubtract_Uniform_Int32.backendIndex = 2147;
+    AtomicSubtract_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicSubtract_Uniform_Int32.parameters = AtomicSubtract_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int32)->signature = "atomicSubtract(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int32)->name = "atomicSubtract(uniform *mutable i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int32)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicSubtract with Int32, Int32, MemorySemantics
+    AtomicSubtract_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicSubtract_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicSubtract_Workgroup_Int32_ptr.type.strict = true;
+    AtomicSubtract_Workgroup_Int32_ptr.type.modifiers = AtomicSubtract_Workgroup_Int32_ptr_modifiers;
+    AtomicSubtract_Workgroup_Int32_ptr.type.modifierValues = AtomicSubtract_Workgroup_Int32_ptr_modifierValues;
+    AtomicSubtract_Workgroup_Int32_value.name = "value"_c;
+    AtomicSubtract_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicSubtract_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicSubtract_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Workgroup_Int32_semantics.type.literal = true;
+    AtomicSubtract_Workgroup_Int32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Workgroup_Int32.name = AtomicSubtract_Workgroup_Int32_name;
+    AtomicSubtract_Workgroup_Int32.backendIndex = 2148;
+    AtomicSubtract_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicSubtract_Workgroup_Int32.parameters = AtomicSubtract_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32)->signature = "atomicSubtract(workgroup *i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32)->name = "atomicSubtract(workgroup *i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32)->nameWithVarNames = "atomicSubtract(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicAnd with Int32, Int32, MemorySemantics
-    AtomicAnd_Int32_ptr.name = "ptr"_c;
-    AtomicAnd_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAnd_Int32_ptr.type.modifiers = AtomicAnd_Int32_ptr_modifiers;
-    AtomicAnd_Int32_ptr.type.modifierValues = AtomicAnd_Int32_ptr_modifierValues;
-    AtomicAnd_Int32_value.name = "value"_c;
-    AtomicAnd_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicAnd_Int32_semantics.name = "semantics"_c;
-    AtomicAnd_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Int32_semantics.type.literal = true;
-    AtomicAnd_Int32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Int32.name = AtomicAnd_Int32_name;
-    AtomicAnd_Int32.backendIndex = 2124;
-    AtomicAnd_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicAnd_Int32.parameters = AtomicAnd_Int32_args;
-    Symbol::Resolved(&AtomicAnd_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAnd_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAnd_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Int32)->signature = "atomicAnd(*i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicAnd_Int32)->name = "atomicAnd(*i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Int32)->nameWithVarNames = "atomicAnd(ptr : *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicAnd_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicAnd_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicAnd_Uniform_Int32_ptr.type.strict = true;
+    AtomicAnd_Uniform_Int32_ptr.type.mut = true;
+    AtomicAnd_Uniform_Int32_ptr.type.modifiers = AtomicAnd_Uniform_Int32_ptr_modifiers;
+    AtomicAnd_Uniform_Int32_ptr.type.modifierValues = AtomicAnd_Uniform_Int32_ptr_modifierValues;
+    AtomicAnd_Uniform_Int32_value.name = "value"_c;
+    AtomicAnd_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicAnd_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicAnd_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Uniform_Int32_semantics.type.literal = true;
+    AtomicAnd_Uniform_Int32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Uniform_Int32.name = AtomicAnd_Uniform_Int32_name;
+    AtomicAnd_Uniform_Int32.backendIndex = 2149;
+    AtomicAnd_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicAnd_Uniform_Int32.parameters = AtomicAnd_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int32)->signature = "atomicAnd(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int32)->name = "atomicAnd(uniform *mutable i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int32)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicAnd with Int32, Int32, MemorySemantics
+    AtomicAnd_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicAnd_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicAnd_Workgroup_Int32_ptr.type.strict = true;
+    AtomicAnd_Workgroup_Int32_ptr.type.modifiers = AtomicAnd_Workgroup_Int32_ptr_modifiers;
+    AtomicAnd_Workgroup_Int32_ptr.type.modifierValues = AtomicAnd_Workgroup_Int32_ptr_modifierValues;
+    AtomicAnd_Workgroup_Int32_value.name = "value"_c;
+    AtomicAnd_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicAnd_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicAnd_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Workgroup_Int32_semantics.type.literal = true;
+    AtomicAnd_Workgroup_Int32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Workgroup_Int32.name = AtomicAnd_Workgroup_Int32_name;
+    AtomicAnd_Workgroup_Int32.backendIndex = 2150;
+    AtomicAnd_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicAnd_Workgroup_Int32.parameters = AtomicAnd_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int32)->signature = "atomicAnd(workgroup *i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int32)->name = "atomicAnd(workgroup *i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int32)->nameWithVarNames = "atomicAnd(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicOr with Int32, Int32, MemorySemantics
-    AtomicOr_Int32_ptr.name = "ptr"_c;
-    AtomicOr_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicOr_Int32_ptr.type.modifiers = AtomicOr_Int32_ptr_modifiers;
-    AtomicOr_Int32_ptr.type.modifierValues = AtomicOr_Int32_ptr_modifierValues;
-    AtomicOr_Int32_value.name = "value"_c;
-    AtomicOr_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicOr_Int32_semantics.name = "semantics"_c;
-    AtomicOr_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Int32_semantics.type.literal = true;
-    AtomicOr_Int32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Int32.name = AtomicOr_Int32_name;
-    AtomicOr_Int32.backendIndex = 2125;
-    AtomicOr_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicOr_Int32.parameters = AtomicOr_Int32_args;
-    Symbol::Resolved(&AtomicOr_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicOr_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicOr_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Int32)->signature = "atomicOr(*i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicOr_Int32)->name = "atomicOr(*i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Int32)->nameWithVarNames = "atomicOr(ptr : *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicOr_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicOr_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicOr_Uniform_Int32_ptr.type.strict = true;
+    AtomicOr_Uniform_Int32_ptr.type.mut = true;
+    AtomicOr_Uniform_Int32_ptr.type.modifiers = AtomicOr_Uniform_Int32_ptr_modifiers;
+    AtomicOr_Uniform_Int32_ptr.type.modifierValues = AtomicOr_Uniform_Int32_ptr_modifierValues;
+    AtomicOr_Uniform_Int32_value.name = "value"_c;
+    AtomicOr_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicOr_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicOr_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Uniform_Int32_semantics.type.literal = true;
+    AtomicOr_Uniform_Int32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Uniform_Int32.name = AtomicOr_Uniform_Int32_name;
+    AtomicOr_Uniform_Int32.backendIndex = 2151;
+    AtomicOr_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicOr_Uniform_Int32.parameters = AtomicOr_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicOr_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicOr_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicOr_Uniform_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicOr_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Uniform_Int32)->signature = "atomicOr(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_Int32)->name = "atomicOr(uniform *mutable i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_Int32)->nameWithVarNames = "atomicOr(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicOr with Int32, Int32, MemorySemantics
+    AtomicOr_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicOr_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicOr_Workgroup_Int32_ptr.type.strict = true;
+    AtomicOr_Workgroup_Int32_ptr.type.modifiers = AtomicOr_Workgroup_Int32_ptr_modifiers;
+    AtomicOr_Workgroup_Int32_ptr.type.modifierValues = AtomicOr_Workgroup_Int32_ptr_modifierValues;
+    AtomicOr_Workgroup_Int32_value.name = "value"_c;
+    AtomicOr_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicOr_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicOr_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Workgroup_Int32_semantics.type.literal = true;
+    AtomicOr_Workgroup_Int32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Workgroup_Int32.name = AtomicOr_Workgroup_Int32_name;
+    AtomicOr_Workgroup_Int32.backendIndex = 2152;
+    AtomicOr_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicOr_Workgroup_Int32.parameters = AtomicOr_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int32)->signature = "atomicOr(workgroup *i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int32)->name = "atomicOr(workgroup *i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int32)->nameWithVarNames = "atomicOr(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicXor with Int32, Int32, MemorySemantics
-    AtomicXor_Int32_ptr.name = "ptr"_c;
-    AtomicXor_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicXor_Int32_ptr.type.modifiers = AtomicXor_Int32_ptr_modifiers;
-    AtomicXor_Int32_ptr.type.modifierValues = AtomicXor_Int32_ptr_modifierValues;
-    AtomicXor_Int32_value.name = "value"_c;
-    AtomicXor_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicXor_Int32_semantics.name = "semantics"_c;
-    AtomicXor_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Int32_semantics.type.literal = true;
-    AtomicXor_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Int32.name = AtomicXor_Int32_name;
-    AtomicXor_Int32.backendIndex = 2126;
-    AtomicXor_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicXor_Int32.parameters = AtomicXor_Int32_args;
-    Symbol::Resolved(&AtomicXor_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicXor_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicXor_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Int32)->signature = "atomicXor(*i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicXor_Int32)->name = "atomicXor(*i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Int32)->nameWithVarNames = "atomicXor(ptr : *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Int32)->returnTypeSymbol = &Int32Type;
+    AtomicXor_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicXor_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicXor_Uniform_Int32_ptr.type.strict = true;
+    AtomicXor_Uniform_Int32_ptr.type.mut = true;
+    AtomicXor_Uniform_Int32_ptr.type.modifiers = AtomicXor_Uniform_Int32_ptr_modifiers;
+    AtomicXor_Uniform_Int32_ptr.type.modifierValues = AtomicXor_Uniform_Int32_ptr_modifierValues;
+    AtomicXor_Uniform_Int32_value.name = "value"_c;
+    AtomicXor_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicXor_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicXor_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Uniform_Int32_semantics.type.literal = true;
+    AtomicXor_Uniform_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Uniform_Int32.name = AtomicXor_Uniform_Int32_name;
+    AtomicXor_Uniform_Int32.backendIndex = 2153;
+    AtomicXor_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicXor_Uniform_Int32.parameters = AtomicXor_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicXor_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicXor_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicXor_Uniform_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicXor_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Uniform_Int32)->signature = "atomicXor(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_Int32)->name = "atomicXor(uniform *mutable i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_Int32)->nameWithVarNames = "atomicXor(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicXor with Int32, Int32, MemorySemantics
+    AtomicXor_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicXor_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicXor_Workgroup_Int32_ptr.type.strict = true;
+    AtomicXor_Workgroup_Int32_ptr.type.modifiers = AtomicXor_Workgroup_Int32_ptr_modifiers;
+    AtomicXor_Workgroup_Int32_ptr.type.modifierValues = AtomicXor_Workgroup_Int32_ptr_modifierValues;
+    AtomicXor_Workgroup_Int32_value.name = "value"_c;
+    AtomicXor_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicXor_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicXor_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Workgroup_Int32_semantics.type.literal = true;
+    AtomicXor_Workgroup_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Workgroup_Int32.name = AtomicXor_Workgroup_Int32_name;
+    AtomicXor_Workgroup_Int32.backendIndex = 2154;
+    AtomicXor_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicXor_Workgroup_Int32.parameters = AtomicXor_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->signature = "atomicXor(workgroup *i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->name = "atomicXor(workgroup *i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->nameWithVarNames = "atomicXor(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicStore with UInt16, UInt16, MemorySemantics
-    AtomicStore_UInt16_ptr.name = "ptr"_c;
-    AtomicStore_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicStore_UInt16_ptr.type.modifiers = AtomicStore_UInt16_ptr_modifiers;
-    AtomicStore_UInt16_ptr.type.modifierValues = AtomicStore_UInt16_ptr_modifierValues;
-    AtomicStore_UInt16_value.name = "value"_c;
-    AtomicStore_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicStore_UInt16_semantics.name = "semantics"_c;
-    AtomicStore_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_UInt16_semantics.type.literal = true;
-    AtomicStore_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_UInt16.name = AtomicStore_UInt16_name;
-    AtomicStore_UInt16.backendIndex = 2127;
-    AtomicStore_UInt16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_UInt16.parameters = AtomicStore_UInt16_args;
-    Symbol::Resolved(&AtomicStore_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicStore_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicStore_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_UInt16)->signature = "atomicStore(*u16,u16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_UInt16)->name = "atomicStore(*u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_UInt16)->nameWithVarNames = "atomicStore(ptr : *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_UInt16)->returnTypeSymbol = &VoidType;
+    AtomicStore_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicStore_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicStore_Uniform_UInt16_ptr.type.strict = true;
+    AtomicStore_Uniform_UInt16_ptr.type.mut = true;
+    AtomicStore_Uniform_UInt16_ptr.type.modifiers = AtomicStore_Uniform_UInt16_ptr_modifiers;
+    AtomicStore_Uniform_UInt16_ptr.type.modifierValues = AtomicStore_Uniform_UInt16_ptr_modifierValues;
+    AtomicStore_Uniform_UInt16_value.name = "value"_c;
+    AtomicStore_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicStore_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicStore_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Uniform_UInt16_semantics.type.literal = true;
+    AtomicStore_Uniform_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Uniform_UInt16.name = AtomicStore_Uniform_UInt16_name;
+    AtomicStore_Uniform_UInt16.backendIndex = 2155;
+    AtomicStore_Uniform_UInt16.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Uniform_UInt16.parameters = AtomicStore_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->signature = "atomicStore(uniform *mutable u16,u16,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->name = "atomicStore(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->nameWithVarNames = "atomicStore(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// atomicStore with UInt16, UInt16, MemorySemantics
+    AtomicStore_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicStore_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicStore_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicStore_Workgroup_UInt16_ptr.type.modifiers = AtomicStore_Workgroup_UInt16_ptr_modifiers;
+    AtomicStore_Workgroup_UInt16_ptr.type.modifierValues = AtomicStore_Workgroup_UInt16_ptr_modifierValues;
+    AtomicStore_Workgroup_UInt16_value.name = "value"_c;
+    AtomicStore_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicStore_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicStore_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicStore_Workgroup_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Workgroup_UInt16.name = AtomicStore_Workgroup_UInt16_name;
+    AtomicStore_Workgroup_UInt16.backendIndex = 2156;
+    AtomicStore_Workgroup_UInt16.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Workgroup_UInt16.parameters = AtomicStore_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->signature = "atomicStore(workgroup *u16,u16,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->name = "atomicStore(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->nameWithVarNames = "atomicStore(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->returnTypeSymbol = &VoidType;
 
     /// atomicExchange with UInt16, UInt16, MemorySemantics
-    AtomicExchange_UInt16_ptr.name = "ptr"_c;
-    AtomicExchange_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicExchange_UInt16_ptr.type.modifiers = AtomicExchange_UInt16_ptr_modifiers;
-    AtomicExchange_UInt16_ptr.type.modifierValues = AtomicExchange_UInt16_ptr_modifierValues;
-    AtomicExchange_UInt16_value.name = "value"_c;
-    AtomicExchange_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicExchange_UInt16_semantics.name = "semantics"_c;
-    AtomicExchange_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_UInt16_semantics.type.literal = true;
-    AtomicExchange_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_UInt16.name = AtomicExchange_UInt16_name;
-    AtomicExchange_UInt16.backendIndex = 2128;
-    AtomicExchange_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicExchange_UInt16.parameters = AtomicExchange_UInt16_args;
-    Symbol::Resolved(&AtomicExchange_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicExchange_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicExchange_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_UInt16)->signature = "atomicExchange(*u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicExchange_UInt16)->name = "atomicExchange(*u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_UInt16)->nameWithVarNames = "atomicExchange(ptr : *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicExchange_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicExchange_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicExchange_Uniform_UInt16_ptr.type.strict = true;
+    AtomicExchange_Uniform_UInt16_ptr.type.mut = true;
+    AtomicExchange_Uniform_UInt16_ptr.type.modifiers = AtomicExchange_Uniform_UInt16_ptr_modifiers;
+    AtomicExchange_Uniform_UInt16_ptr.type.modifierValues = AtomicExchange_Uniform_UInt16_ptr_modifierValues;
+    AtomicExchange_Uniform_UInt16_value.name = "value"_c;
+    AtomicExchange_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicExchange_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicExchange_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Uniform_UInt16_semantics.type.literal = true;
+    AtomicExchange_Uniform_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Uniform_UInt16.name = AtomicExchange_Uniform_UInt16_name;
+    AtomicExchange_Uniform_UInt16.backendIndex = 2157;
+    AtomicExchange_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicExchange_Uniform_UInt16.parameters = AtomicExchange_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->signature = "atomicExchange(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->name = "atomicExchange(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicExchange with UInt16, UInt16, MemorySemantics
+    AtomicExchange_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicExchange_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicExchange_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicExchange_Workgroup_UInt16_ptr.type.modifiers = AtomicExchange_Workgroup_UInt16_ptr_modifiers;
+    AtomicExchange_Workgroup_UInt16_ptr.type.modifierValues = AtomicExchange_Workgroup_UInt16_ptr_modifierValues;
+    AtomicExchange_Workgroup_UInt16_value.name = "value"_c;
+    AtomicExchange_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicExchange_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicExchange_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicExchange_Workgroup_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Workgroup_UInt16.name = AtomicExchange_Workgroup_UInt16_name;
+    AtomicExchange_Workgroup_UInt16.backendIndex = 2158;
+    AtomicExchange_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicExchange_Workgroup_UInt16.parameters = AtomicExchange_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->signature = "atomicExchange(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->name = "atomicExchange(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->nameWithVarNames = "atomicExchange(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicAdd with UInt16, UInt16, MemorySemantics
-    AtomicAdd_UInt16_ptr.name = "ptr"_c;
-    AtomicAdd_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicAdd_UInt16_ptr.type.modifiers = AtomicAdd_UInt16_ptr_modifiers;
-    AtomicAdd_UInt16_ptr.type.modifierValues = AtomicAdd_UInt16_ptr_modifierValues;
-    AtomicAdd_UInt16_value.name = "value"_c;
-    AtomicAdd_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicAdd_UInt16_semantics.name = "semantics"_c;
-    AtomicAdd_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_UInt16_semantics.type.literal = true;
-    AtomicAdd_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_UInt16.name = AtomicAdd_UInt16_name;
-    AtomicAdd_UInt16.backendIndex = 2129;
-    AtomicAdd_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicAdd_UInt16.parameters = AtomicAdd_UInt16_args;
-    Symbol::Resolved(&AtomicAdd_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAdd_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAdd_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_UInt16)->signature = "atomicAdd(*u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicAdd_UInt16)->name = "atomicAdd(*u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_UInt16)->nameWithVarNames = "atomicAdd(ptr : *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicAdd_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicAdd_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicAdd_Uniform_UInt16_ptr.type.strict = true;
+    AtomicAdd_Uniform_UInt16_ptr.type.mut = true;
+    AtomicAdd_Uniform_UInt16_ptr.type.modifiers = AtomicAdd_Uniform_UInt16_ptr_modifiers;
+    AtomicAdd_Uniform_UInt16_ptr.type.modifierValues = AtomicAdd_Uniform_UInt16_ptr_modifierValues;
+    AtomicAdd_Uniform_UInt16_value.name = "value"_c;
+    AtomicAdd_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicAdd_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicAdd_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Uniform_UInt16_semantics.type.literal = true;
+    AtomicAdd_Uniform_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Uniform_UInt16.name = AtomicAdd_Uniform_UInt16_name;
+    AtomicAdd_Uniform_UInt16.backendIndex = 2159;
+    AtomicAdd_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicAdd_Uniform_UInt16.parameters = AtomicAdd_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->signature = "atomicAdd(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->name = "atomicAdd(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicAdd with UInt16, UInt16, MemorySemantics
+    AtomicAdd_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicAdd_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicAdd_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicAdd_Workgroup_UInt16_ptr.type.modifiers = AtomicAdd_Workgroup_UInt16_ptr_modifiers;
+    AtomicAdd_Workgroup_UInt16_ptr.type.modifierValues = AtomicAdd_Workgroup_UInt16_ptr_modifierValues;
+    AtomicAdd_Workgroup_UInt16_value.name = "value"_c;
+    AtomicAdd_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicAdd_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicAdd_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicAdd_Workgroup_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Workgroup_UInt16.name = AtomicAdd_Workgroup_UInt16_name;
+    AtomicAdd_Workgroup_UInt16.backendIndex = 2160;
+    AtomicAdd_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicAdd_Workgroup_UInt16.parameters = AtomicAdd_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->signature = "atomicAdd(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->name = "atomicAdd(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->nameWithVarNames = "atomicAdd(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicSubtract with UInt16, UInt16, MemorySemantics
-    AtomicSubtract_UInt16_ptr.name = "ptr"_c;
-    AtomicSubtract_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicSubtract_UInt16_ptr.type.modifiers = AtomicSubtract_UInt16_ptr_modifiers;
-    AtomicSubtract_UInt16_ptr.type.modifierValues = AtomicSubtract_UInt16_ptr_modifierValues;
-    AtomicSubtract_UInt16_value.name = "value"_c;
-    AtomicSubtract_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicSubtract_UInt16_semantics.name = "semantics"_c;
-    AtomicSubtract_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_UInt16_semantics.type.literal = true;
-    AtomicSubtract_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_UInt16.name = AtomicSubtract_UInt16_name;
-    AtomicSubtract_UInt16.backendIndex = 2130;
-    AtomicSubtract_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicSubtract_UInt16.parameters = AtomicSubtract_UInt16_args;
-    Symbol::Resolved(&AtomicSubtract_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicSubtract_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicSubtract_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_UInt16)->signature = "atomicSubtract(*u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicSubtract_UInt16)->name = "atomicSubtract(*u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_UInt16)->nameWithVarNames = "atomicSubtract(ptr : *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicSubtract_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicSubtract_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicSubtract_Uniform_UInt16_ptr.type.strict = true;
+    AtomicSubtract_Uniform_UInt16_ptr.type.mut = true;
+    AtomicSubtract_Uniform_UInt16_ptr.type.modifiers = AtomicSubtract_Uniform_UInt16_ptr_modifiers;
+    AtomicSubtract_Uniform_UInt16_ptr.type.modifierValues = AtomicSubtract_Uniform_UInt16_ptr_modifierValues;
+    AtomicSubtract_Uniform_UInt16_value.name = "value"_c;
+    AtomicSubtract_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicSubtract_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicSubtract_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Uniform_UInt16_semantics.type.literal = true;
+    AtomicSubtract_Uniform_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Uniform_UInt16.name = AtomicSubtract_Uniform_UInt16_name;
+    AtomicSubtract_Uniform_UInt16.backendIndex = 2161;
+    AtomicSubtract_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicSubtract_Uniform_UInt16.parameters = AtomicSubtract_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->signature = "atomicSubtract(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->name = "atomicSubtract(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicSubtract with UInt16, UInt16, MemorySemantics
+    AtomicSubtract_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicSubtract_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicSubtract_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicSubtract_Workgroup_UInt16_ptr.type.modifiers = AtomicSubtract_Workgroup_UInt16_ptr_modifiers;
+    AtomicSubtract_Workgroup_UInt16_ptr.type.modifierValues = AtomicSubtract_Workgroup_UInt16_ptr_modifierValues;
+    AtomicSubtract_Workgroup_UInt16_value.name = "value"_c;
+    AtomicSubtract_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicSubtract_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicSubtract_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicSubtract_Workgroup_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Workgroup_UInt16.name = AtomicSubtract_Workgroup_UInt16_name;
+    AtomicSubtract_Workgroup_UInt16.backendIndex = 2162;
+    AtomicSubtract_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicSubtract_Workgroup_UInt16.parameters = AtomicSubtract_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->signature = "atomicSubtract(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->name = "atomicSubtract(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->nameWithVarNames = "atomicSubtract(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicAnd with UInt16, UInt16, MemorySemantics
-    AtomicAnd_UInt16_ptr.name = "ptr"_c;
-    AtomicAnd_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicAnd_UInt16_ptr.type.modifiers = AtomicAnd_UInt16_ptr_modifiers;
-    AtomicAnd_UInt16_ptr.type.modifierValues = AtomicAnd_UInt16_ptr_modifierValues;
-    AtomicAnd_UInt16_value.name = "value"_c;
-    AtomicAnd_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicAnd_UInt16_semantics.name = "semantics"_c;
-    AtomicAnd_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_UInt16_semantics.type.literal = true;
-    AtomicAnd_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_UInt16.name = AtomicAnd_UInt16_name;
-    AtomicAnd_UInt16.backendIndex = 2131;
-    AtomicAnd_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicAnd_UInt16.parameters = AtomicAnd_UInt16_args;
-    Symbol::Resolved(&AtomicAnd_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAnd_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAnd_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_UInt16)->signature = "atomicAnd(*u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicAnd_UInt16)->name = "atomicAnd(*u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_UInt16)->nameWithVarNames = "atomicAnd(ptr : *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicAnd_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicAnd_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicAnd_Uniform_UInt16_ptr.type.strict = true;
+    AtomicAnd_Uniform_UInt16_ptr.type.mut = true;
+    AtomicAnd_Uniform_UInt16_ptr.type.modifiers = AtomicAnd_Uniform_UInt16_ptr_modifiers;
+    AtomicAnd_Uniform_UInt16_ptr.type.modifierValues = AtomicAnd_Uniform_UInt16_ptr_modifierValues;
+    AtomicAnd_Uniform_UInt16_value.name = "value"_c;
+    AtomicAnd_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicAnd_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicAnd_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Uniform_UInt16_semantics.type.literal = true;
+    AtomicAnd_Uniform_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Uniform_UInt16.name = AtomicAnd_Uniform_UInt16_name;
+    AtomicAnd_Uniform_UInt16.backendIndex = 2163;
+    AtomicAnd_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicAnd_Uniform_UInt16.parameters = AtomicAnd_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->signature = "atomicAnd(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->name = "atomicAnd(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicAnd with UInt16, UInt16, MemorySemantics
+    AtomicAnd_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicAnd_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicAnd_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicAnd_Workgroup_UInt16_ptr.type.modifiers = AtomicAnd_Workgroup_UInt16_ptr_modifiers;
+    AtomicAnd_Workgroup_UInt16_ptr.type.modifierValues = AtomicAnd_Workgroup_UInt16_ptr_modifierValues;
+    AtomicAnd_Workgroup_UInt16_value.name = "value"_c;
+    AtomicAnd_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicAnd_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicAnd_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicAnd_Workgroup_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Workgroup_UInt16.name = AtomicAnd_Workgroup_UInt16_name;
+    AtomicAnd_Workgroup_UInt16.backendIndex = 2164;
+    AtomicAnd_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicAnd_Workgroup_UInt16.parameters = AtomicAnd_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->signature = "atomicAnd(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->name = "atomicAnd(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->nameWithVarNames = "atomicAnd(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicOr with UInt16, UInt16, MemorySemantics
-    AtomicOr_UInt16_ptr.name = "ptr"_c;
-    AtomicOr_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicOr_UInt16_ptr.type.modifiers = AtomicOr_UInt16_ptr_modifiers;
-    AtomicOr_UInt16_ptr.type.modifierValues = AtomicOr_UInt16_ptr_modifierValues;
-    AtomicOr_UInt16_value.name = "value"_c;
-    AtomicOr_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicOr_UInt16_semantics.name = "semantics"_c;
-    AtomicOr_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_UInt16_semantics.type.literal = true;
-    AtomicOr_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_UInt16.name = AtomicOr_UInt16_name;
-    AtomicOr_UInt16.backendIndex = 2132;
-    AtomicOr_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicOr_UInt16.parameters = AtomicOr_UInt16_args;
-    Symbol::Resolved(&AtomicOr_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicOr_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicOr_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_UInt16)->signature = "atomicOr(*u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicOr_UInt16)->name = "atomicOr(*u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_UInt16)->nameWithVarNames = "atomicOr(ptr : *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicOr_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicOr_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicOr_Uniform_UInt16_ptr.type.strict = true;
+    AtomicOr_Uniform_UInt16_ptr.type.mut = true;
+    AtomicOr_Uniform_UInt16_ptr.type.modifiers = AtomicOr_Uniform_UInt16_ptr_modifiers;
+    AtomicOr_Uniform_UInt16_ptr.type.modifierValues = AtomicOr_Uniform_UInt16_ptr_modifierValues;
+    AtomicOr_Uniform_UInt16_value.name = "value"_c;
+    AtomicOr_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicOr_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicOr_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Uniform_UInt16_semantics.type.literal = true;
+    AtomicOr_Uniform_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Uniform_UInt16.name = AtomicOr_Uniform_UInt16_name;
+    AtomicOr_Uniform_UInt16.backendIndex = 2165;
+    AtomicOr_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicOr_Uniform_UInt16.parameters = AtomicOr_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->signature = "atomicOr(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->name = "atomicOr(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->nameWithVarNames = "atomicOr(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicOr with UInt16, UInt16, MemorySemantics
+    AtomicOr_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicOr_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicOr_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicOr_Workgroup_UInt16_ptr.type.modifiers = AtomicOr_Workgroup_UInt16_ptr_modifiers;
+    AtomicOr_Workgroup_UInt16_ptr.type.modifierValues = AtomicOr_Workgroup_UInt16_ptr_modifierValues;
+    AtomicOr_Workgroup_UInt16_value.name = "value"_c;
+    AtomicOr_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicOr_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicOr_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicOr_Workgroup_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Workgroup_UInt16.name = AtomicOr_Workgroup_UInt16_name;
+    AtomicOr_Workgroup_UInt16.backendIndex = 2166;
+    AtomicOr_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicOr_Workgroup_UInt16.parameters = AtomicOr_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->signature = "atomicOr(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->name = "atomicOr(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->nameWithVarNames = "atomicOr(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicXor with UInt16, UInt16, MemorySemantics
-    AtomicXor_UInt16_ptr.name = "ptr"_c;
-    AtomicXor_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicXor_UInt16_ptr.type.modifiers = AtomicXor_UInt16_ptr_modifiers;
-    AtomicXor_UInt16_ptr.type.modifierValues = AtomicXor_UInt16_ptr_modifierValues;
-    AtomicXor_UInt16_value.name = "value"_c;
-    AtomicXor_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicXor_UInt16_semantics.name = "semantics"_c;
-    AtomicXor_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_UInt16_semantics.type.literal = true;
-    AtomicXor_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_UInt16.name = AtomicXor_UInt16_name;
-    AtomicXor_UInt16.backendIndex = 2133;
-    AtomicXor_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicXor_UInt16.parameters = AtomicXor_UInt16_args;
-    Symbol::Resolved(&AtomicXor_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicXor_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicXor_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_UInt16)->signature = "atomicXor(*u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicXor_UInt16)->name = "atomicXor(*u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_UInt16)->nameWithVarNames = "atomicXor(ptr : *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_UInt16)->returnTypeSymbol = &UInt16Type;
+    AtomicXor_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicXor_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicXor_Uniform_UInt16_ptr.type.strict = true;
+    AtomicXor_Uniform_UInt16_ptr.type.mut = true;
+    AtomicXor_Uniform_UInt16_ptr.type.modifiers = AtomicXor_Uniform_UInt16_ptr_modifiers;
+    AtomicXor_Uniform_UInt16_ptr.type.modifierValues = AtomicXor_Uniform_UInt16_ptr_modifierValues;
+    AtomicXor_Uniform_UInt16_value.name = "value"_c;
+    AtomicXor_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicXor_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicXor_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Uniform_UInt16_semantics.type.literal = true;
+    AtomicXor_Uniform_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Uniform_UInt16.name = AtomicXor_Uniform_UInt16_name;
+    AtomicXor_Uniform_UInt16.backendIndex = 2167;
+    AtomicXor_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicXor_Uniform_UInt16.parameters = AtomicXor_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->signature = "atomicXor(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->name = "atomicXor(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->nameWithVarNames = "atomicXor(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicXor with UInt16, UInt16, MemorySemantics
+    AtomicXor_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicXor_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicXor_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicXor_Workgroup_UInt16_ptr.type.modifiers = AtomicXor_Workgroup_UInt16_ptr_modifiers;
+    AtomicXor_Workgroup_UInt16_ptr.type.modifierValues = AtomicXor_Workgroup_UInt16_ptr_modifierValues;
+    AtomicXor_Workgroup_UInt16_value.name = "value"_c;
+    AtomicXor_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicXor_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicXor_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicXor_Workgroup_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Workgroup_UInt16.name = AtomicXor_Workgroup_UInt16_name;
+    AtomicXor_Workgroup_UInt16.backendIndex = 2168;
+    AtomicXor_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicXor_Workgroup_UInt16.parameters = AtomicXor_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->signature = "atomicXor(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->name = "atomicXor(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->nameWithVarNames = "atomicXor(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicStore with Int16, Int16, MemorySemantics
-    AtomicStore_Int16_ptr.name = "ptr"_c;
-    AtomicStore_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicStore_Int16_ptr.type.modifiers = AtomicStore_Int16_ptr_modifiers;
-    AtomicStore_Int16_ptr.type.modifierValues = AtomicStore_Int16_ptr_modifierValues;
-    AtomicStore_Int16_value.name = "value"_c;
-    AtomicStore_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicStore_Int16_semantics.name = "semantics"_c;
-    AtomicStore_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Int16_semantics.type.literal = true;
-    AtomicStore_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Int16.name = AtomicStore_Int16_name;
-    AtomicStore_Int16.backendIndex = 2134;
-    AtomicStore_Int16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Int16.parameters = AtomicStore_Int16_args;
-    Symbol::Resolved(&AtomicStore_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicStore_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicStore_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Int16)->signature = "atomicStore(*i16,i16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Int16)->name = "atomicStore(*i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Int16)->nameWithVarNames = "atomicStore(ptr : *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Int16)->returnTypeSymbol = &VoidType;
+    AtomicStore_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicStore_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicStore_Uniform_Int16_ptr.type.strict = true;
+    AtomicStore_Uniform_Int16_ptr.type.mut = true;
+    AtomicStore_Uniform_Int16_ptr.type.modifiers = AtomicStore_Uniform_Int16_ptr_modifiers;
+    AtomicStore_Uniform_Int16_ptr.type.modifierValues = AtomicStore_Uniform_Int16_ptr_modifierValues;
+    AtomicStore_Uniform_Int16_value.name = "value"_c;
+    AtomicStore_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicStore_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicStore_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Uniform_Int16_semantics.type.literal = true;
+    AtomicStore_Uniform_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Uniform_Int16.name = AtomicStore_Uniform_Int16_name;
+    AtomicStore_Uniform_Int16.backendIndex = 2169;
+    AtomicStore_Uniform_Int16.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Uniform_Int16.parameters = AtomicStore_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicStore_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicStore_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicStore_Uniform_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicStore_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Uniform_Int16)->signature = "atomicStore(uniform *mutable i16,i16,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Int16)->name = "atomicStore(uniform *mutable i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Int16)->nameWithVarNames = "atomicStore(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Int16)->returnTypeSymbol = &VoidType;
+
+    /// atomicStore with Int16, Int16, MemorySemantics
+    AtomicStore_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicStore_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicStore_Workgroup_Int16_ptr.type.strict = true;
+    AtomicStore_Workgroup_Int16_ptr.type.modifiers = AtomicStore_Workgroup_Int16_ptr_modifiers;
+    AtomicStore_Workgroup_Int16_ptr.type.modifierValues = AtomicStore_Workgroup_Int16_ptr_modifierValues;
+    AtomicStore_Workgroup_Int16_value.name = "value"_c;
+    AtomicStore_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicStore_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicStore_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Workgroup_Int16_semantics.type.literal = true;
+    AtomicStore_Workgroup_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Workgroup_Int16.name = AtomicStore_Workgroup_Int16_name;
+    AtomicStore_Workgroup_Int16.backendIndex = 2170;
+    AtomicStore_Workgroup_Int16.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Workgroup_Int16.parameters = AtomicStore_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int16)->signature = "atomicStore(workgroup *i16,i16,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int16)->name = "atomicStore(workgroup *i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int16)->nameWithVarNames = "atomicStore(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Int16)->returnTypeSymbol = &VoidType;
 
     /// atomicExchange with Int16, Int16, MemorySemantics
-    AtomicExchange_Int16_ptr.name = "ptr"_c;
-    AtomicExchange_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicExchange_Int16_ptr.type.modifiers = AtomicExchange_Int16_ptr_modifiers;
-    AtomicExchange_Int16_ptr.type.modifierValues = AtomicExchange_Int16_ptr_modifierValues;
-    AtomicExchange_Int16_value.name = "value"_c;
-    AtomicExchange_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicExchange_Int16_semantics.name = "semantics"_c;
-    AtomicExchange_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Int16_semantics.type.literal = true;
-    AtomicExchange_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Int16.name = AtomicExchange_Int16_name;
-    AtomicExchange_Int16.backendIndex = 2135;
-    AtomicExchange_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicExchange_Int16.parameters = AtomicExchange_Int16_args;
-    Symbol::Resolved(&AtomicExchange_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicExchange_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicExchange_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Int16)->signature = "atomicExchange(*i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicExchange_Int16)->name = "atomicExchange(*i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Int16)->nameWithVarNames = "atomicExchange(ptr : *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicExchange_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicExchange_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicExchange_Uniform_Int16_ptr.type.strict = true;
+    AtomicExchange_Uniform_Int16_ptr.type.mut = true;
+    AtomicExchange_Uniform_Int16_ptr.type.modifiers = AtomicExchange_Uniform_Int16_ptr_modifiers;
+    AtomicExchange_Uniform_Int16_ptr.type.modifierValues = AtomicExchange_Uniform_Int16_ptr_modifierValues;
+    AtomicExchange_Uniform_Int16_value.name = "value"_c;
+    AtomicExchange_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicExchange_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicExchange_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Uniform_Int16_semantics.type.literal = true;
+    AtomicExchange_Uniform_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Uniform_Int16.name = AtomicExchange_Uniform_Int16_name;
+    AtomicExchange_Uniform_Int16.backendIndex = 2171;
+    AtomicExchange_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicExchange_Uniform_Int16.parameters = AtomicExchange_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int16)->signature = "atomicExchange(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int16)->name = "atomicExchange(uniform *mutable i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int16)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicExchange with Int16, Int16, MemorySemantics
+    AtomicExchange_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicExchange_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicExchange_Workgroup_Int16_ptr.type.strict = true;
+    AtomicExchange_Workgroup_Int16_ptr.type.modifiers = AtomicExchange_Workgroup_Int16_ptr_modifiers;
+    AtomicExchange_Workgroup_Int16_ptr.type.modifierValues = AtomicExchange_Workgroup_Int16_ptr_modifierValues;
+    AtomicExchange_Workgroup_Int16_value.name = "value"_c;
+    AtomicExchange_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicExchange_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicExchange_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Workgroup_Int16_semantics.type.literal = true;
+    AtomicExchange_Workgroup_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Workgroup_Int16.name = AtomicExchange_Workgroup_Int16_name;
+    AtomicExchange_Workgroup_Int16.backendIndex = 2172;
+    AtomicExchange_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicExchange_Workgroup_Int16.parameters = AtomicExchange_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int16)->signature = "atomicExchange(workgroup *i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int16)->name = "atomicExchange(workgroup *i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int16)->nameWithVarNames = "atomicExchange(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicAdd with Int16, Int16, MemorySemantics
-    AtomicAdd_Int16_ptr.name = "ptr"_c;
-    AtomicAdd_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicAdd_Int16_ptr.type.modifiers = AtomicAdd_Int16_ptr_modifiers;
-    AtomicAdd_Int16_ptr.type.modifierValues = AtomicAdd_Int16_ptr_modifierValues;
-    AtomicAdd_Int16_value.name = "value"_c;
-    AtomicAdd_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicAdd_Int16_semantics.name = "semantics"_c;
-    AtomicAdd_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Int16_semantics.type.literal = true;
-    AtomicAdd_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Int16.name = AtomicAdd_Int16_name;
-    AtomicAdd_Int16.backendIndex = 2136;
-    AtomicAdd_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicAdd_Int16.parameters = AtomicAdd_Int16_args;
-    Symbol::Resolved(&AtomicAdd_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAdd_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAdd_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Int16)->signature = "atomicAdd(*i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicAdd_Int16)->name = "atomicAdd(*i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Int16)->nameWithVarNames = "atomicAdd(ptr : *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicAdd_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicAdd_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicAdd_Uniform_Int16_ptr.type.strict = true;
+    AtomicAdd_Uniform_Int16_ptr.type.mut = true;
+    AtomicAdd_Uniform_Int16_ptr.type.modifiers = AtomicAdd_Uniform_Int16_ptr_modifiers;
+    AtomicAdd_Uniform_Int16_ptr.type.modifierValues = AtomicAdd_Uniform_Int16_ptr_modifierValues;
+    AtomicAdd_Uniform_Int16_value.name = "value"_c;
+    AtomicAdd_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicAdd_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicAdd_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Uniform_Int16_semantics.type.literal = true;
+    AtomicAdd_Uniform_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Uniform_Int16.name = AtomicAdd_Uniform_Int16_name;
+    AtomicAdd_Uniform_Int16.backendIndex = 2173;
+    AtomicAdd_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicAdd_Uniform_Int16.parameters = AtomicAdd_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int16)->signature = "atomicAdd(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int16)->name = "atomicAdd(uniform *mutable i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int16)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicAdd with Int16, Int16, MemorySemantics
+    AtomicAdd_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicAdd_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicAdd_Workgroup_Int16_ptr.type.strict = true;
+    AtomicAdd_Workgroup_Int16_ptr.type.modifiers = AtomicAdd_Workgroup_Int16_ptr_modifiers;
+    AtomicAdd_Workgroup_Int16_ptr.type.modifierValues = AtomicAdd_Workgroup_Int16_ptr_modifierValues;
+    AtomicAdd_Workgroup_Int16_value.name = "value"_c;
+    AtomicAdd_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicAdd_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicAdd_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Workgroup_Int16_semantics.type.literal = true;
+    AtomicAdd_Workgroup_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Workgroup_Int16.name = AtomicAdd_Workgroup_Int16_name;
+    AtomicAdd_Workgroup_Int16.backendIndex = 2174;
+    AtomicAdd_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicAdd_Workgroup_Int16.parameters = AtomicAdd_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int16)->signature = "atomicAdd(workgroup *i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int16)->name = "atomicAdd(workgroup *i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int16)->nameWithVarNames = "atomicAdd(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicSubtract with Int16, Int16, MemorySemantics
-    AtomicSubtract_Int16_ptr.name = "ptr"_c;
-    AtomicSubtract_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicSubtract_Int16_ptr.type.modifiers = AtomicSubtract_Int16_ptr_modifiers;
-    AtomicSubtract_Int16_ptr.type.modifierValues = AtomicSubtract_Int16_ptr_modifierValues;
-    AtomicSubtract_Int16_value.name = "value"_c;
-    AtomicSubtract_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicSubtract_Int16_semantics.name = "semantics"_c;
-    AtomicSubtract_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Int16_semantics.type.literal = true;
-    AtomicSubtract_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Int16.name = AtomicSubtract_Int16_name;
-    AtomicSubtract_Int16.backendIndex = 2137;
-    AtomicSubtract_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicSubtract_Int16.parameters = AtomicSubtract_Int16_args;
-    Symbol::Resolved(&AtomicSubtract_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicSubtract_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicSubtract_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Int16)->signature = "atomicSubtract(*i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicSubtract_Int16)->name = "atomicSubtract(*i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Int16)->nameWithVarNames = "atomicSubtract(ptr : *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicSubtract_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicSubtract_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicSubtract_Uniform_Int16_ptr.type.strict = true;
+    AtomicSubtract_Uniform_Int16_ptr.type.mut = true;
+    AtomicSubtract_Uniform_Int16_ptr.type.modifiers = AtomicSubtract_Uniform_Int16_ptr_modifiers;
+    AtomicSubtract_Uniform_Int16_ptr.type.modifierValues = AtomicSubtract_Uniform_Int16_ptr_modifierValues;
+    AtomicSubtract_Uniform_Int16_value.name = "value"_c;
+    AtomicSubtract_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicSubtract_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicSubtract_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Uniform_Int16_semantics.type.literal = true;
+    AtomicSubtract_Uniform_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Uniform_Int16.name = AtomicSubtract_Uniform_Int16_name;
+    AtomicSubtract_Uniform_Int16.backendIndex = 2175;
+    AtomicSubtract_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicSubtract_Uniform_Int16.parameters = AtomicSubtract_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int16)->signature = "atomicSubtract(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int16)->name = "atomicSubtract(uniform *mutable i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int16)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicSubtract with Int16, Int16, MemorySemantics
+    AtomicSubtract_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicSubtract_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicSubtract_Workgroup_Int16_ptr.type.strict = true;
+    AtomicSubtract_Workgroup_Int16_ptr.type.modifiers = AtomicSubtract_Workgroup_Int16_ptr_modifiers;
+    AtomicSubtract_Workgroup_Int16_ptr.type.modifierValues = AtomicSubtract_Workgroup_Int16_ptr_modifierValues;
+    AtomicSubtract_Workgroup_Int16_value.name = "value"_c;
+    AtomicSubtract_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicSubtract_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicSubtract_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Workgroup_Int16_semantics.type.literal = true;
+    AtomicSubtract_Workgroup_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Workgroup_Int16.name = AtomicSubtract_Workgroup_Int16_name;
+    AtomicSubtract_Workgroup_Int16.backendIndex = 2176;
+    AtomicSubtract_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicSubtract_Workgroup_Int16.parameters = AtomicSubtract_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16)->signature = "atomicSubtract(workgroup *i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16)->name = "atomicSubtract(workgroup *i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16)->nameWithVarNames = "atomicSubtract(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicAnd with Int16, Int16, MemorySemantics
-    AtomicAnd_Int16_ptr.name = "ptr"_c;
-    AtomicAnd_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicAnd_Int16_ptr.type.modifiers = AtomicAnd_Int16_ptr_modifiers;
-    AtomicAnd_Int16_ptr.type.modifierValues = AtomicAnd_Int16_ptr_modifierValues;
-    AtomicAnd_Int16_value.name = "value"_c;
-    AtomicAnd_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicAnd_Int16_semantics.name = "semantics"_c;
-    AtomicAnd_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Int16_semantics.type.literal = true;
-    AtomicAnd_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Int16.name = AtomicAnd_Int16_name;
-    AtomicAnd_Int16.backendIndex = 2138;
-    AtomicAnd_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicAnd_Int16.parameters = AtomicAnd_Int16_args;
-    Symbol::Resolved(&AtomicAnd_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAnd_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAnd_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Int16)->signature = "atomicAnd(*i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicAnd_Int16)->name = "atomicAnd(*i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Int16)->nameWithVarNames = "atomicAnd(ptr : *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicAnd_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicAnd_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicAnd_Uniform_Int16_ptr.type.strict = true;
+    AtomicAnd_Uniform_Int16_ptr.type.mut = true;
+    AtomicAnd_Uniform_Int16_ptr.type.modifiers = AtomicAnd_Uniform_Int16_ptr_modifiers;
+    AtomicAnd_Uniform_Int16_ptr.type.modifierValues = AtomicAnd_Uniform_Int16_ptr_modifierValues;
+    AtomicAnd_Uniform_Int16_value.name = "value"_c;
+    AtomicAnd_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicAnd_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicAnd_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Uniform_Int16_semantics.type.literal = true;
+    AtomicAnd_Uniform_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Uniform_Int16.name = AtomicAnd_Uniform_Int16_name;
+    AtomicAnd_Uniform_Int16.backendIndex = 2177;
+    AtomicAnd_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicAnd_Uniform_Int16.parameters = AtomicAnd_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int16)->signature = "atomicAnd(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int16)->name = "atomicAnd(uniform *mutable i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int16)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicAnd with Int16, Int16, MemorySemantics
+    AtomicAnd_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicAnd_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicAnd_Workgroup_Int16_ptr.type.strict = true;
+    AtomicAnd_Workgroup_Int16_ptr.type.modifiers = AtomicAnd_Workgroup_Int16_ptr_modifiers;
+    AtomicAnd_Workgroup_Int16_ptr.type.modifierValues = AtomicAnd_Workgroup_Int16_ptr_modifierValues;
+    AtomicAnd_Workgroup_Int16_value.name = "value"_c;
+    AtomicAnd_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicAnd_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicAnd_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Workgroup_Int16_semantics.type.literal = true;
+    AtomicAnd_Workgroup_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Workgroup_Int16.name = AtomicAnd_Workgroup_Int16_name;
+    AtomicAnd_Workgroup_Int16.backendIndex = 2178;
+    AtomicAnd_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicAnd_Workgroup_Int16.parameters = AtomicAnd_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int16)->signature = "atomicAnd(workgroup *i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int16)->name = "atomicAnd(workgroup *i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int16)->nameWithVarNames = "atomicAnd(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicOr with Int16, Int16, MemorySemantics
-    AtomicOr_Int16_ptr.name = "ptr"_c;
-    AtomicOr_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicOr_Int16_ptr.type.modifiers = AtomicOr_Int16_ptr_modifiers;
-    AtomicOr_Int16_ptr.type.modifierValues = AtomicOr_Int16_ptr_modifierValues;
-    AtomicOr_Int16_value.name = "value"_c;
-    AtomicOr_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicOr_Int16_semantics.name = "semantics"_c;
-    AtomicOr_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Int16_semantics.type.literal = true;
-    AtomicOr_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Int16.name = AtomicOr_Int16_name;
-    AtomicOr_Int16.backendIndex = 2139;
-    AtomicOr_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicOr_Int16.parameters = AtomicOr_Int16_args;
-    Symbol::Resolved(&AtomicOr_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicOr_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicOr_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Int16)->signature = "atomicOr(*i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicOr_Int16)->name = "atomicOr(*i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Int16)->nameWithVarNames = "atomicOr(ptr : *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicOr_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicOr_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicOr_Uniform_Int16_ptr.type.strict = true;
+    AtomicOr_Uniform_Int16_ptr.type.mut = true;
+    AtomicOr_Uniform_Int16_ptr.type.modifiers = AtomicOr_Uniform_Int16_ptr_modifiers;
+    AtomicOr_Uniform_Int16_ptr.type.modifierValues = AtomicOr_Uniform_Int16_ptr_modifierValues;
+    AtomicOr_Uniform_Int16_value.name = "value"_c;
+    AtomicOr_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicOr_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicOr_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Uniform_Int16_semantics.type.literal = true;
+    AtomicOr_Uniform_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Uniform_Int16.name = AtomicOr_Uniform_Int16_name;
+    AtomicOr_Uniform_Int16.backendIndex = 2179;
+    AtomicOr_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicOr_Uniform_Int16.parameters = AtomicOr_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicOr_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicOr_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicOr_Uniform_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicOr_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Uniform_Int16)->signature = "atomicOr(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_Int16)->name = "atomicOr(uniform *mutable i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_Int16)->nameWithVarNames = "atomicOr(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicOr with Int16, Int16, MemorySemantics
+    AtomicOr_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicOr_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicOr_Workgroup_Int16_ptr.type.strict = true;
+    AtomicOr_Workgroup_Int16_ptr.type.modifiers = AtomicOr_Workgroup_Int16_ptr_modifiers;
+    AtomicOr_Workgroup_Int16_ptr.type.modifierValues = AtomicOr_Workgroup_Int16_ptr_modifierValues;
+    AtomicOr_Workgroup_Int16_value.name = "value"_c;
+    AtomicOr_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicOr_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicOr_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Workgroup_Int16_semantics.type.literal = true;
+    AtomicOr_Workgroup_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Workgroup_Int16.name = AtomicOr_Workgroup_Int16_name;
+    AtomicOr_Workgroup_Int16.backendIndex = 2180;
+    AtomicOr_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicOr_Workgroup_Int16.parameters = AtomicOr_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int16)->signature = "atomicOr(workgroup *i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int16)->name = "atomicOr(workgroup *i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int16)->nameWithVarNames = "atomicOr(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicXor with Int16, Int16, MemorySemantics
-    AtomicXor_Int16_ptr.name = "ptr"_c;
-    AtomicXor_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicXor_Int16_ptr.type.modifiers = AtomicXor_Int16_ptr_modifiers;
-    AtomicXor_Int16_ptr.type.modifierValues = AtomicXor_Int16_ptr_modifierValues;
-    AtomicXor_Int16_value.name = "value"_c;
-    AtomicXor_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicXor_Int16_semantics.name = "semantics"_c;
-    AtomicXor_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Int16_semantics.type.literal = true;
-    AtomicXor_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Int16.name = AtomicXor_Int16_name;
-    AtomicXor_Int16.backendIndex = 2140;
-    AtomicXor_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicXor_Int16.parameters = AtomicXor_Int16_args;
-    Symbol::Resolved(&AtomicXor_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicXor_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicXor_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Int16)->signature = "atomicXor(*i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicXor_Int16)->name = "atomicXor(*i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Int16)->nameWithVarNames = "atomicXor(ptr : *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Int16)->returnTypeSymbol = &Int16Type;
+    AtomicXor_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicXor_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicXor_Uniform_Int16_ptr.type.strict = true;
+    AtomicXor_Uniform_Int16_ptr.type.mut = true;
+    AtomicXor_Uniform_Int16_ptr.type.modifiers = AtomicXor_Uniform_Int16_ptr_modifiers;
+    AtomicXor_Uniform_Int16_ptr.type.modifierValues = AtomicXor_Uniform_Int16_ptr_modifierValues;
+    AtomicXor_Uniform_Int16_value.name = "value"_c;
+    AtomicXor_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicXor_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicXor_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Uniform_Int16_semantics.type.literal = true;
+    AtomicXor_Uniform_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Uniform_Int16.name = AtomicXor_Uniform_Int16_name;
+    AtomicXor_Uniform_Int16.backendIndex = 2181;
+    AtomicXor_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicXor_Uniform_Int16.parameters = AtomicXor_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicXor_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicXor_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicXor_Uniform_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicXor_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Uniform_Int16)->signature = "atomicXor(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_Int16)->name = "atomicXor(uniform *mutable i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_Int16)->nameWithVarNames = "atomicXor(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// atomicXor with Int16, Int16, MemorySemantics
+    AtomicXor_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicXor_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
+    AtomicXor_Workgroup_Int16_ptr.type.strict = true;
+    AtomicXor_Workgroup_Int16_ptr.type.modifiers = AtomicXor_Workgroup_Int16_ptr_modifiers;
+    AtomicXor_Workgroup_Int16_ptr.type.modifierValues = AtomicXor_Workgroup_Int16_ptr_modifierValues;
+    AtomicXor_Workgroup_Int16_value.name = "value"_c;
+    AtomicXor_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
+    AtomicXor_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicXor_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Workgroup_Int16_semantics.type.literal = true;
+    AtomicXor_Workgroup_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Workgroup_Int16.name = AtomicXor_Workgroup_Int16_name;
+    AtomicXor_Workgroup_Int16.backendIndex = 2182;
+    AtomicXor_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
+    AtomicXor_Workgroup_Int16.parameters = AtomicXor_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int16)->signature = "atomicXor(workgroup *i16,i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int16)->name = "atomicXor(workgroup *i16,i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int16)->nameWithVarNames = "atomicXor(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicStore with Float32, Float32, MemorySemantics
-    AtomicStore_Float32_ptr.name = "ptr"_c;
-    AtomicStore_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicStore_Float32_ptr.type.modifiers = AtomicStore_Float32_ptr_modifiers;
-    AtomicStore_Float32_ptr.type.modifierValues = AtomicStore_Float32_ptr_modifierValues;
-    AtomicStore_Float32_value.name = "value"_c;
-    AtomicStore_Float32_value.type = Type::FullType{ Float32Type.name };
-    AtomicStore_Float32_semantics.name = "semantics"_c;
-    AtomicStore_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Float32_semantics.type.literal = true;
-    AtomicStore_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Float32.name = AtomicStore_Float32_name;
-    AtomicStore_Float32.backendIndex = 2141;
-    AtomicStore_Float32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Float32.parameters = AtomicStore_Float32_args;
-    Symbol::Resolved(&AtomicStore_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicStore_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicStore_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Float32)->signature = "atomicStore(*f32,f32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Float32)->name = "atomicStore(*f32,f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Float32)->nameWithVarNames = "atomicStore(ptr : *f32, value : f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Float32)->returnTypeSymbol = &VoidType;
+    AtomicStore_Uniform_Float32_ptr.name = "ptr"_c;
+    AtomicStore_Uniform_Float32_ptr.type = Type::FullType{ Float32Type.name };
+    AtomicStore_Uniform_Float32_ptr.type.strict = true;
+    AtomicStore_Uniform_Float32_ptr.type.mut = true;
+    AtomicStore_Uniform_Float32_ptr.type.modifiers = AtomicStore_Uniform_Float32_ptr_modifiers;
+    AtomicStore_Uniform_Float32_ptr.type.modifierValues = AtomicStore_Uniform_Float32_ptr_modifierValues;
+    AtomicStore_Uniform_Float32_value.name = "value"_c;
+    AtomicStore_Uniform_Float32_value.type = Type::FullType{ Float32Type.name };
+    AtomicStore_Uniform_Float32_semantics.name = "semantics"_c;
+    AtomicStore_Uniform_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Uniform_Float32_semantics.type.literal = true;
+    AtomicStore_Uniform_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Uniform_Float32.name = AtomicStore_Uniform_Float32_name;
+    AtomicStore_Uniform_Float32.backendIndex = 2183;
+    AtomicStore_Uniform_Float32.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Uniform_Float32.parameters = AtomicStore_Uniform_Float32_args;
+    Symbol::Resolved(&AtomicStore_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicStore_Uniform_Float32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicStore_Uniform_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicStore_Uniform_Float32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Uniform_Float32)->signature = "atomicStore(uniform *mutable f32,f32,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Float32)->name = "atomicStore(uniform *mutable f32,f32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Float32)->nameWithVarNames = "atomicStore(ptr : uniform *mutable f32, value : f32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Float32)->returnTypeSymbol = &VoidType;
+
+    /// atomicStore with Float32, Float32, MemorySemantics
+    AtomicStore_Workgroup_Float32_ptr.name = "ptr"_c;
+    AtomicStore_Workgroup_Float32_ptr.type = Type::FullType{ Float32Type.name };
+    AtomicStore_Workgroup_Float32_ptr.type.strict = true;
+    AtomicStore_Workgroup_Float32_ptr.type.modifiers = AtomicStore_Workgroup_Float32_ptr_modifiers;
+    AtomicStore_Workgroup_Float32_ptr.type.modifierValues = AtomicStore_Workgroup_Float32_ptr_modifierValues;
+    AtomicStore_Workgroup_Float32_value.name = "value"_c;
+    AtomicStore_Workgroup_Float32_value.type = Type::FullType{ Float32Type.name };
+    AtomicStore_Workgroup_Float32_semantics.name = "semantics"_c;
+    AtomicStore_Workgroup_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Workgroup_Float32_semantics.type.literal = true;
+    AtomicStore_Workgroup_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Workgroup_Float32.name = AtomicStore_Workgroup_Float32_name;
+    AtomicStore_Workgroup_Float32.backendIndex = 2184;
+    AtomicStore_Workgroup_Float32.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Workgroup_Float32.parameters = AtomicStore_Workgroup_Float32_args;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float32)->signature = "atomicStore(workgroup *f32,f32,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float32)->name = "atomicStore(workgroup *f32,f32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float32)->nameWithVarNames = "atomicStore(ptr : workgroup *f32, value : f32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float32)->returnTypeSymbol = &VoidType;
 
     /// atomicExchange with Float32, Float32, MemorySemantics
-    AtomicExchange_Float32_ptr.name = "ptr"_c;
-    AtomicExchange_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicExchange_Float32_ptr.type.modifiers = AtomicExchange_Float32_ptr_modifiers;
-    AtomicExchange_Float32_ptr.type.modifierValues = AtomicExchange_Float32_ptr_modifierValues;
-    AtomicExchange_Float32_value.name = "value"_c;
-    AtomicExchange_Float32_value.type = Type::FullType{ Float32Type.name };
-    AtomicExchange_Float32_semantics.name = "semantics"_c;
-    AtomicExchange_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Float32_semantics.type.literal = true;
-    AtomicExchange_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Float32.name = AtomicExchange_Float32_name;
-    AtomicExchange_Float32.backendIndex = 2142;
-    AtomicExchange_Float32.returnType = Type::FullType { Float32Type.name };
-    AtomicExchange_Float32.parameters = AtomicExchange_Float32_args;
-    Symbol::Resolved(&AtomicExchange_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicExchange_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicExchange_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Float32)->signature = "atomicExchange(*f32,f32,literal MemorySemantics) f32"_c;
-    Symbol::Resolved(&AtomicExchange_Float32)->name = "atomicExchange(*f32,f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Float32)->nameWithVarNames = "atomicExchange(ptr : *f32, value : f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Float32)->returnTypeSymbol = &Float32Type;
+    AtomicExchange_Uniform_Float32_ptr.name = "ptr"_c;
+    AtomicExchange_Uniform_Float32_ptr.type = Type::FullType{ Float32Type.name };
+    AtomicExchange_Uniform_Float32_ptr.type.strict = true;
+    AtomicExchange_Uniform_Float32_ptr.type.mut = true;
+    AtomicExchange_Uniform_Float32_ptr.type.modifiers = AtomicExchange_Uniform_Float32_ptr_modifiers;
+    AtomicExchange_Uniform_Float32_ptr.type.modifierValues = AtomicExchange_Uniform_Float32_ptr_modifierValues;
+    AtomicExchange_Uniform_Float32_value.name = "value"_c;
+    AtomicExchange_Uniform_Float32_value.type = Type::FullType{ Float32Type.name };
+    AtomicExchange_Uniform_Float32_semantics.name = "semantics"_c;
+    AtomicExchange_Uniform_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Uniform_Float32_semantics.type.literal = true;
+    AtomicExchange_Uniform_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Uniform_Float32.name = AtomicExchange_Uniform_Float32_name;
+    AtomicExchange_Uniform_Float32.backendIndex = 2185;
+    AtomicExchange_Uniform_Float32.returnType = Type::FullType { Float32Type.name };
+    AtomicExchange_Uniform_Float32.parameters = AtomicExchange_Uniform_Float32_args;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float32)->signature = "atomicExchange(uniform *mutable f32,f32,literal MemorySemantics) f32"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float32)->name = "atomicExchange(uniform *mutable f32,f32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float32)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable f32, value : f32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// atomicExchange with Float32, Float32, MemorySemantics
+    AtomicExchange_Workgroup_Float32_ptr.name = "ptr"_c;
+    AtomicExchange_Workgroup_Float32_ptr.type = Type::FullType{ Float32Type.name };
+    AtomicExchange_Workgroup_Float32_ptr.type.strict = true;
+    AtomicExchange_Workgroup_Float32_ptr.type.modifiers = AtomicExchange_Workgroup_Float32_ptr_modifiers;
+    AtomicExchange_Workgroup_Float32_ptr.type.modifierValues = AtomicExchange_Workgroup_Float32_ptr_modifierValues;
+    AtomicExchange_Workgroup_Float32_value.name = "value"_c;
+    AtomicExchange_Workgroup_Float32_value.type = Type::FullType{ Float32Type.name };
+    AtomicExchange_Workgroup_Float32_semantics.name = "semantics"_c;
+    AtomicExchange_Workgroup_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Workgroup_Float32_semantics.type.literal = true;
+    AtomicExchange_Workgroup_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Workgroup_Float32.name = AtomicExchange_Workgroup_Float32_name;
+    AtomicExchange_Workgroup_Float32.backendIndex = 2186;
+    AtomicExchange_Workgroup_Float32.returnType = Type::FullType { Float32Type.name };
+    AtomicExchange_Workgroup_Float32.parameters = AtomicExchange_Workgroup_Float32_args;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float32)->signature = "atomicExchange(workgroup *f32,f32,literal MemorySemantics) f32"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float32)->name = "atomicExchange(workgroup *f32,f32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float32)->nameWithVarNames = "atomicExchange(ptr : workgroup *f32, value : f32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float32)->returnTypeSymbol = &Float32Type;
 
     /// atomicStore with Float16, Float16, MemorySemantics
-    AtomicStore_Float16_ptr.name = "ptr"_c;
-    AtomicStore_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicStore_Float16_ptr.type.modifiers = AtomicStore_Float16_ptr_modifiers;
-    AtomicStore_Float16_ptr.type.modifierValues = AtomicStore_Float16_ptr_modifierValues;
-    AtomicStore_Float16_value.name = "value"_c;
-    AtomicStore_Float16_value.type = Type::FullType{ Float16Type.name };
-    AtomicStore_Float16_semantics.name = "semantics"_c;
-    AtomicStore_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Float16_semantics.type.literal = true;
-    AtomicStore_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Float16.name = AtomicStore_Float16_name;
-    AtomicStore_Float16.backendIndex = 2143;
-    AtomicStore_Float16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Float16.parameters = AtomicStore_Float16_args;
-    Symbol::Resolved(&AtomicStore_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicStore_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicStore_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Float16)->signature = "atomicStore(*f16,f16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Float16)->name = "atomicStore(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Float16)->nameWithVarNames = "atomicStore(ptr : *f16, value : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Float16)->returnTypeSymbol = &VoidType;
+    AtomicStore_Uniform_Float16_ptr.name = "ptr"_c;
+    AtomicStore_Uniform_Float16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicStore_Uniform_Float16_ptr.type.strict = true;
+    AtomicStore_Uniform_Float16_ptr.type.mut = true;
+    AtomicStore_Uniform_Float16_ptr.type.modifiers = AtomicStore_Uniform_Float16_ptr_modifiers;
+    AtomicStore_Uniform_Float16_ptr.type.modifierValues = AtomicStore_Uniform_Float16_ptr_modifierValues;
+    AtomicStore_Uniform_Float16_value.name = "value"_c;
+    AtomicStore_Uniform_Float16_value.type = Type::FullType{ Float16Type.name };
+    AtomicStore_Uniform_Float16_semantics.name = "semantics"_c;
+    AtomicStore_Uniform_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Uniform_Float16_semantics.type.literal = true;
+    AtomicStore_Uniform_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Uniform_Float16.name = AtomicStore_Uniform_Float16_name;
+    AtomicStore_Uniform_Float16.backendIndex = 2187;
+    AtomicStore_Uniform_Float16.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Uniform_Float16.parameters = AtomicStore_Uniform_Float16_args;
+    Symbol::Resolved(&AtomicStore_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicStore_Uniform_Float16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicStore_Uniform_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicStore_Uniform_Float16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Uniform_Float16)->signature = "atomicStore(uniform *mutable f16,f16,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Float16)->name = "atomicStore(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Float16)->nameWithVarNames = "atomicStore(ptr : uniform *mutable f16, value : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_Float16)->returnTypeSymbol = &VoidType;
+
+    /// atomicStore with Float16, Float16, MemorySemantics
+    AtomicStore_Workgroup_Float16_ptr.name = "ptr"_c;
+    AtomicStore_Workgroup_Float16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicStore_Workgroup_Float16_ptr.type.strict = true;
+    AtomicStore_Workgroup_Float16_ptr.type.modifiers = AtomicStore_Workgroup_Float16_ptr_modifiers;
+    AtomicStore_Workgroup_Float16_ptr.type.modifierValues = AtomicStore_Workgroup_Float16_ptr_modifierValues;
+    AtomicStore_Workgroup_Float16_value.name = "value"_c;
+    AtomicStore_Workgroup_Float16_value.type = Type::FullType{ Float16Type.name };
+    AtomicStore_Workgroup_Float16_semantics.name = "semantics"_c;
+    AtomicStore_Workgroup_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Workgroup_Float16_semantics.type.literal = true;
+    AtomicStore_Workgroup_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Workgroup_Float16.name = AtomicStore_Workgroup_Float16_name;
+    AtomicStore_Workgroup_Float16.backendIndex = 2188;
+    AtomicStore_Workgroup_Float16.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Workgroup_Float16.parameters = AtomicStore_Workgroup_Float16_args;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float16)->signature = "atomicStore(workgroup *f16,f16,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float16)->name = "atomicStore(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float16)->nameWithVarNames = "atomicStore(ptr : workgroup *f16, value : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_Float16)->returnTypeSymbol = &VoidType;
 
     /// atomicExchange with Float16, Float16, MemorySemantics
-    AtomicExchange_Float16_ptr.name = "ptr"_c;
-    AtomicExchange_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicExchange_Float16_ptr.type.modifiers = AtomicExchange_Float16_ptr_modifiers;
-    AtomicExchange_Float16_ptr.type.modifierValues = AtomicExchange_Float16_ptr_modifierValues;
-    AtomicExchange_Float16_value.name = "value"_c;
-    AtomicExchange_Float16_value.type = Type::FullType{ Float16Type.name };
-    AtomicExchange_Float16_semantics.name = "semantics"_c;
-    AtomicExchange_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Float16_semantics.type.literal = true;
-    AtomicExchange_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Float16.name = AtomicExchange_Float16_name;
-    AtomicExchange_Float16.backendIndex = 2144;
-    AtomicExchange_Float16.returnType = Type::FullType { Float16Type.name };
-    AtomicExchange_Float16.parameters = AtomicExchange_Float16_args;
-    Symbol::Resolved(&AtomicExchange_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicExchange_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicExchange_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Float16)->signature = "atomicExchange(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicExchange_Float16)->name = "atomicExchange(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Float16)->nameWithVarNames = "atomicExchange(ptr : *f16, value : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Float16)->returnTypeSymbol = &Float16Type;
+    AtomicExchange_Uniform_Float16_ptr.name = "ptr"_c;
+    AtomicExchange_Uniform_Float16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicExchange_Uniform_Float16_ptr.type.strict = true;
+    AtomicExchange_Uniform_Float16_ptr.type.mut = true;
+    AtomicExchange_Uniform_Float16_ptr.type.modifiers = AtomicExchange_Uniform_Float16_ptr_modifiers;
+    AtomicExchange_Uniform_Float16_ptr.type.modifierValues = AtomicExchange_Uniform_Float16_ptr_modifierValues;
+    AtomicExchange_Uniform_Float16_value.name = "value"_c;
+    AtomicExchange_Uniform_Float16_value.type = Type::FullType{ Float16Type.name };
+    AtomicExchange_Uniform_Float16_semantics.name = "semantics"_c;
+    AtomicExchange_Uniform_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Uniform_Float16_semantics.type.literal = true;
+    AtomicExchange_Uniform_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Uniform_Float16.name = AtomicExchange_Uniform_Float16_name;
+    AtomicExchange_Uniform_Float16.backendIndex = 2189;
+    AtomicExchange_Uniform_Float16.returnType = Type::FullType { Float16Type.name };
+    AtomicExchange_Uniform_Float16.parameters = AtomicExchange_Uniform_Float16_args;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float16)->signature = "atomicExchange(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float16)->name = "atomicExchange(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float16)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable f16, value : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicExchange with Float16, Float16, MemorySemantics
+    AtomicExchange_Workgroup_Float16_ptr.name = "ptr"_c;
+    AtomicExchange_Workgroup_Float16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicExchange_Workgroup_Float16_ptr.type.strict = true;
+    AtomicExchange_Workgroup_Float16_ptr.type.modifiers = AtomicExchange_Workgroup_Float16_ptr_modifiers;
+    AtomicExchange_Workgroup_Float16_ptr.type.modifierValues = AtomicExchange_Workgroup_Float16_ptr_modifierValues;
+    AtomicExchange_Workgroup_Float16_value.name = "value"_c;
+    AtomicExchange_Workgroup_Float16_value.type = Type::FullType{ Float16Type.name };
+    AtomicExchange_Workgroup_Float16_semantics.name = "semantics"_c;
+    AtomicExchange_Workgroup_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Workgroup_Float16_semantics.type.literal = true;
+    AtomicExchange_Workgroup_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Workgroup_Float16.name = AtomicExchange_Workgroup_Float16_name;
+    AtomicExchange_Workgroup_Float16.backendIndex = 2190;
+    AtomicExchange_Workgroup_Float16.returnType = Type::FullType { Float16Type.name };
+    AtomicExchange_Workgroup_Float16.parameters = AtomicExchange_Workgroup_Float16_args;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float16)->signature = "atomicExchange(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float16)->name = "atomicExchange(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float16)->nameWithVarNames = "atomicExchange(ptr : workgroup *f16, value : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_Float16)->returnTypeSymbol = &Float16Type;
 
     /// atomicMin with Float16, Float16, MemorySemantics
-    AtomicMin_UInt32_ptr.name = "ptr"_c;
-    AtomicMin_UInt32_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicMin_UInt32_ptr.type.modifiers = AtomicMin_UInt32_ptr_modifiers;
-    AtomicMin_UInt32_ptr.type.modifierValues = AtomicMin_UInt32_ptr_modifierValues;
-    AtomicMin_UInt32_compare.name = "compare"_c;
-    AtomicMin_UInt32_compare.type = Type::FullType{ Float16Type.name };
-    AtomicMin_UInt32_semantics.name = "semantics"_c;
-    AtomicMin_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_UInt32_semantics.type.literal = true;
-    AtomicMin_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_UInt32.name = AtomicMin_UInt32_name;
-    AtomicMin_UInt32.backendIndex = 2145;
-    AtomicMin_UInt32.returnType = Type::FullType { Float16Type.name };
-    AtomicMin_UInt32.parameters = AtomicMin_UInt32_args;
-    Symbol::Resolved(&AtomicMin_UInt32_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMin_UInt32_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMin_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_UInt32)->signature = "atomicMin(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicMin_UInt32)->name = "atomicMin(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_UInt32)->nameWithVarNames = "atomicMin(ptr : *f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_UInt32)->returnTypeSymbol = &Float16Type;
-
-    /// atomicMax with Float16, Float16, MemorySemantics
-    AtomicMax_UInt32_ptr.name = "ptr"_c;
-    AtomicMax_UInt32_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicMax_UInt32_ptr.type.modifiers = AtomicMax_UInt32_ptr_modifiers;
-    AtomicMax_UInt32_ptr.type.modifierValues = AtomicMax_UInt32_ptr_modifierValues;
-    AtomicMax_UInt32_compare.name = "compare"_c;
-    AtomicMax_UInt32_compare.type = Type::FullType{ Float16Type.name };
-    AtomicMax_UInt32_semantics.name = "semantics"_c;
-    AtomicMax_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_UInt32_semantics.type.literal = true;
-    AtomicMax_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_UInt32.name = AtomicMax_UInt32_name;
-    AtomicMax_UInt32.backendIndex = 2146;
-    AtomicMax_UInt32.returnType = Type::FullType { Float16Type.name };
-    AtomicMax_UInt32.parameters = AtomicMax_UInt32_args;
-    Symbol::Resolved(&AtomicMax_UInt32_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMax_UInt32_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMax_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_UInt32)->signature = "atomicMax(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicMax_UInt32)->name = "atomicMax(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_UInt32)->nameWithVarNames = "atomicMax(ptr : *f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_UInt32)->returnTypeSymbol = &Float16Type;
+    AtomicMin_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicMin_Uniform_UInt32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Uniform_UInt32_ptr.type.strict = true;
+    AtomicMin_Uniform_UInt32_ptr.type.mut = true;
+    AtomicMin_Uniform_UInt32_ptr.type.modifiers = AtomicMin_Uniform_UInt32_ptr_modifiers;
+    AtomicMin_Uniform_UInt32_ptr.type.modifierValues = AtomicMin_Uniform_UInt32_ptr_modifierValues;
+    AtomicMin_Uniform_UInt32_compare.name = "compare"_c;
+    AtomicMin_Uniform_UInt32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicMin_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMin_Uniform_UInt32_semantics.type.literal = true;
+    AtomicMin_Uniform_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
+    AtomicMin_Uniform_UInt32.name = AtomicMin_Uniform_UInt32_name;
+    AtomicMin_Uniform_UInt32.backendIndex = 2191;
+    AtomicMin_Uniform_UInt32.returnType = Type::FullType { Float16Type.name };
+    AtomicMin_Uniform_UInt32.parameters = AtomicMin_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt32)->signature = "atomicMin(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt32)->name = "atomicMin(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt32)->nameWithVarNames = "atomicMin(ptr : uniform *mutable f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt32)->returnTypeSymbol = &Float16Type;
 
     /// atomicMin with Float16, Float16, MemorySemantics
-    AtomicMin_Int32_ptr.name = "ptr"_c;
-    AtomicMin_Int32_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicMin_Int32_ptr.type.modifiers = AtomicMin_Int32_ptr_modifiers;
-    AtomicMin_Int32_ptr.type.modifierValues = AtomicMin_Int32_ptr_modifierValues;
-    AtomicMin_Int32_compare.name = "compare"_c;
-    AtomicMin_Int32_compare.type = Type::FullType{ Float16Type.name };
-    AtomicMin_Int32_semantics.name = "semantics"_c;
-    AtomicMin_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Int32_semantics.type.literal = true;
-    AtomicMin_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Int32.name = AtomicMin_Int32_name;
-    AtomicMin_Int32.backendIndex = 2147;
-    AtomicMin_Int32.returnType = Type::FullType { Float16Type.name };
-    AtomicMin_Int32.parameters = AtomicMin_Int32_args;
-    Symbol::Resolved(&AtomicMin_Int32_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMin_Int32_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMin_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Int32)->signature = "atomicMin(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicMin_Int32)->name = "atomicMin(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Int32)->nameWithVarNames = "atomicMin(ptr : *f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Int32)->returnTypeSymbol = &Float16Type;
+    AtomicMin_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicMin_Workgroup_UInt32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicMin_Workgroup_UInt32_ptr.type.modifiers = AtomicMin_Workgroup_UInt32_ptr_modifiers;
+    AtomicMin_Workgroup_UInt32_ptr.type.modifierValues = AtomicMin_Workgroup_UInt32_ptr_modifierValues;
+    AtomicMin_Workgroup_UInt32_compare.name = "compare"_c;
+    AtomicMin_Workgroup_UInt32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicMin_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMin_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicMin_Workgroup_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
+    AtomicMin_Workgroup_UInt32.name = AtomicMin_Workgroup_UInt32_name;
+    AtomicMin_Workgroup_UInt32.backendIndex = 2192;
+    AtomicMin_Workgroup_UInt32.returnType = Type::FullType { Float16Type.name };
+    AtomicMin_Workgroup_UInt32.parameters = AtomicMin_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt32)->signature = "atomicMin(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt32)->name = "atomicMin(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt32)->nameWithVarNames = "atomicMin(ptr : workgroup *f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt32)->returnTypeSymbol = &Float16Type;
 
     /// atomicMax with Float16, Float16, MemorySemantics
-    AtomicMax_Int32_ptr.name = "ptr"_c;
-    AtomicMax_Int32_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicMax_Int32_ptr.type.modifiers = AtomicMax_Int32_ptr_modifiers;
-    AtomicMax_Int32_ptr.type.modifierValues = AtomicMax_Int32_ptr_modifierValues;
-    AtomicMax_Int32_compare.name = "compare"_c;
-    AtomicMax_Int32_compare.type = Type::FullType{ Float16Type.name };
-    AtomicMax_Int32_semantics.name = "semantics"_c;
-    AtomicMax_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Int32_semantics.type.literal = true;
-    AtomicMax_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Int32.name = AtomicMax_Int32_name;
-    AtomicMax_Int32.backendIndex = 2148;
-    AtomicMax_Int32.returnType = Type::FullType { Float16Type.name };
-    AtomicMax_Int32.parameters = AtomicMax_Int32_args;
-    Symbol::Resolved(&AtomicMax_Int32_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMax_Int32_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMax_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Int32)->signature = "atomicMax(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicMax_Int32)->name = "atomicMax(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Int32)->nameWithVarNames = "atomicMax(ptr : *f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Int32)->returnTypeSymbol = &Float16Type;
+    AtomicMax_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicMax_Uniform_UInt32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Uniform_UInt32_ptr.type.strict = true;
+    AtomicMax_Uniform_UInt32_ptr.type.mut = true;
+    AtomicMax_Uniform_UInt32_ptr.type.modifiers = AtomicMax_Uniform_UInt32_ptr_modifiers;
+    AtomicMax_Uniform_UInt32_ptr.type.modifierValues = AtomicMax_Uniform_UInt32_ptr_modifierValues;
+    AtomicMax_Uniform_UInt32_compare.name = "compare"_c;
+    AtomicMax_Uniform_UInt32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicMax_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMax_Uniform_UInt32_semantics.type.literal = true;
+    AtomicMax_Uniform_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
+    AtomicMax_Uniform_UInt32.name = AtomicMax_Uniform_UInt32_name;
+    AtomicMax_Uniform_UInt32.backendIndex = 2193;
+    AtomicMax_Uniform_UInt32.returnType = Type::FullType { Float16Type.name };
+    AtomicMax_Uniform_UInt32.parameters = AtomicMax_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt32)->signature = "atomicMax(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt32)->name = "atomicMax(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt32)->nameWithVarNames = "atomicMax(ptr : uniform *mutable f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt32)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMax with Float16, Float16, MemorySemantics
+    AtomicMax_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicMax_Workgroup_UInt32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicMax_Workgroup_UInt32_ptr.type.modifiers = AtomicMax_Workgroup_UInt32_ptr_modifiers;
+    AtomicMax_Workgroup_UInt32_ptr.type.modifierValues = AtomicMax_Workgroup_UInt32_ptr_modifierValues;
+    AtomicMax_Workgroup_UInt32_compare.name = "compare"_c;
+    AtomicMax_Workgroup_UInt32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicMax_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMax_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicMax_Workgroup_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
+    AtomicMax_Workgroup_UInt32.name = AtomicMax_Workgroup_UInt32_name;
+    AtomicMax_Workgroup_UInt32.backendIndex = 2194;
+    AtomicMax_Workgroup_UInt32.returnType = Type::FullType { Float16Type.name };
+    AtomicMax_Workgroup_UInt32.parameters = AtomicMax_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt32)->signature = "atomicMax(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt32)->name = "atomicMax(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt32)->nameWithVarNames = "atomicMax(ptr : workgroup *f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt32)->returnTypeSymbol = &Float16Type;
 
     /// atomicMin with Float16, Float16, MemorySemantics
-    AtomicMin_UInt16_ptr.name = "ptr"_c;
-    AtomicMin_UInt16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicMin_UInt16_ptr.type.modifiers = AtomicMin_UInt16_ptr_modifiers;
-    AtomicMin_UInt16_ptr.type.modifierValues = AtomicMin_UInt16_ptr_modifierValues;
-    AtomicMin_UInt16_compare.name = "compare"_c;
-    AtomicMin_UInt16_compare.type = Type::FullType{ Float16Type.name };
-    AtomicMin_UInt16_semantics.name = "semantics"_c;
-    AtomicMin_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_UInt16_semantics.type.literal = true;
-    AtomicMin_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_UInt16.name = AtomicMin_UInt16_name;
-    AtomicMin_UInt16.backendIndex = 2149;
-    AtomicMin_UInt16.returnType = Type::FullType { Float16Type.name };
-    AtomicMin_UInt16.parameters = AtomicMin_UInt16_args;
-    Symbol::Resolved(&AtomicMin_UInt16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMin_UInt16_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMin_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_UInt16)->signature = "atomicMin(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicMin_UInt16)->name = "atomicMin(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_UInt16)->nameWithVarNames = "atomicMin(ptr : *f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_UInt16)->returnTypeSymbol = &Float16Type;
-
-    /// atomicMax with Float16, Float16, MemorySemantics
-    AtomicMax_UInt16_ptr.name = "ptr"_c;
-    AtomicMax_UInt16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicMax_UInt16_ptr.type.modifiers = AtomicMax_UInt16_ptr_modifiers;
-    AtomicMax_UInt16_ptr.type.modifierValues = AtomicMax_UInt16_ptr_modifierValues;
-    AtomicMax_UInt16_compare.name = "compare"_c;
-    AtomicMax_UInt16_compare.type = Type::FullType{ Float16Type.name };
-    AtomicMax_UInt16_semantics.name = "semantics"_c;
-    AtomicMax_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_UInt16_semantics.type.literal = true;
-    AtomicMax_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_UInt16.name = AtomicMax_UInt16_name;
-    AtomicMax_UInt16.backendIndex = 2150;
-    AtomicMax_UInt16.returnType = Type::FullType { Float16Type.name };
-    AtomicMax_UInt16.parameters = AtomicMax_UInt16_args;
-    Symbol::Resolved(&AtomicMax_UInt16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMax_UInt16_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMax_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_UInt16)->signature = "atomicMax(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicMax_UInt16)->name = "atomicMax(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_UInt16)->nameWithVarNames = "atomicMax(ptr : *f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_UInt16)->returnTypeSymbol = &Float16Type;
+    AtomicMin_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicMin_Uniform_Int32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Uniform_Int32_ptr.type.strict = true;
+    AtomicMin_Uniform_Int32_ptr.type.mut = true;
+    AtomicMin_Uniform_Int32_ptr.type.modifiers = AtomicMin_Uniform_Int32_ptr_modifiers;
+    AtomicMin_Uniform_Int32_ptr.type.modifierValues = AtomicMin_Uniform_Int32_ptr_modifierValues;
+    AtomicMin_Uniform_Int32_compare.name = "compare"_c;
+    AtomicMin_Uniform_Int32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicMin_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMin_Uniform_Int32_semantics.type.literal = true;
+    AtomicMin_Uniform_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
+    AtomicMin_Uniform_Int32.name = AtomicMin_Uniform_Int32_name;
+    AtomicMin_Uniform_Int32.backendIndex = 2195;
+    AtomicMin_Uniform_Int32.returnType = Type::FullType { Float16Type.name };
+    AtomicMin_Uniform_Int32.parameters = AtomicMin_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicMin_Uniform_Int32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicMin_Uniform_Int32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMin_Uniform_Int32)->signature = "atomicMin(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_Int32)->name = "atomicMin(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_Int32)->nameWithVarNames = "atomicMin(ptr : uniform *mutable f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_Int32)->returnTypeSymbol = &Float16Type;
 
     /// atomicMin with Float16, Float16, MemorySemantics
-    AtomicMin_Int16_ptr.name = "ptr"_c;
-    AtomicMin_Int16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicMin_Int16_ptr.type.modifiers = AtomicMin_Int16_ptr_modifiers;
-    AtomicMin_Int16_ptr.type.modifierValues = AtomicMin_Int16_ptr_modifierValues;
-    AtomicMin_Int16_compare.name = "compare"_c;
-    AtomicMin_Int16_compare.type = Type::FullType{ Float16Type.name };
-    AtomicMin_Int16_semantics.name = "semantics"_c;
-    AtomicMin_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Int16_semantics.type.literal = true;
-    AtomicMin_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Int16.name = AtomicMin_Int16_name;
-    AtomicMin_Int16.backendIndex = 2151;
-    AtomicMin_Int16.returnType = Type::FullType { Float16Type.name };
-    AtomicMin_Int16.parameters = AtomicMin_Int16_args;
-    Symbol::Resolved(&AtomicMin_Int16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMin_Int16_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMin_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Int16)->signature = "atomicMin(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicMin_Int16)->name = "atomicMin(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Int16)->nameWithVarNames = "atomicMin(ptr : *f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Int16)->returnTypeSymbol = &Float16Type;
+    AtomicMin_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicMin_Workgroup_Int32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Workgroup_Int32_ptr.type.strict = true;
+    AtomicMin_Workgroup_Int32_ptr.type.modifiers = AtomicMin_Workgroup_Int32_ptr_modifiers;
+    AtomicMin_Workgroup_Int32_ptr.type.modifierValues = AtomicMin_Workgroup_Int32_ptr_modifierValues;
+    AtomicMin_Workgroup_Int32_compare.name = "compare"_c;
+    AtomicMin_Workgroup_Int32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicMin_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMin_Workgroup_Int32_semantics.type.literal = true;
+    AtomicMin_Workgroup_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
+    AtomicMin_Workgroup_Int32.name = AtomicMin_Workgroup_Int32_name;
+    AtomicMin_Workgroup_Int32.backendIndex = 2196;
+    AtomicMin_Workgroup_Int32.returnType = Type::FullType { Float16Type.name };
+    AtomicMin_Workgroup_Int32.parameters = AtomicMin_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int32)->signature = "atomicMin(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int32)->name = "atomicMin(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int32)->nameWithVarNames = "atomicMin(ptr : workgroup *f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int32)->returnTypeSymbol = &Float16Type;
 
     /// atomicMax with Float16, Float16, MemorySemantics
-    AtomicMax_Int16_ptr.name = "ptr"_c;
-    AtomicMax_Int16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicMax_Int16_ptr.type.modifiers = AtomicMax_Int16_ptr_modifiers;
-    AtomicMax_Int16_ptr.type.modifierValues = AtomicMax_Int16_ptr_modifierValues;
-    AtomicMax_Int16_compare.name = "compare"_c;
-    AtomicMax_Int16_compare.type = Type::FullType{ Float16Type.name };
-    AtomicMax_Int16_semantics.name = "semantics"_c;
-    AtomicMax_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Int16_semantics.type.literal = true;
-    AtomicMax_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Int16.name = AtomicMax_Int16_name;
-    AtomicMax_Int16.backendIndex = 2152;
-    AtomicMax_Int16.returnType = Type::FullType { Float16Type.name };
-    AtomicMax_Int16.parameters = AtomicMax_Int16_args;
-    Symbol::Resolved(&AtomicMax_Int16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMax_Int16_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicMax_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Int16)->signature = "atomicMax(*f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicMax_Int16)->name = "atomicMax(*f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Int16)->nameWithVarNames = "atomicMax(ptr : *f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Int16)->returnTypeSymbol = &Float16Type;
+    AtomicMax_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicMax_Uniform_Int32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Uniform_Int32_ptr.type.strict = true;
+    AtomicMax_Uniform_Int32_ptr.type.mut = true;
+    AtomicMax_Uniform_Int32_ptr.type.modifiers = AtomicMax_Uniform_Int32_ptr_modifiers;
+    AtomicMax_Uniform_Int32_ptr.type.modifierValues = AtomicMax_Uniform_Int32_ptr_modifierValues;
+    AtomicMax_Uniform_Int32_compare.name = "compare"_c;
+    AtomicMax_Uniform_Int32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicMax_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMax_Uniform_Int32_semantics.type.literal = true;
+    AtomicMax_Uniform_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
+    AtomicMax_Uniform_Int32.name = AtomicMax_Uniform_Int32_name;
+    AtomicMax_Uniform_Int32.backendIndex = 2197;
+    AtomicMax_Uniform_Int32.returnType = Type::FullType { Float16Type.name };
+    AtomicMax_Uniform_Int32.parameters = AtomicMax_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicMax_Uniform_Int32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicMax_Uniform_Int32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMax_Uniform_Int32)->signature = "atomicMax(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_Int32)->name = "atomicMax(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_Int32)->nameWithVarNames = "atomicMax(ptr : uniform *mutable f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_Int32)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMax with Float16, Float16, MemorySemantics
+    AtomicMax_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicMax_Workgroup_Int32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Workgroup_Int32_ptr.type.strict = true;
+    AtomicMax_Workgroup_Int32_ptr.type.modifiers = AtomicMax_Workgroup_Int32_ptr_modifiers;
+    AtomicMax_Workgroup_Int32_ptr.type.modifierValues = AtomicMax_Workgroup_Int32_ptr_modifierValues;
+    AtomicMax_Workgroup_Int32_compare.name = "compare"_c;
+    AtomicMax_Workgroup_Int32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicMax_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMax_Workgroup_Int32_semantics.type.literal = true;
+    AtomicMax_Workgroup_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
+    AtomicMax_Workgroup_Int32.name = AtomicMax_Workgroup_Int32_name;
+    AtomicMax_Workgroup_Int32.backendIndex = 2198;
+    AtomicMax_Workgroup_Int32.returnType = Type::FullType { Float16Type.name };
+    AtomicMax_Workgroup_Int32.parameters = AtomicMax_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int32)->signature = "atomicMax(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int32)->name = "atomicMax(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int32)->nameWithVarNames = "atomicMax(ptr : workgroup *f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int32)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMin with Float16, Float16, MemorySemantics
+    AtomicMin_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicMin_Uniform_UInt16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Uniform_UInt16_ptr.type.strict = true;
+    AtomicMin_Uniform_UInt16_ptr.type.mut = true;
+    AtomicMin_Uniform_UInt16_ptr.type.modifiers = AtomicMin_Uniform_UInt16_ptr_modifiers;
+    AtomicMin_Uniform_UInt16_ptr.type.modifierValues = AtomicMin_Uniform_UInt16_ptr_modifierValues;
+    AtomicMin_Uniform_UInt16_compare.name = "compare"_c;
+    AtomicMin_Uniform_UInt16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicMin_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMin_Uniform_UInt16_semantics.type.literal = true;
+    AtomicMin_Uniform_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
+    AtomicMin_Uniform_UInt16.name = AtomicMin_Uniform_UInt16_name;
+    AtomicMin_Uniform_UInt16.backendIndex = 2199;
+    AtomicMin_Uniform_UInt16.returnType = Type::FullType { Float16Type.name };
+    AtomicMin_Uniform_UInt16.parameters = AtomicMin_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt16)->signature = "atomicMin(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt16)->name = "atomicMin(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt16)->nameWithVarNames = "atomicMin(ptr : uniform *mutable f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_UInt16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMin with Float16, Float16, MemorySemantics
+    AtomicMin_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicMin_Workgroup_UInt16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicMin_Workgroup_UInt16_ptr.type.modifiers = AtomicMin_Workgroup_UInt16_ptr_modifiers;
+    AtomicMin_Workgroup_UInt16_ptr.type.modifierValues = AtomicMin_Workgroup_UInt16_ptr_modifierValues;
+    AtomicMin_Workgroup_UInt16_compare.name = "compare"_c;
+    AtomicMin_Workgroup_UInt16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicMin_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMin_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicMin_Workgroup_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
+    AtomicMin_Workgroup_UInt16.name = AtomicMin_Workgroup_UInt16_name;
+    AtomicMin_Workgroup_UInt16.backendIndex = 2200;
+    AtomicMin_Workgroup_UInt16.returnType = Type::FullType { Float16Type.name };
+    AtomicMin_Workgroup_UInt16.parameters = AtomicMin_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt16)->signature = "atomicMin(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt16)->name = "atomicMin(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt16)->nameWithVarNames = "atomicMin(ptr : workgroup *f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_UInt16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMax with Float16, Float16, MemorySemantics
+    AtomicMax_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicMax_Uniform_UInt16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Uniform_UInt16_ptr.type.strict = true;
+    AtomicMax_Uniform_UInt16_ptr.type.mut = true;
+    AtomicMax_Uniform_UInt16_ptr.type.modifiers = AtomicMax_Uniform_UInt16_ptr_modifiers;
+    AtomicMax_Uniform_UInt16_ptr.type.modifierValues = AtomicMax_Uniform_UInt16_ptr_modifierValues;
+    AtomicMax_Uniform_UInt16_compare.name = "compare"_c;
+    AtomicMax_Uniform_UInt16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicMax_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMax_Uniform_UInt16_semantics.type.literal = true;
+    AtomicMax_Uniform_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
+    AtomicMax_Uniform_UInt16.name = AtomicMax_Uniform_UInt16_name;
+    AtomicMax_Uniform_UInt16.backendIndex = 2201;
+    AtomicMax_Uniform_UInt16.returnType = Type::FullType { Float16Type.name };
+    AtomicMax_Uniform_UInt16.parameters = AtomicMax_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt16)->signature = "atomicMax(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt16)->name = "atomicMax(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt16)->nameWithVarNames = "atomicMax(ptr : uniform *mutable f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_UInt16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMax with Float16, Float16, MemorySemantics
+    AtomicMax_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicMax_Workgroup_UInt16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicMax_Workgroup_UInt16_ptr.type.modifiers = AtomicMax_Workgroup_UInt16_ptr_modifiers;
+    AtomicMax_Workgroup_UInt16_ptr.type.modifierValues = AtomicMax_Workgroup_UInt16_ptr_modifierValues;
+    AtomicMax_Workgroup_UInt16_compare.name = "compare"_c;
+    AtomicMax_Workgroup_UInt16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicMax_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMax_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicMax_Workgroup_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
+    AtomicMax_Workgroup_UInt16.name = AtomicMax_Workgroup_UInt16_name;
+    AtomicMax_Workgroup_UInt16.backendIndex = 2202;
+    AtomicMax_Workgroup_UInt16.returnType = Type::FullType { Float16Type.name };
+    AtomicMax_Workgroup_UInt16.parameters = AtomicMax_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt16)->signature = "atomicMax(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt16)->name = "atomicMax(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt16)->nameWithVarNames = "atomicMax(ptr : workgroup *f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_UInt16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMin with Float16, Float16, MemorySemantics
+    AtomicMin_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicMin_Uniform_Int16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Uniform_Int16_ptr.type.strict = true;
+    AtomicMin_Uniform_Int16_ptr.type.mut = true;
+    AtomicMin_Uniform_Int16_ptr.type.modifiers = AtomicMin_Uniform_Int16_ptr_modifiers;
+    AtomicMin_Uniform_Int16_ptr.type.modifierValues = AtomicMin_Uniform_Int16_ptr_modifierValues;
+    AtomicMin_Uniform_Int16_compare.name = "compare"_c;
+    AtomicMin_Uniform_Int16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicMin_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMin_Uniform_Int16_semantics.type.literal = true;
+    AtomicMin_Uniform_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
+    AtomicMin_Uniform_Int16.name = AtomicMin_Uniform_Int16_name;
+    AtomicMin_Uniform_Int16.backendIndex = 2203;
+    AtomicMin_Uniform_Int16.returnType = Type::FullType { Float16Type.name };
+    AtomicMin_Uniform_Int16.parameters = AtomicMin_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicMin_Uniform_Int16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicMin_Uniform_Int16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMin_Uniform_Int16)->signature = "atomicMin(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_Int16)->name = "atomicMin(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_Int16)->nameWithVarNames = "atomicMin(ptr : uniform *mutable f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Uniform_Int16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMin with Float16, Float16, MemorySemantics
+    AtomicMin_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicMin_Workgroup_Int16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Workgroup_Int16_ptr.type.strict = true;
+    AtomicMin_Workgroup_Int16_ptr.type.modifiers = AtomicMin_Workgroup_Int16_ptr_modifiers;
+    AtomicMin_Workgroup_Int16_ptr.type.modifierValues = AtomicMin_Workgroup_Int16_ptr_modifierValues;
+    AtomicMin_Workgroup_Int16_compare.name = "compare"_c;
+    AtomicMin_Workgroup_Int16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMin_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicMin_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMin_Workgroup_Int16_semantics.type.literal = true;
+    AtomicMin_Workgroup_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
+    AtomicMin_Workgroup_Int16.name = AtomicMin_Workgroup_Int16_name;
+    AtomicMin_Workgroup_Int16.backendIndex = 2204;
+    AtomicMin_Workgroup_Int16.returnType = Type::FullType { Float16Type.name };
+    AtomicMin_Workgroup_Int16.parameters = AtomicMin_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int16)->signature = "atomicMin(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int16)->name = "atomicMin(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int16)->nameWithVarNames = "atomicMin(ptr : workgroup *f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMin_Workgroup_Int16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMax with Float16, Float16, MemorySemantics
+    AtomicMax_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicMax_Uniform_Int16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Uniform_Int16_ptr.type.strict = true;
+    AtomicMax_Uniform_Int16_ptr.type.mut = true;
+    AtomicMax_Uniform_Int16_ptr.type.modifiers = AtomicMax_Uniform_Int16_ptr_modifiers;
+    AtomicMax_Uniform_Int16_ptr.type.modifierValues = AtomicMax_Uniform_Int16_ptr_modifierValues;
+    AtomicMax_Uniform_Int16_compare.name = "compare"_c;
+    AtomicMax_Uniform_Int16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicMax_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMax_Uniform_Int16_semantics.type.literal = true;
+    AtomicMax_Uniform_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
+    AtomicMax_Uniform_Int16.name = AtomicMax_Uniform_Int16_name;
+    AtomicMax_Uniform_Int16.backendIndex = 2205;
+    AtomicMax_Uniform_Int16.returnType = Type::FullType { Float16Type.name };
+    AtomicMax_Uniform_Int16.parameters = AtomicMax_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicMax_Uniform_Int16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicMax_Uniform_Int16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMax_Uniform_Int16)->signature = "atomicMax(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_Int16)->name = "atomicMax(uniform *mutable f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_Int16)->nameWithVarNames = "atomicMax(ptr : uniform *mutable f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Uniform_Int16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicMax with Float16, Float16, MemorySemantics
+    AtomicMax_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicMax_Workgroup_Int16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Workgroup_Int16_ptr.type.strict = true;
+    AtomicMax_Workgroup_Int16_ptr.type.modifiers = AtomicMax_Workgroup_Int16_ptr_modifiers;
+    AtomicMax_Workgroup_Int16_ptr.type.modifierValues = AtomicMax_Workgroup_Int16_ptr_modifierValues;
+    AtomicMax_Workgroup_Int16_compare.name = "compare"_c;
+    AtomicMax_Workgroup_Int16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicMax_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicMax_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicMax_Workgroup_Int16_semantics.type.literal = true;
+    AtomicMax_Workgroup_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
+    AtomicMax_Workgroup_Int16.name = AtomicMax_Workgroup_Int16_name;
+    AtomicMax_Workgroup_Int16.backendIndex = 2206;
+    AtomicMax_Workgroup_Int16.returnType = Type::FullType { Float16Type.name };
+    AtomicMax_Workgroup_Int16.parameters = AtomicMax_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int16)->signature = "atomicMax(workgroup *f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int16)->name = "atomicMax(workgroup *f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int16)->nameWithVarNames = "atomicMax(ptr : workgroup *f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicMax_Workgroup_Int16)->returnTypeSymbol = &Float16Type;
 
     /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
-    AtomicCompareExchange_UInt32_ptr.name = "ptr"_c;
-    AtomicCompareExchange_UInt32_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_UInt32_ptr.type.modifiers = AtomicCompareExchange_UInt32_ptr_modifiers;
-    AtomicCompareExchange_UInt32_ptr.type.modifierValues = AtomicCompareExchange_UInt32_ptr_modifierValues;
-    AtomicCompareExchange_UInt32_value.name = "value"_c;
-    AtomicCompareExchange_UInt32_value.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_UInt32_compare.name = "compare"_c;
-    AtomicCompareExchange_UInt32_compare.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_UInt32_semantics.name = "semantics"_c;
-    AtomicCompareExchange_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_UInt32_semantics.type.literal = true;
-    AtomicCompareExchange_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_UInt32.name = AtomicCompareExchange_UInt32_name;
-    AtomicCompareExchange_UInt32.backendIndex = 2153;
-    AtomicCompareExchange_UInt32.returnType = Type::FullType { Float16Type.name };
-    AtomicCompareExchange_UInt32.parameters = AtomicCompareExchange_UInt32_args;
-    Symbol::Resolved(&AtomicCompareExchange_UInt32_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_UInt32_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_UInt32_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_UInt32)->signature = "atomicCompareExchange(*f16,f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicCompareExchange_UInt32)->name = "atomicCompareExchange(*f16,f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_UInt32)->nameWithVarNames = "atomicCompareExchange(ptr : *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_UInt32)->returnTypeSymbol = &Float16Type;
+    AtomicCompareExchange_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicCompareExchange_Uniform_UInt32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_UInt32_ptr.type.strict = true;
+    AtomicCompareExchange_Uniform_UInt32_ptr.type.mut = true;
+    AtomicCompareExchange_Uniform_UInt32_ptr.type.modifiers = AtomicCompareExchange_Uniform_UInt32_ptr_modifiers;
+    AtomicCompareExchange_Uniform_UInt32_ptr.type.modifierValues = AtomicCompareExchange_Uniform_UInt32_ptr_modifierValues;
+    AtomicCompareExchange_Uniform_UInt32_value.name = "value"_c;
+    AtomicCompareExchange_Uniform_UInt32_value.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_UInt32_compare.name = "compare"_c;
+    AtomicCompareExchange_Uniform_UInt32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicCompareExchange_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicCompareExchange_Uniform_UInt32_semantics.type.literal = true;
+    AtomicCompareExchange_Uniform_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
+    AtomicCompareExchange_Uniform_UInt32.name = AtomicCompareExchange_Uniform_UInt32_name;
+    AtomicCompareExchange_Uniform_UInt32.backendIndex = 2207;
+    AtomicCompareExchange_Uniform_UInt32.returnType = Type::FullType { Float16Type.name };
+    AtomicCompareExchange_Uniform_UInt32.parameters = AtomicCompareExchange_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32)->signature = "atomicCompareExchange(uniform *mutable f16,f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32)->name = "atomicCompareExchange(uniform *mutable f16,f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32)->nameWithVarNames = "atomicCompareExchange(ptr : uniform *mutable f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32)->returnTypeSymbol = &Float16Type;
 
     /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
-    AtomicCompareExchange_Int32_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Int32_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_Int32_ptr.type.modifiers = AtomicCompareExchange_Int32_ptr_modifiers;
-    AtomicCompareExchange_Int32_ptr.type.modifierValues = AtomicCompareExchange_Int32_ptr_modifierValues;
-    AtomicCompareExchange_Int32_value.name = "value"_c;
-    AtomicCompareExchange_Int32_value.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_Int32_compare.name = "compare"_c;
-    AtomicCompareExchange_Int32_compare.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_Int32_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Int32_semantics.type.literal = true;
-    AtomicCompareExchange_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Int32.name = AtomicCompareExchange_Int32_name;
-    AtomicCompareExchange_Int32.backendIndex = 2154;
-    AtomicCompareExchange_Int32.returnType = Type::FullType { Float16Type.name };
-    AtomicCompareExchange_Int32.parameters = AtomicCompareExchange_Int32_args;
-    Symbol::Resolved(&AtomicCompareExchange_Int32_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Int32_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Int32_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Int32)->signature = "atomicCompareExchange(*f16,f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Int32)->name = "atomicCompareExchange(*f16,f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Int32)->nameWithVarNames = "atomicCompareExchange(ptr : *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Int32)->returnTypeSymbol = &Float16Type;
+    AtomicCompareExchange_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicCompareExchange_Workgroup_UInt32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicCompareExchange_Workgroup_UInt32_ptr.type.modifiers = AtomicCompareExchange_Workgroup_UInt32_ptr_modifiers;
+    AtomicCompareExchange_Workgroup_UInt32_ptr.type.modifierValues = AtomicCompareExchange_Workgroup_UInt32_ptr_modifierValues;
+    AtomicCompareExchange_Workgroup_UInt32_value.name = "value"_c;
+    AtomicCompareExchange_Workgroup_UInt32_value.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_UInt32_compare.name = "compare"_c;
+    AtomicCompareExchange_Workgroup_UInt32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicCompareExchange_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicCompareExchange_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicCompareExchange_Workgroup_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
+    AtomicCompareExchange_Workgroup_UInt32.name = AtomicCompareExchange_Workgroup_UInt32_name;
+    AtomicCompareExchange_Workgroup_UInt32.backendIndex = 2208;
+    AtomicCompareExchange_Workgroup_UInt32.returnType = Type::FullType { Float16Type.name };
+    AtomicCompareExchange_Workgroup_UInt32.parameters = AtomicCompareExchange_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32)->signature = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32)->name = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32)->returnTypeSymbol = &Float16Type;
 
     /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
-    AtomicCompareExchange_UInt16_ptr.name = "ptr"_c;
-    AtomicCompareExchange_UInt16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_UInt16_ptr.type.modifiers = AtomicCompareExchange_UInt16_ptr_modifiers;
-    AtomicCompareExchange_UInt16_ptr.type.modifierValues = AtomicCompareExchange_UInt16_ptr_modifierValues;
-    AtomicCompareExchange_UInt16_value.name = "value"_c;
-    AtomicCompareExchange_UInt16_value.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_UInt16_compare.name = "compare"_c;
-    AtomicCompareExchange_UInt16_compare.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_UInt16_semantics.name = "semantics"_c;
-    AtomicCompareExchange_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_UInt16_semantics.type.literal = true;
-    AtomicCompareExchange_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_UInt16.name = AtomicCompareExchange_UInt16_name;
-    AtomicCompareExchange_UInt16.backendIndex = 2155;
-    AtomicCompareExchange_UInt16.returnType = Type::FullType { Float16Type.name };
-    AtomicCompareExchange_UInt16.parameters = AtomicCompareExchange_UInt16_args;
-    Symbol::Resolved(&AtomicCompareExchange_UInt16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_UInt16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_UInt16_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_UInt16)->signature = "atomicCompareExchange(*f16,f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicCompareExchange_UInt16)->name = "atomicCompareExchange(*f16,f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_UInt16)->nameWithVarNames = "atomicCompareExchange(ptr : *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_UInt16)->returnTypeSymbol = &Float16Type;
+    AtomicCompareExchange_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicCompareExchange_Uniform_Int32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_Int32_ptr.type.strict = true;
+    AtomicCompareExchange_Uniform_Int32_ptr.type.mut = true;
+    AtomicCompareExchange_Uniform_Int32_ptr.type.modifiers = AtomicCompareExchange_Uniform_Int32_ptr_modifiers;
+    AtomicCompareExchange_Uniform_Int32_ptr.type.modifierValues = AtomicCompareExchange_Uniform_Int32_ptr_modifierValues;
+    AtomicCompareExchange_Uniform_Int32_value.name = "value"_c;
+    AtomicCompareExchange_Uniform_Int32_value.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_Int32_compare.name = "compare"_c;
+    AtomicCompareExchange_Uniform_Int32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicCompareExchange_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicCompareExchange_Uniform_Int32_semantics.type.literal = true;
+    AtomicCompareExchange_Uniform_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
+    AtomicCompareExchange_Uniform_Int32.name = AtomicCompareExchange_Uniform_Int32_name;
+    AtomicCompareExchange_Uniform_Int32.backendIndex = 2209;
+    AtomicCompareExchange_Uniform_Int32.returnType = Type::FullType { Float16Type.name };
+    AtomicCompareExchange_Uniform_Int32.parameters = AtomicCompareExchange_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32)->signature = "atomicCompareExchange(uniform *mutable f16,f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32)->name = "atomicCompareExchange(uniform *mutable f16,f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32)->nameWithVarNames = "atomicCompareExchange(ptr : uniform *mutable f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32)->returnTypeSymbol = &Float16Type;
 
     /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
-    AtomicCompareExchange_Int16_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Int16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_Int16_ptr.type.modifiers = AtomicCompareExchange_Int16_ptr_modifiers;
-    AtomicCompareExchange_Int16_ptr.type.modifierValues = AtomicCompareExchange_Int16_ptr_modifierValues;
-    AtomicCompareExchange_Int16_value.name = "value"_c;
-    AtomicCompareExchange_Int16_value.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_Int16_compare.name = "compare"_c;
-    AtomicCompareExchange_Int16_compare.type = Type::FullType{ Float16Type.name };
-    AtomicCompareExchange_Int16_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Int16_semantics.type.literal = true;
-    AtomicCompareExchange_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Int16.name = AtomicCompareExchange_Int16_name;
-    AtomicCompareExchange_Int16.backendIndex = 2156;
-    AtomicCompareExchange_Int16.returnType = Type::FullType { Float16Type.name };
-    AtomicCompareExchange_Int16.parameters = AtomicCompareExchange_Int16_args;
-    Symbol::Resolved(&AtomicCompareExchange_Int16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Int16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Int16_compare)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Int16)->signature = "atomicCompareExchange(*f16,f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Int16)->name = "atomicCompareExchange(*f16,f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Int16)->nameWithVarNames = "atomicCompareExchange(ptr : *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Int16)->returnTypeSymbol = &Float16Type;
+    AtomicCompareExchange_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicCompareExchange_Workgroup_Int32_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_Int32_ptr.type.strict = true;
+    AtomicCompareExchange_Workgroup_Int32_ptr.type.modifiers = AtomicCompareExchange_Workgroup_Int32_ptr_modifiers;
+    AtomicCompareExchange_Workgroup_Int32_ptr.type.modifierValues = AtomicCompareExchange_Workgroup_Int32_ptr_modifierValues;
+    AtomicCompareExchange_Workgroup_Int32_value.name = "value"_c;
+    AtomicCompareExchange_Workgroup_Int32_value.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_Int32_compare.name = "compare"_c;
+    AtomicCompareExchange_Workgroup_Int32_compare.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicCompareExchange_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicCompareExchange_Workgroup_Int32_semantics.type.literal = true;
+    AtomicCompareExchange_Workgroup_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
+    AtomicCompareExchange_Workgroup_Int32.name = AtomicCompareExchange_Workgroup_Int32_name;
+    AtomicCompareExchange_Workgroup_Int32.backendIndex = 2210;
+    AtomicCompareExchange_Workgroup_Int32.returnType = Type::FullType { Float16Type.name };
+    AtomicCompareExchange_Workgroup_Int32.parameters = AtomicCompareExchange_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32)->signature = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32)->name = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32)->returnTypeSymbol = &Float16Type;
+
+    /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
+    AtomicCompareExchange_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicCompareExchange_Uniform_UInt16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_UInt16_ptr.type.strict = true;
+    AtomicCompareExchange_Uniform_UInt16_ptr.type.mut = true;
+    AtomicCompareExchange_Uniform_UInt16_ptr.type.modifiers = AtomicCompareExchange_Uniform_UInt16_ptr_modifiers;
+    AtomicCompareExchange_Uniform_UInt16_ptr.type.modifierValues = AtomicCompareExchange_Uniform_UInt16_ptr_modifierValues;
+    AtomicCompareExchange_Uniform_UInt16_value.name = "value"_c;
+    AtomicCompareExchange_Uniform_UInt16_value.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_UInt16_compare.name = "compare"_c;
+    AtomicCompareExchange_Uniform_UInt16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicCompareExchange_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicCompareExchange_Uniform_UInt16_semantics.type.literal = true;
+    AtomicCompareExchange_Uniform_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
+    AtomicCompareExchange_Uniform_UInt16.name = AtomicCompareExchange_Uniform_UInt16_name;
+    AtomicCompareExchange_Uniform_UInt16.backendIndex = 2211;
+    AtomicCompareExchange_Uniform_UInt16.returnType = Type::FullType { Float16Type.name };
+    AtomicCompareExchange_Uniform_UInt16.parameters = AtomicCompareExchange_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16)->signature = "atomicCompareExchange(uniform *mutable f16,f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16)->name = "atomicCompareExchange(uniform *mutable f16,f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16)->nameWithVarNames = "atomicCompareExchange(ptr : uniform *mutable f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
+    AtomicCompareExchange_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicCompareExchange_Workgroup_UInt16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicCompareExchange_Workgroup_UInt16_ptr.type.modifiers = AtomicCompareExchange_Workgroup_UInt16_ptr_modifiers;
+    AtomicCompareExchange_Workgroup_UInt16_ptr.type.modifierValues = AtomicCompareExchange_Workgroup_UInt16_ptr_modifierValues;
+    AtomicCompareExchange_Workgroup_UInt16_value.name = "value"_c;
+    AtomicCompareExchange_Workgroup_UInt16_value.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_UInt16_compare.name = "compare"_c;
+    AtomicCompareExchange_Workgroup_UInt16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicCompareExchange_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicCompareExchange_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicCompareExchange_Workgroup_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
+    AtomicCompareExchange_Workgroup_UInt16.name = AtomicCompareExchange_Workgroup_UInt16_name;
+    AtomicCompareExchange_Workgroup_UInt16.backendIndex = 2212;
+    AtomicCompareExchange_Workgroup_UInt16.returnType = Type::FullType { Float16Type.name };
+    AtomicCompareExchange_Workgroup_UInt16.parameters = AtomicCompareExchange_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16)->signature = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16)->name = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
+    AtomicCompareExchange_Uniform_Int16_ptr.name = "ptr"_c;
+    AtomicCompareExchange_Uniform_Int16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_Int16_ptr.type.strict = true;
+    AtomicCompareExchange_Uniform_Int16_ptr.type.mut = true;
+    AtomicCompareExchange_Uniform_Int16_ptr.type.modifiers = AtomicCompareExchange_Uniform_Int16_ptr_modifiers;
+    AtomicCompareExchange_Uniform_Int16_ptr.type.modifierValues = AtomicCompareExchange_Uniform_Int16_ptr_modifierValues;
+    AtomicCompareExchange_Uniform_Int16_value.name = "value"_c;
+    AtomicCompareExchange_Uniform_Int16_value.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_Int16_compare.name = "compare"_c;
+    AtomicCompareExchange_Uniform_Int16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Uniform_Int16_semantics.name = "semantics"_c;
+    AtomicCompareExchange_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicCompareExchange_Uniform_Int16_semantics.type.literal = true;
+    AtomicCompareExchange_Uniform_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
+    AtomicCompareExchange_Uniform_Int16.name = AtomicCompareExchange_Uniform_Int16_name;
+    AtomicCompareExchange_Uniform_Int16.backendIndex = 2213;
+    AtomicCompareExchange_Uniform_Int16.returnType = Type::FullType { Float16Type.name };
+    AtomicCompareExchange_Uniform_Int16.parameters = AtomicCompareExchange_Uniform_Int16_args;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16)->signature = "atomicCompareExchange(uniform *mutable f16,f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16)->name = "atomicCompareExchange(uniform *mutable f16,f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16)->nameWithVarNames = "atomicCompareExchange(ptr : uniform *mutable f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16)->returnTypeSymbol = &Float16Type;
+
+    /// atomicCompareExchange with Float16, Float16, Float16, MemorySemantics
+    AtomicCompareExchange_Workgroup_Int16_ptr.name = "ptr"_c;
+    AtomicCompareExchange_Workgroup_Int16_ptr.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_Int16_ptr.type.strict = true;
+    AtomicCompareExchange_Workgroup_Int16_ptr.type.modifiers = AtomicCompareExchange_Workgroup_Int16_ptr_modifiers;
+    AtomicCompareExchange_Workgroup_Int16_ptr.type.modifierValues = AtomicCompareExchange_Workgroup_Int16_ptr_modifierValues;
+    AtomicCompareExchange_Workgroup_Int16_value.name = "value"_c;
+    AtomicCompareExchange_Workgroup_Int16_value.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_Int16_compare.name = "compare"_c;
+    AtomicCompareExchange_Workgroup_Int16_compare.type = Type::FullType{ Float16Type.name };
+    AtomicCompareExchange_Workgroup_Int16_semantics.name = "semantics"_c;
+    AtomicCompareExchange_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicCompareExchange_Workgroup_Int16_semantics.type.literal = true;
+    AtomicCompareExchange_Workgroup_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
+    AtomicCompareExchange_Workgroup_Int16.name = AtomicCompareExchange_Workgroup_Int16_name;
+    AtomicCompareExchange_Workgroup_Int16.backendIndex = 2214;
+    AtomicCompareExchange_Workgroup_Int16.returnType = Type::FullType { Float16Type.name };
+    AtomicCompareExchange_Workgroup_Int16.parameters = AtomicCompareExchange_Workgroup_Int16_args;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_ptr)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_compare)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->signature = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->name = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->returnTypeSymbol = &Float16Type;
 
     /// bitInsert with UInt16, UInt16, UInt16, UInt16
     BitInsert_UInt16_base.name = "base"_c;
@@ -2440,7 +4136,7 @@ void SetupIntrinsics9()
     BitInsert_UInt16_count.type = Type::FullType{ UInt16Type.name };
     BitInsert_UInt16.documentation = "Insert bit into bitmask"_c;
     BitInsert_UInt16.name = BitInsert_UInt16_name;
-    BitInsert_UInt16.backendIndex = 2157;
+    BitInsert_UInt16.backendIndex = 2215;
     BitInsert_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitInsert_UInt16.parameters = BitInsert_UInt16_args;
     Symbol::Resolved(&BitInsert_UInt16_base)->typeSymbol = &UInt16Type;
@@ -2463,7 +4159,7 @@ void SetupIntrinsics9()
     BitInsert_UInt32_count.type = Type::FullType{ UInt32Type.name };
     BitInsert_UInt32.documentation = "Insert bit into bitmask"_c;
     BitInsert_UInt32.name = BitInsert_UInt32_name;
-    BitInsert_UInt32.backendIndex = 2158;
+    BitInsert_UInt32.backendIndex = 2216;
     BitInsert_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitInsert_UInt32.parameters = BitInsert_UInt32_args;
     Symbol::Resolved(&BitInsert_UInt32_base)->typeSymbol = &UInt32Type;
@@ -2474,1043 +4170,6 @@ void SetupIntrinsics9()
     Symbol::Resolved(&BitInsert_UInt32)->name = "bitInsert(u32,u32,u32,u32)"_c;
     Symbol::Resolved(&BitInsert_UInt32)->nameWithVarNames = "bitInsert(base : u32, value : u32, offset : u32, count : u32)"_c;
     Symbol::Resolved(&BitInsert_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// bitExtract with UInt32, UInt32, UInt32
-    BitExtract_UInt32_base.name = "base"_c;
-    BitExtract_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt32_offset.name = "offset"_c;
-    BitExtract_UInt32_offset.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt32_count.name = "count"_c;
-    BitExtract_UInt32_count.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt32.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt32.name = BitExtract_UInt32_name;
-    BitExtract_UInt32.backendIndex = 2159;
-    BitExtract_UInt32.returnType = Type::FullType { UInt32Type.name };
-    BitExtract_UInt32.parameters = BitExtract_UInt32_args;
-    Symbol::Resolved(&BitExtract_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt32_offset)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt32_count)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt32)->signature = "bitExtract(u32,u32,u32) u32"_c;
-    Symbol::Resolved(&BitExtract_UInt32)->name = "bitExtract(u32,u32,u32)"_c;
-    Symbol::Resolved(&BitExtract_UInt32)->nameWithVarNames = "bitExtract(base : u32, offset : u32, count : u32)"_c;
-    Symbol::Resolved(&BitExtract_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// bitExtract with Int32, Int32, Int32
-    BitExtract_Int32_base.name = "base"_c;
-    BitExtract_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32_offset.name = "offset"_c;
-    BitExtract_Int32_offset.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32_count.name = "count"_c;
-    BitExtract_Int32_count.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int32.name = BitExtract_Int32_name;
-    BitExtract_Int32.backendIndex = 2160;
-    BitExtract_Int32.returnType = Type::FullType { Int32Type.name };
-    BitExtract_Int32.parameters = BitExtract_Int32_args;
-    Symbol::Resolved(&BitExtract_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32_offset)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32_count)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32)->signature = "bitExtract(i32,i32,i32) i32"_c;
-    Symbol::Resolved(&BitExtract_Int32)->name = "bitExtract(i32,i32,i32)"_c;
-    Symbol::Resolved(&BitExtract_Int32)->nameWithVarNames = "bitExtract(base : i32, offset : i32, count : i32)"_c;
-    Symbol::Resolved(&BitExtract_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitExtract with UInt16, UInt16, UInt16
-    BitExtract_UInt16_base.name = "base"_c;
-    BitExtract_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16_offset.name = "offset"_c;
-    BitExtract_UInt16_offset.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16_count.name = "count"_c;
-    BitExtract_UInt16_count.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt16.name = BitExtract_UInt16_name;
-    BitExtract_UInt16.backendIndex = 2161;
-    BitExtract_UInt16.returnType = Type::FullType { UInt16Type.name };
-    BitExtract_UInt16.parameters = BitExtract_UInt16_args;
-    Symbol::Resolved(&BitExtract_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16_offset)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16_count)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16)->signature = "bitExtract(u16,u16,u16) u16"_c;
-    Symbol::Resolved(&BitExtract_UInt16)->name = "bitExtract(u16,u16,u16)"_c;
-    Symbol::Resolved(&BitExtract_UInt16)->nameWithVarNames = "bitExtract(base : u16, offset : u16, count : u16)"_c;
-    Symbol::Resolved(&BitExtract_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// bitExtract with Int16, Int16, Int16
-    BitExtract_Int16_base.name = "base"_c;
-    BitExtract_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16_offset.name = "offset"_c;
-    BitExtract_Int16_offset.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16_count.name = "count"_c;
-    BitExtract_Int16_count.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int16.name = BitExtract_Int16_name;
-    BitExtract_Int16.backendIndex = 2162;
-    BitExtract_Int16.returnType = Type::FullType { Int16Type.name };
-    BitExtract_Int16.parameters = BitExtract_Int16_args;
-    Symbol::Resolved(&BitExtract_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16_offset)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16_count)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16)->signature = "bitExtract(i16,i16,i16) i16"_c;
-    Symbol::Resolved(&BitExtract_Int16)->name = "bitExtract(i16,i16,i16)"_c;
-    Symbol::Resolved(&BitExtract_Int16)->nameWithVarNames = "bitExtract(base : i16, offset : i16, count : i16)"_c;
-    Symbol::Resolved(&BitExtract_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitReverse with UInt32
-    BitReverse_UInt32_base.name = "base"_c;
-    BitReverse_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitReverse_UInt32.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_UInt32.name = BitReverse_UInt32_name;
-    BitReverse_UInt32.backendIndex = 2163;
-    BitReverse_UInt32.returnType = Type::FullType { UInt32Type.name };
-    BitReverse_UInt32.parameters = BitReverse_UInt32_args;
-    Symbol::Resolved(&BitReverse_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitReverse_UInt32)->signature = "bitReverse(u32) u32"_c;
-    Symbol::Resolved(&BitReverse_UInt32)->name = "bitReverse(u32)"_c;
-    Symbol::Resolved(&BitReverse_UInt32)->nameWithVarNames = "bitReverse(base : u32)"_c;
-    Symbol::Resolved(&BitReverse_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// bitReverse with Int32
-    BitReverse_Int32_base.name = "base"_c;
-    BitReverse_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitReverse_Int32.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_Int32.name = BitReverse_Int32_name;
-    BitReverse_Int32.backendIndex = 2164;
-    BitReverse_Int32.returnType = Type::FullType { Int32Type.name };
-    BitReverse_Int32.parameters = BitReverse_Int32_args;
-    Symbol::Resolved(&BitReverse_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitReverse_Int32)->signature = "bitReverse(i32) i32"_c;
-    Symbol::Resolved(&BitReverse_Int32)->name = "bitReverse(i32)"_c;
-    Symbol::Resolved(&BitReverse_Int32)->nameWithVarNames = "bitReverse(base : i32)"_c;
-    Symbol::Resolved(&BitReverse_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitReverse with UInt16
-    BitReverse_UInt16_base.name = "base"_c;
-    BitReverse_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitReverse_UInt16.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_UInt16.name = BitReverse_UInt16_name;
-    BitReverse_UInt16.backendIndex = 2165;
-    BitReverse_UInt16.returnType = Type::FullType { UInt16Type.name };
-    BitReverse_UInt16.parameters = BitReverse_UInt16_args;
-    Symbol::Resolved(&BitReverse_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitReverse_UInt16)->signature = "bitReverse(u16) u16"_c;
-    Symbol::Resolved(&BitReverse_UInt16)->name = "bitReverse(u16)"_c;
-    Symbol::Resolved(&BitReverse_UInt16)->nameWithVarNames = "bitReverse(base : u16)"_c;
-    Symbol::Resolved(&BitReverse_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// bitReverse with Int16
-    BitReverse_Int16_base.name = "base"_c;
-    BitReverse_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitReverse_Int16.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_Int16.name = BitReverse_Int16_name;
-    BitReverse_Int16.backendIndex = 2166;
-    BitReverse_Int16.returnType = Type::FullType { Int16Type.name };
-    BitReverse_Int16.parameters = BitReverse_Int16_args;
-    Symbol::Resolved(&BitReverse_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitReverse_Int16)->signature = "bitReverse(i16) i16"_c;
-    Symbol::Resolved(&BitReverse_Int16)->name = "bitReverse(i16)"_c;
-    Symbol::Resolved(&BitReverse_Int16)->nameWithVarNames = "bitReverse(base : i16)"_c;
-    Symbol::Resolved(&BitReverse_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitCount with UInt32
-    BitCount_UInt32_base.name = "base"_c;
-    BitCount_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitCount_UInt32.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_UInt32.name = BitCount_UInt32_name;
-    BitCount_UInt32.backendIndex = 2167;
-    BitCount_UInt32.returnType = Type::FullType { UInt32Type.name };
-    BitCount_UInt32.parameters = BitCount_UInt32_args;
-    Symbol::Resolved(&BitCount_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitCount_UInt32)->signature = "bitCount(u32) u32"_c;
-    Symbol::Resolved(&BitCount_UInt32)->name = "bitCount(u32)"_c;
-    Symbol::Resolved(&BitCount_UInt32)->nameWithVarNames = "bitCount(base : u32)"_c;
-    Symbol::Resolved(&BitCount_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// bitCount with Int32
-    BitCount_Int32_base.name = "base"_c;
-    BitCount_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitCount_Int32.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_Int32.name = BitCount_Int32_name;
-    BitCount_Int32.backendIndex = 2168;
-    BitCount_Int32.returnType = Type::FullType { Int32Type.name };
-    BitCount_Int32.parameters = BitCount_Int32_args;
-    Symbol::Resolved(&BitCount_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitCount_Int32)->signature = "bitCount(i32) i32"_c;
-    Symbol::Resolved(&BitCount_Int32)->name = "bitCount(i32)"_c;
-    Symbol::Resolved(&BitCount_Int32)->nameWithVarNames = "bitCount(base : i32)"_c;
-    Symbol::Resolved(&BitCount_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitCount with UInt16
-    BitCount_UInt16_base.name = "base"_c;
-    BitCount_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitCount_UInt16.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_UInt16.name = BitCount_UInt16_name;
-    BitCount_UInt16.backendIndex = 2169;
-    BitCount_UInt16.returnType = Type::FullType { UInt16Type.name };
-    BitCount_UInt16.parameters = BitCount_UInt16_args;
-    Symbol::Resolved(&BitCount_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitCount_UInt16)->signature = "bitCount(u16) u16"_c;
-    Symbol::Resolved(&BitCount_UInt16)->name = "bitCount(u16)"_c;
-    Symbol::Resolved(&BitCount_UInt16)->nameWithVarNames = "bitCount(base : u16)"_c;
-    Symbol::Resolved(&BitCount_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// bitCount with Int16
-    BitCount_Int16_base.name = "base"_c;
-    BitCount_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitCount_Int16.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_Int16.name = BitCount_Int16_name;
-    BitCount_Int16.backendIndex = 2170;
-    BitCount_Int16.returnType = Type::FullType { Int16Type.name };
-    BitCount_Int16.parameters = BitCount_Int16_args;
-    Symbol::Resolved(&BitCount_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitCount_Int16)->signature = "bitCount(i16) i16"_c;
-    Symbol::Resolved(&BitCount_Int16)->name = "bitCount(i16)"_c;
-    Symbol::Resolved(&BitCount_Int16)->nameWithVarNames = "bitCount(base : i16)"_c;
-    Symbol::Resolved(&BitCount_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// executionBarrier
-    ExecutionBarrier.documentation = "Execution barrier to ensure all threads have reached this point before proceeding"_c;
-    ExecutionBarrier.name = ExecutionBarrier_name;
-    ExecutionBarrier.backendIndex = 2171;
-    ExecutionBarrier.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&ExecutionBarrier)->signature = "executionBarrier() void"_c;
-    Symbol::Resolved(&ExecutionBarrier)->name = "executionBarrier()"_c;
-    Symbol::Resolved(&ExecutionBarrier)->nameWithVarNames = "executionBarrier()"_c;
-    Symbol::Resolved(&ExecutionBarrier)->returnTypeSymbol = &VoidType;
-
-    /// executionBarrierSubgroup
-    ExecutionBarrierSubgroup.documentation = "Execution barrier to ensure all threads in the subgroup have reached this point before proceeding"_c;
-    ExecutionBarrierSubgroup.name = ExecutionBarrierSubgroup_name;
-    ExecutionBarrierSubgroup.backendIndex = 2172;
-    ExecutionBarrierSubgroup.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->signature = "executionBarrierSubgroup() void"_c;
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->name = "executionBarrierSubgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->nameWithVarNames = "executionBarrierSubgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->returnTypeSymbol = &VoidType;
-
-    /// executionBarrierWorkgroup
-    ExecutionBarrierWorkgroup.documentation = "Execution barrier to ensure all threads in the workgroup have reached this point before proceeding"_c;
-    ExecutionBarrierWorkgroup.name = ExecutionBarrierWorkgroup_name;
-    ExecutionBarrierWorkgroup.backendIndex = 2173;
-    ExecutionBarrierWorkgroup.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->signature = "executionBarrierWorkgroup() void"_c;
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->name = "executionBarrierWorkgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->nameWithVarNames = "executionBarrierWorkgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrier
-    MemoryBarrier.documentation = "Memory barrier to ensure memory operations are completed before proceeding"_c;
-    MemoryBarrier.name = MemoryBarrier_name;
-    MemoryBarrier.backendIndex = 2174;
-    MemoryBarrier.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrier)->signature = "memoryBarrier() void"_c;
-    Symbol::Resolved(&MemoryBarrier)->name = "memoryBarrier()"_c;
-    Symbol::Resolved(&MemoryBarrier)->nameWithVarNames = "memoryBarrier()"_c;
-    Symbol::Resolved(&MemoryBarrier)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierBuffer
-    MemoryBarrierBuffer.documentation = "Memory barrier to ensure buffer memory operations are completed before proceeding"_c;
-    MemoryBarrierBuffer.name = MemoryBarrierBuffer_name;
-    MemoryBarrierBuffer.backendIndex = 2175;
-    MemoryBarrierBuffer.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierBuffer)->signature = "memoryBarrierBuffer() void"_c;
-    Symbol::Resolved(&MemoryBarrierBuffer)->name = "memoryBarrierBuffer()"_c;
-    Symbol::Resolved(&MemoryBarrierBuffer)->nameWithVarNames = "memoryBarrierBuffer()"_c;
-    Symbol::Resolved(&MemoryBarrierBuffer)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierTexture
-    MemoryBarrierTexture.documentation = "Memory barrier to ensure texture memory operations are completed before proceeding"_c;
-    MemoryBarrierTexture.name = MemoryBarrierTexture_name;
-    MemoryBarrierTexture.backendIndex = 2176;
-    MemoryBarrierTexture.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierTexture)->signature = "memoryBarrierTexture() void"_c;
-    Symbol::Resolved(&MemoryBarrierTexture)->name = "memoryBarrierTexture()"_c;
-    Symbol::Resolved(&MemoryBarrierTexture)->nameWithVarNames = "memoryBarrierTexture()"_c;
-    Symbol::Resolved(&MemoryBarrierTexture)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierAtomic
-    MemoryBarrierAtomic.documentation = "Memory barrier to ensure atomic memory operations are completed before proceeding"_c;
-    MemoryBarrierAtomic.name = MemoryBarrierAtomic_name;
-    MemoryBarrierAtomic.backendIndex = 2177;
-    MemoryBarrierAtomic.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierAtomic)->signature = "memoryBarrierAtomic() void"_c;
-    Symbol::Resolved(&MemoryBarrierAtomic)->name = "memoryBarrierAtomic()"_c;
-    Symbol::Resolved(&MemoryBarrierAtomic)->nameWithVarNames = "memoryBarrierAtomic()"_c;
-    Symbol::Resolved(&MemoryBarrierAtomic)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierSubgroup
-    MemoryBarrierSubgroup.documentation = "Memory barrier to ensure subgroup memory operations are completed before proceeding"_c;
-    MemoryBarrierSubgroup.name = MemoryBarrierSubgroup_name;
-    MemoryBarrierSubgroup.backendIndex = 2178;
-    MemoryBarrierSubgroup.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierSubgroup)->signature = "memoryBarrierSubgroup() void"_c;
-    Symbol::Resolved(&MemoryBarrierSubgroup)->name = "memoryBarrierSubgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierSubgroup)->nameWithVarNames = "memoryBarrierSubgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierSubgroup)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierWorkgroup
-    MemoryBarrierWorkgroup.documentation = "Memory barrier to ensure workgroup memory operations are completed before proceeding"_c;
-    MemoryBarrierWorkgroup.name = MemoryBarrierWorkgroup_name;
-    MemoryBarrierWorkgroup.backendIndex = 2179;
-    MemoryBarrierWorkgroup.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->signature = "memoryBarrierWorkgroup() void"_c;
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->name = "memoryBarrierWorkgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->nameWithVarNames = "memoryBarrierWorkgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->returnTypeSymbol = &VoidType;
-
-    /// textureGetSize with Texture1D
-    TextureGetSize_Texture1D_texture.name = "texture"_c;
-    TextureGetSize_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSize_Texture1D_texture.type.strict = true;
-    TextureGetSize_Texture1D_texture.type.mut = true;
-    TextureGetSize_Texture1D_texture.type.modifiers = TextureGetSize_Texture1D_texture_modifiers;
-    TextureGetSize_Texture1D_texture.type.modifierValues = TextureGetSize_Texture1D_texture_modifierValues;
-    TextureGetSize_Texture1D.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture1D.name = TextureGetSize_Texture1D_name;
-    TextureGetSize_Texture1D.backendIndex = 2180;
-    TextureGetSize_Texture1D.returnType = Type::FullType { UInt32Type.name };
-    TextureGetSize_Texture1D.parameters = TextureGetSize_Texture1D_args;
-    Symbol::Resolved(&TextureGetSize_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureGetSize_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->signature = "textureGetSize(uniform *mutable texture1D) u32"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->name = "textureGetSize(uniform *mutable texture1D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture1D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->returnTypeSymbol = &UInt32Type;
-
-    /// textureGetSize with Texture2D
-    TextureGetSize_Texture2D_texture.name = "texture"_c;
-    TextureGetSize_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSize_Texture2D_texture.type.strict = true;
-    TextureGetSize_Texture2D_texture.type.mut = true;
-    TextureGetSize_Texture2D_texture.type.modifiers = TextureGetSize_Texture2D_texture_modifiers;
-    TextureGetSize_Texture2D_texture.type.modifierValues = TextureGetSize_Texture2D_texture_modifierValues;
-    TextureGetSize_Texture2D.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture2D.name = TextureGetSize_Texture2D_name;
-    TextureGetSize_Texture2D.backendIndex = 2181;
-    TextureGetSize_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
-    TextureGetSize_Texture2D.parameters = TextureGetSize_Texture2D_args;
-    Symbol::Resolved(&TextureGetSize_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGetSize_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->signature = "textureGetSize(uniform *mutable texture2D) u32x2"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->name = "textureGetSize(uniform *mutable texture2D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture2D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->returnTypeSymbol = &UInt32x2Type;
-
-    /// textureGetSize with Texture3D
-    TextureGetSize_Texture3D_texture.name = "texture"_c;
-    TextureGetSize_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSize_Texture3D_texture.type.strict = true;
-    TextureGetSize_Texture3D_texture.type.mut = true;
-    TextureGetSize_Texture3D_texture.type.modifiers = TextureGetSize_Texture3D_texture_modifiers;
-    TextureGetSize_Texture3D_texture.type.modifierValues = TextureGetSize_Texture3D_texture_modifierValues;
-    TextureGetSize_Texture3D.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture3D.name = TextureGetSize_Texture3D_name;
-    TextureGetSize_Texture3D.backendIndex = 2182;
-    TextureGetSize_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSize_Texture3D.parameters = TextureGetSize_Texture3D_args;
-    Symbol::Resolved(&TextureGetSize_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureGetSize_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->signature = "textureGetSize(uniform *mutable texture3D) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->name = "textureGetSize(uniform *mutable texture3D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture3D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSize with TextureCube
-    TextureGetSize_TextureCube_texture.name = "texture"_c;
-    TextureGetSize_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSize_TextureCube_texture.type.strict = true;
-    TextureGetSize_TextureCube_texture.type.mut = true;
-    TextureGetSize_TextureCube_texture.type.modifiers = TextureGetSize_TextureCube_texture_modifiers;
-    TextureGetSize_TextureCube_texture.type.modifierValues = TextureGetSize_TextureCube_texture_modifierValues;
-    TextureGetSize_TextureCube.documentation = "Get the size of a texture"_c;
-    TextureGetSize_TextureCube.name = TextureGetSize_TextureCube_name;
-    TextureGetSize_TextureCube.backendIndex = 2183;
-    TextureGetSize_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSize_TextureCube.parameters = TextureGetSize_TextureCube_args;
-    Symbol::Resolved(&TextureGetSize_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGetSize_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->signature = "textureGetSize(uniform *mutable textureCube) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->name = "textureGetSize(uniform *mutable textureCube)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->nameWithVarNames = "textureGetSize(texture : uniform *mutable textureCube)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSize with Texture1DArray
-    TextureGetSize_Texture1DArray_texture.name = "texture"_c;
-    TextureGetSize_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSize_Texture1DArray_texture.type.strict = true;
-    TextureGetSize_Texture1DArray_texture.type.mut = true;
-    TextureGetSize_Texture1DArray_texture.type.modifiers = TextureGetSize_Texture1DArray_texture_modifiers;
-    TextureGetSize_Texture1DArray_texture.type.modifierValues = TextureGetSize_Texture1DArray_texture_modifierValues;
-    TextureGetSize_Texture1DArray.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture1DArray.name = TextureGetSize_Texture1DArray_name;
-    TextureGetSize_Texture1DArray.backendIndex = 2184;
-    TextureGetSize_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
-    TextureGetSize_Texture1DArray.parameters = TextureGetSize_Texture1DArray_args;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->signature = "textureGetSize(uniform *mutable texture1DArray) u32x2"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->name = "textureGetSize(uniform *mutable texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->returnTypeSymbol = &UInt32x2Type;
-
-    /// textureGetSize with Texture2DArray
-    TextureGetSize_Texture2DArray_texture.name = "texture"_c;
-    TextureGetSize_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSize_Texture2DArray_texture.type.strict = true;
-    TextureGetSize_Texture2DArray_texture.type.mut = true;
-    TextureGetSize_Texture2DArray_texture.type.modifiers = TextureGetSize_Texture2DArray_texture_modifiers;
-    TextureGetSize_Texture2DArray_texture.type.modifierValues = TextureGetSize_Texture2DArray_texture_modifierValues;
-    TextureGetSize_Texture2DArray.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture2DArray.name = TextureGetSize_Texture2DArray_name;
-    TextureGetSize_Texture2DArray.backendIndex = 2185;
-    TextureGetSize_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSize_Texture2DArray.parameters = TextureGetSize_Texture2DArray_args;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->signature = "textureGetSize(uniform *mutable texture2DArray) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->name = "textureGetSize(uniform *mutable texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSize with TextureCubeArray
-    TextureGetSize_TextureCubeArray_texture.name = "texture"_c;
-    TextureGetSize_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSize_TextureCubeArray_texture.type.strict = true;
-    TextureGetSize_TextureCubeArray_texture.type.mut = true;
-    TextureGetSize_TextureCubeArray_texture.type.modifiers = TextureGetSize_TextureCubeArray_texture_modifiers;
-    TextureGetSize_TextureCubeArray_texture.type.modifierValues = TextureGetSize_TextureCubeArray_texture_modifierValues;
-    TextureGetSize_TextureCubeArray.documentation = "Get the size of a texture"_c;
-    TextureGetSize_TextureCubeArray.name = TextureGetSize_TextureCubeArray_name;
-    TextureGetSize_TextureCubeArray.backendIndex = 2186;
-    TextureGetSize_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
-    TextureGetSize_TextureCubeArray.parameters = TextureGetSize_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->signature = "textureGetSize(uniform *mutable textureCubeArray) u32x4"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->name = "textureGetSize(uniform *mutable textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->returnTypeSymbol = &UInt32x4Type;
-
-    /// textureGetSizeMip with Texture1D, UInt32
-    TextureGetSizeMip_Texture1D_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSizeMip_Texture1D_texture.type.strict = true;
-    TextureGetSizeMip_Texture1D_texture.type.modifiers = TextureGetSizeMip_Texture1D_texture_modifiers;
-    TextureGetSizeMip_Texture1D_texture.type.modifierValues = TextureGetSizeMip_Texture1D_texture_modifierValues;
-    TextureGetSizeMip_Texture1D_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture1D_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture1D.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture1D.name = TextureGetSizeMip_Texture1D_name;
-    TextureGetSizeMip_Texture1D.backendIndex = 2187;
-    TextureGetSizeMip_Texture1D.returnType = Type::FullType { UInt32Type.name };
-    TextureGetSizeMip_Texture1D.parameters = TextureGetSizeMip_Texture1D_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->signature = "textureGetSizeMip(uniform *texture1D,u32) u32"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->name = "textureGetSizeMip(uniform *texture1D,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture1D, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->returnTypeSymbol = &UInt32Type;
-
-    /// textureGetSizeMip with Texture2D, UInt32
-    TextureGetSizeMip_Texture2D_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSizeMip_Texture2D_texture.type.strict = true;
-    TextureGetSizeMip_Texture2D_texture.type.modifiers = TextureGetSizeMip_Texture2D_texture_modifiers;
-    TextureGetSizeMip_Texture2D_texture.type.modifierValues = TextureGetSizeMip_Texture2D_texture_modifierValues;
-    TextureGetSizeMip_Texture2D_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture2D_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture2D.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture2D.name = TextureGetSizeMip_Texture2D_name;
-    TextureGetSizeMip_Texture2D.backendIndex = 2188;
-    TextureGetSizeMip_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
-    TextureGetSizeMip_Texture2D.parameters = TextureGetSizeMip_Texture2D_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->signature = "textureGetSizeMip(uniform *texture2D,u32) u32x2"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->name = "textureGetSizeMip(uniform *texture2D,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture2D, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->returnTypeSymbol = &UInt32x2Type;
-
-    /// textureGetSizeMip with Texture3D, UInt32
-    TextureGetSizeMip_Texture3D_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSizeMip_Texture3D_texture.type.strict = true;
-    TextureGetSizeMip_Texture3D_texture.type.modifiers = TextureGetSizeMip_Texture3D_texture_modifiers;
-    TextureGetSizeMip_Texture3D_texture.type.modifierValues = TextureGetSizeMip_Texture3D_texture_modifierValues;
-    TextureGetSizeMip_Texture3D_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture3D_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture3D.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture3D.name = TextureGetSizeMip_Texture3D_name;
-    TextureGetSizeMip_Texture3D.backendIndex = 2189;
-    TextureGetSizeMip_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSizeMip_Texture3D.parameters = TextureGetSizeMip_Texture3D_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->signature = "textureGetSizeMip(uniform *texture3D,u32) u32x3"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->name = "textureGetSizeMip(uniform *texture3D,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture3D, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSizeMip with TextureCube, UInt32
-    TextureGetSizeMip_TextureCube_texture.name = "texture"_c;
-    TextureGetSizeMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSizeMip_TextureCube_texture.type.strict = true;
-    TextureGetSizeMip_TextureCube_texture.type.modifiers = TextureGetSizeMip_TextureCube_texture_modifiers;
-    TextureGetSizeMip_TextureCube_texture.type.modifierValues = TextureGetSizeMip_TextureCube_texture_modifierValues;
-    TextureGetSizeMip_TextureCube_mip.name = "mip"_c;
-    TextureGetSizeMip_TextureCube_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_TextureCube.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_TextureCube.name = TextureGetSizeMip_TextureCube_name;
-    TextureGetSizeMip_TextureCube.backendIndex = 2190;
-    TextureGetSizeMip_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSizeMip_TextureCube.parameters = TextureGetSizeMip_TextureCube_args;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->signature = "textureGetSizeMip(uniform *textureCube,u32) u32x3"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->name = "textureGetSizeMip(uniform *textureCube,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->nameWithVarNames = "textureGetSizeMip(texture : uniform *textureCube, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSizeMip with Texture1DArray, UInt32
-    TextureGetSizeMip_Texture1DArray_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSizeMip_Texture1DArray_texture.type.strict = true;
-    TextureGetSizeMip_Texture1DArray_texture.type.modifiers = TextureGetSizeMip_Texture1DArray_texture_modifiers;
-    TextureGetSizeMip_Texture1DArray_texture.type.modifierValues = TextureGetSizeMip_Texture1DArray_texture_modifierValues;
-    TextureGetSizeMip_Texture1DArray_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture1DArray_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture1DArray.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture1DArray.name = TextureGetSizeMip_Texture1DArray_name;
-    TextureGetSizeMip_Texture1DArray.backendIndex = 2191;
-    TextureGetSizeMip_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
-    TextureGetSizeMip_Texture1DArray.parameters = TextureGetSizeMip_Texture1DArray_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->signature = "textureGetSizeMip(uniform *texture1DArray,u32) u32x2"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->name = "textureGetSizeMip(uniform *texture1DArray,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture1DArray, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->returnTypeSymbol = &UInt32x2Type;
-
-    /// textureGetSizeMip with Texture2DArray, UInt32
-    TextureGetSizeMip_Texture2DArray_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSizeMip_Texture2DArray_texture.type.strict = true;
-    TextureGetSizeMip_Texture2DArray_texture.type.modifiers = TextureGetSizeMip_Texture2DArray_texture_modifiers;
-    TextureGetSizeMip_Texture2DArray_texture.type.modifierValues = TextureGetSizeMip_Texture2DArray_texture_modifierValues;
-    TextureGetSizeMip_Texture2DArray_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture2DArray_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture2DArray.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture2DArray.name = TextureGetSizeMip_Texture2DArray_name;
-    TextureGetSizeMip_Texture2DArray.backendIndex = 2192;
-    TextureGetSizeMip_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSizeMip_Texture2DArray.parameters = TextureGetSizeMip_Texture2DArray_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->signature = "textureGetSizeMip(uniform *texture2DArray,u32) u32x3"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->name = "textureGetSizeMip(uniform *texture2DArray,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture2DArray, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSizeMip with TextureCubeArray, UInt32
-    TextureGetSizeMip_TextureCubeArray_texture.name = "texture"_c;
-    TextureGetSizeMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSizeMip_TextureCubeArray_texture.type.strict = true;
-    TextureGetSizeMip_TextureCubeArray_texture.type.modifiers = TextureGetSizeMip_TextureCubeArray_texture_modifiers;
-    TextureGetSizeMip_TextureCubeArray_texture.type.modifierValues = TextureGetSizeMip_TextureCubeArray_texture_modifierValues;
-    TextureGetSizeMip_TextureCubeArray_mip.name = "mip"_c;
-    TextureGetSizeMip_TextureCubeArray_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_TextureCubeArray.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_TextureCubeArray.name = TextureGetSizeMip_TextureCubeArray_name;
-    TextureGetSizeMip_TextureCubeArray.backendIndex = 2193;
-    TextureGetSizeMip_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
-    TextureGetSizeMip_TextureCubeArray.parameters = TextureGetSizeMip_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->signature = "textureGetSizeMip(uniform *textureCubeArray,u32) u32x4"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->name = "textureGetSizeMip(uniform *textureCubeArray,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *textureCubeArray, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->returnTypeSymbol = &UInt32x4Type;
-
-    /// textureGetMips with Texture1D
-    TextureGetMips_Texture1D_texture.name = "texture"_c;
-    TextureGetMips_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetMips_Texture1D_texture.type.modifiers = TextureGetMips_Texture1D_texture_modifiers;
-    TextureGetMips_Texture1D_texture.type.modifierValues = TextureGetMips_Texture1D_texture_modifierValues;
-    TextureGetMips_Texture1D.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture1D.name = TextureGetMips_Texture1D_name;
-    TextureGetMips_Texture1D.backendIndex = 2194;
-    TextureGetMips_Texture1D.returnType = Type::FullType { Texture1DType.name };
-    TextureGetMips_Texture1D.parameters = TextureGetMips_Texture1D_args;
-    Symbol::Resolved(&TextureGetMips_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureGetMips_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture1D)->signature = "textureGetMips(uniform *texture1D) texture1D"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1D)->name = "textureGetMips(uniform *texture1D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1D)->nameWithVarNames = "textureGetMips(texture : uniform *texture1D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1D)->returnTypeSymbol = &Texture1DType;
-
-    /// textureGetMips with Texture2D
-    TextureGetMips_Texture2D_texture.name = "texture"_c;
-    TextureGetMips_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetMips_Texture2D_texture.type.modifiers = TextureGetMips_Texture2D_texture_modifiers;
-    TextureGetMips_Texture2D_texture.type.modifierValues = TextureGetMips_Texture2D_texture_modifierValues;
-    TextureGetMips_Texture2D.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture2D.name = TextureGetMips_Texture2D_name;
-    TextureGetMips_Texture2D.backendIndex = 2195;
-    TextureGetMips_Texture2D.returnType = Type::FullType { Texture2DType.name };
-    TextureGetMips_Texture2D.parameters = TextureGetMips_Texture2D_args;
-    Symbol::Resolved(&TextureGetMips_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGetMips_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture2D)->signature = "textureGetMips(uniform *texture2D) texture2D"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2D)->name = "textureGetMips(uniform *texture2D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2D)->nameWithVarNames = "textureGetMips(texture : uniform *texture2D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2D)->returnTypeSymbol = &Texture2DType;
-
-    /// textureGetMips with Texture3D
-    TextureGetMips_Texture3D_texture.name = "texture"_c;
-    TextureGetMips_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetMips_Texture3D_texture.type.modifiers = TextureGetMips_Texture3D_texture_modifiers;
-    TextureGetMips_Texture3D_texture.type.modifierValues = TextureGetMips_Texture3D_texture_modifierValues;
-    TextureGetMips_Texture3D.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture3D.name = TextureGetMips_Texture3D_name;
-    TextureGetMips_Texture3D.backendIndex = 2196;
-    TextureGetMips_Texture3D.returnType = Type::FullType { Texture3DType.name };
-    TextureGetMips_Texture3D.parameters = TextureGetMips_Texture3D_args;
-    Symbol::Resolved(&TextureGetMips_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureGetMips_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture3D)->signature = "textureGetMips(uniform *texture3D) texture3D"_c;
-    Symbol::Resolved(&TextureGetMips_Texture3D)->name = "textureGetMips(uniform *texture3D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture3D)->nameWithVarNames = "textureGetMips(texture : uniform *texture3D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture3D)->returnTypeSymbol = &Texture3DType;
-
-    /// textureGetMips with TextureCube
-    TextureGetMips_TextureCube_texture.name = "texture"_c;
-    TextureGetMips_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetMips_TextureCube_texture.type.modifiers = TextureGetMips_TextureCube_texture_modifiers;
-    TextureGetMips_TextureCube_texture.type.modifierValues = TextureGetMips_TextureCube_texture_modifierValues;
-    TextureGetMips_TextureCube.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_TextureCube.name = TextureGetMips_TextureCube_name;
-    TextureGetMips_TextureCube.backendIndex = 2197;
-    TextureGetMips_TextureCube.returnType = Type::FullType { TextureCubeType.name };
-    TextureGetMips_TextureCube.parameters = TextureGetMips_TextureCube_args;
-    Symbol::Resolved(&TextureGetMips_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGetMips_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_TextureCube)->signature = "textureGetMips(uniform *textureCube) textureCube"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCube)->name = "textureGetMips(uniform *textureCube)"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCube)->nameWithVarNames = "textureGetMips(texture : uniform *textureCube)"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCube)->returnTypeSymbol = &TextureCubeType;
-
-    /// textureGetMips with Texture1DArray
-    TextureGetMips_Texture1DArray_texture.name = "texture"_c;
-    TextureGetMips_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetMips_Texture1DArray_texture.type.modifiers = TextureGetMips_Texture1DArray_texture_modifiers;
-    TextureGetMips_Texture1DArray_texture.type.modifierValues = TextureGetMips_Texture1DArray_texture_modifierValues;
-    TextureGetMips_Texture1DArray.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture1DArray.name = TextureGetMips_Texture1DArray_name;
-    TextureGetMips_Texture1DArray.backendIndex = 2198;
-    TextureGetMips_Texture1DArray.returnType = Type::FullType { Texture1DArrayType.name };
-    TextureGetMips_Texture1DArray.parameters = TextureGetMips_Texture1DArray_args;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray)->signature = "textureGetMips(uniform *texture1DArray) texture1DArray"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray)->name = "textureGetMips(uniform *texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray)->nameWithVarNames = "textureGetMips(texture : uniform *texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray)->returnTypeSymbol = &Texture1DArrayType;
-
-    /// textureGetMips with Texture2DArray
-    TextureGetMips_Texture2DArray_texture.name = "texture"_c;
-    TextureGetMips_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetMips_Texture2DArray_texture.type.modifiers = TextureGetMips_Texture2DArray_texture_modifiers;
-    TextureGetMips_Texture2DArray_texture.type.modifierValues = TextureGetMips_Texture2DArray_texture_modifierValues;
-    TextureGetMips_Texture2DArray.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture2DArray.name = TextureGetMips_Texture2DArray_name;
-    TextureGetMips_Texture2DArray.backendIndex = 2199;
-    TextureGetMips_Texture2DArray.returnType = Type::FullType { Texture2DArrayType.name };
-    TextureGetMips_Texture2DArray.parameters = TextureGetMips_Texture2DArray_args;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray)->signature = "textureGetMips(uniform *texture2DArray) texture2DArray"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray)->name = "textureGetMips(uniform *texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray)->nameWithVarNames = "textureGetMips(texture : uniform *texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray)->returnTypeSymbol = &Texture2DArrayType;
-
-    /// textureGetMips with TextureCubeArray
-    TextureGetMips_TextureCubeArray_texture.name = "texture"_c;
-    TextureGetMips_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetMips_TextureCubeArray_texture.type.modifiers = TextureGetMips_TextureCubeArray_texture_modifiers;
-    TextureGetMips_TextureCubeArray_texture.type.modifierValues = TextureGetMips_TextureCubeArray_texture_modifierValues;
-    TextureGetMips_TextureCubeArray.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_TextureCubeArray.name = TextureGetMips_TextureCubeArray_name;
-    TextureGetMips_TextureCubeArray.backendIndex = 2200;
-    TextureGetMips_TextureCubeArray.returnType = Type::FullType { TextureCubeArrayType.name };
-    TextureGetMips_TextureCubeArray.parameters = TextureGetMips_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray)->signature = "textureGetMips(uniform *textureCubeArray) textureCubeArray"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray)->name = "textureGetMips(uniform *textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray)->nameWithVarNames = "textureGetMips(texture : uniform *textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray)->returnTypeSymbol = &TextureCubeArrayType;
-
-    /// textureGetSamples with Texture2DMS
-    TextureGetSamples_Texture2DMS_texture.name = "texture"_c;
-    TextureGetSamples_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureGetSamples_Texture2DMS_texture.type.modifiers = TextureGetSamples_Texture2DMS_texture_modifiers;
-    TextureGetSamples_Texture2DMS_texture.type.modifierValues = TextureGetSamples_Texture2DMS_texture_modifierValues;
-    TextureGetSamples_Texture2DMS.documentation = "Get the number of samples in a multisampled texture"_c;
-    TextureGetSamples_Texture2DMS.name = TextureGetSamples_Texture2DMS_name;
-    TextureGetSamples_Texture2DMS.backendIndex = 2201;
-    TextureGetSamples_Texture2DMS.returnType = Type::FullType { Texture2DMSType.name };
-    TextureGetSamples_Texture2DMS.parameters = TextureGetSamples_Texture2DMS_args;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS)->signature = "textureGetSamples(uniform *texture2DMS) texture2DMS"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS)->name = "textureGetSamples(uniform *texture2DMS)"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS)->nameWithVarNames = "textureGetSamples(texture : uniform *texture2DMS)"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS)->returnTypeSymbol = &Texture2DMSType;
-
-    /// textureGetSamples with Texture2DMSArray
-    TextureGetSamples_Texture2DMSArray_texture.name = "texture"_c;
-    TextureGetSamples_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureGetSamples_Texture2DMSArray_texture.type.modifiers = TextureGetSamples_Texture2DMSArray_texture_modifiers;
-    TextureGetSamples_Texture2DMSArray_texture.type.modifierValues = TextureGetSamples_Texture2DMSArray_texture_modifierValues;
-    TextureGetSamples_Texture2DMSArray.documentation = "Get the number of samples in a multisampled texture"_c;
-    TextureGetSamples_Texture2DMSArray.name = TextureGetSamples_Texture2DMSArray_name;
-    TextureGetSamples_Texture2DMSArray.backendIndex = 2202;
-    TextureGetSamples_Texture2DMSArray.returnType = Type::FullType { Texture2DMSArrayType.name };
-    TextureGetSamples_Texture2DMSArray.parameters = TextureGetSamples_Texture2DMSArray_args;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->signature = "textureGetSamples(uniform *texture2DMSArray) texture2DMSArray"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->name = "textureGetSamples(uniform *texture2DMSArray)"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->nameWithVarNames = "textureGetSamples(texture : uniform *texture2DMSArray)"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->returnTypeSymbol = &Texture2DMSArrayType;
-
-    /// textureGetSampledMip with Texture1D, Sampler, Float32
-    TextureGetSampledMip_Texture1D_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSampledMip_Texture1D_texture.type.modifiers = TextureGetSampledMip_Texture1D_texture_modifiers;
-    TextureGetSampledMip_Texture1D_texture.type.modifierValues = TextureGetSampledMip_Texture1D_texture_modifierValues;
-    TextureGetSampledMip_Texture1D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture1D_sampler.type.modifiers = TextureGetSampledMip_Texture1D_sampler_modifiers;
-    TextureGetSampledMip_Texture1D_sampler.type.modifierValues = TextureGetSampledMip_Texture1D_sampler_modifierValues;
-    TextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture1D.name = TextureGetSampledMip_Texture1D_name;
-    TextureGetSampledMip_Texture1D.backendIndex = 2203;
-    TextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture1D.parameters = TextureGetSampledMip_Texture1D_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D)->signature = "textureGetSampledMip(uniform *texture1D,uniform *sampler,f32) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D)->name = "textureGetSampledMip(uniform *texture1D,uniform *sampler,f32)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture1D, Float32
-    SampledTextureGetSampledMip_Texture1D_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureGetSampledMip_Texture1D_texture.type.modifiers = SampledTextureGetSampledMip_Texture1D_texture_modifiers;
-    SampledTextureGetSampledMip_Texture1D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture1D_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture1D.name = SampledTextureGetSampledMip_Texture1D_name;
-    SampledTextureGetSampledMip_Texture1D.backendIndex = 2204;
-    SampledTextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture1D.parameters = SampledTextureGetSampledMip_Texture1D_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->signature = "textureGetSampledMip(uniform *textureSampled1D,f32) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->name = "textureGetSampledMip(uniform *textureSampled1D,f32)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled1D, coordinate : f32)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with Texture2D, Sampler, Float32x2
-    TextureGetSampledMip_Texture2D_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSampledMip_Texture2D_texture.type.modifiers = TextureGetSampledMip_Texture2D_texture_modifiers;
-    TextureGetSampledMip_Texture2D_texture.type.modifierValues = TextureGetSampledMip_Texture2D_texture_modifierValues;
-    TextureGetSampledMip_Texture2D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture2D_sampler.type.modifiers = TextureGetSampledMip_Texture2D_sampler_modifiers;
-    TextureGetSampledMip_Texture2D_sampler.type.modifierValues = TextureGetSampledMip_Texture2D_sampler_modifierValues;
-    TextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture2D.name = TextureGetSampledMip_Texture2D_name;
-    TextureGetSampledMip_Texture2D.backendIndex = 2205;
-    TextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture2D.parameters = TextureGetSampledMip_Texture2D_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D)->signature = "textureGetSampledMip(uniform *texture2D,uniform *sampler,f32x2) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D)->name = "textureGetSampledMip(uniform *texture2D,uniform *sampler,f32x2)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture2D, Float32x2
-    SampledTextureGetSampledMip_Texture2D_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureGetSampledMip_Texture2D_texture.type.modifiers = SampledTextureGetSampledMip_Texture2D_texture_modifiers;
-    SampledTextureGetSampledMip_Texture2D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture2D_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture2D.name = SampledTextureGetSampledMip_Texture2D_name;
-    SampledTextureGetSampledMip_Texture2D.backendIndex = 2206;
-    SampledTextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture2D.parameters = SampledTextureGetSampledMip_Texture2D_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->signature = "textureGetSampledMip(uniform *textureSampled2D,f32x2) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->name = "textureGetSampledMip(uniform *textureSampled2D,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled2D, coordinate : f32x2)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with Texture3D, Sampler, Float32x3
-    TextureGetSampledMip_Texture3D_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSampledMip_Texture3D_texture.type.modifiers = TextureGetSampledMip_Texture3D_texture_modifiers;
-    TextureGetSampledMip_Texture3D_texture.type.modifierValues = TextureGetSampledMip_Texture3D_texture_modifierValues;
-    TextureGetSampledMip_Texture3D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture3D_sampler.type.modifiers = TextureGetSampledMip_Texture3D_sampler_modifiers;
-    TextureGetSampledMip_Texture3D_sampler.type.modifierValues = TextureGetSampledMip_Texture3D_sampler_modifierValues;
-    TextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture3D.name = TextureGetSampledMip_Texture3D_name;
-    TextureGetSampledMip_Texture3D.backendIndex = 2207;
-    TextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture3D.parameters = TextureGetSampledMip_Texture3D_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D)->signature = "textureGetSampledMip(uniform *texture3D,uniform *sampler,f32x3) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D)->name = "textureGetSampledMip(uniform *texture3D,uniform *sampler,f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture3D, Float32x3
-    SampledTextureGetSampledMip_Texture3D_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureGetSampledMip_Texture3D_texture.type.modifiers = SampledTextureGetSampledMip_Texture3D_texture_modifiers;
-    SampledTextureGetSampledMip_Texture3D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture3D_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture3D.name = SampledTextureGetSampledMip_Texture3D_name;
-    SampledTextureGetSampledMip_Texture3D.backendIndex = 2208;
-    SampledTextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture3D.parameters = SampledTextureGetSampledMip_Texture3D_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->signature = "textureGetSampledMip(uniform *textureSampled3D,f32x3) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->name = "textureGetSampledMip(uniform *textureSampled3D,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled3D, coordinate : f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with TextureCube, Sampler, Float32x3
-    TextureGetSampledMip_TextureCube_texture.name = "texture"_c;
-    TextureGetSampledMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSampledMip_TextureCube_texture.type.modifiers = TextureGetSampledMip_TextureCube_texture_modifiers;
-    TextureGetSampledMip_TextureCube_texture.type.modifierValues = TextureGetSampledMip_TextureCube_texture_modifierValues;
-    TextureGetSampledMip_TextureCube_sampler.name = "sampler"_c;
-    TextureGetSampledMip_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_TextureCube_sampler.type.modifiers = TextureGetSampledMip_TextureCube_sampler_modifiers;
-    TextureGetSampledMip_TextureCube_sampler.type.modifierValues = TextureGetSampledMip_TextureCube_sampler_modifierValues;
-    TextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_TextureCube.name = TextureGetSampledMip_TextureCube_name;
-    TextureGetSampledMip_TextureCube.backendIndex = 2209;
-    TextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_TextureCube.parameters = TextureGetSampledMip_TextureCube_args;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube)->signature = "textureGetSampledMip(uniform *textureCube,uniform *sampler,f32x3) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube)->name = "textureGetSampledMip(uniform *textureCube,uniform *sampler,f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureCube, sampler : uniform *sampler, coordinate : f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTextureCube, Float32x3
-    SampledTextureGetSampledMip_TextureCube_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureGetSampledMip_TextureCube_texture.type.modifiers = SampledTextureGetSampledMip_TextureCube_texture_modifiers;
-    SampledTextureGetSampledMip_TextureCube_texture.type.modifierValues = SampledTextureGetSampledMip_TextureCube_texture_modifierValues;
-    SampledTextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_TextureCube.name = SampledTextureGetSampledMip_TextureCube_name;
-    SampledTextureGetSampledMip_TextureCube.backendIndex = 2210;
-    SampledTextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_TextureCube.parameters = SampledTextureGetSampledMip_TextureCube_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->signature = "textureGetSampledMip(uniform *textureSampledCube,f32x3) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->name = "textureGetSampledMip(uniform *textureSampledCube,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampledCube, coordinate : f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
-    TextureGetSampledMip_Texture1DArray_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSampledMip_Texture1DArray_texture.type.modifiers = TextureGetSampledMip_Texture1DArray_texture_modifiers;
-    TextureGetSampledMip_Texture1DArray_texture.type.modifierValues = TextureGetSampledMip_Texture1DArray_texture_modifierValues;
-    TextureGetSampledMip_Texture1DArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture1DArray_sampler.type.modifiers = TextureGetSampledMip_Texture1DArray_sampler_modifiers;
-    TextureGetSampledMip_Texture1DArray_sampler.type.modifierValues = TextureGetSampledMip_Texture1DArray_sampler_modifierValues;
-    TextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture1DArray.name = TextureGetSampledMip_Texture1DArray_name;
-    TextureGetSampledMip_Texture1DArray.backendIndex = 2211;
-    TextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture1DArray.parameters = TextureGetSampledMip_Texture1DArray_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->signature = "textureGetSampledMip(uniform *texture1DArray,uniform *sampler,f32x2) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->name = "textureGetSampledMip(uniform *texture1DArray,uniform *sampler,f32x2)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture1DArray, Float32x2
-    SampledTextureGetSampledMip_Texture1DArray_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureGetSampledMip_Texture1DArray_texture.type.modifiers = SampledTextureGetSampledMip_Texture1DArray_texture_modifiers;
-    SampledTextureGetSampledMip_Texture1DArray_texture.type.modifierValues = SampledTextureGetSampledMip_Texture1DArray_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture1DArray.name = SampledTextureGetSampledMip_Texture1DArray_name;
-    SampledTextureGetSampledMip_Texture1DArray.backendIndex = 2212;
-    SampledTextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture1DArray.parameters = SampledTextureGetSampledMip_Texture1DArray_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->signature = "textureGetSampledMip(uniform *textureSampled1DArray,f32x2) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->name = "textureGetSampledMip(uniform *textureSampled1DArray,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled1DArray, coordinate : f32x2)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
-    TextureGetSampledMip_Texture2DArray_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSampledMip_Texture2DArray_texture.type.modifiers = TextureGetSampledMip_Texture2DArray_texture_modifiers;
-    TextureGetSampledMip_Texture2DArray_texture.type.modifierValues = TextureGetSampledMip_Texture2DArray_texture_modifierValues;
-    TextureGetSampledMip_Texture2DArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture2DArray_sampler.type.modifiers = TextureGetSampledMip_Texture2DArray_sampler_modifiers;
-    TextureGetSampledMip_Texture2DArray_sampler.type.modifierValues = TextureGetSampledMip_Texture2DArray_sampler_modifierValues;
-    TextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture2DArray.name = TextureGetSampledMip_Texture2DArray_name;
-    TextureGetSampledMip_Texture2DArray.backendIndex = 2213;
-    TextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture2DArray.parameters = TextureGetSampledMip_Texture2DArray_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->signature = "textureGetSampledMip(uniform *texture2DArray,uniform *sampler,f32x3) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->name = "textureGetSampledMip(uniform *texture2DArray,uniform *sampler,f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture2DArray, Float32x3
-    SampledTextureGetSampledMip_Texture2DArray_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureGetSampledMip_Texture2DArray_texture.type.modifiers = SampledTextureGetSampledMip_Texture2DArray_texture_modifiers;
-    SampledTextureGetSampledMip_Texture2DArray_texture.type.modifierValues = SampledTextureGetSampledMip_Texture2DArray_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture2DArray.name = SampledTextureGetSampledMip_Texture2DArray_name;
-    SampledTextureGetSampledMip_Texture2DArray.backendIndex = 2214;
-    SampledTextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture2DArray.parameters = SampledTextureGetSampledMip_Texture2DArray_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->signature = "textureGetSampledMip(uniform *textureSampled2DArray,f32x3) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->name = "textureGetSampledMip(uniform *textureSampled2DArray,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled2DArray, coordinate : f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
-    TextureGetSampledMip_TextureCubeArray_texture.name = "texture"_c;
-    TextureGetSampledMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSampledMip_TextureCubeArray_texture.type.modifiers = TextureGetSampledMip_TextureCubeArray_texture_modifiers;
-    TextureGetSampledMip_TextureCubeArray_texture.type.modifierValues = TextureGetSampledMip_TextureCubeArray_texture_modifierValues;
-    TextureGetSampledMip_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_TextureCubeArray_sampler.type.modifiers = TextureGetSampledMip_TextureCubeArray_sampler_modifiers;
-    TextureGetSampledMip_TextureCubeArray_sampler.type.modifierValues = TextureGetSampledMip_TextureCubeArray_sampler_modifierValues;
-    TextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
-    TextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_TextureCubeArray.name = TextureGetSampledMip_TextureCubeArray_name;
-    TextureGetSampledMip_TextureCubeArray.backendIndex = 2215;
-    TextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_TextureCubeArray.parameters = TextureGetSampledMip_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->signature = "textureGetSampledMip(uniform *textureCubeArray,uniform *sampler,f32x4) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->name = "textureGetSampledMip(uniform *textureCubeArray,uniform *sampler,f32x4)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureCubeArray, sampler : uniform *sampler, coordinate : f32x4)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTextureCubeArray, Float32x4
-    SampledTextureGetSampledMip_TextureCubeArray_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureGetSampledMip_TextureCubeArray_texture.type.modifiers = SampledTextureGetSampledMip_TextureCubeArray_texture_modifiers;
-    SampledTextureGetSampledMip_TextureCubeArray_texture.type.modifierValues = SampledTextureGetSampledMip_TextureCubeArray_texture_modifierValues;
-    SampledTextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
-    SampledTextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_TextureCubeArray.name = SampledTextureGetSampledMip_TextureCubeArray_name;
-    SampledTextureGetSampledMip_TextureCubeArray.backendIndex = 2216;
-    SampledTextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_TextureCubeArray.parameters = SampledTextureGetSampledMip_TextureCubeArray_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray)->signature = "textureGetSampledMip(uniform *textureSampledCubeArray,f32x4) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray)->name = "textureGetSampledMip(uniform *textureSampledCubeArray,f32x4)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampledCubeArray, coordinate : f32x4)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray)->returnTypeSymbol = &Float32x2Type;
 
 }
 } // namespace GPULang

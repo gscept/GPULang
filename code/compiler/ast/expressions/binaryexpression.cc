@@ -116,7 +116,11 @@ BinaryExpression::Resolve(Compiler* compiler)
     if (thisResolved->isAssignment)
     {
         unsigned leftAccess;
-        this->left->EvalAccessFlags(leftAccess);
+        if (!this->left->EvalAccessFlags(leftAccess))
+        {
+            compiler->Error(Format("Assignment illegal on right hand value"), this);
+            return false;
+        }
         if (leftAccess == AccessFlags::Const &&
             !compiler->currentState.allowConstOverride)
         {

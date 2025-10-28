@@ -23,6 +23,16 @@ namespace GPULang
 {
 struct SPVWriter;
 struct Statement;
+
+struct SpvId
+{
+    uint32_t name = 0xFFFFFFFF;
+    SpvId* type = nullptr;
+    bool isStructPadded = false;    // If true, the type is padded in a struct and requires an extra access indirection
+    
+};
+
+
 struct SPIRVResult
 {
     uint32_t name = 0xFFFFFFFF;
@@ -33,6 +43,7 @@ struct SPIRVResult
     bool isSpecialization = false;  // If true, then the value is the product of specialization
     bool isStructPadded = false;    // If true, the type is padded in a struct and requires an extra access indirection
     uint32_t derefs = 0;
+    uint32_t addrefs = 0;
     std::vector<uint32_t> parentTypes;
 
     Type::SwizzleMask swizzleMask;
@@ -307,19 +318,38 @@ struct SPIRVResult
         }
     }
 
+    std::vector<SPIRVResult::Storage> parentScopes;
+
+
     SPIRVResult()
     {
         *this = SPIRVResult::Invalid();
     }
 
-    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false, bool isConstant = false, Storage scope = Storage::Function, const std::vector<uint32_t>& parentTypes = {})
+    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false, bool isConstant = false, Storage scope = Storage::Function)
+        : name(name)
+        , typeName(type)
+        , isValue(isValue)
+        , isConst(isConstant)
+        , scope(scope)
+        , parentTypes({})
+    {
+        this->swizzleMask.bits.x = Type::SwizzleMask::Invalid;
+        this->swizzleMask.bits.y = Type::SwizzleMask::Invalid;
+        this->swizzleMask.bits.z = Type::SwizzleMask::Invalid;
+        this->swizzleMask.bits.w = Type::SwizzleMask::Invalid;
+    };
+
+    SPIRVResult(uint32_t name, uint32_t type, bool isValue, bool isConstant, Storage scope, const std::vector<uint32_t>& parentTypes, const std::vector<SPIRVResult::Storage>& parentScopes)
         : name(name)
         , typeName(type)
         , isValue(isValue)
         , isConst(isConstant)
         , scope(scope)
         , parentTypes(parentTypes)
+        , parentScopes(parentScopes)
     {
+        assert(parentTypes.size() == parentScopes.size());
         this->swizzleMask.bits.x = Type::SwizzleMask::Invalid;
         this->swizzleMask.bits.y = Type::SwizzleMask::Invalid;
         this->swizzleMask.bits.z = Type::SwizzleMask::Invalid;
@@ -435,8 +465,7 @@ struct SPIRVResult
 struct SymbolAssignment
 {
     Symbol* sym;
-    uint32_t value;
-    SPIRVResult type;
+    SPIRVResult value;
 };
 
 class SPIRVGenerator : public Generator
@@ -456,9 +485,14 @@ public:
     void PushAccessChain(Type* chain, SPIRVResult::Storage scope = SPIRVResult::Storage::Function);
     /// Pop a type from the stack
     void PopAccessChain();
+
+    /// Construct a new Id
+    SpvId* NewId();
     
     std::vector<std::tuple<Type*, SPIRVResult::Storage>> accessChain;
     PinnedSet<uint32_t> interfaceVariables = 0xFFFF;
+    PinnedArray<SpvId> ids = 0xFFFFFF;
+    uint64_t idCounter = 0;
 
     bool blockOpen = false;
     bool literalExtract = false;

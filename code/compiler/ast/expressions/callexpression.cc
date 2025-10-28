@@ -137,6 +137,12 @@ CallExpression::Resolve(Compiler* compiler)
                             Variable* param = ctorFun->parameters[i];
                             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
 
+                            if (param->type.strict)
+                            {
+                                if (paramResolved->storage != this->thisResolved->argStorages[i])
+                                    continue;
+                            }
+
                             // There is no help if storage doesn't align
                             if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
                                 continue;
@@ -190,6 +196,12 @@ CallExpression::Resolve(Compiler* compiler)
                     {
                         Variable* param = fun->parameters[i];
                         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
+
+                        if (param->type.strict)
+                        {
+                            if (paramResolved->storage != this->thisResolved->argStorages[i])
+                                continue;
+                        }
 
                         // There is no help if storage doesn't align
                         if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
@@ -568,8 +580,7 @@ bool
 CallExpression::EvalStorage(Storage& out) const
 {
     // Function calls return values on the stack
-    Function::__Resolved* funResolved = Symbol::Resolved(this->thisResolved->function);
-    out = Storage::Default;
+    out = this->thisResolved->function->returnTypeStorage;
     return true;
 }
 

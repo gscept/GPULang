@@ -1285,7 +1285,7 @@ static void SetupTokenClassTable()
     
     TokenClassTable[(uint32_t)TokenType::Const_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT;
     TokenClassTable[(uint32_t)TokenType::Var_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Uniform_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Uniform_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT;
     TokenClassTable[(uint32_t)TokenType::Workgroup_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
     TokenClassTable[(uint32_t)TokenType::Inline_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
     TokenClassTable[(uint32_t)TokenType::LinkDefined_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
@@ -3237,35 +3237,44 @@ ParseGenerateScopeStatement(TokenStream& stream, ParseResult& ret)
             else if (stream.Match(TokenType::SamplerState))
             {
                 SamplerStateInstance* sym = ParseSamplerState(stream, ret);
-                sym->annotations = annotations;
-                sym->attributes = attributes;
-                annotations.size = 0;
-                attributes.size = 0;
-                symbols.Append(sym);
+                if (sym != nullptr)
+                {
+                    sym->annotations = annotations;
+                    sym->attributes = attributes;
+                    annotations.size = 0;
+                    attributes.size = 0;
+                    symbols.Append(sym);
+                }
             }
             else if (stream.Type() == TokenType::Identifier && stream.Type(1) == TokenType::LeftParant)
             {
                 Function* sym = ParseFunction(stream, ret);
-                sym->annotations = annotations;
-                sym->attributes = attributes;
-                annotations.size = 0;
-                attributes.size = 0;
-                symbols.Append(sym);
+                if (sym != nullptr)
+                {
+                    sym->annotations = annotations;
+                    sym->attributes = attributes;
+                    annotations.size = 0;
+                    attributes.size = 0;
+                    symbols.Append(sym);
+                }
             }
             else if (stream.Match(TokenType::TypeAlias))
             {
                 Alias* sym = ParseAlias(stream, ret);
-                if (annotations.size != 0)
+                if (sym != nullptr)
                 {
-                    ret.diagnostics.Append(Unsupported(stream, "annotations", "alias"));
-                    break;
+                    if (annotations.size != 0)
+                    {
+                        ret.diagnostics.Append(Unsupported(stream, "annotations", "alias"));
+                        break;
+                    }
+                    if (attributes.size != 0)
+                    {
+                        ret.diagnostics.Append(Unsupported(stream, "attributes", "alias"));
+                        break;
+                    }
+                    symbols.Append(sym);
                 }
-                if (attributes.size != 0)
-                {
-                    ret.diagnostics.Append(Unsupported(stream, "attributes", "alias"));
-                    break;
-                }
-                symbols.Append(sym);
             }
             else if (stream.Match(TokenType::RightAngle))
             {

@@ -422,12 +422,15 @@ def generate_types():
         return spirv_intrinsic_code
 
     class Variable():
-        def __init__(self, decl_name, api_name, type_name, pointer=False, uniform=False, mutable=False, literal=False, strict=False):
+        def __init__(self, decl_name, api_name, type_name, pointer=False, uniform=False, workgroup=False, mutable=False, literal=False, strict=False):
             self.decl_name = decl_name
             self.api_name = api_name
             self.type_name = type_name
             self.pointer = pointer
             self.uniform = uniform
+            self.workgroup = workgroup
+            if (self.uniform and self.workgroup):
+                raise Exception("Variable cannot be both uniform and workgroup")
             self.mutable = mutable
             self.literal = literal
             self.strict = strict
@@ -509,6 +512,8 @@ def generate_types():
                 return_string += f'    Symbol::Resolved(&{param.decl_name})->typeSymbol = &{param.type_name}Type;\n'
                 if param.uniform:
                     return_string += f'    Symbol::Resolved(&{param.decl_name})->storage = Storage::Uniform;\n'
+                if param.workgroup:
+                    return_string += f'    Symbol::Resolved(&{param.decl_name})->storage = Storage::Workgroup;\n'
 
             return_type = self.return_type;
             if return_type in data_type_mapping:
@@ -520,6 +525,8 @@ def generate_types():
                     typeString = ''
                     if param.uniform:
                         typeString += 'uniform '
+                    if param.workgroup:
+                        typeString += 'workgroup '
                     if param.pointer:
                         typeString += '*'
                     if param.literal:
@@ -533,6 +540,8 @@ def generate_types():
                     typeString = ''
                     if param.uniform:
                         typeString += 'uniform '
+                    if param.workgroup:
+                        typeString += 'workgroup '
                     if param.pointer:
                         typeString += '*'
                     if param.literal:
@@ -811,6 +820,7 @@ def generate_types():
                 spirv_function += '    ret.AddAccessChainLink({index});\n'
                 spirv_function += '    ret.typeName = returnTypePtr.typeName;\n'
                 spirv_function += '    ret.parentTypes = returnTypePtr.parentTypes;\n'
+                spirv_function += '    ret.parentScopes = returnTypePtr.parentScopes;\n'
                 spirv_function += '    ret.scope = args[0].scope;\n'
                 spirv_function += '    ret.isValue = false;\n'
                 spirv_function += '    return ret;\n'
@@ -1207,6 +1217,7 @@ def generate_types():
                     spirv_function += '    ret.AddAccessChainLink({index});\n'
                     spirv_function += '    ret.typeName = returnTypePtr.typeName;\n'
                     spirv_function += '    ret.parentTypes = returnTypePtr.parentTypes;\n'
+                    spirv_function += '    ret.parentScopes = returnTypePtr.parentScopes;\n'
                     spirv_function += '    ret.scope = args[0].scope;\n'
                     spirv_function += '    ret.isValue = false;\n'
                     spirv_function += '    return ret;\n'
@@ -2935,6 +2946,7 @@ def generate_types():
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    return res;\n'
         
         
@@ -3103,6 +3115,7 @@ def generate_types():
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3241,6 +3254,7 @@ def generate_types():
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    return res;\n'
     
     fun.spirv = spirv_function
@@ -3269,6 +3283,7 @@ def generate_types():
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3334,6 +3349,7 @@ def generate_types():
     spirv_function += geometry_read_function(1, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3357,6 +3373,7 @@ def generate_types():
     spirv_function += geometry_read_function(2, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3384,6 +3401,7 @@ def generate_types():
 
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3412,6 +3430,7 @@ def generate_types():
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    return res;\n'
         
         fun.spirv = spirv_function
@@ -3438,6 +3457,7 @@ def generate_types():
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    return res;\n'
     fun.spirv = spirv_function
     functions.append(fun)
@@ -3463,6 +3483,7 @@ def generate_types():
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    return res;\n'
     
 
@@ -3567,6 +3588,7 @@ def generate_types():
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    return res;\n'
         
 
@@ -3594,6 +3616,7 @@ def generate_types():
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    return res;\n'
     
 
@@ -3628,6 +3651,7 @@ def generate_types():
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    return res;\n'
         
 
@@ -3664,6 +3688,7 @@ def generate_types():
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    return res;\n'
         
 
@@ -3871,8 +3896,9 @@ def generate_types():
             spirv_function = ''
             spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
             spirv_function += '    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);\n'
-            spirv_function += f'    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int({direction}));\n'
-            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);\n'
+            spirv_function += f'    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({direction}));\n'
+            spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, scope, mask, direction);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
 
@@ -3883,6 +3909,7 @@ def generate_types():
     atomic_types = ['UInt32', 'Int32', 'UInt16', 'Int16', 'Float32', 'Float16']
     intrinsics = ['Load', 'Increment', 'Decrement']
     atomic_builtins_spirv = ['OpAtomicLoad', 'OpAtomicIIncrement', 'OpAtomicIDecrement']
+    storages = ['Uniform', 'Workgroup']
     docs = [
         'Loads the value at the pointer location with the specified memory semantics',
         'Increments the value at the pointer location with the specified memory semantics, returns the old value',
@@ -3891,43 +3918,44 @@ def generate_types():
 
     for type in atomic_types:
         for intrinsic, spirv_builtin, doc in zip(intrinsics, atomic_builtins_spirv, docs):
-            function_name = f'Atomic{intrinsic}_{type}'
-            ptr_argument_name = f'{function_name}_ptr'
-            semantics_argument_name = f'{function_name}_semantics'
+            for storage in storages:
+                function_name = f'Atomic{intrinsic}_{storage}_{type}'
+                ptr_argument_name = f'{function_name}_ptr'
+                semantics_argument_name = f'{function_name}_semantics'
 
-            if type.startswith('Float') and intrinsic not in ['Load']:
-                continue
+                if type.startswith('Float') and intrinsic not in ['Load']:
+                    continue
 
-            if intrinsic == 'Load':
-                doc = 'Loads the value at the pointer location with the specified memory semantics'
-            elif intrinsic == 'Increment':
-                doc = 'Increments the value at the pointer location with the specified memory semantics, returns the old value'
-            elif intrinsic == 'Decrement':
-                doc = 'Decrements the value at the pointer location with the specified memory semantics, returns the old value'
-            fun = Function( 
-                decl_name = function_name,
-                api_name = f'atomic{intrinsic}',
-                return_type = type,
-                documentation = doc,
-                parameters = [
-                    Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
-                    Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
-                ]
-            )
+                if intrinsic == 'Load':
+                    doc = 'Loads the value at the pointer location with the specified memory semantics'
+                elif intrinsic == 'Increment':
+                    doc = 'Increments the value at the pointer location with the specified memory semantics, returns the old value'
+                elif intrinsic == 'Decrement':
+                    doc = 'Decrements the value at the pointer location with the specified memory semantics, returns the old value'
+                fun = Function( 
+                    decl_name = function_name,
+                    api_name = f'atomic{intrinsic}',
+                    return_type = type,
+                    documentation = doc,
+                    parameters = [
+                        Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True, uniform = (storage == 'Uniform'), workgroup = (storage == 'Workgroup'), strict=True),
+                        Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
+                    ]
+                )
 
-            spirv_function = ''
-            spirv_function += '    uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);\n'
-            spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
-            spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);\n'
-            spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
-            spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
-            spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
-            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);\n'
-            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
-            
+                spirv_function = ''
+                spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
+                spirv_function += '    uint32_t scope = ScopeToAtomicScope(ptr.scope);\n'
+                spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);\n'
+                spirv_function += '    semantics |= ScopeToMemorySemantics(ptr.scope);\n'
+                spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
+                spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);\n'
+                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                
 
-            fun.spirv = spirv_function
-            functions.append(fun)
+                fun.spirv = spirv_function
+                functions.append(fun)
 
     intrinsics = ['Store', 'Exchange', 'Add', 'Subtract', 'And', 'Or', 'Xor']
     atomic_builtins_spirv = ['Store', 'Exchange', 'Add', 'Sub', 'And', 'Or', 'Xor']
@@ -3942,49 +3970,51 @@ def generate_types():
     ]
     for type in atomic_types:
         for intrinsic, doc, spirv_intrinsic in zip(intrinsics, docs, atomic_builtins_spirv):
-            function_name = f'Atomic{intrinsic}_{type}'
-            ptr_argument_name = f'{function_name}_ptr'
-            value_argument_name = f'{function_name}_value'
-            semantics_argument_name = f'{function_name}_semantics'
-            spirv_builtin = f'OpAtomic{spirv_intrinsic}'
+            for storage in storages:
 
-            # Skip  float atomics for unspported operations
-            if intrinsic not in ['Store', 'Exchange'] and type.startswith('Float'):
-                continue
+                function_name = f'Atomic{intrinsic}_{storage}_{type}'
+                ptr_argument_name = f'{function_name}_ptr'
+                value_argument_name = f'{function_name}_value'
+                semantics_argument_name = f'{function_name}_semantics'
+                spirv_builtin = f'OpAtomic{spirv_intrinsic}'
+
+                # Skip  float atomics for unspported operations
+                if intrinsic not in ['Store', 'Exchange'] and type.startswith('Float'):
+                    continue
+                    
+                if intrinsic in ['Add', 'Subtract']:
+                    spirv_builtin = f'OpAtomicI{spirv_intrinsic}'
+
+                fun = Function( 
+                    decl_name = function_name,
+                    api_name = f'atomic{intrinsic}',
+                    return_type = type if intrinsic != 'Store' else 'Void',
+                    documentation = doc,
+                    parameters = [
+                        Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True, uniform = (storage == 'Uniform'), workgroup = (storage == 'Workgroup'), mutable=(storage == 'Uniform'), strict=True),
+                        Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
+                        Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
+                    ]
+                )
+
+                spirv_function = ''
+                spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
+                spirv_function += '    uint32_t scope = ScopeToAtomicScope(ptr.scope);\n'
+                spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);\n'
+                spirv_function += '    semantics |= ScopeToMemorySemantics(ptr.scope);\n'
+                spirv_function += '    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);\n'
+                spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
+                spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
+                if intrinsic == 'Store':
+                    spirv_function += f'    g->writer->Instruction({spirv_builtin}, SPVWriter::Section::LocalFunction, ptr, scopeId, semanticsId, valueLoaded);\n'
+                    spirv_function += '    return SPIRVResult::Invalid();\n'
+                else:
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, valueLoaded);\n'
+                    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 
-            if intrinsic in ['Add', 'Subtract']:
-                spirv_builtin = f'OpAtomicI{spirv_intrinsic}'
 
-            fun = Function( 
-                decl_name = function_name,
-                api_name = f'atomic{intrinsic}',
-                return_type = type if intrinsic != 'Store' else 'Void',
-                documentation = doc,
-                parameters = [
-                    Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
-                    Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
-                    Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
-                ]
-            )
-
-            spirv_function = ''
-            spirv_function += '    uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);\n'
-            spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
-            spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);\n'
-            spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
-            spirv_function += '    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);\n'
-            spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
-            spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
-            if intrinsic == 'Store':
-                spirv_function += f'    g->writer->Instruction({spirv_builtin}, SPVWriter::Section::LocalFunction, ptr, scopeId, semanticsId, valueLoaded);\n'
-                spirv_function += '    return SPIRVResult::Invalid();\n'
-            else:
-                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, valueLoaded);\n'
-                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
-            
-
-            fun.spirv = spirv_function
-            functions.append(fun)
+                fun.spirv = spirv_function
+                functions.append(fun)
 
     intrinsics = ['Min', 'Max']
     atomic_builtins_spirv = ['Min', 'Max']
@@ -3999,42 +4029,43 @@ def generate_types():
             continue
 
         for intrinsic, doc, spirv_intrinsic in zip(intrinsics, docs, atomic_builtins_spirv):
+            for storage in storages:
 
-            if type.startswith('Int'):
-                spirv_builtin = f'OpAtomicS{spirv_intrinsic}'
-            else:
-                spirv_builtin = f'OpAtomicU{spirv_intrinsic}'
+                if type.startswith('Int'):
+                    spirv_builtin = f'OpAtomicS{spirv_intrinsic}'
+                else:
+                    spirv_builtin = f'OpAtomicU{spirv_intrinsic}'
 
-            function_name = f'Atomic{intrinsic}_{atomic_type}'
-            ptr_argument_name = f'{function_name}_ptr'
-            compare_argument_name = f'{function_name}_compare'
-            semantics_argument_name = f'{function_name}_semantics'
-            fun = Function( 
-                decl_name = function_name,
-                api_name = f'atomic{intrinsic}',
-                return_type = type,
-                documentation = doc,
-                parameters = [
-                    Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
-                    Variable(decl_name = compare_argument_name, api_name = "compare", type_name=type),
-                    Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
-                ]
-            )
+                function_name = f'Atomic{intrinsic}_{storage}_{atomic_type}'
+                ptr_argument_name = f'{function_name}_ptr'
+                compare_argument_name = f'{function_name}_compare'
+                semantics_argument_name = f'{function_name}_semantics'
+                fun = Function( 
+                    decl_name = function_name,
+                    api_name = f'atomic{intrinsic}',
+                    return_type = type,
+                    documentation = doc,
+                    parameters = [
+                        Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True, uniform = (storage == 'Uniform'), workgroup = (storage == 'Workgroup'), mutable=(storage == 'Uniform'), strict=True),
+                        Variable(decl_name = compare_argument_name, api_name = "compare", type_name=type),
+                        Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
+                    ]
+                )
 
-            spirv_function = ''
-            spirv_function += '    uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);\n'
-            spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
-            spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);\n'
-            spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
-            spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);\n'
-            spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
-            spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
-            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, compare);\n'
-            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
-            
+                spirv_function = ''
+                spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
+                spirv_function += '    uint32_t scope = ScopeToAtomicScope(ptr.scope);\n'
+                spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);\n'
+                spirv_function += '    semantics |= ScopeToMemorySemantics(ptr.scope);\n'
+                spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);\n'
+                spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
+                spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, compare);\n'
+                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                
 
-            fun.spirv = spirv_function
-            functions.append(fun)
+                fun.spirv = spirv_function
+                functions.append(fun)
 
     for atomic_type in atomic_types:
 
@@ -4042,40 +4073,41 @@ def generate_types():
         if atomic_type.startswith('Float'):
             continue
 
-        intrinsic = 'CompareExchange'
-        function_name = f'Atomic{intrinsic}_{atomic_type}'
-        ptr_argument_name = f'{function_name}_ptr'
-        value_argument_name = f'{function_name}_value'
-        compare_argument_name = f'{function_name}_compare'
-        semantics_argument_name = f'{function_name}_semantics'
-        fun = Function( 
-            decl_name = function_name,
-            api_name = f'atomic{intrinsic}',
-            return_type = type,
-            documentation = 'Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value',
-            parameters = [
-                Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
-                Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
-                Variable(decl_name = compare_argument_name, api_name = "compare", type_name=type),
-                Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
-            ]
-        )
+        for storage in storages:
+            intrinsic = 'CompareExchange'
+            function_name = f'Atomic{intrinsic}_{storage}_{atomic_type}'
+            ptr_argument_name = f'{function_name}_ptr'
+            value_argument_name = f'{function_name}_value'
+            compare_argument_name = f'{function_name}_compare'
+            semantics_argument_name = f'{function_name}_semantics'
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'atomic{intrinsic}',
+                return_type = type,
+                documentation = 'Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value',
+                parameters = [
+                    Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True, uniform = (storage == 'Uniform'), workgroup = (storage == 'Workgroup'), mutable=(storage == 'Uniform'), strict=True),
+                    Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
+                    Variable(decl_name = compare_argument_name, api_name = "compare", type_name=type),
+                    Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
+                ]
+            )
 
-        spirv_function = ''
-        spirv_function += '    uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);\n'
-        spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
-        spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);\n'
-        spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
-        spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);\n'
-        spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);\n'
-        spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
-        spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
-        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, SPVArg(ptr), scopeId, semanticsId, semanticsId, value, compare);\n'
-        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
-        
+            spirv_function = ''
+            spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    uint32_t scope = ScopeToAtomicScope(ptr.scope);\n'
+            spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);\n'
+            spirv_function += '    semantics |= ScopeToMemorySemantics(ptr.scope);\n'
+            spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);\n'
+            spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
+            spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId, semanticsId, value, compare);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            
 
-        fun.spirv = spirv_function
-        functions.append(fun)
+            fun.spirv = spirv_function
+            functions.append(fun)
 
     intrinsic = 'Insert'
     for type in unsigned_types:
@@ -4818,7 +4850,7 @@ def generate_types():
     for intrinsic in intrinsics:
         for tex_type in texture_types_no_ms:
             for scalar_type in types:
-
+                        
                 # Skip atomic operations on textures with float components      
                 if scalar_type.startswith('Float'):
                     if intrinsic not in ['AtomicLoad', 'AtomicStore', 'AtomicExchange']:

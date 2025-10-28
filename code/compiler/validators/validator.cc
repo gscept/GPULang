@@ -1135,49 +1135,20 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             return false;
     }
 
-    /*
-    // Check if the function has a constructor type associated with it
-    if (fun->constructorType == nullptr && !compiler->staticSymbolSetup)
-    {
-        // If not look it up
-        Symbol* constructorType = compiler->GetSymbol<Symbol>(fun->name);
-        if (constructorType == nullptr || constructorType->symbolType == Type::SymbolType::FunctionType)
-        {
-            // also add the signature for type lookup
-            if (!compiler->AddSymbol(fun->name, fun, true))
-                return false;
-        }
-    }
-    else if (fun->constructorType->symbolType == Type::SymbolType::FunctionType)
-    {
-        // Add constructor
-        if (!compiler->AddSymbol(fun->name, fun, true))
-            return false;
-    }
-    */
-
     if (funResolved->returnTypeSymbol == nullptr)
     {
-        Type* type = (Type*)compiler->GetType(fun->returnType);
+        Type* type = compiler->GetType(fun->returnType);
         if (type == nullptr)
         {
             compiler->UnrecognizedTypeError(TransientString(fun->returnType.name), fun);
             return false;
         }
         funResolved->returnTypeSymbol = type;
+        fun->returnType.name = type->name;
     }
 
     
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &funResolved->scope);
-    
-    /*
-    // Variables already resolved, just need to add them back to the scope
-    for (Variable* var : fun->parameters)
-    {
-        if (!compiler->AddSymbol(var->name, var))
-            return false;
-    }
-    */
 
     // before resolving variables (as parameters), reset in and out bindings
     this->inParameterIndexCounter = 0;
@@ -2565,7 +2536,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             */
 
-            if (type->category != Type::SamplerCategory && type->category != Type::TextureCategory && type->category != Type::PixelCacheCategory && type->category != Type::StructureCategory)
+            if (
+                type->category != Type::SamplerCategory 
+                && type->category != Type::TextureCategory 
+                && type->category != Type::SampledTextureCategory
+                && type->category != Type::TexelPointerCategory
+                && type->category != Type::PixelCacheCategory
+                && type->category != Type::AccelerationStructureCategory
+                && type->category != Type::StructureCategory
+                )
             {
                 compiler->Error(Format("Variables of storage 'uniform' may only be pointers to 'sampler'/'texture'/'pixel_cache'/'struct' types"), symbol);
                 return false;
@@ -2636,14 +2615,25 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
     else // Local variable
     {
-        // Shouldn't be possible
+        /*
         if (firstIndirectionModifier == Type::FullType::Modifier::Pointer && !varResolved->usageBits.flags.isParameter)
         {
             compiler->Error(Format("Pointers are only allowed on variables in the global scope", type->name.c_str()), symbol);
             return false;
         }
-
-        if (varResolved->storage != Storage::Default)
+        */
+        // If the type is a pointer, we may have uniform and workgroup variables in a function
+        if (firstIndirectionModifier != Type::FullType::Modifier::Pointer)
+        {
+            if (varResolved->storage != Storage::Default
+                && varResolved->storage != Storage::Uniform
+                && varResolved->storage != Storage::Workgroup)
+            {
+                compiler->Error(Format("Storage type not allowed on local variables", type->name.c_str()), symbol);
+                return false;
+            }
+        }
+        else if (varResolved->storage != Storage::Default)
         {
             compiler->Error(Format("Storage type not allowed on local variables", type->name.c_str()), symbol);
             return false;
@@ -2926,7 +2916,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
         }
 
-        if (cat == Type::Category::StructureCategory && varResolved->storage == Storage::Uniform)
+        if (cat == Type::Category::StructureCategory && varResolved->storage == Storage::Uniform && firstIndirectionModifier == Type::FullType::Modifier::Pointer)
         {
             Structure* currentStructure = static_cast<Structure*>(varResolved->typeSymbol);
             Structure::__Resolved* currentStrucResolved = Symbol::Resolved(currentStructure);
@@ -3133,6 +3123,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         Function* getReferenceFunction = Alloc<Function>();
                         getReferenceFunction->name = "bufferPtr";
                         getReferenceFunction->returnType = Type::FullType{ currentStructure->name, { Type::FullType::Modifier::Pointer }, { nullptr } };
+                        getReferenceFunction->returnType.mut = true;
+                        getReferenceFunction->returnTypeStorage = Storage::Uniform;
 
                         Variable* arg = Alloc<Variable>();
                         arg->name = "buffer";

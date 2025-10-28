@@ -383,7 +383,13 @@ UnaryExpression::EvalString() const
 bool 
 UnaryExpression::EvalAccessFlags(unsigned& out) const
 {
-    this->expr->EvalAccessFlags(out);
+    if (this->op == '*')
+        out = 0x0;
+    else
+    {
+        this->expr->EvalAccessFlags(out);
+        return false;
+    }
     return true;
 }
 

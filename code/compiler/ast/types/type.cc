@@ -484,8 +484,6 @@ Type::FullType::Assignable(const Type::FullType& rhs) const
             if (lhsSize != rhsSize)
                 return false;
         }
-        else
-            return false;
     FixedString lhsName = this->swizzleName.len == 0 ? this->name : this->swizzleName;
     FixedString rhsName = rhs.swizzleName.len == 0 ? rhs.name : rhs.swizzleName;
     if (lhsName != rhsName)
@@ -529,8 +527,6 @@ Type::FullType::Constructible(const FullType& rhs) const
                     return false;    
             }
         }
-        else
-            return false;
     FixedString lhsName = this->swizzleName.len == 0 ? this->name : this->swizzleName;
     FixedString rhsName = rhs.swizzleName.len == 0 ? rhs.name : rhs.swizzleName;
     if (lhsName != rhsName)

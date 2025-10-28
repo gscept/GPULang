@@ -56,9 +56,9 @@ bool
 IsStorageCompatible(Storage lhs, Storage rhs)
 {
     // All storages which store direct values can write to globals, locals, input output and workgroup
-    if (rhs == Storage::Default || rhs == Storage::Global || rhs == Storage::Input || rhs == Storage::Output || rhs == Storage::InlineUniform || rhs == Storage::Workgroup || rhs == Storage::RayPayloadInput || rhs == Storage::RayPayload || rhs == Storage::RayHitAttribute || rhs == Storage::CallableData || rhs == Storage::CallableDataInput)
+    if (rhs == Storage::Default || rhs == Storage::Global || rhs == Storage::Input || rhs == Storage::Output || rhs == Storage::InlineUniform || rhs == Storage::Uniform || rhs == Storage::Workgroup || rhs == Storage::RayPayloadInput || rhs == Storage::RayPayload || rhs == Storage::RayHitAttribute || rhs == Storage::CallableData || rhs == Storage::CallableDataInput)
     {
-        if (lhs == Storage::Default || lhs == Storage::Global || lhs == Storage::Input || lhs == Storage::Output || lhs == Storage::Workgroup || lhs == Storage::RayPayload || lhs == Storage::CallableData)
+        if (lhs == Storage::Default || lhs == Storage::Global || lhs == Storage::Input || lhs == Storage::Output || lhs == Storage::Uniform || lhs == Storage::Workgroup || lhs == Storage::RayPayload || lhs == Storage::CallableData)
             return true;
         return false;
     }
