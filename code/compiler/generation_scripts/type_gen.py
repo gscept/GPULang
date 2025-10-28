@@ -1,8 +1,10 @@
 
 import os
 import json
+import shutil
 from math import trunc
 
+shutil.rmtree("../generated/", ignore_errors=True)
 os.makedirs('../generated', exist_ok=True)
 
 function_counter = 0
@@ -214,6 +216,7 @@ def generate_types():
 
     vector_matrix_operator_names = ['transform']
     vector_matrix_operators = ['*']
+
 
     header_file = open("../generated/types.h", 'w')
     source_file = open("../generated/types.cc", 'w')
@@ -5015,6 +5018,7 @@ def generate_types():
     intrinsics_header.write('\n};\n\n')
     intrinsics_header.write('} // namespace GPULang\n\n')
 
+    
     for i, [defs, fragment] in enumerate(zip(intrinsic_def_fragments, intrinsic_setup_fragments)):
         intrinsics_source_fragment = open(f'../generated/intrinsics{i}_fragment.cc', "w")
         intrinsics_source_fragment.write(intrinsics_source_start)
