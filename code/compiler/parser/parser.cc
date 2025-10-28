@@ -387,7 +387,7 @@ static auto identifierStart = [](const char c) -> bool
 
 static auto pathStart = [](const char c) -> bool
 {
-    return (CharacterClassTable[c] & IDENTIFIER_START_CHARACTER) == IDENTIFIER_START_CHARACTER;
+    return (CharacterClassTable[c] & PATH_CHARACTER_BIT) == PATH_CHARACTER_BIT;
 };
 
 static auto pathEnd = [](const char* it, const char* end) -> const char*
