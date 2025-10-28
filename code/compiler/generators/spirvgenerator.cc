@@ -5001,6 +5001,11 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
                         rhs.scope = lhs.scope;
                         rhs.name = lhs.name;
                         rhs.accessChain.insert(rhs.accessChain.begin(), lhs.accessChain.begin(), lhs.accessChain.end());
+
+                        if (accessExpression->tailDeref)
+                            rhs.derefs++;
+                        if (accessExpression->tailRef)
+                            rhs.addrefs++;
                         return rhs;
                     }
                     else if (lhsSymbol->symbolType == Symbol::EnumerationType)
@@ -5561,7 +5566,7 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
         if (!val.b[0])
             return;
     }
-    
+    generator->writer->PushScope();
     for (auto decl : stat->declarations)
         GenerateVariableSPIRV(compiler, generator, decl, false, false);
     
@@ -5631,6 +5636,8 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
     {
 		INVALID_ARG, INVALID_ARG
     };
+
+    generator->writer->PopScope();
 }
 
 //------------------------------------------------------------------------------

@@ -2623,19 +2623,30 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         */
         // If the type is a pointer, we may have uniform and workgroup variables in a function
-        if (firstIndirectionModifier != Type::FullType::Modifier::Pointer)
+        if (firstIndirectionModifier == Type::FullType::Modifier::Pointer)
         {
             if (varResolved->storage != Storage::Default
                 && varResolved->storage != Storage::Uniform
                 && varResolved->storage != Storage::Workgroup)
             {
-                compiler->Error(Format("Storage type not allowed on local variables", type->name.c_str()), symbol);
+                compiler->Error(Format("Storage '%s' allowed on local variables", StorageToString(varResolved->storage).c_str()), symbol);
+                return false;
+            }
+
+
+            // Locally declared variables of uniform and workgroup must be initialized to the actual binding
+            if (var->valueExpression == nullptr
+                && (varResolved->storage == Storage::Uniform || varResolved->storage == Storage::Workgroup)
+                )
+            {
+                
+                compiler->Error(Format("Declarations of storage '%s' not allowed on local variables", StorageToString(varResolved->storage).c_str()), symbol);
                 return false;
             }
         }
         else if (varResolved->storage != Storage::Default)
         {
-            compiler->Error(Format("Storage type not allowed on local variables", type->name.c_str()), symbol);
+            compiler->Error(Format("Storage '%s' allowed on local variables", StorageToString(varResolved->storage).c_str()), symbol);
             return false;
         }
     }

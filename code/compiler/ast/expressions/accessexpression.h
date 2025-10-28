@@ -17,7 +17,7 @@ namespace GPULang
 struct AccessExpression : public Expression
 {
     /// constructor
-    AccessExpression(Expression* left, Expression* right, bool deref);
+    AccessExpression(Expression* left, Expression* right, bool deref, bool tailDeref = false, bool tailRef = false);
     /// destructor
     virtual ~AccessExpression();
 
@@ -41,7 +41,7 @@ struct AccessExpression : public Expression
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
 
-    bool deref;
+    bool deref, tailDeref, tailRef;
     Expression* left;
     Expression* right;
 

@@ -14,10 +14,12 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-AccessExpression::AccessExpression(Expression* left, Expression* right, bool deref)
+AccessExpression::AccessExpression(Expression* left, Expression* right, bool deref, bool tailDeref, bool tailRef)
     : deref(deref)
     , left(left)
     , right(right)
+    , tailDeref(tailDeref)
+    , tailRef(tailRef)
 {
     this->resolved = Alloc<AccessExpression::__Resolved>();
     this->symbolType = AccessExpressionType;
@@ -80,6 +82,8 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->leftType.modifiers.size--;
         thisResolved->leftType.modifierValues.size--;
     }
+
+
 
     this->left->EvalTypeSymbol(thisResolved->lhsType);
     if (thisResolved->lhsType == nullptr)
@@ -149,6 +153,26 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->returnType = thisResolved->rightType;
         thisResolved->returnType.mut = thisResolved->leftType.mut;
         thisResolved->retType = thisResolved->rhsType;
+    }
+
+    if (this->tailRef)
+    {
+        TransientArray<Type::FullType::Modifier> mods = TransientArray<Type::FullType::Modifier>::Concatenate(thisResolved->returnType.modifiers, Type::FullType::Modifier::Pointer);
+        TransientArray<Expression*> values = TransientArray<Expression*>::Concatenate(thisResolved->returnType.modifierValues, (Expression*)nullptr);
+        
+        thisResolved->returnType.modifiers = mods;
+        thisResolved->returnType.modifierValues = values;
+    }
+
+    if (this->tailDeref)
+    {
+        if (thisResolved->returnType.FirstIndirectionModifier() != Type::FullType::Modifier::Pointer)
+        {
+            compiler->Error(Format("Dereferencing of '%s' is not allowed", thisResolved->returnType.ToString().c_str()), this);
+            return false;
+        }
+        thisResolved->returnType.modifiers.size--;
+        thisResolved->returnType.modifierValues.size--;
     }
 
     return thisResolved->lhsType != nullptr && thisResolved->rhsType != nullptr;

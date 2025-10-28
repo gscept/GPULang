@@ -101,7 +101,7 @@ struct CharacterClassInitializer
         CharacterClassTable['<'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['>'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['"'] = SPECIAL_CHARACTER;
-        CharacterClassTable['.'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['.'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['+'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['-'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['*'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT1;
@@ -218,6 +218,8 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ ">"_h, TokenType::RightAngle }
     , std::pair{ "\""_h, TokenType::Quote }
     , std::pair{ "."_h, TokenType::Dot }
+    , std::pair{ ".&"_h, TokenType::DotRef }
+    , std::pair{ ".*"_h, TokenType::DotDeref }
     , std::pair{ "+"_h, TokenType::Add }
     , std::pair{ "-"_h, TokenType::Sub }
     , std::pair{ "*"_h, TokenType::Mul }
@@ -1223,6 +1225,8 @@ static void SetupTokenClassTable()
     TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::DotRef] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::DotDeref] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Question] |= TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Colon] |= TOKEN_EXPRESSION_BIT;
@@ -1328,6 +1332,8 @@ static void SetupTokenClassTable()
     PostfixPrecedenceTable[(uint32_t)TokenType::Increment] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::Decrement] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::Dot] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::DotRef] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::DotDeref] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAdd] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixSub] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixMul] = 3;
@@ -1421,6 +1427,22 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 Expression* rhs = operandStack.back(); operandStack.size--;
                 Expression* lhs = operandStack.back(); operandStack.size--;
                 Expression* expr = Alloc<AccessExpression>(lhs, rhs, false);
+                expr->location = LocationFromToken(*tok.token);
+                operandStack.Append(expr);
+            }
+            else if (tok.type == TokenType::DotRef)
+            {
+                Expression* rhs = operandStack.back(); operandStack.size--;
+                Expression* lhs = operandStack.back(); operandStack.size--;
+                Expression* expr = Alloc<AccessExpression>(lhs, rhs, false, false, true);
+                expr->location = LocationFromToken(*tok.token);
+                operandStack.Append(expr);
+            }
+            else if (tok.type == TokenType::DotDeref)
+            {
+                Expression* rhs = operandStack.back(); operandStack.size--;
+                Expression* lhs = operandStack.back(); operandStack.size--;
+                Expression* expr = Alloc<AccessExpression>(lhs, rhs, false, true, false);
                 expr->location = LocationFromToken(*tok.token);
                 operandStack.Append(expr);
             }
@@ -1650,7 +1672,6 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         }
         else if (stream.Match(TokenType::LeftParant))
         {
-            paranthesisDepth++;
             // No previous operand, assume '(' expr ')'
             if (precedenceTable == PrefixPrecedenceTable)
             {
@@ -1668,6 +1689,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 operatorStack.Append(parseTok);
                 expressionListStack.Append(TransientArray<Expression*>(32));
             }
+            paranthesisDepth++;
             precedenceTable = PrefixPrecedenceTable;
             associativityTable = PrefixAssociativityTable;
         }
@@ -1744,7 +1766,6 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         }
         else if (stream.Match(TokenType::LeftBracket))
         {
-            bracketDepth++;
             if (precedenceTable == PostfixPrecedenceTable)
             {
                 Operator parseTok;
@@ -1762,6 +1783,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 operatorStack.Append(parseTok);
                 expressionListStack.Append(TransientArray<Expression*>(256));
             }
+            bracketDepth++;
             precedenceTable = PrefixPrecedenceTable;
             associativityTable = PrefixAssociativityTable;
         }
@@ -2115,6 +2137,20 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
                 const Token& tok = stream.Data(-1);
                 Expression* rhs = ParseExpression(stream, ret, res, 13);
                 res = Alloc<AccessExpression>(res, rhs, false);
+                res->location = LocationFromToken(tok);
+            }
+            else if (stream.Match(TokenType::DotRef))
+            {
+                const Token& tok = stream.Data(-1);
+                Expression* rhs = ParseExpression(stream, ret, res, 13);
+                res = Alloc<AccessExpression>(res, rhs, false, false, true);
+                res->location = LocationFromToken(tok);
+            }
+            else if (stream.Match(TokenType::DotDeref))
+            {
+                const Token& tok = stream.Data(-1);
+                Expression* rhs = ParseExpression(stream, ret, res, 13);
+                res = Alloc<AccessExpression>(res, rhs, false, true, false);
                 res->location = LocationFromToken(tok);
             }
             else if (stream.Match(TokenType::LeftBracket))
@@ -3178,7 +3214,7 @@ Statement*
 ParseGenerateScopeStatement(TokenStream& stream, ParseResult& ret)
 {
     Statement* res = nullptr;
-    if (stream.Match(TokenType::LeftAngle))
+    if (stream.Match(TokenType::LeftScope))
     {
         const Token& tok = stream.Data(-1);
 
@@ -3276,7 +3312,7 @@ ParseGenerateScopeStatement(TokenStream& stream, ParseResult& ret)
                     symbols.Append(sym);
                 }
             }
-            else if (stream.Match(TokenType::RightAngle))
+            else if (stream.Match(TokenType::RightScope))
             {
                 if (annotations.size != 0)
                 {
@@ -3314,21 +3350,10 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
     if (stream.Match(TokenType::If))
     {
         const Token& tok = stream.Data(-1);
-        if (!stream.Match(TokenType::LeftParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, "("));
-            return res;
-        }
-        
+
         Expression* cond = ParseExpression2(stream, ret);
         if (cond == nullptr)
             return res;
-        
-        if (!stream.Match(TokenType::RightParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, ")"));
-            return res;
-        }
         
         Statement* ifBody = ParseGenerateScopeStatement(stream, ret);
         if (ifBody == nullptr)
@@ -3622,23 +3647,12 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     else if (stream.Match(TokenType::If))
     {
         const Token& tok = stream.Data(-1);
-        if (!stream.Match(TokenType::LeftParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, "("));
-            return res;
-        }
         
         Expression* cond = ParseExpression2(stream, ret);
         if (cond == nullptr)
             return res;
         
-        if (!stream.Match(TokenType::RightParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, ")"));
-            return res;
-        }
-        
-        Statement* ifBody = ParseStatement(stream, ret);
+        Statement* ifBody = ParseScopeStatement(stream, ret);
         if (ifBody == nullptr)
         {
             ret.diagnostics.Append(UnexpectedToken(stream, "statement"));
@@ -3712,18 +3726,8 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     else if (stream.Match(TokenType::While))
     {
         const Token& tok = stream.Data(-1);
-        if (!stream.Match(TokenType::LeftParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, "("));
-            return res;
-        }
         Expression* cond = ParseExpression2(stream, ret);
         
-        if (!stream.Match(TokenType::RightParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, ")"));
-            return res;
-        }
         Statement* body = ParseStatement(stream, ret);
         res = Alloc<WhileStatement>(cond, body, false);
         res->location = LocationFromToken(tok);
@@ -3738,18 +3742,8 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             return res;
         }
         
-        if (!stream.Match(TokenType::LeftParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, "("));
-            return res;
-        }
         Expression* cond = ParseExpression2(stream, ret);
         
-        if (!stream.Match(TokenType::RightParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, ")"));
-            return res;
-        }
         res = Alloc<WhileStatement>(cond, body, true);
         res->location = LocationFromToken(tok);
         
@@ -3762,17 +3756,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     else if (stream.Match(TokenType::Switch))
     {
         const Token& tok = stream.Data(-1);
-        if (!stream.Match(TokenType::LeftParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, "("));
-            return res;
-        }
         Expression* cond = ParseExpression2(stream, ret);
-        if (!stream.Match(TokenType::RightParant))
-        {
-            ret.diagnostics.Append(UnexpectedToken(stream, ")"));
-            return res;
-        }
         
         if (!stream.Match(TokenType::LeftScope))
         {
