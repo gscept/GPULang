@@ -2629,7 +2629,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 && varResolved->storage != Storage::Uniform
                 && varResolved->storage != Storage::Workgroup)
             {
-                compiler->Error(Format("Storage '%s' allowed on local variables", StorageToString(varResolved->storage).c_str()), symbol);
+                compiler->Error(Format("Storage '%s' not allowed on local variables", StorageToString(varResolved->storage).c_str()), symbol);
                 return false;
             }
 
@@ -2646,7 +2646,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else if (varResolved->storage != Storage::Default)
         {
-            compiler->Error(Format("Storage '%s' allowed on local variables", StorageToString(varResolved->storage).c_str()), symbol);
+            compiler->Error(Format("Storage '%s' not allowed on local variables", StorageToString(varResolved->storage).c_str()), symbol);
             return false;
         }
     }

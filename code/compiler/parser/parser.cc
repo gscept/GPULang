@@ -101,7 +101,7 @@ struct CharacterClassInitializer
         CharacterClassTable['<'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['>'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['"'] = SPECIAL_CHARACTER;
-        CharacterClassTable['.'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['.'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['+'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['-'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['*'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT1;
@@ -218,8 +218,6 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ ">"_h, TokenType::RightAngle }
     , std::pair{ "\""_h, TokenType::Quote }
     , std::pair{ "."_h, TokenType::Dot }
-    , std::pair{ ".&"_h, TokenType::DotRef }
-    , std::pair{ ".*"_h, TokenType::DotDeref }
     , std::pair{ "+"_h, TokenType::Add }
     , std::pair{ "-"_h, TokenType::Sub }
     , std::pair{ "*"_h, TokenType::Mul }
@@ -1225,8 +1223,6 @@ static void SetupTokenClassTable()
     TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::DotRef] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::DotDeref] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Question] |= TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Colon] |= TOKEN_EXPRESSION_BIT;
@@ -1332,8 +1328,6 @@ static void SetupTokenClassTable()
     PostfixPrecedenceTable[(uint32_t)TokenType::Increment] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::Decrement] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::Dot] = 2;
-    PostfixPrecedenceTable[(uint32_t)TokenType::DotRef] = 2;
-    PostfixPrecedenceTable[(uint32_t)TokenType::DotDeref] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAdd] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixSub] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixMul] = 3;
@@ -1415,6 +1409,10 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         const Operator& tok = operatorStack.back(); operatorStack.size--;
         if (tok.arity == UNARY_ARITY)
         {
+            if (operandStack.size < 1)
+            {
+                return;
+            }
             Expression* rhs = operandStack.back(); operandStack.size--;
             Expression* expr = Alloc<UnaryExpression>(tok.fourcc, tok.prefix, rhs);
             expr->location = LocationFromToken(*tok.token);
@@ -1422,6 +1420,10 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         }
         else if (tok.arity == BINARY_ARITY)
         {
+            if (operandStack.size < 2)
+            {
+                return;
+            }
             if (tok.type == TokenType::Dot)
             {
                 Expression* rhs = operandStack.back(); operandStack.size--;
@@ -1430,24 +1432,8 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 expr->location = LocationFromToken(*tok.token);
                 operandStack.Append(expr);
             }
-            else if (tok.type == TokenType::DotRef)
-            {
-                Expression* rhs = operandStack.back(); operandStack.size--;
-                Expression* lhs = operandStack.back(); operandStack.size--;
-                Expression* expr = Alloc<AccessExpression>(lhs, rhs, false, false, true);
-                expr->location = LocationFromToken(*tok.token);
-                operandStack.Append(expr);
-            }
-            else if (tok.type == TokenType::DotDeref)
-            {
-                Expression* rhs = operandStack.back(); operandStack.size--;
-                Expression* lhs = operandStack.back(); operandStack.size--;
-                Expression* expr = Alloc<AccessExpression>(lhs, rhs, false, true, false);
-                expr->location = LocationFromToken(*tok.token);
-                operandStack.Append(expr);
-            }
             else
-            {
+            {   
                 Expression* rhs = operandStack.back(); operandStack.size--;
                 Expression* lhs = operandStack.back(); operandStack.size--;
                 Expression* expr = Alloc<BinaryExpression>(tok.fourcc, lhs, rhs);
@@ -1457,6 +1443,10 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         }
         else if (tok.arity == TERNARY_ARITY)
         {
+            if (operandStack.size < 3)
+            {
+                return;
+            }
             Expression* rhs = operandStack.back(); operandStack.size--;
             Expression* lhs = operandStack.back(); operandStack.size--;
             Expression* cond = operandStack.back(); operandStack.size--;
@@ -1664,6 +1654,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                     else
                         break;
                 }
+                // If we don't want access operator (.) to allow for right hand side unary operators, wrap this in a condition
                 precedenceTable = PrefixPrecedenceTable;
                 associativityTable = PrefixAssociativityTable;
             }
@@ -2137,20 +2128,6 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
                 const Token& tok = stream.Data(-1);
                 Expression* rhs = ParseExpression(stream, ret, res, 13);
                 res = Alloc<AccessExpression>(res, rhs, false);
-                res->location = LocationFromToken(tok);
-            }
-            else if (stream.Match(TokenType::DotRef))
-            {
-                const Token& tok = stream.Data(-1);
-                Expression* rhs = ParseExpression(stream, ret, res, 13);
-                res = Alloc<AccessExpression>(res, rhs, false, false, true);
-                res->location = LocationFromToken(tok);
-            }
-            else if (stream.Match(TokenType::DotDeref))
-            {
-                const Token& tok = stream.Data(-1);
-                Expression* rhs = ParseExpression(stream, ret, res, 13);
-                res = Alloc<AccessExpression>(res, rhs, false, true, false);
                 res->location = LocationFromToken(tok);
             }
             else if (stream.Match(TokenType::LeftBracket))
