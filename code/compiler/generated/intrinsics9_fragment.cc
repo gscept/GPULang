@@ -9,6 +9,16 @@
 #include "compiler.h"
 namespace GPULang
 {
+/// subgroupSwapHorizontal with Int16
+Variable SubgroupSwapHorizontal_Int16_value;
+Function SubgroupSwapHorizontal_Int16;
+inline constexpr std::array SubgroupSwapHorizontal_Int16_args = { &SubgroupSwapHorizontal_Int16_value };
+
+/// subgroupSwapHorizontal with Int16x2
+Variable SubgroupSwapHorizontal_Int16x2_value;
+Function SubgroupSwapHorizontal_Int16x2;
+inline constexpr std::array SubgroupSwapHorizontal_Int16x2_args = { &SubgroupSwapHorizontal_Int16x2_value };
+
 /// subgroupSwapHorizontal with Int16x3
 Variable SubgroupSwapHorizontal_Int16x3_value;
 Function SubgroupSwapHorizontal_Int16x3;
@@ -1083,30 +1093,42 @@ Variable AtomicCompareExchange_Workgroup_Int16_semantics;
 Function AtomicCompareExchange_Workgroup_Int16;
 inline constexpr std::array AtomicCompareExchange_Workgroup_Int16_args = { &AtomicCompareExchange_Workgroup_Int16_ptr, &AtomicCompareExchange_Workgroup_Int16_value, &AtomicCompareExchange_Workgroup_Int16_compare, &AtomicCompareExchange_Workgroup_Int16_semantics };
 
-/// bitInsert with UInt16, UInt16, UInt16, UInt16
-Variable BitInsert_UInt16_base;
-Variable BitInsert_UInt16_value;
-Variable BitInsert_UInt16_offset;
-Variable BitInsert_UInt16_count;
-Function BitInsert_UInt16;
-inline constexpr std::array BitInsert_UInt16_args = { &BitInsert_UInt16_base, &BitInsert_UInt16_value, &BitInsert_UInt16_offset, &BitInsert_UInt16_count };
-
-/// bitInsert with UInt32, UInt32, UInt32, UInt32
-Variable BitInsert_UInt32_base;
-Variable BitInsert_UInt32_value;
-Variable BitInsert_UInt32_offset;
-Variable BitInsert_UInt32_count;
-Function BitInsert_UInt32;
-inline constexpr std::array BitInsert_UInt32_args = { &BitInsert_UInt32_base, &BitInsert_UInt32_value, &BitInsert_UInt32_offset, &BitInsert_UInt32_count };
-
 void SetupIntrinsics9()
 {
+    /// subgroupSwapHorizontal with Int16
+    SubgroupSwapHorizontal_Int16_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupSwapHorizontal_Int16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
+    SubgroupSwapHorizontal_Int16.name = SubgroupSwapHorizontal_Int16_name;
+    SubgroupSwapHorizontal_Int16.backendIndex = 2089;
+    SubgroupSwapHorizontal_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupSwapHorizontal_Int16.parameters = SubgroupSwapHorizontal_Int16_args;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16)->signature = "subgroupSwapHorizontal(i16) i16"_c;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16)->name = "subgroupSwapHorizontal(i16)"_c;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16)->nameWithVarNames = "subgroupSwapHorizontal(value : i16)"_c;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupSwapHorizontal with Int16x2
+    SubgroupSwapHorizontal_Int16x2_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupSwapHorizontal_Int16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
+    SubgroupSwapHorizontal_Int16x2.name = SubgroupSwapHorizontal_Int16x2_name;
+    SubgroupSwapHorizontal_Int16x2.backendIndex = 2090;
+    SubgroupSwapHorizontal_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupSwapHorizontal_Int16x2.parameters = SubgroupSwapHorizontal_Int16x2_args;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2)->signature = "subgroupSwapHorizontal(i16x2) i16x2"_c;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2)->name = "subgroupSwapHorizontal(i16x2)"_c;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2)->nameWithVarNames = "subgroupSwapHorizontal(value : i16x2)"_c;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
     /// subgroupSwapHorizontal with Int16x3
     SubgroupSwapHorizontal_Int16x3_value.name = "value"_c;
     SubgroupSwapHorizontal_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupSwapHorizontal_Int16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16x3.name = SubgroupSwapHorizontal_Int16x3_name;
-    SubgroupSwapHorizontal_Int16x3.backendIndex = 2089;
+    SubgroupSwapHorizontal_Int16x3.backendIndex = 2091;
     SubgroupSwapHorizontal_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapHorizontal_Int16x3.parameters = SubgroupSwapHorizontal_Int16x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16x3_value)->typeSymbol = &Int16x3Type;
@@ -1120,7 +1142,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupSwapHorizontal_Int16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16x4.name = SubgroupSwapHorizontal_Int16x4_name;
-    SubgroupSwapHorizontal_Int16x4.backendIndex = 2090;
+    SubgroupSwapHorizontal_Int16x4.backendIndex = 2092;
     SubgroupSwapHorizontal_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapHorizontal_Int16x4.parameters = SubgroupSwapHorizontal_Int16x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16x4_value)->typeSymbol = &Int16x4Type;
@@ -1134,7 +1156,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupSwapHorizontal_UInt32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32.name = SubgroupSwapHorizontal_UInt32_name;
-    SubgroupSwapHorizontal_UInt32.backendIndex = 2091;
+    SubgroupSwapHorizontal_UInt32.backendIndex = 2093;
     SubgroupSwapHorizontal_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapHorizontal_UInt32.parameters = SubgroupSwapHorizontal_UInt32_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32_value)->typeSymbol = &UInt32Type;
@@ -1148,7 +1170,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupSwapHorizontal_UInt32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x2.name = SubgroupSwapHorizontal_UInt32x2_name;
-    SubgroupSwapHorizontal_UInt32x2.backendIndex = 2092;
+    SubgroupSwapHorizontal_UInt32x2.backendIndex = 2094;
     SubgroupSwapHorizontal_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapHorizontal_UInt32x2.parameters = SubgroupSwapHorizontal_UInt32x2_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x2_value)->typeSymbol = &UInt32x2Type;
@@ -1162,7 +1184,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupSwapHorizontal_UInt32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x3.name = SubgroupSwapHorizontal_UInt32x3_name;
-    SubgroupSwapHorizontal_UInt32x3.backendIndex = 2093;
+    SubgroupSwapHorizontal_UInt32x3.backendIndex = 2095;
     SubgroupSwapHorizontal_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapHorizontal_UInt32x3.parameters = SubgroupSwapHorizontal_UInt32x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x3_value)->typeSymbol = &UInt32x3Type;
@@ -1176,7 +1198,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupSwapHorizontal_UInt32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x4.name = SubgroupSwapHorizontal_UInt32x4_name;
-    SubgroupSwapHorizontal_UInt32x4.backendIndex = 2094;
+    SubgroupSwapHorizontal_UInt32x4.backendIndex = 2096;
     SubgroupSwapHorizontal_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapHorizontal_UInt32x4.parameters = SubgroupSwapHorizontal_UInt32x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x4_value)->typeSymbol = &UInt32x4Type;
@@ -1190,7 +1212,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupSwapHorizontal_UInt16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16.name = SubgroupSwapHorizontal_UInt16_name;
-    SubgroupSwapHorizontal_UInt16.backendIndex = 2095;
+    SubgroupSwapHorizontal_UInt16.backendIndex = 2097;
     SubgroupSwapHorizontal_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapHorizontal_UInt16.parameters = SubgroupSwapHorizontal_UInt16_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16_value)->typeSymbol = &UInt16Type;
@@ -1204,7 +1226,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupSwapHorizontal_UInt16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x2.name = SubgroupSwapHorizontal_UInt16x2_name;
-    SubgroupSwapHorizontal_UInt16x2.backendIndex = 2096;
+    SubgroupSwapHorizontal_UInt16x2.backendIndex = 2098;
     SubgroupSwapHorizontal_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapHorizontal_UInt16x2.parameters = SubgroupSwapHorizontal_UInt16x2_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x2_value)->typeSymbol = &UInt16x2Type;
@@ -1218,7 +1240,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupSwapHorizontal_UInt16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x3.name = SubgroupSwapHorizontal_UInt16x3_name;
-    SubgroupSwapHorizontal_UInt16x3.backendIndex = 2097;
+    SubgroupSwapHorizontal_UInt16x3.backendIndex = 2099;
     SubgroupSwapHorizontal_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapHorizontal_UInt16x3.parameters = SubgroupSwapHorizontal_UInt16x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x3_value)->typeSymbol = &UInt16x3Type;
@@ -1232,7 +1254,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupSwapHorizontal_UInt16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x4.name = SubgroupSwapHorizontal_UInt16x4_name;
-    SubgroupSwapHorizontal_UInt16x4.backendIndex = 2098;
+    SubgroupSwapHorizontal_UInt16x4.backendIndex = 2100;
     SubgroupSwapHorizontal_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapHorizontal_UInt16x4.parameters = SubgroupSwapHorizontal_UInt16x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x4_value)->typeSymbol = &UInt16x4Type;
@@ -1252,7 +1274,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_UInt32_semantics.type.literal = true;
     AtomicLoad_Uniform_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_UInt32.name = AtomicLoad_Uniform_UInt32_name;
-    AtomicLoad_Uniform_UInt32.backendIndex = 2099;
+    AtomicLoad_Uniform_UInt32.backendIndex = 2101;
     AtomicLoad_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicLoad_Uniform_UInt32.parameters = AtomicLoad_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1274,7 +1296,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_UInt32_semantics.type.literal = true;
     AtomicLoad_Workgroup_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_UInt32.name = AtomicLoad_Workgroup_UInt32_name;
-    AtomicLoad_Workgroup_UInt32.backendIndex = 2100;
+    AtomicLoad_Workgroup_UInt32.backendIndex = 2102;
     AtomicLoad_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicLoad_Workgroup_UInt32.parameters = AtomicLoad_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1296,7 +1318,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Uniform_UInt32_semantics.type.literal = true;
     AtomicIncrement_Uniform_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Uniform_UInt32.name = AtomicIncrement_Uniform_UInt32_name;
-    AtomicIncrement_Uniform_UInt32.backendIndex = 2101;
+    AtomicIncrement_Uniform_UInt32.backendIndex = 2103;
     AtomicIncrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicIncrement_Uniform_UInt32.parameters = AtomicIncrement_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1318,7 +1340,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Workgroup_UInt32_semantics.type.literal = true;
     AtomicIncrement_Workgroup_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Workgroup_UInt32.name = AtomicIncrement_Workgroup_UInt32_name;
-    AtomicIncrement_Workgroup_UInt32.backendIndex = 2102;
+    AtomicIncrement_Workgroup_UInt32.backendIndex = 2104;
     AtomicIncrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicIncrement_Workgroup_UInt32.parameters = AtomicIncrement_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1340,7 +1362,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Uniform_UInt32_semantics.type.literal = true;
     AtomicDecrement_Uniform_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Uniform_UInt32.name = AtomicDecrement_Uniform_UInt32_name;
-    AtomicDecrement_Uniform_UInt32.backendIndex = 2103;
+    AtomicDecrement_Uniform_UInt32.backendIndex = 2105;
     AtomicDecrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicDecrement_Uniform_UInt32.parameters = AtomicDecrement_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1362,7 +1384,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Workgroup_UInt32_semantics.type.literal = true;
     AtomicDecrement_Workgroup_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Workgroup_UInt32.name = AtomicDecrement_Workgroup_UInt32_name;
-    AtomicDecrement_Workgroup_UInt32.backendIndex = 2104;
+    AtomicDecrement_Workgroup_UInt32.backendIndex = 2106;
     AtomicDecrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicDecrement_Workgroup_UInt32.parameters = AtomicDecrement_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1384,7 +1406,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_Int32_semantics.type.literal = true;
     AtomicLoad_Uniform_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_Int32.name = AtomicLoad_Uniform_Int32_name;
-    AtomicLoad_Uniform_Int32.backendIndex = 2105;
+    AtomicLoad_Uniform_Int32.backendIndex = 2107;
     AtomicLoad_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicLoad_Uniform_Int32.parameters = AtomicLoad_Uniform_Int32_args;
     Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1406,7 +1428,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_Int32_semantics.type.literal = true;
     AtomicLoad_Workgroup_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_Int32.name = AtomicLoad_Workgroup_Int32_name;
-    AtomicLoad_Workgroup_Int32.backendIndex = 2106;
+    AtomicLoad_Workgroup_Int32.backendIndex = 2108;
     AtomicLoad_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicLoad_Workgroup_Int32.parameters = AtomicLoad_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1428,7 +1450,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Uniform_Int32_semantics.type.literal = true;
     AtomicIncrement_Uniform_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Uniform_Int32.name = AtomicIncrement_Uniform_Int32_name;
-    AtomicIncrement_Uniform_Int32.backendIndex = 2107;
+    AtomicIncrement_Uniform_Int32.backendIndex = 2109;
     AtomicIncrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicIncrement_Uniform_Int32.parameters = AtomicIncrement_Uniform_Int32_args;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1450,7 +1472,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Workgroup_Int32_semantics.type.literal = true;
     AtomicIncrement_Workgroup_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Workgroup_Int32.name = AtomicIncrement_Workgroup_Int32_name;
-    AtomicIncrement_Workgroup_Int32.backendIndex = 2108;
+    AtomicIncrement_Workgroup_Int32.backendIndex = 2110;
     AtomicIncrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicIncrement_Workgroup_Int32.parameters = AtomicIncrement_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1472,7 +1494,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Uniform_Int32_semantics.type.literal = true;
     AtomicDecrement_Uniform_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Uniform_Int32.name = AtomicDecrement_Uniform_Int32_name;
-    AtomicDecrement_Uniform_Int32.backendIndex = 2109;
+    AtomicDecrement_Uniform_Int32.backendIndex = 2111;
     AtomicDecrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicDecrement_Uniform_Int32.parameters = AtomicDecrement_Uniform_Int32_args;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1494,7 +1516,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Workgroup_Int32_semantics.type.literal = true;
     AtomicDecrement_Workgroup_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Workgroup_Int32.name = AtomicDecrement_Workgroup_Int32_name;
-    AtomicDecrement_Workgroup_Int32.backendIndex = 2110;
+    AtomicDecrement_Workgroup_Int32.backendIndex = 2112;
     AtomicDecrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicDecrement_Workgroup_Int32.parameters = AtomicDecrement_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1516,7 +1538,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_UInt16_semantics.type.literal = true;
     AtomicLoad_Uniform_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_UInt16.name = AtomicLoad_Uniform_UInt16_name;
-    AtomicLoad_Uniform_UInt16.backendIndex = 2111;
+    AtomicLoad_Uniform_UInt16.backendIndex = 2113;
     AtomicLoad_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicLoad_Uniform_UInt16.parameters = AtomicLoad_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1538,7 +1560,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_UInt16_semantics.type.literal = true;
     AtomicLoad_Workgroup_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_UInt16.name = AtomicLoad_Workgroup_UInt16_name;
-    AtomicLoad_Workgroup_UInt16.backendIndex = 2112;
+    AtomicLoad_Workgroup_UInt16.backendIndex = 2114;
     AtomicLoad_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicLoad_Workgroup_UInt16.parameters = AtomicLoad_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1560,7 +1582,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Uniform_UInt16_semantics.type.literal = true;
     AtomicIncrement_Uniform_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Uniform_UInt16.name = AtomicIncrement_Uniform_UInt16_name;
-    AtomicIncrement_Uniform_UInt16.backendIndex = 2113;
+    AtomicIncrement_Uniform_UInt16.backendIndex = 2115;
     AtomicIncrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicIncrement_Uniform_UInt16.parameters = AtomicIncrement_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1582,7 +1604,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Workgroup_UInt16_semantics.type.literal = true;
     AtomicIncrement_Workgroup_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Workgroup_UInt16.name = AtomicIncrement_Workgroup_UInt16_name;
-    AtomicIncrement_Workgroup_UInt16.backendIndex = 2114;
+    AtomicIncrement_Workgroup_UInt16.backendIndex = 2116;
     AtomicIncrement_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicIncrement_Workgroup_UInt16.parameters = AtomicIncrement_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1604,7 +1626,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Uniform_UInt16_semantics.type.literal = true;
     AtomicDecrement_Uniform_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Uniform_UInt16.name = AtomicDecrement_Uniform_UInt16_name;
-    AtomicDecrement_Uniform_UInt16.backendIndex = 2115;
+    AtomicDecrement_Uniform_UInt16.backendIndex = 2117;
     AtomicDecrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicDecrement_Uniform_UInt16.parameters = AtomicDecrement_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1626,7 +1648,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Workgroup_UInt16_semantics.type.literal = true;
     AtomicDecrement_Workgroup_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Workgroup_UInt16.name = AtomicDecrement_Workgroup_UInt16_name;
-    AtomicDecrement_Workgroup_UInt16.backendIndex = 2116;
+    AtomicDecrement_Workgroup_UInt16.backendIndex = 2118;
     AtomicDecrement_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicDecrement_Workgroup_UInt16.parameters = AtomicDecrement_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1648,7 +1670,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_Int16_semantics.type.literal = true;
     AtomicLoad_Uniform_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_Int16.name = AtomicLoad_Uniform_Int16_name;
-    AtomicLoad_Uniform_Int16.backendIndex = 2117;
+    AtomicLoad_Uniform_Int16.backendIndex = 2119;
     AtomicLoad_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicLoad_Uniform_Int16.parameters = AtomicLoad_Uniform_Int16_args;
     Symbol::Resolved(&AtomicLoad_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1670,7 +1692,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_Int16_semantics.type.literal = true;
     AtomicLoad_Workgroup_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_Int16.name = AtomicLoad_Workgroup_Int16_name;
-    AtomicLoad_Workgroup_Int16.backendIndex = 2118;
+    AtomicLoad_Workgroup_Int16.backendIndex = 2120;
     AtomicLoad_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicLoad_Workgroup_Int16.parameters = AtomicLoad_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1692,7 +1714,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Uniform_Int16_semantics.type.literal = true;
     AtomicIncrement_Uniform_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Uniform_Int16.name = AtomicIncrement_Uniform_Int16_name;
-    AtomicIncrement_Uniform_Int16.backendIndex = 2119;
+    AtomicIncrement_Uniform_Int16.backendIndex = 2121;
     AtomicIncrement_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicIncrement_Uniform_Int16.parameters = AtomicIncrement_Uniform_Int16_args;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1714,7 +1736,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Workgroup_Int16_semantics.type.literal = true;
     AtomicIncrement_Workgroup_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Workgroup_Int16.name = AtomicIncrement_Workgroup_Int16_name;
-    AtomicIncrement_Workgroup_Int16.backendIndex = 2120;
+    AtomicIncrement_Workgroup_Int16.backendIndex = 2122;
     AtomicIncrement_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicIncrement_Workgroup_Int16.parameters = AtomicIncrement_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1736,7 +1758,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Uniform_Int16_semantics.type.literal = true;
     AtomicDecrement_Uniform_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Uniform_Int16.name = AtomicDecrement_Uniform_Int16_name;
-    AtomicDecrement_Uniform_Int16.backendIndex = 2121;
+    AtomicDecrement_Uniform_Int16.backendIndex = 2123;
     AtomicDecrement_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicDecrement_Uniform_Int16.parameters = AtomicDecrement_Uniform_Int16_args;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1758,7 +1780,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Workgroup_Int16_semantics.type.literal = true;
     AtomicDecrement_Workgroup_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Workgroup_Int16.name = AtomicDecrement_Workgroup_Int16_name;
-    AtomicDecrement_Workgroup_Int16.backendIndex = 2122;
+    AtomicDecrement_Workgroup_Int16.backendIndex = 2124;
     AtomicDecrement_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicDecrement_Workgroup_Int16.parameters = AtomicDecrement_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1780,7 +1802,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_Float32_semantics.type.literal = true;
     AtomicLoad_Uniform_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_Float32.name = AtomicLoad_Uniform_Float32_name;
-    AtomicLoad_Uniform_Float32.backendIndex = 2123;
+    AtomicLoad_Uniform_Float32.backendIndex = 2125;
     AtomicLoad_Uniform_Float32.returnType = Type::FullType { Float32Type.name };
     AtomicLoad_Uniform_Float32.parameters = AtomicLoad_Uniform_Float32_args;
     Symbol::Resolved(&AtomicLoad_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
@@ -1802,7 +1824,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_Float32_semantics.type.literal = true;
     AtomicLoad_Workgroup_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_Float32.name = AtomicLoad_Workgroup_Float32_name;
-    AtomicLoad_Workgroup_Float32.backendIndex = 2124;
+    AtomicLoad_Workgroup_Float32.backendIndex = 2126;
     AtomicLoad_Workgroup_Float32.returnType = Type::FullType { Float32Type.name };
     AtomicLoad_Workgroup_Float32.parameters = AtomicLoad_Workgroup_Float32_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
@@ -1824,7 +1846,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_Float16_semantics.type.literal = true;
     AtomicLoad_Uniform_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_Float16.name = AtomicLoad_Uniform_Float16_name;
-    AtomicLoad_Uniform_Float16.backendIndex = 2125;
+    AtomicLoad_Uniform_Float16.backendIndex = 2127;
     AtomicLoad_Uniform_Float16.returnType = Type::FullType { Float16Type.name };
     AtomicLoad_Uniform_Float16.parameters = AtomicLoad_Uniform_Float16_args;
     Symbol::Resolved(&AtomicLoad_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
@@ -1846,7 +1868,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_Float16_semantics.type.literal = true;
     AtomicLoad_Workgroup_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_Float16.name = AtomicLoad_Workgroup_Float16_name;
-    AtomicLoad_Workgroup_Float16.backendIndex = 2126;
+    AtomicLoad_Workgroup_Float16.backendIndex = 2128;
     AtomicLoad_Workgroup_Float16.returnType = Type::FullType { Float16Type.name };
     AtomicLoad_Workgroup_Float16.parameters = AtomicLoad_Workgroup_Float16_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
@@ -1871,7 +1893,7 @@ void SetupIntrinsics9()
     AtomicStore_Uniform_UInt32_semantics.type.literal = true;
     AtomicStore_Uniform_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_UInt32.name = AtomicStore_Uniform_UInt32_name;
-    AtomicStore_Uniform_UInt32.backendIndex = 2127;
+    AtomicStore_Uniform_UInt32.backendIndex = 2129;
     AtomicStore_Uniform_UInt32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_UInt32.parameters = AtomicStore_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicStore_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1896,7 +1918,7 @@ void SetupIntrinsics9()
     AtomicStore_Workgroup_UInt32_semantics.type.literal = true;
     AtomicStore_Workgroup_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_UInt32.name = AtomicStore_Workgroup_UInt32_name;
-    AtomicStore_Workgroup_UInt32.backendIndex = 2128;
+    AtomicStore_Workgroup_UInt32.backendIndex = 2130;
     AtomicStore_Workgroup_UInt32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_UInt32.parameters = AtomicStore_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicStore_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1922,7 +1944,7 @@ void SetupIntrinsics9()
     AtomicExchange_Uniform_UInt32_semantics.type.literal = true;
     AtomicExchange_Uniform_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_UInt32.name = AtomicExchange_Uniform_UInt32_name;
-    AtomicExchange_Uniform_UInt32.backendIndex = 2129;
+    AtomicExchange_Uniform_UInt32.backendIndex = 2131;
     AtomicExchange_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicExchange_Uniform_UInt32.parameters = AtomicExchange_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicExchange_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1947,7 +1969,7 @@ void SetupIntrinsics9()
     AtomicExchange_Workgroup_UInt32_semantics.type.literal = true;
     AtomicExchange_Workgroup_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_UInt32.name = AtomicExchange_Workgroup_UInt32_name;
-    AtomicExchange_Workgroup_UInt32.backendIndex = 2130;
+    AtomicExchange_Workgroup_UInt32.backendIndex = 2132;
     AtomicExchange_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicExchange_Workgroup_UInt32.parameters = AtomicExchange_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1973,7 +1995,7 @@ void SetupIntrinsics9()
     AtomicAdd_Uniform_UInt32_semantics.type.literal = true;
     AtomicAdd_Uniform_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Uniform_UInt32.name = AtomicAdd_Uniform_UInt32_name;
-    AtomicAdd_Uniform_UInt32.backendIndex = 2131;
+    AtomicAdd_Uniform_UInt32.backendIndex = 2133;
     AtomicAdd_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicAdd_Uniform_UInt32.parameters = AtomicAdd_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicAdd_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1998,7 +2020,7 @@ void SetupIntrinsics9()
     AtomicAdd_Workgroup_UInt32_semantics.type.literal = true;
     AtomicAdd_Workgroup_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Workgroup_UInt32.name = AtomicAdd_Workgroup_UInt32_name;
-    AtomicAdd_Workgroup_UInt32.backendIndex = 2132;
+    AtomicAdd_Workgroup_UInt32.backendIndex = 2134;
     AtomicAdd_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicAdd_Workgroup_UInt32.parameters = AtomicAdd_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2024,7 +2046,7 @@ void SetupIntrinsics9()
     AtomicSubtract_Uniform_UInt32_semantics.type.literal = true;
     AtomicSubtract_Uniform_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Uniform_UInt32.name = AtomicSubtract_Uniform_UInt32_name;
-    AtomicSubtract_Uniform_UInt32.backendIndex = 2133;
+    AtomicSubtract_Uniform_UInt32.backendIndex = 2135;
     AtomicSubtract_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicSubtract_Uniform_UInt32.parameters = AtomicSubtract_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2049,7 +2071,7 @@ void SetupIntrinsics9()
     AtomicSubtract_Workgroup_UInt32_semantics.type.literal = true;
     AtomicSubtract_Workgroup_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Workgroup_UInt32.name = AtomicSubtract_Workgroup_UInt32_name;
-    AtomicSubtract_Workgroup_UInt32.backendIndex = 2134;
+    AtomicSubtract_Workgroup_UInt32.backendIndex = 2136;
     AtomicSubtract_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicSubtract_Workgroup_UInt32.parameters = AtomicSubtract_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2075,7 +2097,7 @@ void SetupIntrinsics9()
     AtomicAnd_Uniform_UInt32_semantics.type.literal = true;
     AtomicAnd_Uniform_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Uniform_UInt32.name = AtomicAnd_Uniform_UInt32_name;
-    AtomicAnd_Uniform_UInt32.backendIndex = 2135;
+    AtomicAnd_Uniform_UInt32.backendIndex = 2137;
     AtomicAnd_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicAnd_Uniform_UInt32.parameters = AtomicAnd_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicAnd_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2100,7 +2122,7 @@ void SetupIntrinsics9()
     AtomicAnd_Workgroup_UInt32_semantics.type.literal = true;
     AtomicAnd_Workgroup_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Workgroup_UInt32.name = AtomicAnd_Workgroup_UInt32_name;
-    AtomicAnd_Workgroup_UInt32.backendIndex = 2136;
+    AtomicAnd_Workgroup_UInt32.backendIndex = 2138;
     AtomicAnd_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicAnd_Workgroup_UInt32.parameters = AtomicAnd_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2126,7 +2148,7 @@ void SetupIntrinsics9()
     AtomicOr_Uniform_UInt32_semantics.type.literal = true;
     AtomicOr_Uniform_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Uniform_UInt32.name = AtomicOr_Uniform_UInt32_name;
-    AtomicOr_Uniform_UInt32.backendIndex = 2137;
+    AtomicOr_Uniform_UInt32.backendIndex = 2139;
     AtomicOr_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicOr_Uniform_UInt32.parameters = AtomicOr_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicOr_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2151,7 +2173,7 @@ void SetupIntrinsics9()
     AtomicOr_Workgroup_UInt32_semantics.type.literal = true;
     AtomicOr_Workgroup_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Workgroup_UInt32.name = AtomicOr_Workgroup_UInt32_name;
-    AtomicOr_Workgroup_UInt32.backendIndex = 2138;
+    AtomicOr_Workgroup_UInt32.backendIndex = 2140;
     AtomicOr_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicOr_Workgroup_UInt32.parameters = AtomicOr_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicOr_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2177,7 +2199,7 @@ void SetupIntrinsics9()
     AtomicXor_Uniform_UInt32_semantics.type.literal = true;
     AtomicXor_Uniform_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Uniform_UInt32.name = AtomicXor_Uniform_UInt32_name;
-    AtomicXor_Uniform_UInt32.backendIndex = 2139;
+    AtomicXor_Uniform_UInt32.backendIndex = 2141;
     AtomicXor_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicXor_Uniform_UInt32.parameters = AtomicXor_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicXor_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2202,7 +2224,7 @@ void SetupIntrinsics9()
     AtomicXor_Workgroup_UInt32_semantics.type.literal = true;
     AtomicXor_Workgroup_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Workgroup_UInt32.name = AtomicXor_Workgroup_UInt32_name;
-    AtomicXor_Workgroup_UInt32.backendIndex = 2140;
+    AtomicXor_Workgroup_UInt32.backendIndex = 2142;
     AtomicXor_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicXor_Workgroup_UInt32.parameters = AtomicXor_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicXor_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2228,7 +2250,7 @@ void SetupIntrinsics9()
     AtomicStore_Uniform_Int32_semantics.type.literal = true;
     AtomicStore_Uniform_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_Int32.name = AtomicStore_Uniform_Int32_name;
-    AtomicStore_Uniform_Int32.backendIndex = 2141;
+    AtomicStore_Uniform_Int32.backendIndex = 2143;
     AtomicStore_Uniform_Int32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_Int32.parameters = AtomicStore_Uniform_Int32_args;
     Symbol::Resolved(&AtomicStore_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2253,7 +2275,7 @@ void SetupIntrinsics9()
     AtomicStore_Workgroup_Int32_semantics.type.literal = true;
     AtomicStore_Workgroup_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_Int32.name = AtomicStore_Workgroup_Int32_name;
-    AtomicStore_Workgroup_Int32.backendIndex = 2142;
+    AtomicStore_Workgroup_Int32.backendIndex = 2144;
     AtomicStore_Workgroup_Int32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_Int32.parameters = AtomicStore_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicStore_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2279,7 +2301,7 @@ void SetupIntrinsics9()
     AtomicExchange_Uniform_Int32_semantics.type.literal = true;
     AtomicExchange_Uniform_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_Int32.name = AtomicExchange_Uniform_Int32_name;
-    AtomicExchange_Uniform_Int32.backendIndex = 2143;
+    AtomicExchange_Uniform_Int32.backendIndex = 2145;
     AtomicExchange_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicExchange_Uniform_Int32.parameters = AtomicExchange_Uniform_Int32_args;
     Symbol::Resolved(&AtomicExchange_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2304,7 +2326,7 @@ void SetupIntrinsics9()
     AtomicExchange_Workgroup_Int32_semantics.type.literal = true;
     AtomicExchange_Workgroup_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_Int32.name = AtomicExchange_Workgroup_Int32_name;
-    AtomicExchange_Workgroup_Int32.backendIndex = 2144;
+    AtomicExchange_Workgroup_Int32.backendIndex = 2146;
     AtomicExchange_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicExchange_Workgroup_Int32.parameters = AtomicExchange_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2330,7 +2352,7 @@ void SetupIntrinsics9()
     AtomicAdd_Uniform_Int32_semantics.type.literal = true;
     AtomicAdd_Uniform_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Uniform_Int32.name = AtomicAdd_Uniform_Int32_name;
-    AtomicAdd_Uniform_Int32.backendIndex = 2145;
+    AtomicAdd_Uniform_Int32.backendIndex = 2147;
     AtomicAdd_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicAdd_Uniform_Int32.parameters = AtomicAdd_Uniform_Int32_args;
     Symbol::Resolved(&AtomicAdd_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2355,7 +2377,7 @@ void SetupIntrinsics9()
     AtomicAdd_Workgroup_Int32_semantics.type.literal = true;
     AtomicAdd_Workgroup_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Workgroup_Int32.name = AtomicAdd_Workgroup_Int32_name;
-    AtomicAdd_Workgroup_Int32.backendIndex = 2146;
+    AtomicAdd_Workgroup_Int32.backendIndex = 2148;
     AtomicAdd_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicAdd_Workgroup_Int32.parameters = AtomicAdd_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicAdd_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2381,7 +2403,7 @@ void SetupIntrinsics9()
     AtomicSubtract_Uniform_Int32_semantics.type.literal = true;
     AtomicSubtract_Uniform_Int32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Uniform_Int32.name = AtomicSubtract_Uniform_Int32_name;
-    AtomicSubtract_Uniform_Int32.backendIndex = 2147;
+    AtomicSubtract_Uniform_Int32.backendIndex = 2149;
     AtomicSubtract_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicSubtract_Uniform_Int32.parameters = AtomicSubtract_Uniform_Int32_args;
     Symbol::Resolved(&AtomicSubtract_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2406,7 +2428,7 @@ void SetupIntrinsics9()
     AtomicSubtract_Workgroup_Int32_semantics.type.literal = true;
     AtomicSubtract_Workgroup_Int32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Workgroup_Int32.name = AtomicSubtract_Workgroup_Int32_name;
-    AtomicSubtract_Workgroup_Int32.backendIndex = 2148;
+    AtomicSubtract_Workgroup_Int32.backendIndex = 2150;
     AtomicSubtract_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicSubtract_Workgroup_Int32.parameters = AtomicSubtract_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2432,7 +2454,7 @@ void SetupIntrinsics9()
     AtomicAnd_Uniform_Int32_semantics.type.literal = true;
     AtomicAnd_Uniform_Int32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Uniform_Int32.name = AtomicAnd_Uniform_Int32_name;
-    AtomicAnd_Uniform_Int32.backendIndex = 2149;
+    AtomicAnd_Uniform_Int32.backendIndex = 2151;
     AtomicAnd_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicAnd_Uniform_Int32.parameters = AtomicAnd_Uniform_Int32_args;
     Symbol::Resolved(&AtomicAnd_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2457,7 +2479,7 @@ void SetupIntrinsics9()
     AtomicAnd_Workgroup_Int32_semantics.type.literal = true;
     AtomicAnd_Workgroup_Int32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Workgroup_Int32.name = AtomicAnd_Workgroup_Int32_name;
-    AtomicAnd_Workgroup_Int32.backendIndex = 2150;
+    AtomicAnd_Workgroup_Int32.backendIndex = 2152;
     AtomicAnd_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicAnd_Workgroup_Int32.parameters = AtomicAnd_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicAnd_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2483,7 +2505,7 @@ void SetupIntrinsics9()
     AtomicOr_Uniform_Int32_semantics.type.literal = true;
     AtomicOr_Uniform_Int32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Uniform_Int32.name = AtomicOr_Uniform_Int32_name;
-    AtomicOr_Uniform_Int32.backendIndex = 2151;
+    AtomicOr_Uniform_Int32.backendIndex = 2153;
     AtomicOr_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicOr_Uniform_Int32.parameters = AtomicOr_Uniform_Int32_args;
     Symbol::Resolved(&AtomicOr_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2508,7 +2530,7 @@ void SetupIntrinsics9()
     AtomicOr_Workgroup_Int32_semantics.type.literal = true;
     AtomicOr_Workgroup_Int32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Workgroup_Int32.name = AtomicOr_Workgroup_Int32_name;
-    AtomicOr_Workgroup_Int32.backendIndex = 2152;
+    AtomicOr_Workgroup_Int32.backendIndex = 2154;
     AtomicOr_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicOr_Workgroup_Int32.parameters = AtomicOr_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicOr_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2534,7 +2556,7 @@ void SetupIntrinsics9()
     AtomicXor_Uniform_Int32_semantics.type.literal = true;
     AtomicXor_Uniform_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Uniform_Int32.name = AtomicXor_Uniform_Int32_name;
-    AtomicXor_Uniform_Int32.backendIndex = 2153;
+    AtomicXor_Uniform_Int32.backendIndex = 2155;
     AtomicXor_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicXor_Uniform_Int32.parameters = AtomicXor_Uniform_Int32_args;
     Symbol::Resolved(&AtomicXor_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2559,7 +2581,7 @@ void SetupIntrinsics9()
     AtomicXor_Workgroup_Int32_semantics.type.literal = true;
     AtomicXor_Workgroup_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Workgroup_Int32.name = AtomicXor_Workgroup_Int32_name;
-    AtomicXor_Workgroup_Int32.backendIndex = 2154;
+    AtomicXor_Workgroup_Int32.backendIndex = 2156;
     AtomicXor_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicXor_Workgroup_Int32.parameters = AtomicXor_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicXor_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2585,7 +2607,7 @@ void SetupIntrinsics9()
     AtomicStore_Uniform_UInt16_semantics.type.literal = true;
     AtomicStore_Uniform_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_UInt16.name = AtomicStore_Uniform_UInt16_name;
-    AtomicStore_Uniform_UInt16.backendIndex = 2155;
+    AtomicStore_Uniform_UInt16.backendIndex = 2157;
     AtomicStore_Uniform_UInt16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_UInt16.parameters = AtomicStore_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicStore_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2610,7 +2632,7 @@ void SetupIntrinsics9()
     AtomicStore_Workgroup_UInt16_semantics.type.literal = true;
     AtomicStore_Workgroup_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_UInt16.name = AtomicStore_Workgroup_UInt16_name;
-    AtomicStore_Workgroup_UInt16.backendIndex = 2156;
+    AtomicStore_Workgroup_UInt16.backendIndex = 2158;
     AtomicStore_Workgroup_UInt16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_UInt16.parameters = AtomicStore_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicStore_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2636,7 +2658,7 @@ void SetupIntrinsics9()
     AtomicExchange_Uniform_UInt16_semantics.type.literal = true;
     AtomicExchange_Uniform_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_UInt16.name = AtomicExchange_Uniform_UInt16_name;
-    AtomicExchange_Uniform_UInt16.backendIndex = 2157;
+    AtomicExchange_Uniform_UInt16.backendIndex = 2159;
     AtomicExchange_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicExchange_Uniform_UInt16.parameters = AtomicExchange_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicExchange_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2661,7 +2683,7 @@ void SetupIntrinsics9()
     AtomicExchange_Workgroup_UInt16_semantics.type.literal = true;
     AtomicExchange_Workgroup_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_UInt16.name = AtomicExchange_Workgroup_UInt16_name;
-    AtomicExchange_Workgroup_UInt16.backendIndex = 2158;
+    AtomicExchange_Workgroup_UInt16.backendIndex = 2160;
     AtomicExchange_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicExchange_Workgroup_UInt16.parameters = AtomicExchange_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2687,7 +2709,7 @@ void SetupIntrinsics9()
     AtomicAdd_Uniform_UInt16_semantics.type.literal = true;
     AtomicAdd_Uniform_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Uniform_UInt16.name = AtomicAdd_Uniform_UInt16_name;
-    AtomicAdd_Uniform_UInt16.backendIndex = 2159;
+    AtomicAdd_Uniform_UInt16.backendIndex = 2161;
     AtomicAdd_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicAdd_Uniform_UInt16.parameters = AtomicAdd_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicAdd_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2712,7 +2734,7 @@ void SetupIntrinsics9()
     AtomicAdd_Workgroup_UInt16_semantics.type.literal = true;
     AtomicAdd_Workgroup_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Workgroup_UInt16.name = AtomicAdd_Workgroup_UInt16_name;
-    AtomicAdd_Workgroup_UInt16.backendIndex = 2160;
+    AtomicAdd_Workgroup_UInt16.backendIndex = 2162;
     AtomicAdd_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicAdd_Workgroup_UInt16.parameters = AtomicAdd_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2738,7 +2760,7 @@ void SetupIntrinsics9()
     AtomicSubtract_Uniform_UInt16_semantics.type.literal = true;
     AtomicSubtract_Uniform_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Uniform_UInt16.name = AtomicSubtract_Uniform_UInt16_name;
-    AtomicSubtract_Uniform_UInt16.backendIndex = 2161;
+    AtomicSubtract_Uniform_UInt16.backendIndex = 2163;
     AtomicSubtract_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicSubtract_Uniform_UInt16.parameters = AtomicSubtract_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2763,7 +2785,7 @@ void SetupIntrinsics9()
     AtomicSubtract_Workgroup_UInt16_semantics.type.literal = true;
     AtomicSubtract_Workgroup_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Workgroup_UInt16.name = AtomicSubtract_Workgroup_UInt16_name;
-    AtomicSubtract_Workgroup_UInt16.backendIndex = 2162;
+    AtomicSubtract_Workgroup_UInt16.backendIndex = 2164;
     AtomicSubtract_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicSubtract_Workgroup_UInt16.parameters = AtomicSubtract_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2789,7 +2811,7 @@ void SetupIntrinsics9()
     AtomicAnd_Uniform_UInt16_semantics.type.literal = true;
     AtomicAnd_Uniform_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Uniform_UInt16.name = AtomicAnd_Uniform_UInt16_name;
-    AtomicAnd_Uniform_UInt16.backendIndex = 2163;
+    AtomicAnd_Uniform_UInt16.backendIndex = 2165;
     AtomicAnd_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicAnd_Uniform_UInt16.parameters = AtomicAnd_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicAnd_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2814,7 +2836,7 @@ void SetupIntrinsics9()
     AtomicAnd_Workgroup_UInt16_semantics.type.literal = true;
     AtomicAnd_Workgroup_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Workgroup_UInt16.name = AtomicAnd_Workgroup_UInt16_name;
-    AtomicAnd_Workgroup_UInt16.backendIndex = 2164;
+    AtomicAnd_Workgroup_UInt16.backendIndex = 2166;
     AtomicAnd_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicAnd_Workgroup_UInt16.parameters = AtomicAnd_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2840,7 +2862,7 @@ void SetupIntrinsics9()
     AtomicOr_Uniform_UInt16_semantics.type.literal = true;
     AtomicOr_Uniform_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Uniform_UInt16.name = AtomicOr_Uniform_UInt16_name;
-    AtomicOr_Uniform_UInt16.backendIndex = 2165;
+    AtomicOr_Uniform_UInt16.backendIndex = 2167;
     AtomicOr_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicOr_Uniform_UInt16.parameters = AtomicOr_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicOr_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2865,7 +2887,7 @@ void SetupIntrinsics9()
     AtomicOr_Workgroup_UInt16_semantics.type.literal = true;
     AtomicOr_Workgroup_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Workgroup_UInt16.name = AtomicOr_Workgroup_UInt16_name;
-    AtomicOr_Workgroup_UInt16.backendIndex = 2166;
+    AtomicOr_Workgroup_UInt16.backendIndex = 2168;
     AtomicOr_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicOr_Workgroup_UInt16.parameters = AtomicOr_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicOr_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2891,7 +2913,7 @@ void SetupIntrinsics9()
     AtomicXor_Uniform_UInt16_semantics.type.literal = true;
     AtomicXor_Uniform_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Uniform_UInt16.name = AtomicXor_Uniform_UInt16_name;
-    AtomicXor_Uniform_UInt16.backendIndex = 2167;
+    AtomicXor_Uniform_UInt16.backendIndex = 2169;
     AtomicXor_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicXor_Uniform_UInt16.parameters = AtomicXor_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicXor_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2916,7 +2938,7 @@ void SetupIntrinsics9()
     AtomicXor_Workgroup_UInt16_semantics.type.literal = true;
     AtomicXor_Workgroup_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Workgroup_UInt16.name = AtomicXor_Workgroup_UInt16_name;
-    AtomicXor_Workgroup_UInt16.backendIndex = 2168;
+    AtomicXor_Workgroup_UInt16.backendIndex = 2170;
     AtomicXor_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicXor_Workgroup_UInt16.parameters = AtomicXor_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicXor_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2942,7 +2964,7 @@ void SetupIntrinsics9()
     AtomicStore_Uniform_Int16_semantics.type.literal = true;
     AtomicStore_Uniform_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_Int16.name = AtomicStore_Uniform_Int16_name;
-    AtomicStore_Uniform_Int16.backendIndex = 2169;
+    AtomicStore_Uniform_Int16.backendIndex = 2171;
     AtomicStore_Uniform_Int16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_Int16.parameters = AtomicStore_Uniform_Int16_args;
     Symbol::Resolved(&AtomicStore_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2967,7 +2989,7 @@ void SetupIntrinsics9()
     AtomicStore_Workgroup_Int16_semantics.type.literal = true;
     AtomicStore_Workgroup_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_Int16.name = AtomicStore_Workgroup_Int16_name;
-    AtomicStore_Workgroup_Int16.backendIndex = 2170;
+    AtomicStore_Workgroup_Int16.backendIndex = 2172;
     AtomicStore_Workgroup_Int16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_Int16.parameters = AtomicStore_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicStore_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2993,7 +3015,7 @@ void SetupIntrinsics9()
     AtomicExchange_Uniform_Int16_semantics.type.literal = true;
     AtomicExchange_Uniform_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_Int16.name = AtomicExchange_Uniform_Int16_name;
-    AtomicExchange_Uniform_Int16.backendIndex = 2171;
+    AtomicExchange_Uniform_Int16.backendIndex = 2173;
     AtomicExchange_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicExchange_Uniform_Int16.parameters = AtomicExchange_Uniform_Int16_args;
     Symbol::Resolved(&AtomicExchange_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3018,7 +3040,7 @@ void SetupIntrinsics9()
     AtomicExchange_Workgroup_Int16_semantics.type.literal = true;
     AtomicExchange_Workgroup_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_Int16.name = AtomicExchange_Workgroup_Int16_name;
-    AtomicExchange_Workgroup_Int16.backendIndex = 2172;
+    AtomicExchange_Workgroup_Int16.backendIndex = 2174;
     AtomicExchange_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicExchange_Workgroup_Int16.parameters = AtomicExchange_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3044,7 +3066,7 @@ void SetupIntrinsics9()
     AtomicAdd_Uniform_Int16_semantics.type.literal = true;
     AtomicAdd_Uniform_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Uniform_Int16.name = AtomicAdd_Uniform_Int16_name;
-    AtomicAdd_Uniform_Int16.backendIndex = 2173;
+    AtomicAdd_Uniform_Int16.backendIndex = 2175;
     AtomicAdd_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAdd_Uniform_Int16.parameters = AtomicAdd_Uniform_Int16_args;
     Symbol::Resolved(&AtomicAdd_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3069,7 +3091,7 @@ void SetupIntrinsics9()
     AtomicAdd_Workgroup_Int16_semantics.type.literal = true;
     AtomicAdd_Workgroup_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Workgroup_Int16.name = AtomicAdd_Workgroup_Int16_name;
-    AtomicAdd_Workgroup_Int16.backendIndex = 2174;
+    AtomicAdd_Workgroup_Int16.backendIndex = 2176;
     AtomicAdd_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAdd_Workgroup_Int16.parameters = AtomicAdd_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicAdd_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3095,7 +3117,7 @@ void SetupIntrinsics9()
     AtomicSubtract_Uniform_Int16_semantics.type.literal = true;
     AtomicSubtract_Uniform_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Uniform_Int16.name = AtomicSubtract_Uniform_Int16_name;
-    AtomicSubtract_Uniform_Int16.backendIndex = 2175;
+    AtomicSubtract_Uniform_Int16.backendIndex = 2177;
     AtomicSubtract_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicSubtract_Uniform_Int16.parameters = AtomicSubtract_Uniform_Int16_args;
     Symbol::Resolved(&AtomicSubtract_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3120,7 +3142,7 @@ void SetupIntrinsics9()
     AtomicSubtract_Workgroup_Int16_semantics.type.literal = true;
     AtomicSubtract_Workgroup_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Workgroup_Int16.name = AtomicSubtract_Workgroup_Int16_name;
-    AtomicSubtract_Workgroup_Int16.backendIndex = 2176;
+    AtomicSubtract_Workgroup_Int16.backendIndex = 2178;
     AtomicSubtract_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicSubtract_Workgroup_Int16.parameters = AtomicSubtract_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3146,7 +3168,7 @@ void SetupIntrinsics9()
     AtomicAnd_Uniform_Int16_semantics.type.literal = true;
     AtomicAnd_Uniform_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Uniform_Int16.name = AtomicAnd_Uniform_Int16_name;
-    AtomicAnd_Uniform_Int16.backendIndex = 2177;
+    AtomicAnd_Uniform_Int16.backendIndex = 2179;
     AtomicAnd_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAnd_Uniform_Int16.parameters = AtomicAnd_Uniform_Int16_args;
     Symbol::Resolved(&AtomicAnd_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3171,7 +3193,7 @@ void SetupIntrinsics9()
     AtomicAnd_Workgroup_Int16_semantics.type.literal = true;
     AtomicAnd_Workgroup_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Workgroup_Int16.name = AtomicAnd_Workgroup_Int16_name;
-    AtomicAnd_Workgroup_Int16.backendIndex = 2178;
+    AtomicAnd_Workgroup_Int16.backendIndex = 2180;
     AtomicAnd_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAnd_Workgroup_Int16.parameters = AtomicAnd_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicAnd_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3197,7 +3219,7 @@ void SetupIntrinsics9()
     AtomicOr_Uniform_Int16_semantics.type.literal = true;
     AtomicOr_Uniform_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Uniform_Int16.name = AtomicOr_Uniform_Int16_name;
-    AtomicOr_Uniform_Int16.backendIndex = 2179;
+    AtomicOr_Uniform_Int16.backendIndex = 2181;
     AtomicOr_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicOr_Uniform_Int16.parameters = AtomicOr_Uniform_Int16_args;
     Symbol::Resolved(&AtomicOr_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3222,7 +3244,7 @@ void SetupIntrinsics9()
     AtomicOr_Workgroup_Int16_semantics.type.literal = true;
     AtomicOr_Workgroup_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Workgroup_Int16.name = AtomicOr_Workgroup_Int16_name;
-    AtomicOr_Workgroup_Int16.backendIndex = 2180;
+    AtomicOr_Workgroup_Int16.backendIndex = 2182;
     AtomicOr_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicOr_Workgroup_Int16.parameters = AtomicOr_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicOr_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3248,7 +3270,7 @@ void SetupIntrinsics9()
     AtomicXor_Uniform_Int16_semantics.type.literal = true;
     AtomicXor_Uniform_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Uniform_Int16.name = AtomicXor_Uniform_Int16_name;
-    AtomicXor_Uniform_Int16.backendIndex = 2181;
+    AtomicXor_Uniform_Int16.backendIndex = 2183;
     AtomicXor_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicXor_Uniform_Int16.parameters = AtomicXor_Uniform_Int16_args;
     Symbol::Resolved(&AtomicXor_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3273,7 +3295,7 @@ void SetupIntrinsics9()
     AtomicXor_Workgroup_Int16_semantics.type.literal = true;
     AtomicXor_Workgroup_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Workgroup_Int16.name = AtomicXor_Workgroup_Int16_name;
-    AtomicXor_Workgroup_Int16.backendIndex = 2182;
+    AtomicXor_Workgroup_Int16.backendIndex = 2184;
     AtomicXor_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicXor_Workgroup_Int16.parameters = AtomicXor_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicXor_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -3299,7 +3321,7 @@ void SetupIntrinsics9()
     AtomicStore_Uniform_Float32_semantics.type.literal = true;
     AtomicStore_Uniform_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_Float32.name = AtomicStore_Uniform_Float32_name;
-    AtomicStore_Uniform_Float32.backendIndex = 2183;
+    AtomicStore_Uniform_Float32.backendIndex = 2185;
     AtomicStore_Uniform_Float32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_Float32.parameters = AtomicStore_Uniform_Float32_args;
     Symbol::Resolved(&AtomicStore_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
@@ -3324,7 +3346,7 @@ void SetupIntrinsics9()
     AtomicStore_Workgroup_Float32_semantics.type.literal = true;
     AtomicStore_Workgroup_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_Float32.name = AtomicStore_Workgroup_Float32_name;
-    AtomicStore_Workgroup_Float32.backendIndex = 2184;
+    AtomicStore_Workgroup_Float32.backendIndex = 2186;
     AtomicStore_Workgroup_Float32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_Float32.parameters = AtomicStore_Workgroup_Float32_args;
     Symbol::Resolved(&AtomicStore_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
@@ -3350,7 +3372,7 @@ void SetupIntrinsics9()
     AtomicExchange_Uniform_Float32_semantics.type.literal = true;
     AtomicExchange_Uniform_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_Float32.name = AtomicExchange_Uniform_Float32_name;
-    AtomicExchange_Uniform_Float32.backendIndex = 2185;
+    AtomicExchange_Uniform_Float32.backendIndex = 2187;
     AtomicExchange_Uniform_Float32.returnType = Type::FullType { Float32Type.name };
     AtomicExchange_Uniform_Float32.parameters = AtomicExchange_Uniform_Float32_args;
     Symbol::Resolved(&AtomicExchange_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
@@ -3375,7 +3397,7 @@ void SetupIntrinsics9()
     AtomicExchange_Workgroup_Float32_semantics.type.literal = true;
     AtomicExchange_Workgroup_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_Float32.name = AtomicExchange_Workgroup_Float32_name;
-    AtomicExchange_Workgroup_Float32.backendIndex = 2186;
+    AtomicExchange_Workgroup_Float32.backendIndex = 2188;
     AtomicExchange_Workgroup_Float32.returnType = Type::FullType { Float32Type.name };
     AtomicExchange_Workgroup_Float32.parameters = AtomicExchange_Workgroup_Float32_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
@@ -3401,7 +3423,7 @@ void SetupIntrinsics9()
     AtomicStore_Uniform_Float16_semantics.type.literal = true;
     AtomicStore_Uniform_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_Float16.name = AtomicStore_Uniform_Float16_name;
-    AtomicStore_Uniform_Float16.backendIndex = 2187;
+    AtomicStore_Uniform_Float16.backendIndex = 2189;
     AtomicStore_Uniform_Float16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_Float16.parameters = AtomicStore_Uniform_Float16_args;
     Symbol::Resolved(&AtomicStore_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
@@ -3426,7 +3448,7 @@ void SetupIntrinsics9()
     AtomicStore_Workgroup_Float16_semantics.type.literal = true;
     AtomicStore_Workgroup_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_Float16.name = AtomicStore_Workgroup_Float16_name;
-    AtomicStore_Workgroup_Float16.backendIndex = 2188;
+    AtomicStore_Workgroup_Float16.backendIndex = 2190;
     AtomicStore_Workgroup_Float16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_Float16.parameters = AtomicStore_Workgroup_Float16_args;
     Symbol::Resolved(&AtomicStore_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
@@ -3452,7 +3474,7 @@ void SetupIntrinsics9()
     AtomicExchange_Uniform_Float16_semantics.type.literal = true;
     AtomicExchange_Uniform_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_Float16.name = AtomicExchange_Uniform_Float16_name;
-    AtomicExchange_Uniform_Float16.backendIndex = 2189;
+    AtomicExchange_Uniform_Float16.backendIndex = 2191;
     AtomicExchange_Uniform_Float16.returnType = Type::FullType { Float16Type.name };
     AtomicExchange_Uniform_Float16.parameters = AtomicExchange_Uniform_Float16_args;
     Symbol::Resolved(&AtomicExchange_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
@@ -3477,7 +3499,7 @@ void SetupIntrinsics9()
     AtomicExchange_Workgroup_Float16_semantics.type.literal = true;
     AtomicExchange_Workgroup_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_Float16.name = AtomicExchange_Workgroup_Float16_name;
-    AtomicExchange_Workgroup_Float16.backendIndex = 2190;
+    AtomicExchange_Workgroup_Float16.backendIndex = 2192;
     AtomicExchange_Workgroup_Float16.returnType = Type::FullType { Float16Type.name };
     AtomicExchange_Workgroup_Float16.parameters = AtomicExchange_Workgroup_Float16_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
@@ -3503,7 +3525,7 @@ void SetupIntrinsics9()
     AtomicMin_Uniform_UInt32_semantics.type.literal = true;
     AtomicMin_Uniform_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Uniform_UInt32.name = AtomicMin_Uniform_UInt32_name;
-    AtomicMin_Uniform_UInt32.backendIndex = 2191;
+    AtomicMin_Uniform_UInt32.backendIndex = 2193;
     AtomicMin_Uniform_UInt32.returnType = Type::FullType { Float16Type.name };
     AtomicMin_Uniform_UInt32.parameters = AtomicMin_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicMin_Uniform_UInt32_ptr)->typeSymbol = &Float16Type;
@@ -3528,7 +3550,7 @@ void SetupIntrinsics9()
     AtomicMin_Workgroup_UInt32_semantics.type.literal = true;
     AtomicMin_Workgroup_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Workgroup_UInt32.name = AtomicMin_Workgroup_UInt32_name;
-    AtomicMin_Workgroup_UInt32.backendIndex = 2192;
+    AtomicMin_Workgroup_UInt32.backendIndex = 2194;
     AtomicMin_Workgroup_UInt32.returnType = Type::FullType { Float16Type.name };
     AtomicMin_Workgroup_UInt32.parameters = AtomicMin_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicMin_Workgroup_UInt32_ptr)->typeSymbol = &Float16Type;
@@ -3554,7 +3576,7 @@ void SetupIntrinsics9()
     AtomicMax_Uniform_UInt32_semantics.type.literal = true;
     AtomicMax_Uniform_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Uniform_UInt32.name = AtomicMax_Uniform_UInt32_name;
-    AtomicMax_Uniform_UInt32.backendIndex = 2193;
+    AtomicMax_Uniform_UInt32.backendIndex = 2195;
     AtomicMax_Uniform_UInt32.returnType = Type::FullType { Float16Type.name };
     AtomicMax_Uniform_UInt32.parameters = AtomicMax_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicMax_Uniform_UInt32_ptr)->typeSymbol = &Float16Type;
@@ -3579,7 +3601,7 @@ void SetupIntrinsics9()
     AtomicMax_Workgroup_UInt32_semantics.type.literal = true;
     AtomicMax_Workgroup_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Workgroup_UInt32.name = AtomicMax_Workgroup_UInt32_name;
-    AtomicMax_Workgroup_UInt32.backendIndex = 2194;
+    AtomicMax_Workgroup_UInt32.backendIndex = 2196;
     AtomicMax_Workgroup_UInt32.returnType = Type::FullType { Float16Type.name };
     AtomicMax_Workgroup_UInt32.parameters = AtomicMax_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicMax_Workgroup_UInt32_ptr)->typeSymbol = &Float16Type;
@@ -3605,7 +3627,7 @@ void SetupIntrinsics9()
     AtomicMin_Uniform_Int32_semantics.type.literal = true;
     AtomicMin_Uniform_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Uniform_Int32.name = AtomicMin_Uniform_Int32_name;
-    AtomicMin_Uniform_Int32.backendIndex = 2195;
+    AtomicMin_Uniform_Int32.backendIndex = 2197;
     AtomicMin_Uniform_Int32.returnType = Type::FullType { Float16Type.name };
     AtomicMin_Uniform_Int32.parameters = AtomicMin_Uniform_Int32_args;
     Symbol::Resolved(&AtomicMin_Uniform_Int32_ptr)->typeSymbol = &Float16Type;
@@ -3630,7 +3652,7 @@ void SetupIntrinsics9()
     AtomicMin_Workgroup_Int32_semantics.type.literal = true;
     AtomicMin_Workgroup_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Workgroup_Int32.name = AtomicMin_Workgroup_Int32_name;
-    AtomicMin_Workgroup_Int32.backendIndex = 2196;
+    AtomicMin_Workgroup_Int32.backendIndex = 2198;
     AtomicMin_Workgroup_Int32.returnType = Type::FullType { Float16Type.name };
     AtomicMin_Workgroup_Int32.parameters = AtomicMin_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicMin_Workgroup_Int32_ptr)->typeSymbol = &Float16Type;
@@ -3656,7 +3678,7 @@ void SetupIntrinsics9()
     AtomicMax_Uniform_Int32_semantics.type.literal = true;
     AtomicMax_Uniform_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Uniform_Int32.name = AtomicMax_Uniform_Int32_name;
-    AtomicMax_Uniform_Int32.backendIndex = 2197;
+    AtomicMax_Uniform_Int32.backendIndex = 2199;
     AtomicMax_Uniform_Int32.returnType = Type::FullType { Float16Type.name };
     AtomicMax_Uniform_Int32.parameters = AtomicMax_Uniform_Int32_args;
     Symbol::Resolved(&AtomicMax_Uniform_Int32_ptr)->typeSymbol = &Float16Type;
@@ -3681,7 +3703,7 @@ void SetupIntrinsics9()
     AtomicMax_Workgroup_Int32_semantics.type.literal = true;
     AtomicMax_Workgroup_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Workgroup_Int32.name = AtomicMax_Workgroup_Int32_name;
-    AtomicMax_Workgroup_Int32.backendIndex = 2198;
+    AtomicMax_Workgroup_Int32.backendIndex = 2200;
     AtomicMax_Workgroup_Int32.returnType = Type::FullType { Float16Type.name };
     AtomicMax_Workgroup_Int32.parameters = AtomicMax_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicMax_Workgroup_Int32_ptr)->typeSymbol = &Float16Type;
@@ -3707,7 +3729,7 @@ void SetupIntrinsics9()
     AtomicMin_Uniform_UInt16_semantics.type.literal = true;
     AtomicMin_Uniform_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Uniform_UInt16.name = AtomicMin_Uniform_UInt16_name;
-    AtomicMin_Uniform_UInt16.backendIndex = 2199;
+    AtomicMin_Uniform_UInt16.backendIndex = 2201;
     AtomicMin_Uniform_UInt16.returnType = Type::FullType { Float16Type.name };
     AtomicMin_Uniform_UInt16.parameters = AtomicMin_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicMin_Uniform_UInt16_ptr)->typeSymbol = &Float16Type;
@@ -3732,7 +3754,7 @@ void SetupIntrinsics9()
     AtomicMin_Workgroup_UInt16_semantics.type.literal = true;
     AtomicMin_Workgroup_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Workgroup_UInt16.name = AtomicMin_Workgroup_UInt16_name;
-    AtomicMin_Workgroup_UInt16.backendIndex = 2200;
+    AtomicMin_Workgroup_UInt16.backendIndex = 2202;
     AtomicMin_Workgroup_UInt16.returnType = Type::FullType { Float16Type.name };
     AtomicMin_Workgroup_UInt16.parameters = AtomicMin_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicMin_Workgroup_UInt16_ptr)->typeSymbol = &Float16Type;
@@ -3758,7 +3780,7 @@ void SetupIntrinsics9()
     AtomicMax_Uniform_UInt16_semantics.type.literal = true;
     AtomicMax_Uniform_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Uniform_UInt16.name = AtomicMax_Uniform_UInt16_name;
-    AtomicMax_Uniform_UInt16.backendIndex = 2201;
+    AtomicMax_Uniform_UInt16.backendIndex = 2203;
     AtomicMax_Uniform_UInt16.returnType = Type::FullType { Float16Type.name };
     AtomicMax_Uniform_UInt16.parameters = AtomicMax_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicMax_Uniform_UInt16_ptr)->typeSymbol = &Float16Type;
@@ -3783,7 +3805,7 @@ void SetupIntrinsics9()
     AtomicMax_Workgroup_UInt16_semantics.type.literal = true;
     AtomicMax_Workgroup_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Workgroup_UInt16.name = AtomicMax_Workgroup_UInt16_name;
-    AtomicMax_Workgroup_UInt16.backendIndex = 2202;
+    AtomicMax_Workgroup_UInt16.backendIndex = 2204;
     AtomicMax_Workgroup_UInt16.returnType = Type::FullType { Float16Type.name };
     AtomicMax_Workgroup_UInt16.parameters = AtomicMax_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicMax_Workgroup_UInt16_ptr)->typeSymbol = &Float16Type;
@@ -3809,7 +3831,7 @@ void SetupIntrinsics9()
     AtomicMin_Uniform_Int16_semantics.type.literal = true;
     AtomicMin_Uniform_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Uniform_Int16.name = AtomicMin_Uniform_Int16_name;
-    AtomicMin_Uniform_Int16.backendIndex = 2203;
+    AtomicMin_Uniform_Int16.backendIndex = 2205;
     AtomicMin_Uniform_Int16.returnType = Type::FullType { Float16Type.name };
     AtomicMin_Uniform_Int16.parameters = AtomicMin_Uniform_Int16_args;
     Symbol::Resolved(&AtomicMin_Uniform_Int16_ptr)->typeSymbol = &Float16Type;
@@ -3834,7 +3856,7 @@ void SetupIntrinsics9()
     AtomicMin_Workgroup_Int16_semantics.type.literal = true;
     AtomicMin_Workgroup_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Workgroup_Int16.name = AtomicMin_Workgroup_Int16_name;
-    AtomicMin_Workgroup_Int16.backendIndex = 2204;
+    AtomicMin_Workgroup_Int16.backendIndex = 2206;
     AtomicMin_Workgroup_Int16.returnType = Type::FullType { Float16Type.name };
     AtomicMin_Workgroup_Int16.parameters = AtomicMin_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicMin_Workgroup_Int16_ptr)->typeSymbol = &Float16Type;
@@ -3860,7 +3882,7 @@ void SetupIntrinsics9()
     AtomicMax_Uniform_Int16_semantics.type.literal = true;
     AtomicMax_Uniform_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Uniform_Int16.name = AtomicMax_Uniform_Int16_name;
-    AtomicMax_Uniform_Int16.backendIndex = 2205;
+    AtomicMax_Uniform_Int16.backendIndex = 2207;
     AtomicMax_Uniform_Int16.returnType = Type::FullType { Float16Type.name };
     AtomicMax_Uniform_Int16.parameters = AtomicMax_Uniform_Int16_args;
     Symbol::Resolved(&AtomicMax_Uniform_Int16_ptr)->typeSymbol = &Float16Type;
@@ -3885,7 +3907,7 @@ void SetupIntrinsics9()
     AtomicMax_Workgroup_Int16_semantics.type.literal = true;
     AtomicMax_Workgroup_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Workgroup_Int16.name = AtomicMax_Workgroup_Int16_name;
-    AtomicMax_Workgroup_Int16.backendIndex = 2206;
+    AtomicMax_Workgroup_Int16.backendIndex = 2208;
     AtomicMax_Workgroup_Int16.returnType = Type::FullType { Float16Type.name };
     AtomicMax_Workgroup_Int16.parameters = AtomicMax_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicMax_Workgroup_Int16_ptr)->typeSymbol = &Float16Type;
@@ -3913,7 +3935,7 @@ void SetupIntrinsics9()
     AtomicCompareExchange_Uniform_UInt32_semantics.type.literal = true;
     AtomicCompareExchange_Uniform_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Uniform_UInt32.name = AtomicCompareExchange_Uniform_UInt32_name;
-    AtomicCompareExchange_Uniform_UInt32.backendIndex = 2207;
+    AtomicCompareExchange_Uniform_UInt32.backendIndex = 2209;
     AtomicCompareExchange_Uniform_UInt32.returnType = Type::FullType { Float16Type.name };
     AtomicCompareExchange_Uniform_UInt32.parameters = AtomicCompareExchange_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_ptr)->typeSymbol = &Float16Type;
@@ -3941,7 +3963,7 @@ void SetupIntrinsics9()
     AtomicCompareExchange_Workgroup_UInt32_semantics.type.literal = true;
     AtomicCompareExchange_Workgroup_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Workgroup_UInt32.name = AtomicCompareExchange_Workgroup_UInt32_name;
-    AtomicCompareExchange_Workgroup_UInt32.backendIndex = 2208;
+    AtomicCompareExchange_Workgroup_UInt32.backendIndex = 2210;
     AtomicCompareExchange_Workgroup_UInt32.returnType = Type::FullType { Float16Type.name };
     AtomicCompareExchange_Workgroup_UInt32.parameters = AtomicCompareExchange_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_ptr)->typeSymbol = &Float16Type;
@@ -3970,7 +3992,7 @@ void SetupIntrinsics9()
     AtomicCompareExchange_Uniform_Int32_semantics.type.literal = true;
     AtomicCompareExchange_Uniform_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Uniform_Int32.name = AtomicCompareExchange_Uniform_Int32_name;
-    AtomicCompareExchange_Uniform_Int32.backendIndex = 2209;
+    AtomicCompareExchange_Uniform_Int32.backendIndex = 2211;
     AtomicCompareExchange_Uniform_Int32.returnType = Type::FullType { Float16Type.name };
     AtomicCompareExchange_Uniform_Int32.parameters = AtomicCompareExchange_Uniform_Int32_args;
     Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_ptr)->typeSymbol = &Float16Type;
@@ -3998,7 +4020,7 @@ void SetupIntrinsics9()
     AtomicCompareExchange_Workgroup_Int32_semantics.type.literal = true;
     AtomicCompareExchange_Workgroup_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Workgroup_Int32.name = AtomicCompareExchange_Workgroup_Int32_name;
-    AtomicCompareExchange_Workgroup_Int32.backendIndex = 2210;
+    AtomicCompareExchange_Workgroup_Int32.backendIndex = 2212;
     AtomicCompareExchange_Workgroup_Int32.returnType = Type::FullType { Float16Type.name };
     AtomicCompareExchange_Workgroup_Int32.parameters = AtomicCompareExchange_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_ptr)->typeSymbol = &Float16Type;
@@ -4027,7 +4049,7 @@ void SetupIntrinsics9()
     AtomicCompareExchange_Uniform_UInt16_semantics.type.literal = true;
     AtomicCompareExchange_Uniform_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Uniform_UInt16.name = AtomicCompareExchange_Uniform_UInt16_name;
-    AtomicCompareExchange_Uniform_UInt16.backendIndex = 2211;
+    AtomicCompareExchange_Uniform_UInt16.backendIndex = 2213;
     AtomicCompareExchange_Uniform_UInt16.returnType = Type::FullType { Float16Type.name };
     AtomicCompareExchange_Uniform_UInt16.parameters = AtomicCompareExchange_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_ptr)->typeSymbol = &Float16Type;
@@ -4055,7 +4077,7 @@ void SetupIntrinsics9()
     AtomicCompareExchange_Workgroup_UInt16_semantics.type.literal = true;
     AtomicCompareExchange_Workgroup_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Workgroup_UInt16.name = AtomicCompareExchange_Workgroup_UInt16_name;
-    AtomicCompareExchange_Workgroup_UInt16.backendIndex = 2212;
+    AtomicCompareExchange_Workgroup_UInt16.backendIndex = 2214;
     AtomicCompareExchange_Workgroup_UInt16.returnType = Type::FullType { Float16Type.name };
     AtomicCompareExchange_Workgroup_UInt16.parameters = AtomicCompareExchange_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_ptr)->typeSymbol = &Float16Type;
@@ -4084,7 +4106,7 @@ void SetupIntrinsics9()
     AtomicCompareExchange_Uniform_Int16_semantics.type.literal = true;
     AtomicCompareExchange_Uniform_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Uniform_Int16.name = AtomicCompareExchange_Uniform_Int16_name;
-    AtomicCompareExchange_Uniform_Int16.backendIndex = 2213;
+    AtomicCompareExchange_Uniform_Int16.backendIndex = 2215;
     AtomicCompareExchange_Uniform_Int16.returnType = Type::FullType { Float16Type.name };
     AtomicCompareExchange_Uniform_Int16.parameters = AtomicCompareExchange_Uniform_Int16_args;
     Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_ptr)->typeSymbol = &Float16Type;
@@ -4112,7 +4134,7 @@ void SetupIntrinsics9()
     AtomicCompareExchange_Workgroup_Int16_semantics.type.literal = true;
     AtomicCompareExchange_Workgroup_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Workgroup_Int16.name = AtomicCompareExchange_Workgroup_Int16_name;
-    AtomicCompareExchange_Workgroup_Int16.backendIndex = 2214;
+    AtomicCompareExchange_Workgroup_Int16.backendIndex = 2216;
     AtomicCompareExchange_Workgroup_Int16.returnType = Type::FullType { Float16Type.name };
     AtomicCompareExchange_Workgroup_Int16.parameters = AtomicCompareExchange_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_ptr)->typeSymbol = &Float16Type;
@@ -4124,52 +4146,6 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->name = "atomicCompareExchange(workgroup *f16,f16,f16,literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *f16, value : f16, compare : f16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->returnTypeSymbol = &Float16Type;
-
-    /// bitInsert with UInt16, UInt16, UInt16, UInt16
-    BitInsert_UInt16_base.name = "base"_c;
-    BitInsert_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitInsert_UInt16_value.name = "value"_c;
-    BitInsert_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    BitInsert_UInt16_offset.name = "offset"_c;
-    BitInsert_UInt16_offset.type = Type::FullType{ UInt16Type.name };
-    BitInsert_UInt16_count.name = "count"_c;
-    BitInsert_UInt16_count.type = Type::FullType{ UInt16Type.name };
-    BitInsert_UInt16.documentation = "Insert bit into bitmask"_c;
-    BitInsert_UInt16.name = BitInsert_UInt16_name;
-    BitInsert_UInt16.backendIndex = 2215;
-    BitInsert_UInt16.returnType = Type::FullType { UInt16Type.name };
-    BitInsert_UInt16.parameters = BitInsert_UInt16_args;
-    Symbol::Resolved(&BitInsert_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitInsert_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitInsert_UInt16_offset)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitInsert_UInt16_count)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitInsert_UInt16)->signature = "bitInsert(u16,u16,u16,u16) u16"_c;
-    Symbol::Resolved(&BitInsert_UInt16)->name = "bitInsert(u16,u16,u16,u16)"_c;
-    Symbol::Resolved(&BitInsert_UInt16)->nameWithVarNames = "bitInsert(base : u16, value : u16, offset : u16, count : u16)"_c;
-    Symbol::Resolved(&BitInsert_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// bitInsert with UInt32, UInt32, UInt32, UInt32
-    BitInsert_UInt32_base.name = "base"_c;
-    BitInsert_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitInsert_UInt32_value.name = "value"_c;
-    BitInsert_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    BitInsert_UInt32_offset.name = "offset"_c;
-    BitInsert_UInt32_offset.type = Type::FullType{ UInt32Type.name };
-    BitInsert_UInt32_count.name = "count"_c;
-    BitInsert_UInt32_count.type = Type::FullType{ UInt32Type.name };
-    BitInsert_UInt32.documentation = "Insert bit into bitmask"_c;
-    BitInsert_UInt32.name = BitInsert_UInt32_name;
-    BitInsert_UInt32.backendIndex = 2216;
-    BitInsert_UInt32.returnType = Type::FullType { UInt32Type.name };
-    BitInsert_UInt32.parameters = BitInsert_UInt32_args;
-    Symbol::Resolved(&BitInsert_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitInsert_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitInsert_UInt32_offset)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitInsert_UInt32_count)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitInsert_UInt32)->signature = "bitInsert(u32,u32,u32,u32) u32"_c;
-    Symbol::Resolved(&BitInsert_UInt32)->name = "bitInsert(u32,u32,u32,u32)"_c;
-    Symbol::Resolved(&BitInsert_UInt32)->nameWithVarNames = "bitInsert(base : u32, value : u32, offset : u32, count : u32)"_c;
-    Symbol::Resolved(&BitInsert_UInt32)->returnTypeSymbol = &UInt32Type;
 
 }
 } // namespace GPULang

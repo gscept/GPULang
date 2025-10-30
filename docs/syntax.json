@@ -222,6 +222,7 @@
         "pixelGetDepth",
         "pixelGetFrontFacing",
         "pixelGetPrimitiveIndex",
+        "pixelGetSubpixelPosition",
         "pixelSetDepth",
         "pow",
         "reflect",
@@ -322,6 +323,7 @@
         "vertexGetOutputLayer",
         "vertexGetOutputViewport",
         "vertexSetOutputLayer",
-        "vertexSetOutputViewport"
+        "vertexSetOutputViewport",
+        "vertexSetPointSize"
     ]
 }

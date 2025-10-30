@@ -2997,6 +2997,35 @@ def generate_types():
             fun.spirv = spirv_function
             functions.append(fun)
 
+    intrinsic = "SetPointSize"
+    spirv_builtin = "PointSize"
+    function_name = f'Vertex{intrinsic}_{type}'
+    argument_name = f'{function_name}_arg'
+
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'vertex{intrinsic}',
+        return_type = 'Void',
+        documentation = "Sets the output point size for the current vertex.",
+        parameters = [
+            Variable(decl_name = argument_name, api_name = "val", type_name='Float32')
+        ]
+    )
+
+    spirv_function = '' 
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    return SPIRVResult::Invalid();\n'
+    
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
     # Export vertex coordinates
     four_component_float_vec_types = ['Float32x4', 'Float16x4']
     vertex_value_builtins_spirv = ['Position', 'Position']
@@ -3465,6 +3494,32 @@ def generate_types():
     fun.spirv = spirv_function
     functions.append(fun)
 
+    intrinsic = 'GetSubpixelPosition'
+    spirv_builtin = 'PointCoord'
+    function_name = f'Pixel{intrinsic}'
+    fun = Function(
+        decl_name = function_name,
+        api_name = f'pixel{intrinsic}',
+        return_type = 'Float32x2',
+        documentation = 'Returns the subpixel position of the current texel',
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+    spirv_function += '    return res;\n'
+    fun.spirv = spirv_function
+    functions.append(fun)
+
     intrinsic = 'GetDepth'
     spirv_builtin = 'FragDepth'
     function_name = f'Pixel{intrinsic}'
@@ -3488,7 +3543,6 @@ def generate_types():
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    return res;\n'
-    
 
     fun.spirv = spirv_function
     functions.append(fun)

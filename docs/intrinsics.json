@@ -2877,6 +2877,21 @@
         ]
     },
     {
+        "name": "pixelGetSubpixelPosition",
+        "documentation": "Returns the subpixel position of the current texel",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "pixelGetSubpixelPosition() f32x2"
+            }
+        ]
+    },
+    {
         "name": "pixelSetDepth",
         "documentation": "Sets the depth value for the current pixel",
         "target_support": [
@@ -7019,6 +7034,21 @@
             },
             {
                 "signature": "vertexSetOutputViewport(val: u32) void"
+            }
+        ]
+    },
+    {
+        "name": "vertexSetPointSize",
+        "documentation": "Sets the output point size for the current vertex.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "vertexSetPointSize(val: f32) void"
             }
         ]
     }

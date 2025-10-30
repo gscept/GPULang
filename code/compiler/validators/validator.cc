@@ -2590,7 +2590,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             if (varResolved->storage != Storage::Uniform)
             {
-                compiler->Error(Format("Global variables of sampler/texture/pixel_cache types must be 'uniform'"), symbol);
+                compiler->Error(Format("Arguments of sampler/texture/pixel_cache types must be 'uniform'"), symbol);
                 return false;
             }
         }
@@ -3938,6 +3938,19 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
         Variable* var = outParams.ptr[iterator];
         Variable::__Resolved* outResolved = Symbol::Resolved(var);
         Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[iterator]);
+
+        // If parameter, all array types must be sized
+        for (size_t i = 0; i < inParams.ptr[iterator]->type.modifiers.size; i++)
+        {
+            if (inParams.ptr[iterator]->type.modifiers[i] == Type::FullType::Modifier::Array)
+            {
+                if (inParams.ptr[iterator]->type.modifierValues[i] == nullptr)
+                {
+                    compiler->Error(Format("Arguments of array type must be statically sized"), inParams.ptr[iterator]);
+                    return false;
+                }
+            }
+        }
 
         // Add transient modifiers from the next stages in parameters to the previous stages out parameters
         ProgramInstance::__Resolved* progRes = Symbol::Resolved(compiler->currentState.prog);
