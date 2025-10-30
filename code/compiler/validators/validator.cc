@@ -2518,23 +2518,14 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             if (numArrays > 1)
             {
-                compiler->Error(Format("Variables of non scalar type in the global scope may only be a one dimensional array"), symbol);
+                compiler->Error(Format("Global variables of non scalar type in the global scope may only be a one dimensional array"), symbol);
                 return false;
             }
             if (numPointers > 1)
             {
-                compiler->Error(Format("Variables of non scalar type in the global scope may only be single pointer"), symbol);
+                compiler->Error(Format("Global variables of non scalar type in the global scope may only be single pointer"), symbol);
                 return false;
             }
-            
-
-            /*
-            if (varResolved->type.modifiers.front() != Type::FullType::Modifier::Pointer && (varResolved->typeSymbol->category == Type::StructureCategory || varResolved->typeSymbol->category == Type::ScalarCategory))
-            {
-                compiler->Error(Format("Variables in the global scope with storage 'uniform' must be pointers"), symbol);
-                return false;        
-            }
-            */
 
             if (
                 type->category != Type::SamplerCategory 
@@ -2546,7 +2537,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 && type->category != Type::StructureCategory
                 )
             {
-                compiler->Error(Format("Variables of storage 'uniform' may only be pointers to 'sampler'/'texture'/'pixel_cache'/'struct' types"), symbol);
+                compiler->Error(Format("Global variables of storage 'uniform' may only be pointers to sampler, texture, pixel_cache, accelerationStructure or struct types"), symbol);
                 return false;
             }
         }
@@ -2554,22 +2545,22 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             if (type->category != Type::StructureCategory)
             {
-                compiler->Error(Format("Variables of storage 'inline_uniform' storage may only be pointers to 'struct' types"), symbol);
+                compiler->Error(Format("Global variables of storage 'inline_uniform' storage may only be pointers to struct types"), symbol);
                 return false;
             }
         }
-        else // Types that are not resources
+        else // Variables not stored as external resources
         {
             if (type->category == Type::SamplerCategory || type->category == Type::TextureCategory || type->category == Type::PixelCacheCategory)
             {
-                compiler->Error(Format("Variables of sampler/texture/pixel_cache types must be 'uniform'"), symbol);
+                compiler->Error(Format("Global variables of sampler, texture or pixel_cache types must be 'uniform'"), symbol);
                 return false;
             }
             
             if (varResolved->usageBits.flags.isConst && var->valueExpression == nullptr)
             {
                 // check for variable initialization criteria
-                compiler->Error(Format("Variable declared as const but is never initialized"), symbol);
+                compiler->Error(Format("Global variable declared as const but is never initialized"), symbol);
                 return false;
             }
             if (varResolved->storage == Storage::Default)
@@ -2583,15 +2574,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Storage type not allowed on struct member %s", type->name.c_str()), symbol);
             return false;
         }
-
-        /*
-        if (varResolved->typeSymbol->baseType == TypeCode::Bool)
-        {
-            compiler->Warning(Format("Struct member %s of type 'b8' will be automatically promoted to u32", varResolved->name.c_str()), symbol);
-            varResolved->type.name = "u32";
-            varResolved->typeSymbol = compiler->GetType(varResolved->type);
-        }
-        */
     }
     else if (varResolved->usageBits.flags.isParameter)
     {
@@ -2608,20 +2590,13 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             if (varResolved->storage != Storage::Uniform)
             {
-                compiler->Error(Format("Variables of sampler/texture/pixel_cache types must be 'uniform'"), symbol);
+                compiler->Error(Format("Global variables of sampler/texture/pixel_cache types must be 'uniform'"), symbol);
                 return false;
             }
         }
     }
     else // Local variable
     {
-        /*
-        if (firstIndirectionModifier == Type::FullType::Modifier::Pointer && !varResolved->usageBits.flags.isParameter)
-        {
-            compiler->Error(Format("Pointers are only allowed on variables in the global scope", type->name.c_str()), symbol);
-            return false;
-        }
-        */
         // If the type is a pointer, we may have uniform and workgroup variables in a function
         if (firstIndirectionModifier == Type::FullType::Modifier::Pointer)
         {

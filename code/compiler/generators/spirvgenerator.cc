@@ -3034,14 +3034,17 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
     assert(arg.derefs > 0 ? !arg.isValue : true);
     assert(arg.parentTypes.size() == arg.parentScopes.size());
 
-    for (uint32_t i = 0; i < arg.derefs; i++)
+    if (arg.derefs > arg.addrefs)
     {
-        type = arg.parentTypes.back();
-        arg.parentTypes.pop_back();
-        scope = arg.parentScopes.back();
-        arg.parentScopes.pop_back();
-        val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val));
-        arg.isValue = arg.parentTypes.empty();
+        for (uint32_t i = 0; i < arg.derefs - arg.addrefs; i++)
+        {
+            type = arg.parentTypes.back();
+            arg.parentTypes.pop_back();
+            scope = arg.parentScopes.back();
+            arg.parentScopes.pop_back();
+            val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val));
+            arg.isValue = arg.parentTypes.empty();
+        }
     }
 
     val = AccessChainSPIRV(compiler, generator, val, type, arg.accessChain);
@@ -3099,12 +3102,13 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     uint32_t val = target.name;
     uint32_t type = target.typeName;
 
-    assert(target.derefs <= target.parentTypes.back());
-    if (target.derefs > 1)
+    if (target.derefs > target.addrefs)
     {
-        for (uint32_t i = 0; i < target.derefs; i++)
+        for (uint32_t i = 0; i < target.derefs - target.addrefs; i++)
         {
-            target.AddAccessChainLink({ GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(0)) });
+            type = target.parentTypes.back();
+            target.parentTypes.pop_back();
+            val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val));
         }
     }
     
@@ -3113,7 +3117,7 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     // Perform OpStore if source is a value, otherwise copy memory
     if (source.isValue)
     {
-        if (target.parentTypes.rbegin()[target.derefs] != source.typeName)
+        if (target.parentTypes.back() != source.typeName)
         {
             source.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, target.parentTypes.back(), source);
         }
@@ -3756,33 +3760,58 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             TransientString type = ToSPIRVTypeString(compiler, generator, param->type, paramResolved->typeSymbol);
             generator->typeState.storage = SPIRVResult::Storage::Function;
 
+            bool logicallyAddressed = storage == SPIRVResult::Storage::UniformConstant
+                || storage == SPIRVResult::Storage::Image
+                || storage == SPIRVResult::Storage::Sampler
+                || storage == SPIRVResult::Storage::MutableImage
+                || storage == SPIRVResult::Storage::StorageBuffer && paramResolved->typeSymbol->category == Type::Category::StructureCategory
+                || storage == SPIRVResult::Storage::Uniform && paramResolved->typeSymbol->category == Type::Category::StructureCategory
+                || storage == SPIRVResult::Storage::PushConstant;
+
+
             // If value is not a pointer, generate a copy of the value inside the function
-            if (!param->type.IsPointer())
+            if (!logicallyAddressed)
             {
-                uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{param->name.c_str()});
-                ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
+                // If not a pointer, make a local copy of the variable
+                if (!param->type.IsPointer())
+                {
+                    uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{ param->name.c_str() });
 
-                TStr argPtrType = TStr::Compact("ptr_", type, "_", scope);
-                uint32_t typePtrName = GPULang::AddType(generator, argPtrType, OpTypePointer, ScopeToEnum(varType.scope), SPVArg{varType.typeName});
+                    // Function parameters are values if they are not pointers
+                    ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
+                    TStr argPtrType = TStr::Compact("ptr_", type, "_", scope);
+                    uint32_t typePtrName = GPULang::AddType(generator, argPtrType, OpTypePointer, ScopeToEnum(varType.scope), SPVArg{ varType.typeName });
+                    uint32_t paramSymbol = generator->writer->MappedInstruction(OpVariable, SPVWriter::Section::VariableDeclarations, typePtrName, VariableStorage::Function, SPVComment(param->name.c_str()));
 
-                // Function parameters are values if they are not pointers
-                uint32_t paramSymbol = generator->writer->MappedInstruction(OpVariable, SPVWriter::Section::VariableDeclarations, typePtrName, VariableStorage::Function, SPVComment(param->name.c_str()));
+                    SPIRVResult res;
+                    res.name = paramSymbol;
+                    res.typeName = typePtrName;
+                    res.parentTypes = varType.parentTypes;
+                    res.parentScopes = varType.parentScopes;
+                    res.parentTypes.push_back(varType.typeName);
+                    res.parentScopes.push_back(varType.scope);
+                    res.isValue = false;
 
-                SPIRVResult res;
-                res.name = paramSymbol;
-                res.typeName = typePtrName;
-                res.parentTypes = varType.parentTypes;
-                res.parentScopes = varType.parentScopes;
-                res.parentTypes.push_back(varType.typeName);
-                res.parentScopes.push_back(varType.scope);
-                res.isValue = false;
+                    BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
+                    generator->writer->Instruction(OpStore, SPVWriter::Section::ParameterInitializations, SPVArg{ paramSymbol }, SPVArg{ paramName });
+                }
+                else
+                {
+                    uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{ param->name.c_str() });
 
-                BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
-                generator->writer->Instruction(OpStore, SPVWriter::Section::ParameterInitializations, SPVArg{ paramSymbol }, SPVArg{ paramName });
+                    SPIRVResult res;
+                    res.name = paramName;
+                    res.typeName = varType.typeName;
+                    res.parentTypes = varType.parentTypes;
+                    res.parentScopes = varType.parentScopes;
+                    res.isValue = false;
+                    res.addrefs++; // Variables generally have an extra reference, so add this to compensate for the extra deref
+                    BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
+                }
             }
             else
             {
-                // If value is already a pointer, then any stores to it in the function should be visible externally
+                // If parameter is a logically addressed resource, 
                 uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{ param->name.c_str() });
                 SPIRVResult res;
                 res.name = paramName;

@@ -1478,8 +1478,23 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
             // Otherwise, break because the expression is over
             break;
         }
+
+        // Special rule to deal with access operator (.) not allowing anything to follow it
+        if (precedenceTable == PrefixPrecedenceTable)
+        {
+            if (
+                stream.Type(-1) == TokenType::Dot 
+                && type != TokenType::Identifier
+                && (TokenClassTable[(uint32_t)type] & TOKEN_OPERATOR_BIT) == 0x0
+                )
+            {
+                ret.diagnostics.Append(UnexpectedToken(stream, "unary expression or identifier"));
+                break;
+            }
+        }
         if (stream.Match(TokenType::Quote))
         {
+            
             const Token& tok = stream.Data(-1);
             Expression* res = Alloc<StringExpression>(std::string(tok.text));
             res->location = LocationFromToken(tok);
@@ -1673,6 +1688,8 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
             }
             else // Assume call
             {
+
+
                 Operator parseTok;
                 parseTok.type = TokenType::Call;
                 parseTok.operandDepth = operandStack.size;

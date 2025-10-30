@@ -128,6 +128,13 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '&':
         {
+            uint32_t access;
+            this->expr->EvalAccessFlags(access);
+            if (access & AccessFlags::Const)
+            {
+                compiler->Error("Getting the pointer to a const value is not allowed", this);
+                return false;
+            }
             // Add modifier to type
             type.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(type.modifiers, Type::FullType::Modifier::Pointer);
             type.modifierValues = TransientArray<Expression*>::Concatenate(type.modifierValues, (Expression*)nullptr);
