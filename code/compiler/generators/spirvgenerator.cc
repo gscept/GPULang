@@ -3099,11 +3099,13 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     uint32_t val = target.name;
     uint32_t type = target.typeName;
 
-    for (uint32_t i = 0; i < target.derefs; i++)
+    assert(target.derefs <= target.parentTypes.back());
+    if (target.derefs > 1)
     {
-        type = target.parentTypes.back();
-        target.parentTypes.pop_back();
-        val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val));
+        for (uint32_t i = 0; i < target.derefs; i++)
+        {
+            target.AddAccessChainLink({ GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(0)) });
+        }
     }
     
     val = AccessChainSPIRV(compiler, generator, val, type, target.accessChain);
@@ -3111,7 +3113,7 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     // Perform OpStore if source is a value, otherwise copy memory
     if (source.isValue)
     {
-        if (target.parentTypes.back() != source.typeName)
+        if (target.parentTypes.rbegin()[target.derefs] != source.typeName)
         {
             source.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, target.parentTypes.back(), source);
         }
