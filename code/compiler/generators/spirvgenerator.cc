@@ -3102,9 +3102,9 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     uint32_t val = target.name;
     uint32_t type = target.typeName;
 
-    if (target.derefs > 0 && target.derefs-1 > target.addrefs)
+    if (target.derefs > target.addrefs)
     {
-        for (uint32_t i = 0; i < target.derefs-1 - target.addrefs; i++)
+        for (uint32_t i = 0; i < target.derefs - target.addrefs; i++)
         {
             type = target.parentTypes.back();
             target.parentTypes.pop_back();
@@ -3769,45 +3769,28 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 || storage == SPIRVResult::Storage::PushConstant;
 
 
-            // If value is not a pointer, generate a copy of the value inside the function
+            // If value is not logically addressed (such arguments are uniform, which is treated as constants for storage), generate a variable that points to the function parameter
             if (!logicallyAddressed)
             {
-                // If not a pointer, make a local copy of the variable
-                if (!param->type.IsPointer())
-                {
-                    uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{ param->name.c_str() });
+                uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{ param->name.c_str() });
 
-                    // Function parameters are values if they are not pointers
-                    ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
-                    TStr argPtrType = TStr::Compact("ptr_", type, "_", scope);
-                    uint32_t typePtrName = GPULang::AddType(generator, argPtrType, OpTypePointer, ScopeToEnum(varType.scope), SPVArg{ varType.typeName });
-                    uint32_t paramSymbol = generator->writer->MappedInstruction(OpVariable, SPVWriter::Section::VariableDeclarations, typePtrName, VariableStorage::Function, SPVComment(param->name.c_str()));
+                // Function parameters are values if they are not pointers
+                ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
+                TStr argPtrType = TStr::Compact("ptr_", type, "_", scope);
+                uint32_t typePtrName = GPULang::AddType(generator, argPtrType, OpTypePointer, ScopeToEnum(varType.scope), SPVArg{ varType.typeName });
+                uint32_t paramSymbol = generator->writer->MappedInstruction(OpVariable, SPVWriter::Section::VariableDeclarations, typePtrName, VariableStorage::Function, SPVComment(param->name.c_str()));
 
-                    SPIRVResult res;
-                    res.name = paramSymbol;
-                    res.typeName = typePtrName;
-                    res.parentTypes = varType.parentTypes;
-                    res.parentScopes = varType.parentScopes;
-                    res.parentTypes.push_back(varType.typeName);
-                    res.parentScopes.push_back(varType.scope);
-                    res.isValue = false;
+                SPIRVResult res;
+                res.name = paramSymbol;
+                res.typeName = typePtrName;
+                res.parentTypes = varType.parentTypes;
+                res.parentScopes = varType.parentScopes;
+                res.parentTypes.push_back(varType.typeName);
+                res.parentScopes.push_back(varType.scope);
+                res.isValue = false;
 
-                    BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
-                    generator->writer->Instruction(OpStore, SPVWriter::Section::ParameterInitializations, SPVArg{ paramSymbol }, SPVArg{ paramName });
-                }
-                else
-                {
-                    uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{ param->name.c_str() });
-
-                    SPIRVResult res;
-                    res.name = paramName;
-                    res.typeName = varType.typeName;
-                    res.parentTypes = varType.parentTypes;
-                    res.parentScopes = varType.parentScopes;
-                    res.isValue = false;
-                    //res.addrefs++; // Variables generally have an extra reference, so add this to compensate for the extra deref
-                    BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
-                }
+                BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
+                generator->writer->Instruction(OpStore, SPVWriter::Section::ParameterInitializations, SPVArg{ paramSymbol }, SPVArg{ paramName });
             }
             else
             {
