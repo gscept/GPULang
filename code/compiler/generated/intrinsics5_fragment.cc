@@ -1191,14 +1191,14 @@ void SetupIntrinsics5()
     distance_Float32x2.documentation = "Returns the distance between two points."_c;
     distance_Float32x2.name = distance_Float32x2_name;
     distance_Float32x2.backendIndex = 1600;
-    distance_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    distance_Float32x2.returnType = Type::FullType { Float32Type.name };
     distance_Float32x2.parameters = distance_Float32x2_args;
     Symbol::Resolved(&distance_Float32x2_p0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&distance_Float32x2_p1)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&distance_Float32x2)->signature = "distance(f32x2,f32x2) f32x2"_c;
+    Symbol::Resolved(&distance_Float32x2)->signature = "distance(f32x2,f32x2) f32"_c;
     Symbol::Resolved(&distance_Float32x2)->name = "distance(f32x2,f32x2)"_c;
     Symbol::Resolved(&distance_Float32x2)->nameWithVarNames = "distance(p0 : f32x2, p1 : f32x2)"_c;
-    Symbol::Resolved(&distance_Float32x2)->returnTypeSymbol = &Float32x2Type;
+    Symbol::Resolved(&distance_Float32x2)->returnTypeSymbol = &Float32Type;
 
     /// distance with Float32x3, Float32x3
     distance_Float32x3_p0.name = "p0"_c;
@@ -1208,14 +1208,14 @@ void SetupIntrinsics5()
     distance_Float32x3.documentation = "Returns the distance between two points."_c;
     distance_Float32x3.name = distance_Float32x3_name;
     distance_Float32x3.backendIndex = 1601;
-    distance_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    distance_Float32x3.returnType = Type::FullType { Float32Type.name };
     distance_Float32x3.parameters = distance_Float32x3_args;
     Symbol::Resolved(&distance_Float32x3_p0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&distance_Float32x3_p1)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&distance_Float32x3)->signature = "distance(f32x3,f32x3) f32x3"_c;
+    Symbol::Resolved(&distance_Float32x3)->signature = "distance(f32x3,f32x3) f32"_c;
     Symbol::Resolved(&distance_Float32x3)->name = "distance(f32x3,f32x3)"_c;
     Symbol::Resolved(&distance_Float32x3)->nameWithVarNames = "distance(p0 : f32x3, p1 : f32x3)"_c;
-    Symbol::Resolved(&distance_Float32x3)->returnTypeSymbol = &Float32x3Type;
+    Symbol::Resolved(&distance_Float32x3)->returnTypeSymbol = &Float32Type;
 
     /// distance with Float32x4, Float32x4
     distance_Float32x4_p0.name = "p0"_c;
@@ -1225,14 +1225,14 @@ void SetupIntrinsics5()
     distance_Float32x4.documentation = "Returns the distance between two points."_c;
     distance_Float32x4.name = distance_Float32x4_name;
     distance_Float32x4.backendIndex = 1602;
-    distance_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    distance_Float32x4.returnType = Type::FullType { Float32Type.name };
     distance_Float32x4.parameters = distance_Float32x4_args;
     Symbol::Resolved(&distance_Float32x4_p0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&distance_Float32x4_p1)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&distance_Float32x4)->signature = "distance(f32x4,f32x4) f32x4"_c;
+    Symbol::Resolved(&distance_Float32x4)->signature = "distance(f32x4,f32x4) f32"_c;
     Symbol::Resolved(&distance_Float32x4)->name = "distance(f32x4,f32x4)"_c;
     Symbol::Resolved(&distance_Float32x4)->nameWithVarNames = "distance(p0 : f32x4, p1 : f32x4)"_c;
-    Symbol::Resolved(&distance_Float32x4)->returnTypeSymbol = &Float32x4Type;
+    Symbol::Resolved(&distance_Float32x4)->returnTypeSymbol = &Float32Type;
 
     /// distance with Float16x2, Float16x2
     distance_Float16x2_p0.name = "p0"_c;
@@ -1242,14 +1242,14 @@ void SetupIntrinsics5()
     distance_Float16x2.documentation = "Returns the distance between two points."_c;
     distance_Float16x2.name = distance_Float16x2_name;
     distance_Float16x2.backendIndex = 1603;
-    distance_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    distance_Float16x2.returnType = Type::FullType { Float16Type.name };
     distance_Float16x2.parameters = distance_Float16x2_args;
     Symbol::Resolved(&distance_Float16x2_p0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&distance_Float16x2_p1)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&distance_Float16x2)->signature = "distance(f16x2,f16x2) f16x2"_c;
+    Symbol::Resolved(&distance_Float16x2)->signature = "distance(f16x2,f16x2) f16"_c;
     Symbol::Resolved(&distance_Float16x2)->name = "distance(f16x2,f16x2)"_c;
     Symbol::Resolved(&distance_Float16x2)->nameWithVarNames = "distance(p0 : f16x2, p1 : f16x2)"_c;
-    Symbol::Resolved(&distance_Float16x2)->returnTypeSymbol = &Float16x2Type;
+    Symbol::Resolved(&distance_Float16x2)->returnTypeSymbol = &Float16Type;
 
     /// distance with Float16x3, Float16x3
     distance_Float16x3_p0.name = "p0"_c;
@@ -1259,14 +1259,14 @@ void SetupIntrinsics5()
     distance_Float16x3.documentation = "Returns the distance between two points."_c;
     distance_Float16x3.name = distance_Float16x3_name;
     distance_Float16x3.backendIndex = 1604;
-    distance_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    distance_Float16x3.returnType = Type::FullType { Float16Type.name };
     distance_Float16x3.parameters = distance_Float16x3_args;
     Symbol::Resolved(&distance_Float16x3_p0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&distance_Float16x3_p1)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&distance_Float16x3)->signature = "distance(f16x3,f16x3) f16x3"_c;
+    Symbol::Resolved(&distance_Float16x3)->signature = "distance(f16x3,f16x3) f16"_c;
     Symbol::Resolved(&distance_Float16x3)->name = "distance(f16x3,f16x3)"_c;
     Symbol::Resolved(&distance_Float16x3)->nameWithVarNames = "distance(p0 : f16x3, p1 : f16x3)"_c;
-    Symbol::Resolved(&distance_Float16x3)->returnTypeSymbol = &Float16x3Type;
+    Symbol::Resolved(&distance_Float16x3)->returnTypeSymbol = &Float16Type;
 
     /// distance with Float16x4, Float16x4
     distance_Float16x4_p0.name = "p0"_c;
@@ -1276,14 +1276,14 @@ void SetupIntrinsics5()
     distance_Float16x4.documentation = "Returns the distance between two points."_c;
     distance_Float16x4.name = distance_Float16x4_name;
     distance_Float16x4.backendIndex = 1605;
-    distance_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    distance_Float16x4.returnType = Type::FullType { Float16Type.name };
     distance_Float16x4.parameters = distance_Float16x4_args;
     Symbol::Resolved(&distance_Float16x4_p0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&distance_Float16x4_p1)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&distance_Float16x4)->signature = "distance(f16x4,f16x4) f16x4"_c;
+    Symbol::Resolved(&distance_Float16x4)->signature = "distance(f16x4,f16x4) f16"_c;
     Symbol::Resolved(&distance_Float16x4)->name = "distance(f16x4,f16x4)"_c;
     Symbol::Resolved(&distance_Float16x4)->nameWithVarNames = "distance(p0 : f16x4, p1 : f16x4)"_c;
-    Symbol::Resolved(&distance_Float16x4)->returnTypeSymbol = &Float16x4Type;
+    Symbol::Resolved(&distance_Float16x4)->returnTypeSymbol = &Float16Type;
 
     /// min with Float32, Float32
     min_Float32_x.name = "x"_c;

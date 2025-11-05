@@ -2531,7 +2531,7 @@ def generate_types():
         fun = Function(
             decl_name = function_name,
             api_name = intrinsic,
-            return_type = type,
+            return_type = base_type_mapping[type],
             documentation = 'Returns the distance between two points.',
             parameters = [
                 Variable(decl_name = p0_name, api_name = "p0", type_name=type),
@@ -2707,10 +2707,11 @@ def generate_types():
         functions.append(fun)
 
     # Ceil, Floor, Fract, Saturate, Trunc, Ddx, Ddy, Fwidth
-    ops = ['ceil', 'floor', 'fract', 'saturate', 'trunc', 'ddx', 'ddy', 'fwidth']
+    ops = ['ceil', 'floor', 'round', 'fract', 'saturate', 'trunc', 'ddx', 'ddy', 'fwidth']
     docs = [
         'Returns the smallest integer value that is greater than or equal to the input.',
         'Returns the largest integer value that is less than or equal to the input.',
+        'Returns the nearest integer value to the input.',
         'Returns the fractional part of the input.',
         'Returns the input clamped to the range [0, 1].',
         'Returns the integer part of the input, removing any fractional part.',
@@ -2718,7 +2719,7 @@ def generate_types():
         'Returns the derivative of the input with respect to the screen y coordinate.',
         'Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates.'
     ]
-    spirv_ops = ['Ceil', 'Floor', 'Fract', 'Saturate', 'Trunc', 'DPdx', 'DPdy', 'Fwidth']
+    spirv_ops = ['Ceil', 'Floor', 'Round', 'Fract', 'Saturate', 'Trunc', 'DPdx', 'DPdy', 'Fwidth']
     for intrinsic, spirv_op, doc in zip(ops, spirv_ops, docs):
         for type in float_types:
             function_name = f'{intrinsic}_{type}'
@@ -2791,53 +2792,59 @@ def generate_types():
     for type1 in cast_types:
         for type2 in cast_types:
             if type1 != type2:
-                intrinsic = f'castTo{data_type_mapping[type1].title()}'
-                function_name = f'{intrinsic}_{type2}'
-                argument_name = f'{function_name}_arg'
-                fun = Function( 
-                    decl_name = function_name,
-                    api_name = intrinsic,
-                    return_type = type1,
-                    documentation = f'Casts to type {type1} without conversion.',
-                    parameters = [
-                        Variable(decl_name = argument_name, api_name = "val", type_name=type2)
-                    ]
-                )
-                spirv_function = ''
-                spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
-                spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, returnType, val);\n'
-                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
-                
+                for size in [1, 2, 3, 4]:
+                    type1_vec = f'{type1}x{size}' if size > 1 else type1
+                    type2_vec = f'{type2}x{size}' if size > 1 else type2
+                    intrinsic = f'castTo{data_type_mapping[type1].title()}'
+                    function_name = f'{intrinsic}_{type2_vec}'
+                    argument_name = f'{function_name}_arg'
+                    fun = Function( 
+                        decl_name = function_name,
+                        api_name = intrinsic,
+                        return_type = type1,
+                        documentation = f'Casts to type {type1_vec} without conversion.',
+                        parameters = [
+                            Variable(decl_name = argument_name, api_name = "val", type_name=type2_vec)
+                        ]
+                    )
+                    spirv_function = ''
+                    spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+                    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, returnType, val);\n'
+                    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                    
 
-                fun.spirv = spirv_function
-                functions.append(fun)
+                    fun.spirv = spirv_function
+                    functions.append(fun)
 
     cast_types = ["Float32", "UInt32", "Int32"]
 
     for type1 in cast_types:
         for type2 in cast_types:
             if type1 != type2:
-                intrinsic = f'castTo{data_type_mapping[type1].title()}'
-                function_name = f'{intrinsic}_{type2}'
-                argument_name = f'{function_name}_arg'
-                fun = Function( 
-                    decl_name = function_name,
-                    api_name = intrinsic,
-                    return_type = type1,
-                    documentation = f'Casts to type {type1} without conversion.',
-                    parameters = [
-                        Variable(decl_name = argument_name, api_name = "val", type_name=type2)
-                    ]
-                )
+                for size in [1, 2, 3, 4]:
+                    type1_vec = f'{type1}x{size}' if size > 1 else type1
+                    type2_vec = f'{type2}x{size}' if size > 1 else type2
+                    intrinsic = f'castTo{data_type_mapping[type1].title()}'
+                    function_name = f'{intrinsic}_{type2_vec}'
+                    argument_name = f'{function_name}_arg'
+                    fun = Function( 
+                        decl_name = function_name,
+                        api_name = intrinsic,
+                        return_type = type1_vec,
+                        documentation = f'Casts to type {type1_vec} without conversion.',
+                        parameters = [
+                            Variable(decl_name = argument_name, api_name = "val", type_name=type2_vec)
+                        ]
+                    )
 
-                spirv_function = ''
-                spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
-                spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, returnType, val);\n'
-                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
-                
+                    spirv_function = ''
+                    spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+                    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, returnType, val);\n'
+                    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                    
 
-                fun.spirv = spirv_function
-                functions.append(fun)
+                    fun.spirv = spirv_function
+                    functions.append(fun)
 
     # Any and all
     ops = ['any', 'all']
@@ -3090,7 +3097,7 @@ def generate_types():
     fun.spirv = spirv_function
     functions.append(fun)
 
-    primitive_get_id_stages = ['Hull', 'Domain', 'Pixel']
+    primitive_get_id_stages = ['Geometry', 'Task', 'Mesh']
     intrinsic = "GetPrimitiveIndex"
     doc = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."
     for stage in primitive_get_id_stages:
@@ -3124,34 +3131,39 @@ def generate_types():
         fun.spirv = spirv_function
         functions.append(fun)
 
-    intrinsic = 'GetInvocationIndex'
+    vertex_index_stages= ['Geometry', 'Hull']
+    intrinsic = 'GetVertexIndex'
     docs = 'Returns the invocation index of the vertex within the primitive being processed.'
 
-    function_name = f'Geometry{intrinsic}'
-    fun = Function( 
-        decl_name = function_name,
-        api_name = f'geometry{intrinsic}',
-        return_type = 'UInt32',
-        documentation=doc,
-        parameters = [
-        ]
-    )
+    for stage in vertex_index_stages:
+        function_name = f'{stage}{intrinsic}'
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'{stage.lower()}{intrinsic}',
+            return_type = 'UInt32',
+            documentation=doc,
+            parameters = [
+            ]
+        )
 
-    spirv_function = ''
-    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-    spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
-    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
-    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryGetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::InvocationId);\n'
-    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-    spirv_function += '    res.parentTypes.push_back(baseType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
-    spirv_function += '    return res;\n'
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+        if stage == 'Hull':
+            spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
+        elif stage == 'Geometry':
+            spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{stage}GetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::InvocationId);\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    return res;\n'
 
-    fun.spirv = spirv_function
-    functions.append(fun)
+        fun.spirv = spirv_function
+        functions.append(fun)
 
     for type, spirv_builtin in zip(four_component_float_vec_types, vertex_value_builtins_spirv):
         intrinsic = 'ExportVertex'
@@ -3215,20 +3227,30 @@ def generate_types():
         return_type = 'Void',
         documentation=docs,
         parameters = [
-            Variable(decl_name = f'{function_name}_arg', api_name = "levels", type_name='Float32x4')
+            Variable(decl_name = f'{function_name}_arg0', api_name = "f0", type_name='Float32'),
+            Variable(decl_name = f'{function_name}_arg1', api_name = "f1", type_name='Float32'),
+            Variable(decl_name = f'{function_name}_arg2', api_name = "f2", type_name='Float32'),
+            Variable(decl_name = f'{function_name}_arg3', api_name = "f3", type_name='Float32')
         ]
     )
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
     spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
-    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+    spirv_function += f'    SPIRVResult arraySizeConstant = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(4));\n'
+    spirv_function += '    uint32_t arrType = GPULang::AddType(g, TStr("[4]_f32"), OpTypeArray, SPVArg(baseType), arraySizeConstant);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_[4]_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(arrType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullOuterTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
     spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessLevelOuter);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::Patch);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    SPIRVResult loaded0 = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);\n'
+    spirv_function += '    SPIRVResult loaded2 = LoadValueSPIRV(c, g, args[2]);\n'
+    spirv_function += '    SPIRVResult loaded3 = LoadValueSPIRV(c, g, args[3]);\n'
+    spirv_function += '    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, {loaded0, loaded1, loaded2, loaded3});\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loadedArray);\n'
     spirv_function += '    return SPIRVResult::Invalid();\n'
     
     fun.spirv = spirv_function
@@ -3244,20 +3266,26 @@ def generate_types():
         return_type = 'Void',
         documentation=docs,
         parameters = [
-            Variable(decl_name = f'{function_name}_arg', api_name = "levels", type_name='Float32x2')
+            Variable(decl_name = f'{function_name}_arg0', api_name = "f0", type_name='Float32'),
+            Variable(decl_name = f'{function_name}_arg1', api_name = "f1", type_name='Float32')
         ]
     )
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
     spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
-    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
-    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplInnerHullTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+    spirv_function += f'    SPIRVResult arraySizeConstant = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));\n'
+    spirv_function += '    uint32_t arrType = GPULang::AddType(g, TStr("[2]_f32"), OpTypeArray, SPVArg(baseType), arraySizeConstant);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_[2]_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(arrType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullInnerTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
     spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessLevelInner);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::Patch);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    SPIRVResult loaded0 = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);\n'
+    spirv_function += '    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, {loaded0, loaded1});\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loadedArray);\n'
     spirv_function += '    return SPIRVResult::Invalid();\n'
     
     fun.spirv = spirv_function
@@ -3279,9 +3307,9 @@ def generate_types():
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
     spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
-    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 23);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
-    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainTessellationCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainTessellationCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
     spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessCoord);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
@@ -3292,34 +3320,33 @@ def generate_types():
     fun.spirv = spirv_function
     functions.append(fun)
 
-    intrinsic = 'GetInvocationIndex'
-    docs = 'Returns the invocation index of the vertex within the patch being processed.'
+    for type, spirv_builtin in zip(four_component_float_vec_types, vertex_value_builtins_spirv):
+        intrinsic = 'ExportCoordinates'
+        function_name = f'Domain{intrinsic}_{type}'
+        argument_name = f'{function_name}_arg'
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'domain{intrinsic}',
+            return_type = 'Void',
+            documentation = 'Exports the value as the vertex position to the rasterizer. This function must be called at least once in a domain shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL.',
+            parameters = [
+                Variable(decl_name = argument_name, api_name = "val", type_name=type)
+            ]
+        )
 
-    function_name = f'Domain{intrinsic}'
-    fun = Function( 
-        decl_name = function_name,
-        api_name = f'domain{intrinsic}',
-        return_type = 'UInt32',
-        documentation=doc,
-        parameters = [
-        ]
-    )
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+        spirv_function += '    return SPIRVResult::Invalid();\n'
 
-    spirv_function = ''
-    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-    spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
-    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
-    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainGetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::InvocationId);\n'
-    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-    spirv_function += '    res.parentTypes.push_back(baseType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
-    spirv_function += '    return res;\n'
-
-    fun.spirv = spirv_function
-    functions.append(fun)
+        fun.spirv = spirv_function
+        functions.append(fun)
 
     def geometry_read_function(size, ret):
         return_function = ''
@@ -3428,9 +3455,7 @@ def generate_types():
     # Declare return struct
     spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_GeometryTriangle_Function"), OpTypePointer, VariableStorage::Function, SPVArg(returnType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
-
     spirv_function += geometry_read_function(3, "ret")
-
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
@@ -3609,25 +3634,18 @@ def generate_types():
             functions.append(fun)
 
     # TODO: Hmm maybe these should all be UInt16 considering dispatch sizes can't exceed 65535?????
-    intrinsics = ['GetLocalThreadIndices', 'GetGlobalThreadIndices', 'GetWorkgroupIndices', 'GetWorkGroupDimensions']
+    intrinsics = ['GetLocalThreadIndices', 'GetGlobalThreadIndices', 'GetWorkgroupIndices', 'GetNumWorkgroups']
     docs = [
         'Returns the local thread indices within the workgroup',
         'Returns the global thread indices in the dispatch',
         'Returns the workgroup indices in the dispatch',
-        'Returns the dimensions of the workgroup in the dispatch'
+        'Returns the dimensions of the workgroup in the dispatch',
+        'Returns the number of workgroups in the dispatch'
     ]
-    compute_builtin_getters_spirv = ['LocalInvocationId', 'GlobalInvocationId', 'WorkgroupId', 'WorkgroupSize']
+    compute_builtin_getters_spirv = ['LocalInvocationId', 'GlobalInvocationId', 'WorkgroupId', 'NumWorkgroups']
     for intrinsic, spirv_builtin, doc in zip(intrinsics, compute_builtin_getters_spirv, docs):
         function_name = f'Compute{intrinsic}'
 
-        if intrinsic == 'GetLocalThreadIndices':
-            doc = 'Returns the local thread indices within the workgroup'
-        elif intrinsic == 'GetGlobalThreadIndices':
-            doc = 'Returns the global thread indices in the dispatch'
-        elif intrinsic == 'GetWorkgroupIndices':
-            doc = 'Returns the workgroup indices in the dispatch'
-        elif intrinsic == 'GetWorkGroupDimensions':
-            doc = 'Returns the dimensions of the workgroup in the dispatch'
         fun = Function( 
             decl_name = function_name,
             api_name = f'compute{intrinsic}',
@@ -4079,10 +4097,10 @@ def generate_types():
         'Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value',
         'Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value'
     ]
-    for atomic_type in atomic_types:
+    for type in atomic_types:
 
         # Skip min/max for float types
-        if atomic_type.startswith('Float'):
+        if type.startswith('Float'):
             continue
 
         for intrinsic, doc, spirv_intrinsic in zip(intrinsics, docs, atomic_builtins_spirv):
@@ -4093,7 +4111,7 @@ def generate_types():
                 else:
                     spirv_builtin = f'OpAtomicU{spirv_intrinsic}'
 
-                function_name = f'Atomic{intrinsic}_{storage}_{atomic_type}'
+                function_name = f'Atomic{intrinsic}_{storage}_{type}'
                 ptr_argument_name = f'{function_name}_ptr'
                 compare_argument_name = f'{function_name}_compare'
                 semantics_argument_name = f'{function_name}_semantics'
@@ -4124,15 +4142,15 @@ def generate_types():
                 fun.spirv = spirv_function
                 functions.append(fun)
 
-    for atomic_type in atomic_types:
+    for type in atomic_types:
 
         # Skip compare exchange for float types
-        if atomic_type.startswith('Float'):
+        if type.startswith('Float'):
             continue
 
         for storage in storages:
             intrinsic = 'CompareExchange'
-            function_name = f'Atomic{intrinsic}_{storage}_{atomic_type}'
+            function_name = f'Atomic{intrinsic}_{storage}_{type}'
             ptr_argument_name = f'{function_name}_ptr'
             value_argument_name = f'{function_name}_value'
             compare_argument_name = f'{function_name}_compare'
@@ -4702,13 +4720,13 @@ def generate_types():
                     return_type = 'Float32x4',
                     documentation = doc,
                     parameters = args + [
-                        Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[type]),
+                        Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_float_index_types[type]),
                         Variable(decl_name = component_argument_name, api_name = "component", type_name='Int32')
                     ]
                 )
                 if intrinsic == 'GatherOffset':
                     fun.parameters.append(
-                        Variable(decl_name = f'{function_name}_offset', api_name = "offset", type_name='UInt32')
+                        Variable(decl_name = f'{function_name}_offset', api_name = "offset", type_name='Int32x2')
                     )
 
                 spirv_function = ''
@@ -4717,9 +4735,9 @@ def generate_types():
                 spirv_function += '    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);\n'
                 if intrinsic == 'GatherOffset':
                     spirv_function += '    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);\n'
-                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);\n'
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageGather, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);\n'
                 else:
-                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);\n'
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageGather, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);\n'
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 
 

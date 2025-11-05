@@ -34,6 +34,8 @@ public:
     bool EvalType(Type::FullType& out) const override;
     /// eval type symbol
     bool EvalTypeSymbol(Type*& out) const override;
+    /// eval unswizzle type symbol
+    bool EvalUnswizzledTypeSymbol(Type*& out) const override;
     /// eval symbol
     bool EvalSymbol(FixedString& out) const override;
     /// Evaluate value
@@ -55,6 +57,8 @@ public:
         Type::FullType fullType;
         Symbol* dereffedSymbol = nullptr;
         Type* type;
+        Type::SwizzleMask swizzleMask;
+        Type* swizzleType = nullptr;
     };
 }; 
 } // namespace GPULang

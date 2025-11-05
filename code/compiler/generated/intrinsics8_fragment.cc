@@ -9,6 +9,282 @@
 #include "compiler.h"
 namespace GPULang
 {
+/// pixelExportColor with Float16x3, Int16
+Variable PixelExportColor_Float16x3_Int16_color;
+Variable PixelExportColor_Float16x3_Int16_index;
+Function PixelExportColor_Float16x3_Int16;
+inline constexpr std::array PixelExportColor_Float16x3_Int16_args = { &PixelExportColor_Float16x3_Int16_color, &PixelExportColor_Float16x3_Int16_index };
+
+/// pixelExportColor with Float16x3, UInt16
+Variable PixelExportColor_Float16x3_UInt16_color;
+Variable PixelExportColor_Float16x3_UInt16_index;
+Function PixelExportColor_Float16x3_UInt16;
+inline constexpr std::array PixelExportColor_Float16x3_UInt16_args = { &PixelExportColor_Float16x3_UInt16_color, &PixelExportColor_Float16x3_UInt16_index };
+
+/// pixelExportColor with Float16x4, Int32
+Variable PixelExportColor_Float16x4_Int32_color;
+Variable PixelExportColor_Float16x4_Int32_index;
+Function PixelExportColor_Float16x4_Int32;
+inline constexpr std::array PixelExportColor_Float16x4_Int32_args = { &PixelExportColor_Float16x4_Int32_color, &PixelExportColor_Float16x4_Int32_index };
+
+/// pixelExportColor with Float16x4, UInt32
+Variable PixelExportColor_Float16x4_UInt32_color;
+Variable PixelExportColor_Float16x4_UInt32_index;
+Function PixelExportColor_Float16x4_UInt32;
+inline constexpr std::array PixelExportColor_Float16x4_UInt32_args = { &PixelExportColor_Float16x4_UInt32_color, &PixelExportColor_Float16x4_UInt32_index };
+
+/// pixelExportColor with Float16x4, Int16
+Variable PixelExportColor_Float16x4_Int16_color;
+Variable PixelExportColor_Float16x4_Int16_index;
+Function PixelExportColor_Float16x4_Int16;
+inline constexpr std::array PixelExportColor_Float16x4_Int16_args = { &PixelExportColor_Float16x4_Int16_color, &PixelExportColor_Float16x4_Int16_index };
+
+/// pixelExportColor with Float16x4, UInt16
+Variable PixelExportColor_Float16x4_UInt16_color;
+Variable PixelExportColor_Float16x4_UInt16_index;
+Function PixelExportColor_Float16x4_UInt16;
+inline constexpr std::array PixelExportColor_Float16x4_UInt16_args = { &PixelExportColor_Float16x4_UInt16_color, &PixelExportColor_Float16x4_UInt16_index };
+
+/// pixelExportColor with Int32, Int32
+Variable PixelExportColor_Int32_Int32_color;
+Variable PixelExportColor_Int32_Int32_index;
+Function PixelExportColor_Int32_Int32;
+inline constexpr std::array PixelExportColor_Int32_Int32_args = { &PixelExportColor_Int32_Int32_color, &PixelExportColor_Int32_Int32_index };
+
+/// pixelExportColor with Int32, UInt32
+Variable PixelExportColor_Int32_UInt32_color;
+Variable PixelExportColor_Int32_UInt32_index;
+Function PixelExportColor_Int32_UInt32;
+inline constexpr std::array PixelExportColor_Int32_UInt32_args = { &PixelExportColor_Int32_UInt32_color, &PixelExportColor_Int32_UInt32_index };
+
+/// pixelExportColor with Int32, Int16
+Variable PixelExportColor_Int32_Int16_color;
+Variable PixelExportColor_Int32_Int16_index;
+Function PixelExportColor_Int32_Int16;
+inline constexpr std::array PixelExportColor_Int32_Int16_args = { &PixelExportColor_Int32_Int16_color, &PixelExportColor_Int32_Int16_index };
+
+/// pixelExportColor with Int32, UInt16
+Variable PixelExportColor_Int32_UInt16_color;
+Variable PixelExportColor_Int32_UInt16_index;
+Function PixelExportColor_Int32_UInt16;
+inline constexpr std::array PixelExportColor_Int32_UInt16_args = { &PixelExportColor_Int32_UInt16_color, &PixelExportColor_Int32_UInt16_index };
+
+/// pixelExportColor with Int32x2, Int32
+Variable PixelExportColor_Int32x2_Int32_color;
+Variable PixelExportColor_Int32x2_Int32_index;
+Function PixelExportColor_Int32x2_Int32;
+inline constexpr std::array PixelExportColor_Int32x2_Int32_args = { &PixelExportColor_Int32x2_Int32_color, &PixelExportColor_Int32x2_Int32_index };
+
+/// pixelExportColor with Int32x2, UInt32
+Variable PixelExportColor_Int32x2_UInt32_color;
+Variable PixelExportColor_Int32x2_UInt32_index;
+Function PixelExportColor_Int32x2_UInt32;
+inline constexpr std::array PixelExportColor_Int32x2_UInt32_args = { &PixelExportColor_Int32x2_UInt32_color, &PixelExportColor_Int32x2_UInt32_index };
+
+/// pixelExportColor with Int32x2, Int16
+Variable PixelExportColor_Int32x2_Int16_color;
+Variable PixelExportColor_Int32x2_Int16_index;
+Function PixelExportColor_Int32x2_Int16;
+inline constexpr std::array PixelExportColor_Int32x2_Int16_args = { &PixelExportColor_Int32x2_Int16_color, &PixelExportColor_Int32x2_Int16_index };
+
+/// pixelExportColor with Int32x2, UInt16
+Variable PixelExportColor_Int32x2_UInt16_color;
+Variable PixelExportColor_Int32x2_UInt16_index;
+Function PixelExportColor_Int32x2_UInt16;
+inline constexpr std::array PixelExportColor_Int32x2_UInt16_args = { &PixelExportColor_Int32x2_UInt16_color, &PixelExportColor_Int32x2_UInt16_index };
+
+/// pixelExportColor with Int32x3, Int32
+Variable PixelExportColor_Int32x3_Int32_color;
+Variable PixelExportColor_Int32x3_Int32_index;
+Function PixelExportColor_Int32x3_Int32;
+inline constexpr std::array PixelExportColor_Int32x3_Int32_args = { &PixelExportColor_Int32x3_Int32_color, &PixelExportColor_Int32x3_Int32_index };
+
+/// pixelExportColor with Int32x3, UInt32
+Variable PixelExportColor_Int32x3_UInt32_color;
+Variable PixelExportColor_Int32x3_UInt32_index;
+Function PixelExportColor_Int32x3_UInt32;
+inline constexpr std::array PixelExportColor_Int32x3_UInt32_args = { &PixelExportColor_Int32x3_UInt32_color, &PixelExportColor_Int32x3_UInt32_index };
+
+/// pixelExportColor with Int32x3, Int16
+Variable PixelExportColor_Int32x3_Int16_color;
+Variable PixelExportColor_Int32x3_Int16_index;
+Function PixelExportColor_Int32x3_Int16;
+inline constexpr std::array PixelExportColor_Int32x3_Int16_args = { &PixelExportColor_Int32x3_Int16_color, &PixelExportColor_Int32x3_Int16_index };
+
+/// pixelExportColor with Int32x3, UInt16
+Variable PixelExportColor_Int32x3_UInt16_color;
+Variable PixelExportColor_Int32x3_UInt16_index;
+Function PixelExportColor_Int32x3_UInt16;
+inline constexpr std::array PixelExportColor_Int32x3_UInt16_args = { &PixelExportColor_Int32x3_UInt16_color, &PixelExportColor_Int32x3_UInt16_index };
+
+/// pixelExportColor with Int32x4, Int32
+Variable PixelExportColor_Int32x4_Int32_color;
+Variable PixelExportColor_Int32x4_Int32_index;
+Function PixelExportColor_Int32x4_Int32;
+inline constexpr std::array PixelExportColor_Int32x4_Int32_args = { &PixelExportColor_Int32x4_Int32_color, &PixelExportColor_Int32x4_Int32_index };
+
+/// pixelExportColor with Int32x4, UInt32
+Variable PixelExportColor_Int32x4_UInt32_color;
+Variable PixelExportColor_Int32x4_UInt32_index;
+Function PixelExportColor_Int32x4_UInt32;
+inline constexpr std::array PixelExportColor_Int32x4_UInt32_args = { &PixelExportColor_Int32x4_UInt32_color, &PixelExportColor_Int32x4_UInt32_index };
+
+/// pixelExportColor with Int32x4, Int16
+Variable PixelExportColor_Int32x4_Int16_color;
+Variable PixelExportColor_Int32x4_Int16_index;
+Function PixelExportColor_Int32x4_Int16;
+inline constexpr std::array PixelExportColor_Int32x4_Int16_args = { &PixelExportColor_Int32x4_Int16_color, &PixelExportColor_Int32x4_Int16_index };
+
+/// pixelExportColor with Int32x4, UInt16
+Variable PixelExportColor_Int32x4_UInt16_color;
+Variable PixelExportColor_Int32x4_UInt16_index;
+Function PixelExportColor_Int32x4_UInt16;
+inline constexpr std::array PixelExportColor_Int32x4_UInt16_args = { &PixelExportColor_Int32x4_UInt16_color, &PixelExportColor_Int32x4_UInt16_index };
+
+/// pixelExportColor with Int16, Int32
+Variable PixelExportColor_Int16_Int32_color;
+Variable PixelExportColor_Int16_Int32_index;
+Function PixelExportColor_Int16_Int32;
+inline constexpr std::array PixelExportColor_Int16_Int32_args = { &PixelExportColor_Int16_Int32_color, &PixelExportColor_Int16_Int32_index };
+
+/// pixelExportColor with Int16, UInt32
+Variable PixelExportColor_Int16_UInt32_color;
+Variable PixelExportColor_Int16_UInt32_index;
+Function PixelExportColor_Int16_UInt32;
+inline constexpr std::array PixelExportColor_Int16_UInt32_args = { &PixelExportColor_Int16_UInt32_color, &PixelExportColor_Int16_UInt32_index };
+
+/// pixelExportColor with Int16, Int16
+Variable PixelExportColor_Int16_Int16_color;
+Variable PixelExportColor_Int16_Int16_index;
+Function PixelExportColor_Int16_Int16;
+inline constexpr std::array PixelExportColor_Int16_Int16_args = { &PixelExportColor_Int16_Int16_color, &PixelExportColor_Int16_Int16_index };
+
+/// pixelExportColor with Int16, UInt16
+Variable PixelExportColor_Int16_UInt16_color;
+Variable PixelExportColor_Int16_UInt16_index;
+Function PixelExportColor_Int16_UInt16;
+inline constexpr std::array PixelExportColor_Int16_UInt16_args = { &PixelExportColor_Int16_UInt16_color, &PixelExportColor_Int16_UInt16_index };
+
+/// pixelExportColor with Int16x2, Int32
+Variable PixelExportColor_Int16x2_Int32_color;
+Variable PixelExportColor_Int16x2_Int32_index;
+Function PixelExportColor_Int16x2_Int32;
+inline constexpr std::array PixelExportColor_Int16x2_Int32_args = { &PixelExportColor_Int16x2_Int32_color, &PixelExportColor_Int16x2_Int32_index };
+
+/// pixelExportColor with Int16x2, UInt32
+Variable PixelExportColor_Int16x2_UInt32_color;
+Variable PixelExportColor_Int16x2_UInt32_index;
+Function PixelExportColor_Int16x2_UInt32;
+inline constexpr std::array PixelExportColor_Int16x2_UInt32_args = { &PixelExportColor_Int16x2_UInt32_color, &PixelExportColor_Int16x2_UInt32_index };
+
+/// pixelExportColor with Int16x2, Int16
+Variable PixelExportColor_Int16x2_Int16_color;
+Variable PixelExportColor_Int16x2_Int16_index;
+Function PixelExportColor_Int16x2_Int16;
+inline constexpr std::array PixelExportColor_Int16x2_Int16_args = { &PixelExportColor_Int16x2_Int16_color, &PixelExportColor_Int16x2_Int16_index };
+
+/// pixelExportColor with Int16x2, UInt16
+Variable PixelExportColor_Int16x2_UInt16_color;
+Variable PixelExportColor_Int16x2_UInt16_index;
+Function PixelExportColor_Int16x2_UInt16;
+inline constexpr std::array PixelExportColor_Int16x2_UInt16_args = { &PixelExportColor_Int16x2_UInt16_color, &PixelExportColor_Int16x2_UInt16_index };
+
+/// pixelExportColor with Int16x3, Int32
+Variable PixelExportColor_Int16x3_Int32_color;
+Variable PixelExportColor_Int16x3_Int32_index;
+Function PixelExportColor_Int16x3_Int32;
+inline constexpr std::array PixelExportColor_Int16x3_Int32_args = { &PixelExportColor_Int16x3_Int32_color, &PixelExportColor_Int16x3_Int32_index };
+
+/// pixelExportColor with Int16x3, UInt32
+Variable PixelExportColor_Int16x3_UInt32_color;
+Variable PixelExportColor_Int16x3_UInt32_index;
+Function PixelExportColor_Int16x3_UInt32;
+inline constexpr std::array PixelExportColor_Int16x3_UInt32_args = { &PixelExportColor_Int16x3_UInt32_color, &PixelExportColor_Int16x3_UInt32_index };
+
+/// pixelExportColor with Int16x3, Int16
+Variable PixelExportColor_Int16x3_Int16_color;
+Variable PixelExportColor_Int16x3_Int16_index;
+Function PixelExportColor_Int16x3_Int16;
+inline constexpr std::array PixelExportColor_Int16x3_Int16_args = { &PixelExportColor_Int16x3_Int16_color, &PixelExportColor_Int16x3_Int16_index };
+
+/// pixelExportColor with Int16x3, UInt16
+Variable PixelExportColor_Int16x3_UInt16_color;
+Variable PixelExportColor_Int16x3_UInt16_index;
+Function PixelExportColor_Int16x3_UInt16;
+inline constexpr std::array PixelExportColor_Int16x3_UInt16_args = { &PixelExportColor_Int16x3_UInt16_color, &PixelExportColor_Int16x3_UInt16_index };
+
+/// pixelExportColor with Int16x4, Int32
+Variable PixelExportColor_Int16x4_Int32_color;
+Variable PixelExportColor_Int16x4_Int32_index;
+Function PixelExportColor_Int16x4_Int32;
+inline constexpr std::array PixelExportColor_Int16x4_Int32_args = { &PixelExportColor_Int16x4_Int32_color, &PixelExportColor_Int16x4_Int32_index };
+
+/// pixelExportColor with Int16x4, UInt32
+Variable PixelExportColor_Int16x4_UInt32_color;
+Variable PixelExportColor_Int16x4_UInt32_index;
+Function PixelExportColor_Int16x4_UInt32;
+inline constexpr std::array PixelExportColor_Int16x4_UInt32_args = { &PixelExportColor_Int16x4_UInt32_color, &PixelExportColor_Int16x4_UInt32_index };
+
+/// pixelExportColor with Int16x4, Int16
+Variable PixelExportColor_Int16x4_Int16_color;
+Variable PixelExportColor_Int16x4_Int16_index;
+Function PixelExportColor_Int16x4_Int16;
+inline constexpr std::array PixelExportColor_Int16x4_Int16_args = { &PixelExportColor_Int16x4_Int16_color, &PixelExportColor_Int16x4_Int16_index };
+
+/// pixelExportColor with Int16x4, UInt16
+Variable PixelExportColor_Int16x4_UInt16_color;
+Variable PixelExportColor_Int16x4_UInt16_index;
+Function PixelExportColor_Int16x4_UInt16;
+inline constexpr std::array PixelExportColor_Int16x4_UInt16_args = { &PixelExportColor_Int16x4_UInt16_color, &PixelExportColor_Int16x4_UInt16_index };
+
+/// pixelExportColor with UInt32, Int32
+Variable PixelExportColor_UInt32_Int32_color;
+Variable PixelExportColor_UInt32_Int32_index;
+Function PixelExportColor_UInt32_Int32;
+inline constexpr std::array PixelExportColor_UInt32_Int32_args = { &PixelExportColor_UInt32_Int32_color, &PixelExportColor_UInt32_Int32_index };
+
+/// pixelExportColor with UInt32, UInt32
+Variable PixelExportColor_UInt32_UInt32_color;
+Variable PixelExportColor_UInt32_UInt32_index;
+Function PixelExportColor_UInt32_UInt32;
+inline constexpr std::array PixelExportColor_UInt32_UInt32_args = { &PixelExportColor_UInt32_UInt32_color, &PixelExportColor_UInt32_UInt32_index };
+
+/// pixelExportColor with UInt32, Int16
+Variable PixelExportColor_UInt32_Int16_color;
+Variable PixelExportColor_UInt32_Int16_index;
+Function PixelExportColor_UInt32_Int16;
+inline constexpr std::array PixelExportColor_UInt32_Int16_args = { &PixelExportColor_UInt32_Int16_color, &PixelExportColor_UInt32_Int16_index };
+
+/// pixelExportColor with UInt32, UInt16
+Variable PixelExportColor_UInt32_UInt16_color;
+Variable PixelExportColor_UInt32_UInt16_index;
+Function PixelExportColor_UInt32_UInt16;
+inline constexpr std::array PixelExportColor_UInt32_UInt16_args = { &PixelExportColor_UInt32_UInt16_color, &PixelExportColor_UInt32_UInt16_index };
+
+/// pixelExportColor with UInt32x2, Int32
+Variable PixelExportColor_UInt32x2_Int32_color;
+Variable PixelExportColor_UInt32x2_Int32_index;
+Function PixelExportColor_UInt32x2_Int32;
+inline constexpr std::array PixelExportColor_UInt32x2_Int32_args = { &PixelExportColor_UInt32x2_Int32_color, &PixelExportColor_UInt32x2_Int32_index };
+
+/// pixelExportColor with UInt32x2, UInt32
+Variable PixelExportColor_UInt32x2_UInt32_color;
+Variable PixelExportColor_UInt32x2_UInt32_index;
+Function PixelExportColor_UInt32x2_UInt32;
+inline constexpr std::array PixelExportColor_UInt32x2_UInt32_args = { &PixelExportColor_UInt32x2_UInt32_color, &PixelExportColor_UInt32x2_UInt32_index };
+
+/// pixelExportColor with UInt32x2, Int16
+Variable PixelExportColor_UInt32x2_Int16_color;
+Variable PixelExportColor_UInt32x2_Int16_index;
+Function PixelExportColor_UInt32x2_Int16;
+inline constexpr std::array PixelExportColor_UInt32x2_Int16_args = { &PixelExportColor_UInt32x2_Int16_color, &PixelExportColor_UInt32x2_Int16_index };
+
+/// pixelExportColor with UInt32x2, UInt16
+Variable PixelExportColor_UInt32x2_UInt16_color;
+Variable PixelExportColor_UInt32x2_UInt16_index;
+Function PixelExportColor_UInt32x2_UInt16;
+inline constexpr std::array PixelExportColor_UInt32x2_UInt16_args = { &PixelExportColor_UInt32x2_UInt16_color, &PixelExportColor_UInt32x2_UInt16_index };
+
 /// pixelExportColor with UInt32x3, Int32
 Variable PixelExportColor_UInt32x3_Int32_color;
 Variable PixelExportColor_UInt32x3_Int32_index;
@@ -162,8 +438,8 @@ Function ComputeGetGlobalThreadIndices;
 /// computeGetWorkgroupIndices
 Function ComputeGetWorkgroupIndices;
 
-/// computeGetWorkGroupDimensions
-Function ComputeGetWorkGroupDimensions;
+/// computeGetNumWorkgroups
+Function ComputeGetNumWorkgroups;
 
 /// computeGetIndexInWorkgroup
 Function ComputeGetIndexInWorkgroup;
@@ -416,238 +692,836 @@ Variable SubgroupSwapDiagonal_Int16x2_value;
 Function SubgroupSwapDiagonal_Int16x2;
 inline constexpr std::array SubgroupSwapDiagonal_Int16x2_args = { &SubgroupSwapDiagonal_Int16x2_value };
 
-/// subgroupSwapDiagonal with Int16x3
-Variable SubgroupSwapDiagonal_Int16x3_value;
-Function SubgroupSwapDiagonal_Int16x3;
-inline constexpr std::array SubgroupSwapDiagonal_Int16x3_args = { &SubgroupSwapDiagonal_Int16x3_value };
-
-/// subgroupSwapDiagonal with Int16x4
-Variable SubgroupSwapDiagonal_Int16x4_value;
-Function SubgroupSwapDiagonal_Int16x4;
-inline constexpr std::array SubgroupSwapDiagonal_Int16x4_args = { &SubgroupSwapDiagonal_Int16x4_value };
-
-/// subgroupSwapDiagonal with UInt32
-Variable SubgroupSwapDiagonal_UInt32_value;
-Function SubgroupSwapDiagonal_UInt32;
-inline constexpr std::array SubgroupSwapDiagonal_UInt32_args = { &SubgroupSwapDiagonal_UInt32_value };
-
-/// subgroupSwapDiagonal with UInt32x2
-Variable SubgroupSwapDiagonal_UInt32x2_value;
-Function SubgroupSwapDiagonal_UInt32x2;
-inline constexpr std::array SubgroupSwapDiagonal_UInt32x2_args = { &SubgroupSwapDiagonal_UInt32x2_value };
-
-/// subgroupSwapDiagonal with UInt32x3
-Variable SubgroupSwapDiagonal_UInt32x3_value;
-Function SubgroupSwapDiagonal_UInt32x3;
-inline constexpr std::array SubgroupSwapDiagonal_UInt32x3_args = { &SubgroupSwapDiagonal_UInt32x3_value };
-
-/// subgroupSwapDiagonal with UInt32x4
-Variable SubgroupSwapDiagonal_UInt32x4_value;
-Function SubgroupSwapDiagonal_UInt32x4;
-inline constexpr std::array SubgroupSwapDiagonal_UInt32x4_args = { &SubgroupSwapDiagonal_UInt32x4_value };
-
-/// subgroupSwapDiagonal with UInt16
-Variable SubgroupSwapDiagonal_UInt16_value;
-Function SubgroupSwapDiagonal_UInt16;
-inline constexpr std::array SubgroupSwapDiagonal_UInt16_args = { &SubgroupSwapDiagonal_UInt16_value };
-
-/// subgroupSwapDiagonal with UInt16x2
-Variable SubgroupSwapDiagonal_UInt16x2_value;
-Function SubgroupSwapDiagonal_UInt16x2;
-inline constexpr std::array SubgroupSwapDiagonal_UInt16x2_args = { &SubgroupSwapDiagonal_UInt16x2_value };
-
-/// subgroupSwapDiagonal with UInt16x3
-Variable SubgroupSwapDiagonal_UInt16x3_value;
-Function SubgroupSwapDiagonal_UInt16x3;
-inline constexpr std::array SubgroupSwapDiagonal_UInt16x3_args = { &SubgroupSwapDiagonal_UInt16x3_value };
-
-/// subgroupSwapDiagonal with UInt16x4
-Variable SubgroupSwapDiagonal_UInt16x4_value;
-Function SubgroupSwapDiagonal_UInt16x4;
-inline constexpr std::array SubgroupSwapDiagonal_UInt16x4_args = { &SubgroupSwapDiagonal_UInt16x4_value };
-
-/// subgroupSwapVertical with Float32
-Variable SubgroupSwapVertical_Float32_value;
-Function SubgroupSwapVertical_Float32;
-inline constexpr std::array SubgroupSwapVertical_Float32_args = { &SubgroupSwapVertical_Float32_value };
-
-/// subgroupSwapVertical with Float32x2
-Variable SubgroupSwapVertical_Float32x2_value;
-Function SubgroupSwapVertical_Float32x2;
-inline constexpr std::array SubgroupSwapVertical_Float32x2_args = { &SubgroupSwapVertical_Float32x2_value };
-
-/// subgroupSwapVertical with Float32x3
-Variable SubgroupSwapVertical_Float32x3_value;
-Function SubgroupSwapVertical_Float32x3;
-inline constexpr std::array SubgroupSwapVertical_Float32x3_args = { &SubgroupSwapVertical_Float32x3_value };
-
-/// subgroupSwapVertical with Float32x4
-Variable SubgroupSwapVertical_Float32x4_value;
-Function SubgroupSwapVertical_Float32x4;
-inline constexpr std::array SubgroupSwapVertical_Float32x4_args = { &SubgroupSwapVertical_Float32x4_value };
-
-/// subgroupSwapVertical with Float16
-Variable SubgroupSwapVertical_Float16_value;
-Function SubgroupSwapVertical_Float16;
-inline constexpr std::array SubgroupSwapVertical_Float16_args = { &SubgroupSwapVertical_Float16_value };
-
-/// subgroupSwapVertical with Float16x2
-Variable SubgroupSwapVertical_Float16x2_value;
-Function SubgroupSwapVertical_Float16x2;
-inline constexpr std::array SubgroupSwapVertical_Float16x2_args = { &SubgroupSwapVertical_Float16x2_value };
-
-/// subgroupSwapVertical with Float16x3
-Variable SubgroupSwapVertical_Float16x3_value;
-Function SubgroupSwapVertical_Float16x3;
-inline constexpr std::array SubgroupSwapVertical_Float16x3_args = { &SubgroupSwapVertical_Float16x3_value };
-
-/// subgroupSwapVertical with Float16x4
-Variable SubgroupSwapVertical_Float16x4_value;
-Function SubgroupSwapVertical_Float16x4;
-inline constexpr std::array SubgroupSwapVertical_Float16x4_args = { &SubgroupSwapVertical_Float16x4_value };
-
-/// subgroupSwapVertical with Int32
-Variable SubgroupSwapVertical_Int32_value;
-Function SubgroupSwapVertical_Int32;
-inline constexpr std::array SubgroupSwapVertical_Int32_args = { &SubgroupSwapVertical_Int32_value };
-
-/// subgroupSwapVertical with Int32x2
-Variable SubgroupSwapVertical_Int32x2_value;
-Function SubgroupSwapVertical_Int32x2;
-inline constexpr std::array SubgroupSwapVertical_Int32x2_args = { &SubgroupSwapVertical_Int32x2_value };
-
-/// subgroupSwapVertical with Int32x3
-Variable SubgroupSwapVertical_Int32x3_value;
-Function SubgroupSwapVertical_Int32x3;
-inline constexpr std::array SubgroupSwapVertical_Int32x3_args = { &SubgroupSwapVertical_Int32x3_value };
-
-/// subgroupSwapVertical with Int32x4
-Variable SubgroupSwapVertical_Int32x4_value;
-Function SubgroupSwapVertical_Int32x4;
-inline constexpr std::array SubgroupSwapVertical_Int32x4_args = { &SubgroupSwapVertical_Int32x4_value };
-
-/// subgroupSwapVertical with Int16
-Variable SubgroupSwapVertical_Int16_value;
-Function SubgroupSwapVertical_Int16;
-inline constexpr std::array SubgroupSwapVertical_Int16_args = { &SubgroupSwapVertical_Int16_value };
-
-/// subgroupSwapVertical with Int16x2
-Variable SubgroupSwapVertical_Int16x2_value;
-Function SubgroupSwapVertical_Int16x2;
-inline constexpr std::array SubgroupSwapVertical_Int16x2_args = { &SubgroupSwapVertical_Int16x2_value };
-
-/// subgroupSwapVertical with Int16x3
-Variable SubgroupSwapVertical_Int16x3_value;
-Function SubgroupSwapVertical_Int16x3;
-inline constexpr std::array SubgroupSwapVertical_Int16x3_args = { &SubgroupSwapVertical_Int16x3_value };
-
-/// subgroupSwapVertical with Int16x4
-Variable SubgroupSwapVertical_Int16x4_value;
-Function SubgroupSwapVertical_Int16x4;
-inline constexpr std::array SubgroupSwapVertical_Int16x4_args = { &SubgroupSwapVertical_Int16x4_value };
-
-/// subgroupSwapVertical with UInt32
-Variable SubgroupSwapVertical_UInt32_value;
-Function SubgroupSwapVertical_UInt32;
-inline constexpr std::array SubgroupSwapVertical_UInt32_args = { &SubgroupSwapVertical_UInt32_value };
-
-/// subgroupSwapVertical with UInt32x2
-Variable SubgroupSwapVertical_UInt32x2_value;
-Function SubgroupSwapVertical_UInt32x2;
-inline constexpr std::array SubgroupSwapVertical_UInt32x2_args = { &SubgroupSwapVertical_UInt32x2_value };
-
-/// subgroupSwapVertical with UInt32x3
-Variable SubgroupSwapVertical_UInt32x3_value;
-Function SubgroupSwapVertical_UInt32x3;
-inline constexpr std::array SubgroupSwapVertical_UInt32x3_args = { &SubgroupSwapVertical_UInt32x3_value };
-
-/// subgroupSwapVertical with UInt32x4
-Variable SubgroupSwapVertical_UInt32x4_value;
-Function SubgroupSwapVertical_UInt32x4;
-inline constexpr std::array SubgroupSwapVertical_UInt32x4_args = { &SubgroupSwapVertical_UInt32x4_value };
-
-/// subgroupSwapVertical with UInt16
-Variable SubgroupSwapVertical_UInt16_value;
-Function SubgroupSwapVertical_UInt16;
-inline constexpr std::array SubgroupSwapVertical_UInt16_args = { &SubgroupSwapVertical_UInt16_value };
-
-/// subgroupSwapVertical with UInt16x2
-Variable SubgroupSwapVertical_UInt16x2_value;
-Function SubgroupSwapVertical_UInt16x2;
-inline constexpr std::array SubgroupSwapVertical_UInt16x2_args = { &SubgroupSwapVertical_UInt16x2_value };
-
-/// subgroupSwapVertical with UInt16x3
-Variable SubgroupSwapVertical_UInt16x3_value;
-Function SubgroupSwapVertical_UInt16x3;
-inline constexpr std::array SubgroupSwapVertical_UInt16x3_args = { &SubgroupSwapVertical_UInt16x3_value };
-
-/// subgroupSwapVertical with UInt16x4
-Variable SubgroupSwapVertical_UInt16x4_value;
-Function SubgroupSwapVertical_UInt16x4;
-inline constexpr std::array SubgroupSwapVertical_UInt16x4_args = { &SubgroupSwapVertical_UInt16x4_value };
-
-/// subgroupSwapHorizontal with Float32
-Variable SubgroupSwapHorizontal_Float32_value;
-Function SubgroupSwapHorizontal_Float32;
-inline constexpr std::array SubgroupSwapHorizontal_Float32_args = { &SubgroupSwapHorizontal_Float32_value };
-
-/// subgroupSwapHorizontal with Float32x2
-Variable SubgroupSwapHorizontal_Float32x2_value;
-Function SubgroupSwapHorizontal_Float32x2;
-inline constexpr std::array SubgroupSwapHorizontal_Float32x2_args = { &SubgroupSwapHorizontal_Float32x2_value };
-
-/// subgroupSwapHorizontal with Float32x3
-Variable SubgroupSwapHorizontal_Float32x3_value;
-Function SubgroupSwapHorizontal_Float32x3;
-inline constexpr std::array SubgroupSwapHorizontal_Float32x3_args = { &SubgroupSwapHorizontal_Float32x3_value };
-
-/// subgroupSwapHorizontal with Float32x4
-Variable SubgroupSwapHorizontal_Float32x4_value;
-Function SubgroupSwapHorizontal_Float32x4;
-inline constexpr std::array SubgroupSwapHorizontal_Float32x4_args = { &SubgroupSwapHorizontal_Float32x4_value };
-
-/// subgroupSwapHorizontal with Float16
-Variable SubgroupSwapHorizontal_Float16_value;
-Function SubgroupSwapHorizontal_Float16;
-inline constexpr std::array SubgroupSwapHorizontal_Float16_args = { &SubgroupSwapHorizontal_Float16_value };
-
-/// subgroupSwapHorizontal with Float16x2
-Variable SubgroupSwapHorizontal_Float16x2_value;
-Function SubgroupSwapHorizontal_Float16x2;
-inline constexpr std::array SubgroupSwapHorizontal_Float16x2_args = { &SubgroupSwapHorizontal_Float16x2_value };
-
-/// subgroupSwapHorizontal with Float16x3
-Variable SubgroupSwapHorizontal_Float16x3_value;
-Function SubgroupSwapHorizontal_Float16x3;
-inline constexpr std::array SubgroupSwapHorizontal_Float16x3_args = { &SubgroupSwapHorizontal_Float16x3_value };
-
-/// subgroupSwapHorizontal with Float16x4
-Variable SubgroupSwapHorizontal_Float16x4_value;
-Function SubgroupSwapHorizontal_Float16x4;
-inline constexpr std::array SubgroupSwapHorizontal_Float16x4_args = { &SubgroupSwapHorizontal_Float16x4_value };
-
-/// subgroupSwapHorizontal with Int32
-Variable SubgroupSwapHorizontal_Int32_value;
-Function SubgroupSwapHorizontal_Int32;
-inline constexpr std::array SubgroupSwapHorizontal_Int32_args = { &SubgroupSwapHorizontal_Int32_value };
-
-/// subgroupSwapHorizontal with Int32x2
-Variable SubgroupSwapHorizontal_Int32x2_value;
-Function SubgroupSwapHorizontal_Int32x2;
-inline constexpr std::array SubgroupSwapHorizontal_Int32x2_args = { &SubgroupSwapHorizontal_Int32x2_value };
-
-/// subgroupSwapHorizontal with Int32x3
-Variable SubgroupSwapHorizontal_Int32x3_value;
-Function SubgroupSwapHorizontal_Int32x3;
-inline constexpr std::array SubgroupSwapHorizontal_Int32x3_args = { &SubgroupSwapHorizontal_Int32x3_value };
-
-/// subgroupSwapHorizontal with Int32x4
-Variable SubgroupSwapHorizontal_Int32x4_value;
-Function SubgroupSwapHorizontal_Int32x4;
-inline constexpr std::array SubgroupSwapHorizontal_Int32x4_args = { &SubgroupSwapHorizontal_Int32x4_value };
-
 void SetupIntrinsics8()
 {
+    /// pixelExportColor with Float16x3, Int16
+    PixelExportColor_Float16x3_Int16_color.name = "color"_c;
+    PixelExportColor_Float16x3_Int16_color.type = Type::FullType{ Float16x3Type.name };
+    PixelExportColor_Float16x3_Int16_index.name = "index"_c;
+    PixelExportColor_Float16x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float16x3_Int16_index.type.literal = true;
+    PixelExportColor_Float16x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Float16x3_Int16.name = PixelExportColor_Float16x3_Int16_name;
+    PixelExportColor_Float16x3_Int16.backendIndex = 1961;
+    PixelExportColor_Float16x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x3_Int16.parameters = PixelExportColor_Float16x3_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Float16x3_Int16_color)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&PixelExportColor_Float16x3_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Float16x3_Int16)->signature = "pixelExportColor(f16x3,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x3_Int16)->name = "pixelExportColor(f16x3,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x3_Int16)->nameWithVarNames = "pixelExportColor(color : f16x3, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x3_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Float16x3, UInt16
+    PixelExportColor_Float16x3_UInt16_color.name = "color"_c;
+    PixelExportColor_Float16x3_UInt16_color.type = Type::FullType{ Float16x3Type.name };
+    PixelExportColor_Float16x3_UInt16_index.name = "index"_c;
+    PixelExportColor_Float16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float16x3_UInt16_index.type.literal = true;
+    PixelExportColor_Float16x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Float16x3_UInt16.name = PixelExportColor_Float16x3_UInt16_name;
+    PixelExportColor_Float16x3_UInt16.backendIndex = 1962;
+    PixelExportColor_Float16x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x3_UInt16.parameters = PixelExportColor_Float16x3_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Float16x3_UInt16_color)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&PixelExportColor_Float16x3_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Float16x3_UInt16)->signature = "pixelExportColor(f16x3,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x3_UInt16)->name = "pixelExportColor(f16x3,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x3_UInt16)->nameWithVarNames = "pixelExportColor(color : f16x3, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x3_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Float16x4, Int32
+    PixelExportColor_Float16x4_Int32_color.name = "color"_c;
+    PixelExportColor_Float16x4_Int32_color.type = Type::FullType{ Float16x4Type.name };
+    PixelExportColor_Float16x4_Int32_index.name = "index"_c;
+    PixelExportColor_Float16x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float16x4_Int32_index.type.literal = true;
+    PixelExportColor_Float16x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Float16x4_Int32.name = PixelExportColor_Float16x4_Int32_name;
+    PixelExportColor_Float16x4_Int32.backendIndex = 1963;
+    PixelExportColor_Float16x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x4_Int32.parameters = PixelExportColor_Float16x4_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int32_color)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int32)->signature = "pixelExportColor(f16x4,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int32)->name = "pixelExportColor(f16x4,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int32)->nameWithVarNames = "pixelExportColor(color : f16x4, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Float16x4, UInt32
+    PixelExportColor_Float16x4_UInt32_color.name = "color"_c;
+    PixelExportColor_Float16x4_UInt32_color.type = Type::FullType{ Float16x4Type.name };
+    PixelExportColor_Float16x4_UInt32_index.name = "index"_c;
+    PixelExportColor_Float16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float16x4_UInt32_index.type.literal = true;
+    PixelExportColor_Float16x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Float16x4_UInt32.name = PixelExportColor_Float16x4_UInt32_name;
+    PixelExportColor_Float16x4_UInt32.backendIndex = 1964;
+    PixelExportColor_Float16x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x4_UInt32.parameters = PixelExportColor_Float16x4_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt32_color)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt32)->signature = "pixelExportColor(f16x4,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt32)->name = "pixelExportColor(f16x4,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt32)->nameWithVarNames = "pixelExportColor(color : f16x4, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Float16x4, Int16
+    PixelExportColor_Float16x4_Int16_color.name = "color"_c;
+    PixelExportColor_Float16x4_Int16_color.type = Type::FullType{ Float16x4Type.name };
+    PixelExportColor_Float16x4_Int16_index.name = "index"_c;
+    PixelExportColor_Float16x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float16x4_Int16_index.type.literal = true;
+    PixelExportColor_Float16x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Float16x4_Int16.name = PixelExportColor_Float16x4_Int16_name;
+    PixelExportColor_Float16x4_Int16.backendIndex = 1965;
+    PixelExportColor_Float16x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x4_Int16.parameters = PixelExportColor_Float16x4_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int16_color)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int16)->signature = "pixelExportColor(f16x4,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int16)->name = "pixelExportColor(f16x4,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int16)->nameWithVarNames = "pixelExportColor(color : f16x4, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Float16x4, UInt16
+    PixelExportColor_Float16x4_UInt16_color.name = "color"_c;
+    PixelExportColor_Float16x4_UInt16_color.type = Type::FullType{ Float16x4Type.name };
+    PixelExportColor_Float16x4_UInt16_index.name = "index"_c;
+    PixelExportColor_Float16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float16x4_UInt16_index.type.literal = true;
+    PixelExportColor_Float16x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Float16x4_UInt16.name = PixelExportColor_Float16x4_UInt16_name;
+    PixelExportColor_Float16x4_UInt16.backendIndex = 1966;
+    PixelExportColor_Float16x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x4_UInt16.parameters = PixelExportColor_Float16x4_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt16_color)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt16)->signature = "pixelExportColor(f16x4,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt16)->name = "pixelExportColor(f16x4,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt16)->nameWithVarNames = "pixelExportColor(color : f16x4, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Float16x4_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32, Int32
+    PixelExportColor_Int32_Int32_color.name = "color"_c;
+    PixelExportColor_Int32_Int32_color.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32_Int32_index.name = "index"_c;
+    PixelExportColor_Int32_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32_Int32_index.type.literal = true;
+    PixelExportColor_Int32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32_Int32.name = PixelExportColor_Int32_Int32_name;
+    PixelExportColor_Int32_Int32.backendIndex = 1967;
+    PixelExportColor_Int32_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32_Int32.parameters = PixelExportColor_Int32_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Int32_Int32_color)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int32_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int32_Int32)->signature = "pixelExportColor(i32,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_Int32)->name = "pixelExportColor(i32,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_Int32)->nameWithVarNames = "pixelExportColor(color : i32, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32, UInt32
+    PixelExportColor_Int32_UInt32_color.name = "color"_c;
+    PixelExportColor_Int32_UInt32_color.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32_UInt32_index.name = "index"_c;
+    PixelExportColor_Int32_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int32_UInt32_index.type.literal = true;
+    PixelExportColor_Int32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32_UInt32.name = PixelExportColor_Int32_UInt32_name;
+    PixelExportColor_Int32_UInt32.backendIndex = 1968;
+    PixelExportColor_Int32_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32_UInt32.parameters = PixelExportColor_Int32_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt32_color)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt32)->signature = "pixelExportColor(i32,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt32)->name = "pixelExportColor(i32,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt32)->nameWithVarNames = "pixelExportColor(color : i32, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32, Int16
+    PixelExportColor_Int32_Int16_color.name = "color"_c;
+    PixelExportColor_Int32_Int16_color.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32_Int16_index.name = "index"_c;
+    PixelExportColor_Int32_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int32_Int16_index.type.literal = true;
+    PixelExportColor_Int32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32_Int16.name = PixelExportColor_Int32_Int16_name;
+    PixelExportColor_Int32_Int16.backendIndex = 1969;
+    PixelExportColor_Int32_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32_Int16.parameters = PixelExportColor_Int32_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Int32_Int16_color)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int32_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int32_Int16)->signature = "pixelExportColor(i32,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_Int16)->name = "pixelExportColor(i32,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_Int16)->nameWithVarNames = "pixelExportColor(color : i32, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32, UInt16
+    PixelExportColor_Int32_UInt16_color.name = "color"_c;
+    PixelExportColor_Int32_UInt16_color.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32_UInt16_index.name = "index"_c;
+    PixelExportColor_Int32_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int32_UInt16_index.type.literal = true;
+    PixelExportColor_Int32_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32_UInt16.name = PixelExportColor_Int32_UInt16_name;
+    PixelExportColor_Int32_UInt16.backendIndex = 1970;
+    PixelExportColor_Int32_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32_UInt16.parameters = PixelExportColor_Int32_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt16_color)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt16)->signature = "pixelExportColor(i32,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt16)->name = "pixelExportColor(i32,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt16)->nameWithVarNames = "pixelExportColor(color : i32, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x2, Int32
+    PixelExportColor_Int32x2_Int32_color.name = "color"_c;
+    PixelExportColor_Int32x2_Int32_color.type = Type::FullType{ Int32x2Type.name };
+    PixelExportColor_Int32x2_Int32_index.name = "index"_c;
+    PixelExportColor_Int32x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32x2_Int32_index.type.literal = true;
+    PixelExportColor_Int32x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x2_Int32.name = PixelExportColor_Int32x2_Int32_name;
+    PixelExportColor_Int32x2_Int32.backendIndex = 1971;
+    PixelExportColor_Int32x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x2_Int32.parameters = PixelExportColor_Int32x2_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int32_color)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int32)->signature = "pixelExportColor(i32x2,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int32)->name = "pixelExportColor(i32x2,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int32)->nameWithVarNames = "pixelExportColor(color : i32x2, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x2, UInt32
+    PixelExportColor_Int32x2_UInt32_color.name = "color"_c;
+    PixelExportColor_Int32x2_UInt32_color.type = Type::FullType{ Int32x2Type.name };
+    PixelExportColor_Int32x2_UInt32_index.name = "index"_c;
+    PixelExportColor_Int32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int32x2_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x2_UInt32.name = PixelExportColor_Int32x2_UInt32_name;
+    PixelExportColor_Int32x2_UInt32.backendIndex = 1972;
+    PixelExportColor_Int32x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x2_UInt32.parameters = PixelExportColor_Int32x2_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt32_color)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt32)->signature = "pixelExportColor(i32x2,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt32)->name = "pixelExportColor(i32x2,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt32)->nameWithVarNames = "pixelExportColor(color : i32x2, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x2, Int16
+    PixelExportColor_Int32x2_Int16_color.name = "color"_c;
+    PixelExportColor_Int32x2_Int16_color.type = Type::FullType{ Int32x2Type.name };
+    PixelExportColor_Int32x2_Int16_index.name = "index"_c;
+    PixelExportColor_Int32x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int32x2_Int16_index.type.literal = true;
+    PixelExportColor_Int32x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x2_Int16.name = PixelExportColor_Int32x2_Int16_name;
+    PixelExportColor_Int32x2_Int16.backendIndex = 1973;
+    PixelExportColor_Int32x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x2_Int16.parameters = PixelExportColor_Int32x2_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int16_color)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int16)->signature = "pixelExportColor(i32x2,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int16)->name = "pixelExportColor(i32x2,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int16)->nameWithVarNames = "pixelExportColor(color : i32x2, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x2, UInt16
+    PixelExportColor_Int32x2_UInt16_color.name = "color"_c;
+    PixelExportColor_Int32x2_UInt16_color.type = Type::FullType{ Int32x2Type.name };
+    PixelExportColor_Int32x2_UInt16_index.name = "index"_c;
+    PixelExportColor_Int32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int32x2_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x2_UInt16.name = PixelExportColor_Int32x2_UInt16_name;
+    PixelExportColor_Int32x2_UInt16.backendIndex = 1974;
+    PixelExportColor_Int32x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x2_UInt16.parameters = PixelExportColor_Int32x2_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt16_color)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt16)->signature = "pixelExportColor(i32x2,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt16)->name = "pixelExportColor(i32x2,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt16)->nameWithVarNames = "pixelExportColor(color : i32x2, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x2_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x3, Int32
+    PixelExportColor_Int32x3_Int32_color.name = "color"_c;
+    PixelExportColor_Int32x3_Int32_color.type = Type::FullType{ Int32x3Type.name };
+    PixelExportColor_Int32x3_Int32_index.name = "index"_c;
+    PixelExportColor_Int32x3_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32x3_Int32_index.type.literal = true;
+    PixelExportColor_Int32x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x3_Int32.name = PixelExportColor_Int32x3_Int32_name;
+    PixelExportColor_Int32x3_Int32.backendIndex = 1975;
+    PixelExportColor_Int32x3_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x3_Int32.parameters = PixelExportColor_Int32x3_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int32_color)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int32)->signature = "pixelExportColor(i32x3,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int32)->name = "pixelExportColor(i32x3,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int32)->nameWithVarNames = "pixelExportColor(color : i32x3, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x3, UInt32
+    PixelExportColor_Int32x3_UInt32_color.name = "color"_c;
+    PixelExportColor_Int32x3_UInt32_color.type = Type::FullType{ Int32x3Type.name };
+    PixelExportColor_Int32x3_UInt32_index.name = "index"_c;
+    PixelExportColor_Int32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int32x3_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x3_UInt32.name = PixelExportColor_Int32x3_UInt32_name;
+    PixelExportColor_Int32x3_UInt32.backendIndex = 1976;
+    PixelExportColor_Int32x3_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x3_UInt32.parameters = PixelExportColor_Int32x3_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt32_color)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt32)->signature = "pixelExportColor(i32x3,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt32)->name = "pixelExportColor(i32x3,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt32)->nameWithVarNames = "pixelExportColor(color : i32x3, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x3, Int16
+    PixelExportColor_Int32x3_Int16_color.name = "color"_c;
+    PixelExportColor_Int32x3_Int16_color.type = Type::FullType{ Int32x3Type.name };
+    PixelExportColor_Int32x3_Int16_index.name = "index"_c;
+    PixelExportColor_Int32x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int32x3_Int16_index.type.literal = true;
+    PixelExportColor_Int32x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x3_Int16.name = PixelExportColor_Int32x3_Int16_name;
+    PixelExportColor_Int32x3_Int16.backendIndex = 1977;
+    PixelExportColor_Int32x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x3_Int16.parameters = PixelExportColor_Int32x3_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int16_color)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int16)->signature = "pixelExportColor(i32x3,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int16)->name = "pixelExportColor(i32x3,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int16)->nameWithVarNames = "pixelExportColor(color : i32x3, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x3, UInt16
+    PixelExportColor_Int32x3_UInt16_color.name = "color"_c;
+    PixelExportColor_Int32x3_UInt16_color.type = Type::FullType{ Int32x3Type.name };
+    PixelExportColor_Int32x3_UInt16_index.name = "index"_c;
+    PixelExportColor_Int32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int32x3_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x3_UInt16.name = PixelExportColor_Int32x3_UInt16_name;
+    PixelExportColor_Int32x3_UInt16.backendIndex = 1978;
+    PixelExportColor_Int32x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x3_UInt16.parameters = PixelExportColor_Int32x3_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt16_color)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt16)->signature = "pixelExportColor(i32x3,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt16)->name = "pixelExportColor(i32x3,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt16)->nameWithVarNames = "pixelExportColor(color : i32x3, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x3_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x4, Int32
+    PixelExportColor_Int32x4_Int32_color.name = "color"_c;
+    PixelExportColor_Int32x4_Int32_color.type = Type::FullType{ Int32x4Type.name };
+    PixelExportColor_Int32x4_Int32_index.name = "index"_c;
+    PixelExportColor_Int32x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32x4_Int32_index.type.literal = true;
+    PixelExportColor_Int32x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x4_Int32.name = PixelExportColor_Int32x4_Int32_name;
+    PixelExportColor_Int32x4_Int32.backendIndex = 1979;
+    PixelExportColor_Int32x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x4_Int32.parameters = PixelExportColor_Int32x4_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int32_color)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int32)->signature = "pixelExportColor(i32x4,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int32)->name = "pixelExportColor(i32x4,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int32)->nameWithVarNames = "pixelExportColor(color : i32x4, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x4, UInt32
+    PixelExportColor_Int32x4_UInt32_color.name = "color"_c;
+    PixelExportColor_Int32x4_UInt32_color.type = Type::FullType{ Int32x4Type.name };
+    PixelExportColor_Int32x4_UInt32_index.name = "index"_c;
+    PixelExportColor_Int32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int32x4_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x4_UInt32.name = PixelExportColor_Int32x4_UInt32_name;
+    PixelExportColor_Int32x4_UInt32.backendIndex = 1980;
+    PixelExportColor_Int32x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x4_UInt32.parameters = PixelExportColor_Int32x4_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt32_color)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt32)->signature = "pixelExportColor(i32x4,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt32)->name = "pixelExportColor(i32x4,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt32)->nameWithVarNames = "pixelExportColor(color : i32x4, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x4, Int16
+    PixelExportColor_Int32x4_Int16_color.name = "color"_c;
+    PixelExportColor_Int32x4_Int16_color.type = Type::FullType{ Int32x4Type.name };
+    PixelExportColor_Int32x4_Int16_index.name = "index"_c;
+    PixelExportColor_Int32x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int32x4_Int16_index.type.literal = true;
+    PixelExportColor_Int32x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x4_Int16.name = PixelExportColor_Int32x4_Int16_name;
+    PixelExportColor_Int32x4_Int16.backendIndex = 1981;
+    PixelExportColor_Int32x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x4_Int16.parameters = PixelExportColor_Int32x4_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int16_color)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int16)->signature = "pixelExportColor(i32x4,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int16)->name = "pixelExportColor(i32x4,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int16)->nameWithVarNames = "pixelExportColor(color : i32x4, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int32x4, UInt16
+    PixelExportColor_Int32x4_UInt16_color.name = "color"_c;
+    PixelExportColor_Int32x4_UInt16_color.type = Type::FullType{ Int32x4Type.name };
+    PixelExportColor_Int32x4_UInt16_index.name = "index"_c;
+    PixelExportColor_Int32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int32x4_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int32x4_UInt16.name = PixelExportColor_Int32x4_UInt16_name;
+    PixelExportColor_Int32x4_UInt16.backendIndex = 1982;
+    PixelExportColor_Int32x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x4_UInt16.parameters = PixelExportColor_Int32x4_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt16_color)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt16)->signature = "pixelExportColor(i32x4,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt16)->name = "pixelExportColor(i32x4,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt16)->nameWithVarNames = "pixelExportColor(color : i32x4, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int32x4_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16, Int32
+    PixelExportColor_Int16_Int32_color.name = "color"_c;
+    PixelExportColor_Int16_Int32_color.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16_Int32_index.name = "index"_c;
+    PixelExportColor_Int16_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int16_Int32_index.type.literal = true;
+    PixelExportColor_Int16_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16_Int32.name = PixelExportColor_Int16_Int32_name;
+    PixelExportColor_Int16_Int32.backendIndex = 1983;
+    PixelExportColor_Int16_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16_Int32.parameters = PixelExportColor_Int16_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Int16_Int32_color)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int16_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int16_Int32)->signature = "pixelExportColor(i16,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_Int32)->name = "pixelExportColor(i16,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_Int32)->nameWithVarNames = "pixelExportColor(color : i16, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16, UInt32
+    PixelExportColor_Int16_UInt32_color.name = "color"_c;
+    PixelExportColor_Int16_UInt32_color.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16_UInt32_index.name = "index"_c;
+    PixelExportColor_Int16_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int16_UInt32_index.type.literal = true;
+    PixelExportColor_Int16_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16_UInt32.name = PixelExportColor_Int16_UInt32_name;
+    PixelExportColor_Int16_UInt32.backendIndex = 1984;
+    PixelExportColor_Int16_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16_UInt32.parameters = PixelExportColor_Int16_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt32_color)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt32)->signature = "pixelExportColor(i16,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt32)->name = "pixelExportColor(i16,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt32)->nameWithVarNames = "pixelExportColor(color : i16, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16, Int16
+    PixelExportColor_Int16_Int16_color.name = "color"_c;
+    PixelExportColor_Int16_Int16_color.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16_Int16_index.name = "index"_c;
+    PixelExportColor_Int16_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16_Int16_index.type.literal = true;
+    PixelExportColor_Int16_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16_Int16.name = PixelExportColor_Int16_Int16_name;
+    PixelExportColor_Int16_Int16.backendIndex = 1985;
+    PixelExportColor_Int16_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16_Int16.parameters = PixelExportColor_Int16_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Int16_Int16_color)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int16_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int16_Int16)->signature = "pixelExportColor(i16,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_Int16)->name = "pixelExportColor(i16,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_Int16)->nameWithVarNames = "pixelExportColor(color : i16, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16, UInt16
+    PixelExportColor_Int16_UInt16_color.name = "color"_c;
+    PixelExportColor_Int16_UInt16_color.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16_UInt16_index.name = "index"_c;
+    PixelExportColor_Int16_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int16_UInt16_index.type.literal = true;
+    PixelExportColor_Int16_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16_UInt16.name = PixelExportColor_Int16_UInt16_name;
+    PixelExportColor_Int16_UInt16.backendIndex = 1986;
+    PixelExportColor_Int16_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16_UInt16.parameters = PixelExportColor_Int16_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt16_color)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt16)->signature = "pixelExportColor(i16,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt16)->name = "pixelExportColor(i16,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt16)->nameWithVarNames = "pixelExportColor(color : i16, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x2, Int32
+    PixelExportColor_Int16x2_Int32_color.name = "color"_c;
+    PixelExportColor_Int16x2_Int32_color.type = Type::FullType{ Int16x2Type.name };
+    PixelExportColor_Int16x2_Int32_index.name = "index"_c;
+    PixelExportColor_Int16x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int16x2_Int32_index.type.literal = true;
+    PixelExportColor_Int16x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x2_Int32.name = PixelExportColor_Int16x2_Int32_name;
+    PixelExportColor_Int16x2_Int32.backendIndex = 1987;
+    PixelExportColor_Int16x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x2_Int32.parameters = PixelExportColor_Int16x2_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int32_color)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int32)->signature = "pixelExportColor(i16x2,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int32)->name = "pixelExportColor(i16x2,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int32)->nameWithVarNames = "pixelExportColor(color : i16x2, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x2, UInt32
+    PixelExportColor_Int16x2_UInt32_color.name = "color"_c;
+    PixelExportColor_Int16x2_UInt32_color.type = Type::FullType{ Int16x2Type.name };
+    PixelExportColor_Int16x2_UInt32_index.name = "index"_c;
+    PixelExportColor_Int16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int16x2_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x2_UInt32.name = PixelExportColor_Int16x2_UInt32_name;
+    PixelExportColor_Int16x2_UInt32.backendIndex = 1988;
+    PixelExportColor_Int16x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x2_UInt32.parameters = PixelExportColor_Int16x2_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt32_color)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt32)->signature = "pixelExportColor(i16x2,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt32)->name = "pixelExportColor(i16x2,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt32)->nameWithVarNames = "pixelExportColor(color : i16x2, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x2, Int16
+    PixelExportColor_Int16x2_Int16_color.name = "color"_c;
+    PixelExportColor_Int16x2_Int16_color.type = Type::FullType{ Int16x2Type.name };
+    PixelExportColor_Int16x2_Int16_index.name = "index"_c;
+    PixelExportColor_Int16x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16x2_Int16_index.type.literal = true;
+    PixelExportColor_Int16x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x2_Int16.name = PixelExportColor_Int16x2_Int16_name;
+    PixelExportColor_Int16x2_Int16.backendIndex = 1989;
+    PixelExportColor_Int16x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x2_Int16.parameters = PixelExportColor_Int16x2_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int16_color)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int16)->signature = "pixelExportColor(i16x2,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int16)->name = "pixelExportColor(i16x2,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int16)->nameWithVarNames = "pixelExportColor(color : i16x2, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x2, UInt16
+    PixelExportColor_Int16x2_UInt16_color.name = "color"_c;
+    PixelExportColor_Int16x2_UInt16_color.type = Type::FullType{ Int16x2Type.name };
+    PixelExportColor_Int16x2_UInt16_index.name = "index"_c;
+    PixelExportColor_Int16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int16x2_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x2_UInt16.name = PixelExportColor_Int16x2_UInt16_name;
+    PixelExportColor_Int16x2_UInt16.backendIndex = 1990;
+    PixelExportColor_Int16x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x2_UInt16.parameters = PixelExportColor_Int16x2_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt16_color)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt16)->signature = "pixelExportColor(i16x2,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt16)->name = "pixelExportColor(i16x2,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt16)->nameWithVarNames = "pixelExportColor(color : i16x2, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x2_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x3, Int32
+    PixelExportColor_Int16x3_Int32_color.name = "color"_c;
+    PixelExportColor_Int16x3_Int32_color.type = Type::FullType{ Int16x3Type.name };
+    PixelExportColor_Int16x3_Int32_index.name = "index"_c;
+    PixelExportColor_Int16x3_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int16x3_Int32_index.type.literal = true;
+    PixelExportColor_Int16x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x3_Int32.name = PixelExportColor_Int16x3_Int32_name;
+    PixelExportColor_Int16x3_Int32.backendIndex = 1991;
+    PixelExportColor_Int16x3_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x3_Int32.parameters = PixelExportColor_Int16x3_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int32_color)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int32)->signature = "pixelExportColor(i16x3,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int32)->name = "pixelExportColor(i16x3,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int32)->nameWithVarNames = "pixelExportColor(color : i16x3, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x3, UInt32
+    PixelExportColor_Int16x3_UInt32_color.name = "color"_c;
+    PixelExportColor_Int16x3_UInt32_color.type = Type::FullType{ Int16x3Type.name };
+    PixelExportColor_Int16x3_UInt32_index.name = "index"_c;
+    PixelExportColor_Int16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int16x3_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x3_UInt32.name = PixelExportColor_Int16x3_UInt32_name;
+    PixelExportColor_Int16x3_UInt32.backendIndex = 1992;
+    PixelExportColor_Int16x3_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x3_UInt32.parameters = PixelExportColor_Int16x3_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt32_color)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt32)->signature = "pixelExportColor(i16x3,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt32)->name = "pixelExportColor(i16x3,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt32)->nameWithVarNames = "pixelExportColor(color : i16x3, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x3, Int16
+    PixelExportColor_Int16x3_Int16_color.name = "color"_c;
+    PixelExportColor_Int16x3_Int16_color.type = Type::FullType{ Int16x3Type.name };
+    PixelExportColor_Int16x3_Int16_index.name = "index"_c;
+    PixelExportColor_Int16x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16x3_Int16_index.type.literal = true;
+    PixelExportColor_Int16x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x3_Int16.name = PixelExportColor_Int16x3_Int16_name;
+    PixelExportColor_Int16x3_Int16.backendIndex = 1993;
+    PixelExportColor_Int16x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x3_Int16.parameters = PixelExportColor_Int16x3_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int16_color)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int16)->signature = "pixelExportColor(i16x3,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int16)->name = "pixelExportColor(i16x3,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int16)->nameWithVarNames = "pixelExportColor(color : i16x3, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x3, UInt16
+    PixelExportColor_Int16x3_UInt16_color.name = "color"_c;
+    PixelExportColor_Int16x3_UInt16_color.type = Type::FullType{ Int16x3Type.name };
+    PixelExportColor_Int16x3_UInt16_index.name = "index"_c;
+    PixelExportColor_Int16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int16x3_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x3_UInt16.name = PixelExportColor_Int16x3_UInt16_name;
+    PixelExportColor_Int16x3_UInt16.backendIndex = 1994;
+    PixelExportColor_Int16x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x3_UInt16.parameters = PixelExportColor_Int16x3_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt16_color)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt16)->signature = "pixelExportColor(i16x3,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt16)->name = "pixelExportColor(i16x3,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt16)->nameWithVarNames = "pixelExportColor(color : i16x3, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x3_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x4, Int32
+    PixelExportColor_Int16x4_Int32_color.name = "color"_c;
+    PixelExportColor_Int16x4_Int32_color.type = Type::FullType{ Int16x4Type.name };
+    PixelExportColor_Int16x4_Int32_index.name = "index"_c;
+    PixelExportColor_Int16x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int16x4_Int32_index.type.literal = true;
+    PixelExportColor_Int16x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x4_Int32.name = PixelExportColor_Int16x4_Int32_name;
+    PixelExportColor_Int16x4_Int32.backendIndex = 1995;
+    PixelExportColor_Int16x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x4_Int32.parameters = PixelExportColor_Int16x4_Int32_args;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int32_color)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int32)->signature = "pixelExportColor(i16x4,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int32)->name = "pixelExportColor(i16x4,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int32)->nameWithVarNames = "pixelExportColor(color : i16x4, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x4, UInt32
+    PixelExportColor_Int16x4_UInt32_color.name = "color"_c;
+    PixelExportColor_Int16x4_UInt32_color.type = Type::FullType{ Int16x4Type.name };
+    PixelExportColor_Int16x4_UInt32_index.name = "index"_c;
+    PixelExportColor_Int16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int16x4_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x4_UInt32.name = PixelExportColor_Int16x4_UInt32_name;
+    PixelExportColor_Int16x4_UInt32.backendIndex = 1996;
+    PixelExportColor_Int16x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x4_UInt32.parameters = PixelExportColor_Int16x4_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt32_color)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt32)->signature = "pixelExportColor(i16x4,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt32)->name = "pixelExportColor(i16x4,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt32)->nameWithVarNames = "pixelExportColor(color : i16x4, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x4, Int16
+    PixelExportColor_Int16x4_Int16_color.name = "color"_c;
+    PixelExportColor_Int16x4_Int16_color.type = Type::FullType{ Int16x4Type.name };
+    PixelExportColor_Int16x4_Int16_index.name = "index"_c;
+    PixelExportColor_Int16x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16x4_Int16_index.type.literal = true;
+    PixelExportColor_Int16x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x4_Int16.name = PixelExportColor_Int16x4_Int16_name;
+    PixelExportColor_Int16x4_Int16.backendIndex = 1997;
+    PixelExportColor_Int16x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x4_Int16.parameters = PixelExportColor_Int16x4_Int16_args;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int16_color)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int16)->signature = "pixelExportColor(i16x4,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int16)->name = "pixelExportColor(i16x4,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int16)->nameWithVarNames = "pixelExportColor(color : i16x4, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with Int16x4, UInt16
+    PixelExportColor_Int16x4_UInt16_color.name = "color"_c;
+    PixelExportColor_Int16x4_UInt16_color.type = Type::FullType{ Int16x4Type.name };
+    PixelExportColor_Int16x4_UInt16_index.name = "index"_c;
+    PixelExportColor_Int16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int16x4_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_Int16x4_UInt16.name = PixelExportColor_Int16x4_UInt16_name;
+    PixelExportColor_Int16x4_UInt16.backendIndex = 1998;
+    PixelExportColor_Int16x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x4_UInt16.parameters = PixelExportColor_Int16x4_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt16_color)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt16)->signature = "pixelExportColor(i16x4,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt16)->name = "pixelExportColor(i16x4,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt16)->nameWithVarNames = "pixelExportColor(color : i16x4, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_Int16x4_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with UInt32, Int32
+    PixelExportColor_UInt32_Int32_color.name = "color"_c;
+    PixelExportColor_UInt32_Int32_color.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32_Int32_index.name = "index"_c;
+    PixelExportColor_UInt32_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt32_Int32_index.type.literal = true;
+    PixelExportColor_UInt32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_UInt32_Int32.name = PixelExportColor_UInt32_Int32_name;
+    PixelExportColor_UInt32_Int32.backendIndex = 1999;
+    PixelExportColor_UInt32_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32_Int32.parameters = PixelExportColor_UInt32_Int32_args;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int32_color)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int32)->signature = "pixelExportColor(u32,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int32)->name = "pixelExportColor(u32,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int32)->nameWithVarNames = "pixelExportColor(color : u32, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with UInt32, UInt32
+    PixelExportColor_UInt32_UInt32_color.name = "color"_c;
+    PixelExportColor_UInt32_UInt32_color.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32_UInt32_index.name = "index"_c;
+    PixelExportColor_UInt32_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_UInt32_UInt32.name = PixelExportColor_UInt32_UInt32_name;
+    PixelExportColor_UInt32_UInt32.backendIndex = 2000;
+    PixelExportColor_UInt32_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32_UInt32.parameters = PixelExportColor_UInt32_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt32_color)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt32)->signature = "pixelExportColor(u32,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt32)->name = "pixelExportColor(u32,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt32)->nameWithVarNames = "pixelExportColor(color : u32, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with UInt32, Int16
+    PixelExportColor_UInt32_Int16_color.name = "color"_c;
+    PixelExportColor_UInt32_Int16_color.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32_Int16_index.name = "index"_c;
+    PixelExportColor_UInt32_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt32_Int16_index.type.literal = true;
+    PixelExportColor_UInt32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_UInt32_Int16.name = PixelExportColor_UInt32_Int16_name;
+    PixelExportColor_UInt32_Int16.backendIndex = 2001;
+    PixelExportColor_UInt32_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32_Int16.parameters = PixelExportColor_UInt32_Int16_args;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int16_color)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int16)->signature = "pixelExportColor(u32,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int16)->name = "pixelExportColor(u32,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int16)->nameWithVarNames = "pixelExportColor(color : u32, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with UInt32, UInt16
+    PixelExportColor_UInt32_UInt16_color.name = "color"_c;
+    PixelExportColor_UInt32_UInt16_color.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32_UInt16_index.name = "index"_c;
+    PixelExportColor_UInt32_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt32_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_UInt32_UInt16.name = PixelExportColor_UInt32_UInt16_name;
+    PixelExportColor_UInt32_UInt16.backendIndex = 2002;
+    PixelExportColor_UInt32_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32_UInt16.parameters = PixelExportColor_UInt32_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt16_color)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt16)->signature = "pixelExportColor(u32,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt16)->name = "pixelExportColor(u32,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt16)->nameWithVarNames = "pixelExportColor(color : u32, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with UInt32x2, Int32
+    PixelExportColor_UInt32x2_Int32_color.name = "color"_c;
+    PixelExportColor_UInt32x2_Int32_color.type = Type::FullType{ UInt32x2Type.name };
+    PixelExportColor_UInt32x2_Int32_index.name = "index"_c;
+    PixelExportColor_UInt32x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt32x2_Int32_index.type.literal = true;
+    PixelExportColor_UInt32x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_UInt32x2_Int32.name = PixelExportColor_UInt32x2_Int32_name;
+    PixelExportColor_UInt32x2_Int32.backendIndex = 2003;
+    PixelExportColor_UInt32x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x2_Int32.parameters = PixelExportColor_UInt32x2_Int32_args;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int32_color)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int32_index)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int32)->signature = "pixelExportColor(u32x2,literal i32) void"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int32)->name = "pixelExportColor(u32x2,literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int32)->nameWithVarNames = "pixelExportColor(color : u32x2, index : literal i32)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with UInt32x2, UInt32
+    PixelExportColor_UInt32x2_UInt32_color.name = "color"_c;
+    PixelExportColor_UInt32x2_UInt32_color.type = Type::FullType{ UInt32x2Type.name };
+    PixelExportColor_UInt32x2_UInt32_index.name = "index"_c;
+    PixelExportColor_UInt32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32x2_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_UInt32x2_UInt32.name = PixelExportColor_UInt32x2_UInt32_name;
+    PixelExportColor_UInt32x2_UInt32.backendIndex = 2004;
+    PixelExportColor_UInt32x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x2_UInt32.parameters = PixelExportColor_UInt32x2_UInt32_args;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32_color)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32_index)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32)->signature = "pixelExportColor(u32x2,literal u32) void"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32)->name = "pixelExportColor(u32x2,literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32)->nameWithVarNames = "pixelExportColor(color : u32x2, index : literal u32)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with UInt32x2, Int16
+    PixelExportColor_UInt32x2_Int16_color.name = "color"_c;
+    PixelExportColor_UInt32x2_Int16_color.type = Type::FullType{ UInt32x2Type.name };
+    PixelExportColor_UInt32x2_Int16_index.name = "index"_c;
+    PixelExportColor_UInt32x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt32x2_Int16_index.type.literal = true;
+    PixelExportColor_UInt32x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_UInt32x2_Int16.name = PixelExportColor_UInt32x2_Int16_name;
+    PixelExportColor_UInt32x2_Int16.backendIndex = 2005;
+    PixelExportColor_UInt32x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x2_Int16.parameters = PixelExportColor_UInt32x2_Int16_args;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int16_color)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int16_index)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int16)->signature = "pixelExportColor(u32x2,literal i16) void"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int16)->name = "pixelExportColor(u32x2,literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int16)->nameWithVarNames = "pixelExportColor(color : u32x2, index : literal i16)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_Int16)->returnTypeSymbol = &VoidType;
+
+    /// pixelExportColor with UInt32x2, UInt16
+    PixelExportColor_UInt32x2_UInt16_color.name = "color"_c;
+    PixelExportColor_UInt32x2_UInt16_color.type = Type::FullType{ UInt32x2Type.name };
+    PixelExportColor_UInt32x2_UInt16_index.name = "index"_c;
+    PixelExportColor_UInt32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt32x2_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
+    PixelExportColor_UInt32x2_UInt16.name = PixelExportColor_UInt32x2_UInt16_name;
+    PixelExportColor_UInt32x2_UInt16.backendIndex = 2006;
+    PixelExportColor_UInt32x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x2_UInt16.parameters = PixelExportColor_UInt32x2_UInt16_args;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16_color)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16_index)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16)->signature = "pixelExportColor(u32x2,literal u16) void"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16)->name = "pixelExportColor(u32x2,literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16)->nameWithVarNames = "pixelExportColor(color : u32x2, index : literal u16)"_c;
+    Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16)->returnTypeSymbol = &VoidType;
+
     /// pixelExportColor with UInt32x3, Int32
     PixelExportColor_UInt32x3_Int32_color.name = "color"_c;
     PixelExportColor_UInt32x3_Int32_color.type = Type::FullType{ UInt32x3Type.name };
@@ -656,7 +1530,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt32x3_Int32_index.type.literal = true;
     PixelExportColor_UInt32x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x3_Int32.name = PixelExportColor_UInt32x3_Int32_name;
-    PixelExportColor_UInt32x3_Int32.backendIndex = 1961;
+    PixelExportColor_UInt32x3_Int32.backendIndex = 2007;
     PixelExportColor_UInt32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_Int32.parameters = PixelExportColor_UInt32x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int32_color)->typeSymbol = &UInt32x3Type;
@@ -674,7 +1548,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt32x3_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x3_UInt32.name = PixelExportColor_UInt32x3_UInt32_name;
-    PixelExportColor_UInt32x3_UInt32.backendIndex = 1962;
+    PixelExportColor_UInt32x3_UInt32.backendIndex = 2008;
     PixelExportColor_UInt32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_UInt32.parameters = PixelExportColor_UInt32x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt32_color)->typeSymbol = &UInt32x3Type;
@@ -692,7 +1566,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt32x3_Int16_index.type.literal = true;
     PixelExportColor_UInt32x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x3_Int16.name = PixelExportColor_UInt32x3_Int16_name;
-    PixelExportColor_UInt32x3_Int16.backendIndex = 1963;
+    PixelExportColor_UInt32x3_Int16.backendIndex = 2009;
     PixelExportColor_UInt32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_Int16.parameters = PixelExportColor_UInt32x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int16_color)->typeSymbol = &UInt32x3Type;
@@ -710,7 +1584,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt32x3_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x3_UInt16.name = PixelExportColor_UInt32x3_UInt16_name;
-    PixelExportColor_UInt32x3_UInt16.backendIndex = 1964;
+    PixelExportColor_UInt32x3_UInt16.backendIndex = 2010;
     PixelExportColor_UInt32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_UInt16.parameters = PixelExportColor_UInt32x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt16_color)->typeSymbol = &UInt32x3Type;
@@ -728,7 +1602,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt32x4_Int32_index.type.literal = true;
     PixelExportColor_UInt32x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x4_Int32.name = PixelExportColor_UInt32x4_Int32_name;
-    PixelExportColor_UInt32x4_Int32.backendIndex = 1965;
+    PixelExportColor_UInt32x4_Int32.backendIndex = 2011;
     PixelExportColor_UInt32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_Int32.parameters = PixelExportColor_UInt32x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int32_color)->typeSymbol = &UInt32x4Type;
@@ -746,7 +1620,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt32x4_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x4_UInt32.name = PixelExportColor_UInt32x4_UInt32_name;
-    PixelExportColor_UInt32x4_UInt32.backendIndex = 1966;
+    PixelExportColor_UInt32x4_UInt32.backendIndex = 2012;
     PixelExportColor_UInt32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_UInt32.parameters = PixelExportColor_UInt32x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt32_color)->typeSymbol = &UInt32x4Type;
@@ -764,7 +1638,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt32x4_Int16_index.type.literal = true;
     PixelExportColor_UInt32x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x4_Int16.name = PixelExportColor_UInt32x4_Int16_name;
-    PixelExportColor_UInt32x4_Int16.backendIndex = 1967;
+    PixelExportColor_UInt32x4_Int16.backendIndex = 2013;
     PixelExportColor_UInt32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_Int16.parameters = PixelExportColor_UInt32x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int16_color)->typeSymbol = &UInt32x4Type;
@@ -782,7 +1656,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt32x4_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x4_UInt16.name = PixelExportColor_UInt32x4_UInt16_name;
-    PixelExportColor_UInt32x4_UInt16.backendIndex = 1968;
+    PixelExportColor_UInt32x4_UInt16.backendIndex = 2014;
     PixelExportColor_UInt32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_UInt16.parameters = PixelExportColor_UInt32x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt16_color)->typeSymbol = &UInt32x4Type;
@@ -800,7 +1674,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16_Int32_index.type.literal = true;
     PixelExportColor_UInt16_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16_Int32.name = PixelExportColor_UInt16_Int32_name;
-    PixelExportColor_UInt16_Int32.backendIndex = 1969;
+    PixelExportColor_UInt16_Int32.backendIndex = 2015;
     PixelExportColor_UInt16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_Int32.parameters = PixelExportColor_UInt16_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16_Int32_color)->typeSymbol = &UInt16Type;
@@ -818,7 +1692,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16_UInt32_index.type.literal = true;
     PixelExportColor_UInt16_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16_UInt32.name = PixelExportColor_UInt16_UInt32_name;
-    PixelExportColor_UInt16_UInt32.backendIndex = 1970;
+    PixelExportColor_UInt16_UInt32.backendIndex = 2016;
     PixelExportColor_UInt16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_UInt32.parameters = PixelExportColor_UInt16_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt32_color)->typeSymbol = &UInt16Type;
@@ -836,7 +1710,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16_Int16_index.type.literal = true;
     PixelExportColor_UInt16_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16_Int16.name = PixelExportColor_UInt16_Int16_name;
-    PixelExportColor_UInt16_Int16.backendIndex = 1971;
+    PixelExportColor_UInt16_Int16.backendIndex = 2017;
     PixelExportColor_UInt16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_Int16.parameters = PixelExportColor_UInt16_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16_Int16_color)->typeSymbol = &UInt16Type;
@@ -854,7 +1728,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16_UInt16_index.type.literal = true;
     PixelExportColor_UInt16_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16_UInt16.name = PixelExportColor_UInt16_UInt16_name;
-    PixelExportColor_UInt16_UInt16.backendIndex = 1972;
+    PixelExportColor_UInt16_UInt16.backendIndex = 2018;
     PixelExportColor_UInt16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_UInt16.parameters = PixelExportColor_UInt16_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt16_color)->typeSymbol = &UInt16Type;
@@ -872,7 +1746,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x2_Int32_index.type.literal = true;
     PixelExportColor_UInt16x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x2_Int32.name = PixelExportColor_UInt16x2_Int32_name;
-    PixelExportColor_UInt16x2_Int32.backendIndex = 1973;
+    PixelExportColor_UInt16x2_Int32.backendIndex = 2019;
     PixelExportColor_UInt16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_Int32.parameters = PixelExportColor_UInt16x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int32_color)->typeSymbol = &UInt16x2Type;
@@ -890,7 +1764,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x2_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x2_UInt32.name = PixelExportColor_UInt16x2_UInt32_name;
-    PixelExportColor_UInt16x2_UInt32.backendIndex = 1974;
+    PixelExportColor_UInt16x2_UInt32.backendIndex = 2020;
     PixelExportColor_UInt16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_UInt32.parameters = PixelExportColor_UInt16x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32_color)->typeSymbol = &UInt16x2Type;
@@ -908,7 +1782,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x2_Int16_index.type.literal = true;
     PixelExportColor_UInt16x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x2_Int16.name = PixelExportColor_UInt16x2_Int16_name;
-    PixelExportColor_UInt16x2_Int16.backendIndex = 1975;
+    PixelExportColor_UInt16x2_Int16.backendIndex = 2021;
     PixelExportColor_UInt16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_Int16.parameters = PixelExportColor_UInt16x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int16_color)->typeSymbol = &UInt16x2Type;
@@ -926,7 +1800,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x2_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x2_UInt16.name = PixelExportColor_UInt16x2_UInt16_name;
-    PixelExportColor_UInt16x2_UInt16.backendIndex = 1976;
+    PixelExportColor_UInt16x2_UInt16.backendIndex = 2022;
     PixelExportColor_UInt16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_UInt16.parameters = PixelExportColor_UInt16x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16_color)->typeSymbol = &UInt16x2Type;
@@ -944,7 +1818,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x3_Int32_index.type.literal = true;
     PixelExportColor_UInt16x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x3_Int32.name = PixelExportColor_UInt16x3_Int32_name;
-    PixelExportColor_UInt16x3_Int32.backendIndex = 1977;
+    PixelExportColor_UInt16x3_Int32.backendIndex = 2023;
     PixelExportColor_UInt16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_Int32.parameters = PixelExportColor_UInt16x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int32_color)->typeSymbol = &UInt16x3Type;
@@ -962,7 +1836,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x3_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x3_UInt32.name = PixelExportColor_UInt16x3_UInt32_name;
-    PixelExportColor_UInt16x3_UInt32.backendIndex = 1978;
+    PixelExportColor_UInt16x3_UInt32.backendIndex = 2024;
     PixelExportColor_UInt16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_UInt32.parameters = PixelExportColor_UInt16x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt32_color)->typeSymbol = &UInt16x3Type;
@@ -980,7 +1854,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x3_Int16_index.type.literal = true;
     PixelExportColor_UInt16x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x3_Int16.name = PixelExportColor_UInt16x3_Int16_name;
-    PixelExportColor_UInt16x3_Int16.backendIndex = 1979;
+    PixelExportColor_UInt16x3_Int16.backendIndex = 2025;
     PixelExportColor_UInt16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_Int16.parameters = PixelExportColor_UInt16x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int16_color)->typeSymbol = &UInt16x3Type;
@@ -998,7 +1872,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x3_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x3_UInt16.name = PixelExportColor_UInt16x3_UInt16_name;
-    PixelExportColor_UInt16x3_UInt16.backendIndex = 1980;
+    PixelExportColor_UInt16x3_UInt16.backendIndex = 2026;
     PixelExportColor_UInt16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_UInt16.parameters = PixelExportColor_UInt16x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt16_color)->typeSymbol = &UInt16x3Type;
@@ -1016,7 +1890,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x4_Int32_index.type.literal = true;
     PixelExportColor_UInt16x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x4_Int32.name = PixelExportColor_UInt16x4_Int32_name;
-    PixelExportColor_UInt16x4_Int32.backendIndex = 1981;
+    PixelExportColor_UInt16x4_Int32.backendIndex = 2027;
     PixelExportColor_UInt16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_Int32.parameters = PixelExportColor_UInt16x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int32_color)->typeSymbol = &UInt16x4Type;
@@ -1034,7 +1908,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x4_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x4_UInt32.name = PixelExportColor_UInt16x4_UInt32_name;
-    PixelExportColor_UInt16x4_UInt32.backendIndex = 1982;
+    PixelExportColor_UInt16x4_UInt32.backendIndex = 2028;
     PixelExportColor_UInt16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_UInt32.parameters = PixelExportColor_UInt16x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt32_color)->typeSymbol = &UInt16x4Type;
@@ -1052,7 +1926,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x4_Int16_index.type.literal = true;
     PixelExportColor_UInt16x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x4_Int16.name = PixelExportColor_UInt16x4_Int16_name;
-    PixelExportColor_UInt16x4_Int16.backendIndex = 1983;
+    PixelExportColor_UInt16x4_Int16.backendIndex = 2029;
     PixelExportColor_UInt16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_Int16.parameters = PixelExportColor_UInt16x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int16_color)->typeSymbol = &UInt16x4Type;
@@ -1070,7 +1944,7 @@ void SetupIntrinsics8()
     PixelExportColor_UInt16x4_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x4_UInt16.name = PixelExportColor_UInt16x4_UInt16_name;
-    PixelExportColor_UInt16x4_UInt16.backendIndex = 1984;
+    PixelExportColor_UInt16x4_UInt16.backendIndex = 2030;
     PixelExportColor_UInt16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_UInt16.parameters = PixelExportColor_UInt16x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt16_color)->typeSymbol = &UInt16x4Type;
@@ -1083,7 +1957,7 @@ void SetupIntrinsics8()
     /// computeGetLocalThreadIndices
     ComputeGetLocalThreadIndices.documentation = "Returns the local thread indices within the workgroup"_c;
     ComputeGetLocalThreadIndices.name = ComputeGetLocalThreadIndices_name;
-    ComputeGetLocalThreadIndices.backendIndex = 1985;
+    ComputeGetLocalThreadIndices.backendIndex = 2031;
     ComputeGetLocalThreadIndices.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&ComputeGetLocalThreadIndices)->signature = "computeGetLocalThreadIndices() u32x3"_c;
     Symbol::Resolved(&ComputeGetLocalThreadIndices)->name = "computeGetLocalThreadIndices()"_c;
@@ -1093,7 +1967,7 @@ void SetupIntrinsics8()
     /// computeGetGlobalThreadIndices
     ComputeGetGlobalThreadIndices.documentation = "Returns the global thread indices in the dispatch"_c;
     ComputeGetGlobalThreadIndices.name = ComputeGetGlobalThreadIndices_name;
-    ComputeGetGlobalThreadIndices.backendIndex = 1986;
+    ComputeGetGlobalThreadIndices.backendIndex = 2032;
     ComputeGetGlobalThreadIndices.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&ComputeGetGlobalThreadIndices)->signature = "computeGetGlobalThreadIndices() u32x3"_c;
     Symbol::Resolved(&ComputeGetGlobalThreadIndices)->name = "computeGetGlobalThreadIndices()"_c;
@@ -1103,27 +1977,27 @@ void SetupIntrinsics8()
     /// computeGetWorkgroupIndices
     ComputeGetWorkgroupIndices.documentation = "Returns the workgroup indices in the dispatch"_c;
     ComputeGetWorkgroupIndices.name = ComputeGetWorkgroupIndices_name;
-    ComputeGetWorkgroupIndices.backendIndex = 1987;
+    ComputeGetWorkgroupIndices.backendIndex = 2033;
     ComputeGetWorkgroupIndices.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&ComputeGetWorkgroupIndices)->signature = "computeGetWorkgroupIndices() u32x3"_c;
     Symbol::Resolved(&ComputeGetWorkgroupIndices)->name = "computeGetWorkgroupIndices()"_c;
     Symbol::Resolved(&ComputeGetWorkgroupIndices)->nameWithVarNames = "computeGetWorkgroupIndices()"_c;
     Symbol::Resolved(&ComputeGetWorkgroupIndices)->returnTypeSymbol = &UInt32x3Type;
 
-    /// computeGetWorkGroupDimensions
-    ComputeGetWorkGroupDimensions.documentation = "Returns the dimensions of the workgroup in the dispatch"_c;
-    ComputeGetWorkGroupDimensions.name = ComputeGetWorkGroupDimensions_name;
-    ComputeGetWorkGroupDimensions.backendIndex = 1988;
-    ComputeGetWorkGroupDimensions.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&ComputeGetWorkGroupDimensions)->signature = "computeGetWorkGroupDimensions() u32x3"_c;
-    Symbol::Resolved(&ComputeGetWorkGroupDimensions)->name = "computeGetWorkGroupDimensions()"_c;
-    Symbol::Resolved(&ComputeGetWorkGroupDimensions)->nameWithVarNames = "computeGetWorkGroupDimensions()"_c;
-    Symbol::Resolved(&ComputeGetWorkGroupDimensions)->returnTypeSymbol = &UInt32x3Type;
+    /// computeGetNumWorkgroups
+    ComputeGetNumWorkgroups.documentation = "Returns the dimensions of the workgroup in the dispatch"_c;
+    ComputeGetNumWorkgroups.name = ComputeGetNumWorkgroups_name;
+    ComputeGetNumWorkgroups.backendIndex = 2034;
+    ComputeGetNumWorkgroups.returnType = Type::FullType { UInt32x3Type.name };
+    Symbol::Resolved(&ComputeGetNumWorkgroups)->signature = "computeGetNumWorkgroups() u32x3"_c;
+    Symbol::Resolved(&ComputeGetNumWorkgroups)->name = "computeGetNumWorkgroups()"_c;
+    Symbol::Resolved(&ComputeGetNumWorkgroups)->nameWithVarNames = "computeGetNumWorkgroups()"_c;
+    Symbol::Resolved(&ComputeGetNumWorkgroups)->returnTypeSymbol = &UInt32x3Type;
 
     /// computeGetIndexInWorkgroup
     ComputeGetIndexInWorkgroup.documentation = "Returns flattened index of the current thread in the workgroup using (x * workgroupSize.y + y) * workgroupSize.x + z"_c;
     ComputeGetIndexInWorkgroup.name = ComputeGetIndexInWorkgroup_name;
-    ComputeGetIndexInWorkgroup.backendIndex = 1989;
+    ComputeGetIndexInWorkgroup.backendIndex = 2035;
     ComputeGetIndexInWorkgroup.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&ComputeGetIndexInWorkgroup)->signature = "computeGetIndexInWorkgroup() u32"_c;
     Symbol::Resolved(&ComputeGetIndexInWorkgroup)->name = "computeGetIndexInWorkgroup()"_c;
@@ -1133,7 +2007,7 @@ void SetupIntrinsics8()
     /// subgroupGetId
     SubgroupGetId.documentation = "Returns the subgroup ID of the current thread"_c;
     SubgroupGetId.name = SubgroupGetId_name;
-    SubgroupGetId.backendIndex = 1990;
+    SubgroupGetId.backendIndex = 2036;
     SubgroupGetId.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&SubgroupGetId)->signature = "subgroupGetId() u32x3"_c;
     Symbol::Resolved(&SubgroupGetId)->name = "subgroupGetId()"_c;
@@ -1143,7 +2017,7 @@ void SetupIntrinsics8()
     /// subgroupGetSize
     SubgroupGetSize.documentation = "Returns the size of the subgroup"_c;
     SubgroupGetSize.name = SubgroupGetSize_name;
-    SubgroupGetSize.backendIndex = 1991;
+    SubgroupGetSize.backendIndex = 2037;
     SubgroupGetSize.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&SubgroupGetSize)->signature = "subgroupGetSize() u32x3"_c;
     Symbol::Resolved(&SubgroupGetSize)->name = "subgroupGetSize()"_c;
@@ -1153,7 +2027,7 @@ void SetupIntrinsics8()
     /// subgroupGetNum
     SubgroupGetNum.documentation = "Returns the number of subgroups in the workgroup"_c;
     SubgroupGetNum.name = SubgroupGetNum_name;
-    SubgroupGetNum.backendIndex = 1992;
+    SubgroupGetNum.backendIndex = 2038;
     SubgroupGetNum.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&SubgroupGetNum)->signature = "subgroupGetNum() u32x3"_c;
     Symbol::Resolved(&SubgroupGetNum)->name = "subgroupGetNum()"_c;
@@ -1163,7 +2037,7 @@ void SetupIntrinsics8()
     /// subgroupGetThreadMask
     SubgroupGetThreadMask.documentation = "Returns a 128 bit subgroup mask where the current thread is active"_c;
     SubgroupGetThreadMask.name = SubgroupGetThreadMask_name;
-    SubgroupGetThreadMask.backendIndex = 1993;
+    SubgroupGetThreadMask.backendIndex = 2039;
     SubgroupGetThreadMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetThreadMask)->signature = "subgroupGetThreadMask() u32x4"_c;
     Symbol::Resolved(&SubgroupGetThreadMask)->name = "subgroupGetThreadMask()"_c;
@@ -1173,7 +2047,7 @@ void SetupIntrinsics8()
     /// subgroupGetThreadAndLowerMask
     SubgroupGetThreadAndLowerMask.documentation = "Returns a 128 bit subgroup mask where the current thread and all lower threads are active"_c;
     SubgroupGetThreadAndLowerMask.name = SubgroupGetThreadAndLowerMask_name;
-    SubgroupGetThreadAndLowerMask.backendIndex = 1994;
+    SubgroupGetThreadAndLowerMask.backendIndex = 2040;
     SubgroupGetThreadAndLowerMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetThreadAndLowerMask)->signature = "subgroupGetThreadAndLowerMask() u32x4"_c;
     Symbol::Resolved(&SubgroupGetThreadAndLowerMask)->name = "subgroupGetThreadAndLowerMask()"_c;
@@ -1183,7 +2057,7 @@ void SetupIntrinsics8()
     /// subgroupGetLowerMask
     SubgroupGetLowerMask.documentation = "Returns a 128 bit subgroup mask where all lower threads are active"_c;
     SubgroupGetLowerMask.name = SubgroupGetLowerMask_name;
-    SubgroupGetLowerMask.backendIndex = 1995;
+    SubgroupGetLowerMask.backendIndex = 2041;
     SubgroupGetLowerMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetLowerMask)->signature = "subgroupGetLowerMask() u32x4"_c;
     Symbol::Resolved(&SubgroupGetLowerMask)->name = "subgroupGetLowerMask()"_c;
@@ -1193,7 +2067,7 @@ void SetupIntrinsics8()
     /// subgroupGetThreadAndGreaterMask
     SubgroupGetThreadAndGreaterMask.documentation = "Returns a 128 bit subgroup mask where the current thread and all greater threads are active"_c;
     SubgroupGetThreadAndGreaterMask.name = SubgroupGetThreadAndGreaterMask_name;
-    SubgroupGetThreadAndGreaterMask.backendIndex = 1996;
+    SubgroupGetThreadAndGreaterMask.backendIndex = 2042;
     SubgroupGetThreadAndGreaterMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetThreadAndGreaterMask)->signature = "subgroupGetThreadAndGreaterMask() u32x4"_c;
     Symbol::Resolved(&SubgroupGetThreadAndGreaterMask)->name = "subgroupGetThreadAndGreaterMask()"_c;
@@ -1203,7 +2077,7 @@ void SetupIntrinsics8()
     /// subgroupGetGreaterMask
     SubgroupGetGreaterMask.documentation = "Returns a 128 bit subgroup mask where all greater threads are active"_c;
     SubgroupGetGreaterMask.name = SubgroupGetGreaterMask_name;
-    SubgroupGetGreaterMask.backendIndex = 1997;
+    SubgroupGetGreaterMask.backendIndex = 2043;
     SubgroupGetGreaterMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetGreaterMask)->signature = "subgroupGetGreaterMask() u32x4"_c;
     Symbol::Resolved(&SubgroupGetGreaterMask)->name = "subgroupGetGreaterMask()"_c;
@@ -1213,7 +2087,7 @@ void SetupIntrinsics8()
     /// subgroupGetFirstActiveThread
     SubgroupGetFirstActiveThread.documentation = "Returns the ID of the first active thread in the subgroup. If no threads are active, returns 0."_c;
     SubgroupGetFirstActiveThread.name = SubgroupGetFirstActiveThread_name;
-    SubgroupGetFirstActiveThread.backendIndex = 1998;
+    SubgroupGetFirstActiveThread.backendIndex = 2044;
     SubgroupGetFirstActiveThread.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&SubgroupGetFirstActiveThread)->signature = "subgroupGetFirstActiveThread() u32"_c;
     Symbol::Resolved(&SubgroupGetFirstActiveThread)->name = "subgroupGetFirstActiveThread()"_c;
@@ -1225,7 +2099,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupBroadcastFirstActiveThread_Float32.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float32.name = SubgroupBroadcastFirstActiveThread_Float32_name;
-    SubgroupBroadcastFirstActiveThread_Float32.backendIndex = 1999;
+    SubgroupBroadcastFirstActiveThread_Float32.backendIndex = 2045;
     SubgroupBroadcastFirstActiveThread_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupBroadcastFirstActiveThread_Float32.parameters = SubgroupBroadcastFirstActiveThread_Float32_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32_value)->typeSymbol = &Float32Type;
@@ -1239,7 +2113,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float32x2.name = SubgroupBroadcastFirstActiveThread_Float32x2_name;
-    SubgroupBroadcastFirstActiveThread_Float32x2.backendIndex = 2000;
+    SubgroupBroadcastFirstActiveThread_Float32x2.backendIndex = 2046;
     SubgroupBroadcastFirstActiveThread_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x2.parameters = SubgroupBroadcastFirstActiveThread_Float32x2_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x2_value)->typeSymbol = &Float32x2Type;
@@ -1253,7 +2127,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float32x3.name = SubgroupBroadcastFirstActiveThread_Float32x3_name;
-    SubgroupBroadcastFirstActiveThread_Float32x3.backendIndex = 2001;
+    SubgroupBroadcastFirstActiveThread_Float32x3.backendIndex = 2047;
     SubgroupBroadcastFirstActiveThread_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x3.parameters = SubgroupBroadcastFirstActiveThread_Float32x3_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x3_value)->typeSymbol = &Float32x3Type;
@@ -1267,7 +2141,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float32x4.name = SubgroupBroadcastFirstActiveThread_Float32x4_name;
-    SubgroupBroadcastFirstActiveThread_Float32x4.backendIndex = 2002;
+    SubgroupBroadcastFirstActiveThread_Float32x4.backendIndex = 2048;
     SubgroupBroadcastFirstActiveThread_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x4.parameters = SubgroupBroadcastFirstActiveThread_Float32x4_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x4_value)->typeSymbol = &Float32x4Type;
@@ -1281,7 +2155,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupBroadcastFirstActiveThread_Float16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float16.name = SubgroupBroadcastFirstActiveThread_Float16_name;
-    SubgroupBroadcastFirstActiveThread_Float16.backendIndex = 2003;
+    SubgroupBroadcastFirstActiveThread_Float16.backendIndex = 2049;
     SubgroupBroadcastFirstActiveThread_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupBroadcastFirstActiveThread_Float16.parameters = SubgroupBroadcastFirstActiveThread_Float16_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16_value)->typeSymbol = &Float16Type;
@@ -1295,7 +2169,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float16x2.name = SubgroupBroadcastFirstActiveThread_Float16x2_name;
-    SubgroupBroadcastFirstActiveThread_Float16x2.backendIndex = 2004;
+    SubgroupBroadcastFirstActiveThread_Float16x2.backendIndex = 2050;
     SubgroupBroadcastFirstActiveThread_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x2.parameters = SubgroupBroadcastFirstActiveThread_Float16x2_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x2_value)->typeSymbol = &Float16x2Type;
@@ -1309,7 +2183,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float16x3.name = SubgroupBroadcastFirstActiveThread_Float16x3_name;
-    SubgroupBroadcastFirstActiveThread_Float16x3.backendIndex = 2005;
+    SubgroupBroadcastFirstActiveThread_Float16x3.backendIndex = 2051;
     SubgroupBroadcastFirstActiveThread_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x3.parameters = SubgroupBroadcastFirstActiveThread_Float16x3_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x3_value)->typeSymbol = &Float16x3Type;
@@ -1323,7 +2197,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float16x4.name = SubgroupBroadcastFirstActiveThread_Float16x4_name;
-    SubgroupBroadcastFirstActiveThread_Float16x4.backendIndex = 2006;
+    SubgroupBroadcastFirstActiveThread_Float16x4.backendIndex = 2052;
     SubgroupBroadcastFirstActiveThread_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x4.parameters = SubgroupBroadcastFirstActiveThread_Float16x4_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x4_value)->typeSymbol = &Float16x4Type;
@@ -1337,7 +2211,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupBroadcastFirstActiveThread_Int32.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int32.name = SubgroupBroadcastFirstActiveThread_Int32_name;
-    SubgroupBroadcastFirstActiveThread_Int32.backendIndex = 2007;
+    SubgroupBroadcastFirstActiveThread_Int32.backendIndex = 2053;
     SubgroupBroadcastFirstActiveThread_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupBroadcastFirstActiveThread_Int32.parameters = SubgroupBroadcastFirstActiveThread_Int32_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32_value)->typeSymbol = &Int32Type;
@@ -1351,7 +2225,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int32x2.name = SubgroupBroadcastFirstActiveThread_Int32x2_name;
-    SubgroupBroadcastFirstActiveThread_Int32x2.backendIndex = 2008;
+    SubgroupBroadcastFirstActiveThread_Int32x2.backendIndex = 2054;
     SubgroupBroadcastFirstActiveThread_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x2.parameters = SubgroupBroadcastFirstActiveThread_Int32x2_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x2_value)->typeSymbol = &Int32x2Type;
@@ -1365,7 +2239,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int32x3.name = SubgroupBroadcastFirstActiveThread_Int32x3_name;
-    SubgroupBroadcastFirstActiveThread_Int32x3.backendIndex = 2009;
+    SubgroupBroadcastFirstActiveThread_Int32x3.backendIndex = 2055;
     SubgroupBroadcastFirstActiveThread_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x3.parameters = SubgroupBroadcastFirstActiveThread_Int32x3_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x3_value)->typeSymbol = &Int32x3Type;
@@ -1379,7 +2253,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int32x4.name = SubgroupBroadcastFirstActiveThread_Int32x4_name;
-    SubgroupBroadcastFirstActiveThread_Int32x4.backendIndex = 2010;
+    SubgroupBroadcastFirstActiveThread_Int32x4.backendIndex = 2056;
     SubgroupBroadcastFirstActiveThread_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x4.parameters = SubgroupBroadcastFirstActiveThread_Int32x4_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x4_value)->typeSymbol = &Int32x4Type;
@@ -1393,7 +2267,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupBroadcastFirstActiveThread_Int16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int16.name = SubgroupBroadcastFirstActiveThread_Int16_name;
-    SubgroupBroadcastFirstActiveThread_Int16.backendIndex = 2011;
+    SubgroupBroadcastFirstActiveThread_Int16.backendIndex = 2057;
     SubgroupBroadcastFirstActiveThread_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupBroadcastFirstActiveThread_Int16.parameters = SubgroupBroadcastFirstActiveThread_Int16_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16_value)->typeSymbol = &Int16Type;
@@ -1407,7 +2281,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int16x2.name = SubgroupBroadcastFirstActiveThread_Int16x2_name;
-    SubgroupBroadcastFirstActiveThread_Int16x2.backendIndex = 2012;
+    SubgroupBroadcastFirstActiveThread_Int16x2.backendIndex = 2058;
     SubgroupBroadcastFirstActiveThread_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x2.parameters = SubgroupBroadcastFirstActiveThread_Int16x2_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x2_value)->typeSymbol = &Int16x2Type;
@@ -1421,7 +2295,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int16x3.name = SubgroupBroadcastFirstActiveThread_Int16x3_name;
-    SubgroupBroadcastFirstActiveThread_Int16x3.backendIndex = 2013;
+    SubgroupBroadcastFirstActiveThread_Int16x3.backendIndex = 2059;
     SubgroupBroadcastFirstActiveThread_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x3.parameters = SubgroupBroadcastFirstActiveThread_Int16x3_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x3_value)->typeSymbol = &Int16x3Type;
@@ -1435,7 +2309,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int16x4.name = SubgroupBroadcastFirstActiveThread_Int16x4_name;
-    SubgroupBroadcastFirstActiveThread_Int16x4.backendIndex = 2014;
+    SubgroupBroadcastFirstActiveThread_Int16x4.backendIndex = 2060;
     SubgroupBroadcastFirstActiveThread_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x4.parameters = SubgroupBroadcastFirstActiveThread_Int16x4_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x4_value)->typeSymbol = &Int16x4Type;
@@ -1449,7 +2323,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt32.name = SubgroupBroadcastFirstActiveThread_UInt32_name;
-    SubgroupBroadcastFirstActiveThread_UInt32.backendIndex = 2015;
+    SubgroupBroadcastFirstActiveThread_UInt32.backendIndex = 2061;
     SubgroupBroadcastFirstActiveThread_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32.parameters = SubgroupBroadcastFirstActiveThread_UInt32_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32_value)->typeSymbol = &UInt32Type;
@@ -1463,7 +2337,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x2.name = SubgroupBroadcastFirstActiveThread_UInt32x2_name;
-    SubgroupBroadcastFirstActiveThread_UInt32x2.backendIndex = 2016;
+    SubgroupBroadcastFirstActiveThread_UInt32x2.backendIndex = 2062;
     SubgroupBroadcastFirstActiveThread_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x2.parameters = SubgroupBroadcastFirstActiveThread_UInt32x2_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x2_value)->typeSymbol = &UInt32x2Type;
@@ -1477,7 +2351,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x3.name = SubgroupBroadcastFirstActiveThread_UInt32x3_name;
-    SubgroupBroadcastFirstActiveThread_UInt32x3.backendIndex = 2017;
+    SubgroupBroadcastFirstActiveThread_UInt32x3.backendIndex = 2063;
     SubgroupBroadcastFirstActiveThread_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x3.parameters = SubgroupBroadcastFirstActiveThread_UInt32x3_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x3_value)->typeSymbol = &UInt32x3Type;
@@ -1491,7 +2365,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x4.name = SubgroupBroadcastFirstActiveThread_UInt32x4_name;
-    SubgroupBroadcastFirstActiveThread_UInt32x4.backendIndex = 2018;
+    SubgroupBroadcastFirstActiveThread_UInt32x4.backendIndex = 2064;
     SubgroupBroadcastFirstActiveThread_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x4.parameters = SubgroupBroadcastFirstActiveThread_UInt32x4_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x4_value)->typeSymbol = &UInt32x4Type;
@@ -1505,7 +2379,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16.name = SubgroupBroadcastFirstActiveThread_UInt16_name;
-    SubgroupBroadcastFirstActiveThread_UInt16.backendIndex = 2019;
+    SubgroupBroadcastFirstActiveThread_UInt16.backendIndex = 2065;
     SubgroupBroadcastFirstActiveThread_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16.parameters = SubgroupBroadcastFirstActiveThread_UInt16_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16_value)->typeSymbol = &UInt16Type;
@@ -1519,7 +2393,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x2.name = SubgroupBroadcastFirstActiveThread_UInt16x2_name;
-    SubgroupBroadcastFirstActiveThread_UInt16x2.backendIndex = 2020;
+    SubgroupBroadcastFirstActiveThread_UInt16x2.backendIndex = 2066;
     SubgroupBroadcastFirstActiveThread_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x2.parameters = SubgroupBroadcastFirstActiveThread_UInt16x2_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x2_value)->typeSymbol = &UInt16x2Type;
@@ -1533,7 +2407,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x3.name = SubgroupBroadcastFirstActiveThread_UInt16x3_name;
-    SubgroupBroadcastFirstActiveThread_UInt16x3.backendIndex = 2021;
+    SubgroupBroadcastFirstActiveThread_UInt16x3.backendIndex = 2067;
     SubgroupBroadcastFirstActiveThread_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x3.parameters = SubgroupBroadcastFirstActiveThread_UInt16x3_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x3_value)->typeSymbol = &UInt16x3Type;
@@ -1547,7 +2421,7 @@ void SetupIntrinsics8()
     SubgroupBroadcastFirstActiveThread_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x4.name = SubgroupBroadcastFirstActiveThread_UInt16x4_name;
-    SubgroupBroadcastFirstActiveThread_UInt16x4.backendIndex = 2022;
+    SubgroupBroadcastFirstActiveThread_UInt16x4.backendIndex = 2068;
     SubgroupBroadcastFirstActiveThread_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x4.parameters = SubgroupBroadcastFirstActiveThread_UInt16x4_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x4_value)->typeSymbol = &UInt16x4Type;
@@ -1561,7 +2435,7 @@ void SetupIntrinsics8()
     SubgroupBallot_predicate.type = Type::FullType{ Bool8Type.name };
     SubgroupBallot.documentation = "Constructs a 128 bit subgroup thread mask to the value of the predicate argument for each active thread"_c;
     SubgroupBallot.name = SubgroupBallot_name;
-    SubgroupBallot.backendIndex = 2023;
+    SubgroupBallot.backendIndex = 2069;
     SubgroupBallot.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupBallot.parameters = SubgroupBallot_args;
     Symbol::Resolved(&SubgroupBallot_predicate)->typeSymbol = &Bool8Type;
@@ -1575,7 +2449,7 @@ void SetupIntrinsics8()
     SubgroupInverseBallot_predicate.type = Type::FullType{ Bool8Type.name };
     SubgroupInverseBallot.documentation = "Constructs a 128 bit subgroup thread mask to the inverse of the value of the predicate argument for each active thread"_c;
     SubgroupInverseBallot.name = SubgroupInverseBallot_name;
-    SubgroupInverseBallot.backendIndex = 2024;
+    SubgroupInverseBallot.backendIndex = 2070;
     SubgroupInverseBallot.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupInverseBallot.parameters = SubgroupInverseBallot_args;
     Symbol::Resolved(&SubgroupInverseBallot_predicate)->typeSymbol = &Bool8Type;
@@ -1589,7 +2463,7 @@ void SetupIntrinsics8()
     SubgroupBallotBitCount_mask.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBallotBitCount.documentation = "Returns the number of bits set to 1 in a 128 bit subgroup thread mask"_c;
     SubgroupBallotBitCount.name = SubgroupBallotBitCount_name;
-    SubgroupBallotBitCount.backendIndex = 2025;
+    SubgroupBallotBitCount.backendIndex = 2071;
     SubgroupBallotBitCount.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotBitCount.parameters = SubgroupBallotBitCount_args;
     Symbol::Resolved(&SubgroupBallotBitCount_mask)->typeSymbol = &UInt32x4Type;
@@ -1603,7 +2477,7 @@ void SetupIntrinsics8()
     SubgroupBallotFirstOne_mask.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBallotFirstOne.documentation = "Returns the first one (ctz) in a 128 bit subgroup thread mask"_c;
     SubgroupBallotFirstOne.name = SubgroupBallotFirstOne_name;
-    SubgroupBallotFirstOne.backendIndex = 2026;
+    SubgroupBallotFirstOne.backendIndex = 2072;
     SubgroupBallotFirstOne.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotFirstOne.parameters = SubgroupBallotFirstOne_args;
     Symbol::Resolved(&SubgroupBallotFirstOne_mask)->typeSymbol = &UInt32x4Type;
@@ -1617,7 +2491,7 @@ void SetupIntrinsics8()
     SubgroupBallotLastOne_mask.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBallotLastOne.documentation = "Returns the last one (clz) in a 128 bit subgroup thread mask"_c;
     SubgroupBallotLastOne.name = SubgroupBallotLastOne_name;
-    SubgroupBallotLastOne.backendIndex = 2027;
+    SubgroupBallotLastOne.backendIndex = 2073;
     SubgroupBallotLastOne.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotLastOne.parameters = SubgroupBallotLastOne_args;
     Symbol::Resolved(&SubgroupBallotLastOne_mask)->typeSymbol = &UInt32x4Type;
@@ -1634,7 +2508,7 @@ void SetupIntrinsics8()
     SubgroupBallotBit_index.type.literal = true;
     SubgroupBallotBit.documentation = "Extracts a specific bit from a 128 bit subgroup thread mask"_c;
     SubgroupBallotBit.name = SubgroupBallotBit_name;
-    SubgroupBallotBit.backendIndex = 2028;
+    SubgroupBallotBit.backendIndex = 2074;
     SubgroupBallotBit.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotBit.parameters = SubgroupBallotBit_args;
     Symbol::Resolved(&SubgroupBallotBit_mask)->typeSymbol = &UInt32x4Type;
@@ -1649,7 +2523,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupSwapDiagonal_Float32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32.name = SubgroupSwapDiagonal_Float32_name;
-    SubgroupSwapDiagonal_Float32.backendIndex = 2029;
+    SubgroupSwapDiagonal_Float32.backendIndex = 2075;
     SubgroupSwapDiagonal_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapDiagonal_Float32.parameters = SubgroupSwapDiagonal_Float32_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32_value)->typeSymbol = &Float32Type;
@@ -1663,7 +2537,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupSwapDiagonal_Float32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x2.name = SubgroupSwapDiagonal_Float32x2_name;
-    SubgroupSwapDiagonal_Float32x2.backendIndex = 2030;
+    SubgroupSwapDiagonal_Float32x2.backendIndex = 2076;
     SubgroupSwapDiagonal_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapDiagonal_Float32x2.parameters = SubgroupSwapDiagonal_Float32x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x2_value)->typeSymbol = &Float32x2Type;
@@ -1677,7 +2551,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupSwapDiagonal_Float32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x3.name = SubgroupSwapDiagonal_Float32x3_name;
-    SubgroupSwapDiagonal_Float32x3.backendIndex = 2031;
+    SubgroupSwapDiagonal_Float32x3.backendIndex = 2077;
     SubgroupSwapDiagonal_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapDiagonal_Float32x3.parameters = SubgroupSwapDiagonal_Float32x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x3_value)->typeSymbol = &Float32x3Type;
@@ -1691,7 +2565,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupSwapDiagonal_Float32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x4.name = SubgroupSwapDiagonal_Float32x4_name;
-    SubgroupSwapDiagonal_Float32x4.backendIndex = 2032;
+    SubgroupSwapDiagonal_Float32x4.backendIndex = 2078;
     SubgroupSwapDiagonal_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapDiagonal_Float32x4.parameters = SubgroupSwapDiagonal_Float32x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x4_value)->typeSymbol = &Float32x4Type;
@@ -1705,7 +2579,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupSwapDiagonal_Float16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16.name = SubgroupSwapDiagonal_Float16_name;
-    SubgroupSwapDiagonal_Float16.backendIndex = 2033;
+    SubgroupSwapDiagonal_Float16.backendIndex = 2079;
     SubgroupSwapDiagonal_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapDiagonal_Float16.parameters = SubgroupSwapDiagonal_Float16_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16_value)->typeSymbol = &Float16Type;
@@ -1719,7 +2593,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupSwapDiagonal_Float16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x2.name = SubgroupSwapDiagonal_Float16x2_name;
-    SubgroupSwapDiagonal_Float16x2.backendIndex = 2034;
+    SubgroupSwapDiagonal_Float16x2.backendIndex = 2080;
     SubgroupSwapDiagonal_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapDiagonal_Float16x2.parameters = SubgroupSwapDiagonal_Float16x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x2_value)->typeSymbol = &Float16x2Type;
@@ -1733,7 +2607,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupSwapDiagonal_Float16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x3.name = SubgroupSwapDiagonal_Float16x3_name;
-    SubgroupSwapDiagonal_Float16x3.backendIndex = 2035;
+    SubgroupSwapDiagonal_Float16x3.backendIndex = 2081;
     SubgroupSwapDiagonal_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapDiagonal_Float16x3.parameters = SubgroupSwapDiagonal_Float16x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x3_value)->typeSymbol = &Float16x3Type;
@@ -1747,7 +2621,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupSwapDiagonal_Float16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x4.name = SubgroupSwapDiagonal_Float16x4_name;
-    SubgroupSwapDiagonal_Float16x4.backendIndex = 2036;
+    SubgroupSwapDiagonal_Float16x4.backendIndex = 2082;
     SubgroupSwapDiagonal_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapDiagonal_Float16x4.parameters = SubgroupSwapDiagonal_Float16x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x4_value)->typeSymbol = &Float16x4Type;
@@ -1761,7 +2635,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupSwapDiagonal_Int32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32.name = SubgroupSwapDiagonal_Int32_name;
-    SubgroupSwapDiagonal_Int32.backendIndex = 2037;
+    SubgroupSwapDiagonal_Int32.backendIndex = 2083;
     SubgroupSwapDiagonal_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapDiagonal_Int32.parameters = SubgroupSwapDiagonal_Int32_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32_value)->typeSymbol = &Int32Type;
@@ -1775,7 +2649,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupSwapDiagonal_Int32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x2.name = SubgroupSwapDiagonal_Int32x2_name;
-    SubgroupSwapDiagonal_Int32x2.backendIndex = 2038;
+    SubgroupSwapDiagonal_Int32x2.backendIndex = 2084;
     SubgroupSwapDiagonal_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapDiagonal_Int32x2.parameters = SubgroupSwapDiagonal_Int32x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x2_value)->typeSymbol = &Int32x2Type;
@@ -1789,7 +2663,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupSwapDiagonal_Int32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x3.name = SubgroupSwapDiagonal_Int32x3_name;
-    SubgroupSwapDiagonal_Int32x3.backendIndex = 2039;
+    SubgroupSwapDiagonal_Int32x3.backendIndex = 2085;
     SubgroupSwapDiagonal_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapDiagonal_Int32x3.parameters = SubgroupSwapDiagonal_Int32x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x3_value)->typeSymbol = &Int32x3Type;
@@ -1803,7 +2677,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupSwapDiagonal_Int32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x4.name = SubgroupSwapDiagonal_Int32x4_name;
-    SubgroupSwapDiagonal_Int32x4.backendIndex = 2040;
+    SubgroupSwapDiagonal_Int32x4.backendIndex = 2086;
     SubgroupSwapDiagonal_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapDiagonal_Int32x4.parameters = SubgroupSwapDiagonal_Int32x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x4_value)->typeSymbol = &Int32x4Type;
@@ -1817,7 +2691,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupSwapDiagonal_Int16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16.name = SubgroupSwapDiagonal_Int16_name;
-    SubgroupSwapDiagonal_Int16.backendIndex = 2041;
+    SubgroupSwapDiagonal_Int16.backendIndex = 2087;
     SubgroupSwapDiagonal_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapDiagonal_Int16.parameters = SubgroupSwapDiagonal_Int16_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16_value)->typeSymbol = &Int16Type;
@@ -1831,7 +2705,7 @@ void SetupIntrinsics8()
     SubgroupSwapDiagonal_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupSwapDiagonal_Int16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16x2.name = SubgroupSwapDiagonal_Int16x2_name;
-    SubgroupSwapDiagonal_Int16x2.backendIndex = 2042;
+    SubgroupSwapDiagonal_Int16x2.backendIndex = 2088;
     SubgroupSwapDiagonal_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapDiagonal_Int16x2.parameters = SubgroupSwapDiagonal_Int16x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x2_value)->typeSymbol = &Int16x2Type;
@@ -1839,650 +2713,6 @@ void SetupIntrinsics8()
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x2)->name = "subgroupSwapDiagonal(i16x2)"_c;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x2)->nameWithVarNames = "subgroupSwapDiagonal(value : i16x2)"_c;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x2)->returnTypeSymbol = &Int16x2Type;
-
-    /// subgroupSwapDiagonal with Int16x3
-    SubgroupSwapDiagonal_Int16x3_value.name = "value"_c;
-    SubgroupSwapDiagonal_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
-    SubgroupSwapDiagonal_Int16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_Int16x3.name = SubgroupSwapDiagonal_Int16x3_name;
-    SubgroupSwapDiagonal_Int16x3.backendIndex = 2043;
-    SubgroupSwapDiagonal_Int16x3.returnType = Type::FullType { Int16x3Type.name };
-    SubgroupSwapDiagonal_Int16x3.parameters = SubgroupSwapDiagonal_Int16x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3_value)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3)->signature = "subgroupSwapDiagonal(i16x3) i16x3"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3)->name = "subgroupSwapDiagonal(i16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3)->nameWithVarNames = "subgroupSwapDiagonal(value : i16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3)->returnTypeSymbol = &Int16x3Type;
-
-    /// subgroupSwapDiagonal with Int16x4
-    SubgroupSwapDiagonal_Int16x4_value.name = "value"_c;
-    SubgroupSwapDiagonal_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
-    SubgroupSwapDiagonal_Int16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_Int16x4.name = SubgroupSwapDiagonal_Int16x4_name;
-    SubgroupSwapDiagonal_Int16x4.backendIndex = 2044;
-    SubgroupSwapDiagonal_Int16x4.returnType = Type::FullType { Int16x4Type.name };
-    SubgroupSwapDiagonal_Int16x4.parameters = SubgroupSwapDiagonal_Int16x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4_value)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4)->signature = "subgroupSwapDiagonal(i16x4) i16x4"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4)->name = "subgroupSwapDiagonal(i16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4)->nameWithVarNames = "subgroupSwapDiagonal(value : i16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4)->returnTypeSymbol = &Int16x4Type;
-
-    /// subgroupSwapDiagonal with UInt32
-    SubgroupSwapDiagonal_UInt32_value.name = "value"_c;
-    SubgroupSwapDiagonal_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    SubgroupSwapDiagonal_UInt32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_UInt32.name = SubgroupSwapDiagonal_UInt32_name;
-    SubgroupSwapDiagonal_UInt32.backendIndex = 2045;
-    SubgroupSwapDiagonal_UInt32.returnType = Type::FullType { UInt32Type.name };
-    SubgroupSwapDiagonal_UInt32.parameters = SubgroupSwapDiagonal_UInt32_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32)->signature = "subgroupSwapDiagonal(u32) u32"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32)->name = "subgroupSwapDiagonal(u32)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32)->nameWithVarNames = "subgroupSwapDiagonal(value : u32)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// subgroupSwapDiagonal with UInt32x2
-    SubgroupSwapDiagonal_UInt32x2_value.name = "value"_c;
-    SubgroupSwapDiagonal_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
-    SubgroupSwapDiagonal_UInt32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_UInt32x2.name = SubgroupSwapDiagonal_UInt32x2_name;
-    SubgroupSwapDiagonal_UInt32x2.backendIndex = 2046;
-    SubgroupSwapDiagonal_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
-    SubgroupSwapDiagonal_UInt32x2.parameters = SubgroupSwapDiagonal_UInt32x2_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2_value)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2)->signature = "subgroupSwapDiagonal(u32x2) u32x2"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2)->name = "subgroupSwapDiagonal(u32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2)->nameWithVarNames = "subgroupSwapDiagonal(value : u32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
-
-    /// subgroupSwapDiagonal with UInt32x3
-    SubgroupSwapDiagonal_UInt32x3_value.name = "value"_c;
-    SubgroupSwapDiagonal_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
-    SubgroupSwapDiagonal_UInt32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_UInt32x3.name = SubgroupSwapDiagonal_UInt32x3_name;
-    SubgroupSwapDiagonal_UInt32x3.backendIndex = 2047;
-    SubgroupSwapDiagonal_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
-    SubgroupSwapDiagonal_UInt32x3.parameters = SubgroupSwapDiagonal_UInt32x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3_value)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3)->signature = "subgroupSwapDiagonal(u32x3) u32x3"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3)->name = "subgroupSwapDiagonal(u32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3)->nameWithVarNames = "subgroupSwapDiagonal(value : u32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
-
-    /// subgroupSwapDiagonal with UInt32x4
-    SubgroupSwapDiagonal_UInt32x4_value.name = "value"_c;
-    SubgroupSwapDiagonal_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    SubgroupSwapDiagonal_UInt32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_UInt32x4.name = SubgroupSwapDiagonal_UInt32x4_name;
-    SubgroupSwapDiagonal_UInt32x4.backendIndex = 2048;
-    SubgroupSwapDiagonal_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
-    SubgroupSwapDiagonal_UInt32x4.parameters = SubgroupSwapDiagonal_UInt32x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4)->signature = "subgroupSwapDiagonal(u32x4) u32x4"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4)->name = "subgroupSwapDiagonal(u32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4)->nameWithVarNames = "subgroupSwapDiagonal(value : u32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
-
-    /// subgroupSwapDiagonal with UInt16
-    SubgroupSwapDiagonal_UInt16_value.name = "value"_c;
-    SubgroupSwapDiagonal_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    SubgroupSwapDiagonal_UInt16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_UInt16.name = SubgroupSwapDiagonal_UInt16_name;
-    SubgroupSwapDiagonal_UInt16.backendIndex = 2049;
-    SubgroupSwapDiagonal_UInt16.returnType = Type::FullType { UInt16Type.name };
-    SubgroupSwapDiagonal_UInt16.parameters = SubgroupSwapDiagonal_UInt16_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16)->signature = "subgroupSwapDiagonal(u16) u16"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16)->name = "subgroupSwapDiagonal(u16)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16)->nameWithVarNames = "subgroupSwapDiagonal(value : u16)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// subgroupSwapDiagonal with UInt16x2
-    SubgroupSwapDiagonal_UInt16x2_value.name = "value"_c;
-    SubgroupSwapDiagonal_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
-    SubgroupSwapDiagonal_UInt16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_UInt16x2.name = SubgroupSwapDiagonal_UInt16x2_name;
-    SubgroupSwapDiagonal_UInt16x2.backendIndex = 2050;
-    SubgroupSwapDiagonal_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
-    SubgroupSwapDiagonal_UInt16x2.parameters = SubgroupSwapDiagonal_UInt16x2_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2_value)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2)->signature = "subgroupSwapDiagonal(u16x2) u16x2"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2)->name = "subgroupSwapDiagonal(u16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2)->nameWithVarNames = "subgroupSwapDiagonal(value : u16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
-
-    /// subgroupSwapDiagonal with UInt16x3
-    SubgroupSwapDiagonal_UInt16x3_value.name = "value"_c;
-    SubgroupSwapDiagonal_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
-    SubgroupSwapDiagonal_UInt16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_UInt16x3.name = SubgroupSwapDiagonal_UInt16x3_name;
-    SubgroupSwapDiagonal_UInt16x3.backendIndex = 2051;
-    SubgroupSwapDiagonal_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
-    SubgroupSwapDiagonal_UInt16x3.parameters = SubgroupSwapDiagonal_UInt16x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3_value)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3)->signature = "subgroupSwapDiagonal(u16x3) u16x3"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3)->name = "subgroupSwapDiagonal(u16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3)->nameWithVarNames = "subgroupSwapDiagonal(value : u16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
-
-    /// subgroupSwapDiagonal with UInt16x4
-    SubgroupSwapDiagonal_UInt16x4_value.name = "value"_c;
-    SubgroupSwapDiagonal_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
-    SubgroupSwapDiagonal_UInt16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
-    SubgroupSwapDiagonal_UInt16x4.name = SubgroupSwapDiagonal_UInt16x4_name;
-    SubgroupSwapDiagonal_UInt16x4.backendIndex = 2052;
-    SubgroupSwapDiagonal_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
-    SubgroupSwapDiagonal_UInt16x4.parameters = SubgroupSwapDiagonal_UInt16x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4_value)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4)->signature = "subgroupSwapDiagonal(u16x4) u16x4"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4)->name = "subgroupSwapDiagonal(u16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4)->nameWithVarNames = "subgroupSwapDiagonal(value : u16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
-
-    /// subgroupSwapVertical with Float32
-    SubgroupSwapVertical_Float32_value.name = "value"_c;
-    SubgroupSwapVertical_Float32_value.type = Type::FullType{ Float32Type.name };
-    SubgroupSwapVertical_Float32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Float32.name = SubgroupSwapVertical_Float32_name;
-    SubgroupSwapVertical_Float32.backendIndex = 2053;
-    SubgroupSwapVertical_Float32.returnType = Type::FullType { Float32Type.name };
-    SubgroupSwapVertical_Float32.parameters = SubgroupSwapVertical_Float32_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32)->signature = "subgroupSwapVertical(f32) f32"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32)->name = "subgroupSwapVertical(f32)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32)->nameWithVarNames = "subgroupSwapVertical(value : f32)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// subgroupSwapVertical with Float32x2
-    SubgroupSwapVertical_Float32x2_value.name = "value"_c;
-    SubgroupSwapVertical_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
-    SubgroupSwapVertical_Float32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Float32x2.name = SubgroupSwapVertical_Float32x2_name;
-    SubgroupSwapVertical_Float32x2.backendIndex = 2054;
-    SubgroupSwapVertical_Float32x2.returnType = Type::FullType { Float32x2Type.name };
-    SubgroupSwapVertical_Float32x2.parameters = SubgroupSwapVertical_Float32x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x2_value)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x2)->signature = "subgroupSwapVertical(f32x2) f32x2"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x2)->name = "subgroupSwapVertical(f32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x2)->nameWithVarNames = "subgroupSwapVertical(value : f32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x2)->returnTypeSymbol = &Float32x2Type;
-
-    /// subgroupSwapVertical with Float32x3
-    SubgroupSwapVertical_Float32x3_value.name = "value"_c;
-    SubgroupSwapVertical_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
-    SubgroupSwapVertical_Float32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Float32x3.name = SubgroupSwapVertical_Float32x3_name;
-    SubgroupSwapVertical_Float32x3.backendIndex = 2055;
-    SubgroupSwapVertical_Float32x3.returnType = Type::FullType { Float32x3Type.name };
-    SubgroupSwapVertical_Float32x3.parameters = SubgroupSwapVertical_Float32x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x3_value)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x3)->signature = "subgroupSwapVertical(f32x3) f32x3"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x3)->name = "subgroupSwapVertical(f32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x3)->nameWithVarNames = "subgroupSwapVertical(value : f32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x3)->returnTypeSymbol = &Float32x3Type;
-
-    /// subgroupSwapVertical with Float32x4
-    SubgroupSwapVertical_Float32x4_value.name = "value"_c;
-    SubgroupSwapVertical_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    SubgroupSwapVertical_Float32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Float32x4.name = SubgroupSwapVertical_Float32x4_name;
-    SubgroupSwapVertical_Float32x4.backendIndex = 2056;
-    SubgroupSwapVertical_Float32x4.returnType = Type::FullType { Float32x4Type.name };
-    SubgroupSwapVertical_Float32x4.parameters = SubgroupSwapVertical_Float32x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x4)->signature = "subgroupSwapVertical(f32x4) f32x4"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x4)->name = "subgroupSwapVertical(f32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x4)->nameWithVarNames = "subgroupSwapVertical(value : f32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x4)->returnTypeSymbol = &Float32x4Type;
-
-    /// subgroupSwapVertical with Float16
-    SubgroupSwapVertical_Float16_value.name = "value"_c;
-    SubgroupSwapVertical_Float16_value.type = Type::FullType{ Float16Type.name };
-    SubgroupSwapVertical_Float16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Float16.name = SubgroupSwapVertical_Float16_name;
-    SubgroupSwapVertical_Float16.backendIndex = 2057;
-    SubgroupSwapVertical_Float16.returnType = Type::FullType { Float16Type.name };
-    SubgroupSwapVertical_Float16.parameters = SubgroupSwapVertical_Float16_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16)->signature = "subgroupSwapVertical(f16) f16"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16)->name = "subgroupSwapVertical(f16)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16)->nameWithVarNames = "subgroupSwapVertical(value : f16)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16)->returnTypeSymbol = &Float16Type;
-
-    /// subgroupSwapVertical with Float16x2
-    SubgroupSwapVertical_Float16x2_value.name = "value"_c;
-    SubgroupSwapVertical_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
-    SubgroupSwapVertical_Float16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Float16x2.name = SubgroupSwapVertical_Float16x2_name;
-    SubgroupSwapVertical_Float16x2.backendIndex = 2058;
-    SubgroupSwapVertical_Float16x2.returnType = Type::FullType { Float16x2Type.name };
-    SubgroupSwapVertical_Float16x2.parameters = SubgroupSwapVertical_Float16x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x2_value)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x2)->signature = "subgroupSwapVertical(f16x2) f16x2"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x2)->name = "subgroupSwapVertical(f16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x2)->nameWithVarNames = "subgroupSwapVertical(value : f16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x2)->returnTypeSymbol = &Float16x2Type;
-
-    /// subgroupSwapVertical with Float16x3
-    SubgroupSwapVertical_Float16x3_value.name = "value"_c;
-    SubgroupSwapVertical_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
-    SubgroupSwapVertical_Float16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Float16x3.name = SubgroupSwapVertical_Float16x3_name;
-    SubgroupSwapVertical_Float16x3.backendIndex = 2059;
-    SubgroupSwapVertical_Float16x3.returnType = Type::FullType { Float16x3Type.name };
-    SubgroupSwapVertical_Float16x3.parameters = SubgroupSwapVertical_Float16x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x3_value)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x3)->signature = "subgroupSwapVertical(f16x3) f16x3"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x3)->name = "subgroupSwapVertical(f16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x3)->nameWithVarNames = "subgroupSwapVertical(value : f16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x3)->returnTypeSymbol = &Float16x3Type;
-
-    /// subgroupSwapVertical with Float16x4
-    SubgroupSwapVertical_Float16x4_value.name = "value"_c;
-    SubgroupSwapVertical_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
-    SubgroupSwapVertical_Float16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Float16x4.name = SubgroupSwapVertical_Float16x4_name;
-    SubgroupSwapVertical_Float16x4.backendIndex = 2060;
-    SubgroupSwapVertical_Float16x4.returnType = Type::FullType { Float16x4Type.name };
-    SubgroupSwapVertical_Float16x4.parameters = SubgroupSwapVertical_Float16x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x4_value)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x4)->signature = "subgroupSwapVertical(f16x4) f16x4"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x4)->name = "subgroupSwapVertical(f16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x4)->nameWithVarNames = "subgroupSwapVertical(value : f16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x4)->returnTypeSymbol = &Float16x4Type;
-
-    /// subgroupSwapVertical with Int32
-    SubgroupSwapVertical_Int32_value.name = "value"_c;
-    SubgroupSwapVertical_Int32_value.type = Type::FullType{ Int32Type.name };
-    SubgroupSwapVertical_Int32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Int32.name = SubgroupSwapVertical_Int32_name;
-    SubgroupSwapVertical_Int32.backendIndex = 2061;
-    SubgroupSwapVertical_Int32.returnType = Type::FullType { Int32Type.name };
-    SubgroupSwapVertical_Int32.parameters = SubgroupSwapVertical_Int32_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32)->signature = "subgroupSwapVertical(i32) i32"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32)->name = "subgroupSwapVertical(i32)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32)->nameWithVarNames = "subgroupSwapVertical(value : i32)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// subgroupSwapVertical with Int32x2
-    SubgroupSwapVertical_Int32x2_value.name = "value"_c;
-    SubgroupSwapVertical_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
-    SubgroupSwapVertical_Int32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Int32x2.name = SubgroupSwapVertical_Int32x2_name;
-    SubgroupSwapVertical_Int32x2.backendIndex = 2062;
-    SubgroupSwapVertical_Int32x2.returnType = Type::FullType { Int32x2Type.name };
-    SubgroupSwapVertical_Int32x2.parameters = SubgroupSwapVertical_Int32x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x2_value)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x2)->signature = "subgroupSwapVertical(i32x2) i32x2"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x2)->name = "subgroupSwapVertical(i32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x2)->nameWithVarNames = "subgroupSwapVertical(value : i32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x2)->returnTypeSymbol = &Int32x2Type;
-
-    /// subgroupSwapVertical with Int32x3
-    SubgroupSwapVertical_Int32x3_value.name = "value"_c;
-    SubgroupSwapVertical_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
-    SubgroupSwapVertical_Int32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Int32x3.name = SubgroupSwapVertical_Int32x3_name;
-    SubgroupSwapVertical_Int32x3.backendIndex = 2063;
-    SubgroupSwapVertical_Int32x3.returnType = Type::FullType { Int32x3Type.name };
-    SubgroupSwapVertical_Int32x3.parameters = SubgroupSwapVertical_Int32x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x3_value)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x3)->signature = "subgroupSwapVertical(i32x3) i32x3"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x3)->name = "subgroupSwapVertical(i32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x3)->nameWithVarNames = "subgroupSwapVertical(value : i32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x3)->returnTypeSymbol = &Int32x3Type;
-
-    /// subgroupSwapVertical with Int32x4
-    SubgroupSwapVertical_Int32x4_value.name = "value"_c;
-    SubgroupSwapVertical_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    SubgroupSwapVertical_Int32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Int32x4.name = SubgroupSwapVertical_Int32x4_name;
-    SubgroupSwapVertical_Int32x4.backendIndex = 2064;
-    SubgroupSwapVertical_Int32x4.returnType = Type::FullType { Int32x4Type.name };
-    SubgroupSwapVertical_Int32x4.parameters = SubgroupSwapVertical_Int32x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x4)->signature = "subgroupSwapVertical(i32x4) i32x4"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x4)->name = "subgroupSwapVertical(i32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x4)->nameWithVarNames = "subgroupSwapVertical(value : i32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x4)->returnTypeSymbol = &Int32x4Type;
-
-    /// subgroupSwapVertical with Int16
-    SubgroupSwapVertical_Int16_value.name = "value"_c;
-    SubgroupSwapVertical_Int16_value.type = Type::FullType{ Int16Type.name };
-    SubgroupSwapVertical_Int16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Int16.name = SubgroupSwapVertical_Int16_name;
-    SubgroupSwapVertical_Int16.backendIndex = 2065;
-    SubgroupSwapVertical_Int16.returnType = Type::FullType { Int16Type.name };
-    SubgroupSwapVertical_Int16.parameters = SubgroupSwapVertical_Int16_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16)->signature = "subgroupSwapVertical(i16) i16"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16)->name = "subgroupSwapVertical(i16)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16)->nameWithVarNames = "subgroupSwapVertical(value : i16)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// subgroupSwapVertical with Int16x2
-    SubgroupSwapVertical_Int16x2_value.name = "value"_c;
-    SubgroupSwapVertical_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
-    SubgroupSwapVertical_Int16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Int16x2.name = SubgroupSwapVertical_Int16x2_name;
-    SubgroupSwapVertical_Int16x2.backendIndex = 2066;
-    SubgroupSwapVertical_Int16x2.returnType = Type::FullType { Int16x2Type.name };
-    SubgroupSwapVertical_Int16x2.parameters = SubgroupSwapVertical_Int16x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x2_value)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x2)->signature = "subgroupSwapVertical(i16x2) i16x2"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x2)->name = "subgroupSwapVertical(i16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x2)->nameWithVarNames = "subgroupSwapVertical(value : i16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x2)->returnTypeSymbol = &Int16x2Type;
-
-    /// subgroupSwapVertical with Int16x3
-    SubgroupSwapVertical_Int16x3_value.name = "value"_c;
-    SubgroupSwapVertical_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
-    SubgroupSwapVertical_Int16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Int16x3.name = SubgroupSwapVertical_Int16x3_name;
-    SubgroupSwapVertical_Int16x3.backendIndex = 2067;
-    SubgroupSwapVertical_Int16x3.returnType = Type::FullType { Int16x3Type.name };
-    SubgroupSwapVertical_Int16x3.parameters = SubgroupSwapVertical_Int16x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x3_value)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x3)->signature = "subgroupSwapVertical(i16x3) i16x3"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x3)->name = "subgroupSwapVertical(i16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x3)->nameWithVarNames = "subgroupSwapVertical(value : i16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x3)->returnTypeSymbol = &Int16x3Type;
-
-    /// subgroupSwapVertical with Int16x4
-    SubgroupSwapVertical_Int16x4_value.name = "value"_c;
-    SubgroupSwapVertical_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
-    SubgroupSwapVertical_Int16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_Int16x4.name = SubgroupSwapVertical_Int16x4_name;
-    SubgroupSwapVertical_Int16x4.backendIndex = 2068;
-    SubgroupSwapVertical_Int16x4.returnType = Type::FullType { Int16x4Type.name };
-    SubgroupSwapVertical_Int16x4.parameters = SubgroupSwapVertical_Int16x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x4_value)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x4)->signature = "subgroupSwapVertical(i16x4) i16x4"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x4)->name = "subgroupSwapVertical(i16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x4)->nameWithVarNames = "subgroupSwapVertical(value : i16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x4)->returnTypeSymbol = &Int16x4Type;
-
-    /// subgroupSwapVertical with UInt32
-    SubgroupSwapVertical_UInt32_value.name = "value"_c;
-    SubgroupSwapVertical_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    SubgroupSwapVertical_UInt32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_UInt32.name = SubgroupSwapVertical_UInt32_name;
-    SubgroupSwapVertical_UInt32.backendIndex = 2069;
-    SubgroupSwapVertical_UInt32.returnType = Type::FullType { UInt32Type.name };
-    SubgroupSwapVertical_UInt32.parameters = SubgroupSwapVertical_UInt32_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32)->signature = "subgroupSwapVertical(u32) u32"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32)->name = "subgroupSwapVertical(u32)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32)->nameWithVarNames = "subgroupSwapVertical(value : u32)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// subgroupSwapVertical with UInt32x2
-    SubgroupSwapVertical_UInt32x2_value.name = "value"_c;
-    SubgroupSwapVertical_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
-    SubgroupSwapVertical_UInt32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_UInt32x2.name = SubgroupSwapVertical_UInt32x2_name;
-    SubgroupSwapVertical_UInt32x2.backendIndex = 2070;
-    SubgroupSwapVertical_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
-    SubgroupSwapVertical_UInt32x2.parameters = SubgroupSwapVertical_UInt32x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x2_value)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x2)->signature = "subgroupSwapVertical(u32x2) u32x2"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x2)->name = "subgroupSwapVertical(u32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x2)->nameWithVarNames = "subgroupSwapVertical(value : u32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
-
-    /// subgroupSwapVertical with UInt32x3
-    SubgroupSwapVertical_UInt32x3_value.name = "value"_c;
-    SubgroupSwapVertical_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
-    SubgroupSwapVertical_UInt32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_UInt32x3.name = SubgroupSwapVertical_UInt32x3_name;
-    SubgroupSwapVertical_UInt32x3.backendIndex = 2071;
-    SubgroupSwapVertical_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
-    SubgroupSwapVertical_UInt32x3.parameters = SubgroupSwapVertical_UInt32x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x3_value)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x3)->signature = "subgroupSwapVertical(u32x3) u32x3"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x3)->name = "subgroupSwapVertical(u32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x3)->nameWithVarNames = "subgroupSwapVertical(value : u32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
-
-    /// subgroupSwapVertical with UInt32x4
-    SubgroupSwapVertical_UInt32x4_value.name = "value"_c;
-    SubgroupSwapVertical_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    SubgroupSwapVertical_UInt32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_UInt32x4.name = SubgroupSwapVertical_UInt32x4_name;
-    SubgroupSwapVertical_UInt32x4.backendIndex = 2072;
-    SubgroupSwapVertical_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
-    SubgroupSwapVertical_UInt32x4.parameters = SubgroupSwapVertical_UInt32x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x4)->signature = "subgroupSwapVertical(u32x4) u32x4"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x4)->name = "subgroupSwapVertical(u32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x4)->nameWithVarNames = "subgroupSwapVertical(value : u32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
-
-    /// subgroupSwapVertical with UInt16
-    SubgroupSwapVertical_UInt16_value.name = "value"_c;
-    SubgroupSwapVertical_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    SubgroupSwapVertical_UInt16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_UInt16.name = SubgroupSwapVertical_UInt16_name;
-    SubgroupSwapVertical_UInt16.backendIndex = 2073;
-    SubgroupSwapVertical_UInt16.returnType = Type::FullType { UInt16Type.name };
-    SubgroupSwapVertical_UInt16.parameters = SubgroupSwapVertical_UInt16_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16)->signature = "subgroupSwapVertical(u16) u16"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16)->name = "subgroupSwapVertical(u16)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16)->nameWithVarNames = "subgroupSwapVertical(value : u16)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// subgroupSwapVertical with UInt16x2
-    SubgroupSwapVertical_UInt16x2_value.name = "value"_c;
-    SubgroupSwapVertical_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
-    SubgroupSwapVertical_UInt16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_UInt16x2.name = SubgroupSwapVertical_UInt16x2_name;
-    SubgroupSwapVertical_UInt16x2.backendIndex = 2074;
-    SubgroupSwapVertical_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
-    SubgroupSwapVertical_UInt16x2.parameters = SubgroupSwapVertical_UInt16x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x2_value)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x2)->signature = "subgroupSwapVertical(u16x2) u16x2"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x2)->name = "subgroupSwapVertical(u16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x2)->nameWithVarNames = "subgroupSwapVertical(value : u16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
-
-    /// subgroupSwapVertical with UInt16x3
-    SubgroupSwapVertical_UInt16x3_value.name = "value"_c;
-    SubgroupSwapVertical_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
-    SubgroupSwapVertical_UInt16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_UInt16x3.name = SubgroupSwapVertical_UInt16x3_name;
-    SubgroupSwapVertical_UInt16x3.backendIndex = 2075;
-    SubgroupSwapVertical_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
-    SubgroupSwapVertical_UInt16x3.parameters = SubgroupSwapVertical_UInt16x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x3_value)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x3)->signature = "subgroupSwapVertical(u16x3) u16x3"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x3)->name = "subgroupSwapVertical(u16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x3)->nameWithVarNames = "subgroupSwapVertical(value : u16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
-
-    /// subgroupSwapVertical with UInt16x4
-    SubgroupSwapVertical_UInt16x4_value.name = "value"_c;
-    SubgroupSwapVertical_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
-    SubgroupSwapVertical_UInt16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
-    SubgroupSwapVertical_UInt16x4.name = SubgroupSwapVertical_UInt16x4_name;
-    SubgroupSwapVertical_UInt16x4.backendIndex = 2076;
-    SubgroupSwapVertical_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
-    SubgroupSwapVertical_UInt16x4.parameters = SubgroupSwapVertical_UInt16x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x4_value)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x4)->signature = "subgroupSwapVertical(u16x4) u16x4"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x4)->name = "subgroupSwapVertical(u16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x4)->nameWithVarNames = "subgroupSwapVertical(value : u16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
-
-    /// subgroupSwapHorizontal with Float32
-    SubgroupSwapHorizontal_Float32_value.name = "value"_c;
-    SubgroupSwapHorizontal_Float32_value.type = Type::FullType{ Float32Type.name };
-    SubgroupSwapHorizontal_Float32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Float32.name = SubgroupSwapHorizontal_Float32_name;
-    SubgroupSwapHorizontal_Float32.backendIndex = 2077;
-    SubgroupSwapHorizontal_Float32.returnType = Type::FullType { Float32Type.name };
-    SubgroupSwapHorizontal_Float32.parameters = SubgroupSwapHorizontal_Float32_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32)->signature = "subgroupSwapHorizontal(f32) f32"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32)->name = "subgroupSwapHorizontal(f32)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32)->nameWithVarNames = "subgroupSwapHorizontal(value : f32)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// subgroupSwapHorizontal with Float32x2
-    SubgroupSwapHorizontal_Float32x2_value.name = "value"_c;
-    SubgroupSwapHorizontal_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
-    SubgroupSwapHorizontal_Float32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Float32x2.name = SubgroupSwapHorizontal_Float32x2_name;
-    SubgroupSwapHorizontal_Float32x2.backendIndex = 2078;
-    SubgroupSwapHorizontal_Float32x2.returnType = Type::FullType { Float32x2Type.name };
-    SubgroupSwapHorizontal_Float32x2.parameters = SubgroupSwapHorizontal_Float32x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2_value)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2)->signature = "subgroupSwapHorizontal(f32x2) f32x2"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2)->name = "subgroupSwapHorizontal(f32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2)->nameWithVarNames = "subgroupSwapHorizontal(value : f32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2)->returnTypeSymbol = &Float32x2Type;
-
-    /// subgroupSwapHorizontal with Float32x3
-    SubgroupSwapHorizontal_Float32x3_value.name = "value"_c;
-    SubgroupSwapHorizontal_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
-    SubgroupSwapHorizontal_Float32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Float32x3.name = SubgroupSwapHorizontal_Float32x3_name;
-    SubgroupSwapHorizontal_Float32x3.backendIndex = 2079;
-    SubgroupSwapHorizontal_Float32x3.returnType = Type::FullType { Float32x3Type.name };
-    SubgroupSwapHorizontal_Float32x3.parameters = SubgroupSwapHorizontal_Float32x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3_value)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3)->signature = "subgroupSwapHorizontal(f32x3) f32x3"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3)->name = "subgroupSwapHorizontal(f32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3)->nameWithVarNames = "subgroupSwapHorizontal(value : f32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3)->returnTypeSymbol = &Float32x3Type;
-
-    /// subgroupSwapHorizontal with Float32x4
-    SubgroupSwapHorizontal_Float32x4_value.name = "value"_c;
-    SubgroupSwapHorizontal_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    SubgroupSwapHorizontal_Float32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Float32x4.name = SubgroupSwapHorizontal_Float32x4_name;
-    SubgroupSwapHorizontal_Float32x4.backendIndex = 2080;
-    SubgroupSwapHorizontal_Float32x4.returnType = Type::FullType { Float32x4Type.name };
-    SubgroupSwapHorizontal_Float32x4.parameters = SubgroupSwapHorizontal_Float32x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4)->signature = "subgroupSwapHorizontal(f32x4) f32x4"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4)->name = "subgroupSwapHorizontal(f32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4)->nameWithVarNames = "subgroupSwapHorizontal(value : f32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4)->returnTypeSymbol = &Float32x4Type;
-
-    /// subgroupSwapHorizontal with Float16
-    SubgroupSwapHorizontal_Float16_value.name = "value"_c;
-    SubgroupSwapHorizontal_Float16_value.type = Type::FullType{ Float16Type.name };
-    SubgroupSwapHorizontal_Float16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Float16.name = SubgroupSwapHorizontal_Float16_name;
-    SubgroupSwapHorizontal_Float16.backendIndex = 2081;
-    SubgroupSwapHorizontal_Float16.returnType = Type::FullType { Float16Type.name };
-    SubgroupSwapHorizontal_Float16.parameters = SubgroupSwapHorizontal_Float16_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16)->signature = "subgroupSwapHorizontal(f16) f16"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16)->name = "subgroupSwapHorizontal(f16)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16)->nameWithVarNames = "subgroupSwapHorizontal(value : f16)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16)->returnTypeSymbol = &Float16Type;
-
-    /// subgroupSwapHorizontal with Float16x2
-    SubgroupSwapHorizontal_Float16x2_value.name = "value"_c;
-    SubgroupSwapHorizontal_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
-    SubgroupSwapHorizontal_Float16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Float16x2.name = SubgroupSwapHorizontal_Float16x2_name;
-    SubgroupSwapHorizontal_Float16x2.backendIndex = 2082;
-    SubgroupSwapHorizontal_Float16x2.returnType = Type::FullType { Float16x2Type.name };
-    SubgroupSwapHorizontal_Float16x2.parameters = SubgroupSwapHorizontal_Float16x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2_value)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2)->signature = "subgroupSwapHorizontal(f16x2) f16x2"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2)->name = "subgroupSwapHorizontal(f16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2)->nameWithVarNames = "subgroupSwapHorizontal(value : f16x2)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2)->returnTypeSymbol = &Float16x2Type;
-
-    /// subgroupSwapHorizontal with Float16x3
-    SubgroupSwapHorizontal_Float16x3_value.name = "value"_c;
-    SubgroupSwapHorizontal_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
-    SubgroupSwapHorizontal_Float16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Float16x3.name = SubgroupSwapHorizontal_Float16x3_name;
-    SubgroupSwapHorizontal_Float16x3.backendIndex = 2083;
-    SubgroupSwapHorizontal_Float16x3.returnType = Type::FullType { Float16x3Type.name };
-    SubgroupSwapHorizontal_Float16x3.parameters = SubgroupSwapHorizontal_Float16x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3_value)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3)->signature = "subgroupSwapHorizontal(f16x3) f16x3"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3)->name = "subgroupSwapHorizontal(f16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3)->nameWithVarNames = "subgroupSwapHorizontal(value : f16x3)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3)->returnTypeSymbol = &Float16x3Type;
-
-    /// subgroupSwapHorizontal with Float16x4
-    SubgroupSwapHorizontal_Float16x4_value.name = "value"_c;
-    SubgroupSwapHorizontal_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
-    SubgroupSwapHorizontal_Float16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Float16x4.name = SubgroupSwapHorizontal_Float16x4_name;
-    SubgroupSwapHorizontal_Float16x4.backendIndex = 2084;
-    SubgroupSwapHorizontal_Float16x4.returnType = Type::FullType { Float16x4Type.name };
-    SubgroupSwapHorizontal_Float16x4.parameters = SubgroupSwapHorizontal_Float16x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4_value)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4)->signature = "subgroupSwapHorizontal(f16x4) f16x4"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4)->name = "subgroupSwapHorizontal(f16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4)->nameWithVarNames = "subgroupSwapHorizontal(value : f16x4)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4)->returnTypeSymbol = &Float16x4Type;
-
-    /// subgroupSwapHorizontal with Int32
-    SubgroupSwapHorizontal_Int32_value.name = "value"_c;
-    SubgroupSwapHorizontal_Int32_value.type = Type::FullType{ Int32Type.name };
-    SubgroupSwapHorizontal_Int32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Int32.name = SubgroupSwapHorizontal_Int32_name;
-    SubgroupSwapHorizontal_Int32.backendIndex = 2085;
-    SubgroupSwapHorizontal_Int32.returnType = Type::FullType { Int32Type.name };
-    SubgroupSwapHorizontal_Int32.parameters = SubgroupSwapHorizontal_Int32_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32)->signature = "subgroupSwapHorizontal(i32) i32"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32)->name = "subgroupSwapHorizontal(i32)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32)->nameWithVarNames = "subgroupSwapHorizontal(value : i32)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// subgroupSwapHorizontal with Int32x2
-    SubgroupSwapHorizontal_Int32x2_value.name = "value"_c;
-    SubgroupSwapHorizontal_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
-    SubgroupSwapHorizontal_Int32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Int32x2.name = SubgroupSwapHorizontal_Int32x2_name;
-    SubgroupSwapHorizontal_Int32x2.backendIndex = 2086;
-    SubgroupSwapHorizontal_Int32x2.returnType = Type::FullType { Int32x2Type.name };
-    SubgroupSwapHorizontal_Int32x2.parameters = SubgroupSwapHorizontal_Int32x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2_value)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2)->signature = "subgroupSwapHorizontal(i32x2) i32x2"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2)->name = "subgroupSwapHorizontal(i32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2)->nameWithVarNames = "subgroupSwapHorizontal(value : i32x2)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2)->returnTypeSymbol = &Int32x2Type;
-
-    /// subgroupSwapHorizontal with Int32x3
-    SubgroupSwapHorizontal_Int32x3_value.name = "value"_c;
-    SubgroupSwapHorizontal_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
-    SubgroupSwapHorizontal_Int32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Int32x3.name = SubgroupSwapHorizontal_Int32x3_name;
-    SubgroupSwapHorizontal_Int32x3.backendIndex = 2087;
-    SubgroupSwapHorizontal_Int32x3.returnType = Type::FullType { Int32x3Type.name };
-    SubgroupSwapHorizontal_Int32x3.parameters = SubgroupSwapHorizontal_Int32x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3_value)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3)->signature = "subgroupSwapHorizontal(i32x3) i32x3"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3)->name = "subgroupSwapHorizontal(i32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3)->nameWithVarNames = "subgroupSwapHorizontal(value : i32x3)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3)->returnTypeSymbol = &Int32x3Type;
-
-    /// subgroupSwapHorizontal with Int32x4
-    SubgroupSwapHorizontal_Int32x4_value.name = "value"_c;
-    SubgroupSwapHorizontal_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    SubgroupSwapHorizontal_Int32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
-    SubgroupSwapHorizontal_Int32x4.name = SubgroupSwapHorizontal_Int32x4_name;
-    SubgroupSwapHorizontal_Int32x4.backendIndex = 2088;
-    SubgroupSwapHorizontal_Int32x4.returnType = Type::FullType { Int32x4Type.name };
-    SubgroupSwapHorizontal_Int32x4.parameters = SubgroupSwapHorizontal_Int32x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4)->signature = "subgroupSwapHorizontal(i32x4) i32x4"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4)->name = "subgroupSwapHorizontal(i32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4)->nameWithVarNames = "subgroupSwapHorizontal(value : i32x4)"_c;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
 }
 } // namespace GPULang

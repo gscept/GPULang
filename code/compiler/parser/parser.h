@@ -108,6 +108,7 @@ enum class TokenType
     , RightAngle    // >
     , Quote
     , Dot
+    , Arrow
     , Add
     , Sub
     , Mul

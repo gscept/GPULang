@@ -33,6 +33,8 @@ struct TernaryExpression : public Expression
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
+    /// Evaluate value compile time
+    bool EvalValue(ValueUnion& out) const override;
     
     Expression* lhs;
     Expression* ifExpression;

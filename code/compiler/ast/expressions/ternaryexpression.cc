@@ -58,19 +58,32 @@ TernaryExpression::Resolve(Compiler* compiler)
         && type3.name != "u32")
     || type3.modifiers.size != 0)
     {
-        compiler->Error(Format("Condition must evaluate to 'b8', 'i32' or 'u32', but got '%s'", type3.name.c_str()), this);
+        compiler->Error(Format("Condition must evaluate to 'b8', 'i32' or 'u32', but got '%s'", type3.ToString().c_str()), this);
         return false;
     }
 
-    if (type1 != type2)
+    // Not a bug, if type1 is literal, the first will fail but the other succeed, and vice versa
+    if (type1 != type2 && type2 != type1)
     {
-        compiler->Error(Format("Ternary results are of different types '%s' and '%s'", type1.name.c_str(), type2.name.c_str()), this);
+        compiler->Error(Format("Ternary results are of different types '%s' and '%s'", type1.ToString().c_str(), type2.ToString().c_str()), this);
         return false;
     }
 
+    if (!type2.literal)
+        type1.literal = false;
     thisResolved->fullType = type1;
     thisResolved->type = compiler->GetType(type1);
     return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+TernaryExpression::EvalValue(ValueUnion& out) const
+{
+    // Fixme, implement a compile time evaluation path for this
+    return Expression::EvalValue(out);
 }
 
 //------------------------------------------------------------------------------
@@ -135,5 +148,6 @@ TernaryExpression::EvalStorage(Storage& out) const
     out = Storage::Default;
     return true;
 }
+
 
 } // namespace GPULang

@@ -47,12 +47,31 @@ UnaryExpression::Resolve(Compiler* compiler)
 
     Type::FullType type;
     this->expr->EvalType(type);
-    Type* typeSymbol;
-    if (!this->expr->EvalTypeSymbol(typeSymbol))
+    if (!this->expr->EvalUnswizzledTypeSymbol(thisResolved->type))
     {
         this->name = this->expr->EvalString();
         compiler->UnrecognizedTypeError(type.name, this);
         return false;
+    }
+
+    if (!this->expr->EvalTypeSymbol(thisResolved->swizzleType))
+    {
+        this->name = this->expr->EvalString();
+        compiler->UnrecognizedTypeError(type.name, this);
+        return false;
+    }
+    if (type.swizzleMask != Type::SwizzleMask())
+    {
+        if (this->op == '*')
+        {
+            compiler->Error("Dereferencing is not allowed on a swizzled variable", this);
+            return false;
+        }
+        if (this->op == '&')
+        {
+            compiler->Error("Getting a reference is not allowed on a swizzled variable", this);
+            return false;
+        }
     }
 
     static const StaticSet allowedIncrementDecrementTypes =
@@ -93,7 +112,7 @@ UnaryExpression::Resolve(Compiler* compiler)
     {
         case '++':
         {
-            if (allowedIncrementDecrementTypes.Find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
+            if (allowedIncrementDecrementTypes.Find(thisResolved->type->baseType) == allowedIncrementDecrementTypes.end())
             {
                 compiler->Error("Unary '++' only allowed on numeric (int/float) types", this);
                 return false;    
@@ -102,7 +121,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '--':
         {
-            if (allowedIncrementDecrementTypes.Find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
+            if (allowedIncrementDecrementTypes.Find(thisResolved->type->baseType) == allowedIncrementDecrementTypes.end())
             {
                 compiler->Error("Unary '++' only allowed on numeric (int/float) types", this);
                 return false;    
@@ -142,7 +161,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '-':
         {
-            if (signedTypes.Find(typeSymbol->baseType) == signedTypes.end())
+            if (signedTypes.Find(thisResolved->type->baseType) == signedTypes.end())
             {
                 compiler->Error("Unary '-' only allowed on signed types", this);
                 return false;    
@@ -161,7 +180,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '!':
         {
-            if (negatableTypes.Find(typeSymbol->baseType) == negatableTypes.end())
+            if (negatableTypes.Find(thisResolved->type->baseType) == negatableTypes.end())
             {
                 compiler->Error(Format("Unary '!' only allowed on integer and bool types"), this);
                 return false;    
@@ -170,7 +189,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }    
         case '~':
         {
-            if (conjuctableTypes.Find(typeSymbol->baseType) == conjuctableTypes.end())
+            if (conjuctableTypes.Find(thisResolved->type->baseType) == conjuctableTypes.end())
             {
                 compiler->Error(Format("Unary '~' only allowed on integer types"), this);
                 return false;    
@@ -179,7 +198,6 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
     }
 
-    thisResolved->type = compiler->GetType(type);
     thisResolved->fullType = type;
     return true;
 }
@@ -204,10 +222,25 @@ bool
 UnaryExpression::EvalTypeSymbol(Type*& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->swizzleType != nullptr)
+        out = thisResolved->swizzleType;
+    else if (thisResolved->type != nullptr)
+        out = thisResolved->type;
+    else
+        return false;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+UnaryExpression::EvalUnswizzledTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
     if (thisResolved->type == nullptr)
         return false;
     out = thisResolved->type;
-    assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
     return true;
 }
 

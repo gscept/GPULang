@@ -218,6 +218,7 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ ">"_h, TokenType::RightAngle }
     , std::pair{ "\""_h, TokenType::Quote }
     , std::pair{ "."_h, TokenType::Dot }
+    //, std::pair{ "->"_h, TokenType::Arrow }
     , std::pair{ "+"_h, TokenType::Add }
     , std::pair{ "-"_h, TokenType::Sub }
     , std::pair{ "*"_h, TokenType::Mul }
@@ -1223,6 +1224,7 @@ static void SetupTokenClassTable()
     TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Arrow] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Question] |= TOKEN_EXPRESSION_BIT;
     TokenClassTable[(uint32_t)TokenType::Colon] |= TOKEN_EXPRESSION_BIT;
@@ -1328,6 +1330,7 @@ static void SetupTokenClassTable()
     PostfixPrecedenceTable[(uint32_t)TokenType::Increment] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::Decrement] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::Dot] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Arrow] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAdd] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixSub] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixMul] = 3;
@@ -1432,6 +1435,14 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 expr->location = LocationFromToken(*tok.token);
                 operandStack.Append(expr);
             }
+            else if (tok.type == TokenType::Arrow)
+            {
+                Expression* rhs = operandStack.back(); operandStack.size--;
+                Expression* lhs = operandStack.back(); operandStack.size--;
+                Expression* expr = Alloc<AccessExpression>(lhs, rhs, true);
+                expr->location = LocationFromToken(*tok.token);
+                operandStack.Append(expr);
+            }
             else
             {   
                 Expression* rhs = operandStack.back(); operandStack.size--;
@@ -1483,7 +1494,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         if (precedenceTable == PrefixPrecedenceTable)
         {
             if (
-                stream.Type(-1) == TokenType::Dot 
+                (stream.Type(-1) == TokenType::Dot || stream.Type(-1) == TokenType::Arrow)
                 && type != TokenType::Identifier
                 && (TokenClassTable[(uint32_t)type] & TOKEN_OPERATOR_BIT) == 0x0
                 )
@@ -2147,6 +2158,13 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
                 res = Alloc<AccessExpression>(res, rhs, false);
                 res->location = LocationFromToken(tok);
             }
+            else if (stream.Match(TokenType::Arrow))
+            {
+                const Token& tok = stream.Data(-1);
+                Expression* rhs = ParseExpression(stream, ret, res, 13);
+                res = Alloc<AccessExpression>(res, rhs, true);
+                res->location = LocationFromToken(tok);
+            }
             else if (stream.Match(TokenType::LeftBracket))
             {
                 const Token& tok = stream.Data(-1);
@@ -2777,6 +2795,12 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
     }
     res = vars;
 
+    if (vars.size == 0)
+    {
+        ret.diagnostics.Append(UnexpectedToken(stream, "variable name"));
+        return res;
+    }
+
     bool typeKnown = false;
     if (stream.Match(TokenType::Colon))
     {
@@ -2828,7 +2852,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
 
             GPULangDiagnostic diagnostic;
             diagnostic.file = tok.path;
-            diagnostic.error = TStr("Expected a variable for for each value");
+            diagnostic.error = TStr("Expected a variable for each value");
             diagnostic.line = tok.startLine;
             diagnostic.column = tok.startChar;
             diagnostic.length = tok.endChar - tok.startChar;
@@ -2840,7 +2864,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
 
             GPULangDiagnostic diagnostic;
             diagnostic.file = tok.path;
-            diagnostic.error = TStr("Expected a value for for each variable");
+            diagnostic.error = TStr("Expected a value for each variable");
             diagnostic.line = tok.startLine;
             diagnostic.column = tok.startChar;
             diagnostic.length = tok.endChar - tok.startChar;

@@ -442,28 +442,28 @@
         ],
         "overloads": [
             {
-                "signature": "atomicCompareExchange(uniform ptr: *mutable f16, value: f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicCompareExchange(uniform ptr: *mutable u32, value: u32, compare: u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicCompareExchange(ptr: *f16, value: f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicCompareExchange(ptr: *u32, value: u32, compare: u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicCompareExchange(uniform ptr: *mutable f16, value: f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicCompareExchange(uniform ptr: *mutable i32, value: i32, compare: i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicCompareExchange(ptr: *f16, value: f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicCompareExchange(ptr: *i32, value: i32, compare: i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicCompareExchange(uniform ptr: *mutable f16, value: f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicCompareExchange(uniform ptr: *mutable u16, value: u16, compare: u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicCompareExchange(ptr: *f16, value: f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicCompareExchange(ptr: *u16, value: u16, compare: u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicCompareExchange(uniform ptr: *mutable f16, value: f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicCompareExchange(uniform ptr: *mutable i16, value: i16, compare: i16, semantics: literal MemorySemantics) i16"
             },
             {
-                "signature": "atomicCompareExchange(ptr: *f16, value: f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicCompareExchange(ptr: *i16, value: i16, compare: i16, semantics: literal MemorySemantics) i16"
             }
         ]
     },
@@ -646,28 +646,28 @@
         ],
         "overloads": [
             {
-                "signature": "atomicMax(uniform ptr: *mutable f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMax(uniform ptr: *mutable u32, compare: u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicMax(ptr: *f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMax(ptr: *u32, compare: u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicMax(uniform ptr: *mutable f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMax(uniform ptr: *mutable i32, compare: i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicMax(ptr: *f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMax(ptr: *i32, compare: i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicMax(uniform ptr: *mutable f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMax(uniform ptr: *mutable u16, compare: u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicMax(ptr: *f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMax(ptr: *u16, compare: u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicMax(uniform ptr: *mutable f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMax(uniform ptr: *mutable i16, compare: i16, semantics: literal MemorySemantics) i16"
             },
             {
-                "signature": "atomicMax(ptr: *f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMax(ptr: *i16, compare: i16, semantics: literal MemorySemantics) i16"
             }
         ]
     },
@@ -682,28 +682,28 @@
         ],
         "overloads": [
             {
-                "signature": "atomicMin(uniform ptr: *mutable f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMin(uniform ptr: *mutable u32, compare: u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicMin(ptr: *f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMin(ptr: *u32, compare: u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicMin(uniform ptr: *mutable f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMin(uniform ptr: *mutable i32, compare: i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicMin(ptr: *f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMin(ptr: *i32, compare: i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicMin(uniform ptr: *mutable f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMin(uniform ptr: *mutable u16, compare: u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicMin(ptr: *f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMin(ptr: *u16, compare: u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicMin(uniform ptr: *mutable f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMin(uniform ptr: *mutable i16, compare: i16, semantics: literal MemorySemantics) i16"
             },
             {
-                "signature": "atomicMin(ptr: *f16, compare: f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicMin(ptr: *i16, compare: i16, semantics: literal MemorySemantics) i16"
             }
         ]
     },
@@ -967,7 +967,25 @@
                 "signature": "castToF16(val: u16) f16"
             },
             {
+                "signature": "castToF16(val: u16x2) f16"
+            },
+            {
+                "signature": "castToF16(val: u16x3) f16"
+            },
+            {
+                "signature": "castToF16(val: u16x4) f16"
+            },
+            {
                 "signature": "castToF16(val: i16) f16"
+            },
+            {
+                "signature": "castToF16(val: i16x2) f16"
+            },
+            {
+                "signature": "castToF16(val: i16x3) f16"
+            },
+            {
+                "signature": "castToF16(val: i16x4) f16"
             }
         ]
     },
@@ -985,7 +1003,25 @@
                 "signature": "castToF32(val: u32) f32"
             },
             {
+                "signature": "castToF32(val: u32x2) f32x2"
+            },
+            {
+                "signature": "castToF32(val: u32x3) f32x3"
+            },
+            {
+                "signature": "castToF32(val: u32x4) f32x4"
+            },
+            {
                 "signature": "castToF32(val: i32) f32"
+            },
+            {
+                "signature": "castToF32(val: i32x2) f32x2"
+            },
+            {
+                "signature": "castToF32(val: i32x3) f32x3"
+            },
+            {
+                "signature": "castToF32(val: i32x4) f32x4"
             }
         ]
     },
@@ -1003,7 +1039,25 @@
                 "signature": "castToI16(val: f16) i16"
             },
             {
+                "signature": "castToI16(val: f16x2) i16"
+            },
+            {
+                "signature": "castToI16(val: f16x3) i16"
+            },
+            {
+                "signature": "castToI16(val: f16x4) i16"
+            },
+            {
                 "signature": "castToI16(val: u16) i16"
+            },
+            {
+                "signature": "castToI16(val: u16x2) i16"
+            },
+            {
+                "signature": "castToI16(val: u16x3) i16"
+            },
+            {
+                "signature": "castToI16(val: u16x4) i16"
             }
         ]
     },
@@ -1021,7 +1075,25 @@
                 "signature": "castToI32(val: f32) i32"
             },
             {
+                "signature": "castToI32(val: f32x2) i32x2"
+            },
+            {
+                "signature": "castToI32(val: f32x3) i32x3"
+            },
+            {
+                "signature": "castToI32(val: f32x4) i32x4"
+            },
+            {
                 "signature": "castToI32(val: u32) i32"
+            },
+            {
+                "signature": "castToI32(val: u32x2) i32x2"
+            },
+            {
+                "signature": "castToI32(val: u32x3) i32x3"
+            },
+            {
+                "signature": "castToI32(val: u32x4) i32x4"
             }
         ]
     },
@@ -1039,7 +1111,25 @@
                 "signature": "castToU16(val: f16) u16"
             },
             {
+                "signature": "castToU16(val: f16x2) u16"
+            },
+            {
+                "signature": "castToU16(val: f16x3) u16"
+            },
+            {
+                "signature": "castToU16(val: f16x4) u16"
+            },
+            {
                 "signature": "castToU16(val: i16) u16"
+            },
+            {
+                "signature": "castToU16(val: i16x2) u16"
+            },
+            {
+                "signature": "castToU16(val: i16x3) u16"
+            },
+            {
+                "signature": "castToU16(val: i16x4) u16"
             }
         ]
     },
@@ -1057,7 +1147,25 @@
                 "signature": "castToU32(val: f32) u32"
             },
             {
+                "signature": "castToU32(val: f32x2) u32x2"
+            },
+            {
+                "signature": "castToU32(val: f32x3) u32x3"
+            },
+            {
+                "signature": "castToU32(val: f32x4) u32x4"
+            },
+            {
                 "signature": "castToU32(val: i32) u32"
+            },
+            {
+                "signature": "castToU32(val: i32x2) u32x2"
+            },
+            {
+                "signature": "castToU32(val: i32x3) u32x3"
+            },
+            {
+                "signature": "castToU32(val: i32x4) u32x4"
             }
         ]
     },
@@ -1227,7 +1335,7 @@
         ]
     },
     {
-        "name": "computeGetWorkGroupDimensions",
+        "name": "computeGetNumWorkgroups",
         "documentation": "Returns the dimensions of the workgroup in the dispatch",
         "target_support": [
             1,
@@ -1237,7 +1345,7 @@
         ],
         "overloads": [
             {
-                "signature": "computeGetWorkGroupDimensions() u32x3"
+                "signature": "computeGetNumWorkgroups() u32x3"
             }
         ]
     },
@@ -1429,28 +1537,28 @@
         ],
         "overloads": [
             {
-                "signature": "distance(p0: f32x2, p1: f32x2) f32x2"
+                "signature": "distance(p0: f32x2, p1: f32x2) f32"
             },
             {
-                "signature": "distance(p0: f32x3, p1: f32x3) f32x3"
+                "signature": "distance(p0: f32x3, p1: f32x3) f32"
             },
             {
-                "signature": "distance(p0: f32x4, p1: f32x4) f32x4"
+                "signature": "distance(p0: f32x4, p1: f32x4) f32"
             },
             {
-                "signature": "distance(p0: f16x2, p1: f16x2) f16x2"
+                "signature": "distance(p0: f16x2, p1: f16x2) f16"
             },
             {
-                "signature": "distance(p0: f16x3, p1: f16x3) f16x3"
+                "signature": "distance(p0: f16x3, p1: f16x3) f16"
             },
             {
-                "signature": "distance(p0: f16x4, p1: f16x4) f16x4"
+                "signature": "distance(p0: f16x4, p1: f16x4) f16"
             }
         ]
     },
     {
-        "name": "domainGetInvocationIndex",
-        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "name": "domainExportCoordinates",
+        "documentation": "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a domain shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL.",
         "target_support": [
             1,
             1,
@@ -1459,22 +1567,10 @@
         ],
         "overloads": [
             {
-                "signature": "domainGetInvocationIndex() u32"
-            }
-        ]
-    },
-    {
-        "name": "domainGetPrimitiveIndex",
-        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
+                "signature": "domainExportCoordinates(val: f32x4) void"
+            },
             {
-                "signature": "domainGetPrimitiveIndex(index: u32) u32"
+                "signature": "domainExportCoordinates(val: f16x4) void"
             }
         ]
     },
@@ -1797,21 +1893,6 @@
         ]
     },
     {
-        "name": "geometryGetInvocationIndex",
-        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "geometryGetInvocationIndex() u32"
-            }
-        ]
-    },
-    {
         "name": "geometryGetLine",
         "documentation": "Returns a struct of the current line.",
         "target_support": [
@@ -1842,6 +1923,21 @@
         ]
     },
     {
+        "name": "geometryGetPrimitiveIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "geometryGetPrimitiveIndex(index: u32) u32"
+            }
+        ]
+    },
+    {
         "name": "geometryGetTriangle",
         "documentation": "Returns a struct of the current triangle.",
         "target_support": [
@@ -1857,6 +1953,21 @@
         ]
     },
     {
+        "name": "geometryGetVertexIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "geometryGetVertexIndex() u32"
+            }
+        ]
+    },
+    {
         "name": "hullExportInnerTessellationLevels",
         "documentation": "Sets the inner tessellation levels for the current patch. This function must be called once per patch.",
         "target_support": [
@@ -1867,7 +1978,7 @@
         ],
         "overloads": [
             {
-                "signature": "hullExportInnerTessellationLevels(levels: f32x2) void"
+                "signature": "hullExportInnerTessellationLevels(f0: f32, f1: f32) void"
             }
         ]
     },
@@ -1882,12 +1993,12 @@
         ],
         "overloads": [
             {
-                "signature": "hullExportOuterTessellationLevels(levels: f32x4) void"
+                "signature": "hullExportOuterTessellationLevels(f0: f32, f1: f32, f2: f32, f3: f32) void"
             }
         ]
     },
     {
-        "name": "hullGetPrimitiveIndex",
+        "name": "hullGetVertexIndex",
         "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
         "target_support": [
             1,
@@ -1897,7 +2008,7 @@
         ],
         "overloads": [
             {
-                "signature": "hullGetPrimitiveIndex(index: u32) u32"
+                "signature": "hullGetVertexIndex() u32"
             }
         ]
     },
@@ -2400,6 +2511,21 @@
         ]
     },
     {
+        "name": "meshGetPrimitiveIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "meshGetPrimitiveIndex(index: u32) u32"
+            }
+        ]
+    },
+    {
         "name": "min",
         "documentation": "Returns the minimum of x and y.",
         "target_support": [
@@ -2862,21 +2988,6 @@
         ]
     },
     {
-        "name": "pixelGetPrimitiveIndex",
-        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "pixelGetPrimitiveIndex(index: u32) u32"
-            }
-        ]
-    },
-    {
         "name": "pixelGetSubpixelPosition",
         "documentation": "Returns the subpixel position of the current texel",
         "target_support": [
@@ -2999,6 +3110,42 @@
             },
             {
                 "signature": "refract(incident: f16x4, normal: f16x4, ior: f16x4) f16x4"
+            }
+        ]
+    },
+    {
+        "name": "round",
+        "documentation": "Returns the nearest integer value to the input.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "round(val: f32) f32"
+            },
+            {
+                "signature": "round(val: f32x2) f32x2"
+            },
+            {
+                "signature": "round(val: f32x3) f32x3"
+            },
+            {
+                "signature": "round(val: f32x4) f32x4"
+            },
+            {
+                "signature": "round(val: f16) f16"
+            },
+            {
+                "signature": "round(val: f16x2) f16x2"
+            },
+            {
+                "signature": "round(val: f16x3) f16x3"
+            },
+            {
+                "signature": "round(val: f16x4) f16x4"
             }
         ]
     },
@@ -3908,6 +4055,21 @@
             },
             {
                 "signature": "tanh(val: f16x4) f16x4"
+            }
+        ]
+    },
+    {
+        "name": "taskGetPrimitiveIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "taskGetPrimitiveIndex(index: u32) u32"
             }
         ]
     },
@@ -5170,28 +5332,28 @@
         ],
         "overloads": [
             {
-                "signature": "textureGather(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: i32x2, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *textureSampled2D, coordinate: i32x2, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureSampled2D, coordinate: f32x2, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: i32x3, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: f32x3, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *textureSampledCube, coordinate: i32x3, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureSampledCube, coordinate: f32x3, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: i32x3, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *textureSampled2DArray, coordinate: i32x3, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureSampled2DArray, coordinate: f32x3, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: i32x4, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: f32x4, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *textureSampledCubeArray, coordinate: i32x4, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureSampledCubeArray, coordinate: f32x4, component: i32) f32x4"
             }
         ]
     },
@@ -5206,28 +5368,28 @@
         ],
         "overloads": [
             {
-                "signature": "textureGatherOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: i32x2, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, component: i32, offset: i32x2) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *textureSampled2D, coordinate: i32x2, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureSampled2D, coordinate: f32x2, component: i32, offset: i32x2) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: i32x3, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: f32x3, component: i32, offset: i32x2) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *textureSampledCube, coordinate: i32x3, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureSampledCube, coordinate: f32x3, component: i32, offset: i32x2) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: i32x3, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, component: i32, offset: i32x2) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *textureSampled2DArray, coordinate: i32x3, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, component: i32, offset: i32x2) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: i32x4, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: f32x4, component: i32, offset: i32x2) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *textureSampledCubeArray, coordinate: i32x4, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureSampledCubeArray, coordinate: f32x4, component: i32, offset: i32x2) f32x4"
             }
         ]
     },

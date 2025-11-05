@@ -32,5 +32,6 @@ void SetupIntrinsics()
     SetupIntrinsics13();
     SetupIntrinsics14();
     SetupIntrinsics15();
+    SetupIntrinsics16();
 }
 } // namespace GPULang

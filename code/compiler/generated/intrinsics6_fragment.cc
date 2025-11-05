@@ -74,6 +74,46 @@ Variable floor_Float16x4_arg;
 Function floor_Float16x4;
 inline constexpr std::array floor_Float16x4_args = { &floor_Float16x4_arg };
 
+/// round with Float32
+Variable round_Float32_arg;
+Function round_Float32;
+inline constexpr std::array round_Float32_args = { &round_Float32_arg };
+
+/// round with Float32x2
+Variable round_Float32x2_arg;
+Function round_Float32x2;
+inline constexpr std::array round_Float32x2_args = { &round_Float32x2_arg };
+
+/// round with Float32x3
+Variable round_Float32x3_arg;
+Function round_Float32x3;
+inline constexpr std::array round_Float32x3_args = { &round_Float32x3_arg };
+
+/// round with Float32x4
+Variable round_Float32x4_arg;
+Function round_Float32x4;
+inline constexpr std::array round_Float32x4_args = { &round_Float32x4_arg };
+
+/// round with Float16
+Variable round_Float16_arg;
+Function round_Float16;
+inline constexpr std::array round_Float16_args = { &round_Float16_arg };
+
+/// round with Float16x2
+Variable round_Float16x2_arg;
+Function round_Float16x2;
+inline constexpr std::array round_Float16x2_args = { &round_Float16x2_arg };
+
+/// round with Float16x3
+Variable round_Float16x3_arg;
+Function round_Float16x3;
+inline constexpr std::array round_Float16x3_args = { &round_Float16x3_arg };
+
+/// round with Float16x4
+Variable round_Float16x4_arg;
+Function round_Float16x4;
+inline constexpr std::array round_Float16x4_args = { &round_Float16x4_arg };
+
 /// fract with Float32
 Variable fract_Float32_arg;
 Function fract_Float32;
@@ -479,175 +519,135 @@ Variable castToF16_UInt16_arg;
 Function castToF16_UInt16;
 inline constexpr std::array castToF16_UInt16_args = { &castToF16_UInt16_arg };
 
+/// castToF16 with UInt16x2
+Variable castToF16_UInt16x2_arg;
+Function castToF16_UInt16x2;
+inline constexpr std::array castToF16_UInt16x2_args = { &castToF16_UInt16x2_arg };
+
+/// castToF16 with UInt16x3
+Variable castToF16_UInt16x3_arg;
+Function castToF16_UInt16x3;
+inline constexpr std::array castToF16_UInt16x3_args = { &castToF16_UInt16x3_arg };
+
+/// castToF16 with UInt16x4
+Variable castToF16_UInt16x4_arg;
+Function castToF16_UInt16x4;
+inline constexpr std::array castToF16_UInt16x4_args = { &castToF16_UInt16x4_arg };
+
 /// castToF16 with Int16
 Variable castToF16_Int16_arg;
 Function castToF16_Int16;
 inline constexpr std::array castToF16_Int16_args = { &castToF16_Int16_arg };
+
+/// castToF16 with Int16x2
+Variable castToF16_Int16x2_arg;
+Function castToF16_Int16x2;
+inline constexpr std::array castToF16_Int16x2_args = { &castToF16_Int16x2_arg };
+
+/// castToF16 with Int16x3
+Variable castToF16_Int16x3_arg;
+Function castToF16_Int16x3;
+inline constexpr std::array castToF16_Int16x3_args = { &castToF16_Int16x3_arg };
+
+/// castToF16 with Int16x4
+Variable castToF16_Int16x4_arg;
+Function castToF16_Int16x4;
+inline constexpr std::array castToF16_Int16x4_args = { &castToF16_Int16x4_arg };
 
 /// castToU16 with Float16
 Variable castToU16_Float16_arg;
 Function castToU16_Float16;
 inline constexpr std::array castToU16_Float16_args = { &castToU16_Float16_arg };
 
+/// castToU16 with Float16x2
+Variable castToU16_Float16x2_arg;
+Function castToU16_Float16x2;
+inline constexpr std::array castToU16_Float16x2_args = { &castToU16_Float16x2_arg };
+
+/// castToU16 with Float16x3
+Variable castToU16_Float16x3_arg;
+Function castToU16_Float16x3;
+inline constexpr std::array castToU16_Float16x3_args = { &castToU16_Float16x3_arg };
+
+/// castToU16 with Float16x4
+Variable castToU16_Float16x4_arg;
+Function castToU16_Float16x4;
+inline constexpr std::array castToU16_Float16x4_args = { &castToU16_Float16x4_arg };
+
 /// castToU16 with Int16
 Variable castToU16_Int16_arg;
 Function castToU16_Int16;
 inline constexpr std::array castToU16_Int16_args = { &castToU16_Int16_arg };
+
+/// castToU16 with Int16x2
+Variable castToU16_Int16x2_arg;
+Function castToU16_Int16x2;
+inline constexpr std::array castToU16_Int16x2_args = { &castToU16_Int16x2_arg };
+
+/// castToU16 with Int16x3
+Variable castToU16_Int16x3_arg;
+Function castToU16_Int16x3;
+inline constexpr std::array castToU16_Int16x3_args = { &castToU16_Int16x3_arg };
+
+/// castToU16 with Int16x4
+Variable castToU16_Int16x4_arg;
+Function castToU16_Int16x4;
+inline constexpr std::array castToU16_Int16x4_args = { &castToU16_Int16x4_arg };
 
 /// castToI16 with Float16
 Variable castToI16_Float16_arg;
 Function castToI16_Float16;
 inline constexpr std::array castToI16_Float16_args = { &castToI16_Float16_arg };
 
+/// castToI16 with Float16x2
+Variable castToI16_Float16x2_arg;
+Function castToI16_Float16x2;
+inline constexpr std::array castToI16_Float16x2_args = { &castToI16_Float16x2_arg };
+
+/// castToI16 with Float16x3
+Variable castToI16_Float16x3_arg;
+Function castToI16_Float16x3;
+inline constexpr std::array castToI16_Float16x3_args = { &castToI16_Float16x3_arg };
+
+/// castToI16 with Float16x4
+Variable castToI16_Float16x4_arg;
+Function castToI16_Float16x4;
+inline constexpr std::array castToI16_Float16x4_args = { &castToI16_Float16x4_arg };
+
 /// castToI16 with UInt16
 Variable castToI16_UInt16_arg;
 Function castToI16_UInt16;
 inline constexpr std::array castToI16_UInt16_args = { &castToI16_UInt16_arg };
+
+/// castToI16 with UInt16x2
+Variable castToI16_UInt16x2_arg;
+Function castToI16_UInt16x2;
+inline constexpr std::array castToI16_UInt16x2_args = { &castToI16_UInt16x2_arg };
+
+/// castToI16 with UInt16x3
+Variable castToI16_UInt16x3_arg;
+Function castToI16_UInt16x3;
+inline constexpr std::array castToI16_UInt16x3_args = { &castToI16_UInt16x3_arg };
+
+/// castToI16 with UInt16x4
+Variable castToI16_UInt16x4_arg;
+Function castToI16_UInt16x4;
+inline constexpr std::array castToI16_UInt16x4_args = { &castToI16_UInt16x4_arg };
 
 /// castToF32 with UInt32
 Variable castToF32_UInt32_arg;
 Function castToF32_UInt32;
 inline constexpr std::array castToF32_UInt32_args = { &castToF32_UInt32_arg };
 
-/// castToF32 with Int32
-Variable castToF32_Int32_arg;
-Function castToF32_Int32;
-inline constexpr std::array castToF32_Int32_args = { &castToF32_Int32_arg };
+/// castToF32 with UInt32x2
+Variable castToF32_UInt32x2_arg;
+Function castToF32_UInt32x2;
+inline constexpr std::array castToF32_UInt32x2_args = { &castToF32_UInt32x2_arg };
 
-/// castToU32 with Float32
-Variable castToU32_Float32_arg;
-Function castToU32_Float32;
-inline constexpr std::array castToU32_Float32_args = { &castToU32_Float32_arg };
-
-/// castToU32 with Int32
-Variable castToU32_Int32_arg;
-Function castToU32_Int32;
-inline constexpr std::array castToU32_Int32_args = { &castToU32_Int32_arg };
-
-/// castToI32 with Float32
-Variable castToI32_Float32_arg;
-Function castToI32_Float32;
-inline constexpr std::array castToI32_Float32_args = { &castToI32_Float32_arg };
-
-/// castToI32 with UInt32
-Variable castToI32_UInt32_arg;
-Function castToI32_UInt32;
-inline constexpr std::array castToI32_UInt32_args = { &castToI32_UInt32_arg };
-
-/// any with Bool8
-Variable any_Bool8_arg;
-Function any_Bool8;
-inline constexpr std::array any_Bool8_args = { &any_Bool8_arg };
-
-/// any with Bool8x2
-Variable any_Bool8x2_arg;
-Function any_Bool8x2;
-inline constexpr std::array any_Bool8x2_args = { &any_Bool8x2_arg };
-
-/// any with Bool8x3
-Variable any_Bool8x3_arg;
-Function any_Bool8x3;
-inline constexpr std::array any_Bool8x3_args = { &any_Bool8x3_arg };
-
-/// any with Bool8x4
-Variable any_Bool8x4_arg;
-Function any_Bool8x4;
-inline constexpr std::array any_Bool8x4_args = { &any_Bool8x4_arg };
-
-/// all with Bool8
-Variable all_Bool8_arg;
-Function all_Bool8;
-inline constexpr std::array all_Bool8_args = { &all_Bool8_arg };
-
-/// all with Bool8x2
-Variable all_Bool8x2_arg;
-Function all_Bool8x2;
-inline constexpr std::array all_Bool8x2_args = { &all_Bool8x2_arg };
-
-/// all with Bool8x3
-Variable all_Bool8x3_arg;
-Function all_Bool8x3;
-inline constexpr std::array all_Bool8x3_args = { &all_Bool8x3_arg };
-
-/// all with Bool8x4
-Variable all_Bool8x4_arg;
-Function all_Bool8x4;
-inline constexpr std::array all_Bool8x4_args = { &all_Bool8x4_arg };
-
-/// transpose with Float32x2x2
-Variable transpose_Float32x2x2_arg;
-Function transpose_Float32x2x2;
-inline constexpr std::array transpose_Float32x2x2_args = { &transpose_Float32x2x2_arg };
-
-/// transpose with Float16x2x2
-Variable transpose_Float16x2x2_arg;
-Function transpose_Float16x2x2;
-inline constexpr std::array transpose_Float16x2x2_args = { &transpose_Float16x2x2_arg };
-
-/// transpose with Float32x2x3
-Variable transpose_Float32x2x3_arg;
-Function transpose_Float32x2x3;
-inline constexpr std::array transpose_Float32x2x3_args = { &transpose_Float32x2x3_arg };
-
-/// transpose with Float16x2x3
-Variable transpose_Float16x2x3_arg;
-Function transpose_Float16x2x3;
-inline constexpr std::array transpose_Float16x2x3_args = { &transpose_Float16x2x3_arg };
-
-/// transpose with Float32x2x4
-Variable transpose_Float32x2x4_arg;
-Function transpose_Float32x2x4;
-inline constexpr std::array transpose_Float32x2x4_args = { &transpose_Float32x2x4_arg };
-
-/// transpose with Float16x2x4
-Variable transpose_Float16x2x4_arg;
-Function transpose_Float16x2x4;
-inline constexpr std::array transpose_Float16x2x4_args = { &transpose_Float16x2x4_arg };
-
-/// transpose with Float32x3x2
-Variable transpose_Float32x3x2_arg;
-Function transpose_Float32x3x2;
-inline constexpr std::array transpose_Float32x3x2_args = { &transpose_Float32x3x2_arg };
-
-/// transpose with Float16x3x2
-Variable transpose_Float16x3x2_arg;
-Function transpose_Float16x3x2;
-inline constexpr std::array transpose_Float16x3x2_args = { &transpose_Float16x3x2_arg };
-
-/// transpose with Float32x3x3
-Variable transpose_Float32x3x3_arg;
-Function transpose_Float32x3x3;
-inline constexpr std::array transpose_Float32x3x3_args = { &transpose_Float32x3x3_arg };
-
-/// transpose with Float16x3x3
-Variable transpose_Float16x3x3_arg;
-Function transpose_Float16x3x3;
-inline constexpr std::array transpose_Float16x3x3_args = { &transpose_Float16x3x3_arg };
-
-/// transpose with Float32x3x4
-Variable transpose_Float32x3x4_arg;
-Function transpose_Float32x3x4;
-inline constexpr std::array transpose_Float32x3x4_args = { &transpose_Float32x3x4_arg };
-
-/// transpose with Float16x3x4
-Variable transpose_Float16x3x4_arg;
-Function transpose_Float16x3x4;
-inline constexpr std::array transpose_Float16x3x4_args = { &transpose_Float16x3x4_arg };
-
-/// transpose with Float32x4x2
-Variable transpose_Float32x4x2_arg;
-Function transpose_Float32x4x2;
-inline constexpr std::array transpose_Float32x4x2_args = { &transpose_Float32x4x2_arg };
-
-/// transpose with Float16x4x2
-Variable transpose_Float16x4x2_arg;
-Function transpose_Float16x4x2;
-inline constexpr std::array transpose_Float16x4x2_args = { &transpose_Float16x4x2_arg };
-
-/// transpose with Float32x4x3
-Variable transpose_Float32x4x3_arg;
-Function transpose_Float32x4x3;
-inline constexpr std::array transpose_Float32x4x3_args = { &transpose_Float32x4x3_arg };
+/// castToF32 with UInt32x3
+Variable castToF32_UInt32x3_arg;
+Function castToF32_UInt32x3;
+inline constexpr std::array castToF32_UInt32x3_args = { &castToF32_UInt32x3_arg };
 
 void SetupIntrinsics6()
 {
@@ -833,12 +833,124 @@ void SetupIntrinsics6()
     Symbol::Resolved(&floor_Float16x4)->nameWithVarNames = "floor(val : f16x4)"_c;
     Symbol::Resolved(&floor_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// round with Float32
+    round_Float32_arg.name = "val"_c;
+    round_Float32_arg.type = Type::FullType{ Float32Type.name };
+    round_Float32.documentation = "Returns the nearest integer value to the input."_c;
+    round_Float32.name = round_Float32_name;
+    round_Float32.backendIndex = 1718;
+    round_Float32.returnType = Type::FullType { Float32Type.name };
+    round_Float32.parameters = round_Float32_args;
+    Symbol::Resolved(&round_Float32_arg)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&round_Float32)->signature = "round(f32) f32"_c;
+    Symbol::Resolved(&round_Float32)->name = "round(f32)"_c;
+    Symbol::Resolved(&round_Float32)->nameWithVarNames = "round(val : f32)"_c;
+    Symbol::Resolved(&round_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// round with Float32x2
+    round_Float32x2_arg.name = "val"_c;
+    round_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    round_Float32x2.documentation = "Returns the nearest integer value to the input."_c;
+    round_Float32x2.name = round_Float32x2_name;
+    round_Float32x2.backendIndex = 1719;
+    round_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    round_Float32x2.parameters = round_Float32x2_args;
+    Symbol::Resolved(&round_Float32x2_arg)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&round_Float32x2)->signature = "round(f32x2) f32x2"_c;
+    Symbol::Resolved(&round_Float32x2)->name = "round(f32x2)"_c;
+    Symbol::Resolved(&round_Float32x2)->nameWithVarNames = "round(val : f32x2)"_c;
+    Symbol::Resolved(&round_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// round with Float32x3
+    round_Float32x3_arg.name = "val"_c;
+    round_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    round_Float32x3.documentation = "Returns the nearest integer value to the input."_c;
+    round_Float32x3.name = round_Float32x3_name;
+    round_Float32x3.backendIndex = 1720;
+    round_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    round_Float32x3.parameters = round_Float32x3_args;
+    Symbol::Resolved(&round_Float32x3_arg)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&round_Float32x3)->signature = "round(f32x3) f32x3"_c;
+    Symbol::Resolved(&round_Float32x3)->name = "round(f32x3)"_c;
+    Symbol::Resolved(&round_Float32x3)->nameWithVarNames = "round(val : f32x3)"_c;
+    Symbol::Resolved(&round_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// round with Float32x4
+    round_Float32x4_arg.name = "val"_c;
+    round_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    round_Float32x4.documentation = "Returns the nearest integer value to the input."_c;
+    round_Float32x4.name = round_Float32x4_name;
+    round_Float32x4.backendIndex = 1721;
+    round_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    round_Float32x4.parameters = round_Float32x4_args;
+    Symbol::Resolved(&round_Float32x4_arg)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&round_Float32x4)->signature = "round(f32x4) f32x4"_c;
+    Symbol::Resolved(&round_Float32x4)->name = "round(f32x4)"_c;
+    Symbol::Resolved(&round_Float32x4)->nameWithVarNames = "round(val : f32x4)"_c;
+    Symbol::Resolved(&round_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// round with Float16
+    round_Float16_arg.name = "val"_c;
+    round_Float16_arg.type = Type::FullType{ Float16Type.name };
+    round_Float16.documentation = "Returns the nearest integer value to the input."_c;
+    round_Float16.name = round_Float16_name;
+    round_Float16.backendIndex = 1722;
+    round_Float16.returnType = Type::FullType { Float16Type.name };
+    round_Float16.parameters = round_Float16_args;
+    Symbol::Resolved(&round_Float16_arg)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&round_Float16)->signature = "round(f16) f16"_c;
+    Symbol::Resolved(&round_Float16)->name = "round(f16)"_c;
+    Symbol::Resolved(&round_Float16)->nameWithVarNames = "round(val : f16)"_c;
+    Symbol::Resolved(&round_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// round with Float16x2
+    round_Float16x2_arg.name = "val"_c;
+    round_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    round_Float16x2.documentation = "Returns the nearest integer value to the input."_c;
+    round_Float16x2.name = round_Float16x2_name;
+    round_Float16x2.backendIndex = 1723;
+    round_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    round_Float16x2.parameters = round_Float16x2_args;
+    Symbol::Resolved(&round_Float16x2_arg)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&round_Float16x2)->signature = "round(f16x2) f16x2"_c;
+    Symbol::Resolved(&round_Float16x2)->name = "round(f16x2)"_c;
+    Symbol::Resolved(&round_Float16x2)->nameWithVarNames = "round(val : f16x2)"_c;
+    Symbol::Resolved(&round_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// round with Float16x3
+    round_Float16x3_arg.name = "val"_c;
+    round_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    round_Float16x3.documentation = "Returns the nearest integer value to the input."_c;
+    round_Float16x3.name = round_Float16x3_name;
+    round_Float16x3.backendIndex = 1724;
+    round_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    round_Float16x3.parameters = round_Float16x3_args;
+    Symbol::Resolved(&round_Float16x3_arg)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&round_Float16x3)->signature = "round(f16x3) f16x3"_c;
+    Symbol::Resolved(&round_Float16x3)->name = "round(f16x3)"_c;
+    Symbol::Resolved(&round_Float16x3)->nameWithVarNames = "round(val : f16x3)"_c;
+    Symbol::Resolved(&round_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// round with Float16x4
+    round_Float16x4_arg.name = "val"_c;
+    round_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    round_Float16x4.documentation = "Returns the nearest integer value to the input."_c;
+    round_Float16x4.name = round_Float16x4_name;
+    round_Float16x4.backendIndex = 1725;
+    round_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    round_Float16x4.parameters = round_Float16x4_args;
+    Symbol::Resolved(&round_Float16x4_arg)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&round_Float16x4)->signature = "round(f16x4) f16x4"_c;
+    Symbol::Resolved(&round_Float16x4)->name = "round(f16x4)"_c;
+    Symbol::Resolved(&round_Float16x4)->nameWithVarNames = "round(val : f16x4)"_c;
+    Symbol::Resolved(&round_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
     /// fract with Float32
     fract_Float32_arg.name = "val"_c;
     fract_Float32_arg.type = Type::FullType{ Float32Type.name };
     fract_Float32.documentation = "Returns the fractional part of the input."_c;
     fract_Float32.name = fract_Float32_name;
-    fract_Float32.backendIndex = 1718;
+    fract_Float32.backendIndex = 1726;
     fract_Float32.returnType = Type::FullType { Float32Type.name };
     fract_Float32.parameters = fract_Float32_args;
     Symbol::Resolved(&fract_Float32_arg)->typeSymbol = &Float32Type;
@@ -852,7 +964,7 @@ void SetupIntrinsics6()
     fract_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     fract_Float32x2.documentation = "Returns the fractional part of the input."_c;
     fract_Float32x2.name = fract_Float32x2_name;
-    fract_Float32x2.backendIndex = 1719;
+    fract_Float32x2.backendIndex = 1727;
     fract_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     fract_Float32x2.parameters = fract_Float32x2_args;
     Symbol::Resolved(&fract_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -866,7 +978,7 @@ void SetupIntrinsics6()
     fract_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     fract_Float32x3.documentation = "Returns the fractional part of the input."_c;
     fract_Float32x3.name = fract_Float32x3_name;
-    fract_Float32x3.backendIndex = 1720;
+    fract_Float32x3.backendIndex = 1728;
     fract_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     fract_Float32x3.parameters = fract_Float32x3_args;
     Symbol::Resolved(&fract_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -880,7 +992,7 @@ void SetupIntrinsics6()
     fract_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     fract_Float32x4.documentation = "Returns the fractional part of the input."_c;
     fract_Float32x4.name = fract_Float32x4_name;
-    fract_Float32x4.backendIndex = 1721;
+    fract_Float32x4.backendIndex = 1729;
     fract_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     fract_Float32x4.parameters = fract_Float32x4_args;
     Symbol::Resolved(&fract_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -894,7 +1006,7 @@ void SetupIntrinsics6()
     fract_Float16_arg.type = Type::FullType{ Float16Type.name };
     fract_Float16.documentation = "Returns the fractional part of the input."_c;
     fract_Float16.name = fract_Float16_name;
-    fract_Float16.backendIndex = 1722;
+    fract_Float16.backendIndex = 1730;
     fract_Float16.returnType = Type::FullType { Float16Type.name };
     fract_Float16.parameters = fract_Float16_args;
     Symbol::Resolved(&fract_Float16_arg)->typeSymbol = &Float16Type;
@@ -908,7 +1020,7 @@ void SetupIntrinsics6()
     fract_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     fract_Float16x2.documentation = "Returns the fractional part of the input."_c;
     fract_Float16x2.name = fract_Float16x2_name;
-    fract_Float16x2.backendIndex = 1723;
+    fract_Float16x2.backendIndex = 1731;
     fract_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     fract_Float16x2.parameters = fract_Float16x2_args;
     Symbol::Resolved(&fract_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -922,7 +1034,7 @@ void SetupIntrinsics6()
     fract_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     fract_Float16x3.documentation = "Returns the fractional part of the input."_c;
     fract_Float16x3.name = fract_Float16x3_name;
-    fract_Float16x3.backendIndex = 1724;
+    fract_Float16x3.backendIndex = 1732;
     fract_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     fract_Float16x3.parameters = fract_Float16x3_args;
     Symbol::Resolved(&fract_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -936,7 +1048,7 @@ void SetupIntrinsics6()
     fract_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     fract_Float16x4.documentation = "Returns the fractional part of the input."_c;
     fract_Float16x4.name = fract_Float16x4_name;
-    fract_Float16x4.backendIndex = 1725;
+    fract_Float16x4.backendIndex = 1733;
     fract_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     fract_Float16x4.parameters = fract_Float16x4_args;
     Symbol::Resolved(&fract_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -950,7 +1062,7 @@ void SetupIntrinsics6()
     saturate_Float32_arg.type = Type::FullType{ Float32Type.name };
     saturate_Float32.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float32.name = saturate_Float32_name;
-    saturate_Float32.backendIndex = 1726;
+    saturate_Float32.backendIndex = 1734;
     saturate_Float32.returnType = Type::FullType { Float32Type.name };
     saturate_Float32.parameters = saturate_Float32_args;
     Symbol::Resolved(&saturate_Float32_arg)->typeSymbol = &Float32Type;
@@ -964,7 +1076,7 @@ void SetupIntrinsics6()
     saturate_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     saturate_Float32x2.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float32x2.name = saturate_Float32x2_name;
-    saturate_Float32x2.backendIndex = 1727;
+    saturate_Float32x2.backendIndex = 1735;
     saturate_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     saturate_Float32x2.parameters = saturate_Float32x2_args;
     Symbol::Resolved(&saturate_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -978,7 +1090,7 @@ void SetupIntrinsics6()
     saturate_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     saturate_Float32x3.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float32x3.name = saturate_Float32x3_name;
-    saturate_Float32x3.backendIndex = 1728;
+    saturate_Float32x3.backendIndex = 1736;
     saturate_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     saturate_Float32x3.parameters = saturate_Float32x3_args;
     Symbol::Resolved(&saturate_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -992,7 +1104,7 @@ void SetupIntrinsics6()
     saturate_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     saturate_Float32x4.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float32x4.name = saturate_Float32x4_name;
-    saturate_Float32x4.backendIndex = 1729;
+    saturate_Float32x4.backendIndex = 1737;
     saturate_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     saturate_Float32x4.parameters = saturate_Float32x4_args;
     Symbol::Resolved(&saturate_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1006,7 +1118,7 @@ void SetupIntrinsics6()
     saturate_Float16_arg.type = Type::FullType{ Float16Type.name };
     saturate_Float16.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float16.name = saturate_Float16_name;
-    saturate_Float16.backendIndex = 1730;
+    saturate_Float16.backendIndex = 1738;
     saturate_Float16.returnType = Type::FullType { Float16Type.name };
     saturate_Float16.parameters = saturate_Float16_args;
     Symbol::Resolved(&saturate_Float16_arg)->typeSymbol = &Float16Type;
@@ -1020,7 +1132,7 @@ void SetupIntrinsics6()
     saturate_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     saturate_Float16x2.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float16x2.name = saturate_Float16x2_name;
-    saturate_Float16x2.backendIndex = 1731;
+    saturate_Float16x2.backendIndex = 1739;
     saturate_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     saturate_Float16x2.parameters = saturate_Float16x2_args;
     Symbol::Resolved(&saturate_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1034,7 +1146,7 @@ void SetupIntrinsics6()
     saturate_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     saturate_Float16x3.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float16x3.name = saturate_Float16x3_name;
-    saturate_Float16x3.backendIndex = 1732;
+    saturate_Float16x3.backendIndex = 1740;
     saturate_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     saturate_Float16x3.parameters = saturate_Float16x3_args;
     Symbol::Resolved(&saturate_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1048,7 +1160,7 @@ void SetupIntrinsics6()
     saturate_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     saturate_Float16x4.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float16x4.name = saturate_Float16x4_name;
-    saturate_Float16x4.backendIndex = 1733;
+    saturate_Float16x4.backendIndex = 1741;
     saturate_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     saturate_Float16x4.parameters = saturate_Float16x4_args;
     Symbol::Resolved(&saturate_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1062,7 +1174,7 @@ void SetupIntrinsics6()
     trunc_Float32_arg.type = Type::FullType{ Float32Type.name };
     trunc_Float32.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float32.name = trunc_Float32_name;
-    trunc_Float32.backendIndex = 1734;
+    trunc_Float32.backendIndex = 1742;
     trunc_Float32.returnType = Type::FullType { Float32Type.name };
     trunc_Float32.parameters = trunc_Float32_args;
     Symbol::Resolved(&trunc_Float32_arg)->typeSymbol = &Float32Type;
@@ -1076,7 +1188,7 @@ void SetupIntrinsics6()
     trunc_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     trunc_Float32x2.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float32x2.name = trunc_Float32x2_name;
-    trunc_Float32x2.backendIndex = 1735;
+    trunc_Float32x2.backendIndex = 1743;
     trunc_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     trunc_Float32x2.parameters = trunc_Float32x2_args;
     Symbol::Resolved(&trunc_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -1090,7 +1202,7 @@ void SetupIntrinsics6()
     trunc_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     trunc_Float32x3.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float32x3.name = trunc_Float32x3_name;
-    trunc_Float32x3.backendIndex = 1736;
+    trunc_Float32x3.backendIndex = 1744;
     trunc_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     trunc_Float32x3.parameters = trunc_Float32x3_args;
     Symbol::Resolved(&trunc_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -1104,7 +1216,7 @@ void SetupIntrinsics6()
     trunc_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     trunc_Float32x4.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float32x4.name = trunc_Float32x4_name;
-    trunc_Float32x4.backendIndex = 1737;
+    trunc_Float32x4.backendIndex = 1745;
     trunc_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     trunc_Float32x4.parameters = trunc_Float32x4_args;
     Symbol::Resolved(&trunc_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1118,7 +1230,7 @@ void SetupIntrinsics6()
     trunc_Float16_arg.type = Type::FullType{ Float16Type.name };
     trunc_Float16.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float16.name = trunc_Float16_name;
-    trunc_Float16.backendIndex = 1738;
+    trunc_Float16.backendIndex = 1746;
     trunc_Float16.returnType = Type::FullType { Float16Type.name };
     trunc_Float16.parameters = trunc_Float16_args;
     Symbol::Resolved(&trunc_Float16_arg)->typeSymbol = &Float16Type;
@@ -1132,7 +1244,7 @@ void SetupIntrinsics6()
     trunc_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     trunc_Float16x2.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float16x2.name = trunc_Float16x2_name;
-    trunc_Float16x2.backendIndex = 1739;
+    trunc_Float16x2.backendIndex = 1747;
     trunc_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     trunc_Float16x2.parameters = trunc_Float16x2_args;
     Symbol::Resolved(&trunc_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1146,7 +1258,7 @@ void SetupIntrinsics6()
     trunc_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     trunc_Float16x3.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float16x3.name = trunc_Float16x3_name;
-    trunc_Float16x3.backendIndex = 1740;
+    trunc_Float16x3.backendIndex = 1748;
     trunc_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     trunc_Float16x3.parameters = trunc_Float16x3_args;
     Symbol::Resolved(&trunc_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1160,7 +1272,7 @@ void SetupIntrinsics6()
     trunc_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     trunc_Float16x4.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float16x4.name = trunc_Float16x4_name;
-    trunc_Float16x4.backendIndex = 1741;
+    trunc_Float16x4.backendIndex = 1749;
     trunc_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     trunc_Float16x4.parameters = trunc_Float16x4_args;
     Symbol::Resolved(&trunc_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1174,7 +1286,7 @@ void SetupIntrinsics6()
     ddx_Float32_arg.type = Type::FullType{ Float32Type.name };
     ddx_Float32.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float32.name = ddx_Float32_name;
-    ddx_Float32.backendIndex = 1742;
+    ddx_Float32.backendIndex = 1750;
     ddx_Float32.returnType = Type::FullType { Float32Type.name };
     ddx_Float32.parameters = ddx_Float32_args;
     Symbol::Resolved(&ddx_Float32_arg)->typeSymbol = &Float32Type;
@@ -1188,7 +1300,7 @@ void SetupIntrinsics6()
     ddx_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     ddx_Float32x2.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float32x2.name = ddx_Float32x2_name;
-    ddx_Float32x2.backendIndex = 1743;
+    ddx_Float32x2.backendIndex = 1751;
     ddx_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     ddx_Float32x2.parameters = ddx_Float32x2_args;
     Symbol::Resolved(&ddx_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -1202,7 +1314,7 @@ void SetupIntrinsics6()
     ddx_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     ddx_Float32x3.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float32x3.name = ddx_Float32x3_name;
-    ddx_Float32x3.backendIndex = 1744;
+    ddx_Float32x3.backendIndex = 1752;
     ddx_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     ddx_Float32x3.parameters = ddx_Float32x3_args;
     Symbol::Resolved(&ddx_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -1216,7 +1328,7 @@ void SetupIntrinsics6()
     ddx_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     ddx_Float32x4.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float32x4.name = ddx_Float32x4_name;
-    ddx_Float32x4.backendIndex = 1745;
+    ddx_Float32x4.backendIndex = 1753;
     ddx_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     ddx_Float32x4.parameters = ddx_Float32x4_args;
     Symbol::Resolved(&ddx_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1230,7 +1342,7 @@ void SetupIntrinsics6()
     ddx_Float16_arg.type = Type::FullType{ Float16Type.name };
     ddx_Float16.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float16.name = ddx_Float16_name;
-    ddx_Float16.backendIndex = 1746;
+    ddx_Float16.backendIndex = 1754;
     ddx_Float16.returnType = Type::FullType { Float16Type.name };
     ddx_Float16.parameters = ddx_Float16_args;
     Symbol::Resolved(&ddx_Float16_arg)->typeSymbol = &Float16Type;
@@ -1244,7 +1356,7 @@ void SetupIntrinsics6()
     ddx_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     ddx_Float16x2.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float16x2.name = ddx_Float16x2_name;
-    ddx_Float16x2.backendIndex = 1747;
+    ddx_Float16x2.backendIndex = 1755;
     ddx_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     ddx_Float16x2.parameters = ddx_Float16x2_args;
     Symbol::Resolved(&ddx_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1258,7 +1370,7 @@ void SetupIntrinsics6()
     ddx_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     ddx_Float16x3.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float16x3.name = ddx_Float16x3_name;
-    ddx_Float16x3.backendIndex = 1748;
+    ddx_Float16x3.backendIndex = 1756;
     ddx_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     ddx_Float16x3.parameters = ddx_Float16x3_args;
     Symbol::Resolved(&ddx_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1272,7 +1384,7 @@ void SetupIntrinsics6()
     ddx_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     ddx_Float16x4.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float16x4.name = ddx_Float16x4_name;
-    ddx_Float16x4.backendIndex = 1749;
+    ddx_Float16x4.backendIndex = 1757;
     ddx_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     ddx_Float16x4.parameters = ddx_Float16x4_args;
     Symbol::Resolved(&ddx_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1286,7 +1398,7 @@ void SetupIntrinsics6()
     ddy_Float32_arg.type = Type::FullType{ Float32Type.name };
     ddy_Float32.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float32.name = ddy_Float32_name;
-    ddy_Float32.backendIndex = 1750;
+    ddy_Float32.backendIndex = 1758;
     ddy_Float32.returnType = Type::FullType { Float32Type.name };
     ddy_Float32.parameters = ddy_Float32_args;
     Symbol::Resolved(&ddy_Float32_arg)->typeSymbol = &Float32Type;
@@ -1300,7 +1412,7 @@ void SetupIntrinsics6()
     ddy_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     ddy_Float32x2.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float32x2.name = ddy_Float32x2_name;
-    ddy_Float32x2.backendIndex = 1751;
+    ddy_Float32x2.backendIndex = 1759;
     ddy_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     ddy_Float32x2.parameters = ddy_Float32x2_args;
     Symbol::Resolved(&ddy_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -1314,7 +1426,7 @@ void SetupIntrinsics6()
     ddy_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     ddy_Float32x3.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float32x3.name = ddy_Float32x3_name;
-    ddy_Float32x3.backendIndex = 1752;
+    ddy_Float32x3.backendIndex = 1760;
     ddy_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     ddy_Float32x3.parameters = ddy_Float32x3_args;
     Symbol::Resolved(&ddy_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -1328,7 +1440,7 @@ void SetupIntrinsics6()
     ddy_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     ddy_Float32x4.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float32x4.name = ddy_Float32x4_name;
-    ddy_Float32x4.backendIndex = 1753;
+    ddy_Float32x4.backendIndex = 1761;
     ddy_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     ddy_Float32x4.parameters = ddy_Float32x4_args;
     Symbol::Resolved(&ddy_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1342,7 +1454,7 @@ void SetupIntrinsics6()
     ddy_Float16_arg.type = Type::FullType{ Float16Type.name };
     ddy_Float16.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float16.name = ddy_Float16_name;
-    ddy_Float16.backendIndex = 1754;
+    ddy_Float16.backendIndex = 1762;
     ddy_Float16.returnType = Type::FullType { Float16Type.name };
     ddy_Float16.parameters = ddy_Float16_args;
     Symbol::Resolved(&ddy_Float16_arg)->typeSymbol = &Float16Type;
@@ -1356,7 +1468,7 @@ void SetupIntrinsics6()
     ddy_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     ddy_Float16x2.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float16x2.name = ddy_Float16x2_name;
-    ddy_Float16x2.backendIndex = 1755;
+    ddy_Float16x2.backendIndex = 1763;
     ddy_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     ddy_Float16x2.parameters = ddy_Float16x2_args;
     Symbol::Resolved(&ddy_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1370,7 +1482,7 @@ void SetupIntrinsics6()
     ddy_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     ddy_Float16x3.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float16x3.name = ddy_Float16x3_name;
-    ddy_Float16x3.backendIndex = 1756;
+    ddy_Float16x3.backendIndex = 1764;
     ddy_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     ddy_Float16x3.parameters = ddy_Float16x3_args;
     Symbol::Resolved(&ddy_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1384,7 +1496,7 @@ void SetupIntrinsics6()
     ddy_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     ddy_Float16x4.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float16x4.name = ddy_Float16x4_name;
-    ddy_Float16x4.backendIndex = 1757;
+    ddy_Float16x4.backendIndex = 1765;
     ddy_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     ddy_Float16x4.parameters = ddy_Float16x4_args;
     Symbol::Resolved(&ddy_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1398,7 +1510,7 @@ void SetupIntrinsics6()
     fwidth_Float32_arg.type = Type::FullType{ Float32Type.name };
     fwidth_Float32.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float32.name = fwidth_Float32_name;
-    fwidth_Float32.backendIndex = 1758;
+    fwidth_Float32.backendIndex = 1766;
     fwidth_Float32.returnType = Type::FullType { Float32Type.name };
     fwidth_Float32.parameters = fwidth_Float32_args;
     Symbol::Resolved(&fwidth_Float32_arg)->typeSymbol = &Float32Type;
@@ -1412,7 +1524,7 @@ void SetupIntrinsics6()
     fwidth_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     fwidth_Float32x2.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float32x2.name = fwidth_Float32x2_name;
-    fwidth_Float32x2.backendIndex = 1759;
+    fwidth_Float32x2.backendIndex = 1767;
     fwidth_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     fwidth_Float32x2.parameters = fwidth_Float32x2_args;
     Symbol::Resolved(&fwidth_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -1426,7 +1538,7 @@ void SetupIntrinsics6()
     fwidth_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     fwidth_Float32x3.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float32x3.name = fwidth_Float32x3_name;
-    fwidth_Float32x3.backendIndex = 1760;
+    fwidth_Float32x3.backendIndex = 1768;
     fwidth_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     fwidth_Float32x3.parameters = fwidth_Float32x3_args;
     Symbol::Resolved(&fwidth_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -1440,7 +1552,7 @@ void SetupIntrinsics6()
     fwidth_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     fwidth_Float32x4.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float32x4.name = fwidth_Float32x4_name;
-    fwidth_Float32x4.backendIndex = 1761;
+    fwidth_Float32x4.backendIndex = 1769;
     fwidth_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     fwidth_Float32x4.parameters = fwidth_Float32x4_args;
     Symbol::Resolved(&fwidth_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1454,7 +1566,7 @@ void SetupIntrinsics6()
     fwidth_Float16_arg.type = Type::FullType{ Float16Type.name };
     fwidth_Float16.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float16.name = fwidth_Float16_name;
-    fwidth_Float16.backendIndex = 1762;
+    fwidth_Float16.backendIndex = 1770;
     fwidth_Float16.returnType = Type::FullType { Float16Type.name };
     fwidth_Float16.parameters = fwidth_Float16_args;
     Symbol::Resolved(&fwidth_Float16_arg)->typeSymbol = &Float16Type;
@@ -1468,7 +1580,7 @@ void SetupIntrinsics6()
     fwidth_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     fwidth_Float16x2.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float16x2.name = fwidth_Float16x2_name;
-    fwidth_Float16x2.backendIndex = 1763;
+    fwidth_Float16x2.backendIndex = 1771;
     fwidth_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     fwidth_Float16x2.parameters = fwidth_Float16x2_args;
     Symbol::Resolved(&fwidth_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1482,7 +1594,7 @@ void SetupIntrinsics6()
     fwidth_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     fwidth_Float16x3.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float16x3.name = fwidth_Float16x3_name;
-    fwidth_Float16x3.backendIndex = 1764;
+    fwidth_Float16x3.backendIndex = 1772;
     fwidth_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     fwidth_Float16x3.parameters = fwidth_Float16x3_args;
     Symbol::Resolved(&fwidth_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1496,7 +1608,7 @@ void SetupIntrinsics6()
     fwidth_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     fwidth_Float16x4.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float16x4.name = fwidth_Float16x4_name;
-    fwidth_Float16x4.backendIndex = 1765;
+    fwidth_Float16x4.backendIndex = 1773;
     fwidth_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     fwidth_Float16x4.parameters = fwidth_Float16x4_args;
     Symbol::Resolved(&fwidth_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1510,7 +1622,7 @@ void SetupIntrinsics6()
     sign_Int32_arg.type = Type::FullType{ Int32Type.name };
     sign_Int32.documentation = "Returns the sign of the value."_c;
     sign_Int32.name = sign_Int32_name;
-    sign_Int32.backendIndex = 1766;
+    sign_Int32.backendIndex = 1774;
     sign_Int32.returnType = Type::FullType { Int32Type.name };
     sign_Int32.parameters = sign_Int32_args;
     Symbol::Resolved(&sign_Int32_arg)->typeSymbol = &Int32Type;
@@ -1524,7 +1636,7 @@ void SetupIntrinsics6()
     sign_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     sign_Int32x2.documentation = "Returns the sign of the value."_c;
     sign_Int32x2.name = sign_Int32x2_name;
-    sign_Int32x2.backendIndex = 1767;
+    sign_Int32x2.backendIndex = 1775;
     sign_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     sign_Int32x2.parameters = sign_Int32x2_args;
     Symbol::Resolved(&sign_Int32x2_arg)->typeSymbol = &Int32x2Type;
@@ -1538,7 +1650,7 @@ void SetupIntrinsics6()
     sign_Int32x3_arg.type = Type::FullType{ Int32x3Type.name };
     sign_Int32x3.documentation = "Returns the sign of the value."_c;
     sign_Int32x3.name = sign_Int32x3_name;
-    sign_Int32x3.backendIndex = 1768;
+    sign_Int32x3.backendIndex = 1776;
     sign_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     sign_Int32x3.parameters = sign_Int32x3_args;
     Symbol::Resolved(&sign_Int32x3_arg)->typeSymbol = &Int32x3Type;
@@ -1552,7 +1664,7 @@ void SetupIntrinsics6()
     sign_Int32x4_arg.type = Type::FullType{ Int32x4Type.name };
     sign_Int32x4.documentation = "Returns the sign of the value."_c;
     sign_Int32x4.name = sign_Int32x4_name;
-    sign_Int32x4.backendIndex = 1769;
+    sign_Int32x4.backendIndex = 1777;
     sign_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     sign_Int32x4.parameters = sign_Int32x4_args;
     Symbol::Resolved(&sign_Int32x4_arg)->typeSymbol = &Int32x4Type;
@@ -1566,7 +1678,7 @@ void SetupIntrinsics6()
     sign_Int16_arg.type = Type::FullType{ Int16Type.name };
     sign_Int16.documentation = "Returns the sign of the value."_c;
     sign_Int16.name = sign_Int16_name;
-    sign_Int16.backendIndex = 1770;
+    sign_Int16.backendIndex = 1778;
     sign_Int16.returnType = Type::FullType { Int16Type.name };
     sign_Int16.parameters = sign_Int16_args;
     Symbol::Resolved(&sign_Int16_arg)->typeSymbol = &Int16Type;
@@ -1580,7 +1692,7 @@ void SetupIntrinsics6()
     sign_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     sign_Int16x2.documentation = "Returns the sign of the value."_c;
     sign_Int16x2.name = sign_Int16x2_name;
-    sign_Int16x2.backendIndex = 1771;
+    sign_Int16x2.backendIndex = 1779;
     sign_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     sign_Int16x2.parameters = sign_Int16x2_args;
     Symbol::Resolved(&sign_Int16x2_arg)->typeSymbol = &Int16x2Type;
@@ -1594,7 +1706,7 @@ void SetupIntrinsics6()
     sign_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
     sign_Int16x3.documentation = "Returns the sign of the value."_c;
     sign_Int16x3.name = sign_Int16x3_name;
-    sign_Int16x3.backendIndex = 1772;
+    sign_Int16x3.backendIndex = 1780;
     sign_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     sign_Int16x3.parameters = sign_Int16x3_args;
     Symbol::Resolved(&sign_Int16x3_arg)->typeSymbol = &Int16x3Type;
@@ -1608,7 +1720,7 @@ void SetupIntrinsics6()
     sign_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
     sign_Int16x4.documentation = "Returns the sign of the value."_c;
     sign_Int16x4.name = sign_Int16x4_name;
-    sign_Int16x4.backendIndex = 1773;
+    sign_Int16x4.backendIndex = 1781;
     sign_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     sign_Int16x4.parameters = sign_Int16x4_args;
     Symbol::Resolved(&sign_Int16x4_arg)->typeSymbol = &Int16x4Type;
@@ -1622,7 +1734,7 @@ void SetupIntrinsics6()
     sign_Float32_arg.type = Type::FullType{ Float32Type.name };
     sign_Float32.documentation = "Returns the sign of the value."_c;
     sign_Float32.name = sign_Float32_name;
-    sign_Float32.backendIndex = 1774;
+    sign_Float32.backendIndex = 1782;
     sign_Float32.returnType = Type::FullType { Float32Type.name };
     sign_Float32.parameters = sign_Float32_args;
     Symbol::Resolved(&sign_Float32_arg)->typeSymbol = &Float32Type;
@@ -1636,7 +1748,7 @@ void SetupIntrinsics6()
     sign_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     sign_Float32x2.documentation = "Returns the sign of the value."_c;
     sign_Float32x2.name = sign_Float32x2_name;
-    sign_Float32x2.backendIndex = 1775;
+    sign_Float32x2.backendIndex = 1783;
     sign_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     sign_Float32x2.parameters = sign_Float32x2_args;
     Symbol::Resolved(&sign_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -1650,7 +1762,7 @@ void SetupIntrinsics6()
     sign_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     sign_Float32x3.documentation = "Returns the sign of the value."_c;
     sign_Float32x3.name = sign_Float32x3_name;
-    sign_Float32x3.backendIndex = 1776;
+    sign_Float32x3.backendIndex = 1784;
     sign_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     sign_Float32x3.parameters = sign_Float32x3_args;
     Symbol::Resolved(&sign_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -1664,7 +1776,7 @@ void SetupIntrinsics6()
     sign_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     sign_Float32x4.documentation = "Returns the sign of the value."_c;
     sign_Float32x4.name = sign_Float32x4_name;
-    sign_Float32x4.backendIndex = 1777;
+    sign_Float32x4.backendIndex = 1785;
     sign_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     sign_Float32x4.parameters = sign_Float32x4_args;
     Symbol::Resolved(&sign_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1678,7 +1790,7 @@ void SetupIntrinsics6()
     sign_Float16_arg.type = Type::FullType{ Float16Type.name };
     sign_Float16.documentation = "Returns the sign of the value."_c;
     sign_Float16.name = sign_Float16_name;
-    sign_Float16.backendIndex = 1778;
+    sign_Float16.backendIndex = 1786;
     sign_Float16.returnType = Type::FullType { Float16Type.name };
     sign_Float16.parameters = sign_Float16_args;
     Symbol::Resolved(&sign_Float16_arg)->typeSymbol = &Float16Type;
@@ -1692,7 +1804,7 @@ void SetupIntrinsics6()
     sign_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     sign_Float16x2.documentation = "Returns the sign of the value."_c;
     sign_Float16x2.name = sign_Float16x2_name;
-    sign_Float16x2.backendIndex = 1779;
+    sign_Float16x2.backendIndex = 1787;
     sign_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     sign_Float16x2.parameters = sign_Float16x2_args;
     Symbol::Resolved(&sign_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1706,7 +1818,7 @@ void SetupIntrinsics6()
     sign_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     sign_Float16x3.documentation = "Returns the sign of the value."_c;
     sign_Float16x3.name = sign_Float16x3_name;
-    sign_Float16x3.backendIndex = 1780;
+    sign_Float16x3.backendIndex = 1788;
     sign_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     sign_Float16x3.parameters = sign_Float16x3_args;
     Symbol::Resolved(&sign_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1720,7 +1832,7 @@ void SetupIntrinsics6()
     sign_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     sign_Float16x4.documentation = "Returns the sign of the value."_c;
     sign_Float16x4.name = sign_Float16x4_name;
-    sign_Float16x4.backendIndex = 1781;
+    sign_Float16x4.backendIndex = 1789;
     sign_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     sign_Float16x4.parameters = sign_Float16x4_args;
     Symbol::Resolved(&sign_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1734,7 +1846,7 @@ void SetupIntrinsics6()
     abs_Int32_arg.type = Type::FullType{ Int32Type.name };
     abs_Int32.documentation = "Returns the absolute value of the input."_c;
     abs_Int32.name = abs_Int32_name;
-    abs_Int32.backendIndex = 1782;
+    abs_Int32.backendIndex = 1790;
     abs_Int32.returnType = Type::FullType { Int32Type.name };
     abs_Int32.parameters = abs_Int32_args;
     Symbol::Resolved(&abs_Int32_arg)->typeSymbol = &Int32Type;
@@ -1748,7 +1860,7 @@ void SetupIntrinsics6()
     abs_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     abs_Int32x2.documentation = "Returns the absolute value of the input."_c;
     abs_Int32x2.name = abs_Int32x2_name;
-    abs_Int32x2.backendIndex = 1783;
+    abs_Int32x2.backendIndex = 1791;
     abs_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     abs_Int32x2.parameters = abs_Int32x2_args;
     Symbol::Resolved(&abs_Int32x2_arg)->typeSymbol = &Int32x2Type;
@@ -1762,7 +1874,7 @@ void SetupIntrinsics6()
     abs_Int32x3_arg.type = Type::FullType{ Int32x3Type.name };
     abs_Int32x3.documentation = "Returns the absolute value of the input."_c;
     abs_Int32x3.name = abs_Int32x3_name;
-    abs_Int32x3.backendIndex = 1784;
+    abs_Int32x3.backendIndex = 1792;
     abs_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     abs_Int32x3.parameters = abs_Int32x3_args;
     Symbol::Resolved(&abs_Int32x3_arg)->typeSymbol = &Int32x3Type;
@@ -1776,7 +1888,7 @@ void SetupIntrinsics6()
     abs_Int32x4_arg.type = Type::FullType{ Int32x4Type.name };
     abs_Int32x4.documentation = "Returns the absolute value of the input."_c;
     abs_Int32x4.name = abs_Int32x4_name;
-    abs_Int32x4.backendIndex = 1785;
+    abs_Int32x4.backendIndex = 1793;
     abs_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     abs_Int32x4.parameters = abs_Int32x4_args;
     Symbol::Resolved(&abs_Int32x4_arg)->typeSymbol = &Int32x4Type;
@@ -1790,7 +1902,7 @@ void SetupIntrinsics6()
     abs_Int16_arg.type = Type::FullType{ Int16Type.name };
     abs_Int16.documentation = "Returns the absolute value of the input."_c;
     abs_Int16.name = abs_Int16_name;
-    abs_Int16.backendIndex = 1786;
+    abs_Int16.backendIndex = 1794;
     abs_Int16.returnType = Type::FullType { Int16Type.name };
     abs_Int16.parameters = abs_Int16_args;
     Symbol::Resolved(&abs_Int16_arg)->typeSymbol = &Int16Type;
@@ -1804,7 +1916,7 @@ void SetupIntrinsics6()
     abs_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     abs_Int16x2.documentation = "Returns the absolute value of the input."_c;
     abs_Int16x2.name = abs_Int16x2_name;
-    abs_Int16x2.backendIndex = 1787;
+    abs_Int16x2.backendIndex = 1795;
     abs_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     abs_Int16x2.parameters = abs_Int16x2_args;
     Symbol::Resolved(&abs_Int16x2_arg)->typeSymbol = &Int16x2Type;
@@ -1818,7 +1930,7 @@ void SetupIntrinsics6()
     abs_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
     abs_Int16x3.documentation = "Returns the absolute value of the input."_c;
     abs_Int16x3.name = abs_Int16x3_name;
-    abs_Int16x3.backendIndex = 1788;
+    abs_Int16x3.backendIndex = 1796;
     abs_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     abs_Int16x3.parameters = abs_Int16x3_args;
     Symbol::Resolved(&abs_Int16x3_arg)->typeSymbol = &Int16x3Type;
@@ -1832,7 +1944,7 @@ void SetupIntrinsics6()
     abs_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
     abs_Int16x4.documentation = "Returns the absolute value of the input."_c;
     abs_Int16x4.name = abs_Int16x4_name;
-    abs_Int16x4.backendIndex = 1789;
+    abs_Int16x4.backendIndex = 1797;
     abs_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     abs_Int16x4.parameters = abs_Int16x4_args;
     Symbol::Resolved(&abs_Int16x4_arg)->typeSymbol = &Int16x4Type;
@@ -1846,7 +1958,7 @@ void SetupIntrinsics6()
     abs_Float32_arg.type = Type::FullType{ Float32Type.name };
     abs_Float32.documentation = "Returns the absolute value of the input."_c;
     abs_Float32.name = abs_Float32_name;
-    abs_Float32.backendIndex = 1790;
+    abs_Float32.backendIndex = 1798;
     abs_Float32.returnType = Type::FullType { Float32Type.name };
     abs_Float32.parameters = abs_Float32_args;
     Symbol::Resolved(&abs_Float32_arg)->typeSymbol = &Float32Type;
@@ -1860,7 +1972,7 @@ void SetupIntrinsics6()
     abs_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     abs_Float32x2.documentation = "Returns the absolute value of the input."_c;
     abs_Float32x2.name = abs_Float32x2_name;
-    abs_Float32x2.backendIndex = 1791;
+    abs_Float32x2.backendIndex = 1799;
     abs_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     abs_Float32x2.parameters = abs_Float32x2_args;
     Symbol::Resolved(&abs_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -1874,7 +1986,7 @@ void SetupIntrinsics6()
     abs_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     abs_Float32x3.documentation = "Returns the absolute value of the input."_c;
     abs_Float32x3.name = abs_Float32x3_name;
-    abs_Float32x3.backendIndex = 1792;
+    abs_Float32x3.backendIndex = 1800;
     abs_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     abs_Float32x3.parameters = abs_Float32x3_args;
     Symbol::Resolved(&abs_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -1888,7 +2000,7 @@ void SetupIntrinsics6()
     abs_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     abs_Float32x4.documentation = "Returns the absolute value of the input."_c;
     abs_Float32x4.name = abs_Float32x4_name;
-    abs_Float32x4.backendIndex = 1793;
+    abs_Float32x4.backendIndex = 1801;
     abs_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     abs_Float32x4.parameters = abs_Float32x4_args;
     Symbol::Resolved(&abs_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1902,7 +2014,7 @@ void SetupIntrinsics6()
     abs_Float16_arg.type = Type::FullType{ Float16Type.name };
     abs_Float16.documentation = "Returns the absolute value of the input."_c;
     abs_Float16.name = abs_Float16_name;
-    abs_Float16.backendIndex = 1794;
+    abs_Float16.backendIndex = 1802;
     abs_Float16.returnType = Type::FullType { Float16Type.name };
     abs_Float16.parameters = abs_Float16_args;
     Symbol::Resolved(&abs_Float16_arg)->typeSymbol = &Float16Type;
@@ -1916,7 +2028,7 @@ void SetupIntrinsics6()
     abs_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     abs_Float16x2.documentation = "Returns the absolute value of the input."_c;
     abs_Float16x2.name = abs_Float16x2_name;
-    abs_Float16x2.backendIndex = 1795;
+    abs_Float16x2.backendIndex = 1803;
     abs_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     abs_Float16x2.parameters = abs_Float16x2_args;
     Symbol::Resolved(&abs_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1930,7 +2042,7 @@ void SetupIntrinsics6()
     abs_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     abs_Float16x3.documentation = "Returns the absolute value of the input."_c;
     abs_Float16x3.name = abs_Float16x3_name;
-    abs_Float16x3.backendIndex = 1796;
+    abs_Float16x3.backendIndex = 1804;
     abs_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     abs_Float16x3.parameters = abs_Float16x3_args;
     Symbol::Resolved(&abs_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1944,7 +2056,7 @@ void SetupIntrinsics6()
     abs_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     abs_Float16x4.documentation = "Returns the absolute value of the input."_c;
     abs_Float16x4.name = abs_Float16x4_name;
-    abs_Float16x4.backendIndex = 1797;
+    abs_Float16x4.backendIndex = 1805;
     abs_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     abs_Float16x4.parameters = abs_Float16x4_args;
     Symbol::Resolved(&abs_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1958,7 +2070,7 @@ void SetupIntrinsics6()
     castToF16_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     castToF16_UInt16.documentation = "Casts to type Float16 without conversion."_c;
     castToF16_UInt16.name = castToF16_UInt16_name;
-    castToF16_UInt16.backendIndex = 1798;
+    castToF16_UInt16.backendIndex = 1806;
     castToF16_UInt16.returnType = Type::FullType { Float16Type.name };
     castToF16_UInt16.parameters = castToF16_UInt16_args;
     Symbol::Resolved(&castToF16_UInt16_arg)->typeSymbol = &UInt16Type;
@@ -1967,12 +2079,54 @@ void SetupIntrinsics6()
     Symbol::Resolved(&castToF16_UInt16)->nameWithVarNames = "castToF16(val : u16)"_c;
     Symbol::Resolved(&castToF16_UInt16)->returnTypeSymbol = &Float16Type;
 
+    /// castToF16 with UInt16x2
+    castToF16_UInt16x2_arg.name = "val"_c;
+    castToF16_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
+    castToF16_UInt16x2.documentation = "Casts to type Float16x2 without conversion."_c;
+    castToF16_UInt16x2.name = castToF16_UInt16x2_name;
+    castToF16_UInt16x2.backendIndex = 1807;
+    castToF16_UInt16x2.returnType = Type::FullType { Float16Type.name };
+    castToF16_UInt16x2.parameters = castToF16_UInt16x2_args;
+    Symbol::Resolved(&castToF16_UInt16x2_arg)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&castToF16_UInt16x2)->signature = "castToF16(u16x2) f16"_c;
+    Symbol::Resolved(&castToF16_UInt16x2)->name = "castToF16(u16x2)"_c;
+    Symbol::Resolved(&castToF16_UInt16x2)->nameWithVarNames = "castToF16(val : u16x2)"_c;
+    Symbol::Resolved(&castToF16_UInt16x2)->returnTypeSymbol = &Float16Type;
+
+    /// castToF16 with UInt16x3
+    castToF16_UInt16x3_arg.name = "val"_c;
+    castToF16_UInt16x3_arg.type = Type::FullType{ UInt16x3Type.name };
+    castToF16_UInt16x3.documentation = "Casts to type Float16x3 without conversion."_c;
+    castToF16_UInt16x3.name = castToF16_UInt16x3_name;
+    castToF16_UInt16x3.backendIndex = 1808;
+    castToF16_UInt16x3.returnType = Type::FullType { Float16Type.name };
+    castToF16_UInt16x3.parameters = castToF16_UInt16x3_args;
+    Symbol::Resolved(&castToF16_UInt16x3_arg)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&castToF16_UInt16x3)->signature = "castToF16(u16x3) f16"_c;
+    Symbol::Resolved(&castToF16_UInt16x3)->name = "castToF16(u16x3)"_c;
+    Symbol::Resolved(&castToF16_UInt16x3)->nameWithVarNames = "castToF16(val : u16x3)"_c;
+    Symbol::Resolved(&castToF16_UInt16x3)->returnTypeSymbol = &Float16Type;
+
+    /// castToF16 with UInt16x4
+    castToF16_UInt16x4_arg.name = "val"_c;
+    castToF16_UInt16x4_arg.type = Type::FullType{ UInt16x4Type.name };
+    castToF16_UInt16x4.documentation = "Casts to type Float16x4 without conversion."_c;
+    castToF16_UInt16x4.name = castToF16_UInt16x4_name;
+    castToF16_UInt16x4.backendIndex = 1809;
+    castToF16_UInt16x4.returnType = Type::FullType { Float16Type.name };
+    castToF16_UInt16x4.parameters = castToF16_UInt16x4_args;
+    Symbol::Resolved(&castToF16_UInt16x4_arg)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&castToF16_UInt16x4)->signature = "castToF16(u16x4) f16"_c;
+    Symbol::Resolved(&castToF16_UInt16x4)->name = "castToF16(u16x4)"_c;
+    Symbol::Resolved(&castToF16_UInt16x4)->nameWithVarNames = "castToF16(val : u16x4)"_c;
+    Symbol::Resolved(&castToF16_UInt16x4)->returnTypeSymbol = &Float16Type;
+
     /// castToF16 with Int16
     castToF16_Int16_arg.name = "val"_c;
     castToF16_Int16_arg.type = Type::FullType{ Int16Type.name };
     castToF16_Int16.documentation = "Casts to type Float16 without conversion."_c;
     castToF16_Int16.name = castToF16_Int16_name;
-    castToF16_Int16.backendIndex = 1799;
+    castToF16_Int16.backendIndex = 1810;
     castToF16_Int16.returnType = Type::FullType { Float16Type.name };
     castToF16_Int16.parameters = castToF16_Int16_args;
     Symbol::Resolved(&castToF16_Int16_arg)->typeSymbol = &Int16Type;
@@ -1981,12 +2135,54 @@ void SetupIntrinsics6()
     Symbol::Resolved(&castToF16_Int16)->nameWithVarNames = "castToF16(val : i16)"_c;
     Symbol::Resolved(&castToF16_Int16)->returnTypeSymbol = &Float16Type;
 
+    /// castToF16 with Int16x2
+    castToF16_Int16x2_arg.name = "val"_c;
+    castToF16_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
+    castToF16_Int16x2.documentation = "Casts to type Float16x2 without conversion."_c;
+    castToF16_Int16x2.name = castToF16_Int16x2_name;
+    castToF16_Int16x2.backendIndex = 1811;
+    castToF16_Int16x2.returnType = Type::FullType { Float16Type.name };
+    castToF16_Int16x2.parameters = castToF16_Int16x2_args;
+    Symbol::Resolved(&castToF16_Int16x2_arg)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&castToF16_Int16x2)->signature = "castToF16(i16x2) f16"_c;
+    Symbol::Resolved(&castToF16_Int16x2)->name = "castToF16(i16x2)"_c;
+    Symbol::Resolved(&castToF16_Int16x2)->nameWithVarNames = "castToF16(val : i16x2)"_c;
+    Symbol::Resolved(&castToF16_Int16x2)->returnTypeSymbol = &Float16Type;
+
+    /// castToF16 with Int16x3
+    castToF16_Int16x3_arg.name = "val"_c;
+    castToF16_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
+    castToF16_Int16x3.documentation = "Casts to type Float16x3 without conversion."_c;
+    castToF16_Int16x3.name = castToF16_Int16x3_name;
+    castToF16_Int16x3.backendIndex = 1812;
+    castToF16_Int16x3.returnType = Type::FullType { Float16Type.name };
+    castToF16_Int16x3.parameters = castToF16_Int16x3_args;
+    Symbol::Resolved(&castToF16_Int16x3_arg)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&castToF16_Int16x3)->signature = "castToF16(i16x3) f16"_c;
+    Symbol::Resolved(&castToF16_Int16x3)->name = "castToF16(i16x3)"_c;
+    Symbol::Resolved(&castToF16_Int16x3)->nameWithVarNames = "castToF16(val : i16x3)"_c;
+    Symbol::Resolved(&castToF16_Int16x3)->returnTypeSymbol = &Float16Type;
+
+    /// castToF16 with Int16x4
+    castToF16_Int16x4_arg.name = "val"_c;
+    castToF16_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
+    castToF16_Int16x4.documentation = "Casts to type Float16x4 without conversion."_c;
+    castToF16_Int16x4.name = castToF16_Int16x4_name;
+    castToF16_Int16x4.backendIndex = 1813;
+    castToF16_Int16x4.returnType = Type::FullType { Float16Type.name };
+    castToF16_Int16x4.parameters = castToF16_Int16x4_args;
+    Symbol::Resolved(&castToF16_Int16x4_arg)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&castToF16_Int16x4)->signature = "castToF16(i16x4) f16"_c;
+    Symbol::Resolved(&castToF16_Int16x4)->name = "castToF16(i16x4)"_c;
+    Symbol::Resolved(&castToF16_Int16x4)->nameWithVarNames = "castToF16(val : i16x4)"_c;
+    Symbol::Resolved(&castToF16_Int16x4)->returnTypeSymbol = &Float16Type;
+
     /// castToU16 with Float16
     castToU16_Float16_arg.name = "val"_c;
     castToU16_Float16_arg.type = Type::FullType{ Float16Type.name };
     castToU16_Float16.documentation = "Casts to type UInt16 without conversion."_c;
     castToU16_Float16.name = castToU16_Float16_name;
-    castToU16_Float16.backendIndex = 1800;
+    castToU16_Float16.backendIndex = 1814;
     castToU16_Float16.returnType = Type::FullType { UInt16Type.name };
     castToU16_Float16.parameters = castToU16_Float16_args;
     Symbol::Resolved(&castToU16_Float16_arg)->typeSymbol = &Float16Type;
@@ -1995,12 +2191,54 @@ void SetupIntrinsics6()
     Symbol::Resolved(&castToU16_Float16)->nameWithVarNames = "castToU16(val : f16)"_c;
     Symbol::Resolved(&castToU16_Float16)->returnTypeSymbol = &UInt16Type;
 
+    /// castToU16 with Float16x2
+    castToU16_Float16x2_arg.name = "val"_c;
+    castToU16_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    castToU16_Float16x2.documentation = "Casts to type UInt16x2 without conversion."_c;
+    castToU16_Float16x2.name = castToU16_Float16x2_name;
+    castToU16_Float16x2.backendIndex = 1815;
+    castToU16_Float16x2.returnType = Type::FullType { UInt16Type.name };
+    castToU16_Float16x2.parameters = castToU16_Float16x2_args;
+    Symbol::Resolved(&castToU16_Float16x2_arg)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&castToU16_Float16x2)->signature = "castToU16(f16x2) u16"_c;
+    Symbol::Resolved(&castToU16_Float16x2)->name = "castToU16(f16x2)"_c;
+    Symbol::Resolved(&castToU16_Float16x2)->nameWithVarNames = "castToU16(val : f16x2)"_c;
+    Symbol::Resolved(&castToU16_Float16x2)->returnTypeSymbol = &UInt16Type;
+
+    /// castToU16 with Float16x3
+    castToU16_Float16x3_arg.name = "val"_c;
+    castToU16_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    castToU16_Float16x3.documentation = "Casts to type UInt16x3 without conversion."_c;
+    castToU16_Float16x3.name = castToU16_Float16x3_name;
+    castToU16_Float16x3.backendIndex = 1816;
+    castToU16_Float16x3.returnType = Type::FullType { UInt16Type.name };
+    castToU16_Float16x3.parameters = castToU16_Float16x3_args;
+    Symbol::Resolved(&castToU16_Float16x3_arg)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&castToU16_Float16x3)->signature = "castToU16(f16x3) u16"_c;
+    Symbol::Resolved(&castToU16_Float16x3)->name = "castToU16(f16x3)"_c;
+    Symbol::Resolved(&castToU16_Float16x3)->nameWithVarNames = "castToU16(val : f16x3)"_c;
+    Symbol::Resolved(&castToU16_Float16x3)->returnTypeSymbol = &UInt16Type;
+
+    /// castToU16 with Float16x4
+    castToU16_Float16x4_arg.name = "val"_c;
+    castToU16_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    castToU16_Float16x4.documentation = "Casts to type UInt16x4 without conversion."_c;
+    castToU16_Float16x4.name = castToU16_Float16x4_name;
+    castToU16_Float16x4.backendIndex = 1817;
+    castToU16_Float16x4.returnType = Type::FullType { UInt16Type.name };
+    castToU16_Float16x4.parameters = castToU16_Float16x4_args;
+    Symbol::Resolved(&castToU16_Float16x4_arg)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&castToU16_Float16x4)->signature = "castToU16(f16x4) u16"_c;
+    Symbol::Resolved(&castToU16_Float16x4)->name = "castToU16(f16x4)"_c;
+    Symbol::Resolved(&castToU16_Float16x4)->nameWithVarNames = "castToU16(val : f16x4)"_c;
+    Symbol::Resolved(&castToU16_Float16x4)->returnTypeSymbol = &UInt16Type;
+
     /// castToU16 with Int16
     castToU16_Int16_arg.name = "val"_c;
     castToU16_Int16_arg.type = Type::FullType{ Int16Type.name };
     castToU16_Int16.documentation = "Casts to type UInt16 without conversion."_c;
     castToU16_Int16.name = castToU16_Int16_name;
-    castToU16_Int16.backendIndex = 1801;
+    castToU16_Int16.backendIndex = 1818;
     castToU16_Int16.returnType = Type::FullType { UInt16Type.name };
     castToU16_Int16.parameters = castToU16_Int16_args;
     Symbol::Resolved(&castToU16_Int16_arg)->typeSymbol = &Int16Type;
@@ -2009,12 +2247,54 @@ void SetupIntrinsics6()
     Symbol::Resolved(&castToU16_Int16)->nameWithVarNames = "castToU16(val : i16)"_c;
     Symbol::Resolved(&castToU16_Int16)->returnTypeSymbol = &UInt16Type;
 
+    /// castToU16 with Int16x2
+    castToU16_Int16x2_arg.name = "val"_c;
+    castToU16_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
+    castToU16_Int16x2.documentation = "Casts to type UInt16x2 without conversion."_c;
+    castToU16_Int16x2.name = castToU16_Int16x2_name;
+    castToU16_Int16x2.backendIndex = 1819;
+    castToU16_Int16x2.returnType = Type::FullType { UInt16Type.name };
+    castToU16_Int16x2.parameters = castToU16_Int16x2_args;
+    Symbol::Resolved(&castToU16_Int16x2_arg)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&castToU16_Int16x2)->signature = "castToU16(i16x2) u16"_c;
+    Symbol::Resolved(&castToU16_Int16x2)->name = "castToU16(i16x2)"_c;
+    Symbol::Resolved(&castToU16_Int16x2)->nameWithVarNames = "castToU16(val : i16x2)"_c;
+    Symbol::Resolved(&castToU16_Int16x2)->returnTypeSymbol = &UInt16Type;
+
+    /// castToU16 with Int16x3
+    castToU16_Int16x3_arg.name = "val"_c;
+    castToU16_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
+    castToU16_Int16x3.documentation = "Casts to type UInt16x3 without conversion."_c;
+    castToU16_Int16x3.name = castToU16_Int16x3_name;
+    castToU16_Int16x3.backendIndex = 1820;
+    castToU16_Int16x3.returnType = Type::FullType { UInt16Type.name };
+    castToU16_Int16x3.parameters = castToU16_Int16x3_args;
+    Symbol::Resolved(&castToU16_Int16x3_arg)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&castToU16_Int16x3)->signature = "castToU16(i16x3) u16"_c;
+    Symbol::Resolved(&castToU16_Int16x3)->name = "castToU16(i16x3)"_c;
+    Symbol::Resolved(&castToU16_Int16x3)->nameWithVarNames = "castToU16(val : i16x3)"_c;
+    Symbol::Resolved(&castToU16_Int16x3)->returnTypeSymbol = &UInt16Type;
+
+    /// castToU16 with Int16x4
+    castToU16_Int16x4_arg.name = "val"_c;
+    castToU16_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
+    castToU16_Int16x4.documentation = "Casts to type UInt16x4 without conversion."_c;
+    castToU16_Int16x4.name = castToU16_Int16x4_name;
+    castToU16_Int16x4.backendIndex = 1821;
+    castToU16_Int16x4.returnType = Type::FullType { UInt16Type.name };
+    castToU16_Int16x4.parameters = castToU16_Int16x4_args;
+    Symbol::Resolved(&castToU16_Int16x4_arg)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&castToU16_Int16x4)->signature = "castToU16(i16x4) u16"_c;
+    Symbol::Resolved(&castToU16_Int16x4)->name = "castToU16(i16x4)"_c;
+    Symbol::Resolved(&castToU16_Int16x4)->nameWithVarNames = "castToU16(val : i16x4)"_c;
+    Symbol::Resolved(&castToU16_Int16x4)->returnTypeSymbol = &UInt16Type;
+
     /// castToI16 with Float16
     castToI16_Float16_arg.name = "val"_c;
     castToI16_Float16_arg.type = Type::FullType{ Float16Type.name };
     castToI16_Float16.documentation = "Casts to type Int16 without conversion."_c;
     castToI16_Float16.name = castToI16_Float16_name;
-    castToI16_Float16.backendIndex = 1802;
+    castToI16_Float16.backendIndex = 1822;
     castToI16_Float16.returnType = Type::FullType { Int16Type.name };
     castToI16_Float16.parameters = castToI16_Float16_args;
     Symbol::Resolved(&castToI16_Float16_arg)->typeSymbol = &Float16Type;
@@ -2023,12 +2303,54 @@ void SetupIntrinsics6()
     Symbol::Resolved(&castToI16_Float16)->nameWithVarNames = "castToI16(val : f16)"_c;
     Symbol::Resolved(&castToI16_Float16)->returnTypeSymbol = &Int16Type;
 
+    /// castToI16 with Float16x2
+    castToI16_Float16x2_arg.name = "val"_c;
+    castToI16_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    castToI16_Float16x2.documentation = "Casts to type Int16x2 without conversion."_c;
+    castToI16_Float16x2.name = castToI16_Float16x2_name;
+    castToI16_Float16x2.backendIndex = 1823;
+    castToI16_Float16x2.returnType = Type::FullType { Int16Type.name };
+    castToI16_Float16x2.parameters = castToI16_Float16x2_args;
+    Symbol::Resolved(&castToI16_Float16x2_arg)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&castToI16_Float16x2)->signature = "castToI16(f16x2) i16"_c;
+    Symbol::Resolved(&castToI16_Float16x2)->name = "castToI16(f16x2)"_c;
+    Symbol::Resolved(&castToI16_Float16x2)->nameWithVarNames = "castToI16(val : f16x2)"_c;
+    Symbol::Resolved(&castToI16_Float16x2)->returnTypeSymbol = &Int16Type;
+
+    /// castToI16 with Float16x3
+    castToI16_Float16x3_arg.name = "val"_c;
+    castToI16_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    castToI16_Float16x3.documentation = "Casts to type Int16x3 without conversion."_c;
+    castToI16_Float16x3.name = castToI16_Float16x3_name;
+    castToI16_Float16x3.backendIndex = 1824;
+    castToI16_Float16x3.returnType = Type::FullType { Int16Type.name };
+    castToI16_Float16x3.parameters = castToI16_Float16x3_args;
+    Symbol::Resolved(&castToI16_Float16x3_arg)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&castToI16_Float16x3)->signature = "castToI16(f16x3) i16"_c;
+    Symbol::Resolved(&castToI16_Float16x3)->name = "castToI16(f16x3)"_c;
+    Symbol::Resolved(&castToI16_Float16x3)->nameWithVarNames = "castToI16(val : f16x3)"_c;
+    Symbol::Resolved(&castToI16_Float16x3)->returnTypeSymbol = &Int16Type;
+
+    /// castToI16 with Float16x4
+    castToI16_Float16x4_arg.name = "val"_c;
+    castToI16_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    castToI16_Float16x4.documentation = "Casts to type Int16x4 without conversion."_c;
+    castToI16_Float16x4.name = castToI16_Float16x4_name;
+    castToI16_Float16x4.backendIndex = 1825;
+    castToI16_Float16x4.returnType = Type::FullType { Int16Type.name };
+    castToI16_Float16x4.parameters = castToI16_Float16x4_args;
+    Symbol::Resolved(&castToI16_Float16x4_arg)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&castToI16_Float16x4)->signature = "castToI16(f16x4) i16"_c;
+    Symbol::Resolved(&castToI16_Float16x4)->name = "castToI16(f16x4)"_c;
+    Symbol::Resolved(&castToI16_Float16x4)->nameWithVarNames = "castToI16(val : f16x4)"_c;
+    Symbol::Resolved(&castToI16_Float16x4)->returnTypeSymbol = &Int16Type;
+
     /// castToI16 with UInt16
     castToI16_UInt16_arg.name = "val"_c;
     castToI16_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     castToI16_UInt16.documentation = "Casts to type Int16 without conversion."_c;
     castToI16_UInt16.name = castToI16_UInt16_name;
-    castToI16_UInt16.backendIndex = 1803;
+    castToI16_UInt16.backendIndex = 1826;
     castToI16_UInt16.returnType = Type::FullType { Int16Type.name };
     castToI16_UInt16.parameters = castToI16_UInt16_args;
     Symbol::Resolved(&castToI16_UInt16_arg)->typeSymbol = &UInt16Type;
@@ -2037,12 +2359,54 @@ void SetupIntrinsics6()
     Symbol::Resolved(&castToI16_UInt16)->nameWithVarNames = "castToI16(val : u16)"_c;
     Symbol::Resolved(&castToI16_UInt16)->returnTypeSymbol = &Int16Type;
 
+    /// castToI16 with UInt16x2
+    castToI16_UInt16x2_arg.name = "val"_c;
+    castToI16_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
+    castToI16_UInt16x2.documentation = "Casts to type Int16x2 without conversion."_c;
+    castToI16_UInt16x2.name = castToI16_UInt16x2_name;
+    castToI16_UInt16x2.backendIndex = 1827;
+    castToI16_UInt16x2.returnType = Type::FullType { Int16Type.name };
+    castToI16_UInt16x2.parameters = castToI16_UInt16x2_args;
+    Symbol::Resolved(&castToI16_UInt16x2_arg)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&castToI16_UInt16x2)->signature = "castToI16(u16x2) i16"_c;
+    Symbol::Resolved(&castToI16_UInt16x2)->name = "castToI16(u16x2)"_c;
+    Symbol::Resolved(&castToI16_UInt16x2)->nameWithVarNames = "castToI16(val : u16x2)"_c;
+    Symbol::Resolved(&castToI16_UInt16x2)->returnTypeSymbol = &Int16Type;
+
+    /// castToI16 with UInt16x3
+    castToI16_UInt16x3_arg.name = "val"_c;
+    castToI16_UInt16x3_arg.type = Type::FullType{ UInt16x3Type.name };
+    castToI16_UInt16x3.documentation = "Casts to type Int16x3 without conversion."_c;
+    castToI16_UInt16x3.name = castToI16_UInt16x3_name;
+    castToI16_UInt16x3.backendIndex = 1828;
+    castToI16_UInt16x3.returnType = Type::FullType { Int16Type.name };
+    castToI16_UInt16x3.parameters = castToI16_UInt16x3_args;
+    Symbol::Resolved(&castToI16_UInt16x3_arg)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&castToI16_UInt16x3)->signature = "castToI16(u16x3) i16"_c;
+    Symbol::Resolved(&castToI16_UInt16x3)->name = "castToI16(u16x3)"_c;
+    Symbol::Resolved(&castToI16_UInt16x3)->nameWithVarNames = "castToI16(val : u16x3)"_c;
+    Symbol::Resolved(&castToI16_UInt16x3)->returnTypeSymbol = &Int16Type;
+
+    /// castToI16 with UInt16x4
+    castToI16_UInt16x4_arg.name = "val"_c;
+    castToI16_UInt16x4_arg.type = Type::FullType{ UInt16x4Type.name };
+    castToI16_UInt16x4.documentation = "Casts to type Int16x4 without conversion."_c;
+    castToI16_UInt16x4.name = castToI16_UInt16x4_name;
+    castToI16_UInt16x4.backendIndex = 1829;
+    castToI16_UInt16x4.returnType = Type::FullType { Int16Type.name };
+    castToI16_UInt16x4.parameters = castToI16_UInt16x4_args;
+    Symbol::Resolved(&castToI16_UInt16x4_arg)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&castToI16_UInt16x4)->signature = "castToI16(u16x4) i16"_c;
+    Symbol::Resolved(&castToI16_UInt16x4)->name = "castToI16(u16x4)"_c;
+    Symbol::Resolved(&castToI16_UInt16x4)->nameWithVarNames = "castToI16(val : u16x4)"_c;
+    Symbol::Resolved(&castToI16_UInt16x4)->returnTypeSymbol = &Int16Type;
+
     /// castToF32 with UInt32
     castToF32_UInt32_arg.name = "val"_c;
     castToF32_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     castToF32_UInt32.documentation = "Casts to type Float32 without conversion."_c;
     castToF32_UInt32.name = castToF32_UInt32_name;
-    castToF32_UInt32.backendIndex = 1804;
+    castToF32_UInt32.backendIndex = 1830;
     castToF32_UInt32.returnType = Type::FullType { Float32Type.name };
     castToF32_UInt32.parameters = castToF32_UInt32_args;
     Symbol::Resolved(&castToF32_UInt32_arg)->typeSymbol = &UInt32Type;
@@ -2051,397 +2415,33 @@ void SetupIntrinsics6()
     Symbol::Resolved(&castToF32_UInt32)->nameWithVarNames = "castToF32(val : u32)"_c;
     Symbol::Resolved(&castToF32_UInt32)->returnTypeSymbol = &Float32Type;
 
-    /// castToF32 with Int32
-    castToF32_Int32_arg.name = "val"_c;
-    castToF32_Int32_arg.type = Type::FullType{ Int32Type.name };
-    castToF32_Int32.documentation = "Casts to type Float32 without conversion."_c;
-    castToF32_Int32.name = castToF32_Int32_name;
-    castToF32_Int32.backendIndex = 1805;
-    castToF32_Int32.returnType = Type::FullType { Float32Type.name };
-    castToF32_Int32.parameters = castToF32_Int32_args;
-    Symbol::Resolved(&castToF32_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&castToF32_Int32)->signature = "castToF32(i32) f32"_c;
-    Symbol::Resolved(&castToF32_Int32)->name = "castToF32(i32)"_c;
-    Symbol::Resolved(&castToF32_Int32)->nameWithVarNames = "castToF32(val : i32)"_c;
-    Symbol::Resolved(&castToF32_Int32)->returnTypeSymbol = &Float32Type;
+    /// castToF32 with UInt32x2
+    castToF32_UInt32x2_arg.name = "val"_c;
+    castToF32_UInt32x2_arg.type = Type::FullType{ UInt32x2Type.name };
+    castToF32_UInt32x2.documentation = "Casts to type Float32x2 without conversion."_c;
+    castToF32_UInt32x2.name = castToF32_UInt32x2_name;
+    castToF32_UInt32x2.backendIndex = 1831;
+    castToF32_UInt32x2.returnType = Type::FullType { Float32x2Type.name };
+    castToF32_UInt32x2.parameters = castToF32_UInt32x2_args;
+    Symbol::Resolved(&castToF32_UInt32x2_arg)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&castToF32_UInt32x2)->signature = "castToF32(u32x2) f32x2"_c;
+    Symbol::Resolved(&castToF32_UInt32x2)->name = "castToF32(u32x2)"_c;
+    Symbol::Resolved(&castToF32_UInt32x2)->nameWithVarNames = "castToF32(val : u32x2)"_c;
+    Symbol::Resolved(&castToF32_UInt32x2)->returnTypeSymbol = &Float32x2Type;
 
-    /// castToU32 with Float32
-    castToU32_Float32_arg.name = "val"_c;
-    castToU32_Float32_arg.type = Type::FullType{ Float32Type.name };
-    castToU32_Float32.documentation = "Casts to type UInt32 without conversion."_c;
-    castToU32_Float32.name = castToU32_Float32_name;
-    castToU32_Float32.backendIndex = 1806;
-    castToU32_Float32.returnType = Type::FullType { UInt32Type.name };
-    castToU32_Float32.parameters = castToU32_Float32_args;
-    Symbol::Resolved(&castToU32_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&castToU32_Float32)->signature = "castToU32(f32) u32"_c;
-    Symbol::Resolved(&castToU32_Float32)->name = "castToU32(f32)"_c;
-    Symbol::Resolved(&castToU32_Float32)->nameWithVarNames = "castToU32(val : f32)"_c;
-    Symbol::Resolved(&castToU32_Float32)->returnTypeSymbol = &UInt32Type;
-
-    /// castToU32 with Int32
-    castToU32_Int32_arg.name = "val"_c;
-    castToU32_Int32_arg.type = Type::FullType{ Int32Type.name };
-    castToU32_Int32.documentation = "Casts to type UInt32 without conversion."_c;
-    castToU32_Int32.name = castToU32_Int32_name;
-    castToU32_Int32.backendIndex = 1807;
-    castToU32_Int32.returnType = Type::FullType { UInt32Type.name };
-    castToU32_Int32.parameters = castToU32_Int32_args;
-    Symbol::Resolved(&castToU32_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&castToU32_Int32)->signature = "castToU32(i32) u32"_c;
-    Symbol::Resolved(&castToU32_Int32)->name = "castToU32(i32)"_c;
-    Symbol::Resolved(&castToU32_Int32)->nameWithVarNames = "castToU32(val : i32)"_c;
-    Symbol::Resolved(&castToU32_Int32)->returnTypeSymbol = &UInt32Type;
-
-    /// castToI32 with Float32
-    castToI32_Float32_arg.name = "val"_c;
-    castToI32_Float32_arg.type = Type::FullType{ Float32Type.name };
-    castToI32_Float32.documentation = "Casts to type Int32 without conversion."_c;
-    castToI32_Float32.name = castToI32_Float32_name;
-    castToI32_Float32.backendIndex = 1808;
-    castToI32_Float32.returnType = Type::FullType { Int32Type.name };
-    castToI32_Float32.parameters = castToI32_Float32_args;
-    Symbol::Resolved(&castToI32_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&castToI32_Float32)->signature = "castToI32(f32) i32"_c;
-    Symbol::Resolved(&castToI32_Float32)->name = "castToI32(f32)"_c;
-    Symbol::Resolved(&castToI32_Float32)->nameWithVarNames = "castToI32(val : f32)"_c;
-    Symbol::Resolved(&castToI32_Float32)->returnTypeSymbol = &Int32Type;
-
-    /// castToI32 with UInt32
-    castToI32_UInt32_arg.name = "val"_c;
-    castToI32_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    castToI32_UInt32.documentation = "Casts to type Int32 without conversion."_c;
-    castToI32_UInt32.name = castToI32_UInt32_name;
-    castToI32_UInt32.backendIndex = 1809;
-    castToI32_UInt32.returnType = Type::FullType { Int32Type.name };
-    castToI32_UInt32.parameters = castToI32_UInt32_args;
-    Symbol::Resolved(&castToI32_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&castToI32_UInt32)->signature = "castToI32(u32) i32"_c;
-    Symbol::Resolved(&castToI32_UInt32)->name = "castToI32(u32)"_c;
-    Symbol::Resolved(&castToI32_UInt32)->nameWithVarNames = "castToI32(val : u32)"_c;
-    Symbol::Resolved(&castToI32_UInt32)->returnTypeSymbol = &Int32Type;
-
-    /// any with Bool8
-    any_Bool8_arg.name = "val"_c;
-    any_Bool8_arg.type = Type::FullType{ Bool8Type.name };
-    any_Bool8.documentation = "Returns true if any component of the vector is non-zero."_c;
-    any_Bool8.name = any_Bool8_name;
-    any_Bool8.backendIndex = 1810;
-    any_Bool8.returnType = Type::FullType { Bool8Type.name };
-    any_Bool8.parameters = any_Bool8_args;
-    Symbol::Resolved(&any_Bool8_arg)->typeSymbol = &Bool8Type;
-    Symbol::Resolved(&any_Bool8)->signature = "any(b8) b8"_c;
-    Symbol::Resolved(&any_Bool8)->name = "any(b8)"_c;
-    Symbol::Resolved(&any_Bool8)->nameWithVarNames = "any(val : b8)"_c;
-    Symbol::Resolved(&any_Bool8)->returnTypeSymbol = &Bool8Type;
-
-    /// any with Bool8x2
-    any_Bool8x2_arg.name = "val"_c;
-    any_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
-    any_Bool8x2.documentation = "Returns true if any component of the vector is non-zero."_c;
-    any_Bool8x2.name = any_Bool8x2_name;
-    any_Bool8x2.backendIndex = 1811;
-    any_Bool8x2.returnType = Type::FullType { Bool8Type.name };
-    any_Bool8x2.parameters = any_Bool8x2_args;
-    Symbol::Resolved(&any_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&any_Bool8x2)->signature = "any(b8x2) b8"_c;
-    Symbol::Resolved(&any_Bool8x2)->name = "any(b8x2)"_c;
-    Symbol::Resolved(&any_Bool8x2)->nameWithVarNames = "any(val : b8x2)"_c;
-    Symbol::Resolved(&any_Bool8x2)->returnTypeSymbol = &Bool8Type;
-
-    /// any with Bool8x3
-    any_Bool8x3_arg.name = "val"_c;
-    any_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
-    any_Bool8x3.documentation = "Returns true if any component of the vector is non-zero."_c;
-    any_Bool8x3.name = any_Bool8x3_name;
-    any_Bool8x3.backendIndex = 1812;
-    any_Bool8x3.returnType = Type::FullType { Bool8Type.name };
-    any_Bool8x3.parameters = any_Bool8x3_args;
-    Symbol::Resolved(&any_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&any_Bool8x3)->signature = "any(b8x3) b8"_c;
-    Symbol::Resolved(&any_Bool8x3)->name = "any(b8x3)"_c;
-    Symbol::Resolved(&any_Bool8x3)->nameWithVarNames = "any(val : b8x3)"_c;
-    Symbol::Resolved(&any_Bool8x3)->returnTypeSymbol = &Bool8Type;
-
-    /// any with Bool8x4
-    any_Bool8x4_arg.name = "val"_c;
-    any_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
-    any_Bool8x4.documentation = "Returns true if any component of the vector is non-zero."_c;
-    any_Bool8x4.name = any_Bool8x4_name;
-    any_Bool8x4.backendIndex = 1813;
-    any_Bool8x4.returnType = Type::FullType { Bool8Type.name };
-    any_Bool8x4.parameters = any_Bool8x4_args;
-    Symbol::Resolved(&any_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&any_Bool8x4)->signature = "any(b8x4) b8"_c;
-    Symbol::Resolved(&any_Bool8x4)->name = "any(b8x4)"_c;
-    Symbol::Resolved(&any_Bool8x4)->nameWithVarNames = "any(val : b8x4)"_c;
-    Symbol::Resolved(&any_Bool8x4)->returnTypeSymbol = &Bool8Type;
-
-    /// all with Bool8
-    all_Bool8_arg.name = "val"_c;
-    all_Bool8_arg.type = Type::FullType{ Bool8Type.name };
-    all_Bool8.documentation = "Returns true if all components of the vector are non-zero."_c;
-    all_Bool8.name = all_Bool8_name;
-    all_Bool8.backendIndex = 1814;
-    all_Bool8.returnType = Type::FullType { Bool8Type.name };
-    all_Bool8.parameters = all_Bool8_args;
-    Symbol::Resolved(&all_Bool8_arg)->typeSymbol = &Bool8Type;
-    Symbol::Resolved(&all_Bool8)->signature = "all(b8) b8"_c;
-    Symbol::Resolved(&all_Bool8)->name = "all(b8)"_c;
-    Symbol::Resolved(&all_Bool8)->nameWithVarNames = "all(val : b8)"_c;
-    Symbol::Resolved(&all_Bool8)->returnTypeSymbol = &Bool8Type;
-
-    /// all with Bool8x2
-    all_Bool8x2_arg.name = "val"_c;
-    all_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
-    all_Bool8x2.documentation = "Returns true if all components of the vector are non-zero."_c;
-    all_Bool8x2.name = all_Bool8x2_name;
-    all_Bool8x2.backendIndex = 1815;
-    all_Bool8x2.returnType = Type::FullType { Bool8Type.name };
-    all_Bool8x2.parameters = all_Bool8x2_args;
-    Symbol::Resolved(&all_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&all_Bool8x2)->signature = "all(b8x2) b8"_c;
-    Symbol::Resolved(&all_Bool8x2)->name = "all(b8x2)"_c;
-    Symbol::Resolved(&all_Bool8x2)->nameWithVarNames = "all(val : b8x2)"_c;
-    Symbol::Resolved(&all_Bool8x2)->returnTypeSymbol = &Bool8Type;
-
-    /// all with Bool8x3
-    all_Bool8x3_arg.name = "val"_c;
-    all_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
-    all_Bool8x3.documentation = "Returns true if all components of the vector are non-zero."_c;
-    all_Bool8x3.name = all_Bool8x3_name;
-    all_Bool8x3.backendIndex = 1816;
-    all_Bool8x3.returnType = Type::FullType { Bool8Type.name };
-    all_Bool8x3.parameters = all_Bool8x3_args;
-    Symbol::Resolved(&all_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&all_Bool8x3)->signature = "all(b8x3) b8"_c;
-    Symbol::Resolved(&all_Bool8x3)->name = "all(b8x3)"_c;
-    Symbol::Resolved(&all_Bool8x3)->nameWithVarNames = "all(val : b8x3)"_c;
-    Symbol::Resolved(&all_Bool8x3)->returnTypeSymbol = &Bool8Type;
-
-    /// all with Bool8x4
-    all_Bool8x4_arg.name = "val"_c;
-    all_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
-    all_Bool8x4.documentation = "Returns true if all components of the vector are non-zero."_c;
-    all_Bool8x4.name = all_Bool8x4_name;
-    all_Bool8x4.backendIndex = 1817;
-    all_Bool8x4.returnType = Type::FullType { Bool8Type.name };
-    all_Bool8x4.parameters = all_Bool8x4_args;
-    Symbol::Resolved(&all_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&all_Bool8x4)->signature = "all(b8x4) b8"_c;
-    Symbol::Resolved(&all_Bool8x4)->name = "all(b8x4)"_c;
-    Symbol::Resolved(&all_Bool8x4)->nameWithVarNames = "all(val : b8x4)"_c;
-    Symbol::Resolved(&all_Bool8x4)->returnTypeSymbol = &Bool8Type;
-
-    /// transpose with Float32x2x2
-    transpose_Float32x2x2_arg.name = "val"_c;
-    transpose_Float32x2x2_arg.type = Type::FullType{ Float32x2x2Type.name };
-    transpose_Float32x2x2.documentation = "Returns the transposed matrix."_c;
-    transpose_Float32x2x2.name = transpose_Float32x2x2_name;
-    transpose_Float32x2x2.backendIndex = 1818;
-    transpose_Float32x2x2.returnType = Type::FullType { Float32x2x2Type.name };
-    transpose_Float32x2x2.parameters = transpose_Float32x2x2_args;
-    Symbol::Resolved(&transpose_Float32x2x2_arg)->typeSymbol = &Float32x2x2Type;
-    Symbol::Resolved(&transpose_Float32x2x2)->signature = "transpose(f32x2x2) f32x2x2"_c;
-    Symbol::Resolved(&transpose_Float32x2x2)->name = "transpose(f32x2x2)"_c;
-    Symbol::Resolved(&transpose_Float32x2x2)->nameWithVarNames = "transpose(val : f32x2x2)"_c;
-    Symbol::Resolved(&transpose_Float32x2x2)->returnTypeSymbol = &Float32x2x2Type;
-
-    /// transpose with Float16x2x2
-    transpose_Float16x2x2_arg.name = "val"_c;
-    transpose_Float16x2x2_arg.type = Type::FullType{ Float16x2x2Type.name };
-    transpose_Float16x2x2.documentation = "Returns the transposed matrix."_c;
-    transpose_Float16x2x2.name = transpose_Float16x2x2_name;
-    transpose_Float16x2x2.backendIndex = 1819;
-    transpose_Float16x2x2.returnType = Type::FullType { Float16x2x2Type.name };
-    transpose_Float16x2x2.parameters = transpose_Float16x2x2_args;
-    Symbol::Resolved(&transpose_Float16x2x2_arg)->typeSymbol = &Float16x2x2Type;
-    Symbol::Resolved(&transpose_Float16x2x2)->signature = "transpose(f16x2x2) f16x2x2"_c;
-    Symbol::Resolved(&transpose_Float16x2x2)->name = "transpose(f16x2x2)"_c;
-    Symbol::Resolved(&transpose_Float16x2x2)->nameWithVarNames = "transpose(val : f16x2x2)"_c;
-    Symbol::Resolved(&transpose_Float16x2x2)->returnTypeSymbol = &Float16x2x2Type;
-
-    /// transpose with Float32x2x3
-    transpose_Float32x2x3_arg.name = "val"_c;
-    transpose_Float32x2x3_arg.type = Type::FullType{ Float32x2x3Type.name };
-    transpose_Float32x2x3.documentation = "Returns the transposed matrix."_c;
-    transpose_Float32x2x3.name = transpose_Float32x2x3_name;
-    transpose_Float32x2x3.backendIndex = 1820;
-    transpose_Float32x2x3.returnType = Type::FullType { Float32x2x3Type.name };
-    transpose_Float32x2x3.parameters = transpose_Float32x2x3_args;
-    Symbol::Resolved(&transpose_Float32x2x3_arg)->typeSymbol = &Float32x2x3Type;
-    Symbol::Resolved(&transpose_Float32x2x3)->signature = "transpose(f32x2x3) f32x2x3"_c;
-    Symbol::Resolved(&transpose_Float32x2x3)->name = "transpose(f32x2x3)"_c;
-    Symbol::Resolved(&transpose_Float32x2x3)->nameWithVarNames = "transpose(val : f32x2x3)"_c;
-    Symbol::Resolved(&transpose_Float32x2x3)->returnTypeSymbol = &Float32x2x3Type;
-
-    /// transpose with Float16x2x3
-    transpose_Float16x2x3_arg.name = "val"_c;
-    transpose_Float16x2x3_arg.type = Type::FullType{ Float16x2x3Type.name };
-    transpose_Float16x2x3.documentation = "Returns the transposed matrix."_c;
-    transpose_Float16x2x3.name = transpose_Float16x2x3_name;
-    transpose_Float16x2x3.backendIndex = 1821;
-    transpose_Float16x2x3.returnType = Type::FullType { Float16x2x3Type.name };
-    transpose_Float16x2x3.parameters = transpose_Float16x2x3_args;
-    Symbol::Resolved(&transpose_Float16x2x3_arg)->typeSymbol = &Float16x2x3Type;
-    Symbol::Resolved(&transpose_Float16x2x3)->signature = "transpose(f16x2x3) f16x2x3"_c;
-    Symbol::Resolved(&transpose_Float16x2x3)->name = "transpose(f16x2x3)"_c;
-    Symbol::Resolved(&transpose_Float16x2x3)->nameWithVarNames = "transpose(val : f16x2x3)"_c;
-    Symbol::Resolved(&transpose_Float16x2x3)->returnTypeSymbol = &Float16x2x3Type;
-
-    /// transpose with Float32x2x4
-    transpose_Float32x2x4_arg.name = "val"_c;
-    transpose_Float32x2x4_arg.type = Type::FullType{ Float32x2x4Type.name };
-    transpose_Float32x2x4.documentation = "Returns the transposed matrix."_c;
-    transpose_Float32x2x4.name = transpose_Float32x2x4_name;
-    transpose_Float32x2x4.backendIndex = 1822;
-    transpose_Float32x2x4.returnType = Type::FullType { Float32x2x4Type.name };
-    transpose_Float32x2x4.parameters = transpose_Float32x2x4_args;
-    Symbol::Resolved(&transpose_Float32x2x4_arg)->typeSymbol = &Float32x2x4Type;
-    Symbol::Resolved(&transpose_Float32x2x4)->signature = "transpose(f32x2x4) f32x2x4"_c;
-    Symbol::Resolved(&transpose_Float32x2x4)->name = "transpose(f32x2x4)"_c;
-    Symbol::Resolved(&transpose_Float32x2x4)->nameWithVarNames = "transpose(val : f32x2x4)"_c;
-    Symbol::Resolved(&transpose_Float32x2x4)->returnTypeSymbol = &Float32x2x4Type;
-
-    /// transpose with Float16x2x4
-    transpose_Float16x2x4_arg.name = "val"_c;
-    transpose_Float16x2x4_arg.type = Type::FullType{ Float16x2x4Type.name };
-    transpose_Float16x2x4.documentation = "Returns the transposed matrix."_c;
-    transpose_Float16x2x4.name = transpose_Float16x2x4_name;
-    transpose_Float16x2x4.backendIndex = 1823;
-    transpose_Float16x2x4.returnType = Type::FullType { Float16x2x4Type.name };
-    transpose_Float16x2x4.parameters = transpose_Float16x2x4_args;
-    Symbol::Resolved(&transpose_Float16x2x4_arg)->typeSymbol = &Float16x2x4Type;
-    Symbol::Resolved(&transpose_Float16x2x4)->signature = "transpose(f16x2x4) f16x2x4"_c;
-    Symbol::Resolved(&transpose_Float16x2x4)->name = "transpose(f16x2x4)"_c;
-    Symbol::Resolved(&transpose_Float16x2x4)->nameWithVarNames = "transpose(val : f16x2x4)"_c;
-    Symbol::Resolved(&transpose_Float16x2x4)->returnTypeSymbol = &Float16x2x4Type;
-
-    /// transpose with Float32x3x2
-    transpose_Float32x3x2_arg.name = "val"_c;
-    transpose_Float32x3x2_arg.type = Type::FullType{ Float32x3x2Type.name };
-    transpose_Float32x3x2.documentation = "Returns the transposed matrix."_c;
-    transpose_Float32x3x2.name = transpose_Float32x3x2_name;
-    transpose_Float32x3x2.backendIndex = 1824;
-    transpose_Float32x3x2.returnType = Type::FullType { Float32x3x2Type.name };
-    transpose_Float32x3x2.parameters = transpose_Float32x3x2_args;
-    Symbol::Resolved(&transpose_Float32x3x2_arg)->typeSymbol = &Float32x3x2Type;
-    Symbol::Resolved(&transpose_Float32x3x2)->signature = "transpose(f32x3x2) f32x3x2"_c;
-    Symbol::Resolved(&transpose_Float32x3x2)->name = "transpose(f32x3x2)"_c;
-    Symbol::Resolved(&transpose_Float32x3x2)->nameWithVarNames = "transpose(val : f32x3x2)"_c;
-    Symbol::Resolved(&transpose_Float32x3x2)->returnTypeSymbol = &Float32x3x2Type;
-
-    /// transpose with Float16x3x2
-    transpose_Float16x3x2_arg.name = "val"_c;
-    transpose_Float16x3x2_arg.type = Type::FullType{ Float16x3x2Type.name };
-    transpose_Float16x3x2.documentation = "Returns the transposed matrix."_c;
-    transpose_Float16x3x2.name = transpose_Float16x3x2_name;
-    transpose_Float16x3x2.backendIndex = 1825;
-    transpose_Float16x3x2.returnType = Type::FullType { Float16x3x2Type.name };
-    transpose_Float16x3x2.parameters = transpose_Float16x3x2_args;
-    Symbol::Resolved(&transpose_Float16x3x2_arg)->typeSymbol = &Float16x3x2Type;
-    Symbol::Resolved(&transpose_Float16x3x2)->signature = "transpose(f16x3x2) f16x3x2"_c;
-    Symbol::Resolved(&transpose_Float16x3x2)->name = "transpose(f16x3x2)"_c;
-    Symbol::Resolved(&transpose_Float16x3x2)->nameWithVarNames = "transpose(val : f16x3x2)"_c;
-    Symbol::Resolved(&transpose_Float16x3x2)->returnTypeSymbol = &Float16x3x2Type;
-
-    /// transpose with Float32x3x3
-    transpose_Float32x3x3_arg.name = "val"_c;
-    transpose_Float32x3x3_arg.type = Type::FullType{ Float32x3x3Type.name };
-    transpose_Float32x3x3.documentation = "Returns the transposed matrix."_c;
-    transpose_Float32x3x3.name = transpose_Float32x3x3_name;
-    transpose_Float32x3x3.backendIndex = 1826;
-    transpose_Float32x3x3.returnType = Type::FullType { Float32x3x3Type.name };
-    transpose_Float32x3x3.parameters = transpose_Float32x3x3_args;
-    Symbol::Resolved(&transpose_Float32x3x3_arg)->typeSymbol = &Float32x3x3Type;
-    Symbol::Resolved(&transpose_Float32x3x3)->signature = "transpose(f32x3x3) f32x3x3"_c;
-    Symbol::Resolved(&transpose_Float32x3x3)->name = "transpose(f32x3x3)"_c;
-    Symbol::Resolved(&transpose_Float32x3x3)->nameWithVarNames = "transpose(val : f32x3x3)"_c;
-    Symbol::Resolved(&transpose_Float32x3x3)->returnTypeSymbol = &Float32x3x3Type;
-
-    /// transpose with Float16x3x3
-    transpose_Float16x3x3_arg.name = "val"_c;
-    transpose_Float16x3x3_arg.type = Type::FullType{ Float16x3x3Type.name };
-    transpose_Float16x3x3.documentation = "Returns the transposed matrix."_c;
-    transpose_Float16x3x3.name = transpose_Float16x3x3_name;
-    transpose_Float16x3x3.backendIndex = 1827;
-    transpose_Float16x3x3.returnType = Type::FullType { Float16x3x3Type.name };
-    transpose_Float16x3x3.parameters = transpose_Float16x3x3_args;
-    Symbol::Resolved(&transpose_Float16x3x3_arg)->typeSymbol = &Float16x3x3Type;
-    Symbol::Resolved(&transpose_Float16x3x3)->signature = "transpose(f16x3x3) f16x3x3"_c;
-    Symbol::Resolved(&transpose_Float16x3x3)->name = "transpose(f16x3x3)"_c;
-    Symbol::Resolved(&transpose_Float16x3x3)->nameWithVarNames = "transpose(val : f16x3x3)"_c;
-    Symbol::Resolved(&transpose_Float16x3x3)->returnTypeSymbol = &Float16x3x3Type;
-
-    /// transpose with Float32x3x4
-    transpose_Float32x3x4_arg.name = "val"_c;
-    transpose_Float32x3x4_arg.type = Type::FullType{ Float32x3x4Type.name };
-    transpose_Float32x3x4.documentation = "Returns the transposed matrix."_c;
-    transpose_Float32x3x4.name = transpose_Float32x3x4_name;
-    transpose_Float32x3x4.backendIndex = 1828;
-    transpose_Float32x3x4.returnType = Type::FullType { Float32x3x4Type.name };
-    transpose_Float32x3x4.parameters = transpose_Float32x3x4_args;
-    Symbol::Resolved(&transpose_Float32x3x4_arg)->typeSymbol = &Float32x3x4Type;
-    Symbol::Resolved(&transpose_Float32x3x4)->signature = "transpose(f32x3x4) f32x3x4"_c;
-    Symbol::Resolved(&transpose_Float32x3x4)->name = "transpose(f32x3x4)"_c;
-    Symbol::Resolved(&transpose_Float32x3x4)->nameWithVarNames = "transpose(val : f32x3x4)"_c;
-    Symbol::Resolved(&transpose_Float32x3x4)->returnTypeSymbol = &Float32x3x4Type;
-
-    /// transpose with Float16x3x4
-    transpose_Float16x3x4_arg.name = "val"_c;
-    transpose_Float16x3x4_arg.type = Type::FullType{ Float16x3x4Type.name };
-    transpose_Float16x3x4.documentation = "Returns the transposed matrix."_c;
-    transpose_Float16x3x4.name = transpose_Float16x3x4_name;
-    transpose_Float16x3x4.backendIndex = 1829;
-    transpose_Float16x3x4.returnType = Type::FullType { Float16x3x4Type.name };
-    transpose_Float16x3x4.parameters = transpose_Float16x3x4_args;
-    Symbol::Resolved(&transpose_Float16x3x4_arg)->typeSymbol = &Float16x3x4Type;
-    Symbol::Resolved(&transpose_Float16x3x4)->signature = "transpose(f16x3x4) f16x3x4"_c;
-    Symbol::Resolved(&transpose_Float16x3x4)->name = "transpose(f16x3x4)"_c;
-    Symbol::Resolved(&transpose_Float16x3x4)->nameWithVarNames = "transpose(val : f16x3x4)"_c;
-    Symbol::Resolved(&transpose_Float16x3x4)->returnTypeSymbol = &Float16x3x4Type;
-
-    /// transpose with Float32x4x2
-    transpose_Float32x4x2_arg.name = "val"_c;
-    transpose_Float32x4x2_arg.type = Type::FullType{ Float32x4x2Type.name };
-    transpose_Float32x4x2.documentation = "Returns the transposed matrix."_c;
-    transpose_Float32x4x2.name = transpose_Float32x4x2_name;
-    transpose_Float32x4x2.backendIndex = 1830;
-    transpose_Float32x4x2.returnType = Type::FullType { Float32x4x2Type.name };
-    transpose_Float32x4x2.parameters = transpose_Float32x4x2_args;
-    Symbol::Resolved(&transpose_Float32x4x2_arg)->typeSymbol = &Float32x4x2Type;
-    Symbol::Resolved(&transpose_Float32x4x2)->signature = "transpose(f32x4x2) f32x4x2"_c;
-    Symbol::Resolved(&transpose_Float32x4x2)->name = "transpose(f32x4x2)"_c;
-    Symbol::Resolved(&transpose_Float32x4x2)->nameWithVarNames = "transpose(val : f32x4x2)"_c;
-    Symbol::Resolved(&transpose_Float32x4x2)->returnTypeSymbol = &Float32x4x2Type;
-
-    /// transpose with Float16x4x2
-    transpose_Float16x4x2_arg.name = "val"_c;
-    transpose_Float16x4x2_arg.type = Type::FullType{ Float16x4x2Type.name };
-    transpose_Float16x4x2.documentation = "Returns the transposed matrix."_c;
-    transpose_Float16x4x2.name = transpose_Float16x4x2_name;
-    transpose_Float16x4x2.backendIndex = 1831;
-    transpose_Float16x4x2.returnType = Type::FullType { Float16x4x2Type.name };
-    transpose_Float16x4x2.parameters = transpose_Float16x4x2_args;
-    Symbol::Resolved(&transpose_Float16x4x2_arg)->typeSymbol = &Float16x4x2Type;
-    Symbol::Resolved(&transpose_Float16x4x2)->signature = "transpose(f16x4x2) f16x4x2"_c;
-    Symbol::Resolved(&transpose_Float16x4x2)->name = "transpose(f16x4x2)"_c;
-    Symbol::Resolved(&transpose_Float16x4x2)->nameWithVarNames = "transpose(val : f16x4x2)"_c;
-    Symbol::Resolved(&transpose_Float16x4x2)->returnTypeSymbol = &Float16x4x2Type;
-
-    /// transpose with Float32x4x3
-    transpose_Float32x4x3_arg.name = "val"_c;
-    transpose_Float32x4x3_arg.type = Type::FullType{ Float32x4x3Type.name };
-    transpose_Float32x4x3.documentation = "Returns the transposed matrix."_c;
-    transpose_Float32x4x3.name = transpose_Float32x4x3_name;
-    transpose_Float32x4x3.backendIndex = 1832;
-    transpose_Float32x4x3.returnType = Type::FullType { Float32x4x3Type.name };
-    transpose_Float32x4x3.parameters = transpose_Float32x4x3_args;
-    Symbol::Resolved(&transpose_Float32x4x3_arg)->typeSymbol = &Float32x4x3Type;
-    Symbol::Resolved(&transpose_Float32x4x3)->signature = "transpose(f32x4x3) f32x4x3"_c;
-    Symbol::Resolved(&transpose_Float32x4x3)->name = "transpose(f32x4x3)"_c;
-    Symbol::Resolved(&transpose_Float32x4x3)->nameWithVarNames = "transpose(val : f32x4x3)"_c;
-    Symbol::Resolved(&transpose_Float32x4x3)->returnTypeSymbol = &Float32x4x3Type;
+    /// castToF32 with UInt32x3
+    castToF32_UInt32x3_arg.name = "val"_c;
+    castToF32_UInt32x3_arg.type = Type::FullType{ UInt32x3Type.name };
+    castToF32_UInt32x3.documentation = "Casts to type Float32x3 without conversion."_c;
+    castToF32_UInt32x3.name = castToF32_UInt32x3_name;
+    castToF32_UInt32x3.backendIndex = 1832;
+    castToF32_UInt32x3.returnType = Type::FullType { Float32x3Type.name };
+    castToF32_UInt32x3.parameters = castToF32_UInt32x3_args;
+    Symbol::Resolved(&castToF32_UInt32x3_arg)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&castToF32_UInt32x3)->signature = "castToF32(u32x3) f32x3"_c;
+    Symbol::Resolved(&castToF32_UInt32x3)->name = "castToF32(u32x3)"_c;
+    Symbol::Resolved(&castToF32_UInt32x3)->nameWithVarNames = "castToF32(val : u32x3)"_c;
+    Symbol::Resolved(&castToF32_UInt32x3)->returnTypeSymbol = &Float32x3Type;
 
 }
 } // namespace GPULang

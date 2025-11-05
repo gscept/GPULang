@@ -106,7 +106,7 @@ std::array{
     "binding"_c, "group"_c, "local_size_x"_c, "local_size_y"_c, "local_size_z"_c, "local_size"_c, "threads_x"_c, "threads_y"_c, "threads_z"_c, "threads"_c
     , "group_size"_c, "groups_per_workgroup"_c
     , "input_vertices"_c, "max_output_vertices"_c, "winding"_c
-    , "input_topology"_c, "output_topology"_c, "patch_type"_c, "patch_size"_c, "partition"_c
+    , "input_topology"_c, "output_topology"_c, "patch_type"_c, "partition"_c
 };
 
 static StaticSet pointerQualifiers =
@@ -2987,7 +2987,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->symbolIterator++;
             }
 
-            if (var->type.IsMutable())
+            if (varResolved->storage == Storage::Uniform)
             {
                 TStr storageFun = TStr(var->type.ToString() + "_bufferStore");
                 TStr storageIndexedFun = TStr(var->type.ToString() + "_bufferStoreIndexed");
@@ -3727,11 +3727,6 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::HullShader)
     {
-        if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
-        {
-            compiler->Error(Format("Hull shader '%s' does not define 'patch_size'", fun->name.c_str()), symbol);
-            return false;
-        }
 
         if (funResolved->executionModifiers.inputPrimitiveTopology == InputTopologyPoints_value)
         {
@@ -3756,22 +3751,21 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Hull shader '%s' doesn't support input topology 'InputTopology.TrianglesAdjacency", fun->name.c_str()), symbol);
             return false;
         }
-        if (funResolved->executionModifiers.partitionMethod != PartitionInvalid_value)
-        {
-            compiler->Warning(Format("Domain shader '%s' does not define 'partition', defaulting to 'integer'", fun->name.c_str()), symbol);
-            funResolved->executionModifiers.partitionMethod = PartitionIntegerSteps_value;
-        }
     }
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::DomainShader)
     {
         // validate required qualifiers
-        if (funResolved->executionModifiers.patchType != PatchInvalid_value)
+        if (funResolved->executionModifiers.patchType == PatchInvalid_value)
         {
             compiler->Warning(Format("Domain shader '%s' does not define 'patch_type' for DomainShader/TessellationEvaluationShader, defaulting to 'triangles'", fun->name.c_str()), symbol);
             funResolved->executionModifiers.patchType = PatchTriangles_value;
         }
-
+        if (funResolved->executionModifiers.partitionMethod == PartitionInvalid_value)
+        {
+            compiler->Warning(Format("Domain shader '%s' does not define 'partition', defaulting to 'integer'", fun->name.c_str()), symbol);
+            funResolved->executionModifiers.partitionMethod = PartitionIntegerSteps_value;
+        }
     }
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::GeometryShader)
@@ -3921,6 +3915,7 @@ struct ParameterSetValidationRules
     uint8_t inputIsArray : 1 = 0;
     uint8_t outputIsArray : 1 = 0;
     uint8_t previousOutputIsArray : 1 = 0;
+    uint8_t allowDynamicArray : 1 = 0;
 };
 
 //------------------------------------------------------------------------------
@@ -3930,27 +3925,75 @@ struct ParameterSetValidationRules
 bool 
 ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, const ParameterSetValidationRules rules = ParameterSetValidationRules())
 {
-    TransientArray<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
+    TransientArray<Variable*> previousOutParams = SortAndFilterParameters(outFunc->parameters, false);
+    TransientArray<Variable*> previousInParams = SortAndFilterParameters(outFunc->parameters, true);
+    TransientArray<Variable*> outParams = SortAndFilterParameters(inFunc->parameters, false);
     TransientArray<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
     size_t iterator = 0;
-    for (; iterator < outParams.size && iterator < inParams.size; iterator++)
+    size_t firstArraySize = 0;
+    for (iterator = 0; iterator < outParams.size && iterator < inParams.size; iterator++)
     {
-        Variable* var = outParams.ptr[iterator];
-        Variable::__Resolved* outResolved = Symbol::Resolved(var);
-        Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[iterator]);
-
-        // If parameter, all array types must be sized
-        for (size_t i = 0; i < inParams.ptr[iterator]->type.modifiers.size; i++)
+        if (rules.inputIsArray)
         {
-            if (inParams.ptr[iterator]->type.modifiers[i] == Type::FullType::Modifier::Array)
+            auto inType = inParams.ptr[iterator]->type;
+            if (inType.modifiers.size != 1 || inType.modifiers[0] != Type::FullType::Modifier::Array)
             {
-                if (inParams.ptr[iterator]->type.modifierValues[i] == nullptr)
-                {
-                    compiler->Error(Format("Arguments of array type must be statically sized"), inParams.ptr[iterator]);
-                    return false;
-                }
+                compiler->Error(Format("Expected array type"), inParams.ptr[iterator]);
+                return false;
+            }
+            if (inType.modifierValues[0] == nullptr)
+            {
+                compiler->Error(Format("Expected array size"), inParams.ptr[iterator]);
+                return false;
+            }
+            ValueUnion arraySize;
+            inParams.ptr[iterator]->type.modifierValues[0]->EvalValue(arraySize);
+            if (firstArraySize == 0)
+            {
+                firstArraySize = arraySize.ui[0];
+            }
+            else if (firstArraySize != arraySize.ui[0])
+            {
+                compiler->Error(Format("Expected input to have same sized array type as previous"), inParams.ptr[iterator]);
+                return false;
             }
         }
+
+        // Set this conservatively even if the shader recieving the inputs isn't a hull shader
+        Symbol::Resolved(inFunc)->executionModifiers.patchSize = firstArraySize;
+        firstArraySize = 0;
+        if (rules.outputIsArray)
+        {
+            auto outType = outParams.ptr[iterator]->type;
+            if (outType.modifiers.size != 1 || outType.modifiers[0] != Type::FullType::Modifier::Array)
+            {
+                compiler->Error(Format("Expected array type"), outParams.ptr[iterator]);
+                return false;
+            }
+            if (outType.modifierValues[0] == nullptr)
+            {
+                compiler->Error(Format("Expected array size"), outParams.ptr[iterator]);
+                return false;
+            }
+            ValueUnion arraySize;
+            outParams.ptr[iterator]->type.modifierValues[0]->EvalValue(arraySize);
+            if (firstArraySize == 0)
+            {
+                firstArraySize = arraySize.ui[0];
+            }
+            else if (firstArraySize != arraySize.ui[0])
+            {
+                compiler->Error(Format("Expected output to have same sized array type as previous"), outParams.ptr[iterator]);
+                return false;
+            }
+        }
+    }
+
+    for (iterator = 0; iterator < previousOutParams.size && iterator < inParams.size; iterator++)
+    {
+        Variable* var = previousOutParams.ptr[iterator];
+        Variable::__Resolved* outResolved = Symbol::Resolved(var);
+        Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[iterator]);
 
         // Add transient modifiers from the next stages in parameters to the previous stages out parameters
         ProgramInstance::__Resolved* progRes = Symbol::Resolved(compiler->currentState.prog);
@@ -3974,6 +4017,11 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
         {
             // If in type is removed 1 array level, the types must match
             auto inType = inParams.ptr[iterator]->type;
+            if (inType.modifiers.size == 0)
+            {
+                compiler->Error(Format("Expected array type"), inParams.ptr[iterator]);
+                return false;
+            }
             inType.modifiers.size--;
             inType.modifierValues.size--;
             if (var->type != inType)
@@ -4005,9 +4053,9 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
     // If there is a mismatch in the parameter count and we want to warn, then do so
     if (compiler->options.warnOnUnusedParameter)
     {
-        for (; iterator < outParams.size; iterator++)
+        for (; iterator < previousOutParams.size; iterator++)
         {
-            Variable* var = outParams.ptr[iterator];
+            Variable* var = previousOutParams.ptr[iterator];
             Variable::__Resolved* outResolved = Symbol::Resolved(var);
             compiler->Warning(Format("Unused parameter '%s' (binding %d) from shader '%s' to '%s'", var->name.c_str(), outResolved->outBinding, outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
         }
@@ -4138,6 +4186,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             rules.inputIsArray = 1;
             rules.outputIsArray = 1;
             rules.previousOutputIsArray = 0;
+            rules.allowDynamicArray = 0;
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, hs, rules))
                 return false;
 
@@ -4157,6 +4206,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             rules.inputIsArray = 1;
             rules.outputIsArray = 0;
             rules.previousOutputIsArray = 1;
+            rules.allowDynamicArray = 1;
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ds, rules))
                 return false;
 
@@ -4175,6 +4225,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             rules.inputIsArray = 1;
             rules.outputIsArray = 0;
             rules.previousOutputIsArray = 0;
+            rules.allowDynamicArray = 0;
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, gs, rules))
                 return false;
 
@@ -4522,18 +4573,11 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
 
             static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
             {
-                static constexpr StaticArray derivativeProducingShaders =
-                std::array {
-                    ProgramInstance::__Resolved::EntryType::VertexShader
-                    , ProgramInstance::__Resolved::EntryType::GeometryShader
-                    , ProgramInstance::__Resolved::EntryType::HullShader
-                    , ProgramInstance::__Resolved::EntryType::DomainShader
-                    , ProgramInstance::__Resolved::EntryType::PixelShader
-                };
-                for (const auto shader : derivativeProducingShaders)
-                    if (shader == compiler->currentState.shaderType)
-                        return true;
+                // The only shader type that implicitly produces derivatives are pixel shaders
+                if (compiler->currentState.shaderType == ProgramInstance::__Resolved::EntryType::PixelShader)
+                    return true;
 
+                // Compute, task and mesh are also compatible, however they need explicit derivatives
                 if (compiler->currentState.shaderType == ProgramInstance::__Resolved::ComputeShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::TaskShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::EntryType::MeshShader)
                 {
                     Function::__Resolved* funResolved = Symbol::Resolved(compiler->currentState.function);

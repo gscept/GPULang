@@ -83,8 +83,6 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->leftType.modifierValues.size--;
     }
 
-
-
     this->left->EvalTypeSymbol(thisResolved->lhsType);
     if (thisResolved->lhsType == nullptr)
     {

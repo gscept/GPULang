@@ -3102,9 +3102,9 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     uint32_t val = target.name;
     uint32_t type = target.typeName;
 
-    if (target.derefs > target.addrefs)
+    if (target.derefs > 0 && target.derefs-1 > target.addrefs)
     {
-        for (uint32_t i = 0; i < target.derefs - target.addrefs; i++)
+        for (uint32_t i = 0; i < target.derefs-1 - target.addrefs; i++)
         {
             type = target.parentTypes.back();
             target.parentTypes.pop_back();
@@ -3805,7 +3805,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                     res.parentTypes = varType.parentTypes;
                     res.parentScopes = varType.parentScopes;
                     res.isValue = false;
-                    res.addrefs++; // Variables generally have an extra reference, so add this to compensate for the extra deref
+                    //res.addrefs++; // Variables generally have an extra reference, so add this to compensate for the extra deref
                     BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
                 }
             }
@@ -4511,7 +4511,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         }
 
         // Then call the function
-        uint32_t ret = generator->writer->MappedInstruction(OpFunctionCall, SPVWriter::Section::LocalFunction, returnTypeName.typeName, SPVArg(funName), SPVArgList(argListArray));
+        uint32_t ret = generator->writer->MappedInstruction(OpFunctionCall, SPVWriter::Section::LocalFunction, returnTypeName.typeName, SPVArg(funName), SPVArgList(argListArray), SPVComment(resolvedCall->functionSymbol.c_str()));
         return SPIRVResult(ret, returnTypeName.typeName, true);
     }
     else
@@ -5244,7 +5244,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
                 constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
             SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
-            uint32_t res = generator->writer->MappedInstruction(subOp, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
+            uint32_t res = generator->writer->MappedInstruction(subOp, SPVWriter::Section::LocalFunction, loaded.typeName, loaded, constOne);
             generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, rhs, SPVArg(res));
             if (unaryExpression->isPrefix)
             {
@@ -6272,6 +6272,20 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         , { OutputTopologyTriangles_value, ExecutionModes::OutputTriangleStrip }
     };
 
+    static std::unordered_map<uint32_t, std::string> tessellationDomainMap =
+    {
+        { PatchIsolines_value, "Isolines" }
+        , { PatchTriangles_value, "Triangles" }
+        , { PatchQuads_value, "Quads" }
+    };
+
+    static std::unordered_map<uint32_t, SPVEnum> tessellationDomainEnumMap =
+    {
+        { PatchIsolines_value, ExecutionModes::Isolines }
+        , { PatchTriangles_value, ExecutionModes::Triangles }
+        , { PatchQuads_value, ExecutionModes::Quads }
+    };
+
     this->evaluatingProgram = progResolved;
     for (auto& val : this->shaderValueExpressions)
         val.value;
@@ -6419,16 +6433,17 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             }
             break;
         case ProgramInstance::__Resolved::HullShader:
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, partitionMap[funResolved->executionModifiers.partitionMethod]);
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, windingOrderMap[funResolved->executionModifiers.windingOrder]);
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, inputPrimitiveTopologyEnumMap[funResolved->executionModifiers.inputPrimitiveTopology-1]);
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::OutputVertices, funResolved->executionModifiers.maxOutputVertices);
+
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::OutputVertices, funResolved->executionModifiers.patchSize);
             break;
         case ProgramInstance::__Resolved::DomainShader:
             if (funResolved->executionModifiers.layerOrViewportOutput)
             {
                 this->writer->Extension(SPV_EXT_shader_viewport_index_layer);
             }
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, partitionEnumMap[funResolved->executionModifiers.partitionMethod-1]);
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, windingOrderEnumMap[funResolved->executionModifiers.windingOrder-1]);
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, tessellationDomainEnumMap[funResolved->executionModifiers.patchType-1]);
             break;
         case ProgramInstance::__Resolved::PixelShader:
         {
