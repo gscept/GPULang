@@ -2380,6 +2380,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             if (attr->name == "in")
             {
+                if (varResolved->storage != Storage::Default)
+                {
+                    compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                    return false;
+                }
                 if (!varResolved->usageBits.flags.isEntryPointParameter)
                 {
                     compiler->Error(Format("'in' storage only supported on functions marked as entry_point"), symbol);
@@ -2389,6 +2394,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             else if (attr->name == "out")
             {
+                if (varResolved->storage != Storage::Default)
+                {
+                    compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                    return false;
+                }
                 if (!varResolved->usageBits.flags.isEntryPointParameter)
                 {
                     compiler->Error(Format("'out' storage only supported on functions marked as entry_point"), symbol);
@@ -3667,7 +3677,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             if (varResolved->parameterBits.flags.isPatch
                 && !(compiler->currentState.shaderType == ProgramInstance::__Resolved::HullShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::DomainShader))
             {
-                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'patch' if function is not being used as a HullShader/TessellationControlShader or DomainShader/TessellationEvaluationShader", var->name.c_str(), fun->name.c_str()), var);
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'patch' if function is not being used as a HullShader or DomainShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
@@ -3915,7 +3925,8 @@ struct ParameterSetValidationRules
     uint8_t inputIsArray : 1 = 0;
     uint8_t outputIsArray : 1 = 0;
     uint8_t previousOutputIsArray : 1 = 0;
-    uint8_t allowDynamicArray : 1 = 0;
+    uint8_t allowPatchOutput : 1 = 0;
+    uint8_t allowPatchInput : 1 = 0;
 };
 
 //------------------------------------------------------------------------------
@@ -3935,6 +3946,9 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
     {
         if (rules.inputIsArray)
         {
+            if (rules.allowPatchInput && Symbol::Resolved(inParams.ptr[iterator])->parameterBits.flags.isPatch)
+                continue;
+
             auto inType = inParams.ptr[iterator]->type;
             if (inType.modifiers.size != 1 || inType.modifiers[0] != Type::FullType::Modifier::Array)
             {
@@ -3964,6 +3978,10 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
         firstArraySize = 0;
         if (rules.outputIsArray)
         {
+            // Apply no array requirements on patch inputs
+            if (rules.allowPatchOutput && Symbol::Resolved(outParams.ptr[iterator])->parameterBits.flags.isPatch)
+                continue;
+
             auto outType = outParams.ptr[iterator]->type;
             if (outType.modifiers.size != 1 || outType.modifiers[0] != Type::FullType::Modifier::Array)
             {
@@ -4186,7 +4204,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             rules.inputIsArray = 1;
             rules.outputIsArray = 1;
             rules.previousOutputIsArray = 0;
-            rules.allowDynamicArray = 0;
+            rules.allowPatchOutput = 1;
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, hs, rules))
                 return false;
 
@@ -4206,7 +4224,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             rules.inputIsArray = 1;
             rules.outputIsArray = 0;
             rules.previousOutputIsArray = 1;
-            rules.allowDynamicArray = 1;
+            rules.allowPatchInput = 1;
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ds, rules))
                 return false;
 
@@ -4225,7 +4243,6 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             rules.inputIsArray = 1;
             rules.outputIsArray = 0;
             rules.previousOutputIsArray = 0;
-            rules.allowDynamicArray = 0;
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, gs, rules))
                 return false;
 

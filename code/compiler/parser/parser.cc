@@ -130,6 +130,242 @@ struct CharacterClassInitializer
     }
 } CharacterTableInitializer;
 
+static const uint32_t TOKEN_ASSIGNMENT_OPERATOR_BIT = 0x1;
+static const uint32_t TOKEN_EQUALITY_OPERATOR_BIT = 0x2;
+static const uint32_t TOKEN_COMPARISON_OPERATOR_BIT = 0x4;
+static const uint32_t TOKEN_SHIFT_OPERATOR_BIT = 0x8;
+static const uint32_t TOKEN_ADD_SUB_OPERATOR_BIT = 0x10;
+static const uint32_t TOKEN_MUL_DIV_MOD_OPERATOR_BIT = 0x20;
+static const uint32_t TOKEN_PREFIX_OPERATOR_BIT = 0x40;
+static const uint32_t TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT = 0x80;
+static const uint32_t TOKEN_FUNCTION_ATTRIBUTE_BIT = 0x100;
+static const uint32_t TOKEN_PARAMETER_ATTRIBUTE_BIT = 0x200;
+static const uint32_t TOKEN_VARIABLE_ATTRIBUTE_BIT = 0x400;
+static const uint32_t TOKEN_VARIABLE_STORAGE_BIT = 0x800;
+static const uint32_t TOKEN_PARAMETER_STORAGE_BIT = 0x1000;
+static const uint32_t TOKEN_OPERATOR_BIT = 0x2000;
+static const uint32_t TOKEN_EXPRESSION_BIT = 0x4000;
+static const uint32_t TOKEN_KEYWORD_BIT = 0x8000;
+uint32_t TokenClassTable[(uint32_t)TokenType::NumTokenTypes];
+
+uint32_t PrefixAssociativityTable[(uint32_t)TokenType::NumTokenTypes];
+uint32_t PostfixAssociativityTable[(uint32_t)TokenType::NumTokenTypes];
+uint32_t PrefixPrecedenceTable[(uint32_t)TokenType::NumTokenTypes];
+uint32_t PostfixPrecedenceTable[(uint32_t)TokenType::NumTokenTypes];
+static const uint32_t ASSOC_LEFT = 0;
+static const uint32_t ASSOC_RIGHT = 1;
+
+static void SetupTokenClassTable()
+{
+    memset(TokenClassTable, 0x0, sizeof(TokenClassTable));
+    TokenClassTable[(uint32_t)TokenType::AddAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::SubAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::MulAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::DivAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::ModAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::AndAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::OrAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::XorAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Assign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::Equal] |= TOKEN_EQUALITY_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::NotEqual] |= TOKEN_EQUALITY_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::LeftAngle] |= TOKEN_COMPARISON_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LessThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightAngle] |= TOKEN_COMPARISON_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::GreaterThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::LeftShift] |= TOKEN_SHIFT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightShift] |= TOKEN_SHIFT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_ADD_SUB_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_ADD_SUB_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Div] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mod] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Not] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Complement] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Increment] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Decrement] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_OPERATOR_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::LogicalOr] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LogicalAnd] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Or] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Arrow] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Question] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Colon] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftBracket] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightBracket] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftParant] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightParant] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Identifier] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Integer] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::UnsignedInteger] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Hex] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::UnsignedHex] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Float] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Double] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Bool] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Quote] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Declared] |= TOKEN_EXPRESSION_BIT;
+
+
+
+    TokenClassTable[(uint32_t)TokenType::EntryPoint_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Threads_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::ThreadsX_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::ThreadsY_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::ThreadsZ_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::EarlyDepth_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::DepthLesser_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::DepthGreater_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::SubgroupSize_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::SubgroupsPerWorkgroup_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::InputVertices_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::MaxOutputVertices_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Winding_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::InputTopology_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::OutputTopology_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::PatchType_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Partition_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::PixelOrigin_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::ComputeDerivatives_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::Binding_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Group_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Volatile_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Atomic_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::NoRead_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::NonTemporal_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::NoReflect_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::In_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Out_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Uniform_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Workgroup_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::RayPayload_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::CallableData_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::RayHitAttribute_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::NoInterpolate_Modifier] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::NoPerspective_Modifier] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Patch_Domain] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Binding_Decorator] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+
+    TokenClassTable[(uint32_t)TokenType::Const_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Var_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Uniform_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Workgroup_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Inline_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::LinkDefined_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_KEYWORD_BIT;
+
+    memset(PrefixAssociativityTable, 0x0, sizeof(PrefixAssociativityTable));
+    memset(PostfixAssociativityTable, 0x0, sizeof(PostfixAssociativityTable));
+    PrefixAssociativityTable[(uint32_t)TokenType::Add] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Mul] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Sub] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Not] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Complement] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::And] = ASSOC_RIGHT;
+
+    PostfixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Add] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Sub] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Mul] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Div] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Mod] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::And] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Or] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Xor] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::AddAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::SubAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::MulAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::DivAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::ModAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::AndAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::OrAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::XorAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Question] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Comma] = ASSOC_LEFT;
+
+    memset(PostfixPrecedenceTable, 0x0, sizeof(PostfixPrecedenceTable));
+    PostfixPrecedenceTable[(uint32_t)TokenType::Increment] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Decrement] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Dot] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Arrow] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAdd] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixSub] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixMul] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAnd] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixIncrement] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixDecrement] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Not] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Mul] = 5;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Div] = 5;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Mod] = 5;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Add] = 6;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Sub] = 6;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftShift] = 7;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightShift] = 7;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftAngle] = 9;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LessThanEqual] = 9;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightAngle] = 9;
+    PostfixPrecedenceTable[(uint32_t)TokenType::GreaterThanEqual] = 9;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Equal] = 10;
+    PostfixPrecedenceTable[(uint32_t)TokenType::NotEqual] = 10;
+    PostfixPrecedenceTable[(uint32_t)TokenType::And] = 11;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Xor] = 12;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Or] = 13;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LogicalAnd] = 14;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LogicalOr] = 15;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Assign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::AddAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::SubAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::MulAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::DivAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::ModAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftShiftAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightShiftAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::AndAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::OrAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::XorAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Comma] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::ArrayInitializer] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftBracket] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightBracket] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftParant] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightParant] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Question] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Subscript] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Call] = 0xFFFFFFFF;
+
+    memset(PrefixPrecedenceTable, 0x0, sizeof(PrefixPrecedenceTable));
+    PrefixPrecedenceTable[(uint32_t)TokenType::Add] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Sub] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Mul] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Increment] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Decrement] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Complement] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Not] = 3;
+}
+
 constexpr StaticMap HardCodedTokens = std::array{
     std::pair{ "alias"_h, TokenType::TypeAlias }
     , std::pair{ "as"_h, TokenType::As }
@@ -1047,7 +1283,14 @@ UnexpectedToken(const TokenStream& stream, const char* expected)
     
     GPULangDiagnostic diagnostic;
     diagnostic.severity = GPULangDiagnostic::Severity::Error;
-    diagnostic.error = TStr("Expected ", expected);
+    if ((TokenClassTable[(uint32_t)stream.Type(0)] & TOKEN_KEYWORD_BIT) == TOKEN_KEYWORD_BIT)
+    {
+        diagnostic.error = TStr("Expected ", expected, ", got keyword '", tok.text, "'");
+    }
+    else
+    {
+        diagnostic.error = TStr("Expected ", expected);
+    }
     diagnostic.file = tok.path;
     diagnostic.line = tok.startLine;
     diagnostic.column = tok.startChar;
@@ -1152,240 +1395,6 @@ ParseExpressionList(TokenStream& stream, ParseResult& ret)
     return FixedArray<Expression*>(expressions);
 }
 
-static const uint32_t TOKEN_ASSIGNMENT_OPERATOR_BIT = 0x1;
-static const uint32_t TOKEN_EQUALITY_OPERATOR_BIT = 0x2;
-static const uint32_t TOKEN_COMPARISON_OPERATOR_BIT = 0x4;
-static const uint32_t TOKEN_SHIFT_OPERATOR_BIT = 0x8;
-static const uint32_t TOKEN_ADD_SUB_OPERATOR_BIT = 0x10;
-static const uint32_t TOKEN_MUL_DIV_MOD_OPERATOR_BIT = 0x20;
-static const uint32_t TOKEN_PREFIX_OPERATOR_BIT = 0x40;
-static const uint32_t TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT = 0x80;
-static const uint32_t TOKEN_FUNCTION_ATTRIBUTE_BIT = 0x100;
-static const uint32_t TOKEN_PARAMETER_ATTRIBUTE_BIT = 0x200;
-static const uint32_t TOKEN_VARIABLE_ATTRIBUTE_BIT = 0x400;
-static const uint32_t TOKEN_VARIABLE_STORAGE_BIT = 0x800;
-static const uint32_t TOKEN_PARAMETER_STORAGE_BIT = 0x1000;
-static const uint32_t TOKEN_OPERATOR_BIT = 0x2000;
-static const uint32_t TOKEN_EXPRESSION_BIT = 0x4000;
-uint32_t TokenClassTable[(uint32_t)TokenType::NumTokenTypes];
-
-uint32_t PrefixAssociativityTable[(uint32_t)TokenType::NumTokenTypes];
-uint32_t PostfixAssociativityTable[(uint32_t)TokenType::NumTokenTypes];
-uint32_t PrefixPrecedenceTable[(uint32_t)TokenType::NumTokenTypes];
-uint32_t PostfixPrecedenceTable[(uint32_t)TokenType::NumTokenTypes];
-static const uint32_t ASSOC_LEFT = 0;
-static const uint32_t ASSOC_RIGHT = 1;
-
-static void SetupTokenClassTable()
-{
-    memset(TokenClassTable, 0x0, sizeof(TokenClassTable));
-    TokenClassTable[(uint32_t)TokenType::AddAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::SubAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::MulAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::DivAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::ModAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::LeftShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::AndAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::OrAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::XorAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Assign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::Equal] |= TOKEN_EQUALITY_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::NotEqual] |= TOKEN_EQUALITY_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::LeftAngle] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::LessThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightAngle] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::GreaterThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::LeftShift] |= TOKEN_SHIFT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightShift] |= TOKEN_SHIFT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_ADD_SUB_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_ADD_SUB_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Div] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Mod] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_PREFIX_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_PREFIX_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Not] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Complement] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Increment] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Decrement] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT  | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_PREFIX_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_OPERATOR_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::LogicalOr] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::LogicalAnd] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Or] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Arrow] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Question] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Colon] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::LeftBracket] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightBracket] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::LeftParant] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightParant] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Identifier] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Integer] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::UnsignedInteger] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Hex] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::UnsignedHex] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Float] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Double] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Bool] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Quote] |= TOKEN_EXPRESSION_BIT;
-    TokenClassTable[(uint32_t)TokenType::Declared] |= TOKEN_EXPRESSION_BIT;
-
-    
-    
-    TokenClassTable[(uint32_t)TokenType::EntryPoint_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Threads_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::ThreadsX_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::ThreadsY_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::ThreadsZ_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::EarlyDepth_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::DepthLesser_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::DepthGreater_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::SubgroupSize_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::SubgroupsPerWorkgroup_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::InputVertices_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::MaxOutputVertices_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Winding_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::InputTopology_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::OutputTopology_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::PatchType_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Partition_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::PixelOrigin_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::ComputeDerivatives_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::Binding_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Group_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Volatile_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Atomic_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::NoRead_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::NonTemporal_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::NoReflect_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::In_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Out_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Uniform_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Workgroup_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::RayPayload_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::CallableData_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::RayHitAttribute_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::NoInterpolate_Modifier] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::NoPerspective_Modifier] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Patch_Domain] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Binding_Decorator] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
-    
-    TokenClassTable[(uint32_t)TokenType::Const_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Var_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Uniform_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Workgroup_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
-    TokenClassTable[(uint32_t)TokenType::Inline_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
-    TokenClassTable[(uint32_t)TokenType::LinkDefined_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
-    
-    memset(PrefixAssociativityTable, 0x0, sizeof(PrefixAssociativityTable));
-    memset(PostfixAssociativityTable, 0x0, sizeof(PostfixAssociativityTable));
-    PrefixAssociativityTable[(uint32_t)TokenType::Add] = ASSOC_RIGHT;
-    PrefixAssociativityTable[(uint32_t)TokenType::Mul] = ASSOC_RIGHT;
-    PrefixAssociativityTable[(uint32_t)TokenType::Sub] = ASSOC_RIGHT;
-    PrefixAssociativityTable[(uint32_t)TokenType::Not] = ASSOC_RIGHT;
-    PrefixAssociativityTable[(uint32_t)TokenType::Complement] = ASSOC_RIGHT;
-    PrefixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_RIGHT;
-    PrefixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_RIGHT;
-    PrefixAssociativityTable[(uint32_t)TokenType::And] = ASSOC_RIGHT;
-    
-    PostfixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Add] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Sub] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Mul] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Div] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Mod] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::And] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Or] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Xor] = ASSOC_LEFT;
-    PostfixAssociativityTable[(uint32_t)TokenType::AddAssign] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::SubAssign] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::MulAssign] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::DivAssign] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::ModAssign] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::AndAssign] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::OrAssign] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::XorAssign] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Question] = ASSOC_RIGHT;
-    PostfixAssociativityTable[(uint32_t)TokenType::Comma] = ASSOC_LEFT;
-    
-    memset(PostfixPrecedenceTable, 0x0, sizeof(PostfixPrecedenceTable));
-    PostfixPrecedenceTable[(uint32_t)TokenType::Increment] = 2;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Decrement] = 2;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Dot] = 2;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Arrow] = 2;
-    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAdd] = 3;
-    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixSub] = 3;
-    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixMul] = 3;
-    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAnd] = 3;
-    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixIncrement] = 3;
-    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixDecrement] = 3;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Not] = 3;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Mul] = 5;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Div] = 5;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Mod] = 5;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Add] = 6;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Sub] = 6;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LeftShift] = 7;
-    PostfixPrecedenceTable[(uint32_t)TokenType::RightShift] = 7;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LeftAngle] = 9;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LessThanEqual] = 9;
-    PostfixPrecedenceTable[(uint32_t)TokenType::RightAngle] = 9;
-    PostfixPrecedenceTable[(uint32_t)TokenType::GreaterThanEqual] = 9;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Equal] = 10;
-    PostfixPrecedenceTable[(uint32_t)TokenType::NotEqual] = 10;
-    PostfixPrecedenceTable[(uint32_t)TokenType::And] = 11;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Xor] = 12;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Or] = 13;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LogicalAnd] = 14;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LogicalOr] = 15;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Assign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::AddAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::SubAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::MulAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::DivAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::ModAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LeftShiftAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::RightShiftAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::AndAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::OrAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::XorAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Comma] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::ArrayInitializer] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LeftBracket] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::RightBracket] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LeftParant] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::RightParant] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Question] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Subscript] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Call] = 0xFFFFFFFF;
-    
-    memset(PrefixPrecedenceTable, 0x0, sizeof(PrefixPrecedenceTable));
-    PrefixPrecedenceTable[(uint32_t)TokenType::Add] = 3;
-    PrefixPrecedenceTable[(uint32_t)TokenType::Sub] = 3;
-    PrefixPrecedenceTable[(uint32_t)TokenType::Mul] = 3;
-    PrefixPrecedenceTable[(uint32_t)TokenType::Increment] = 3;
-    PrefixPrecedenceTable[(uint32_t)TokenType::Decrement] = 3;
-    PrefixPrecedenceTable[(uint32_t)TokenType::Complement] = 3;
-    PrefixPrecedenceTable[(uint32_t)TokenType::Not] = 3;
-}
 
 
 //------------------------------------------------------------------------------
@@ -2918,7 +2927,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
         {
             if (paramAttributes.size > 0)
             {
-                ret.diagnostics.Append(UnexpectedToken(stream, "parameter name"));
+                ret.diagnostics.Append(UnexpectedToken(stream, "parameter name or attribute"));
                 return nullptr;
             }
             else

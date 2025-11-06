@@ -252,7 +252,7 @@ struct TokenStream
         this->typeIt += count;
     }
 
-    TokenType Type(int64_t lookAhead = 0)
+    const TokenType Type(int64_t lookAhead = 0) const
     {
         if (this->typeIt + lookAhead > this->typeEnd)
             return TokenType::InvalidToken;
