@@ -51,10 +51,13 @@ public:
 	void WriteBytes(const char* ptr, unsigned numbytes);
     /// write type as bytes
     template <typename T> size_t WriteType(const T& data);
+    /// Increment decode byte size
+    void IncrementDecodeSize(uint32_t size) { this->numBytesWritten += size; }
 
 private:
 	std::string path;
 	std::ofstream output;
+    uint32_t numBytesWritten;
 	bool isOpen;
 }; 
 

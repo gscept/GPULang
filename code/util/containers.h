@@ -595,6 +595,22 @@ struct PinnedArray
         assert(it >= this->data && it <= this->data + this->size);
         memmove(it, it + 1, (this->end() - it) * sizeof(TYPE));
     }
+
+    void Prepend(const TYPE& element)
+    {
+        this->Grow(1);
+        memmove(this->data + 1, this->data, this->size * sizeof(TYPE));
+        if (std::is_trivially_copyable<TYPE>::value)
+        {
+            memcpy(this->data, &element, sizeof(TYPE));
+            this->size++;
+        }
+        else
+        {
+            this->data[0] = element;
+        }
+
+    }
     
     void Prepend(const PinnedArray<TYPE>& elements)
     {

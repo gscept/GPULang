@@ -10,6 +10,8 @@
 #include "generators/reflection/hgenerator.h"
 #include "util.h"
 #include "ast/expressions/boolexpression.h"
+#include "ast/statements/ifstatement.h"
+#include "ast/statements/scopestatement.h"
 #include "ast/types/type.h"
 #include "ast/function.h"
 #include "ast/variable.h"
@@ -567,6 +569,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     this->validator->defaultGroup = this->options.defaultGroupBinding;
 
     this->symbols = root->symbols;
+    this->symbols.Prepend(&this->defaultRenderState);
 
     this->performanceTimer.Start();
 
@@ -652,31 +655,32 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     if (!ret || this->hasErrors)
         return false;
 
-    // output binary if possible
-    if (binaryWriter.Open())
+    // Output binary if file can be opened and there are programs to dump
+    if (programs.size() > 0)
     {
-        this->performanceTimer.Start();
+        if (binaryWriter.Open())
+        {
+            this->performanceTimer.Start();
 
-        // write magic
-        binaryWriter.WriteInt('AFX3'); // Homage to AnyFX
+            // write magic
+            binaryWriter.WriteInt('AFX3'); // Homage to AnyFX
 
-        // run binary output step
-        Serialize::DynamicLengthBlob blob;
-        std::vector<Symbol*> symbolsWithBuiltins = { &this->defaultRenderState };
-        symbolsWithBuiltins.insert(symbolsWithBuiltins.end(), this->symbols.begin(), this->symbols.end());
-        this->OutputBinary(symbolsWithBuiltins, binaryWriter, blob);
+            // run binary output step
+            Serialize::DynamicLengthBlob blob;
+            this->OutputBinary(this->symbols, binaryWriter, blob);
 
-        // output dynamic blob
-        binaryWriter.WriteBytes(&blob.data[0], blob.iterator);
+            // output dynamic blob
+            binaryWriter.WriteBytes(&blob.data[0], blob.iterator);
 
-        // write size of dynamic blob at the end
-        binaryWriter.WriteUInt(blob.iterator);
-        binaryWriter.Close();
+            // write size of dynamic blob at the end
+            binaryWriter.WriteUInt(blob.iterator);
+            binaryWriter.Close();
 
-        this->performanceTimer.Stop();
+            this->performanceTimer.Stop();
 
-        if (this->options.emitTimings)
-            this->performanceTimer.Print("Reflection serialization");
+            if (this->options.emitTimings)
+                this->performanceTimer.Print("Reflection serialization");
+        }
     }
 
     // header writing is optional
@@ -711,6 +715,7 @@ Compiler::Validate(Effect* root)
     this->validator->defaultGroup = this->options.defaultGroupBinding;
 
     this->symbols = root->symbols;
+    this->symbols.Prepend(&this->defaultRenderState);
 
     this->performanceTimer.Start();
 
@@ -918,7 +923,7 @@ WriteAnnotation(Compiler* compiler, const Annotation* annot, size_t offset, Seri
 {
     Serialize::Annotation output;
     output.nameLength = annot->name.len;
-    output.nameOffset = dynamicDataBlob.Write(annot->name.c_str(), annot->name.len);
+    output.nameOffset = dynamicDataBlob.WriteString(annot->name.c_str(), annot->name.len);
     if (annot->value != nullptr)
     {
         switch (annot->value->symbolType)
@@ -926,7 +931,7 @@ WriteAnnotation(Compiler* compiler, const Annotation* annot, size_t offset, Seri
         case Symbol::StringExpressionType:
         {
             TransientString str = annot->value->EvalString();
-            output.data.s.stringOffset = dynamicDataBlob.Write(str.c_str(), str.size);
+            output.data.s.stringOffset = dynamicDataBlob.WriteString(str.c_str(), str.size);
             output.data.s.stringLength = str.size;
             output.type = Serialize::StringType;
             break;
@@ -977,23 +982,60 @@ WriteAnnotation(Compiler* compiler, const Annotation* annot, size_t offset, Seri
 /**
 */
 void 
-Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob)
+Compiler::OutputBinary(const PinnedArray<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob)
 {
-    for (uint32_t i = 0; i < symbols.size(); i++)
+    for (uint32_t i = 0; i < symbols.size; i++)
     {
         Symbol* symbol = symbols[i];
-        if (symbol->symbolType == Symbol::ProgramInstanceType)
-        {
-            ProgramInstance* program = static_cast<ProgramInstance*>(symbol);
-            ProgramInstance::__Resolved* resolved = static_cast<ProgramInstance::__Resolved*>(symbol->resolved);
-            Serialize::Program output;
-            output.nameLength = symbol->name.len;
-            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
+        this->OutputSymbolToBinary(symbol, writer, dynamicDataBlob);
+    }
+}
 
-            output.rayHitAttributeSize = 0;
-            output.rayPayloadSize = 0;
-            output.vsInputsLength = 0;
-            output.patchSize = 0;
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob)
+{
+    if (symbol->symbolType == Symbol::GenerateType)
+    {
+        Generate* generate = static_cast<Generate*>(symbol);
+        this->OutputBinary(generate->symbols, writer, dynamicDataBlob);
+    }
+    else if (symbol->symbolType == Symbol::IfStatementType)
+    {
+        IfStatement* cond = static_cast<IfStatement*>(symbol);
+        ValueUnion val;
+        if (cond->condition->EvalValue(val))
+        {
+            if (val.b[0])
+            {
+                ScopeStatement* scope = static_cast<ScopeStatement*>(cond->ifStatement);
+                this->OutputBinary(scope->symbols, writer, dynamicDataBlob);
+            }
+            else if (cond->elseStatement != nullptr)
+            {
+                this->OutputSymbolToBinary(cond->elseStatement, writer, dynamicDataBlob);
+            }
+        }
+    }
+    else if (symbol->symbolType == Symbol::ScopeStatementType)
+    {
+        ScopeStatement* scope = static_cast<ScopeStatement*>(symbol);
+        this->OutputBinary(scope->symbols, writer, dynamicDataBlob);
+    }
+    else if (symbol->symbolType == Symbol::ProgramInstanceType)
+    {
+        ProgramInstance* program = static_cast<ProgramInstance*>(symbol);
+        ProgramInstance::__Resolved* resolved = static_cast<ProgramInstance::__Resolved*>(symbol->resolved);
+        Serialize::Program output;
+        output.nameLength = symbol->name.len;
+        output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
+
+        output.rayHitAttributeSize = 0;
+        output.rayPayloadSize = 0;
+        output.vsInputsLength = 0;
+        output.patchSize = 0;
 
 #define WRITE_BINARY(x, y)\
     if (resolved->usage.flags.has##x)\
@@ -1008,7 +1050,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
         output.y.binaryLength = 0;\
     }
 
-            WRITE_BINARY(VertexShader, vs)
+        WRITE_BINARY(VertexShader, vs)
             WRITE_BINARY(HullShader, hs)
             WRITE_BINARY(DomainShader, ds)
             WRITE_BINARY(GeometryShader, gs)
@@ -1040,338 +1082,349 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     }
                 }
             }
-            if (resolved->usage.flags.hasHullShader)
-            {
-                Function* hs = (Function*)resolved->mappings[ProgramInstance::__Resolved::HullShader];
-                Function::__Resolved* hsRes = Symbol::Resolved(hs);
-                output.patchSize = hsRes->executionModifiers.maxOutputVertices;
-            }
-            if (resolved->usage.flags.hasRayGenerationShader)
-            {
-                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayGenerationShader];
-                Function::__Resolved* shRes = Symbol::Resolved(sh);
-                for (const Variable* var : sh->parameters)
-                {
-                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
-                    if (varRes->storage == Storage::RayPayload)
-                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
-                }
-            }
-            if (resolved->usage.flags.hasRayAnyHitShader)
-            {
-                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayAnyHitShader];
-                Function::__Resolved* shRes = Symbol::Resolved(sh);
-                for (const Variable* var : sh->parameters)
-                {
-                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
-                    if (varRes->storage == Storage::RayPayloadInput)
-                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
-                    else if (varRes->storage == Storage::RayHitAttribute)
-                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
-                }
-            }
-            if (resolved->usage.flags.hasRayClosestHitShader)
-            {
-                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayClosestHitShader];
-                Function::__Resolved* shRes = Symbol::Resolved(sh);
-                for (const Variable* var : sh->parameters)
-                {
-                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
-                    if (varRes->storage == Storage::RayPayload || varRes->storage == Storage::RayPayloadInput)
-                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
-                    else if (varRes->storage == Storage::RayHitAttribute)
-                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
-                }
-            }
-            if (resolved->usage.flags.hasRayMissShader)
-            {
-                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayMissShader];
-                Function::__Resolved* shRes = Symbol::Resolved(sh);
-                for (const Variable* var : sh->parameters)
-                {
-                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
-                    if (varRes->storage == Storage::RayPayload || varRes->storage == Storage::RayPayloadInput)
-                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
-                }
-            }
-            if (resolved->usage.flags.hasRayIntersectionShader)
-            {
-                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayIntersectionShader];
-                Function::__Resolved* shRes = Symbol::Resolved(sh);
-                for (const Variable* var : sh->parameters)
-                {
-                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
-                    if (varRes->storage == Storage::RayHitAttribute)
-                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
-                }
-            }
-
-            if (resolved->usage.flags.hasRenderState)
-            {
-                Symbol* renderState = resolved->mappings[ProgramInstance::__Resolved::RenderState];
-                output.renderStateNameLength = renderState->name.len;
-                output.renderStateNameOffset = dynamicDataBlob.WriteString(renderState->name.c_str(), renderState->name.len);
-            }
-            else
-            {
-                output.renderStateNameLength = 0;
-                output.renderStateNameOffset = 0;
-            }
-
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(program->annotations.size);
-            output.annotationsCount = program->annotations.size;
-
-            size_t offset = output.annotationsOffset;
-            for (const Annotation* annot : program->annotations)
-            {
-                WriteAnnotation(this, annot, offset, dynamicDataBlob);
-                offset += sizeof(Serialize::Annotation);
-            }
-
-            writer.WriteType(output);
-        }
-        else if (symbol->symbolType == Symbol::RenderStateInstanceType)
+        if (resolved->usage.flags.hasHullShader)
         {
-            RenderStateInstance* rend = static_cast<RenderStateInstance*>(symbol);
-
-            auto resolved = Symbol::Resolved(rend);
-            Serialize::RenderState output;
-            output.nameLength = symbol->name.len;
-            output.nameOffset = dynamicDataBlob.Write(symbol->name.c_str(), symbol->name.len);
-            output.depthClampEnabled = resolved->depthClampEnabled;
-            output.noPixels = resolved->noPixels;
-            output.rasterizationMode = resolved->rasterizationMode;
-            output.cullMode = resolved->cullMode;
-            output.windingOrderMode = resolved->windingOrderMode;
-            output.depthBiasEnabled = resolved->depthBiasEnabled;
-            output.depthBiasFactor = resolved->depthBiasFactor;
-            output.depthBiasClamp = resolved->depthBiasClamp;
-            output.depthBiasSlopeFactor = resolved->depthBiasSlopeFactor;
-            output.lineWidth = resolved->lineWidth;
-            output.depthTestEnabled = resolved->depthTestEnabled;
-            output.depthWriteEnabled = resolved->depthWriteEnabled;
-            output.depthCompare = resolved->depthCompare;
-            output.depthBoundsTestEnabled = resolved->depthBoundsTestEnabled;
-            output.minDepthBounds = resolved->minDepthBounds;
-            output.maxDepthBounds = resolved->maxDepthBounds;
-            output.scissorEnabled = resolved->scissorEnabled;
-            output.stencilEnabled = resolved->stencilEnabled;
-            output.frontStencilState = resolved->frontStencilState;
-            output.backStencilState = resolved->backStencilState;
-            output.logicOpEnabled = resolved->logicOpEnabled;
-            output.logicOp = resolved->logicOp;
-            output.depthClampEnabled = resolved->depthClampEnabled;
-            output.backStencilState = resolved->backStencilState;
-            output.blendConstants[0] = resolved->blendConstants[0];
-            output.blendConstants[1] = resolved->blendConstants[1];
-            output.blendConstants[2] = resolved->blendConstants[2];
-            output.blendConstants[3] = resolved->blendConstants[3];
-
-            output.blendStatesOffset = dynamicDataBlob.iterator;
-            output.blendStatesCount = 8;
-            for (int i = 0; i < 8; i++)
-            {
-                const Serialization::BlendState& state = resolved->blendStates[i];
-                dynamicDataBlob.Write(state);
-            }
-
-            output.annotationsOffset = 0;
-            output.annotationsCount = 0;
-
-            writer.WriteType(output);
+            Function* hs = (Function*)resolved->mappings[ProgramInstance::__Resolved::HullShader];
+            Function::__Resolved* hsRes = Symbol::Resolved(hs);
+            output.patchSize = hsRes->executionModifiers.maxOutputVertices;
         }
-        else if (symbol->symbolType == Symbol::SamplerStateInstanceType)
+        if (resolved->usage.flags.hasRayGenerationShader)
         {
-            SamplerStateInstance* sampler = static_cast<SamplerStateInstance*>(symbol);
-            SamplerStateInstance::__Resolved* resolved = Symbol::Resolved(sampler);
-            Serialize::SamplerState output;
-
-            output.binding = resolved->binding;
-            output.group = resolved->group;
-            output.visibility.bits = resolved->visibilityBits.bits;
-
-            output.nameLength = symbol->name.len;
-            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
-            output.addressU = resolved->addressU;
-            output.addressV = resolved->addressV;
-            output.addressW = resolved->addressW;
-            output.minFilter = resolved->minFilter;
-            output.magFilter = resolved->magFilter;
-            output.mipFilter = resolved->mipFilter;
-            output.mipLodBias = resolved->mipLodBias;
-            output.anisotropicEnabled = resolved->anisotropicEnabled;
-            output.maxAnisotropy = resolved->maxAnisotropy;
-            output.compareSamplerEnabled = resolved->compareSamplerEnabled;
-            output.compareMode = resolved->compareMode;
-            output.minLod = resolved->minLod;
-            output.maxLod = resolved->maxLod;
-            output.borderColor = resolved->borderColor;
-            output.unnormalizedSamplingEnabled = resolved->unnormalizedSamplingEnabled;
-
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.size);
-            output.annotationsCount = sampler->annotations.size;
-
-            size_t annotOffset = output.annotationsOffset;
-            for (const Annotation* annot : sampler->annotations)
+            Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayGenerationShader];
+            Function::__Resolved* shRes = Symbol::Resolved(sh);
+            for (const Variable* var : sh->parameters)
             {
-                WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
-                annotOffset += sizeof(Serialize::Annotation);
+                const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                if (varRes->storage == Storage::RayPayload)
+                    output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
             }
-
-            writer.WriteType(output);
         }
-        else if (symbol->symbolType == Symbol::StructureType)
+        if (resolved->usage.flags.hasRayAnyHitShader)
         {
-            Structure* structure = static_cast<Structure*>(symbol);
-            Structure::__Resolved* resolved = static_cast<Structure::__Resolved*>(symbol->resolved);
-            Serialize::Structure output;
-            output.isUniform = false;
-            output.isMutable = false;
-            output.nameLength = symbol->name.len;
-            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
-            output.size = resolved->byteSize;
-            if (resolved->usageFlags.flags.isUniformBuffer)
+            Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayAnyHitShader];
+            Function::__Resolved* shRes = Symbol::Resolved(sh);
+            for (const Variable* var : sh->parameters)
             {
-                output.isUniform = true;
+                const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                if (varRes->storage == Storage::RayPayloadInput)
+                    output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                else if (varRes->storage == Storage::RayHitAttribute)
+                    output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
             }
-            else if (resolved->usageFlags.flags.isMutableBuffer)
+        }
+        if (resolved->usage.flags.hasRayClosestHitShader)
+        {
+            Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayClosestHitShader];
+            Function::__Resolved* shRes = Symbol::Resolved(sh);
+            for (const Variable* var : sh->parameters)
             {
-                output.isMutable = true;
+                const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                if (varRes->storage == Storage::RayPayload || varRes->storage == Storage::RayPayloadInput)
+                    output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                else if (varRes->storage == Storage::RayHitAttribute)
+                    output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
             }
-
-            output.variablesCount = 0;
-            for (Symbol* sym : structure->symbols)
+        }
+        if (resolved->usage.flags.hasRayMissShader)
+        {
+            Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayMissShader];
+            Function::__Resolved* shRes = Symbol::Resolved(sh);
+            for (const Variable* var : sh->parameters)
             {
-                if (sym->symbolType == Symbol::VariableType)
-                    output.variablesCount++;
+                const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                if (varRes->storage == Storage::RayPayload || varRes->storage == Storage::RayPayloadInput)
+                    output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
             }
-
-            // start serializing variables
-            output.variablesOffset = dynamicDataBlob.Reserve<Serialize::Variable>(output.variablesCount);
-
-            size_t offset = output.variablesOffset;
-            for (Symbol* sym : structure->symbols)
+        }
+        if (resolved->usage.flags.hasRayIntersectionShader)
+        {
+            Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayIntersectionShader];
+            Function::__Resolved* shRes = Symbol::Resolved(sh);
+            for (const Variable* var : sh->parameters)
             {
-                if (sym->symbolType == Symbol::VariableType)
+                const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                if (varRes->storage == Storage::RayHitAttribute)
+                    output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
+            }
+        }
+
+        if (resolved->usage.flags.hasRenderState)
+        {
+            Symbol* renderState = resolved->mappings[ProgramInstance::__Resolved::RenderState];
+            output.renderStateNameLength = renderState->name.len;
+            output.renderStateNameOffset = dynamicDataBlob.WriteString(renderState->name.c_str(), renderState->name.len);
+        }
+        else
+        {
+            output.renderStateNameLength = 0;
+            output.renderStateNameOffset = 0;
+        }
+
+        output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(program->annotations.size);
+        output.annotationsCount = program->annotations.size;
+
+        size_t offset = output.annotationsOffset;
+        for (const Annotation* annot : program->annotations)
+        {
+            WriteAnnotation(this, annot, offset, dynamicDataBlob);
+            writer.IncrementDecodeSize(sizeof(Deserialize::Annotation));
+            offset += sizeof(Serialize::Annotation);
+        }
+
+        writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Program));
+    }
+    else if (symbol->symbolType == Symbol::RenderStateInstanceType)
+    {
+        RenderStateInstance* rend = static_cast<RenderStateInstance*>(symbol);
+
+        auto resolved = Symbol::Resolved(rend);
+        Serialize::RenderState output;
+        output.nameLength = symbol->name.len;
+        output.nameOffset = dynamicDataBlob.Write(symbol->name.c_str(), symbol->name.len);
+        output.depthClampEnabled = resolved->depthClampEnabled;
+        output.noPixels = resolved->noPixels;
+        output.rasterizationMode = resolved->rasterizationMode;
+        output.cullMode = resolved->cullMode;
+        output.windingOrderMode = resolved->windingOrderMode;
+        output.depthBiasEnabled = resolved->depthBiasEnabled;
+        output.depthBiasFactor = resolved->depthBiasFactor;
+        output.depthBiasClamp = resolved->depthBiasClamp;
+        output.depthBiasSlopeFactor = resolved->depthBiasSlopeFactor;
+        output.lineWidth = resolved->lineWidth;
+        output.depthTestEnabled = resolved->depthTestEnabled;
+        output.depthWriteEnabled = resolved->depthWriteEnabled;
+        output.depthCompare = resolved->depthCompare;
+        output.depthBoundsTestEnabled = resolved->depthBoundsTestEnabled;
+        output.minDepthBounds = resolved->minDepthBounds;
+        output.maxDepthBounds = resolved->maxDepthBounds;
+        output.scissorEnabled = resolved->scissorEnabled;
+        output.stencilEnabled = resolved->stencilEnabled;
+        output.frontStencilState = resolved->frontStencilState;
+        output.backStencilState = resolved->backStencilState;
+        output.logicOpEnabled = resolved->logicOpEnabled;
+        output.logicOp = resolved->logicOp;
+        output.depthClampEnabled = resolved->depthClampEnabled;
+        output.backStencilState = resolved->backStencilState;
+        output.blendConstants[0] = resolved->blendConstants[0];
+        output.blendConstants[1] = resolved->blendConstants[1];
+        output.blendConstants[2] = resolved->blendConstants[2];
+        output.blendConstants[3] = resolved->blendConstants[3];
+
+        output.blendStatesOffset = dynamicDataBlob.iterator;
+        output.blendStatesCount = 8;
+        for (int i = 0; i < 8; i++)
+        {
+            const Serialization::BlendState& state = resolved->blendStates[i];
+            dynamicDataBlob.Write(state);
+        }
+
+        output.annotationsOffset = 0;
+        output.annotationsCount = 0;
+
+        writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::RenderState));
+    } 
+    else if (symbol->symbolType == Symbol::SamplerStateInstanceType)
+    {
+        SamplerStateInstance* sampler = static_cast<SamplerStateInstance*>(symbol);
+        SamplerStateInstance::__Resolved* resolved = Symbol::Resolved(sampler);
+        Serialize::SamplerState output;
+
+        output.binding = resolved->binding;
+        output.group = resolved->group;
+        output.visibility.bits = resolved->visibilityBits.bits;
+
+        output.nameLength = symbol->name.len;
+        output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
+        output.addressU = resolved->addressU;
+        output.addressV = resolved->addressV;
+        output.addressW = resolved->addressW;
+        output.minFilter = resolved->minFilter;
+        output.magFilter = resolved->magFilter;
+        output.mipFilter = resolved->mipFilter;
+        output.mipLodBias = resolved->mipLodBias;
+        output.anisotropicEnabled = resolved->anisotropicEnabled;
+        output.maxAnisotropy = resolved->maxAnisotropy;
+        output.compareSamplerEnabled = resolved->compareSamplerEnabled;
+        output.compareMode = resolved->compareMode;
+        output.minLod = resolved->minLod;
+        output.maxLod = resolved->maxLod;
+        output.borderColor = resolved->borderColor;
+        output.unnormalizedSamplingEnabled = resolved->unnormalizedSamplingEnabled;
+
+        output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.size);
+        output.annotationsCount = sampler->annotations.size;
+
+        size_t annotOffset = output.annotationsOffset;
+        for (const Annotation* annot : sampler->annotations)
+        {
+            WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
+            writer.IncrementDecodeSize(sizeof(Deserialize::Annotation));
+            annotOffset += sizeof(Serialize::Annotation);
+        }
+
+        writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::SamplerState));
+    }
+    else if (symbol->symbolType == Symbol::StructureType)
+    {
+        Structure* structure = static_cast<Structure*>(symbol);
+        Structure::__Resolved* resolved = static_cast<Structure::__Resolved*>(symbol->resolved);
+        Serialize::Structure output;
+        output.isUniform = false;
+        output.isMutable = false;
+        output.nameLength = symbol->name.len;
+        output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
+        output.size = resolved->byteSize;
+        if (resolved->usageFlags.flags.isUniformBuffer)
+        {
+            output.isUniform = true;
+        }
+        else if (resolved->usageFlags.flags.isMutableBuffer)
+        {
+            output.isMutable = true;
+        }
+
+        output.variablesCount = 0;
+        for (Symbol* sym : structure->symbols)
+        {
+            if (sym->symbolType == Symbol::VariableType)
+                output.variablesCount++;
+        }
+
+        // start serializing variables
+        output.variablesOffset = dynamicDataBlob.Reserve<Serialize::Variable>(output.variablesCount);
+
+        size_t offset = output.variablesOffset;
+        for (Symbol* sym : structure->symbols)
+        {
+            if (sym->symbolType == Symbol::VariableType)
+            {
+                Variable* var = static_cast<Variable*>(sym);
+                Variable::__Resolved* resolved = static_cast<Variable::__Resolved*>(var->resolved);
+                Serialize::Variable varOutput;
+                varOutput.binding = -1;
+                varOutput.group = -1;
+                varOutput.nameLength = var->name.len;
+                varOutput.nameOffset = dynamicDataBlob.WriteString(var->name.c_str(), var->name.len);
+                varOutput.byteSize = resolved->byteSize;
+                varOutput.structureOffset = resolved->structureOffset;
+                varOutput.arraySizesCount = 0;
+                varOutput.arraySizesOffset = dynamicDataBlob.iterator;
+                for (size_t i = 0; i < var->type.modifiers.size; i++)
                 {
-                    Variable* var = static_cast<Variable*>(sym);
-                    Variable::__Resolved* resolved = static_cast<Variable::__Resolved*>(var->resolved);
-                    Serialize::Variable varOutput;
-                    varOutput.binding = -1;
-                    varOutput.group = -1;
-                    varOutput.nameLength = var->name.len;
-                    varOutput.nameOffset = dynamicDataBlob.WriteString(var->name.c_str(), var->name.len);
-                    varOutput.byteSize = resolved->byteSize;
-                    varOutput.structureOffset = resolved->structureOffset;
-                    varOutput.arraySizesCount = 0;
-                    varOutput.arraySizesOffset = dynamicDataBlob.iterator;
-                    for (size_t i = 0; i < var->type.modifiers.size; i++)
+                    if (var->type.modifiers[i] == Type::FullType::Modifier::Array && var->type.modifierValues[i] != nullptr)
                     {
-                        if (var->type.modifiers[i] == Type::FullType::Modifier::Array && var->type.modifierValues[i] != nullptr)
-                        {
-                            varOutput.arraySizesCount++;
-                            ValueUnion size;
-                            var->type.modifierValues[i]->EvalValue(size);
-                            dynamicDataBlob.Write(size.ui);
-                        }
+                        varOutput.arraySizesCount++;
+                        ValueUnion size;
+                        var->type.modifierValues[i]->EvalValue(size);
+                        dynamicDataBlob.Write(size.ui);
                     }
-
-                    // write variable
-                    dynamicDataBlob.WriteReserved(varOutput, offset);
-                    offset += sizeof(Serialize::Variable);
                 }
+
+                // write variable
+                dynamicDataBlob.WriteReserved(varOutput, offset);
+                offset += sizeof(Serialize::Variable);
+                writer.IncrementDecodeSize(sizeof(Deserialize::Variable));
             }
-
-            // end serializing variables
-
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(structure->annotations.size);
-            output.annotationsCount = structure->annotations.size;
-
-            size_t annotOffset = output.annotationsOffset;
-            for (const Annotation* annot : structure->annotations)
-            {
-                WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
-                annotOffset += sizeof(Serialize::Annotation);
-            }
-
-            writer.WriteType(output);
         }
-        else if (symbol->symbolType == Symbol::VariableType)
+
+        // end serializing variables
+
+        output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(structure->annotations.size);
+        output.annotationsCount = structure->annotations.size;
+
+        size_t annotOffset = output.annotationsOffset;
+        for (const Annotation* annot : structure->annotations)
         {
-            Variable* var = static_cast<Variable*>(symbol);
-            Variable::__Resolved* resolved = static_cast<Variable::__Resolved*>(symbol->resolved);
-            if (resolved->usageBits.flags.isNoReflect)
-                continue;
-            Serialize::Variable output;
-            output.binding = resolved->binding;
-            output.group = resolved->group;
-            output.visibility.bits = resolved->visibilityBits.bits;
-            output.nameLength = symbol->name.len;
-            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
-            output.byteSize = resolved->byteSize;
-            output.structureOffset = resolved->structureOffset;
-            output.arraySizesCount = 0;
-            output.arraySizesOffset = dynamicDataBlob.iterator;
-            for (size_t i = 0; i < var->type.modifiers.size; i++)
-            {
-                if (var->type.modifiers[i] == Type::FullType::Modifier::Array && var->type.modifierValues[i] != nullptr)
-                {
-                    output.arraySizesCount++;
-                    ValueUnion size;
-                    var->type.modifierValues[i]->EvalValue(size);
-                    dynamicDataBlob.Write(size.ui);
-                }
-            }
-            output.annotationsCount = var->annotations.size;
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size);
-            if (resolved->usageBits.flags.isEntryPointParameter)
-                output.bindingScope = Serialization::BindingScope::VertexInput;
-            else if (resolved->storage == Storage::Global)
-                output.bindingScope = Serialization::BindingScope::Constant;
-            else
-                output.bindingScope = Serialization::BindingScope::Resource;
-
-            if (var->type.IsMutable())
-            {
-                if (resolved->typeSymbol->category == Type::Category::StructureCategory)
-                    output.bindingType = Serialization::BindingType::MutableBuffer;
-                else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
-                    output.bindingType = Serialization::BindingType::MutableImage;
-            }
-            else
-            {
-                if (resolved->typeSymbol->category == Type::Category::StructureCategory)
-                    output.bindingType = Serialization::BindingType::Buffer;
-                else if (resolved->typeSymbol->category == Type::Category::SampledTextureCategory)
-                        output.bindingType = Serialization::BindingType::SampledImage;
-                else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
-                    output.bindingType = Serialization::BindingType::Image;
-                else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
-                    output.bindingType = Serialization::BindingType::Sampler;
-                else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
-                    output.bindingType = Serialization::BindingType::LinkDefined;
-                else if (resolved->typeSymbol->category == Type::Category::PixelCacheCategory)
-                    output.bindingType = Serialization::BindingType::PixelCache;
-                else if (resolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
-                    output.bindingType = Serialization::BindingType::AccelerationStructure;
-            }
-
-            output.structTypeNameLength = 0;
-            output.structTypeNameOffset = 0;
-            if (output.bindingType == Serialization::BindingType::Buffer || output.bindingType == Serialization::BindingType::MutableBuffer)
-            {
-                output.structTypeNameLength = var->type.name.len;
-                output.structTypeNameOffset = dynamicDataBlob.WriteString(var->type.name.c_str(), var->type.name.len);
-            }
-            size_t offset = output.annotationsOffset;
-            for (const Annotation* annot : var->annotations)
-            {
-                WriteAnnotation(this, annot, offset, dynamicDataBlob);
-                offset += sizeof(Serialize::Annotation);
-            }
-
-            writer.WriteType(output);
+            WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
+            writer.IncrementDecodeSize(sizeof(Deserialize::Annotation));
+            annotOffset += sizeof(Serialize::Annotation);
         }
+
+        writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Structure));
+    }
+    else if (symbol->symbolType == Symbol::VariableType)
+    {
+        Variable* var = static_cast<Variable*>(symbol);
+        Variable::__Resolved* resolved = static_cast<Variable::__Resolved*>(symbol->resolved);
+        if (resolved->usageBits.flags.isNoReflect)
+            return;
+        Serialize::Variable output;
+        output.binding = resolved->binding;
+        output.group = resolved->group;
+        output.visibility.bits = resolved->visibilityBits.bits;
+        output.nameLength = symbol->name.len;
+        output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
+        output.byteSize = resolved->byteSize;
+        output.structureOffset = resolved->structureOffset;
+        output.arraySizesCount = 0;
+        output.arraySizesOffset = dynamicDataBlob.iterator;
+        for (size_t i = 0; i < var->type.modifiers.size; i++)
+        {
+            if (var->type.modifiers[i] == Type::FullType::Modifier::Array && var->type.modifierValues[i] != nullptr)
+            {
+                output.arraySizesCount++;
+                ValueUnion size;
+                var->type.modifierValues[i]->EvalValue(size);
+                dynamicDataBlob.Write(size.ui);
+            }
+        }
+        output.annotationsCount = var->annotations.size;
+        output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size);
+        output.bindingScope = Serialization::BindingScope::Constant;
+        if (resolved->usageBits.flags.isEntryPointParameter)
+            output.bindingScope = Serialization::BindingScope::VertexInput;
+        else if (resolved->storage == Storage::Global)
+            output.bindingScope = Serialization::BindingScope::Constant;
+        else
+            output.bindingScope = Serialization::BindingScope::Resource;
+
+        output.bindingType = Serialization::BindingType::None;
+        if (var->type.IsMutable())
+        {
+            if (resolved->typeSymbol->category == Type::Category::StructureCategory)
+                output.bindingType = Serialization::BindingType::MutableBuffer;
+            else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
+                output.bindingType = Serialization::BindingType::MutableImage;
+        }
+        else
+        {
+            if (resolved->typeSymbol->category == Type::Category::StructureCategory)
+                output.bindingType = Serialization::BindingType::Buffer;
+            else if (resolved->typeSymbol->category == Type::Category::SampledTextureCategory)
+                output.bindingType = Serialization::BindingType::SampledImage;
+            else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
+                output.bindingType = Serialization::BindingType::Image;
+            else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
+                output.bindingType = Serialization::BindingType::Sampler;
+            else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
+                output.bindingType = Serialization::BindingType::LinkDefined;
+            else if (resolved->typeSymbol->category == Type::Category::PixelCacheCategory)
+                output.bindingType = Serialization::BindingType::PixelCache;
+            else if (resolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
+                output.bindingType = Serialization::BindingType::AccelerationStructure;
+        }
+
+        output.structTypeNameLength = 0;
+        output.structTypeNameOffset = 0;
+        if (output.bindingType == Serialization::BindingType::Buffer || output.bindingType == Serialization::BindingType::MutableBuffer)
+        {
+            output.structTypeNameLength = var->type.name.len;
+            output.structTypeNameOffset = dynamicDataBlob.WriteString(var->type.name.c_str(), var->type.name.len);
+        }
+        size_t offset = output.annotationsOffset;
+        for (const Annotation* annot : var->annotations)
+        {
+            WriteAnnotation(this, annot, offset, dynamicDataBlob);
+            writer.IncrementDecodeSize(sizeof(Deserialize::Annotation));
+            offset += sizeof(Serialize::Annotation);
+        }
+
+        writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Variable));
     }
 }
 

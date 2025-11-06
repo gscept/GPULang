@@ -81,9 +81,15 @@ Loader::Load(const char* data, const size_t length)
 
     // read the blob at the bottom of the file
     backIterator -= sizeof(uint32_t);
+    const uint32_t* totalSize = reinterpret_cast<const uint32_t*>(data + backIterator);
+    uint32_t allocSize = *totalSize;
+    backIterator -= sizeof(uint32_t);
     const uint32_t* size = reinterpret_cast<const uint32_t*>(data + backIterator);
     backIterator -= *size;
     const char* buf = data + backIterator;
+
+    void* rawData = malloc(allocSize);
+    char* dataIt = (char*)rawData;
 
     while (frontIterator != backIterator)
     {
@@ -93,7 +99,8 @@ Loader::Load(const char* data, const size_t length)
         case GPULang::Serialize::SamplerStateType:
         {
             const GPULang::Serialize::SamplerState* samplerState = ParseAndConsume<GPULang::Serialize::SamplerState>(data, frontIterator);
-            GPULang::Deserialize::SamplerState* deserialized = new GPULang::Deserialize::SamplerState;
+            GPULang::Deserialize::SamplerState* deserialized = new (dataIt) GPULang::Deserialize::SamplerState;
+            dataIt += sizeof(GPULang::Deserialize::SamplerState);
             deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, samplerState->nameOffset);
             deserialized->nameLength = samplerState->nameLength;
@@ -121,7 +128,8 @@ Loader::Load(const char* data, const size_t length)
             deserialized->annotations = nullptr;
             if (deserialized->annotationCount > 0)
             {
-                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                deserialized->annotations = new (dataIt) GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                dataIt += sizeof(GPULang::Deserialize::Annotation) * deserialized->annotationCount;
                 LoadAnnotations(deserialized->annotationCount, deserialized->annotations, samplerState->annotationsOffset, buf);
             }
 
@@ -131,7 +139,8 @@ Loader::Load(const char* data, const size_t length)
         case GPULang::Serialize::VariableType:
         {
             const GPULang::Serialize::Variable* var = ParseAndConsume<GPULang::Serialize::Variable>(data, frontIterator);
-            GPULang::Deserialize::Variable* deserialized = new GPULang::Deserialize::Variable;
+            GPULang::Deserialize::Variable* deserialized = new (dataIt) GPULang::Deserialize::Variable;
+            dataIt += sizeof(GPULang::Deserialize::Variable);
             deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, var->nameOffset);
             deserialized->nameLength = var->nameLength;
@@ -152,7 +161,8 @@ Loader::Load(const char* data, const size_t length)
             deserialized->annotations = nullptr;
             if (deserialized->annotationCount > 0)
             {
-                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                deserialized->annotations = new (dataIt) GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                dataIt += sizeof(GPULang::Deserialize::Annotation) * deserialized->annotationCount;
                 LoadAnnotations(deserialized->annotationCount, deserialized->annotations, var->annotationsOffset, buf);
             }
             deserialized->bindingScope = var->bindingScope;
@@ -171,12 +181,14 @@ Loader::Load(const char* data, const size_t length)
         case GPULang::Serialize::StructureType:
         {
             const GPULang::Serialize::Structure* struc = ParseAndConsume<GPULang::Serialize::Structure>(data, frontIterator);
-            GPULang::Deserialize::Structure* deserialized = new GPULang::Deserialize::Structure;
+            GPULang::Deserialize::Structure* deserialized = new (dataIt) GPULang::Deserialize::Structure;
+            dataIt += sizeof(GPULang::Deserialize::Structure);
             deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, struc->nameOffset);
             deserialized->nameLength = struc->nameLength;
             deserialized->variableCount = struc->variablesCount;
-            deserialized->variables = new GPULang::Deserialize::Variable[deserialized->variableCount];
+            deserialized->variables = new (dataIt) GPULang::Deserialize::Variable[deserialized->variableCount];
+            dataIt += sizeof(GPULang::Deserialize::Variable) * deserialized->variableCount;
             deserialized->size = struc->size;
             size_t variableIterator = struc->variablesOffset;
 
@@ -208,7 +220,8 @@ Loader::Load(const char* data, const size_t length)
             deserialized->annotations = nullptr;
             if (deserialized->annotationCount > 0)
             {
-                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                deserialized->annotations = new (dataIt) GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                dataIt += sizeof(GPULang::Deserialize::Annotation) * deserialized->annotationCount;
                 LoadAnnotations(deserialized->annotationCount, deserialized->annotations, struc->annotationsOffset, buf);
             }
 
@@ -218,7 +231,8 @@ Loader::Load(const char* data, const size_t length)
         case GPULang::Serialize::ProgramType:
         {
             const GPULang::Serialize::Program* prog = ParseAndConsume<GPULang::Serialize::Program>(data, frontIterator);
-            GPULang::Deserialize::Program* deserialized = new GPULang::Deserialize::Program;
+            GPULang::Deserialize::Program* deserialized = new (dataIt) GPULang::Deserialize::Program;
+            dataIt += sizeof(GPULang::Deserialize::Program);
             deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, prog->nameOffset);
             deserialized->nameLength = prog->nameLength;
@@ -273,7 +287,8 @@ else\
             deserialized->annotations = nullptr;
             if (deserialized->annotationCount > 0)
             {
-                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                deserialized->annotations = new (dataIt) GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                dataIt += sizeof(GPULang::Deserialize::Annotation) * deserialized->annotationCount;
                 LoadAnnotations(deserialized->annotationCount, deserialized->annotations, prog->annotationsOffset, buf);
             }
 
@@ -283,7 +298,8 @@ else\
         case GPULang::Serialize::RenderStateType:
         {
             const GPULang::Serialize::RenderState* rend = ParseAndConsume<GPULang::Serialize::RenderState>(data, frontIterator);
-            GPULang::Deserialize::RenderState* deserialized = new GPULang::Deserialize::RenderState;
+            GPULang::Deserialize::RenderState* deserialized = new (dataIt) GPULang::Deserialize::RenderState;
+            dataIt += sizeof(GPULang::Deserialize::RenderState);
             deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, rend->nameOffset);
             deserialized->nameLength = rend->nameLength;
@@ -322,7 +338,8 @@ else\
             deserialized->annotations = nullptr;
             if (deserialized->annotationCount > 0)
             {
-                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                deserialized->annotations = new (dataIt) GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                dataIt += sizeof(GPULang::Deserialize::Annotation) * deserialized->annotationCount;
                 LoadAnnotations(deserialized->annotationCount, deserialized->annotations, rend->annotationsOffset, buf);
             }
 

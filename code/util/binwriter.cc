@@ -42,6 +42,7 @@ BinWriter::Open()
 	std::filesystem::create_directories(path);
 	this->output.open(this->path.c_str(), std::ofstream::out | std::ofstream::trunc | std::ofstream::binary);
 	this->isOpen = this->output.is_open();
+    this->numBytesWritten = 0;
 	return this->isOpen;
 }
 
@@ -53,6 +54,7 @@ BinWriter::Close()
 {
 	assert(this->isOpen);
 	
+    this->output.write((const char*)&this->numBytesWritten, sizeof(uint32_t));
 	this->output.close();
 	this->output.clear();
 }

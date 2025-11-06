@@ -3392,11 +3392,24 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
         Statement* elseBody = nullptr;
         if (stream.Match(TokenType::Else))
         {
-            elseBody = ParseGenerateStatement(stream, ret);
-            if (elseBody == nullptr)
+            if (stream.Match(TokenType::If))
             {
-                ret.diagnostics.Append(UnexpectedToken(stream, "else body"));
-                return res;
+                stream.Unmatch();
+                elseBody = ParseGenerateStatement(stream, ret);
+                if (elseBody == nullptr)
+                {
+                    ret.diagnostics.Append(UnexpectedToken(stream, "else body"));
+                    return res;
+                }
+            }
+            else
+            {
+                elseBody = ParseGenerateScopeStatement(stream, ret);
+                if (elseBody == nullptr)
+                {
+                    ret.diagnostics.Append(UnexpectedToken(stream, "else body"));
+                    return res;
+                }
             }
         }
         
@@ -3689,11 +3702,24 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         Statement* elseBody = nullptr;
         if (stream.Match(TokenType::Else))
         {
-            elseBody = ParseStatement(stream, ret);
-            if (elseBody == nullptr)
+            if (stream.Match(TokenType::If))
             {
-                ret.diagnostics.Append(UnexpectedToken(stream, "statement"));
-                return res;
+                stream.Unmatch();
+                elseBody = ParseStatement(stream, ret);
+                if (elseBody == nullptr)
+                {
+                    ret.diagnostics.Append(UnexpectedToken(stream, "statement"));
+                    return res;
+                }
+            }
+            else
+            {
+                elseBody = ParseScopeStatement(stream, ret);
+                if (elseBody == nullptr)
+                {
+                    ret.diagnostics.Append(UnexpectedToken(stream, "statement"));
+                    return res;
+                }
             }
         }
         

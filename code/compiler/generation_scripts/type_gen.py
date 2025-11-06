@@ -1701,7 +1701,7 @@ def generate_types():
         members=[
             EnumMember("Point", value = 0),
             EnumMember("Nearest", value = 0),
-            EnumMember("Linear", value = 1),
+            EnumMember("Linear", value = 1 | (0x1 << 1) | (0x1) << 2),
             EnumMember("MinMagMipLinear", value = 0x1 | (0x1 << 1) | (0x1) << 2),
             EnumMember("MinMagLinearMipPoint", value = 0x1 | (0x1 << 1) | (0x0) << 2),
             EnumMember("MinLinearMagMipPoint", value = 0x1 | (0x0 << 1) | (0x0) << 2),

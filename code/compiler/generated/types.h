@@ -6320,7 +6320,7 @@ inline constexpr auto FilterModePoint_value = 0x0;
 extern EnumExpression FilterModePoint;
 inline constexpr auto FilterModeNearest_value = 0x0;
 extern EnumExpression FilterModeNearest;
-inline constexpr auto FilterModeLinear_value = 0x1;
+inline constexpr auto FilterModeLinear_value = 0x7;
 extern EnumExpression FilterModeLinear;
 inline constexpr auto FilterModeMinMagMipLinear_value = 0x7;
 extern EnumExpression FilterModeMinMagMipLinear;

@@ -456,9 +456,11 @@ size_t
 WriteString(const char* data, size_t size)
 {
     this->Grow(size + 1);
-    memcpy(this->data + this->iterator, data, size + 1);
+    memcpy(this->data + this->iterator, data, size);
     size_t ret = this->iterator;
-    this->iterator += size + 1;
+    this->iterator += size;
+    this->data[this->iterator] = 0; // null terminate
+    this->iterator++;
 
     return ret;
 };

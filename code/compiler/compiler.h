@@ -201,7 +201,9 @@ struct Compiler
     void ReservedPrefixError(const FixedString& name, const std::string& word, Symbol* sym);
 
     /// output binary data
-    void OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
+    void OutputBinary(const PinnedArray<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
+    /// Write symbol to binary
+    void OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
 
     FixedString path;
     FixedString filename;

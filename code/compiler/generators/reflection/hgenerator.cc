@@ -14,6 +14,9 @@
 #include "ast/expressions/uintexpression.h"
 #include "ast/expressions/boolexpression.h"
 #include "ast/expressions/enumexpression.h"
+#include "ast/generate.h"
+#include "ast/statements/scopestatement.h"
+#include "ast/statements/ifstatement.h"
 #include "compiler.h"
 #include "util.h"
 #include "ast/expressions/arrayinitializerexpression.h"
@@ -34,10 +37,69 @@ HGenerator::Generate(const Compiler* compiler, const ProgramInstance* program, c
 
     writer.WriteLine(Format("namespace %s", compiler->filename.c_str()));
     writer.WriteLine("{");
+
+    this->GenerateSymbols(compiler, program, symbols, writer);
+   
+    writer.WriteLine(Format("} // namespace %s", compiler->filename.c_str()));
+
+    // output header
+    if (writerFunc)
+        writerFunc("header", writer.output);
+
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+HGenerator::GenerateSymbols(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, HeaderWriter& writer)
+{
     for (Symbol* sym : symbols)
     {
-        switch (sym->symbolType)
+        this->GenerateSymbol(compiler, program, sym, writer);
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+HGenerator::GenerateSymbol(const Compiler* compiler, const ProgramInstance* program, const Symbol* sym, HeaderWriter& writer)
+{
+    switch (sym->symbolType)
+    {
+        case Symbol::GenerateType:
         {
+            const GPULang::Generate* generate = static_cast<const GPULang::Generate*>(sym);
+            this->GenerateSymbols(compiler, program, generate->symbols, writer);
+            break;
+        }
+        case Symbol::IfStatementType:
+        {
+            const IfStatement* cond = static_cast<const IfStatement*>(sym);
+            ValueUnion val;
+            if (cond->condition->EvalValue(val))
+            {
+                if (val.b[0])
+                {
+                    ScopeStatement* scope = static_cast<ScopeStatement*>(cond->ifStatement);
+                    this->GenerateSymbols(compiler, program, scope->symbols, writer);
+                }
+                else if (cond->elseStatement != nullptr)
+                {
+                    this->GenerateSymbol(compiler, program, cond->elseStatement, writer);
+                }
+
+            }
+            break;
+        }
+        case Symbol::ScopeStatementType:
+        {
+            const ScopeStatement* scope = static_cast<const ScopeStatement*>(sym);
+            this->GenerateSymbols(compiler, program, scope->symbols, writer);
+            break;
+        }
         case Symbol::StructureType:
             this->GenerateStructureH(compiler, nullptr, sym, writer);
             break;
@@ -47,20 +109,11 @@ HGenerator::Generate(const Compiler* compiler, const ProgramInstance* program, c
         case Symbol::EnumerationType:
             this->GenerateEnumH(compiler, nullptr, sym, writer);
             break;
-        case Symbol::ProgramInstanceType:
-            this->GenerateProgramH(compiler, static_cast<ProgramInstance*>(sym), symbols, writer);
-            break;
+        //case Symbol::ProgramInstanceType:
+        //    this->GenerateProgramH(compiler, static_cast<const ProgramInstance*>(sym), symbols, writer);
+        //    break;
 
-        }
     }
-
-    writer.WriteLine(Format("} // namespace %s", compiler->filename.c_str()));
-
-    // output header
-    if (writerFunc)
-        writerFunc("header", writer.output);
-
-    return true;
 }
 
 
@@ -129,9 +182,9 @@ std::array{
 /**
 */
 void 
-HGenerator::GenerateStructureH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer)
+HGenerator::GenerateStructureH(const Compiler* compiler, const ProgramInstance* program, const Symbol* symbol, HeaderWriter& writer)
 {
-    Structure* struc = static_cast<Structure*>(symbol);
+    const Structure* struc = static_cast<const Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
     writer.WriteLine(Format("struct %s", struc->name.c_str()));
     writer.WriteLine("{");
@@ -179,6 +232,40 @@ GenerateHInitializer(const Compiler* compiler, Expression* expr, HeaderWriter& w
                     writer.Write(", ");
             }
             writer.Write("};");
+            break;
+        }
+        case Symbol::BinaryExpressionType:
+        {
+            ValueUnion val;
+            if (expr->EvalValue(val))
+            {
+                TransientString initializer;
+                for (int size = 0; size < val.columnSize; size++)
+                {
+                    switch (val.code)
+                    {
+                        case TypeCode::Bool:
+                            initializer.Append(val.b[size]);
+                            break;
+                        case TypeCode::Int:
+                        case TypeCode::Int16:
+                            initializer.Append(val.i[size]);
+                            break;
+                        case TypeCode::UInt:
+                        case TypeCode::UInt16:
+                            initializer.Append(val.ui[size]);
+                            break;
+                        case TypeCode::Float:
+                        case TypeCode::Float16:
+                            initializer.Append(val.f[size]);
+                            initializer.Append('f');
+                            break;
+                    }
+                    if (size < val.columnSize - 1)
+                        initializer.Append(",");
+                }
+                writer.Write(initializer);
+            }
             break;
         }
         case Symbol::FloatExpressionType:
@@ -233,9 +320,9 @@ GenerateHInitializer(const Compiler* compiler, Expression* expr, HeaderWriter& w
 /**
 */
 void 
-HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
+HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* program, const Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
 {
-    Variable* var = static_cast<Variable*>(symbol);
+    const Variable* var = static_cast<const Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
     if (varResolved->usageBits.flags.isNoReflect) // skip
         return;        
@@ -403,7 +490,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             if (it != typeToHeaderType.end())
                 type = it->second.c_str();
             auto arrayTypeIt = typeToArraySize.Find(var->type.name);
-            TStr arrayType;
+            TStr arrayType = "";
             if (arrayTypeIt != typeToArraySize.end())
                 arrayType = arrayTypeIt->second.c_str();
             auto modIt = var->type.modifiers.rbegin();
@@ -435,50 +522,8 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             HeaderWriter initWriter;
             if (var->valueExpression != nullptr)
             {
-                ValueUnion val;
-                if (var->valueExpression->EvalValue(val))
-                {
-                    TransientString initializer;
-                    for (int size = 0; size < val.columnSize; size++)
-                    {
-                        switch (val.code)
-                        {
-                            case TypeCode::Bool:
-                                initializer.Append(val.b[size]);
-
-                                break;
-                            case TypeCode::Int:
-                            case TypeCode::Int16:
-                                initializer.Append(val.i[size]);
-                                break;
-                            case TypeCode::UInt:
-                            case TypeCode::UInt16:
-                                initializer.Append(val.ui[size]);
-                                break;
-                            case TypeCode::Float:
-                            case TypeCode::Float16:
-                                initializer.Append(val.f[size]);
-                                initializer.Append('f');
-                                break;
-                        }
-                        if (size < val.columnSize-1)
-                            initializer.Append(",");
-                    }
-                    if (val.columnSize > 1)
-                    {
-                        writer.WriteLine(Format("static const %s %s%s = {%s};", type.buf, var->name.c_str(), arrayType.buf, initializer.c_str()));
-                    }
-                    else
-                    {
-                        writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayType.buf, initializer.c_str()));
-                    }
-
-                }
-                else
-                {
-                    GenerateHInitializer(compiler, var->valueExpression, initWriter);
-                    writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayType.buf, initWriter.output.c_str()));
-                }
+                GenerateHInitializer(compiler, var->valueExpression, initWriter);
+                writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayType.buf, initWriter.output.c_str()));
             }
             else
             {
@@ -492,9 +537,9 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
 /**
 */
 void 
-HGenerator::GenerateEnumH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer)
+HGenerator::GenerateEnumH(const Compiler* compiler, const ProgramInstance* program, const  Symbol* symbol, HeaderWriter& writer)
 {
-    Enumeration* enu = static_cast<Enumeration*>(symbol);
+    const Enumeration* enu = static_cast<const Enumeration*>(symbol);
     Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
 
     writer.WriteLine(Format("enum %s", enu->name.c_str()));
@@ -557,9 +602,9 @@ HGenerator::GenerateProgramH(const Compiler* compiler, const ProgramInstance* pr
 /**
 */
 void 
-HGenerator::GenerateFunctionH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, ProgramInstance::__Resolved::EntryType shaderType, HeaderWriter& writer)
+HGenerator::GenerateFunctionH(const Compiler* compiler, const ProgramInstance* program, const Symbol* symbol, ProgramInstance::__Resolved::EntryType shaderType, HeaderWriter& writer)
 {
-    Function* fun = static_cast<Function*>(symbol);
+    const Function* fun = static_cast<const Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
     if (funResolved->isEntryPoint)
     {
