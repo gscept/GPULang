@@ -3,6 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "loader.h"
+#include <cassert>
 
 namespace GPULang
 {
@@ -90,9 +91,11 @@ Loader::Load(const char* data, const size_t length)
 
     void* rawData = malloc(allocSize);
     char* dataIt = (char*)rawData;
+    char* endOfBuf = dataIt + allocSize;
 
     while (frontIterator != backIterator)
     {
+        assert(dataIt < endOfBuf);
         const GPULang::Serialize::Serializable* type = Parse<GPULang::Serialize::Serializable>(data, frontIterator);
         switch (type->type)
         {
@@ -334,6 +337,12 @@ else\
             deserialized->blendConstants[2] = rend->blendConstants[2];
             deserialized->blendConstants[3] = rend->blendConstants[3];
 
+            deserialized->samples = rend->samples;
+            deserialized->sampleShadingEnabled = rend->sampleShadingEnabled;
+            deserialized->minSampleShading = rend->minSampleShading;
+            deserialized->alphaToCoverageEnabled = rend->alphaToCoverageEnabled;
+            deserialized->alphaToOneEnabled = rend->alphaToOneEnabled;
+
             deserialized->annotationCount = rend->annotationsCount;
             deserialized->annotations = nullptr;
             if (deserialized->annotationCount > 0)
@@ -348,6 +357,7 @@ else\
         }
         }
     }
+    assert(dataIt <= endOfBuf);
     return true;
 }
 

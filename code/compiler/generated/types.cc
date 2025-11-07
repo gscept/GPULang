@@ -28710,6 +28710,11 @@ Variable RenderStateAlphaBlendOp;
 IntExpression RenderStateAlphaBlendOpArraySize(8);
 Variable RenderStateMask;
 IntExpression RenderStateMaskArraySize(8);
+Variable RenderStateSamples;
+Variable RenderStateSampleShadingEnabled;
+Variable RenderStateMinSampleShading;
+Variable RenderStateAlphaToCoverageEnabled;
+Variable RenderStateAlphaToOneEnabled;
 RenderState::RenderState()
 {
     this->name = "RenderState"_c;
@@ -28830,16 +28835,40 @@ RenderState::RenderState()
     RenderStateMask.type = Type::FullType{ BlendColorMaskType.name, {Type::FullType::Modifier::Array}, {&RenderStateMaskArraySize} };
     Symbol::Resolved(&RenderStateMask)->typeSymbol = &BlendColorMaskType;
 
-    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 29>{
+    RenderStateSamples.name = "Samples"_c;
+    RenderStateSamples.type = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&RenderStateSamples)->typeSymbol = &UInt32Type;
+
+    RenderStateSampleShadingEnabled.name = "SampleShadingEnabled"_c;
+    RenderStateSampleShadingEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateSampleShadingEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateMinSampleShading.name = "MinSampleShading"_c;
+    RenderStateMinSampleShading.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&RenderStateMinSampleShading)->typeSymbol = &Float32Type;
+
+    RenderStateAlphaToCoverageEnabled.name = "AlphaToCoverageEnabled"_c;
+    RenderStateAlphaToCoverageEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateAlphaToCoverageEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateAlphaToOneEnabled.name = "AlphaToOneEnabled"_c;
+    RenderStateAlphaToOneEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateAlphaToOneEnabled)->typeSymbol = &Bool8Type;
+
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 34>{
         std::pair{ "ScissorEnabled"_h, &RenderStateScissorEnabled },
+        std::pair{ "Samples"_h, &RenderStateSamples },
+        std::pair{ "MinSampleShading"_h, &RenderStateMinSampleShading },
         std::pair{ "WindingOrder"_h, &RenderStateWindingOrder },
         std::pair{ "DepthBoundsTestEnabled"_h, &RenderStateDepthBoundsTestEnabled },
         std::pair{ "ColorBlendOp"_h, &RenderStateColorBlendOp },
         std::pair{ "BlendEnabled"_h, &RenderStateBlendEnabled },
         std::pair{ "Rasterize"_h, &RenderStateRasterize },
         std::pair{ "StencilEnabled"_h, &RenderStateStencilEnabled },
+        std::pair{ "AlphaToCoverageEnabled"_h, &RenderStateAlphaToCoverageEnabled },
         std::pair{ "Mask"_h, &RenderStateMask },
         std::pair{ "DepthBiasEnabled"_h, &RenderStateDepthBiasEnabled },
+        std::pair{ "SampleShadingEnabled"_h, &RenderStateSampleShadingEnabled },
         std::pair{ "DepthBoundsMax"_h, &RenderStateDepthBoundsMax },
         std::pair{ "DepthBoundsMin"_h, &RenderStateDepthBoundsMin },
         std::pair{ "StencilFront"_h, &RenderStateStencilFront },
@@ -28847,6 +28876,7 @@ RenderState::RenderState()
         std::pair{ "DestinationBlend"_h, &RenderStateDestinationBlend },
         std::pair{ "DepthTestFunction"_h, &RenderStateDepthTestFunction },
         std::pair{ "DepthTestEnabled"_h, &RenderStateDepthTestEnabled },
+        std::pair{ "AlphaToOneEnabled"_h, &RenderStateAlphaToOneEnabled },
         std::pair{ "SourceAlphaBlend"_h, &RenderStateSourceAlphaBlend },
         std::pair{ "DepthWriteEnabled"_h, &RenderStateDepthWriteEnabled },
         std::pair{ "DepthClampEnabled"_h, &RenderStateDepthClampEnabled },

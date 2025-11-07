@@ -2053,7 +2053,12 @@ def generate_types():
             StateMember('DestinationAlphaBlend', 'BlendFactor', 8),
             StateMember('ColorBlendOp', 'BlendOperation', 8),
             StateMember('AlphaBlendOp', 'BlendOperation', 8),
-            StateMember('Mask', 'BlendColorMask', 8)
+            StateMember('Mask', 'BlendColorMask', 8),
+            StateMember('Samples', 'UInt32'),
+            StateMember('SampleShadingEnabled', 'Bool8'),
+            StateMember('MinSampleShading', 'Float32'),
+            StateMember('AlphaToCoverageEnabled', 'Bool8'),
+            StateMember('AlphaToOneEnabled', 'Bool8')
         ]
     )
     states.append(state)

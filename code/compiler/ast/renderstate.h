@@ -59,7 +59,12 @@ struct RenderStateInstance : public State
             ColorBlendOpType,
             AlphaBlendOpType,
             ColorComponentMaskType,
-            BlendConstantsType
+            BlendConstantsType,
+            SamplesType,
+            SampleShadingEnabledType,
+            MinSampleShadingType,
+            AlphaToCoverageEnabledType,
+            AlphaToOneEnabledType,
         };
 
         /// convert from string to program entry type
@@ -137,6 +142,17 @@ struct RenderStateInstance : public State
         static const uint8_t NUM_BLEND_STATES = 8;
         Serialization::BlendState blendStates[NUM_BLEND_STATES];
         float blendConstants[4];
+
+        //------------------------------------------------------------------------------
+        /**
+            Multisample
+        */
+        //------------------------------------------------------------------------------
+        uint32_t samples;
+        bool sampleShadingEnabled;
+        float minSampleShading;
+        bool alphaToCoverageEnabled;
+        bool alphaToOneEnabled;
     };
 };
 

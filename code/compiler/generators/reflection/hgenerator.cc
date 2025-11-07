@@ -473,6 +473,15 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                 
             }
         }
+        else if (varResolved->storage == Storage::InlineUniform)
+        {
+            writer.WriteLine(Format("struct %s", var->name.c_str()));
+            writer.WriteLine("{");
+            writer.Indent();
+            writer.WriteLine(Format("using STRUCT = %s;", varResolved->typeSymbol->name.c_str()));
+            writer.Unindent();
+            writer.WriteLine("};\n");
+        }
         else if (varResolved->storage == Storage::LinkDefined)
         {
             writer.WriteLine(Format("struct %s", var->name.c_str()));

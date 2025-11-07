@@ -6582,6 +6582,11 @@ extern Variable RenderStateAlphaBlendOp;
 extern IntExpression RenderStateAlphaBlendOpArraySize;
 extern Variable RenderStateMask;
 extern IntExpression RenderStateMaskArraySize;
+extern Variable RenderStateSamples;
+extern Variable RenderStateSampleShadingEnabled;
+extern Variable RenderStateMinSampleShading;
+extern Variable RenderStateAlphaToCoverageEnabled;
+extern Variable RenderStateAlphaToOneEnabled;
 struct RenderState : public Type
 {
     RenderState();

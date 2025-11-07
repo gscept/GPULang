@@ -278,6 +278,11 @@ struct RenderState : public Serializable
     size_t blendStatesOffset;
     size_t blendStatesCount;
     float blendConstants[4];
+    uint32_t samples;
+    bool sampleShadingEnabled;
+    float minSampleShading;
+    bool alphaToCoverageEnabled;
+    bool alphaToOneEnabled;
 };
 
 struct Program : public Serializable
@@ -593,6 +598,11 @@ struct RenderState : public Deserializable
     Serialization::LogicOp logicOp;
     Serialization::BlendState blendStates[8];
     float blendConstants[4];
+    uint32_t samples;
+    bool sampleShadingEnabled;
+    float minSampleShading;
+    bool alphaToCoverageEnabled;
+    bool alphaToOneEnabled;
 };
 
 struct Program : public Deserializable

@@ -1167,11 +1167,11 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         for (const Annotation* annot : program->annotations)
         {
             WriteAnnotation(this, annot, offset, dynamicDataBlob);
-            writer.IncrementDecodeSize(sizeof(Deserialize::Annotation));
             offset += sizeof(Serialize::Annotation);
         }
 
         writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Annotation)* program->annotations.size);
         writer.IncrementDecodeSize(sizeof(Deserialize::Program));
     }
     else if (symbol->symbolType == Symbol::RenderStateInstanceType)
@@ -1210,6 +1210,12 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         output.blendConstants[1] = resolved->blendConstants[1];
         output.blendConstants[2] = resolved->blendConstants[2];
         output.blendConstants[3] = resolved->blendConstants[3];
+
+        output.samples = resolved->samples;
+        output.sampleShadingEnabled = resolved->sampleShadingEnabled;
+        output.minSampleShading = resolved->minSampleShading;
+        output.alphaToCoverageEnabled = resolved->alphaToCoverageEnabled;
+        output.alphaToOneEnabled = resolved->alphaToOneEnabled;
 
         output.blendStatesOffset = dynamicDataBlob.iterator;
         output.blendStatesCount = 8;
@@ -1260,11 +1266,11 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         for (const Annotation* annot : sampler->annotations)
         {
             WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
-            writer.IncrementDecodeSize(sizeof(Deserialize::Annotation));
             annotOffset += sizeof(Serialize::Annotation);
         }
 
         writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Annotation) * sampler->annotations.size);
         writer.IncrementDecodeSize(sizeof(Deserialize::SamplerState));
     }
     else if (symbol->symbolType == Symbol::StructureType)
@@ -1339,11 +1345,11 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         for (const Annotation* annot : structure->annotations)
         {
             WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
-            writer.IncrementDecodeSize(sizeof(Deserialize::Annotation));
             annotOffset += sizeof(Serialize::Annotation);
         }
 
         writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Annotation) * structure->annotations.size);
         writer.IncrementDecodeSize(sizeof(Deserialize::Structure));
     }
     else if (symbol->symbolType == Symbol::VariableType)
@@ -1358,7 +1364,7 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         output.visibility.bits = resolved->visibilityBits.bits;
         output.nameLength = symbol->name.len;
         output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
-        output.byteSize = resolved->byteSize;
+        output.byteSize = resolved->typeSymbol->byteSize;
         output.structureOffset = resolved->structureOffset;
         output.arraySizesCount = 0;
         output.arraySizesOffset = dynamicDataBlob.iterator;
@@ -1393,7 +1399,12 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         else
         {
             if (resolved->typeSymbol->category == Type::Category::StructureCategory)
-                output.bindingType = Serialization::BindingType::Buffer;
+            {
+                if (resolved->storage == Storage::InlineUniform)
+                    output.bindingType = Serialization::BindingType::Inline;
+                else
+                    output.bindingType = Serialization::BindingType::Buffer;
+            }
             else if (resolved->typeSymbol->category == Type::Category::SampledTextureCategory)
                 output.bindingType = Serialization::BindingType::SampledImage;
             else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
@@ -1419,11 +1430,11 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         for (const Annotation* annot : var->annotations)
         {
             WriteAnnotation(this, annot, offset, dynamicDataBlob);
-            writer.IncrementDecodeSize(sizeof(Deserialize::Annotation));
             offset += sizeof(Serialize::Annotation);
         }
 
         writer.WriteType(output);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Annotation)* var->annotations.size);
         writer.IncrementDecodeSize(sizeof(Deserialize::Variable));
     }
 }

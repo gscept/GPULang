@@ -1185,6 +1185,9 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 {
     ProgramInstance* prog = static_cast<ProgramInstance*>(symbol);
     ProgramInstance::__Resolved* progResolved = Symbol::Resolved(prog);
+    if (!compiler->AddSymbol(TransientString(prog->name), prog, false))
+        return false;
+
     compiler->currentState.prog = prog;
 
     Type* progType = &ProgramType;
@@ -1779,7 +1782,6 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             switch (entryType)
             {
                 case RenderStateInstance::__Resolved::DepthClampEnabledType:
-                    
                     value.Store(stateResolved->depthClampEnabled);
                     break;
                 case RenderStateInstance::__Resolved::NoPixelsType:
@@ -1838,6 +1840,29 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     break;
                 case RenderStateInstance::__Resolved::LogicOpType:
                     stateResolved->logicOp = (GPULang::Serialization::LogicOp)value.i[0];
+                    break;
+                case RenderStateInstance::__Resolved::SamplesType:
+                    value.Store(stateResolved->samples);
+                    if (stateResolved->samples != 1)
+                    {
+                        if (stateResolved->samples == 0 || (stateResolved->samples & (stateResolved->samples - 1)) != 0)
+                        {
+                            compiler->Error(Format("Samples must be a power of two greater than zero"), symbol);
+                            return false;
+                        }
+                    }
+                    break;
+                case RenderStateInstance::__Resolved::SampleShadingEnabledType:
+                    value.Store(stateResolved->sampleShadingEnabled);
+                    break;
+                case RenderStateInstance::__Resolved::MinSampleShadingType:
+                    value.Store(stateResolved->minSampleShading);
+                    break;
+                case RenderStateInstance::__Resolved::AlphaToCoverageEnabledType:
+                    value.Store(stateResolved->alphaToCoverageEnabled);
+                    break;
+                case RenderStateInstance::__Resolved::AlphaToOneEnabledType:
+                    value.Store(stateResolved->alphaToOneEnabled);
                     break;
                 default:
                     compiler->Error(Format("Unknown render state entry '%s'", entryStr.c_str()), symbol);
@@ -1952,6 +1977,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
     uint32_t alignedSize = Type::Align(strucResolved->byteSize, 16);
     strucResolved->endPadding = alignedSize - strucResolved->byteSize;
     strucResolved->byteSize = alignedSize;
+    struc->byteSize = alignedSize;
 
     return true;
 }

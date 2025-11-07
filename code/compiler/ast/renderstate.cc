@@ -68,6 +68,12 @@ RenderStateInstance::RenderStateInstance()
     };
     typeResolved->frontStencilState = defaultStencil;
     typeResolved->backStencilState = defaultStencil;
+
+    typeResolved->samples = 1;
+    typeResolved->sampleShadingEnabled = false;
+    typeResolved->minSampleShading = 1.0f;
+    typeResolved->alphaToCoverageEnabled = false;
+    typeResolved->alphaToOneEnabled = false;
 }
 
 constexpr StaticMap stringToRenderStateEntryType =
@@ -118,7 +124,12 @@ std::array{
     std::pair{ "BlendOp"_c, RenderStateInstance::__Resolved::ColorBlendOpType },
     std::pair{ "BlendOpAlpha"_c, RenderStateInstance::__Resolved::AlphaBlendOpType },
     std::pair{ "ColorComponentMask"_c, RenderStateInstance::__Resolved::ColorComponentMaskType },
-    std::pair{ "BlendConstants"_c, RenderStateInstance::__Resolved::BlendConstantsType }
+    std::pair{ "BlendConstants"_c, RenderStateInstance::__Resolved::BlendConstantsType },
+    std::pair{ "Samples"_c, RenderStateInstance::__Resolved::SamplesType },
+    std::pair{ "SampleShadingEnabled"_c, RenderStateInstance::__Resolved::SampleShadingEnabledType },
+    std::pair{ "MinSampleShading"_c, RenderStateInstance::__Resolved::MinSampleShadingType },
+    std::pair{ "AlphaToCoverageEnabled"_c, RenderStateInstance::__Resolved::AlphaToCoverageEnabledType },
+    std::pair{ "AlphaToOneEnabled"_c, RenderStateInstance::__Resolved::AlphaToOneEnabledType },
 };
 
 static ConstantString NoRenderStateEntry = "";
