@@ -1326,6 +1326,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             }
             RenderStateInstance* state = static_cast<RenderStateInstance*>(value);
             progResolved->mappings[entryType] = state;
+            progResolved->usage.flags.hasRenderState = true;
         }
         else
         {
