@@ -4678,6 +4678,13 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 funResolved->executionModifiers.layerOrViewportOutput = true;
                 return true;
             };
+
+            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> setDepthFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun) -> bool
+            {
+                Function::__Resolved* funResolved = Symbol::Resolved(compiler->currentState.function);
+                funResolved->executionModifiers.writesDepth = true;
+                return true;
+            };
             
             static const StaticMap conditionalBuiltins =
             std::array{
@@ -4704,6 +4711,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 , std::pair{ "ddx"_c, derivativeConditionFunction }
                 , std::pair{ "ddy"_c, derivativeConditionFunction }
                 , std::pair{ "fwidth"_c, derivativeConditionFunction }
+                , std::pair{ "pixelSetDepth"_c, setDepthFunction }
             };
             const auto it2 = conditionalBuiltins.Find(callResolved->functionSymbol);
             if (it2 != conditionalBuiltins.end())

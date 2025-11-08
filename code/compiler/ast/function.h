@@ -70,6 +70,7 @@ struct Function : public Symbol
             uint32_t earlyDepth : 1 = 0;
             uint32_t depthAlwaysGreater : 1 = 0;
             uint32_t depthAlwaysLesser : 1 = 0;
+            uint32_t writesDepth : 1 = 0;
 
             uint32_t invocations = 0;
 

@@ -1181,7 +1181,7 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         auto resolved = Symbol::Resolved(rend);
         Serialize::RenderState output;
         output.nameLength = symbol->name.len;
-        output.nameOffset = dynamicDataBlob.Write(symbol->name.c_str(), symbol->name.len);
+        output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
         output.depthClampEnabled = resolved->depthClampEnabled;
         output.noPixels = resolved->noPixels;
         output.rasterizationMode = resolved->rasterizationMode;

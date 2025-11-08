@@ -4851,7 +4851,6 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         lhsType = leftConvResolved->returnTypeSymbol;
     }
 
-    SPIRVResult binaryOpResult = rightValue;
     if (binaryExpression->op != '=')
     {
         std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.Name().c_str());
@@ -4867,10 +4866,10 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         {
             assert(fun->backendIndex != UINT64_MAX && fun->backendIndex < SPIRVDefaultIntrinsics.size());
             auto it = SPIRVDefaultIntrinsics[fun->backendIndex];
-            binaryOpResult = it(compiler, generator, retType.typeName, { leftValue, rightValue });
+            rightValue = it(compiler, generator, retType.typeName, { leftValue, rightValue });
         }
         else
-            binaryOpResult = it->second(compiler, generator, retType.typeName, { leftValue, rightValue });
+            rightValue = it->second(compiler, generator, retType.typeName, { leftValue, rightValue });
     }
 
     if (binaryExpressionResolved->isAssignment)
@@ -4923,15 +4922,14 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
                 rightValue.name = generator->writer->MappedInstruction(OpVectorShuffle, SPVWriter::Section::LocalFunction, vectorTypeName.typeName, leftLoaded, rightValue, SPVLiteralList{ .vals = slots, .num = (uint8_t)vectorType->columnSize });
                 rightValue.typeName = vectorTypeName.typeName;
             }
-            binaryOpResult = rightValue;
-
+            rightValue = rightValue;
         }
-        StoreValueSPIRV(compiler, generator, leftValue, binaryOpResult);
+        StoreValueSPIRV(compiler, generator, leftValue, rightValue);
         return leftValue;
     }
     else
     {
-        return binaryOpResult;
+        return rightValue;
     }
 }
 
@@ -6408,8 +6406,8 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         case ProgramInstance::__Resolved::GeometryShader:
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::Invocations, funResolved->executionModifiers.invocations);
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::OutputVertices, funResolved->executionModifiers.maxOutputVertices);
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, inputPrimitiveTopologyEnumMap[funResolved->executionModifiers.inputPrimitiveTopology-1]);
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, outputPrimitiveTopologyEnumMap[funResolved->executionModifiers.inputPrimitiveTopology-1]);
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, inputPrimitiveTopologyEnumMap[funResolved->executionModifiers.inputPrimitiveTopology]);
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, outputPrimitiveTopologyEnumMap[funResolved->executionModifiers.outputPrimitiveTopology]);
             if (funResolved->executionModifiers.layerOrViewportOutput)
             {
                 this->writer->Extension(SPV_EXT_shader_viewport_index_layer);
@@ -6424,9 +6422,9 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             {
                 this->writer->Extension(SPV_EXT_shader_viewport_index_layer);
             }
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, partitionEnumMap[funResolved->executionModifiers.partitionMethod-1]);
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, windingOrderEnumMap[funResolved->executionModifiers.windingOrder-1]);
-            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, tessellationDomainEnumMap[funResolved->executionModifiers.patchType-1]);
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, partitionEnumMap[funResolved->executionModifiers.partitionMethod]);
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, windingOrderEnumMap[funResolved->executionModifiers.windingOrder]);
+            this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, tessellationDomainEnumMap[funResolved->executionModifiers.patchType]);
             break;
         case ProgramInstance::__Resolved::PixelShader:
         {
@@ -6434,6 +6432,10 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             if (funResolved->executionModifiers.earlyDepth)
             {
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::EarlyFragmentTests);
+            }
+            if (funResolved->executionModifiers.writesDepth)
+            {
+                this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::DepthReplacing);
             }
             if (funResolved->executionModifiers.depthAlwaysGreater)
             {

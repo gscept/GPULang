@@ -3,6 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "renderstate.h"
+#include "generated/types.h"
 #include <map>
 namespace GPULang
 {
@@ -19,7 +20,7 @@ RenderStateInstance::RenderStateInstance()
     typeResolved->noPixels = false;
     typeResolved->rasterizationMode = Serialization::RasterizationMode::FillMode;
     typeResolved->cullMode = Serialization::CullMode::BackMode;
-    typeResolved->windingOrderMode = Serialization::WindingOrderMode::CounterClockwiseMode;
+    typeResolved->windingOrderMode = Serialization::WindingOrderMode::ClockwiseMode;
     typeResolved->depthBiasEnabled = false;
     typeResolved->depthBiasFactor = 0.0f;
     typeResolved->depthBiasClamp = 0.0f;
@@ -29,7 +30,7 @@ RenderStateInstance::RenderStateInstance()
     typeResolved->depthTestEnabled = true;
     typeResolved->depthWriteEnabled = true;
     typeResolved->depthCompare = Serialization::CompareMode::LessEqualCompare;
-    typeResolved->depthBoundsTestEnabled = true;
+    typeResolved->depthBoundsTestEnabled = false;
     typeResolved->minDepthBounds = 0.0f;
     typeResolved->maxDepthBounds = 1.0f;
     typeResolved->scissorEnabled = false;
@@ -45,7 +46,7 @@ RenderStateInstance::RenderStateInstance()
         .destinationAlphaBlendFactor = Serialization::BlendFactor::OneFactor,
         .colorBlendOp = Serialization::BlendOp::AddOp,
         .alphaBlendOp = Serialization::BlendOp::AddOp,
-        .colorComponentMask = 0xFFFFFFFF
+        .colorComponentMask = BlendColorMaskR_value | BlendColorMaskG_value | BlendColorMaskB_value | BlendColorMaskA_value
     };
     typeResolved->blendStates[0] = defaultBlend;
     typeResolved->blendStates[1] = defaultBlend;

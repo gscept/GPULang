@@ -27332,10 +27332,10 @@ EnumExpression BlendFactorZero;
 EnumExpression BlendFactorOne;
 EnumExpression BlendFactorSourceColor;
 EnumExpression BlendFactorOneMinusSourceColor;
-EnumExpression BlendFactorSourceAlpha;
-EnumExpression BlendFactorOneMinusSourceAlpha;
 EnumExpression BlendFactorDestinationColor;
 EnumExpression BlendFactorOneMinusDestinationColor;
+EnumExpression BlendFactorSourceAlpha;
+EnumExpression BlendFactorOneMinusSourceAlpha;
 EnumExpression BlendFactorDestinationAlpha;
 EnumExpression BlendFactorOneMinusDestinationAlpha;
 EnumExpression BlendFactorConstantColor;
@@ -27367,14 +27367,6 @@ BlendFactor::BlendFactor()
     BlendFactorOneMinusSourceColor.type = Type::FullType{ BlendFactorType.name, true };
     BlendFactorOneMinusSourceColor.underlyingType = Type::FullType{ UInt32Type.name };
     BlendFactorOneMinusSourceColor.thisResolved->type = this;
-    BlendFactorSourceAlpha.value = BlendFactorSourceAlpha_value;
-    BlendFactorSourceAlpha.type = Type::FullType{ BlendFactorType.name, true };
-    BlendFactorSourceAlpha.underlyingType = Type::FullType{ UInt32Type.name };
-    BlendFactorSourceAlpha.thisResolved->type = this;
-    BlendFactorOneMinusSourceAlpha.value = BlendFactorOneMinusSourceAlpha_value;
-    BlendFactorOneMinusSourceAlpha.type = Type::FullType{ BlendFactorType.name, true };
-    BlendFactorOneMinusSourceAlpha.underlyingType = Type::FullType{ UInt32Type.name };
-    BlendFactorOneMinusSourceAlpha.thisResolved->type = this;
     BlendFactorDestinationColor.value = BlendFactorDestinationColor_value;
     BlendFactorDestinationColor.type = Type::FullType{ BlendFactorType.name, true };
     BlendFactorDestinationColor.underlyingType = Type::FullType{ UInt32Type.name };
@@ -27383,6 +27375,14 @@ BlendFactor::BlendFactor()
     BlendFactorOneMinusDestinationColor.type = Type::FullType{ BlendFactorType.name, true };
     BlendFactorOneMinusDestinationColor.underlyingType = Type::FullType{ UInt32Type.name };
     BlendFactorOneMinusDestinationColor.thisResolved->type = this;
+    BlendFactorSourceAlpha.value = BlendFactorSourceAlpha_value;
+    BlendFactorSourceAlpha.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorSourceAlpha.underlyingType = Type::FullType{ UInt32Type.name };
+    BlendFactorSourceAlpha.thisResolved->type = this;
+    BlendFactorOneMinusSourceAlpha.value = BlendFactorOneMinusSourceAlpha_value;
+    BlendFactorOneMinusSourceAlpha.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorOneMinusSourceAlpha.underlyingType = Type::FullType{ UInt32Type.name };
+    BlendFactorOneMinusSourceAlpha.thisResolved->type = this;
     BlendFactorDestinationAlpha.value = BlendFactorDestinationAlpha_value;
     BlendFactorDestinationAlpha.type = Type::FullType{ BlendFactorType.name, true };
     BlendFactorDestinationAlpha.underlyingType = Type::FullType{ UInt32Type.name };
@@ -27407,7 +27407,7 @@ BlendFactor::BlendFactor()
     BlendFactorOneMinusConstantAlpha.type = Type::FullType{ BlendFactorType.name, true };
     BlendFactorOneMinusConstantAlpha.underlyingType = Type::FullType{ UInt32Type.name };
     BlendFactorOneMinusConstantAlpha.thisResolved->type = this;
-    this->labels = std::array{ "Zero"_c, "One"_c, "SourceColor"_c, "OneMinusSourceColor"_c, "SourceAlpha"_c, "OneMinusSourceAlpha"_c, "DestinationColor"_c, "OneMinusDestinationColor"_c, "DestinationAlpha"_c, "OneMinusDestinationAlpha"_c, "ConstantColor"_c, "OneMinusConstantColor"_c, "ConstantAlpha"_c, "OneMinusConstantAlpha"_c };
+    this->labels = std::array{ "Zero"_c, "One"_c, "SourceColor"_c, "OneMinusSourceColor"_c, "DestinationColor"_c, "OneMinusDestinationColor"_c, "SourceAlpha"_c, "OneMinusSourceAlpha"_c, "DestinationAlpha"_c, "OneMinusDestinationAlpha"_c, "ConstantColor"_c, "OneMinusConstantColor"_c, "ConstantAlpha"_c, "OneMinusConstantAlpha"_c };
     this->fromUnderlyingType.name = this->name;
     this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
     this->fromUnderlyingType.compileTime = true;
@@ -27538,9 +27538,9 @@ BlendOperation BlendOperationType;
 
 EnumExpression BlendColorMaskNone;
 EnumExpression BlendColorMaskR;
-EnumExpression BlendColorMaskRG;
-EnumExpression BlendColorMaskRGB;
-EnumExpression BlendColorMaskRGBA;
+EnumExpression BlendColorMaskG;
+EnumExpression BlendColorMaskB;
+EnumExpression BlendColorMaskA;
 BlendColorMask::BlendColorMask()
 {
     this->name = "BlendColorMask"_c;
@@ -27558,19 +27558,19 @@ BlendColorMask::BlendColorMask()
     BlendColorMaskR.type = Type::FullType{ BlendColorMaskType.name, true };
     BlendColorMaskR.underlyingType = Type::FullType{ UInt32Type.name };
     BlendColorMaskR.thisResolved->type = this;
-    BlendColorMaskRG.value = BlendColorMaskRG_value;
-    BlendColorMaskRG.type = Type::FullType{ BlendColorMaskType.name, true };
-    BlendColorMaskRG.underlyingType = Type::FullType{ UInt32Type.name };
-    BlendColorMaskRG.thisResolved->type = this;
-    BlendColorMaskRGB.value = BlendColorMaskRGB_value;
-    BlendColorMaskRGB.type = Type::FullType{ BlendColorMaskType.name, true };
-    BlendColorMaskRGB.underlyingType = Type::FullType{ UInt32Type.name };
-    BlendColorMaskRGB.thisResolved->type = this;
-    BlendColorMaskRGBA.value = BlendColorMaskRGBA_value;
-    BlendColorMaskRGBA.type = Type::FullType{ BlendColorMaskType.name, true };
-    BlendColorMaskRGBA.underlyingType = Type::FullType{ UInt32Type.name };
-    BlendColorMaskRGBA.thisResolved->type = this;
-    this->labels = std::array{ "None"_c, "R"_c, "RG"_c, "RGB"_c, "RGBA"_c };
+    BlendColorMaskG.value = BlendColorMaskG_value;
+    BlendColorMaskG.type = Type::FullType{ BlendColorMaskType.name, true };
+    BlendColorMaskG.underlyingType = Type::FullType{ UInt32Type.name };
+    BlendColorMaskG.thisResolved->type = this;
+    BlendColorMaskB.value = BlendColorMaskB_value;
+    BlendColorMaskB.type = Type::FullType{ BlendColorMaskType.name, true };
+    BlendColorMaskB.underlyingType = Type::FullType{ UInt32Type.name };
+    BlendColorMaskB.thisResolved->type = this;
+    BlendColorMaskA.value = BlendColorMaskA_value;
+    BlendColorMaskA.type = Type::FullType{ BlendColorMaskType.name, true };
+    BlendColorMaskA.underlyingType = Type::FullType{ UInt32Type.name };
+    BlendColorMaskA.thisResolved->type = this;
+    this->labels = std::array{ "None"_c, "R"_c, "G"_c, "B"_c, "A"_c };
     this->fromUnderlyingType.name = this->name;
     this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
     this->fromUnderlyingType.compileTime = true;
@@ -27602,10 +27602,10 @@ BlendColorMask::BlendColorMask()
     Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
     Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 7> {
-        std::pair{ "RG"_h, &BlendColorMaskRG },
         std::pair{ "None"_h, &BlendColorMaskNone },
-        std::pair{ "RGBA"_h, &BlendColorMaskRGBA },
-        std::pair{ "RGB"_h, &BlendColorMaskRGB },
+        std::pair{ "G"_h, &BlendColorMaskG },
+        std::pair{ "A"_h, &BlendColorMaskA },
+        std::pair{ "B"_h, &BlendColorMaskB },
         std::pair{ "R"_h, &BlendColorMaskR },
         std::pair{ "operator=="_h, &BlendColorMaskType.eqOp },
         std::pair{ "operator!="_h, &BlendColorMaskType.neqOp }
