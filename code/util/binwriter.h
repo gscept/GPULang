@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 #include <iostream>
 #include <fstream>
+#include <cstdint>
 namespace GPULang
 {
 class BinWriter
