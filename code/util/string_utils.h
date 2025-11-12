@@ -205,8 +205,8 @@ template<>
 inline size_t
 FragmentSize(float arg)
 {
-    char buf[256];
-    return snprintf(buf, 256, "%f", arg);
+    char buf[64];
+    return snprintf(buf, 64, "%.17g", arg);
 }
 
 template<>
@@ -318,7 +318,7 @@ template<>
 inline void
 FragmentString(float arg, char* buf, size_t size)
 {
-    snprintf(buf, size, "%f", arg);
+    snprintf(buf, size, "%.17g", arg);
 }
 
 template<>
@@ -694,7 +694,7 @@ struct TransientString
     template<>
     void Append(float arg)
     {
-        size_t written = snprintf(this->buf + this->size, this->capacity - this->size, "%f", arg);
+        size_t written = snprintf(this->buf + this->size, this->capacity - this->size, "%.17g", arg);
         this->size += written;
         this->buf[this->size] = '\0';
     }

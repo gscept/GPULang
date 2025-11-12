@@ -6098,22 +6098,22 @@ struct CompareMode : public Enumeration
 };
 extern CompareMode CompareModeType;
 
-inline constexpr auto CompareModeLess_value = 0x0;
-extern EnumExpression CompareModeLess;
-inline constexpr auto CompareModeLessEqual_value = 0x1;
-extern EnumExpression CompareModeLessEqual;
-inline constexpr auto CompareModeGreater_value = 0x2;
-extern EnumExpression CompareModeGreater;
-inline constexpr auto CompareModeGreaterEqual_value = 0x3;
-extern EnumExpression CompareModeGreaterEqual;
-inline constexpr auto CompareModeEqual_value = 0x4;
-extern EnumExpression CompareModeEqual;
-inline constexpr auto CompareModeNotEqual_value = 0x5;
-extern EnumExpression CompareModeNotEqual;
-inline constexpr auto CompareModeAlways_value = 0x6;
-extern EnumExpression CompareModeAlways;
-inline constexpr auto CompareModeNever_value = 0x7;
+inline constexpr auto CompareModeNever_value = 0x0;
 extern EnumExpression CompareModeNever;
+inline constexpr auto CompareModeLess_value = 0x1;
+extern EnumExpression CompareModeLess;
+inline constexpr auto CompareModeLessEqual_value = 0x2;
+extern EnumExpression CompareModeLessEqual;
+inline constexpr auto CompareModeGreater_value = 0x3;
+extern EnumExpression CompareModeGreater;
+inline constexpr auto CompareModeGreaterEqual_value = 0x4;
+extern EnumExpression CompareModeGreaterEqual;
+inline constexpr auto CompareModeEqual_value = 0x5;
+extern EnumExpression CompareModeEqual;
+inline constexpr auto CompareModeNotEqual_value = 0x6;
+extern EnumExpression CompareModeNotEqual;
+inline constexpr auto CompareModeAlways_value = 0x7;
+extern EnumExpression CompareModeAlways;
 struct StencilOp : public Enumeration
 {
     StencilOp();

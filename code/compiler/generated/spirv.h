@@ -1420,7 +1420,7 @@ SPIRVResult SPIRV_UInt32_operator_orasg_UInt32(const Compiler* c, SPIRVGenerator
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1428,7 +1428,7 @@ SPIRVResult SPIRV_UInt32_operator_andasg_UInt32(const Compiler* c, SPIRVGenerato
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1436,7 +1436,7 @@ SPIRVResult SPIRV_UInt32_operator_xorasg_UInt32(const Compiler* c, SPIRVGenerato
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1444,7 +1444,7 @@ SPIRVResult SPIRV_UInt32_operator_lshasg_UInt32(const Compiler* c, SPIRVGenerato
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1720,7 +1720,7 @@ SPIRVResult SPIRV_Int32_operator_orasg_Int32(const Compiler* c, SPIRVGenerator* 
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1728,7 +1728,7 @@ SPIRVResult SPIRV_Int32_operator_andasg_Int32(const Compiler* c, SPIRVGenerator*
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1736,7 +1736,7 @@ SPIRVResult SPIRV_Int32_operator_xorasg_Int32(const Compiler* c, SPIRVGenerator*
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1744,7 +1744,7 @@ SPIRVResult SPIRV_Int32_operator_lshasg_Int32(const Compiler* c, SPIRVGenerator*
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2362,7 +2362,7 @@ SPIRVResult SPIRV_UInt16_operator_orasg_UInt16(const Compiler* c, SPIRVGenerator
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2370,7 +2370,7 @@ SPIRVResult SPIRV_UInt16_operator_andasg_UInt16(const Compiler* c, SPIRVGenerato
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2378,7 +2378,7 @@ SPIRVResult SPIRV_UInt16_operator_xorasg_UInt16(const Compiler* c, SPIRVGenerato
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2386,7 +2386,7 @@ SPIRVResult SPIRV_UInt16_operator_lshasg_UInt16(const Compiler* c, SPIRVGenerato
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2662,7 +2662,7 @@ SPIRVResult SPIRV_Int16_operator_orasg_Int16(const Compiler* c, SPIRVGenerator* 
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2670,7 +2670,7 @@ SPIRVResult SPIRV_Int16_operator_andasg_Int16(const Compiler* c, SPIRVGenerator*
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2678,7 +2678,7 @@ SPIRVResult SPIRV_Int16_operator_xorasg_Int16(const Compiler* c, SPIRVGenerator*
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2686,7 +2686,7 @@ SPIRVResult SPIRV_Int16_operator_lshasg_Int16(const Compiler* c, SPIRVGenerator*
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3398,7 +3398,7 @@ SPIRVResult SPIRV_UInt32x2_operator_orasg_UInt32x2(const Compiler* c, SPIRVGener
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3406,7 +3406,7 @@ SPIRVResult SPIRV_UInt32x2_operator_andasg_UInt32x2(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3414,7 +3414,7 @@ SPIRVResult SPIRV_UInt32x2_operator_xorasg_UInt32x2(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3422,7 +3422,7 @@ SPIRVResult SPIRV_UInt32x2_operator_lshasg_UInt32x2(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3795,7 +3795,7 @@ SPIRVResult SPIRV_Int32x2_operator_orasg_Int32x2(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3803,7 +3803,7 @@ SPIRVResult SPIRV_Int32x2_operator_andasg_Int32x2(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3811,7 +3811,7 @@ SPIRVResult SPIRV_Int32x2_operator_xorasg_Int32x2(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3819,7 +3819,7 @@ SPIRVResult SPIRV_Int32x2_operator_lshasg_Int32x2(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -4704,7 +4704,7 @@ SPIRVResult SPIRV_UInt16x2_operator_orasg_UInt16x2(const Compiler* c, SPIRVGener
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -4712,7 +4712,7 @@ SPIRVResult SPIRV_UInt16x2_operator_andasg_UInt16x2(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -4720,7 +4720,7 @@ SPIRVResult SPIRV_UInt16x2_operator_xorasg_UInt16x2(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -4728,7 +4728,7 @@ SPIRVResult SPIRV_UInt16x2_operator_lshasg_UInt16x2(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5101,7 +5101,7 @@ SPIRVResult SPIRV_Int16x2_operator_orasg_Int16x2(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5109,7 +5109,7 @@ SPIRVResult SPIRV_Int16x2_operator_andasg_Int16x2(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5117,7 +5117,7 @@ SPIRVResult SPIRV_Int16x2_operator_xorasg_Int16x2(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5125,7 +5125,7 @@ SPIRVResult SPIRV_Int16x2_operator_lshasg_Int16x2(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5861,7 +5861,7 @@ SPIRVResult SPIRV_UInt32x3_operator_orasg_UInt32x3(const Compiler* c, SPIRVGener
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5869,7 +5869,7 @@ SPIRVResult SPIRV_UInt32x3_operator_andasg_UInt32x3(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5877,7 +5877,7 @@ SPIRVResult SPIRV_UInt32x3_operator_xorasg_UInt32x3(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5885,7 +5885,7 @@ SPIRVResult SPIRV_UInt32x3_operator_lshasg_UInt32x3(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -6270,7 +6270,7 @@ SPIRVResult SPIRV_Int32x3_operator_orasg_Int32x3(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -6278,7 +6278,7 @@ SPIRVResult SPIRV_Int32x3_operator_andasg_Int32x3(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -6286,7 +6286,7 @@ SPIRVResult SPIRV_Int32x3_operator_xorasg_Int32x3(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -6294,7 +6294,7 @@ SPIRVResult SPIRV_Int32x3_operator_lshasg_Int32x3(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7215,7 +7215,7 @@ SPIRVResult SPIRV_UInt16x3_operator_orasg_UInt16x3(const Compiler* c, SPIRVGener
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7223,7 +7223,7 @@ SPIRVResult SPIRV_UInt16x3_operator_andasg_UInt16x3(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7231,7 +7231,7 @@ SPIRVResult SPIRV_UInt16x3_operator_xorasg_UInt16x3(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7239,7 +7239,7 @@ SPIRVResult SPIRV_UInt16x3_operator_lshasg_UInt16x3(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7624,7 +7624,7 @@ SPIRVResult SPIRV_Int16x3_operator_orasg_Int16x3(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7632,7 +7632,7 @@ SPIRVResult SPIRV_Int16x3_operator_andasg_Int16x3(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7640,7 +7640,7 @@ SPIRVResult SPIRV_Int16x3_operator_xorasg_Int16x3(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7648,7 +7648,7 @@ SPIRVResult SPIRV_Int16x3_operator_lshasg_Int16x3(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8432,7 +8432,7 @@ SPIRVResult SPIRV_UInt32x4_operator_orasg_UInt32x4(const Compiler* c, SPIRVGener
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8440,7 +8440,7 @@ SPIRVResult SPIRV_UInt32x4_operator_andasg_UInt32x4(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8448,7 +8448,7 @@ SPIRVResult SPIRV_UInt32x4_operator_xorasg_UInt32x4(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8456,7 +8456,7 @@ SPIRVResult SPIRV_UInt32x4_operator_lshasg_UInt32x4(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8865,7 +8865,7 @@ SPIRVResult SPIRV_Int32x4_operator_orasg_Int32x4(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8873,7 +8873,7 @@ SPIRVResult SPIRV_Int32x4_operator_andasg_Int32x4(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8881,7 +8881,7 @@ SPIRVResult SPIRV_Int32x4_operator_xorasg_Int32x4(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8889,7 +8889,7 @@ SPIRVResult SPIRV_Int32x4_operator_lshasg_Int32x4(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -9882,7 +9882,7 @@ SPIRVResult SPIRV_UInt16x4_operator_orasg_UInt16x4(const Compiler* c, SPIRVGener
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -9890,7 +9890,7 @@ SPIRVResult SPIRV_UInt16x4_operator_andasg_UInt16x4(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -9898,7 +9898,7 @@ SPIRVResult SPIRV_UInt16x4_operator_xorasg_UInt16x4(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -9906,7 +9906,7 @@ SPIRVResult SPIRV_UInt16x4_operator_lshasg_UInt16x4(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -10315,7 +10315,7 @@ SPIRVResult SPIRV_Int16x4_operator_orasg_Int16x4(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseOr, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -10323,7 +10323,7 @@ SPIRVResult SPIRV_Int16x4_operator_andasg_Int16x4(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -10331,7 +10331,7 @@ SPIRVResult SPIRV_Int16x4_operator_xorasg_Int16x4(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpBitwiseXor, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -10339,7 +10339,7 @@ SPIRVResult SPIRV_Int16x4_operator_lshasg_Int16x4(const Compiler* c, SPIRVGenera
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpShiftRightLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpShiftLeftLogical, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -10361,17 +10361,17 @@ SPIRVResult SPIRV_Float32x2x2_identity(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
     SPIRVResult one = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 2);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {one, zero});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {zero, one});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({one, zero}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, one}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1}));
 }
 
 SPIRVResult SPIRV_Float32x2x2_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 2);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[2]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[3]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[2]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[3]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1}));
 }
 
 SPIRVResult SPIRV_Float32x2x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -10546,10 +10546,10 @@ SPIRVResult SPIRV_Float32x3x2_Float32_2_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float32x3x2_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[3]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[4]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[5]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[3]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[4]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[5]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2}));
 }
 
 SPIRVResult SPIRV_Float32x3x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -10724,11 +10724,11 @@ SPIRVResult SPIRV_Float32x4x2_Float32_2_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float32x4x2_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[4]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[5]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[6]});
-    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, {args[3], args[7]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2, col3});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[4]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[5]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[6]}));
+    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[3], args[7]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2, col3}));
 }
 
 SPIRVResult SPIRV_Float32x4x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -10903,9 +10903,9 @@ SPIRVResult SPIRV_Float32x2x3_Float32_3_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float32x2x3_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 2);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[2], args[4]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[3], args[5]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[2], args[4]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[3], args[5]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1}));
 }
 
 SPIRVResult SPIRV_Float32x2x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11082,19 +11082,19 @@ SPIRVResult SPIRV_Float32x3x3_identity(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
     SPIRVResult one = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {one, zero, zero});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {zero, one, zero});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {zero, zero, one});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({one, zero, zero}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, one, zero}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, zero, one}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2}));
 }
 
 SPIRVResult SPIRV_Float32x3x3_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[3], args[6]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[4], args[7]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[5], args[8]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[3], args[6]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[4], args[7]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[5], args[8]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2}));
 }
 
 SPIRVResult SPIRV_Float32x3x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11269,11 +11269,11 @@ SPIRVResult SPIRV_Float32x4x3_Float32_3_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float32x4x3_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[4], args[8]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[5], args[9]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[6], args[10]});
-    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, {args[3], args[7], args[11]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2, col3});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[4], args[8]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[5], args[9]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[6], args[10]}));
+    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[3], args[7], args[11]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2, col3}));
 }
 
 SPIRVResult SPIRV_Float32x4x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11448,9 +11448,9 @@ SPIRVResult SPIRV_Float32x2x4_Float32_4_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float32x2x4_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 2);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[2], args[4], args[6]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[3], args[5], args[7]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[2], args[4], args[6]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[3], args[5], args[7]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1}));
 }
 
 SPIRVResult SPIRV_Float32x2x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11625,10 +11625,10 @@ SPIRVResult SPIRV_Float32x3x4_Float32_4_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float32x3x4_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[3], args[6], args[9]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[4], args[7], args[10]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[5], args[8], args[11]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[3], args[6], args[9]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[4], args[7], args[10]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[5], args[8], args[11]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2}));
 }
 
 SPIRVResult SPIRV_Float32x3x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11805,21 +11805,21 @@ SPIRVResult SPIRV_Float32x4x4_identity(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
     SPIRVResult one = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {one, zero, zero, zero});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {zero, one, zero, zero});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {zero, zero, one, zero});
-    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, {zero, zero, zero, one});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2, col3});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({one, zero, zero, zero}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, one, zero, zero}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, zero, one, zero}));
+    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, zero, zero, one}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2, col3}));
 }
 
 SPIRVResult SPIRV_Float32x4x4_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[4], args[8], args[12]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[5], args[9], args[13]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[6], args[10], args[14]});
-    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, {args[3], args[7], args[11], args[15]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2, col3});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[4], args[8], args[12]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[5], args[9], args[13]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[6], args[10], args[14]}));
+    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[3], args[7], args[11], args[15]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2, col3}));
 }
 
 SPIRVResult SPIRV_Float32x4x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11996,17 +11996,17 @@ SPIRVResult SPIRV_Float16x2x2_identity(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
     SPIRVResult one = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 2);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {one, zero});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {zero, one});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({one, zero}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, one}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1}));
 }
 
 SPIRVResult SPIRV_Float16x2x2_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 2);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[2]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[3]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[2]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[3]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1}));
 }
 
 SPIRVResult SPIRV_Float16x2x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -12181,10 +12181,10 @@ SPIRVResult SPIRV_Float16x3x2_Float16_2_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float16x3x2_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[3]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[4]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[5]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[3]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[4]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[5]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2}));
 }
 
 SPIRVResult SPIRV_Float16x3x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -12359,11 +12359,11 @@ SPIRVResult SPIRV_Float16x4x2_Float16_2_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float16x4x2_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[4]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[5]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[6]});
-    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, {args[3], args[7]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2, col3});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[4]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[5]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[6]}));
+    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[3], args[7]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2, col3}));
 }
 
 SPIRVResult SPIRV_Float16x4x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -12538,9 +12538,9 @@ SPIRVResult SPIRV_Float16x2x3_Float16_3_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float16x2x3_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 2);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[2], args[4]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[3], args[5]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[2], args[4]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[3], args[5]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1}));
 }
 
 SPIRVResult SPIRV_Float16x2x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -12717,19 +12717,19 @@ SPIRVResult SPIRV_Float16x3x3_identity(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
     SPIRVResult one = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {one, zero, zero});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {zero, one, zero});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {zero, zero, one});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({one, zero, zero}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, one, zero}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, zero, one}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2}));
 }
 
 SPIRVResult SPIRV_Float16x3x3_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[3], args[6]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[4], args[7]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[5], args[8]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[3], args[6]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[4], args[7]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[5], args[8]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2}));
 }
 
 SPIRVResult SPIRV_Float16x3x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -12904,11 +12904,11 @@ SPIRVResult SPIRV_Float16x4x3_Float16_3_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float16x4x3_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[4], args[8]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[5], args[9]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[6], args[10]});
-    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, {args[3], args[7], args[11]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2, col3});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[4], args[8]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[5], args[9]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[6], args[10]}));
+    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[3], args[7], args[11]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2, col3}));
 }
 
 SPIRVResult SPIRV_Float16x4x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -13083,9 +13083,9 @@ SPIRVResult SPIRV_Float16x2x4_Float16_4_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float16x2x4_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 2);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[2], args[4], args[6]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[3], args[5], args[7]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[2], args[4], args[6]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[3], args[5], args[7]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1}));
 }
 
 SPIRVResult SPIRV_Float16x2x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -13260,10 +13260,10 @@ SPIRVResult SPIRV_Float16x3x4_Float16_4_ctor(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Float16x3x4_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[3], args[6], args[9]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[4], args[7], args[10]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[5], args[8], args[11]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[3], args[6], args[9]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[4], args[7], args[10]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[5], args[8], args[11]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2}));
 }
 
 SPIRVResult SPIRV_Float16x3x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -13440,21 +13440,21 @@ SPIRVResult SPIRV_Float16x4x4_identity(const Compiler* c, SPIRVGenerator* g, uin
     SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
     SPIRVResult one = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {one, zero, zero, zero});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {zero, one, zero, zero});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {zero, zero, one, zero});
-    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, {zero, zero, zero, one});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2, col3});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({one, zero, zero, zero}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, one, zero, zero}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, zero, one, zero}));
+    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({zero, zero, zero, one}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2, col3}));
 }
 
 SPIRVResult SPIRV_Float16x4x4_raw_list(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4);
-    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, {args[0], args[4], args[8], args[12]});
-    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, {args[1], args[5], args[9], args[13]});
-    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, {args[2], args[6], args[10], args[14]});
-    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, {args[3], args[7], args[11], args[15]});
-    return GenerateCompositeSPIRV(c, g, returnType, {col0, col1, col2, col3});
+    SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[0], args[4], args[8], args[12]}));
+    SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[1], args[5], args[9], args[13]}));
+    SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[2], args[6], args[10], args[14]}));
+    SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({args[3], args[7], args[11], args[15]}));
+    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({col0, col1, col2, col3}));
 }
 
 SPIRVResult SPIRV_Float16x4x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -17803,7 +17803,7 @@ SPIRVResult SPIRV_HullExportOuterTessellationLevels(const Compiler* c, SPIRVGene
     SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult loaded2 = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult loaded3 = LoadValueSPIRV(c, g, args[3]);
-    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, {loaded0, loaded1, loaded2, loaded3});
+    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, TransientArray<SPIRVResult>({loaded0, loaded1, loaded2, loaded3}));
     g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loadedArray);
     return SPIRVResult::Invalid();
 }
@@ -17822,7 +17822,7 @@ SPIRVResult SPIRV_HullExportInnerTessellationLevels(const Compiler* c, SPIRVGene
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, {loaded0, loaded1});
+    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, TransientArray<SPIRVResult>({loaded0, loaded1}));
     g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loadedArray);
     return SPIRVResult::Invalid();
 }
@@ -23356,7 +23356,7 @@ SPIRVResult SPIRV_TextureSampleProj_Texture1D(const Compiler* c, SPIRVGenerator*
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23368,7 +23368,7 @@ SPIRVResult SPIRV_SampledTextureSampleProj_Texture1D(const Compiler* c, SPIRVGen
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23380,7 +23380,7 @@ SPIRVResult SPIRV_TextureSampleProj_Texture2D(const Compiler* c, SPIRVGenerator*
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23392,7 +23392,7 @@ SPIRVResult SPIRV_SampledTextureSampleProj_Texture2D(const Compiler* c, SPIRVGen
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23404,7 +23404,7 @@ SPIRVResult SPIRV_TextureSampleProj_Texture3D(const Compiler* c, SPIRVGenerator*
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23416,7 +23416,7 @@ SPIRVResult SPIRV_SampledTextureSampleProj_Texture3D(const Compiler* c, SPIRVGen
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23428,7 +23428,7 @@ SPIRVResult SPIRV_TextureSampleProjOffset_Texture1D(const Compiler* c, SPIRVGene
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
@@ -23442,7 +23442,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjOffset_Texture1D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
@@ -23456,7 +23456,7 @@ SPIRVResult SPIRV_TextureSampleProjOffset_Texture2D(const Compiler* c, SPIRVGene
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
@@ -23470,7 +23470,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjOffset_Texture2D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
@@ -23484,7 +23484,7 @@ SPIRVResult SPIRV_TextureSampleProjOffset_Texture3D(const Compiler* c, SPIRVGene
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
@@ -23498,7 +23498,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjOffset_Texture3D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
@@ -23732,7 +23732,7 @@ SPIRVResult SPIRV_TextureSampleProjCompare_Texture1D(const Compiler* c, SPIRVGen
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
     return SPIRVResult(ret, returnType, true);
@@ -23745,7 +23745,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompare_Texture1D(const Compiler* c, S
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
     return SPIRVResult(ret, returnType, true);
@@ -23758,7 +23758,7 @@ SPIRVResult SPIRV_TextureSampleProjCompare_Texture2D(const Compiler* c, SPIRVGen
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
     return SPIRVResult(ret, returnType, true);
@@ -23771,7 +23771,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompare_Texture2D(const Compiler* c, S
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
     return SPIRVResult(ret, returnType, true);
@@ -23784,7 +23784,7 @@ SPIRVResult SPIRV_TextureSampleProjCompare_Texture3D(const Compiler* c, SPIRVGen
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
     return SPIRVResult(ret, returnType, true);
@@ -23797,7 +23797,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompare_Texture3D(const Compiler* c, S
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
     return SPIRVResult(ret, returnType, true);
@@ -23810,7 +23810,7 @@ SPIRVResult SPIRV_TextureSampleProjCompareOffset_Texture1D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -23825,7 +23825,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompareOffset_Texture1D(const Compiler
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -23840,7 +23840,7 @@ SPIRVResult SPIRV_TextureSampleProjCompareOffset_Texture2D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -23855,7 +23855,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompareOffset_Texture2D(const Compiler
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -23870,7 +23870,7 @@ SPIRVResult SPIRV_TextureSampleProjCompareOffset_Texture3D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -23885,7 +23885,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompareOffset_Texture3D(const Compiler
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -24160,7 +24160,7 @@ SPIRVResult SPIRV_TextureSampleLodProj_Texture1D(const Compiler* c, SPIRVGenerat
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
     return SPIRVResult(ret, returnType, true);
@@ -24173,7 +24173,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProj_Texture1D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
     return SPIRVResult(ret, returnType, true);
@@ -24186,7 +24186,7 @@ SPIRVResult SPIRV_TextureSampleLodProj_Texture2D(const Compiler* c, SPIRVGenerat
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
     return SPIRVResult(ret, returnType, true);
@@ -24199,7 +24199,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProj_Texture2D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
     return SPIRVResult(ret, returnType, true);
@@ -24212,7 +24212,7 @@ SPIRVResult SPIRV_TextureSampleLodProj_Texture3D(const Compiler* c, SPIRVGenerat
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
     return SPIRVResult(ret, returnType, true);
@@ -24225,7 +24225,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProj_Texture3D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
     return SPIRVResult(ret, returnType, true);
@@ -24238,7 +24238,7 @@ SPIRVResult SPIRV_TextureSampleLodProjOffset_Texture1D(const Compiler* c, SPIRVG
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -24253,7 +24253,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjOffset_Texture1D(const Compiler* c,
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -24268,7 +24268,7 @@ SPIRVResult SPIRV_TextureSampleLodProjOffset_Texture2D(const Compiler* c, SPIRVG
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -24283,7 +24283,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjOffset_Texture2D(const Compiler* c,
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -24298,7 +24298,7 @@ SPIRVResult SPIRV_TextureSampleLodProjOffset_Texture3D(const Compiler* c, SPIRVG
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -24313,7 +24313,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjOffset_Texture3D(const Compiler* c,
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -24568,7 +24568,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompare_Texture1D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
@@ -24582,7 +24582,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompare_Texture1D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
@@ -24596,7 +24596,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompare_Texture2D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
@@ -24610,7 +24610,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompare_Texture2D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
@@ -24624,7 +24624,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompare_Texture3D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
@@ -24638,7 +24638,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompare_Texture3D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
@@ -24652,7 +24652,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompareOffset_Texture1D(const Compiler* c,
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -24668,7 +24668,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompareOffset_Texture1D(const Compi
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -24684,7 +24684,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompareOffset_Texture2D(const Compiler* c,
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -24700,7 +24700,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompareOffset_Texture2D(const Compi
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -24716,7 +24716,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompareOffset_Texture3D(const Compiler* c,
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -24732,7 +24732,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompareOffset_Texture3D(const Compi
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -25032,7 +25032,7 @@ SPIRVResult SPIRV_TextureSampleGradProj_Texture1D(const Compiler* c, SPIRVGenera
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY);
@@ -25046,7 +25046,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProj_Texture1D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY);
@@ -25060,7 +25060,7 @@ SPIRVResult SPIRV_TextureSampleGradProj_Texture2D(const Compiler* c, SPIRVGenera
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY);
@@ -25074,7 +25074,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProj_Texture2D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY);
@@ -25088,7 +25088,7 @@ SPIRVResult SPIRV_TextureSampleGradProj_Texture3D(const Compiler* c, SPIRVGenera
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY);
@@ -25102,7 +25102,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProj_Texture3D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY);
@@ -25116,7 +25116,7 @@ SPIRVResult SPIRV_TextureSampleGradProjOffset_Texture1D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -25132,7 +25132,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjOffset_Texture1D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -25148,7 +25148,7 @@ SPIRVResult SPIRV_TextureSampleGradProjOffset_Texture2D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -25164,7 +25164,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjOffset_Texture2D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -25180,7 +25180,7 @@ SPIRVResult SPIRV_TextureSampleGradProjOffset_Texture3D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -25196,7 +25196,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjOffset_Texture3D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -25472,7 +25472,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompare_Texture1D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
@@ -25487,7 +25487,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompare_Texture1D(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
@@ -25502,7 +25502,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompare_Texture2D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
@@ -25517,7 +25517,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompare_Texture2D(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
@@ -25532,7 +25532,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompare_Texture3D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
@@ -25547,7 +25547,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompare_Texture3D(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
@@ -25562,7 +25562,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompareOffset_Texture1D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
@@ -25579,7 +25579,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompareOffset_Texture1D(const Comp
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
@@ -25596,7 +25596,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompareOffset_Texture2D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
@@ -25613,7 +25613,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompareOffset_Texture2D(const Comp
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
@@ -25630,7 +25630,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompareOffset_Texture3D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
@@ -25647,7 +25647,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompareOffset_Texture3D(const Comp
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
@@ -25924,7 +25924,7 @@ SPIRVResult SPIRV_TextureSampleBiasProj_Texture1D(const Compiler* c, SPIRVGenera
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
     return SPIRVResult(ret, returnType, true);
@@ -25937,7 +25937,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProj_Texture1D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
     return SPIRVResult(ret, returnType, true);
@@ -25950,7 +25950,7 @@ SPIRVResult SPIRV_TextureSampleBiasProj_Texture2D(const Compiler* c, SPIRVGenera
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
     return SPIRVResult(ret, returnType, true);
@@ -25963,7 +25963,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProj_Texture2D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
     return SPIRVResult(ret, returnType, true);
@@ -25976,7 +25976,7 @@ SPIRVResult SPIRV_TextureSampleBiasProj_Texture3D(const Compiler* c, SPIRVGenera
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
     return SPIRVResult(ret, returnType, true);
@@ -25989,7 +25989,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProj_Texture3D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
     return SPIRVResult(ret, returnType, true);
@@ -26002,7 +26002,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjOffset_Texture1D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -26017,7 +26017,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjOffset_Texture1D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -26032,7 +26032,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjOffset_Texture2D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -26047,7 +26047,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjOffset_Texture2D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -26062,7 +26062,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjOffset_Texture3D(const Compiler* c, SPIRV
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -26077,7 +26077,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjOffset_Texture3D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
     g->writer->Capability(Capabilities::ImageQuery);
     SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
@@ -26332,7 +26332,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompare_Texture1D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
@@ -26346,7 +26346,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompare_Texture1D(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
@@ -26360,7 +26360,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompare_Texture2D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
@@ -26374,7 +26374,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompare_Texture2D(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
@@ -26388,7 +26388,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompare_Texture3D(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
@@ -26402,7 +26402,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompare_Texture3D(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
@@ -26416,7 +26416,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompareOffset_Texture1D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -26432,7 +26432,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture1D(const Comp
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -26448,7 +26448,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompareOffset_Texture2D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -26464,7 +26464,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture2D(const Comp
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -26480,7 +26480,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompareOffset_Texture3D(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
     g->writer->Capability(Capabilities::ImageQuery);
@@ -26496,7 +26496,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture3D(const Comp
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
     g->writer->Capability(Capabilities::ImageQuery);

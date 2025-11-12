@@ -26640,6 +26640,7 @@ Void::Void()
 };
 Void VoidType;
 
+EnumExpression CompareModeNever;
 EnumExpression CompareModeLess;
 EnumExpression CompareModeLessEqual;
 EnumExpression CompareModeGreater;
@@ -26647,7 +26648,6 @@ EnumExpression CompareModeGreaterEqual;
 EnumExpression CompareModeEqual;
 EnumExpression CompareModeNotEqual;
 EnumExpression CompareModeAlways;
-EnumExpression CompareModeNever;
 CompareMode::CompareMode()
 {
     this->name = "CompareMode"_c;
@@ -26657,6 +26657,10 @@ CompareMode::CompareMode()
     this->baseType = TypeCode::UInt;
     this->type.literal = true;
     this->builtin = true;
+    CompareModeNever.value = CompareModeNever_value;
+    CompareModeNever.type = Type::FullType{ CompareModeType.name, true };
+    CompareModeNever.underlyingType = Type::FullType{ UInt32Type.name };
+    CompareModeNever.thisResolved->type = this;
     CompareModeLess.value = CompareModeLess_value;
     CompareModeLess.type = Type::FullType{ CompareModeType.name, true };
     CompareModeLess.underlyingType = Type::FullType{ UInt32Type.name };
@@ -26685,11 +26689,7 @@ CompareMode::CompareMode()
     CompareModeAlways.type = Type::FullType{ CompareModeType.name, true };
     CompareModeAlways.underlyingType = Type::FullType{ UInt32Type.name };
     CompareModeAlways.thisResolved->type = this;
-    CompareModeNever.value = CompareModeNever_value;
-    CompareModeNever.type = Type::FullType{ CompareModeType.name, true };
-    CompareModeNever.underlyingType = Type::FullType{ UInt32Type.name };
-    CompareModeNever.thisResolved->type = this;
-    this->labels = std::array{ "Less"_c, "LessEqual"_c, "Greater"_c, "GreaterEqual"_c, "Equal"_c, "NotEqual"_c, "Always"_c, "Never"_c };
+    this->labels = std::array{ "Never"_c, "Less"_c, "LessEqual"_c, "Greater"_c, "GreaterEqual"_c, "Equal"_c, "NotEqual"_c, "Always"_c };
     this->fromUnderlyingType.name = this->name;
     this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
     this->fromUnderlyingType.compileTime = true;

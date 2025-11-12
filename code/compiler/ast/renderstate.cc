@@ -20,7 +20,7 @@ RenderStateInstance::RenderStateInstance()
     typeResolved->noPixels = false;
     typeResolved->rasterizationMode = Serialization::RasterizationMode::FillMode;
     typeResolved->cullMode = Serialization::CullMode::BackMode;
-    typeResolved->windingOrderMode = Serialization::WindingOrderMode::ClockwiseMode;
+    typeResolved->windingOrderMode = Serialization::WindingOrderMode::CounterClockwiseMode;
     typeResolved->depthBiasEnabled = false;
     typeResolved->depthBiasFactor = 0.0f;
     typeResolved->depthBiasClamp = 0.0f;

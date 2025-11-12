@@ -1559,7 +1559,7 @@ struct SPVWriter
         if (this->outputText)
         {
             char buf[64];
-            int numWritten = snprintf(buf, 64, " %f", arg);
+            int numWritten = snprintf(buf, 64, " %.17g", arg);
             this->texts[(uint32_t)this->section].Append(buf, numWritten);
         }
     }
@@ -3384,9 +3384,53 @@ GenerateCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
 /**
 */
 SPIRVResult
+GenerateCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const TransientArray<SPIRVResult>& args)
+{
+    TStr argList;
+    bool isConst = true;
+    bool isSpecialization = false;
+    TransientArray<SPIRVResult> loadedArgs(args.size);
+    for (const SPIRVResult& arg : args)
+    {
+        SPIRVResult loaded = LoadValueSPIRV(compiler, generator, arg);
+        loadedArgs.Append(loaded);
+        argList.Concatenate<false>(SPVArg(loaded.name), " ");
+        if (!loaded.isConst)
+            isConst = false;
+        isSpecialization |= loaded.isSpecialization;
+    }
+    if (isConst)
+    {
+        if (isSpecialization)
+        {
+            uint32_t ret = AddSymbol(generator, TStr::Compact(SPVArg(returnType), "_", "composite_link_defined", "_", argList), SPVWriter::Section::Declarations, OpSpecConstantComposite, returnType, SPVResultList(loadedArgs));
+            return SPIRVResult(ret, returnType, true, true);
+        }
+        else
+        {
+            uint32_t ret = AddSymbol(generator, TStr::Compact(SPVArg(returnType), "_", "composite", "_", argList), SPVWriter::Section::Declarations, OpConstantComposite, returnType, SPVResultList(loadedArgs));
+            return SPIRVResult(ret, returnType, true, true);
+        }
+    }
+    else
+    {
+        assert(!generator->linkDefineEvaluation);
+        uint32_t res = generator->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVResultList(loadedArgs));
+        return SPIRVResult(res, returnType, true);
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+SPIRVResult
 GenerateSplatCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t num, SPIRVResult arg)
 {
-    std::vector<SPIRVResult> splat(num, arg);
+    TransientArray<SPIRVResult> splat(num);
+    for (uint32_t i = 0; i < num; i++)
+    {
+        splat.Append(arg);
+    }
     assert(num > 1);
     return GenerateCompositeSPIRV(compiler, generator, returnType, splat);
 }
@@ -4516,11 +4560,25 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                     ValueUnion val;
                     callExpression->args[i]->EvalValue(val);
                     SPIRVResult arg = SPIRVResult(val);
-                    arg = arg.ConvertTo(paramResolved->typeSymbol->baseType);
-                    if (paramResolved->typeSymbol->columnSize > 1)
+                    SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+
+                    if (val.columnSize > 1)
                     {
-                        SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+                        TransientArray<SPIRVResult> literals(val.columnSize);
+                        for (uint8_t i = 0; i < val.columnSize; i++)
+                        {
+                            literals.Append(SPIRVResult(val, i).ConvertTo(paramResolved->typeSymbol->baseType));
+                        }
+                        arg = GenerateCompositeSPIRV(compiler, generator, ty.typeName, literals);
+                    }
+                    else if (paramResolved->typeSymbol->columnSize > 1)
+                    {
+                        arg = arg.ConvertTo(paramResolved->typeSymbol->baseType);
                         arg = GenerateSplatCompositeSPIRV(compiler, generator, ty.typeName, paramResolved->typeSymbol->columnSize, arg);
+                    }
+                    else
+                    {
+                        arg = arg.ConvertTo(paramResolved->typeSymbol->baseType);
                     }
                     args.push_back(arg);
                 }
@@ -5341,10 +5399,10 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             FloatVecExpression* floatVecExpr = static_cast<FloatVecExpression*>(expr);
             FloatVecExpression::__Resolved* floatVecExprRes = Symbol::Resolved(floatVecExpr);
             assert(!generator->literalExtract);
-            std::vector<SPIRVResult> results;
+            TransientArray<SPIRVResult> results(floatVecExpr->values.size);
             for (uint32_t i = 0; i < floatVecExpr->values.size; i++)
             {
-                results.push_back(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(floatVecExpr->values[i])));
+                results.Append(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(floatVecExpr->values[i])));
             }
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, floatVecExprRes->fullType, floatVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
@@ -5362,10 +5420,10 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             IntVecExpression* intVecExpr = static_cast<IntVecExpression*>(expr);
             IntVecExpression::__Resolved* intVecExprRes = Symbol::Resolved(intVecExpr);
             assert(!generator->literalExtract);
-            std::vector<SPIRVResult> results;
+            TransientArray<SPIRVResult> results(intVecExpr->values.size);
             for (uint32_t i = 0; i < intVecExpr->values.size; i++)
             {
-                results.push_back(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(intVecExpr->values[i])));
+                results.Append(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(intVecExpr->values[i])));
             }
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, intVecExprRes->fullType, intVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
@@ -5383,10 +5441,10 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             UIntVecExpression* uintVecExpr = static_cast<UIntVecExpression*>(expr);
             UIntVecExpression::__Resolved* uintVecExprRes = Symbol::Resolved(uintVecExpr);
             assert(!generator->literalExtract);
-            std::vector<SPIRVResult> results;
+            TransientArray<SPIRVResult> results(uintVecExpr->values.size);
             for (uint32_t i = 0; i < uintVecExpr->values.size; i++)
             {
-                results.push_back(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(uintVecExpr->values[i])));
+                results.Append(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(uintVecExpr->values[i])));
             }
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, uintVecExprRes->fullType, uintVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
@@ -5404,10 +5462,10 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             BoolVecExpression* boolVecExpr = static_cast<BoolVecExpression*>(expr);
             BoolVecExpression::__Resolved* boolVecExprRes = Symbol::Resolved(boolVecExpr);
             assert(!generator->literalExtract);
-            std::vector<SPIRVResult> results;
+            TransientArray<SPIRVResult> results(boolVecExpr->values.size);
             for (uint32_t i = 0; i < boolVecExpr->values.size; i++)
             {
-                results.push_back(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(boolVecExpr->values[i])));
+                results.Append(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(boolVecExpr->values[i])));
             }
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, boolVecExprRes->fullType, boolVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
@@ -6433,10 +6491,6 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             {
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::EarlyFragmentTests);
             }
-            if (funResolved->executionModifiers.writesDepth)
-            {
-                this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::DepthReplacing);
-            }
             if (funResolved->executionModifiers.depthAlwaysGreater)
             {
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::DepthGreater);
@@ -6452,12 +6506,9 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
                 // Set depth to be unchanged if depth is never written
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::DepthUnchanged);
             }
-            else
+            if (progResolved->effects.flags.explicitDepth)
             {
-                if (progResolved->effects.flags.explicitDepth)
-                {
-                    this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::DepthReplacing);
-                }
+                this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::DepthReplacing);
             }
             break;
         }

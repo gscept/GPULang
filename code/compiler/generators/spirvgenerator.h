@@ -356,49 +356,49 @@ struct SPIRVResult
         this->swizzleMask.bits.w = Type::SwizzleMask::Invalid;
     };
     
-    explicit SPIRVResult(const ValueUnion& value)
+    explicit SPIRVResult(const ValueUnion& value, const uint8_t offset = 0)
     {
         switch (value.code)
         {
             case TypeCode::Bool8:
                 this->literalValue.type = TypeCode::Bool8;
-                this->literalValue.b8 = value.b[0];
+                this->literalValue.b8 = value.b[offset];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::UInt16:
                 this->literalValue.type = TypeCode::UInt16;
-                this->literalValue.u16 = value.ui[0];
+                this->literalValue.u16 = value.ui[offset];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::UInt32:
                 this->literalValue.type = TypeCode::UInt32;
-                this->literalValue.u32 = value.ui[0];
+                this->literalValue.u32 = value.ui[offset];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::Int16:
                 this->literalValue.type = TypeCode::Int16;
-                this->literalValue.i16 = value.i[0];
+                this->literalValue.i16 = value.i[offset];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::Int32:
                 this->literalValue.type = TypeCode::Int32;
-                this->literalValue.i32 = value.i[0];
+                this->literalValue.i32 = value.i[offset];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::Float16:
                 this->literalValue.type = TypeCode::Float16;
-                this->literalValue.f16 = value.f[0];
+                this->literalValue.f16 = value.f[offset];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::Float32:
                 this->literalValue.type = TypeCode::Float32;
-                this->literalValue.f32 = value.f[0];
+                this->literalValue.f32 = value.f[offset];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;

@@ -887,25 +887,25 @@ def generate_types():
                         if type.startswith('Float'):
                             spirv_op_type = 'F'
                         elif type.startswith('Int'):
-                            if op == '/' or op == '/=' or op == '%' or op == '%=':
+                            if op.startswith('/') or op.startswith('%'):
                                 spirv_op_type = 'S'
                             else:
                                 spirv_op_type = 'I'
                         elif type.startswith('UInt'):
-                            if op == '/' or op == '/=' or op == '%' or op == '%=':
+                            if op.startswith('/') or op.startswith('%'):
                                 spirv_op_type = 'S'
                             else:
                                 spirv_op_type = 'I'
 
-                        if op == '+' or op == '+=':
+                        if op.startswith('+'):
                             spirv_op = f'Op{spirv_op_type}Add'
-                        elif op == '-' or op == '-=':
+                        elif op.startswith('-'):
                             spirv_op = f'Op{spirv_op_type}Sub'
-                        elif op == '*' or op == '*=':
+                        elif op.startswith('*'):
                             spirv_op = f'Op{spirv_op_type}Mul'
-                        elif op == '/' or op == '/=':
+                        elif op.startswith('/'):
                             spirv_op = f'Op{spirv_op_type}Div'
-                        elif op == '%' or op == '%=':
+                        elif op.startswith('%'):
                             spirv_op = f'Op{spirv_op_type}Mod'
                         spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
@@ -1066,15 +1066,15 @@ def generate_types():
                             is_member=True
                         )
 
-                        if op == '&':
+                        if op.startswith('&'):
                             spirv_op = 'OpBitwiseAnd'
-                        elif op == '|':
+                        elif op.startswith('|'):
                             spirv_op = 'OpBitwiseOr'
-                        elif op == '^':
+                        elif op.startswith('^'):
                             spirv_op = 'OpBitwiseXor'
-                        elif op == '<<':
+                        elif op.startswith('<<'):
                             spirv_op = 'OpShiftLeftLogical'
-                        elif op == '>>':
+                        elif op.startswith('>>'):
                             spirv_op = 'OpShiftRightLogical'
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -1168,9 +1168,9 @@ def generate_types():
                         elif column_size == 4:
                             elements = ['zero', 'zero', 'zero', 'zero']
                         elements[col] = 'one'
-                        spirv_function += f'    SPIRVResult col{col} = GenerateCompositeSPIRV(c, g, vectorType, {{{", ".join(elements)}}});\n'
+                        spirv_function += f'    SPIRVResult col{col} = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({{{", ".join(elements)}}}));\n'
                         cols.append(f'col{col}')
-                    spirv_function += f'    return GenerateCompositeSPIRV(c, g, returnType, {{{", ".join(cols)}}});\n'
+                    spirv_function += f'    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({{{", ".join(cols)}}}));\n'
                     fun.spirv = spirv_function
                     functions.append(fun)
 
@@ -1194,8 +1194,8 @@ def generate_types():
                     args = []
                     for row in range(0, row_size):
                         args.append(f'args[{row * column_size + col}]')
-                    spirv_function += f'    SPIRVResult col{col} = GenerateCompositeSPIRV(c, g, vectorType, {{{", ".join(args)}}});\n'
-                spirv_function += f'    return GenerateCompositeSPIRV(c, g, returnType, {{{", ".join([f"col{col}" for col in range(0, column_size)])}}});\n'
+                    spirv_function += f'    SPIRVResult col{col} = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({{{", ".join(args)}}}));\n'
+                spirv_function += f'    return GenerateCompositeSPIRV(c, g, returnType, TransientArray<SPIRVResult>({{{", ".join([f"col{col}" for col in range(0, column_size)])}}}));\n'
                 fun.spirv = spirv_function
                 functions.append(fun)
 
@@ -1270,7 +1270,7 @@ def generate_types():
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
                         spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
 
-                        if op == '+' or op == '+=':
+                        if op.startswith('+'):
                             spirv_function += f'    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, {column_size});\n'
                             spirv_function += f'    TransientArray<SPVArg> intermediateArgs({column_size});\n'
                             spirv_function += f'    for (uint32_t i = 0; i < {column_size}; i++)\n'
@@ -1281,7 +1281,7 @@ def generate_types():
                             spirv_function += '        intermediateArgs.Append(SPVArg(res));\n'
                             spirv_function += '    }\n'
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVArgList(intermediateArgs));\n'
-                        elif op == '-' or op == '-=':
+                        elif op.startswith('-'):
                             spirv_function += f'    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, {column_size});\n'
                             spirv_function += f'    TransientArray<SPVArg> intermediateArgs({column_size});\n'
                             spirv_function += f'    for (uint32_t i = 0; i < {column_size}; i++)\n'
@@ -1292,7 +1292,7 @@ def generate_types():
                             spirv_function += '        intermediateArgs.Append(SPVArg(res));\n'
                             spirv_function += '    }\n'
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVArgList(intermediateArgs));\n'
-                        elif op == '*' or op == '*=':
+                        elif op.startswith('*'):
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesMatrix, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         fun.spirv = spirv_function
@@ -1535,6 +1535,7 @@ def generate_types():
         name = "CompareMode",
         type_name = "UInt32",
         members=[
+            EnumMember("Never"),
             EnumMember("Less"),
             EnumMember("LessEqual"),
             EnumMember("Greater"),
@@ -1542,7 +1543,6 @@ def generate_types():
             EnumMember("Equal"),
             EnumMember("NotEqual"),
             EnumMember("Always"),
-            EnumMember("Never")
         ]
     )
     enums.append(enum)
@@ -3254,7 +3254,7 @@ def generate_types():
     spirv_function += '    SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);\n'
     spirv_function += '    SPIRVResult loaded2 = LoadValueSPIRV(c, g, args[2]);\n'
     spirv_function += '    SPIRVResult loaded3 = LoadValueSPIRV(c, g, args[3]);\n'
-    spirv_function += '    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, {loaded0, loaded1, loaded2, loaded3});\n'
+    spirv_function += '    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, TransientArray<SPIRVResult>({loaded0, loaded1, loaded2, loaded3}));\n'
     spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loadedArray);\n'
     spirv_function += '    return SPIRVResult::Invalid();\n'
     
@@ -3289,7 +3289,7 @@ def generate_types():
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult loaded0 = LoadValueSPIRV(c, g, args[0]);\n'
     spirv_function += '    SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);\n'
-    spirv_function += '    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, {loaded0, loaded1});\n'
+    spirv_function += '    SPIRVResult loadedArray = GenerateCompositeSPIRV(c, g, arrType, TransientArray<SPIRVResult>({loaded0, loaded1}));\n'
     spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loadedArray);\n'
     spirv_function += '    return SPIRVResult::Invalid();\n'
     
@@ -4887,7 +4887,7 @@ def generate_types():
                                 spirv_function += f'    SPIRVResult proj = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
                                 spirv_arg_counter += 1
                                 spirv_function += f'    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, {texture_float_index_proj_sizes[type]});\n'
-                                spirv_function += f'    coord = GenerateCompositeSPIRV(c, g, vectorType, {{ coord, proj }});\n'
+                                spirv_function += f'    coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({{ coord, proj }}));\n'
                             spirv_compare = ''
                             if comp:
                                 spirv_compare = 'Dref'

@@ -34,7 +34,7 @@ bool
 HGenerator::Generate(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     HeaderWriter writer;
-
+    writer.WriteLine("#pragma once");
     writer.WriteLine(Format("namespace %s", compiler->filename.c_str()));
     writer.WriteLine("{");
 
@@ -186,7 +186,7 @@ HGenerator::GenerateStructureH(const Compiler* compiler, const ProgramInstance* 
 {
     const Structure* struc = static_cast<const Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
-    writer.WriteLine(Format("struct %s", struc->name.c_str()));
+    writer.WriteLine(Format("struct alignas(16) %s", struc->name.c_str()));
     writer.WriteLine("{");
     writer.Indent();
     for (Symbol* sym : struc->symbols)
@@ -280,7 +280,8 @@ GenerateHInitializer(const Compiler* compiler, Expression* expr, HeaderWriter& w
             writer.Write("{");
             for (Expression* expr : initExpr->values)
             {
-                writer.Write(expr->EvalString());
+                GenerateHInitializer(compiler, expr, writer);
+                //writer.Write(expr->EvalString());
                 if (expr != initExpr->values.back())
                     writer.Write(", ");
             }

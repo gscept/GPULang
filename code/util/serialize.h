@@ -48,11 +48,11 @@ enum class CompareMode
 {
     NeverCompare,
     LessCompare,
-    EqualCompare,
     LessEqualCompare,
     GreaterCompare,
-    NotEqualCompare,
     GreaterEqualCompare,
+    EqualCompare,
+    NotEqualCompare,
     AlwaysCompare
 };
 
