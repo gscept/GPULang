@@ -318,6 +318,14 @@ BinaryExpression::EvalValue(ValueUnion& out) const
     if (!(this->left->EvalValue(lval) && this->right->EvalValue(rval)))
         return false;
 
+    TypeCode retType = thisResolved->lhsType->baseType;
+    if (this->op == '+' || this->op == '-' || this->op == '*' || this->op == '/' || this->op == '%')
+    {
+        lval.Convert(thisResolved->retType->baseType);
+        rval.Convert(thisResolved->retType->baseType);
+        retType = thisResolved->retType->baseType;
+    }
+
     if (lval.columnSize > rval.columnSize || lval.rowSize > rval.rowSize)
     {
         rval.Expand(lval.columnSize, lval.rowSize);
@@ -369,7 +377,7 @@ BinaryExpression::EvalValue(ValueUnion& out) const
 #define OPERATOR_SCALAR(label, op) \
     case label:\
     {\
-        switch (this->thisResolved->lhsType->baseType)\
+        switch (retType)\
         {\
             case TypeCode::Float:\
             case TypeCode::Float16:\
@@ -391,7 +399,7 @@ BinaryExpression::EvalValue(ValueUnion& out) const
 #define OPERATOR_ALL(label, op) \
     case label:\
     {\
-        switch (this->thisResolved->lhsType->baseType)\
+        switch (retType)\
         {\
             case TypeCode::Bool:\
                 OPERATOR_EXECUTE(b, op)\
@@ -417,7 +425,7 @@ BinaryExpression::EvalValue(ValueUnion& out) const
     #define OPERATOR_INTEGER(label, op) \
     case label:\
     {\
-        switch (this->thisResolved->lhsType->baseType)\
+        switch (retType)\
         {\
             case TypeCode::Int:\
             case TypeCode::Int16:\
