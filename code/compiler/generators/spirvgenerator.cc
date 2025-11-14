@@ -49,7 +49,6 @@
 
 #include <array>
 #include <complex>
-#include <format>
 #include <algorithm>
 
 #include "ast/samplerstate.h"
