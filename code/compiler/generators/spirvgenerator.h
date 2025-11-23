@@ -528,6 +528,10 @@ public:
     } typeState;
 
     uint32_t shaderStage;
+
+    // For use with ray tracing, any function input or output value must be assigned to this variable as it's passed to the OpTraceRayKHR intrinsic
+    SPIRVResult rayPayload;
+    SPIRVResult callableData;
 };
 
 } // namespace GPULang

@@ -31,12 +31,12 @@ Function::Function()
     Function::__Resolved* thisResolved = static_cast<Function::__Resolved*>(this->resolved);
     thisResolved->isEntryPoint = false;
     thisResolved->executionModifiers.invocations = 1;
-    thisResolved->executionModifiers.maxOutputVertices = Function::__Resolved::INVALID_SIZE;
     thisResolved->executionModifiers.windingOrder = WindingInvalid_value;
     thisResolved->executionModifiers.inputPrimitiveTopology = InputTopologyInvalid_value;
     thisResolved->executionModifiers.outputPrimitiveTopology = OutputTopologyInvalid_value;
     thisResolved->executionModifiers.patchType = PatchInvalid_value;
     thisResolved->executionModifiers.partitionMethod = PartitionInvalid_value;
+    thisResolved->executionModifiers.patchSize = Function::__Resolved::INVALID_SIZE;
     thisResolved->executionModifiers.pixelOrigin = PixelOriginInvalid_value;
     thisResolved->executionModifiers.computeDerivativeIndexing = ComputeDerivativesInvalid_value;
     thisResolved->executionModifiers.computeShaderWorkGroupSize[0] = 1;

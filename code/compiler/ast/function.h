@@ -75,7 +75,7 @@ struct Function : public Symbol
             uint32_t invocations = 0;
 
             uint32_t patchSize = 0;                     // Hull shader patch size
-            uint32_t maxOutputVertices = 0;             // Maximum allowed vertices to spawn from geometry shader
+            uint32_t maxOutputVertices = 0;             // Geometry shader max allowed EmitVertex calls
 
             uint32_t patchType = 0x0;                   // Managed by the generated Patch type
             uint32_t windingOrder = 0x0;                // Managed by the generated Winding type

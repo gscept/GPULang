@@ -470,7 +470,7 @@ SPV_INSTRUCTION(OpLogicalEqual, 164, 5, false)
 SPV_INSTRUCTION(OpLogicalNotEqual, 165, 5, false)
 SPV_INSTRUCTION(OpLogicalOr, 166, 5, false)
 SPV_INSTRUCTION(OpLogicalAnd, 167, 5, false)
-SPV_INSTRUCTION(OpLogicalNot, 168, 5, false)
+SPV_INSTRUCTION(OpLogicalNot, 168, 4, false)
 SPV_INSTRUCTION(OpSelect, 169, 6, false)
 SPV_INSTRUCTION(OpIEqual, 170, 5, false)
 SPV_INSTRUCTION(OpINotEqual, 171, 5, false)
@@ -547,6 +547,8 @@ SPV_INSTRUCTION(OpGroupNonUniformBallotFindMSB, 344, 5, false)
 SPV_INSTRUCTION(OpCopyLogical, 400, 4, false);
 SPV_INSTRUCTION(OpGroupNonUniformQuadSwap, 366, 6, false)
 SPV_INSTRUCTION(OpTerminateInvocation, 4416, 1, false)
+SPV_INSTRUCTION(OpTraceRayKHR, 4445, 12, false)
+SPV_INSTRUCTION(OpExecuteCallableKHR, 4446, 3, false)
 SPV_INSTRUCTION(OpIgnoreIntersectionKHR, 4448, 1, false)
 SPV_INSTRUCTION(OpTerminateRayKHR, 4449, 1, false)
 SPV_INSTRUCTION(OpReportIntersectionKHR, 5334, 5, false)
@@ -1005,6 +1007,7 @@ SPV_ENUM(SPV_KHR_bit_instructions, 1)
 SPV_ENUM(SPV_EXT_shader_viewport_index_layer, 2)
 SPV_ENUM(SPV_KHR_physical_storage_buffer, 3)
 SPV_ENUM(SPV_KHR_storage_buffer_storage_class, 4)
+SPV_ENUM(SPV_KHR_ray_tracing, 5)
 
 static const unsigned INVALID_ARG = 0xFFFFFFFF;
 
@@ -3686,9 +3689,9 @@ SPIRVGenerator::SetupIntrinsics()
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
         uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplRayHitDistance", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayMax", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayHitDistance", ret, "BuiltIn RayTmaxKHR");
+        g->AddDecoration("gplRayMax", ret, "BuiltIn RayTmaxKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4098,6 +4101,29 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
         refIndexedIt++;
     }
 
+    if (strucResolved->traceRayFunction != nullptr)
+    {
+        generator->generatorIntrinsics[strucResolved->traceRayFunction] = [fun = strucResolved->traceRayFunction](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 11);
+            assert(!args[0].isValue);
+            g->writer->Capability(Capabilities::RayTracingKHR);
+            SPIRVResult bvh = LoadValueSPIRV(c, g, args[0]);
+            SPIRVResult flags = LoadValueSPIRV(c, g, args[1]);
+            SPIRVResult mask = LoadValueSPIRV(c, g, args[2]);
+            SPIRVResult shaderTableOffset = LoadValueSPIRV(c, g, args[3]);
+            SPIRVResult shaderTableStride = LoadValueSPIRV(c, g, args[4]);
+            SPIRVResult missShaderIndex = LoadValueSPIRV(c, g, args[5]);
+            SPIRVResult rayOrigin = LoadValueSPIRV(c, g, args[6]);
+            SPIRVResult rayDirection = LoadValueSPIRV(c, g, args[7]);
+            SPIRVResult rayTMin = LoadValueSPIRV(c, g, args[8]);
+            SPIRVResult rayTMax = LoadValueSPIRV(c, g, args[9]);
+            SPIRVResult payload = LoadValueSPIRV(c, g, args[10]);
+            uint32_t ret = g->writer->MappedInstruction(OpTraceRayKHR, SPVWriter::Section::LocalFunction, returnType, bvh, flags, mask, shaderTableOffset, shaderTableStride, missShaderIndex, rayOrigin, rayTMin, rayDirection, rayTMax, payload);
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
     generator->writer->ReservedType(OpTypeStruct, nameStr, SPVWriter::Section::Declarations, structName, SPVArgList(memberTypeArray), SPVComment{ .str = nameStr.c_str() });
     return structName;
 }
@@ -4211,7 +4237,9 @@ GenerateEnumSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* s
             {
                 generator->generatorIntrinsics[fun] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
                 {
-                    uint32_t ret = g->writer->MappedInstruction(OpIEqual, SPVWriter::Section::LocalFunction, returnType, args[0], args[1]);
+                    SPIRVResult loadedArg0 = LoadValueSPIRV(c, g, args[0]);
+                    SPIRVResult loadedArg1 = LoadValueSPIRV(c, g, args[1]);
+                    uint32_t ret = g->writer->MappedInstruction(OpIEqual, SPVWriter::Section::LocalFunction, returnType, loadedArg0, loadedArg1);
                     return SPIRVResult(ret, returnType, true, true);
                 };
             }
@@ -4219,7 +4247,9 @@ GenerateEnumSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* s
             {
                 generator->generatorIntrinsics[fun] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
                 {
-                    uint32_t ret = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, returnType, args[0], args[1]);
+                    SPIRVResult loadedArg0 = LoadValueSPIRV(c, g, args[0]);
+                    SPIRVResult loadedArg1 = LoadValueSPIRV(c, g, args[1]);
+                    uint32_t ret = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, returnType, loadedArg0, loadedArg1);
                     return SPIRVResult(ret, returnType, true, true);
                 };
             }
@@ -4261,6 +4291,8 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     generator->typeState.storage = SPIRVResult::Storage::Function;
     //std::string type = varResolved->type.name;
     ConstantString scope = SPIRVResult::ScopeToString(typeName.scope);
+
+
 
     std::vector<uint32_t> parentTypes = { typeName.typeName };
     std::vector<SPIRVResult::Storage> parentScopes = { typeName.scope };
@@ -5348,20 +5380,23 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             
             if (rhs.isLiteral)
             {
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(!rhs.literalValue.ui));                
+                if (op == 'B')
+                    return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(!rhs.literalValue.b8));
+                else
+                    return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(~rhs.literalValue.ui));
             }
             else
             {
                 SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
-                // If bool, convert to u32 first and then perform ! or ~
                 if (op == 'B')
-                    loaded = GenerateConversionSPIRV(compiler, generator, ConversionTable::BoolToUInt, vectorSize, loaded);
-                uint32_t res = generator->writer->MappedInstruction(OpNot, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
-
-                // Again, if bool, convert back from uint to Bool
-                if (op == 'B')
-                    loaded = GenerateConversionSPIRV(compiler, generator, ConversionTable::UIntToBool, vectorSize, SPIRVResult(res, loaded.typeName, true));
-                return loaded;    
+                {
+                    loaded.name = generator->writer->MappedInstruction(OpLogicalNot, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
+                }
+                else
+                {
+                    loaded.name = generator->writer->MappedInstruction(OpNot, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
+                }
+                return loaded;
             }
         }
         default:

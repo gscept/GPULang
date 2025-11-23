@@ -9,24 +9,6 @@
 #include "compiler.h"
 namespace GPULang
 {
-/// textureAtomicStore with Texture1DArray, Int32x2, Float32
-Variable TextureAtomicStore_Texture1DArray_Float32_texture;
-inline constexpr std::array TextureAtomicStore_Texture1DArray_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicStore_Texture1DArray_Float32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicStore_Texture1DArray_Float32_coordinate;
-Variable TextureAtomicStore_Texture1DArray_Float32_value;
-Function TextureAtomicStore_Texture1DArray_Float32;
-inline constexpr std::array TextureAtomicStore_Texture1DArray_Float32_args = { &TextureAtomicStore_Texture1DArray_Float32_texture, &TextureAtomicStore_Texture1DArray_Float32_coordinate, &TextureAtomicStore_Texture1DArray_Float32_value };
-
-/// textureAtomicStore with Texture1DArray, Int32x2, UInt32
-Variable TextureAtomicStore_Texture1DArray_UInt32_texture;
-inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicStore_Texture1DArray_UInt32_coordinate;
-Variable TextureAtomicStore_Texture1DArray_UInt32_value;
-Function TextureAtomicStore_Texture1DArray_UInt32;
-inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt32_args = { &TextureAtomicStore_Texture1DArray_UInt32_texture, &TextureAtomicStore_Texture1DArray_UInt32_coordinate, &TextureAtomicStore_Texture1DArray_UInt32_value };
-
 /// textureAtomicStore with Texture1DArray, Int32x2, Int32
 Variable TextureAtomicStore_Texture1DArray_Int32_texture;
 inline constexpr std::array TextureAtomicStore_Texture1DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
@@ -1161,57 +1143,30 @@ Variable TextureAtomicSubtract_Texture3D_Int16_value;
 Function TextureAtomicSubtract_Texture3D_Int16;
 inline constexpr std::array TextureAtomicSubtract_Texture3D_Int16_args = { &TextureAtomicSubtract_Texture3D_Int16_texture, &TextureAtomicSubtract_Texture3D_Int16_coordinate, &TextureAtomicSubtract_Texture3D_Int16_value };
 
+/// textureAtomicSubtract with TextureCube, Int32x3, UInt32
+Variable TextureAtomicSubtract_TextureCube_UInt32_texture;
+inline constexpr std::array TextureAtomicSubtract_TextureCube_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicSubtract_TextureCube_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicSubtract_TextureCube_UInt32_coordinate;
+Variable TextureAtomicSubtract_TextureCube_UInt32_value;
+Function TextureAtomicSubtract_TextureCube_UInt32;
+inline constexpr std::array TextureAtomicSubtract_TextureCube_UInt32_args = { &TextureAtomicSubtract_TextureCube_UInt32_texture, &TextureAtomicSubtract_TextureCube_UInt32_coordinate, &TextureAtomicSubtract_TextureCube_UInt32_value };
+
+/// textureAtomicSubtract with TextureCube, Int32x3, Int32
+Variable TextureAtomicSubtract_TextureCube_Int32_texture;
+inline constexpr std::array TextureAtomicSubtract_TextureCube_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicSubtract_TextureCube_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicSubtract_TextureCube_Int32_coordinate;
+Variable TextureAtomicSubtract_TextureCube_Int32_value;
+Function TextureAtomicSubtract_TextureCube_Int32;
+inline constexpr std::array TextureAtomicSubtract_TextureCube_Int32_args = { &TextureAtomicSubtract_TextureCube_Int32_texture, &TextureAtomicSubtract_TextureCube_Int32_coordinate, &TextureAtomicSubtract_TextureCube_Int32_value };
+
 void SetupIntrinsics14()
 {
-    /// textureAtomicStore with Texture1DArray, Int32x2, Float32
-    TextureAtomicStore_Texture1DArray_Float32_texture.name = "texture"_c;
-    TextureAtomicStore_Texture1DArray_Float32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicStore_Texture1DArray_Float32_texture.type.modifiers = TextureAtomicStore_Texture1DArray_Float32_texture_modifiers;
-    TextureAtomicStore_Texture1DArray_Float32_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_Float32_texture_modifierValues;
-    TextureAtomicStore_Texture1DArray_Float32_coordinate.name = "coordinate"_c;
-    TextureAtomicStore_Texture1DArray_Float32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicStore_Texture1DArray_Float32_value.name = "value"_c;
-    TextureAtomicStore_Texture1DArray_Float32_value.type = Type::FullType{ Float32Type.name };
-    TextureAtomicStore_Texture1DArray_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
-    TextureAtomicStore_Texture1DArray_Float32.name = TextureAtomicStore_Texture1DArray_Float32_name;
-    TextureAtomicStore_Texture1DArray_Float32.backendIndex = 2729;
-    TextureAtomicStore_Texture1DArray_Float32.returnType = Type::FullType { Float32Type.name };
-    TextureAtomicStore_Texture1DArray_Float32.parameters = TextureAtomicStore_Texture1DArray_Float32_args;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32)->signature = "textureAtomicStore(uniform *texture1DArray,i32x2,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32)->name = "textureAtomicStore(uniform *texture1DArray,i32x2,f32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture1DArray, coordinate : i32x2, value : f32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// textureAtomicStore with Texture1DArray, Int32x2, UInt32
-    TextureAtomicStore_Texture1DArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicStore_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicStore_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicStore_Texture1DArray_UInt32_texture_modifiers;
-    TextureAtomicStore_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_UInt32_texture_modifierValues;
-    TextureAtomicStore_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicStore_Texture1DArray_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicStore_Texture1DArray_UInt32_value.name = "value"_c;
-    TextureAtomicStore_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicStore_Texture1DArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
-    TextureAtomicStore_Texture1DArray_UInt32.name = TextureAtomicStore_Texture1DArray_UInt32_name;
-    TextureAtomicStore_Texture1DArray_UInt32.backendIndex = 2730;
-    TextureAtomicStore_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicStore_Texture1DArray_UInt32.parameters = TextureAtomicStore_Texture1DArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32)->signature = "textureAtomicStore(uniform *texture1DArray,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32)->name = "textureAtomicStore(uniform *texture1DArray,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture1DArray, coordinate : i32x2, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
     /// textureAtomicStore with Texture1DArray, Int32x2, Int32
     TextureAtomicStore_Texture1DArray_Int32_texture.name = "texture"_c;
     TextureAtomicStore_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_Int32_texture.type.mut = true;
     TextureAtomicStore_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicStore_Texture1DArray_Int32_texture_modifiers;
     TextureAtomicStore_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_Int32_texture_modifierValues;
     TextureAtomicStore_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
@@ -1220,21 +1175,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicStore_Texture1DArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture1DArray_Int32.name = TextureAtomicStore_Texture1DArray_Int32_name;
-    TextureAtomicStore_Texture1DArray_Int32.backendIndex = 2731;
+    TextureAtomicStore_Texture1DArray_Int32.backendIndex = 2729;
     TextureAtomicStore_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicStore_Texture1DArray_Int32.parameters = TextureAtomicStore_Texture1DArray_Int32_args;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->signature = "textureAtomicStore(uniform *texture1DArray,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->name = "textureAtomicStore(uniform *texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture1DArray, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicStore with Texture1DArray, Int32x2, Float16
     TextureAtomicStore_Texture1DArray_Float16_texture.name = "texture"_c;
     TextureAtomicStore_Texture1DArray_Float16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_Float16_texture.type.mut = true;
     TextureAtomicStore_Texture1DArray_Float16_texture.type.modifiers = TextureAtomicStore_Texture1DArray_Float16_texture_modifiers;
     TextureAtomicStore_Texture1DArray_Float16_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_Float16_texture_modifierValues;
     TextureAtomicStore_Texture1DArray_Float16_coordinate.name = "coordinate"_c;
@@ -1243,21 +1199,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture1DArray_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicStore_Texture1DArray_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture1DArray_Float16.name = TextureAtomicStore_Texture1DArray_Float16_name;
-    TextureAtomicStore_Texture1DArray_Float16.backendIndex = 2732;
+    TextureAtomicStore_Texture1DArray_Float16.backendIndex = 2730;
     TextureAtomicStore_Texture1DArray_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicStore_Texture1DArray_Float16.parameters = TextureAtomicStore_Texture1DArray_Float16_args;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->signature = "textureAtomicStore(uniform *texture1DArray,i32x2,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->name = "textureAtomicStore(uniform *texture1DArray,i32x2,f16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture1DArray, coordinate : i32x2, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicStore with Texture1DArray, Int32x2, UInt16
     TextureAtomicStore_Texture1DArray_UInt16_texture.name = "texture"_c;
     TextureAtomicStore_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_UInt16_texture.type.mut = true;
     TextureAtomicStore_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicStore_Texture1DArray_UInt16_texture_modifiers;
     TextureAtomicStore_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_UInt16_texture_modifierValues;
     TextureAtomicStore_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
@@ -1266,21 +1223,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicStore_Texture1DArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture1DArray_UInt16.name = TextureAtomicStore_Texture1DArray_UInt16_name;
-    TextureAtomicStore_Texture1DArray_UInt16.backendIndex = 2733;
+    TextureAtomicStore_Texture1DArray_UInt16.backendIndex = 2731;
     TextureAtomicStore_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicStore_Texture1DArray_UInt16.parameters = TextureAtomicStore_Texture1DArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->signature = "textureAtomicStore(uniform *texture1DArray,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->name = "textureAtomicStore(uniform *texture1DArray,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture1DArray, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicStore with Texture1DArray, Int32x2, Int16
     TextureAtomicStore_Texture1DArray_Int16_texture.name = "texture"_c;
     TextureAtomicStore_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_Int16_texture.type.mut = true;
     TextureAtomicStore_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicStore_Texture1DArray_Int16_texture_modifiers;
     TextureAtomicStore_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_Int16_texture_modifierValues;
     TextureAtomicStore_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
@@ -1289,21 +1247,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicStore_Texture1DArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture1DArray_Int16.name = TextureAtomicStore_Texture1DArray_Int16_name;
-    TextureAtomicStore_Texture1DArray_Int16.backendIndex = 2734;
+    TextureAtomicStore_Texture1DArray_Int16.backendIndex = 2732;
     TextureAtomicStore_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicStore_Texture1DArray_Int16.parameters = TextureAtomicStore_Texture1DArray_Int16_args;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->signature = "textureAtomicStore(uniform *texture1DArray,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->name = "textureAtomicStore(uniform *texture1DArray,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture1DArray, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicStore with Texture2DArray, Int32x3, Float32
     TextureAtomicStore_Texture2DArray_Float32_texture.name = "texture"_c;
     TextureAtomicStore_Texture2DArray_Float32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_Float32_texture.type.mut = true;
     TextureAtomicStore_Texture2DArray_Float32_texture.type.modifiers = TextureAtomicStore_Texture2DArray_Float32_texture_modifiers;
     TextureAtomicStore_Texture2DArray_Float32_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_Float32_texture_modifierValues;
     TextureAtomicStore_Texture2DArray_Float32_coordinate.name = "coordinate"_c;
@@ -1312,21 +1271,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture2DArray_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicStore_Texture2DArray_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture2DArray_Float32.name = TextureAtomicStore_Texture2DArray_Float32_name;
-    TextureAtomicStore_Texture2DArray_Float32.backendIndex = 2735;
+    TextureAtomicStore_Texture2DArray_Float32.backendIndex = 2733;
     TextureAtomicStore_Texture2DArray_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicStore_Texture2DArray_Float32.parameters = TextureAtomicStore_Texture2DArray_Float32_args;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->signature = "textureAtomicStore(uniform *texture2DArray,i32x3,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->name = "textureAtomicStore(uniform *texture2DArray,i32x3,f32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture2DArray, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicStore with Texture2DArray, Int32x3, UInt32
     TextureAtomicStore_Texture2DArray_UInt32_texture.name = "texture"_c;
     TextureAtomicStore_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_UInt32_texture.type.mut = true;
     TextureAtomicStore_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicStore_Texture2DArray_UInt32_texture_modifiers;
     TextureAtomicStore_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_UInt32_texture_modifierValues;
     TextureAtomicStore_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
@@ -1335,21 +1295,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicStore_Texture2DArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture2DArray_UInt32.name = TextureAtomicStore_Texture2DArray_UInt32_name;
-    TextureAtomicStore_Texture2DArray_UInt32.backendIndex = 2736;
+    TextureAtomicStore_Texture2DArray_UInt32.backendIndex = 2734;
     TextureAtomicStore_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicStore_Texture2DArray_UInt32.parameters = TextureAtomicStore_Texture2DArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->signature = "textureAtomicStore(uniform *texture2DArray,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->name = "textureAtomicStore(uniform *texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture2DArray, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicStore with Texture2DArray, Int32x3, Int32
     TextureAtomicStore_Texture2DArray_Int32_texture.name = "texture"_c;
     TextureAtomicStore_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_Int32_texture.type.mut = true;
     TextureAtomicStore_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicStore_Texture2DArray_Int32_texture_modifiers;
     TextureAtomicStore_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_Int32_texture_modifierValues;
     TextureAtomicStore_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
@@ -1358,21 +1319,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicStore_Texture2DArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture2DArray_Int32.name = TextureAtomicStore_Texture2DArray_Int32_name;
-    TextureAtomicStore_Texture2DArray_Int32.backendIndex = 2737;
+    TextureAtomicStore_Texture2DArray_Int32.backendIndex = 2735;
     TextureAtomicStore_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicStore_Texture2DArray_Int32.parameters = TextureAtomicStore_Texture2DArray_Int32_args;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->signature = "textureAtomicStore(uniform *texture2DArray,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->name = "textureAtomicStore(uniform *texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture2DArray, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicStore with Texture2DArray, Int32x3, Float16
     TextureAtomicStore_Texture2DArray_Float16_texture.name = "texture"_c;
     TextureAtomicStore_Texture2DArray_Float16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_Float16_texture.type.mut = true;
     TextureAtomicStore_Texture2DArray_Float16_texture.type.modifiers = TextureAtomicStore_Texture2DArray_Float16_texture_modifiers;
     TextureAtomicStore_Texture2DArray_Float16_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_Float16_texture_modifierValues;
     TextureAtomicStore_Texture2DArray_Float16_coordinate.name = "coordinate"_c;
@@ -1381,21 +1343,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture2DArray_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicStore_Texture2DArray_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture2DArray_Float16.name = TextureAtomicStore_Texture2DArray_Float16_name;
-    TextureAtomicStore_Texture2DArray_Float16.backendIndex = 2738;
+    TextureAtomicStore_Texture2DArray_Float16.backendIndex = 2736;
     TextureAtomicStore_Texture2DArray_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicStore_Texture2DArray_Float16.parameters = TextureAtomicStore_Texture2DArray_Float16_args;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->signature = "textureAtomicStore(uniform *texture2DArray,i32x3,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->name = "textureAtomicStore(uniform *texture2DArray,i32x3,f16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture2DArray, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicStore with Texture2DArray, Int32x3, UInt16
     TextureAtomicStore_Texture2DArray_UInt16_texture.name = "texture"_c;
     TextureAtomicStore_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_UInt16_texture.type.mut = true;
     TextureAtomicStore_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicStore_Texture2DArray_UInt16_texture_modifiers;
     TextureAtomicStore_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_UInt16_texture_modifierValues;
     TextureAtomicStore_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
@@ -1404,21 +1367,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicStore_Texture2DArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture2DArray_UInt16.name = TextureAtomicStore_Texture2DArray_UInt16_name;
-    TextureAtomicStore_Texture2DArray_UInt16.backendIndex = 2739;
+    TextureAtomicStore_Texture2DArray_UInt16.backendIndex = 2737;
     TextureAtomicStore_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicStore_Texture2DArray_UInt16.parameters = TextureAtomicStore_Texture2DArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->signature = "textureAtomicStore(uniform *texture2DArray,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->name = "textureAtomicStore(uniform *texture2DArray,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture2DArray, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicStore with Texture2DArray, Int32x3, Int16
     TextureAtomicStore_Texture2DArray_Int16_texture.name = "texture"_c;
     TextureAtomicStore_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_Int16_texture.type.mut = true;
     TextureAtomicStore_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicStore_Texture2DArray_Int16_texture_modifiers;
     TextureAtomicStore_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_Int16_texture_modifierValues;
     TextureAtomicStore_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
@@ -1427,21 +1391,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicStore_Texture2DArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_Texture2DArray_Int16.name = TextureAtomicStore_Texture2DArray_Int16_name;
-    TextureAtomicStore_Texture2DArray_Int16.backendIndex = 2740;
+    TextureAtomicStore_Texture2DArray_Int16.backendIndex = 2738;
     TextureAtomicStore_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicStore_Texture2DArray_Int16.parameters = TextureAtomicStore_Texture2DArray_Int16_args;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->signature = "textureAtomicStore(uniform *texture2DArray,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->name = "textureAtomicStore(uniform *texture2DArray,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *texture2DArray, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicStore with TextureCubeArray, Int32x4, Float32
     TextureAtomicStore_TextureCubeArray_Float32_texture.name = "texture"_c;
     TextureAtomicStore_TextureCubeArray_Float32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_Float32_texture.type.mut = true;
     TextureAtomicStore_TextureCubeArray_Float32_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_Float32_texture_modifiers;
     TextureAtomicStore_TextureCubeArray_Float32_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_Float32_texture_modifierValues;
     TextureAtomicStore_TextureCubeArray_Float32_coordinate.name = "coordinate"_c;
@@ -1450,21 +1415,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_TextureCubeArray_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicStore_TextureCubeArray_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_TextureCubeArray_Float32.name = TextureAtomicStore_TextureCubeArray_Float32_name;
-    TextureAtomicStore_TextureCubeArray_Float32.backendIndex = 2741;
+    TextureAtomicStore_TextureCubeArray_Float32.backendIndex = 2739;
     TextureAtomicStore_TextureCubeArray_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicStore_TextureCubeArray_Float32.parameters = TextureAtomicStore_TextureCubeArray_Float32_args;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->signature = "textureAtomicStore(uniform *textureCubeArray,i32x4,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->name = "textureAtomicStore(uniform *textureCubeArray,i32x4,f32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *textureCubeArray, coordinate : i32x4, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicStore with TextureCubeArray, Int32x4, UInt32
     TextureAtomicStore_TextureCubeArray_UInt32_texture.name = "texture"_c;
     TextureAtomicStore_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_UInt32_texture.type.mut = true;
     TextureAtomicStore_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_UInt32_texture_modifiers;
     TextureAtomicStore_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_UInt32_texture_modifierValues;
     TextureAtomicStore_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
@@ -1473,21 +1439,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicStore_TextureCubeArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_TextureCubeArray_UInt32.name = TextureAtomicStore_TextureCubeArray_UInt32_name;
-    TextureAtomicStore_TextureCubeArray_UInt32.backendIndex = 2742;
+    TextureAtomicStore_TextureCubeArray_UInt32.backendIndex = 2740;
     TextureAtomicStore_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicStore_TextureCubeArray_UInt32.parameters = TextureAtomicStore_TextureCubeArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->signature = "textureAtomicStore(uniform *textureCubeArray,i32x4,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->name = "textureAtomicStore(uniform *textureCubeArray,i32x4,u32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *textureCubeArray, coordinate : i32x4, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicStore with TextureCubeArray, Int32x4, Int32
     TextureAtomicStore_TextureCubeArray_Int32_texture.name = "texture"_c;
     TextureAtomicStore_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_Int32_texture.type.mut = true;
     TextureAtomicStore_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_Int32_texture_modifiers;
     TextureAtomicStore_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_Int32_texture_modifierValues;
     TextureAtomicStore_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
@@ -1496,21 +1463,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicStore_TextureCubeArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_TextureCubeArray_Int32.name = TextureAtomicStore_TextureCubeArray_Int32_name;
-    TextureAtomicStore_TextureCubeArray_Int32.backendIndex = 2743;
+    TextureAtomicStore_TextureCubeArray_Int32.backendIndex = 2741;
     TextureAtomicStore_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicStore_TextureCubeArray_Int32.parameters = TextureAtomicStore_TextureCubeArray_Int32_args;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->signature = "textureAtomicStore(uniform *textureCubeArray,i32x4,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->name = "textureAtomicStore(uniform *textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *textureCubeArray, coordinate : i32x4, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicStore with TextureCubeArray, Int32x4, Float16
     TextureAtomicStore_TextureCubeArray_Float16_texture.name = "texture"_c;
     TextureAtomicStore_TextureCubeArray_Float16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_Float16_texture.type.mut = true;
     TextureAtomicStore_TextureCubeArray_Float16_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_Float16_texture_modifiers;
     TextureAtomicStore_TextureCubeArray_Float16_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_Float16_texture_modifierValues;
     TextureAtomicStore_TextureCubeArray_Float16_coordinate.name = "coordinate"_c;
@@ -1519,21 +1487,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_TextureCubeArray_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicStore_TextureCubeArray_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_TextureCubeArray_Float16.name = TextureAtomicStore_TextureCubeArray_Float16_name;
-    TextureAtomicStore_TextureCubeArray_Float16.backendIndex = 2744;
+    TextureAtomicStore_TextureCubeArray_Float16.backendIndex = 2742;
     TextureAtomicStore_TextureCubeArray_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicStore_TextureCubeArray_Float16.parameters = TextureAtomicStore_TextureCubeArray_Float16_args;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->signature = "textureAtomicStore(uniform *textureCubeArray,i32x4,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->name = "textureAtomicStore(uniform *textureCubeArray,i32x4,f16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *textureCubeArray, coordinate : i32x4, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicStore with TextureCubeArray, Int32x4, UInt16
     TextureAtomicStore_TextureCubeArray_UInt16_texture.name = "texture"_c;
     TextureAtomicStore_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_UInt16_texture.type.mut = true;
     TextureAtomicStore_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_UInt16_texture_modifiers;
     TextureAtomicStore_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_UInt16_texture_modifierValues;
     TextureAtomicStore_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
@@ -1542,21 +1511,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicStore_TextureCubeArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_TextureCubeArray_UInt16.name = TextureAtomicStore_TextureCubeArray_UInt16_name;
-    TextureAtomicStore_TextureCubeArray_UInt16.backendIndex = 2745;
+    TextureAtomicStore_TextureCubeArray_UInt16.backendIndex = 2743;
     TextureAtomicStore_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicStore_TextureCubeArray_UInt16.parameters = TextureAtomicStore_TextureCubeArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->signature = "textureAtomicStore(uniform *textureCubeArray,i32x4,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->name = "textureAtomicStore(uniform *textureCubeArray,i32x4,u16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *textureCubeArray, coordinate : i32x4, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicStore with TextureCubeArray, Int32x4, Int16
     TextureAtomicStore_TextureCubeArray_Int16_texture.name = "texture"_c;
     TextureAtomicStore_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_Int16_texture.type.mut = true;
     TextureAtomicStore_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_Int16_texture_modifiers;
     TextureAtomicStore_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_Int16_texture_modifierValues;
     TextureAtomicStore_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
@@ -1565,21 +1535,22 @@ void SetupIntrinsics14()
     TextureAtomicStore_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicStore_TextureCubeArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicStore_TextureCubeArray_Int16.name = TextureAtomicStore_TextureCubeArray_Int16_name;
-    TextureAtomicStore_TextureCubeArray_Int16.backendIndex = 2746;
+    TextureAtomicStore_TextureCubeArray_Int16.backendIndex = 2744;
     TextureAtomicStore_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicStore_TextureCubeArray_Int16.parameters = TextureAtomicStore_TextureCubeArray_Int16_args;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->signature = "textureAtomicStore(uniform *textureCubeArray,i32x4,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->name = "textureAtomicStore(uniform *textureCubeArray,i32x4,i16)"_c;
-    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *textureCubeArray, coordinate : i32x4, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicExchange with Texture1D, Int32, Float32
     TextureAtomicExchange_Texture1D_Float32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1D_Float32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_Float32_texture.type.mut = true;
     TextureAtomicExchange_Texture1D_Float32_texture.type.modifiers = TextureAtomicExchange_Texture1D_Float32_texture_modifiers;
     TextureAtomicExchange_Texture1D_Float32_texture.type.modifierValues = TextureAtomicExchange_Texture1D_Float32_texture_modifierValues;
     TextureAtomicExchange_Texture1D_Float32_coordinate.name = "coordinate"_c;
@@ -1588,21 +1559,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1D_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicExchange_Texture1D_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1D_Float32.name = TextureAtomicExchange_Texture1D_Float32_name;
-    TextureAtomicExchange_Texture1D_Float32.backendIndex = 2747;
+    TextureAtomicExchange_Texture1D_Float32.backendIndex = 2745;
     TextureAtomicExchange_Texture1D_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicExchange_Texture1D_Float32.parameters = TextureAtomicExchange_Texture1D_Float32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->signature = "textureAtomicExchange(uniform *texture1D,i32,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->name = "textureAtomicExchange(uniform *texture1D,i32,f32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1D, coordinate : i32, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicExchange with Texture1D, Int32, UInt32
     TextureAtomicExchange_Texture1D_UInt32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_UInt32_texture.type.mut = true;
     TextureAtomicExchange_Texture1D_UInt32_texture.type.modifiers = TextureAtomicExchange_Texture1D_UInt32_texture_modifiers;
     TextureAtomicExchange_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicExchange_Texture1D_UInt32_texture_modifierValues;
     TextureAtomicExchange_Texture1D_UInt32_coordinate.name = "coordinate"_c;
@@ -1611,21 +1583,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicExchange_Texture1D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1D_UInt32.name = TextureAtomicExchange_Texture1D_UInt32_name;
-    TextureAtomicExchange_Texture1D_UInt32.backendIndex = 2748;
+    TextureAtomicExchange_Texture1D_UInt32.backendIndex = 2746;
     TextureAtomicExchange_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicExchange_Texture1D_UInt32.parameters = TextureAtomicExchange_Texture1D_UInt32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->signature = "textureAtomicExchange(uniform *texture1D,i32,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->name = "textureAtomicExchange(uniform *texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1D, coordinate : i32, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicExchange with Texture1D, Int32, Int32
     TextureAtomicExchange_Texture1D_Int32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_Int32_texture.type.mut = true;
     TextureAtomicExchange_Texture1D_Int32_texture.type.modifiers = TextureAtomicExchange_Texture1D_Int32_texture_modifiers;
     TextureAtomicExchange_Texture1D_Int32_texture.type.modifierValues = TextureAtomicExchange_Texture1D_Int32_texture_modifierValues;
     TextureAtomicExchange_Texture1D_Int32_coordinate.name = "coordinate"_c;
@@ -1634,21 +1607,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicExchange_Texture1D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1D_Int32.name = TextureAtomicExchange_Texture1D_Int32_name;
-    TextureAtomicExchange_Texture1D_Int32.backendIndex = 2749;
+    TextureAtomicExchange_Texture1D_Int32.backendIndex = 2747;
     TextureAtomicExchange_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicExchange_Texture1D_Int32.parameters = TextureAtomicExchange_Texture1D_Int32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->signature = "textureAtomicExchange(uniform *texture1D,i32,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->name = "textureAtomicExchange(uniform *texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1D, coordinate : i32, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicExchange with Texture1D, Int32, Float16
     TextureAtomicExchange_Texture1D_Float16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1D_Float16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_Float16_texture.type.mut = true;
     TextureAtomicExchange_Texture1D_Float16_texture.type.modifiers = TextureAtomicExchange_Texture1D_Float16_texture_modifiers;
     TextureAtomicExchange_Texture1D_Float16_texture.type.modifierValues = TextureAtomicExchange_Texture1D_Float16_texture_modifierValues;
     TextureAtomicExchange_Texture1D_Float16_coordinate.name = "coordinate"_c;
@@ -1657,21 +1631,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1D_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicExchange_Texture1D_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1D_Float16.name = TextureAtomicExchange_Texture1D_Float16_name;
-    TextureAtomicExchange_Texture1D_Float16.backendIndex = 2750;
+    TextureAtomicExchange_Texture1D_Float16.backendIndex = 2748;
     TextureAtomicExchange_Texture1D_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicExchange_Texture1D_Float16.parameters = TextureAtomicExchange_Texture1D_Float16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->signature = "textureAtomicExchange(uniform *texture1D,i32,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->name = "textureAtomicExchange(uniform *texture1D,i32,f16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1D, coordinate : i32, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicExchange with Texture1D, Int32, UInt16
     TextureAtomicExchange_Texture1D_UInt16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_UInt16_texture.type.mut = true;
     TextureAtomicExchange_Texture1D_UInt16_texture.type.modifiers = TextureAtomicExchange_Texture1D_UInt16_texture_modifiers;
     TextureAtomicExchange_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicExchange_Texture1D_UInt16_texture_modifierValues;
     TextureAtomicExchange_Texture1D_UInt16_coordinate.name = "coordinate"_c;
@@ -1680,21 +1655,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicExchange_Texture1D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1D_UInt16.name = TextureAtomicExchange_Texture1D_UInt16_name;
-    TextureAtomicExchange_Texture1D_UInt16.backendIndex = 2751;
+    TextureAtomicExchange_Texture1D_UInt16.backendIndex = 2749;
     TextureAtomicExchange_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicExchange_Texture1D_UInt16.parameters = TextureAtomicExchange_Texture1D_UInt16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16)->signature = "textureAtomicExchange(uniform *texture1D,i32,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16)->name = "textureAtomicExchange(uniform *texture1D,i32,u16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1D, coordinate : i32, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicExchange with Texture1D, Int32, Int16
     TextureAtomicExchange_Texture1D_Int16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_Int16_texture.type.mut = true;
     TextureAtomicExchange_Texture1D_Int16_texture.type.modifiers = TextureAtomicExchange_Texture1D_Int16_texture_modifiers;
     TextureAtomicExchange_Texture1D_Int16_texture.type.modifierValues = TextureAtomicExchange_Texture1D_Int16_texture_modifierValues;
     TextureAtomicExchange_Texture1D_Int16_coordinate.name = "coordinate"_c;
@@ -1703,21 +1679,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicExchange_Texture1D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1D_Int16.name = TextureAtomicExchange_Texture1D_Int16_name;
-    TextureAtomicExchange_Texture1D_Int16.backendIndex = 2752;
+    TextureAtomicExchange_Texture1D_Int16.backendIndex = 2750;
     TextureAtomicExchange_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicExchange_Texture1D_Int16.parameters = TextureAtomicExchange_Texture1D_Int16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16)->signature = "textureAtomicExchange(uniform *texture1D,i32,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16)->name = "textureAtomicExchange(uniform *texture1D,i32,i16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1D, coordinate : i32, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicExchange with Texture2D, Int32x2, Float32
     TextureAtomicExchange_Texture2D_Float32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2D_Float32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicExchange_Texture2D_Float32_texture.type.mut = true;
     TextureAtomicExchange_Texture2D_Float32_texture.type.modifiers = TextureAtomicExchange_Texture2D_Float32_texture_modifiers;
     TextureAtomicExchange_Texture2D_Float32_texture.type.modifierValues = TextureAtomicExchange_Texture2D_Float32_texture_modifierValues;
     TextureAtomicExchange_Texture2D_Float32_coordinate.name = "coordinate"_c;
@@ -1726,21 +1703,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2D_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicExchange_Texture2D_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2D_Float32.name = TextureAtomicExchange_Texture2D_Float32_name;
-    TextureAtomicExchange_Texture2D_Float32.backendIndex = 2753;
+    TextureAtomicExchange_Texture2D_Float32.backendIndex = 2751;
     TextureAtomicExchange_Texture2D_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicExchange_Texture2D_Float32.parameters = TextureAtomicExchange_Texture2D_Float32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32)->signature = "textureAtomicExchange(uniform *texture2D,i32x2,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32)->name = "textureAtomicExchange(uniform *texture2D,i32x2,f32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2D, coordinate : i32x2, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32)->signature = "textureAtomicExchange(uniform *mutable texture2D,i32x2,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32)->name = "textureAtomicExchange(uniform *mutable texture2D,i32x2,f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicExchange with Texture2D, Int32x2, UInt32
     TextureAtomicExchange_Texture2D_UInt32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicExchange_Texture2D_UInt32_texture.type.mut = true;
     TextureAtomicExchange_Texture2D_UInt32_texture.type.modifiers = TextureAtomicExchange_Texture2D_UInt32_texture_modifiers;
     TextureAtomicExchange_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicExchange_Texture2D_UInt32_texture_modifierValues;
     TextureAtomicExchange_Texture2D_UInt32_coordinate.name = "coordinate"_c;
@@ -1749,21 +1727,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicExchange_Texture2D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2D_UInt32.name = TextureAtomicExchange_Texture2D_UInt32_name;
-    TextureAtomicExchange_Texture2D_UInt32.backendIndex = 2754;
+    TextureAtomicExchange_Texture2D_UInt32.backendIndex = 2752;
     TextureAtomicExchange_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicExchange_Texture2D_UInt32.parameters = TextureAtomicExchange_Texture2D_UInt32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32)->signature = "textureAtomicExchange(uniform *texture2D,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32)->name = "textureAtomicExchange(uniform *texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2D, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32)->signature = "textureAtomicExchange(uniform *mutable texture2D,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32)->name = "textureAtomicExchange(uniform *mutable texture2D,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicExchange with Texture2D, Int32x2, Int32
     TextureAtomicExchange_Texture2D_Int32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicExchange_Texture2D_Int32_texture.type.mut = true;
     TextureAtomicExchange_Texture2D_Int32_texture.type.modifiers = TextureAtomicExchange_Texture2D_Int32_texture_modifiers;
     TextureAtomicExchange_Texture2D_Int32_texture.type.modifierValues = TextureAtomicExchange_Texture2D_Int32_texture_modifierValues;
     TextureAtomicExchange_Texture2D_Int32_coordinate.name = "coordinate"_c;
@@ -1772,21 +1751,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicExchange_Texture2D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2D_Int32.name = TextureAtomicExchange_Texture2D_Int32_name;
-    TextureAtomicExchange_Texture2D_Int32.backendIndex = 2755;
+    TextureAtomicExchange_Texture2D_Int32.backendIndex = 2753;
     TextureAtomicExchange_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicExchange_Texture2D_Int32.parameters = TextureAtomicExchange_Texture2D_Int32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32)->signature = "textureAtomicExchange(uniform *texture2D,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32)->name = "textureAtomicExchange(uniform *texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2D, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32)->signature = "textureAtomicExchange(uniform *mutable texture2D,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32)->name = "textureAtomicExchange(uniform *mutable texture2D,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicExchange with Texture2D, Int32x2, Float16
     TextureAtomicExchange_Texture2D_Float16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2D_Float16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicExchange_Texture2D_Float16_texture.type.mut = true;
     TextureAtomicExchange_Texture2D_Float16_texture.type.modifiers = TextureAtomicExchange_Texture2D_Float16_texture_modifiers;
     TextureAtomicExchange_Texture2D_Float16_texture.type.modifierValues = TextureAtomicExchange_Texture2D_Float16_texture_modifierValues;
     TextureAtomicExchange_Texture2D_Float16_coordinate.name = "coordinate"_c;
@@ -1795,21 +1775,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2D_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicExchange_Texture2D_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2D_Float16.name = TextureAtomicExchange_Texture2D_Float16_name;
-    TextureAtomicExchange_Texture2D_Float16.backendIndex = 2756;
+    TextureAtomicExchange_Texture2D_Float16.backendIndex = 2754;
     TextureAtomicExchange_Texture2D_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicExchange_Texture2D_Float16.parameters = TextureAtomicExchange_Texture2D_Float16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16)->signature = "textureAtomicExchange(uniform *texture2D,i32x2,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16)->name = "textureAtomicExchange(uniform *texture2D,i32x2,f16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2D, coordinate : i32x2, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16)->signature = "textureAtomicExchange(uniform *mutable texture2D,i32x2,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16)->name = "textureAtomicExchange(uniform *mutable texture2D,i32x2,f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicExchange with Texture2D, Int32x2, UInt16
     TextureAtomicExchange_Texture2D_UInt16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicExchange_Texture2D_UInt16_texture.type.mut = true;
     TextureAtomicExchange_Texture2D_UInt16_texture.type.modifiers = TextureAtomicExchange_Texture2D_UInt16_texture_modifiers;
     TextureAtomicExchange_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicExchange_Texture2D_UInt16_texture_modifierValues;
     TextureAtomicExchange_Texture2D_UInt16_coordinate.name = "coordinate"_c;
@@ -1818,21 +1799,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicExchange_Texture2D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2D_UInt16.name = TextureAtomicExchange_Texture2D_UInt16_name;
-    TextureAtomicExchange_Texture2D_UInt16.backendIndex = 2757;
+    TextureAtomicExchange_Texture2D_UInt16.backendIndex = 2755;
     TextureAtomicExchange_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicExchange_Texture2D_UInt16.parameters = TextureAtomicExchange_Texture2D_UInt16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16)->signature = "textureAtomicExchange(uniform *texture2D,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16)->name = "textureAtomicExchange(uniform *texture2D,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2D, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16)->signature = "textureAtomicExchange(uniform *mutable texture2D,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16)->name = "textureAtomicExchange(uniform *mutable texture2D,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicExchange with Texture2D, Int32x2, Int16
     TextureAtomicExchange_Texture2D_Int16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicExchange_Texture2D_Int16_texture.type.mut = true;
     TextureAtomicExchange_Texture2D_Int16_texture.type.modifiers = TextureAtomicExchange_Texture2D_Int16_texture_modifiers;
     TextureAtomicExchange_Texture2D_Int16_texture.type.modifierValues = TextureAtomicExchange_Texture2D_Int16_texture_modifierValues;
     TextureAtomicExchange_Texture2D_Int16_coordinate.name = "coordinate"_c;
@@ -1841,21 +1823,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicExchange_Texture2D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2D_Int16.name = TextureAtomicExchange_Texture2D_Int16_name;
-    TextureAtomicExchange_Texture2D_Int16.backendIndex = 2758;
+    TextureAtomicExchange_Texture2D_Int16.backendIndex = 2756;
     TextureAtomicExchange_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicExchange_Texture2D_Int16.parameters = TextureAtomicExchange_Texture2D_Int16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16)->signature = "textureAtomicExchange(uniform *texture2D,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16)->name = "textureAtomicExchange(uniform *texture2D,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2D, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16)->signature = "textureAtomicExchange(uniform *mutable texture2D,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16)->name = "textureAtomicExchange(uniform *mutable texture2D,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicExchange with Texture3D, Int32x3, Float32
     TextureAtomicExchange_Texture3D_Float32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture3D_Float32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicExchange_Texture3D_Float32_texture.type.mut = true;
     TextureAtomicExchange_Texture3D_Float32_texture.type.modifiers = TextureAtomicExchange_Texture3D_Float32_texture_modifiers;
     TextureAtomicExchange_Texture3D_Float32_texture.type.modifierValues = TextureAtomicExchange_Texture3D_Float32_texture_modifierValues;
     TextureAtomicExchange_Texture3D_Float32_coordinate.name = "coordinate"_c;
@@ -1864,21 +1847,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture3D_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicExchange_Texture3D_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture3D_Float32.name = TextureAtomicExchange_Texture3D_Float32_name;
-    TextureAtomicExchange_Texture3D_Float32.backendIndex = 2759;
+    TextureAtomicExchange_Texture3D_Float32.backendIndex = 2757;
     TextureAtomicExchange_Texture3D_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicExchange_Texture3D_Float32.parameters = TextureAtomicExchange_Texture3D_Float32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32)->signature = "textureAtomicExchange(uniform *texture3D,i32x3,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32)->name = "textureAtomicExchange(uniform *texture3D,i32x3,f32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture3D, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32)->signature = "textureAtomicExchange(uniform *mutable texture3D,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32)->name = "textureAtomicExchange(uniform *mutable texture3D,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicExchange with Texture3D, Int32x3, UInt32
     TextureAtomicExchange_Texture3D_UInt32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicExchange_Texture3D_UInt32_texture.type.mut = true;
     TextureAtomicExchange_Texture3D_UInt32_texture.type.modifiers = TextureAtomicExchange_Texture3D_UInt32_texture_modifiers;
     TextureAtomicExchange_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicExchange_Texture3D_UInt32_texture_modifierValues;
     TextureAtomicExchange_Texture3D_UInt32_coordinate.name = "coordinate"_c;
@@ -1887,21 +1871,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicExchange_Texture3D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture3D_UInt32.name = TextureAtomicExchange_Texture3D_UInt32_name;
-    TextureAtomicExchange_Texture3D_UInt32.backendIndex = 2760;
+    TextureAtomicExchange_Texture3D_UInt32.backendIndex = 2758;
     TextureAtomicExchange_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicExchange_Texture3D_UInt32.parameters = TextureAtomicExchange_Texture3D_UInt32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32)->signature = "textureAtomicExchange(uniform *texture3D,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32)->name = "textureAtomicExchange(uniform *texture3D,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture3D, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32)->signature = "textureAtomicExchange(uniform *mutable texture3D,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32)->name = "textureAtomicExchange(uniform *mutable texture3D,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicExchange with Texture3D, Int32x3, Int32
     TextureAtomicExchange_Texture3D_Int32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicExchange_Texture3D_Int32_texture.type.mut = true;
     TextureAtomicExchange_Texture3D_Int32_texture.type.modifiers = TextureAtomicExchange_Texture3D_Int32_texture_modifiers;
     TextureAtomicExchange_Texture3D_Int32_texture.type.modifierValues = TextureAtomicExchange_Texture3D_Int32_texture_modifierValues;
     TextureAtomicExchange_Texture3D_Int32_coordinate.name = "coordinate"_c;
@@ -1910,21 +1895,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicExchange_Texture3D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture3D_Int32.name = TextureAtomicExchange_Texture3D_Int32_name;
-    TextureAtomicExchange_Texture3D_Int32.backendIndex = 2761;
+    TextureAtomicExchange_Texture3D_Int32.backendIndex = 2759;
     TextureAtomicExchange_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicExchange_Texture3D_Int32.parameters = TextureAtomicExchange_Texture3D_Int32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32)->signature = "textureAtomicExchange(uniform *texture3D,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32)->name = "textureAtomicExchange(uniform *texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture3D, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32)->signature = "textureAtomicExchange(uniform *mutable texture3D,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32)->name = "textureAtomicExchange(uniform *mutable texture3D,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicExchange with Texture3D, Int32x3, Float16
     TextureAtomicExchange_Texture3D_Float16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture3D_Float16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicExchange_Texture3D_Float16_texture.type.mut = true;
     TextureAtomicExchange_Texture3D_Float16_texture.type.modifiers = TextureAtomicExchange_Texture3D_Float16_texture_modifiers;
     TextureAtomicExchange_Texture3D_Float16_texture.type.modifierValues = TextureAtomicExchange_Texture3D_Float16_texture_modifierValues;
     TextureAtomicExchange_Texture3D_Float16_coordinate.name = "coordinate"_c;
@@ -1933,21 +1919,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture3D_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicExchange_Texture3D_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture3D_Float16.name = TextureAtomicExchange_Texture3D_Float16_name;
-    TextureAtomicExchange_Texture3D_Float16.backendIndex = 2762;
+    TextureAtomicExchange_Texture3D_Float16.backendIndex = 2760;
     TextureAtomicExchange_Texture3D_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicExchange_Texture3D_Float16.parameters = TextureAtomicExchange_Texture3D_Float16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16)->signature = "textureAtomicExchange(uniform *texture3D,i32x3,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16)->name = "textureAtomicExchange(uniform *texture3D,i32x3,f16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture3D, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16)->signature = "textureAtomicExchange(uniform *mutable texture3D,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16)->name = "textureAtomicExchange(uniform *mutable texture3D,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicExchange with Texture3D, Int32x3, UInt16
     TextureAtomicExchange_Texture3D_UInt16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicExchange_Texture3D_UInt16_texture.type.mut = true;
     TextureAtomicExchange_Texture3D_UInt16_texture.type.modifiers = TextureAtomicExchange_Texture3D_UInt16_texture_modifiers;
     TextureAtomicExchange_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicExchange_Texture3D_UInt16_texture_modifierValues;
     TextureAtomicExchange_Texture3D_UInt16_coordinate.name = "coordinate"_c;
@@ -1956,21 +1943,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicExchange_Texture3D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture3D_UInt16.name = TextureAtomicExchange_Texture3D_UInt16_name;
-    TextureAtomicExchange_Texture3D_UInt16.backendIndex = 2763;
+    TextureAtomicExchange_Texture3D_UInt16.backendIndex = 2761;
     TextureAtomicExchange_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicExchange_Texture3D_UInt16.parameters = TextureAtomicExchange_Texture3D_UInt16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16)->signature = "textureAtomicExchange(uniform *texture3D,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16)->name = "textureAtomicExchange(uniform *texture3D,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture3D, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16)->signature = "textureAtomicExchange(uniform *mutable texture3D,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16)->name = "textureAtomicExchange(uniform *mutable texture3D,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicExchange with Texture3D, Int32x3, Int16
     TextureAtomicExchange_Texture3D_Int16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicExchange_Texture3D_Int16_texture.type.mut = true;
     TextureAtomicExchange_Texture3D_Int16_texture.type.modifiers = TextureAtomicExchange_Texture3D_Int16_texture_modifiers;
     TextureAtomicExchange_Texture3D_Int16_texture.type.modifierValues = TextureAtomicExchange_Texture3D_Int16_texture_modifierValues;
     TextureAtomicExchange_Texture3D_Int16_coordinate.name = "coordinate"_c;
@@ -1979,21 +1967,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicExchange_Texture3D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture3D_Int16.name = TextureAtomicExchange_Texture3D_Int16_name;
-    TextureAtomicExchange_Texture3D_Int16.backendIndex = 2764;
+    TextureAtomicExchange_Texture3D_Int16.backendIndex = 2762;
     TextureAtomicExchange_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicExchange_Texture3D_Int16.parameters = TextureAtomicExchange_Texture3D_Int16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16)->signature = "textureAtomicExchange(uniform *texture3D,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16)->name = "textureAtomicExchange(uniform *texture3D,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture3D, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16)->signature = "textureAtomicExchange(uniform *mutable texture3D,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16)->name = "textureAtomicExchange(uniform *mutable texture3D,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicExchange with TextureCube, Int32x3, Float32
     TextureAtomicExchange_TextureCube_Float32_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCube_Float32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicExchange_TextureCube_Float32_texture.type.mut = true;
     TextureAtomicExchange_TextureCube_Float32_texture.type.modifiers = TextureAtomicExchange_TextureCube_Float32_texture_modifiers;
     TextureAtomicExchange_TextureCube_Float32_texture.type.modifierValues = TextureAtomicExchange_TextureCube_Float32_texture_modifierValues;
     TextureAtomicExchange_TextureCube_Float32_coordinate.name = "coordinate"_c;
@@ -2002,21 +1991,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCube_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicExchange_TextureCube_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCube_Float32.name = TextureAtomicExchange_TextureCube_Float32_name;
-    TextureAtomicExchange_TextureCube_Float32.backendIndex = 2765;
+    TextureAtomicExchange_TextureCube_Float32.backendIndex = 2763;
     TextureAtomicExchange_TextureCube_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicExchange_TextureCube_Float32.parameters = TextureAtomicExchange_TextureCube_Float32_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32)->signature = "textureAtomicExchange(uniform *textureCube,i32x3,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32)->name = "textureAtomicExchange(uniform *textureCube,i32x3,f32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCube, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32)->signature = "textureAtomicExchange(uniform *mutable textureCube,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32)->name = "textureAtomicExchange(uniform *mutable textureCube,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicExchange with TextureCube, Int32x3, UInt32
     TextureAtomicExchange_TextureCube_UInt32_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicExchange_TextureCube_UInt32_texture.type.mut = true;
     TextureAtomicExchange_TextureCube_UInt32_texture.type.modifiers = TextureAtomicExchange_TextureCube_UInt32_texture_modifiers;
     TextureAtomicExchange_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicExchange_TextureCube_UInt32_texture_modifierValues;
     TextureAtomicExchange_TextureCube_UInt32_coordinate.name = "coordinate"_c;
@@ -2025,21 +2015,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicExchange_TextureCube_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCube_UInt32.name = TextureAtomicExchange_TextureCube_UInt32_name;
-    TextureAtomicExchange_TextureCube_UInt32.backendIndex = 2766;
+    TextureAtomicExchange_TextureCube_UInt32.backendIndex = 2764;
     TextureAtomicExchange_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicExchange_TextureCube_UInt32.parameters = TextureAtomicExchange_TextureCube_UInt32_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32)->signature = "textureAtomicExchange(uniform *textureCube,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32)->name = "textureAtomicExchange(uniform *textureCube,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCube, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32)->signature = "textureAtomicExchange(uniform *mutable textureCube,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32)->name = "textureAtomicExchange(uniform *mutable textureCube,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicExchange with TextureCube, Int32x3, Int32
     TextureAtomicExchange_TextureCube_Int32_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicExchange_TextureCube_Int32_texture.type.mut = true;
     TextureAtomicExchange_TextureCube_Int32_texture.type.modifiers = TextureAtomicExchange_TextureCube_Int32_texture_modifiers;
     TextureAtomicExchange_TextureCube_Int32_texture.type.modifierValues = TextureAtomicExchange_TextureCube_Int32_texture_modifierValues;
     TextureAtomicExchange_TextureCube_Int32_coordinate.name = "coordinate"_c;
@@ -2048,21 +2039,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicExchange_TextureCube_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCube_Int32.name = TextureAtomicExchange_TextureCube_Int32_name;
-    TextureAtomicExchange_TextureCube_Int32.backendIndex = 2767;
+    TextureAtomicExchange_TextureCube_Int32.backendIndex = 2765;
     TextureAtomicExchange_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicExchange_TextureCube_Int32.parameters = TextureAtomicExchange_TextureCube_Int32_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32)->signature = "textureAtomicExchange(uniform *textureCube,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32)->name = "textureAtomicExchange(uniform *textureCube,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCube, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32)->signature = "textureAtomicExchange(uniform *mutable textureCube,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32)->name = "textureAtomicExchange(uniform *mutable textureCube,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicExchange with TextureCube, Int32x3, Float16
     TextureAtomicExchange_TextureCube_Float16_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCube_Float16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicExchange_TextureCube_Float16_texture.type.mut = true;
     TextureAtomicExchange_TextureCube_Float16_texture.type.modifiers = TextureAtomicExchange_TextureCube_Float16_texture_modifiers;
     TextureAtomicExchange_TextureCube_Float16_texture.type.modifierValues = TextureAtomicExchange_TextureCube_Float16_texture_modifierValues;
     TextureAtomicExchange_TextureCube_Float16_coordinate.name = "coordinate"_c;
@@ -2071,21 +2063,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCube_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicExchange_TextureCube_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCube_Float16.name = TextureAtomicExchange_TextureCube_Float16_name;
-    TextureAtomicExchange_TextureCube_Float16.backendIndex = 2768;
+    TextureAtomicExchange_TextureCube_Float16.backendIndex = 2766;
     TextureAtomicExchange_TextureCube_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicExchange_TextureCube_Float16.parameters = TextureAtomicExchange_TextureCube_Float16_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16)->signature = "textureAtomicExchange(uniform *textureCube,i32x3,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16)->name = "textureAtomicExchange(uniform *textureCube,i32x3,f16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCube, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16)->signature = "textureAtomicExchange(uniform *mutable textureCube,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16)->name = "textureAtomicExchange(uniform *mutable textureCube,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicExchange with TextureCube, Int32x3, UInt16
     TextureAtomicExchange_TextureCube_UInt16_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCube_UInt16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicExchange_TextureCube_UInt16_texture.type.mut = true;
     TextureAtomicExchange_TextureCube_UInt16_texture.type.modifiers = TextureAtomicExchange_TextureCube_UInt16_texture_modifiers;
     TextureAtomicExchange_TextureCube_UInt16_texture.type.modifierValues = TextureAtomicExchange_TextureCube_UInt16_texture_modifierValues;
     TextureAtomicExchange_TextureCube_UInt16_coordinate.name = "coordinate"_c;
@@ -2094,21 +2087,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCube_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicExchange_TextureCube_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCube_UInt16.name = TextureAtomicExchange_TextureCube_UInt16_name;
-    TextureAtomicExchange_TextureCube_UInt16.backendIndex = 2769;
+    TextureAtomicExchange_TextureCube_UInt16.backendIndex = 2767;
     TextureAtomicExchange_TextureCube_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicExchange_TextureCube_UInt16.parameters = TextureAtomicExchange_TextureCube_UInt16_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16)->signature = "textureAtomicExchange(uniform *textureCube,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16)->name = "textureAtomicExchange(uniform *textureCube,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCube, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16)->signature = "textureAtomicExchange(uniform *mutable textureCube,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16)->name = "textureAtomicExchange(uniform *mutable textureCube,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicExchange with TextureCube, Int32x3, Int16
     TextureAtomicExchange_TextureCube_Int16_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCube_Int16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicExchange_TextureCube_Int16_texture.type.mut = true;
     TextureAtomicExchange_TextureCube_Int16_texture.type.modifiers = TextureAtomicExchange_TextureCube_Int16_texture_modifiers;
     TextureAtomicExchange_TextureCube_Int16_texture.type.modifierValues = TextureAtomicExchange_TextureCube_Int16_texture_modifierValues;
     TextureAtomicExchange_TextureCube_Int16_coordinate.name = "coordinate"_c;
@@ -2117,21 +2111,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCube_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicExchange_TextureCube_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCube_Int16.name = TextureAtomicExchange_TextureCube_Int16_name;
-    TextureAtomicExchange_TextureCube_Int16.backendIndex = 2770;
+    TextureAtomicExchange_TextureCube_Int16.backendIndex = 2768;
     TextureAtomicExchange_TextureCube_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicExchange_TextureCube_Int16.parameters = TextureAtomicExchange_TextureCube_Int16_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16)->signature = "textureAtomicExchange(uniform *textureCube,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16)->name = "textureAtomicExchange(uniform *textureCube,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCube, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16)->signature = "textureAtomicExchange(uniform *mutable textureCube,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16)->name = "textureAtomicExchange(uniform *mutable textureCube,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCube_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicExchange with Texture1DArray, Int32x2, Float32
     TextureAtomicExchange_Texture1DArray_Float32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1DArray_Float32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicExchange_Texture1DArray_Float32_texture.type.mut = true;
     TextureAtomicExchange_Texture1DArray_Float32_texture.type.modifiers = TextureAtomicExchange_Texture1DArray_Float32_texture_modifiers;
     TextureAtomicExchange_Texture1DArray_Float32_texture.type.modifierValues = TextureAtomicExchange_Texture1DArray_Float32_texture_modifierValues;
     TextureAtomicExchange_Texture1DArray_Float32_coordinate.name = "coordinate"_c;
@@ -2140,21 +2135,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1DArray_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicExchange_Texture1DArray_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1DArray_Float32.name = TextureAtomicExchange_Texture1DArray_Float32_name;
-    TextureAtomicExchange_Texture1DArray_Float32.backendIndex = 2771;
+    TextureAtomicExchange_Texture1DArray_Float32.backendIndex = 2769;
     TextureAtomicExchange_Texture1DArray_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicExchange_Texture1DArray_Float32.parameters = TextureAtomicExchange_Texture1DArray_Float32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32)->signature = "textureAtomicExchange(uniform *texture1DArray,i32x2,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32)->name = "textureAtomicExchange(uniform *texture1DArray,i32x2,f32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32)->signature = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32)->name = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicExchange with Texture1DArray, Int32x2, UInt32
     TextureAtomicExchange_Texture1DArray_UInt32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicExchange_Texture1DArray_UInt32_texture.type.mut = true;
     TextureAtomicExchange_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicExchange_Texture1DArray_UInt32_texture_modifiers;
     TextureAtomicExchange_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicExchange_Texture1DArray_UInt32_texture_modifierValues;
     TextureAtomicExchange_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
@@ -2163,21 +2159,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicExchange_Texture1DArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1DArray_UInt32.name = TextureAtomicExchange_Texture1DArray_UInt32_name;
-    TextureAtomicExchange_Texture1DArray_UInt32.backendIndex = 2772;
+    TextureAtomicExchange_Texture1DArray_UInt32.backendIndex = 2770;
     TextureAtomicExchange_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicExchange_Texture1DArray_UInt32.parameters = TextureAtomicExchange_Texture1DArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32)->signature = "textureAtomicExchange(uniform *texture1DArray,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32)->name = "textureAtomicExchange(uniform *texture1DArray,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32)->signature = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32)->name = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicExchange with Texture1DArray, Int32x2, Int32
     TextureAtomicExchange_Texture1DArray_Int32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicExchange_Texture1DArray_Int32_texture.type.mut = true;
     TextureAtomicExchange_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicExchange_Texture1DArray_Int32_texture_modifiers;
     TextureAtomicExchange_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicExchange_Texture1DArray_Int32_texture_modifierValues;
     TextureAtomicExchange_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
@@ -2186,21 +2183,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicExchange_Texture1DArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1DArray_Int32.name = TextureAtomicExchange_Texture1DArray_Int32_name;
-    TextureAtomicExchange_Texture1DArray_Int32.backendIndex = 2773;
+    TextureAtomicExchange_Texture1DArray_Int32.backendIndex = 2771;
     TextureAtomicExchange_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicExchange_Texture1DArray_Int32.parameters = TextureAtomicExchange_Texture1DArray_Int32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32)->signature = "textureAtomicExchange(uniform *texture1DArray,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32)->name = "textureAtomicExchange(uniform *texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32)->signature = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32)->name = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicExchange with Texture1DArray, Int32x2, Float16
     TextureAtomicExchange_Texture1DArray_Float16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1DArray_Float16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicExchange_Texture1DArray_Float16_texture.type.mut = true;
     TextureAtomicExchange_Texture1DArray_Float16_texture.type.modifiers = TextureAtomicExchange_Texture1DArray_Float16_texture_modifiers;
     TextureAtomicExchange_Texture1DArray_Float16_texture.type.modifierValues = TextureAtomicExchange_Texture1DArray_Float16_texture_modifierValues;
     TextureAtomicExchange_Texture1DArray_Float16_coordinate.name = "coordinate"_c;
@@ -2209,21 +2207,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1DArray_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicExchange_Texture1DArray_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1DArray_Float16.name = TextureAtomicExchange_Texture1DArray_Float16_name;
-    TextureAtomicExchange_Texture1DArray_Float16.backendIndex = 2774;
+    TextureAtomicExchange_Texture1DArray_Float16.backendIndex = 2772;
     TextureAtomicExchange_Texture1DArray_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicExchange_Texture1DArray_Float16.parameters = TextureAtomicExchange_Texture1DArray_Float16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16)->signature = "textureAtomicExchange(uniform *texture1DArray,i32x2,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16)->name = "textureAtomicExchange(uniform *texture1DArray,i32x2,f16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16)->signature = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16)->name = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicExchange with Texture1DArray, Int32x2, UInt16
     TextureAtomicExchange_Texture1DArray_UInt16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicExchange_Texture1DArray_UInt16_texture.type.mut = true;
     TextureAtomicExchange_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicExchange_Texture1DArray_UInt16_texture_modifiers;
     TextureAtomicExchange_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicExchange_Texture1DArray_UInt16_texture_modifierValues;
     TextureAtomicExchange_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
@@ -2232,21 +2231,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicExchange_Texture1DArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1DArray_UInt16.name = TextureAtomicExchange_Texture1DArray_UInt16_name;
-    TextureAtomicExchange_Texture1DArray_UInt16.backendIndex = 2775;
+    TextureAtomicExchange_Texture1DArray_UInt16.backendIndex = 2773;
     TextureAtomicExchange_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicExchange_Texture1DArray_UInt16.parameters = TextureAtomicExchange_Texture1DArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16)->signature = "textureAtomicExchange(uniform *texture1DArray,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16)->name = "textureAtomicExchange(uniform *texture1DArray,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16)->signature = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16)->name = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicExchange with Texture1DArray, Int32x2, Int16
     TextureAtomicExchange_Texture1DArray_Int16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicExchange_Texture1DArray_Int16_texture.type.mut = true;
     TextureAtomicExchange_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicExchange_Texture1DArray_Int16_texture_modifiers;
     TextureAtomicExchange_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicExchange_Texture1DArray_Int16_texture_modifierValues;
     TextureAtomicExchange_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
@@ -2255,21 +2255,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicExchange_Texture1DArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture1DArray_Int16.name = TextureAtomicExchange_Texture1DArray_Int16_name;
-    TextureAtomicExchange_Texture1DArray_Int16.backendIndex = 2776;
+    TextureAtomicExchange_Texture1DArray_Int16.backendIndex = 2774;
     TextureAtomicExchange_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicExchange_Texture1DArray_Int16.parameters = TextureAtomicExchange_Texture1DArray_Int16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16)->signature = "textureAtomicExchange(uniform *texture1DArray,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16)->name = "textureAtomicExchange(uniform *texture1DArray,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16)->signature = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16)->name = "textureAtomicExchange(uniform *mutable texture1DArray,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicExchange with Texture2DArray, Int32x3, Float32
     TextureAtomicExchange_Texture2DArray_Float32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2DArray_Float32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicExchange_Texture2DArray_Float32_texture.type.mut = true;
     TextureAtomicExchange_Texture2DArray_Float32_texture.type.modifiers = TextureAtomicExchange_Texture2DArray_Float32_texture_modifiers;
     TextureAtomicExchange_Texture2DArray_Float32_texture.type.modifierValues = TextureAtomicExchange_Texture2DArray_Float32_texture_modifierValues;
     TextureAtomicExchange_Texture2DArray_Float32_coordinate.name = "coordinate"_c;
@@ -2278,21 +2279,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2DArray_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicExchange_Texture2DArray_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2DArray_Float32.name = TextureAtomicExchange_Texture2DArray_Float32_name;
-    TextureAtomicExchange_Texture2DArray_Float32.backendIndex = 2777;
+    TextureAtomicExchange_Texture2DArray_Float32.backendIndex = 2775;
     TextureAtomicExchange_Texture2DArray_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicExchange_Texture2DArray_Float32.parameters = TextureAtomicExchange_Texture2DArray_Float32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32)->signature = "textureAtomicExchange(uniform *texture2DArray,i32x3,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32)->name = "textureAtomicExchange(uniform *texture2DArray,i32x3,f32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32)->signature = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32)->name = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicExchange with Texture2DArray, Int32x3, UInt32
     TextureAtomicExchange_Texture2DArray_UInt32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicExchange_Texture2DArray_UInt32_texture.type.mut = true;
     TextureAtomicExchange_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicExchange_Texture2DArray_UInt32_texture_modifiers;
     TextureAtomicExchange_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicExchange_Texture2DArray_UInt32_texture_modifierValues;
     TextureAtomicExchange_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
@@ -2301,21 +2303,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicExchange_Texture2DArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2DArray_UInt32.name = TextureAtomicExchange_Texture2DArray_UInt32_name;
-    TextureAtomicExchange_Texture2DArray_UInt32.backendIndex = 2778;
+    TextureAtomicExchange_Texture2DArray_UInt32.backendIndex = 2776;
     TextureAtomicExchange_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicExchange_Texture2DArray_UInt32.parameters = TextureAtomicExchange_Texture2DArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32)->signature = "textureAtomicExchange(uniform *texture2DArray,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32)->name = "textureAtomicExchange(uniform *texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32)->signature = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32)->name = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicExchange with Texture2DArray, Int32x3, Int32
     TextureAtomicExchange_Texture2DArray_Int32_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicExchange_Texture2DArray_Int32_texture.type.mut = true;
     TextureAtomicExchange_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicExchange_Texture2DArray_Int32_texture_modifiers;
     TextureAtomicExchange_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicExchange_Texture2DArray_Int32_texture_modifierValues;
     TextureAtomicExchange_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
@@ -2324,21 +2327,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicExchange_Texture2DArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2DArray_Int32.name = TextureAtomicExchange_Texture2DArray_Int32_name;
-    TextureAtomicExchange_Texture2DArray_Int32.backendIndex = 2779;
+    TextureAtomicExchange_Texture2DArray_Int32.backendIndex = 2777;
     TextureAtomicExchange_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicExchange_Texture2DArray_Int32.parameters = TextureAtomicExchange_Texture2DArray_Int32_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32)->signature = "textureAtomicExchange(uniform *texture2DArray,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32)->name = "textureAtomicExchange(uniform *texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32)->signature = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32)->name = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicExchange with Texture2DArray, Int32x3, Float16
     TextureAtomicExchange_Texture2DArray_Float16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2DArray_Float16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicExchange_Texture2DArray_Float16_texture.type.mut = true;
     TextureAtomicExchange_Texture2DArray_Float16_texture.type.modifiers = TextureAtomicExchange_Texture2DArray_Float16_texture_modifiers;
     TextureAtomicExchange_Texture2DArray_Float16_texture.type.modifierValues = TextureAtomicExchange_Texture2DArray_Float16_texture_modifierValues;
     TextureAtomicExchange_Texture2DArray_Float16_coordinate.name = "coordinate"_c;
@@ -2347,21 +2351,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2DArray_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicExchange_Texture2DArray_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2DArray_Float16.name = TextureAtomicExchange_Texture2DArray_Float16_name;
-    TextureAtomicExchange_Texture2DArray_Float16.backendIndex = 2780;
+    TextureAtomicExchange_Texture2DArray_Float16.backendIndex = 2778;
     TextureAtomicExchange_Texture2DArray_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicExchange_Texture2DArray_Float16.parameters = TextureAtomicExchange_Texture2DArray_Float16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16)->signature = "textureAtomicExchange(uniform *texture2DArray,i32x3,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16)->name = "textureAtomicExchange(uniform *texture2DArray,i32x3,f16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16)->signature = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16)->name = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicExchange with Texture2DArray, Int32x3, UInt16
     TextureAtomicExchange_Texture2DArray_UInt16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicExchange_Texture2DArray_UInt16_texture.type.mut = true;
     TextureAtomicExchange_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicExchange_Texture2DArray_UInt16_texture_modifiers;
     TextureAtomicExchange_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicExchange_Texture2DArray_UInt16_texture_modifierValues;
     TextureAtomicExchange_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
@@ -2370,21 +2375,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicExchange_Texture2DArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2DArray_UInt16.name = TextureAtomicExchange_Texture2DArray_UInt16_name;
-    TextureAtomicExchange_Texture2DArray_UInt16.backendIndex = 2781;
+    TextureAtomicExchange_Texture2DArray_UInt16.backendIndex = 2779;
     TextureAtomicExchange_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicExchange_Texture2DArray_UInt16.parameters = TextureAtomicExchange_Texture2DArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16)->signature = "textureAtomicExchange(uniform *texture2DArray,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16)->name = "textureAtomicExchange(uniform *texture2DArray,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16)->signature = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16)->name = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicExchange with Texture2DArray, Int32x3, Int16
     TextureAtomicExchange_Texture2DArray_Int16_texture.name = "texture"_c;
     TextureAtomicExchange_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicExchange_Texture2DArray_Int16_texture.type.mut = true;
     TextureAtomicExchange_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicExchange_Texture2DArray_Int16_texture_modifiers;
     TextureAtomicExchange_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicExchange_Texture2DArray_Int16_texture_modifierValues;
     TextureAtomicExchange_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
@@ -2393,21 +2399,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicExchange_Texture2DArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_Texture2DArray_Int16.name = TextureAtomicExchange_Texture2DArray_Int16_name;
-    TextureAtomicExchange_Texture2DArray_Int16.backendIndex = 2782;
+    TextureAtomicExchange_Texture2DArray_Int16.backendIndex = 2780;
     TextureAtomicExchange_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicExchange_Texture2DArray_Int16.parameters = TextureAtomicExchange_Texture2DArray_Int16_args;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16)->signature = "textureAtomicExchange(uniform *texture2DArray,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16)->name = "textureAtomicExchange(uniform *texture2DArray,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16)->signature = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16)->name = "textureAtomicExchange(uniform *mutable texture2DArray,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicExchange with TextureCubeArray, Int32x4, Float32
     TextureAtomicExchange_TextureCubeArray_Float32_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCubeArray_Float32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicExchange_TextureCubeArray_Float32_texture.type.mut = true;
     TextureAtomicExchange_TextureCubeArray_Float32_texture.type.modifiers = TextureAtomicExchange_TextureCubeArray_Float32_texture_modifiers;
     TextureAtomicExchange_TextureCubeArray_Float32_texture.type.modifierValues = TextureAtomicExchange_TextureCubeArray_Float32_texture_modifierValues;
     TextureAtomicExchange_TextureCubeArray_Float32_coordinate.name = "coordinate"_c;
@@ -2416,21 +2423,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCubeArray_Float32_value.type = Type::FullType{ Float32Type.name };
     TextureAtomicExchange_TextureCubeArray_Float32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCubeArray_Float32.name = TextureAtomicExchange_TextureCubeArray_Float32_name;
-    TextureAtomicExchange_TextureCubeArray_Float32.backendIndex = 2783;
+    TextureAtomicExchange_TextureCubeArray_Float32.backendIndex = 2781;
     TextureAtomicExchange_TextureCubeArray_Float32.returnType = Type::FullType { Float32Type.name };
     TextureAtomicExchange_TextureCubeArray_Float32.parameters = TextureAtomicExchange_TextureCubeArray_Float32_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32)->signature = "textureAtomicExchange(uniform *textureCubeArray,i32x4,f32) f32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32)->name = "textureAtomicExchange(uniform *textureCubeArray,i32x4,f32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32)->signature = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32)->name = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float32)->returnTypeSymbol = &Float32Type;
 
     /// textureAtomicExchange with TextureCubeArray, Int32x4, UInt32
     TextureAtomicExchange_TextureCubeArray_UInt32_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicExchange_TextureCubeArray_UInt32_texture.type.mut = true;
     TextureAtomicExchange_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicExchange_TextureCubeArray_UInt32_texture_modifiers;
     TextureAtomicExchange_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicExchange_TextureCubeArray_UInt32_texture_modifierValues;
     TextureAtomicExchange_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
@@ -2439,21 +2447,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicExchange_TextureCubeArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCubeArray_UInt32.name = TextureAtomicExchange_TextureCubeArray_UInt32_name;
-    TextureAtomicExchange_TextureCubeArray_UInt32.backendIndex = 2784;
+    TextureAtomicExchange_TextureCubeArray_UInt32.backendIndex = 2782;
     TextureAtomicExchange_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicExchange_TextureCubeArray_UInt32.parameters = TextureAtomicExchange_TextureCubeArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32)->signature = "textureAtomicExchange(uniform *textureCubeArray,i32x4,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32)->name = "textureAtomicExchange(uniform *textureCubeArray,i32x4,u32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32)->signature = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32)->name = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicExchange with TextureCubeArray, Int32x4, Int32
     TextureAtomicExchange_TextureCubeArray_Int32_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicExchange_TextureCubeArray_Int32_texture.type.mut = true;
     TextureAtomicExchange_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicExchange_TextureCubeArray_Int32_texture_modifiers;
     TextureAtomicExchange_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicExchange_TextureCubeArray_Int32_texture_modifierValues;
     TextureAtomicExchange_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
@@ -2462,21 +2471,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicExchange_TextureCubeArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCubeArray_Int32.name = TextureAtomicExchange_TextureCubeArray_Int32_name;
-    TextureAtomicExchange_TextureCubeArray_Int32.backendIndex = 2785;
+    TextureAtomicExchange_TextureCubeArray_Int32.backendIndex = 2783;
     TextureAtomicExchange_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicExchange_TextureCubeArray_Int32.parameters = TextureAtomicExchange_TextureCubeArray_Int32_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32)->signature = "textureAtomicExchange(uniform *textureCubeArray,i32x4,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32)->name = "textureAtomicExchange(uniform *textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32)->signature = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32)->name = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicExchange with TextureCubeArray, Int32x4, Float16
     TextureAtomicExchange_TextureCubeArray_Float16_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCubeArray_Float16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicExchange_TextureCubeArray_Float16_texture.type.mut = true;
     TextureAtomicExchange_TextureCubeArray_Float16_texture.type.modifiers = TextureAtomicExchange_TextureCubeArray_Float16_texture_modifiers;
     TextureAtomicExchange_TextureCubeArray_Float16_texture.type.modifierValues = TextureAtomicExchange_TextureCubeArray_Float16_texture_modifierValues;
     TextureAtomicExchange_TextureCubeArray_Float16_coordinate.name = "coordinate"_c;
@@ -2485,21 +2495,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCubeArray_Float16_value.type = Type::FullType{ Float16Type.name };
     TextureAtomicExchange_TextureCubeArray_Float16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCubeArray_Float16.name = TextureAtomicExchange_TextureCubeArray_Float16_name;
-    TextureAtomicExchange_TextureCubeArray_Float16.backendIndex = 2786;
+    TextureAtomicExchange_TextureCubeArray_Float16.backendIndex = 2784;
     TextureAtomicExchange_TextureCubeArray_Float16.returnType = Type::FullType { Float16Type.name };
     TextureAtomicExchange_TextureCubeArray_Float16.parameters = TextureAtomicExchange_TextureCubeArray_Float16_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16)->signature = "textureAtomicExchange(uniform *textureCubeArray,i32x4,f16) f16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16)->name = "textureAtomicExchange(uniform *textureCubeArray,i32x4,f16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16)->signature = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16)->name = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Float16)->returnTypeSymbol = &Float16Type;
 
     /// textureAtomicExchange with TextureCubeArray, Int32x4, UInt16
     TextureAtomicExchange_TextureCubeArray_UInt16_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicExchange_TextureCubeArray_UInt16_texture.type.mut = true;
     TextureAtomicExchange_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicExchange_TextureCubeArray_UInt16_texture_modifiers;
     TextureAtomicExchange_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicExchange_TextureCubeArray_UInt16_texture_modifierValues;
     TextureAtomicExchange_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
@@ -2508,21 +2519,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicExchange_TextureCubeArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCubeArray_UInt16.name = TextureAtomicExchange_TextureCubeArray_UInt16_name;
-    TextureAtomicExchange_TextureCubeArray_UInt16.backendIndex = 2787;
+    TextureAtomicExchange_TextureCubeArray_UInt16.backendIndex = 2785;
     TextureAtomicExchange_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicExchange_TextureCubeArray_UInt16.parameters = TextureAtomicExchange_TextureCubeArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16)->signature = "textureAtomicExchange(uniform *textureCubeArray,i32x4,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16)->name = "textureAtomicExchange(uniform *textureCubeArray,i32x4,u16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16)->signature = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16)->name = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,u16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicExchange with TextureCubeArray, Int32x4, Int16
     TextureAtomicExchange_TextureCubeArray_Int16_texture.name = "texture"_c;
     TextureAtomicExchange_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicExchange_TextureCubeArray_Int16_texture.type.mut = true;
     TextureAtomicExchange_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicExchange_TextureCubeArray_Int16_texture_modifiers;
     TextureAtomicExchange_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicExchange_TextureCubeArray_Int16_texture_modifierValues;
     TextureAtomicExchange_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
@@ -2531,21 +2543,22 @@ void SetupIntrinsics14()
     TextureAtomicExchange_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicExchange_TextureCubeArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicExchange_TextureCubeArray_Int16.name = TextureAtomicExchange_TextureCubeArray_Int16_name;
-    TextureAtomicExchange_TextureCubeArray_Int16.backendIndex = 2788;
+    TextureAtomicExchange_TextureCubeArray_Int16.backendIndex = 2786;
     TextureAtomicExchange_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicExchange_TextureCubeArray_Int16.parameters = TextureAtomicExchange_TextureCubeArray_Int16_args;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16)->signature = "textureAtomicExchange(uniform *textureCubeArray,i32x4,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16)->name = "textureAtomicExchange(uniform *textureCubeArray,i32x4,i16)"_c;
-    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16)->signature = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16)->name = "textureAtomicExchange(uniform *mutable textureCubeArray,i32x4,i16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicExchange_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicCompareExchange with Texture1D, Int32, UInt32
     TextureAtomicCompareExchange_Texture1D_UInt32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicCompareExchange_Texture1D_UInt32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture1D_UInt32_texture.type.modifiers = TextureAtomicCompareExchange_Texture1D_UInt32_texture_modifiers;
     TextureAtomicCompareExchange_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture1D_UInt32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture1D_UInt32_coordinate.name = "coordinate"_c;
@@ -2554,21 +2567,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicCompareExchange_Texture1D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture1D_UInt32.name = TextureAtomicCompareExchange_Texture1D_UInt32_name;
-    TextureAtomicCompareExchange_Texture1D_UInt32.backendIndex = 2789;
+    TextureAtomicCompareExchange_Texture1D_UInt32.backendIndex = 2787;
     TextureAtomicCompareExchange_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicCompareExchange_Texture1D_UInt32.parameters = TextureAtomicCompareExchange_Texture1D_UInt32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32)->signature = "textureAtomicCompareExchange(uniform *texture1D,i32,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32)->name = "textureAtomicCompareExchange(uniform *texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture1D, coordinate : i32, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32)->signature = "textureAtomicCompareExchange(uniform *mutable texture1D,i32,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32)->name = "textureAtomicCompareExchange(uniform *mutable texture1D,i32,u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicCompareExchange with Texture1D, Int32, Int32
     TextureAtomicCompareExchange_Texture1D_Int32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicCompareExchange_Texture1D_Int32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture1D_Int32_texture.type.modifiers = TextureAtomicCompareExchange_Texture1D_Int32_texture_modifiers;
     TextureAtomicCompareExchange_Texture1D_Int32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture1D_Int32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture1D_Int32_coordinate.name = "coordinate"_c;
@@ -2577,21 +2591,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicCompareExchange_Texture1D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture1D_Int32.name = TextureAtomicCompareExchange_Texture1D_Int32_name;
-    TextureAtomicCompareExchange_Texture1D_Int32.backendIndex = 2790;
+    TextureAtomicCompareExchange_Texture1D_Int32.backendIndex = 2788;
     TextureAtomicCompareExchange_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicCompareExchange_Texture1D_Int32.parameters = TextureAtomicCompareExchange_Texture1D_Int32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32)->signature = "textureAtomicCompareExchange(uniform *texture1D,i32,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32)->name = "textureAtomicCompareExchange(uniform *texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture1D, coordinate : i32, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32)->signature = "textureAtomicCompareExchange(uniform *mutable texture1D,i32,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32)->name = "textureAtomicCompareExchange(uniform *mutable texture1D,i32,i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicCompareExchange with Texture1D, Int32, UInt16
     TextureAtomicCompareExchange_Texture1D_UInt16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicCompareExchange_Texture1D_UInt16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture1D_UInt16_texture.type.modifiers = TextureAtomicCompareExchange_Texture1D_UInt16_texture_modifiers;
     TextureAtomicCompareExchange_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture1D_UInt16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture1D_UInt16_coordinate.name = "coordinate"_c;
@@ -2600,21 +2615,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicCompareExchange_Texture1D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture1D_UInt16.name = TextureAtomicCompareExchange_Texture1D_UInt16_name;
-    TextureAtomicCompareExchange_Texture1D_UInt16.backendIndex = 2791;
+    TextureAtomicCompareExchange_Texture1D_UInt16.backendIndex = 2789;
     TextureAtomicCompareExchange_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicCompareExchange_Texture1D_UInt16.parameters = TextureAtomicCompareExchange_Texture1D_UInt16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16)->signature = "textureAtomicCompareExchange(uniform *texture1D,i32,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16)->name = "textureAtomicCompareExchange(uniform *texture1D,i32,u16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture1D, coordinate : i32, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16)->signature = "textureAtomicCompareExchange(uniform *mutable texture1D,i32,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16)->name = "textureAtomicCompareExchange(uniform *mutable texture1D,i32,u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicCompareExchange with Texture1D, Int32, Int16
     TextureAtomicCompareExchange_Texture1D_Int16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicCompareExchange_Texture1D_Int16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture1D_Int16_texture.type.modifiers = TextureAtomicCompareExchange_Texture1D_Int16_texture_modifiers;
     TextureAtomicCompareExchange_Texture1D_Int16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture1D_Int16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture1D_Int16_coordinate.name = "coordinate"_c;
@@ -2623,21 +2639,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicCompareExchange_Texture1D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture1D_Int16.name = TextureAtomicCompareExchange_Texture1D_Int16_name;
-    TextureAtomicCompareExchange_Texture1D_Int16.backendIndex = 2792;
+    TextureAtomicCompareExchange_Texture1D_Int16.backendIndex = 2790;
     TextureAtomicCompareExchange_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicCompareExchange_Texture1D_Int16.parameters = TextureAtomicCompareExchange_Texture1D_Int16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16)->signature = "textureAtomicCompareExchange(uniform *texture1D,i32,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16)->name = "textureAtomicCompareExchange(uniform *texture1D,i32,i16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture1D, coordinate : i32, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16)->signature = "textureAtomicCompareExchange(uniform *mutable texture1D,i32,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16)->name = "textureAtomicCompareExchange(uniform *mutable texture1D,i32,i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicCompareExchange with Texture2D, Int32x2, UInt32
     TextureAtomicCompareExchange_Texture2D_UInt32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicCompareExchange_Texture2D_UInt32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture2D_UInt32_texture.type.modifiers = TextureAtomicCompareExchange_Texture2D_UInt32_texture_modifiers;
     TextureAtomicCompareExchange_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture2D_UInt32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture2D_UInt32_coordinate.name = "coordinate"_c;
@@ -2646,21 +2663,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicCompareExchange_Texture2D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture2D_UInt32.name = TextureAtomicCompareExchange_Texture2D_UInt32_name;
-    TextureAtomicCompareExchange_Texture2D_UInt32.backendIndex = 2793;
+    TextureAtomicCompareExchange_Texture2D_UInt32.backendIndex = 2791;
     TextureAtomicCompareExchange_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicCompareExchange_Texture2D_UInt32.parameters = TextureAtomicCompareExchange_Texture2D_UInt32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32)->signature = "textureAtomicCompareExchange(uniform *texture2D,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32)->name = "textureAtomicCompareExchange(uniform *texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture2D, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32)->signature = "textureAtomicCompareExchange(uniform *mutable texture2D,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32)->name = "textureAtomicCompareExchange(uniform *mutable texture2D,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicCompareExchange with Texture2D, Int32x2, Int32
     TextureAtomicCompareExchange_Texture2D_Int32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicCompareExchange_Texture2D_Int32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture2D_Int32_texture.type.modifiers = TextureAtomicCompareExchange_Texture2D_Int32_texture_modifiers;
     TextureAtomicCompareExchange_Texture2D_Int32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture2D_Int32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture2D_Int32_coordinate.name = "coordinate"_c;
@@ -2669,21 +2687,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicCompareExchange_Texture2D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture2D_Int32.name = TextureAtomicCompareExchange_Texture2D_Int32_name;
-    TextureAtomicCompareExchange_Texture2D_Int32.backendIndex = 2794;
+    TextureAtomicCompareExchange_Texture2D_Int32.backendIndex = 2792;
     TextureAtomicCompareExchange_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicCompareExchange_Texture2D_Int32.parameters = TextureAtomicCompareExchange_Texture2D_Int32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32)->signature = "textureAtomicCompareExchange(uniform *texture2D,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32)->name = "textureAtomicCompareExchange(uniform *texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture2D, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32)->signature = "textureAtomicCompareExchange(uniform *mutable texture2D,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32)->name = "textureAtomicCompareExchange(uniform *mutable texture2D,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicCompareExchange with Texture2D, Int32x2, UInt16
     TextureAtomicCompareExchange_Texture2D_UInt16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicCompareExchange_Texture2D_UInt16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture2D_UInt16_texture.type.modifiers = TextureAtomicCompareExchange_Texture2D_UInt16_texture_modifiers;
     TextureAtomicCompareExchange_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture2D_UInt16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture2D_UInt16_coordinate.name = "coordinate"_c;
@@ -2692,21 +2711,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicCompareExchange_Texture2D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture2D_UInt16.name = TextureAtomicCompareExchange_Texture2D_UInt16_name;
-    TextureAtomicCompareExchange_Texture2D_UInt16.backendIndex = 2795;
+    TextureAtomicCompareExchange_Texture2D_UInt16.backendIndex = 2793;
     TextureAtomicCompareExchange_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicCompareExchange_Texture2D_UInt16.parameters = TextureAtomicCompareExchange_Texture2D_UInt16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16)->signature = "textureAtomicCompareExchange(uniform *texture2D,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16)->name = "textureAtomicCompareExchange(uniform *texture2D,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture2D, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16)->signature = "textureAtomicCompareExchange(uniform *mutable texture2D,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16)->name = "textureAtomicCompareExchange(uniform *mutable texture2D,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicCompareExchange with Texture2D, Int32x2, Int16
     TextureAtomicCompareExchange_Texture2D_Int16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicCompareExchange_Texture2D_Int16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture2D_Int16_texture.type.modifiers = TextureAtomicCompareExchange_Texture2D_Int16_texture_modifiers;
     TextureAtomicCompareExchange_Texture2D_Int16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture2D_Int16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture2D_Int16_coordinate.name = "coordinate"_c;
@@ -2715,21 +2735,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicCompareExchange_Texture2D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture2D_Int16.name = TextureAtomicCompareExchange_Texture2D_Int16_name;
-    TextureAtomicCompareExchange_Texture2D_Int16.backendIndex = 2796;
+    TextureAtomicCompareExchange_Texture2D_Int16.backendIndex = 2794;
     TextureAtomicCompareExchange_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicCompareExchange_Texture2D_Int16.parameters = TextureAtomicCompareExchange_Texture2D_Int16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16)->signature = "textureAtomicCompareExchange(uniform *texture2D,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16)->name = "textureAtomicCompareExchange(uniform *texture2D,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture2D, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16)->signature = "textureAtomicCompareExchange(uniform *mutable texture2D,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16)->name = "textureAtomicCompareExchange(uniform *mutable texture2D,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicCompareExchange with Texture3D, Int32x3, UInt32
     TextureAtomicCompareExchange_Texture3D_UInt32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicCompareExchange_Texture3D_UInt32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture3D_UInt32_texture.type.modifiers = TextureAtomicCompareExchange_Texture3D_UInt32_texture_modifiers;
     TextureAtomicCompareExchange_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture3D_UInt32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture3D_UInt32_coordinate.name = "coordinate"_c;
@@ -2738,21 +2759,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicCompareExchange_Texture3D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture3D_UInt32.name = TextureAtomicCompareExchange_Texture3D_UInt32_name;
-    TextureAtomicCompareExchange_Texture3D_UInt32.backendIndex = 2797;
+    TextureAtomicCompareExchange_Texture3D_UInt32.backendIndex = 2795;
     TextureAtomicCompareExchange_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicCompareExchange_Texture3D_UInt32.parameters = TextureAtomicCompareExchange_Texture3D_UInt32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32)->signature = "textureAtomicCompareExchange(uniform *texture3D,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32)->name = "textureAtomicCompareExchange(uniform *texture3D,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture3D, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32)->signature = "textureAtomicCompareExchange(uniform *mutable texture3D,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32)->name = "textureAtomicCompareExchange(uniform *mutable texture3D,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicCompareExchange with Texture3D, Int32x3, Int32
     TextureAtomicCompareExchange_Texture3D_Int32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicCompareExchange_Texture3D_Int32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture3D_Int32_texture.type.modifiers = TextureAtomicCompareExchange_Texture3D_Int32_texture_modifiers;
     TextureAtomicCompareExchange_Texture3D_Int32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture3D_Int32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture3D_Int32_coordinate.name = "coordinate"_c;
@@ -2761,21 +2783,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicCompareExchange_Texture3D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture3D_Int32.name = TextureAtomicCompareExchange_Texture3D_Int32_name;
-    TextureAtomicCompareExchange_Texture3D_Int32.backendIndex = 2798;
+    TextureAtomicCompareExchange_Texture3D_Int32.backendIndex = 2796;
     TextureAtomicCompareExchange_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicCompareExchange_Texture3D_Int32.parameters = TextureAtomicCompareExchange_Texture3D_Int32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32)->signature = "textureAtomicCompareExchange(uniform *texture3D,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32)->name = "textureAtomicCompareExchange(uniform *texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture3D, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32)->signature = "textureAtomicCompareExchange(uniform *mutable texture3D,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32)->name = "textureAtomicCompareExchange(uniform *mutable texture3D,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicCompareExchange with Texture3D, Int32x3, UInt16
     TextureAtomicCompareExchange_Texture3D_UInt16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicCompareExchange_Texture3D_UInt16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture3D_UInt16_texture.type.modifiers = TextureAtomicCompareExchange_Texture3D_UInt16_texture_modifiers;
     TextureAtomicCompareExchange_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture3D_UInt16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture3D_UInt16_coordinate.name = "coordinate"_c;
@@ -2784,21 +2807,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicCompareExchange_Texture3D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture3D_UInt16.name = TextureAtomicCompareExchange_Texture3D_UInt16_name;
-    TextureAtomicCompareExchange_Texture3D_UInt16.backendIndex = 2799;
+    TextureAtomicCompareExchange_Texture3D_UInt16.backendIndex = 2797;
     TextureAtomicCompareExchange_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicCompareExchange_Texture3D_UInt16.parameters = TextureAtomicCompareExchange_Texture3D_UInt16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16)->signature = "textureAtomicCompareExchange(uniform *texture3D,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16)->name = "textureAtomicCompareExchange(uniform *texture3D,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture3D, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16)->signature = "textureAtomicCompareExchange(uniform *mutable texture3D,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16)->name = "textureAtomicCompareExchange(uniform *mutable texture3D,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicCompareExchange with Texture3D, Int32x3, Int16
     TextureAtomicCompareExchange_Texture3D_Int16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicCompareExchange_Texture3D_Int16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture3D_Int16_texture.type.modifiers = TextureAtomicCompareExchange_Texture3D_Int16_texture_modifiers;
     TextureAtomicCompareExchange_Texture3D_Int16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture3D_Int16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture3D_Int16_coordinate.name = "coordinate"_c;
@@ -2807,21 +2831,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicCompareExchange_Texture3D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture3D_Int16.name = TextureAtomicCompareExchange_Texture3D_Int16_name;
-    TextureAtomicCompareExchange_Texture3D_Int16.backendIndex = 2800;
+    TextureAtomicCompareExchange_Texture3D_Int16.backendIndex = 2798;
     TextureAtomicCompareExchange_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicCompareExchange_Texture3D_Int16.parameters = TextureAtomicCompareExchange_Texture3D_Int16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16)->signature = "textureAtomicCompareExchange(uniform *texture3D,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16)->name = "textureAtomicCompareExchange(uniform *texture3D,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture3D, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16)->signature = "textureAtomicCompareExchange(uniform *mutable texture3D,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16)->name = "textureAtomicCompareExchange(uniform *mutable texture3D,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicCompareExchange with TextureCube, Int32x3, UInt32
     TextureAtomicCompareExchange_TextureCube_UInt32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicCompareExchange_TextureCube_UInt32_texture.type.mut = true;
     TextureAtomicCompareExchange_TextureCube_UInt32_texture.type.modifiers = TextureAtomicCompareExchange_TextureCube_UInt32_texture_modifiers;
     TextureAtomicCompareExchange_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicCompareExchange_TextureCube_UInt32_texture_modifierValues;
     TextureAtomicCompareExchange_TextureCube_UInt32_coordinate.name = "coordinate"_c;
@@ -2830,21 +2855,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicCompareExchange_TextureCube_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_TextureCube_UInt32.name = TextureAtomicCompareExchange_TextureCube_UInt32_name;
-    TextureAtomicCompareExchange_TextureCube_UInt32.backendIndex = 2801;
+    TextureAtomicCompareExchange_TextureCube_UInt32.backendIndex = 2799;
     TextureAtomicCompareExchange_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicCompareExchange_TextureCube_UInt32.parameters = TextureAtomicCompareExchange_TextureCube_UInt32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32)->signature = "textureAtomicCompareExchange(uniform *textureCube,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32)->name = "textureAtomicCompareExchange(uniform *textureCube,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *textureCube, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32)->signature = "textureAtomicCompareExchange(uniform *mutable textureCube,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32)->name = "textureAtomicCompareExchange(uniform *mutable textureCube,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicCompareExchange with TextureCube, Int32x3, Int32
     TextureAtomicCompareExchange_TextureCube_Int32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicCompareExchange_TextureCube_Int32_texture.type.mut = true;
     TextureAtomicCompareExchange_TextureCube_Int32_texture.type.modifiers = TextureAtomicCompareExchange_TextureCube_Int32_texture_modifiers;
     TextureAtomicCompareExchange_TextureCube_Int32_texture.type.modifierValues = TextureAtomicCompareExchange_TextureCube_Int32_texture_modifierValues;
     TextureAtomicCompareExchange_TextureCube_Int32_coordinate.name = "coordinate"_c;
@@ -2853,21 +2879,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicCompareExchange_TextureCube_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_TextureCube_Int32.name = TextureAtomicCompareExchange_TextureCube_Int32_name;
-    TextureAtomicCompareExchange_TextureCube_Int32.backendIndex = 2802;
+    TextureAtomicCompareExchange_TextureCube_Int32.backendIndex = 2800;
     TextureAtomicCompareExchange_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicCompareExchange_TextureCube_Int32.parameters = TextureAtomicCompareExchange_TextureCube_Int32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32)->signature = "textureAtomicCompareExchange(uniform *textureCube,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32)->name = "textureAtomicCompareExchange(uniform *textureCube,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *textureCube, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32)->signature = "textureAtomicCompareExchange(uniform *mutable textureCube,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32)->name = "textureAtomicCompareExchange(uniform *mutable textureCube,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicCompareExchange with TextureCube, Int32x3, UInt16
     TextureAtomicCompareExchange_TextureCube_UInt16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_TextureCube_UInt16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicCompareExchange_TextureCube_UInt16_texture.type.mut = true;
     TextureAtomicCompareExchange_TextureCube_UInt16_texture.type.modifiers = TextureAtomicCompareExchange_TextureCube_UInt16_texture_modifiers;
     TextureAtomicCompareExchange_TextureCube_UInt16_texture.type.modifierValues = TextureAtomicCompareExchange_TextureCube_UInt16_texture_modifierValues;
     TextureAtomicCompareExchange_TextureCube_UInt16_coordinate.name = "coordinate"_c;
@@ -2876,21 +2903,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_TextureCube_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicCompareExchange_TextureCube_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_TextureCube_UInt16.name = TextureAtomicCompareExchange_TextureCube_UInt16_name;
-    TextureAtomicCompareExchange_TextureCube_UInt16.backendIndex = 2803;
+    TextureAtomicCompareExchange_TextureCube_UInt16.backendIndex = 2801;
     TextureAtomicCompareExchange_TextureCube_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicCompareExchange_TextureCube_UInt16.parameters = TextureAtomicCompareExchange_TextureCube_UInt16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16)->signature = "textureAtomicCompareExchange(uniform *textureCube,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16)->name = "textureAtomicCompareExchange(uniform *textureCube,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *textureCube, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16)->signature = "textureAtomicCompareExchange(uniform *mutable textureCube,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16)->name = "textureAtomicCompareExchange(uniform *mutable textureCube,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicCompareExchange with TextureCube, Int32x3, Int16
     TextureAtomicCompareExchange_TextureCube_Int16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_TextureCube_Int16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicCompareExchange_TextureCube_Int16_texture.type.mut = true;
     TextureAtomicCompareExchange_TextureCube_Int16_texture.type.modifiers = TextureAtomicCompareExchange_TextureCube_Int16_texture_modifiers;
     TextureAtomicCompareExchange_TextureCube_Int16_texture.type.modifierValues = TextureAtomicCompareExchange_TextureCube_Int16_texture_modifierValues;
     TextureAtomicCompareExchange_TextureCube_Int16_coordinate.name = "coordinate"_c;
@@ -2899,21 +2927,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_TextureCube_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicCompareExchange_TextureCube_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_TextureCube_Int16.name = TextureAtomicCompareExchange_TextureCube_Int16_name;
-    TextureAtomicCompareExchange_TextureCube_Int16.backendIndex = 2804;
+    TextureAtomicCompareExchange_TextureCube_Int16.backendIndex = 2802;
     TextureAtomicCompareExchange_TextureCube_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicCompareExchange_TextureCube_Int16.parameters = TextureAtomicCompareExchange_TextureCube_Int16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16)->signature = "textureAtomicCompareExchange(uniform *textureCube,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16)->name = "textureAtomicCompareExchange(uniform *textureCube,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *textureCube, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16)->signature = "textureAtomicCompareExchange(uniform *mutable textureCube,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16)->name = "textureAtomicCompareExchange(uniform *mutable textureCube,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable textureCube, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCube_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicCompareExchange with Texture1DArray, Int32x2, UInt32
     TextureAtomicCompareExchange_Texture1DArray_UInt32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicCompareExchange_Texture1DArray_UInt32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicCompareExchange_Texture1DArray_UInt32_texture_modifiers;
     TextureAtomicCompareExchange_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture1DArray_UInt32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
@@ -2922,21 +2951,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicCompareExchange_Texture1DArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture1DArray_UInt32.name = TextureAtomicCompareExchange_Texture1DArray_UInt32_name;
-    TextureAtomicCompareExchange_Texture1DArray_UInt32.backendIndex = 2805;
+    TextureAtomicCompareExchange_Texture1DArray_UInt32.backendIndex = 2803;
     TextureAtomicCompareExchange_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicCompareExchange_Texture1DArray_UInt32.parameters = TextureAtomicCompareExchange_Texture1DArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32)->signature = "textureAtomicCompareExchange(uniform *texture1DArray,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32)->name = "textureAtomicCompareExchange(uniform *texture1DArray,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32)->signature = "textureAtomicCompareExchange(uniform *mutable texture1DArray,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32)->name = "textureAtomicCompareExchange(uniform *mutable texture1DArray,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicCompareExchange with Texture1DArray, Int32x2, Int32
     TextureAtomicCompareExchange_Texture1DArray_Int32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicCompareExchange_Texture1DArray_Int32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicCompareExchange_Texture1DArray_Int32_texture_modifiers;
     TextureAtomicCompareExchange_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture1DArray_Int32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
@@ -2945,21 +2975,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicCompareExchange_Texture1DArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture1DArray_Int32.name = TextureAtomicCompareExchange_Texture1DArray_Int32_name;
-    TextureAtomicCompareExchange_Texture1DArray_Int32.backendIndex = 2806;
+    TextureAtomicCompareExchange_Texture1DArray_Int32.backendIndex = 2804;
     TextureAtomicCompareExchange_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicCompareExchange_Texture1DArray_Int32.parameters = TextureAtomicCompareExchange_Texture1DArray_Int32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32)->signature = "textureAtomicCompareExchange(uniform *texture1DArray,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32)->name = "textureAtomicCompareExchange(uniform *texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32)->signature = "textureAtomicCompareExchange(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32)->name = "textureAtomicCompareExchange(uniform *mutable texture1DArray,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicCompareExchange with Texture1DArray, Int32x2, UInt16
     TextureAtomicCompareExchange_Texture1DArray_UInt16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicCompareExchange_Texture1DArray_UInt16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicCompareExchange_Texture1DArray_UInt16_texture_modifiers;
     TextureAtomicCompareExchange_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture1DArray_UInt16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
@@ -2968,21 +2999,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicCompareExchange_Texture1DArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture1DArray_UInt16.name = TextureAtomicCompareExchange_Texture1DArray_UInt16_name;
-    TextureAtomicCompareExchange_Texture1DArray_UInt16.backendIndex = 2807;
+    TextureAtomicCompareExchange_Texture1DArray_UInt16.backendIndex = 2805;
     TextureAtomicCompareExchange_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicCompareExchange_Texture1DArray_UInt16.parameters = TextureAtomicCompareExchange_Texture1DArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16)->signature = "textureAtomicCompareExchange(uniform *texture1DArray,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16)->name = "textureAtomicCompareExchange(uniform *texture1DArray,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16)->signature = "textureAtomicCompareExchange(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16)->name = "textureAtomicCompareExchange(uniform *mutable texture1DArray,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicCompareExchange with Texture1DArray, Int32x2, Int16
     TextureAtomicCompareExchange_Texture1DArray_Int16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicCompareExchange_Texture1DArray_Int16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicCompareExchange_Texture1DArray_Int16_texture_modifiers;
     TextureAtomicCompareExchange_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture1DArray_Int16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
@@ -2991,21 +3023,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicCompareExchange_Texture1DArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture1DArray_Int16.name = TextureAtomicCompareExchange_Texture1DArray_Int16_name;
-    TextureAtomicCompareExchange_Texture1DArray_Int16.backendIndex = 2808;
+    TextureAtomicCompareExchange_Texture1DArray_Int16.backendIndex = 2806;
     TextureAtomicCompareExchange_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicCompareExchange_Texture1DArray_Int16.parameters = TextureAtomicCompareExchange_Texture1DArray_Int16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16)->signature = "textureAtomicCompareExchange(uniform *texture1DArray,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16)->name = "textureAtomicCompareExchange(uniform *texture1DArray,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture1DArray, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16)->signature = "textureAtomicCompareExchange(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16)->name = "textureAtomicCompareExchange(uniform *mutable texture1DArray,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicCompareExchange with Texture2DArray, Int32x3, UInt32
     TextureAtomicCompareExchange_Texture2DArray_UInt32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicCompareExchange_Texture2DArray_UInt32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicCompareExchange_Texture2DArray_UInt32_texture_modifiers;
     TextureAtomicCompareExchange_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture2DArray_UInt32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
@@ -3014,21 +3047,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicCompareExchange_Texture2DArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture2DArray_UInt32.name = TextureAtomicCompareExchange_Texture2DArray_UInt32_name;
-    TextureAtomicCompareExchange_Texture2DArray_UInt32.backendIndex = 2809;
+    TextureAtomicCompareExchange_Texture2DArray_UInt32.backendIndex = 2807;
     TextureAtomicCompareExchange_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicCompareExchange_Texture2DArray_UInt32.parameters = TextureAtomicCompareExchange_Texture2DArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32)->signature = "textureAtomicCompareExchange(uniform *texture2DArray,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32)->name = "textureAtomicCompareExchange(uniform *texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32)->signature = "textureAtomicCompareExchange(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32)->name = "textureAtomicCompareExchange(uniform *mutable texture2DArray,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicCompareExchange with Texture2DArray, Int32x3, Int32
     TextureAtomicCompareExchange_Texture2DArray_Int32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicCompareExchange_Texture2DArray_Int32_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicCompareExchange_Texture2DArray_Int32_texture_modifiers;
     TextureAtomicCompareExchange_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicCompareExchange_Texture2DArray_Int32_texture_modifierValues;
     TextureAtomicCompareExchange_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
@@ -3037,21 +3071,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicCompareExchange_Texture2DArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture2DArray_Int32.name = TextureAtomicCompareExchange_Texture2DArray_Int32_name;
-    TextureAtomicCompareExchange_Texture2DArray_Int32.backendIndex = 2810;
+    TextureAtomicCompareExchange_Texture2DArray_Int32.backendIndex = 2808;
     TextureAtomicCompareExchange_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicCompareExchange_Texture2DArray_Int32.parameters = TextureAtomicCompareExchange_Texture2DArray_Int32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32)->signature = "textureAtomicCompareExchange(uniform *texture2DArray,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32)->name = "textureAtomicCompareExchange(uniform *texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32)->signature = "textureAtomicCompareExchange(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32)->name = "textureAtomicCompareExchange(uniform *mutable texture2DArray,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicCompareExchange with Texture2DArray, Int32x3, UInt16
     TextureAtomicCompareExchange_Texture2DArray_UInt16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicCompareExchange_Texture2DArray_UInt16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicCompareExchange_Texture2DArray_UInt16_texture_modifiers;
     TextureAtomicCompareExchange_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture2DArray_UInt16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
@@ -3060,21 +3095,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicCompareExchange_Texture2DArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture2DArray_UInt16.name = TextureAtomicCompareExchange_Texture2DArray_UInt16_name;
-    TextureAtomicCompareExchange_Texture2DArray_UInt16.backendIndex = 2811;
+    TextureAtomicCompareExchange_Texture2DArray_UInt16.backendIndex = 2809;
     TextureAtomicCompareExchange_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicCompareExchange_Texture2DArray_UInt16.parameters = TextureAtomicCompareExchange_Texture2DArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16)->signature = "textureAtomicCompareExchange(uniform *texture2DArray,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16)->name = "textureAtomicCompareExchange(uniform *texture2DArray,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16)->signature = "textureAtomicCompareExchange(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16)->name = "textureAtomicCompareExchange(uniform *mutable texture2DArray,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicCompareExchange with Texture2DArray, Int32x3, Int16
     TextureAtomicCompareExchange_Texture2DArray_Int16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicCompareExchange_Texture2DArray_Int16_texture.type.mut = true;
     TextureAtomicCompareExchange_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicCompareExchange_Texture2DArray_Int16_texture_modifiers;
     TextureAtomicCompareExchange_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicCompareExchange_Texture2DArray_Int16_texture_modifierValues;
     TextureAtomicCompareExchange_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
@@ -3083,21 +3119,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicCompareExchange_Texture2DArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_Texture2DArray_Int16.name = TextureAtomicCompareExchange_Texture2DArray_Int16_name;
-    TextureAtomicCompareExchange_Texture2DArray_Int16.backendIndex = 2812;
+    TextureAtomicCompareExchange_Texture2DArray_Int16.backendIndex = 2810;
     TextureAtomicCompareExchange_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicCompareExchange_Texture2DArray_Int16.parameters = TextureAtomicCompareExchange_Texture2DArray_Int16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16)->signature = "textureAtomicCompareExchange(uniform *texture2DArray,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16)->name = "textureAtomicCompareExchange(uniform *texture2DArray,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *texture2DArray, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16)->signature = "textureAtomicCompareExchange(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16)->name = "textureAtomicCompareExchange(uniform *mutable texture2DArray,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicCompareExchange with TextureCubeArray, Int32x4, UInt32
     TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture.type.mut = true;
     TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture_modifiers;
     TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture_modifierValues;
     TextureAtomicCompareExchange_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
@@ -3106,21 +3143,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicCompareExchange_TextureCubeArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_TextureCubeArray_UInt32.name = TextureAtomicCompareExchange_TextureCubeArray_UInt32_name;
-    TextureAtomicCompareExchange_TextureCubeArray_UInt32.backendIndex = 2813;
+    TextureAtomicCompareExchange_TextureCubeArray_UInt32.backendIndex = 2811;
     TextureAtomicCompareExchange_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicCompareExchange_TextureCubeArray_UInt32.parameters = TextureAtomicCompareExchange_TextureCubeArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32)->signature = "textureAtomicCompareExchange(uniform *textureCubeArray,i32x4,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32)->name = "textureAtomicCompareExchange(uniform *textureCubeArray,i32x4,u32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32)->signature = "textureAtomicCompareExchange(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32)->name = "textureAtomicCompareExchange(uniform *mutable textureCubeArray,i32x4,u32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicCompareExchange with TextureCubeArray, Int32x4, Int32
     TextureAtomicCompareExchange_TextureCubeArray_Int32_texture.name = "texture"_c;
     TextureAtomicCompareExchange_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicCompareExchange_TextureCubeArray_Int32_texture.type.mut = true;
     TextureAtomicCompareExchange_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicCompareExchange_TextureCubeArray_Int32_texture_modifiers;
     TextureAtomicCompareExchange_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicCompareExchange_TextureCubeArray_Int32_texture_modifierValues;
     TextureAtomicCompareExchange_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
@@ -3129,21 +3167,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicCompareExchange_TextureCubeArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_TextureCubeArray_Int32.name = TextureAtomicCompareExchange_TextureCubeArray_Int32_name;
-    TextureAtomicCompareExchange_TextureCubeArray_Int32.backendIndex = 2814;
+    TextureAtomicCompareExchange_TextureCubeArray_Int32.backendIndex = 2812;
     TextureAtomicCompareExchange_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicCompareExchange_TextureCubeArray_Int32.parameters = TextureAtomicCompareExchange_TextureCubeArray_Int32_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32)->signature = "textureAtomicCompareExchange(uniform *textureCubeArray,i32x4,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32)->name = "textureAtomicCompareExchange(uniform *textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32)->signature = "textureAtomicCompareExchange(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32)->name = "textureAtomicCompareExchange(uniform *mutable textureCubeArray,i32x4,i32)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicCompareExchange with TextureCubeArray, Int32x4, UInt16
     TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture.type.mut = true;
     TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture_modifiers;
     TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture_modifierValues;
     TextureAtomicCompareExchange_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
@@ -3152,21 +3191,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicCompareExchange_TextureCubeArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_TextureCubeArray_UInt16.name = TextureAtomicCompareExchange_TextureCubeArray_UInt16_name;
-    TextureAtomicCompareExchange_TextureCubeArray_UInt16.backendIndex = 2815;
+    TextureAtomicCompareExchange_TextureCubeArray_UInt16.backendIndex = 2813;
     TextureAtomicCompareExchange_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicCompareExchange_TextureCubeArray_UInt16.parameters = TextureAtomicCompareExchange_TextureCubeArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16)->signature = "textureAtomicCompareExchange(uniform *textureCubeArray,i32x4,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16)->name = "textureAtomicCompareExchange(uniform *textureCubeArray,i32x4,u16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16)->signature = "textureAtomicCompareExchange(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16)->name = "textureAtomicCompareExchange(uniform *mutable textureCubeArray,i32x4,u16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicCompareExchange with TextureCubeArray, Int32x4, Int16
     TextureAtomicCompareExchange_TextureCubeArray_Int16_texture.name = "texture"_c;
     TextureAtomicCompareExchange_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicCompareExchange_TextureCubeArray_Int16_texture.type.mut = true;
     TextureAtomicCompareExchange_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicCompareExchange_TextureCubeArray_Int16_texture_modifiers;
     TextureAtomicCompareExchange_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicCompareExchange_TextureCubeArray_Int16_texture_modifierValues;
     TextureAtomicCompareExchange_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
@@ -3175,21 +3215,22 @@ void SetupIntrinsics14()
     TextureAtomicCompareExchange_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicCompareExchange_TextureCubeArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicCompareExchange_TextureCubeArray_Int16.name = TextureAtomicCompareExchange_TextureCubeArray_Int16_name;
-    TextureAtomicCompareExchange_TextureCubeArray_Int16.backendIndex = 2816;
+    TextureAtomicCompareExchange_TextureCubeArray_Int16.backendIndex = 2814;
     TextureAtomicCompareExchange_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicCompareExchange_TextureCubeArray_Int16.parameters = TextureAtomicCompareExchange_TextureCubeArray_Int16_args;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16)->signature = "textureAtomicCompareExchange(uniform *textureCubeArray,i32x4,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16)->name = "textureAtomicCompareExchange(uniform *textureCubeArray,i32x4,i16)"_c;
-    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *textureCubeArray, coordinate : i32x4, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16)->signature = "textureAtomicCompareExchange(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16)->name = "textureAtomicCompareExchange(uniform *mutable textureCubeArray,i32x4,i16)"_c;
+    Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicCompareExchange(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicCompareExchange_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicAdd with Texture1D, Int32, UInt32
     TextureAtomicAdd_Texture1D_UInt32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicAdd_Texture1D_UInt32_texture.type.mut = true;
     TextureAtomicAdd_Texture1D_UInt32_texture.type.modifiers = TextureAtomicAdd_Texture1D_UInt32_texture_modifiers;
     TextureAtomicAdd_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicAdd_Texture1D_UInt32_texture_modifierValues;
     TextureAtomicAdd_Texture1D_UInt32_coordinate.name = "coordinate"_c;
@@ -3198,21 +3239,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicAdd_Texture1D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture1D_UInt32.name = TextureAtomicAdd_Texture1D_UInt32_name;
-    TextureAtomicAdd_Texture1D_UInt32.backendIndex = 2817;
+    TextureAtomicAdd_Texture1D_UInt32.backendIndex = 2815;
     TextureAtomicAdd_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicAdd_Texture1D_UInt32.parameters = TextureAtomicAdd_Texture1D_UInt32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32)->signature = "textureAtomicAdd(uniform *texture1D,i32,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32)->name = "textureAtomicAdd(uniform *texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture1D, coordinate : i32, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32)->signature = "textureAtomicAdd(uniform *mutable texture1D,i32,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32)->name = "textureAtomicAdd(uniform *mutable texture1D,i32,u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicAdd with Texture1D, Int32, Int32
     TextureAtomicAdd_Texture1D_Int32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicAdd_Texture1D_Int32_texture.type.mut = true;
     TextureAtomicAdd_Texture1D_Int32_texture.type.modifiers = TextureAtomicAdd_Texture1D_Int32_texture_modifiers;
     TextureAtomicAdd_Texture1D_Int32_texture.type.modifierValues = TextureAtomicAdd_Texture1D_Int32_texture_modifierValues;
     TextureAtomicAdd_Texture1D_Int32_coordinate.name = "coordinate"_c;
@@ -3221,21 +3263,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicAdd_Texture1D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture1D_Int32.name = TextureAtomicAdd_Texture1D_Int32_name;
-    TextureAtomicAdd_Texture1D_Int32.backendIndex = 2818;
+    TextureAtomicAdd_Texture1D_Int32.backendIndex = 2816;
     TextureAtomicAdd_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicAdd_Texture1D_Int32.parameters = TextureAtomicAdd_Texture1D_Int32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32)->signature = "textureAtomicAdd(uniform *texture1D,i32,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32)->name = "textureAtomicAdd(uniform *texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture1D, coordinate : i32, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32)->signature = "textureAtomicAdd(uniform *mutable texture1D,i32,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32)->name = "textureAtomicAdd(uniform *mutable texture1D,i32,i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicAdd with Texture1D, Int32, UInt16
     TextureAtomicAdd_Texture1D_UInt16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicAdd_Texture1D_UInt16_texture.type.mut = true;
     TextureAtomicAdd_Texture1D_UInt16_texture.type.modifiers = TextureAtomicAdd_Texture1D_UInt16_texture_modifiers;
     TextureAtomicAdd_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicAdd_Texture1D_UInt16_texture_modifierValues;
     TextureAtomicAdd_Texture1D_UInt16_coordinate.name = "coordinate"_c;
@@ -3244,21 +3287,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicAdd_Texture1D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture1D_UInt16.name = TextureAtomicAdd_Texture1D_UInt16_name;
-    TextureAtomicAdd_Texture1D_UInt16.backendIndex = 2819;
+    TextureAtomicAdd_Texture1D_UInt16.backendIndex = 2817;
     TextureAtomicAdd_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicAdd_Texture1D_UInt16.parameters = TextureAtomicAdd_Texture1D_UInt16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16)->signature = "textureAtomicAdd(uniform *texture1D,i32,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16)->name = "textureAtomicAdd(uniform *texture1D,i32,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture1D, coordinate : i32, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16)->signature = "textureAtomicAdd(uniform *mutable texture1D,i32,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16)->name = "textureAtomicAdd(uniform *mutable texture1D,i32,u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicAdd with Texture1D, Int32, Int16
     TextureAtomicAdd_Texture1D_Int16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicAdd_Texture1D_Int16_texture.type.mut = true;
     TextureAtomicAdd_Texture1D_Int16_texture.type.modifiers = TextureAtomicAdd_Texture1D_Int16_texture_modifiers;
     TextureAtomicAdd_Texture1D_Int16_texture.type.modifierValues = TextureAtomicAdd_Texture1D_Int16_texture_modifierValues;
     TextureAtomicAdd_Texture1D_Int16_coordinate.name = "coordinate"_c;
@@ -3267,21 +3311,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicAdd_Texture1D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture1D_Int16.name = TextureAtomicAdd_Texture1D_Int16_name;
-    TextureAtomicAdd_Texture1D_Int16.backendIndex = 2820;
+    TextureAtomicAdd_Texture1D_Int16.backendIndex = 2818;
     TextureAtomicAdd_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicAdd_Texture1D_Int16.parameters = TextureAtomicAdd_Texture1D_Int16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16)->signature = "textureAtomicAdd(uniform *texture1D,i32,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16)->name = "textureAtomicAdd(uniform *texture1D,i32,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture1D, coordinate : i32, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16)->signature = "textureAtomicAdd(uniform *mutable texture1D,i32,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16)->name = "textureAtomicAdd(uniform *mutable texture1D,i32,i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicAdd with Texture2D, Int32x2, UInt32
     TextureAtomicAdd_Texture2D_UInt32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicAdd_Texture2D_UInt32_texture.type.mut = true;
     TextureAtomicAdd_Texture2D_UInt32_texture.type.modifiers = TextureAtomicAdd_Texture2D_UInt32_texture_modifiers;
     TextureAtomicAdd_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicAdd_Texture2D_UInt32_texture_modifierValues;
     TextureAtomicAdd_Texture2D_UInt32_coordinate.name = "coordinate"_c;
@@ -3290,21 +3335,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicAdd_Texture2D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture2D_UInt32.name = TextureAtomicAdd_Texture2D_UInt32_name;
-    TextureAtomicAdd_Texture2D_UInt32.backendIndex = 2821;
+    TextureAtomicAdd_Texture2D_UInt32.backendIndex = 2819;
     TextureAtomicAdd_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicAdd_Texture2D_UInt32.parameters = TextureAtomicAdd_Texture2D_UInt32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32)->signature = "textureAtomicAdd(uniform *texture2D,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32)->name = "textureAtomicAdd(uniform *texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture2D, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32)->signature = "textureAtomicAdd(uniform *mutable texture2D,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32)->name = "textureAtomicAdd(uniform *mutable texture2D,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicAdd with Texture2D, Int32x2, Int32
     TextureAtomicAdd_Texture2D_Int32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicAdd_Texture2D_Int32_texture.type.mut = true;
     TextureAtomicAdd_Texture2D_Int32_texture.type.modifiers = TextureAtomicAdd_Texture2D_Int32_texture_modifiers;
     TextureAtomicAdd_Texture2D_Int32_texture.type.modifierValues = TextureAtomicAdd_Texture2D_Int32_texture_modifierValues;
     TextureAtomicAdd_Texture2D_Int32_coordinate.name = "coordinate"_c;
@@ -3313,21 +3359,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicAdd_Texture2D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture2D_Int32.name = TextureAtomicAdd_Texture2D_Int32_name;
-    TextureAtomicAdd_Texture2D_Int32.backendIndex = 2822;
+    TextureAtomicAdd_Texture2D_Int32.backendIndex = 2820;
     TextureAtomicAdd_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicAdd_Texture2D_Int32.parameters = TextureAtomicAdd_Texture2D_Int32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32)->signature = "textureAtomicAdd(uniform *texture2D,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32)->name = "textureAtomicAdd(uniform *texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture2D, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32)->signature = "textureAtomicAdd(uniform *mutable texture2D,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32)->name = "textureAtomicAdd(uniform *mutable texture2D,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicAdd with Texture2D, Int32x2, UInt16
     TextureAtomicAdd_Texture2D_UInt16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicAdd_Texture2D_UInt16_texture.type.mut = true;
     TextureAtomicAdd_Texture2D_UInt16_texture.type.modifiers = TextureAtomicAdd_Texture2D_UInt16_texture_modifiers;
     TextureAtomicAdd_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicAdd_Texture2D_UInt16_texture_modifierValues;
     TextureAtomicAdd_Texture2D_UInt16_coordinate.name = "coordinate"_c;
@@ -3336,21 +3383,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicAdd_Texture2D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture2D_UInt16.name = TextureAtomicAdd_Texture2D_UInt16_name;
-    TextureAtomicAdd_Texture2D_UInt16.backendIndex = 2823;
+    TextureAtomicAdd_Texture2D_UInt16.backendIndex = 2821;
     TextureAtomicAdd_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicAdd_Texture2D_UInt16.parameters = TextureAtomicAdd_Texture2D_UInt16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16)->signature = "textureAtomicAdd(uniform *texture2D,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16)->name = "textureAtomicAdd(uniform *texture2D,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture2D, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16)->signature = "textureAtomicAdd(uniform *mutable texture2D,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16)->name = "textureAtomicAdd(uniform *mutable texture2D,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicAdd with Texture2D, Int32x2, Int16
     TextureAtomicAdd_Texture2D_Int16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicAdd_Texture2D_Int16_texture.type.mut = true;
     TextureAtomicAdd_Texture2D_Int16_texture.type.modifiers = TextureAtomicAdd_Texture2D_Int16_texture_modifiers;
     TextureAtomicAdd_Texture2D_Int16_texture.type.modifierValues = TextureAtomicAdd_Texture2D_Int16_texture_modifierValues;
     TextureAtomicAdd_Texture2D_Int16_coordinate.name = "coordinate"_c;
@@ -3359,21 +3407,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicAdd_Texture2D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture2D_Int16.name = TextureAtomicAdd_Texture2D_Int16_name;
-    TextureAtomicAdd_Texture2D_Int16.backendIndex = 2824;
+    TextureAtomicAdd_Texture2D_Int16.backendIndex = 2822;
     TextureAtomicAdd_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicAdd_Texture2D_Int16.parameters = TextureAtomicAdd_Texture2D_Int16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16)->signature = "textureAtomicAdd(uniform *texture2D,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16)->name = "textureAtomicAdd(uniform *texture2D,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture2D, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16)->signature = "textureAtomicAdd(uniform *mutable texture2D,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16)->name = "textureAtomicAdd(uniform *mutable texture2D,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicAdd with Texture3D, Int32x3, UInt32
     TextureAtomicAdd_Texture3D_UInt32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicAdd_Texture3D_UInt32_texture.type.mut = true;
     TextureAtomicAdd_Texture3D_UInt32_texture.type.modifiers = TextureAtomicAdd_Texture3D_UInt32_texture_modifiers;
     TextureAtomicAdd_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicAdd_Texture3D_UInt32_texture_modifierValues;
     TextureAtomicAdd_Texture3D_UInt32_coordinate.name = "coordinate"_c;
@@ -3382,21 +3431,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicAdd_Texture3D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture3D_UInt32.name = TextureAtomicAdd_Texture3D_UInt32_name;
-    TextureAtomicAdd_Texture3D_UInt32.backendIndex = 2825;
+    TextureAtomicAdd_Texture3D_UInt32.backendIndex = 2823;
     TextureAtomicAdd_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicAdd_Texture3D_UInt32.parameters = TextureAtomicAdd_Texture3D_UInt32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32)->signature = "textureAtomicAdd(uniform *texture3D,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32)->name = "textureAtomicAdd(uniform *texture3D,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture3D, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32)->signature = "textureAtomicAdd(uniform *mutable texture3D,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32)->name = "textureAtomicAdd(uniform *mutable texture3D,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicAdd with Texture3D, Int32x3, Int32
     TextureAtomicAdd_Texture3D_Int32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicAdd_Texture3D_Int32_texture.type.mut = true;
     TextureAtomicAdd_Texture3D_Int32_texture.type.modifiers = TextureAtomicAdd_Texture3D_Int32_texture_modifiers;
     TextureAtomicAdd_Texture3D_Int32_texture.type.modifierValues = TextureAtomicAdd_Texture3D_Int32_texture_modifierValues;
     TextureAtomicAdd_Texture3D_Int32_coordinate.name = "coordinate"_c;
@@ -3405,21 +3455,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicAdd_Texture3D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture3D_Int32.name = TextureAtomicAdd_Texture3D_Int32_name;
-    TextureAtomicAdd_Texture3D_Int32.backendIndex = 2826;
+    TextureAtomicAdd_Texture3D_Int32.backendIndex = 2824;
     TextureAtomicAdd_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicAdd_Texture3D_Int32.parameters = TextureAtomicAdd_Texture3D_Int32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32)->signature = "textureAtomicAdd(uniform *texture3D,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32)->name = "textureAtomicAdd(uniform *texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture3D, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32)->signature = "textureAtomicAdd(uniform *mutable texture3D,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32)->name = "textureAtomicAdd(uniform *mutable texture3D,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicAdd with Texture3D, Int32x3, UInt16
     TextureAtomicAdd_Texture3D_UInt16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicAdd_Texture3D_UInt16_texture.type.mut = true;
     TextureAtomicAdd_Texture3D_UInt16_texture.type.modifiers = TextureAtomicAdd_Texture3D_UInt16_texture_modifiers;
     TextureAtomicAdd_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicAdd_Texture3D_UInt16_texture_modifierValues;
     TextureAtomicAdd_Texture3D_UInt16_coordinate.name = "coordinate"_c;
@@ -3428,21 +3479,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicAdd_Texture3D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture3D_UInt16.name = TextureAtomicAdd_Texture3D_UInt16_name;
-    TextureAtomicAdd_Texture3D_UInt16.backendIndex = 2827;
+    TextureAtomicAdd_Texture3D_UInt16.backendIndex = 2825;
     TextureAtomicAdd_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicAdd_Texture3D_UInt16.parameters = TextureAtomicAdd_Texture3D_UInt16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16)->signature = "textureAtomicAdd(uniform *texture3D,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16)->name = "textureAtomicAdd(uniform *texture3D,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture3D, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16)->signature = "textureAtomicAdd(uniform *mutable texture3D,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16)->name = "textureAtomicAdd(uniform *mutable texture3D,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicAdd with Texture3D, Int32x3, Int16
     TextureAtomicAdd_Texture3D_Int16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicAdd_Texture3D_Int16_texture.type.mut = true;
     TextureAtomicAdd_Texture3D_Int16_texture.type.modifiers = TextureAtomicAdd_Texture3D_Int16_texture_modifiers;
     TextureAtomicAdd_Texture3D_Int16_texture.type.modifierValues = TextureAtomicAdd_Texture3D_Int16_texture_modifierValues;
     TextureAtomicAdd_Texture3D_Int16_coordinate.name = "coordinate"_c;
@@ -3451,21 +3503,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicAdd_Texture3D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture3D_Int16.name = TextureAtomicAdd_Texture3D_Int16_name;
-    TextureAtomicAdd_Texture3D_Int16.backendIndex = 2828;
+    TextureAtomicAdd_Texture3D_Int16.backendIndex = 2826;
     TextureAtomicAdd_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicAdd_Texture3D_Int16.parameters = TextureAtomicAdd_Texture3D_Int16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16)->signature = "textureAtomicAdd(uniform *texture3D,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16)->name = "textureAtomicAdd(uniform *texture3D,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture3D, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16)->signature = "textureAtomicAdd(uniform *mutable texture3D,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16)->name = "textureAtomicAdd(uniform *mutable texture3D,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicAdd with TextureCube, Int32x3, UInt32
     TextureAtomicAdd_TextureCube_UInt32_texture.name = "texture"_c;
     TextureAtomicAdd_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicAdd_TextureCube_UInt32_texture.type.mut = true;
     TextureAtomicAdd_TextureCube_UInt32_texture.type.modifiers = TextureAtomicAdd_TextureCube_UInt32_texture_modifiers;
     TextureAtomicAdd_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicAdd_TextureCube_UInt32_texture_modifierValues;
     TextureAtomicAdd_TextureCube_UInt32_coordinate.name = "coordinate"_c;
@@ -3474,21 +3527,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicAdd_TextureCube_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_TextureCube_UInt32.name = TextureAtomicAdd_TextureCube_UInt32_name;
-    TextureAtomicAdd_TextureCube_UInt32.backendIndex = 2829;
+    TextureAtomicAdd_TextureCube_UInt32.backendIndex = 2827;
     TextureAtomicAdd_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicAdd_TextureCube_UInt32.parameters = TextureAtomicAdd_TextureCube_UInt32_args;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32)->signature = "textureAtomicAdd(uniform *textureCube,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32)->name = "textureAtomicAdd(uniform *textureCube,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *textureCube, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32)->signature = "textureAtomicAdd(uniform *mutable textureCube,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32)->name = "textureAtomicAdd(uniform *mutable textureCube,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicAdd with TextureCube, Int32x3, Int32
     TextureAtomicAdd_TextureCube_Int32_texture.name = "texture"_c;
     TextureAtomicAdd_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicAdd_TextureCube_Int32_texture.type.mut = true;
     TextureAtomicAdd_TextureCube_Int32_texture.type.modifiers = TextureAtomicAdd_TextureCube_Int32_texture_modifiers;
     TextureAtomicAdd_TextureCube_Int32_texture.type.modifierValues = TextureAtomicAdd_TextureCube_Int32_texture_modifierValues;
     TextureAtomicAdd_TextureCube_Int32_coordinate.name = "coordinate"_c;
@@ -3497,21 +3551,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicAdd_TextureCube_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_TextureCube_Int32.name = TextureAtomicAdd_TextureCube_Int32_name;
-    TextureAtomicAdd_TextureCube_Int32.backendIndex = 2830;
+    TextureAtomicAdd_TextureCube_Int32.backendIndex = 2828;
     TextureAtomicAdd_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicAdd_TextureCube_Int32.parameters = TextureAtomicAdd_TextureCube_Int32_args;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32)->signature = "textureAtomicAdd(uniform *textureCube,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32)->name = "textureAtomicAdd(uniform *textureCube,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *textureCube, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32)->signature = "textureAtomicAdd(uniform *mutable textureCube,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32)->name = "textureAtomicAdd(uniform *mutable textureCube,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicAdd with TextureCube, Int32x3, UInt16
     TextureAtomicAdd_TextureCube_UInt16_texture.name = "texture"_c;
     TextureAtomicAdd_TextureCube_UInt16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicAdd_TextureCube_UInt16_texture.type.mut = true;
     TextureAtomicAdd_TextureCube_UInt16_texture.type.modifiers = TextureAtomicAdd_TextureCube_UInt16_texture_modifiers;
     TextureAtomicAdd_TextureCube_UInt16_texture.type.modifierValues = TextureAtomicAdd_TextureCube_UInt16_texture_modifierValues;
     TextureAtomicAdd_TextureCube_UInt16_coordinate.name = "coordinate"_c;
@@ -3520,21 +3575,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_TextureCube_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicAdd_TextureCube_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_TextureCube_UInt16.name = TextureAtomicAdd_TextureCube_UInt16_name;
-    TextureAtomicAdd_TextureCube_UInt16.backendIndex = 2831;
+    TextureAtomicAdd_TextureCube_UInt16.backendIndex = 2829;
     TextureAtomicAdd_TextureCube_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicAdd_TextureCube_UInt16.parameters = TextureAtomicAdd_TextureCube_UInt16_args;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16)->signature = "textureAtomicAdd(uniform *textureCube,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16)->name = "textureAtomicAdd(uniform *textureCube,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *textureCube, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16)->signature = "textureAtomicAdd(uniform *mutable textureCube,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16)->name = "textureAtomicAdd(uniform *mutable textureCube,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable textureCube, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicAdd with TextureCube, Int32x3, Int16
     TextureAtomicAdd_TextureCube_Int16_texture.name = "texture"_c;
     TextureAtomicAdd_TextureCube_Int16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicAdd_TextureCube_Int16_texture.type.mut = true;
     TextureAtomicAdd_TextureCube_Int16_texture.type.modifiers = TextureAtomicAdd_TextureCube_Int16_texture_modifiers;
     TextureAtomicAdd_TextureCube_Int16_texture.type.modifierValues = TextureAtomicAdd_TextureCube_Int16_texture_modifierValues;
     TextureAtomicAdd_TextureCube_Int16_coordinate.name = "coordinate"_c;
@@ -3543,21 +3599,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_TextureCube_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicAdd_TextureCube_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_TextureCube_Int16.name = TextureAtomicAdd_TextureCube_Int16_name;
-    TextureAtomicAdd_TextureCube_Int16.backendIndex = 2832;
+    TextureAtomicAdd_TextureCube_Int16.backendIndex = 2830;
     TextureAtomicAdd_TextureCube_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicAdd_TextureCube_Int16.parameters = TextureAtomicAdd_TextureCube_Int16_args;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16)->signature = "textureAtomicAdd(uniform *textureCube,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16)->name = "textureAtomicAdd(uniform *textureCube,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *textureCube, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16)->signature = "textureAtomicAdd(uniform *mutable textureCube,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16)->name = "textureAtomicAdd(uniform *mutable textureCube,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable textureCube, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_TextureCube_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicAdd with Texture1DArray, Int32x2, UInt32
     TextureAtomicAdd_Texture1DArray_UInt32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicAdd_Texture1DArray_UInt32_texture.type.mut = true;
     TextureAtomicAdd_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicAdd_Texture1DArray_UInt32_texture_modifiers;
     TextureAtomicAdd_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicAdd_Texture1DArray_UInt32_texture_modifierValues;
     TextureAtomicAdd_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
@@ -3566,21 +3623,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicAdd_Texture1DArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture1DArray_UInt32.name = TextureAtomicAdd_Texture1DArray_UInt32_name;
-    TextureAtomicAdd_Texture1DArray_UInt32.backendIndex = 2833;
+    TextureAtomicAdd_Texture1DArray_UInt32.backendIndex = 2831;
     TextureAtomicAdd_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicAdd_Texture1DArray_UInt32.parameters = TextureAtomicAdd_Texture1DArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32)->signature = "textureAtomicAdd(uniform *texture1DArray,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32)->name = "textureAtomicAdd(uniform *texture1DArray,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture1DArray, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32)->signature = "textureAtomicAdd(uniform *mutable texture1DArray,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32)->name = "textureAtomicAdd(uniform *mutable texture1DArray,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicAdd with Texture1DArray, Int32x2, Int32
     TextureAtomicAdd_Texture1DArray_Int32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicAdd_Texture1DArray_Int32_texture.type.mut = true;
     TextureAtomicAdd_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicAdd_Texture1DArray_Int32_texture_modifiers;
     TextureAtomicAdd_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicAdd_Texture1DArray_Int32_texture_modifierValues;
     TextureAtomicAdd_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
@@ -3589,21 +3647,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicAdd_Texture1DArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture1DArray_Int32.name = TextureAtomicAdd_Texture1DArray_Int32_name;
-    TextureAtomicAdd_Texture1DArray_Int32.backendIndex = 2834;
+    TextureAtomicAdd_Texture1DArray_Int32.backendIndex = 2832;
     TextureAtomicAdd_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicAdd_Texture1DArray_Int32.parameters = TextureAtomicAdd_Texture1DArray_Int32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32)->signature = "textureAtomicAdd(uniform *texture1DArray,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32)->name = "textureAtomicAdd(uniform *texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture1DArray, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32)->signature = "textureAtomicAdd(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32)->name = "textureAtomicAdd(uniform *mutable texture1DArray,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicAdd with Texture1DArray, Int32x2, UInt16
     TextureAtomicAdd_Texture1DArray_UInt16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicAdd_Texture1DArray_UInt16_texture.type.mut = true;
     TextureAtomicAdd_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicAdd_Texture1DArray_UInt16_texture_modifiers;
     TextureAtomicAdd_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicAdd_Texture1DArray_UInt16_texture_modifierValues;
     TextureAtomicAdd_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
@@ -3612,21 +3671,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicAdd_Texture1DArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture1DArray_UInt16.name = TextureAtomicAdd_Texture1DArray_UInt16_name;
-    TextureAtomicAdd_Texture1DArray_UInt16.backendIndex = 2835;
+    TextureAtomicAdd_Texture1DArray_UInt16.backendIndex = 2833;
     TextureAtomicAdd_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicAdd_Texture1DArray_UInt16.parameters = TextureAtomicAdd_Texture1DArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16)->signature = "textureAtomicAdd(uniform *texture1DArray,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16)->name = "textureAtomicAdd(uniform *texture1DArray,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture1DArray, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16)->signature = "textureAtomicAdd(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16)->name = "textureAtomicAdd(uniform *mutable texture1DArray,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicAdd with Texture1DArray, Int32x2, Int16
     TextureAtomicAdd_Texture1DArray_Int16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicAdd_Texture1DArray_Int16_texture.type.mut = true;
     TextureAtomicAdd_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicAdd_Texture1DArray_Int16_texture_modifiers;
     TextureAtomicAdd_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicAdd_Texture1DArray_Int16_texture_modifierValues;
     TextureAtomicAdd_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
@@ -3635,21 +3695,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicAdd_Texture1DArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture1DArray_Int16.name = TextureAtomicAdd_Texture1DArray_Int16_name;
-    TextureAtomicAdd_Texture1DArray_Int16.backendIndex = 2836;
+    TextureAtomicAdd_Texture1DArray_Int16.backendIndex = 2834;
     TextureAtomicAdd_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicAdd_Texture1DArray_Int16.parameters = TextureAtomicAdd_Texture1DArray_Int16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16)->signature = "textureAtomicAdd(uniform *texture1DArray,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16)->name = "textureAtomicAdd(uniform *texture1DArray,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture1DArray, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16)->signature = "textureAtomicAdd(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16)->name = "textureAtomicAdd(uniform *mutable texture1DArray,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicAdd with Texture2DArray, Int32x3, UInt32
     TextureAtomicAdd_Texture2DArray_UInt32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicAdd_Texture2DArray_UInt32_texture.type.mut = true;
     TextureAtomicAdd_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicAdd_Texture2DArray_UInt32_texture_modifiers;
     TextureAtomicAdd_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicAdd_Texture2DArray_UInt32_texture_modifierValues;
     TextureAtomicAdd_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
@@ -3658,21 +3719,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicAdd_Texture2DArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture2DArray_UInt32.name = TextureAtomicAdd_Texture2DArray_UInt32_name;
-    TextureAtomicAdd_Texture2DArray_UInt32.backendIndex = 2837;
+    TextureAtomicAdd_Texture2DArray_UInt32.backendIndex = 2835;
     TextureAtomicAdd_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicAdd_Texture2DArray_UInt32.parameters = TextureAtomicAdd_Texture2DArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32)->signature = "textureAtomicAdd(uniform *texture2DArray,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32)->name = "textureAtomicAdd(uniform *texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture2DArray, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32)->signature = "textureAtomicAdd(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32)->name = "textureAtomicAdd(uniform *mutable texture2DArray,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicAdd with Texture2DArray, Int32x3, Int32
     TextureAtomicAdd_Texture2DArray_Int32_texture.name = "texture"_c;
     TextureAtomicAdd_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicAdd_Texture2DArray_Int32_texture.type.mut = true;
     TextureAtomicAdd_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicAdd_Texture2DArray_Int32_texture_modifiers;
     TextureAtomicAdd_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicAdd_Texture2DArray_Int32_texture_modifierValues;
     TextureAtomicAdd_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
@@ -3681,21 +3743,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicAdd_Texture2DArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture2DArray_Int32.name = TextureAtomicAdd_Texture2DArray_Int32_name;
-    TextureAtomicAdd_Texture2DArray_Int32.backendIndex = 2838;
+    TextureAtomicAdd_Texture2DArray_Int32.backendIndex = 2836;
     TextureAtomicAdd_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicAdd_Texture2DArray_Int32.parameters = TextureAtomicAdd_Texture2DArray_Int32_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32)->signature = "textureAtomicAdd(uniform *texture2DArray,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32)->name = "textureAtomicAdd(uniform *texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture2DArray, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32)->signature = "textureAtomicAdd(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32)->name = "textureAtomicAdd(uniform *mutable texture2DArray,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicAdd with Texture2DArray, Int32x3, UInt16
     TextureAtomicAdd_Texture2DArray_UInt16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicAdd_Texture2DArray_UInt16_texture.type.mut = true;
     TextureAtomicAdd_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicAdd_Texture2DArray_UInt16_texture_modifiers;
     TextureAtomicAdd_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicAdd_Texture2DArray_UInt16_texture_modifierValues;
     TextureAtomicAdd_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
@@ -3704,21 +3767,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicAdd_Texture2DArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture2DArray_UInt16.name = TextureAtomicAdd_Texture2DArray_UInt16_name;
-    TextureAtomicAdd_Texture2DArray_UInt16.backendIndex = 2839;
+    TextureAtomicAdd_Texture2DArray_UInt16.backendIndex = 2837;
     TextureAtomicAdd_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicAdd_Texture2DArray_UInt16.parameters = TextureAtomicAdd_Texture2DArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16)->signature = "textureAtomicAdd(uniform *texture2DArray,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16)->name = "textureAtomicAdd(uniform *texture2DArray,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture2DArray, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16)->signature = "textureAtomicAdd(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16)->name = "textureAtomicAdd(uniform *mutable texture2DArray,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicAdd with Texture2DArray, Int32x3, Int16
     TextureAtomicAdd_Texture2DArray_Int16_texture.name = "texture"_c;
     TextureAtomicAdd_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicAdd_Texture2DArray_Int16_texture.type.mut = true;
     TextureAtomicAdd_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicAdd_Texture2DArray_Int16_texture_modifiers;
     TextureAtomicAdd_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicAdd_Texture2DArray_Int16_texture_modifierValues;
     TextureAtomicAdd_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
@@ -3727,21 +3791,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicAdd_Texture2DArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_Texture2DArray_Int16.name = TextureAtomicAdd_Texture2DArray_Int16_name;
-    TextureAtomicAdd_Texture2DArray_Int16.backendIndex = 2840;
+    TextureAtomicAdd_Texture2DArray_Int16.backendIndex = 2838;
     TextureAtomicAdd_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicAdd_Texture2DArray_Int16.parameters = TextureAtomicAdd_Texture2DArray_Int16_args;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16)->signature = "textureAtomicAdd(uniform *texture2DArray,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16)->name = "textureAtomicAdd(uniform *texture2DArray,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *texture2DArray, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16)->signature = "textureAtomicAdd(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16)->name = "textureAtomicAdd(uniform *mutable texture2DArray,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicAdd with TextureCubeArray, Int32x4, UInt32
     TextureAtomicAdd_TextureCubeArray_UInt32_texture.name = "texture"_c;
     TextureAtomicAdd_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicAdd_TextureCubeArray_UInt32_texture.type.mut = true;
     TextureAtomicAdd_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicAdd_TextureCubeArray_UInt32_texture_modifiers;
     TextureAtomicAdd_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicAdd_TextureCubeArray_UInt32_texture_modifierValues;
     TextureAtomicAdd_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
@@ -3750,21 +3815,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicAdd_TextureCubeArray_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_TextureCubeArray_UInt32.name = TextureAtomicAdd_TextureCubeArray_UInt32_name;
-    TextureAtomicAdd_TextureCubeArray_UInt32.backendIndex = 2841;
+    TextureAtomicAdd_TextureCubeArray_UInt32.backendIndex = 2839;
     TextureAtomicAdd_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicAdd_TextureCubeArray_UInt32.parameters = TextureAtomicAdd_TextureCubeArray_UInt32_args;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32)->signature = "textureAtomicAdd(uniform *textureCubeArray,i32x4,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32)->name = "textureAtomicAdd(uniform *textureCubeArray,i32x4,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *textureCubeArray, coordinate : i32x4, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32)->signature = "textureAtomicAdd(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32)->name = "textureAtomicAdd(uniform *mutable textureCubeArray,i32x4,u32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicAdd with TextureCubeArray, Int32x4, Int32
     TextureAtomicAdd_TextureCubeArray_Int32_texture.name = "texture"_c;
     TextureAtomicAdd_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicAdd_TextureCubeArray_Int32_texture.type.mut = true;
     TextureAtomicAdd_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicAdd_TextureCubeArray_Int32_texture_modifiers;
     TextureAtomicAdd_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicAdd_TextureCubeArray_Int32_texture_modifierValues;
     TextureAtomicAdd_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
@@ -3773,21 +3839,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicAdd_TextureCubeArray_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_TextureCubeArray_Int32.name = TextureAtomicAdd_TextureCubeArray_Int32_name;
-    TextureAtomicAdd_TextureCubeArray_Int32.backendIndex = 2842;
+    TextureAtomicAdd_TextureCubeArray_Int32.backendIndex = 2840;
     TextureAtomicAdd_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicAdd_TextureCubeArray_Int32.parameters = TextureAtomicAdd_TextureCubeArray_Int32_args;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32)->signature = "textureAtomicAdd(uniform *textureCubeArray,i32x4,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32)->name = "textureAtomicAdd(uniform *textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *textureCubeArray, coordinate : i32x4, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32)->signature = "textureAtomicAdd(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32)->name = "textureAtomicAdd(uniform *mutable textureCubeArray,i32x4,i32)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicAdd with TextureCubeArray, Int32x4, UInt16
     TextureAtomicAdd_TextureCubeArray_UInt16_texture.name = "texture"_c;
     TextureAtomicAdd_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicAdd_TextureCubeArray_UInt16_texture.type.mut = true;
     TextureAtomicAdd_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicAdd_TextureCubeArray_UInt16_texture_modifiers;
     TextureAtomicAdd_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicAdd_TextureCubeArray_UInt16_texture_modifierValues;
     TextureAtomicAdd_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
@@ -3796,21 +3863,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicAdd_TextureCubeArray_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_TextureCubeArray_UInt16.name = TextureAtomicAdd_TextureCubeArray_UInt16_name;
-    TextureAtomicAdd_TextureCubeArray_UInt16.backendIndex = 2843;
+    TextureAtomicAdd_TextureCubeArray_UInt16.backendIndex = 2841;
     TextureAtomicAdd_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicAdd_TextureCubeArray_UInt16.parameters = TextureAtomicAdd_TextureCubeArray_UInt16_args;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16)->signature = "textureAtomicAdd(uniform *textureCubeArray,i32x4,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16)->name = "textureAtomicAdd(uniform *textureCubeArray,i32x4,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *textureCubeArray, coordinate : i32x4, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16)->signature = "textureAtomicAdd(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16)->name = "textureAtomicAdd(uniform *mutable textureCubeArray,i32x4,u16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicAdd with TextureCubeArray, Int32x4, Int16
     TextureAtomicAdd_TextureCubeArray_Int16_texture.name = "texture"_c;
     TextureAtomicAdd_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicAdd_TextureCubeArray_Int16_texture.type.mut = true;
     TextureAtomicAdd_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicAdd_TextureCubeArray_Int16_texture_modifiers;
     TextureAtomicAdd_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicAdd_TextureCubeArray_Int16_texture_modifierValues;
     TextureAtomicAdd_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
@@ -3819,21 +3887,22 @@ void SetupIntrinsics14()
     TextureAtomicAdd_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicAdd_TextureCubeArray_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicAdd_TextureCubeArray_Int16.name = TextureAtomicAdd_TextureCubeArray_Int16_name;
-    TextureAtomicAdd_TextureCubeArray_Int16.backendIndex = 2844;
+    TextureAtomicAdd_TextureCubeArray_Int16.backendIndex = 2842;
     TextureAtomicAdd_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicAdd_TextureCubeArray_Int16.parameters = TextureAtomicAdd_TextureCubeArray_Int16_args;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16)->signature = "textureAtomicAdd(uniform *textureCubeArray,i32x4,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16)->name = "textureAtomicAdd(uniform *textureCubeArray,i32x4,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *textureCubeArray, coordinate : i32x4, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16)->signature = "textureAtomicAdd(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16)->name = "textureAtomicAdd(uniform *mutable textureCubeArray,i32x4,i16)"_c;
+    Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicAdd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicAdd_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicSubtract with Texture1D, Int32, UInt32
     TextureAtomicSubtract_Texture1D_UInt32_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicSubtract_Texture1D_UInt32_texture.type.mut = true;
     TextureAtomicSubtract_Texture1D_UInt32_texture.type.modifiers = TextureAtomicSubtract_Texture1D_UInt32_texture_modifiers;
     TextureAtomicSubtract_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicSubtract_Texture1D_UInt32_texture_modifierValues;
     TextureAtomicSubtract_Texture1D_UInt32_coordinate.name = "coordinate"_c;
@@ -3842,21 +3911,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicSubtract_Texture1D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture1D_UInt32.name = TextureAtomicSubtract_Texture1D_UInt32_name;
-    TextureAtomicSubtract_Texture1D_UInt32.backendIndex = 2845;
+    TextureAtomicSubtract_Texture1D_UInt32.backendIndex = 2843;
     TextureAtomicSubtract_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicSubtract_Texture1D_UInt32.parameters = TextureAtomicSubtract_Texture1D_UInt32_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32)->signature = "textureAtomicSubtract(uniform *texture1D,i32,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32)->name = "textureAtomicSubtract(uniform *texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture1D, coordinate : i32, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32)->signature = "textureAtomicSubtract(uniform *mutable texture1D,i32,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32)->name = "textureAtomicSubtract(uniform *mutable texture1D,i32,u32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicSubtract with Texture1D, Int32, Int32
     TextureAtomicSubtract_Texture1D_Int32_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicSubtract_Texture1D_Int32_texture.type.mut = true;
     TextureAtomicSubtract_Texture1D_Int32_texture.type.modifiers = TextureAtomicSubtract_Texture1D_Int32_texture_modifiers;
     TextureAtomicSubtract_Texture1D_Int32_texture.type.modifierValues = TextureAtomicSubtract_Texture1D_Int32_texture_modifierValues;
     TextureAtomicSubtract_Texture1D_Int32_coordinate.name = "coordinate"_c;
@@ -3865,21 +3935,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicSubtract_Texture1D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture1D_Int32.name = TextureAtomicSubtract_Texture1D_Int32_name;
-    TextureAtomicSubtract_Texture1D_Int32.backendIndex = 2846;
+    TextureAtomicSubtract_Texture1D_Int32.backendIndex = 2844;
     TextureAtomicSubtract_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicSubtract_Texture1D_Int32.parameters = TextureAtomicSubtract_Texture1D_Int32_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32)->signature = "textureAtomicSubtract(uniform *texture1D,i32,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32)->name = "textureAtomicSubtract(uniform *texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture1D, coordinate : i32, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32)->signature = "textureAtomicSubtract(uniform *mutable texture1D,i32,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32)->name = "textureAtomicSubtract(uniform *mutable texture1D,i32,i32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicSubtract with Texture1D, Int32, UInt16
     TextureAtomicSubtract_Texture1D_UInt16_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicSubtract_Texture1D_UInt16_texture.type.mut = true;
     TextureAtomicSubtract_Texture1D_UInt16_texture.type.modifiers = TextureAtomicSubtract_Texture1D_UInt16_texture_modifiers;
     TextureAtomicSubtract_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicSubtract_Texture1D_UInt16_texture_modifierValues;
     TextureAtomicSubtract_Texture1D_UInt16_coordinate.name = "coordinate"_c;
@@ -3888,21 +3959,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicSubtract_Texture1D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture1D_UInt16.name = TextureAtomicSubtract_Texture1D_UInt16_name;
-    TextureAtomicSubtract_Texture1D_UInt16.backendIndex = 2847;
+    TextureAtomicSubtract_Texture1D_UInt16.backendIndex = 2845;
     TextureAtomicSubtract_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicSubtract_Texture1D_UInt16.parameters = TextureAtomicSubtract_Texture1D_UInt16_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16)->signature = "textureAtomicSubtract(uniform *texture1D,i32,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16)->name = "textureAtomicSubtract(uniform *texture1D,i32,u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture1D, coordinate : i32, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16)->signature = "textureAtomicSubtract(uniform *mutable texture1D,i32,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16)->name = "textureAtomicSubtract(uniform *mutable texture1D,i32,u16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicSubtract with Texture1D, Int32, Int16
     TextureAtomicSubtract_Texture1D_Int16_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicSubtract_Texture1D_Int16_texture.type.mut = true;
     TextureAtomicSubtract_Texture1D_Int16_texture.type.modifiers = TextureAtomicSubtract_Texture1D_Int16_texture_modifiers;
     TextureAtomicSubtract_Texture1D_Int16_texture.type.modifierValues = TextureAtomicSubtract_Texture1D_Int16_texture_modifierValues;
     TextureAtomicSubtract_Texture1D_Int16_coordinate.name = "coordinate"_c;
@@ -3911,21 +3983,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicSubtract_Texture1D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture1D_Int16.name = TextureAtomicSubtract_Texture1D_Int16_name;
-    TextureAtomicSubtract_Texture1D_Int16.backendIndex = 2848;
+    TextureAtomicSubtract_Texture1D_Int16.backendIndex = 2846;
     TextureAtomicSubtract_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicSubtract_Texture1D_Int16.parameters = TextureAtomicSubtract_Texture1D_Int16_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16)->signature = "textureAtomicSubtract(uniform *texture1D,i32,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16)->name = "textureAtomicSubtract(uniform *texture1D,i32,i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture1D, coordinate : i32, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16)->signature = "textureAtomicSubtract(uniform *mutable texture1D,i32,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16)->name = "textureAtomicSubtract(uniform *mutable texture1D,i32,i16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicSubtract with Texture2D, Int32x2, UInt32
     TextureAtomicSubtract_Texture2D_UInt32_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicSubtract_Texture2D_UInt32_texture.type.mut = true;
     TextureAtomicSubtract_Texture2D_UInt32_texture.type.modifiers = TextureAtomicSubtract_Texture2D_UInt32_texture_modifiers;
     TextureAtomicSubtract_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicSubtract_Texture2D_UInt32_texture_modifierValues;
     TextureAtomicSubtract_Texture2D_UInt32_coordinate.name = "coordinate"_c;
@@ -3934,21 +4007,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicSubtract_Texture2D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture2D_UInt32.name = TextureAtomicSubtract_Texture2D_UInt32_name;
-    TextureAtomicSubtract_Texture2D_UInt32.backendIndex = 2849;
+    TextureAtomicSubtract_Texture2D_UInt32.backendIndex = 2847;
     TextureAtomicSubtract_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicSubtract_Texture2D_UInt32.parameters = TextureAtomicSubtract_Texture2D_UInt32_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32)->signature = "textureAtomicSubtract(uniform *texture2D,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32)->name = "textureAtomicSubtract(uniform *texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture2D, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32)->signature = "textureAtomicSubtract(uniform *mutable texture2D,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32)->name = "textureAtomicSubtract(uniform *mutable texture2D,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicSubtract with Texture2D, Int32x2, Int32
     TextureAtomicSubtract_Texture2D_Int32_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicSubtract_Texture2D_Int32_texture.type.mut = true;
     TextureAtomicSubtract_Texture2D_Int32_texture.type.modifiers = TextureAtomicSubtract_Texture2D_Int32_texture_modifiers;
     TextureAtomicSubtract_Texture2D_Int32_texture.type.modifierValues = TextureAtomicSubtract_Texture2D_Int32_texture_modifierValues;
     TextureAtomicSubtract_Texture2D_Int32_coordinate.name = "coordinate"_c;
@@ -3957,21 +4031,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicSubtract_Texture2D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture2D_Int32.name = TextureAtomicSubtract_Texture2D_Int32_name;
-    TextureAtomicSubtract_Texture2D_Int32.backendIndex = 2850;
+    TextureAtomicSubtract_Texture2D_Int32.backendIndex = 2848;
     TextureAtomicSubtract_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicSubtract_Texture2D_Int32.parameters = TextureAtomicSubtract_Texture2D_Int32_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32)->signature = "textureAtomicSubtract(uniform *texture2D,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32)->name = "textureAtomicSubtract(uniform *texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture2D, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32)->signature = "textureAtomicSubtract(uniform *mutable texture2D,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32)->name = "textureAtomicSubtract(uniform *mutable texture2D,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicSubtract with Texture2D, Int32x2, UInt16
     TextureAtomicSubtract_Texture2D_UInt16_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicSubtract_Texture2D_UInt16_texture.type.mut = true;
     TextureAtomicSubtract_Texture2D_UInt16_texture.type.modifiers = TextureAtomicSubtract_Texture2D_UInt16_texture_modifiers;
     TextureAtomicSubtract_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicSubtract_Texture2D_UInt16_texture_modifierValues;
     TextureAtomicSubtract_Texture2D_UInt16_coordinate.name = "coordinate"_c;
@@ -3980,21 +4055,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicSubtract_Texture2D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture2D_UInt16.name = TextureAtomicSubtract_Texture2D_UInt16_name;
-    TextureAtomicSubtract_Texture2D_UInt16.backendIndex = 2851;
+    TextureAtomicSubtract_Texture2D_UInt16.backendIndex = 2849;
     TextureAtomicSubtract_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicSubtract_Texture2D_UInt16.parameters = TextureAtomicSubtract_Texture2D_UInt16_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16)->signature = "textureAtomicSubtract(uniform *texture2D,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16)->name = "textureAtomicSubtract(uniform *texture2D,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture2D, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16)->signature = "textureAtomicSubtract(uniform *mutable texture2D,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16)->name = "textureAtomicSubtract(uniform *mutable texture2D,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicSubtract with Texture2D, Int32x2, Int16
     TextureAtomicSubtract_Texture2D_Int16_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicSubtract_Texture2D_Int16_texture.type.mut = true;
     TextureAtomicSubtract_Texture2D_Int16_texture.type.modifiers = TextureAtomicSubtract_Texture2D_Int16_texture_modifiers;
     TextureAtomicSubtract_Texture2D_Int16_texture.type.modifierValues = TextureAtomicSubtract_Texture2D_Int16_texture_modifierValues;
     TextureAtomicSubtract_Texture2D_Int16_coordinate.name = "coordinate"_c;
@@ -4003,21 +4079,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicSubtract_Texture2D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture2D_Int16.name = TextureAtomicSubtract_Texture2D_Int16_name;
-    TextureAtomicSubtract_Texture2D_Int16.backendIndex = 2852;
+    TextureAtomicSubtract_Texture2D_Int16.backendIndex = 2850;
     TextureAtomicSubtract_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicSubtract_Texture2D_Int16.parameters = TextureAtomicSubtract_Texture2D_Int16_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16)->signature = "textureAtomicSubtract(uniform *texture2D,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16)->name = "textureAtomicSubtract(uniform *texture2D,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture2D, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16)->signature = "textureAtomicSubtract(uniform *mutable texture2D,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16)->name = "textureAtomicSubtract(uniform *mutable texture2D,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
 
     /// textureAtomicSubtract with Texture3D, Int32x3, UInt32
     TextureAtomicSubtract_Texture3D_UInt32_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicSubtract_Texture3D_UInt32_texture.type.mut = true;
     TextureAtomicSubtract_Texture3D_UInt32_texture.type.modifiers = TextureAtomicSubtract_Texture3D_UInt32_texture_modifiers;
     TextureAtomicSubtract_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicSubtract_Texture3D_UInt32_texture_modifierValues;
     TextureAtomicSubtract_Texture3D_UInt32_coordinate.name = "coordinate"_c;
@@ -4026,21 +4103,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
     TextureAtomicSubtract_Texture3D_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture3D_UInt32.name = TextureAtomicSubtract_Texture3D_UInt32_name;
-    TextureAtomicSubtract_Texture3D_UInt32.backendIndex = 2853;
+    TextureAtomicSubtract_Texture3D_UInt32.backendIndex = 2851;
     TextureAtomicSubtract_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
     TextureAtomicSubtract_Texture3D_UInt32.parameters = TextureAtomicSubtract_Texture3D_UInt32_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32)->signature = "textureAtomicSubtract(uniform *texture3D,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32)->name = "textureAtomicSubtract(uniform *texture3D,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture3D, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32)->signature = "textureAtomicSubtract(uniform *mutable texture3D,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32)->name = "textureAtomicSubtract(uniform *mutable texture3D,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// textureAtomicSubtract with Texture3D, Int32x3, Int32
     TextureAtomicSubtract_Texture3D_Int32_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicSubtract_Texture3D_Int32_texture.type.mut = true;
     TextureAtomicSubtract_Texture3D_Int32_texture.type.modifiers = TextureAtomicSubtract_Texture3D_Int32_texture_modifiers;
     TextureAtomicSubtract_Texture3D_Int32_texture.type.modifierValues = TextureAtomicSubtract_Texture3D_Int32_texture_modifierValues;
     TextureAtomicSubtract_Texture3D_Int32_coordinate.name = "coordinate"_c;
@@ -4049,21 +4127,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
     TextureAtomicSubtract_Texture3D_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture3D_Int32.name = TextureAtomicSubtract_Texture3D_Int32_name;
-    TextureAtomicSubtract_Texture3D_Int32.backendIndex = 2854;
+    TextureAtomicSubtract_Texture3D_Int32.backendIndex = 2852;
     TextureAtomicSubtract_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
     TextureAtomicSubtract_Texture3D_Int32.parameters = TextureAtomicSubtract_Texture3D_Int32_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32)->signature = "textureAtomicSubtract(uniform *texture3D,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32)->name = "textureAtomicSubtract(uniform *texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture3D, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32)->signature = "textureAtomicSubtract(uniform *mutable texture3D,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32)->name = "textureAtomicSubtract(uniform *mutable texture3D,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
 
     /// textureAtomicSubtract with Texture3D, Int32x3, UInt16
     TextureAtomicSubtract_Texture3D_UInt16_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicSubtract_Texture3D_UInt16_texture.type.mut = true;
     TextureAtomicSubtract_Texture3D_UInt16_texture.type.modifiers = TextureAtomicSubtract_Texture3D_UInt16_texture_modifiers;
     TextureAtomicSubtract_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicSubtract_Texture3D_UInt16_texture_modifierValues;
     TextureAtomicSubtract_Texture3D_UInt16_coordinate.name = "coordinate"_c;
@@ -4072,21 +4151,22 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
     TextureAtomicSubtract_Texture3D_UInt16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture3D_UInt16.name = TextureAtomicSubtract_Texture3D_UInt16_name;
-    TextureAtomicSubtract_Texture3D_UInt16.backendIndex = 2855;
+    TextureAtomicSubtract_Texture3D_UInt16.backendIndex = 2853;
     TextureAtomicSubtract_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
     TextureAtomicSubtract_Texture3D_UInt16.parameters = TextureAtomicSubtract_Texture3D_UInt16_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16)->signature = "textureAtomicSubtract(uniform *texture3D,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16)->name = "textureAtomicSubtract(uniform *texture3D,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture3D, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16)->signature = "textureAtomicSubtract(uniform *mutable texture3D,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16)->name = "textureAtomicSubtract(uniform *mutable texture3D,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// textureAtomicSubtract with Texture3D, Int32x3, Int16
     TextureAtomicSubtract_Texture3D_Int16_texture.name = "texture"_c;
     TextureAtomicSubtract_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicSubtract_Texture3D_Int16_texture.type.mut = true;
     TextureAtomicSubtract_Texture3D_Int16_texture.type.modifiers = TextureAtomicSubtract_Texture3D_Int16_texture_modifiers;
     TextureAtomicSubtract_Texture3D_Int16_texture.type.modifierValues = TextureAtomicSubtract_Texture3D_Int16_texture_modifierValues;
     TextureAtomicSubtract_Texture3D_Int16_coordinate.name = "coordinate"_c;
@@ -4095,17 +4175,65 @@ void SetupIntrinsics14()
     TextureAtomicSubtract_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
     TextureAtomicSubtract_Texture3D_Int16.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
     TextureAtomicSubtract_Texture3D_Int16.name = TextureAtomicSubtract_Texture3D_Int16_name;
-    TextureAtomicSubtract_Texture3D_Int16.backendIndex = 2856;
+    TextureAtomicSubtract_Texture3D_Int16.backendIndex = 2854;
     TextureAtomicSubtract_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
     TextureAtomicSubtract_Texture3D_Int16.parameters = TextureAtomicSubtract_Texture3D_Int16_args;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16)->signature = "textureAtomicSubtract(uniform *texture3D,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16)->name = "textureAtomicSubtract(uniform *texture3D,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *texture3D, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16)->signature = "textureAtomicSubtract(uniform *mutable texture3D,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16)->name = "textureAtomicSubtract(uniform *mutable texture3D,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
     Symbol::Resolved(&TextureAtomicSubtract_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicSubtract with TextureCube, Int32x3, UInt32
+    TextureAtomicSubtract_TextureCube_UInt32_texture.name = "texture"_c;
+    TextureAtomicSubtract_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicSubtract_TextureCube_UInt32_texture.type.mut = true;
+    TextureAtomicSubtract_TextureCube_UInt32_texture.type.modifiers = TextureAtomicSubtract_TextureCube_UInt32_texture_modifiers;
+    TextureAtomicSubtract_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicSubtract_TextureCube_UInt32_texture_modifierValues;
+    TextureAtomicSubtract_TextureCube_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicSubtract_TextureCube_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicSubtract_TextureCube_UInt32_value.name = "value"_c;
+    TextureAtomicSubtract_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicSubtract_TextureCube_UInt32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
+    TextureAtomicSubtract_TextureCube_UInt32.name = TextureAtomicSubtract_TextureCube_UInt32_name;
+    TextureAtomicSubtract_TextureCube_UInt32.backendIndex = 2855;
+    TextureAtomicSubtract_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicSubtract_TextureCube_UInt32.parameters = TextureAtomicSubtract_TextureCube_UInt32_args;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32)->signature = "textureAtomicSubtract(uniform *mutable textureCube,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32)->name = "textureAtomicSubtract(uniform *mutable textureCube,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicSubtract with TextureCube, Int32x3, Int32
+    TextureAtomicSubtract_TextureCube_Int32_texture.name = "texture"_c;
+    TextureAtomicSubtract_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicSubtract_TextureCube_Int32_texture.type.mut = true;
+    TextureAtomicSubtract_TextureCube_Int32_texture.type.modifiers = TextureAtomicSubtract_TextureCube_Int32_texture_modifiers;
+    TextureAtomicSubtract_TextureCube_Int32_texture.type.modifierValues = TextureAtomicSubtract_TextureCube_Int32_texture_modifierValues;
+    TextureAtomicSubtract_TextureCube_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicSubtract_TextureCube_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicSubtract_TextureCube_Int32_value.name = "value"_c;
+    TextureAtomicSubtract_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicSubtract_TextureCube_Int32.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
+    TextureAtomicSubtract_TextureCube_Int32.name = TextureAtomicSubtract_TextureCube_Int32_name;
+    TextureAtomicSubtract_TextureCube_Int32.backendIndex = 2856;
+    TextureAtomicSubtract_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicSubtract_TextureCube_Int32.parameters = TextureAtomicSubtract_TextureCube_Int32_args;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32)->signature = "textureAtomicSubtract(uniform *mutable textureCube,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32)->name = "textureAtomicSubtract(uniform *mutable textureCube,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicSubtract_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
 
 }
 } // namespace GPULang

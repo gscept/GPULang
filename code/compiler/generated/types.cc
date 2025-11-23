@@ -26439,7 +26439,7 @@ Texture1DArray::Texture1DArray()
 {
     this->name = "texture1DArray"_c;
     this->category = Type::TextureCategory;
-    this->baseType = TypeCode::Texture1D;
+    this->baseType = TypeCode::Texture1DArray;
     this->builtin = true;
 };
 Texture1DArray Texture1DArrayType;
@@ -26457,7 +26457,7 @@ Texture2DMS::Texture2DMS()
 {
     this->name = "texture2DMS"_c;
     this->category = Type::TextureCategory;
-    this->baseType = TypeCode::Texture2D;
+    this->baseType = TypeCode::Texture2DMS;
     this->builtin = true;
 };
 Texture2DMS Texture2DMSType;
@@ -26466,7 +26466,7 @@ Texture2DMSArray::Texture2DMSArray()
 {
     this->name = "texture2DMSArray"_c;
     this->category = Type::TextureCategory;
-    this->baseType = TypeCode::Texture2D;
+    this->baseType = TypeCode::Texture2DMSArray;
     this->builtin = true;
 };
 Texture2DMSArray Texture2DMSArrayType;
@@ -26475,7 +26475,7 @@ Texture2DArray::Texture2DArray()
 {
     this->name = "texture2DArray"_c;
     this->category = Type::TextureCategory;
-    this->baseType = TypeCode::Texture2D;
+    this->baseType = TypeCode::Texture2DArray;
     this->builtin = true;
 };
 Texture2DArray Texture2DArrayType;
@@ -26502,7 +26502,7 @@ TextureCubeArray::TextureCubeArray()
 {
     this->name = "textureCubeArray"_c;
     this->category = Type::TextureCategory;
-    this->baseType = TypeCode::TextureCube;
+    this->baseType = TypeCode::TextureCubeArray;
     this->builtin = true;
 };
 TextureCubeArray TextureCubeArrayType;
@@ -26520,7 +26520,7 @@ SampledTexture1DArray::SampledTexture1DArray()
 {
     this->name = "textureSampled1DArray"_c;
     this->category = Type::SampledTextureCategory;
-    this->baseType = TypeCode::SampledTexture1D;
+    this->baseType = TypeCode::SampledTexture1DArray;
     this->builtin = true;
 };
 SampledTexture1DArray SampledTexture1DArrayType;
@@ -26538,7 +26538,7 @@ SampledTexture2DMS::SampledTexture2DMS()
 {
     this->name = "textureSampled2DMS"_c;
     this->category = Type::SampledTextureCategory;
-    this->baseType = TypeCode::SampledTexture2D;
+    this->baseType = TypeCode::SampledTexture2DMS;
     this->builtin = true;
 };
 SampledTexture2DMS SampledTexture2DMSType;
@@ -26547,7 +26547,7 @@ SampledTexture2DMSArray::SampledTexture2DMSArray()
 {
     this->name = "textureSampled2DMSArray"_c;
     this->category = Type::SampledTextureCategory;
-    this->baseType = TypeCode::SampledTexture2D;
+    this->baseType = TypeCode::SampledTexture2DMSArray;
     this->builtin = true;
 };
 SampledTexture2DMSArray SampledTexture2DMSArrayType;
@@ -26556,7 +26556,7 @@ SampledTexture2DArray::SampledTexture2DArray()
 {
     this->name = "textureSampled2DArray"_c;
     this->category = Type::SampledTextureCategory;
-    this->baseType = TypeCode::SampledTexture2D;
+    this->baseType = TypeCode::SampledTexture2DArray;
     this->builtin = true;
 };
 SampledTexture2DArray SampledTexture2DArrayType;
@@ -26583,7 +26583,7 @@ SampledTextureCubeArray::SampledTextureCubeArray()
 {
     this->name = "textureSampledCubeArray"_c;
     this->category = Type::SampledTextureCategory;
-    this->baseType = TypeCode::SampledTextureCube;
+    this->baseType = TypeCode::SampledTextureCubeArray;
     this->builtin = true;
 };
 SampledTextureCubeArray SampledTextureCubeArrayType;

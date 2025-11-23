@@ -3325,6 +3325,7 @@ void SetupIntrinsics10()
     /// textureLoad with Texture1D, Int32
     TextureLoad_Texture1D_texture.name = "texture"_c;
     TextureLoad_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureLoad_Texture1D_texture.type.strict = true;
     TextureLoad_Texture1D_texture.type.mut = true;
     TextureLoad_Texture1D_texture.type.modifiers = TextureLoad_Texture1D_texture_modifiers;
     TextureLoad_Texture1D_texture.type.modifierValues = TextureLoad_Texture1D_texture_modifierValues;
@@ -3346,6 +3347,7 @@ void SetupIntrinsics10()
     /// textureLoadMip with Texture1D, Int32, Int32
     TextureLoadMip_Texture1D_texture.name = "texture"_c;
     TextureLoadMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureLoadMip_Texture1D_texture.type.strict = true;
     TextureLoadMip_Texture1D_texture.type.mut = true;
     TextureLoadMip_Texture1D_texture.type.modifiers = TextureLoadMip_Texture1D_texture_modifiers;
     TextureLoadMip_Texture1D_texture.type.modifierValues = TextureLoadMip_Texture1D_texture_modifierValues;
@@ -3370,6 +3372,7 @@ void SetupIntrinsics10()
     /// textureStore with Texture1D, Int32, Float32x4
     TextureStore_Texture1D_texture.name = "texture"_c;
     TextureStore_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureStore_Texture1D_texture.type.strict = true;
     TextureStore_Texture1D_texture.type.mut = true;
     TextureStore_Texture1D_texture.type.modifiers = TextureStore_Texture1D_texture_modifiers;
     TextureStore_Texture1D_texture.type.modifierValues = TextureStore_Texture1D_texture_modifierValues;
@@ -3394,6 +3397,7 @@ void SetupIntrinsics10()
     /// textureStoreMip with Texture1D, Int32, Int32, Float32x4
     TextureStoreMip_Texture1D_texture.name = "texture"_c;
     TextureStoreMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureStoreMip_Texture1D_texture.type.strict = true;
     TextureStoreMip_Texture1D_texture.type.mut = true;
     TextureStoreMip_Texture1D_texture.type.modifiers = TextureStoreMip_Texture1D_texture_modifiers;
     TextureStoreMip_Texture1D_texture.type.modifierValues = TextureStoreMip_Texture1D_texture_modifierValues;
@@ -3421,6 +3425,7 @@ void SetupIntrinsics10()
     /// textureLoad with Texture2D, Int32x2
     TextureLoad_Texture2D_texture.name = "texture"_c;
     TextureLoad_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureLoad_Texture2D_texture.type.strict = true;
     TextureLoad_Texture2D_texture.type.mut = true;
     TextureLoad_Texture2D_texture.type.modifiers = TextureLoad_Texture2D_texture_modifiers;
     TextureLoad_Texture2D_texture.type.modifierValues = TextureLoad_Texture2D_texture_modifierValues;
@@ -3442,6 +3447,7 @@ void SetupIntrinsics10()
     /// textureLoadMip with Texture2D, Int32x2, Int32
     TextureLoadMip_Texture2D_texture.name = "texture"_c;
     TextureLoadMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureLoadMip_Texture2D_texture.type.strict = true;
     TextureLoadMip_Texture2D_texture.type.mut = true;
     TextureLoadMip_Texture2D_texture.type.modifiers = TextureLoadMip_Texture2D_texture_modifiers;
     TextureLoadMip_Texture2D_texture.type.modifierValues = TextureLoadMip_Texture2D_texture_modifierValues;
@@ -3466,6 +3472,7 @@ void SetupIntrinsics10()
     /// textureStore with Texture2D, Int32x2, Float32x4
     TextureStore_Texture2D_texture.name = "texture"_c;
     TextureStore_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureStore_Texture2D_texture.type.strict = true;
     TextureStore_Texture2D_texture.type.mut = true;
     TextureStore_Texture2D_texture.type.modifiers = TextureStore_Texture2D_texture_modifiers;
     TextureStore_Texture2D_texture.type.modifierValues = TextureStore_Texture2D_texture_modifierValues;
@@ -3490,6 +3497,7 @@ void SetupIntrinsics10()
     /// textureStoreMip with Texture2D, Int32x2, Int32, Float32x4
     TextureStoreMip_Texture2D_texture.name = "texture"_c;
     TextureStoreMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureStoreMip_Texture2D_texture.type.strict = true;
     TextureStoreMip_Texture2D_texture.type.mut = true;
     TextureStoreMip_Texture2D_texture.type.modifiers = TextureStoreMip_Texture2D_texture_modifiers;
     TextureStoreMip_Texture2D_texture.type.modifierValues = TextureStoreMip_Texture2D_texture_modifierValues;
@@ -3517,6 +3525,7 @@ void SetupIntrinsics10()
     /// textureLoad with Texture3D, Int32x3
     TextureLoad_Texture3D_texture.name = "texture"_c;
     TextureLoad_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureLoad_Texture3D_texture.type.strict = true;
     TextureLoad_Texture3D_texture.type.mut = true;
     TextureLoad_Texture3D_texture.type.modifiers = TextureLoad_Texture3D_texture_modifiers;
     TextureLoad_Texture3D_texture.type.modifierValues = TextureLoad_Texture3D_texture_modifierValues;
@@ -3538,6 +3547,7 @@ void SetupIntrinsics10()
     /// textureLoadMip with Texture3D, Int32x3, Int32
     TextureLoadMip_Texture3D_texture.name = "texture"_c;
     TextureLoadMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureLoadMip_Texture3D_texture.type.strict = true;
     TextureLoadMip_Texture3D_texture.type.mut = true;
     TextureLoadMip_Texture3D_texture.type.modifiers = TextureLoadMip_Texture3D_texture_modifiers;
     TextureLoadMip_Texture3D_texture.type.modifierValues = TextureLoadMip_Texture3D_texture_modifierValues;
@@ -3562,6 +3572,7 @@ void SetupIntrinsics10()
     /// textureStore with Texture3D, Int32x3, Float32x4
     TextureStore_Texture3D_texture.name = "texture"_c;
     TextureStore_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureStore_Texture3D_texture.type.strict = true;
     TextureStore_Texture3D_texture.type.mut = true;
     TextureStore_Texture3D_texture.type.modifiers = TextureStore_Texture3D_texture_modifiers;
     TextureStore_Texture3D_texture.type.modifierValues = TextureStore_Texture3D_texture_modifierValues;
@@ -3586,6 +3597,7 @@ void SetupIntrinsics10()
     /// textureStoreMip with Texture3D, Int32x3, Int32, Float32x4
     TextureStoreMip_Texture3D_texture.name = "texture"_c;
     TextureStoreMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureStoreMip_Texture3D_texture.type.strict = true;
     TextureStoreMip_Texture3D_texture.type.mut = true;
     TextureStoreMip_Texture3D_texture.type.modifiers = TextureStoreMip_Texture3D_texture_modifiers;
     TextureStoreMip_Texture3D_texture.type.modifierValues = TextureStoreMip_Texture3D_texture_modifierValues;
@@ -3613,6 +3625,7 @@ void SetupIntrinsics10()
     /// textureLoad with TextureCube, Int32x3
     TextureLoad_TextureCube_texture.name = "texture"_c;
     TextureLoad_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureLoad_TextureCube_texture.type.strict = true;
     TextureLoad_TextureCube_texture.type.mut = true;
     TextureLoad_TextureCube_texture.type.modifiers = TextureLoad_TextureCube_texture_modifiers;
     TextureLoad_TextureCube_texture.type.modifierValues = TextureLoad_TextureCube_texture_modifierValues;
@@ -3634,6 +3647,7 @@ void SetupIntrinsics10()
     /// textureLoadMip with TextureCube, Int32x3, Int32
     TextureLoadMip_TextureCube_texture.name = "texture"_c;
     TextureLoadMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureLoadMip_TextureCube_texture.type.strict = true;
     TextureLoadMip_TextureCube_texture.type.mut = true;
     TextureLoadMip_TextureCube_texture.type.modifiers = TextureLoadMip_TextureCube_texture_modifiers;
     TextureLoadMip_TextureCube_texture.type.modifierValues = TextureLoadMip_TextureCube_texture_modifierValues;
@@ -3658,6 +3672,7 @@ void SetupIntrinsics10()
     /// textureStore with TextureCube, Int32x3, Float32x4
     TextureStore_TextureCube_texture.name = "texture"_c;
     TextureStore_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureStore_TextureCube_texture.type.strict = true;
     TextureStore_TextureCube_texture.type.mut = true;
     TextureStore_TextureCube_texture.type.modifiers = TextureStore_TextureCube_texture_modifiers;
     TextureStore_TextureCube_texture.type.modifierValues = TextureStore_TextureCube_texture_modifierValues;
@@ -3682,6 +3697,7 @@ void SetupIntrinsics10()
     /// textureStoreMip with TextureCube, Int32x3, Int32, Float32x4
     TextureStoreMip_TextureCube_texture.name = "texture"_c;
     TextureStoreMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureStoreMip_TextureCube_texture.type.strict = true;
     TextureStoreMip_TextureCube_texture.type.mut = true;
     TextureStoreMip_TextureCube_texture.type.modifiers = TextureStoreMip_TextureCube_texture_modifiers;
     TextureStoreMip_TextureCube_texture.type.modifierValues = TextureStoreMip_TextureCube_texture_modifierValues;
@@ -3709,6 +3725,7 @@ void SetupIntrinsics10()
     /// textureLoad with Texture1DArray, Int32x2
     TextureLoad_Texture1DArray_texture.name = "texture"_c;
     TextureLoad_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureLoad_Texture1DArray_texture.type.strict = true;
     TextureLoad_Texture1DArray_texture.type.mut = true;
     TextureLoad_Texture1DArray_texture.type.modifiers = TextureLoad_Texture1DArray_texture_modifiers;
     TextureLoad_Texture1DArray_texture.type.modifierValues = TextureLoad_Texture1DArray_texture_modifierValues;
@@ -3730,6 +3747,7 @@ void SetupIntrinsics10()
     /// textureLoadMip with Texture1DArray, Int32x2, Int32
     TextureLoadMip_Texture1DArray_texture.name = "texture"_c;
     TextureLoadMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureLoadMip_Texture1DArray_texture.type.strict = true;
     TextureLoadMip_Texture1DArray_texture.type.mut = true;
     TextureLoadMip_Texture1DArray_texture.type.modifiers = TextureLoadMip_Texture1DArray_texture_modifiers;
     TextureLoadMip_Texture1DArray_texture.type.modifierValues = TextureLoadMip_Texture1DArray_texture_modifierValues;
@@ -3754,6 +3772,7 @@ void SetupIntrinsics10()
     /// textureStore with Texture1DArray, Int32x2, Float32x4
     TextureStore_Texture1DArray_texture.name = "texture"_c;
     TextureStore_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureStore_Texture1DArray_texture.type.strict = true;
     TextureStore_Texture1DArray_texture.type.mut = true;
     TextureStore_Texture1DArray_texture.type.modifiers = TextureStore_Texture1DArray_texture_modifiers;
     TextureStore_Texture1DArray_texture.type.modifierValues = TextureStore_Texture1DArray_texture_modifierValues;
@@ -3778,6 +3797,7 @@ void SetupIntrinsics10()
     /// textureStoreMip with Texture1DArray, Int32x2, Int32, Float32x4
     TextureStoreMip_Texture1DArray_texture.name = "texture"_c;
     TextureStoreMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureStoreMip_Texture1DArray_texture.type.strict = true;
     TextureStoreMip_Texture1DArray_texture.type.mut = true;
     TextureStoreMip_Texture1DArray_texture.type.modifiers = TextureStoreMip_Texture1DArray_texture_modifiers;
     TextureStoreMip_Texture1DArray_texture.type.modifierValues = TextureStoreMip_Texture1DArray_texture_modifierValues;
@@ -3805,6 +3825,7 @@ void SetupIntrinsics10()
     /// textureLoad with Texture2DArray, Int32x3
     TextureLoad_Texture2DArray_texture.name = "texture"_c;
     TextureLoad_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureLoad_Texture2DArray_texture.type.strict = true;
     TextureLoad_Texture2DArray_texture.type.mut = true;
     TextureLoad_Texture2DArray_texture.type.modifiers = TextureLoad_Texture2DArray_texture_modifiers;
     TextureLoad_Texture2DArray_texture.type.modifierValues = TextureLoad_Texture2DArray_texture_modifierValues;
@@ -3826,6 +3847,7 @@ void SetupIntrinsics10()
     /// textureLoadMip with Texture2DArray, Int32x3, Int32
     TextureLoadMip_Texture2DArray_texture.name = "texture"_c;
     TextureLoadMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureLoadMip_Texture2DArray_texture.type.strict = true;
     TextureLoadMip_Texture2DArray_texture.type.mut = true;
     TextureLoadMip_Texture2DArray_texture.type.modifiers = TextureLoadMip_Texture2DArray_texture_modifiers;
     TextureLoadMip_Texture2DArray_texture.type.modifierValues = TextureLoadMip_Texture2DArray_texture_modifierValues;

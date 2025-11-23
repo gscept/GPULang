@@ -3005,8 +3005,17 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
                 else
                 {
-                    generatedStructResolved->usageFlags.flags.isUniformBuffer = true;
-                    generatedStruct->baseType = TypeCode::Buffer;
+                    if (var->type.modifiers.size > 1 && var->type.modifiers[1] == Type::FullType::Modifier::Array)
+                    {
+                        // Force a mutable buffer if the type is an array
+                        generatedStructResolved->usageFlags.flags.isMutableBuffer = true;
+                        generatedStruct->baseType = TypeCode::Buffer;
+                    }
+                    else
+                    {
+                        generatedStructResolved->usageFlags.flags.isUniformBuffer = true;
+                        generatedStruct->baseType = TypeCode::Buffer;
+                    }
                 }
                 
                 Type::FullType newType{ generatedStruct->name };
@@ -3171,6 +3180,74 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         currentStrucResolved->getReferenceFunctions.Insert(FixedString(refIndexedFun), getReferenceFunction);
                     }
                 }
+            }
+            else if (currentStrucResolved->traceRayFunction == nullptr && (varResolved->storage == Storage::RayPayload || varResolved->storage == Storage::RayPayloadInput))
+            {
+                Function* traceRayFunction = Alloc<Function>();
+                traceRayFunction->name = "traceRay";
+                traceRayFunction->returnType = Type::FullType{ "void" };
+
+                TransientArray<Variable*> params(11);
+
+                Variable* bvh = Alloc<Variable>();
+                bvh->name = "bvh";
+                bvh->type = Type::FullType{ "accelerationStructure", { Type::FullType::Modifier::Pointer }, { nullptr } };
+                Symbol::Resolved(bvh)->storage = Storage::Uniform;
+                params.Append(bvh);
+
+                Variable* rayFlags = Alloc<Variable>();
+                rayFlags->name = "flags";
+                rayFlags->type = Type::FullType{ "u32" };
+                params.Append(rayFlags);
+
+                Variable* mask = Alloc<Variable>();
+                mask->name = "mask";
+                mask->type = Type::FullType{ "u32" };
+                params.Append(mask);
+
+                Variable* shaderTableOffset = Alloc<Variable>();
+                shaderTableOffset->name = "shaderTableOffset";
+                shaderTableOffset->type = Type::FullType{ "u32" };
+                params.Append(shaderTableOffset);
+
+                Variable* shaderTableStride = Alloc<Variable>();
+                shaderTableStride->name = "shaderTableStride";
+                shaderTableStride->type = Type::FullType{ "u32" };
+                params.Append(shaderTableStride);
+
+                Variable* missIndex = Alloc<Variable>();
+                missIndex->name = "missIndex";
+                missIndex->type = Type::FullType{ "u32" };
+                params.Append(missIndex);
+
+                Variable* origin = Alloc<Variable>();
+                origin->name = "origin";
+                origin->type = Type::FullType{ "f32x3" };
+                params.Append(origin);
+
+                Variable* direction = Alloc<Variable>();
+                direction->name = "direction";
+                direction->type = Type::FullType{ "f32x3" };
+                params.Append(direction);
+
+                Variable* tMin = Alloc<Variable>();
+                tMin->name = "tMin";
+                tMin->type = Type::FullType{ "f32" };
+                params.Append(tMin);
+
+                Variable* tMax = Alloc<Variable>();
+                tMax->name = "tMax";
+                tMax->type = Type::FullType{ "f32" };
+                params.Append(tMax);
+
+                Variable* payload = Alloc<Variable>();
+                payload->name = "payload";
+                payload->type = var->type;
+                params.Append(payload);
+
+                traceRayFunction->parameters = params;
+                this->ResolveFunction(compiler, traceRayFunction);
+                currentStrucResolved->traceRayFunction = traceRayFunction;
             }
         }
     }

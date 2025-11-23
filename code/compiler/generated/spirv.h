@@ -8,7 +8,7 @@ static auto CreateSampledImageSPIRV = [](const Compiler* c, SPIRVGenerator* g, S
         assert(img.parentTypes.size() > 0);
         SPIRVResult image = LoadValueSPIRV(c, g, img, true);
         SPIRVResult sampler = LoadValueSPIRV(c, g, samp, true);
-        uint32_t typeSymbol = AddType(g, TStr::Compact("sampledImage_", img.parentTypes[0]), OpTypeSampledImage, SPVArg{img.parentTypes[0]});
+        uint32_t typeSymbol = AddType(g, TStr::Compact("sampledImage_", img.parentTypes[0]), OpTypeSampledImage, SPVArg(img.parentTypes[0]));
         uint32_t sampledImage = g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, typeSymbol, image, sampler);
         return SPIRVResult(sampledImage, typeSymbol, true);
 };
@@ -17485,7 +17485,7 @@ SPIRVResult SPIRV_VertexGetOutputLayer(const Compiler* c, SPIRVGenerator* g, uin
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Layer);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17499,7 +17499,7 @@ SPIRVResult SPIRV_VertexGetOutputViewport(const Compiler* c, SPIRVGenerator* g, 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ViewportIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17513,7 +17513,7 @@ SPIRVResult SPIRV_VertexGetIndex(const Compiler* c, SPIRVGenerator* g, uint32_t 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::VertexIndex);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::VertexIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17527,7 +17527,7 @@ SPIRVResult SPIRV_VertexGetInstanceIndex(const Compiler* c, SPIRVGenerator* g, u
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InstanceIndex);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InstanceIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17541,7 +17541,7 @@ SPIRVResult SPIRV_VertexGetBaseIndex(const Compiler* c, SPIRVGenerator* g, uint3
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetBaseIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::BaseVertex);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::BaseVertex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17555,7 +17555,7 @@ SPIRVResult SPIRV_VertexGetBaseInstanceIndex(const Compiler* c, SPIRVGenerator* 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetBaseInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::BaseInstance);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::BaseInstance);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17569,7 +17569,7 @@ SPIRVResult SPIRV_VertexGetDrawIndex(const Compiler* c, SPIRVGenerator* g, uint3
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetDrawIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::DrawIndex);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::DrawIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17583,10 +17583,10 @@ SPIRVResult SPIRV_VertexSetOutputLayer_UInt16(const Compiler* c, SPIRVGenerator*
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Layer);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17596,10 +17596,10 @@ SPIRVResult SPIRV_VertexSetOutputLayer_UInt32(const Compiler* c, SPIRVGenerator*
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Layer);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17609,10 +17609,10 @@ SPIRVResult SPIRV_VertexSetOutputViewport_UInt16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ViewportIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17622,10 +17622,10 @@ SPIRVResult SPIRV_VertexSetOutputViewport_UInt32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ViewportIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17634,10 +17634,10 @@ SPIRVResult SPIRV_VertexSetPointSize_UInt32(const Compiler* c, SPIRVGenerator* g
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PointSize);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PointSize);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17647,10 +17647,10 @@ SPIRVResult SPIRV_VertexExportCoordinates_Float32x4(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17660,10 +17660,10 @@ SPIRVResult SPIRV_VertexExportCoordinates_Float16x4(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17674,10 +17674,10 @@ SPIRVResult SPIRV_GeometryExportPrimitiveIndex(const Compiler* c, SPIRVGenerator
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PrimitiveId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17687,10 +17687,10 @@ SPIRVResult SPIRV_GeometryGetPrimitiveIndex(const Compiler* c, SPIRVGenerator* g
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PrimitiveId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17700,10 +17700,10 @@ SPIRVResult SPIRV_TaskGetPrimitiveIndex(const Compiler* c, SPIRVGenerator* g, ui
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplTaskExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PrimitiveId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17713,10 +17713,10 @@ SPIRVResult SPIRV_MeshGetPrimitiveIndex(const Compiler* c, SPIRVGenerator* g, ui
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplMeshExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PrimitiveId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17727,7 +17727,7 @@ SPIRVResult SPIRV_GeometryGetVertexIndex(const Compiler* c, SPIRVGenerator* g, u
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryGetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InvocationId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InvocationId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17742,7 +17742,7 @@ SPIRVResult SPIRV_HullGetVertexIndex(const Compiler* c, SPIRVGenerator* g, uint3
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullGetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InvocationId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InvocationId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17757,10 +17757,10 @@ SPIRVResult SPIRV_GeometryExportVertex_Float32x4(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     g->writer->Instruction(OpEmitVertex, SPVWriter::Section::LocalFunction);
     return SPIRVResult::Invalid();
 }
@@ -17772,10 +17772,10 @@ SPIRVResult SPIRV_GeometryExportVertex_Float16x4(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     g->writer->Instruction(OpEmitVertex, SPVWriter::Section::LocalFunction);
     return SPIRVResult::Invalid();
 }
@@ -17796,8 +17796,8 @@ SPIRVResult SPIRV_HullExportOuterTessellationLevels(const Compiler* c, SPIRVGene
     uint32_t arrType = GPULang::AddType(g, TStr("[4]_f32"), OpTypeArray, SPVArg(baseType), arraySizeConstant);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_[4]_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(arrType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullOuterTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::TessLevelOuter);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Patch);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::TessLevelOuter);
+    g->writer->Decorate(SPVArg(ret), Decorations::Patch);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);
@@ -17817,8 +17817,8 @@ SPIRVResult SPIRV_HullExportInnerTessellationLevels(const Compiler* c, SPIRVGene
     uint32_t arrType = GPULang::AddType(g, TStr("[2]_f32"), OpTypeArray, SPVArg(baseType), arraySizeConstant);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_[2]_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(arrType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullInnerTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::TessLevelInner);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Patch);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::TessLevelInner);
+    g->writer->Decorate(SPVArg(ret), Decorations::Patch);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);
@@ -17834,7 +17834,7 @@ SPIRVResult SPIRV_DomainGetTessellationCoordinates(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainTessellationCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::TessCoord);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::TessCoord);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17848,10 +17848,10 @@ SPIRVResult SPIRV_DomainExportCoordinates_Float32x4(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -17861,10 +17861,10 @@ SPIRVResult SPIRV_DomainExportCoordinates_Float16x4(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Position);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18006,7 +18006,7 @@ SPIRVResult SPIRV_PixelGetCoordinates_Float32x4(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelGetCoordinates_Float32x4"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragCoord);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FragCoord);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -18020,7 +18020,7 @@ SPIRVResult SPIRV_PixelGetCoordinates_Float16x4(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelGetCoordinates_Float16x4"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragCoord);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FragCoord);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -18034,7 +18034,7 @@ SPIRVResult SPIRV_PixelGetFrontFacing(const Compiler* c, SPIRVGenerator* g, uint
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_b8_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelGetFrontFacing"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FrontFacing);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FrontFacing);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -18048,7 +18048,7 @@ SPIRVResult SPIRV_PixelGetSubpixelPosition(const Compiler* c, SPIRVGenerator* g,
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelGetSubpixelPosition"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::PointCoord);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PointCoord);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -18062,7 +18062,7 @@ SPIRVResult SPIRV_PixelGetDepth(const Compiler* c, SPIRVGenerator* g, uint32_t r
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelGetDepth"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragDepth);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FragDepth);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -18076,10 +18076,10 @@ SPIRVResult SPIRV_PixelSetDepth(const Compiler* c, SPIRVGenerator* g, uint32_t r
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelSetDepth"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragDepth);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FragDepth);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18089,10 +18089,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32_Int32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18102,10 +18102,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32_UInt32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18115,10 +18115,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32_Int16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18128,10 +18128,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32_UInt16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18141,10 +18141,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_Int32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18154,10 +18154,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_UInt32(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18167,10 +18167,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_Int16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18180,10 +18180,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_UInt16(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18193,10 +18193,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_Int32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18206,10 +18206,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_UInt32(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18219,10 +18219,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_Int16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18232,10 +18232,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_UInt16(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18245,10 +18245,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_Int32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18258,10 +18258,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_UInt32(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18271,10 +18271,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_Int16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18284,10 +18284,10 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_UInt16(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18297,10 +18297,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16_Int32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18310,10 +18310,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16_UInt32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18323,10 +18323,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16_Int16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18336,10 +18336,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16_UInt16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18349,10 +18349,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_Int32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18362,10 +18362,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_UInt32(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18375,10 +18375,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_Int16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18388,10 +18388,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_UInt16(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18401,10 +18401,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_Int32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18414,10 +18414,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_UInt32(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18427,10 +18427,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_Int16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18440,10 +18440,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_UInt16(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18453,10 +18453,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_Int32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18466,10 +18466,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_UInt32(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18479,10 +18479,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_Int16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18492,10 +18492,10 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_UInt16(const Compiler* c, SPIRVGene
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18505,10 +18505,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32_Int32(const Compiler* c, SPIRVGenerator
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18518,10 +18518,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32_UInt32(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18531,10 +18531,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32_Int16(const Compiler* c, SPIRVGenerator
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18544,10 +18544,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32_UInt16(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18557,10 +18557,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_Int32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18570,10 +18570,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_UInt32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18583,10 +18583,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_Int16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18596,10 +18596,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_UInt16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18609,10 +18609,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_Int32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18622,10 +18622,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_UInt32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18635,10 +18635,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_Int16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18648,10 +18648,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_UInt16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18661,10 +18661,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_Int32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18674,10 +18674,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_UInt32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18687,10 +18687,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_Int16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18700,10 +18700,10 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_UInt16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18713,10 +18713,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16_Int32(const Compiler* c, SPIRVGenerator
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18726,10 +18726,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16_UInt32(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18739,10 +18739,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16_Int16(const Compiler* c, SPIRVGenerator
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18752,10 +18752,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16_UInt16(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18765,10 +18765,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_Int32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18778,10 +18778,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_UInt32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18791,10 +18791,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_Int16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18804,10 +18804,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_UInt16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18817,10 +18817,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_Int32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18830,10 +18830,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_UInt32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18843,10 +18843,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_Int16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18856,10 +18856,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_UInt16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18869,10 +18869,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_Int32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18882,10 +18882,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_UInt32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18895,10 +18895,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_Int16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18908,10 +18908,10 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_UInt16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18921,10 +18921,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_Int32(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18934,10 +18934,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_UInt32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18947,10 +18947,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_Int16(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18960,10 +18960,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_UInt16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18973,10 +18973,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_Int32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18986,10 +18986,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_UInt32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -18999,10 +18999,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_Int16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19012,10 +19012,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_UInt16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19025,10 +19025,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_Int32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19038,10 +19038,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_UInt32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19051,10 +19051,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_Int16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19064,10 +19064,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_UInt16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19077,10 +19077,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_Int32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19090,10 +19090,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_UInt32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19103,10 +19103,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_Int16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19116,10 +19116,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_UInt16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19129,10 +19129,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_Int32(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19142,10 +19142,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_UInt32(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19155,10 +19155,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_Int16(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19168,10 +19168,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_UInt16(const Compiler* c, SPIRVGenerat
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19181,10 +19181,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_Int32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19194,10 +19194,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_UInt32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19207,10 +19207,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_Int16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19220,10 +19220,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_UInt16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19233,10 +19233,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_Int32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19246,10 +19246,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_UInt32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19259,10 +19259,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_Int16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19272,10 +19272,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_UInt16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19285,10 +19285,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_Int32(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19298,10 +19298,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_UInt32(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt32", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19311,10 +19311,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_Int16(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19324,10 +19324,10 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_UInt16(const Compiler* c, SPIRVGener
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt16", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);
     return SPIRVResult::Invalid();
 }
 
@@ -19336,7 +19336,7 @@ SPIRVResult SPIRV_ComputeGetLocalThreadIndices(const Compiler* c, SPIRVGenerator
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetLocalThreadIndices"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::LocalInvocationId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19349,7 +19349,7 @@ SPIRVResult SPIRV_ComputeGetGlobalThreadIndices(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetGlobalThreadIndices"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::GlobalInvocationId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::GlobalInvocationId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19362,7 +19362,7 @@ SPIRVResult SPIRV_ComputeGetWorkgroupIndices(const Compiler* c, SPIRVGenerator* 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetWorkgroupIndices"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::WorkgroupId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::WorkgroupId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19375,7 +19375,7 @@ SPIRVResult SPIRV_ComputeGetNumWorkgroups(const Compiler* c, SPIRVGenerator* g, 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetNumWorkgroups"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::NumWorkgroups);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::NumWorkgroups);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19388,7 +19388,7 @@ SPIRVResult SPIRV_ComputeGetIndexInWorkgroup(const Compiler* c, SPIRVGenerator* 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetIndexInWorkgroup"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::LocalInvocationIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19402,7 +19402,7 @@ SPIRVResult SPIRV_SubgroupGetId(const Compiler* c, SPIRVGenerator* g, uint32_t r
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetId"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupId);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19416,7 +19416,7 @@ SPIRVResult SPIRV_SubgroupGetSize(const Compiler* c, SPIRVGenerator* g, uint32_t
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetSize"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupSize);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupSize);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19430,7 +19430,7 @@ SPIRVResult SPIRV_SubgroupGetNum(const Compiler* c, SPIRVGenerator* g, uint32_t 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetNum"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::NumSubgroups);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::NumSubgroups);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19444,7 +19444,7 @@ SPIRVResult SPIRV_SubgroupGetThreadMask(const Compiler* c, SPIRVGenerator* g, ui
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetThreadMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupEqMask);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupEqMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19458,7 +19458,7 @@ SPIRVResult SPIRV_SubgroupGetThreadAndLowerMask(const Compiler* c, SPIRVGenerato
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetThreadAndLowerMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupLeMask);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupLeMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19472,7 +19472,7 @@ SPIRVResult SPIRV_SubgroupGetLowerMask(const Compiler* c, SPIRVGenerator* g, uin
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetLowerMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupLtMask);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupLtMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19486,7 +19486,7 @@ SPIRVResult SPIRV_SubgroupGetThreadAndGreaterMask(const Compiler* c, SPIRVGenera
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetThreadAndGreaterMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupGeMask);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupGeMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -19500,7 +19500,7 @@ SPIRVResult SPIRV_SubgroupGetGreaterMask(const Compiler* c, SPIRVGenerator* g, u
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetGreaterMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupGtMask);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupGtMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -22083,7 +22083,7 @@ SPIRVResult SPIRV_BitCount_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_ExecutionBarrier(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
     g->writer->Instruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22091,7 +22091,7 @@ SPIRVResult SPIRV_ExecutionBarrier(const Compiler* c, SPIRVGenerator* g, uint32_
 SPIRVResult SPIRV_ExecutionBarrierSubgroup(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x80));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x80));
     g->writer->Instruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22099,7 +22099,7 @@ SPIRVResult SPIRV_ExecutionBarrierSubgroup(const Compiler* c, SPIRVGenerator* g,
 SPIRVResult SPIRV_ExecutionBarrierWorkgroup(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x100));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x100));
     g->writer->Instruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22107,7 +22107,7 @@ SPIRVResult SPIRV_ExecutionBarrierWorkgroup(const Compiler* c, SPIRVGenerator* g
 SPIRVResult SPIRV_MemoryBarrier(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
     g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22115,7 +22115,7 @@ SPIRVResult SPIRV_MemoryBarrier(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_MemoryBarrierBuffer(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x40));
     g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22123,7 +22123,7 @@ SPIRVResult SPIRV_MemoryBarrierBuffer(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_MemoryBarrierTexture(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x800));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x800));
     g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22131,7 +22131,7 @@ SPIRVResult SPIRV_MemoryBarrierTexture(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_MemoryBarrierAtomic(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x400));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x400));
     g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22139,7 +22139,7 @@ SPIRVResult SPIRV_MemoryBarrierAtomic(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_MemoryBarrierSubgroup(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x80));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x80));
     g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22147,7 +22147,7 @@ SPIRVResult SPIRV_MemoryBarrierSubgroup(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_MemoryBarrierWorkgroup(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x100));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x8 | 0x40 | 0x100 | 0x400 | 0x800 ));
     g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
@@ -22824,9 +22824,8 @@ SPIRVResult SPIRV_TextureFetchSample_Texture1D(const Compiler* c, SPIRVGenerator
 {
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -22843,9 +22842,8 @@ SPIRVResult SPIRV_TextureFetchSample_Texture2D(const Compiler* c, SPIRVGenerator
 {
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -22862,9 +22860,8 @@ SPIRVResult SPIRV_TextureFetchSample_Texture3D(const Compiler* c, SPIRVGenerator
 {
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -22881,9 +22878,8 @@ SPIRVResult SPIRV_TextureFetchSample_Texture1DArray(const Compiler* c, SPIRVGene
 {
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -22900,18 +22896,8 @@ SPIRVResult SPIRV_TextureFetchSample_Texture2DArray(const Compiler* c, SPIRVGene
 {
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_TextureFetch_Texture2DMS(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -22919,18 +22905,8 @@ SPIRVResult SPIRV_TextureFetchSample_Texture2DMS(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_TextureFetch_Texture2DMSArray(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -22938,9 +22914,8 @@ SPIRVResult SPIRV_TextureFetchSample_Texture2DMSArray(const Compiler* c, SPIRVGe
 {
     SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
-    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
-    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -31405,8 +31380,261 @@ SPIRVResult SPIRV_TextureAtomicXor_TextureCubeArray_Int16(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
+SPIRVResult SPIRV_ExportRayIntersection(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    g->writer->Instruction(OpReportIntersectionKHR, SPVWriter::Section::LocalFunction);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}
+
+SPIRVResult SPIRV_ExecuteCallable(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    SPIRVResult shaderBindingIndex = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpExecuteCallableKHR, SPVWriter::Section::LocalFunction, shaderBindingIndex, g->callableData);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}
+
+SPIRVResult SPIRV_RayLaunchIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayLaunchIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::LaunchIdKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayLaunchSize(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayLaunchSize"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::LaunchSizeKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_BLASPrimitiveIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplBLASPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PrimitiveId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_BLASGeometryIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplBLASGeometryIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayGeometryIndexKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_TLASInstanceIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplTLASInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InstanceId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_TLASInstanceCustomIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplTLASInstanceCustomIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InstanceCustomIndexKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayWorldOrigin(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayWorldOrigin"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::WorldRayOriginKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayWorldDirection(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayWorldDirection"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::WorldRayDirectionKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayObjectOrigin(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayObjectOrigin"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ObjectRayOriginKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayObjectDirection(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayObjectDirection"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ObjectRayDirectionKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayTMin(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayTMin"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayTminKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayTMax(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayTMax"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayTmaxKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayFlags(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayFlags"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::IncomingRayFlagsKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayHitDistance(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayHitDistance"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayTmaxKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_RayHitKind(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayHitKind"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::HitKindKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_TLASObjectToWorld(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplTLASObjectToWorld"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ObjectToWorldKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
+SPIRVResult SPIRV_TLASWorldToObject(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::RayTracingKHR);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplTLASWorldToObject"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::WorldToObjectKHR);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    res.parentScopes.push_back(SPIRVResult::Storage::Input);
+    return res;
+}
+
 using SPIRVIntrinsic = SPIRVResult(*)(const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&);
-constexpr std::array<SPIRVIntrinsic, 3013> SPIRVDefaultIntrinsics = {
+constexpr std::array<SPIRVIntrinsic, 3030> SPIRVDefaultIntrinsics = {
         &SPIRV_Float32_from_UInt32 /* 0 -> 0 */,
         &SPIRV_Float32_from_Int32 /* 1 -> 1 */,
         &SPIRV_Float32_from_Bool8 /* 2 -> 2 */,
@@ -33776,648 +34004,665 @@ constexpr std::array<SPIRVIntrinsic, 3013> SPIRVDefaultIntrinsics = {
         &SPIRV_TextureFetchSample_Texture1DArray /* 2366 -> 2366 */,
         &SPIRV_TextureFetch_Texture2DArray /* 2367 -> 2367 */,
         &SPIRV_TextureFetchSample_Texture2DArray /* 2368 -> 2368 */,
-        &SPIRV_TextureFetch_Texture2DMS /* 2369 -> 2369 */,
-        &SPIRV_TextureFetchSample_Texture2DMS /* 2370 -> 2370 */,
-        &SPIRV_TextureFetch_Texture2DMSArray /* 2371 -> 2371 */,
-        &SPIRV_TextureFetchSample_Texture2DMSArray /* 2372 -> 2372 */,
-        &SPIRV_TextureGather_Texture2D /* 2373 -> 2373 */,
-        &SPIRV_SampledTextureGather_Texture2D /* 2374 -> 2374 */,
-        &SPIRV_TextureGatherOffset_Texture2D /* 2375 -> 2375 */,
-        &SPIRV_SampledTextureGatherOffset_Texture2D /* 2376 -> 2376 */,
-        &SPIRV_TextureGather_TextureCube /* 2377 -> 2377 */,
-        &SPIRV_SampledTextureGather_TextureCube /* 2378 -> 2378 */,
-        &SPIRV_TextureGatherOffset_TextureCube /* 2379 -> 2379 */,
-        &SPIRV_SampledTextureGatherOffset_TextureCube /* 2380 -> 2380 */,
-        &SPIRV_TextureGather_Texture2DArray /* 2381 -> 2381 */,
-        &SPIRV_SampledTextureGather_Texture2DArray /* 2382 -> 2382 */,
-        &SPIRV_TextureGatherOffset_Texture2DArray /* 2383 -> 2383 */,
-        &SPIRV_SampledTextureGatherOffset_Texture2DArray /* 2384 -> 2384 */,
-        &SPIRV_TextureGather_TextureCubeArray /* 2385 -> 2385 */,
-        &SPIRV_SampledTextureGather_TextureCubeArray /* 2386 -> 2386 */,
-        &SPIRV_TextureGatherOffset_TextureCubeArray /* 2387 -> 2387 */,
-        &SPIRV_SampledTextureGatherOffset_TextureCubeArray /* 2388 -> 2388 */,
-        &SPIRV_TexturePixelCacheLoad_PixelCache /* 2389 -> 2389 */,
-        &SPIRV_TexturePixelCacheLoad_PixelCacheMS /* 2390 -> 2390 */,
-        &SPIRV_TextureSample_Texture1D /* 2391 -> 2391 */,
-        &SPIRV_SampledTextureSample_Texture1D /* 2392 -> 2392 */,
-        &SPIRV_TextureSample_Texture2D /* 2393 -> 2393 */,
-        &SPIRV_SampledTextureSample_Texture2D /* 2394 -> 2394 */,
-        &SPIRV_TextureSample_Texture3D /* 2395 -> 2395 */,
-        &SPIRV_SampledTextureSample_Texture3D /* 2396 -> 2396 */,
-        &SPIRV_TextureSample_TextureCube /* 2397 -> 2397 */,
-        &SPIRV_SampledTextureSample_TextureCube /* 2398 -> 2398 */,
-        &SPIRV_TextureSample_Texture1DArray /* 2399 -> 2399 */,
-        &SPIRV_SampledTextureSample_Texture1DArray /* 2400 -> 2400 */,
-        &SPIRV_TextureSample_Texture2DArray /* 2401 -> 2401 */,
-        &SPIRV_SampledTextureSample_Texture2DArray /* 2402 -> 2402 */,
-        &SPIRV_TextureSample_TextureCubeArray /* 2403 -> 2403 */,
-        &SPIRV_SampledTextureSample_TextureCubeArray /* 2404 -> 2404 */,
-        &SPIRV_TextureSampleOffset_Texture1D /* 2405 -> 2405 */,
-        &SPIRV_SampledTextureSampleOffset_Texture1D /* 2406 -> 2406 */,
-        &SPIRV_TextureSampleOffset_Texture2D /* 2407 -> 2407 */,
-        &SPIRV_SampledTextureSampleOffset_Texture2D /* 2408 -> 2408 */,
-        &SPIRV_TextureSampleOffset_Texture3D /* 2409 -> 2409 */,
-        &SPIRV_SampledTextureSampleOffset_Texture3D /* 2410 -> 2410 */,
-        &SPIRV_TextureSampleOffset_Texture1DArray /* 2411 -> 2411 */,
-        &SPIRV_SampledTextureSampleOffset_Texture1DArray /* 2412 -> 2412 */,
-        &SPIRV_TextureSampleOffset_Texture2DArray /* 2413 -> 2413 */,
-        &SPIRV_SampledTextureSampleOffset_Texture2DArray /* 2414 -> 2414 */,
-        &SPIRV_TextureSampleProj_Texture1D /* 2415 -> 2415 */,
-        &SPIRV_SampledTextureSampleProj_Texture1D /* 2416 -> 2416 */,
-        &SPIRV_TextureSampleProj_Texture2D /* 2417 -> 2417 */,
-        &SPIRV_SampledTextureSampleProj_Texture2D /* 2418 -> 2418 */,
-        &SPIRV_TextureSampleProj_Texture3D /* 2419 -> 2419 */,
-        &SPIRV_SampledTextureSampleProj_Texture3D /* 2420 -> 2420 */,
-        &SPIRV_TextureSampleProjOffset_Texture1D /* 2421 -> 2421 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture1D /* 2422 -> 2422 */,
-        &SPIRV_TextureSampleProjOffset_Texture2D /* 2423 -> 2423 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture2D /* 2424 -> 2424 */,
-        &SPIRV_TextureSampleProjOffset_Texture3D /* 2425 -> 2425 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture3D /* 2426 -> 2426 */,
-        &SPIRV_TextureSampleCompare_Texture1D /* 2427 -> 2427 */,
-        &SPIRV_SampledTextureSampleCompare_Texture1D /* 2428 -> 2428 */,
-        &SPIRV_TextureSampleCompare_Texture2D /* 2429 -> 2429 */,
-        &SPIRV_SampledTextureSampleCompare_Texture2D /* 2430 -> 2430 */,
-        &SPIRV_TextureSampleCompare_Texture3D /* 2431 -> 2431 */,
-        &SPIRV_SampledTextureSampleCompare_Texture3D /* 2432 -> 2432 */,
-        &SPIRV_TextureSampleCompare_Texture1DArray /* 2433 -> 2433 */,
-        &SPIRV_SampledTextureSampleCompare_Texture1DArray /* 2434 -> 2434 */,
-        &SPIRV_TextureSampleCompare_Texture2DArray /* 2435 -> 2435 */,
-        &SPIRV_SampledTextureSampleCompare_Texture2DArray /* 2436 -> 2436 */,
-        &SPIRV_TextureSampleCompareOffset_Texture1D /* 2437 -> 2437 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture1D /* 2438 -> 2438 */,
-        &SPIRV_TextureSampleCompareOffset_Texture2D /* 2439 -> 2439 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture2D /* 2440 -> 2440 */,
-        &SPIRV_TextureSampleCompareOffset_Texture3D /* 2441 -> 2441 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture3D /* 2442 -> 2442 */,
-        &SPIRV_TextureSampleCompareOffset_Texture1DArray /* 2443 -> 2443 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture1DArray /* 2444 -> 2444 */,
-        &SPIRV_TextureSampleCompareOffset_Texture2DArray /* 2445 -> 2445 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture2DArray /* 2446 -> 2446 */,
-        &SPIRV_TextureSampleProjCompare_Texture1D /* 2447 -> 2447 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture1D /* 2448 -> 2448 */,
-        &SPIRV_TextureSampleProjCompare_Texture2D /* 2449 -> 2449 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture2D /* 2450 -> 2450 */,
-        &SPIRV_TextureSampleProjCompare_Texture3D /* 2451 -> 2451 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture3D /* 2452 -> 2452 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture1D /* 2453 -> 2453 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture1D /* 2454 -> 2454 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture2D /* 2455 -> 2455 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture2D /* 2456 -> 2456 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture3D /* 2457 -> 2457 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture3D /* 2458 -> 2458 */,
-        &SPIRV_TextureSampleLod_Texture1D /* 2459 -> 2459 */,
-        &SPIRV_SampledTextureSampleLod_Texture1D /* 2460 -> 2460 */,
-        &SPIRV_TextureSampleLod_Texture2D /* 2461 -> 2461 */,
-        &SPIRV_SampledTextureSampleLod_Texture2D /* 2462 -> 2462 */,
-        &SPIRV_TextureSampleLod_Texture3D /* 2463 -> 2463 */,
-        &SPIRV_SampledTextureSampleLod_Texture3D /* 2464 -> 2464 */,
-        &SPIRV_TextureSampleLod_TextureCube /* 2465 -> 2465 */,
-        &SPIRV_SampledTextureSampleLod_TextureCube /* 2466 -> 2466 */,
-        &SPIRV_TextureSampleLod_Texture1DArray /* 2467 -> 2467 */,
-        &SPIRV_SampledTextureSampleLod_Texture1DArray /* 2468 -> 2468 */,
-        &SPIRV_TextureSampleLod_Texture2DArray /* 2469 -> 2469 */,
-        &SPIRV_SampledTextureSampleLod_Texture2DArray /* 2470 -> 2470 */,
-        &SPIRV_TextureSampleLod_TextureCubeArray /* 2471 -> 2471 */,
-        &SPIRV_SampledTextureSampleLod_TextureCubeArray /* 2472 -> 2472 */,
-        &SPIRV_TextureSampleLodOffset_Texture1D /* 2473 -> 2473 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture1D /* 2474 -> 2474 */,
-        &SPIRV_TextureSampleLodOffset_Texture2D /* 2475 -> 2475 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture2D /* 2476 -> 2476 */,
-        &SPIRV_TextureSampleLodOffset_Texture3D /* 2477 -> 2477 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture3D /* 2478 -> 2478 */,
-        &SPIRV_TextureSampleLodOffset_Texture1DArray /* 2479 -> 2479 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture1DArray /* 2480 -> 2480 */,
-        &SPIRV_TextureSampleLodOffset_Texture2DArray /* 2481 -> 2481 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture2DArray /* 2482 -> 2482 */,
-        &SPIRV_TextureSampleLodProj_Texture1D /* 2483 -> 2483 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture1D /* 2484 -> 2484 */,
-        &SPIRV_TextureSampleLodProj_Texture2D /* 2485 -> 2485 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture2D /* 2486 -> 2486 */,
-        &SPIRV_TextureSampleLodProj_Texture3D /* 2487 -> 2487 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture3D /* 2488 -> 2488 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture1D /* 2489 -> 2489 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture1D /* 2490 -> 2490 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture2D /* 2491 -> 2491 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture2D /* 2492 -> 2492 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture3D /* 2493 -> 2493 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture3D /* 2494 -> 2494 */,
-        &SPIRV_TextureSampleLodCompare_Texture1D /* 2495 -> 2495 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture1D /* 2496 -> 2496 */,
-        &SPIRV_TextureSampleLodCompare_Texture2D /* 2497 -> 2497 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture2D /* 2498 -> 2498 */,
-        &SPIRV_TextureSampleLodCompare_Texture3D /* 2499 -> 2499 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture3D /* 2500 -> 2500 */,
-        &SPIRV_TextureSampleLodCompare_Texture1DArray /* 2501 -> 2501 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture1DArray /* 2502 -> 2502 */,
-        &SPIRV_TextureSampleLodCompare_Texture2DArray /* 2503 -> 2503 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture2DArray /* 2504 -> 2504 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture1D /* 2505 -> 2505 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1D /* 2506 -> 2506 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture2D /* 2507 -> 2507 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2D /* 2508 -> 2508 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture3D /* 2509 -> 2509 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture3D /* 2510 -> 2510 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture1DArray /* 2511 -> 2511 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1DArray /* 2512 -> 2512 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture2DArray /* 2513 -> 2513 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2DArray /* 2514 -> 2514 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture1D /* 2515 -> 2515 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture1D /* 2516 -> 2516 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture2D /* 2517 -> 2517 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture2D /* 2518 -> 2518 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture3D /* 2519 -> 2519 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture3D /* 2520 -> 2520 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture1D /* 2521 -> 2521 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture1D /* 2522 -> 2522 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture2D /* 2523 -> 2523 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture2D /* 2524 -> 2524 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture3D /* 2525 -> 2525 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture3D /* 2526 -> 2526 */,
-        &SPIRV_TextureSampleGrad_Texture1D /* 2527 -> 2527 */,
-        &SPIRV_SampledTextureSampleGrad_Texture1D /* 2528 -> 2528 */,
-        &SPIRV_TextureSampleGrad_Texture2D /* 2529 -> 2529 */,
-        &SPIRV_SampledTextureSampleGrad_Texture2D /* 2530 -> 2530 */,
-        &SPIRV_TextureSampleGrad_Texture3D /* 2531 -> 2531 */,
-        &SPIRV_SampledTextureSampleGrad_Texture3D /* 2532 -> 2532 */,
-        &SPIRV_TextureSampleGrad_TextureCube /* 2533 -> 2533 */,
-        &SPIRV_SampledTextureSampleGrad_TextureCube /* 2534 -> 2534 */,
-        &SPIRV_TextureSampleGrad_Texture1DArray /* 2535 -> 2535 */,
-        &SPIRV_SampledTextureSampleGrad_Texture1DArray /* 2536 -> 2536 */,
-        &SPIRV_TextureSampleGrad_Texture2DArray /* 2537 -> 2537 */,
-        &SPIRV_SampledTextureSampleGrad_Texture2DArray /* 2538 -> 2538 */,
-        &SPIRV_TextureSampleGrad_TextureCubeArray /* 2539 -> 2539 */,
-        &SPIRV_SampledTextureSampleGrad_TextureCubeArray /* 2540 -> 2540 */,
-        &SPIRV_TextureSampleGradOffset_Texture1D /* 2541 -> 2541 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture1D /* 2542 -> 2542 */,
-        &SPIRV_TextureSampleGradOffset_Texture2D /* 2543 -> 2543 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture2D /* 2544 -> 2544 */,
-        &SPIRV_TextureSampleGradOffset_Texture3D /* 2545 -> 2545 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture3D /* 2546 -> 2546 */,
-        &SPIRV_TextureSampleGradOffset_Texture1DArray /* 2547 -> 2547 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture1DArray /* 2548 -> 2548 */,
-        &SPIRV_TextureSampleGradOffset_Texture2DArray /* 2549 -> 2549 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture2DArray /* 2550 -> 2550 */,
-        &SPIRV_TextureSampleGradProj_Texture1D /* 2551 -> 2551 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture1D /* 2552 -> 2552 */,
-        &SPIRV_TextureSampleGradProj_Texture2D /* 2553 -> 2553 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture2D /* 2554 -> 2554 */,
-        &SPIRV_TextureSampleGradProj_Texture3D /* 2555 -> 2555 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture3D /* 2556 -> 2556 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture1D /* 2557 -> 2557 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture1D /* 2558 -> 2558 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture2D /* 2559 -> 2559 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture2D /* 2560 -> 2560 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture3D /* 2561 -> 2561 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture3D /* 2562 -> 2562 */,
-        &SPIRV_TextureSampleGradCompare_Texture1D /* 2563 -> 2563 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture1D /* 2564 -> 2564 */,
-        &SPIRV_TextureSampleGradCompare_Texture2D /* 2565 -> 2565 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture2D /* 2566 -> 2566 */,
-        &SPIRV_TextureSampleGradCompare_Texture3D /* 2567 -> 2567 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture3D /* 2568 -> 2568 */,
-        &SPIRV_TextureSampleGradCompare_Texture1DArray /* 2569 -> 2569 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture1DArray /* 2570 -> 2570 */,
-        &SPIRV_TextureSampleGradCompare_Texture2DArray /* 2571 -> 2571 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture2DArray /* 2572 -> 2572 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture1D /* 2573 -> 2573 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1D /* 2574 -> 2574 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture2D /* 2575 -> 2575 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2D /* 2576 -> 2576 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture3D /* 2577 -> 2577 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture3D /* 2578 -> 2578 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture1DArray /* 2579 -> 2579 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1DArray /* 2580 -> 2580 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture2DArray /* 2581 -> 2581 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2DArray /* 2582 -> 2582 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture1D /* 2583 -> 2583 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture1D /* 2584 -> 2584 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture2D /* 2585 -> 2585 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture2D /* 2586 -> 2586 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture3D /* 2587 -> 2587 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture3D /* 2588 -> 2588 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture1D /* 2589 -> 2589 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture1D /* 2590 -> 2590 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture2D /* 2591 -> 2591 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture2D /* 2592 -> 2592 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture3D /* 2593 -> 2593 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture3D /* 2594 -> 2594 */,
-        &SPIRV_TextureSampleBias_Texture1D /* 2595 -> 2595 */,
-        &SPIRV_SampledTextureSampleBias_Texture1D /* 2596 -> 2596 */,
-        &SPIRV_TextureSampleBias_Texture2D /* 2597 -> 2597 */,
-        &SPIRV_SampledTextureSampleBias_Texture2D /* 2598 -> 2598 */,
-        &SPIRV_TextureSampleBias_Texture3D /* 2599 -> 2599 */,
-        &SPIRV_SampledTextureSampleBias_Texture3D /* 2600 -> 2600 */,
-        &SPIRV_TextureSampleBias_TextureCube /* 2601 -> 2601 */,
-        &SPIRV_SampledTextureSampleBias_TextureCube /* 2602 -> 2602 */,
-        &SPIRV_TextureSampleBias_Texture1DArray /* 2603 -> 2603 */,
-        &SPIRV_SampledTextureSampleBias_Texture1DArray /* 2604 -> 2604 */,
-        &SPIRV_TextureSampleBias_Texture2DArray /* 2605 -> 2605 */,
-        &SPIRV_SampledTextureSampleBias_Texture2DArray /* 2606 -> 2606 */,
-        &SPIRV_TextureSampleBias_TextureCubeArray /* 2607 -> 2607 */,
-        &SPIRV_SampledTextureSampleBias_TextureCubeArray /* 2608 -> 2608 */,
-        &SPIRV_TextureSampleBiasOffset_Texture1D /* 2609 -> 2609 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture1D /* 2610 -> 2610 */,
-        &SPIRV_TextureSampleBiasOffset_Texture2D /* 2611 -> 2611 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture2D /* 2612 -> 2612 */,
-        &SPIRV_TextureSampleBiasOffset_Texture3D /* 2613 -> 2613 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture3D /* 2614 -> 2614 */,
-        &SPIRV_TextureSampleBiasOffset_Texture1DArray /* 2615 -> 2615 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture1DArray /* 2616 -> 2616 */,
-        &SPIRV_TextureSampleBiasOffset_Texture2DArray /* 2617 -> 2617 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture2DArray /* 2618 -> 2618 */,
-        &SPIRV_TextureSampleBiasProj_Texture1D /* 2619 -> 2619 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture1D /* 2620 -> 2620 */,
-        &SPIRV_TextureSampleBiasProj_Texture2D /* 2621 -> 2621 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture2D /* 2622 -> 2622 */,
-        &SPIRV_TextureSampleBiasProj_Texture3D /* 2623 -> 2623 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture3D /* 2624 -> 2624 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture1D /* 2625 -> 2625 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture1D /* 2626 -> 2626 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture2D /* 2627 -> 2627 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture2D /* 2628 -> 2628 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture3D /* 2629 -> 2629 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture3D /* 2630 -> 2630 */,
-        &SPIRV_TextureSampleBiasCompare_Texture1D /* 2631 -> 2631 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture1D /* 2632 -> 2632 */,
-        &SPIRV_TextureSampleBiasCompare_Texture2D /* 2633 -> 2633 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture2D /* 2634 -> 2634 */,
-        &SPIRV_TextureSampleBiasCompare_Texture3D /* 2635 -> 2635 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture3D /* 2636 -> 2636 */,
-        &SPIRV_TextureSampleBiasCompare_Texture1DArray /* 2637 -> 2637 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture1DArray /* 2638 -> 2638 */,
-        &SPIRV_TextureSampleBiasCompare_Texture2DArray /* 2639 -> 2639 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture2DArray /* 2640 -> 2640 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture1D /* 2641 -> 2641 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1D /* 2642 -> 2642 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture2D /* 2643 -> 2643 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2D /* 2644 -> 2644 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture3D /* 2645 -> 2645 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture3D /* 2646 -> 2646 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture1DArray /* 2647 -> 2647 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1DArray /* 2648 -> 2648 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture2DArray /* 2649 -> 2649 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2DArray /* 2650 -> 2650 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture1D /* 2651 -> 2651 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture1D /* 2652 -> 2652 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture2D /* 2653 -> 2653 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture2D /* 2654 -> 2654 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture3D /* 2655 -> 2655 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture3D /* 2656 -> 2656 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture1D /* 2657 -> 2657 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture1D /* 2658 -> 2658 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture2D /* 2659 -> 2659 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture2D /* 2660 -> 2660 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture3D /* 2661 -> 2661 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture3D /* 2662 -> 2662 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Float32 /* 2663 -> 2663 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_UInt32 /* 2664 -> 2664 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Int32 /* 2665 -> 2665 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Float16 /* 2666 -> 2666 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_UInt16 /* 2667 -> 2667 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Int16 /* 2668 -> 2668 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Float32 /* 2669 -> 2669 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_UInt32 /* 2670 -> 2670 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Int32 /* 2671 -> 2671 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Float16 /* 2672 -> 2672 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_UInt16 /* 2673 -> 2673 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Int16 /* 2674 -> 2674 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Float32 /* 2675 -> 2675 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_UInt32 /* 2676 -> 2676 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Int32 /* 2677 -> 2677 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Float16 /* 2678 -> 2678 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_UInt16 /* 2679 -> 2679 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Int16 /* 2680 -> 2680 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Float32 /* 2681 -> 2681 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_UInt32 /* 2682 -> 2682 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Int32 /* 2683 -> 2683 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Float16 /* 2684 -> 2684 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_UInt16 /* 2685 -> 2685 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Int16 /* 2686 -> 2686 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Float32 /* 2687 -> 2687 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt32 /* 2688 -> 2688 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Int32 /* 2689 -> 2689 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Float16 /* 2690 -> 2690 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt16 /* 2691 -> 2691 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Int16 /* 2692 -> 2692 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Float32 /* 2693 -> 2693 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt32 /* 2694 -> 2694 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Int32 /* 2695 -> 2695 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Float16 /* 2696 -> 2696 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt16 /* 2697 -> 2697 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Int16 /* 2698 -> 2698 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float32 /* 2699 -> 2699 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt32 /* 2700 -> 2700 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int32 /* 2701 -> 2701 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float16 /* 2702 -> 2702 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt16 /* 2703 -> 2703 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int16 /* 2704 -> 2704 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Float32 /* 2705 -> 2705 */,
-        &SPIRV_TextureAtomicStore_Texture1D_UInt32 /* 2706 -> 2706 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Int32 /* 2707 -> 2707 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Float16 /* 2708 -> 2708 */,
-        &SPIRV_TextureAtomicStore_Texture1D_UInt16 /* 2709 -> 2709 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Int16 /* 2710 -> 2710 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Float32 /* 2711 -> 2711 */,
-        &SPIRV_TextureAtomicStore_Texture2D_UInt32 /* 2712 -> 2712 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Int32 /* 2713 -> 2713 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Float16 /* 2714 -> 2714 */,
-        &SPIRV_TextureAtomicStore_Texture2D_UInt16 /* 2715 -> 2715 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Int16 /* 2716 -> 2716 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Float32 /* 2717 -> 2717 */,
-        &SPIRV_TextureAtomicStore_Texture3D_UInt32 /* 2718 -> 2718 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Int32 /* 2719 -> 2719 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Float16 /* 2720 -> 2720 */,
-        &SPIRV_TextureAtomicStore_Texture3D_UInt16 /* 2721 -> 2721 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Int16 /* 2722 -> 2722 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Float32 /* 2723 -> 2723 */,
-        &SPIRV_TextureAtomicStore_TextureCube_UInt32 /* 2724 -> 2724 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Int32 /* 2725 -> 2725 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Float16 /* 2726 -> 2726 */,
-        &SPIRV_TextureAtomicStore_TextureCube_UInt16 /* 2727 -> 2727 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Int16 /* 2728 -> 2728 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Float32 /* 2729 -> 2729 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_UInt32 /* 2730 -> 2730 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Int32 /* 2731 -> 2731 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Float16 /* 2732 -> 2732 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_UInt16 /* 2733 -> 2733 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Int16 /* 2734 -> 2734 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Float32 /* 2735 -> 2735 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_UInt32 /* 2736 -> 2736 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Int32 /* 2737 -> 2737 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Float16 /* 2738 -> 2738 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_UInt16 /* 2739 -> 2739 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Int16 /* 2740 -> 2740 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Float32 /* 2741 -> 2741 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt32 /* 2742 -> 2742 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Int32 /* 2743 -> 2743 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Float16 /* 2744 -> 2744 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt16 /* 2745 -> 2745 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Int16 /* 2746 -> 2746 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Float32 /* 2747 -> 2747 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_UInt32 /* 2748 -> 2748 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Int32 /* 2749 -> 2749 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Float16 /* 2750 -> 2750 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_UInt16 /* 2751 -> 2751 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Int16 /* 2752 -> 2752 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Float32 /* 2753 -> 2753 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_UInt32 /* 2754 -> 2754 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Int32 /* 2755 -> 2755 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Float16 /* 2756 -> 2756 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_UInt16 /* 2757 -> 2757 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Int16 /* 2758 -> 2758 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Float32 /* 2759 -> 2759 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_UInt32 /* 2760 -> 2760 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Int32 /* 2761 -> 2761 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Float16 /* 2762 -> 2762 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_UInt16 /* 2763 -> 2763 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Int16 /* 2764 -> 2764 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Float32 /* 2765 -> 2765 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_UInt32 /* 2766 -> 2766 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Int32 /* 2767 -> 2767 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Float16 /* 2768 -> 2768 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_UInt16 /* 2769 -> 2769 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Int16 /* 2770 -> 2770 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Float32 /* 2771 -> 2771 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt32 /* 2772 -> 2772 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Int32 /* 2773 -> 2773 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Float16 /* 2774 -> 2774 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt16 /* 2775 -> 2775 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Int16 /* 2776 -> 2776 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Float32 /* 2777 -> 2777 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt32 /* 2778 -> 2778 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Int32 /* 2779 -> 2779 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Float16 /* 2780 -> 2780 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt16 /* 2781 -> 2781 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Int16 /* 2782 -> 2782 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float32 /* 2783 -> 2783 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt32 /* 2784 -> 2784 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int32 /* 2785 -> 2785 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float16 /* 2786 -> 2786 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt16 /* 2787 -> 2787 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int16 /* 2788 -> 2788 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt32 /* 2789 -> 2789 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int32 /* 2790 -> 2790 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt16 /* 2791 -> 2791 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int16 /* 2792 -> 2792 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt32 /* 2793 -> 2793 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int32 /* 2794 -> 2794 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt16 /* 2795 -> 2795 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int16 /* 2796 -> 2796 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt32 /* 2797 -> 2797 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int32 /* 2798 -> 2798 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt16 /* 2799 -> 2799 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int16 /* 2800 -> 2800 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt32 /* 2801 -> 2801 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int32 /* 2802 -> 2802 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt16 /* 2803 -> 2803 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int16 /* 2804 -> 2804 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt32 /* 2805 -> 2805 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int32 /* 2806 -> 2806 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt16 /* 2807 -> 2807 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int16 /* 2808 -> 2808 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt32 /* 2809 -> 2809 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int32 /* 2810 -> 2810 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt16 /* 2811 -> 2811 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int16 /* 2812 -> 2812 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt32 /* 2813 -> 2813 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int32 /* 2814 -> 2814 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt16 /* 2815 -> 2815 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int16 /* 2816 -> 2816 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_UInt32 /* 2817 -> 2817 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_Int32 /* 2818 -> 2818 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_UInt16 /* 2819 -> 2819 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_Int16 /* 2820 -> 2820 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_UInt32 /* 2821 -> 2821 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_Int32 /* 2822 -> 2822 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_UInt16 /* 2823 -> 2823 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_Int16 /* 2824 -> 2824 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_UInt32 /* 2825 -> 2825 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_Int32 /* 2826 -> 2826 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_UInt16 /* 2827 -> 2827 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_Int16 /* 2828 -> 2828 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_UInt32 /* 2829 -> 2829 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_Int32 /* 2830 -> 2830 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_UInt16 /* 2831 -> 2831 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_Int16 /* 2832 -> 2832 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt32 /* 2833 -> 2833 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_Int32 /* 2834 -> 2834 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt16 /* 2835 -> 2835 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_Int16 /* 2836 -> 2836 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt32 /* 2837 -> 2837 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_Int32 /* 2838 -> 2838 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt16 /* 2839 -> 2839 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_Int16 /* 2840 -> 2840 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt32 /* 2841 -> 2841 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int32 /* 2842 -> 2842 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt16 /* 2843 -> 2843 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int16 /* 2844 -> 2844 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_UInt32 /* 2845 -> 2845 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_Int32 /* 2846 -> 2846 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_UInt16 /* 2847 -> 2847 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_Int16 /* 2848 -> 2848 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_UInt32 /* 2849 -> 2849 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_Int32 /* 2850 -> 2850 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_UInt16 /* 2851 -> 2851 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_Int16 /* 2852 -> 2852 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_UInt32 /* 2853 -> 2853 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_Int32 /* 2854 -> 2854 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_UInt16 /* 2855 -> 2855 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_Int16 /* 2856 -> 2856 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_UInt32 /* 2857 -> 2857 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_Int32 /* 2858 -> 2858 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_UInt16 /* 2859 -> 2859 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_Int16 /* 2860 -> 2860 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt32 /* 2861 -> 2861 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int32 /* 2862 -> 2862 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt16 /* 2863 -> 2863 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int16 /* 2864 -> 2864 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt32 /* 2865 -> 2865 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int32 /* 2866 -> 2866 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt16 /* 2867 -> 2867 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int16 /* 2868 -> 2868 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt32 /* 2869 -> 2869 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int32 /* 2870 -> 2870 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt16 /* 2871 -> 2871 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int16 /* 2872 -> 2872 */,
-        &SPIRV_TextureAtomicMin_Texture1D_UInt32 /* 2873 -> 2873 */,
-        &SPIRV_TextureAtomicMin_Texture1D_Int32 /* 2874 -> 2874 */,
-        &SPIRV_TextureAtomicMin_Texture1D_UInt16 /* 2875 -> 2875 */,
-        &SPIRV_TextureAtomicMin_Texture1D_Int16 /* 2876 -> 2876 */,
-        &SPIRV_TextureAtomicMin_Texture2D_UInt32 /* 2877 -> 2877 */,
-        &SPIRV_TextureAtomicMin_Texture2D_Int32 /* 2878 -> 2878 */,
-        &SPIRV_TextureAtomicMin_Texture2D_UInt16 /* 2879 -> 2879 */,
-        &SPIRV_TextureAtomicMin_Texture2D_Int16 /* 2880 -> 2880 */,
-        &SPIRV_TextureAtomicMin_Texture3D_UInt32 /* 2881 -> 2881 */,
-        &SPIRV_TextureAtomicMin_Texture3D_Int32 /* 2882 -> 2882 */,
-        &SPIRV_TextureAtomicMin_Texture3D_UInt16 /* 2883 -> 2883 */,
-        &SPIRV_TextureAtomicMin_Texture3D_Int16 /* 2884 -> 2884 */,
-        &SPIRV_TextureAtomicMin_TextureCube_UInt32 /* 2885 -> 2885 */,
-        &SPIRV_TextureAtomicMin_TextureCube_Int32 /* 2886 -> 2886 */,
-        &SPIRV_TextureAtomicMin_TextureCube_UInt16 /* 2887 -> 2887 */,
-        &SPIRV_TextureAtomicMin_TextureCube_Int16 /* 2888 -> 2888 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_UInt32 /* 2889 -> 2889 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_Int32 /* 2890 -> 2890 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_UInt16 /* 2891 -> 2891 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_Int16 /* 2892 -> 2892 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_UInt32 /* 2893 -> 2893 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_Int32 /* 2894 -> 2894 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_UInt16 /* 2895 -> 2895 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_Int16 /* 2896 -> 2896 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt32 /* 2897 -> 2897 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_Int32 /* 2898 -> 2898 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt16 /* 2899 -> 2899 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_Int16 /* 2900 -> 2900 */,
-        &SPIRV_TextureAtomicMax_Texture1D_UInt32 /* 2901 -> 2901 */,
-        &SPIRV_TextureAtomicMax_Texture1D_Int32 /* 2902 -> 2902 */,
-        &SPIRV_TextureAtomicMax_Texture1D_UInt16 /* 2903 -> 2903 */,
-        &SPIRV_TextureAtomicMax_Texture1D_Int16 /* 2904 -> 2904 */,
-        &SPIRV_TextureAtomicMax_Texture2D_UInt32 /* 2905 -> 2905 */,
-        &SPIRV_TextureAtomicMax_Texture2D_Int32 /* 2906 -> 2906 */,
-        &SPIRV_TextureAtomicMax_Texture2D_UInt16 /* 2907 -> 2907 */,
-        &SPIRV_TextureAtomicMax_Texture2D_Int16 /* 2908 -> 2908 */,
-        &SPIRV_TextureAtomicMax_Texture3D_UInt32 /* 2909 -> 2909 */,
-        &SPIRV_TextureAtomicMax_Texture3D_Int32 /* 2910 -> 2910 */,
-        &SPIRV_TextureAtomicMax_Texture3D_UInt16 /* 2911 -> 2911 */,
-        &SPIRV_TextureAtomicMax_Texture3D_Int16 /* 2912 -> 2912 */,
-        &SPIRV_TextureAtomicMax_TextureCube_UInt32 /* 2913 -> 2913 */,
-        &SPIRV_TextureAtomicMax_TextureCube_Int32 /* 2914 -> 2914 */,
-        &SPIRV_TextureAtomicMax_TextureCube_UInt16 /* 2915 -> 2915 */,
-        &SPIRV_TextureAtomicMax_TextureCube_Int16 /* 2916 -> 2916 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_UInt32 /* 2917 -> 2917 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_Int32 /* 2918 -> 2918 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_UInt16 /* 2919 -> 2919 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_Int16 /* 2920 -> 2920 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_UInt32 /* 2921 -> 2921 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_Int32 /* 2922 -> 2922 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_UInt16 /* 2923 -> 2923 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_Int16 /* 2924 -> 2924 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt32 /* 2925 -> 2925 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_Int32 /* 2926 -> 2926 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt16 /* 2927 -> 2927 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_Int16 /* 2928 -> 2928 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_UInt32 /* 2929 -> 2929 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_Int32 /* 2930 -> 2930 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_UInt16 /* 2931 -> 2931 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_Int16 /* 2932 -> 2932 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_UInt32 /* 2933 -> 2933 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_Int32 /* 2934 -> 2934 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_UInt16 /* 2935 -> 2935 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_Int16 /* 2936 -> 2936 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_UInt32 /* 2937 -> 2937 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_Int32 /* 2938 -> 2938 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_UInt16 /* 2939 -> 2939 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_Int16 /* 2940 -> 2940 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_UInt32 /* 2941 -> 2941 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_Int32 /* 2942 -> 2942 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_UInt16 /* 2943 -> 2943 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_Int16 /* 2944 -> 2944 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt32 /* 2945 -> 2945 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_Int32 /* 2946 -> 2946 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt16 /* 2947 -> 2947 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_Int16 /* 2948 -> 2948 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt32 /* 2949 -> 2949 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_Int32 /* 2950 -> 2950 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt16 /* 2951 -> 2951 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_Int16 /* 2952 -> 2952 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt32 /* 2953 -> 2953 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int32 /* 2954 -> 2954 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt16 /* 2955 -> 2955 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int16 /* 2956 -> 2956 */,
-        &SPIRV_TextureAtomicOr_Texture1D_UInt32 /* 2957 -> 2957 */,
-        &SPIRV_TextureAtomicOr_Texture1D_Int32 /* 2958 -> 2958 */,
-        &SPIRV_TextureAtomicOr_Texture1D_UInt16 /* 2959 -> 2959 */,
-        &SPIRV_TextureAtomicOr_Texture1D_Int16 /* 2960 -> 2960 */,
-        &SPIRV_TextureAtomicOr_Texture2D_UInt32 /* 2961 -> 2961 */,
-        &SPIRV_TextureAtomicOr_Texture2D_Int32 /* 2962 -> 2962 */,
-        &SPIRV_TextureAtomicOr_Texture2D_UInt16 /* 2963 -> 2963 */,
-        &SPIRV_TextureAtomicOr_Texture2D_Int16 /* 2964 -> 2964 */,
-        &SPIRV_TextureAtomicOr_Texture3D_UInt32 /* 2965 -> 2965 */,
-        &SPIRV_TextureAtomicOr_Texture3D_Int32 /* 2966 -> 2966 */,
-        &SPIRV_TextureAtomicOr_Texture3D_UInt16 /* 2967 -> 2967 */,
-        &SPIRV_TextureAtomicOr_Texture3D_Int16 /* 2968 -> 2968 */,
-        &SPIRV_TextureAtomicOr_TextureCube_UInt32 /* 2969 -> 2969 */,
-        &SPIRV_TextureAtomicOr_TextureCube_Int32 /* 2970 -> 2970 */,
-        &SPIRV_TextureAtomicOr_TextureCube_UInt16 /* 2971 -> 2971 */,
-        &SPIRV_TextureAtomicOr_TextureCube_Int16 /* 2972 -> 2972 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_UInt32 /* 2973 -> 2973 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_Int32 /* 2974 -> 2974 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_UInt16 /* 2975 -> 2975 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_Int16 /* 2976 -> 2976 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_UInt32 /* 2977 -> 2977 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_Int32 /* 2978 -> 2978 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_UInt16 /* 2979 -> 2979 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_Int16 /* 2980 -> 2980 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt32 /* 2981 -> 2981 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_Int32 /* 2982 -> 2982 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt16 /* 2983 -> 2983 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_Int16 /* 2984 -> 2984 */,
-        &SPIRV_TextureAtomicXor_Texture1D_UInt32 /* 2985 -> 2985 */,
-        &SPIRV_TextureAtomicXor_Texture1D_Int32 /* 2986 -> 2986 */,
-        &SPIRV_TextureAtomicXor_Texture1D_UInt16 /* 2987 -> 2987 */,
-        &SPIRV_TextureAtomicXor_Texture1D_Int16 /* 2988 -> 2988 */,
-        &SPIRV_TextureAtomicXor_Texture2D_UInt32 /* 2989 -> 2989 */,
-        &SPIRV_TextureAtomicXor_Texture2D_Int32 /* 2990 -> 2990 */,
-        &SPIRV_TextureAtomicXor_Texture2D_UInt16 /* 2991 -> 2991 */,
-        &SPIRV_TextureAtomicXor_Texture2D_Int16 /* 2992 -> 2992 */,
-        &SPIRV_TextureAtomicXor_Texture3D_UInt32 /* 2993 -> 2993 */,
-        &SPIRV_TextureAtomicXor_Texture3D_Int32 /* 2994 -> 2994 */,
-        &SPIRV_TextureAtomicXor_Texture3D_UInt16 /* 2995 -> 2995 */,
-        &SPIRV_TextureAtomicXor_Texture3D_Int16 /* 2996 -> 2996 */,
-        &SPIRV_TextureAtomicXor_TextureCube_UInt32 /* 2997 -> 2997 */,
-        &SPIRV_TextureAtomicXor_TextureCube_Int32 /* 2998 -> 2998 */,
-        &SPIRV_TextureAtomicXor_TextureCube_UInt16 /* 2999 -> 2999 */,
-        &SPIRV_TextureAtomicXor_TextureCube_Int16 /* 3000 -> 3000 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_UInt32 /* 3001 -> 3001 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_Int32 /* 3002 -> 3002 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_UInt16 /* 3003 -> 3003 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_Int16 /* 3004 -> 3004 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_UInt32 /* 3005 -> 3005 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_Int32 /* 3006 -> 3006 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_UInt16 /* 3007 -> 3007 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_Int16 /* 3008 -> 3008 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt32 /* 3009 -> 3009 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_Int32 /* 3010 -> 3010 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt16 /* 3011 -> 3011 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_Int16 /* 3012 -> 3012 */
+        &SPIRV_TextureFetchSample_Texture2DMS /* 2369 -> 2369 */,
+        &SPIRV_TextureFetchSample_Texture2DMSArray /* 2370 -> 2370 */,
+        &SPIRV_TextureGather_Texture2D /* 2371 -> 2371 */,
+        &SPIRV_SampledTextureGather_Texture2D /* 2372 -> 2372 */,
+        &SPIRV_TextureGatherOffset_Texture2D /* 2373 -> 2373 */,
+        &SPIRV_SampledTextureGatherOffset_Texture2D /* 2374 -> 2374 */,
+        &SPIRV_TextureGather_TextureCube /* 2375 -> 2375 */,
+        &SPIRV_SampledTextureGather_TextureCube /* 2376 -> 2376 */,
+        &SPIRV_TextureGatherOffset_TextureCube /* 2377 -> 2377 */,
+        &SPIRV_SampledTextureGatherOffset_TextureCube /* 2378 -> 2378 */,
+        &SPIRV_TextureGather_Texture2DArray /* 2379 -> 2379 */,
+        &SPIRV_SampledTextureGather_Texture2DArray /* 2380 -> 2380 */,
+        &SPIRV_TextureGatherOffset_Texture2DArray /* 2381 -> 2381 */,
+        &SPIRV_SampledTextureGatherOffset_Texture2DArray /* 2382 -> 2382 */,
+        &SPIRV_TextureGather_TextureCubeArray /* 2383 -> 2383 */,
+        &SPIRV_SampledTextureGather_TextureCubeArray /* 2384 -> 2384 */,
+        &SPIRV_TextureGatherOffset_TextureCubeArray /* 2385 -> 2385 */,
+        &SPIRV_SampledTextureGatherOffset_TextureCubeArray /* 2386 -> 2386 */,
+        &SPIRV_TexturePixelCacheLoad_PixelCache /* 2387 -> 2387 */,
+        &SPIRV_TexturePixelCacheLoad_PixelCacheMS /* 2388 -> 2388 */,
+        &SPIRV_TextureSample_Texture1D /* 2389 -> 2389 */,
+        &SPIRV_SampledTextureSample_Texture1D /* 2390 -> 2390 */,
+        &SPIRV_TextureSample_Texture2D /* 2391 -> 2391 */,
+        &SPIRV_SampledTextureSample_Texture2D /* 2392 -> 2392 */,
+        &SPIRV_TextureSample_Texture3D /* 2393 -> 2393 */,
+        &SPIRV_SampledTextureSample_Texture3D /* 2394 -> 2394 */,
+        &SPIRV_TextureSample_TextureCube /* 2395 -> 2395 */,
+        &SPIRV_SampledTextureSample_TextureCube /* 2396 -> 2396 */,
+        &SPIRV_TextureSample_Texture1DArray /* 2397 -> 2397 */,
+        &SPIRV_SampledTextureSample_Texture1DArray /* 2398 -> 2398 */,
+        &SPIRV_TextureSample_Texture2DArray /* 2399 -> 2399 */,
+        &SPIRV_SampledTextureSample_Texture2DArray /* 2400 -> 2400 */,
+        &SPIRV_TextureSample_TextureCubeArray /* 2401 -> 2401 */,
+        &SPIRV_SampledTextureSample_TextureCubeArray /* 2402 -> 2402 */,
+        &SPIRV_TextureSampleOffset_Texture1D /* 2403 -> 2403 */,
+        &SPIRV_SampledTextureSampleOffset_Texture1D /* 2404 -> 2404 */,
+        &SPIRV_TextureSampleOffset_Texture2D /* 2405 -> 2405 */,
+        &SPIRV_SampledTextureSampleOffset_Texture2D /* 2406 -> 2406 */,
+        &SPIRV_TextureSampleOffset_Texture3D /* 2407 -> 2407 */,
+        &SPIRV_SampledTextureSampleOffset_Texture3D /* 2408 -> 2408 */,
+        &SPIRV_TextureSampleOffset_Texture1DArray /* 2409 -> 2409 */,
+        &SPIRV_SampledTextureSampleOffset_Texture1DArray /* 2410 -> 2410 */,
+        &SPIRV_TextureSampleOffset_Texture2DArray /* 2411 -> 2411 */,
+        &SPIRV_SampledTextureSampleOffset_Texture2DArray /* 2412 -> 2412 */,
+        &SPIRV_TextureSampleProj_Texture1D /* 2413 -> 2413 */,
+        &SPIRV_SampledTextureSampleProj_Texture1D /* 2414 -> 2414 */,
+        &SPIRV_TextureSampleProj_Texture2D /* 2415 -> 2415 */,
+        &SPIRV_SampledTextureSampleProj_Texture2D /* 2416 -> 2416 */,
+        &SPIRV_TextureSampleProj_Texture3D /* 2417 -> 2417 */,
+        &SPIRV_SampledTextureSampleProj_Texture3D /* 2418 -> 2418 */,
+        &SPIRV_TextureSampleProjOffset_Texture1D /* 2419 -> 2419 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture1D /* 2420 -> 2420 */,
+        &SPIRV_TextureSampleProjOffset_Texture2D /* 2421 -> 2421 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture2D /* 2422 -> 2422 */,
+        &SPIRV_TextureSampleProjOffset_Texture3D /* 2423 -> 2423 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture3D /* 2424 -> 2424 */,
+        &SPIRV_TextureSampleCompare_Texture1D /* 2425 -> 2425 */,
+        &SPIRV_SampledTextureSampleCompare_Texture1D /* 2426 -> 2426 */,
+        &SPIRV_TextureSampleCompare_Texture2D /* 2427 -> 2427 */,
+        &SPIRV_SampledTextureSampleCompare_Texture2D /* 2428 -> 2428 */,
+        &SPIRV_TextureSampleCompare_Texture3D /* 2429 -> 2429 */,
+        &SPIRV_SampledTextureSampleCompare_Texture3D /* 2430 -> 2430 */,
+        &SPIRV_TextureSampleCompare_Texture1DArray /* 2431 -> 2431 */,
+        &SPIRV_SampledTextureSampleCompare_Texture1DArray /* 2432 -> 2432 */,
+        &SPIRV_TextureSampleCompare_Texture2DArray /* 2433 -> 2433 */,
+        &SPIRV_SampledTextureSampleCompare_Texture2DArray /* 2434 -> 2434 */,
+        &SPIRV_TextureSampleCompareOffset_Texture1D /* 2435 -> 2435 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture1D /* 2436 -> 2436 */,
+        &SPIRV_TextureSampleCompareOffset_Texture2D /* 2437 -> 2437 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture2D /* 2438 -> 2438 */,
+        &SPIRV_TextureSampleCompareOffset_Texture3D /* 2439 -> 2439 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture3D /* 2440 -> 2440 */,
+        &SPIRV_TextureSampleCompareOffset_Texture1DArray /* 2441 -> 2441 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture1DArray /* 2442 -> 2442 */,
+        &SPIRV_TextureSampleCompareOffset_Texture2DArray /* 2443 -> 2443 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture2DArray /* 2444 -> 2444 */,
+        &SPIRV_TextureSampleProjCompare_Texture1D /* 2445 -> 2445 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture1D /* 2446 -> 2446 */,
+        &SPIRV_TextureSampleProjCompare_Texture2D /* 2447 -> 2447 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture2D /* 2448 -> 2448 */,
+        &SPIRV_TextureSampleProjCompare_Texture3D /* 2449 -> 2449 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture3D /* 2450 -> 2450 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture1D /* 2451 -> 2451 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture1D /* 2452 -> 2452 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture2D /* 2453 -> 2453 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture2D /* 2454 -> 2454 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture3D /* 2455 -> 2455 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture3D /* 2456 -> 2456 */,
+        &SPIRV_TextureSampleLod_Texture1D /* 2457 -> 2457 */,
+        &SPIRV_SampledTextureSampleLod_Texture1D /* 2458 -> 2458 */,
+        &SPIRV_TextureSampleLod_Texture2D /* 2459 -> 2459 */,
+        &SPIRV_SampledTextureSampleLod_Texture2D /* 2460 -> 2460 */,
+        &SPIRV_TextureSampleLod_Texture3D /* 2461 -> 2461 */,
+        &SPIRV_SampledTextureSampleLod_Texture3D /* 2462 -> 2462 */,
+        &SPIRV_TextureSampleLod_TextureCube /* 2463 -> 2463 */,
+        &SPIRV_SampledTextureSampleLod_TextureCube /* 2464 -> 2464 */,
+        &SPIRV_TextureSampleLod_Texture1DArray /* 2465 -> 2465 */,
+        &SPIRV_SampledTextureSampleLod_Texture1DArray /* 2466 -> 2466 */,
+        &SPIRV_TextureSampleLod_Texture2DArray /* 2467 -> 2467 */,
+        &SPIRV_SampledTextureSampleLod_Texture2DArray /* 2468 -> 2468 */,
+        &SPIRV_TextureSampleLod_TextureCubeArray /* 2469 -> 2469 */,
+        &SPIRV_SampledTextureSampleLod_TextureCubeArray /* 2470 -> 2470 */,
+        &SPIRV_TextureSampleLodOffset_Texture1D /* 2471 -> 2471 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture1D /* 2472 -> 2472 */,
+        &SPIRV_TextureSampleLodOffset_Texture2D /* 2473 -> 2473 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture2D /* 2474 -> 2474 */,
+        &SPIRV_TextureSampleLodOffset_Texture3D /* 2475 -> 2475 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture3D /* 2476 -> 2476 */,
+        &SPIRV_TextureSampleLodOffset_Texture1DArray /* 2477 -> 2477 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture1DArray /* 2478 -> 2478 */,
+        &SPIRV_TextureSampleLodOffset_Texture2DArray /* 2479 -> 2479 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture2DArray /* 2480 -> 2480 */,
+        &SPIRV_TextureSampleLodProj_Texture1D /* 2481 -> 2481 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture1D /* 2482 -> 2482 */,
+        &SPIRV_TextureSampleLodProj_Texture2D /* 2483 -> 2483 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture2D /* 2484 -> 2484 */,
+        &SPIRV_TextureSampleLodProj_Texture3D /* 2485 -> 2485 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture3D /* 2486 -> 2486 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture1D /* 2487 -> 2487 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture1D /* 2488 -> 2488 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture2D /* 2489 -> 2489 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture2D /* 2490 -> 2490 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture3D /* 2491 -> 2491 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture3D /* 2492 -> 2492 */,
+        &SPIRV_TextureSampleLodCompare_Texture1D /* 2493 -> 2493 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture1D /* 2494 -> 2494 */,
+        &SPIRV_TextureSampleLodCompare_Texture2D /* 2495 -> 2495 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture2D /* 2496 -> 2496 */,
+        &SPIRV_TextureSampleLodCompare_Texture3D /* 2497 -> 2497 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture3D /* 2498 -> 2498 */,
+        &SPIRV_TextureSampleLodCompare_Texture1DArray /* 2499 -> 2499 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture1DArray /* 2500 -> 2500 */,
+        &SPIRV_TextureSampleLodCompare_Texture2DArray /* 2501 -> 2501 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture2DArray /* 2502 -> 2502 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture1D /* 2503 -> 2503 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1D /* 2504 -> 2504 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture2D /* 2505 -> 2505 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2D /* 2506 -> 2506 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture3D /* 2507 -> 2507 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture3D /* 2508 -> 2508 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture1DArray /* 2509 -> 2509 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1DArray /* 2510 -> 2510 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture2DArray /* 2511 -> 2511 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2DArray /* 2512 -> 2512 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture1D /* 2513 -> 2513 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture1D /* 2514 -> 2514 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture2D /* 2515 -> 2515 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture2D /* 2516 -> 2516 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture3D /* 2517 -> 2517 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture3D /* 2518 -> 2518 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture1D /* 2519 -> 2519 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture1D /* 2520 -> 2520 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture2D /* 2521 -> 2521 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture2D /* 2522 -> 2522 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture3D /* 2523 -> 2523 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture3D /* 2524 -> 2524 */,
+        &SPIRV_TextureSampleGrad_Texture1D /* 2525 -> 2525 */,
+        &SPIRV_SampledTextureSampleGrad_Texture1D /* 2526 -> 2526 */,
+        &SPIRV_TextureSampleGrad_Texture2D /* 2527 -> 2527 */,
+        &SPIRV_SampledTextureSampleGrad_Texture2D /* 2528 -> 2528 */,
+        &SPIRV_TextureSampleGrad_Texture3D /* 2529 -> 2529 */,
+        &SPIRV_SampledTextureSampleGrad_Texture3D /* 2530 -> 2530 */,
+        &SPIRV_TextureSampleGrad_TextureCube /* 2531 -> 2531 */,
+        &SPIRV_SampledTextureSampleGrad_TextureCube /* 2532 -> 2532 */,
+        &SPIRV_TextureSampleGrad_Texture1DArray /* 2533 -> 2533 */,
+        &SPIRV_SampledTextureSampleGrad_Texture1DArray /* 2534 -> 2534 */,
+        &SPIRV_TextureSampleGrad_Texture2DArray /* 2535 -> 2535 */,
+        &SPIRV_SampledTextureSampleGrad_Texture2DArray /* 2536 -> 2536 */,
+        &SPIRV_TextureSampleGrad_TextureCubeArray /* 2537 -> 2537 */,
+        &SPIRV_SampledTextureSampleGrad_TextureCubeArray /* 2538 -> 2538 */,
+        &SPIRV_TextureSampleGradOffset_Texture1D /* 2539 -> 2539 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture1D /* 2540 -> 2540 */,
+        &SPIRV_TextureSampleGradOffset_Texture2D /* 2541 -> 2541 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture2D /* 2542 -> 2542 */,
+        &SPIRV_TextureSampleGradOffset_Texture3D /* 2543 -> 2543 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture3D /* 2544 -> 2544 */,
+        &SPIRV_TextureSampleGradOffset_Texture1DArray /* 2545 -> 2545 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture1DArray /* 2546 -> 2546 */,
+        &SPIRV_TextureSampleGradOffset_Texture2DArray /* 2547 -> 2547 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture2DArray /* 2548 -> 2548 */,
+        &SPIRV_TextureSampleGradProj_Texture1D /* 2549 -> 2549 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture1D /* 2550 -> 2550 */,
+        &SPIRV_TextureSampleGradProj_Texture2D /* 2551 -> 2551 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture2D /* 2552 -> 2552 */,
+        &SPIRV_TextureSampleGradProj_Texture3D /* 2553 -> 2553 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture3D /* 2554 -> 2554 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture1D /* 2555 -> 2555 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture1D /* 2556 -> 2556 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture2D /* 2557 -> 2557 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture2D /* 2558 -> 2558 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture3D /* 2559 -> 2559 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture3D /* 2560 -> 2560 */,
+        &SPIRV_TextureSampleGradCompare_Texture1D /* 2561 -> 2561 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture1D /* 2562 -> 2562 */,
+        &SPIRV_TextureSampleGradCompare_Texture2D /* 2563 -> 2563 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture2D /* 2564 -> 2564 */,
+        &SPIRV_TextureSampleGradCompare_Texture3D /* 2565 -> 2565 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture3D /* 2566 -> 2566 */,
+        &SPIRV_TextureSampleGradCompare_Texture1DArray /* 2567 -> 2567 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture1DArray /* 2568 -> 2568 */,
+        &SPIRV_TextureSampleGradCompare_Texture2DArray /* 2569 -> 2569 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture2DArray /* 2570 -> 2570 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture1D /* 2571 -> 2571 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1D /* 2572 -> 2572 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture2D /* 2573 -> 2573 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2D /* 2574 -> 2574 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture3D /* 2575 -> 2575 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture3D /* 2576 -> 2576 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture1DArray /* 2577 -> 2577 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1DArray /* 2578 -> 2578 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture2DArray /* 2579 -> 2579 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2DArray /* 2580 -> 2580 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture1D /* 2581 -> 2581 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture1D /* 2582 -> 2582 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture2D /* 2583 -> 2583 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture2D /* 2584 -> 2584 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture3D /* 2585 -> 2585 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture3D /* 2586 -> 2586 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture1D /* 2587 -> 2587 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture1D /* 2588 -> 2588 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture2D /* 2589 -> 2589 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture2D /* 2590 -> 2590 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture3D /* 2591 -> 2591 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture3D /* 2592 -> 2592 */,
+        &SPIRV_TextureSampleBias_Texture1D /* 2593 -> 2593 */,
+        &SPIRV_SampledTextureSampleBias_Texture1D /* 2594 -> 2594 */,
+        &SPIRV_TextureSampleBias_Texture2D /* 2595 -> 2595 */,
+        &SPIRV_SampledTextureSampleBias_Texture2D /* 2596 -> 2596 */,
+        &SPIRV_TextureSampleBias_Texture3D /* 2597 -> 2597 */,
+        &SPIRV_SampledTextureSampleBias_Texture3D /* 2598 -> 2598 */,
+        &SPIRV_TextureSampleBias_TextureCube /* 2599 -> 2599 */,
+        &SPIRV_SampledTextureSampleBias_TextureCube /* 2600 -> 2600 */,
+        &SPIRV_TextureSampleBias_Texture1DArray /* 2601 -> 2601 */,
+        &SPIRV_SampledTextureSampleBias_Texture1DArray /* 2602 -> 2602 */,
+        &SPIRV_TextureSampleBias_Texture2DArray /* 2603 -> 2603 */,
+        &SPIRV_SampledTextureSampleBias_Texture2DArray /* 2604 -> 2604 */,
+        &SPIRV_TextureSampleBias_TextureCubeArray /* 2605 -> 2605 */,
+        &SPIRV_SampledTextureSampleBias_TextureCubeArray /* 2606 -> 2606 */,
+        &SPIRV_TextureSampleBiasOffset_Texture1D /* 2607 -> 2607 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture1D /* 2608 -> 2608 */,
+        &SPIRV_TextureSampleBiasOffset_Texture2D /* 2609 -> 2609 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture2D /* 2610 -> 2610 */,
+        &SPIRV_TextureSampleBiasOffset_Texture3D /* 2611 -> 2611 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture3D /* 2612 -> 2612 */,
+        &SPIRV_TextureSampleBiasOffset_Texture1DArray /* 2613 -> 2613 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture1DArray /* 2614 -> 2614 */,
+        &SPIRV_TextureSampleBiasOffset_Texture2DArray /* 2615 -> 2615 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture2DArray /* 2616 -> 2616 */,
+        &SPIRV_TextureSampleBiasProj_Texture1D /* 2617 -> 2617 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture1D /* 2618 -> 2618 */,
+        &SPIRV_TextureSampleBiasProj_Texture2D /* 2619 -> 2619 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture2D /* 2620 -> 2620 */,
+        &SPIRV_TextureSampleBiasProj_Texture3D /* 2621 -> 2621 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture3D /* 2622 -> 2622 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture1D /* 2623 -> 2623 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture1D /* 2624 -> 2624 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture2D /* 2625 -> 2625 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture2D /* 2626 -> 2626 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture3D /* 2627 -> 2627 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture3D /* 2628 -> 2628 */,
+        &SPIRV_TextureSampleBiasCompare_Texture1D /* 2629 -> 2629 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture1D /* 2630 -> 2630 */,
+        &SPIRV_TextureSampleBiasCompare_Texture2D /* 2631 -> 2631 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture2D /* 2632 -> 2632 */,
+        &SPIRV_TextureSampleBiasCompare_Texture3D /* 2633 -> 2633 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture3D /* 2634 -> 2634 */,
+        &SPIRV_TextureSampleBiasCompare_Texture1DArray /* 2635 -> 2635 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture1DArray /* 2636 -> 2636 */,
+        &SPIRV_TextureSampleBiasCompare_Texture2DArray /* 2637 -> 2637 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture2DArray /* 2638 -> 2638 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture1D /* 2639 -> 2639 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1D /* 2640 -> 2640 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture2D /* 2641 -> 2641 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2D /* 2642 -> 2642 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture3D /* 2643 -> 2643 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture3D /* 2644 -> 2644 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture1DArray /* 2645 -> 2645 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1DArray /* 2646 -> 2646 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture2DArray /* 2647 -> 2647 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2DArray /* 2648 -> 2648 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture1D /* 2649 -> 2649 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture1D /* 2650 -> 2650 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture2D /* 2651 -> 2651 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture2D /* 2652 -> 2652 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture3D /* 2653 -> 2653 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture3D /* 2654 -> 2654 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture1D /* 2655 -> 2655 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture1D /* 2656 -> 2656 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture2D /* 2657 -> 2657 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture2D /* 2658 -> 2658 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture3D /* 2659 -> 2659 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture3D /* 2660 -> 2660 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Float32 /* 2661 -> 2661 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_UInt32 /* 2662 -> 2662 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Int32 /* 2663 -> 2663 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Float16 /* 2664 -> 2664 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_UInt16 /* 2665 -> 2665 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Int16 /* 2666 -> 2666 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Float32 /* 2667 -> 2667 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_UInt32 /* 2668 -> 2668 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Int32 /* 2669 -> 2669 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Float16 /* 2670 -> 2670 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_UInt16 /* 2671 -> 2671 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Int16 /* 2672 -> 2672 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Float32 /* 2673 -> 2673 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_UInt32 /* 2674 -> 2674 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Int32 /* 2675 -> 2675 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Float16 /* 2676 -> 2676 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_UInt16 /* 2677 -> 2677 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Int16 /* 2678 -> 2678 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Float32 /* 2679 -> 2679 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_UInt32 /* 2680 -> 2680 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Int32 /* 2681 -> 2681 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Float16 /* 2682 -> 2682 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_UInt16 /* 2683 -> 2683 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Int16 /* 2684 -> 2684 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Float32 /* 2685 -> 2685 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt32 /* 2686 -> 2686 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Int32 /* 2687 -> 2687 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Float16 /* 2688 -> 2688 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt16 /* 2689 -> 2689 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Int16 /* 2690 -> 2690 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Float32 /* 2691 -> 2691 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt32 /* 2692 -> 2692 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Int32 /* 2693 -> 2693 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Float16 /* 2694 -> 2694 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt16 /* 2695 -> 2695 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Int16 /* 2696 -> 2696 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float32 /* 2697 -> 2697 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt32 /* 2698 -> 2698 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int32 /* 2699 -> 2699 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float16 /* 2700 -> 2700 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt16 /* 2701 -> 2701 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int16 /* 2702 -> 2702 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Float32 /* 2703 -> 2703 */,
+        &SPIRV_TextureAtomicStore_Texture1D_UInt32 /* 2704 -> 2704 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Int32 /* 2705 -> 2705 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Float16 /* 2706 -> 2706 */,
+        &SPIRV_TextureAtomicStore_Texture1D_UInt16 /* 2707 -> 2707 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Int16 /* 2708 -> 2708 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Float32 /* 2709 -> 2709 */,
+        &SPIRV_TextureAtomicStore_Texture2D_UInt32 /* 2710 -> 2710 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Int32 /* 2711 -> 2711 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Float16 /* 2712 -> 2712 */,
+        &SPIRV_TextureAtomicStore_Texture2D_UInt16 /* 2713 -> 2713 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Int16 /* 2714 -> 2714 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Float32 /* 2715 -> 2715 */,
+        &SPIRV_TextureAtomicStore_Texture3D_UInt32 /* 2716 -> 2716 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Int32 /* 2717 -> 2717 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Float16 /* 2718 -> 2718 */,
+        &SPIRV_TextureAtomicStore_Texture3D_UInt16 /* 2719 -> 2719 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Int16 /* 2720 -> 2720 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Float32 /* 2721 -> 2721 */,
+        &SPIRV_TextureAtomicStore_TextureCube_UInt32 /* 2722 -> 2722 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Int32 /* 2723 -> 2723 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Float16 /* 2724 -> 2724 */,
+        &SPIRV_TextureAtomicStore_TextureCube_UInt16 /* 2725 -> 2725 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Int16 /* 2726 -> 2726 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Float32 /* 2727 -> 2727 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_UInt32 /* 2728 -> 2728 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Int32 /* 2729 -> 2729 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Float16 /* 2730 -> 2730 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_UInt16 /* 2731 -> 2731 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Int16 /* 2732 -> 2732 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Float32 /* 2733 -> 2733 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_UInt32 /* 2734 -> 2734 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Int32 /* 2735 -> 2735 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Float16 /* 2736 -> 2736 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_UInt16 /* 2737 -> 2737 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Int16 /* 2738 -> 2738 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Float32 /* 2739 -> 2739 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt32 /* 2740 -> 2740 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Int32 /* 2741 -> 2741 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Float16 /* 2742 -> 2742 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt16 /* 2743 -> 2743 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Int16 /* 2744 -> 2744 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Float32 /* 2745 -> 2745 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_UInt32 /* 2746 -> 2746 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Int32 /* 2747 -> 2747 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Float16 /* 2748 -> 2748 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_UInt16 /* 2749 -> 2749 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Int16 /* 2750 -> 2750 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Float32 /* 2751 -> 2751 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_UInt32 /* 2752 -> 2752 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Int32 /* 2753 -> 2753 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Float16 /* 2754 -> 2754 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_UInt16 /* 2755 -> 2755 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Int16 /* 2756 -> 2756 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Float32 /* 2757 -> 2757 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_UInt32 /* 2758 -> 2758 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Int32 /* 2759 -> 2759 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Float16 /* 2760 -> 2760 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_UInt16 /* 2761 -> 2761 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Int16 /* 2762 -> 2762 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Float32 /* 2763 -> 2763 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_UInt32 /* 2764 -> 2764 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Int32 /* 2765 -> 2765 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Float16 /* 2766 -> 2766 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_UInt16 /* 2767 -> 2767 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Int16 /* 2768 -> 2768 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Float32 /* 2769 -> 2769 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt32 /* 2770 -> 2770 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Int32 /* 2771 -> 2771 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Float16 /* 2772 -> 2772 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt16 /* 2773 -> 2773 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Int16 /* 2774 -> 2774 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Float32 /* 2775 -> 2775 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt32 /* 2776 -> 2776 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Int32 /* 2777 -> 2777 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Float16 /* 2778 -> 2778 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt16 /* 2779 -> 2779 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Int16 /* 2780 -> 2780 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float32 /* 2781 -> 2781 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt32 /* 2782 -> 2782 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int32 /* 2783 -> 2783 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float16 /* 2784 -> 2784 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt16 /* 2785 -> 2785 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int16 /* 2786 -> 2786 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt32 /* 2787 -> 2787 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int32 /* 2788 -> 2788 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt16 /* 2789 -> 2789 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int16 /* 2790 -> 2790 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt32 /* 2791 -> 2791 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int32 /* 2792 -> 2792 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt16 /* 2793 -> 2793 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int16 /* 2794 -> 2794 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt32 /* 2795 -> 2795 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int32 /* 2796 -> 2796 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt16 /* 2797 -> 2797 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int16 /* 2798 -> 2798 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt32 /* 2799 -> 2799 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int32 /* 2800 -> 2800 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt16 /* 2801 -> 2801 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int16 /* 2802 -> 2802 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt32 /* 2803 -> 2803 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int32 /* 2804 -> 2804 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt16 /* 2805 -> 2805 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int16 /* 2806 -> 2806 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt32 /* 2807 -> 2807 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int32 /* 2808 -> 2808 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt16 /* 2809 -> 2809 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int16 /* 2810 -> 2810 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt32 /* 2811 -> 2811 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int32 /* 2812 -> 2812 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt16 /* 2813 -> 2813 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int16 /* 2814 -> 2814 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_UInt32 /* 2815 -> 2815 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_Int32 /* 2816 -> 2816 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_UInt16 /* 2817 -> 2817 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_Int16 /* 2818 -> 2818 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_UInt32 /* 2819 -> 2819 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_Int32 /* 2820 -> 2820 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_UInt16 /* 2821 -> 2821 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_Int16 /* 2822 -> 2822 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_UInt32 /* 2823 -> 2823 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_Int32 /* 2824 -> 2824 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_UInt16 /* 2825 -> 2825 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_Int16 /* 2826 -> 2826 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_UInt32 /* 2827 -> 2827 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_Int32 /* 2828 -> 2828 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_UInt16 /* 2829 -> 2829 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_Int16 /* 2830 -> 2830 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt32 /* 2831 -> 2831 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_Int32 /* 2832 -> 2832 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt16 /* 2833 -> 2833 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_Int16 /* 2834 -> 2834 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt32 /* 2835 -> 2835 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_Int32 /* 2836 -> 2836 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt16 /* 2837 -> 2837 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_Int16 /* 2838 -> 2838 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt32 /* 2839 -> 2839 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int32 /* 2840 -> 2840 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt16 /* 2841 -> 2841 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int16 /* 2842 -> 2842 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_UInt32 /* 2843 -> 2843 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_Int32 /* 2844 -> 2844 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_UInt16 /* 2845 -> 2845 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_Int16 /* 2846 -> 2846 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_UInt32 /* 2847 -> 2847 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_Int32 /* 2848 -> 2848 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_UInt16 /* 2849 -> 2849 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_Int16 /* 2850 -> 2850 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_UInt32 /* 2851 -> 2851 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_Int32 /* 2852 -> 2852 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_UInt16 /* 2853 -> 2853 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_Int16 /* 2854 -> 2854 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_UInt32 /* 2855 -> 2855 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_Int32 /* 2856 -> 2856 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_UInt16 /* 2857 -> 2857 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_Int16 /* 2858 -> 2858 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt32 /* 2859 -> 2859 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int32 /* 2860 -> 2860 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt16 /* 2861 -> 2861 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int16 /* 2862 -> 2862 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt32 /* 2863 -> 2863 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int32 /* 2864 -> 2864 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt16 /* 2865 -> 2865 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int16 /* 2866 -> 2866 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt32 /* 2867 -> 2867 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int32 /* 2868 -> 2868 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt16 /* 2869 -> 2869 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int16 /* 2870 -> 2870 */,
+        &SPIRV_TextureAtomicMin_Texture1D_UInt32 /* 2871 -> 2871 */,
+        &SPIRV_TextureAtomicMin_Texture1D_Int32 /* 2872 -> 2872 */,
+        &SPIRV_TextureAtomicMin_Texture1D_UInt16 /* 2873 -> 2873 */,
+        &SPIRV_TextureAtomicMin_Texture1D_Int16 /* 2874 -> 2874 */,
+        &SPIRV_TextureAtomicMin_Texture2D_UInt32 /* 2875 -> 2875 */,
+        &SPIRV_TextureAtomicMin_Texture2D_Int32 /* 2876 -> 2876 */,
+        &SPIRV_TextureAtomicMin_Texture2D_UInt16 /* 2877 -> 2877 */,
+        &SPIRV_TextureAtomicMin_Texture2D_Int16 /* 2878 -> 2878 */,
+        &SPIRV_TextureAtomicMin_Texture3D_UInt32 /* 2879 -> 2879 */,
+        &SPIRV_TextureAtomicMin_Texture3D_Int32 /* 2880 -> 2880 */,
+        &SPIRV_TextureAtomicMin_Texture3D_UInt16 /* 2881 -> 2881 */,
+        &SPIRV_TextureAtomicMin_Texture3D_Int16 /* 2882 -> 2882 */,
+        &SPIRV_TextureAtomicMin_TextureCube_UInt32 /* 2883 -> 2883 */,
+        &SPIRV_TextureAtomicMin_TextureCube_Int32 /* 2884 -> 2884 */,
+        &SPIRV_TextureAtomicMin_TextureCube_UInt16 /* 2885 -> 2885 */,
+        &SPIRV_TextureAtomicMin_TextureCube_Int16 /* 2886 -> 2886 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_UInt32 /* 2887 -> 2887 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_Int32 /* 2888 -> 2888 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_UInt16 /* 2889 -> 2889 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_Int16 /* 2890 -> 2890 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_UInt32 /* 2891 -> 2891 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_Int32 /* 2892 -> 2892 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_UInt16 /* 2893 -> 2893 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_Int16 /* 2894 -> 2894 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt32 /* 2895 -> 2895 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_Int32 /* 2896 -> 2896 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt16 /* 2897 -> 2897 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_Int16 /* 2898 -> 2898 */,
+        &SPIRV_TextureAtomicMax_Texture1D_UInt32 /* 2899 -> 2899 */,
+        &SPIRV_TextureAtomicMax_Texture1D_Int32 /* 2900 -> 2900 */,
+        &SPIRV_TextureAtomicMax_Texture1D_UInt16 /* 2901 -> 2901 */,
+        &SPIRV_TextureAtomicMax_Texture1D_Int16 /* 2902 -> 2902 */,
+        &SPIRV_TextureAtomicMax_Texture2D_UInt32 /* 2903 -> 2903 */,
+        &SPIRV_TextureAtomicMax_Texture2D_Int32 /* 2904 -> 2904 */,
+        &SPIRV_TextureAtomicMax_Texture2D_UInt16 /* 2905 -> 2905 */,
+        &SPIRV_TextureAtomicMax_Texture2D_Int16 /* 2906 -> 2906 */,
+        &SPIRV_TextureAtomicMax_Texture3D_UInt32 /* 2907 -> 2907 */,
+        &SPIRV_TextureAtomicMax_Texture3D_Int32 /* 2908 -> 2908 */,
+        &SPIRV_TextureAtomicMax_Texture3D_UInt16 /* 2909 -> 2909 */,
+        &SPIRV_TextureAtomicMax_Texture3D_Int16 /* 2910 -> 2910 */,
+        &SPIRV_TextureAtomicMax_TextureCube_UInt32 /* 2911 -> 2911 */,
+        &SPIRV_TextureAtomicMax_TextureCube_Int32 /* 2912 -> 2912 */,
+        &SPIRV_TextureAtomicMax_TextureCube_UInt16 /* 2913 -> 2913 */,
+        &SPIRV_TextureAtomicMax_TextureCube_Int16 /* 2914 -> 2914 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_UInt32 /* 2915 -> 2915 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_Int32 /* 2916 -> 2916 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_UInt16 /* 2917 -> 2917 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_Int16 /* 2918 -> 2918 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_UInt32 /* 2919 -> 2919 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_Int32 /* 2920 -> 2920 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_UInt16 /* 2921 -> 2921 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_Int16 /* 2922 -> 2922 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt32 /* 2923 -> 2923 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_Int32 /* 2924 -> 2924 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt16 /* 2925 -> 2925 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_Int16 /* 2926 -> 2926 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_UInt32 /* 2927 -> 2927 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_Int32 /* 2928 -> 2928 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_UInt16 /* 2929 -> 2929 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_Int16 /* 2930 -> 2930 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_UInt32 /* 2931 -> 2931 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_Int32 /* 2932 -> 2932 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_UInt16 /* 2933 -> 2933 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_Int16 /* 2934 -> 2934 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_UInt32 /* 2935 -> 2935 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_Int32 /* 2936 -> 2936 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_UInt16 /* 2937 -> 2937 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_Int16 /* 2938 -> 2938 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_UInt32 /* 2939 -> 2939 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_Int32 /* 2940 -> 2940 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_UInt16 /* 2941 -> 2941 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_Int16 /* 2942 -> 2942 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt32 /* 2943 -> 2943 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_Int32 /* 2944 -> 2944 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt16 /* 2945 -> 2945 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_Int16 /* 2946 -> 2946 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt32 /* 2947 -> 2947 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_Int32 /* 2948 -> 2948 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt16 /* 2949 -> 2949 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_Int16 /* 2950 -> 2950 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt32 /* 2951 -> 2951 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int32 /* 2952 -> 2952 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt16 /* 2953 -> 2953 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int16 /* 2954 -> 2954 */,
+        &SPIRV_TextureAtomicOr_Texture1D_UInt32 /* 2955 -> 2955 */,
+        &SPIRV_TextureAtomicOr_Texture1D_Int32 /* 2956 -> 2956 */,
+        &SPIRV_TextureAtomicOr_Texture1D_UInt16 /* 2957 -> 2957 */,
+        &SPIRV_TextureAtomicOr_Texture1D_Int16 /* 2958 -> 2958 */,
+        &SPIRV_TextureAtomicOr_Texture2D_UInt32 /* 2959 -> 2959 */,
+        &SPIRV_TextureAtomicOr_Texture2D_Int32 /* 2960 -> 2960 */,
+        &SPIRV_TextureAtomicOr_Texture2D_UInt16 /* 2961 -> 2961 */,
+        &SPIRV_TextureAtomicOr_Texture2D_Int16 /* 2962 -> 2962 */,
+        &SPIRV_TextureAtomicOr_Texture3D_UInt32 /* 2963 -> 2963 */,
+        &SPIRV_TextureAtomicOr_Texture3D_Int32 /* 2964 -> 2964 */,
+        &SPIRV_TextureAtomicOr_Texture3D_UInt16 /* 2965 -> 2965 */,
+        &SPIRV_TextureAtomicOr_Texture3D_Int16 /* 2966 -> 2966 */,
+        &SPIRV_TextureAtomicOr_TextureCube_UInt32 /* 2967 -> 2967 */,
+        &SPIRV_TextureAtomicOr_TextureCube_Int32 /* 2968 -> 2968 */,
+        &SPIRV_TextureAtomicOr_TextureCube_UInt16 /* 2969 -> 2969 */,
+        &SPIRV_TextureAtomicOr_TextureCube_Int16 /* 2970 -> 2970 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_UInt32 /* 2971 -> 2971 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_Int32 /* 2972 -> 2972 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_UInt16 /* 2973 -> 2973 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_Int16 /* 2974 -> 2974 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_UInt32 /* 2975 -> 2975 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_Int32 /* 2976 -> 2976 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_UInt16 /* 2977 -> 2977 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_Int16 /* 2978 -> 2978 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt32 /* 2979 -> 2979 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_Int32 /* 2980 -> 2980 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt16 /* 2981 -> 2981 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_Int16 /* 2982 -> 2982 */,
+        &SPIRV_TextureAtomicXor_Texture1D_UInt32 /* 2983 -> 2983 */,
+        &SPIRV_TextureAtomicXor_Texture1D_Int32 /* 2984 -> 2984 */,
+        &SPIRV_TextureAtomicXor_Texture1D_UInt16 /* 2985 -> 2985 */,
+        &SPIRV_TextureAtomicXor_Texture1D_Int16 /* 2986 -> 2986 */,
+        &SPIRV_TextureAtomicXor_Texture2D_UInt32 /* 2987 -> 2987 */,
+        &SPIRV_TextureAtomicXor_Texture2D_Int32 /* 2988 -> 2988 */,
+        &SPIRV_TextureAtomicXor_Texture2D_UInt16 /* 2989 -> 2989 */,
+        &SPIRV_TextureAtomicXor_Texture2D_Int16 /* 2990 -> 2990 */,
+        &SPIRV_TextureAtomicXor_Texture3D_UInt32 /* 2991 -> 2991 */,
+        &SPIRV_TextureAtomicXor_Texture3D_Int32 /* 2992 -> 2992 */,
+        &SPIRV_TextureAtomicXor_Texture3D_UInt16 /* 2993 -> 2993 */,
+        &SPIRV_TextureAtomicXor_Texture3D_Int16 /* 2994 -> 2994 */,
+        &SPIRV_TextureAtomicXor_TextureCube_UInt32 /* 2995 -> 2995 */,
+        &SPIRV_TextureAtomicXor_TextureCube_Int32 /* 2996 -> 2996 */,
+        &SPIRV_TextureAtomicXor_TextureCube_UInt16 /* 2997 -> 2997 */,
+        &SPIRV_TextureAtomicXor_TextureCube_Int16 /* 2998 -> 2998 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_UInt32 /* 2999 -> 2999 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_Int32 /* 3000 -> 3000 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_UInt16 /* 3001 -> 3001 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_Int16 /* 3002 -> 3002 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_UInt32 /* 3003 -> 3003 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_Int32 /* 3004 -> 3004 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_UInt16 /* 3005 -> 3005 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_Int16 /* 3006 -> 3006 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt32 /* 3007 -> 3007 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_Int32 /* 3008 -> 3008 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt16 /* 3009 -> 3009 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_Int16 /* 3010 -> 3010 */,
+        &SPIRV_ExportRayIntersection /* 3011 -> 3011 */,
+        &SPIRV_ExecuteCallable /* 3012 -> 3012 */,
+        &SPIRV_RayLaunchIndex /* 3013 -> 3013 */,
+        &SPIRV_RayLaunchSize /* 3014 -> 3014 */,
+        &SPIRV_BLASPrimitiveIndex /* 3015 -> 3015 */,
+        &SPIRV_BLASGeometryIndex /* 3016 -> 3016 */,
+        &SPIRV_TLASInstanceIndex /* 3017 -> 3017 */,
+        &SPIRV_TLASInstanceCustomIndex /* 3018 -> 3018 */,
+        &SPIRV_RayWorldOrigin /* 3019 -> 3019 */,
+        &SPIRV_RayWorldDirection /* 3020 -> 3020 */,
+        &SPIRV_RayObjectOrigin /* 3021 -> 3021 */,
+        &SPIRV_RayObjectDirection /* 3022 -> 3022 */,
+        &SPIRV_RayTMin /* 3023 -> 3023 */,
+        &SPIRV_RayTMax /* 3024 -> 3024 */,
+        &SPIRV_RayFlags /* 3025 -> 3025 */,
+        &SPIRV_RayHitDistance /* 3026 -> 3026 */,
+        &SPIRV_RayHitKind /* 3027 -> 3027 */,
+        &SPIRV_TLASObjectToWorld /* 3028 -> 3028 */,
+        &SPIRV_TLASWorldToObject /* 3029 -> 3029 */
 };

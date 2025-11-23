@@ -864,6 +864,36 @@
         ]
     },
     {
+        "name": "bLASGeometryIndex",
+        "documentation": "Get the ray tracing built-in value for BLASGeometryIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "bLASGeometryIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "bLASPrimitiveIndex",
+        "documentation": "Get the ray tracing built-in value for BLASPrimitiveIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "bLASPrimitiveIndex() u32"
+            }
+        ]
+    },
+    {
         "name": "bitCount",
         "documentation": "Counts the number of bits set to 1 in a bitmask",
         "target_support": [
@@ -1620,6 +1650,21 @@
         ]
     },
     {
+        "name": "executeCallable",
+        "documentation": "Execute a callable shader",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "executeCallable(callableIndex: u32) void"
+            }
+        ]
+    },
+    {
         "name": "executionBarrier",
         "documentation": "Execution barrier to ensure all threads have reached this point before proceeding",
         "target_support": [
@@ -1733,6 +1778,21 @@
             },
             {
                 "signature": "exp2(val: f16x4) f16x4"
+            }
+        ]
+    },
+    {
+        "name": "exportRayIntersection",
+        "documentation": "Export the current ray intersection data to the ray payload",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "exportRayIntersection() void"
             }
         ]
     },
@@ -3054,6 +3114,171 @@
         ]
     },
     {
+        "name": "rayFlags",
+        "documentation": "Get the ray tracing built-in value for RayFlags",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayFlags() u32"
+            }
+        ]
+    },
+    {
+        "name": "rayHitDistance",
+        "documentation": "Get the ray tracing built-in value for RayHitDistance",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayHitDistance() f32"
+            }
+        ]
+    },
+    {
+        "name": "rayHitKind",
+        "documentation": "Get the ray tracing built-in value for RayHitKind",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayHitKind() u32"
+            }
+        ]
+    },
+    {
+        "name": "rayLaunchIndex",
+        "documentation": "Get the ray tracing built-in value for RayLaunchIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayLaunchIndex() u32x3"
+            }
+        ]
+    },
+    {
+        "name": "rayLaunchSize",
+        "documentation": "Get the ray tracing built-in value for RayLaunchSize",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayLaunchSize() u32x3"
+            }
+        ]
+    },
+    {
+        "name": "rayObjectDirection",
+        "documentation": "Get the ray tracing built-in value for RayObjectDirection",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayObjectDirection() f32x3"
+            }
+        ]
+    },
+    {
+        "name": "rayObjectOrigin",
+        "documentation": "Get the ray tracing built-in value for RayObjectOrigin",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayObjectOrigin() f32x3"
+            }
+        ]
+    },
+    {
+        "name": "rayTMax",
+        "documentation": "Get the ray tracing built-in value for RayTMax",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayTMax() f32"
+            }
+        ]
+    },
+    {
+        "name": "rayTMin",
+        "documentation": "Get the ray tracing built-in value for RayTMin",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayTMin() f32"
+            }
+        ]
+    },
+    {
+        "name": "rayWorldDirection",
+        "documentation": "Get the ray tracing built-in value for RayWorldDirection",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayWorldDirection() f32x3"
+            }
+        ]
+    },
+    {
+        "name": "rayWorldOrigin",
+        "documentation": "Get the ray tracing built-in value for RayWorldOrigin",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "rayWorldOrigin() f32x3"
+            }
+        ]
+    },
+    {
         "name": "reflect",
         "documentation": "Returns the reflection of a vector through a surface using an incident vector and normal.",
         "target_support": [
@@ -3987,6 +4212,66 @@
         ]
     },
     {
+        "name": "tLASInstanceCustomIndex",
+        "documentation": "Get the ray tracing built-in value for TLASInstanceCustomIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "tLASInstanceCustomIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "tLASInstanceIndex",
+        "documentation": "Get the ray tracing built-in value for TLASInstanceIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "tLASInstanceIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "tLASObjectToWorld",
+        "documentation": "Get the ray tracing built-in value for TLASObjectToWorld",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "tLASObjectToWorld() f32x4x3"
+            }
+        ]
+    },
+    {
+        "name": "tLASWorldToObject",
+        "documentation": "Get the ray tracing built-in value for TLASWorldToObject",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "tLASWorldToObject() f32x4x3"
+            }
+        ]
+    },
+    {
         "name": "tan",
         "documentation": "Returns the tangent of a value.",
         "target_support": [
@@ -4084,88 +4369,88 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicAdd(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAdd(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicAdd(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -4180,88 +4465,88 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicAnd(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicAnd(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicAnd(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -4276,88 +4561,88 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicCompareExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicCompareExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -4372,130 +4657,130 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1D, coordinate: i32, value: f32) f32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1D, coordinate: i32, value: f32) f32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1D, coordinate: i32, value: f16) f16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1D, coordinate: i32, value: f16) f16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2D, coordinate: i32x2, value: f32) f32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: f32) f32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2D, coordinate: i32x2, value: f16) f16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: f16) f16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture3D, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture3D, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCube, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCube, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: f32) f32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: f32) f32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: f16) f16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: f16) f16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: f32) f32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: f32) f32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: f16) f16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: f16) f16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicExchange(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicExchange(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -4510,130 +4795,130 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1D, coordinate: i32, value: f32) f32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1D, coordinate: i32, value: f32) f32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1D, coordinate: i32, value: f16) f16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1D, coordinate: i32, value: f16) f16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2D, coordinate: i32x2, value: f32) f32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2D, coordinate: i32x2, value: f32) f32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2D, coordinate: i32x2, value: f16) f16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2D, coordinate: i32x2, value: f16) f16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture3D, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture3D, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture3D, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture3D, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCube, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCube, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCube, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCube, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1DArray, coordinate: i32x2, value: f32) f32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: f32) f32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1DArray, coordinate: i32x2, value: f16) f16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: f16) f16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2DArray, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2DArray, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCubeArray, coordinate: i32x4, value: f32) f32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: f32) f32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCubeArray, coordinate: i32x4, value: f16) f16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: f16) f16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicLoad(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicLoad(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -4648,88 +4933,88 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicMax(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicMax(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicMax(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicMax(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicMax(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicMax(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicMax(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicMax(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicMax(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMax(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicMax(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -4744,88 +5029,88 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicMin(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicMin(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicMin(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicMin(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicMin(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicMin(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicMin(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicMin(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicMin(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicMin(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicMin(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -4840,88 +5125,88 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicOr(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicOr(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicOr(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicOr(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicOr(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicOr(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicOr(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicOr(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicOr(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicOr(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicOr(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -4936,130 +5221,130 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1D, coordinate: i32, value: f32) f32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1D, coordinate: i32, value: f32) f32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1D, coordinate: i32, value: f16) f16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1D, coordinate: i32, value: f16) f16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2D, coordinate: i32x2, value: f32) f32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: f32) f32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2D, coordinate: i32x2, value: f16) f16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: f16) f16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture3D, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture3D, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCube, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCube, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1DArray, coordinate: i32x2, value: f32) f32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: f32) f32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1DArray, coordinate: i32x2, value: f16) f16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: f16) f16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2DArray, coordinate: i32x3, value: f32) f32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: f32) f32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2DArray, coordinate: i32x3, value: f16) f16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: f16) f16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCubeArray, coordinate: i32x4, value: f32) f32"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: f32) f32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCubeArray, coordinate: i32x4, value: f16) f16"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: f16) f16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicStore(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -5074,88 +5359,88 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicSubtract(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicSubtract(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
@@ -5170,94 +5455,94 @@
         ],
         "overloads": [
             {
-                "signature": "textureAtomicXor(uniform texture: *texture1D, coordinate: i32, value: u32) u32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture1D, coordinate: i32, value: u32) u32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture1D, coordinate: i32, value: i32) i32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture1D, coordinate: i32, value: i32) i32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture1D, coordinate: i32, value: u16) u16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture1D, coordinate: i32, value: u16) u16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture1D, coordinate: i32, value: i16) i16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture1D, coordinate: i32, value: i16) i16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture2D, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture2D, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture2D, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture2D, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture2D, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture2D, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture3D, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture3D, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture3D, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture3D, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture3D, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture3D, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *textureCube, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicXor(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *textureCube, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicXor(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *textureCube, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicXor(uniform texture: *mutable textureCube, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *textureCube, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicXor(uniform texture: *mutable textureCube, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture1DArray, coordinate: i32x2, value: u32) u32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32) u32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture1DArray, coordinate: i32x2, value: i32) i32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32) i32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture1DArray, coordinate: i32x2, value: u16) u16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u16) u16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture1DArray, coordinate: i32x2, value: i16) i16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i16) i16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture2DArray, coordinate: i32x3, value: u32) u32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32) u32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture2DArray, coordinate: i32x3, value: i32) i32"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32) i32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture2DArray, coordinate: i32x3, value: u16) u16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u16) u16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *texture2DArray, coordinate: i32x3, value: i16) i16"
+                "signature": "textureAtomicXor(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i16) i16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *textureCubeArray, coordinate: i32x4, value: u32) u32"
+                "signature": "textureAtomicXor(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32) u32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *textureCubeArray, coordinate: i32x4, value: i32) i32"
+                "signature": "textureAtomicXor(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32) i32"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *textureCubeArray, coordinate: i32x4, value: u16) u16"
+                "signature": "textureAtomicXor(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u16) u16"
             },
             {
-                "signature": "textureAtomicXor(uniform texture: *textureCubeArray, coordinate: i32x4, value: i16) i16"
+                "signature": "textureAtomicXor(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i16) i16"
             }
         ]
     },
     {
         "name": "textureFetch",
-        "documentation": "Fetch a single texel without using a sampler value at a coordinate",
+        "documentation": "Fetch a single texel without using a sampler value at a coordinate at a specific mip level",
         "target_support": [
             1,
             1,
@@ -5266,25 +5551,19 @@
         ],
         "overloads": [
             {
-                "signature": "textureFetch(uniform texture: *texture1D, coordinate: i32, lod: u32) f32x4"
+                "signature": "textureFetch(uniform texture: *texture1D, coordinate: i32, mip: i32) f32x4"
             },
             {
-                "signature": "textureFetch(uniform texture: *texture2D, coordinate: i32x2, lod: u32) f32x4"
+                "signature": "textureFetch(uniform texture: *texture2D, coordinate: i32x2, mip: i32) f32x4"
             },
             {
-                "signature": "textureFetch(uniform texture: *texture3D, coordinate: i32x3, lod: u32) f32x4"
+                "signature": "textureFetch(uniform texture: *texture3D, coordinate: i32x3, mip: i32) f32x4"
             },
             {
-                "signature": "textureFetch(uniform texture: *texture1DArray, coordinate: i32x2, lod: u32) f32x4"
+                "signature": "textureFetch(uniform texture: *texture1DArray, coordinate: i32x2, mip: i32) f32x4"
             },
             {
-                "signature": "textureFetch(uniform texture: *texture2DArray, coordinate: i32x3, lod: u32) f32x4"
-            },
-            {
-                "signature": "textureFetch(uniform texture: *texture2DMS, coordinate: i32x2, lod: u32) f32x4"
-            },
-            {
-                "signature": "textureFetch(uniform texture: *texture2DMSArray, coordinate: i32x3, lod: u32) f32x4"
+                "signature": "textureFetch(uniform texture: *texture2DArray, coordinate: i32x3, mip: i32) f32x4"
             }
         ]
     },
@@ -5299,25 +5578,25 @@
         ],
         "overloads": [
             {
-                "signature": "textureFetchSample(uniform texture: *texture1D, coordinate: i32, lod: u32, sample: u32) f32x4"
+                "signature": "textureFetchSample(uniform texture: *texture1D, coordinate: i32, sample: u32) f32x4"
             },
             {
-                "signature": "textureFetchSample(uniform texture: *texture2D, coordinate: i32x2, lod: u32, sample: u32) f32x4"
+                "signature": "textureFetchSample(uniform texture: *texture2D, coordinate: i32x2, sample: u32) f32x4"
             },
             {
-                "signature": "textureFetchSample(uniform texture: *texture3D, coordinate: i32x3, lod: u32, sample: u32) f32x4"
+                "signature": "textureFetchSample(uniform texture: *texture3D, coordinate: i32x3, sample: u32) f32x4"
             },
             {
-                "signature": "textureFetchSample(uniform texture: *texture1DArray, coordinate: i32x2, lod: u32, sample: u32) f32x4"
+                "signature": "textureFetchSample(uniform texture: *texture1DArray, coordinate: i32x2, sample: u32) f32x4"
             },
             {
-                "signature": "textureFetchSample(uniform texture: *texture2DArray, coordinate: i32x3, lod: u32, sample: u32) f32x4"
+                "signature": "textureFetchSample(uniform texture: *texture2DArray, coordinate: i32x3, sample: u32) f32x4"
             },
             {
-                "signature": "textureFetchSample(uniform texture: *texture2DMS, coordinate: i32x2, lod: u32, sample: u32) f32x4"
+                "signature": "textureFetchSample(uniform texture: *texture2DMS, coordinate: i32x2, sample: u32) f32x4"
             },
             {
-                "signature": "textureFetchSample(uniform texture: *texture2DMSArray, coordinate: i32x3, lod: u32, sample: u32) f32x4"
+                "signature": "textureFetchSample(uniform texture: *texture2DMSArray, coordinate: i32x3, sample: u32) f32x4"
             }
         ]
     },

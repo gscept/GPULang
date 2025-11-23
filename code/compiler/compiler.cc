@@ -1086,7 +1086,7 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         {
             Function* hs = (Function*)resolved->mappings[ProgramInstance::__Resolved::HullShader];
             Function::__Resolved* hsRes = Symbol::Resolved(hs);
-            output.patchSize = hsRes->executionModifiers.maxOutputVertices;
+            output.patchSize = hsRes->executionModifiers.patchSize;
         }
         if (resolved->usage.flags.hasRayGenerationShader)
         {
@@ -1389,35 +1389,37 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
             output.bindingScope = Serialization::BindingScope::Resource;
 
         output.bindingType = Serialization::BindingType::None;
-        if (var->type.IsMutable())
+        bool mut = var->type.IsMutable();
+        if (resolved->typeSymbol->category == Type::Category::StructureCategory)
         {
-            if (resolved->typeSymbol->category == Type::Category::StructureCategory)
-                output.bindingType = Serialization::BindingType::MutableBuffer;
-            else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
-                output.bindingType = Serialization::BindingType::MutableImage;
-        }
-        else
-        {
-            if (resolved->typeSymbol->category == Type::Category::StructureCategory)
+            if (var->type.modifiers.size > 1 && var->type.modifiers[1] == Type::FullType::Modifier::Array)
             {
-                if (resolved->storage == Storage::InlineUniform)
-                    output.bindingType = Serialization::BindingType::Inline;
-                else
-                    output.bindingType = Serialization::BindingType::Buffer;
+                mut = true;
             }
-            else if (resolved->typeSymbol->category == Type::Category::SampledTextureCategory)
-                output.bindingType = Serialization::BindingType::SampledImage;
-            else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
-                output.bindingType = Serialization::BindingType::Image;
-            else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
-                output.bindingType = Serialization::BindingType::Sampler;
-            else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
-                output.bindingType = Serialization::BindingType::LinkDefined;
-            else if (resolved->typeSymbol->category == Type::Category::PixelCacheCategory)
-                output.bindingType = Serialization::BindingType::PixelCache;
-            else if (resolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
-                output.bindingType = Serialization::BindingType::AccelerationStructure;
+            if (mut)
+                output.bindingType = Serialization::BindingType::MutableBuffer;
+            else if (resolved->storage == Storage::InlineUniform)
+                output.bindingType = Serialization::BindingType::Inline;
+            else
+                output.bindingType = Serialization::BindingType::Buffer;
         }
+        else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
+        {
+            if (mut)
+                output.bindingType = Serialization::BindingType::MutableImage;
+            else
+                output.bindingType = Serialization::BindingType::Image;
+        }
+        else if (resolved->typeSymbol->category == Type::Category::SampledTextureCategory)
+            output.bindingType = Serialization::BindingType::SampledImage;
+        else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
+            output.bindingType = Serialization::BindingType::Sampler;
+        else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
+            output.bindingType = Serialization::BindingType::LinkDefined;
+        else if (resolved->typeSymbol->category == Type::Category::PixelCacheCategory)
+            output.bindingType = Serialization::BindingType::PixelCache;
+        else if (resolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
+            output.bindingType = Serialization::BindingType::AccelerationStructure;
 
         output.structTypeNameLength = 0;
         output.structTypeNameOffset = 0;

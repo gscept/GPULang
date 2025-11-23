@@ -149,10 +149,28 @@ def generate_types():
         'Float32x2': 'Float32',
         'Float32x3': 'Float32',
         'Float32x4': 'Float32',
+        'Float32x2x2': 'Float32',
+        'Float32x2x3': 'Float32',
+        'Float32x2x4': 'Float32',
+        'Float32x3x2': 'Float32',
+        'Float32x3x3': 'Float32',
+        'Float32x3x4': 'Float32',
+        'Float32x4x2': 'Float32',
+        'Float32x4x3': 'Float32',
+        'Float32x4x4': 'Float32',
         'Float16': 'Float16',
         'Float16x2': 'Float16',
         'Float16x3': 'Float16',
         'Float16x4': 'Float16',
+        'Float16x2x2': 'Float16',
+        'Float16x2x3': 'Float16',
+        'Float16x2x4': 'Float16',
+        'Float16x3x2': 'Float16',
+        'Float16x3x3': 'Float16',
+        'Float16x3x4': 'Float16',
+        'Float16x4x2': 'Float16',
+        'Float16x4x3': 'Float16',
+        'Float16x4x4': 'Float16',
         'Int32': 'Int32',
         'Int32x2': 'Int32',
         'Int32x3': 'Int32',
@@ -186,6 +204,14 @@ def generate_types():
         'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4
     }
 
+    matrix_size_mapping = {
+        'Float32x2x2': (2,2), 'Float32x2x3': (2,3), 'Float32x2x4': (2,4),
+        'Float32x3x2': (3,2), 'Float32x3x3': (3,3), 'Float32x3x4': (3,4),
+        'Float32x4x2': (4,2), 'Float32x4x3': (4,3), 'Float32x4x4': (4,4),
+        'Float16x2x2': (2,2), 'Float16x2x3': (2,3), 'Float16x2x4': (2,4),
+        'Float16x3x2': (3,2), 'Float16x3x3': (3,3), 'Float16x3x4': (3,4),
+        'Float16x4x2': (4,2), 'Float16x4x3': (4,3), 'Float16x4x4': (4,4)
+    }
 
 
     bit_operator_names = ['or', 'and', 'xor', 'lsh', 'rsh']
@@ -322,7 +348,7 @@ def generate_types():
     spirv_intrinsics.write("        assert(img.parentTypes.size() > 0);\n")
     spirv_intrinsics.write("        SPIRVResult image = LoadValueSPIRV(c, g, img, true);\n")
     spirv_intrinsics.write("        SPIRVResult sampler = LoadValueSPIRV(c, g, samp, true);\n")
-    spirv_intrinsics.write("        uint32_t typeSymbol = AddType(g, TStr::Compact(\"sampledImage_\", img.parentTypes[0]), OpTypeSampledImage, SPVArg{img.parentTypes[0]});\n")
+    spirv_intrinsics.write("        uint32_t typeSymbol = AddType(g, TStr::Compact(\"sampledImage_\", img.parentTypes[0]), OpTypeSampledImage, SPVArg(img.parentTypes[0]));\n")
     spirv_intrinsics.write("        uint32_t sampledImage = g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, typeSymbol, image, sampler);\n")
     spirv_intrinsics.write("        return SPIRVResult(sampledImage, typeSymbol, true);\n")
     spirv_intrinsics.write("};\n\n")
@@ -1380,17 +1406,17 @@ def generate_types():
             type_list.append(type)
 
             if ms : 
-                type = Type(f'{sampled}Texture{dim}MS', f'{sampled}TextureCategory', f'{sampled}Texture{dim}', f'texture{sampled}{dim}MS')
+                type = Type(f'{sampled}Texture{dim}MS', f'{sampled}TextureCategory', f'{sampled}Texture{dim}MS', f'texture{sampled}{dim}MS')
                 data_type_mapping[type.name] = type.api_name
                 type_list.append(type)
 
                 if array:
-                    type = Type(f'{sampled}Texture{dim}MSArray', f'{sampled}TextureCategory', f'{sampled}Texture{dim}', f'texture{sampled}{dim}MSArray')
+                    type = Type(f'{sampled}Texture{dim}MSArray', f'{sampled}TextureCategory', f'{sampled}Texture{dim}MSArray', f'texture{sampled}{dim}MSArray')
                     data_type_mapping[type.name] = type.api_name
                     type_list.append(type)
 
             if array:
-                type = Type(f'{sampled}Texture{dim}Array', f'{sampled}TextureCategory', f'{sampled}Texture{dim}', f'texture{sampled}{dim}Array')
+                type = Type(f'{sampled}Texture{dim}Array', f'{sampled}TextureCategory', f'{sampled}Texture{dim}Array', f'texture{sampled}{dim}Array')
                 data_type_mapping[type.name] = type.api_name
                 type_list.append(type)
 
@@ -2957,7 +2983,7 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -2999,10 +3025,10 @@ def generate_types():
             spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
             spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
             spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
-            spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+            spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
             spirv_function += '    g->interfaceVariables.Insert(ret);\n'
             spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-            spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+            spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
             spirv_function += '    return SPIRVResult::Invalid();\n'
             
 
@@ -3028,10 +3054,10 @@ def generate_types():
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
     spirv_function += '    return SPIRVResult::Invalid();\n'
     
 
@@ -3061,10 +3087,10 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
         spirv_function += '    return SPIRVResult::Invalid();\n'
         
 
@@ -3093,10 +3119,10 @@ def generate_types():
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::PrimitiveId);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PrimitiveId);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
     spirv_function += '    return SPIRVResult::Invalid();\n'
 
     fun.spirv = spirv_function
@@ -3127,10 +3153,10 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{stage}ExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::PrimitiveId);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PrimitiveId);\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
         spirv_function += '    return SPIRVResult::Invalid();\n'
 
         fun.spirv = spirv_function
@@ -3160,7 +3186,7 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{stage}GetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::InvocationId);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InvocationId);\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3190,10 +3216,10 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
         spirv_function += f'    g->writer->Instruction(OpEmitVertex, SPVWriter::Section::LocalFunction);\n'
         spirv_function += '    return SPIRVResult::Invalid();\n'
         
@@ -3247,8 +3273,8 @@ def generate_types():
     spirv_function += '    uint32_t arrType = GPULang::AddType(g, TStr("[4]_f32"), OpTypeArray, SPVArg(baseType), arraySizeConstant);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_[4]_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(arrType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullOuterTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessLevelOuter);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::Patch);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::TessLevelOuter);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::Patch);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult loaded0 = LoadValueSPIRV(c, g, args[0]);\n'
     spirv_function += '    SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);\n'
@@ -3284,8 +3310,8 @@ def generate_types():
     spirv_function += '    uint32_t arrType = GPULang::AddType(g, TStr("[2]_f32"), OpTypeArray, SPVArg(baseType), arraySizeConstant);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_[2]_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(arrType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullInnerTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessLevelInner);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::Patch);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::TessLevelInner);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::Patch);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult loaded0 = LoadValueSPIRV(c, g, args[0]);\n'
     spirv_function += '    SPIRVResult loaded1 = LoadValueSPIRV(c, g, args[1]);\n'
@@ -3315,7 +3341,7 @@ def generate_types():
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainTessellationCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessCoord);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::TessCoord);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3344,10 +3370,10 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
         spirv_function += '    return SPIRVResult::Invalid();\n'
 
         fun.spirv = spirv_function
@@ -3379,10 +3405,10 @@ def generate_types():
         return_function += '    SPIRVResult const1 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));\n'
         return_function += '    SPIRVResult const2 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));\n'
         return_function += '    SPIRVResult const3 = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(3));\n'
-        return_function += f'    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, float32x4ArrayFunctionTypePtr, SPVArg({ret}), const0);\n'
-        return_function += f'    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, float32ArrayFunctionTypePtr, SPVArg({ret}), const1);\n'
-        return_function += f'    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, float32ArrayFunctionTypePtr, SPVArg({ret}), const2);\n'
-        return_function += f'    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, float32ArrayFunctionTypePtr, SPVArg({ret}), const3);\n'
+        return_function += f'    uint32_t ptrToPositions = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, float32x4ArrayFunctionTypePtr, SPVArg(ret), const0);\n'
+        return_function += f'    uint32_t ptrToPointSizes = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, float32ArrayFunctionTypePtr, SPVArg(ret), const1);\n'
+        return_function += f'    uint32_t ptrToCullDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, float32ArrayFunctionTypePtr, SPVArg(ret), const2);\n'
+        return_function += f'    uint32_t ptrToClipDistances = g->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, float32ArrayFunctionTypePtr, SPVArg(ret), const3);\n'
 
         # Copy
         return_function += '    g->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(ptrToPositions), SPVArg(positions));\n'
@@ -3488,7 +3514,7 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3515,7 +3541,7 @@ def generate_types():
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, 1);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_b8_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3541,7 +3567,7 @@ def generate_types():
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3567,7 +3593,7 @@ def generate_types():
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3596,10 +3622,10 @@ def generate_types():
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
     spirv_function += '    return SPIRVResult::Invalid();\n' 
     
 
@@ -3630,10 +3656,10 @@ def generate_types():
             spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_{data_type_mapping[type]}_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
             spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}", "_", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
             #spirv_function += '    g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);\n'
-            spirv_function += '    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);\n'
+            spirv_function += '    g->writer->Decorate(SPVArg(ret), Decorations::Location, args[1].literalValue.i);\n'
             spirv_function += '    g->interfaceVariables.Insert(ret);\n'
             spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-            spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+            spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(ret), loaded);\n'
             spirv_function += '    return SPIRVResult::Invalid();\n' 
             
 
@@ -3666,7 +3692,7 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3694,7 +3720,7 @@ def generate_types():
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3729,7 +3755,7 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -3766,7 +3792,7 @@ def generate_types():
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -4317,13 +4343,13 @@ def generate_types():
 
         if intrinsic.endswith('Subgroup'):
             scope = '3'
-            semantics = '0x2 | 0x80'
+            semantics = '0x8 | 0x80'
         elif intrinsic.endswith('Workgroup'):
             scope = '2'
-            semantics = '0x2 | 0x100'
+            semantics = '0x8 | 0x100'
         else:
             scope = '2'
-            semantics = '0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800'
+            semantics = '0x8 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800'
         spirv_function = ''
         spirv_function += f'    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({scope}));\n'
         spirv_function += f'    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({semantics}));\n'
@@ -4360,21 +4386,21 @@ def generate_types():
 
         if intrinsic.endswith('Buffer'):
             scope = '2'
-            semantics = '0x2 | 0x40'
+            semantics = '0x8 | 0x40'
         elif intrinsic.endswith('Texture'):
             scope = '2'
-            semantics = '0x2 | 0x800'
+            semantics = '0x8 | 0x800'
         elif intrinsic.endswith('Atomic'):
             scope = '2'
-            semantics = '0x2 | 0x400'
+            semantics = '0x8 | 0x400'
         elif intrinsic.endswith('Subgroup'):
             scope = '3'
-            semantics = '0x2 | 0x80'
+            semantics = '0x8 | 0x80'
         elif intrinsic.endswith('Workgroup'):
             scope = '2'
-            semantics = '0x2 | 0x100'
+            semantics = '0x8 | 0x40 | 0x100 | 0x400 | 0x800 '
         else:
-            semantics = '0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800'
+            semantics = '0x8 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800'
         spirv_function = ''
         spirv_function += f'    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({scope}));\n'
         spirv_function += f'    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({semantics}));\n'
@@ -4616,7 +4642,7 @@ def generate_types():
                 return_type = 'Float32x4' if not hasStore else 'Void',
                 documentation = doc,
                 parameters = [
-                    Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, mutable=True),
+                    Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, mutable=True, strict=True),
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
                 ]
             )
@@ -4665,38 +4691,47 @@ def generate_types():
             continue
 
         for intrinsic in texture_fetch_intrinsics:
+
+            # Don't generate fetch for multisampled textures
+            if 'MS' in type and intrinsic == 'Fetch':
+                continue
+
             function_name = f'Texture{intrinsic}_{type}'
             texture_argument_name = f'{function_name}_texture'
             coordinate_argument_name = f'{function_name}_coordinate'
-            lod_argument_name = f'{function_name}_lod'
 
             doc = f'Fetch a single texel without using a sampler value at a coordinate'
             if intrinsic == 'FetchSample':
                 doc += ' at a specific sample index'
+            else:
+                doc += ' at a specific mip level'
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'texture{intrinsic}',
                 return_type = 'Float32x4',
                 documentation = doc,
                 parameters = [
-                    Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
+                    Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, strict=True),
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[type]),
-                    Variable(decl_name = lod_argument_name, api_name = "lod", type_name='UInt32')
                 ]
             )
             if intrinsic == 'FetchSample':
                 fun.parameters.append(
                     Variable(decl_name = f'{function_name}_sample', api_name = "sample", type_name='UInt32')
                 )
+            else:
+                fun.parameters.append(
+                    Variable(decl_name = f'{function_name}_mip', api_name = "mip", type_name='Int32')
+                )
 
             spirv_function = ''
             spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
             spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
-            spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);\n'
             if intrinsic == 'FetchSample':
-                spirv_function += '    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);\n'
-                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);\n'
+                spirv_function += '    SPIRVResult sample = LoadValueSPIRV(c, g, args[2]);\n'
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);\n'
             else:
+                spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);\n'
                 spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
@@ -4951,7 +4986,7 @@ def generate_types():
                     return_type = scalar_type,
                     documentation = 'Get a pointer to a texel. This enables it to be used for atomic operations.',
                     parameters = [
-                        Variable(decl_name = texture_argument_name, api_name = "texture", type_name=tex_type, pointer=True, uniform=True),
+                        Variable(decl_name = texture_argument_name, api_name = "texture", type_name=tex_type, pointer=True, mutable=True, uniform=True),
                         Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[tex_type]),
                         Variable(decl_name = value_argument_name, api_name = "value", type_name=scalar_type)
                     ]
@@ -5001,6 +5036,190 @@ def generate_types():
                 fun.spirv = spirv_function
                 functions.append(fun)
 
+    # Since traceRay takes the payload as an argument, we let the compiler generate this intrinsic for every variable with rayPayload as storage.
+    #function_name = 'TraceRay'
+    #intrinsic = 'traceRay'
+    #fun = Function( 
+    #    decl_name = function_name,
+    #    api_name = intrinsic,
+    #    return_type = 'Void',
+    #    documentation = 'Trace a ray through a raytracing acceleration structure',
+    #    parameters = [
+    #        Variable(decl_name = "bvh", api_name = "bvh", type_name="AccelerationStructure", pointer=True, uniform=True),
+    #        Variable(decl_name = "flags", api_name = "flags", type_name="UInt32"),
+    #        Variable(decl_name = "mask", api_name = "mask", type_name="UInt32"),
+    #        Variable(decl_name = "shaderTableOffset", api_name = "shaderTableOffset", type_name="UInt32"),
+    #        Variable(decl_name = "shaderTableStride", api_name = "shaderTableStride", type_name="UInt32"),
+    #        Variable(decl_name = "missShaderIndex", api_name = "missShaderIndex", type_name="UInt32"),
+    #        Variable(decl_name = "rayOrigin", api_name = "rayOrigin", type_name="Float32x3"),
+    #        Variable(decl_name = "rayDirection", api_name = "rayDirection", type_name="Float32x3"),
+    #        Variable(decl_name = "rayTMin", api_name = "rayTMin", type_name="Float32"),
+    #        Variable(decl_name = "rayTMax", api_name = "rayTMax", type_name="Float32"),
+    #    ]
+    #)
+#
+    #spirv_function = ''
+    #spirv_function += '    g->writer->Capability(Capabilities::RayTracingKHR);\n'
+    #spirv_function += '    SPIRVResult bvh = LoadValueSPIRV(c, g, args[0]);\n'
+    #spirv_function += '    SPIRVResult flags = LoadValueSPIRV(c, g, args[1]);\n'
+    #spirv_function += '    SPIRVResult mask = LoadValueSPIRV(c, g, args[2]);\n'
+    #spirv_function += '    SPIRVResult shaderTableOffset = LoadValueSPIRV(c, g, args[3]);\n'
+    #spirv_function += '    SPIRVResult shaderTableStride = LoadValueSPIRV(c, g, args[4]);\n'
+    #spirv_function += '    SPIRVResult missShaderIndex = LoadValueSPIRV(c, g, args[5]);\n'
+    #spirv_function += '    SPIRVResult rayOrigin = LoadValueSPIRV(c, g, args[6]);\n'
+    #spirv_function += '    SPIRVResult rayDirection = LoadValueSPIRV(c, g, args[7]);\n'
+    #spirv_function += '    SPIRVResult rayTMin = LoadValueSPIRV(c, g, args[8]);\n'
+    #spirv_function += '    SPIRVResult rayTMax = LoadValueSPIRV(c, g, args[9]);\n'
+    #spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpTraceRayKHR, SPVWriter::Section::LocalFunction, returnType, bvh, flags, mask, shaderTableOffset, shaderTableStride, missShaderIndex, rayOrigin, rayTMin, rayDirection, rayTMax, g->rayPayload);\n'
+    #spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+    #
+    #fun.spirv = spirv_function
+    #functions.append(fun)
+
+    function_name = "ExportRayIntersection"
+    intrinsic = "exportRayIntersection"
+    fun = Function(
+        decl_name = function_name,
+        api_name = intrinsic,
+        return_type = "Void",
+        documentation = "Export the current ray intersection data to the ray payload",
+        parameters = []
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::RayTracingKHR);\n'
+    spirv_function += '    g->writer->Instruction(OpReportIntersectionKHR, SPVWriter::Section::LocalFunction);\n'
+    spirv_function += '    return SPIRVResult(0xFFFFFFFF, returnType);\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
+    function_name = "ExecuteCallable"
+    intrinsic = "executeCallable"
+    fun = Function(
+        decl_name = function_name,
+        api_name = intrinsic,
+        return_type = "Void",
+        documentation = "Execute a callable shader",
+        parameters = [
+            Variable(decl_name = "callableIndex", api_name = "callableIndex", type_name="UInt32"),
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::RayTracingKHR);\n'
+    spirv_function += '    SPIRVResult shaderBindingIndex = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    g->writer->Instruction(OpExecuteCallableKHR, SPVWriter::Section::LocalFunction, shaderBindingIndex, g->callableData);\n'
+    spirv_function += '    return SPIRVResult(0xFFFFFFFF, returnType);\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
+    ray_tracing_getters = [
+        'RayLaunchIndex', 
+        'RayLaunchSize', 
+        'BLASPrimitiveIndex', 
+        'BLASGeometryIndex', 
+        'TLASInstanceIndex', 
+        'TLASInstanceCustomIndex', 
+        'RayWorldOrigin', 
+        'RayWorldDirection', 
+        'RayObjectOrigin', 
+        'RayObjectDirection', 
+        'RayTMin', 
+        'RayTMax', 
+        'RayFlags', 
+        'RayHitDistance', 
+        'RayHitKind', 
+        'TLASObjectToWorld', 
+        'TLASWorldToObject'
+    ]
+    ray_tracing_getter_docs = [
+        'Get the ray launch index', 
+        'Get the ray launch size', 
+        'Get the bottom-level acceleration structure primitive (triangle) index', 
+        'Get the bottom-level acceleration structure geometry (mesh) index', 
+        'Get the top-level acceleration structure instance index', 
+        'Get the top-level acceleration structure instance custom index', 
+        'Get the world space ray origin', 
+        'Get the world space ray direction', 
+        'Get the object space ray origin', 
+        'Get the object space ray direction', 
+        'Get the minimum t value of the ray', 
+        'Get the maximum t value of the ray', 
+        'Get the ray flags', 
+        'Get the hit distance of the ray', 
+        'Get the hit kind of the ray', 
+        'Get the object-to-world transformation matrix of the top-level acceleration structure instance', 
+        'Get the world-to-object transformation matrix of the top-level acceleration structure instance'
+    ]    
+    ray_tracing_return_types = [ 
+        'UInt32x3', 
+        'UInt32x3', 
+        'UInt32', 
+        'UInt32', 
+        'UInt32', 
+        'UInt32', 
+        'Float32x3', 
+        'Float32x3', 
+        'Float32x3', 
+        'Float32x3', 
+        'Float32', 
+        'Float32', 
+        'UInt32', 
+        'Float32', 
+        'UInt32', 
+        'Float32x4x3', 
+        'Float32x4x3' 
+    ]
+    ray_tracing_spirv_builtins = [ 
+        'LaunchIdKHR', 
+        'LaunchSizeKHR', 
+        'PrimitiveId', 
+        'RayGeometryIndexKHR', 
+        'InstanceId', 
+        'InstanceCustomIndexKHR', 
+        'WorldRayOriginKHR', 
+        'WorldRayDirectionKHR', 
+        'ObjectRayOriginKHR', 
+        'ObjectRayDirectionKHR', 
+        'RayTminKHR', 
+        'RayTmaxKHR', 
+        'IncomingRayFlagsKHR', 
+        'RayTmaxKHR', 
+        'HitKindKHR', 
+        'ObjectToWorldKHR', 
+        'WorldToObjectKHR' 
+    ]
+
+    for name, return_type, spirv_builtin in zip(ray_tracing_getters, ray_tracing_return_types, ray_tracing_spirv_builtins):
+        function_name = name
+        intrinsic = name[0].lower() + name[1:] 
+        fun = Function(
+            decl_name = function_name,
+            api_name = intrinsic,
+            return_type = return_type,
+            documentation = f'Get the ray tracing built-in value for {name}',
+            parameters = []
+        )
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::RayTracingKHR);\n'
+        if return_type in vector_size_mapping:
+            spirv_function += f'    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::{base_type_mapping[return_type]}, {vector_size_mapping[return_type]});\n'
+        elif return_type in matrix_size_mapping:
+            spirv_function += f'    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::{base_type_mapping[return_type]}, {matrix_size_mapping[return_type][0]}, {matrix_size_mapping[return_type][1]});\n'
+        spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_{data_type_mapping[return_type]}_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    return res;\n'
+
+        fun.spirv = spirv_function
+        functions.append(fun)
 
     spirv_code = ''
     for fun in functions:

@@ -393,6 +393,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                 for (uint32_t i = 0; i < numElements; i++)
                     writer.WriteLine("unsigned int : 32;");
             }
+            writer.Write(TransientString("/* Offset: ", varResolved->structureOffset, "*/"));
 
             TStr type = var->type.name;
             auto it = typeToHeaderType.Find(type.ToView());
