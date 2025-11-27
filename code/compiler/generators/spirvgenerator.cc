@@ -5352,6 +5352,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
                     case 'F':
                         return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(-rhs.literalValue.f));            
                     case 'U':
+                        return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(-rhs.literalValue.i));
                     case 'S':
                         return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(-rhs.literalValue.i));
                     default:
