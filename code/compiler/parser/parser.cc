@@ -1547,7 +1547,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         else if (stream.Match(TokenType::Hex))
         {
             const Token& tok = stream.Data(-1);
-            int value;
+            unsigned int value; // Not a bug, from_chars doesn't implement two's complement, so rely on the compiler to do that instead
             std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value, 16);
             Expression* res = Alloc<IntExpression>(value);
             res->location = LocationFromToken(tok);

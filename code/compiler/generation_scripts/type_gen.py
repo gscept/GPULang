@@ -919,7 +919,7 @@ def generate_types():
                                 spirv_op_type = 'I'
                         elif type.startswith('UInt'):
                             if op.startswith('/') or op.startswith('%'):
-                                spirv_op_type = 'S'
+                                spirv_op_type = 'U'
                             else:
                                 spirv_op_type = 'I'
 

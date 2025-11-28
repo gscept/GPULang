@@ -1284,7 +1284,7 @@ SPIRVResult SPIRV_UInt32_operator_div_UInt32(const Compiler* c, SPIRVGenerator* 
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1292,7 +1292,7 @@ SPIRVResult SPIRV_UInt32_operator_mod_UInt32(const Compiler* c, SPIRVGenerator* 
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -1324,7 +1324,7 @@ SPIRVResult SPIRV_UInt32_operator_divasg_UInt32(const Compiler* c, SPIRVGenerato
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2226,7 +2226,7 @@ SPIRVResult SPIRV_UInt16_operator_div_UInt16(const Compiler* c, SPIRVGenerator* 
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2234,7 +2234,7 @@ SPIRVResult SPIRV_UInt16_operator_mod_UInt16(const Compiler* c, SPIRVGenerator* 
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -2266,7 +2266,7 @@ SPIRVResult SPIRV_UInt16_operator_divasg_UInt16(const Compiler* c, SPIRVGenerato
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3236,7 +3236,7 @@ SPIRVResult SPIRV_UInt32x2_operator_div_UInt32x2(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3244,7 +3244,7 @@ SPIRVResult SPIRV_UInt32x2_operator_mod_UInt32x2(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -3276,7 +3276,7 @@ SPIRVResult SPIRV_UInt32x2_operator_divasg_UInt32x2(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -4542,7 +4542,7 @@ SPIRVResult SPIRV_UInt16x2_operator_div_UInt16x2(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -4550,7 +4550,7 @@ SPIRVResult SPIRV_UInt16x2_operator_mod_UInt16x2(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -4582,7 +4582,7 @@ SPIRVResult SPIRV_UInt16x2_operator_divasg_UInt16x2(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5699,7 +5699,7 @@ SPIRVResult SPIRV_UInt32x3_operator_div_UInt32x3(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5707,7 +5707,7 @@ SPIRVResult SPIRV_UInt32x3_operator_mod_UInt32x3(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -5739,7 +5739,7 @@ SPIRVResult SPIRV_UInt32x3_operator_divasg_UInt32x3(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7053,7 +7053,7 @@ SPIRVResult SPIRV_UInt16x3_operator_div_UInt16x3(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7061,7 +7061,7 @@ SPIRVResult SPIRV_UInt16x3_operator_mod_UInt16x3(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -7093,7 +7093,7 @@ SPIRVResult SPIRV_UInt16x3_operator_divasg_UInt16x3(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8270,7 +8270,7 @@ SPIRVResult SPIRV_UInt32x4_operator_div_UInt32x4(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8278,7 +8278,7 @@ SPIRVResult SPIRV_UInt32x4_operator_mod_UInt32x4(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -8310,7 +8310,7 @@ SPIRVResult SPIRV_UInt32x4_operator_divasg_UInt32x4(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -9720,7 +9720,7 @@ SPIRVResult SPIRV_UInt16x4_operator_div_UInt16x4(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -9728,7 +9728,7 @@ SPIRVResult SPIRV_UInt16x4_operator_mod_UInt16x4(const Compiler* c, SPIRVGenerat
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUMod, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -9760,7 +9760,7 @@ SPIRVResult SPIRV_UInt16x4_operator_divasg_UInt16x4(const Compiler* c, SPIRVGene
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpSDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    uint32_t ret = g->writer->MappedInstruction(OpUDiv, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
