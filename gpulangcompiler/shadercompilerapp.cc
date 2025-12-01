@@ -16,7 +16,7 @@ bool
 ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 {
     argh::parser args;
-    args.add_params({ "-o", "-h", "-g", "-I", "-t" });
+    args.add_params({ "-o", "-h", "-g", "-I" });
     args.parse(argv, argh::parser::SINGLE_DASH_IS_MULTIFLAG);
 
     if (args["--help"])
@@ -61,11 +61,6 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
         this->shaderCompiler.SetRootDir(buffer);
     }
     
-    if (args("t") >> buffer)
-    {
-        
-    }
-
     if (args.pos_args().size() <= 1)
     {
         fprintf(stderr, "gpulangc error: no input file specified\n");

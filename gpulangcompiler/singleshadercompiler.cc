@@ -235,6 +235,11 @@ SingleShaderCompiler::CreateDependencies(const std::string& src)
 
 #pragma warning (disable:4996)
     FILE * output = fopen(this->dstBinary.c_str(), "w");
+
+    GPULang::Allocator GlobalStringAllocator = GPULang::CreateAllocator();
+    GPULang::InitAllocator(&GlobalStringAllocator);
+
+    GPULang::StringAllocator = &GlobalStringAllocator;
     GPULangFile* sourceFile = GPULangLoadFile(src);
 	if (sourceFile != nullptr && output != nullptr)
 	{
