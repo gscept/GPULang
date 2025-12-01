@@ -1975,7 +1975,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
         }
     }
     strucResolved->byteSize = offset;
-    uint32_t alignedSize = Type::Align(strucResolved->byteSize, 16);
+    uint32_t alignedSize = strucResolved->packMembers ? strucResolved->byteSize : Type::Align(strucResolved->byteSize, 16);
     strucResolved->endPadding = alignedSize - strucResolved->byteSize;
     strucResolved->byteSize = alignedSize;
     struc->byteSize = alignedSize;
@@ -2945,9 +2945,20 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             Structure::__Resolved* currentStrucResolved = Symbol::Resolved(currentStructure);
             Type::FullType newType = var->type;
             Type* newTypeSymbol = varResolved->typeSymbol;
+            bool generateNewStruct = currentStrucResolved->packMembers || currentStrucResolved->hasBoolMember;
+
+            // Special case for when we have a single member struct, bound as a dynamically sized array, then we can skip this whole process of generating a new type
+            if (
+                currentStrucResolved->packMembers && 
+                lastIndirectionModifier == Type::FullType::Modifier::Array && 
+                var->type.modifierValues.back() == nullptr && 
+                currentStructure->symbols.size == 1)
+            {
+                generateNewStruct = false;
+            }
 
             // If the structure is packed, we need to inflate it to adhere to alignment rules
-            if (currentStrucResolved->packMembers || currentStrucResolved->hasBoolMember)
+            if (generateNewStruct)
             {
                 const char* bufferType = var->type.IsMutable() ? "MutableBuffer" : "Buffer";
                 std::string structName = Format("gpl%s_%s", bufferType, var->name.c_str());
