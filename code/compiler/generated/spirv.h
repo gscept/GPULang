@@ -31582,7 +31582,7 @@ SPIRVResult SPIRV_RayHitDistance(const Compiler* c, SPIRVGenerator* g, uint32_t 
     g->writer->Capability(Capabilities::RayTracingKHR);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayHitDistance"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplRayTMax"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayTmaxKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);

@@ -5138,6 +5138,47 @@ def generate_types():
         'TLASObjectToWorld', 
         'TLASWorldToObject'
     ]
+
+    ray_tracing_spirv_builtins = [ 
+        'LaunchIdKHR', 
+        'LaunchSizeKHR', 
+        'PrimitiveId', 
+        'RayGeometryIndexKHR', 
+        'InstanceId', 
+        'InstanceCustomIndexKHR', 
+        'WorldRayOriginKHR', 
+        'WorldRayDirectionKHR', 
+        'ObjectRayOriginKHR', 
+        'ObjectRayDirectionKHR', 
+        'RayTminKHR', 
+        'RayTmaxKHR', 
+        'IncomingRayFlagsKHR', 
+        'RayTmaxKHR', 
+        'HitKindKHR', 
+        'ObjectToWorldKHR', 
+        'WorldToObjectKHR' 
+    ]
+
+    ray_tracing_variable_names = [
+        'RayLaunchIndex', 
+        'RayLaunchSize', 
+        'BLASPrimitiveIndex', 
+        'BLASGeometryIndex', 
+        'TLASInstanceIndex', 
+        'TLASInstanceCustomIndex', 
+        'RayWorldOrigin', 
+        'RayWorldDirection', 
+        'RayObjectOrigin', 
+        'RayObjectDirection', 
+        'RayTMin', 
+        'RayTMax', 
+        'RayFlags', 
+        'RayTMax', 
+        'RayHitKind', 
+        'TLASObjectToWorld', 
+        'TLASWorldToObject'
+    ]
+
     ray_tracing_getter_docs = [
         'Get the ray launch index', 
         'Get the ray launch size', 
@@ -5176,27 +5217,9 @@ def generate_types():
         'Float32x4x3', 
         'Float32x4x3' 
     ]
-    ray_tracing_spirv_builtins = [ 
-        'LaunchIdKHR', 
-        'LaunchSizeKHR', 
-        'PrimitiveId', 
-        'RayGeometryIndexKHR', 
-        'InstanceId', 
-        'InstanceCustomIndexKHR', 
-        'WorldRayOriginKHR', 
-        'WorldRayDirectionKHR', 
-        'ObjectRayOriginKHR', 
-        'ObjectRayDirectionKHR', 
-        'RayTminKHR', 
-        'RayTmaxKHR', 
-        'IncomingRayFlagsKHR', 
-        'RayTmaxKHR', 
-        'HitKindKHR', 
-        'ObjectToWorldKHR', 
-        'WorldToObjectKHR' 
-    ]
 
-    for name, return_type, spirv_builtin in zip(ray_tracing_getters, ray_tracing_return_types, ray_tracing_spirv_builtins):
+
+    for name, return_type, spirv_builtin, variable_name in zip(ray_tracing_getters, ray_tracing_return_types, ray_tracing_spirv_builtins, ray_tracing_variable_names):
         function_name = name
         intrinsic = name[0].lower() + name[1:] 
         fun = Function(
@@ -5214,7 +5237,7 @@ def generate_types():
         elif return_type in matrix_size_mapping:
             spirv_function += f'    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::{base_type_mapping[return_type]}, {matrix_size_mapping[return_type][0]}, {matrix_size_mapping[return_type][1]});\n'
         spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_{data_type_mapping[return_type]}_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
-        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{variable_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
