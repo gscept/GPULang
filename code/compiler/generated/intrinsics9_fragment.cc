@@ -1719,6 +1719,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_UInt32_ptr.name = "ptr"_c;
     AtomicLoad_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
     AtomicLoad_Uniform_UInt32_ptr.type.strict = true;
+    AtomicLoad_Uniform_UInt32_ptr.type.mut = true;
     AtomicLoad_Uniform_UInt32_ptr.type.modifiers = AtomicLoad_Uniform_UInt32_ptr_modifiers;
     AtomicLoad_Uniform_UInt32_ptr.type.modifierValues = AtomicLoad_Uniform_UInt32_ptr_modifierValues;
     AtomicLoad_Uniform_UInt32_semantics.name = "semantics"_c;
@@ -1732,15 +1733,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->signature = "atomicLoad(uniform *u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->name = "atomicLoad(uniform *u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->nameWithVarNames = "atomicLoad(ptr : uniform *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->signature = "atomicLoad(uniform *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->name = "atomicLoad(uniform *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicLoad with UInt32, MemorySemantics
     AtomicLoad_Workgroup_UInt32_ptr.name = "ptr"_c;
     AtomicLoad_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
     AtomicLoad_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicLoad_Workgroup_UInt32_ptr.type.mut = true;
     AtomicLoad_Workgroup_UInt32_ptr.type.modifiers = AtomicLoad_Workgroup_UInt32_ptr_modifiers;
     AtomicLoad_Workgroup_UInt32_ptr.type.modifierValues = AtomicLoad_Workgroup_UInt32_ptr_modifierValues;
     AtomicLoad_Workgroup_UInt32_semantics.name = "semantics"_c;
@@ -1754,15 +1756,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->signature = "atomicLoad(workgroup *u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->name = "atomicLoad(workgroup *u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->nameWithVarNames = "atomicLoad(ptr : workgroup *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->signature = "atomicLoad(workgroup *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->name = "atomicLoad(workgroup *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicIncrement with UInt32, MemorySemantics
     AtomicIncrement_Uniform_UInt32_ptr.name = "ptr"_c;
     AtomicIncrement_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
     AtomicIncrement_Uniform_UInt32_ptr.type.strict = true;
+    AtomicIncrement_Uniform_UInt32_ptr.type.mut = true;
     AtomicIncrement_Uniform_UInt32_ptr.type.modifiers = AtomicIncrement_Uniform_UInt32_ptr_modifiers;
     AtomicIncrement_Uniform_UInt32_ptr.type.modifierValues = AtomicIncrement_Uniform_UInt32_ptr_modifierValues;
     AtomicIncrement_Uniform_UInt32_semantics.name = "semantics"_c;
@@ -1776,15 +1779,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->signature = "atomicIncrement(uniform *u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->name = "atomicIncrement(uniform *u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->nameWithVarNames = "atomicIncrement(ptr : uniform *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->signature = "atomicIncrement(uniform *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->name = "atomicIncrement(uniform *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicIncrement with UInt32, MemorySemantics
     AtomicIncrement_Workgroup_UInt32_ptr.name = "ptr"_c;
     AtomicIncrement_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
     AtomicIncrement_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_UInt32_ptr.type.mut = true;
     AtomicIncrement_Workgroup_UInt32_ptr.type.modifiers = AtomicIncrement_Workgroup_UInt32_ptr_modifiers;
     AtomicIncrement_Workgroup_UInt32_ptr.type.modifierValues = AtomicIncrement_Workgroup_UInt32_ptr_modifierValues;
     AtomicIncrement_Workgroup_UInt32_semantics.name = "semantics"_c;
@@ -1798,15 +1802,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->signature = "atomicIncrement(workgroup *u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->name = "atomicIncrement(workgroup *u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->signature = "atomicIncrement(workgroup *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->name = "atomicIncrement(workgroup *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicDecrement with UInt32, MemorySemantics
     AtomicDecrement_Uniform_UInt32_ptr.name = "ptr"_c;
     AtomicDecrement_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
     AtomicDecrement_Uniform_UInt32_ptr.type.strict = true;
+    AtomicDecrement_Uniform_UInt32_ptr.type.mut = true;
     AtomicDecrement_Uniform_UInt32_ptr.type.modifiers = AtomicDecrement_Uniform_UInt32_ptr_modifiers;
     AtomicDecrement_Uniform_UInt32_ptr.type.modifierValues = AtomicDecrement_Uniform_UInt32_ptr_modifierValues;
     AtomicDecrement_Uniform_UInt32_semantics.name = "semantics"_c;
@@ -1820,15 +1825,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->signature = "atomicDecrement(uniform *u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->name = "atomicDecrement(uniform *u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->nameWithVarNames = "atomicDecrement(ptr : uniform *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->signature = "atomicDecrement(uniform *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->name = "atomicDecrement(uniform *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicDecrement with UInt32, MemorySemantics
     AtomicDecrement_Workgroup_UInt32_ptr.name = "ptr"_c;
     AtomicDecrement_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
     AtomicDecrement_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_UInt32_ptr.type.mut = true;
     AtomicDecrement_Workgroup_UInt32_ptr.type.modifiers = AtomicDecrement_Workgroup_UInt32_ptr_modifiers;
     AtomicDecrement_Workgroup_UInt32_ptr.type.modifierValues = AtomicDecrement_Workgroup_UInt32_ptr_modifierValues;
     AtomicDecrement_Workgroup_UInt32_semantics.name = "semantics"_c;
@@ -1842,15 +1848,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->signature = "atomicDecrement(workgroup *u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->name = "atomicDecrement(workgroup *u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->signature = "atomicDecrement(workgroup *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->name = "atomicDecrement(workgroup *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// atomicLoad with Int32, MemorySemantics
     AtomicLoad_Uniform_Int32_ptr.name = "ptr"_c;
     AtomicLoad_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
     AtomicLoad_Uniform_Int32_ptr.type.strict = true;
+    AtomicLoad_Uniform_Int32_ptr.type.mut = true;
     AtomicLoad_Uniform_Int32_ptr.type.modifiers = AtomicLoad_Uniform_Int32_ptr_modifiers;
     AtomicLoad_Uniform_Int32_ptr.type.modifierValues = AtomicLoad_Uniform_Int32_ptr_modifierValues;
     AtomicLoad_Uniform_Int32_semantics.name = "semantics"_c;
@@ -1864,15 +1871,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
     Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicLoad_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->signature = "atomicLoad(uniform *i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->name = "atomicLoad(uniform *i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->nameWithVarNames = "atomicLoad(ptr : uniform *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->signature = "atomicLoad(uniform *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->name = "atomicLoad(uniform *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Uniform_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicLoad with Int32, MemorySemantics
     AtomicLoad_Workgroup_Int32_ptr.name = "ptr"_c;
     AtomicLoad_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
     AtomicLoad_Workgroup_Int32_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Int32_ptr.type.mut = true;
     AtomicLoad_Workgroup_Int32_ptr.type.modifiers = AtomicLoad_Workgroup_Int32_ptr_modifiers;
     AtomicLoad_Workgroup_Int32_ptr.type.modifierValues = AtomicLoad_Workgroup_Int32_ptr_modifierValues;
     AtomicLoad_Workgroup_Int32_semantics.name = "semantics"_c;
@@ -1886,15 +1894,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->signature = "atomicLoad(workgroup *i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->name = "atomicLoad(workgroup *i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->nameWithVarNames = "atomicLoad(ptr : workgroup *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->signature = "atomicLoad(workgroup *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->name = "atomicLoad(workgroup *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicIncrement with Int32, MemorySemantics
     AtomicIncrement_Uniform_Int32_ptr.name = "ptr"_c;
     AtomicIncrement_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
     AtomicIncrement_Uniform_Int32_ptr.type.strict = true;
+    AtomicIncrement_Uniform_Int32_ptr.type.mut = true;
     AtomicIncrement_Uniform_Int32_ptr.type.modifiers = AtomicIncrement_Uniform_Int32_ptr_modifiers;
     AtomicIncrement_Uniform_Int32_ptr.type.modifierValues = AtomicIncrement_Uniform_Int32_ptr_modifierValues;
     AtomicIncrement_Uniform_Int32_semantics.name = "semantics"_c;
@@ -1908,15 +1917,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->signature = "atomicIncrement(uniform *i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->name = "atomicIncrement(uniform *i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->nameWithVarNames = "atomicIncrement(ptr : uniform *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->signature = "atomicIncrement(uniform *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->name = "atomicIncrement(uniform *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicIncrement with Int32, MemorySemantics
     AtomicIncrement_Workgroup_Int32_ptr.name = "ptr"_c;
     AtomicIncrement_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
     AtomicIncrement_Workgroup_Int32_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_Int32_ptr.type.mut = true;
     AtomicIncrement_Workgroup_Int32_ptr.type.modifiers = AtomicIncrement_Workgroup_Int32_ptr_modifiers;
     AtomicIncrement_Workgroup_Int32_ptr.type.modifierValues = AtomicIncrement_Workgroup_Int32_ptr_modifierValues;
     AtomicIncrement_Workgroup_Int32_semantics.name = "semantics"_c;
@@ -1930,15 +1940,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->signature = "atomicIncrement(workgroup *i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->name = "atomicIncrement(workgroup *i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->signature = "atomicIncrement(workgroup *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->name = "atomicIncrement(workgroup *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicDecrement with Int32, MemorySemantics
     AtomicDecrement_Uniform_Int32_ptr.name = "ptr"_c;
     AtomicDecrement_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
     AtomicDecrement_Uniform_Int32_ptr.type.strict = true;
+    AtomicDecrement_Uniform_Int32_ptr.type.mut = true;
     AtomicDecrement_Uniform_Int32_ptr.type.modifiers = AtomicDecrement_Uniform_Int32_ptr_modifiers;
     AtomicDecrement_Uniform_Int32_ptr.type.modifierValues = AtomicDecrement_Uniform_Int32_ptr_modifierValues;
     AtomicDecrement_Uniform_Int32_semantics.name = "semantics"_c;
@@ -1952,15 +1963,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->signature = "atomicDecrement(uniform *i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->name = "atomicDecrement(uniform *i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->nameWithVarNames = "atomicDecrement(ptr : uniform *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->signature = "atomicDecrement(uniform *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->name = "atomicDecrement(uniform *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicDecrement with Int32, MemorySemantics
     AtomicDecrement_Workgroup_Int32_ptr.name = "ptr"_c;
     AtomicDecrement_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
     AtomicDecrement_Workgroup_Int32_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_Int32_ptr.type.mut = true;
     AtomicDecrement_Workgroup_Int32_ptr.type.modifiers = AtomicDecrement_Workgroup_Int32_ptr_modifiers;
     AtomicDecrement_Workgroup_Int32_ptr.type.modifierValues = AtomicDecrement_Workgroup_Int32_ptr_modifierValues;
     AtomicDecrement_Workgroup_Int32_semantics.name = "semantics"_c;
@@ -1974,15 +1986,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->signature = "atomicDecrement(workgroup *i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->name = "atomicDecrement(workgroup *i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->signature = "atomicDecrement(workgroup *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->name = "atomicDecrement(workgroup *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
 
     /// atomicLoad with UInt16, MemorySemantics
     AtomicLoad_Uniform_UInt16_ptr.name = "ptr"_c;
     AtomicLoad_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
     AtomicLoad_Uniform_UInt16_ptr.type.strict = true;
+    AtomicLoad_Uniform_UInt16_ptr.type.mut = true;
     AtomicLoad_Uniform_UInt16_ptr.type.modifiers = AtomicLoad_Uniform_UInt16_ptr_modifiers;
     AtomicLoad_Uniform_UInt16_ptr.type.modifierValues = AtomicLoad_Uniform_UInt16_ptr_modifierValues;
     AtomicLoad_Uniform_UInt16_semantics.name = "semantics"_c;
@@ -1996,15 +2009,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->signature = "atomicLoad(uniform *u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->name = "atomicLoad(uniform *u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->nameWithVarNames = "atomicLoad(ptr : uniform *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->signature = "atomicLoad(uniform *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->name = "atomicLoad(uniform *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable u16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicLoad with UInt16, MemorySemantics
     AtomicLoad_Workgroup_UInt16_ptr.name = "ptr"_c;
     AtomicLoad_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
     AtomicLoad_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicLoad_Workgroup_UInt16_ptr.type.mut = true;
     AtomicLoad_Workgroup_UInt16_ptr.type.modifiers = AtomicLoad_Workgroup_UInt16_ptr_modifiers;
     AtomicLoad_Workgroup_UInt16_ptr.type.modifierValues = AtomicLoad_Workgroup_UInt16_ptr_modifierValues;
     AtomicLoad_Workgroup_UInt16_semantics.name = "semantics"_c;
@@ -2018,15 +2032,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->signature = "atomicLoad(workgroup *u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->name = "atomicLoad(workgroup *u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->nameWithVarNames = "atomicLoad(ptr : workgroup *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->signature = "atomicLoad(workgroup *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->name = "atomicLoad(workgroup *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable u16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicIncrement with UInt16, MemorySemantics
     AtomicIncrement_Uniform_UInt16_ptr.name = "ptr"_c;
     AtomicIncrement_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
     AtomicIncrement_Uniform_UInt16_ptr.type.strict = true;
+    AtomicIncrement_Uniform_UInt16_ptr.type.mut = true;
     AtomicIncrement_Uniform_UInt16_ptr.type.modifiers = AtomicIncrement_Uniform_UInt16_ptr_modifiers;
     AtomicIncrement_Uniform_UInt16_ptr.type.modifierValues = AtomicIncrement_Uniform_UInt16_ptr_modifierValues;
     AtomicIncrement_Uniform_UInt16_semantics.name = "semantics"_c;
@@ -2040,15 +2055,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->signature = "atomicIncrement(uniform *u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->name = "atomicIncrement(uniform *u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->nameWithVarNames = "atomicIncrement(ptr : uniform *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->signature = "atomicIncrement(uniform *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->name = "atomicIncrement(uniform *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable u16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicIncrement with UInt16, MemorySemantics
     AtomicIncrement_Workgroup_UInt16_ptr.name = "ptr"_c;
     AtomicIncrement_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
     AtomicIncrement_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_UInt16_ptr.type.mut = true;
     AtomicIncrement_Workgroup_UInt16_ptr.type.modifiers = AtomicIncrement_Workgroup_UInt16_ptr_modifiers;
     AtomicIncrement_Workgroup_UInt16_ptr.type.modifierValues = AtomicIncrement_Workgroup_UInt16_ptr_modifierValues;
     AtomicIncrement_Workgroup_UInt16_semantics.name = "semantics"_c;
@@ -2062,15 +2078,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->signature = "atomicIncrement(workgroup *u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->name = "atomicIncrement(workgroup *u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->nameWithVarNames = "atomicIncrement(ptr : workgroup *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->signature = "atomicIncrement(workgroup *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->name = "atomicIncrement(workgroup *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable u16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicDecrement with UInt16, MemorySemantics
     AtomicDecrement_Uniform_UInt16_ptr.name = "ptr"_c;
     AtomicDecrement_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
     AtomicDecrement_Uniform_UInt16_ptr.type.strict = true;
+    AtomicDecrement_Uniform_UInt16_ptr.type.mut = true;
     AtomicDecrement_Uniform_UInt16_ptr.type.modifiers = AtomicDecrement_Uniform_UInt16_ptr_modifiers;
     AtomicDecrement_Uniform_UInt16_ptr.type.modifierValues = AtomicDecrement_Uniform_UInt16_ptr_modifierValues;
     AtomicDecrement_Uniform_UInt16_semantics.name = "semantics"_c;
@@ -2084,15 +2101,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->signature = "atomicDecrement(uniform *u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->name = "atomicDecrement(uniform *u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->nameWithVarNames = "atomicDecrement(ptr : uniform *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->signature = "atomicDecrement(uniform *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->name = "atomicDecrement(uniform *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable u16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicDecrement with UInt16, MemorySemantics
     AtomicDecrement_Workgroup_UInt16_ptr.name = "ptr"_c;
     AtomicDecrement_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
     AtomicDecrement_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_UInt16_ptr.type.mut = true;
     AtomicDecrement_Workgroup_UInt16_ptr.type.modifiers = AtomicDecrement_Workgroup_UInt16_ptr_modifiers;
     AtomicDecrement_Workgroup_UInt16_ptr.type.modifierValues = AtomicDecrement_Workgroup_UInt16_ptr_modifierValues;
     AtomicDecrement_Workgroup_UInt16_semantics.name = "semantics"_c;
@@ -2106,15 +2124,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->signature = "atomicDecrement(workgroup *u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->name = "atomicDecrement(workgroup *u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->nameWithVarNames = "atomicDecrement(ptr : workgroup *u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->signature = "atomicDecrement(workgroup *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->name = "atomicDecrement(workgroup *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable u16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// atomicLoad with Int16, MemorySemantics
     AtomicLoad_Uniform_Int16_ptr.name = "ptr"_c;
     AtomicLoad_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
     AtomicLoad_Uniform_Int16_ptr.type.strict = true;
+    AtomicLoad_Uniform_Int16_ptr.type.mut = true;
     AtomicLoad_Uniform_Int16_ptr.type.modifiers = AtomicLoad_Uniform_Int16_ptr_modifiers;
     AtomicLoad_Uniform_Int16_ptr.type.modifierValues = AtomicLoad_Uniform_Int16_ptr_modifierValues;
     AtomicLoad_Uniform_Int16_semantics.name = "semantics"_c;
@@ -2128,15 +2147,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
     Symbol::Resolved(&AtomicLoad_Uniform_Int16_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicLoad_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->signature = "atomicLoad(uniform *i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->name = "atomicLoad(uniform *i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->nameWithVarNames = "atomicLoad(ptr : uniform *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->signature = "atomicLoad(uniform *mutable i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->name = "atomicLoad(uniform *mutable i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable i16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Uniform_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicLoad with Int16, MemorySemantics
     AtomicLoad_Workgroup_Int16_ptr.name = "ptr"_c;
     AtomicLoad_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
     AtomicLoad_Workgroup_Int16_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Int16_ptr.type.mut = true;
     AtomicLoad_Workgroup_Int16_ptr.type.modifiers = AtomicLoad_Workgroup_Int16_ptr_modifiers;
     AtomicLoad_Workgroup_Int16_ptr.type.modifierValues = AtomicLoad_Workgroup_Int16_ptr_modifierValues;
     AtomicLoad_Workgroup_Int16_semantics.name = "semantics"_c;
@@ -2150,15 +2170,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->signature = "atomicLoad(workgroup *i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->name = "atomicLoad(workgroup *i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->nameWithVarNames = "atomicLoad(ptr : workgroup *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->signature = "atomicLoad(workgroup *mutable i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->name = "atomicLoad(workgroup *mutable i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable i16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicIncrement with Int16, MemorySemantics
     AtomicIncrement_Uniform_Int16_ptr.name = "ptr"_c;
     AtomicIncrement_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
     AtomicIncrement_Uniform_Int16_ptr.type.strict = true;
+    AtomicIncrement_Uniform_Int16_ptr.type.mut = true;
     AtomicIncrement_Uniform_Int16_ptr.type.modifiers = AtomicIncrement_Uniform_Int16_ptr_modifiers;
     AtomicIncrement_Uniform_Int16_ptr.type.modifierValues = AtomicIncrement_Uniform_Int16_ptr_modifierValues;
     AtomicIncrement_Uniform_Int16_semantics.name = "semantics"_c;
@@ -2172,15 +2193,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicIncrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int16_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->signature = "atomicIncrement(uniform *i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->name = "atomicIncrement(uniform *i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->nameWithVarNames = "atomicIncrement(ptr : uniform *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->signature = "atomicIncrement(uniform *mutable i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->name = "atomicIncrement(uniform *mutable i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable i16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicIncrement with Int16, MemorySemantics
     AtomicIncrement_Workgroup_Int16_ptr.name = "ptr"_c;
     AtomicIncrement_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
     AtomicIncrement_Workgroup_Int16_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_Int16_ptr.type.mut = true;
     AtomicIncrement_Workgroup_Int16_ptr.type.modifiers = AtomicIncrement_Workgroup_Int16_ptr_modifiers;
     AtomicIncrement_Workgroup_Int16_ptr.type.modifierValues = AtomicIncrement_Workgroup_Int16_ptr_modifierValues;
     AtomicIncrement_Workgroup_Int16_semantics.name = "semantics"_c;
@@ -2194,15 +2216,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->signature = "atomicIncrement(workgroup *i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->name = "atomicIncrement(workgroup *i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->nameWithVarNames = "atomicIncrement(ptr : workgroup *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->signature = "atomicIncrement(workgroup *mutable i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->name = "atomicIncrement(workgroup *mutable i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable i16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicDecrement with Int16, MemorySemantics
     AtomicDecrement_Uniform_Int16_ptr.name = "ptr"_c;
     AtomicDecrement_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
     AtomicDecrement_Uniform_Int16_ptr.type.strict = true;
+    AtomicDecrement_Uniform_Int16_ptr.type.mut = true;
     AtomicDecrement_Uniform_Int16_ptr.type.modifiers = AtomicDecrement_Uniform_Int16_ptr_modifiers;
     AtomicDecrement_Uniform_Int16_ptr.type.modifierValues = AtomicDecrement_Uniform_Int16_ptr_modifierValues;
     AtomicDecrement_Uniform_Int16_semantics.name = "semantics"_c;
@@ -2216,15 +2239,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicDecrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int16_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->signature = "atomicDecrement(uniform *i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->name = "atomicDecrement(uniform *i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->nameWithVarNames = "atomicDecrement(ptr : uniform *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->signature = "atomicDecrement(uniform *mutable i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->name = "atomicDecrement(uniform *mutable i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable i16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicDecrement with Int16, MemorySemantics
     AtomicDecrement_Workgroup_Int16_ptr.name = "ptr"_c;
     AtomicDecrement_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
     AtomicDecrement_Workgroup_Int16_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_Int16_ptr.type.mut = true;
     AtomicDecrement_Workgroup_Int16_ptr.type.modifiers = AtomicDecrement_Workgroup_Int16_ptr_modifiers;
     AtomicDecrement_Workgroup_Int16_ptr.type.modifierValues = AtomicDecrement_Workgroup_Int16_ptr_modifierValues;
     AtomicDecrement_Workgroup_Int16_semantics.name = "semantics"_c;
@@ -2238,15 +2262,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->signature = "atomicDecrement(workgroup *i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->name = "atomicDecrement(workgroup *i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->nameWithVarNames = "atomicDecrement(ptr : workgroup *i16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->signature = "atomicDecrement(workgroup *mutable i16,literal MemorySemantics) i16"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->name = "atomicDecrement(workgroup *mutable i16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable i16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
 
     /// atomicLoad with Float32, MemorySemantics
     AtomicLoad_Uniform_Float32_ptr.name = "ptr"_c;
     AtomicLoad_Uniform_Float32_ptr.type = Type::FullType{ Float32Type.name };
     AtomicLoad_Uniform_Float32_ptr.type.strict = true;
+    AtomicLoad_Uniform_Float32_ptr.type.mut = true;
     AtomicLoad_Uniform_Float32_ptr.type.modifiers = AtomicLoad_Uniform_Float32_ptr_modifiers;
     AtomicLoad_Uniform_Float32_ptr.type.modifierValues = AtomicLoad_Uniform_Float32_ptr_modifierValues;
     AtomicLoad_Uniform_Float32_semantics.name = "semantics"_c;
@@ -2260,15 +2285,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
     Symbol::Resolved(&AtomicLoad_Uniform_Float32_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicLoad_Uniform_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->signature = "atomicLoad(uniform *f32,literal MemorySemantics) f32"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->name = "atomicLoad(uniform *f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->nameWithVarNames = "atomicLoad(ptr : uniform *f32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->signature = "atomicLoad(uniform *mutable f32,literal MemorySemantics) f32"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->name = "atomicLoad(uniform *mutable f32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable f32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Uniform_Float32)->returnTypeSymbol = &Float32Type;
 
     /// atomicLoad with Float32, MemorySemantics
     AtomicLoad_Workgroup_Float32_ptr.name = "ptr"_c;
     AtomicLoad_Workgroup_Float32_ptr.type = Type::FullType{ Float32Type.name };
     AtomicLoad_Workgroup_Float32_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Float32_ptr.type.mut = true;
     AtomicLoad_Workgroup_Float32_ptr.type.modifiers = AtomicLoad_Workgroup_Float32_ptr_modifiers;
     AtomicLoad_Workgroup_Float32_ptr.type.modifierValues = AtomicLoad_Workgroup_Float32_ptr_modifierValues;
     AtomicLoad_Workgroup_Float32_semantics.name = "semantics"_c;
@@ -2282,15 +2308,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float32_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->signature = "atomicLoad(workgroup *f32,literal MemorySemantics) f32"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->name = "atomicLoad(workgroup *f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->nameWithVarNames = "atomicLoad(ptr : workgroup *f32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->signature = "atomicLoad(workgroup *mutable f32,literal MemorySemantics) f32"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->name = "atomicLoad(workgroup *mutable f32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable f32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->returnTypeSymbol = &Float32Type;
 
     /// atomicLoad with Float16, MemorySemantics
     AtomicLoad_Uniform_Float16_ptr.name = "ptr"_c;
     AtomicLoad_Uniform_Float16_ptr.type = Type::FullType{ Float16Type.name };
     AtomicLoad_Uniform_Float16_ptr.type.strict = true;
+    AtomicLoad_Uniform_Float16_ptr.type.mut = true;
     AtomicLoad_Uniform_Float16_ptr.type.modifiers = AtomicLoad_Uniform_Float16_ptr_modifiers;
     AtomicLoad_Uniform_Float16_ptr.type.modifierValues = AtomicLoad_Uniform_Float16_ptr_modifierValues;
     AtomicLoad_Uniform_Float16_semantics.name = "semantics"_c;
@@ -2304,15 +2331,16 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
     Symbol::Resolved(&AtomicLoad_Uniform_Float16_ptr)->storage = Storage::Uniform;
     Symbol::Resolved(&AtomicLoad_Uniform_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->signature = "atomicLoad(uniform *f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->name = "atomicLoad(uniform *f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->nameWithVarNames = "atomicLoad(ptr : uniform *f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->signature = "atomicLoad(uniform *mutable f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->name = "atomicLoad(uniform *mutable f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable f16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Uniform_Float16)->returnTypeSymbol = &Float16Type;
 
     /// atomicLoad with Float16, MemorySemantics
     AtomicLoad_Workgroup_Float16_ptr.name = "ptr"_c;
     AtomicLoad_Workgroup_Float16_ptr.type = Type::FullType{ Float16Type.name };
     AtomicLoad_Workgroup_Float16_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Float16_ptr.type.mut = true;
     AtomicLoad_Workgroup_Float16_ptr.type.modifiers = AtomicLoad_Workgroup_Float16_ptr_modifiers;
     AtomicLoad_Workgroup_Float16_ptr.type.modifierValues = AtomicLoad_Workgroup_Float16_ptr_modifierValues;
     AtomicLoad_Workgroup_Float16_semantics.name = "semantics"_c;
@@ -2326,9 +2354,9 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicLoad_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float16_ptr)->storage = Storage::Workgroup;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->signature = "atomicLoad(workgroup *f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->name = "atomicLoad(workgroup *f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->nameWithVarNames = "atomicLoad(ptr : workgroup *f16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->signature = "atomicLoad(workgroup *mutable f16,literal MemorySemantics) f16"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->name = "atomicLoad(workgroup *mutable f16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable f16, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->returnTypeSymbol = &Float16Type;
 
     /// atomicStore with UInt32, UInt32, MemorySemantics

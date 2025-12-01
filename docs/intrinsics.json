@@ -478,28 +478,28 @@
         ],
         "overloads": [
             {
-                "signature": "atomicDecrement(uniform ptr: *u32, semantics: literal MemorySemantics) u32"
+                "signature": "atomicDecrement(uniform ptr: *mutable u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicDecrement(ptr: *u32, semantics: literal MemorySemantics) u32"
+                "signature": "atomicDecrement(ptr: *mutable u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicDecrement(uniform ptr: *i32, semantics: literal MemorySemantics) i32"
+                "signature": "atomicDecrement(uniform ptr: *mutable i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicDecrement(ptr: *i32, semantics: literal MemorySemantics) i32"
+                "signature": "atomicDecrement(ptr: *mutable i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicDecrement(uniform ptr: *u16, semantics: literal MemorySemantics) u16"
+                "signature": "atomicDecrement(uniform ptr: *mutable u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicDecrement(ptr: *u16, semantics: literal MemorySemantics) u16"
+                "signature": "atomicDecrement(ptr: *mutable u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicDecrement(uniform ptr: *i16, semantics: literal MemorySemantics) i16"
+                "signature": "atomicDecrement(uniform ptr: *mutable i16, semantics: literal MemorySemantics) i16"
             },
             {
-                "signature": "atomicDecrement(ptr: *i16, semantics: literal MemorySemantics) i16"
+                "signature": "atomicDecrement(ptr: *mutable i16, semantics: literal MemorySemantics) i16"
             }
         ]
     },
@@ -562,28 +562,28 @@
         ],
         "overloads": [
             {
-                "signature": "atomicIncrement(uniform ptr: *u32, semantics: literal MemorySemantics) u32"
+                "signature": "atomicIncrement(uniform ptr: *mutable u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicIncrement(ptr: *u32, semantics: literal MemorySemantics) u32"
+                "signature": "atomicIncrement(ptr: *mutable u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicIncrement(uniform ptr: *i32, semantics: literal MemorySemantics) i32"
+                "signature": "atomicIncrement(uniform ptr: *mutable i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicIncrement(ptr: *i32, semantics: literal MemorySemantics) i32"
+                "signature": "atomicIncrement(ptr: *mutable i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicIncrement(uniform ptr: *u16, semantics: literal MemorySemantics) u16"
+                "signature": "atomicIncrement(uniform ptr: *mutable u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicIncrement(ptr: *u16, semantics: literal MemorySemantics) u16"
+                "signature": "atomicIncrement(ptr: *mutable u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicIncrement(uniform ptr: *i16, semantics: literal MemorySemantics) i16"
+                "signature": "atomicIncrement(uniform ptr: *mutable i16, semantics: literal MemorySemantics) i16"
             },
             {
-                "signature": "atomicIncrement(ptr: *i16, semantics: literal MemorySemantics) i16"
+                "signature": "atomicIncrement(ptr: *mutable i16, semantics: literal MemorySemantics) i16"
             }
         ]
     },
@@ -598,40 +598,40 @@
         ],
         "overloads": [
             {
-                "signature": "atomicLoad(uniform ptr: *u32, semantics: literal MemorySemantics) u32"
+                "signature": "atomicLoad(uniform ptr: *mutable u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicLoad(ptr: *u32, semantics: literal MemorySemantics) u32"
+                "signature": "atomicLoad(ptr: *mutable u32, semantics: literal MemorySemantics) u32"
             },
             {
-                "signature": "atomicLoad(uniform ptr: *i32, semantics: literal MemorySemantics) i32"
+                "signature": "atomicLoad(uniform ptr: *mutable i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicLoad(ptr: *i32, semantics: literal MemorySemantics) i32"
+                "signature": "atomicLoad(ptr: *mutable i32, semantics: literal MemorySemantics) i32"
             },
             {
-                "signature": "atomicLoad(uniform ptr: *u16, semantics: literal MemorySemantics) u16"
+                "signature": "atomicLoad(uniform ptr: *mutable u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicLoad(ptr: *u16, semantics: literal MemorySemantics) u16"
+                "signature": "atomicLoad(ptr: *mutable u16, semantics: literal MemorySemantics) u16"
             },
             {
-                "signature": "atomicLoad(uniform ptr: *i16, semantics: literal MemorySemantics) i16"
+                "signature": "atomicLoad(uniform ptr: *mutable i16, semantics: literal MemorySemantics) i16"
             },
             {
-                "signature": "atomicLoad(ptr: *i16, semantics: literal MemorySemantics) i16"
+                "signature": "atomicLoad(ptr: *mutable i16, semantics: literal MemorySemantics) i16"
             },
             {
-                "signature": "atomicLoad(uniform ptr: *f32, semantics: literal MemorySemantics) f32"
+                "signature": "atomicLoad(uniform ptr: *mutable f32, semantics: literal MemorySemantics) f32"
             },
             {
-                "signature": "atomicLoad(ptr: *f32, semantics: literal MemorySemantics) f32"
+                "signature": "atomicLoad(ptr: *mutable f32, semantics: literal MemorySemantics) f32"
             },
             {
-                "signature": "atomicLoad(uniform ptr: *f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicLoad(uniform ptr: *mutable f16, semantics: literal MemorySemantics) f16"
             },
             {
-                "signature": "atomicLoad(ptr: *f16, semantics: literal MemorySemantics) f16"
+                "signature": "atomicLoad(ptr: *mutable f16, semantics: literal MemorySemantics) f16"
             }
         ]
     },

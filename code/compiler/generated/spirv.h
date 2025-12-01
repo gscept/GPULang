@@ -20481,7 +20481,7 @@ SPIRVResult SPIRV_AtomicLoad_Uniform_UInt32(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20493,7 +20493,7 @@ SPIRVResult SPIRV_AtomicLoad_Workgroup_UInt32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20505,7 +20505,7 @@ SPIRVResult SPIRV_AtomicIncrement_Uniform_UInt32(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20517,7 +20517,7 @@ SPIRVResult SPIRV_AtomicIncrement_Workgroup_UInt32(const Compiler* c, SPIRVGener
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20529,7 +20529,7 @@ SPIRVResult SPIRV_AtomicDecrement_Uniform_UInt32(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20541,7 +20541,7 @@ SPIRVResult SPIRV_AtomicDecrement_Workgroup_UInt32(const Compiler* c, SPIRVGener
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20553,7 +20553,7 @@ SPIRVResult SPIRV_AtomicLoad_Uniform_Int32(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20565,7 +20565,7 @@ SPIRVResult SPIRV_AtomicLoad_Workgroup_Int32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20577,7 +20577,7 @@ SPIRVResult SPIRV_AtomicIncrement_Uniform_Int32(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20589,7 +20589,7 @@ SPIRVResult SPIRV_AtomicIncrement_Workgroup_Int32(const Compiler* c, SPIRVGenera
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20601,7 +20601,7 @@ SPIRVResult SPIRV_AtomicDecrement_Uniform_Int32(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20613,7 +20613,7 @@ SPIRVResult SPIRV_AtomicDecrement_Workgroup_Int32(const Compiler* c, SPIRVGenera
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20625,7 +20625,7 @@ SPIRVResult SPIRV_AtomicLoad_Uniform_UInt16(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20637,7 +20637,7 @@ SPIRVResult SPIRV_AtomicLoad_Workgroup_UInt16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20649,7 +20649,7 @@ SPIRVResult SPIRV_AtomicIncrement_Uniform_UInt16(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20661,7 +20661,7 @@ SPIRVResult SPIRV_AtomicIncrement_Workgroup_UInt16(const Compiler* c, SPIRVGener
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20673,7 +20673,7 @@ SPIRVResult SPIRV_AtomicDecrement_Uniform_UInt16(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20685,7 +20685,7 @@ SPIRVResult SPIRV_AtomicDecrement_Workgroup_UInt16(const Compiler* c, SPIRVGener
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20697,7 +20697,7 @@ SPIRVResult SPIRV_AtomicLoad_Uniform_Int16(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20709,7 +20709,7 @@ SPIRVResult SPIRV_AtomicLoad_Workgroup_Int16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20721,7 +20721,7 @@ SPIRVResult SPIRV_AtomicIncrement_Uniform_Int16(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20733,7 +20733,7 @@ SPIRVResult SPIRV_AtomicIncrement_Workgroup_Int16(const Compiler* c, SPIRVGenera
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20745,7 +20745,7 @@ SPIRVResult SPIRV_AtomicDecrement_Uniform_Int16(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20757,7 +20757,7 @@ SPIRVResult SPIRV_AtomicDecrement_Workgroup_Int16(const Compiler* c, SPIRVGenera
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20769,7 +20769,7 @@ SPIRVResult SPIRV_AtomicLoad_Uniform_Float32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20781,7 +20781,7 @@ SPIRVResult SPIRV_AtomicLoad_Workgroup_Float32(const Compiler* c, SPIRVGenerator
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20793,7 +20793,7 @@ SPIRVResult SPIRV_AtomicLoad_Uniform_Float16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20805,7 +20805,7 @@ SPIRVResult SPIRV_AtomicLoad_Workgroup_Float16(const Compiler* c, SPIRVGenerator
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
     uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);
@@ -20817,7 +20817,7 @@ SPIRVResult SPIRV_AtomicStore_Uniform_UInt32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20830,7 +20830,7 @@ SPIRVResult SPIRV_AtomicStore_Workgroup_UInt32(const Compiler* c, SPIRVGenerator
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20843,7 +20843,7 @@ SPIRVResult SPIRV_AtomicExchange_Uniform_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20856,7 +20856,7 @@ SPIRVResult SPIRV_AtomicExchange_Workgroup_UInt32(const Compiler* c, SPIRVGenera
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20869,7 +20869,7 @@ SPIRVResult SPIRV_AtomicAdd_Uniform_UInt32(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20882,7 +20882,7 @@ SPIRVResult SPIRV_AtomicAdd_Workgroup_UInt32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20895,7 +20895,7 @@ SPIRVResult SPIRV_AtomicSubtract_Uniform_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20908,7 +20908,7 @@ SPIRVResult SPIRV_AtomicSubtract_Workgroup_UInt32(const Compiler* c, SPIRVGenera
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20921,7 +20921,7 @@ SPIRVResult SPIRV_AtomicAnd_Uniform_UInt32(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20934,7 +20934,7 @@ SPIRVResult SPIRV_AtomicAnd_Workgroup_UInt32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20947,7 +20947,7 @@ SPIRVResult SPIRV_AtomicOr_Uniform_UInt32(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20960,7 +20960,7 @@ SPIRVResult SPIRV_AtomicOr_Workgroup_UInt32(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20973,7 +20973,7 @@ SPIRVResult SPIRV_AtomicXor_Uniform_UInt32(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20986,7 +20986,7 @@ SPIRVResult SPIRV_AtomicXor_Workgroup_UInt32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -20999,7 +20999,7 @@ SPIRVResult SPIRV_AtomicStore_Uniform_Int32(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21012,7 +21012,7 @@ SPIRVResult SPIRV_AtomicStore_Workgroup_Int32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21025,7 +21025,7 @@ SPIRVResult SPIRV_AtomicExchange_Uniform_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21038,7 +21038,7 @@ SPIRVResult SPIRV_AtomicExchange_Workgroup_Int32(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21051,7 +21051,7 @@ SPIRVResult SPIRV_AtomicAdd_Uniform_Int32(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21064,7 +21064,7 @@ SPIRVResult SPIRV_AtomicAdd_Workgroup_Int32(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21077,7 +21077,7 @@ SPIRVResult SPIRV_AtomicSubtract_Uniform_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21090,7 +21090,7 @@ SPIRVResult SPIRV_AtomicSubtract_Workgroup_Int32(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21103,7 +21103,7 @@ SPIRVResult SPIRV_AtomicAnd_Uniform_Int32(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21116,7 +21116,7 @@ SPIRVResult SPIRV_AtomicAnd_Workgroup_Int32(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21129,7 +21129,7 @@ SPIRVResult SPIRV_AtomicOr_Uniform_Int32(const Compiler* c, SPIRVGenerator* g, u
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21142,7 +21142,7 @@ SPIRVResult SPIRV_AtomicOr_Workgroup_Int32(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21155,7 +21155,7 @@ SPIRVResult SPIRV_AtomicXor_Uniform_Int32(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21168,7 +21168,7 @@ SPIRVResult SPIRV_AtomicXor_Workgroup_Int32(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21181,7 +21181,7 @@ SPIRVResult SPIRV_AtomicStore_Uniform_UInt16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21194,7 +21194,7 @@ SPIRVResult SPIRV_AtomicStore_Workgroup_UInt16(const Compiler* c, SPIRVGenerator
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21207,7 +21207,7 @@ SPIRVResult SPIRV_AtomicExchange_Uniform_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21220,7 +21220,7 @@ SPIRVResult SPIRV_AtomicExchange_Workgroup_UInt16(const Compiler* c, SPIRVGenera
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21233,7 +21233,7 @@ SPIRVResult SPIRV_AtomicAdd_Uniform_UInt16(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21246,7 +21246,7 @@ SPIRVResult SPIRV_AtomicAdd_Workgroup_UInt16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21259,7 +21259,7 @@ SPIRVResult SPIRV_AtomicSubtract_Uniform_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21272,7 +21272,7 @@ SPIRVResult SPIRV_AtomicSubtract_Workgroup_UInt16(const Compiler* c, SPIRVGenera
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21285,7 +21285,7 @@ SPIRVResult SPIRV_AtomicAnd_Uniform_UInt16(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21298,7 +21298,7 @@ SPIRVResult SPIRV_AtomicAnd_Workgroup_UInt16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21311,7 +21311,7 @@ SPIRVResult SPIRV_AtomicOr_Uniform_UInt16(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21324,7 +21324,7 @@ SPIRVResult SPIRV_AtomicOr_Workgroup_UInt16(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21337,7 +21337,7 @@ SPIRVResult SPIRV_AtomicXor_Uniform_UInt16(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21350,7 +21350,7 @@ SPIRVResult SPIRV_AtomicXor_Workgroup_UInt16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21363,7 +21363,7 @@ SPIRVResult SPIRV_AtomicStore_Uniform_Int16(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21376,7 +21376,7 @@ SPIRVResult SPIRV_AtomicStore_Workgroup_Int16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21389,7 +21389,7 @@ SPIRVResult SPIRV_AtomicExchange_Uniform_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21402,7 +21402,7 @@ SPIRVResult SPIRV_AtomicExchange_Workgroup_Int16(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21415,7 +21415,7 @@ SPIRVResult SPIRV_AtomicAdd_Uniform_Int16(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21428,7 +21428,7 @@ SPIRVResult SPIRV_AtomicAdd_Workgroup_Int16(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21441,7 +21441,7 @@ SPIRVResult SPIRV_AtomicSubtract_Uniform_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21454,7 +21454,7 @@ SPIRVResult SPIRV_AtomicSubtract_Workgroup_Int16(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21467,7 +21467,7 @@ SPIRVResult SPIRV_AtomicAnd_Uniform_Int16(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21480,7 +21480,7 @@ SPIRVResult SPIRV_AtomicAnd_Workgroup_Int16(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21493,7 +21493,7 @@ SPIRVResult SPIRV_AtomicOr_Uniform_Int16(const Compiler* c, SPIRVGenerator* g, u
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21506,7 +21506,7 @@ SPIRVResult SPIRV_AtomicOr_Workgroup_Int16(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21519,7 +21519,7 @@ SPIRVResult SPIRV_AtomicXor_Uniform_Int16(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21532,7 +21532,7 @@ SPIRVResult SPIRV_AtomicXor_Workgroup_Int16(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21545,7 +21545,7 @@ SPIRVResult SPIRV_AtomicStore_Uniform_Float32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21558,7 +21558,7 @@ SPIRVResult SPIRV_AtomicStore_Workgroup_Float32(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21571,7 +21571,7 @@ SPIRVResult SPIRV_AtomicExchange_Uniform_Float32(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21584,7 +21584,7 @@ SPIRVResult SPIRV_AtomicExchange_Workgroup_Float32(const Compiler* c, SPIRVGener
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21597,7 +21597,7 @@ SPIRVResult SPIRV_AtomicStore_Uniform_Float16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21610,7 +21610,7 @@ SPIRVResult SPIRV_AtomicStore_Workgroup_Float16(const Compiler* c, SPIRVGenerato
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21623,7 +21623,7 @@ SPIRVResult SPIRV_AtomicExchange_Uniform_Float16(const Compiler* c, SPIRVGenerat
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21636,7 +21636,7 @@ SPIRVResult SPIRV_AtomicExchange_Workgroup_Float16(const Compiler* c, SPIRVGener
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21649,7 +21649,7 @@ SPIRVResult SPIRV_AtomicMin_Uniform_UInt32(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21662,7 +21662,7 @@ SPIRVResult SPIRV_AtomicMin_Workgroup_UInt32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21675,7 +21675,7 @@ SPIRVResult SPIRV_AtomicMax_Uniform_UInt32(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21688,7 +21688,7 @@ SPIRVResult SPIRV_AtomicMax_Workgroup_UInt32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21701,7 +21701,7 @@ SPIRVResult SPIRV_AtomicMin_Uniform_Int32(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21714,7 +21714,7 @@ SPIRVResult SPIRV_AtomicMin_Workgroup_Int32(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21727,7 +21727,7 @@ SPIRVResult SPIRV_AtomicMax_Uniform_Int32(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21740,7 +21740,7 @@ SPIRVResult SPIRV_AtomicMax_Workgroup_Int32(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21753,7 +21753,7 @@ SPIRVResult SPIRV_AtomicMin_Uniform_UInt16(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21766,7 +21766,7 @@ SPIRVResult SPIRV_AtomicMin_Workgroup_UInt16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21779,7 +21779,7 @@ SPIRVResult SPIRV_AtomicMax_Uniform_UInt16(const Compiler* c, SPIRVGenerator* g,
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21792,7 +21792,7 @@ SPIRVResult SPIRV_AtomicMax_Workgroup_UInt16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21805,7 +21805,7 @@ SPIRVResult SPIRV_AtomicMin_Uniform_Int16(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21818,7 +21818,7 @@ SPIRVResult SPIRV_AtomicMin_Workgroup_Int16(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21831,7 +21831,7 @@ SPIRVResult SPIRV_AtomicMax_Uniform_Int16(const Compiler* c, SPIRVGenerator* g, 
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21844,7 +21844,7 @@ SPIRVResult SPIRV_AtomicMax_Workgroup_Int16(const Compiler* c, SPIRVGenerator* g
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
@@ -21857,7 +21857,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Uniform_UInt32(const Compiler* c, SPIRVG
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
@@ -21871,7 +21871,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Workgroup_UInt32(const Compiler* c, SPIR
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
@@ -21885,7 +21885,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Uniform_Int32(const Compiler* c, SPIRVGe
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
@@ -21899,7 +21899,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Workgroup_Int32(const Compiler* c, SPIRV
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
@@ -21913,7 +21913,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Uniform_UInt16(const Compiler* c, SPIRVG
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
@@ -21927,7 +21927,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Workgroup_UInt16(const Compiler* c, SPIR
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
@@ -21941,7 +21941,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Uniform_Int16(const Compiler* c, SPIRVGe
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
@@ -21955,7 +21955,7 @@ SPIRVResult SPIRV_AtomicCompareExchange_Workgroup_Int16(const Compiler* c, SPIRV
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
     uint32_t scope = ScopeToAtomicScope(ptr.scope);
     uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);
-    semantics |= ScopeToMemorySemantics(ptr.scope);
+    if (semantics != 0x0)        semantics |= ScopeToMemorySemantics(ptr.scope);
     SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));

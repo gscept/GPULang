@@ -4046,7 +4046,7 @@ def generate_types():
                     return_type = type,
                     documentation = doc,
                     parameters = [
-                        Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True, uniform = (storage == 'Uniform'), workgroup = (storage == 'Workgroup'), strict=True),
+                        Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True, uniform = (storage == 'Uniform'), workgroup = (storage == 'Workgroup'), strict=True, mutable=True),
                         Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
                     ]
                 )
@@ -4055,7 +4055,8 @@ def generate_types():
                 spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
                 spirv_function += '    uint32_t scope = ScopeToAtomicScope(ptr.scope);\n'
                 spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[1].literalValue.ui);\n'
-                spirv_function += '    semantics |= ScopeToMemorySemantics(ptr.scope);\n'
+                spirv_function += '    if (semantics != 0x0)'
+                spirv_function += '        semantics |= ScopeToMemorySemantics(ptr.scope);\n'
                 spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
                 spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
                 spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, ptr, scopeId, semanticsId);\n'
@@ -4109,7 +4110,8 @@ def generate_types():
                 spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
                 spirv_function += '    uint32_t scope = ScopeToAtomicScope(ptr.scope);\n'
                 spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);\n'
-                spirv_function += '    semantics |= ScopeToMemorySemantics(ptr.scope);\n'
+                spirv_function += '    if (semantics != 0x0)'
+                spirv_function += '        semantics |= ScopeToMemorySemantics(ptr.scope);\n'
                 spirv_function += '    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);\n'
                 spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
                 spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
@@ -4164,7 +4166,8 @@ def generate_types():
                 spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
                 spirv_function += '    uint32_t scope = ScopeToAtomicScope(ptr.scope);\n'
                 spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);\n'
-                spirv_function += '    semantics |= ScopeToMemorySemantics(ptr.scope);\n'
+                spirv_function += '    if (semantics != 0x0)'
+                spirv_function += '        semantics |= ScopeToMemorySemantics(ptr.scope);\n'
                 spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);\n'
                 spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
                 spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
@@ -4205,7 +4208,8 @@ def generate_types():
             spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
             spirv_function += '    uint32_t scope = ScopeToAtomicScope(ptr.scope);\n'
             spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);\n'
-            spirv_function += '    semantics |= ScopeToMemorySemantics(ptr.scope);\n'
+            spirv_function += '    if (semantics != 0x0)'
+            spirv_function += '        semantics |= ScopeToMemorySemantics(ptr.scope);\n'
             spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);\n'
             spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);\n'
             spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
