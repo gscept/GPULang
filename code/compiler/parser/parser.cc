@@ -3919,7 +3919,7 @@ Parse(TokenStream& stream)
             Attribute* attr = Alloc<Attribute>();
             if (attr != nullptr)
             {
-                attr->name = stream.Data(0).text;
+                attr->name = stream.Data(-1).text;
                 attr->location = LocationFromToken(stream.Data(-1));
                 attributes.Append(attr);
             }
