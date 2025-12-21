@@ -10,6 +10,7 @@
 #include "serialize.h"
 #include "annotation.h"
 #include "attribute.h"
+#include <float.h>
 
 #include <set>
 namespace GPULang
