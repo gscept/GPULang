@@ -4589,7 +4589,8 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                 if (resolvedCall->argumentTypes[i].literal)
                 {
                     ValueUnion val;
-                    callExpression->args[i]->EvalValue(val);
+                    bool res = callExpression->args[i]->EvalValue(val);
+                    assert(res);
                     SPIRVResult arg = SPIRVResult(val);
                     SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
 
@@ -5114,7 +5115,8 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
                         EnumExpression* enumExp = static_cast<EnumExpression*>(sym);
                         uint32_t val;
                         ValueUnion value;
-                        enumExp->EvalValue(value);
+                        bool res = enumExp->EvalValue(value);
+                        assert(res);
                         value.Store(val);
                         if (generator->literalExtract)
                             return SPIRVResult(val);
@@ -5419,12 +5421,13 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     ValueUnion val;
-    expr->EvalValue(val);
+    bool valueEvaled = expr->EvalValue(val);
     switch (expr->symbolType)
     {
         case Symbol::FloatExpressionType:
         {
             FloatExpression* floatExpr = static_cast<FloatExpression*>(expr);
+            assert(valueEvaled);
             if (generator->literalExtract)
                 return SPIRVResult(val.f[0]);
             else
@@ -5446,6 +5449,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
         case Symbol::IntExpressionType:
         {
             IntExpression* intExpr = static_cast<IntExpression*>(expr);
+            assert(valueEvaled);
             if (generator->literalExtract)
                 return SPIRVResult(val.i[0]);
             else
@@ -5467,6 +5471,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
         case Symbol::UIntExpressionType:
         {
             UIntExpression* uintExpr = static_cast<UIntExpression*>(expr);
+            assert(valueEvaled);
             if (generator->literalExtract)
                 return SPIRVResult(val.ui[0]);
             else
@@ -5488,6 +5493,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
         case Symbol::BoolExpressionType:
         {
             BoolExpression* boolExpr = static_cast<BoolExpression*>(expr);
+            assert(valueEvaled);
             if (generator->literalExtract)
                 return SPIRVResult(val.b[0]);
             else

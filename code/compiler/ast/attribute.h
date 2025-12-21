@@ -70,7 +70,8 @@ Attribute::ToString(TransientString& out) const
     else
     {
         ValueUnion value;
-        this->expression->EvalValue(value);
+        bool res = this->expression->EvalValue(value);
+        assert(res);
         switch (this->expression->symbolType)
         {
             case Symbol::FloatExpressionType:

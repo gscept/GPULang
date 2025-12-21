@@ -192,7 +192,37 @@ ArrayIndexExpression::EvalValue(ValueUnion& out) const
     auto thisResolved = Symbol::Resolved(this);
     if (thisResolved->lhsType == nullptr || thisResolved->rhsType == nullptr)
         return false;
-    return this->left->EvalValue(out);
+
+    ValueUnion indexVal;
+    if (!this->right->EvalValue(indexVal))
+        return false;
+
+    if (!this->left->EvalValue(out))
+        return false;
+
+    if (thisResolved->returnType->rowSize > 0)
+        out.rowSize = 1;
+    else
+        out.columnSize = 1;
+
+    // If after access we still have columns (in case of a matrix), copy over all columns at row offset to output
+    if (out.columnSize > 1)
+    {
+        for (size_t i = 0; i < out.columnSize; i++)
+        {
+            if (indexVal.ui[0] >= out.columnSize)
+                return false;
+            out.i[i] = out.i[indexVal.ui[0] + i * thisResolved->returnType->columnSize];
+        }
+    }
+    else
+    {
+        if (indexVal.ui[0] >= out.rowSize)
+            return false;
+        out.i[0] = out.i[indexVal.ui[0]];
+    }
+
+    return true;
 }
 
 //------------------------------------------------------------------------------
