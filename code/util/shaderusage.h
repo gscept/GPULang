@@ -32,6 +32,12 @@ union ShaderUsage
 
     } flags;
     uint32_t bits;
+
+    ShaderUsage()
+        : bits(0x0)
+    {
+        // empty
+    }
 };
 
 } // namespace GPULang

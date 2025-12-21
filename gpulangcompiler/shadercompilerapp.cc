@@ -38,6 +38,7 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
         return false;
     }
     
+    this->shaderCompiler.SetFlag(args["--debug"] || args["d"] ? SingleShaderCompiler::Debug : 0);
     this->shaderCompiler.SetFlag(args["--quiet"] || args["q"] ? SingleShaderCompiler::Quiet : 0);
     this->shaderCompiler.SetFlag(args["--validate"] || args["v"] ? SingleShaderCompiler::Validate : 0);
     this->shaderCompiler.SetFlag(args["--profile"] || args["p"]  ? SingleShaderCompiler::Profile : 0);
@@ -130,6 +131,7 @@ usage: gpulangc file [--help] [-I <path>]\n\
 --symbols/-s         Generate debug symbols (not allowed with -optimize/-Ox).\n\
 --profile/-p         Print compilation timings.\n\
 --validate/-v        Validate compilation output against backend library (spv-tools).\n\
+--debug/-d           Output intermediate debug files to the output folder.\n\
 -M                  Parses the file and walks the included files to generate a dependency list\n\
 ";
 

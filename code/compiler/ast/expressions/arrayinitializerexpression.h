@@ -48,7 +48,7 @@ struct ArrayInitializerExpression : public Expression
                     value->~Expression();
         };
         Type::FullType fullType;
-        Type* type;
+        Type* type = nullptr;
     };
 };
 

@@ -1429,7 +1429,7 @@ def generate_types():
     data_type_mapping[type.name] = type.api_name
     type_list.append(type)
 
-    type = Type('Sampler', 'SamplerCategory', 'Sampler', 'sampler')
+    type = Type('Sampler', 'SamplerStateCategory', 'Sampler', 'sampler')
     data_type_mapping[type.name] = type.api_name
     type_list.append(type)
 
@@ -2010,6 +2010,7 @@ def generate_types():
             defn += f'{self.name}::{self.name}()\n'
             defn += '{\n'
             defn += f'    this->name = "{self.name}"_c;\n'
+            defn += f'    this->category = {self.name}Category;\n'
             defn += '    this->builtin = true;\n'
             for member in self.members:
                 defn += f'    {self.name}{member.name}.name = "{member.name}"_c;\n'

@@ -17,6 +17,7 @@ namespace GPULang
 */
 BinWriter::BinWriter() :
 	isOpen(false)
+    , numBytesWritten(0)
 {
 	// empty
 }

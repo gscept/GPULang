@@ -56,7 +56,7 @@ public:
         virtual ~__Resolved() {};
         Type::FullType fullType;
         Symbol* dereffedSymbol = nullptr;
-        Type* type;
+        Type* type = nullptr;
         Type::SwizzleMask swizzleMask;
         Type* swizzleType = nullptr;
     };

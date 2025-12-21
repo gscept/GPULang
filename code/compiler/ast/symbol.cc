@@ -14,6 +14,7 @@ namespace GPULang
 */
 Symbol::Symbol() :
     symbolType(InvalidType)
+    , resolved(nullptr)
 {
     // empty
 }

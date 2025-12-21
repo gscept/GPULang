@@ -242,6 +242,33 @@ AccessExpression::EvalValue(ValueUnion& out) const
         EnumExpression* expr = static_cast<EnumExpression*>(thisRes->lhsType->GetSymbol(thisRes->rightSymbol));
         return expr->EvalValue(out);
     }
+    else
+    {
+        if (this->left->EvalValue(out))
+        {
+            // Handle constant expressions with swizzle masks
+            if (thisRes->swizzleMask != Type::SwizzleMask())
+            {
+                ValueUnion swizzledValue;
+                swizzledValue.code = out.code;
+                swizzledValue.columnSize = Type::SwizzleMaskComponents(thisRes->swizzleMask);
+
+                // Use the integer members for swizzling, since the union shares the same memory
+                if (thisRes->swizzleMask.bits.x != Type::SwizzleMask::Invalid)
+                    swizzledValue.i[thisRes->swizzleMask.bits.x] = out.i[0];
+                if (thisRes->swizzleMask.bits.y != Type::SwizzleMask::Invalid)
+                    swizzledValue.i[thisRes->swizzleMask.bits.y] = out.i[1];
+                if (thisRes->swizzleMask.bits.z != Type::SwizzleMask::Invalid)
+                    swizzledValue.i[thisRes->swizzleMask.bits.z] = out.i[2];
+                if (thisRes->swizzleMask.bits.w != Type::SwizzleMask::Invalid)
+                    swizzledValue.i[thisRes->swizzleMask.bits.w] = out.i[3];
+
+                out = swizzledValue;
+            }
+
+            return true;
+        }
+    }
     out.SetType(thisRes->retType);
     return false;
 }

@@ -46,9 +46,9 @@ public:
     struct __Resolved : public Expression::__Resolved
     {
         virtual ~__Resolved() {};
-        Type* type;
+        Type* type = nullptr;
     } enumResolved;
-    __Resolved* thisResolved;
+    __Resolved* thisResolved = nullptr;
 
 };
 } // namespace GPULang

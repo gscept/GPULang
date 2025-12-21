@@ -388,7 +388,7 @@ FragmentString(ConstantString arg, char* buf, size_t size)
 struct FixedString;
 struct TransientString
 {
-    char* buf;
+    char* buf = nullptr;
     char chars[2048];
     size_t capacity = 2048;
     size_t size = 0;
@@ -830,6 +830,26 @@ inline void
 FragmentString(const TransientString& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
+}
+
+inline TransientString
+StripFile(const char* path)
+{
+    const char* ptr = strrchr(path, '/');
+    if (ptr) {
+        return TransientString(path, std::size_t(ptr + 1 - path));
+    }
+    return TransientString(path);
+}
+
+inline TransientString
+StripExtension(const char* path)
+{
+        const char* ptr = strrchr(path, '.');
+    if (ptr) {
+        return TransientString(path, std::size_t(ptr - path));
+    }
+    return TransientString(path);
 }
 
 struct FixedString

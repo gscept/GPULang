@@ -52,14 +52,14 @@ public:
 
     struct __Resolved : public Expression::__Resolved
     {
-    	Function* leftConversion;
-    	Function* rightConversion;
+    	Function* leftConversion = nullptr;
+    	Function* rightConversion = nullptr;
         Type::FullType leftType;
-        Type* lhsType;
+        Type* lhsType = nullptr;
         Type::FullType rightType;
-        Type* rhsType;
+        Type* rhsType = nullptr;
         Type::FullType returnType;
-        Type* retType;
+        Type* retType = nullptr;
 
         virtual ~__Resolved()
         {
@@ -67,9 +67,9 @@ public:
                 this->constValueExpression->~Expression();
         }
 
-    	Expression* constValueExpression;
+    	Expression* constValueExpression = nullptr;
 
-    	bool isAssignment;
+    	bool isAssignment = false;
     };
 	__Resolved* thisResolved;
 }; 

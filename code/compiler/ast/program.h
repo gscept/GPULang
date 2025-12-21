@@ -33,7 +33,7 @@ struct ProgramInstance : public Symbol
     struct __Resolved : public Symbol::__Resolved
     {
         virtual ~__Resolved() {};
-        Type* typeSymbol;
+        Type* typeSymbol = nullptr;
         enum EntryType
         {
             InvalidProgramEntryType,
@@ -90,6 +90,11 @@ struct ProgramInstance : public Symbol
                 uint32_t hasRenderState : 1;
             } flags;
             uint32_t bits;
+
+            ProgramUsage()
+                : bits(0x0)
+            {
+            }
         } usage;
 
         union ProgramEffects
@@ -98,9 +103,9 @@ struct ProgramInstance : public Symbol
             {
                 uint32_t explicitDepth : 1;
             } flags;
-            uint32_t bits;
+            uint32_t bits = 0x0;
         } effects;
-        Symbol* mappings[EntryType::NumProgramEntries];
+        Symbol* mappings[EntryType::NumProgramEntries] = {};
         std::vector<uint32_t> binaries[EntryType::NumProgramEntries];
         PinnedMap<Function*, Function*> functionOverrides = 0xFFF;
         PinnedMap<Variable*, Expression*> constVarInitializationOverrides = 0xFFF;

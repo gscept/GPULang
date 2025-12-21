@@ -45,9 +45,9 @@ struct CallExpression : public Expression
         virtual ~__Resolved() {};
         FixedString functionSymbol;
         Type::FullType returnType;
-        Type* retType;
+        Type* retType = nullptr;
 
-        Function* function;
+        Function* function = nullptr;
 
         FixedArray<Type::FullType> argumentTypes;
         FixedArray<Type*> argTypes;

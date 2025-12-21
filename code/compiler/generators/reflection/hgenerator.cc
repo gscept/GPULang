@@ -460,7 +460,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
         {
             if (varResolved->typeSymbol->category == Type::Category::StructureCategory
                 || varResolved->typeSymbol->category == Type::Category::TextureCategory
-                || varResolved->typeSymbol->category == Type::Category::SamplerCategory
+                || varResolved->typeSymbol->category == Type::Category::SamplerStateCategory
                 || varResolved->typeSymbol->category == Type::Category::PixelCacheCategory
                 )
             {

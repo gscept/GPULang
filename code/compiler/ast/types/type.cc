@@ -119,7 +119,7 @@ std::array{
     , std::pair{ Type::Category::StructureCategory, ConstantString("Buffer") }
     , std::pair{ Type::Category::EnumCategory, ConstantString("Enum") }
     , std::pair{ Type::Category::VoidCategory, ConstantString("Void") }
-    , std::pair{ Type::Category::SamplerCategory, ConstantString("Sampler") }
+    , std::pair{ Type::Category::SamplerStateCategory, ConstantString("Sampler") }
     , std::pair{ Type::Category::AccelerationStructureCategory, ConstantString("AccelerationStructure") }
 };
 

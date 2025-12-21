@@ -23,9 +23,14 @@ enum AccessFlags
 
 union AccessBits
 {
+    AccessBits()
+        : bits(0x0)
+    {}
+
     AccessBits(uint32_t mask)
         : bits(mask)
     {}
+
     struct
     {
         uint32_t readAccess : 1;
@@ -253,6 +258,12 @@ struct ValueUnion
         b = this->b[0];
         return this->columnSize == 1 && this->rowSize == 1;
     }
+    bool Store(uint8_t& ui8)
+    {
+        this->Convert(TypeCode::UInt);
+        ui8 = this->ui[0] & 0xFF;
+        return this->columnSize == 1 && this->rowSize == 1;
+    }
 
     bool SetType(const Type* type)
     {
@@ -275,7 +286,7 @@ struct ValueUnion
         }
     }
 
-    TypeCode code;
+    TypeCode code = TypeCode::InvalidType;
     int columnSize = 1, rowSize = 1;
 };
 

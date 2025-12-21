@@ -209,8 +209,8 @@ struct Token
 {
     std::string_view text;
     FixedString path;
-    uint32_t startLine, endLine;
-    uint16_t startChar, endChar;
+    uint32_t startLine = 0, endLine = 0;
+    uint16_t startChar = 0, endChar = 0;
 };
 
 struct TokenizationResult

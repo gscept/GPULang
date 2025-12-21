@@ -43,7 +43,7 @@ public:
     {
         virtual ~__Resolved() {};
         Type::FullType fullType;
-        Type* type;
+        Type* type = nullptr;
     } intResolved;
     __Resolved* thisResolved;
 };

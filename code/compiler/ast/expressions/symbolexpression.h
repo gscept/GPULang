@@ -44,11 +44,11 @@ public:
     struct __Resolved : public Expression::__Resolved
     {
         virtual ~__Resolved() {};
-        Symbol* symbol;
+        Symbol* symbol = nullptr;
         Type::FullType fullType;
-        Type* type;
+        Type* type = nullptr;
     };
-	__Resolved* thisResolved;
+	__Resolved* thisResolved = nullptr;
 }; 
 } // namespace GPULang
 //------------------------------------------------------------------------------

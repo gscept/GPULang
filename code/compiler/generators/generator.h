@@ -36,7 +36,7 @@ struct Generator
 
     BoolExpression shaderValueExpressions[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
     std::vector<std::string> targetLanguageFiles;
-    Function* mainFunction;
+    Function* mainFunction = nullptr;
 };
 
 } // namespace GPULang

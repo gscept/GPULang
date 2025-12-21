@@ -26609,7 +26609,7 @@ PixelCacheMS PixelCacheMSType;
 Sampler::Sampler()
 {
     this->name = "sampler"_c;
-    this->category = Type::SamplerCategory;
+    this->category = Type::SamplerStateCategory;
     this->baseType = TypeCode::Sampler;
     this->builtin = true;
 };
@@ -28632,6 +28632,7 @@ Variable StencilStateReference;
 StencilState::StencilState()
 {
     this->name = "StencilState"_c;
+    this->category = StencilStateCategory;
     this->builtin = true;
     StencilStateFail.name = "Fail"_c;
     StencilStateFail.type = Type::FullType{ StencilOpType.name };
@@ -28718,6 +28719,7 @@ Variable RenderStateAlphaToOneEnabled;
 RenderState::RenderState()
 {
     this->name = "RenderState"_c;
+    this->category = RenderStateCategory;
     this->builtin = true;
     RenderStateDepthClampEnabled.name = "DepthClampEnabled"_c;
     RenderStateDepthClampEnabled.type = Type::FullType{ Bool8Type.name };
@@ -28914,6 +28916,7 @@ Variable SamplerStateUnnormalizedSamplingEnabled;
 SamplerState::SamplerState()
 {
     this->name = "SamplerState"_c;
+    this->category = SamplerStateCategory;
     this->builtin = true;
     SamplerStateAddress.name = "Address"_c;
     SamplerStateAddress.type = Type::FullType{ AddressModeType.name };
@@ -29023,6 +29026,7 @@ Variable ProgramRenderState;
 Program::Program()
 {
     this->name = "Program"_c;
+    this->category = ProgramCategory;
     this->builtin = true;
     ProgramVertexShader.name = "VertexShader"_c;
     ProgramVertexShader.type = Type::FullType{ FunctionPtrType.name };

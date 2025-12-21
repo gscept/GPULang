@@ -44,9 +44,9 @@ struct CommaExpression : public Expression
     {
         virtual ~__Resolved() {};
         Type::FullType rightType;
-        Type* rhsType;
+        Type* rhsType = nullptr;
         Type::FullType leftType;
-        Type* lhsType;
+        Type* lhsType = nullptr;
     };
 };
 

@@ -29,9 +29,9 @@ struct Enumeration : public Type
     struct __Resolved : public Type::__Resolved
     {
         virtual ~__Resolved() { typeSymbol = nullptr; };
-        Type* typeSymbol;
+        Type* typeSymbol = nullptr;
     } enumResolved;
-    Enumeration::__Resolved* thisResolved;
+    Enumeration::__Resolved* thisResolved = nullptr;
 };
 
 } // namespace GPULang

@@ -57,7 +57,7 @@ struct Function : public Symbol
         FixedString name;
         FixedString nameWithVarNames;
         FixedString signature;
-        bool hasExplicitReturn;
+        bool hasExplicitReturn = false;
         
         static const uint8_t INVALID_SIZE = 0xF;
 
@@ -89,8 +89,8 @@ struct Function : public Symbol
 
         } executionModifiers;
 
-        bool isEntryPoint;
-        bool isPrototype;
+        bool isEntryPoint = false;
+        bool isPrototype = false;
         
         PinnedSet<Symbol*> visibleSymbols;
     } functionResolved;

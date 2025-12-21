@@ -56,6 +56,7 @@ struct FileLevel
     {
         this->file = nullptr;
         this->lineCounter = 0;
+        this->it = nullptr;
     }
 
     FileLevel(GPULangFile* file)
@@ -109,6 +110,7 @@ GPULangLoadFile(const std::string_view& path)
         int size = ftell(f);
 
         file->contents = (char*)malloc(size);
+        assert(file->contents != nullptr);
         rewind(f);
         fread(file->contents, 1, size, f);
         fclose(f);
@@ -1015,7 +1017,7 @@ escape_newline:
             if (!ilevel.active)\
             {\
                 auto pp = Alloc<Preprocessor>();\
-                pp->type = Preprocessor::Comment;\
+                pp->type = Preprocessor::Type::Comment;\
                 pp->location.file = level->file->path;\
                 pp->location.line = level->lineCounter;\
                 pp->location.start = 0;\
@@ -1070,7 +1072,7 @@ escape_newline:
                     const char* startOfPath = wordStart(endOfDirective, eol);
                     const char* endOfPath = wordEnd(startOfPath, eol);
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::Include;
+                    pp->type = Preprocessor::Type::Include;
                     SETUP_PP2(pp, firstWord-1, endOfDirective);
 
                     TransientArray<Symbol::Location> argLocs(1);
@@ -1171,7 +1173,7 @@ escape_newline:
                     TransientArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::Macro;
+                    pp->type = Preprocessor::Type::Macro;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
                     SETUP_ARG2(pp, def, startOfDefinition, endOfDefinition);
 
@@ -1247,7 +1249,7 @@ escape_newline:
                     TransientArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::Undefine;
+                    pp->type = Preprocessor::Type::Undefine;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
@@ -1284,7 +1286,7 @@ escape_newline:
                     TransientArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::If;
+                    pp->type = Preprocessor::Type::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
                     
@@ -1342,7 +1344,7 @@ escape_newline:
                     TransientArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::If;
+                    pp->type = Preprocessor::Type::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
@@ -1390,7 +1392,7 @@ escape_newline:
                     TransientArray<std::string> args(1);
 
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::Else;
+                    pp->type = Preprocessor::Type::Else;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
                     IfLevel& prevLevel = ifStack.back();
@@ -1420,7 +1422,7 @@ escape_newline:
                     TransientArray<std::string> args(1);
 
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::If;
+                    pp->type = Preprocessor::Type::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
                     bool active = true;
@@ -1464,7 +1466,7 @@ escape_newline:
                     }
                     
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::Else;
+                    pp->type = Preprocessor::Type::Else;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
                     
                     IfLevel& prevLevel = ifStack.back();
@@ -1481,7 +1483,7 @@ escape_newline:
                 else if (strncmp(startOfDirective, "endif", 5) == 0)
                 {
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::EndIf;
+                    pp->type = Preprocessor::Type::EndIf;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
                     if (ifStack.size == 0)
                     {
@@ -1495,7 +1497,7 @@ escape_newline:
                 else if (strncmp(startOfDirective, "pragma", 6) == 0)
                 {
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::Pragma;
+                    pp->type = Preprocessor::Type::Pragma;
                     SETUP_PP2(pp, firstWord-1, endOfDirective);
                     
                     const char* startOfCommand = wordStart(endOfDirective, eol);
@@ -1520,7 +1522,7 @@ escape_newline:
             else if (firstWord[0] == '/' && firstWord[1] == '/')
             {
                 auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::Comment;
+                pp->type = Preprocessor::Type::Comment;
                 SETUP_PP2(pp, firstWord, eol)
                 pp->location.end = lineEndIt - lineIt;
                 
@@ -1535,7 +1537,7 @@ escape_newline:
                 comment = true;
                 output.append(columnIt, firstWord);
                 auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::Comment;
+                pp->type = Preprocessor::Type::Comment;
                 SETUP_PP2(pp, firstWord, eol)
 
                 const char* endOfComment = commentEnd(columnIt, eol);
@@ -1586,7 +1588,7 @@ escape_newline:
                     if (it != definitions.end())
                     {
                         auto pp = Alloc<Preprocessor>();
-                        pp->type = Preprocessor::Call;
+                        pp->type = Preprocessor::Type::Call;
                         SETUP_PP2(pp, startOfWord, endOfWord)
                         
                         static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, FileLevel*, PinnedArray<GPULangDiagnostic>&)> expandMacro = [&endOfFile](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, FileLevel* level, PinnedArray<GPULangDiagnostic>& diagnostics) -> const char*
@@ -1920,7 +1922,6 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     StringAllocator = &stringAllocator;
     GPULang::InitAllocator(StringAllocator);
 
-    
     errorBuffer = nullptr;
 
     Compiler compiler;
@@ -2028,7 +2029,6 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         compiler.path = file->path;
         compiler.filename = fileName;
         compiler.debugPath = output;
-        compiler.debugOutput = true;
 
         bool res = compiler.Compile(parseResult.ast, binaryWriter, headerWriter);
 

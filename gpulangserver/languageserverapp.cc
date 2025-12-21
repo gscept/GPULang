@@ -358,7 +358,7 @@ ValidateFile(ParseContext::ParsedFile* file, ParseContext* context, const std::s
         if (sym->symbolType == GPULang::Symbol::SymbolType::PreprocessorType)
         {
             GPULang::Preprocessor* symPp = static_cast<GPULang::Preprocessor*>(sym);
-            if (symPp->type == GPULang::Preprocessor::Comment)
+            if (symPp->type == GPULang::Preprocessor::Type::Comment)
             {
                 auto it = ppPerFileMap.Find(symPp->location.file);
                 if (it == ppPerFileMap.end())
@@ -616,30 +616,30 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             const GPULang::Preprocessor* pp = static_cast<const GPULang::Preprocessor*>(sym);
             switch (pp->type)
             {
-            case GPULang::Preprocessor::Comment:
+            case GPULang::Preprocessor::Type::Comment:
                 InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Comment, 0x0, result);
                 break;
-            case GPULang::Preprocessor::Pragma:
+            case GPULang::Preprocessor::Type::Pragma:
                 InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
                 break;
-            case GPULang::Preprocessor::If:
-            case GPULang::Preprocessor::Undefine:
-                InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
-                InsertSemanticToken(ctx, pp->argLocations[0], SemanticTypeMapping::Macro, 0x0, result);
-                break;
-            case GPULang::Preprocessor::Macro:
+            case GPULang::Preprocessor::Type::If:
+            case GPULang::Preprocessor::Type::Undefine:
                 InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
                 InsertSemanticToken(ctx, pp->argLocations[0], SemanticTypeMapping::Macro, 0x0, result);
                 break;
-            case GPULang::Preprocessor::Include:
+            case GPULang::Preprocessor::Type::Macro:
+                InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                InsertSemanticToken(ctx, pp->argLocations[0], SemanticTypeMapping::Macro, 0x0, result);
+                break;
+            case GPULang::Preprocessor::Type::Include:
                 InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
                 InsertSemanticToken(ctx, pp->argLocations[0], SemanticTypeMapping::String, 0x0, result);
                 break;
-            case GPULang::Preprocessor::Else:
-            case GPULang::Preprocessor::EndIf:
+            case GPULang::Preprocessor::Type::Else:
+            case GPULang::Preprocessor::Type::EndIf:
                 InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
                 break;
-            case GPULang::Preprocessor::Call:
+            case GPULang::Preprocessor::Type::Call:
             {
                 //InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Macro, 0x0, result);
                 //uint32_t callLength = uint32_t(pp->location.end - pp->location.start);
@@ -1035,11 +1035,11 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         case GPULang::Symbol::SymbolType::PreprocessorType:
         {
             auto pp = static_cast<const GPULang::Preprocessor*>(sym);
-            if (pp->type == GPULang::Preprocessor::Call)
+            if (pp->type == GPULang::Preprocessor::Type::Call)
             {
                 ret = pp->contents.c_str();
             }
-            else if (pp->type == GPULang::Preprocessor::Include)
+            else if (pp->type == GPULang::Preprocessor::Type::Include)
             {
                 ret = pp->contents.c_str();
             }

@@ -29,7 +29,7 @@ struct SamplerStateInstance : public State
     {
         virtual ~__Resolved() {};
 
-        Type* typeSymbol;
+        Type* typeSymbol = nullptr;
         enum SamplerStateEntryType
         {
             InvalidSamplerStateEntryType,
@@ -67,36 +67,36 @@ struct SamplerStateInstance : public State
         /// convert from string to enum
         static const Serialization::AddressMode StringToAddressMode(const TransientString& str);
 
-        Serialization::AddressMode addressU;
-        Serialization::AddressMode addressV;
-        Serialization::AddressMode addressW;
+        Serialization::AddressMode addressU = Serialization::AddressMode::RepeatAddressMode;
+        Serialization::AddressMode addressV = Serialization::AddressMode::RepeatAddressMode;
+        Serialization::AddressMode addressW = Serialization::AddressMode::RepeatAddressMode;
 
-        Serialization::Filter minFilter;
-        Serialization::Filter magFilter;
-        Serialization::Filter mipFilter;
+        Serialization::Filter minFilter = Serialization::Filter::LinearFilter;
+        Serialization::Filter magFilter = Serialization::Filter::LinearFilter;
+        Serialization::Filter mipFilter = Serialization::Filter::LinearFilter;
 
-        float mipLodBias;
-        bool anisotropicEnabled;
-        float maxAnisotropy;
+        float mipLodBias = false;
+        bool anisotropicEnabled = false;
+        float maxAnisotropy = 16.0f;
 
-        bool compareSamplerEnabled;
-        Serialization::CompareMode compareMode;
+        bool compareSamplerEnabled = false;
+        Serialization::CompareMode compareMode = Serialization::CompareMode::LessEqualCompare;
 
-        float minLod;
-        float maxLod;
+        float minLod = 0.0f;
+        float maxLod = FLT_MAX;
 
-        Serialization::BorderColor borderColor;
+        Serialization::BorderColor borderColor = Serialization::BorderColor::TransparentBorder;
 
-        bool unnormalizedSamplingEnabled;        // sample as if texture was in dimensions [0..width, 0..height] instead of [0..1, 0..1]
-        bool isInline, isImmutable;
+        bool unnormalizedSamplingEnabled = false;        // sample as if texture was in dimensions [0..width, 0..height] instead of [0..1, 0..1]
+        bool isInline = false, isImmutable = false;
 
-        uint32_t group;
-        uint32_t binding;
+        uint8_t group = 0xFF;
+        uint8_t binding = 0xFF;
 
         ShaderUsage visibilityBits;
     };
 
-    bool isInline, isImmutable;
+    bool isInline = false, isImmutable = false;
 };
 
 } // namespace GPULang

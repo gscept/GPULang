@@ -207,13 +207,14 @@ struct Type : public Symbol
         StructureCategory,
         EnumCategory,
         VoidCategory,
-        SamplerCategory,
+        SamplerStateCategory,
         AccelerationStructureCategory,
         TexelPointerCategory,
 
         // Special categories
         RenderStateCategory,
-        StencilStateCategory
+        StencilStateCategory,
+        ProgramCategory
     };
 
     static ConstantString CategoryToString(const Category& cat);

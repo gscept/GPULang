@@ -20,7 +20,7 @@ struct RenderStateInstance : public State
     {
         virtual ~__Resolved() {};
 
-        Type* typeSymbol;
+        Type* typeSymbol = nullptr;
         enum RenderStateEntryType
         {
             InvalidRenderStateEntryType,
@@ -77,42 +77,42 @@ struct RenderStateInstance : public State
             Rasterizer
         */
         //------------------------------------------------------------------------------
-        bool depthClampEnabled;
-        bool noPixels;
+        bool depthClampEnabled = false;
+        bool noPixels = false;
 
         /// convert from string
         static const Serialization::RasterizationMode StringToPolygonMode(const TransientString& str);
 
-        Serialization::RasterizationMode rasterizationMode;
+        Serialization::RasterizationMode rasterizationMode = Serialization::RasterizationMode::FillMode;
 
         /// convert from string
         static const Serialization::CullMode StringToCullMode(const TransientString& str);
 
-        Serialization::CullMode cullMode;
+        Serialization::CullMode cullMode = Serialization::CullMode::BackMode;
 
         /// convert from string
         static const Serialization::WindingOrderMode StringToWindingOrderMode(const TransientString& str);
-
-        Serialization::WindingOrderMode windingOrderMode;
-        bool depthBiasEnabled;
-        float depthBiasFactor;
-        float depthBiasClamp;
-        float depthBiasSlopeFactor;
-        float lineWidth;
+                         
+        Serialization::WindingOrderMode windingOrderMode = Serialization::WindingOrderMode::CounterClockwiseMode;
+        bool depthBiasEnabled = false;
+        float depthBiasFactor = 0.0f;
+        float depthBiasClamp = 0.0f;
+        float depthBiasSlopeFactor = 0.0f;
+        float lineWidth = 1.0f;
 
         //------------------------------------------------------------------------------
         /**
             Depth-stencil
         */
         //------------------------------------------------------------------------------
-        bool depthTestEnabled;
-        bool depthWriteEnabled;
-        Serialization::CompareMode depthCompare;
-        bool depthBoundsTestEnabled;
-        float minDepthBounds;
-        float maxDepthBounds;
-        bool scissorEnabled;
-        bool stencilEnabled;
+        bool depthTestEnabled = false;
+        bool depthWriteEnabled = false;
+        Serialization::CompareMode depthCompare = Serialization::CompareMode::LessEqualCompare;
+        bool depthBoundsTestEnabled = false;
+        float minDepthBounds = 0.0f;
+        float maxDepthBounds = 1.0f;
+        bool scissorEnabled = false;
+        bool stencilEnabled = false;
 
         /// convert from string
         static const Serialization::StencilOp StringToStencilOp(const TransientString& str);
@@ -126,12 +126,12 @@ struct RenderStateInstance : public State
             Blend
         */
         //------------------------------------------------------------------------------
-        bool logicOpEnabled;
+        bool logicOpEnabled = false;
 
         /// convert from string
         static const Serialization::LogicOp StringToLogicOp(const TransientString& str);
 
-        Serialization::LogicOp logicOp;
+        Serialization::LogicOp logicOp = Serialization::LogicOp::LogicSetOp;
 
         /// convert from string
         static const Serialization::BlendFactor StringToBlendFactor(const TransientString& str);
@@ -141,18 +141,18 @@ struct RenderStateInstance : public State
 
         static const uint8_t NUM_BLEND_STATES = 8;
         Serialization::BlendState blendStates[NUM_BLEND_STATES];
-        float blendConstants[4];
+        float blendConstants[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 
         //------------------------------------------------------------------------------
         /**
             Multisample
         */
         //------------------------------------------------------------------------------
-        uint32_t samples;
-        bool sampleShadingEnabled;
-        float minSampleShading;
-        bool alphaToCoverageEnabled;
-        bool alphaToOneEnabled;
+        uint32_t samples = 1;
+        bool sampleShadingEnabled = false;
+        float minSampleShading = 1.0f;
+        bool alphaToCoverageEnabled = false;
+        bool alphaToOneEnabled = false;
     };
 };
 

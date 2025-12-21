@@ -24,7 +24,8 @@ public:
 		Quiet = 0x2,
 		Validate = 0x4,
 		Profile = 0x8,
-		Symbols = 0x10
+		Symbols = 0x10,
+        Debug = 0x20
 	};
 
 	/// constructor

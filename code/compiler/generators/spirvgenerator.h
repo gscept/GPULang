@@ -333,6 +333,7 @@ struct SPIRVResult
         , isConst(isConstant)
         , scope(scope)
         , parentTypes({})
+        , literalValue({})
     {
         this->swizzleMask.bits.x = Type::SwizzleMask::Invalid;
         this->swizzleMask.bits.y = Type::SwizzleMask::Invalid;
@@ -348,6 +349,7 @@ struct SPIRVResult
         , scope(scope)
         , parentTypes(parentTypes)
         , parentScopes(parentScopes)
+        , literalValue({})
     {
         assert(parentTypes.size() == parentScopes.size());
         this->swizzleMask.bits.x = Type::SwizzleMask::Invalid;
@@ -358,6 +360,7 @@ struct SPIRVResult
     
     explicit SPIRVResult(const ValueUnion& value, const uint8_t offset = 0)
     {
+        this->literalValue = {};
         switch (value.code)
         {
             case TypeCode::Bool8:
@@ -523,11 +526,11 @@ public:
             Relaxed,    // Typical layout, no specific offsets or strides
             Explicit,   // Layout is explicitly defined via decorations
             Interface,  // Layout follows interface block rules (std140/std430), infers explicit
-        } layout;
+        } layout = Relaxed;
         SPIRVResult::Storage storage = SPIRVResult::Storage::Function;
     } typeState;
 
-    uint32_t shaderStage;
+    uint32_t shaderStage = 0xFFFFFFFF;
 
     // For use with ray tracing, any function input or output value must be assigned to this variable as it's passed to the OpTraceRayKHR intrinsic
     SPIRVResult rayPayload;

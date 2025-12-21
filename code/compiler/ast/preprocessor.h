@@ -17,8 +17,9 @@ struct Preprocessor : public Symbol
     /// destructor
     virtual ~Preprocessor();
 
-    enum Type
+    enum class Type
     {
+        Invalid,
         Include,
         Comment,
         Macro,

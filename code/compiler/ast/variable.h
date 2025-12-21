@@ -80,17 +80,17 @@ struct Variable : public Symbol
         /// type here is the fully qualified (pointer and array) type
         Type* typeSymbol = nullptr;
 
-        static const uint8_t NOT_BOUND = 0xF;
-        uint32_t group;          // resource group
-        uint32_t binding;        // resource binding
+        static const uint8_t NOT_BOUND = 0xFF;
+        uint8_t group = Variable::__Resolved::NOT_BOUND;          // resource group
+        uint8_t binding = Variable::__Resolved::NOT_BOUND;        // resource binding
 
-        uint8_t inBinding;      // parameter input binding
-        uint8_t outBinding;     // parameter output binding
+        uint8_t inBinding = Variable::__Resolved::NOT_BOUND;      // parameter input binding
+        uint8_t outBinding = Variable::__Resolved::NOT_BOUND;     // parameter output binding
 
-        uint32_t byteSize;          // size in bytes
-        uint32_t structureOffset;   // offset within structure
-        uint32_t elementPadding;    // padding between elements
-        uint32_t startPadding;      // padding before variable
+        uint32_t byteSize = 0;          // size in bytes
+        uint32_t structureOffset = 0;   // offset within structure
+        uint32_t elementPadding = 0;    // padding between elements
+        uint32_t startPadding = 0;      // padding before variable
 
         Function* valueConversionFunction = nullptr;
 

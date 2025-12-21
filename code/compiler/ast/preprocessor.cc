@@ -10,7 +10,8 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-Preprocessor::Preprocessor()
+Preprocessor::Preprocessor() :
+    type(Type::Invalid)
 {
     this->resolved = nullptr;
     this->symbolType = Symbol::SymbolType::PreprocessorType;

@@ -86,11 +86,11 @@ struct Allocator
         void* mem = nullptr;
         uint32_t index = 0;
         size_t size = 0;
-        Allocator* alloc;
+        Allocator* alloc = nullptr;
     };
-    VAlloc* virtualMem;
+    VAlloc* virtualMem = nullptr;
     uint32_t freeVirtualMemSlotCounter;
-    uint32_t* freeVirtualMemSlots;
+    uint32_t* freeVirtualMemSlots = nullptr;
 };
 
 inline Allocator CreateAllocator()

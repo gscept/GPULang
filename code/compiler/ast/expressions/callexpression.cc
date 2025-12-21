@@ -99,7 +99,7 @@ CallExpression::Resolve(Compiler* compiler)
 
     struct Candidate
     {
-        Function* function;
+        Function* function = nullptr;
         bool needsConversion = false;
         bool simpleConversion = false;
         std::vector<Function*> argumentConversionFunctions;

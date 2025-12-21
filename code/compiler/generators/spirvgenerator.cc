@@ -205,14 +205,14 @@ struct ConstantCreationInfo
         UInt16,
         Bool,
         Bool8 = Bool
-    } type;
+    } type = Type::Float;
     union
     {
         float f;
         int32_t i;
         uint32_t ui;
         bool b;
-    } data;
+    } data = {};
     bool linkDefined = false;
 
     static ConstantCreationInfo Float(float val)
@@ -361,7 +361,7 @@ struct ConstantCreationInfo
 };
 
 #define SPV_INSTRUCTION(name, code, words, dyn) constexpr SPVOp name { .str = #name, .c = code, .wordCount = words, .dynamicWords = dyn };
-SPV_INSTRUCTION(OpNop, 0, 1, false)
+SPV_INSTRUCTION(OpNop, 1, 0, false)
 SPV_INSTRUCTION(OpSourceContinued, 2, 2, true)
 SPV_INSTRUCTION(OpSource, 3, 3, true)
 SPV_INSTRUCTION(OpName, 5, 3, true)
@@ -2342,7 +2342,7 @@ ResolveSPIRVVariableStorage(
         if (storage == Storage::Uniform)
             scope = SPIRVResult::Storage::Image;
     }
-    else if (typeSymbol->category == Type::SamplerCategory)
+    else if (typeSymbol->category == Type::SamplerStateCategory)
     {
         if (storage == Storage::Uniform)
             scope = SPIRVResult::Storage::Sampler;
@@ -2478,7 +2478,7 @@ GenerateTypeSPIRV(
         baseType = std::tie(name, gpulangType);
         typeNameStr = gpulangType;
     }
-    else if (typeSymbol->category == Type::SamplerCategory)
+    else if (typeSymbol->category == Type::SamplerStateCategory)
     {
         auto handleGenerator = generators.find(typeSymbol->baseType);
         uint32_t name = handleGenerator->second(generator, typeSymbol->name, 0, 0, 0, ImageFormats::Unknown);
@@ -2759,7 +2759,7 @@ ToSPIRVTypeString(
 
         ret = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
     }
-    else if (typeSymbol->category == Type::SamplerCategory)
+    else if (typeSymbol->category == Type::SamplerStateCategory)
     {
         auto handleTypeIt = handleTable.find(typeSymbol->baseType);
         auto [gpulangType, spirvFormatter] = handleTypeIt->second;
@@ -2842,7 +2842,7 @@ SwizzleMaskIndices(const Type::SwizzleMask mask, uint32_t* indices, uint8_t& num
 /**
 */
 SPIRVResult
-GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize)
+ GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize)
 {
     SPIRVResult res = SPIRVResult::Invalid();
     uint32_t baseType;
@@ -4197,8 +4197,8 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
         if (compiler->options.debugSymbols)
             generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, sampler->name.c_str());
 
-        generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, samplerResolved->group);
-        generator->writer->Decorate(SPVArg(name), Decorations::Binding, samplerResolved->binding);
+        generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, (uint32_t)samplerResolved->group);
+        generator->writer->Decorate(SPVArg(name), Decorations::Binding, (uint32_t)samplerResolved->binding);
         return SPIRVResult(name, samplerType.typeName);
     }
 }
@@ -4394,13 +4394,13 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             || storage == SPIRVResult::Storage::UniformConstant 
             || storage == SPIRVResult::Storage::Sampler)
         {
-            generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, varResolved->group);
-            generator->writer->Decorate(SPVArg(name), Decorations::Binding, varResolved->binding);
+            generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, (uint32_t)varResolved->group);
+            generator->writer->Decorate(SPVArg(name), Decorations::Binding, (uint32_t)varResolved->binding);
         }
         else if (storage == SPIRVResult::Storage::Image || storage == SPIRVResult::Storage::MutableImage)
         {
-            generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, varResolved->group);
-            generator->writer->Decorate(SPVArg(name), Decorations::Binding, varResolved->binding);
+            generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, (uint32_t)varResolved->group);
+            generator->writer->Decorate(SPVArg(name), Decorations::Binding, (uint32_t)varResolved->binding);
         }
         else if (storage == SPIRVResult::Storage::Input || storage == SPIRVResult::Storage::Output)
         {
@@ -5357,6 +5357,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
                         return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(-rhs.literalValue.i));
                     default:
                         assert(false);
+                        return SPIRVResult::Invalid();
                 }
             }
             else
@@ -6636,6 +6637,30 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
                 printf("%s\n", binary.data);
                 this->Error(std::string(binary.data, binary.size));
                 return false;
+            }
+
+            if (compiler->options.debugInfo)
+            {
+                GrowingString binary;
+                binary.Line("; Entry point", funResolved->name);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Top]);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Capabilities]);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Extensions]);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::ExtImports]);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Header]);
+                if (compiler->options.debugSymbols)
+                {
+                    binary.Append("\n; Debug\n");
+                    binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::DebugStrings]);
+                    binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::DebugNames]);
+                }
+                binary.Append("\n; Decorations\n");
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Decorations]);
+                binary.Append("\n; Declarations\n");
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Declarations]);
+                binary.Append("\n; Functions\n");
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Functions]);
+                writerFunc(TStr(object->name, "_SPIRV").c_str(), std::string(binary.data));
             }
         }
 

@@ -132,7 +132,7 @@ Validator::Validator()
     , defaultGroup(0)
 {
     // add formats
-    for (auto it : StringToFormats)
+    for (const auto& it : StringToFormats)
     {
         this->allowedTextureAttributes.Insert(FixedString(it.first));
     }
@@ -2268,7 +2268,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             allowedAttributesSet = &this->allowedPointerAttributes;
         else if (type->category == Type::ScalarCategory || type->category == Type::EnumCategory)
             allowedAttributesSet = &this->allowedScalarAttributes;
-        else if (type->category == Type::SamplerCategory)
+        else if (type->category == Type::SamplerStateCategory)
             allowedAttributesSet = &this->allowedSamplerAttributes;
         else if (type->category == Type::StructureCategory)
         {
@@ -2308,6 +2308,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             if (!attr->expression->EvalValue(val))
             {
                 compiler->Error(Format("Expected compile time constant for 'binding' qualifier"), symbol);
+                return false;
+            }
+            if (val.ui[0] >= 0xFF)
+            {
+                compiler->Error(Format("'binding' qualifier value out of range (0-255)"), symbol);
                 return false;
             }
             val.Store(varResolved->binding);
@@ -2565,7 +2570,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
 
             if (
-                type->category != Type::SamplerCategory 
+                type->category != Type::SamplerStateCategory
                 && type->category != Type::TextureCategory 
                 && type->category != Type::SampledTextureCategory
                 && type->category != Type::TexelPointerCategory
@@ -2588,7 +2593,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else // Variables not stored as external resources
         {
-            if (type->category == Type::SamplerCategory || type->category == Type::TextureCategory || type->category == Type::PixelCacheCategory)
+            if (type->category == Type::SamplerStateCategory || type->category == Type::TextureCategory || type->category == Type::PixelCacheCategory)
             {
                 compiler->Error(Format("Global variables of sampler, texture or pixel_cache types must be 'uniform'"), symbol);
                 return false;
@@ -2623,7 +2628,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
         }
         
-        if (type->category == Type::SamplerCategory || type->category == Type::TextureCategory || type->category == Type::PixelCacheCategory)
+        if (type->category == Type::SamplerStateCategory || type->category == Type::TextureCategory || type->category == Type::PixelCacheCategory)
         {
             if (varResolved->storage != Storage::Uniform)
             {
@@ -2669,7 +2674,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         compiler->Error(Format("Variable of texture type must be pointer"), symbol);
         return false;
     }
-    else if (type->category == Type::SamplerCategory
+    else if (type->category == Type::SamplerStateCategory
         && lastIndirectionModifier != Type::FullType::Modifier::Pointer)
     {
         compiler->Error(Format("Variable of sampler type must be pointer"), symbol);
@@ -2708,7 +2713,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     if (var->type.IsMutable())
     {
         varResolved->accessBits.flags.writeAccess = true;
-        if (type->category == Type::SamplerCategory)
+        if (type->category == Type::SamplerStateCategory)
         {
             compiler->Error(Format("Sampler can not be mutable", type->name.c_str()), symbol);
             return false;
@@ -2868,7 +2873,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
         // if not a parameter, assume resource (these types can't be declared inside functions)
         if (cat == Type::Category::TextureCategory
-            || cat == Type::Category::SamplerCategory
+            || cat == Type::Category::SamplerStateCategory
             || cat == Type::Category::PixelCacheCategory
             || (cat == Type::Category::StructureCategory && varResolved->storage == Storage::Uniform))
         {
@@ -2916,6 +2921,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 if (it2 == this->resourceTypePerGroupAndBinding.end())
                 {
                     PinnedMap<uint32_t, Type::Category> table = 0xFFF;
+                    assert(varResolved->typeSymbol->category != Type::Category::InvalidCategory);
                     table.Insert(varResolved->binding, varResolved->typeSymbol->category);
                     this->resourceTypePerGroupAndBinding.Insert(varResolved->group, table);
                 }
@@ -2925,6 +2931,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     auto it3 = table.Find(varResolved->binding);
                     if (it3 == table.end())
                     {
+                        assert(varResolved->typeSymbol->category != Type::Category::InvalidCategory);
                         table.Insert(varResolved->binding, varResolved->typeSymbol->category);
                     }
                     else

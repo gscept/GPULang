@@ -37,10 +37,12 @@ struct Structure : public Type
                 bool isUniformBuffer : 1;
                 bool isMutableBuffer : 1;
             } flags;
-            int bits;
+            uint32_t bits;
+
+            UsageFlags() : bits(0) {}
         };
         UsageFlags usageFlags;
-        AccessBits accessBits = 0x0;
+        AccessBits accessBits;
 
         static const uint8_t NOT_BOUND = 0xF;
         //uint32_t group;

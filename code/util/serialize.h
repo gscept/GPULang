@@ -151,25 +151,25 @@ enum ColorComponents
 
 struct StencilState
 {
-    StencilOp fail;
-    StencilOp pass;
-    StencilOp depthFail;
-    CompareMode compare;
-    uint32_t compareMask;
-    uint32_t writeMask;
-    uint32_t referenceMask;
+    StencilOp fail = StencilOp::StencilReplaceOp;
+    StencilOp pass = StencilOp::StencilReplaceOp;
+    StencilOp depthFail = StencilOp::StencilReplaceOp;
+    CompareMode compare = CompareMode::EqualCompare;
+    uint32_t compareMask = 0xFF;
+    uint32_t writeMask = 0xFF;
+    uint32_t referenceMask = 0xFF;
 };
 
 struct BlendState
 {
-    bool blendEnabled;
-    BlendFactor sourceColorBlendFactor;
-    BlendFactor destinationColorBlendFactor;
-    BlendFactor sourceAlphaBlendFactor;
-    BlendFactor destinationAlphaBlendFactor;
-    BlendOp colorBlendOp;
-    BlendOp alphaBlendOp;
-    uint32_t colorComponentMask;
+    bool blendEnabled = false;
+    BlendFactor sourceColorBlendFactor = BlendFactor::OneFactor;
+    BlendFactor destinationColorBlendFactor = BlendFactor::ZeroFactor;
+    BlendFactor sourceAlphaBlendFactor = BlendFactor::OneFactor;
+    BlendFactor destinationAlphaBlendFactor = BlendFactor::ZeroFactor;
+    BlendOp colorBlendOp = BlendOp::AddOp;
+    BlendOp alphaBlendOp = BlendOp::AddOp;
+    uint32_t colorComponentMask = ColorComponents::RedComponent | ColorComponents::GreenComponent | ColorComponents::BlueComponent | ColorComponents::AlphaComponent;
 };
 
 enum class BindingScope
@@ -250,8 +250,39 @@ struct RenderState : public Serializable
 {
     /// constructor
     RenderState()
+        : depthClampEnabled(false)
+        , noPixels(false)
+        , rasterizationMode(Serialization::RasterizationMode::FillMode)
+        , cullMode(Serialization::CullMode::NoCullMode)
+        , windingOrderMode(Serialization::WindingOrderMode::CounterClockwiseMode)
+        , depthBiasEnabled(false)
+        , depthBiasFactor(0.0f)
+        , depthBiasClamp(0.0f)
+        , depthBiasSlopeFactor(0.0f)
+        , lineWidth(1.0f)
+        , depthTestEnabled(true)
+        , depthWriteEnabled(true)
+        , depthCompare(Serialization::CompareMode::LessEqualCompare)
+        , depthBoundsTestEnabled(false)
+        , minDepthBounds(0.0f)
+        , maxDepthBounds(1.0f)
+        , scissorEnabled(false)
+        , stencilEnabled(false)
+        , frontStencilState()
+        , backStencilState()
+        , logicOpEnabled(false)
+        , logicOp(Serialization::LogicOp::LogicNoOp)
+        , blendStatesOffset(0)
+        , blendStatesCount(0)
+        , samples(1)
+        , sampleShadingEnabled(false)
+        , minSampleShading(1.0f)
+        , alphaToCoverageEnabled(false)
+        , alphaToOneEnabled(false)
+        , blendConstants{ 0.0f, 0.0f, 0.0f, 0.0f }
     {
         this->type = RenderStateType;
+
     }
     bool depthClampEnabled;
     bool noPixels;
@@ -293,8 +324,8 @@ struct Program : public Serializable
         this->type = ProgramType;
     }
 
-    size_t renderStateNameOffset;
-    size_t renderStateNameLength;
+    size_t renderStateNameOffset = 0;
+    size_t renderStateNameLength = 0;
 
     struct Shader
     {
@@ -310,18 +341,18 @@ struct Program : public Serializable
 
     Shader vs, gs, hs, ds, ps, cs, ts, ms, rgs, rms, rchs, rahs, rcs, ris;
 
-    size_t vsInputsLength;
-    size_t vsInputsOffset;
-    uint16_t patchSize;                 // Patch size if program contains a hull shader
-    uint16_t rayPayloadSize;            // Ray payload size in bytes if program contains a ray tracing shader
-    uint16_t rayHitAttributeSize;       // Ray hit attribute size in bytes if program contains a ray tracing hit shader
+    size_t vsInputsLength = 0;
+    size_t vsInputsOffset = 0;
+    uint16_t patchSize = 0;                 // Patch size if program contains a hull shader
+    uint16_t rayPayloadSize = 0;            // Ray payload size in bytes if program contains a ray tracing shader
+    uint16_t rayHitAttributeSize = 0;       // Ray hit attribute size in bytes if program contains a ray tracing hit shader
 
 };
 
 struct Bindable : public Serializable
 {
-    unsigned int binding;
-    unsigned int group;
+    unsigned int binding = UINT32_MAX;
+    unsigned int group = UINT32_MAX;
 };
 
 struct SamplerState : public Bindable
@@ -331,27 +362,27 @@ struct SamplerState : public Bindable
     {
         this->type = SamplerStateType;
     }
-    Serialization::AddressMode addressU;
-    Serialization::AddressMode addressV;
-    Serialization::AddressMode addressW;
+    Serialization::AddressMode addressU = Serialization::AddressMode::RepeatAddressMode;
+    Serialization::AddressMode addressV = Serialization::AddressMode::RepeatAddressMode;
+    Serialization::AddressMode addressW = Serialization::AddressMode::RepeatAddressMode;
 
-    Serialization::Filter minFilter;
-    Serialization::Filter magFilter;
-    Serialization::Filter mipFilter;
+    Serialization::Filter minFilter = Serialization::Filter::LinearFilter;
+    Serialization::Filter magFilter = Serialization::Filter::LinearFilter;
+    Serialization::Filter mipFilter = Serialization::Filter::LinearFilter;
 
-    float mipLodBias;
-    bool anisotropicEnabled;
-    float maxAnisotropy;
+    float mipLodBias = 0.0f;
+    bool anisotropicEnabled = false;
+    float maxAnisotropy = 16.0f;
 
-    bool compareSamplerEnabled;
-    Serialization::CompareMode compareMode;
+    bool compareSamplerEnabled = false;
+    Serialization::CompareMode compareMode = Serialization::CompareMode::LessEqualCompare;
 
-    float minLod;
-    float maxLod;
+    float minLod = 0.0f;
+    float maxLod = FLT_MAX;
 
-    Serialization::BorderColor borderColor;
+    Serialization::BorderColor borderColor = Serialization::BorderColor::TransparentBorder;
 
-    bool unnormalizedSamplingEnabled;
+    bool unnormalizedSamplingEnabled = false;
 
     ShaderUsage visibility;
 };
@@ -363,18 +394,18 @@ struct Variable : public Bindable
     {
         this->type = VariableType;
     }
-    size_t arraySizesOffset;
-    size_t arraySizesCount;
+    size_t arraySizesOffset = 0;
+    size_t arraySizesCount = 0;
 
-    uint32_t byteSize;
-    uint32_t structureOffset;
+    uint32_t byteSize = 0;
+    uint32_t structureOffset = 0;
 
     Serialization::BindingScope bindingScope;
     Serialization::BindingType bindingType;
     ShaderUsage visibility;
 
-    size_t structTypeNameOffset;
-    size_t structTypeNameLength;
+    size_t structTypeNameOffset = 0;
+    size_t structTypeNameLength = 0;
 };
 
 struct Structure : public Serializable
@@ -384,11 +415,11 @@ struct Structure : public Serializable
     {
         this->type = StructureType;
     }
-    bool isUniform;
-    bool isMutable;
-    unsigned int size;
-    size_t variablesOffset;
-    size_t variablesCount;
+    bool isUniform = false;
+    bool isMutable = false;
+    unsigned int size = 0;
+    size_t variablesOffset = 0;
+    size_t variablesCount = 0;
 };
 
 struct DynamicLengthBlob

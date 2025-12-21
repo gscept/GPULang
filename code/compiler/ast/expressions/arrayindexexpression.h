@@ -45,11 +45,11 @@ struct ArrayIndexExpression : public Expression
     {
         virtual ~__Resolved() {};
         Type::FullType leftFullType;
-        Type* lhsType;
+        Type* lhsType = nullptr;
         Type::FullType rightFullType;
-        Type* rhsType;
+        Type* rhsType = nullptr;
         Type::FullType returnFullType;
-        Type* returnType;
+        Type* returnType = nullptr;
 
         unsigned int literalAccess = 0xFFFFFFFF;
     };

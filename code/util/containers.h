@@ -392,8 +392,8 @@ struct PinnedArray
             this->Grow(rhs.size);
             if (std::is_trivially_copyable<TYPE>::value)
             {
-                memcpy(this->data + this->size, rhs.data, rhs.size * sizeof(TYPE));
-                this->size += rhs.size;
+                memcpy(this->data, rhs.data, rhs.size * sizeof(TYPE));
+                this->size = rhs.size;
             }
             else
             {
@@ -485,7 +485,7 @@ struct PinnedArray
             this->Grow(rhs.size);
             if (std::is_trivially_copyable<TYPE>::value)
             {
-                memcpy(this->data + this->size, rhs.data, rhs.size * sizeof(TYPE));
+                memcpy(this->data, rhs.data, rhs.size * sizeof(TYPE));
                 this->size += rhs.size;
             }
             else
@@ -1041,7 +1041,7 @@ struct FixedArray
         }
     }
     
-    FixedArray(FixedArray<TYPE>&& rhs)
+    FixedArray(FixedArray<TYPE>&& rhs) noexcept
     {
         if (this->buf != nullptr)
         {
@@ -1692,7 +1692,7 @@ struct PinnedMap
             if (it != this->data.end())
             {
                 this->data.Grow(1);
-                if (std::is_trivially_move_constructible<item>::value)
+                if (std::is_trivially_move_assignable<item>::value)
                 {
                     memmove(it + 1, it, (this->data.end() - it) * sizeof(item));
                 }
@@ -2000,7 +2000,7 @@ struct PinnedSet
                 if (*it != key)
                 {
                     this->data.Grow(1);
-                    if (std::is_trivially_move_constructible<K>::value)
+                    if (std::is_trivially_move_assignable<K>::value)
                     {
                         memmove(it + 1, it, (this->data.end() - it) * sizeof(K));
                     }

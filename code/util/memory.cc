@@ -62,7 +62,9 @@ InitAllocator(Allocator* alloc)
     alloc->pageCount = 1; // Start with one page committed
 
     alloc->freeVirtualMemSlots = (uint32_t*)malloc(sizeof(uint32_t) * NumAllocatorVirtualAllocs);
+    assert(alloc->freeVirtualMemSlots != nullptr);
     alloc->virtualMem = (Allocator::VAlloc*)malloc(sizeof(Allocator::VAlloc) * NumAllocatorVirtualAllocs);
+    assert(alloc->virtualMem != nullptr);
     for (int32_t i = NumAllocatorVirtualAllocs - 1; i >= 0; i--)
     {
         alloc->virtualMem[i] = Allocator::VAlloc();

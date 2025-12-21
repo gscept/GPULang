@@ -52,7 +52,6 @@ Format(const char* format, ...)
 	return retVal;
 }
 
-
 //------------------------------------------------------------------------------
 /**
 	Neat macro to make enums act as bit flags, be able to check if bits are set, and convert to integers

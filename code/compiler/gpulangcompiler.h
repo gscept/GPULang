@@ -41,7 +41,7 @@ struct GPULangDiagnostic
     GPULang::FixedString error;
     GPULang::FixedString file;
     Severity severity = Severity::Error;
-    int line, column, length;
+    int line = 0, column = 0, length = 0;
 };
 
 

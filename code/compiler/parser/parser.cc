@@ -1408,7 +1408,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
     static const uint8_t TERNARY_ARITY = 2;
     struct Operator
     {
-        TokenType type;
+        TokenType type = TokenType::InvalidToken;
         uint32_t fourcc = 0xFFFFFFFF;
         uint8_t prefix = 0;
         uint8_t arity = BINARY_ARITY; // 0 = binary, 1 = unary, 2 = ternary

@@ -40,7 +40,6 @@ thread_local BoolExpression ShaderValueExpressions[ProgramInstance::__Resolved::
 */
 Compiler::Compiler() 
     : hasErrors(false)
-    , debugOutput(false)
     , ignoreReservedWords(false)
 {
     this->validator = Alloc<Validator>();
@@ -595,21 +594,6 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     if (this->options.emitTimings)
         this->performanceTimer.Print("Type checking");
 
-    // setup potential debug output stream
-    std::function<void(const std::string&, const std::string&)> writeFunction = nullptr;
-    if (this->debugOutput)
-    {
-        writeFunction = [this](const std::string& name, const std::string& code)
-        {
-            TextWriter outputStream;
-            outputStream.SetPath(this->debugPath + "/" + name);
-            if (outputStream.Open())
-            {
-                outputStream.WriteString(code);
-                outputStream.Close();
-            }
-        };
-    }
     this->performanceTimer.Start();
 
     uint32_t numAvailableThreads = std::thread::hardware_concurrency();
@@ -619,6 +603,8 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     TransientArray<Generator*> generators(programs.size());
     TransientArray<Allocator> allocators(programs.size());
 
+    TransientString debugOutputPath = StripExtension(binaryWriter.GetPath().c_str());
+
     // Run the code generation per thread
     for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
     {
@@ -627,6 +613,21 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         allocators[programIndex] = CreateAllocator();
         InitAllocator(&allocators[programIndex]);
         generators.Append(gen);
+
+        std::function<void(const std::string&, const std::string&)> writeFunction = nullptr;
+        if (this->options.debugInfo)
+        {
+            writeFunction = [this, &debugOutputPath](const std::string& name, const std::string& code)
+            {
+                TextWriter outputStream;
+                outputStream.SetPath(TStr(debugOutputPath, "_debug", "/", name.c_str(), ".txt").c_str());
+                if (outputStream.Open())
+                {
+                    outputStream.WriteString(code);
+                    outputStream.Close();
+                }
+            };
+        }
         new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program = programs[programIndex], allocator = &allocators[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
         {
             GPULang::CurrentAllocator = allocator;
@@ -755,19 +756,6 @@ Compiler::Validate(Effect* root)
     {
         // setup potential debug output stream
         std::function<void(const std::string&, const std::string&)> writeFunction = nullptr;
-        if (this->debugOutput)
-        {
-            writeFunction = [this](const std::string& name, const std::string& code)
-            {
-                TextWriter outputStream;
-                outputStream.SetPath(this->debugPath + "/" + name);
-                if (outputStream.Open())
-                {
-                    outputStream.WriteString(code);
-                    outputStream.Close();
-                }
-            };
-        }
         this->performanceTimer.Start();
         
         uint32_t numAvailableThreads = std::thread::hardware_concurrency();
@@ -1051,37 +1039,36 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
     }
 
         WRITE_BINARY(VertexShader, vs)
-            WRITE_BINARY(HullShader, hs)
-            WRITE_BINARY(DomainShader, ds)
-            WRITE_BINARY(GeometryShader, gs)
-            WRITE_BINARY(PixelShader, ps)
-            WRITE_BINARY(ComputeShader, cs)
-            WRITE_BINARY(VertexShader, vs)
-            WRITE_BINARY(TaskShader, ts)
-            WRITE_BINARY(MeshShader, ms)
-            WRITE_BINARY(RayGenerationShader, rgs)
-            WRITE_BINARY(RayAnyHitShader, rahs)
-            WRITE_BINARY(RayClosestHitShader, rchs)
-            WRITE_BINARY(RayMissShader, rms)
-            WRITE_BINARY(RayCallableShader, rcs)
-            WRITE_BINARY(RayIntersectionShader, ris)
+        WRITE_BINARY(HullShader, hs)
+        WRITE_BINARY(DomainShader, ds)
+        WRITE_BINARY(GeometryShader, gs)
+        WRITE_BINARY(PixelShader, ps)
+        WRITE_BINARY(ComputeShader, cs)
+        WRITE_BINARY(TaskShader, ts)
+        WRITE_BINARY(MeshShader, ms)
+        WRITE_BINARY(RayGenerationShader, rgs)
+        WRITE_BINARY(RayAnyHitShader, rahs)
+        WRITE_BINARY(RayClosestHitShader, rchs)
+        WRITE_BINARY(RayMissShader, rms)
+        WRITE_BINARY(RayCallableShader, rcs)
+        WRITE_BINARY(RayIntersectionShader, ris)
 
-            if (resolved->usage.flags.hasVertexShader)
+        if (resolved->usage.flags.hasVertexShader)
+        {
+            Function* vs = (Function*)resolved->mappings[ProgramInstance::__Resolved::VertexShader];
+            Function::__Resolved* vsRes = Symbol::Resolved(vs);
+            output.vsInputsLength = 0;
+            output.vsInputsOffset = dynamicDataBlob.iterator;
+            for (const Variable* var : vs->parameters)
             {
-                Function* vs = (Function*)resolved->mappings[ProgramInstance::__Resolved::VertexShader];
-                Function::__Resolved* vsRes = Symbol::Resolved(vs);
-                output.vsInputsLength = 0;
-                output.vsInputsOffset = dynamicDataBlob.iterator;
-                for (const Variable* var : vs->parameters)
+                const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                if (varRes->storage == Storage::Input)
                 {
-                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
-                    if (varRes->storage == Storage::Input)
-                    {
-                        output.vsInputsLength++;
-                        dynamicDataBlob.Write(varRes->inBinding);
-                    }
+                    output.vsInputsLength++;
+                    dynamicDataBlob.Write(varRes->inBinding);
                 }
             }
+        }
         if (resolved->usage.flags.hasHullShader)
         {
             Function* hs = (Function*)resolved->mappings[ProgramInstance::__Resolved::HullShader];
@@ -1171,7 +1158,7 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         }
 
         writer.WriteType(output);
-        writer.IncrementDecodeSize(sizeof(Deserialize::Annotation)* program->annotations.size);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Annotation) * program->annotations.size);
         writer.IncrementDecodeSize(sizeof(Deserialize::Program));
     }
     else if (symbol->symbolType == Symbol::RenderStateInstanceType)
@@ -1358,6 +1345,11 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         Variable::__Resolved* resolved = static_cast<Variable::__Resolved*>(symbol->resolved);
         if (resolved->usageBits.flags.isNoReflect)
             return;
+        if (resolved->usageBits.flags.isConst && (
+            resolved->storage != Storage::Uniform
+            && resolved->storage != Storage::InlineUniform
+            )) // No need to dump consts to the reflection
+            return;
         Serialize::Variable output;
         output.binding = resolved->binding;
         output.group = resolved->group;
@@ -1412,7 +1404,7 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         }
         else if (resolved->typeSymbol->category == Type::Category::SampledTextureCategory)
             output.bindingType = Serialization::BindingType::SampledImage;
-        else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
+        else if (resolved->typeSymbol->category == Type::Category::SamplerStateCategory)
             output.bindingType = Serialization::BindingType::Sampler;
         else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
             output.bindingType = Serialization::BindingType::LinkDefined;
@@ -1436,7 +1428,7 @@ Compiler::OutputSymbolToBinary(Symbol* symbol, BinWriter& writer, Serialize::Dyn
         }
 
         writer.WriteType(output);
-        writer.IncrementDecodeSize(sizeof(Deserialize::Annotation)* var->annotations.size);
+        writer.IncrementDecodeSize(sizeof(Deserialize::Annotation) * var->annotations.size);
         writer.IncrementDecodeSize(sizeof(Deserialize::Variable));
     }
 }

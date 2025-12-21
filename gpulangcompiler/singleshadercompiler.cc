@@ -73,6 +73,13 @@ SingleShaderCompiler::CompileShader(const std::string& src)
         try
         {
             fs::create_directories(sp.parent_path());
+            if (this->flags & Flags::Debug)
+            {
+                sp.replace_extension("");
+                sp.replace_filename(sp.filename().string() + "_debug");
+                fs::create_directories(sp);
+            }
+
         } catch (const fs::filesystem_error&)
         {
             fprintf(stderr, "[gpulangc] error: could not create output directory '%s'\n", sp.parent_path().string().c_str());
@@ -149,6 +156,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	options.validate = this->flags & Flags::Validate ? 1 : 0;
     options.debugSymbols = this->flags & Flags::Symbols ? 1 : 0;
 	options.errorFormat = GPULang::Compiler::ErrorFormat::MSVC;
+    options.debugInfo = this->flags & Flags::Debug ? 1 : 0;
 	options.defaultGroupBinding = this->defaultGroup;
 
     GPULangErrorBlob* errors = NULL;

@@ -49,12 +49,12 @@ struct AccessExpression : public Expression
     {
         virtual ~__Resolved() {};
         Type::FullType leftType;
-        Type* lhsType;
+        Type* lhsType = nullptr;
         Type::FullType rightType;
-        Type* rhsType;
+        Type* rhsType = nullptr;
         FixedString rightSymbol;
         Type::FullType returnType;
-        Type* retType;
+        Type* retType = nullptr;
         Type::SwizzleMask swizzleMask;
         Type* swizzleType = nullptr;
     };
