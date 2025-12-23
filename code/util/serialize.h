@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <cstring>
+#include <float.h>
 #include "shaderusage.h"
 
 namespace GPULang
