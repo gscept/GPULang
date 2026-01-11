@@ -401,6 +401,56 @@ Compiler::AddSymbol(const TransientString& name, Symbol* symbol, bool allowDupli
 //------------------------------------------------------------------------------
 /**
 */
+bool 
+Compiler::AddGlobalSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate)
+{
+    Scope* scope = this->scopes.front();
+    PinnedMap<HashString, Symbol*>* lookup = &scope->symbolLookup;
+    PinnedArray<Symbol*>* symbols = &scope->symbols;
+    assert(scope->type == Scope::ScopeType::Global);
+
+    if (!allowDuplicate && !this->staticSymbolSetup)
+    {
+        auto it = lookup->Find(HashString(name));
+        if (it != lookup->end())
+        {
+            Symbol* prevSymbol = it->second;
+            this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
+            return false;
+        }
+    }
+    lookup->Insert(HashString(name), symbol);
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+Compiler::AddGlobalSymbol(const TransientString& name, Symbol* symbol, bool allowDuplicate)
+{
+    Scope* scope = this->scopes.front();
+    PinnedMap<HashString, Symbol*>* lookup = &scope->symbolLookup;
+    PinnedArray<Symbol*>* symbols = &scope->symbols;
+    assert(scope->type == Scope::ScopeType::Global);
+
+    if (!allowDuplicate && !this->staticSymbolSetup)
+    {
+        auto it = lookup->Find(HashString(name));
+        if (it != lookup->end())
+        {
+            Symbol* prevSymbol = it->second;
+            this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
+            return false;
+        }
+    }
+    lookup->Insert(HashString(name), symbol);
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 Symbol*
 Compiler::GetSymbol(const TransientString& name) const
 {
@@ -641,7 +691,11 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         threads[programIndex].join();
         if (!returnValues[programIndex])
         {
-            this->messages.Append(generators[programIndex]->messages);
+            // Copy messages from each generator, since they use their own allocator
+            for (const auto& msg : generators[programIndex]->messages)
+            {
+                this->messages.Append(FixedString(TStr(msg)));
+            }
         }
         DestroyAllocator(&allocators[programIndex]);
         ret &= returnValues[programIndex];

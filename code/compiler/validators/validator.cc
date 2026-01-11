@@ -93,7 +93,7 @@ std::array{
 
 static StaticSet structureQualifiers =
 std::array{
-    "packed"_c
+    "packed"_c, "alignas"_c
 };
 
 static StaticSet pixelShaderInputQualifiers =
@@ -151,6 +151,7 @@ Validator::Validator()
     this->allowedPointerAttributes.Insert(pointerQualifiers);
     this->allowedPointerAttributes.Insert(bindingQualifiers);
     this->allowedPointerAttributes.Insert(storageQualifiers);
+    this->allowedPointerAttributes.Insert(scalarQualifiers);
 
     this->allowedArrayAttributes.Insert(pointerQualifiers);
     this->allowedArrayAttributes.Insert(bindingQualifiers);
@@ -1069,7 +1070,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     // format function with all attributes and parameters
     auto resolvedName = TransientString(fun->name, "(", paramList, ")");
     auto resolvedNameWithParamNames = TransientString(fun->name, "(", paramListNamed, ")");
-    auto functionFormatted = TransientString::Compact(attributeList, resolvedName, " ", fun->returnType.name);
+    auto functionFormatted = TransientString::Compact(attributeList, resolvedName, " ", fun->returnType.ToString());
     
     funResolved->name = resolvedName;
     funResolved->nameWithVarNames = resolvedNameWithParamNames;
@@ -1917,6 +1918,33 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
         {
             if (attr->name == "packed")
                 strucResolved->packMembers = true;
+            if (attr->name == "alignas")
+            {
+                if (attr->expression == nullptr)
+                {
+                    compiler->Error(Format("Attribute 'alignas' requires an alignment value"), symbol);
+                    return false;
+                }
+                ValueUnion val;
+                if (!attr->expression->EvalValue(val))
+                {
+                    compiler->Error(Format("Attribute 'alignas' requires a compile time constant alignment value"), symbol);
+                    return false;
+                }
+
+                if (!(val.ui[0] & (val.ui[0] - 1))) // check power of two
+                {
+                    compiler->Error(Format("Attribute 'alignas' requires alignment to be a power of two"), symbol);
+                    return false;
+                }
+
+                if (val.ui[0] == 0)
+                {
+                    // If alignment is 0, just set alignment to 1 
+                    val.ui[0] = 1;
+                }
+                strucResolved->baseAlignment = val.ui[0];
+            }
         }
     }
 
@@ -1951,18 +1979,19 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
                 }
             }
             uint32_t packedOffset = offset;
-            uint32_t varSize = varResolved->byteSize;
+            uint32_t varSize = var->type.address ? 8 : varResolved->byteSize;
             if (!strucResolved->packMembers)
             {
                 if (varResolved->typeSymbol->category == Type::Category::StructureCategory)
                 {
                     Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(varResolved->typeSymbol));
-                    offset = Type::Align(offset, strucRes->byteSize);
-                    varSize = strucRes->byteSize;
+                    uint32_t size = var->type.address ? 8 : strucRes->byteSize;
+                    offset = Type::Align(offset, size);
+                    varSize = size;
                 }
                 else
                 {
-                    offset = Type::Align(offset, varResolved->typeSymbol->CalculateAlignment());
+                    offset = Type::Align(offset, var->type.address ? 8 : varResolved->typeSymbol->CalculateAlignment());
                 }
             }
                 
@@ -1975,7 +2004,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
         }
     }
     strucResolved->byteSize = offset;
-    uint32_t alignedSize = strucResolved->packMembers ? strucResolved->byteSize : Type::Align(strucResolved->byteSize, 16);
+    uint32_t alignedSize = strucResolved->packMembers ? strucResolved->byteSize : Type::Align(strucResolved->byteSize, strucResolved->baseAlignment);
     strucResolved->endPadding = alignedSize - strucResolved->byteSize;
     strucResolved->byteSize = alignedSize;
     struc->byteSize = alignedSize;
@@ -2197,7 +2226,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     Type::FullType::Modifier firstIndirectionModifier = var->type.FirstIndirectionModifier();
     Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
 
-    varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
     varResolved->byteSize = type->byteSize;
     varResolved->storage = Storage::Default;
     varResolved->parameterBits.bits = 0x0;
@@ -2212,12 +2240,24 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         return false;
 
     // struct members may only be scalars, or stencil states but they can't be created by the grammar rules
-    if (varResolved->usageBits.flags.isStructMember && 
-        (type->category != Type::ScalarCategory && type->category != Type::EnumCategory && type->category != Type::StructureCategory && type->category != Type::StencilStateCategory))
+    if (varResolved->usageBits.flags.isStructMember)
     {
-        compiler->Error(Format("'%s' may only be scalar or struct type if member of a struct", var->name.c_str()), symbol);
-        return false;
-    }    
+        if (type->category != Type::ScalarCategory && type->category != Type::EnumCategory && type->category != Type::StructureCategory && type->category != Type::StencilStateCategory && type->category != Type::VoidCategory)
+        {
+            compiler->Error(Format("'%s' may only be scalar or struct type if member of a struct", var->name.c_str()), symbol);
+            return false;
+        }
+
+        if (type->category == Type::VoidCategory)
+        {
+            if (!var->type.address)
+            {
+                compiler->Error(Format("Struct member of 'void' must be a 'address'"), symbol);
+                return false;
+            }
+        }
+    }
+
     
     // Add symbol
     if (!compiler->AddSymbol(var->name, var))
@@ -2243,13 +2283,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             if (size == 0)
             {
-                if (compiler->target.supportsPhysicalBufferAddresses)
-                    varResolved->usageBits.flags.isPhysicalAddress = true;
-                else
-                {
-                    compiler->Error(Format("'struct' array member can't be of dynamic size"), symbol);
-                    return false;    
-                }                
+                compiler->Error(Format("'struct' array member can't be pointer"), symbol);
+                return false;    
             }
         }
     }
@@ -2399,12 +2434,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             // more complicated lookups
             if (set_contains(pointerQualifiers, attr->name))
             {
-                if (attr->name == "no_read")
-                    varResolved->accessBits.flags.readAccess = false;
-                else if (attr->name == "atomic")
-                    varResolved->accessBits.flags.atomicAccess = true;
-                else if (attr->name == "volatile")
+                if (attr->name == "volatile")
                     varResolved->accessBits.flags.volatileAccess = true;
+                else if (attr->name == "nontemporal")
+                    varResolved->accessBits.flags.nonTemporalAccess = true;
             }
         }
 
@@ -2524,31 +2557,33 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (!compiler->target.supportsPhysicalAddressing)
+    if (!compiler->target.supportsPhysicalBufferAddresses && var->type.address)
     {
-        if (varResolved->usageBits.flags.isStructMember && type->category == Type::StructureCategory && var->type.IsPointer())
+        if (varResolved->usageBits.flags.isStructMember && type->category == Type::StructureCategory)
         {
-            if (!compiler->target.supportsPhysicalBufferAddresses)
-            {
-                compiler->Error(Format("Struct members may not be pointers if ('%s') does not support physical buffer addresses", compiler->target.name.c_str()), var);
-                return false;
-            }
+            compiler->Error(Format("Struct members may not use 'address' if ('%s') does not support physical buffer addresses", compiler->target.name.c_str()), var);
+            return false;
         }
         else
         {
-            if (type->category == Type::StructureCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform && var->type.IsPointer())
+            if (type->category == Type::StructureCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform)
             {
-                compiler->Error(Format("Type may not be pointer if target language ('%s') does not support physical addressing", compiler->target.name.c_str()), var);
+                compiler->Error(Format("Type may not be 'address' if the target language ('%s') does not support physical addressing", compiler->target.name.c_str()), var);
                 return false;
             }    
         }
     }
 
-
     if (compiler->IsScopeGlobal())
     {
         uint16_t numArrays = 0;
         uint16_t numPointers = 0;
+        if (var->type.address)
+        {
+            compiler->Error(Format("Global variables may not have address space qualifier"), symbol);
+            return false;
+        }
+
         for (Type::FullType::Modifier mod : var->type.modifiers)
         {
             if (mod == Type::FullType::Modifier::Array)
@@ -2668,6 +2703,18 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
+    if (varResolved->accessBits.flags.nonTemporalAccess && varResolved->storage != Storage::Uniform)
+    {
+        compiler->Error(Format("'nontemporal' qualifier only allowed on 'uniform' variables"), symbol);
+        return false;
+    }
+
+    if (varResolved->accessBits.flags.volatileAccess && varResolved->storage != Storage::Uniform)
+    {
+        compiler->Error(Format("'volatile' qualifier only allowed on 'uniform' variables"), symbol);
+        return false;
+    }
+
     if (type->category == Type::TextureCategory
         && lastIndirectionModifier != Type::FullType::Modifier::Pointer)
     {
@@ -2712,7 +2759,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     // Check that the type can be mutable
     if (var->type.IsMutable())
     {
-        varResolved->accessBits.flags.writeAccess = true;
         if (type->category == Type::SamplerStateCategory)
         {
             compiler->Error(Format("Sampler can not be mutable", type->name.c_str()), symbol);
@@ -2822,6 +2868,28 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
         // If storage types are compatible, set initializer storage to be that of the variable
         
+    }
+
+    // Check for valid struct members in case this variable binds a struct as an interface
+    if (type->category == Type::StructureCategory && (varResolved->storage == Storage::Uniform || varResolved->storage == Storage::InlineUniform))
+    {
+        Structure* structType = static_cast<Structure*>(type);
+        for (const auto& member : structType->symbols)
+        {
+            if (member->symbolType == Symbol::VariableType)
+            {
+                const Variable* memberVar = static_cast<const Variable*>(member);
+                const Variable::__Resolved* memberVarResolved = Symbol::Resolved(memberVar);
+                if (memberVarResolved->typeSymbol == &UInt64Type)
+                {
+                    if (!compiler->target.supportsPhysicalBufferAddresses)
+                    {
+                        compiler->Error(Format("struct '%s' member '%s' may not be a pointer type if bound as 'uniform' or 'inline' unless target '%s' supports physical buffer addresses", structType->name.c_str(), memberVar->name.c_str(), compiler->target.name.c_str()), var);
+                        return false;
+                    }
+                }
+            }
+        }
     }
 
     // check if image formats have been resolved
@@ -2997,7 +3065,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         }
                         
                         uint32_t size = varResolved->typeSymbol->CalculateSize();
-                        uint32_t alignment = varResolved->typeSymbol->CalculateAlignment();
+                        uint32_t alignment = var->type.address ? 8 : varResolved->typeSymbol->CalculateAlignment();
                         uint32_t alignedOffset = Type::Align(offset, alignment);
                         generatedVarResolved->startPadding = alignedOffset - offset;
                         generatedVarResolved->byteSize = size;
@@ -4394,6 +4462,19 @@ bool
 Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* typeSymbol, Symbol* sym)
 {
     uint32_t numPointers = 0;
+    if (type.address)
+    {
+        if (!compiler->target.supportsPhysicalBufferAddresses)
+        {
+            compiler->Error(Format("Target language %s does not support the 'address' type modifier.", compiler->target.name.c_str()), sym);
+            return false;
+        }
+        if (type.modifiers.size != 0)
+        {
+            compiler->Error(Format("Type with address space qualifier cannot have modifiers"), sym);
+            return false;
+        }
+    }
     for (auto mod : type.modifiers)
     {
         if (mod == Type::FullType::Modifier::Invalid)

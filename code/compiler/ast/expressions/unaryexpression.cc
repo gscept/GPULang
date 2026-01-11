@@ -130,10 +130,17 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '*':
         {
-            if (type.modifiers.size == 0 || type.modifiers.front() != Type::FullType::Modifier::Pointer)
+            if (!type.address)
             {
-                compiler->Error("Dereferencing is only allowed on a pointer", this);
-                return false;
+                if (type.modifiers.size == 0 || type.modifiers.front() != Type::FullType::Modifier::Pointer)
+                {
+                    compiler->Error("Dereferencing is only allowed on a pointer", this);
+                    return false;
+                }
+            }
+            else
+            {
+                type.address = false;
             }
             if (compiler->options.encourageBufferOps && storage == Storage::Uniform)
             {

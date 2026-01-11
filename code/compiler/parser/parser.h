@@ -49,6 +49,7 @@ enum class TokenType
     , ConditionalCompile
     , Declared
     , Packed
+    , Alignas
     , Const_Storage
     , Var_Storage
     , Uniform_Storage
@@ -61,8 +62,6 @@ enum class TokenType
     , RayHitAttribute_Storage
     , CallableData_Storage
     , Volatile_Decorator
-    , Atomic_Decorator
-    , NoRead_Decorator
     , NonTemporal_Decorator
     , Binding_Decorator
     , Group_Decorator
@@ -93,6 +92,7 @@ enum class TokenType
     , ComputeDerivatives_Attribute
     , Mutable_TypeModifier
     , Literal_TypeModifier
+    , Address_TypeModifier
     , Directive
     , Annot
     , Comma

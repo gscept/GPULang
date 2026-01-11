@@ -7,6 +7,7 @@
 #include "compiler.h"
 #include "ast/function.h"
 #include "ast/enumeration.h"
+#include "generated/types.h"
 namespace GPULang 
 {
 
@@ -62,10 +63,18 @@ CallExpression::Resolve(Compiler* compiler)
             return false;
 
         Type::FullType fullType;
-        expr->EvalType(fullType);
+        if (!expr->EvalType(fullType))
+        {
+            compiler->Error(Format("Unknown type class"), this);
+            return false;
+        }
 
         Storage storage;
-        expr->EvalStorage(storage);
+        if (!expr->EvalStorage(storage))
+        {
+            compiler->Error(Format("Unknown storage class"), this);
+            return false;
+        }
 
         Type* type;
         expr->EvalTypeSymbol(type);
@@ -109,6 +118,66 @@ CallExpression::Resolve(Compiler* compiler)
     };
     if (symbol == nullptr)
     {
+        // Handle pointer casting specially since the functions needs to be generated when called
+        if (this->thisResolved->functionSymbol.StartsWith("cast_"))
+        {
+            if (argTypeSymbols.size != 1)
+            {
+                compiler->UnrecognizedSymbolError(callSignature, this);
+                return false;
+            }
+
+            if (!argFullTypes[0].address)
+            {
+                compiler->UnrecognizedSymbolError(callSignature, this);
+                return false;
+            }
+
+            if (argTypeSymbols[0] == &UInt64Type)
+            {
+                compiler->UnrecognizedSymbolError(callSignature, this);
+                return false;
+            }
+
+            if (!compiler->target.supportsPhysicalBufferAddresses)
+            {
+                compiler->Error(Format("Target '%s' does not support physical buffer addresses required for pointer casts", compiler->target.name.c_str()), this);
+                return false;
+            }
+
+            Type::FullType targetType;
+            targetType.name = this->thisResolved->functionSymbol.Trailing("cast_");
+            Type* type = compiler->GetType(targetType);
+            if (type == nullptr)
+            {
+                compiler->UnrecognizedSymbolError(callSignature, this);
+                return false;
+            }
+
+            // If this is a pointer cast and it doesn't exist, emit a new function for it
+            Function* castFunc = Alloc<Function>();
+            castFunc->name = this->thisResolved->functionSymbol;
+
+            TransientArray<Variable*> args(1);
+            Variable* arg = Alloc<Variable>();
+            arg->name = "address";
+            arg->type = argFullTypes[0];
+            args.Append(arg);
+
+            targetType.address = true;
+            castFunc->returnType = targetType;
+            castFunc->parameters = args;
+
+            // Push main scope temporarily to add function to it
+            compiler->PushScope(compiler->intrinsicScope);
+            compiler->validator->ResolveFunction(compiler, castFunc);
+            compiler->PopScope();
+
+            this->thisResolved->function = castFunc;
+            this->thisResolved->returnType = this->thisResolved->function->returnType;
+            this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+        }
+
         // If the function isn't available, check for any type constructor that might implement it
         TransientArray<Symbol*> functionSymbols = compiler->GetSymbols(this->thisResolved->functionSymbol);
         if (functionSymbols.size == 0)

@@ -57,6 +57,7 @@ struct AccessExpression : public Expression
         Type* retType = nullptr;
         Type::SwizzleMask swizzleMask;
         Type* swizzleType = nullptr;
+        bool isAddressDeref = false;
     };
 };
 

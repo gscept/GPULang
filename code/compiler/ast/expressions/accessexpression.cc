@@ -148,6 +148,10 @@ AccessExpression::Resolve(Compiler* compiler)
     }
     else
     {
+        if (thisResolved->leftType.address)
+        {
+            thisResolved->isAddressDeref = true;
+        }
         thisResolved->returnType = thisResolved->rightType;
         thisResolved->returnType.mut = thisResolved->leftType.mut;
         thisResolved->retType = thisResolved->rhsType;
@@ -172,7 +176,6 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->returnType.modifiers.size--;
         thisResolved->returnType.modifierValues.size--;
     }
-
     return thisResolved->lhsType != nullptr && thisResolved->rhsType != nullptr;
 }
 

@@ -9,6 +9,141 @@
 #include "compiler.h"
 namespace GPULang
 {
+/// atomicXor with Int32, Int32, MemorySemantics
+Variable AtomicXor_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicXor_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Workgroup_Int32_value;
+Variable AtomicXor_Workgroup_Int32_semantics;
+Function AtomicXor_Workgroup_Int32;
+inline constexpr std::array AtomicXor_Workgroup_Int32_args = { &AtomicXor_Workgroup_Int32_ptr, &AtomicXor_Workgroup_Int32_value, &AtomicXor_Workgroup_Int32_semantics };
+
+/// atomicStore with UInt16, UInt16, MemorySemantics
+Variable AtomicStore_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicStore_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Uniform_UInt16_value;
+Variable AtomicStore_Uniform_UInt16_semantics;
+Function AtomicStore_Uniform_UInt16;
+inline constexpr std::array AtomicStore_Uniform_UInt16_args = { &AtomicStore_Uniform_UInt16_ptr, &AtomicStore_Uniform_UInt16_value, &AtomicStore_Uniform_UInt16_semantics };
+
+/// atomicStore with UInt16, UInt16, MemorySemantics
+Variable AtomicStore_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicStore_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicStore_Workgroup_UInt16_value;
+Variable AtomicStore_Workgroup_UInt16_semantics;
+Function AtomicStore_Workgroup_UInt16;
+inline constexpr std::array AtomicStore_Workgroup_UInt16_args = { &AtomicStore_Workgroup_UInt16_ptr, &AtomicStore_Workgroup_UInt16_value, &AtomicStore_Workgroup_UInt16_semantics };
+
+/// atomicExchange with UInt16, UInt16, MemorySemantics
+Variable AtomicExchange_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicExchange_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Uniform_UInt16_value;
+Variable AtomicExchange_Uniform_UInt16_semantics;
+Function AtomicExchange_Uniform_UInt16;
+inline constexpr std::array AtomicExchange_Uniform_UInt16_args = { &AtomicExchange_Uniform_UInt16_ptr, &AtomicExchange_Uniform_UInt16_value, &AtomicExchange_Uniform_UInt16_semantics };
+
+/// atomicExchange with UInt16, UInt16, MemorySemantics
+Variable AtomicExchange_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicExchange_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicExchange_Workgroup_UInt16_value;
+Variable AtomicExchange_Workgroup_UInt16_semantics;
+Function AtomicExchange_Workgroup_UInt16;
+inline constexpr std::array AtomicExchange_Workgroup_UInt16_args = { &AtomicExchange_Workgroup_UInt16_ptr, &AtomicExchange_Workgroup_UInt16_value, &AtomicExchange_Workgroup_UInt16_semantics };
+
+/// atomicAdd with UInt16, UInt16, MemorySemantics
+Variable AtomicAdd_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicAdd_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Uniform_UInt16_value;
+Variable AtomicAdd_Uniform_UInt16_semantics;
+Function AtomicAdd_Uniform_UInt16;
+inline constexpr std::array AtomicAdd_Uniform_UInt16_args = { &AtomicAdd_Uniform_UInt16_ptr, &AtomicAdd_Uniform_UInt16_value, &AtomicAdd_Uniform_UInt16_semantics };
+
+/// atomicAdd with UInt16, UInt16, MemorySemantics
+Variable AtomicAdd_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicAdd_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAdd_Workgroup_UInt16_value;
+Variable AtomicAdd_Workgroup_UInt16_semantics;
+Function AtomicAdd_Workgroup_UInt16;
+inline constexpr std::array AtomicAdd_Workgroup_UInt16_args = { &AtomicAdd_Workgroup_UInt16_ptr, &AtomicAdd_Workgroup_UInt16_value, &AtomicAdd_Workgroup_UInt16_semantics };
+
+/// atomicSubtract with UInt16, UInt16, MemorySemantics
+Variable AtomicSubtract_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicSubtract_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Uniform_UInt16_value;
+Variable AtomicSubtract_Uniform_UInt16_semantics;
+Function AtomicSubtract_Uniform_UInt16;
+inline constexpr std::array AtomicSubtract_Uniform_UInt16_args = { &AtomicSubtract_Uniform_UInt16_ptr, &AtomicSubtract_Uniform_UInt16_value, &AtomicSubtract_Uniform_UInt16_semantics };
+
+/// atomicSubtract with UInt16, UInt16, MemorySemantics
+Variable AtomicSubtract_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicSubtract_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicSubtract_Workgroup_UInt16_value;
+Variable AtomicSubtract_Workgroup_UInt16_semantics;
+Function AtomicSubtract_Workgroup_UInt16;
+inline constexpr std::array AtomicSubtract_Workgroup_UInt16_args = { &AtomicSubtract_Workgroup_UInt16_ptr, &AtomicSubtract_Workgroup_UInt16_value, &AtomicSubtract_Workgroup_UInt16_semantics };
+
+/// atomicAnd with UInt16, UInt16, MemorySemantics
+Variable AtomicAnd_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicAnd_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Uniform_UInt16_value;
+Variable AtomicAnd_Uniform_UInt16_semantics;
+Function AtomicAnd_Uniform_UInt16;
+inline constexpr std::array AtomicAnd_Uniform_UInt16_args = { &AtomicAnd_Uniform_UInt16_ptr, &AtomicAnd_Uniform_UInt16_value, &AtomicAnd_Uniform_UInt16_semantics };
+
+/// atomicAnd with UInt16, UInt16, MemorySemantics
+Variable AtomicAnd_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicAnd_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicAnd_Workgroup_UInt16_value;
+Variable AtomicAnd_Workgroup_UInt16_semantics;
+Function AtomicAnd_Workgroup_UInt16;
+inline constexpr std::array AtomicAnd_Workgroup_UInt16_args = { &AtomicAnd_Workgroup_UInt16_ptr, &AtomicAnd_Workgroup_UInt16_value, &AtomicAnd_Workgroup_UInt16_semantics };
+
+/// atomicOr with UInt16, UInt16, MemorySemantics
+Variable AtomicOr_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicOr_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Uniform_UInt16_value;
+Variable AtomicOr_Uniform_UInt16_semantics;
+Function AtomicOr_Uniform_UInt16;
+inline constexpr std::array AtomicOr_Uniform_UInt16_args = { &AtomicOr_Uniform_UInt16_ptr, &AtomicOr_Uniform_UInt16_value, &AtomicOr_Uniform_UInt16_semantics };
+
+/// atomicOr with UInt16, UInt16, MemorySemantics
+Variable AtomicOr_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicOr_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicOr_Workgroup_UInt16_value;
+Variable AtomicOr_Workgroup_UInt16_semantics;
+Function AtomicOr_Workgroup_UInt16;
+inline constexpr std::array AtomicOr_Workgroup_UInt16_args = { &AtomicOr_Workgroup_UInt16_ptr, &AtomicOr_Workgroup_UInt16_value, &AtomicOr_Workgroup_UInt16_semantics };
+
+/// atomicXor with UInt16, UInt16, MemorySemantics
+Variable AtomicXor_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicXor_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Uniform_UInt16_value;
+Variable AtomicXor_Uniform_UInt16_semantics;
+Function AtomicXor_Uniform_UInt16;
+inline constexpr std::array AtomicXor_Uniform_UInt16_args = { &AtomicXor_Uniform_UInt16_ptr, &AtomicXor_Uniform_UInt16_value, &AtomicXor_Uniform_UInt16_semantics };
+
+/// atomicXor with UInt16, UInt16, MemorySemantics
+Variable AtomicXor_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicXor_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicXor_Workgroup_UInt16_value;
+Variable AtomicXor_Workgroup_UInt16_semantics;
+Function AtomicXor_Workgroup_UInt16;
+inline constexpr std::array AtomicXor_Workgroup_UInt16_args = { &AtomicXor_Workgroup_UInt16_ptr, &AtomicXor_Workgroup_UInt16_value, &AtomicXor_Workgroup_UInt16_semantics };
+
 /// atomicStore with Int16, Int16, MemorySemantics
 Variable AtomicStore_Uniform_Int16_ptr;
 inline constexpr std::array AtomicStore_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
@@ -475,6 +610,13 @@ Variable BitExtract_Int16_count;
 Function BitExtract_Int16;
 inline constexpr std::array BitExtract_Int16_args = { &BitExtract_Int16_base, &BitExtract_Int16_offset, &BitExtract_Int16_count };
 
+/// bitExtract with UInt64, UInt64, UInt64
+Variable BitExtract_UInt64_base;
+Variable BitExtract_UInt64_offset;
+Variable BitExtract_UInt64_count;
+Function BitExtract_UInt64;
+inline constexpr std::array BitExtract_UInt64_args = { &BitExtract_UInt64_base, &BitExtract_UInt64_offset, &BitExtract_UInt64_count };
+
 /// bitReverse with UInt32
 Variable BitReverse_UInt32_base;
 Function BitReverse_UInt32;
@@ -495,6 +637,11 @@ Variable BitReverse_Int16_base;
 Function BitReverse_Int16;
 inline constexpr std::array BitReverse_Int16_args = { &BitReverse_Int16_base };
 
+/// bitReverse with UInt64
+Variable BitReverse_UInt64_base;
+Function BitReverse_UInt64;
+inline constexpr std::array BitReverse_UInt64_args = { &BitReverse_UInt64_base };
+
 /// bitCount with UInt32
 Variable BitCount_UInt32_base;
 Function BitCount_UInt32;
@@ -514,6 +661,11 @@ inline constexpr std::array BitCount_UInt16_args = { &BitCount_UInt16_base };
 Variable BitCount_Int16_base;
 Function BitCount_Int16;
 inline constexpr std::array BitCount_Int16_args = { &BitCount_Int16_base };
+
+/// bitCount with UInt64
+Variable BitCount_UInt64_base;
+Function BitCount_UInt64;
+inline constexpr std::array BitCount_UInt64_args = { &BitCount_UInt64_base };
 
 /// executionBarrier
 Function ExecutionBarrier;
@@ -879,169 +1031,390 @@ Variable TextureStoreMip_Texture1D_value;
 Function TextureStoreMip_Texture1D;
 inline constexpr std::array TextureStoreMip_Texture1D_args = { &TextureStoreMip_Texture1D_texture, &TextureStoreMip_Texture1D_coordinate, &TextureStoreMip_Texture1D_mip, &TextureStoreMip_Texture1D_value };
 
-/// textureLoad with Texture2D, Int32x2
-Variable TextureLoad_Texture2D_texture;
-inline constexpr std::array TextureLoad_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture2D_coordinate;
-Function TextureLoad_Texture2D;
-inline constexpr std::array TextureLoad_Texture2D_args = { &TextureLoad_Texture2D_texture, &TextureLoad_Texture2D_coordinate };
-
-/// textureLoadMip with Texture2D, Int32x2, Int32
-Variable TextureLoadMip_Texture2D_texture;
-inline constexpr std::array TextureLoadMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture2D_coordinate;
-Variable TextureLoadMip_Texture2D_mip;
-Function TextureLoadMip_Texture2D;
-inline constexpr std::array TextureLoadMip_Texture2D_args = { &TextureLoadMip_Texture2D_texture, &TextureLoadMip_Texture2D_coordinate, &TextureLoadMip_Texture2D_mip };
-
-/// textureStore with Texture2D, Int32x2, Float32x4
-Variable TextureStore_Texture2D_texture;
-inline constexpr std::array TextureStore_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2D_coordinate;
-Variable TextureStore_Texture2D_value;
-Function TextureStore_Texture2D;
-inline constexpr std::array TextureStore_Texture2D_args = { &TextureStore_Texture2D_texture, &TextureStore_Texture2D_coordinate, &TextureStore_Texture2D_value };
-
-/// textureStoreMip with Texture2D, Int32x2, Int32, Float32x4
-Variable TextureStoreMip_Texture2D_texture;
-inline constexpr std::array TextureStoreMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2D_coordinate;
-Variable TextureStoreMip_Texture2D_mip;
-Variable TextureStoreMip_Texture2D_value;
-Function TextureStoreMip_Texture2D;
-inline constexpr std::array TextureStoreMip_Texture2D_args = { &TextureStoreMip_Texture2D_texture, &TextureStoreMip_Texture2D_coordinate, &TextureStoreMip_Texture2D_mip, &TextureStoreMip_Texture2D_value };
-
-/// textureLoad with Texture3D, Int32x3
-Variable TextureLoad_Texture3D_texture;
-inline constexpr std::array TextureLoad_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture3D_coordinate;
-Function TextureLoad_Texture3D;
-inline constexpr std::array TextureLoad_Texture3D_args = { &TextureLoad_Texture3D_texture, &TextureLoad_Texture3D_coordinate };
-
-/// textureLoadMip with Texture3D, Int32x3, Int32
-Variable TextureLoadMip_Texture3D_texture;
-inline constexpr std::array TextureLoadMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture3D_coordinate;
-Variable TextureLoadMip_Texture3D_mip;
-Function TextureLoadMip_Texture3D;
-inline constexpr std::array TextureLoadMip_Texture3D_args = { &TextureLoadMip_Texture3D_texture, &TextureLoadMip_Texture3D_coordinate, &TextureLoadMip_Texture3D_mip };
-
-/// textureStore with Texture3D, Int32x3, Float32x4
-Variable TextureStore_Texture3D_texture;
-inline constexpr std::array TextureStore_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture3D_coordinate;
-Variable TextureStore_Texture3D_value;
-Function TextureStore_Texture3D;
-inline constexpr std::array TextureStore_Texture3D_args = { &TextureStore_Texture3D_texture, &TextureStore_Texture3D_coordinate, &TextureStore_Texture3D_value };
-
-/// textureStoreMip with Texture3D, Int32x3, Int32, Float32x4
-Variable TextureStoreMip_Texture3D_texture;
-inline constexpr std::array TextureStoreMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture3D_coordinate;
-Variable TextureStoreMip_Texture3D_mip;
-Variable TextureStoreMip_Texture3D_value;
-Function TextureStoreMip_Texture3D;
-inline constexpr std::array TextureStoreMip_Texture3D_args = { &TextureStoreMip_Texture3D_texture, &TextureStoreMip_Texture3D_coordinate, &TextureStoreMip_Texture3D_mip, &TextureStoreMip_Texture3D_value };
-
-/// textureLoad with TextureCube, Int32x3
-Variable TextureLoad_TextureCube_texture;
-inline constexpr std::array TextureLoad_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_TextureCube_coordinate;
-Function TextureLoad_TextureCube;
-inline constexpr std::array TextureLoad_TextureCube_args = { &TextureLoad_TextureCube_texture, &TextureLoad_TextureCube_coordinate };
-
-/// textureLoadMip with TextureCube, Int32x3, Int32
-Variable TextureLoadMip_TextureCube_texture;
-inline constexpr std::array TextureLoadMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_TextureCube_coordinate;
-Variable TextureLoadMip_TextureCube_mip;
-Function TextureLoadMip_TextureCube;
-inline constexpr std::array TextureLoadMip_TextureCube_args = { &TextureLoadMip_TextureCube_texture, &TextureLoadMip_TextureCube_coordinate, &TextureLoadMip_TextureCube_mip };
-
-/// textureStore with TextureCube, Int32x3, Float32x4
-Variable TextureStore_TextureCube_texture;
-inline constexpr std::array TextureStore_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_TextureCube_coordinate;
-Variable TextureStore_TextureCube_value;
-Function TextureStore_TextureCube;
-inline constexpr std::array TextureStore_TextureCube_args = { &TextureStore_TextureCube_texture, &TextureStore_TextureCube_coordinate, &TextureStore_TextureCube_value };
-
-/// textureStoreMip with TextureCube, Int32x3, Int32, Float32x4
-Variable TextureStoreMip_TextureCube_texture;
-inline constexpr std::array TextureStoreMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_TextureCube_coordinate;
-Variable TextureStoreMip_TextureCube_mip;
-Variable TextureStoreMip_TextureCube_value;
-Function TextureStoreMip_TextureCube;
-inline constexpr std::array TextureStoreMip_TextureCube_args = { &TextureStoreMip_TextureCube_texture, &TextureStoreMip_TextureCube_coordinate, &TextureStoreMip_TextureCube_mip, &TextureStoreMip_TextureCube_value };
-
-/// textureLoad with Texture1DArray, Int32x2
-Variable TextureLoad_Texture1DArray_texture;
-inline constexpr std::array TextureLoad_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture1DArray_coordinate;
-Function TextureLoad_Texture1DArray;
-inline constexpr std::array TextureLoad_Texture1DArray_args = { &TextureLoad_Texture1DArray_texture, &TextureLoad_Texture1DArray_coordinate };
-
-/// textureLoadMip with Texture1DArray, Int32x2, Int32
-Variable TextureLoadMip_Texture1DArray_texture;
-inline constexpr std::array TextureLoadMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture1DArray_coordinate;
-Variable TextureLoadMip_Texture1DArray_mip;
-Function TextureLoadMip_Texture1DArray;
-inline constexpr std::array TextureLoadMip_Texture1DArray_args = { &TextureLoadMip_Texture1DArray_texture, &TextureLoadMip_Texture1DArray_coordinate, &TextureLoadMip_Texture1DArray_mip };
-
-/// textureStore with Texture1DArray, Int32x2, Float32x4
-Variable TextureStore_Texture1DArray_texture;
-inline constexpr std::array TextureStore_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture1DArray_coordinate;
-Variable TextureStore_Texture1DArray_value;
-Function TextureStore_Texture1DArray;
-inline constexpr std::array TextureStore_Texture1DArray_args = { &TextureStore_Texture1DArray_texture, &TextureStore_Texture1DArray_coordinate, &TextureStore_Texture1DArray_value };
-
-/// textureStoreMip with Texture1DArray, Int32x2, Int32, Float32x4
-Variable TextureStoreMip_Texture1DArray_texture;
-inline constexpr std::array TextureStoreMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture1DArray_coordinate;
-Variable TextureStoreMip_Texture1DArray_mip;
-Variable TextureStoreMip_Texture1DArray_value;
-Function TextureStoreMip_Texture1DArray;
-inline constexpr std::array TextureStoreMip_Texture1DArray_args = { &TextureStoreMip_Texture1DArray_texture, &TextureStoreMip_Texture1DArray_coordinate, &TextureStoreMip_Texture1DArray_mip, &TextureStoreMip_Texture1DArray_value };
-
-/// textureLoad with Texture2DArray, Int32x3
-Variable TextureLoad_Texture2DArray_texture;
-inline constexpr std::array TextureLoad_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture2DArray_coordinate;
-Function TextureLoad_Texture2DArray;
-inline constexpr std::array TextureLoad_Texture2DArray_args = { &TextureLoad_Texture2DArray_texture, &TextureLoad_Texture2DArray_coordinate };
-
-/// textureLoadMip with Texture2DArray, Int32x3, Int32
-Variable TextureLoadMip_Texture2DArray_texture;
-inline constexpr std::array TextureLoadMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture2DArray_coordinate;
-Variable TextureLoadMip_Texture2DArray_mip;
-Function TextureLoadMip_Texture2DArray;
-inline constexpr std::array TextureLoadMip_Texture2DArray_args = { &TextureLoadMip_Texture2DArray_texture, &TextureLoadMip_Texture2DArray_coordinate, &TextureLoadMip_Texture2DArray_mip };
-
 void SetupIntrinsics10()
 {
+    /// atomicXor with Int32, Int32, MemorySemantics
+    AtomicXor_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicXor_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicXor_Workgroup_Int32_ptr.type.strict = true;
+    AtomicXor_Workgroup_Int32_ptr.type.modifiers = AtomicXor_Workgroup_Int32_ptr_modifiers;
+    AtomicXor_Workgroup_Int32_ptr.type.modifierValues = AtomicXor_Workgroup_Int32_ptr_modifierValues;
+    AtomicXor_Workgroup_Int32_value.name = "value"_c;
+    AtomicXor_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
+    AtomicXor_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicXor_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Workgroup_Int32_semantics.type.literal = true;
+    AtomicXor_Workgroup_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Workgroup_Int32.name = AtomicXor_Workgroup_Int32_name;
+    AtomicXor_Workgroup_Int32.backendIndex = 2246;
+    AtomicXor_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicXor_Workgroup_Int32.parameters = AtomicXor_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->signature = "atomicXor(workgroup *i32,i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->name = "atomicXor(workgroup *i32,i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->nameWithVarNames = "atomicXor(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicStore with UInt16, UInt16, MemorySemantics
+    AtomicStore_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicStore_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicStore_Uniform_UInt16_ptr.type.strict = true;
+    AtomicStore_Uniform_UInt16_ptr.type.mut = true;
+    AtomicStore_Uniform_UInt16_ptr.type.modifiers = AtomicStore_Uniform_UInt16_ptr_modifiers;
+    AtomicStore_Uniform_UInt16_ptr.type.modifierValues = AtomicStore_Uniform_UInt16_ptr_modifierValues;
+    AtomicStore_Uniform_UInt16_value.name = "value"_c;
+    AtomicStore_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicStore_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicStore_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Uniform_UInt16_semantics.type.literal = true;
+    AtomicStore_Uniform_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Uniform_UInt16.name = AtomicStore_Uniform_UInt16_name;
+    AtomicStore_Uniform_UInt16.backendIndex = 2247;
+    AtomicStore_Uniform_UInt16.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Uniform_UInt16.parameters = AtomicStore_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->signature = "atomicStore(uniform *mutable u16,u16,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->name = "atomicStore(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->nameWithVarNames = "atomicStore(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// atomicStore with UInt16, UInt16, MemorySemantics
+    AtomicStore_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicStore_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicStore_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicStore_Workgroup_UInt16_ptr.type.modifiers = AtomicStore_Workgroup_UInt16_ptr_modifiers;
+    AtomicStore_Workgroup_UInt16_ptr.type.modifierValues = AtomicStore_Workgroup_UInt16_ptr_modifierValues;
+    AtomicStore_Workgroup_UInt16_value.name = "value"_c;
+    AtomicStore_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicStore_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicStore_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicStore_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicStore_Workgroup_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicStore_Workgroup_UInt16.name = AtomicStore_Workgroup_UInt16_name;
+    AtomicStore_Workgroup_UInt16.backendIndex = 2248;
+    AtomicStore_Workgroup_UInt16.returnType = Type::FullType { VoidType.name };
+    AtomicStore_Workgroup_UInt16.parameters = AtomicStore_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->signature = "atomicStore(workgroup *u16,u16,literal MemorySemantics) void"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->name = "atomicStore(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->nameWithVarNames = "atomicStore(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->returnTypeSymbol = &VoidType;
+
+    /// atomicExchange with UInt16, UInt16, MemorySemantics
+    AtomicExchange_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicExchange_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicExchange_Uniform_UInt16_ptr.type.strict = true;
+    AtomicExchange_Uniform_UInt16_ptr.type.mut = true;
+    AtomicExchange_Uniform_UInt16_ptr.type.modifiers = AtomicExchange_Uniform_UInt16_ptr_modifiers;
+    AtomicExchange_Uniform_UInt16_ptr.type.modifierValues = AtomicExchange_Uniform_UInt16_ptr_modifierValues;
+    AtomicExchange_Uniform_UInt16_value.name = "value"_c;
+    AtomicExchange_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicExchange_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicExchange_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Uniform_UInt16_semantics.type.literal = true;
+    AtomicExchange_Uniform_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Uniform_UInt16.name = AtomicExchange_Uniform_UInt16_name;
+    AtomicExchange_Uniform_UInt16.backendIndex = 2249;
+    AtomicExchange_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicExchange_Uniform_UInt16.parameters = AtomicExchange_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->signature = "atomicExchange(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->name = "atomicExchange(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicExchange with UInt16, UInt16, MemorySemantics
+    AtomicExchange_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicExchange_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicExchange_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicExchange_Workgroup_UInt16_ptr.type.modifiers = AtomicExchange_Workgroup_UInt16_ptr_modifiers;
+    AtomicExchange_Workgroup_UInt16_ptr.type.modifierValues = AtomicExchange_Workgroup_UInt16_ptr_modifierValues;
+    AtomicExchange_Workgroup_UInt16_value.name = "value"_c;
+    AtomicExchange_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicExchange_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicExchange_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicExchange_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicExchange_Workgroup_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
+    AtomicExchange_Workgroup_UInt16.name = AtomicExchange_Workgroup_UInt16_name;
+    AtomicExchange_Workgroup_UInt16.backendIndex = 2250;
+    AtomicExchange_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicExchange_Workgroup_UInt16.parameters = AtomicExchange_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->signature = "atomicExchange(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->name = "atomicExchange(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->nameWithVarNames = "atomicExchange(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicAdd with UInt16, UInt16, MemorySemantics
+    AtomicAdd_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicAdd_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicAdd_Uniform_UInt16_ptr.type.strict = true;
+    AtomicAdd_Uniform_UInt16_ptr.type.mut = true;
+    AtomicAdd_Uniform_UInt16_ptr.type.modifiers = AtomicAdd_Uniform_UInt16_ptr_modifiers;
+    AtomicAdd_Uniform_UInt16_ptr.type.modifierValues = AtomicAdd_Uniform_UInt16_ptr_modifierValues;
+    AtomicAdd_Uniform_UInt16_value.name = "value"_c;
+    AtomicAdd_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicAdd_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicAdd_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Uniform_UInt16_semantics.type.literal = true;
+    AtomicAdd_Uniform_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Uniform_UInt16.name = AtomicAdd_Uniform_UInt16_name;
+    AtomicAdd_Uniform_UInt16.backendIndex = 2251;
+    AtomicAdd_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicAdd_Uniform_UInt16.parameters = AtomicAdd_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->signature = "atomicAdd(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->name = "atomicAdd(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicAdd with UInt16, UInt16, MemorySemantics
+    AtomicAdd_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicAdd_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicAdd_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicAdd_Workgroup_UInt16_ptr.type.modifiers = AtomicAdd_Workgroup_UInt16_ptr_modifiers;
+    AtomicAdd_Workgroup_UInt16_ptr.type.modifierValues = AtomicAdd_Workgroup_UInt16_ptr_modifierValues;
+    AtomicAdd_Workgroup_UInt16_value.name = "value"_c;
+    AtomicAdd_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicAdd_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicAdd_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAdd_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicAdd_Workgroup_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAdd_Workgroup_UInt16.name = AtomicAdd_Workgroup_UInt16_name;
+    AtomicAdd_Workgroup_UInt16.backendIndex = 2252;
+    AtomicAdd_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicAdd_Workgroup_UInt16.parameters = AtomicAdd_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->signature = "atomicAdd(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->name = "atomicAdd(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->nameWithVarNames = "atomicAdd(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicSubtract with UInt16, UInt16, MemorySemantics
+    AtomicSubtract_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicSubtract_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicSubtract_Uniform_UInt16_ptr.type.strict = true;
+    AtomicSubtract_Uniform_UInt16_ptr.type.mut = true;
+    AtomicSubtract_Uniform_UInt16_ptr.type.modifiers = AtomicSubtract_Uniform_UInt16_ptr_modifiers;
+    AtomicSubtract_Uniform_UInt16_ptr.type.modifierValues = AtomicSubtract_Uniform_UInt16_ptr_modifierValues;
+    AtomicSubtract_Uniform_UInt16_value.name = "value"_c;
+    AtomicSubtract_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicSubtract_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicSubtract_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Uniform_UInt16_semantics.type.literal = true;
+    AtomicSubtract_Uniform_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Uniform_UInt16.name = AtomicSubtract_Uniform_UInt16_name;
+    AtomicSubtract_Uniform_UInt16.backendIndex = 2253;
+    AtomicSubtract_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicSubtract_Uniform_UInt16.parameters = AtomicSubtract_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->signature = "atomicSubtract(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->name = "atomicSubtract(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicSubtract with UInt16, UInt16, MemorySemantics
+    AtomicSubtract_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicSubtract_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicSubtract_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicSubtract_Workgroup_UInt16_ptr.type.modifiers = AtomicSubtract_Workgroup_UInt16_ptr_modifiers;
+    AtomicSubtract_Workgroup_UInt16_ptr.type.modifierValues = AtomicSubtract_Workgroup_UInt16_ptr_modifierValues;
+    AtomicSubtract_Workgroup_UInt16_value.name = "value"_c;
+    AtomicSubtract_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicSubtract_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicSubtract_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicSubtract_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicSubtract_Workgroup_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicSubtract_Workgroup_UInt16.name = AtomicSubtract_Workgroup_UInt16_name;
+    AtomicSubtract_Workgroup_UInt16.backendIndex = 2254;
+    AtomicSubtract_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicSubtract_Workgroup_UInt16.parameters = AtomicSubtract_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->signature = "atomicSubtract(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->name = "atomicSubtract(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->nameWithVarNames = "atomicSubtract(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicAnd with UInt16, UInt16, MemorySemantics
+    AtomicAnd_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicAnd_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicAnd_Uniform_UInt16_ptr.type.strict = true;
+    AtomicAnd_Uniform_UInt16_ptr.type.mut = true;
+    AtomicAnd_Uniform_UInt16_ptr.type.modifiers = AtomicAnd_Uniform_UInt16_ptr_modifiers;
+    AtomicAnd_Uniform_UInt16_ptr.type.modifierValues = AtomicAnd_Uniform_UInt16_ptr_modifierValues;
+    AtomicAnd_Uniform_UInt16_value.name = "value"_c;
+    AtomicAnd_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicAnd_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicAnd_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Uniform_UInt16_semantics.type.literal = true;
+    AtomicAnd_Uniform_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Uniform_UInt16.name = AtomicAnd_Uniform_UInt16_name;
+    AtomicAnd_Uniform_UInt16.backendIndex = 2255;
+    AtomicAnd_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicAnd_Uniform_UInt16.parameters = AtomicAnd_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->signature = "atomicAnd(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->name = "atomicAnd(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicAnd with UInt16, UInt16, MemorySemantics
+    AtomicAnd_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicAnd_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicAnd_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicAnd_Workgroup_UInt16_ptr.type.modifiers = AtomicAnd_Workgroup_UInt16_ptr_modifiers;
+    AtomicAnd_Workgroup_UInt16_ptr.type.modifierValues = AtomicAnd_Workgroup_UInt16_ptr_modifierValues;
+    AtomicAnd_Workgroup_UInt16_value.name = "value"_c;
+    AtomicAnd_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicAnd_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicAnd_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicAnd_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicAnd_Workgroup_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicAnd_Workgroup_UInt16.name = AtomicAnd_Workgroup_UInt16_name;
+    AtomicAnd_Workgroup_UInt16.backendIndex = 2256;
+    AtomicAnd_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicAnd_Workgroup_UInt16.parameters = AtomicAnd_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->signature = "atomicAnd(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->name = "atomicAnd(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->nameWithVarNames = "atomicAnd(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicOr with UInt16, UInt16, MemorySemantics
+    AtomicOr_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicOr_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicOr_Uniform_UInt16_ptr.type.strict = true;
+    AtomicOr_Uniform_UInt16_ptr.type.mut = true;
+    AtomicOr_Uniform_UInt16_ptr.type.modifiers = AtomicOr_Uniform_UInt16_ptr_modifiers;
+    AtomicOr_Uniform_UInt16_ptr.type.modifierValues = AtomicOr_Uniform_UInt16_ptr_modifierValues;
+    AtomicOr_Uniform_UInt16_value.name = "value"_c;
+    AtomicOr_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicOr_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicOr_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Uniform_UInt16_semantics.type.literal = true;
+    AtomicOr_Uniform_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Uniform_UInt16.name = AtomicOr_Uniform_UInt16_name;
+    AtomicOr_Uniform_UInt16.backendIndex = 2257;
+    AtomicOr_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicOr_Uniform_UInt16.parameters = AtomicOr_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->signature = "atomicOr(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->name = "atomicOr(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->nameWithVarNames = "atomicOr(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicOr with UInt16, UInt16, MemorySemantics
+    AtomicOr_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicOr_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicOr_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicOr_Workgroup_UInt16_ptr.type.modifiers = AtomicOr_Workgroup_UInt16_ptr_modifiers;
+    AtomicOr_Workgroup_UInt16_ptr.type.modifierValues = AtomicOr_Workgroup_UInt16_ptr_modifierValues;
+    AtomicOr_Workgroup_UInt16_value.name = "value"_c;
+    AtomicOr_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicOr_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicOr_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicOr_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicOr_Workgroup_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicOr_Workgroup_UInt16.name = AtomicOr_Workgroup_UInt16_name;
+    AtomicOr_Workgroup_UInt16.backendIndex = 2258;
+    AtomicOr_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicOr_Workgroup_UInt16.parameters = AtomicOr_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->signature = "atomicOr(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->name = "atomicOr(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->nameWithVarNames = "atomicOr(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicXor with UInt16, UInt16, MemorySemantics
+    AtomicXor_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicXor_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicXor_Uniform_UInt16_ptr.type.strict = true;
+    AtomicXor_Uniform_UInt16_ptr.type.mut = true;
+    AtomicXor_Uniform_UInt16_ptr.type.modifiers = AtomicXor_Uniform_UInt16_ptr_modifiers;
+    AtomicXor_Uniform_UInt16_ptr.type.modifierValues = AtomicXor_Uniform_UInt16_ptr_modifierValues;
+    AtomicXor_Uniform_UInt16_value.name = "value"_c;
+    AtomicXor_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicXor_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicXor_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Uniform_UInt16_semantics.type.literal = true;
+    AtomicXor_Uniform_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Uniform_UInt16.name = AtomicXor_Uniform_UInt16_name;
+    AtomicXor_Uniform_UInt16.backendIndex = 2259;
+    AtomicXor_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicXor_Uniform_UInt16.parameters = AtomicXor_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->signature = "atomicXor(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->name = "atomicXor(uniform *mutable u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->nameWithVarNames = "atomicXor(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicXor with UInt16, UInt16, MemorySemantics
+    AtomicXor_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicXor_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicXor_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicXor_Workgroup_UInt16_ptr.type.modifiers = AtomicXor_Workgroup_UInt16_ptr_modifiers;
+    AtomicXor_Workgroup_UInt16_ptr.type.modifierValues = AtomicXor_Workgroup_UInt16_ptr_modifierValues;
+    AtomicXor_Workgroup_UInt16_value.name = "value"_c;
+    AtomicXor_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    AtomicXor_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicXor_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicXor_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicXor_Workgroup_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicXor_Workgroup_UInt16.name = AtomicXor_Workgroup_UInt16_name;
+    AtomicXor_Workgroup_UInt16.backendIndex = 2260;
+    AtomicXor_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicXor_Workgroup_UInt16.parameters = AtomicXor_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->signature = "atomicXor(workgroup *u16,u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->name = "atomicXor(workgroup *u16,u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->nameWithVarNames = "atomicXor(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+
     /// atomicStore with Int16, Int16, MemorySemantics
     AtomicStore_Uniform_Int16_ptr.name = "ptr"_c;
     AtomicStore_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
@@ -1056,7 +1429,7 @@ void SetupIntrinsics10()
     AtomicStore_Uniform_Int16_semantics.type.literal = true;
     AtomicStore_Uniform_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_Int16.name = AtomicStore_Uniform_Int16_name;
-    AtomicStore_Uniform_Int16.backendIndex = 2217;
+    AtomicStore_Uniform_Int16.backendIndex = 2261;
     AtomicStore_Uniform_Int16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_Int16.parameters = AtomicStore_Uniform_Int16_args;
     Symbol::Resolved(&AtomicStore_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1081,7 +1454,7 @@ void SetupIntrinsics10()
     AtomicStore_Workgroup_Int16_semantics.type.literal = true;
     AtomicStore_Workgroup_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_Int16.name = AtomicStore_Workgroup_Int16_name;
-    AtomicStore_Workgroup_Int16.backendIndex = 2218;
+    AtomicStore_Workgroup_Int16.backendIndex = 2262;
     AtomicStore_Workgroup_Int16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_Int16.parameters = AtomicStore_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicStore_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1107,7 +1480,7 @@ void SetupIntrinsics10()
     AtomicExchange_Uniform_Int16_semantics.type.literal = true;
     AtomicExchange_Uniform_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_Int16.name = AtomicExchange_Uniform_Int16_name;
-    AtomicExchange_Uniform_Int16.backendIndex = 2219;
+    AtomicExchange_Uniform_Int16.backendIndex = 2263;
     AtomicExchange_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicExchange_Uniform_Int16.parameters = AtomicExchange_Uniform_Int16_args;
     Symbol::Resolved(&AtomicExchange_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1132,7 +1505,7 @@ void SetupIntrinsics10()
     AtomicExchange_Workgroup_Int16_semantics.type.literal = true;
     AtomicExchange_Workgroup_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_Int16.name = AtomicExchange_Workgroup_Int16_name;
-    AtomicExchange_Workgroup_Int16.backendIndex = 2220;
+    AtomicExchange_Workgroup_Int16.backendIndex = 2264;
     AtomicExchange_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicExchange_Workgroup_Int16.parameters = AtomicExchange_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1158,7 +1531,7 @@ void SetupIntrinsics10()
     AtomicAdd_Uniform_Int16_semantics.type.literal = true;
     AtomicAdd_Uniform_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Uniform_Int16.name = AtomicAdd_Uniform_Int16_name;
-    AtomicAdd_Uniform_Int16.backendIndex = 2221;
+    AtomicAdd_Uniform_Int16.backendIndex = 2265;
     AtomicAdd_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAdd_Uniform_Int16.parameters = AtomicAdd_Uniform_Int16_args;
     Symbol::Resolved(&AtomicAdd_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1183,7 +1556,7 @@ void SetupIntrinsics10()
     AtomicAdd_Workgroup_Int16_semantics.type.literal = true;
     AtomicAdd_Workgroup_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Workgroup_Int16.name = AtomicAdd_Workgroup_Int16_name;
-    AtomicAdd_Workgroup_Int16.backendIndex = 2222;
+    AtomicAdd_Workgroup_Int16.backendIndex = 2266;
     AtomicAdd_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAdd_Workgroup_Int16.parameters = AtomicAdd_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicAdd_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1209,7 +1582,7 @@ void SetupIntrinsics10()
     AtomicSubtract_Uniform_Int16_semantics.type.literal = true;
     AtomicSubtract_Uniform_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Uniform_Int16.name = AtomicSubtract_Uniform_Int16_name;
-    AtomicSubtract_Uniform_Int16.backendIndex = 2223;
+    AtomicSubtract_Uniform_Int16.backendIndex = 2267;
     AtomicSubtract_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicSubtract_Uniform_Int16.parameters = AtomicSubtract_Uniform_Int16_args;
     Symbol::Resolved(&AtomicSubtract_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1234,7 +1607,7 @@ void SetupIntrinsics10()
     AtomicSubtract_Workgroup_Int16_semantics.type.literal = true;
     AtomicSubtract_Workgroup_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Workgroup_Int16.name = AtomicSubtract_Workgroup_Int16_name;
-    AtomicSubtract_Workgroup_Int16.backendIndex = 2224;
+    AtomicSubtract_Workgroup_Int16.backendIndex = 2268;
     AtomicSubtract_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicSubtract_Workgroup_Int16.parameters = AtomicSubtract_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1260,7 +1633,7 @@ void SetupIntrinsics10()
     AtomicAnd_Uniform_Int16_semantics.type.literal = true;
     AtomicAnd_Uniform_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Uniform_Int16.name = AtomicAnd_Uniform_Int16_name;
-    AtomicAnd_Uniform_Int16.backendIndex = 2225;
+    AtomicAnd_Uniform_Int16.backendIndex = 2269;
     AtomicAnd_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAnd_Uniform_Int16.parameters = AtomicAnd_Uniform_Int16_args;
     Symbol::Resolved(&AtomicAnd_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1285,7 +1658,7 @@ void SetupIntrinsics10()
     AtomicAnd_Workgroup_Int16_semantics.type.literal = true;
     AtomicAnd_Workgroup_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Workgroup_Int16.name = AtomicAnd_Workgroup_Int16_name;
-    AtomicAnd_Workgroup_Int16.backendIndex = 2226;
+    AtomicAnd_Workgroup_Int16.backendIndex = 2270;
     AtomicAnd_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAnd_Workgroup_Int16.parameters = AtomicAnd_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicAnd_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1311,7 +1684,7 @@ void SetupIntrinsics10()
     AtomicOr_Uniform_Int16_semantics.type.literal = true;
     AtomicOr_Uniform_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Uniform_Int16.name = AtomicOr_Uniform_Int16_name;
-    AtomicOr_Uniform_Int16.backendIndex = 2227;
+    AtomicOr_Uniform_Int16.backendIndex = 2271;
     AtomicOr_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicOr_Uniform_Int16.parameters = AtomicOr_Uniform_Int16_args;
     Symbol::Resolved(&AtomicOr_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1336,7 +1709,7 @@ void SetupIntrinsics10()
     AtomicOr_Workgroup_Int16_semantics.type.literal = true;
     AtomicOr_Workgroup_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Workgroup_Int16.name = AtomicOr_Workgroup_Int16_name;
-    AtomicOr_Workgroup_Int16.backendIndex = 2228;
+    AtomicOr_Workgroup_Int16.backendIndex = 2272;
     AtomicOr_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicOr_Workgroup_Int16.parameters = AtomicOr_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicOr_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1362,7 +1735,7 @@ void SetupIntrinsics10()
     AtomicXor_Uniform_Int16_semantics.type.literal = true;
     AtomicXor_Uniform_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Uniform_Int16.name = AtomicXor_Uniform_Int16_name;
-    AtomicXor_Uniform_Int16.backendIndex = 2229;
+    AtomicXor_Uniform_Int16.backendIndex = 2273;
     AtomicXor_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicXor_Uniform_Int16.parameters = AtomicXor_Uniform_Int16_args;
     Symbol::Resolved(&AtomicXor_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1387,7 +1760,7 @@ void SetupIntrinsics10()
     AtomicXor_Workgroup_Int16_semantics.type.literal = true;
     AtomicXor_Workgroup_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Workgroup_Int16.name = AtomicXor_Workgroup_Int16_name;
-    AtomicXor_Workgroup_Int16.backendIndex = 2230;
+    AtomicXor_Workgroup_Int16.backendIndex = 2274;
     AtomicXor_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicXor_Workgroup_Int16.parameters = AtomicXor_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicXor_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1413,7 +1786,7 @@ void SetupIntrinsics10()
     AtomicStore_Uniform_Float32_semantics.type.literal = true;
     AtomicStore_Uniform_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_Float32.name = AtomicStore_Uniform_Float32_name;
-    AtomicStore_Uniform_Float32.backendIndex = 2231;
+    AtomicStore_Uniform_Float32.backendIndex = 2275;
     AtomicStore_Uniform_Float32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_Float32.parameters = AtomicStore_Uniform_Float32_args;
     Symbol::Resolved(&AtomicStore_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
@@ -1438,7 +1811,7 @@ void SetupIntrinsics10()
     AtomicStore_Workgroup_Float32_semantics.type.literal = true;
     AtomicStore_Workgroup_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_Float32.name = AtomicStore_Workgroup_Float32_name;
-    AtomicStore_Workgroup_Float32.backendIndex = 2232;
+    AtomicStore_Workgroup_Float32.backendIndex = 2276;
     AtomicStore_Workgroup_Float32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_Float32.parameters = AtomicStore_Workgroup_Float32_args;
     Symbol::Resolved(&AtomicStore_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
@@ -1464,7 +1837,7 @@ void SetupIntrinsics10()
     AtomicExchange_Uniform_Float32_semantics.type.literal = true;
     AtomicExchange_Uniform_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_Float32.name = AtomicExchange_Uniform_Float32_name;
-    AtomicExchange_Uniform_Float32.backendIndex = 2233;
+    AtomicExchange_Uniform_Float32.backendIndex = 2277;
     AtomicExchange_Uniform_Float32.returnType = Type::FullType { Float32Type.name };
     AtomicExchange_Uniform_Float32.parameters = AtomicExchange_Uniform_Float32_args;
     Symbol::Resolved(&AtomicExchange_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
@@ -1489,7 +1862,7 @@ void SetupIntrinsics10()
     AtomicExchange_Workgroup_Float32_semantics.type.literal = true;
     AtomicExchange_Workgroup_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_Float32.name = AtomicExchange_Workgroup_Float32_name;
-    AtomicExchange_Workgroup_Float32.backendIndex = 2234;
+    AtomicExchange_Workgroup_Float32.backendIndex = 2278;
     AtomicExchange_Workgroup_Float32.returnType = Type::FullType { Float32Type.name };
     AtomicExchange_Workgroup_Float32.parameters = AtomicExchange_Workgroup_Float32_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
@@ -1515,7 +1888,7 @@ void SetupIntrinsics10()
     AtomicStore_Uniform_Float16_semantics.type.literal = true;
     AtomicStore_Uniform_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_Float16.name = AtomicStore_Uniform_Float16_name;
-    AtomicStore_Uniform_Float16.backendIndex = 2235;
+    AtomicStore_Uniform_Float16.backendIndex = 2279;
     AtomicStore_Uniform_Float16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_Float16.parameters = AtomicStore_Uniform_Float16_args;
     Symbol::Resolved(&AtomicStore_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
@@ -1540,7 +1913,7 @@ void SetupIntrinsics10()
     AtomicStore_Workgroup_Float16_semantics.type.literal = true;
     AtomicStore_Workgroup_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Workgroup_Float16.name = AtomicStore_Workgroup_Float16_name;
-    AtomicStore_Workgroup_Float16.backendIndex = 2236;
+    AtomicStore_Workgroup_Float16.backendIndex = 2280;
     AtomicStore_Workgroup_Float16.returnType = Type::FullType { VoidType.name };
     AtomicStore_Workgroup_Float16.parameters = AtomicStore_Workgroup_Float16_args;
     Symbol::Resolved(&AtomicStore_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
@@ -1566,7 +1939,7 @@ void SetupIntrinsics10()
     AtomicExchange_Uniform_Float16_semantics.type.literal = true;
     AtomicExchange_Uniform_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Uniform_Float16.name = AtomicExchange_Uniform_Float16_name;
-    AtomicExchange_Uniform_Float16.backendIndex = 2237;
+    AtomicExchange_Uniform_Float16.backendIndex = 2281;
     AtomicExchange_Uniform_Float16.returnType = Type::FullType { Float16Type.name };
     AtomicExchange_Uniform_Float16.parameters = AtomicExchange_Uniform_Float16_args;
     Symbol::Resolved(&AtomicExchange_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
@@ -1591,7 +1964,7 @@ void SetupIntrinsics10()
     AtomicExchange_Workgroup_Float16_semantics.type.literal = true;
     AtomicExchange_Workgroup_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Workgroup_Float16.name = AtomicExchange_Workgroup_Float16_name;
-    AtomicExchange_Workgroup_Float16.backendIndex = 2238;
+    AtomicExchange_Workgroup_Float16.backendIndex = 2282;
     AtomicExchange_Workgroup_Float16.returnType = Type::FullType { Float16Type.name };
     AtomicExchange_Workgroup_Float16.parameters = AtomicExchange_Workgroup_Float16_args;
     Symbol::Resolved(&AtomicExchange_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
@@ -1617,7 +1990,7 @@ void SetupIntrinsics10()
     AtomicMin_Uniform_UInt32_semantics.type.literal = true;
     AtomicMin_Uniform_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Uniform_UInt32.name = AtomicMin_Uniform_UInt32_name;
-    AtomicMin_Uniform_UInt32.backendIndex = 2239;
+    AtomicMin_Uniform_UInt32.backendIndex = 2283;
     AtomicMin_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicMin_Uniform_UInt32.parameters = AtomicMin_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicMin_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1642,7 +2015,7 @@ void SetupIntrinsics10()
     AtomicMin_Workgroup_UInt32_semantics.type.literal = true;
     AtomicMin_Workgroup_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Workgroup_UInt32.name = AtomicMin_Workgroup_UInt32_name;
-    AtomicMin_Workgroup_UInt32.backendIndex = 2240;
+    AtomicMin_Workgroup_UInt32.backendIndex = 2284;
     AtomicMin_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicMin_Workgroup_UInt32.parameters = AtomicMin_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicMin_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1668,7 +2041,7 @@ void SetupIntrinsics10()
     AtomicMax_Uniform_UInt32_semantics.type.literal = true;
     AtomicMax_Uniform_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Uniform_UInt32.name = AtomicMax_Uniform_UInt32_name;
-    AtomicMax_Uniform_UInt32.backendIndex = 2241;
+    AtomicMax_Uniform_UInt32.backendIndex = 2285;
     AtomicMax_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicMax_Uniform_UInt32.parameters = AtomicMax_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicMax_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1693,7 +2066,7 @@ void SetupIntrinsics10()
     AtomicMax_Workgroup_UInt32_semantics.type.literal = true;
     AtomicMax_Workgroup_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Workgroup_UInt32.name = AtomicMax_Workgroup_UInt32_name;
-    AtomicMax_Workgroup_UInt32.backendIndex = 2242;
+    AtomicMax_Workgroup_UInt32.backendIndex = 2286;
     AtomicMax_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicMax_Workgroup_UInt32.parameters = AtomicMax_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicMax_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1719,7 +2092,7 @@ void SetupIntrinsics10()
     AtomicMin_Uniform_Int32_semantics.type.literal = true;
     AtomicMin_Uniform_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Uniform_Int32.name = AtomicMin_Uniform_Int32_name;
-    AtomicMin_Uniform_Int32.backendIndex = 2243;
+    AtomicMin_Uniform_Int32.backendIndex = 2287;
     AtomicMin_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicMin_Uniform_Int32.parameters = AtomicMin_Uniform_Int32_args;
     Symbol::Resolved(&AtomicMin_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1744,7 +2117,7 @@ void SetupIntrinsics10()
     AtomicMin_Workgroup_Int32_semantics.type.literal = true;
     AtomicMin_Workgroup_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Workgroup_Int32.name = AtomicMin_Workgroup_Int32_name;
-    AtomicMin_Workgroup_Int32.backendIndex = 2244;
+    AtomicMin_Workgroup_Int32.backendIndex = 2288;
     AtomicMin_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicMin_Workgroup_Int32.parameters = AtomicMin_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicMin_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1770,7 +2143,7 @@ void SetupIntrinsics10()
     AtomicMax_Uniform_Int32_semantics.type.literal = true;
     AtomicMax_Uniform_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Uniform_Int32.name = AtomicMax_Uniform_Int32_name;
-    AtomicMax_Uniform_Int32.backendIndex = 2245;
+    AtomicMax_Uniform_Int32.backendIndex = 2289;
     AtomicMax_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicMax_Uniform_Int32.parameters = AtomicMax_Uniform_Int32_args;
     Symbol::Resolved(&AtomicMax_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1795,7 +2168,7 @@ void SetupIntrinsics10()
     AtomicMax_Workgroup_Int32_semantics.type.literal = true;
     AtomicMax_Workgroup_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Workgroup_Int32.name = AtomicMax_Workgroup_Int32_name;
-    AtomicMax_Workgroup_Int32.backendIndex = 2246;
+    AtomicMax_Workgroup_Int32.backendIndex = 2290;
     AtomicMax_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicMax_Workgroup_Int32.parameters = AtomicMax_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicMax_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -1821,7 +2194,7 @@ void SetupIntrinsics10()
     AtomicMin_Uniform_UInt16_semantics.type.literal = true;
     AtomicMin_Uniform_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Uniform_UInt16.name = AtomicMin_Uniform_UInt16_name;
-    AtomicMin_Uniform_UInt16.backendIndex = 2247;
+    AtomicMin_Uniform_UInt16.backendIndex = 2291;
     AtomicMin_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicMin_Uniform_UInt16.parameters = AtomicMin_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicMin_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1846,7 +2219,7 @@ void SetupIntrinsics10()
     AtomicMin_Workgroup_UInt16_semantics.type.literal = true;
     AtomicMin_Workgroup_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Workgroup_UInt16.name = AtomicMin_Workgroup_UInt16_name;
-    AtomicMin_Workgroup_UInt16.backendIndex = 2248;
+    AtomicMin_Workgroup_UInt16.backendIndex = 2292;
     AtomicMin_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicMin_Workgroup_UInt16.parameters = AtomicMin_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicMin_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1872,7 +2245,7 @@ void SetupIntrinsics10()
     AtomicMax_Uniform_UInt16_semantics.type.literal = true;
     AtomicMax_Uniform_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Uniform_UInt16.name = AtomicMax_Uniform_UInt16_name;
-    AtomicMax_Uniform_UInt16.backendIndex = 2249;
+    AtomicMax_Uniform_UInt16.backendIndex = 2293;
     AtomicMax_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicMax_Uniform_UInt16.parameters = AtomicMax_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicMax_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1897,7 +2270,7 @@ void SetupIntrinsics10()
     AtomicMax_Workgroup_UInt16_semantics.type.literal = true;
     AtomicMax_Workgroup_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Workgroup_UInt16.name = AtomicMax_Workgroup_UInt16_name;
-    AtomicMax_Workgroup_UInt16.backendIndex = 2250;
+    AtomicMax_Workgroup_UInt16.backendIndex = 2294;
     AtomicMax_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicMax_Workgroup_UInt16.parameters = AtomicMax_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicMax_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -1923,7 +2296,7 @@ void SetupIntrinsics10()
     AtomicMin_Uniform_Int16_semantics.type.literal = true;
     AtomicMin_Uniform_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Uniform_Int16.name = AtomicMin_Uniform_Int16_name;
-    AtomicMin_Uniform_Int16.backendIndex = 2251;
+    AtomicMin_Uniform_Int16.backendIndex = 2295;
     AtomicMin_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicMin_Uniform_Int16.parameters = AtomicMin_Uniform_Int16_args;
     Symbol::Resolved(&AtomicMin_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1948,7 +2321,7 @@ void SetupIntrinsics10()
     AtomicMin_Workgroup_Int16_semantics.type.literal = true;
     AtomicMin_Workgroup_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
     AtomicMin_Workgroup_Int16.name = AtomicMin_Workgroup_Int16_name;
-    AtomicMin_Workgroup_Int16.backendIndex = 2252;
+    AtomicMin_Workgroup_Int16.backendIndex = 2296;
     AtomicMin_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicMin_Workgroup_Int16.parameters = AtomicMin_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicMin_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1974,7 +2347,7 @@ void SetupIntrinsics10()
     AtomicMax_Uniform_Int16_semantics.type.literal = true;
     AtomicMax_Uniform_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Uniform_Int16.name = AtomicMax_Uniform_Int16_name;
-    AtomicMax_Uniform_Int16.backendIndex = 2253;
+    AtomicMax_Uniform_Int16.backendIndex = 2297;
     AtomicMax_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicMax_Uniform_Int16.parameters = AtomicMax_Uniform_Int16_args;
     Symbol::Resolved(&AtomicMax_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -1999,7 +2372,7 @@ void SetupIntrinsics10()
     AtomicMax_Workgroup_Int16_semantics.type.literal = true;
     AtomicMax_Workgroup_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
     AtomicMax_Workgroup_Int16.name = AtomicMax_Workgroup_Int16_name;
-    AtomicMax_Workgroup_Int16.backendIndex = 2254;
+    AtomicMax_Workgroup_Int16.backendIndex = 2298;
     AtomicMax_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicMax_Workgroup_Int16.parameters = AtomicMax_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicMax_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2027,7 +2400,7 @@ void SetupIntrinsics10()
     AtomicCompareExchange_Uniform_UInt32_semantics.type.literal = true;
     AtomicCompareExchange_Uniform_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Uniform_UInt32.name = AtomicCompareExchange_Uniform_UInt32_name;
-    AtomicCompareExchange_Uniform_UInt32.backendIndex = 2255;
+    AtomicCompareExchange_Uniform_UInt32.backendIndex = 2299;
     AtomicCompareExchange_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicCompareExchange_Uniform_UInt32.parameters = AtomicCompareExchange_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2055,7 +2428,7 @@ void SetupIntrinsics10()
     AtomicCompareExchange_Workgroup_UInt32_semantics.type.literal = true;
     AtomicCompareExchange_Workgroup_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Workgroup_UInt32.name = AtomicCompareExchange_Workgroup_UInt32_name;
-    AtomicCompareExchange_Workgroup_UInt32.backendIndex = 2256;
+    AtomicCompareExchange_Workgroup_UInt32.backendIndex = 2300;
     AtomicCompareExchange_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicCompareExchange_Workgroup_UInt32.parameters = AtomicCompareExchange_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2084,7 +2457,7 @@ void SetupIntrinsics10()
     AtomicCompareExchange_Uniform_Int32_semantics.type.literal = true;
     AtomicCompareExchange_Uniform_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Uniform_Int32.name = AtomicCompareExchange_Uniform_Int32_name;
-    AtomicCompareExchange_Uniform_Int32.backendIndex = 2257;
+    AtomicCompareExchange_Uniform_Int32.backendIndex = 2301;
     AtomicCompareExchange_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicCompareExchange_Uniform_Int32.parameters = AtomicCompareExchange_Uniform_Int32_args;
     Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2112,7 +2485,7 @@ void SetupIntrinsics10()
     AtomicCompareExchange_Workgroup_Int32_semantics.type.literal = true;
     AtomicCompareExchange_Workgroup_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Workgroup_Int32.name = AtomicCompareExchange_Workgroup_Int32_name;
-    AtomicCompareExchange_Workgroup_Int32.backendIndex = 2258;
+    AtomicCompareExchange_Workgroup_Int32.backendIndex = 2302;
     AtomicCompareExchange_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicCompareExchange_Workgroup_Int32.parameters = AtomicCompareExchange_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2141,7 +2514,7 @@ void SetupIntrinsics10()
     AtomicCompareExchange_Uniform_UInt16_semantics.type.literal = true;
     AtomicCompareExchange_Uniform_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Uniform_UInt16.name = AtomicCompareExchange_Uniform_UInt16_name;
-    AtomicCompareExchange_Uniform_UInt16.backendIndex = 2259;
+    AtomicCompareExchange_Uniform_UInt16.backendIndex = 2303;
     AtomicCompareExchange_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicCompareExchange_Uniform_UInt16.parameters = AtomicCompareExchange_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2169,7 +2542,7 @@ void SetupIntrinsics10()
     AtomicCompareExchange_Workgroup_UInt16_semantics.type.literal = true;
     AtomicCompareExchange_Workgroup_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Workgroup_UInt16.name = AtomicCompareExchange_Workgroup_UInt16_name;
-    AtomicCompareExchange_Workgroup_UInt16.backendIndex = 2260;
+    AtomicCompareExchange_Workgroup_UInt16.backendIndex = 2304;
     AtomicCompareExchange_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicCompareExchange_Workgroup_UInt16.parameters = AtomicCompareExchange_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2198,7 +2571,7 @@ void SetupIntrinsics10()
     AtomicCompareExchange_Uniform_Int16_semantics.type.literal = true;
     AtomicCompareExchange_Uniform_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Uniform_Int16.name = AtomicCompareExchange_Uniform_Int16_name;
-    AtomicCompareExchange_Uniform_Int16.backendIndex = 2261;
+    AtomicCompareExchange_Uniform_Int16.backendIndex = 2305;
     AtomicCompareExchange_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicCompareExchange_Uniform_Int16.parameters = AtomicCompareExchange_Uniform_Int16_args;
     Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2226,7 +2599,7 @@ void SetupIntrinsics10()
     AtomicCompareExchange_Workgroup_Int16_semantics.type.literal = true;
     AtomicCompareExchange_Workgroup_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Workgroup_Int16.name = AtomicCompareExchange_Workgroup_Int16_name;
-    AtomicCompareExchange_Workgroup_Int16.backendIndex = 2262;
+    AtomicCompareExchange_Workgroup_Int16.backendIndex = 2306;
     AtomicCompareExchange_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicCompareExchange_Workgroup_Int16.parameters = AtomicCompareExchange_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2250,7 +2623,7 @@ void SetupIntrinsics10()
     BitInsert_UInt16_count.type = Type::FullType{ UInt16Type.name };
     BitInsert_UInt16.documentation = "Insert bit into bitmask"_c;
     BitInsert_UInt16.name = BitInsert_UInt16_name;
-    BitInsert_UInt16.backendIndex = 2263;
+    BitInsert_UInt16.backendIndex = 2307;
     BitInsert_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitInsert_UInt16.parameters = BitInsert_UInt16_args;
     Symbol::Resolved(&BitInsert_UInt16_base)->typeSymbol = &UInt16Type;
@@ -2273,7 +2646,7 @@ void SetupIntrinsics10()
     BitInsert_UInt32_count.type = Type::FullType{ UInt32Type.name };
     BitInsert_UInt32.documentation = "Insert bit into bitmask"_c;
     BitInsert_UInt32.name = BitInsert_UInt32_name;
-    BitInsert_UInt32.backendIndex = 2264;
+    BitInsert_UInt32.backendIndex = 2308;
     BitInsert_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitInsert_UInt32.parameters = BitInsert_UInt32_args;
     Symbol::Resolved(&BitInsert_UInt32_base)->typeSymbol = &UInt32Type;
@@ -2294,7 +2667,7 @@ void SetupIntrinsics10()
     BitExtract_UInt32_count.type = Type::FullType{ UInt32Type.name };
     BitExtract_UInt32.documentation = "Extract a specific bit from a bitmask"_c;
     BitExtract_UInt32.name = BitExtract_UInt32_name;
-    BitExtract_UInt32.backendIndex = 2265;
+    BitExtract_UInt32.backendIndex = 2309;
     BitExtract_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitExtract_UInt32.parameters = BitExtract_UInt32_args;
     Symbol::Resolved(&BitExtract_UInt32_base)->typeSymbol = &UInt32Type;
@@ -2314,7 +2687,7 @@ void SetupIntrinsics10()
     BitExtract_Int32_count.type = Type::FullType{ Int32Type.name };
     BitExtract_Int32.documentation = "Extract a specific bit from a bitmask"_c;
     BitExtract_Int32.name = BitExtract_Int32_name;
-    BitExtract_Int32.backendIndex = 2266;
+    BitExtract_Int32.backendIndex = 2310;
     BitExtract_Int32.returnType = Type::FullType { Int32Type.name };
     BitExtract_Int32.parameters = BitExtract_Int32_args;
     Symbol::Resolved(&BitExtract_Int32_base)->typeSymbol = &Int32Type;
@@ -2334,7 +2707,7 @@ void SetupIntrinsics10()
     BitExtract_UInt16_count.type = Type::FullType{ UInt16Type.name };
     BitExtract_UInt16.documentation = "Extract a specific bit from a bitmask"_c;
     BitExtract_UInt16.name = BitExtract_UInt16_name;
-    BitExtract_UInt16.backendIndex = 2267;
+    BitExtract_UInt16.backendIndex = 2311;
     BitExtract_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitExtract_UInt16.parameters = BitExtract_UInt16_args;
     Symbol::Resolved(&BitExtract_UInt16_base)->typeSymbol = &UInt16Type;
@@ -2354,7 +2727,7 @@ void SetupIntrinsics10()
     BitExtract_Int16_count.type = Type::FullType{ Int16Type.name };
     BitExtract_Int16.documentation = "Extract a specific bit from a bitmask"_c;
     BitExtract_Int16.name = BitExtract_Int16_name;
-    BitExtract_Int16.backendIndex = 2268;
+    BitExtract_Int16.backendIndex = 2312;
     BitExtract_Int16.returnType = Type::FullType { Int16Type.name };
     BitExtract_Int16.parameters = BitExtract_Int16_args;
     Symbol::Resolved(&BitExtract_Int16_base)->typeSymbol = &Int16Type;
@@ -2365,12 +2738,32 @@ void SetupIntrinsics10()
     Symbol::Resolved(&BitExtract_Int16)->nameWithVarNames = "bitExtract(base : i16, offset : i16, count : i16)"_c;
     Symbol::Resolved(&BitExtract_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// bitExtract with UInt64, UInt64, UInt64
+    BitExtract_UInt64_base.name = "base"_c;
+    BitExtract_UInt64_base.type = Type::FullType{ UInt64Type.name };
+    BitExtract_UInt64_offset.name = "offset"_c;
+    BitExtract_UInt64_offset.type = Type::FullType{ UInt64Type.name };
+    BitExtract_UInt64_count.name = "count"_c;
+    BitExtract_UInt64_count.type = Type::FullType{ UInt64Type.name };
+    BitExtract_UInt64.documentation = "Extract a specific bit from a bitmask"_c;
+    BitExtract_UInt64.name = BitExtract_UInt64_name;
+    BitExtract_UInt64.backendIndex = 2313;
+    BitExtract_UInt64.returnType = Type::FullType { UInt64Type.name };
+    BitExtract_UInt64.parameters = BitExtract_UInt64_args;
+    Symbol::Resolved(&BitExtract_UInt64_base)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&BitExtract_UInt64_offset)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&BitExtract_UInt64_count)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&BitExtract_UInt64)->signature = "bitExtract(u64,u64,u64) u64"_c;
+    Symbol::Resolved(&BitExtract_UInt64)->name = "bitExtract(u64,u64,u64)"_c;
+    Symbol::Resolved(&BitExtract_UInt64)->nameWithVarNames = "bitExtract(base : u64, offset : u64, count : u64)"_c;
+    Symbol::Resolved(&BitExtract_UInt64)->returnTypeSymbol = &UInt64Type;
+
     /// bitReverse with UInt32
     BitReverse_UInt32_base.name = "base"_c;
     BitReverse_UInt32_base.type = Type::FullType{ UInt32Type.name };
     BitReverse_UInt32.documentation = "Reverses the bits in a bitmask"_c;
     BitReverse_UInt32.name = BitReverse_UInt32_name;
-    BitReverse_UInt32.backendIndex = 2269;
+    BitReverse_UInt32.backendIndex = 2314;
     BitReverse_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitReverse_UInt32.parameters = BitReverse_UInt32_args;
     Symbol::Resolved(&BitReverse_UInt32_base)->typeSymbol = &UInt32Type;
@@ -2384,7 +2777,7 @@ void SetupIntrinsics10()
     BitReverse_Int32_base.type = Type::FullType{ Int32Type.name };
     BitReverse_Int32.documentation = "Reverses the bits in a bitmask"_c;
     BitReverse_Int32.name = BitReverse_Int32_name;
-    BitReverse_Int32.backendIndex = 2270;
+    BitReverse_Int32.backendIndex = 2315;
     BitReverse_Int32.returnType = Type::FullType { Int32Type.name };
     BitReverse_Int32.parameters = BitReverse_Int32_args;
     Symbol::Resolved(&BitReverse_Int32_base)->typeSymbol = &Int32Type;
@@ -2398,7 +2791,7 @@ void SetupIntrinsics10()
     BitReverse_UInt16_base.type = Type::FullType{ UInt16Type.name };
     BitReverse_UInt16.documentation = "Reverses the bits in a bitmask"_c;
     BitReverse_UInt16.name = BitReverse_UInt16_name;
-    BitReverse_UInt16.backendIndex = 2271;
+    BitReverse_UInt16.backendIndex = 2316;
     BitReverse_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitReverse_UInt16.parameters = BitReverse_UInt16_args;
     Symbol::Resolved(&BitReverse_UInt16_base)->typeSymbol = &UInt16Type;
@@ -2412,7 +2805,7 @@ void SetupIntrinsics10()
     BitReverse_Int16_base.type = Type::FullType{ Int16Type.name };
     BitReverse_Int16.documentation = "Reverses the bits in a bitmask"_c;
     BitReverse_Int16.name = BitReverse_Int16_name;
-    BitReverse_Int16.backendIndex = 2272;
+    BitReverse_Int16.backendIndex = 2317;
     BitReverse_Int16.returnType = Type::FullType { Int16Type.name };
     BitReverse_Int16.parameters = BitReverse_Int16_args;
     Symbol::Resolved(&BitReverse_Int16_base)->typeSymbol = &Int16Type;
@@ -2421,12 +2814,26 @@ void SetupIntrinsics10()
     Symbol::Resolved(&BitReverse_Int16)->nameWithVarNames = "bitReverse(base : i16)"_c;
     Symbol::Resolved(&BitReverse_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// bitReverse with UInt64
+    BitReverse_UInt64_base.name = "base"_c;
+    BitReverse_UInt64_base.type = Type::FullType{ UInt64Type.name };
+    BitReverse_UInt64.documentation = "Reverses the bits in a bitmask"_c;
+    BitReverse_UInt64.name = BitReverse_UInt64_name;
+    BitReverse_UInt64.backendIndex = 2318;
+    BitReverse_UInt64.returnType = Type::FullType { UInt64Type.name };
+    BitReverse_UInt64.parameters = BitReverse_UInt64_args;
+    Symbol::Resolved(&BitReverse_UInt64_base)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&BitReverse_UInt64)->signature = "bitReverse(u64) u64"_c;
+    Symbol::Resolved(&BitReverse_UInt64)->name = "bitReverse(u64)"_c;
+    Symbol::Resolved(&BitReverse_UInt64)->nameWithVarNames = "bitReverse(base : u64)"_c;
+    Symbol::Resolved(&BitReverse_UInt64)->returnTypeSymbol = &UInt64Type;
+
     /// bitCount with UInt32
     BitCount_UInt32_base.name = "base"_c;
     BitCount_UInt32_base.type = Type::FullType{ UInt32Type.name };
     BitCount_UInt32.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
     BitCount_UInt32.name = BitCount_UInt32_name;
-    BitCount_UInt32.backendIndex = 2273;
+    BitCount_UInt32.backendIndex = 2319;
     BitCount_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitCount_UInt32.parameters = BitCount_UInt32_args;
     Symbol::Resolved(&BitCount_UInt32_base)->typeSymbol = &UInt32Type;
@@ -2440,7 +2847,7 @@ void SetupIntrinsics10()
     BitCount_Int32_base.type = Type::FullType{ Int32Type.name };
     BitCount_Int32.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
     BitCount_Int32.name = BitCount_Int32_name;
-    BitCount_Int32.backendIndex = 2274;
+    BitCount_Int32.backendIndex = 2320;
     BitCount_Int32.returnType = Type::FullType { Int32Type.name };
     BitCount_Int32.parameters = BitCount_Int32_args;
     Symbol::Resolved(&BitCount_Int32_base)->typeSymbol = &Int32Type;
@@ -2454,7 +2861,7 @@ void SetupIntrinsics10()
     BitCount_UInt16_base.type = Type::FullType{ UInt16Type.name };
     BitCount_UInt16.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
     BitCount_UInt16.name = BitCount_UInt16_name;
-    BitCount_UInt16.backendIndex = 2275;
+    BitCount_UInt16.backendIndex = 2321;
     BitCount_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitCount_UInt16.parameters = BitCount_UInt16_args;
     Symbol::Resolved(&BitCount_UInt16_base)->typeSymbol = &UInt16Type;
@@ -2468,7 +2875,7 @@ void SetupIntrinsics10()
     BitCount_Int16_base.type = Type::FullType{ Int16Type.name };
     BitCount_Int16.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
     BitCount_Int16.name = BitCount_Int16_name;
-    BitCount_Int16.backendIndex = 2276;
+    BitCount_Int16.backendIndex = 2322;
     BitCount_Int16.returnType = Type::FullType { Int16Type.name };
     BitCount_Int16.parameters = BitCount_Int16_args;
     Symbol::Resolved(&BitCount_Int16_base)->typeSymbol = &Int16Type;
@@ -2477,10 +2884,24 @@ void SetupIntrinsics10()
     Symbol::Resolved(&BitCount_Int16)->nameWithVarNames = "bitCount(base : i16)"_c;
     Symbol::Resolved(&BitCount_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// bitCount with UInt64
+    BitCount_UInt64_base.name = "base"_c;
+    BitCount_UInt64_base.type = Type::FullType{ UInt64Type.name };
+    BitCount_UInt64.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
+    BitCount_UInt64.name = BitCount_UInt64_name;
+    BitCount_UInt64.backendIndex = 2323;
+    BitCount_UInt64.returnType = Type::FullType { UInt64Type.name };
+    BitCount_UInt64.parameters = BitCount_UInt64_args;
+    Symbol::Resolved(&BitCount_UInt64_base)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&BitCount_UInt64)->signature = "bitCount(u64) u64"_c;
+    Symbol::Resolved(&BitCount_UInt64)->name = "bitCount(u64)"_c;
+    Symbol::Resolved(&BitCount_UInt64)->nameWithVarNames = "bitCount(base : u64)"_c;
+    Symbol::Resolved(&BitCount_UInt64)->returnTypeSymbol = &UInt64Type;
+
     /// executionBarrier
     ExecutionBarrier.documentation = "Execution barrier to ensure all threads have reached this point before proceeding"_c;
     ExecutionBarrier.name = ExecutionBarrier_name;
-    ExecutionBarrier.backendIndex = 2277;
+    ExecutionBarrier.backendIndex = 2324;
     ExecutionBarrier.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&ExecutionBarrier)->signature = "executionBarrier() void"_c;
     Symbol::Resolved(&ExecutionBarrier)->name = "executionBarrier()"_c;
@@ -2490,7 +2911,7 @@ void SetupIntrinsics10()
     /// executionBarrierSubgroup
     ExecutionBarrierSubgroup.documentation = "Execution barrier to ensure all threads in the subgroup have reached this point before proceeding"_c;
     ExecutionBarrierSubgroup.name = ExecutionBarrierSubgroup_name;
-    ExecutionBarrierSubgroup.backendIndex = 2278;
+    ExecutionBarrierSubgroup.backendIndex = 2325;
     ExecutionBarrierSubgroup.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&ExecutionBarrierSubgroup)->signature = "executionBarrierSubgroup() void"_c;
     Symbol::Resolved(&ExecutionBarrierSubgroup)->name = "executionBarrierSubgroup()"_c;
@@ -2500,7 +2921,7 @@ void SetupIntrinsics10()
     /// executionBarrierWorkgroup
     ExecutionBarrierWorkgroup.documentation = "Execution barrier to ensure all threads in the workgroup have reached this point before proceeding"_c;
     ExecutionBarrierWorkgroup.name = ExecutionBarrierWorkgroup_name;
-    ExecutionBarrierWorkgroup.backendIndex = 2279;
+    ExecutionBarrierWorkgroup.backendIndex = 2326;
     ExecutionBarrierWorkgroup.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&ExecutionBarrierWorkgroup)->signature = "executionBarrierWorkgroup() void"_c;
     Symbol::Resolved(&ExecutionBarrierWorkgroup)->name = "executionBarrierWorkgroup()"_c;
@@ -2510,7 +2931,7 @@ void SetupIntrinsics10()
     /// memoryBarrier
     MemoryBarrier.documentation = "Memory barrier to ensure memory operations are completed before proceeding"_c;
     MemoryBarrier.name = MemoryBarrier_name;
-    MemoryBarrier.backendIndex = 2280;
+    MemoryBarrier.backendIndex = 2327;
     MemoryBarrier.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&MemoryBarrier)->signature = "memoryBarrier() void"_c;
     Symbol::Resolved(&MemoryBarrier)->name = "memoryBarrier()"_c;
@@ -2520,7 +2941,7 @@ void SetupIntrinsics10()
     /// memoryBarrierBuffer
     MemoryBarrierBuffer.documentation = "Memory barrier to ensure buffer memory operations are completed before proceeding"_c;
     MemoryBarrierBuffer.name = MemoryBarrierBuffer_name;
-    MemoryBarrierBuffer.backendIndex = 2281;
+    MemoryBarrierBuffer.backendIndex = 2328;
     MemoryBarrierBuffer.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&MemoryBarrierBuffer)->signature = "memoryBarrierBuffer() void"_c;
     Symbol::Resolved(&MemoryBarrierBuffer)->name = "memoryBarrierBuffer()"_c;
@@ -2530,7 +2951,7 @@ void SetupIntrinsics10()
     /// memoryBarrierTexture
     MemoryBarrierTexture.documentation = "Memory barrier to ensure texture memory operations are completed before proceeding"_c;
     MemoryBarrierTexture.name = MemoryBarrierTexture_name;
-    MemoryBarrierTexture.backendIndex = 2282;
+    MemoryBarrierTexture.backendIndex = 2329;
     MemoryBarrierTexture.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&MemoryBarrierTexture)->signature = "memoryBarrierTexture() void"_c;
     Symbol::Resolved(&MemoryBarrierTexture)->name = "memoryBarrierTexture()"_c;
@@ -2540,7 +2961,7 @@ void SetupIntrinsics10()
     /// memoryBarrierAtomic
     MemoryBarrierAtomic.documentation = "Memory barrier to ensure atomic memory operations are completed before proceeding"_c;
     MemoryBarrierAtomic.name = MemoryBarrierAtomic_name;
-    MemoryBarrierAtomic.backendIndex = 2283;
+    MemoryBarrierAtomic.backendIndex = 2330;
     MemoryBarrierAtomic.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&MemoryBarrierAtomic)->signature = "memoryBarrierAtomic() void"_c;
     Symbol::Resolved(&MemoryBarrierAtomic)->name = "memoryBarrierAtomic()"_c;
@@ -2550,7 +2971,7 @@ void SetupIntrinsics10()
     /// memoryBarrierSubgroup
     MemoryBarrierSubgroup.documentation = "Memory barrier to ensure subgroup memory operations are completed before proceeding"_c;
     MemoryBarrierSubgroup.name = MemoryBarrierSubgroup_name;
-    MemoryBarrierSubgroup.backendIndex = 2284;
+    MemoryBarrierSubgroup.backendIndex = 2331;
     MemoryBarrierSubgroup.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&MemoryBarrierSubgroup)->signature = "memoryBarrierSubgroup() void"_c;
     Symbol::Resolved(&MemoryBarrierSubgroup)->name = "memoryBarrierSubgroup()"_c;
@@ -2560,7 +2981,7 @@ void SetupIntrinsics10()
     /// memoryBarrierWorkgroup
     MemoryBarrierWorkgroup.documentation = "Memory barrier to ensure workgroup memory operations are completed before proceeding"_c;
     MemoryBarrierWorkgroup.name = MemoryBarrierWorkgroup_name;
-    MemoryBarrierWorkgroup.backendIndex = 2285;
+    MemoryBarrierWorkgroup.backendIndex = 2332;
     MemoryBarrierWorkgroup.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&MemoryBarrierWorkgroup)->signature = "memoryBarrierWorkgroup() void"_c;
     Symbol::Resolved(&MemoryBarrierWorkgroup)->name = "memoryBarrierWorkgroup()"_c;
@@ -2576,7 +2997,7 @@ void SetupIntrinsics10()
     TextureGetSize_Texture1D_texture.type.modifierValues = TextureGetSize_Texture1D_texture_modifierValues;
     TextureGetSize_Texture1D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture1D.name = TextureGetSize_Texture1D_name;
-    TextureGetSize_Texture1D.backendIndex = 2286;
+    TextureGetSize_Texture1D.backendIndex = 2333;
     TextureGetSize_Texture1D.returnType = Type::FullType { UInt32Type.name };
     TextureGetSize_Texture1D.parameters = TextureGetSize_Texture1D_args;
     Symbol::Resolved(&TextureGetSize_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -2595,7 +3016,7 @@ void SetupIntrinsics10()
     TextureGetSize_Texture2D_texture.type.modifierValues = TextureGetSize_Texture2D_texture_modifierValues;
     TextureGetSize_Texture2D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture2D.name = TextureGetSize_Texture2D_name;
-    TextureGetSize_Texture2D.backendIndex = 2287;
+    TextureGetSize_Texture2D.backendIndex = 2334;
     TextureGetSize_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSize_Texture2D.parameters = TextureGetSize_Texture2D_args;
     Symbol::Resolved(&TextureGetSize_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -2614,7 +3035,7 @@ void SetupIntrinsics10()
     TextureGetSize_Texture3D_texture.type.modifierValues = TextureGetSize_Texture3D_texture_modifierValues;
     TextureGetSize_Texture3D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture3D.name = TextureGetSize_Texture3D_name;
-    TextureGetSize_Texture3D.backendIndex = 2288;
+    TextureGetSize_Texture3D.backendIndex = 2335;
     TextureGetSize_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_Texture3D.parameters = TextureGetSize_Texture3D_args;
     Symbol::Resolved(&TextureGetSize_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -2633,7 +3054,7 @@ void SetupIntrinsics10()
     TextureGetSize_TextureCube_texture.type.modifierValues = TextureGetSize_TextureCube_texture_modifierValues;
     TextureGetSize_TextureCube.documentation = "Get the size of a texture"_c;
     TextureGetSize_TextureCube.name = TextureGetSize_TextureCube_name;
-    TextureGetSize_TextureCube.backendIndex = 2289;
+    TextureGetSize_TextureCube.backendIndex = 2336;
     TextureGetSize_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_TextureCube.parameters = TextureGetSize_TextureCube_args;
     Symbol::Resolved(&TextureGetSize_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -2652,7 +3073,7 @@ void SetupIntrinsics10()
     TextureGetSize_Texture1DArray_texture.type.modifierValues = TextureGetSize_Texture1DArray_texture_modifierValues;
     TextureGetSize_Texture1DArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture1DArray.name = TextureGetSize_Texture1DArray_name;
-    TextureGetSize_Texture1DArray.backendIndex = 2290;
+    TextureGetSize_Texture1DArray.backendIndex = 2337;
     TextureGetSize_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSize_Texture1DArray.parameters = TextureGetSize_Texture1DArray_args;
     Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2671,7 +3092,7 @@ void SetupIntrinsics10()
     TextureGetSize_Texture2DArray_texture.type.modifierValues = TextureGetSize_Texture2DArray_texture_modifierValues;
     TextureGetSize_Texture2DArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture2DArray.name = TextureGetSize_Texture2DArray_name;
-    TextureGetSize_Texture2DArray.backendIndex = 2291;
+    TextureGetSize_Texture2DArray.backendIndex = 2338;
     TextureGetSize_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_Texture2DArray.parameters = TextureGetSize_Texture2DArray_args;
     Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2690,7 +3111,7 @@ void SetupIntrinsics10()
     TextureGetSize_TextureCubeArray_texture.type.modifierValues = TextureGetSize_TextureCubeArray_texture_modifierValues;
     TextureGetSize_TextureCubeArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_TextureCubeArray.name = TextureGetSize_TextureCubeArray_name;
-    TextureGetSize_TextureCubeArray.backendIndex = 2292;
+    TextureGetSize_TextureCubeArray.backendIndex = 2339;
     TextureGetSize_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
     TextureGetSize_TextureCubeArray.parameters = TextureGetSize_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -2710,7 +3131,7 @@ void SetupIntrinsics10()
     TextureGetSizeMip_Texture1D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture1D.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture1D.name = TextureGetSizeMip_Texture1D_name;
-    TextureGetSizeMip_Texture1D.backendIndex = 2293;
+    TextureGetSizeMip_Texture1D.backendIndex = 2340;
     TextureGetSizeMip_Texture1D.returnType = Type::FullType { UInt32Type.name };
     TextureGetSizeMip_Texture1D.parameters = TextureGetSizeMip_Texture1D_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -2731,7 +3152,7 @@ void SetupIntrinsics10()
     TextureGetSizeMip_Texture2D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture2D.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture2D.name = TextureGetSizeMip_Texture2D_name;
-    TextureGetSizeMip_Texture2D.backendIndex = 2294;
+    TextureGetSizeMip_Texture2D.backendIndex = 2341;
     TextureGetSizeMip_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSizeMip_Texture2D.parameters = TextureGetSizeMip_Texture2D_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -2752,7 +3173,7 @@ void SetupIntrinsics10()
     TextureGetSizeMip_Texture3D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture3D.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture3D.name = TextureGetSizeMip_Texture3D_name;
-    TextureGetSizeMip_Texture3D.backendIndex = 2295;
+    TextureGetSizeMip_Texture3D.backendIndex = 2342;
     TextureGetSizeMip_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_Texture3D.parameters = TextureGetSizeMip_Texture3D_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -2773,7 +3194,7 @@ void SetupIntrinsics10()
     TextureGetSizeMip_TextureCube_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_TextureCube.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_TextureCube.name = TextureGetSizeMip_TextureCube_name;
-    TextureGetSizeMip_TextureCube.backendIndex = 2296;
+    TextureGetSizeMip_TextureCube.backendIndex = 2343;
     TextureGetSizeMip_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_TextureCube.parameters = TextureGetSizeMip_TextureCube_args;
     Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -2794,7 +3215,7 @@ void SetupIntrinsics10()
     TextureGetSizeMip_Texture1DArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture1DArray.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture1DArray.name = TextureGetSizeMip_Texture1DArray_name;
-    TextureGetSizeMip_Texture1DArray.backendIndex = 2297;
+    TextureGetSizeMip_Texture1DArray.backendIndex = 2344;
     TextureGetSizeMip_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSizeMip_Texture1DArray.parameters = TextureGetSizeMip_Texture1DArray_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2815,7 +3236,7 @@ void SetupIntrinsics10()
     TextureGetSizeMip_Texture2DArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture2DArray.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture2DArray.name = TextureGetSizeMip_Texture2DArray_name;
-    TextureGetSizeMip_Texture2DArray.backendIndex = 2298;
+    TextureGetSizeMip_Texture2DArray.backendIndex = 2345;
     TextureGetSizeMip_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_Texture2DArray.parameters = TextureGetSizeMip_Texture2DArray_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2836,7 +3257,7 @@ void SetupIntrinsics10()
     TextureGetSizeMip_TextureCubeArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_TextureCubeArray.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_TextureCubeArray.name = TextureGetSizeMip_TextureCubeArray_name;
-    TextureGetSizeMip_TextureCubeArray.backendIndex = 2299;
+    TextureGetSizeMip_TextureCubeArray.backendIndex = 2346;
     TextureGetSizeMip_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
     TextureGetSizeMip_TextureCubeArray.parameters = TextureGetSizeMip_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -2854,7 +3275,7 @@ void SetupIntrinsics10()
     TextureGetMips_Texture1D_texture.type.modifierValues = TextureGetMips_Texture1D_texture_modifierValues;
     TextureGetMips_Texture1D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture1D.name = TextureGetMips_Texture1D_name;
-    TextureGetMips_Texture1D.backendIndex = 2300;
+    TextureGetMips_Texture1D.backendIndex = 2347;
     TextureGetMips_Texture1D.returnType = Type::FullType { Texture1DType.name };
     TextureGetMips_Texture1D.parameters = TextureGetMips_Texture1D_args;
     Symbol::Resolved(&TextureGetMips_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -2871,7 +3292,7 @@ void SetupIntrinsics10()
     TextureGetMips_Texture2D_texture.type.modifierValues = TextureGetMips_Texture2D_texture_modifierValues;
     TextureGetMips_Texture2D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture2D.name = TextureGetMips_Texture2D_name;
-    TextureGetMips_Texture2D.backendIndex = 2301;
+    TextureGetMips_Texture2D.backendIndex = 2348;
     TextureGetMips_Texture2D.returnType = Type::FullType { Texture2DType.name };
     TextureGetMips_Texture2D.parameters = TextureGetMips_Texture2D_args;
     Symbol::Resolved(&TextureGetMips_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -2888,7 +3309,7 @@ void SetupIntrinsics10()
     TextureGetMips_Texture3D_texture.type.modifierValues = TextureGetMips_Texture3D_texture_modifierValues;
     TextureGetMips_Texture3D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture3D.name = TextureGetMips_Texture3D_name;
-    TextureGetMips_Texture3D.backendIndex = 2302;
+    TextureGetMips_Texture3D.backendIndex = 2349;
     TextureGetMips_Texture3D.returnType = Type::FullType { Texture3DType.name };
     TextureGetMips_Texture3D.parameters = TextureGetMips_Texture3D_args;
     Symbol::Resolved(&TextureGetMips_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -2905,7 +3326,7 @@ void SetupIntrinsics10()
     TextureGetMips_TextureCube_texture.type.modifierValues = TextureGetMips_TextureCube_texture_modifierValues;
     TextureGetMips_TextureCube.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_TextureCube.name = TextureGetMips_TextureCube_name;
-    TextureGetMips_TextureCube.backendIndex = 2303;
+    TextureGetMips_TextureCube.backendIndex = 2350;
     TextureGetMips_TextureCube.returnType = Type::FullType { TextureCubeType.name };
     TextureGetMips_TextureCube.parameters = TextureGetMips_TextureCube_args;
     Symbol::Resolved(&TextureGetMips_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -2922,7 +3343,7 @@ void SetupIntrinsics10()
     TextureGetMips_Texture1DArray_texture.type.modifierValues = TextureGetMips_Texture1DArray_texture_modifierValues;
     TextureGetMips_Texture1DArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture1DArray.name = TextureGetMips_Texture1DArray_name;
-    TextureGetMips_Texture1DArray.backendIndex = 2304;
+    TextureGetMips_Texture1DArray.backendIndex = 2351;
     TextureGetMips_Texture1DArray.returnType = Type::FullType { Texture1DArrayType.name };
     TextureGetMips_Texture1DArray.parameters = TextureGetMips_Texture1DArray_args;
     Symbol::Resolved(&TextureGetMips_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2939,7 +3360,7 @@ void SetupIntrinsics10()
     TextureGetMips_Texture2DArray_texture.type.modifierValues = TextureGetMips_Texture2DArray_texture_modifierValues;
     TextureGetMips_Texture2DArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture2DArray.name = TextureGetMips_Texture2DArray_name;
-    TextureGetMips_Texture2DArray.backendIndex = 2305;
+    TextureGetMips_Texture2DArray.backendIndex = 2352;
     TextureGetMips_Texture2DArray.returnType = Type::FullType { Texture2DArrayType.name };
     TextureGetMips_Texture2DArray.parameters = TextureGetMips_Texture2DArray_args;
     Symbol::Resolved(&TextureGetMips_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2956,7 +3377,7 @@ void SetupIntrinsics10()
     TextureGetMips_TextureCubeArray_texture.type.modifierValues = TextureGetMips_TextureCubeArray_texture_modifierValues;
     TextureGetMips_TextureCubeArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_TextureCubeArray.name = TextureGetMips_TextureCubeArray_name;
-    TextureGetMips_TextureCubeArray.backendIndex = 2306;
+    TextureGetMips_TextureCubeArray.backendIndex = 2353;
     TextureGetMips_TextureCubeArray.returnType = Type::FullType { TextureCubeArrayType.name };
     TextureGetMips_TextureCubeArray.parameters = TextureGetMips_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetMips_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -2973,7 +3394,7 @@ void SetupIntrinsics10()
     TextureGetSamples_Texture2DMS_texture.type.modifierValues = TextureGetSamples_Texture2DMS_texture_modifierValues;
     TextureGetSamples_Texture2DMS.documentation = "Get the number of samples in a multisampled texture"_c;
     TextureGetSamples_Texture2DMS.name = TextureGetSamples_Texture2DMS_name;
-    TextureGetSamples_Texture2DMS.backendIndex = 2307;
+    TextureGetSamples_Texture2DMS.backendIndex = 2354;
     TextureGetSamples_Texture2DMS.returnType = Type::FullType { Texture2DMSType.name };
     TextureGetSamples_Texture2DMS.parameters = TextureGetSamples_Texture2DMS_args;
     Symbol::Resolved(&TextureGetSamples_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
@@ -2990,7 +3411,7 @@ void SetupIntrinsics10()
     TextureGetSamples_Texture2DMSArray_texture.type.modifierValues = TextureGetSamples_Texture2DMSArray_texture_modifierValues;
     TextureGetSamples_Texture2DMSArray.documentation = "Get the number of samples in a multisampled texture"_c;
     TextureGetSamples_Texture2DMSArray.name = TextureGetSamples_Texture2DMSArray_name;
-    TextureGetSamples_Texture2DMSArray.backendIndex = 2308;
+    TextureGetSamples_Texture2DMSArray.backendIndex = 2355;
     TextureGetSamples_Texture2DMSArray.returnType = Type::FullType { Texture2DMSArrayType.name };
     TextureGetSamples_Texture2DMSArray.parameters = TextureGetSamples_Texture2DMSArray_args;
     Symbol::Resolved(&TextureGetSamples_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
@@ -3013,7 +3434,7 @@ void SetupIntrinsics10()
     TextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture1D.name = TextureGetSampledMip_Texture1D_name;
-    TextureGetSampledMip_Texture1D.backendIndex = 2309;
+    TextureGetSampledMip_Texture1D.backendIndex = 2356;
     TextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture1D.parameters = TextureGetSampledMip_Texture1D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -3035,7 +3456,7 @@ void SetupIntrinsics10()
     SampledTextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture1D.name = SampledTextureGetSampledMip_Texture1D_name;
-    SampledTextureGetSampledMip_Texture1D.backendIndex = 2310;
+    SampledTextureGetSampledMip_Texture1D.backendIndex = 2357;
     SampledTextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1D.parameters = SampledTextureGetSampledMip_Texture1D_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
@@ -3059,7 +3480,7 @@ void SetupIntrinsics10()
     TextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture2D.name = TextureGetSampledMip_Texture2D_name;
-    TextureGetSampledMip_Texture2D.backendIndex = 2311;
+    TextureGetSampledMip_Texture2D.backendIndex = 2358;
     TextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture2D.parameters = TextureGetSampledMip_Texture2D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -3081,7 +3502,7 @@ void SetupIntrinsics10()
     SampledTextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture2D.name = SampledTextureGetSampledMip_Texture2D_name;
-    SampledTextureGetSampledMip_Texture2D.backendIndex = 2312;
+    SampledTextureGetSampledMip_Texture2D.backendIndex = 2359;
     SampledTextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2D.parameters = SampledTextureGetSampledMip_Texture2D_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
@@ -3105,7 +3526,7 @@ void SetupIntrinsics10()
     TextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture3D.name = TextureGetSampledMip_Texture3D_name;
-    TextureGetSampledMip_Texture3D.backendIndex = 2313;
+    TextureGetSampledMip_Texture3D.backendIndex = 2360;
     TextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture3D.parameters = TextureGetSampledMip_Texture3D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -3127,7 +3548,7 @@ void SetupIntrinsics10()
     SampledTextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture3D.name = SampledTextureGetSampledMip_Texture3D_name;
-    SampledTextureGetSampledMip_Texture3D.backendIndex = 2314;
+    SampledTextureGetSampledMip_Texture3D.backendIndex = 2361;
     SampledTextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture3D.parameters = SampledTextureGetSampledMip_Texture3D_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
@@ -3151,7 +3572,7 @@ void SetupIntrinsics10()
     TextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_TextureCube.name = TextureGetSampledMip_TextureCube_name;
-    TextureGetSampledMip_TextureCube.backendIndex = 2315;
+    TextureGetSampledMip_TextureCube.backendIndex = 2362;
     TextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_TextureCube.parameters = TextureGetSampledMip_TextureCube_args;
     Symbol::Resolved(&TextureGetSampledMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -3173,7 +3594,7 @@ void SetupIntrinsics10()
     SampledTextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_TextureCube.name = SampledTextureGetSampledMip_TextureCube_name;
-    SampledTextureGetSampledMip_TextureCube.backendIndex = 2316;
+    SampledTextureGetSampledMip_TextureCube.backendIndex = 2363;
     SampledTextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_TextureCube.parameters = SampledTextureGetSampledMip_TextureCube_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
@@ -3197,7 +3618,7 @@ void SetupIntrinsics10()
     TextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture1DArray.name = TextureGetSampledMip_Texture1DArray_name;
-    TextureGetSampledMip_Texture1DArray.backendIndex = 2317;
+    TextureGetSampledMip_Texture1DArray.backendIndex = 2364;
     TextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture1DArray.parameters = TextureGetSampledMip_Texture1DArray_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -3219,7 +3640,7 @@ void SetupIntrinsics10()
     SampledTextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture1DArray.name = SampledTextureGetSampledMip_Texture1DArray_name;
-    SampledTextureGetSampledMip_Texture1DArray.backendIndex = 2318;
+    SampledTextureGetSampledMip_Texture1DArray.backendIndex = 2365;
     SampledTextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1DArray.parameters = SampledTextureGetSampledMip_Texture1DArray_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
@@ -3243,7 +3664,7 @@ void SetupIntrinsics10()
     TextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture2DArray.name = TextureGetSampledMip_Texture2DArray_name;
-    TextureGetSampledMip_Texture2DArray.backendIndex = 2319;
+    TextureGetSampledMip_Texture2DArray.backendIndex = 2366;
     TextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture2DArray.parameters = TextureGetSampledMip_Texture2DArray_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -3265,7 +3686,7 @@ void SetupIntrinsics10()
     SampledTextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture2DArray.name = SampledTextureGetSampledMip_Texture2DArray_name;
-    SampledTextureGetSampledMip_Texture2DArray.backendIndex = 2320;
+    SampledTextureGetSampledMip_Texture2DArray.backendIndex = 2367;
     SampledTextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2DArray.parameters = SampledTextureGetSampledMip_Texture2DArray_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
@@ -3289,7 +3710,7 @@ void SetupIntrinsics10()
     TextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_TextureCubeArray.name = TextureGetSampledMip_TextureCubeArray_name;
-    TextureGetSampledMip_TextureCubeArray.backendIndex = 2321;
+    TextureGetSampledMip_TextureCubeArray.backendIndex = 2368;
     TextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_TextureCubeArray.parameters = TextureGetSampledMip_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -3311,7 +3732,7 @@ void SetupIntrinsics10()
     SampledTextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_TextureCubeArray.name = SampledTextureGetSampledMip_TextureCubeArray_name;
-    SampledTextureGetSampledMip_TextureCubeArray.backendIndex = 2322;
+    SampledTextureGetSampledMip_TextureCubeArray.backendIndex = 2369;
     SampledTextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_TextureCubeArray.parameters = SampledTextureGetSampledMip_TextureCubeArray_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
@@ -3333,7 +3754,7 @@ void SetupIntrinsics10()
     TextureLoad_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureLoad_Texture1D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture1D.name = TextureLoad_Texture1D_name;
-    TextureLoad_Texture1D.backendIndex = 2323;
+    TextureLoad_Texture1D.backendIndex = 2370;
     TextureLoad_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture1D.parameters = TextureLoad_Texture1D_args;
     Symbol::Resolved(&TextureLoad_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -3357,7 +3778,7 @@ void SetupIntrinsics10()
     TextureLoadMip_Texture1D_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture1D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture1D.name = TextureLoadMip_Texture1D_name;
-    TextureLoadMip_Texture1D.backendIndex = 2324;
+    TextureLoadMip_Texture1D.backendIndex = 2371;
     TextureLoadMip_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture1D.parameters = TextureLoadMip_Texture1D_args;
     Symbol::Resolved(&TextureLoadMip_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -3382,7 +3803,7 @@ void SetupIntrinsics10()
     TextureStore_Texture1D_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_Texture1D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_Texture1D.name = TextureStore_Texture1D_name;
-    TextureStore_Texture1D.backendIndex = 2325;
+    TextureStore_Texture1D.backendIndex = 2372;
     TextureStore_Texture1D.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture1D.parameters = TextureStore_Texture1D_args;
     Symbol::Resolved(&TextureStore_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -3409,7 +3830,7 @@ void SetupIntrinsics10()
     TextureStoreMip_Texture1D_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_Texture1D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture1D.name = TextureStoreMip_Texture1D_name;
-    TextureStoreMip_Texture1D.backendIndex = 2326;
+    TextureStoreMip_Texture1D.backendIndex = 2373;
     TextureStoreMip_Texture1D.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture1D.parameters = TextureStoreMip_Texture1D_args;
     Symbol::Resolved(&TextureStoreMip_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -3421,453 +3842,6 @@ void SetupIntrinsics10()
     Symbol::Resolved(&TextureStoreMip_Texture1D)->name = "textureStoreMip(uniform *mutable texture1D,i32,i32,f32x4)"_c;
     Symbol::Resolved(&TextureStoreMip_Texture1D)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture1D, coordinate : i32, mip : i32, value : f32x4)"_c;
     Symbol::Resolved(&TextureStoreMip_Texture1D)->returnTypeSymbol = &VoidType;
-
-    /// textureLoad with Texture2D, Int32x2
-    TextureLoad_Texture2D_texture.name = "texture"_c;
-    TextureLoad_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureLoad_Texture2D_texture.type.strict = true;
-    TextureLoad_Texture2D_texture.type.mut = true;
-    TextureLoad_Texture2D_texture.type.modifiers = TextureLoad_Texture2D_texture_modifiers;
-    TextureLoad_Texture2D_texture.type.modifierValues = TextureLoad_Texture2D_texture_modifierValues;
-    TextureLoad_Texture2D_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoad_Texture2D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture2D.name = TextureLoad_Texture2D_name;
-    TextureLoad_Texture2D.backendIndex = 2327;
-    TextureLoad_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture2D.parameters = TextureLoad_Texture2D_args;
-    Symbol::Resolved(&TextureLoad_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureLoad_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoad_Texture2D)->signature = "textureLoad(uniform *mutable texture2D,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture2D)->name = "textureLoad(uniform *mutable texture2D,i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2D)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture2D, coordinate : i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture2D, Int32x2, Int32
-    TextureLoadMip_Texture2D_texture.name = "texture"_c;
-    TextureLoadMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureLoadMip_Texture2D_texture.type.strict = true;
-    TextureLoadMip_Texture2D_texture.type.mut = true;
-    TextureLoadMip_Texture2D_texture.type.modifiers = TextureLoadMip_Texture2D_texture_modifiers;
-    TextureLoadMip_Texture2D_texture.type.modifierValues = TextureLoadMip_Texture2D_texture_modifierValues;
-    TextureLoadMip_Texture2D_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoadMip_Texture2D_mip.name = "mip"_c;
-    TextureLoadMip_Texture2D_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture2D.name = TextureLoadMip_Texture2D_name;
-    TextureLoadMip_Texture2D.backendIndex = 2328;
-    TextureLoadMip_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture2D.parameters = TextureLoadMip_Texture2D_args;
-    Symbol::Resolved(&TextureLoadMip_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureLoadMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2D)->signature = "textureLoadMip(uniform *mutable texture2D,i32x2,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2D)->name = "textureLoadMip(uniform *mutable texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2D)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture2D, coordinate : i32x2, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureStore with Texture2D, Int32x2, Float32x4
-    TextureStore_Texture2D_texture.name = "texture"_c;
-    TextureStore_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStore_Texture2D_texture.type.strict = true;
-    TextureStore_Texture2D_texture.type.mut = true;
-    TextureStore_Texture2D_texture.type.modifiers = TextureStore_Texture2D_texture_modifiers;
-    TextureStore_Texture2D_texture.type.modifierValues = TextureStore_Texture2D_texture_modifierValues;
-    TextureStore_Texture2D_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture2D_value.name = "value"_c;
-    TextureStore_Texture2D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2D.name = TextureStore_Texture2D_name;
-    TextureStore_Texture2D.backendIndex = 2329;
-    TextureStore_Texture2D.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2D.parameters = TextureStore_Texture2D_args;
-    Symbol::Resolved(&TextureStore_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureStore_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture2D_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2D)->signature = "textureStore(uniform *mutable texture2D,i32x2,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2D)->name = "textureStore(uniform *mutable texture2D,i32x2,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2D)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2D)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2D, Int32x2, Int32, Float32x4
-    TextureStoreMip_Texture2D_texture.name = "texture"_c;
-    TextureStoreMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStoreMip_Texture2D_texture.type.strict = true;
-    TextureStoreMip_Texture2D_texture.type.mut = true;
-    TextureStoreMip_Texture2D_texture.type.modifiers = TextureStoreMip_Texture2D_texture_modifiers;
-    TextureStoreMip_Texture2D_texture.type.modifierValues = TextureStoreMip_Texture2D_texture_modifierValues;
-    TextureStoreMip_Texture2D_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture2D_mip.name = "mip"_c;
-    TextureStoreMip_Texture2D_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2D_value.name = "value"_c;
-    TextureStoreMip_Texture2D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2D.name = TextureStoreMip_Texture2D_name;
-    TextureStoreMip_Texture2D.backendIndex = 2330;
-    TextureStoreMip_Texture2D.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2D.parameters = TextureStoreMip_Texture2D_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D)->signature = "textureStoreMip(uniform *mutable texture2D,i32x2,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D)->name = "textureStoreMip(uniform *mutable texture2D,i32x2,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2D, coordinate : i32x2, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D)->returnTypeSymbol = &VoidType;
-
-    /// textureLoad with Texture3D, Int32x3
-    TextureLoad_Texture3D_texture.name = "texture"_c;
-    TextureLoad_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureLoad_Texture3D_texture.type.strict = true;
-    TextureLoad_Texture3D_texture.type.mut = true;
-    TextureLoad_Texture3D_texture.type.modifiers = TextureLoad_Texture3D_texture_modifiers;
-    TextureLoad_Texture3D_texture.type.modifierValues = TextureLoad_Texture3D_texture_modifierValues;
-    TextureLoad_Texture3D_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_Texture3D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture3D.name = TextureLoad_Texture3D_name;
-    TextureLoad_Texture3D.backendIndex = 2331;
-    TextureLoad_Texture3D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture3D.parameters = TextureLoad_Texture3D_args;
-    Symbol::Resolved(&TextureLoad_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureLoad_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture3D_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoad_Texture3D)->signature = "textureLoad(uniform *mutable texture3D,i32x3) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture3D)->name = "textureLoad(uniform *mutable texture3D,i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture3D)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture3D, coordinate : i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture3D, Int32x3, Int32
-    TextureLoadMip_Texture3D_texture.name = "texture"_c;
-    TextureLoadMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureLoadMip_Texture3D_texture.type.strict = true;
-    TextureLoadMip_Texture3D_texture.type.mut = true;
-    TextureLoadMip_Texture3D_texture.type.modifiers = TextureLoadMip_Texture3D_texture_modifiers;
-    TextureLoadMip_Texture3D_texture.type.modifierValues = TextureLoadMip_Texture3D_texture_modifierValues;
-    TextureLoadMip_Texture3D_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoadMip_Texture3D_mip.name = "mip"_c;
-    TextureLoadMip_Texture3D_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture3D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture3D.name = TextureLoadMip_Texture3D_name;
-    TextureLoadMip_Texture3D.backendIndex = 2332;
-    TextureLoadMip_Texture3D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture3D.parameters = TextureLoadMip_Texture3D_args;
-    Symbol::Resolved(&TextureLoadMip_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureLoadMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture3D_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoadMip_Texture3D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture3D)->signature = "textureLoadMip(uniform *mutable texture3D,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture3D)->name = "textureLoadMip(uniform *mutable texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture3D)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture3D, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureStore with Texture3D, Int32x3, Float32x4
-    TextureStore_Texture3D_texture.name = "texture"_c;
-    TextureStore_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStore_Texture3D_texture.type.strict = true;
-    TextureStore_Texture3D_texture.type.mut = true;
-    TextureStore_Texture3D_texture.type.modifiers = TextureStore_Texture3D_texture_modifiers;
-    TextureStore_Texture3D_texture.type.modifierValues = TextureStore_Texture3D_texture_modifierValues;
-    TextureStore_Texture3D_coordinate.name = "coordinate"_c;
-    TextureStore_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture3D_value.name = "value"_c;
-    TextureStore_Texture3D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture3D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture3D.name = TextureStore_Texture3D_name;
-    TextureStore_Texture3D.backendIndex = 2333;
-    TextureStore_Texture3D.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture3D.parameters = TextureStore_Texture3D_args;
-    Symbol::Resolved(&TextureStore_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureStore_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture3D_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture3D_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture3D)->signature = "textureStore(uniform *mutable texture3D,i32x3,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture3D)->name = "textureStore(uniform *mutable texture3D,i32x3,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture3D)->nameWithVarNames = "textureStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture3D)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture3D, Int32x3, Int32, Float32x4
-    TextureStoreMip_Texture3D_texture.name = "texture"_c;
-    TextureStoreMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStoreMip_Texture3D_texture.type.strict = true;
-    TextureStoreMip_Texture3D_texture.type.mut = true;
-    TextureStoreMip_Texture3D_texture.type.modifiers = TextureStoreMip_Texture3D_texture_modifiers;
-    TextureStoreMip_Texture3D_texture.type.modifierValues = TextureStoreMip_Texture3D_texture_modifierValues;
-    TextureStoreMip_Texture3D_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture3D_mip.name = "mip"_c;
-    TextureStoreMip_Texture3D_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture3D_value.name = "value"_c;
-    TextureStoreMip_Texture3D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture3D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture3D.name = TextureStoreMip_Texture3D_name;
-    TextureStoreMip_Texture3D.backendIndex = 2334;
-    TextureStoreMip_Texture3D.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture3D.parameters = TextureStoreMip_Texture3D_args;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D)->signature = "textureStoreMip(uniform *mutable texture3D,i32x3,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D)->name = "textureStoreMip(uniform *mutable texture3D,i32x3,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture3D, coordinate : i32x3, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D)->returnTypeSymbol = &VoidType;
-
-    /// textureLoad with TextureCube, Int32x3
-    TextureLoad_TextureCube_texture.name = "texture"_c;
-    TextureLoad_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureLoad_TextureCube_texture.type.strict = true;
-    TextureLoad_TextureCube_texture.type.mut = true;
-    TextureLoad_TextureCube_texture.type.modifiers = TextureLoad_TextureCube_texture_modifiers;
-    TextureLoad_TextureCube_texture.type.modifierValues = TextureLoad_TextureCube_texture_modifierValues;
-    TextureLoad_TextureCube_coordinate.name = "coordinate"_c;
-    TextureLoad_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_TextureCube.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureLoad_TextureCube.name = TextureLoad_TextureCube_name;
-    TextureLoad_TextureCube.backendIndex = 2335;
-    TextureLoad_TextureCube.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_TextureCube.parameters = TextureLoad_TextureCube_args;
-    Symbol::Resolved(&TextureLoad_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureLoad_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_TextureCube_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoad_TextureCube)->signature = "textureLoad(uniform *mutable textureCube,i32x3) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_TextureCube)->name = "textureLoad(uniform *mutable textureCube,i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_TextureCube)->nameWithVarNames = "textureLoad(texture : uniform *mutable textureCube, coordinate : i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with TextureCube, Int32x3, Int32
-    TextureLoadMip_TextureCube_texture.name = "texture"_c;
-    TextureLoadMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureLoadMip_TextureCube_texture.type.strict = true;
-    TextureLoadMip_TextureCube_texture.type.mut = true;
-    TextureLoadMip_TextureCube_texture.type.modifiers = TextureLoadMip_TextureCube_texture_modifiers;
-    TextureLoadMip_TextureCube_texture.type.modifierValues = TextureLoadMip_TextureCube_texture_modifierValues;
-    TextureLoadMip_TextureCube_coordinate.name = "coordinate"_c;
-    TextureLoadMip_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoadMip_TextureCube_mip.name = "mip"_c;
-    TextureLoadMip_TextureCube_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_TextureCube.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_TextureCube.name = TextureLoadMip_TextureCube_name;
-    TextureLoadMip_TextureCube.backendIndex = 2336;
-    TextureLoadMip_TextureCube.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_TextureCube.parameters = TextureLoadMip_TextureCube_args;
-    Symbol::Resolved(&TextureLoadMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureLoadMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_TextureCube_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoadMip_TextureCube_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_TextureCube)->signature = "textureLoadMip(uniform *mutable textureCube,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCube)->name = "textureLoadMip(uniform *mutable textureCube,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCube)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable textureCube, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureStore with TextureCube, Int32x3, Float32x4
-    TextureStore_TextureCube_texture.name = "texture"_c;
-    TextureStore_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStore_TextureCube_texture.type.strict = true;
-    TextureStore_TextureCube_texture.type.mut = true;
-    TextureStore_TextureCube_texture.type.modifiers = TextureStore_TextureCube_texture_modifiers;
-    TextureStore_TextureCube_texture.type.modifierValues = TextureStore_TextureCube_texture_modifierValues;
-    TextureStore_TextureCube_coordinate.name = "coordinate"_c;
-    TextureStore_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_TextureCube_value.name = "value"_c;
-    TextureStore_TextureCube_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_TextureCube.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureStore_TextureCube.name = TextureStore_TextureCube_name;
-    TextureStore_TextureCube.backendIndex = 2337;
-    TextureStore_TextureCube.returnType = Type::FullType { VoidType.name };
-    TextureStore_TextureCube.parameters = TextureStore_TextureCube_args;
-    Symbol::Resolved(&TextureStore_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureStore_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_TextureCube_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_TextureCube_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCube)->signature = "textureStore(uniform *mutable textureCube,i32x3,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_TextureCube)->name = "textureStore(uniform *mutable textureCube,i32x3,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCube)->nameWithVarNames = "textureStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCube)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with TextureCube, Int32x3, Int32, Float32x4
-    TextureStoreMip_TextureCube_texture.name = "texture"_c;
-    TextureStoreMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStoreMip_TextureCube_texture.type.strict = true;
-    TextureStoreMip_TextureCube_texture.type.mut = true;
-    TextureStoreMip_TextureCube_texture.type.modifiers = TextureStoreMip_TextureCube_texture_modifiers;
-    TextureStoreMip_TextureCube_texture.type.modifierValues = TextureStoreMip_TextureCube_texture_modifierValues;
-    TextureStoreMip_TextureCube_coordinate.name = "coordinate"_c;
-    TextureStoreMip_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_TextureCube_mip.name = "mip"_c;
-    TextureStoreMip_TextureCube_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_TextureCube_value.name = "value"_c;
-    TextureStoreMip_TextureCube_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_TextureCube.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_TextureCube.name = TextureStoreMip_TextureCube_name;
-    TextureStoreMip_TextureCube.backendIndex = 2338;
-    TextureStoreMip_TextureCube.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_TextureCube.parameters = TextureStoreMip_TextureCube_args;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube)->signature = "textureStoreMip(uniform *mutable textureCube,i32x3,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube)->name = "textureStoreMip(uniform *mutable textureCube,i32x3,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable textureCube, coordinate : i32x3, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube)->returnTypeSymbol = &VoidType;
-
-    /// textureLoad with Texture1DArray, Int32x2
-    TextureLoad_Texture1DArray_texture.name = "texture"_c;
-    TextureLoad_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureLoad_Texture1DArray_texture.type.strict = true;
-    TextureLoad_Texture1DArray_texture.type.mut = true;
-    TextureLoad_Texture1DArray_texture.type.modifiers = TextureLoad_Texture1DArray_texture_modifiers;
-    TextureLoad_Texture1DArray_texture.type.modifierValues = TextureLoad_Texture1DArray_texture_modifierValues;
-    TextureLoad_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoad_Texture1DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture1DArray.name = TextureLoad_Texture1DArray_name;
-    TextureLoad_Texture1DArray.backendIndex = 2339;
-    TextureLoad_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture1DArray.parameters = TextureLoad_Texture1DArray_args;
-    Symbol::Resolved(&TextureLoad_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureLoad_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture1DArray_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoad_Texture1DArray)->signature = "textureLoad(uniform *mutable texture1DArray,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture1DArray)->name = "textureLoad(uniform *mutable texture1DArray,i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture1DArray)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture1DArray, Int32x2, Int32
-    TextureLoadMip_Texture1DArray_texture.name = "texture"_c;
-    TextureLoadMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureLoadMip_Texture1DArray_texture.type.strict = true;
-    TextureLoadMip_Texture1DArray_texture.type.mut = true;
-    TextureLoadMip_Texture1DArray_texture.type.modifiers = TextureLoadMip_Texture1DArray_texture_modifiers;
-    TextureLoadMip_Texture1DArray_texture.type.modifierValues = TextureLoadMip_Texture1DArray_texture_modifierValues;
-    TextureLoadMip_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoadMip_Texture1DArray_mip.name = "mip"_c;
-    TextureLoadMip_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture1DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture1DArray.name = TextureLoadMip_Texture1DArray_name;
-    TextureLoadMip_Texture1DArray.backendIndex = 2340;
-    TextureLoadMip_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture1DArray.parameters = TextureLoadMip_Texture1DArray_args;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray)->signature = "textureLoadMip(uniform *mutable texture1DArray,i32x2,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray)->name = "textureLoadMip(uniform *mutable texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture1DArray, coordinate : i32x2, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureStore with Texture1DArray, Int32x2, Float32x4
-    TextureStore_Texture1DArray_texture.name = "texture"_c;
-    TextureStore_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStore_Texture1DArray_texture.type.strict = true;
-    TextureStore_Texture1DArray_texture.type.mut = true;
-    TextureStore_Texture1DArray_texture.type.modifiers = TextureStore_Texture1DArray_texture_modifiers;
-    TextureStore_Texture1DArray_texture.type.modifierValues = TextureStore_Texture1DArray_texture_modifierValues;
-    TextureStore_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureStore_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture1DArray_value.name = "value"_c;
-    TextureStore_Texture1DArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture1DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture1DArray.name = TextureStore_Texture1DArray_name;
-    TextureStore_Texture1DArray.backendIndex = 2341;
-    TextureStore_Texture1DArray.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture1DArray.parameters = TextureStore_Texture1DArray_args;
-    Symbol::Resolved(&TextureStore_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureStore_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture1DArray_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture1DArray_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture1DArray)->signature = "textureStore(uniform *mutable texture1DArray,i32x2,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray)->name = "textureStore(uniform *mutable texture1DArray,i32x2,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray)->nameWithVarNames = "textureStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture1DArray, Int32x2, Int32, Float32x4
-    TextureStoreMip_Texture1DArray_texture.name = "texture"_c;
-    TextureStoreMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStoreMip_Texture1DArray_texture.type.strict = true;
-    TextureStoreMip_Texture1DArray_texture.type.mut = true;
-    TextureStoreMip_Texture1DArray_texture.type.modifiers = TextureStoreMip_Texture1DArray_texture_modifiers;
-    TextureStoreMip_Texture1DArray_texture.type.modifierValues = TextureStoreMip_Texture1DArray_texture_modifierValues;
-    TextureStoreMip_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture1DArray_mip.name = "mip"_c;
-    TextureStoreMip_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1DArray_value.name = "value"_c;
-    TextureStoreMip_Texture1DArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture1DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture1DArray.name = TextureStoreMip_Texture1DArray_name;
-    TextureStoreMip_Texture1DArray.backendIndex = 2342;
-    TextureStoreMip_Texture1DArray.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture1DArray.parameters = TextureStoreMip_Texture1DArray_args;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray)->signature = "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray)->name = "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture1DArray, coordinate : i32x2, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray)->returnTypeSymbol = &VoidType;
-
-    /// textureLoad with Texture2DArray, Int32x3
-    TextureLoad_Texture2DArray_texture.name = "texture"_c;
-    TextureLoad_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureLoad_Texture2DArray_texture.type.strict = true;
-    TextureLoad_Texture2DArray_texture.type.mut = true;
-    TextureLoad_Texture2DArray_texture.type.modifiers = TextureLoad_Texture2DArray_texture_modifiers;
-    TextureLoad_Texture2DArray_texture.type.modifierValues = TextureLoad_Texture2DArray_texture_modifierValues;
-    TextureLoad_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_Texture2DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture2DArray.name = TextureLoad_Texture2DArray_name;
-    TextureLoad_Texture2DArray.backendIndex = 2343;
-    TextureLoad_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture2DArray.parameters = TextureLoad_Texture2DArray_args;
-    Symbol::Resolved(&TextureLoad_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureLoad_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture2DArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoad_Texture2DArray)->signature = "textureLoad(uniform *mutable texture2DArray,i32x3) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DArray)->name = "textureLoad(uniform *mutable texture2DArray,i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DArray)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture2DArray, Int32x3, Int32
-    TextureLoadMip_Texture2DArray_texture.name = "texture"_c;
-    TextureLoadMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureLoadMip_Texture2DArray_texture.type.strict = true;
-    TextureLoadMip_Texture2DArray_texture.type.mut = true;
-    TextureLoadMip_Texture2DArray_texture.type.modifiers = TextureLoadMip_Texture2DArray_texture_modifiers;
-    TextureLoadMip_Texture2DArray_texture.type.modifierValues = TextureLoadMip_Texture2DArray_texture_modifierValues;
-    TextureLoadMip_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoadMip_Texture2DArray_mip.name = "mip"_c;
-    TextureLoadMip_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture2DArray.name = TextureLoadMip_Texture2DArray_name;
-    TextureLoadMip_Texture2DArray.backendIndex = 2344;
-    TextureLoadMip_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture2DArray.parameters = TextureLoadMip_Texture2DArray_args;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray)->signature = "textureLoadMip(uniform *mutable texture2DArray,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray)->name = "textureLoadMip(uniform *mutable texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture2DArray, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
 }
 } // namespace GPULang

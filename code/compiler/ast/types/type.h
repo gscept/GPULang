@@ -138,6 +138,7 @@ enum class TypeCode
     , Int16
     , UInt
     , UInt32 = UInt
+    , UInt64
     , UInt16
     , Bool
     , Bool8 = Bool
@@ -196,6 +197,11 @@ struct Type : public Symbol
 
     /// convert type to string
     static const ConstantString& CodeToString(const TypeCode& code);
+
+    struct __Resolved : public Symbol::__Resolved
+    {
+        size_t baseAlignment = 4; // Smallest GPU unit is going to be 4 bytes
+    };
 
     enum Category
     {
@@ -524,6 +530,7 @@ struct Type : public Symbol
             uint8_t literal: 1 = false;
             uint8_t mut: 1 = false;
             uint8_t strict: 1 = false;
+            uint8_t address : 1 = false;
         };
 
 

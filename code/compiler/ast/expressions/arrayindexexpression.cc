@@ -61,10 +61,28 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     if (this->right != nullptr)
         this->right->EvalType(thisResolved->rightFullType);
 
+
+    // If we have a right expression (array index), get the type and validate
+    if (this->right != nullptr)
+    {
+        this->right->EvalTypeSymbol(thisResolved->rhsType);
+        if (thisResolved->rhsType == nullptr)
+        {
+            compiler->UnrecognizedTypeError(thisResolved->rightFullType.ToString(), this);
+            return false;
+        }
+
+        if (thisResolved->rhsType->name != "u32" && thisResolved->rhsType->name != "i32")
+        {
+            compiler->Error(Format("Expected array index to be u32 or i32 but got '%s'", thisResolved->rightFullType.ToString().c_str()), this->right);
+            return false;
+        }
+    }
+
     thisResolved->returnFullType = thisResolved->leftFullType;
 
     // If there are no modifiers, then we check for an array access operator for the type
-    if (thisResolved->returnFullType.modifiers.size == 0)
+    if (thisResolved->returnFullType.modifiers.size == 0 && !thisResolved->returnFullType.address)
     {
         Type* type = static_cast<Type*>(compiler->GetType(thisResolved->returnFullType));
         TStr lookup = TStr("operator[](", thisResolved->rightFullType.name, ")");
@@ -78,27 +96,40 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
         // If access operator was found, set the return type of this expression as the result of it
         Function* accessFunc = static_cast<Function*>(it->second);
         thisResolved->returnFullType = accessFunc->returnType;
-        //thisResolved->returnType = compiler->GetType(thisResolved->returnFullType.name);
-        /*
-        if (!this->right->EvalUInt(thisResolved->literalAccess))
-        {
-            compiler->Error(Format("'%s' only allows indexing with a literal or compile time deducable value", thisResolved->leftFullType.ToString().c_str()), this);
-            return false;
-        }
-        */
-        //return true;
     }
     else
     {
-        if (thisResolved->returnFullType.modifiers.front() != Type::FullType::Modifier::Array)
+        // If the left side is a pointer, we allow indexing
+        if (thisResolved->leftFullType.address)
         {
-            compiler->Error(Format("Invalid array access operator '[]' on non-array type"), this);
-            return false;
+            if (thisResolved->rhsType->baseType != TypeCode::Int && thisResolved->rhsType->baseType != TypeCode::UInt)
+            {
+                compiler->Error(Format("Address index only allowed with integer types, got '%s'", thisResolved->rightFullType.ToString().c_str()), this);
+                return false;
+            }
+
+            Storage storage;
+            this->left->EvalStorage(storage);
+
+            // If indexing a pointer with default storage, consider this a pointer byte offset
+            if (storage == Storage::Default)
+            {
+                thisResolved->isAddressIndex = true;
+            }
+        }
+        else
+        {
+            if (thisResolved->returnFullType.modifiers.front() != Type::FullType::Modifier::Array)
+            {
+                compiler->Error(Format("Invalid array access operator '[]' on non-array type"), this);
+                return false;
+            }
         }
         
         // Strip first element
         thisResolved->returnFullType.modifiers = TransientArray(thisResolved->returnFullType.modifiers, 1);
         thisResolved->returnFullType.modifierValues = TransientArray(thisResolved->returnFullType.modifierValues, 1);
+        thisResolved->returnFullType.address = false;
     }
     
     thisResolved->returnType = compiler->GetType(thisResolved->returnFullType);
@@ -127,22 +158,6 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
         return false;
     }
 
-    // If we have a right expression (array index), get the type and validate
-    if (this->right != nullptr)
-    {
-        this->right->EvalTypeSymbol(thisResolved->rhsType);
-        if (thisResolved->rhsType == nullptr)
-        {
-            compiler->UnrecognizedTypeError(thisResolved->rightFullType.ToString(), this);
-            return false;
-        }
-
-        if (thisResolved->rhsType->name != "u32" && thisResolved->rhsType->name != "i32")
-        {
-            compiler->Error(Format("Expected array index to be u32 or i32 but got '%s'", thisResolved->rightFullType.ToString().c_str()), this->right);
-            return false;
-        }
-    }
 
     return true;
 }

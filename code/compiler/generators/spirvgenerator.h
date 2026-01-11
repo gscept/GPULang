@@ -35,6 +35,31 @@ struct SpvId
 
 struct SPIRVResult
 {
+    enum class Storage
+    {
+        Invalid,
+        Private,
+        Device,
+        WorkGroup,
+        Uniform,
+        UniformConstant,
+        StorageBuffer,
+        PhysicalBuffer,
+        Sampler,
+        PushConstant,
+        Function,
+        Image,
+        MutableImage,
+        TexelPointer,                           // variable is a pointer to a texel
+        Input,
+        Output,
+        RayPayload,                             // variable is a ray payload
+        RayPayloadInput,                        // variable is a ray payload input
+        RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
+        CallableData,                           // variable is ray tracing callable data
+        CallableDataInput,                      // variable is ray tracing callable data
+    } scope = Storage::Function;
+
     uint32_t name = 0xFFFFFFFF;
     uint32_t typeName = 0xFFFFFFFF;
     bool isValue = false;           // If not, then the object needs a load to be read. If it is, doesn't support store
@@ -45,14 +70,98 @@ struct SPIRVResult
     uint32_t derefs = 0;
     uint32_t addrefs = 0;
     std::vector<uint32_t> parentTypes;
+    std::vector<SPIRVResult::Storage> parentScopes;
+
+    struct MemoryModifiers
+    {
+        uint32_t volatileAccess : 1;
+        uint32_t nonTemporalAccess : 1;
+        uint32_t alignedAccess : 1;
+
+        MemoryModifiers()
+            : volatileAccess(false)
+            , nonTemporalAccess(false)
+            , alignedAccess(false)
+        {
+            
+        }
+    } memoryModifiers;
+
+
 
     Type::SwizzleMask swizzleMask;
     uint32_t swizzleType = 0xFFFFFFFF;
 
-    std::vector<SPIRVResult> accessChain;
-    void AddAccessChainLink(std::vector<SPIRVResult> links)
+    struct Indirection
     {
-        accessChain.insert(accessChain.end(), links.begin(), links.end());
+        enum class Type
+        {
+            Access,          // Access chain like foo.bar.test or foo[index]
+            Pointer,         // Pointer dereference
+            Address,         // Address of physical buffer, requires casting from u64 to ptr
+            Array,           // Access is through an array
+        } type;
+
+        union
+        {
+            struct AccessInfo
+            {
+                uint32_t ptrType, dataType, offset;
+            } accessInfo;
+            struct PointerInfo
+            {
+                uint32_t ptrType, dataType, scope;
+            } pointerInfo;
+            struct AddressInfo
+            {
+                uint32_t ptrType, dataType, indexType, offset, alignment;
+            } addressInfo;
+            struct ArrayInfo
+            {
+                uint32_t ptrType, dataType, indexType, size;
+            } arrayInfo;
+        };
+    };
+    std::vector<Indirection> indirections;
+    void AddIndirection(const std::vector<Indirection>& offsets)
+    {
+        indirections.insert(indirections.end(), offsets.begin(), offsets.end());
+    }
+
+    void PopIndirection()
+    {
+        if (!indirections.empty())
+            indirections.pop_back();
+    }
+
+    static Indirection Access(uint32_t link, uint32_t ptrType, uint32_t type)
+    {
+        return Indirection{ .type = Indirection::Type::Access, .accessInfo = { .ptrType = ptrType, .dataType = type, .offset = link } };
+    }
+
+    static Indirection Access(SPIRVResult res, uint32_t ptrType)
+    {
+        return Indirection{ .type = Indirection::Type::Access, .accessInfo = { .ptrType = ptrType, .dataType = res.typeName, .offset = res.name } };
+    }
+
+    static Indirection Address(uint32_t ptrType, uint32_t dataType, uint32_t indexType, uint32_t offset, uint32_t alignment)
+    {
+        return Indirection{ .type = Indirection::Type::Address, .addressInfo = { .ptrType = ptrType, .dataType = dataType, .indexType = indexType, .offset = offset, .alignment = alignment } };
+    }
+
+    static Indirection Address(uint32_t ptrType, uint32_t dataType, uint32_t alignment)
+    {
+        return Indirection{ .type = Indirection::Type::Address, .addressInfo = { .ptrType = ptrType, .dataType = dataType, .indexType = 0xFFFFFFFF, .offset = 0xFFFFFFFF, .alignment = alignment } };
+    }
+
+    static Indirection Pointer(uint32_t ptrType, uint32_t dataType, SPIRVResult::Storage scope)
+    {
+        return Indirection{ .type = Indirection::Type::Pointer, .pointerInfo = { .ptrType = ptrType, .dataType = dataType, .scope = (uint32_t)scope } };
+    }
+
+    static Indirection Array(uint32_t ptrType, uint32_t dataType, uint32_t indexType, uint32_t size)
+    {
+        return Indirection{ .type = Indirection::Type::Array, .arrayInfo = { .ptrType = ptrType, .dataType = dataType, .indexType = indexType, .size = size } };
     }
 
     struct LiteralValue
@@ -68,6 +177,7 @@ struct SPIRVResult
             uint32_t ui;
             uint32_t u32;
             uint16_t u16;
+            uint64_t u64;
             bool b;
             bool b8;
         };
@@ -249,29 +359,7 @@ struct SPIRVResult
         return result;
     }
 
-    enum class Storage
-    {
-        Invalid,
-        Private,
-        Device,
-        WorkGroup,
-        Uniform,
-        UniformConstant,
-        StorageBuffer,
-        Sampler,
-        PushConstant,
-        Function,
-        Image,
-        MutableImage,
-        TexelPointer,                           // variable is a pointer to a texel
-        Input,
-        Output,
-        RayPayload,                             // variable is a ray payload
-        RayPayloadInput,                        // variable is a ray payload input
-        RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
-        CallableData,                           // variable is ray tracing callable data
-        CallableDataInput,                      // variable is ray tracing callable data
-    } scope = Storage::Function;
+
 
     static ConstantString ScopeToString(Storage s)
     {
@@ -294,6 +382,8 @@ struct SPIRVResult
                 return "Image";
             case Storage::StorageBuffer:
                 return "StorageBuffer";
+            case Storage::PhysicalBuffer:
+                return "PhysicalStorageBuffer";
             case Storage::PushConstant:
                 return "PushConstant";
             case Storage::Function:
@@ -318,7 +408,6 @@ struct SPIRVResult
         }
     }
 
-    std::vector<SPIRVResult::Storage> parentScopes;
 
 
     SPIRVResult()
@@ -341,6 +430,7 @@ struct SPIRVResult
         this->swizzleMask.bits.w = Type::SwizzleMask::Invalid;
     };
 
+    /*
     SPIRVResult(uint32_t name, uint32_t type, bool isValue, bool isConstant, Storage scope, const std::vector<uint32_t>& parentTypes, const std::vector<SPIRVResult::Storage>& parentScopes)
         : name(name)
         , typeName(type)
@@ -357,7 +447,8 @@ struct SPIRVResult
         this->swizzleMask.bits.z = Type::SwizzleMask::Invalid;
         this->swizzleMask.bits.w = Type::SwizzleMask::Invalid;
     };
-    
+    */
+
     explicit SPIRVResult(const ValueUnion& value, const uint8_t offset = 0)
     {
         this->literalValue = {};
@@ -485,14 +576,14 @@ public:
     bool Generate(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// Push a type to the stack
-    void PushAccessChain(Type* chain, SPIRVResult::Storage scope = SPIRVResult::Storage::Function);
+    void PushAccessChain(SPIRVResult res);
     /// Pop a type from the stack
     void PopAccessChain();
 
     /// Construct a new Id
     SpvId* NewId();
     
-    std::vector<std::tuple<Type*, SPIRVResult::Storage>> accessChain;
+    std::vector<SPIRVResult> accessChain;
     PinnedSet<uint32_t> interfaceVariables = 0xFFFF;
     PinnedArray<SpvId> ids = 0xFFFFFF;
     uint64_t idCounter = 0;

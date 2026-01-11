@@ -70,6 +70,7 @@ public:
     	Expression* constValueExpression = nullptr;
 
     	bool isAssignment = false;
+        bool isAddressOperation = false;
     };
 	__Resolved* thisResolved;
 }; 

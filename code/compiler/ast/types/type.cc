@@ -59,9 +59,10 @@ Type::Type()
     this->byteSize = 4;
     this->builtin = false;
     this->category = Type::InvalidCategory;
-    this->resolved = nullptr;
+    this->resolved = Alloc<Type::__Resolved>();
     this->scope.type = Scope::ScopeType::Type;
     this->scope.owningSymbol = this;
+    
 }
 
 //------------------------------------------------------------------------------
@@ -447,6 +448,8 @@ Type::FullType::ToString(bool includeLiteral) const
         base.Append("literal ");
     if (this->mut)
         base.Append("mutable ");
+    if (this->address)
+        base.Append("address ");
 
     if (this->swizzleName.len > 0)
         return TransientString(base, this->swizzleName);
@@ -463,6 +466,8 @@ Type::FullType::Assignable(const Type::FullType& rhs) const
     if (this->literal)
         return false;
     if (this->modifiers != rhs.modifiers)
+        return false;
+    if (this->address != rhs.address)
         return false;
     for (size_t i = 0; i < this->modifierValues.size; i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
@@ -498,6 +503,8 @@ bool
 Type::FullType::Constructible(const FullType& rhs) const
 {
     if (this->literal)
+        return false;
+    if (this->address != rhs.address)
         return false;
     if (this->modifiers != rhs.modifiers)
         return false;
@@ -552,6 +559,8 @@ Type::FullType::operator==(const FullType& rhs) const
         if (this->mut && !rhs.mut)
             return false;
     }
+    if (this->address != rhs.address)
+        return false; 
     if (this->modifiers != rhs.modifiers)
         return false;
     if (this->modifierValues.size != rhs.modifierValues.size)

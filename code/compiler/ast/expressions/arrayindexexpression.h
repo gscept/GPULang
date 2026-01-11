@@ -52,6 +52,8 @@ struct ArrayIndexExpression : public Expression
         Type* returnType = nullptr;
 
         unsigned int literalAccess = 0xFFFFFFFF;
+
+        bool isAddressIndex = false;
     };
 };
 

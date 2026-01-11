@@ -247,10 +247,9 @@ static void SetupTokenClassTable()
     TokenClassTable[(uint32_t)TokenType::Binding_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
     TokenClassTable[(uint32_t)TokenType::Group_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
     TokenClassTable[(uint32_t)TokenType::Volatile_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
-    TokenClassTable[(uint32_t)TokenType::Atomic_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
-    TokenClassTable[(uint32_t)TokenType::NoRead_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
     TokenClassTable[(uint32_t)TokenType::NonTemporal_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
     TokenClassTable[(uint32_t)TokenType::NoReflect_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
+    TokenClassTable[(uint32_t)TokenType::Alignas] |= TOKEN_VARIABLE_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
 
     TokenClassTable[(uint32_t)TokenType::In_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
     TokenClassTable[(uint32_t)TokenType::Out_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT | TOKEN_KEYWORD_BIT;
@@ -389,6 +388,7 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "generate"_h, TokenType::ConditionalCompile }
     , std::pair{ "declared"_h, TokenType::Declared }
     , std::pair{ "packed"_h, TokenType::Packed }
+    , std::pair{ "alignas"_h, TokenType::Alignas }
     , std::pair{ "true"_h, TokenType::Bool }
     , std::pair{ "false"_h, TokenType::Bool }
     , std::pair{ "const"_h, TokenType::Const_Storage }
@@ -403,8 +403,6 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "ray_hit_attribute"_h, TokenType::RayHitAttribute_Storage }
     , std::pair{ "ray_callable_data"_h, TokenType::CallableData_Storage }
     , std::pair{ "volatile"_h, TokenType::Volatile_Decorator }
-    , std::pair{ "atomic"_h, TokenType::Atomic_Decorator }
-    , std::pair{ "no_read"_h, TokenType::NoRead_Decorator }
     , std::pair{ "non_temporal"_h, TokenType::NonTemporal_Decorator }
     , std::pair{ "binding"_h, TokenType::Binding_Decorator }
     , std::pair{ "group"_h, TokenType::Group_Decorator }
@@ -439,6 +437,7 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "compute_derivatives"_h, TokenType::ComputeDerivatives_Attribute }
     , std::pair{ "mutable"_h, TokenType::Mutable_TypeModifier }
     , std::pair{ "literal"_h, TokenType::Literal_TypeModifier }
+    , std::pair{ "address"_h, TokenType::Address_TypeModifier }
     , std::pair{ "#"_h, TokenType::Directive }
     , std::pair{ "@"_h, TokenType::Annot }
     , std::pair{ ","_h, TokenType::Comma }
@@ -2522,6 +2521,11 @@ ParseType(TokenStream& stream, ParseResult& ret, Type::FullType& res)
     {
         res.modifierLocation = LocationFromToken(stream.Data(-1));
         res.literal = true;
+    }
+    else if (stream.Match(TokenType::Address_TypeModifier))
+    {
+        res.modifierLocation = LocationFromToken(stream.Data(-1));
+        res.address = true;
     }
     
     switch (stream.Type())

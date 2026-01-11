@@ -49,9 +49,8 @@ struct Structure : public Type
         //uint32_t binding;
 
         // for alignment
-        size_t byteSize = 0;
+        uint32_t byteSize = 0;
         size_t endPadding = 0;
-        size_t baseAlignment = 1;
 
         bool packMembers = false;
         bool hasBoolMember = false;

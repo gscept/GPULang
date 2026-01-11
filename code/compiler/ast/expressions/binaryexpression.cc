@@ -161,75 +161,108 @@ BinaryExpression::Resolve(Compiler* compiler)
     }
     else if (this->op != '=') // If not an assignment, allow promotion of either side of the operator
     {
-        TStr functionName = TStr("operator", FourCCToString(this->op), "(", this->thisResolved->rightType.Name(), ")");
-        Function* operatorFunction = this->thisResolved->lhsType->GetSymbol<Function>(functionName);
-        if (operatorFunction == nullptr)
+        // If the left type is a pointer, then we need to handle pointer arithmetic
+        if (thisResolved->leftType.address)
         {
-            if (compiler->options.disallowImplicitPromotion)
+            if (thisResolved->rhsType->baseType != TypeCode::Int && thisResolved->rhsType->baseType != TypeCode::UInt)
             {
-                TransientString conversionSignature = TransientString(this->thisResolved->lhsType->name, "(", this->thisResolved->rhsType->name, ")");
-                Symbol* conversionFunction = compiler->GetSymbol(conversionSignature);
-                compiler->Error(Format("'%s' does not implement '%s'", this->thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
+                compiler->Error(Format("Pointer arithmetic only allowed with integer types, got '%s'", this->thisResolved->rightType.ToString().c_str()), this);
                 return false;
+            }
+
+            Storage storage;
+            this->left->EvalStorage(storage);
+            if (storage == Storage::Uniform ||
+                storage == Storage::InlineUniform)
+            {
+                compiler->Error(Format("Pointer arithmetic not allowed on 'uniform' or 'inline_uniform' pointers"), this);
+                return false;
+            }
+
+            if (this->op == '+' || this->op == '-')
+            {
+                this->thisResolved->returnType = this->thisResolved->leftType;
             }
             else
             {
-                /// Attempt to promote left and right side to the smallest common denominator
-                TypeCode promotedType = Type::PromoteTypes(this->thisResolved->lhsType->baseType, this->thisResolved->rhsType->baseType);
-                if (promotedType == TypeCode::InvalidType)
-                {
-                    compiler->Error(Format("Type '%s' could not be promoted to '%s'", this->thisResolved->leftType.ToString().c_str(), this->thisResolved->rightType.ToString().c_str()), this    );
-                    return false;
-                }
-                Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(this->thisResolved->lhsType->columnSize, this->thisResolved->rhsType->columnSize), max(this->thisResolved->lhsType->rowSize, this->thisResolved->rhsType->rowSize));
-
-                // If we have an assignment, then promotion of the left type is not allowed
-                if (thisResolved->isAssignment && promotedFullType != thisResolved->leftType)
-                {
-                    compiler->Error(Format("Type '%s' does not implement '%s'", this->thisResolved->leftType.ToString().c_str(), functionName.c_str()), this);
-                    return false;
-                }
-                
-                TransientString promotedOperatorFunctionName = TransientString("operator", FourCCToString(this->op), "(", promotedFullType.Name(), ")");
-                Type* promotedLhsType = compiler->GetType(promotedFullType);
-                Function* promotedOperatorFunction = promotedLhsType->GetSymbol<Function>(promotedOperatorFunctionName);
-                if (promotedOperatorFunction == nullptr)
-                {
-                    compiler->Error(Format("'%s' does not implement '%s' when implicitly promoting either side of operator", this->thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
-                    return false;
-                }
-                
-                if (promotedFullType != this->thisResolved->leftType)
-                {
-                    TransientString lhsConversion = TransientString(promotedFullType.Name(), "(", this->thisResolved->leftType.Name(), ")");
-                    this->thisResolved->leftConversion = compiler->GetSymbol<Function>(lhsConversion);
-                    if (this->thisResolved->leftConversion == nullptr)
-                    {
-                        compiler->Error(Format("'%s' can't be constructed from '%s' when promoting left hand", promotedFullType.ToString().c_str(), this->thisResolved->lhsType->name.c_str()), this);
-                        return false;        
-                    }
-                    
-                }
-                if (promotedFullType != this->thisResolved->rightType)
-                {
-                    TransientString rhsConversion = TransientString(promotedFullType.Name(), "(", this->thisResolved->rightType.Name(), ")");
-                    this->thisResolved->rightConversion = compiler->GetSymbol<Function>(rhsConversion);
-                    if (this->thisResolved->rightConversion == nullptr)
-                    {
-                        compiler->Error(Format("'%s' can't be constructed from '%s' when promoting right hand",  promotedFullType.Name().c_str(), this->thisResolved->rhsType->name.c_str()), this);
-                        return false;        
-                    }
-                }
-                
-                this->thisResolved->returnType = promotedOperatorFunction->returnType;
+                compiler->Error(Format("Invalid pointer operation '%c'", this->op), this);
+                return false;
             }
+
+            thisResolved->isAddressOperation = true;
         }
         else
         {
-            Function* fun = static_cast<Function*>(operatorFunction);
-            this->thisResolved->returnType = fun->returnType;
-            this->thisResolved->leftConversion = nullptr;
-            this->thisResolved->rightConversion = nullptr;
+            TStr functionName = TStr("operator", FourCCToString(this->op), "(", this->thisResolved->rightType.Name(), ")");
+            Function* operatorFunction = this->thisResolved->lhsType->GetSymbol<Function>(functionName);
+            if (operatorFunction == nullptr)
+            {
+                if (compiler->options.disallowImplicitPromotion)
+                {
+                    TransientString conversionSignature = TransientString(this->thisResolved->lhsType->name, "(", this->thisResolved->rhsType->name, ")");
+                    Symbol* conversionFunction = compiler->GetSymbol(conversionSignature);
+                    compiler->Error(Format("'%s' does not implement '%s'", this->thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
+                    return false;
+                }
+                else
+                {
+                    /// Attempt to promote left and right side to the smallest common denominator
+                    TypeCode promotedType = Type::PromoteTypes(this->thisResolved->lhsType->baseType, this->thisResolved->rhsType->baseType);
+                    if (promotedType == TypeCode::InvalidType)
+                    {
+                        compiler->Error(Format("Type '%s' could not be promoted to '%s'", this->thisResolved->leftType.ToString().c_str(), this->thisResolved->rightType.ToString().c_str()), this);
+                        return false;
+                    }
+                    Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(this->thisResolved->lhsType->columnSize, this->thisResolved->rhsType->columnSize), max(this->thisResolved->lhsType->rowSize, this->thisResolved->rhsType->rowSize));
+
+                    // If we have an assignment, then promotion of the left type is not allowed
+                    if (thisResolved->isAssignment && promotedFullType != thisResolved->leftType)
+                    {
+                        compiler->Error(Format("Type '%s' does not implement '%s'", this->thisResolved->leftType.ToString().c_str(), functionName.c_str()), this);
+                        return false;
+                    }
+
+                    TransientString promotedOperatorFunctionName = TransientString("operator", FourCCToString(this->op), "(", promotedFullType.Name(), ")");
+                    Type* promotedLhsType = compiler->GetType(promotedFullType);
+                    Function* promotedOperatorFunction = promotedLhsType->GetSymbol<Function>(promotedOperatorFunctionName);
+                    if (promotedOperatorFunction == nullptr)
+                    {
+                        compiler->Error(Format("'%s' does not implement '%s' when implicitly promoting either side of operator", this->thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
+                        return false;
+                    }
+
+                    if (promotedFullType != this->thisResolved->leftType)
+                    {
+                        TransientString lhsConversion = TransientString(promotedFullType.Name(), "(", this->thisResolved->leftType.Name(), ")");
+                        this->thisResolved->leftConversion = compiler->GetSymbol<Function>(lhsConversion);
+                        if (this->thisResolved->leftConversion == nullptr)
+                        {
+                            compiler->Error(Format("'%s' can't be constructed from '%s' when promoting left hand", promotedFullType.ToString().c_str(), this->thisResolved->lhsType->name.c_str()), this);
+                            return false;
+                        }
+
+                    }
+                    if (promotedFullType != this->thisResolved->rightType)
+                    {
+                        TransientString rhsConversion = TransientString(promotedFullType.Name(), "(", this->thisResolved->rightType.Name(), ")");
+                        this->thisResolved->rightConversion = compiler->GetSymbol<Function>(rhsConversion);
+                        if (this->thisResolved->rightConversion == nullptr)
+                        {
+                            compiler->Error(Format("'%s' can't be constructed from '%s' when promoting right hand", promotedFullType.Name().c_str(), this->thisResolved->rhsType->name.c_str()), this);
+                            return false;
+                        }
+                    }
+
+                    this->thisResolved->returnType = promotedOperatorFunction->returnType;
+                }
+            }
+            else
+            {
+                Function* fun = static_cast<Function*>(operatorFunction);
+                this->thisResolved->returnType = fun->returnType;
+                this->thisResolved->leftConversion = nullptr;
+                this->thisResolved->rightConversion = nullptr;
+            }
         }
     }
     else // directly assignable (same type)

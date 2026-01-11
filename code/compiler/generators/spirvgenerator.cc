@@ -189,6 +189,18 @@ struct SPVCaseList
     }
 };
 
+struct SPVEnumList
+{
+    SPVEnum* enums = nullptr;
+    uint8_t num = 0;
+
+    explicit SPVEnumList(const TransientArray<SPVEnum>& enums)
+    {
+        this->enums = enums.ptr;
+        this->num = (uint8_t)enums.size;
+    }
+};
+
 
 struct ConstantCreationInfo
 {
@@ -203,6 +215,7 @@ struct ConstantCreationInfo
         UInt,
         UInt32 = UInt,
         UInt16,
+        UInt64,
         Bool,
         Bool8 = Bool
     } type = Type::Float;
@@ -211,6 +224,7 @@ struct ConstantCreationInfo
         float f;
         int32_t i;
         uint32_t ui;
+        uint64_t ul;
         bool b;
     } data = {};
     bool linkDefined = false;
@@ -276,6 +290,22 @@ struct ConstantCreationInfo
         ConstantCreationInfo ret;
         ret.type = Type::UInt32;
         ret.data.ui = val.literalValue.u32;
+        return ret;
+    }
+
+    static ConstantCreationInfo UInt64(uint64_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt64;
+        ret.data.ul = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo UInt64(const SPIRVResult& val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt64;
+        ret.data.ul = val.literalValue.u64;
         return ret;
     }
 
@@ -416,6 +446,7 @@ SPV_INSTRUCTION(OpVectorShuffle, 79, 5, true)
 SPV_INSTRUCTION(OpCompositeConstruct, 80, 3, true)
 SPV_INSTRUCTION(OpCompositeExtract, 81, 4, true)
 SPV_INSTRUCTION(OpCompositeInsert, 82, 5, true)
+SPV_INSTRUCTION(OpCopyObject, 83, 4, false)
 SPV_INSTRUCTION(OpTranspose, 84, 4, false)
 SPV_INSTRUCTION(OpSampledImage, 86, 5, false)
 SPV_INSTRUCTION(OpImageSampleImplicitLod, 87, 5, true)
@@ -443,6 +474,8 @@ SPV_INSTRUCTION(OpConvertUToF, 112, 4, false)
 SPV_INSTRUCTION(OpUConvert, 113, 4, false)
 SPV_INSTRUCTION(OpSConvert, 114, 4, false)
 SPV_INSTRUCTION(OpFConvert, 115, 4, false)
+SPV_INSTRUCTION(OpConvertPtrToU, 117, 4, false)
+SPV_INSTRUCTION(OpConvertUToPtr, 120, 4, false)
 SPV_INSTRUCTION(OpBitcast, 124, 4, false)
 SPV_INSTRUCTION(OpSNegate, 126, 4, false)
 SPV_INSTRUCTION(OpFNegate, 127, 4, false)
@@ -564,6 +597,8 @@ SPV_ENUM(Shader, 1)
 SPV_ENUM(Geometry, 2)
 SPV_ENUM(Tessellation, 3)
 SPV_ENUM(Addresses, 4)
+SPV_ENUM(Float16, 9)
+SPV_ENUM(Int64, 11)
 SPV_ENUM(ImageBasic, 13)
 SPV_ENUM(ImageReadWrite, 14)
 SPV_ENUM(InputAttachment, 40)
@@ -902,6 +937,13 @@ SPV_ENUM(Unknown, 0)
 SPV_ENUM(GPULang, 14)
 }
 
+namespace MemoryOperands
+{
+SPV_ENUM(Volatile, 0x1)
+SPV_ENUM(Aligned, 0x2)
+SPV_ENUM(Nontemporal, 0x4)
+}
+
 SPVEnum ScopeToEnum(SPIRVResult::Storage s)
 {
     switch (s)
@@ -923,6 +965,8 @@ SPVEnum ScopeToEnum(SPIRVResult::Storage s)
             return VariableStorage::Image;
         case SPIRVResult::Storage::StorageBuffer:
             return VariableStorage::StorageBuffer;
+        case SPIRVResult::Storage::PhysicalBuffer:
+            return VariableStorage::PhysicalStorageBuffer;
         case SPIRVResult::Storage::PushConstant:
             return VariableStorage::PushConstant;
         case SPIRVResult::Storage::Function:
@@ -1608,7 +1652,8 @@ struct SPVWriter
     template<>
     void Append(const size_t& arg)
     {
-        this->binaries[(uint32_t)this->section].push_back(arg);
+        this->binaries[(uint32_t)this->section].push_back(arg & 0xFFFFFFFFu);
+        this->binaries[(uint32_t)this->section].push_back((arg >> 32) & 0xFFFFFFFFu);
         
         if (this->outputText)
         {
@@ -1697,8 +1742,21 @@ struct SPVWriter
             {
                 char buf[64];
                 uint32_t numWritten = snprintf(buf, 64, " %%%d", arg.vals[it].arg);
-                this->texts[(uint32_t)this->section].Append(" ");
                 this->texts[(uint32_t)this->section].Append(buf, numWritten);
+            }
+        }
+    }
+
+    template<>
+    void Append(const SPVEnumList& arg)
+    {
+        for (uint8_t it = 0; it < arg.num; it++)
+            this->binaries[(uint32_t)this->section].push_back((uint32_t)arg.enums[it].c);
+        if (this->outputText)
+        {
+            for (uint8_t it = 0; it < arg.num; it++)
+            {
+                this->texts[(uint32_t)this->section].Append(arg.enums[it].str);
             }
         }
     }
@@ -1769,6 +1827,12 @@ struct SPVWriter
     }
 
     template<>
+    uint32_t ArgCount(const SPVEnumList& args)
+    {
+        return args.num;
+    }
+
+    template<>
     uint32_t ArgCount(const SPVResultList& args)
     {
         return args.num;
@@ -1808,6 +1872,12 @@ struct SPVWriter
     uint32_t ArgCount(const char* const& args)
     {
         return std::ceil((strlen(args) + 1) / (float)sizeof(uint32_t));
+    }
+
+    template<>
+    uint32_t ArgCount(const uint64_t& arg)
+    {
+        return 2;
     }
 
     template<int SIZE>
@@ -2173,6 +2243,7 @@ static const std::unordered_map<TypeCode, std::tuple<ConstantString, ConstantStr
     { TypeCode::Int, { "i32", "OpTypeInt 32 1", OpTypeInt, { 32u, 1u } } }
     , { TypeCode::Int16, { "i16", "OpTypeInt 16 1", OpTypeInt, { 16u, 1u } } }
     , { TypeCode::UInt, { "u32", "OpTypeInt 32 0", OpTypeInt, { 32u, 0u } } }
+    , { TypeCode::UInt64, { "u64", "OpTypeInt 64 0", OpTypeInt, { 64u, 0u } } }
     , { TypeCode::UInt16, { "u16", "OpTypeInt 16 0", OpTypeInt, { 16u, 0u } } }
     , { TypeCode::Float, { "f32", "OpTypeFloat 32", OpTypeFloat, { 32u } } }
     , { TypeCode::Float16, { "f16", "OpTypeFloat 16", OpTypeFloat, { 16u } } }
@@ -2273,6 +2344,11 @@ GenerateBaseTypeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, TypeC
     auto [str, spirvstr, op, args] = it->second;
     uint32_t baseType = AddType(generator, str, op, args);
     TStr type = std::get<0>(it->second);
+
+    if (code == TypeCode::UInt64)
+        generator->writer->Capability(Capabilities::Int64);
+    if (code == TypeCode::Float16)
+        generator->writer->Capability(Capabilities::Float16);
     
     // Matrix
     if (rowSize > 1)
@@ -2309,6 +2385,10 @@ ResolveSPIRVVariableStorage(
     SPIRVResult::Storage scope = SPIRVResult::Storage::Function;
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
     {
+        // Check for potential struct member pointers
+        if (type.address)
+            scope = SPIRVResult::Storage::Function;
+
         if (storage == Storage::Input)
             scope = SPIRVResult::Storage::Input;
         else if (storage == Storage::Output)
@@ -2358,6 +2438,10 @@ ResolveSPIRVVariableStorage(
     }
     else if (typeSymbol->category == Type::StructureCategory)
     {
+        // Check for potential struct member pointers
+        if (type.address)
+            scope = SPIRVResult::Storage::Function;
+
         if (storage == Storage::Uniform && (type.IsMutable() || usageBits.flags.isDynamicSizedArray))
             scope = SPIRVResult::Storage::StorageBuffer;
         else if (storage == Storage::Uniform)
@@ -2401,12 +2485,24 @@ GenerateTypeSPIRV(
     std::vector<uint32_t> parentType;
     std::vector<SPIRVResult::Storage> parentScope;
     TransientString typeNameStr;
-
+    std::vector<SPIRVResult::Indirection> indirections;
     ConstantString scopeString = SPIRVResult::ScopeToString(generator->typeState.storage);
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
     {
         typeNameStr = typeSymbol->name;
         baseType = GenerateBaseTypeSPIRV(compiler, generator, typeSymbol->baseType, typeSymbol->columnSize, typeSymbol->rowSize);
+
+        if (type.address)
+        {
+            // If we are generating a pointer type, then we need to generate the base type first
+            parentType.push_back(std::get<0>(baseType));
+            parentScope.push_back(generator->typeState.storage);
+            //indirections.push_back(SPIRVResult::Pointer(0xFFFFFFFF, std::get<0>(baseType), generator->typeState.storage));
+            baseType = GenerateBaseTypeSPIRV(compiler, generator, TypeCode::UInt64, 1);
+            typeNameStr = "u64";
+
+            generator->writer->Capability(Capabilities::Int64);
+        }
     }
     else if (typeSymbol->category == Type::TextureCategory)
     {
@@ -2524,6 +2620,17 @@ GenerateTypeSPIRV(
 
         // The scope string is already consumed by the struct
         baseType = std::tie(t.value.typeName, typeSymbol->name);
+
+        if (type.address)
+        {
+            // When generating an addr type, make a higher type as u64 and parent the actual type
+            parentType.push_back(std::get<0>(baseType));
+            parentScope.push_back(generator->typeState.storage);
+            //indirections.push_back(SPIRVResult::Pointer(0xFFFFFFFF, std::get<0>(baseType), generator->typeState.storage));
+            baseType = GenerateBaseTypeSPIRV(compiler, generator, TypeCode::UInt64, 1);
+            typeNameStr = "u64";
+
+        }
     }
 
     bool isStructPadded = false;
@@ -2533,6 +2640,8 @@ GenerateTypeSPIRV(
         || generator->typeState.storage == SPIRVResult::Storage::MutableImage;
 
     SPVEnum scopeEnum = ScopeToEnum(generator->typeState.storage);
+
+    std::vector<SPIRVResult::Indirection> paddingIndirections;
     
     uint32_t lastStructType = std::get<0>(baseType);
     if (type.modifiers.size > 0)
@@ -2553,7 +2662,9 @@ GenerateTypeSPIRV(
 
                 parentType.push_back(typeName);
                 parentScope.push_back(generator->typeState.storage);
+                uint32_t prevType = typeName;
                 typeName = AddType(generator, typeNameStr, OpTypePointer, scopeEnum, SPVArg{ typeName });
+                indirections.push_back(SPIRVResult::Pointer(typeName, prevType, generator->typeState.storage));
                 baseType = std::tie(typeName, gpulangType);
             }
             else if (mod == Type::FullType::Modifier::Array)
@@ -2571,6 +2682,9 @@ GenerateTypeSPIRV(
 
                     bool newType = !HasType(generator, typeNameStr);
                     typeName = AddType(generator, typeNameStr, OpTypeRuntimeArray, SPVArg{ typeName });
+                    uint32_t prevType = typeName;
+                    baseType = std::tie(typeName, gpulangType);
+
                     if (newType)
                     {
                         if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Explicit || generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface)
@@ -2595,6 +2709,7 @@ GenerateTypeSPIRV(
                         gpulangType = TStr("struct_", gpulangType);
                         typeNameStr = FormatExplicitLayout(gpulangType, generator->typeState.layout);
                         typeName = AddType(generator, typeNameStr, OpTypeStruct, SPVArg{ typeName });
+
                         lastStructType = typeName;
                         baseType = std::tie(typeName, gpulangType);
 
@@ -2608,6 +2723,10 @@ GenerateTypeSPIRV(
                         scopeString = SPIRVResult::ScopeToString(SPIRVResult::Storage::StorageBuffer);
                         scopeEnum = ScopeToEnum(generator->typeState.storage);
                         generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+
+                        SPIRVResult zero = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(0));
+                        paddingIndirections.push_back(SPIRVResult::Access(zero.name, prevType, typeName));
+
                         isStructPadded = true;
                     }
                 }
@@ -2632,7 +2751,9 @@ GenerateTypeSPIRV(
                     SPIRVResult arraySizeConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(size));
                     bool newType = !HasType(generator, typeNameStr);
                     typeName = AddType(generator, typeNameStr, OpTypeArray, SPVArg{ typeName }, arraySizeConstant);
+                    //indirections.push_back(SPIRVResult::Array(typeName, prevType, arraySizeConstant.typeName, arraySizeConstant.name));
                     baseType = std::tie(typeName, gpulangType);
+                    uint32_t prevType = typeName;
 
                     if (newType)
                     {
@@ -2656,6 +2777,7 @@ GenerateTypeSPIRV(
                     // if this is an interface, wrap it in a struct to allow interface binding
                     if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface && typeSymbol->category == Type::StructureCategory)
                     {
+
                         gpulangType = TStr("struct_", gpulangType);
                         typeNameStr = FormatExplicitLayout(gpulangType, generator->typeState.layout);
                         typeName = AddType(generator, typeNameStr, OpTypeStruct, SPVArg{ typeName });
@@ -2670,6 +2792,10 @@ GenerateTypeSPIRV(
                         scopeString = SPIRVResult::ScopeToString(SPIRVResult::Storage::StorageBuffer);
                         scopeEnum = ScopeToEnum(generator->typeState.storage);
                         generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+
+                        SPIRVResult zero = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(0));
+                        paddingIndirections.push_back(SPIRVResult::Access(zero.name, prevType, typeName));
+
                         isStructPadded = true;
                     }
                 }
@@ -2685,13 +2811,22 @@ GenerateTypeSPIRV(
 
         parentType.push_back(typeName);
         parentScope.push_back(generator->typeState.storage);
+        uint32_t prevType = typeName;
         typeName = AddType(generator, typeNameStr, OpTypePointer, scopeEnum, SPVArg{ typeName });
+        indirections.push_back(SPIRVResult::Pointer(typeName, prevType, generator->typeState.storage));
         baseType = std::tie(typeName, gpulangType);
 
         // Tack on scope
     }
 
-    auto ret = SPIRVResult(INVALID_ARG, std::get<0>(baseType), false, false, generator->typeState.storage, parentType, parentScope);
+    // If struct padded, add an indirection after the pointer
+    if (isStructPadded)
+    {
+        indirections.insert(indirections.end(), paddingIndirections.begin(), paddingIndirections.end());
+    }
+
+    auto ret = SPIRVResult(INVALID_ARG, std::get<0>(baseType), false, false, generator->typeState.storage);
+    ret.indirections = indirections;
     ret.isStructPadded = isStructPadded;
     return ret;
 }
@@ -2708,6 +2843,10 @@ ToSPIRVTypeString(
 )
 {
     TransientString ret;
+    if (type.address)
+    {
+        return "u64";
+    }
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
     {
         auto it = scalarTable.find(typeSymbol->baseType);
@@ -2842,7 +2981,7 @@ SwizzleMaskIndices(const Type::SwizzleMask mask, uint32_t* indices, uint8_t& num
 /**
 */
 SPIRVResult
- GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize)
+GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize)
 {
     SPIRVResult res = SPIRVResult::Invalid();
     uint32_t baseType;
@@ -2879,6 +3018,15 @@ else\
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt16, vectorSize);
             res.typeName = baseType;
             ADD_CONSTANT(u16, ui)
+            break;
+        }
+        case ConstantCreationInfo::Type::UInt64:
+        {
+            baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt64, 1);
+            if (vectorSize > 1)
+                vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt64, vectorSize);
+            res.typeName = baseType;
+            ADD_CONSTANT(u64, ul) // not a bug, SPIRV expects 32 bit words for constants, so this must be truncated
             break;
         }
         case ConstantCreationInfo::Type::Int32:
@@ -2994,6 +3142,126 @@ AccessChainSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t n
     return val;
 }
 
+
+struct IndirectionState
+{
+    uint32_t needsLoad : 1;
+    uint32_t needsAlignment : 1;
+    uint32_t volatileData : 1;
+    uint32_t nonTemporal : 1;
+    uint32_t alignment : 28;
+
+    IndirectionState()
+        : needsLoad(false)
+        , needsAlignment(false)
+        , volatileData(false)
+        , nonTemporal(false)
+        , alignment(0)
+    {
+    }
+};
+
+//------------------------------------------------------------------------------
+/**
+*/
+uint32_t
+IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t name, uint32_t& type, const std::vector<SPIRVResult::Indirection>& chain, IndirectionState& state)
+{
+    uint32_t val = name;
+
+    state.needsLoad = false;
+    state.needsAlignment = false;
+    state.alignment = 0;
+
+    TransientArray<SPVArg> accessChain(chain.size());
+    SPIRVResult::Indirection::Type currentType = SPIRVResult::Indirection::Type::Access;
+    uint32_t ptrType = type;
+    for (uint32_t i = 0; i < chain.size(); i++)
+    {
+        const SPIRVResult::Indirection& indirection = chain[i];
+
+        TransientArray<SPVEnum> memOps(2);
+        if (state.volatileData)
+            memOps.Append(MemoryOperands::Volatile);
+        if (state.nonTemporal)
+            memOps.Append(MemoryOperands::Nontemporal);
+
+        SPVEnumList memoryOperands(memOps);
+
+        if (indirection.type == SPIRVResult::Indirection::Type::Pointer)
+        {
+            // If we are not already a pointer, load the value so we can load the next pointer
+            if (state.needsLoad)
+            {
+                if (!state.needsAlignment)
+                    val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, indirection.pointerInfo.dataType, SPVArg(val), memoryOperands);
+                else
+                {
+                    val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, indirection.pointerInfo.dataType, SPVArg(val), MemoryOperands::Aligned, state.alignment, memoryOperands);
+                    state.needsAlignment = false;
+                    state.alignment = 0;
+                }
+            }
+            type = indirection.pointerInfo.dataType;
+            ptrType = indirection.pointerInfo.ptrType;
+            state.needsLoad = true;
+            //val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, indirection.pointerInfo.dataType, SPVArg(val));
+        }
+        else if (indirection.type == SPIRVResult::Indirection::Type::Access)
+        {
+            // Access chain expects a pointer, so no need to load the pointer here
+            accessChain.Append(SPVArg(indirection.accessInfo.offset));
+            type = indirection.accessInfo.dataType;
+            ptrType = indirection.accessInfo.ptrType;
+
+            // If last part of chain or next is different type, flush access chain
+            if (i == chain.size() - 1)
+            {
+                val = generator->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, ptrType, SPVArg(val), SPVArgList(accessChain));
+                accessChain.Clear();
+            }
+            else if (chain[i + 1].type != SPIRVResult::Indirection::Type::Access && chain[i + 1].type != SPIRVResult::Indirection::Type::Pointer)
+            {
+                val = generator->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, ptrType, SPVArg(val), SPVArgList(accessChain));
+                accessChain.Clear();
+            }
+            state.needsLoad = true;
+        }
+        else if (indirection.type == SPIRVResult::Indirection::Type::Address)
+        {
+            // If the previous value is a pointer, we first need to load the u64 address
+            if (state.needsLoad)
+            {
+                if (!state.needsAlignment)
+                    val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val), memoryOperands);
+                else
+                {
+                    val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val), MemoryOperands::Aligned, state.alignment, memoryOperands);
+                    state.alignment = 0;
+                    state.needsAlignment = false;
+                }
+            }
+
+            ptrType = indirection.addressInfo.ptrType;
+            state.alignment = indirection.addressInfo.alignment;
+            uint32_t offset = indirection.addressInfo.offset;
+
+            if (offset != 0xFFFFFFFF)
+                val = generator->writer->MappedInstruction(OpIAdd, SPVWriter::Section::LocalFunction, type, SPVArg(val), SPVArg(offset));
+            val = generator->writer->MappedInstruction(OpConvertUToPtr, SPVWriter::Section::LocalFunction, ptrType, SPVArg(val));
+
+            type = indirection.addressInfo.dataType;
+            state.needsAlignment = true;
+            state.needsLoad = true;
+        }
+
+        currentType = indirection.type;
+    }
+    
+    return val;
+}
+
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -3016,6 +3284,9 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
         case TypeCode::Int16:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int16(arg.literalValue.i16));
             break;
+        case TypeCode::UInt64:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt64(arg.literalValue.u64));
+            break;
         case TypeCode::UInt32:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt32(arg.literalValue.u32));
             break;
@@ -3033,37 +3304,27 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
     uint32_t type = arg.typeName;
     SPIRVResult::Storage scope = arg.scope;
     bool isValue = arg.isValue;
-    assert(arg.derefs > 0 ? !arg.isValue : true);
-    assert(arg.parentTypes.size() == arg.parentScopes.size());
 
-    if (arg.derefs > arg.addrefs)
-    {
-        for (uint32_t i = 0; i < arg.derefs - arg.addrefs; i++)
-        {
-            type = arg.parentTypes.back();
-            arg.parentTypes.pop_back();
-            scope = arg.parentScopes.back();
-            arg.parentScopes.pop_back();
-            val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val));
-            arg.isValue = arg.parentTypes.empty();
-        }
-    }
+    IndirectionState state;
+    val = IndirectionUnrollSPIRV(compiler, generator, val, type, arg.indirections, state);
 
-    val = AccessChainSPIRV(compiler, generator, val, type, arg.accessChain);
-    
-    assert(val != -1);
-    if (!arg.isValue && arg.parentTypes.size() > arg.addrefs)
+    TransientArray<SPVEnum> memOps(2);
+    if (state.volatileData)
+        memOps.Append(MemoryOperands::Volatile);
+    if (state.nonTemporal)
+        memOps.Append(MemoryOperands::Nontemporal);
+
+    SPVEnumList memoryOperands(memOps);
+
+    // If the output value from the indirection is a pointer, load the value
+    if (state.needsLoad)
     {
-        // The value loaded should be the parent type, as the current type has to be a pointer
-        assert(!arg.parentTypes.empty());
-        type = arg.parentTypes.back();
-        arg.parentTypes.pop_back();
-        scope = arg.parentScopes.back();
-        arg.parentScopes.pop_back();
-        val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val));
+        if (!state.needsAlignment)
+            val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val), memoryOperands);
+        else
+            val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val), MemoryOperands::Aligned, state.alignment, memoryOperands);
     }
     
-    assert(val != -1);
     if (arg.swizzleMask != Type::SwizzleMask())
     {
         // Can't swizzle a pointer
@@ -3084,10 +3345,12 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
             type = swizzleType;
         }
     }
+
     auto res = SPIRVResult(val, type);
-    res.isValue = arg.parentTypes.empty(); // The result is only a value if there are no more parent types (indirections)
+    res.isValue = true; // The result is only a value if there are no more parent types (indirections)
     res.isConst = arg.isConst;
     res.isSpecialization = arg.isSpecialization;
+    res.indirections = {};
     res.parentTypes = arg.parentTypes;
     res.parentScopes = arg.parentScopes;
     res.derefs = 0;
@@ -3103,42 +3366,55 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
 {
     uint32_t val = target.name;
     uint32_t type = target.typeName;
-
-    if (target.derefs > target.addrefs)
-    {
-        for (uint32_t i = 0; i < target.derefs - target.addrefs; i++)
-        {
-            type = target.parentTypes.back();
-            target.parentTypes.pop_back();
-            val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, type, SPVArg(val));
-        }
-    }
     
-    val = AccessChainSPIRV(compiler, generator, val, type, target.accessChain);
+    IndirectionState state;
+    val = IndirectionUnrollSPIRV(compiler, generator, val, type, target.indirections, state);
+    assert(state.needsLoad); // For Store operations, we assume the value is a pointer (needs loading)
+
+    TransientArray<SPVEnum> memOps(2);
+    if (state.volatileData)
+        memOps.Append(MemoryOperands::Volatile);
+    if (state.nonTemporal)
+        memOps.Append(MemoryOperands::Nontemporal);
+
+    SPVEnumList memoryOperands(memOps);
+
+    assert(target.indirections.size() > 0);
 
     // Perform OpStore if source is a value, otherwise copy memory
     if (source.isValue)
     {
-        if (target.parentTypes.back() != source.typeName)
+        if (target.indirections.back().pointerInfo.dataType != source.typeName)
         {
-            source.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, target.parentTypes.back(), source);
+            source.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, target.indirections.back().pointerInfo.dataType, source);
         }
-        generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name));
+        
+        if (!state.needsAlignment)
+            generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name), memoryOperands);
+        else
+            generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name), MemoryOperands::Aligned, state.alignment, memoryOperands);
     }
     else
     {
         // If we copy between pointers, there is a chance the storage classes don't match, so we need to handle that
-        if (target.parentTypes[0] != source.parentTypes[0])
+        if (target.indirections.back().pointerInfo.dataType != source.typeName)
         {
             // Load the source and do a logical copy conversion to the target storage class
             source = LoadValueSPIRV(compiler, generator, source);
-            source.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, target.parentTypes.back(), source);
-            generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name));
+            source.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, target.indirections.back().pointerInfo.dataType, source);
+
+            if (!state.needsAlignment)
+                generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name), memoryOperands);
+            else
+                generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name), MemoryOperands::Aligned, state.alignment, memoryOperands);
         }
         else
         {
             // If storages do match, do a simple memory copy
-            generator->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name));
+            if (!state.needsAlignment)
+                generator->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name), memoryOperands);
+            else
+                generator->writer->Instruction(OpCopyMemory, SPVWriter::Section::LocalFunction, SPVArg(val), SPVArg(source.name), MemoryOperands::Aligned, state.alignment, memoryOperands);
         }
     }
 
@@ -3479,260 +3755,6 @@ std::unordered_map<Function*, SPIRVGenerator::FunctionToSPIRVMapping> SPIRVGener
 void
 SPIRVGenerator::SetupIntrinsics()
 {
-   
-
-    /*
-    SPIRVGenerator::IntrinsicMap[Intrinsics::TraceRay] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
-    {
-        assert(args.size() == 11);
-        g->AddCapability("RayTracingKHR");
-        // Load acceleration structure with a special parent load type, as it's
-        SPIRVResult acc = SPIRVResult::Invalid();
-        if (c->target.supportsPhysicalAddressing)
-        {
-            // First load pointer
-            acc = LoadValueSPIRV(c, g, args[0]);
-
-            // Then load structure
-            acc = LoadValueSPIRV(c,g, acc, true);
-        }
-        else
-        {
-            acc = LoadValueSPIRV(c, g, args[0], true);
-        }
-        std::string fmt;
-        for (size_t i = 1; i < args.size() - 1; i++)
-        {
-            SPIRVResult loaded = LoadValueSPIRV(c, g, args[i]);
-            fmt.append(Format("%%%d", loaded.name));
-        }
-        g->AddOp(Format("OpTraceRayKHR %%%d %s", fmt.c_str()));
-        return SPIRVResult(0xFFFFFFFF, returnType);
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::ExportRayIntersection] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
-    {
-        g->writer->Capability(Capabilities::RayTracingKHR);
-        g->writer->Instruction(OpReportIntersectionKHR, SPVWriter::Section::LocalFunction);
-        g->AddCapability("RayTracingKHR");
-        g->AddOp("OpReportIntersectionKHR");
-        return SPIRVResult(0xFFFFFFFF, returnType);
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::ExecuteCallable] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
-    {
-        assert(args.size() == 2);
-        g->AddCapability("RayTracingKHR");
-        SPIRVResult shaderBindingIndex = LoadValueSPIRV(c, g, args[0]);
-        SPIRVResult callableData = LoadValueSPIRV(c, g, args[1]);
-        g->AddOp(Format("OpExecuteCallableKHR %%%d %%%d", shaderBindingIndex.name, callableData.name));
-        return SPIRVResult(0xFFFFFFFF, returnType);
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayLaunchIndex] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = g->AddSymbol("ptr_u32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplRayLaunchIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayLaunchIndex", ret, "BuiltIn LaunchIdKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(vecType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayLaunchSize] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = g->AddSymbol("ptr_u32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplRayLaunchSize", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayLaunchSize", ret, "BuiltIn LaunchSizeKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(vecType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::BLASPrimitiveIndex] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplBLASPrimitiveIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplBLASPrimitiveIndex", ret, "BuiltIn PrimitiveId");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::BLASGeometryIndex] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplBLASGeometryIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplBLASGeometryIndex", ret, "BuiltIn RayGeometryIndexKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::TLASInstanceIndex] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplTLASInstanceIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplTLASInstanceIndex", ret, "BuiltIn InstanceId");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::TLASInstanceCustomIndex] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplTLASInstanceCustomIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplTLASInstanceCustomIndex", ret, "BuiltIn InstanceCustomIndexKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayWorldOrigin] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-        uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplRayWorldOrigin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayWorldOrigin", ret, "BuiltIn WorldRayOriginKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(vecType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayWorldDirection] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-        uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplRayWorldDirection", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayWorldDirection", ret, "BuiltIn WorldRayDirectionKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(vecType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayObjectOrigin] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-        uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplRayObjectOrigin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayObjectOrigin", ret, "BuiltIn ObjectRayOriginKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(vecType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayObjectDirection] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
-        uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplRayObjectDirection", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayObjectDirection", ret, "BuiltIn ObjectRayDirectionKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(vecType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayMin] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplRayMin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayMin", ret, "BuiltIn RayTminKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayMax] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplRayMax", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayMax", ret, "BuiltIn RayTmaxKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayFlags] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplRayFlags", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayFlags", ret, "BuiltIn IncomingRayFlagsKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayHitDistance] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplRayMax", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayMax", ret, "BuiltIn RayTmaxKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::RayHitKind] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
-        uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplRayHitKind", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplRayHitKind", ret, "BuiltIn HitKindKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(baseType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::TLASObjectToWorld] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t matType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4, 3);
-        uint32_t typePtr = g->AddSymbol("ptr_f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
-        uint32_t ret = g->AddSymbol("gplTLASObjectToWorld", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplTLASObjectToWorld", ret, "BuiltIn ObjectToWorldKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(matType);
-        return res;
-    };
-
-    SPIRVGenerator::IntrinsicMap[Intrinsics::TLASWorldToObject] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("RayTracingKHR");
-        uint32_t matType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4, 3);
-        uint32_t typePtr = g->AddSymbol("ptr_f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
-        uint32_t ret = g->AddSymbol("gplTLASWorldToObject", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.Insert(ret);
-        g->AddDecoration("gplTLASWorldToObject", ret, "BuiltIn WorldToObjectKHR");
-        SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-        res.parentTypes.push_back(matType);
-        return res;
-    };
-    */
 }
 
 //------------------------------------------------------------------------------
@@ -3829,6 +3851,8 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 SPIRVResult res;
                 res.name = paramSymbol;
                 res.typeName = typePtrName;
+                res.indirections = varType.indirections;
+                res.AddIndirection({ SPIRVResult::Pointer(typePtrName, varType.typeName, varType.scope) });
                 res.parentTypes = varType.parentTypes;
                 res.parentScopes = varType.parentScopes;
                 res.parentTypes.push_back(varType.typeName);
@@ -3845,6 +3869,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 SPIRVResult res;
                 res.name = paramName;
                 res.typeName = varType.typeName;
+                res.indirections = varType.indirections;
                 res.parentTypes = varType.parentTypes;
                 res.parentScopes = varType.parentScopes;
                 res.isValue = false;
@@ -3854,11 +3879,12 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     }
 
     uint32_t label = generator->writer->MappedInstruction(OpLabel, SPVWriter::Section::Functions);
+
     generator->blockOpen = true;
     auto functionOverride = generator->evaluatingProgram->functionOverrides.Find(func);
     if (functionOverride != generator->evaluatingProgram->functionOverrides.end())
         GenerateStatementSPIRV(compiler, generator, functionOverride->second->ast);
-    else
+    else if (func->ast != nullptr)
         GenerateStatementSPIRV(compiler, generator, func->ast);
 
     generator->writer->BeginFunction();
@@ -3904,7 +3930,8 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
 
     // If the generator is set to generate an interface, do so and set the state to emit explicitly laid out sub-types
     TransientString nameStr = FormatExplicitLayout(struc->name, generator->typeState.layout);
-    if (generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface)
+    bool boundAsInterface = generator->typeState.layout == SPIRVGenerator::TypeState::TypeLayout::Interface;
+    if (boundAsInterface)
     {
         generator->writer->Decorate(SPVArg(structName), Decorations::Block);
         generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
@@ -3927,16 +3954,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             if (compiler->options.debugSymbols)
                 generator->writer->Instruction(OpMemberName, SPVWriter::Section::DebugNames, SPVArg{ structName }, i, var->name.c_str());
             
-            SPIRVResult varType;
-            if (varResolved->usageBits.flags.isPhysicalAddress)
-            {
-                // If physical address, generate a uint type
-                varType.typeName = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt);
-            }
-            else
-            {
-                varType = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol);
-            }
+            SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol);
             memberTypes.append(Format("%%%d ", varType.typeName));
             memberTypeArray.Append(SPVArg{ varType.typeName });
 
@@ -3984,7 +4002,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
         {
             assert(args.size() == 2);
             assert(!args[0].isValue);
-            std::vector<SPIRVResult> index;
+            std::vector<SPIRVResult::Indirection> index;
             SPIRVResult accessedArg = args[0];
 
             Function::__Resolved* funRes = Symbol::Resolved(fun);
@@ -3994,17 +4012,9 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
             g->typeState.storage = SPIRVResult::Storage::Function;
 
-            if (args[0].isStructPadded)
-            {
-                SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-                index = { zero, LoadValueSPIRV(c, g, args[1]) };
-            }
-            else
-            {
-                index = { LoadValueSPIRV(c, g, args[1]) };
-            }
+            index = { SPIRVResult::Access(LoadValueSPIRV(c, g, args[1]).name, ptrReturnType.indirections[0].pointerInfo.ptrType, ptrReturnType.indirections[0].pointerInfo.dataType) };
 
-            accessedArg.AddAccessChainLink(index);
+            accessedArg.AddIndirection(index);
             accessedArg.typeName = ptrReturnType.typeName;
             accessedArg.parentTypes = ptrReturnType.parentTypes;
             accessedArg.parentScopes = ptrReturnType.parentScopes;
@@ -4033,7 +4043,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
         {
             assert(args.size() == 3);
             assert(!args[0].isValue);
-            std::vector<SPIRVResult> index;
+            std::vector<SPIRVResult::Indirection> index;
             SPIRVResult accessedArg = args[0];
 
             Variable::__Resolved* firstArgRes = Symbol::Resolved(fun->parameters[0]);
@@ -4046,16 +4056,9 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
             g->typeState.storage = SPIRVResult::Storage::Function;
 
-            if (args[0].isStructPadded)
-            {
-                SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-                index = { zero, LoadValueSPIRV(c, g, args[1]) };
-            }
-            else
-            {
-                index = { LoadValueSPIRV(c, g, args[1]) };
-            }
-            accessedArg.AddAccessChainLink(index);
+            index = { SPIRVResult::Access(LoadValueSPIRV(c, g, args[1]).name, ptrToDataType.indirections[0].pointerInfo.ptrType, ptrToDataType.indirections[0].pointerInfo.dataType) };
+
+            accessedArg.AddIndirection(index);
             accessedArg.typeName = ptrToDataType.typeName;
             accessedArg.parentTypes = ptrToDataType.parentTypes;
             accessedArg.parentScopes = ptrToDataType.parentScopes;
@@ -4072,7 +4075,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
         {
             assert(args.size() == 2);
             assert(!args[0].isValue);
-            std::vector<SPIRVResult> index;
+            std::vector<SPIRVResult::Indirection> index;
             SPIRVResult accessedArg = args[0];
 
             Function::__Resolved* funRes = Symbol::Resolved(fun);
@@ -4082,17 +4085,9 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
             g->typeState.storage = SPIRVResult::Storage::Function;
 
-            if (args[0].isStructPadded)
-            {
-                SPIRVResult zero = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0));
-                index = { zero, LoadValueSPIRV(c, g, args[1]) };
-            }
-            else
-            {
-                index = { LoadValueSPIRV(c, g, args[1]) };
-            }
+            index = { SPIRVResult::Access(LoadValueSPIRV(c, g, args[1]).name, ptrReturnType.indirections[0].pointerInfo.ptrType, ptrReturnType.indirections[0].pointerInfo.dataType) };
 
-            accessedArg.AddAccessChainLink(index);
+            accessedArg.AddIndirection(index);
             accessedArg.typeName = ptrReturnType.typeName;
             accessedArg.parentTypes = ptrReturnType.parentTypes;
             accessedArg.parentScopes = ptrReturnType.parentScopes;
@@ -4280,22 +4275,30 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         || storage == SPIRVResult::Storage::StorageBuffer && varResolved->typeSymbol->category == Type::Category::StructureCategory
         || storage == SPIRVResult::Storage::Uniform && varResolved->typeSymbol->category == Type::Category::StructureCategory
         || storage == SPIRVResult::Storage::PushConstant;
+
+    bool physicalStorage = storage == SPIRVResult::Storage::PhysicalBuffer;
     
     generator->typeState.storage = storage;
     if (logicallyAddressed)
     {
         generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Interface;
     }
+
+    if (physicalStorage)
+    {
+        generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+    }
+
     SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol);
+
     generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Relaxed;
     generator->typeState.storage = SPIRVResult::Storage::Function;
     //std::string type = varResolved->type.name;
     ConstantString scope = SPIRVResult::ScopeToString(typeName.scope);
 
-
-
     std::vector<uint32_t> parentTypes = { typeName.typeName };
     std::vector<SPIRVResult::Storage> parentScopes = { typeName.scope };
+    std::vector<SPIRVResult::Indirection> parentIndirections = typeName.indirections;
     uint32_t name = INVALID_ARG;
 
     SPIRVResult initializer = SPIRVResult::Invalid();
@@ -4331,6 +4334,12 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 initializer = it->second(compiler, generator, typeName.typeName, { initializer });
         }
 
+        // TODO: If physical storage, convert the uint to a pointer type
+        if (physicalStorage)
+        {
+
+        }
+
         generator->linkDefineEvaluation = false;
         generator->linkDefineSlot = UINT32_MAX;
     }
@@ -4346,13 +4355,19 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             TStr ptrType = TStr("ptr_", ToSPIRVTypeString(compiler, generator, var->type, varResolved->typeSymbol));
             typeName.parentScopes.push_back(typeName.scope);
 
-            if (typeName.scope == SPIRVResult::Storage::StorageBuffer || typeName.scope == SPIRVResult::Storage::Uniform)
+            if (typeName.scope == SPIRVResult::Storage::StorageBuffer
+                || typeName.scope == SPIRVResult::Storage::Uniform)
             {
                 typeName.scope = SPIRVResult::Storage::Function;
                 storage = SPIRVResult::Storage::Function;
             }
+            if (physicalStorage && varResolved->typeSymbol->category == Type::Category::StructureCategory)
+            {
+                ptrType = TStr(ptrType, "_Explicit");
+            }
             typePtrName = AddType(generator, TStr::Compact(ptrType, "_", scope), OpTypePointer, ScopeToEnum(typeName.scope), SPVArg{ typeName.typeName });
             typeName.parentTypes.push_back(typeName.typeName);
+            typeName.AddIndirection({ SPIRVResult::Pointer(typePtrName, typeName.typeName, typeName.scope) });
             
             typeName.typeName = typePtrName;
         }
@@ -4376,8 +4391,10 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                     generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
 
                 SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
-                if (typeName.parentTypes.back() != loaded.typeName)
-                    loaded.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, typeName.parentTypes.back(), loaded);
+                if (loaded.typeName != typeName.indirections.back().pointerInfo.dataType)
+                {
+                    loaded.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, typeName.indirections.back().pointerInfo.dataType, SPVArg(loaded.name));
+                }
                 generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(name), loaded);
             }
         }
@@ -4452,7 +4469,9 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         ret.derefs = typeName.derefs;
         ret.parentTypes = typeName.parentTypes;
         ret.parentScopes = typeName.parentScopes;
-        ret.accessChain = typeName.accessChain;
+        ret.indirections = typeName.indirections;
+        ret.memoryModifiers.volatileAccess = varResolved->accessBits.flags.volatileAccess;
+        ret.memoryModifiers.nonTemporalAccess = varResolved->accessBits.flags.nonTemporalAccess;
         BindSymbol(generator, declarationScope, var->name.c_str(), ret);
         
         return ret;
@@ -4472,6 +4491,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         res.isSpecialization = true;
         res.scope = typeName.scope;
         res.isStructPadded = typeName.isStructPadded;
+        res.indirections = parentIndirections;
         res.parentTypes = parentTypes;
         res.parentScopes = parentScopes;
         return res;
@@ -4511,7 +4531,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
 
             SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
             if (!resolvedCall->argumentTypes[i].IsPointer())
-                arg = LoadValueSPIRV(compiler,generator, arg);
+                arg = LoadValueSPIRV(compiler, generator, arg);
 
 
             generator->literalExtract = false;
@@ -4552,7 +4572,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
             }
             else
             {
-                if (typeName.parentTypes.back() != arg.parentTypes.back())
+                if (typeName.indirections.back().pointerInfo.dataType != arg.indirections.back().pointerInfo.dataType)
                 {
                     arg.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, typeName.typeName, SPVArg(arg.name));
                 }
@@ -4666,9 +4686,44 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         auto it = generator->generatorIntrinsics.find(resolvedCall->function);
         if (it == generator->generatorIntrinsics.end())
         {
-            assert(resolvedCall->function->backendIndex != UINT64_MAX && resolvedCall->function->backendIndex < SPIRVDefaultIntrinsics.size());
-            auto it = SPIRVDefaultIntrinsics[resolvedCall->function->backendIndex];
-            return it(compiler, generator, returnTypeName.typeName, args);
+            if (resolvedCall->function->backendIndex != UINT64_MAX)
+            {
+                assert(resolvedCall->function->backendIndex < SPIRVDefaultIntrinsics.size());
+                auto it = SPIRVDefaultIntrinsics[resolvedCall->function->backendIndex];
+                return it(compiler, generator, returnTypeName.typeName, args);
+            }
+            else
+            {
+                // Generate functions here, only function available now is pointer cast
+                generator->generatorIntrinsics[resolvedCall->function] = [&resolvedCall](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+                {
+                    return args[0];
+                    /*
+                    Function::__Resolved* resolvedCallFunction = Symbol::Resolved(resolvedCall->function);
+                    auto currentStorage = g->typeState.storage;
+                    SPIRVGenerator::TypeState::TypeLayout oldLayout = g->typeState.layout;
+                    g->typeState.storage = SPIRVResult::Storage::PhysicalBuffer;
+                    g->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+                    auto type = resolvedCall->function->returnType;
+                    type.address = false;
+                    SPIRVResult ptrReturnType = GenerateTypeSPIRV(c, g, type, resolvedCallFunction->returnTypeSymbol, true);
+                    SPIRVResult loadedValue = LoadValueSPIRV(c, g, args[0]);
+                    uint32_t ret = g->writer->MappedInstruction(OpConvertUToPtr, SPVWriter::Section::LocalFunction, SPVArg(ptrReturnType.typeName), loadedValue);
+
+                    SPIRVResult res = ptrReturnType;
+                    res.name = ret;
+
+                    g->typeState.storage = currentStorage; 
+                    g->typeState.layout = oldLayout;
+                    return res;
+                    */
+                };
+
+                // This means the function must be generated here
+                auto it = generator->generatorIntrinsics.find(resolvedCall->function);
+                assert(it != generator->generatorIntrinsics.end());
+                return it->second(compiler, generator, returnTypeName.typeName, args);
+            }
         }
         else
             return it->second(compiler, generator, returnTypeName.typeName, args);
@@ -4713,7 +4768,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
-    if (leftType.modifiers.size == 0)
+    if (leftType.modifiers.size == 0 && !leftType.address)
     {
         Type* type = static_cast<Type*>(compiler->GetSymbol(leftType.name));
 
@@ -4744,22 +4799,67 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
     }
     else
     {
-        SPIRVResult ret = leftSymbol;
-        ret.typeName = returnType.typeName;
-        ret.parentTypes = returnType.parentTypes;
-        ret.parentScopes = returnType.parentScopes;
-        
-        // If the left side is an unbound array, it lives in a struct, so access chain must first get the first (0) element
-        if (ret.isStructPadded)
+        if (arrayIndexExpressionResolved->isAddressIndex)
         {
-            SPIRVResult zero = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(0));
-            ret.AddAccessChainLink({zero, indexConstant});
+            
+            SPIRVResult ret = leftSymbol;
+            ret.typeName = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt64);
+            //ret.indirections = {};
+            ret.parentTypes = returnType.parentTypes;
+            ret.parentScopes = returnType.parentScopes;
+
+            // If the left side is an unbound array, it lives in a struct, so access chain must first get the first (0) element
+            if (ret.isStructPadded)
+            {
+                SPIRVResult zero = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(0));
+                
+                ret.AddIndirection({ SPIRVResult::Access(zero.name, ret.indirections.back().pointerInfo.ptrType, ret.indirections.back().pointerInfo.dataType) });
+            }
+
+            // Convert to UInt, add/sub, and convert back to ptr
+            SPIRVResult stride = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt64(arrayIndexExpressionResolved->lhsType->byteSize));
+            if (indexConstant.typeName != ret.typeName)
+            {
+                indexConstant.name = generator->writer->MappedInstruction(OpUConvert, SPVWriter::Section::LocalFunction, ret.typeName, indexConstant);
+                indexConstant.typeName = ret.typeName;
+            }
+            uint32_t indexOffset = generator->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, indexConstant.typeName, stride, indexConstant);
+
+            // Change layout to be explicit first, then generate data type
+            auto oldLayout = generator->typeState.layout;
+            generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+            SPIRVResult dataType = GenerateTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType);
+
+            // Now generate pointer type, and change storage
+            auto oldStorage = generator->typeState.storage;
+            generator->typeState.storage = SPIRVResult::Storage::PhysicalBuffer;
+            returnType = GeneratePointerTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType);
+            
+            // Finally convert back to original state
+            generator->typeState.layout = oldLayout;
+            generator->typeState.storage = oldStorage;
+
+            // Add an access chain link to index at element zero
+            Type::__Resolved* returnTypeResolved = Symbol::Resolved(arrayIndexExpressionResolved->returnType);
+            ret.AddIndirection({ SPIRVResult::Address(returnType.typeName, dataType.typeName, indexConstant.typeName, indexOffset, returnTypeResolved->baseAlignment) });
+            ret.addrefs++; // Add a fake ref to avoid crawling up the types
+            ret.memoryModifiers.alignedAccess = true;
+            ret.scope = SPIRVResult::Storage::PhysicalBuffer;
+
+            return ret;
         }
         else
         {
-            ret.AddAccessChainLink({indexConstant});
+            SPIRVResult ret = leftSymbol;
+            ret.typeName = returnType.typeName;
+            ret.indirections = {};
+            ret.parentTypes = returnType.parentTypes;
+            ret.parentScopes = returnType.parentScopes;
+
+            ret.AddIndirection({ SPIRVResult::Access(indexConstant.name, returnType.indirections.back().pointerInfo.ptrType, returnType.indirections.back().pointerInfo.dataType) });
+
+            return ret;
         }
-        return ret;
     }
     return SPIRVResult::Invalid();
 }
@@ -4889,7 +4989,6 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
     Type::FullType leftType, rightType;
     binaryExpression->left->EvalType(leftType);
     binaryExpression->right->EvalType(rightType);
-
     
     Type* lhsType = binaryExpressionResolved->lhsType;
     Type* rhsType = binaryExpressionResolved->rhsType;
@@ -4951,15 +5050,31 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, fun->returnType, funResolved->returnTypeSymbol);
 
         // Get operator 
-        auto it = generator->generatorIntrinsics.find(fun);
-        if (it == generator->generatorIntrinsics.end())
+        if (!binaryExpressionResolved->isAddressOperation)
         {
-            assert(fun->backendIndex != UINT64_MAX && fun->backendIndex < SPIRVDefaultIntrinsics.size());
-            auto it = SPIRVDefaultIntrinsics[fun->backendIndex];
-            rightValue = it(compiler, generator, retType.typeName, { leftValue, rightValue });
+            auto it = generator->generatorIntrinsics.find(fun);
+            if (it == generator->generatorIntrinsics.end())
+            {
+                assert(fun->backendIndex != UINT64_MAX && fun->backendIndex < SPIRVDefaultIntrinsics.size());
+                auto it = SPIRVDefaultIntrinsics[fun->backendIndex];
+                rightValue = it(compiler, generator, retType.typeName, { leftValue, rightValue });
+            }
+            else
+                rightValue = it->second(compiler, generator, retType.typeName, { leftValue, rightValue });
         }
         else
-            rightValue = it->second(compiler, generator, retType.typeName, { leftValue, rightValue });
+        {
+            // Scale with size of type first
+            uint32_t scaledOffset = generator->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, rightValue.typeName, rightValue, GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(rhsType->byteSize)));
+            uint32_t offsetPtr = 0x0;
+            if (binaryExpression->op == '+')
+                offsetPtr = generator->writer->MappedInstruction(OpIAdd, SPVWriter::Section::LocalFunction, rightValue.typeName, leftValue, SPVArg(scaledOffset));
+            else if (binaryExpression->op == '-')
+                offsetPtr = generator->writer->MappedInstruction(OpISub, SPVWriter::Section::LocalFunction, rightValue.typeName, leftValue, SPVArg(scaledOffset));
+            else
+                assert(false); // Unsupported pointer operation
+            rightValue.name = offsetPtr;
+        }
     }
 
     if (binaryExpressionResolved->isAssignment)
@@ -5092,23 +5207,53 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
 
                         // Create an index for the offset in the struct, and a type for the type of that member
                         SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
-                        generator->typeState.storage = lhs.scope;
+                        auto oldStorage = generator->typeState.storage;
+                        SPIRVResult::Storage storage = lhs.scope;
+                        if (accessExpressionResolved->isAddressDeref)
+                            storage = SPIRVResult::Storage::PhysicalBuffer;
+                        generator->typeState.storage = storage;
                         SPIRVResult typeName = GeneratePointerTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol);
-                        generator->typeState.storage = SPIRVResult::Storage::Function;
+
+                        if (accessExpressionResolved->isAddressDeref)
+                        {
+                            Type::FullType temp = accessExpressionResolved->leftType;
+                            temp.address = false;
+                            auto oldLayout = generator->typeState.layout;
+                            generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
+                            SPIRVResult leftType = GeneratePointerTypeSPIRV(compiler, generator, temp, accessExpressionResolved->lhsType);
+                            lhs.AddIndirection({ SPIRVResult::Address(leftType.indirections.back().pointerInfo.ptrType, leftType.indirections.back().pointerInfo.dataType, Symbol::Resolved(memResolved->typeSymbol)->baseAlignment) });
+                            generator->typeState.layout = oldLayout;
+                        }
                         
-                        // Since this is na access chain, we need to be returning a pointer to the type
-                        generator->PushAccessChain(lhsSymbol, lhs.scope);
+                        // Add access
+                        lhs.AddIndirection({ SPIRVResult::Access(indexName.name, typeName.indirections[0].pointerInfo.ptrType, typeName.indirections[0].pointerInfo.dataType) });
+
+                        generator->typeState.storage = oldStorage;
+                        
+                        // Push a temporary value without any access chains
+                        SPIRVResult temp = lhs;
+                        temp.indirections = {};
+                        generator->PushAccessChain(temp);
                         SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, accessExpression->right);
                         generator->PopAccessChain();
-                        rhs.scope = lhs.scope;
-                        rhs.name = lhs.name;
-                        rhs.accessChain.insert(rhs.accessChain.begin(), lhs.accessChain.begin(), lhs.accessChain.end());
+
+                        // Merge the result of the rhs with the lhs
+                        lhs.typeName = rhs.typeName;
+                        lhs.indirections.insert(lhs.indirections.end(), rhs.indirections.begin(), rhs.indirections.end());
 
                         if (accessExpression->tailDeref)
-                            rhs.derefs++;
+                        {
+                            lhs.derefs++;
+                            SPIRVResult dataName = GenerateTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol);
+                            lhs.indirections.push_back({ SPIRVResult::Pointer(typeName.typeName, dataName.typeName, typeName.scope) });
+                        }
                         if (accessExpression->tailRef)
-                            rhs.addrefs++;
-                        return rhs;
+                        {
+                            lhs.addrefs++;
+                            assert(lhs.indirections.back().type == SPIRVResult::Indirection::Type::Pointer);
+                            lhs.indirections.pop_back();
+                        }
+                        return lhs;
                     }
                     else if (lhsSymbol->symbolType == Symbol::EnumerationType)
                     {
@@ -5329,6 +5474,17 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         }
         case '*':
         {
+            //SPIRVResult dataName = GeneratePointerTypeSPIRV(compiler, generator, unaryExpressionResolved->fullType, unaryExpressionResolved->type);
+            //rhs.AddIndirection({ SPIRVResult::Pointer(dataName.indirections[0].pointerInfo.ptrType, dataName.indirections[0].pointerInfo.dataType, rhs.scope) });
+
+            // Split indirections by shaving off the topmost one
+            SPIRVResult temp = rhs;
+            temp.indirections = { rhs.indirections.back() };
+            temp = LoadValueSPIRV(compiler, generator, temp);
+            temp.indirections = rhs.indirections;
+            temp.indirections.pop_back();
+            temp.isValue = temp.indirections.size() == 0;
+            rhs = temp;
             rhs.derefs++;
             return rhs;
             //SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, unaryExpressionResolved->fullType, unaryExpressionResolved->type);
@@ -5338,6 +5494,10 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         }
         case '&':
         {
+            assert(rhs.indirections.back().type == SPIRVResult::Indirection::Type::Pointer);
+            rhs.indirections.pop_back();
+            rhs.isValue = rhs.indirections.size() == 0;
+
             rhs.addrefs++;
             return rhs;
         }
@@ -5566,24 +5726,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                         }
                         else
                         {
-                            auto [ty, accessStorage] = generator->accessChain.back();
-                            for (size_t i = 0; i < ty->symbols.size; i++)
-                            {
-                                if (ty->symbols[i]->name == symbolExpression->symbol)
-                                {
-                                    Variable* var = static_cast<Variable*>(ty->symbols[i]);
-                                    Variable::__Resolved* varRes = Symbol::Resolved(var);
-                                    SPIRVResult index = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
-
-                                    // If part of an access chain, generate a pointer version of the type
-                                    generator->typeState.storage = accessStorage;
-                                    res = GeneratePointerTypeSPIRV(compiler, generator, var->type, varRes->typeSymbol);
-                                    generator->typeState.storage = SPIRVResult::Storage::Function;
-                                    res.scope = accessStorage;
-                                    res.AddAccessChainLink({ index });
-                                    break;
-                                }
-                            }
+                            return generator->accessChain.back();
                         }
                     }
                     else
@@ -5598,7 +5741,8 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                     Enumeration* enu = static_cast<Enumeration*>(symResolved->symbol);
                     Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
                     type = GenerateTypeSPIRV(compiler, generator, enu->type, enuResolved->typeSymbol);
-                    auto res = SPIRVResult(INVALID_ARG, type.typeName, false, false, type.scope, type.parentTypes, type.parentScopes);
+                    auto res = SPIRVResult(INVALID_ARG, type.typeName, false, false, type.scope);
+                    res.indirections = type.indirections;
                     return res;
                 }
                 else
@@ -5610,6 +5754,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                     SPIRVResult ret = GetSymbol(generator, symbolExpression->symbol).value;
                     ret.typeName = type.typeName;
                     ret.scope = type.scope;
+                    ret.indirections = type.indirections;
                     ret.parentTypes = type.parentTypes;
                     ret.parentScopes = type.parentScopes;
                     return ret;
@@ -6701,9 +6846,9 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 /**
 */
 void
-SPIRVGenerator::PushAccessChain(Type* chain, SPIRVResult::Storage scope)
+SPIRVGenerator::PushAccessChain(SPIRVResult res)
 {
-    this->accessChain.push_back(std::make_tuple(chain, scope));
+    this->accessChain.push_back(res);
 }
 
 //------------------------------------------------------------------------------

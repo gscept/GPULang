@@ -114,12 +114,16 @@ struct Compiler
 
     /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
     bool AddSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
-    /// get symbol by name
-    Symbol* GetSymbol(const FixedString& name) const;
     /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
     bool AddSymbol(const TransientString& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
+    /// adds symbol directly to the global scope, bypassing any local scopes, allow duplicate if symbol type should support overloading
+    bool AddGlobalSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate = false);
+    /// adds symbol directly to the global scope, bypassing any local scopes, allow duplicate if symbol type should support overloading
+    bool AddGlobalSymbol(const TransientString& name, Symbol* symbol, bool allowDuplicate = false);
     /// get symbol by name
     Symbol* GetSymbol(const TransientString& name) const;
+    /// get symbol by name
+    Symbol* GetSymbol(const FixedString& name) const;
     /// Get type by FullType
     Type* GetType(const Type::FullType& type) const;
     /// get symbol by name as other type

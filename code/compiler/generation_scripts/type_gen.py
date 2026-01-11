@@ -78,7 +78,7 @@ def generate_swizzle_two():
     return swizzles
 
 def generate_types():
-    types = ["Float32", "UInt32", "Int32", "Bool8", "Float16", "UInt16", "Int16"]
+    types = ["Float32", "UInt32", "Int32", "Bool8", "Float16", "UInt16", "Int16", "UInt64"]
 
 
     bit_width_mapping = {
@@ -89,6 +89,7 @@ def generate_types():
         "Float16": 16,
         "UInt16": 16,
         "Int16": 16,
+        "UInt64" : 64,
     }
 
     data_type_mapping = {
@@ -99,6 +100,7 @@ def generate_types():
         "Float16": "f16",
         "UInt16": "u16",
         "Int16": "i16",
+        "UInt64": "u64",
         "Float32x2": "f32x2",
         "Float32x3": "f32x3",
         "Float32x4": "f32x4",
@@ -190,7 +192,8 @@ def generate_types():
         'Bool8': 'Bool8',
         'Bool8x2': 'Bool8',
         'Bool8x3': 'Bool8',
-        'Bool8x4': 'Bool8'
+        'Bool8x4': 'Bool8',
+        'UInt64': 'UInt64'
     }
 
     
@@ -201,7 +204,8 @@ def generate_types():
         'Int16': 1, 'Int16x2': 2, 'Int16x3': 3, 'Int16x4': 4,
         'UInt32': 1, 'UInt32x2': 2, 'UInt32x3': 3, 'UInt32x4': 4,
         'UInt16': 1, 'UInt16x2': 2, 'UInt16x3': 3, 'UInt16x4': 4,
-        'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4
+        'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4,
+        'UInt64': 1
     }
 
     matrix_size_mapping = {
@@ -345,12 +349,11 @@ def generate_types():
     spirv_intrinsics.write("//-------------------------------------------------\n")
     spirv_intrinsics.write("static auto CreateSampledImageSPIRV = [](const Compiler* c, SPIRVGenerator* g, SPIRVResult img, SPIRVResult samp) -> SPIRVResult\n")
     spirv_intrinsics.write("{\n")
-    spirv_intrinsics.write("        assert(img.parentTypes.size() > 0);\n")
-    spirv_intrinsics.write("        SPIRVResult image = LoadValueSPIRV(c, g, img, true);\n")
-    spirv_intrinsics.write("        SPIRVResult sampler = LoadValueSPIRV(c, g, samp, true);\n")
-    spirv_intrinsics.write("        uint32_t typeSymbol = AddType(g, TStr::Compact(\"sampledImage_\", img.parentTypes[0]), OpTypeSampledImage, SPVArg(img.parentTypes[0]));\n")
-    spirv_intrinsics.write("        uint32_t sampledImage = g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, typeSymbol, image, sampler);\n")
-    spirv_intrinsics.write("        return SPIRVResult(sampledImage, typeSymbol, true);\n")
+    spirv_intrinsics.write("    SPIRVResult image = LoadValueSPIRV(c, g, img, true);\n")
+    spirv_intrinsics.write("    SPIRVResult sampler = LoadValueSPIRV(c, g, samp, true);\n")
+    spirv_intrinsics.write("    uint32_t typeSymbol = AddType(g, TStr::Compact(\"sampledImage_\", image.typeName), OpTypeSampledImage, SPVArg(image.typeName));\n")
+    spirv_intrinsics.write("    uint32_t sampledImage = g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, typeSymbol, image, sampler);\n")
+    spirv_intrinsics.write("    return SPIRVResult(sampledImage, typeSymbol, true);\n")
     spirv_intrinsics.write("};\n\n")
 
     spirv_type_converter_list = []
@@ -688,6 +691,8 @@ def generate_types():
     }
     for size in range(1, 5):
         for type in types:
+            if type == 'UInt64' and size > 1:
+                continue
             if size == 1:
                 data_type_name = data_type_mapping[type]
                 type_name = type
@@ -707,7 +712,8 @@ def generate_types():
 
             # Conversions
             for type2 in types:
-
+                if type2 == 'UInt64' and size > 1:
+                    continue
                 if size == 1 and type2 == type:
                     continue
 
@@ -846,7 +852,7 @@ def generate_types():
                 spirv_function += f'    g->typeState.storage = SPIRVResult::Storage::Function;\n'
                 spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);\n'
                 spirv_function += '    SPIRVResult ret = args[0];\n'
-                spirv_function += '    ret.AddAccessChainLink({index});\n'
+                spirv_function += '    ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});\n'
                 spirv_function += '    ret.typeName = returnTypePtr.typeName;\n'
                 spirv_function += '    ret.parentTypes = returnTypePtr.parentTypes;\n'
                 spirv_function += '    ret.parentScopes = returnTypePtr.parentScopes;\n'
@@ -1243,7 +1249,7 @@ def generate_types():
                     spirv_function += f'    g->typeState.storage = SPIRVResult::Storage::Function;\n'
                     spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);\n'
                     spirv_function += '    SPIRVResult ret = args[0];\n'
-                    spirv_function += '    ret.AddAccessChainLink({index});\n'
+                    spirv_function += '    ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});\n'
                     spirv_function += '    ret.typeName = returnTypePtr.typeName;\n'
                     spirv_function += '    ret.parentTypes = returnTypePtr.parentTypes;\n'
                     spirv_function += '    ret.parentScopes = returnTypePtr.parentScopes;\n'
@@ -2989,6 +2995,7 @@ def generate_types():
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
         spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
         
@@ -3192,6 +3199,7 @@ def generate_types():
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
         spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
 
         fun.spirv = spirv_function
@@ -3347,6 +3355,8 @@ def generate_types():
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
+
     spirv_function += '    return res;\n'
     
     fun.spirv = spirv_function
@@ -3441,6 +3451,8 @@ def generate_types():
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
+    spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});\n'
+
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3465,6 +3477,8 @@ def generate_types():
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
+    spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});\n'
+
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3491,6 +3505,8 @@ def generate_types():
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);\n'
     spirv_function += '    res.parentTypes.push_back(returnType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
+    spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});\n'
+
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3520,6 +3536,7 @@ def generate_types():
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
         spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
         fun.spirv = spirv_function
@@ -3547,6 +3564,7 @@ def generate_types():
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
     spirv_function += '    return res;\n'
     fun.spirv = spirv_function
     functions.append(fun)
@@ -3573,6 +3591,7 @@ def generate_types():
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
     spirv_function += '    return res;\n'
     fun.spirv = spirv_function
     functions.append(fun)
@@ -3599,6 +3618,7 @@ def generate_types():
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
     spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
@@ -3698,6 +3718,7 @@ def generate_types():
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
         spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
 
@@ -3726,6 +3747,7 @@ def generate_types():
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.parentTypes.push_back(baseType);\n'
     spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
     spirv_function += '    return res;\n'
     
 
@@ -3761,6 +3783,7 @@ def generate_types():
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
         spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
 
@@ -3798,6 +3821,7 @@ def generate_types():
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
         spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
 
@@ -5244,6 +5268,7 @@ def generate_types():
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
         spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
 
         fun.spirv = spirv_function

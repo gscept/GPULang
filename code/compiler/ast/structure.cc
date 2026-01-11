@@ -27,7 +27,7 @@ Structure::Structure()
     typeResolved->usageFlags.bits = 0x0;
     typeResolved->accessBits.bits = 0x0;
     typeResolved->byteSize = 0;
-    typeResolved->baseAlignment = 0;
+    typeResolved->baseAlignment = 16; // Default to 16 byte alignment
     typeResolved->packMembers = false;
 }
 

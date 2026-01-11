@@ -9,6 +9,102 @@
 #include "compiler.h"
 namespace GPULang
 {
+/// mad with UInt32x3, UInt32x3, UInt32x3
+Variable mad_UInt32x3_arg;
+Variable mad_UInt32x3_mul;
+Variable mad_UInt32x3_add;
+Function mad_UInt32x3;
+inline constexpr std::array mad_UInt32x3_args = { &mad_UInt32x3_arg, &mad_UInt32x3_mul, &mad_UInt32x3_add };
+
+/// mad with UInt32x4, UInt32x4, UInt32x4
+Variable mad_UInt32x4_arg;
+Variable mad_UInt32x4_mul;
+Variable mad_UInt32x4_add;
+Function mad_UInt32x4;
+inline constexpr std::array mad_UInt32x4_args = { &mad_UInt32x4_arg, &mad_UInt32x4_mul, &mad_UInt32x4_add };
+
+/// mad with UInt16, UInt16, UInt16
+Variable mad_UInt16_arg;
+Variable mad_UInt16_mul;
+Variable mad_UInt16_add;
+Function mad_UInt16;
+inline constexpr std::array mad_UInt16_args = { &mad_UInt16_arg, &mad_UInt16_mul, &mad_UInt16_add };
+
+/// mad with UInt16x2, UInt16x2, UInt16x2
+Variable mad_UInt16x2_arg;
+Variable mad_UInt16x2_mul;
+Variable mad_UInt16x2_add;
+Function mad_UInt16x2;
+inline constexpr std::array mad_UInt16x2_args = { &mad_UInt16x2_arg, &mad_UInt16x2_mul, &mad_UInt16x2_add };
+
+/// mad with UInt16x3, UInt16x3, UInt16x3
+Variable mad_UInt16x3_arg;
+Variable mad_UInt16x3_mul;
+Variable mad_UInt16x3_add;
+Function mad_UInt16x3;
+inline constexpr std::array mad_UInt16x3_args = { &mad_UInt16x3_arg, &mad_UInt16x3_mul, &mad_UInt16x3_add };
+
+/// mad with UInt16x4, UInt16x4, UInt16x4
+Variable mad_UInt16x4_arg;
+Variable mad_UInt16x4_mul;
+Variable mad_UInt16x4_add;
+Function mad_UInt16x4;
+inline constexpr std::array mad_UInt16x4_args = { &mad_UInt16x4_arg, &mad_UInt16x4_mul, &mad_UInt16x4_add };
+
+/// dot with Float32x2, Float32x2
+Variable dot_Float32x2_x;
+Variable dot_Float32x2_y;
+Function dot_Float32x2;
+inline constexpr std::array dot_Float32x2_args = { &dot_Float32x2_x, &dot_Float32x2_y };
+
+/// dot with Float32x3, Float32x3
+Variable dot_Float32x3_x;
+Variable dot_Float32x3_y;
+Function dot_Float32x3;
+inline constexpr std::array dot_Float32x3_args = { &dot_Float32x3_x, &dot_Float32x3_y };
+
+/// dot with Float32x4, Float32x4
+Variable dot_Float32x4_x;
+Variable dot_Float32x4_y;
+Function dot_Float32x4;
+inline constexpr std::array dot_Float32x4_args = { &dot_Float32x4_x, &dot_Float32x4_y };
+
+/// dot with Float16x2, Float16x2
+Variable dot_Float16x2_x;
+Variable dot_Float16x2_y;
+Function dot_Float16x2;
+inline constexpr std::array dot_Float16x2_args = { &dot_Float16x2_x, &dot_Float16x2_y };
+
+/// dot with Float16x3, Float16x3
+Variable dot_Float16x3_x;
+Variable dot_Float16x3_y;
+Function dot_Float16x3;
+inline constexpr std::array dot_Float16x3_args = { &dot_Float16x3_x, &dot_Float16x3_y };
+
+/// dot with Float16x4, Float16x4
+Variable dot_Float16x4_x;
+Variable dot_Float16x4_y;
+Function dot_Float16x4;
+inline constexpr std::array dot_Float16x4_args = { &dot_Float16x4_x, &dot_Float16x4_y };
+
+/// reflect with Float32x2, Float32x2
+Variable reflect_Float32x2_incident;
+Variable reflect_Float32x2_normal;
+Function reflect_Float32x2;
+inline constexpr std::array reflect_Float32x2_args = { &reflect_Float32x2_incident, &reflect_Float32x2_normal };
+
+/// reflect with Float32x3, Float32x3
+Variable reflect_Float32x3_incident;
+Variable reflect_Float32x3_normal;
+Function reflect_Float32x3;
+inline constexpr std::array reflect_Float32x3_args = { &reflect_Float32x3_incident, &reflect_Float32x3_normal };
+
+/// reflect with Float32x4, Float32x4
+Variable reflect_Float32x4_incident;
+Variable reflect_Float32x4_normal;
+Function reflect_Float32x4;
+inline constexpr std::array reflect_Float32x4_args = { &reflect_Float32x4_incident, &reflect_Float32x4_normal };
+
 /// reflect with Float16x2, Float16x2
 Variable reflect_Float16x2_incident;
 Variable reflect_Float16x2_normal;
@@ -713,103 +809,281 @@ Variable step_Float32x4_x;
 Function step_Float32x4;
 inline constexpr std::array step_Float32x4_args = { &step_Float32x4_edge, &step_Float32x4_x };
 
-/// step with Float16, Float16
-Variable step_Float16_edge;
-Variable step_Float16_x;
-Function step_Float16;
-inline constexpr std::array step_Float16_args = { &step_Float16_edge, &step_Float16_x };
-
-/// step with Float16x2, Float16x2
-Variable step_Float16x2_edge;
-Variable step_Float16x2_x;
-Function step_Float16x2;
-inline constexpr std::array step_Float16x2_args = { &step_Float16x2_edge, &step_Float16x2_x };
-
-/// step with Float16x3, Float16x3
-Variable step_Float16x3_edge;
-Variable step_Float16x3_x;
-Function step_Float16x3;
-inline constexpr std::array step_Float16x3_args = { &step_Float16x3_edge, &step_Float16x3_x };
-
-/// step with Float16x4, Float16x4
-Variable step_Float16x4_edge;
-Variable step_Float16x4_x;
-Function step_Float16x4;
-inline constexpr std::array step_Float16x4_args = { &step_Float16x4_edge, &step_Float16x4_x };
-
-/// smoothstep with Float32, Float32, Float32
-Variable smoothstep_Float32_edge0;
-Variable smoothstep_Float32_edge1;
-Variable smoothstep_Float32_x;
-Function smoothstep_Float32;
-inline constexpr std::array smoothstep_Float32_args = { &smoothstep_Float32_edge0, &smoothstep_Float32_edge1, &smoothstep_Float32_x };
-
-/// smoothstep with Float32x2, Float32x2, Float32x2
-Variable smoothstep_Float32x2_edge0;
-Variable smoothstep_Float32x2_edge1;
-Variable smoothstep_Float32x2_x;
-Function smoothstep_Float32x2;
-inline constexpr std::array smoothstep_Float32x2_args = { &smoothstep_Float32x2_edge0, &smoothstep_Float32x2_edge1, &smoothstep_Float32x2_x };
-
-/// smoothstep with Float32x3, Float32x3, Float32x3
-Variable smoothstep_Float32x3_edge0;
-Variable smoothstep_Float32x3_edge1;
-Variable smoothstep_Float32x3_x;
-Function smoothstep_Float32x3;
-inline constexpr std::array smoothstep_Float32x3_args = { &smoothstep_Float32x3_edge0, &smoothstep_Float32x3_edge1, &smoothstep_Float32x3_x };
-
-/// smoothstep with Float32x4, Float32x4, Float32x4
-Variable smoothstep_Float32x4_edge0;
-Variable smoothstep_Float32x4_edge1;
-Variable smoothstep_Float32x4_x;
-Function smoothstep_Float32x4;
-inline constexpr std::array smoothstep_Float32x4_args = { &smoothstep_Float32x4_edge0, &smoothstep_Float32x4_edge1, &smoothstep_Float32x4_x };
-
-/// smoothstep with Float16, Float16, Float16
-Variable smoothstep_Float16_edge0;
-Variable smoothstep_Float16_edge1;
-Variable smoothstep_Float16_x;
-Function smoothstep_Float16;
-inline constexpr std::array smoothstep_Float16_args = { &smoothstep_Float16_edge0, &smoothstep_Float16_edge1, &smoothstep_Float16_x };
-
-/// smoothstep with Float16x2, Float16x2, Float16x2
-Variable smoothstep_Float16x2_edge0;
-Variable smoothstep_Float16x2_edge1;
-Variable smoothstep_Float16x2_x;
-Function smoothstep_Float16x2;
-inline constexpr std::array smoothstep_Float16x2_args = { &smoothstep_Float16x2_edge0, &smoothstep_Float16x2_edge1, &smoothstep_Float16x2_x };
-
-/// smoothstep with Float16x3, Float16x3, Float16x3
-Variable smoothstep_Float16x3_edge0;
-Variable smoothstep_Float16x3_edge1;
-Variable smoothstep_Float16x3_x;
-Function smoothstep_Float16x3;
-inline constexpr std::array smoothstep_Float16x3_args = { &smoothstep_Float16x3_edge0, &smoothstep_Float16x3_edge1, &smoothstep_Float16x3_x };
-
-/// smoothstep with Float16x4, Float16x4, Float16x4
-Variable smoothstep_Float16x4_edge0;
-Variable smoothstep_Float16x4_edge1;
-Variable smoothstep_Float16x4_x;
-Function smoothstep_Float16x4;
-inline constexpr std::array smoothstep_Float16x4_args = { &smoothstep_Float16x4_edge0, &smoothstep_Float16x4_edge1, &smoothstep_Float16x4_x };
-
-/// ceil with Float32
-Variable ceil_Float32_arg;
-Function ceil_Float32;
-inline constexpr std::array ceil_Float32_args = { &ceil_Float32_arg };
-
-/// ceil with Float32x2
-Variable ceil_Float32x2_arg;
-Function ceil_Float32x2;
-inline constexpr std::array ceil_Float32x2_args = { &ceil_Float32x2_arg };
-
-/// ceil with Float32x3
-Variable ceil_Float32x3_arg;
-Function ceil_Float32x3;
-inline constexpr std::array ceil_Float32x3_args = { &ceil_Float32x3_arg };
-
 void SetupIntrinsics5()
 {
+    /// mad with UInt32x3, UInt32x3, UInt32x3
+    mad_UInt32x3_arg.name = "val"_c;
+    mad_UInt32x3_arg.type = Type::FullType{ UInt32x3Type.name };
+    mad_UInt32x3_mul.name = "multiplier"_c;
+    mad_UInt32x3_mul.type = Type::FullType{ UInt32x3Type.name };
+    mad_UInt32x3_add.name = "addend"_c;
+    mad_UInt32x3_add.type = Type::FullType{ UInt32x3Type.name };
+    mad_UInt32x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
+    mad_UInt32x3.name = mad_UInt32x3_name;
+    mad_UInt32x3.backendIndex = 1606;
+    mad_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    mad_UInt32x3.parameters = mad_UInt32x3_args;
+    Symbol::Resolved(&mad_UInt32x3_arg)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&mad_UInt32x3_mul)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&mad_UInt32x3_add)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&mad_UInt32x3)->signature = "mad(u32x3,u32x3,u32x3) u32x3"_c;
+    Symbol::Resolved(&mad_UInt32x3)->name = "mad(u32x3,u32x3,u32x3)"_c;
+    Symbol::Resolved(&mad_UInt32x3)->nameWithVarNames = "mad(val : u32x3, multiplier : u32x3, addend : u32x3)"_c;
+    Symbol::Resolved(&mad_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// mad with UInt32x4, UInt32x4, UInt32x4
+    mad_UInt32x4_arg.name = "val"_c;
+    mad_UInt32x4_arg.type = Type::FullType{ UInt32x4Type.name };
+    mad_UInt32x4_mul.name = "multiplier"_c;
+    mad_UInt32x4_mul.type = Type::FullType{ UInt32x4Type.name };
+    mad_UInt32x4_add.name = "addend"_c;
+    mad_UInt32x4_add.type = Type::FullType{ UInt32x4Type.name };
+    mad_UInt32x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
+    mad_UInt32x4.name = mad_UInt32x4_name;
+    mad_UInt32x4.backendIndex = 1607;
+    mad_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    mad_UInt32x4.parameters = mad_UInt32x4_args;
+    Symbol::Resolved(&mad_UInt32x4_arg)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&mad_UInt32x4_mul)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&mad_UInt32x4_add)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&mad_UInt32x4)->signature = "mad(u32x4,u32x4,u32x4) u32x4"_c;
+    Symbol::Resolved(&mad_UInt32x4)->name = "mad(u32x4,u32x4,u32x4)"_c;
+    Symbol::Resolved(&mad_UInt32x4)->nameWithVarNames = "mad(val : u32x4, multiplier : u32x4, addend : u32x4)"_c;
+    Symbol::Resolved(&mad_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// mad with UInt16, UInt16, UInt16
+    mad_UInt16_arg.name = "val"_c;
+    mad_UInt16_arg.type = Type::FullType{ UInt16Type.name };
+    mad_UInt16_mul.name = "multiplier"_c;
+    mad_UInt16_mul.type = Type::FullType{ UInt16Type.name };
+    mad_UInt16_add.name = "addend"_c;
+    mad_UInt16_add.type = Type::FullType{ UInt16Type.name };
+    mad_UInt16.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
+    mad_UInt16.name = mad_UInt16_name;
+    mad_UInt16.backendIndex = 1608;
+    mad_UInt16.returnType = Type::FullType { UInt16Type.name };
+    mad_UInt16.parameters = mad_UInt16_args;
+    Symbol::Resolved(&mad_UInt16_arg)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&mad_UInt16_mul)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&mad_UInt16_add)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&mad_UInt16)->signature = "mad(u16,u16,u16) u16"_c;
+    Symbol::Resolved(&mad_UInt16)->name = "mad(u16,u16,u16)"_c;
+    Symbol::Resolved(&mad_UInt16)->nameWithVarNames = "mad(val : u16, multiplier : u16, addend : u16)"_c;
+    Symbol::Resolved(&mad_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// mad with UInt16x2, UInt16x2, UInt16x2
+    mad_UInt16x2_arg.name = "val"_c;
+    mad_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
+    mad_UInt16x2_mul.name = "multiplier"_c;
+    mad_UInt16x2_mul.type = Type::FullType{ UInt16x2Type.name };
+    mad_UInt16x2_add.name = "addend"_c;
+    mad_UInt16x2_add.type = Type::FullType{ UInt16x2Type.name };
+    mad_UInt16x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
+    mad_UInt16x2.name = mad_UInt16x2_name;
+    mad_UInt16x2.backendIndex = 1609;
+    mad_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    mad_UInt16x2.parameters = mad_UInt16x2_args;
+    Symbol::Resolved(&mad_UInt16x2_arg)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&mad_UInt16x2_mul)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&mad_UInt16x2_add)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&mad_UInt16x2)->signature = "mad(u16x2,u16x2,u16x2) u16x2"_c;
+    Symbol::Resolved(&mad_UInt16x2)->name = "mad(u16x2,u16x2,u16x2)"_c;
+    Symbol::Resolved(&mad_UInt16x2)->nameWithVarNames = "mad(val : u16x2, multiplier : u16x2, addend : u16x2)"_c;
+    Symbol::Resolved(&mad_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// mad with UInt16x3, UInt16x3, UInt16x3
+    mad_UInt16x3_arg.name = "val"_c;
+    mad_UInt16x3_arg.type = Type::FullType{ UInt16x3Type.name };
+    mad_UInt16x3_mul.name = "multiplier"_c;
+    mad_UInt16x3_mul.type = Type::FullType{ UInt16x3Type.name };
+    mad_UInt16x3_add.name = "addend"_c;
+    mad_UInt16x3_add.type = Type::FullType{ UInt16x3Type.name };
+    mad_UInt16x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
+    mad_UInt16x3.name = mad_UInt16x3_name;
+    mad_UInt16x3.backendIndex = 1610;
+    mad_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    mad_UInt16x3.parameters = mad_UInt16x3_args;
+    Symbol::Resolved(&mad_UInt16x3_arg)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&mad_UInt16x3_mul)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&mad_UInt16x3_add)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&mad_UInt16x3)->signature = "mad(u16x3,u16x3,u16x3) u16x3"_c;
+    Symbol::Resolved(&mad_UInt16x3)->name = "mad(u16x3,u16x3,u16x3)"_c;
+    Symbol::Resolved(&mad_UInt16x3)->nameWithVarNames = "mad(val : u16x3, multiplier : u16x3, addend : u16x3)"_c;
+    Symbol::Resolved(&mad_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// mad with UInt16x4, UInt16x4, UInt16x4
+    mad_UInt16x4_arg.name = "val"_c;
+    mad_UInt16x4_arg.type = Type::FullType{ UInt16x4Type.name };
+    mad_UInt16x4_mul.name = "multiplier"_c;
+    mad_UInt16x4_mul.type = Type::FullType{ UInt16x4Type.name };
+    mad_UInt16x4_add.name = "addend"_c;
+    mad_UInt16x4_add.type = Type::FullType{ UInt16x4Type.name };
+    mad_UInt16x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
+    mad_UInt16x4.name = mad_UInt16x4_name;
+    mad_UInt16x4.backendIndex = 1611;
+    mad_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    mad_UInt16x4.parameters = mad_UInt16x4_args;
+    Symbol::Resolved(&mad_UInt16x4_arg)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&mad_UInt16x4_mul)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&mad_UInt16x4_add)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&mad_UInt16x4)->signature = "mad(u16x4,u16x4,u16x4) u16x4"_c;
+    Symbol::Resolved(&mad_UInt16x4)->name = "mad(u16x4,u16x4,u16x4)"_c;
+    Symbol::Resolved(&mad_UInt16x4)->nameWithVarNames = "mad(val : u16x4, multiplier : u16x4, addend : u16x4)"_c;
+    Symbol::Resolved(&mad_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// dot with Float32x2, Float32x2
+    dot_Float32x2_x.name = "x"_c;
+    dot_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
+    dot_Float32x2_y.name = "y"_c;
+    dot_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
+    dot_Float32x2.documentation = "Returns the dot product of two vectors."_c;
+    dot_Float32x2.name = dot_Float32x2_name;
+    dot_Float32x2.backendIndex = 1612;
+    dot_Float32x2.returnType = Type::FullType { Float32Type.name };
+    dot_Float32x2.parameters = dot_Float32x2_args;
+    Symbol::Resolved(&dot_Float32x2_x)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&dot_Float32x2_y)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&dot_Float32x2)->signature = "dot(f32x2,f32x2) f32"_c;
+    Symbol::Resolved(&dot_Float32x2)->name = "dot(f32x2,f32x2)"_c;
+    Symbol::Resolved(&dot_Float32x2)->nameWithVarNames = "dot(x : f32x2, y : f32x2)"_c;
+    Symbol::Resolved(&dot_Float32x2)->returnTypeSymbol = &Float32Type;
+
+    /// dot with Float32x3, Float32x3
+    dot_Float32x3_x.name = "x"_c;
+    dot_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
+    dot_Float32x3_y.name = "y"_c;
+    dot_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
+    dot_Float32x3.documentation = "Returns the dot product of two vectors."_c;
+    dot_Float32x3.name = dot_Float32x3_name;
+    dot_Float32x3.backendIndex = 1613;
+    dot_Float32x3.returnType = Type::FullType { Float32Type.name };
+    dot_Float32x3.parameters = dot_Float32x3_args;
+    Symbol::Resolved(&dot_Float32x3_x)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&dot_Float32x3_y)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&dot_Float32x3)->signature = "dot(f32x3,f32x3) f32"_c;
+    Symbol::Resolved(&dot_Float32x3)->name = "dot(f32x3,f32x3)"_c;
+    Symbol::Resolved(&dot_Float32x3)->nameWithVarNames = "dot(x : f32x3, y : f32x3)"_c;
+    Symbol::Resolved(&dot_Float32x3)->returnTypeSymbol = &Float32Type;
+
+    /// dot with Float32x4, Float32x4
+    dot_Float32x4_x.name = "x"_c;
+    dot_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
+    dot_Float32x4_y.name = "y"_c;
+    dot_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
+    dot_Float32x4.documentation = "Returns the dot product of two vectors."_c;
+    dot_Float32x4.name = dot_Float32x4_name;
+    dot_Float32x4.backendIndex = 1614;
+    dot_Float32x4.returnType = Type::FullType { Float32Type.name };
+    dot_Float32x4.parameters = dot_Float32x4_args;
+    Symbol::Resolved(&dot_Float32x4_x)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&dot_Float32x4_y)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&dot_Float32x4)->signature = "dot(f32x4,f32x4) f32"_c;
+    Symbol::Resolved(&dot_Float32x4)->name = "dot(f32x4,f32x4)"_c;
+    Symbol::Resolved(&dot_Float32x4)->nameWithVarNames = "dot(x : f32x4, y : f32x4)"_c;
+    Symbol::Resolved(&dot_Float32x4)->returnTypeSymbol = &Float32Type;
+
+    /// dot with Float16x2, Float16x2
+    dot_Float16x2_x.name = "x"_c;
+    dot_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
+    dot_Float16x2_y.name = "y"_c;
+    dot_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
+    dot_Float16x2.documentation = "Returns the dot product of two vectors."_c;
+    dot_Float16x2.name = dot_Float16x2_name;
+    dot_Float16x2.backendIndex = 1615;
+    dot_Float16x2.returnType = Type::FullType { Float16Type.name };
+    dot_Float16x2.parameters = dot_Float16x2_args;
+    Symbol::Resolved(&dot_Float16x2_x)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&dot_Float16x2_y)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&dot_Float16x2)->signature = "dot(f16x2,f16x2) f16"_c;
+    Symbol::Resolved(&dot_Float16x2)->name = "dot(f16x2,f16x2)"_c;
+    Symbol::Resolved(&dot_Float16x2)->nameWithVarNames = "dot(x : f16x2, y : f16x2)"_c;
+    Symbol::Resolved(&dot_Float16x2)->returnTypeSymbol = &Float16Type;
+
+    /// dot with Float16x3, Float16x3
+    dot_Float16x3_x.name = "x"_c;
+    dot_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
+    dot_Float16x3_y.name = "y"_c;
+    dot_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
+    dot_Float16x3.documentation = "Returns the dot product of two vectors."_c;
+    dot_Float16x3.name = dot_Float16x3_name;
+    dot_Float16x3.backendIndex = 1616;
+    dot_Float16x3.returnType = Type::FullType { Float16Type.name };
+    dot_Float16x3.parameters = dot_Float16x3_args;
+    Symbol::Resolved(&dot_Float16x3_x)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&dot_Float16x3_y)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&dot_Float16x3)->signature = "dot(f16x3,f16x3) f16"_c;
+    Symbol::Resolved(&dot_Float16x3)->name = "dot(f16x3,f16x3)"_c;
+    Symbol::Resolved(&dot_Float16x3)->nameWithVarNames = "dot(x : f16x3, y : f16x3)"_c;
+    Symbol::Resolved(&dot_Float16x3)->returnTypeSymbol = &Float16Type;
+
+    /// dot with Float16x4, Float16x4
+    dot_Float16x4_x.name = "x"_c;
+    dot_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
+    dot_Float16x4_y.name = "y"_c;
+    dot_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
+    dot_Float16x4.documentation = "Returns the dot product of two vectors."_c;
+    dot_Float16x4.name = dot_Float16x4_name;
+    dot_Float16x4.backendIndex = 1617;
+    dot_Float16x4.returnType = Type::FullType { Float16Type.name };
+    dot_Float16x4.parameters = dot_Float16x4_args;
+    Symbol::Resolved(&dot_Float16x4_x)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&dot_Float16x4_y)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&dot_Float16x4)->signature = "dot(f16x4,f16x4) f16"_c;
+    Symbol::Resolved(&dot_Float16x4)->name = "dot(f16x4,f16x4)"_c;
+    Symbol::Resolved(&dot_Float16x4)->nameWithVarNames = "dot(x : f16x4, y : f16x4)"_c;
+    Symbol::Resolved(&dot_Float16x4)->returnTypeSymbol = &Float16Type;
+
+    /// reflect with Float32x2, Float32x2
+    reflect_Float32x2_incident.name = "incident"_c;
+    reflect_Float32x2_incident.type = Type::FullType{ Float32x2Type.name };
+    reflect_Float32x2_normal.name = "normal"_c;
+    reflect_Float32x2_normal.type = Type::FullType{ Float32x2Type.name };
+    reflect_Float32x2.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
+    reflect_Float32x2.name = reflect_Float32x2_name;
+    reflect_Float32x2.backendIndex = 1618;
+    reflect_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    reflect_Float32x2.parameters = reflect_Float32x2_args;
+    Symbol::Resolved(&reflect_Float32x2_incident)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&reflect_Float32x2_normal)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&reflect_Float32x2)->signature = "reflect(f32x2,f32x2) f32x2"_c;
+    Symbol::Resolved(&reflect_Float32x2)->name = "reflect(f32x2,f32x2)"_c;
+    Symbol::Resolved(&reflect_Float32x2)->nameWithVarNames = "reflect(incident : f32x2, normal : f32x2)"_c;
+    Symbol::Resolved(&reflect_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// reflect with Float32x3, Float32x3
+    reflect_Float32x3_incident.name = "incident"_c;
+    reflect_Float32x3_incident.type = Type::FullType{ Float32x3Type.name };
+    reflect_Float32x3_normal.name = "normal"_c;
+    reflect_Float32x3_normal.type = Type::FullType{ Float32x3Type.name };
+    reflect_Float32x3.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
+    reflect_Float32x3.name = reflect_Float32x3_name;
+    reflect_Float32x3.backendIndex = 1619;
+    reflect_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    reflect_Float32x3.parameters = reflect_Float32x3_args;
+    Symbol::Resolved(&reflect_Float32x3_incident)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&reflect_Float32x3_normal)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&reflect_Float32x3)->signature = "reflect(f32x3,f32x3) f32x3"_c;
+    Symbol::Resolved(&reflect_Float32x3)->name = "reflect(f32x3,f32x3)"_c;
+    Symbol::Resolved(&reflect_Float32x3)->nameWithVarNames = "reflect(incident : f32x3, normal : f32x3)"_c;
+    Symbol::Resolved(&reflect_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// reflect with Float32x4, Float32x4
+    reflect_Float32x4_incident.name = "incident"_c;
+    reflect_Float32x4_incident.type = Type::FullType{ Float32x4Type.name };
+    reflect_Float32x4_normal.name = "normal"_c;
+    reflect_Float32x4_normal.type = Type::FullType{ Float32x4Type.name };
+    reflect_Float32x4.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
+    reflect_Float32x4.name = reflect_Float32x4_name;
+    reflect_Float32x4.backendIndex = 1620;
+    reflect_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    reflect_Float32x4.parameters = reflect_Float32x4_args;
+    Symbol::Resolved(&reflect_Float32x4_incident)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&reflect_Float32x4_normal)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&reflect_Float32x4)->signature = "reflect(f32x4,f32x4) f32x4"_c;
+    Symbol::Resolved(&reflect_Float32x4)->name = "reflect(f32x4,f32x4)"_c;
+    Symbol::Resolved(&reflect_Float32x4)->nameWithVarNames = "reflect(incident : f32x4, normal : f32x4)"_c;
+    Symbol::Resolved(&reflect_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
     /// reflect with Float16x2, Float16x2
     reflect_Float16x2_incident.name = "incident"_c;
     reflect_Float16x2_incident.type = Type::FullType{ Float16x2Type.name };
@@ -817,7 +1091,7 @@ void SetupIntrinsics5()
     reflect_Float16x2_normal.type = Type::FullType{ Float16x2Type.name };
     reflect_Float16x2.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float16x2.name = reflect_Float16x2_name;
-    reflect_Float16x2.backendIndex = 1577;
+    reflect_Float16x2.backendIndex = 1621;
     reflect_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     reflect_Float16x2.parameters = reflect_Float16x2_args;
     Symbol::Resolved(&reflect_Float16x2_incident)->typeSymbol = &Float16x2Type;
@@ -834,7 +1108,7 @@ void SetupIntrinsics5()
     reflect_Float16x3_normal.type = Type::FullType{ Float16x3Type.name };
     reflect_Float16x3.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float16x3.name = reflect_Float16x3_name;
-    reflect_Float16x3.backendIndex = 1578;
+    reflect_Float16x3.backendIndex = 1622;
     reflect_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     reflect_Float16x3.parameters = reflect_Float16x3_args;
     Symbol::Resolved(&reflect_Float16x3_incident)->typeSymbol = &Float16x3Type;
@@ -851,7 +1125,7 @@ void SetupIntrinsics5()
     reflect_Float16x4_normal.type = Type::FullType{ Float16x4Type.name };
     reflect_Float16x4.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float16x4.name = reflect_Float16x4_name;
-    reflect_Float16x4.backendIndex = 1579;
+    reflect_Float16x4.backendIndex = 1623;
     reflect_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     reflect_Float16x4.parameters = reflect_Float16x4_args;
     Symbol::Resolved(&reflect_Float16x4_incident)->typeSymbol = &Float16x4Type;
@@ -870,7 +1144,7 @@ void SetupIntrinsics5()
     refract_Float32x2_ior.type = Type::FullType{ Float32x2Type.name };
     refract_Float32x2.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float32x2.name = refract_Float32x2_name;
-    refract_Float32x2.backendIndex = 1580;
+    refract_Float32x2.backendIndex = 1624;
     refract_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     refract_Float32x2.parameters = refract_Float32x2_args;
     Symbol::Resolved(&refract_Float32x2_incident)->typeSymbol = &Float32x2Type;
@@ -890,7 +1164,7 @@ void SetupIntrinsics5()
     refract_Float32x3_ior.type = Type::FullType{ Float32x3Type.name };
     refract_Float32x3.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float32x3.name = refract_Float32x3_name;
-    refract_Float32x3.backendIndex = 1581;
+    refract_Float32x3.backendIndex = 1625;
     refract_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     refract_Float32x3.parameters = refract_Float32x3_args;
     Symbol::Resolved(&refract_Float32x3_incident)->typeSymbol = &Float32x3Type;
@@ -910,7 +1184,7 @@ void SetupIntrinsics5()
     refract_Float32x4_ior.type = Type::FullType{ Float32x4Type.name };
     refract_Float32x4.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float32x4.name = refract_Float32x4_name;
-    refract_Float32x4.backendIndex = 1582;
+    refract_Float32x4.backendIndex = 1626;
     refract_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     refract_Float32x4.parameters = refract_Float32x4_args;
     Symbol::Resolved(&refract_Float32x4_incident)->typeSymbol = &Float32x4Type;
@@ -930,7 +1204,7 @@ void SetupIntrinsics5()
     refract_Float16x2_ior.type = Type::FullType{ Float16x2Type.name };
     refract_Float16x2.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float16x2.name = refract_Float16x2_name;
-    refract_Float16x2.backendIndex = 1583;
+    refract_Float16x2.backendIndex = 1627;
     refract_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     refract_Float16x2.parameters = refract_Float16x2_args;
     Symbol::Resolved(&refract_Float16x2_incident)->typeSymbol = &Float16x2Type;
@@ -950,7 +1224,7 @@ void SetupIntrinsics5()
     refract_Float16x3_ior.type = Type::FullType{ Float16x3Type.name };
     refract_Float16x3.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float16x3.name = refract_Float16x3_name;
-    refract_Float16x3.backendIndex = 1584;
+    refract_Float16x3.backendIndex = 1628;
     refract_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     refract_Float16x3.parameters = refract_Float16x3_args;
     Symbol::Resolved(&refract_Float16x3_incident)->typeSymbol = &Float16x3Type;
@@ -970,7 +1244,7 @@ void SetupIntrinsics5()
     refract_Float16x4_ior.type = Type::FullType{ Float16x4Type.name };
     refract_Float16x4.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float16x4.name = refract_Float16x4_name;
-    refract_Float16x4.backendIndex = 1585;
+    refract_Float16x4.backendIndex = 1629;
     refract_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     refract_Float16x4.parameters = refract_Float16x4_args;
     Symbol::Resolved(&refract_Float16x4_incident)->typeSymbol = &Float16x4Type;
@@ -988,7 +1262,7 @@ void SetupIntrinsics5()
     cross_Float32x3_v1.type = Type::FullType{ Float32x3Type.name };
     cross_Float32x3.documentation = "Returns the cross product of two vectors."_c;
     cross_Float32x3.name = cross_Float32x3_name;
-    cross_Float32x3.backendIndex = 1586;
+    cross_Float32x3.backendIndex = 1630;
     cross_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     cross_Float32x3.parameters = cross_Float32x3_args;
     Symbol::Resolved(&cross_Float32x3_v0)->typeSymbol = &Float32x3Type;
@@ -1005,7 +1279,7 @@ void SetupIntrinsics5()
     cross_Float16x3_v1.type = Type::FullType{ Float16x3Type.name };
     cross_Float16x3.documentation = "Returns the cross product of two vectors."_c;
     cross_Float16x3.name = cross_Float16x3_name;
-    cross_Float16x3.backendIndex = 1587;
+    cross_Float16x3.backendIndex = 1631;
     cross_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     cross_Float16x3.parameters = cross_Float16x3_args;
     Symbol::Resolved(&cross_Float16x3_v0)->typeSymbol = &Float16x3Type;
@@ -1020,7 +1294,7 @@ void SetupIntrinsics5()
     length_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     length_Float32x2.documentation = "Returns the length of the vector."_c;
     length_Float32x2.name = length_Float32x2_name;
-    length_Float32x2.backendIndex = 1588;
+    length_Float32x2.backendIndex = 1632;
     length_Float32x2.returnType = Type::FullType { Float32Type.name };
     length_Float32x2.parameters = length_Float32x2_args;
     Symbol::Resolved(&length_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -1034,7 +1308,7 @@ void SetupIntrinsics5()
     length_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     length_Float32x3.documentation = "Returns the length of the vector."_c;
     length_Float32x3.name = length_Float32x3_name;
-    length_Float32x3.backendIndex = 1589;
+    length_Float32x3.backendIndex = 1633;
     length_Float32x3.returnType = Type::FullType { Float32Type.name };
     length_Float32x3.parameters = length_Float32x3_args;
     Symbol::Resolved(&length_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -1048,7 +1322,7 @@ void SetupIntrinsics5()
     length_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     length_Float32x4.documentation = "Returns the length of the vector."_c;
     length_Float32x4.name = length_Float32x4_name;
-    length_Float32x4.backendIndex = 1590;
+    length_Float32x4.backendIndex = 1634;
     length_Float32x4.returnType = Type::FullType { Float32Type.name };
     length_Float32x4.parameters = length_Float32x4_args;
     Symbol::Resolved(&length_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1062,7 +1336,7 @@ void SetupIntrinsics5()
     length_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     length_Float16x2.documentation = "Returns the length of the vector."_c;
     length_Float16x2.name = length_Float16x2_name;
-    length_Float16x2.backendIndex = 1591;
+    length_Float16x2.backendIndex = 1635;
     length_Float16x2.returnType = Type::FullType { Float32Type.name };
     length_Float16x2.parameters = length_Float16x2_args;
     Symbol::Resolved(&length_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1076,7 +1350,7 @@ void SetupIntrinsics5()
     length_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     length_Float16x3.documentation = "Returns the length of the vector."_c;
     length_Float16x3.name = length_Float16x3_name;
-    length_Float16x3.backendIndex = 1592;
+    length_Float16x3.backendIndex = 1636;
     length_Float16x3.returnType = Type::FullType { Float32Type.name };
     length_Float16x3.parameters = length_Float16x3_args;
     Symbol::Resolved(&length_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1090,7 +1364,7 @@ void SetupIntrinsics5()
     length_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     length_Float16x4.documentation = "Returns the length of the vector."_c;
     length_Float16x4.name = length_Float16x4_name;
-    length_Float16x4.backendIndex = 1593;
+    length_Float16x4.backendIndex = 1637;
     length_Float16x4.returnType = Type::FullType { Float32Type.name };
     length_Float16x4.parameters = length_Float16x4_args;
     Symbol::Resolved(&length_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1104,7 +1378,7 @@ void SetupIntrinsics5()
     normalize_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     normalize_Float32x2.documentation = "Returns the normalized vector."_c;
     normalize_Float32x2.name = normalize_Float32x2_name;
-    normalize_Float32x2.backendIndex = 1594;
+    normalize_Float32x2.backendIndex = 1638;
     normalize_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     normalize_Float32x2.parameters = normalize_Float32x2_args;
     Symbol::Resolved(&normalize_Float32x2_arg)->typeSymbol = &Float32x2Type;
@@ -1118,7 +1392,7 @@ void SetupIntrinsics5()
     normalize_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     normalize_Float32x3.documentation = "Returns the normalized vector."_c;
     normalize_Float32x3.name = normalize_Float32x3_name;
-    normalize_Float32x3.backendIndex = 1595;
+    normalize_Float32x3.backendIndex = 1639;
     normalize_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     normalize_Float32x3.parameters = normalize_Float32x3_args;
     Symbol::Resolved(&normalize_Float32x3_arg)->typeSymbol = &Float32x3Type;
@@ -1132,7 +1406,7 @@ void SetupIntrinsics5()
     normalize_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     normalize_Float32x4.documentation = "Returns the normalized vector."_c;
     normalize_Float32x4.name = normalize_Float32x4_name;
-    normalize_Float32x4.backendIndex = 1596;
+    normalize_Float32x4.backendIndex = 1640;
     normalize_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     normalize_Float32x4.parameters = normalize_Float32x4_args;
     Symbol::Resolved(&normalize_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -1146,7 +1420,7 @@ void SetupIntrinsics5()
     normalize_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     normalize_Float16x2.documentation = "Returns the normalized vector."_c;
     normalize_Float16x2.name = normalize_Float16x2_name;
-    normalize_Float16x2.backendIndex = 1597;
+    normalize_Float16x2.backendIndex = 1641;
     normalize_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     normalize_Float16x2.parameters = normalize_Float16x2_args;
     Symbol::Resolved(&normalize_Float16x2_arg)->typeSymbol = &Float16x2Type;
@@ -1160,7 +1434,7 @@ void SetupIntrinsics5()
     normalize_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     normalize_Float16x3.documentation = "Returns the normalized vector."_c;
     normalize_Float16x3.name = normalize_Float16x3_name;
-    normalize_Float16x3.backendIndex = 1598;
+    normalize_Float16x3.backendIndex = 1642;
     normalize_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     normalize_Float16x3.parameters = normalize_Float16x3_args;
     Symbol::Resolved(&normalize_Float16x3_arg)->typeSymbol = &Float16x3Type;
@@ -1174,7 +1448,7 @@ void SetupIntrinsics5()
     normalize_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     normalize_Float16x4.documentation = "Returns the normalized vector."_c;
     normalize_Float16x4.name = normalize_Float16x4_name;
-    normalize_Float16x4.backendIndex = 1599;
+    normalize_Float16x4.backendIndex = 1643;
     normalize_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     normalize_Float16x4.parameters = normalize_Float16x4_args;
     Symbol::Resolved(&normalize_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -1190,7 +1464,7 @@ void SetupIntrinsics5()
     distance_Float32x2_p1.type = Type::FullType{ Float32x2Type.name };
     distance_Float32x2.documentation = "Returns the distance between two points."_c;
     distance_Float32x2.name = distance_Float32x2_name;
-    distance_Float32x2.backendIndex = 1600;
+    distance_Float32x2.backendIndex = 1644;
     distance_Float32x2.returnType = Type::FullType { Float32Type.name };
     distance_Float32x2.parameters = distance_Float32x2_args;
     Symbol::Resolved(&distance_Float32x2_p0)->typeSymbol = &Float32x2Type;
@@ -1207,7 +1481,7 @@ void SetupIntrinsics5()
     distance_Float32x3_p1.type = Type::FullType{ Float32x3Type.name };
     distance_Float32x3.documentation = "Returns the distance between two points."_c;
     distance_Float32x3.name = distance_Float32x3_name;
-    distance_Float32x3.backendIndex = 1601;
+    distance_Float32x3.backendIndex = 1645;
     distance_Float32x3.returnType = Type::FullType { Float32Type.name };
     distance_Float32x3.parameters = distance_Float32x3_args;
     Symbol::Resolved(&distance_Float32x3_p0)->typeSymbol = &Float32x3Type;
@@ -1224,7 +1498,7 @@ void SetupIntrinsics5()
     distance_Float32x4_p1.type = Type::FullType{ Float32x4Type.name };
     distance_Float32x4.documentation = "Returns the distance between two points."_c;
     distance_Float32x4.name = distance_Float32x4_name;
-    distance_Float32x4.backendIndex = 1602;
+    distance_Float32x4.backendIndex = 1646;
     distance_Float32x4.returnType = Type::FullType { Float32Type.name };
     distance_Float32x4.parameters = distance_Float32x4_args;
     Symbol::Resolved(&distance_Float32x4_p0)->typeSymbol = &Float32x4Type;
@@ -1241,7 +1515,7 @@ void SetupIntrinsics5()
     distance_Float16x2_p1.type = Type::FullType{ Float16x2Type.name };
     distance_Float16x2.documentation = "Returns the distance between two points."_c;
     distance_Float16x2.name = distance_Float16x2_name;
-    distance_Float16x2.backendIndex = 1603;
+    distance_Float16x2.backendIndex = 1647;
     distance_Float16x2.returnType = Type::FullType { Float16Type.name };
     distance_Float16x2.parameters = distance_Float16x2_args;
     Symbol::Resolved(&distance_Float16x2_p0)->typeSymbol = &Float16x2Type;
@@ -1258,7 +1532,7 @@ void SetupIntrinsics5()
     distance_Float16x3_p1.type = Type::FullType{ Float16x3Type.name };
     distance_Float16x3.documentation = "Returns the distance between two points."_c;
     distance_Float16x3.name = distance_Float16x3_name;
-    distance_Float16x3.backendIndex = 1604;
+    distance_Float16x3.backendIndex = 1648;
     distance_Float16x3.returnType = Type::FullType { Float16Type.name };
     distance_Float16x3.parameters = distance_Float16x3_args;
     Symbol::Resolved(&distance_Float16x3_p0)->typeSymbol = &Float16x3Type;
@@ -1275,7 +1549,7 @@ void SetupIntrinsics5()
     distance_Float16x4_p1.type = Type::FullType{ Float16x4Type.name };
     distance_Float16x4.documentation = "Returns the distance between two points."_c;
     distance_Float16x4.name = distance_Float16x4_name;
-    distance_Float16x4.backendIndex = 1605;
+    distance_Float16x4.backendIndex = 1649;
     distance_Float16x4.returnType = Type::FullType { Float16Type.name };
     distance_Float16x4.parameters = distance_Float16x4_args;
     Symbol::Resolved(&distance_Float16x4_p0)->typeSymbol = &Float16x4Type;
@@ -1292,7 +1566,7 @@ void SetupIntrinsics5()
     min_Float32_y.type = Type::FullType{ Float32Type.name };
     min_Float32.documentation = "Returns the minimum of x and y."_c;
     min_Float32.name = min_Float32_name;
-    min_Float32.backendIndex = 1606;
+    min_Float32.backendIndex = 1650;
     min_Float32.returnType = Type::FullType { Float32Type.name };
     min_Float32.parameters = min_Float32_args;
     Symbol::Resolved(&min_Float32_x)->typeSymbol = &Float32Type;
@@ -1309,7 +1583,7 @@ void SetupIntrinsics5()
     min_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     min_Float32x2.documentation = "Returns the minimum of x and y."_c;
     min_Float32x2.name = min_Float32x2_name;
-    min_Float32x2.backendIndex = 1607;
+    min_Float32x2.backendIndex = 1651;
     min_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     min_Float32x2.parameters = min_Float32x2_args;
     Symbol::Resolved(&min_Float32x2_x)->typeSymbol = &Float32x2Type;
@@ -1326,7 +1600,7 @@ void SetupIntrinsics5()
     min_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     min_Float32x3.documentation = "Returns the minimum of x and y."_c;
     min_Float32x3.name = min_Float32x3_name;
-    min_Float32x3.backendIndex = 1608;
+    min_Float32x3.backendIndex = 1652;
     min_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     min_Float32x3.parameters = min_Float32x3_args;
     Symbol::Resolved(&min_Float32x3_x)->typeSymbol = &Float32x3Type;
@@ -1343,7 +1617,7 @@ void SetupIntrinsics5()
     min_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     min_Float32x4.documentation = "Returns the minimum of x and y."_c;
     min_Float32x4.name = min_Float32x4_name;
-    min_Float32x4.backendIndex = 1609;
+    min_Float32x4.backendIndex = 1653;
     min_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     min_Float32x4.parameters = min_Float32x4_args;
     Symbol::Resolved(&min_Float32x4_x)->typeSymbol = &Float32x4Type;
@@ -1360,7 +1634,7 @@ void SetupIntrinsics5()
     min_Float16_y.type = Type::FullType{ Float16Type.name };
     min_Float16.documentation = "Returns the minimum of x and y."_c;
     min_Float16.name = min_Float16_name;
-    min_Float16.backendIndex = 1610;
+    min_Float16.backendIndex = 1654;
     min_Float16.returnType = Type::FullType { Float16Type.name };
     min_Float16.parameters = min_Float16_args;
     Symbol::Resolved(&min_Float16_x)->typeSymbol = &Float16Type;
@@ -1377,7 +1651,7 @@ void SetupIntrinsics5()
     min_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     min_Float16x2.documentation = "Returns the minimum of x and y."_c;
     min_Float16x2.name = min_Float16x2_name;
-    min_Float16x2.backendIndex = 1611;
+    min_Float16x2.backendIndex = 1655;
     min_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     min_Float16x2.parameters = min_Float16x2_args;
     Symbol::Resolved(&min_Float16x2_x)->typeSymbol = &Float16x2Type;
@@ -1394,7 +1668,7 @@ void SetupIntrinsics5()
     min_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     min_Float16x3.documentation = "Returns the minimum of x and y."_c;
     min_Float16x3.name = min_Float16x3_name;
-    min_Float16x3.backendIndex = 1612;
+    min_Float16x3.backendIndex = 1656;
     min_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     min_Float16x3.parameters = min_Float16x3_args;
     Symbol::Resolved(&min_Float16x3_x)->typeSymbol = &Float16x3Type;
@@ -1411,7 +1685,7 @@ void SetupIntrinsics5()
     min_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     min_Float16x4.documentation = "Returns the minimum of x and y."_c;
     min_Float16x4.name = min_Float16x4_name;
-    min_Float16x4.backendIndex = 1613;
+    min_Float16x4.backendIndex = 1657;
     min_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     min_Float16x4.parameters = min_Float16x4_args;
     Symbol::Resolved(&min_Float16x4_x)->typeSymbol = &Float16x4Type;
@@ -1428,7 +1702,7 @@ void SetupIntrinsics5()
     min_Int32_y.type = Type::FullType{ Int32Type.name };
     min_Int32.documentation = "Returns the minimum of x and y."_c;
     min_Int32.name = min_Int32_name;
-    min_Int32.backendIndex = 1614;
+    min_Int32.backendIndex = 1658;
     min_Int32.returnType = Type::FullType { Int32Type.name };
     min_Int32.parameters = min_Int32_args;
     Symbol::Resolved(&min_Int32_x)->typeSymbol = &Int32Type;
@@ -1445,7 +1719,7 @@ void SetupIntrinsics5()
     min_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
     min_Int32x2.documentation = "Returns the minimum of x and y."_c;
     min_Int32x2.name = min_Int32x2_name;
-    min_Int32x2.backendIndex = 1615;
+    min_Int32x2.backendIndex = 1659;
     min_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     min_Int32x2.parameters = min_Int32x2_args;
     Symbol::Resolved(&min_Int32x2_x)->typeSymbol = &Int32x2Type;
@@ -1462,7 +1736,7 @@ void SetupIntrinsics5()
     min_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
     min_Int32x3.documentation = "Returns the minimum of x and y."_c;
     min_Int32x3.name = min_Int32x3_name;
-    min_Int32x3.backendIndex = 1616;
+    min_Int32x3.backendIndex = 1660;
     min_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     min_Int32x3.parameters = min_Int32x3_args;
     Symbol::Resolved(&min_Int32x3_x)->typeSymbol = &Int32x3Type;
@@ -1479,7 +1753,7 @@ void SetupIntrinsics5()
     min_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
     min_Int32x4.documentation = "Returns the minimum of x and y."_c;
     min_Int32x4.name = min_Int32x4_name;
-    min_Int32x4.backendIndex = 1617;
+    min_Int32x4.backendIndex = 1661;
     min_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     min_Int32x4.parameters = min_Int32x4_args;
     Symbol::Resolved(&min_Int32x4_x)->typeSymbol = &Int32x4Type;
@@ -1496,7 +1770,7 @@ void SetupIntrinsics5()
     min_Int16_y.type = Type::FullType{ Int16Type.name };
     min_Int16.documentation = "Returns the minimum of x and y."_c;
     min_Int16.name = min_Int16_name;
-    min_Int16.backendIndex = 1618;
+    min_Int16.backendIndex = 1662;
     min_Int16.returnType = Type::FullType { Int16Type.name };
     min_Int16.parameters = min_Int16_args;
     Symbol::Resolved(&min_Int16_x)->typeSymbol = &Int16Type;
@@ -1513,7 +1787,7 @@ void SetupIntrinsics5()
     min_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
     min_Int16x2.documentation = "Returns the minimum of x and y."_c;
     min_Int16x2.name = min_Int16x2_name;
-    min_Int16x2.backendIndex = 1619;
+    min_Int16x2.backendIndex = 1663;
     min_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     min_Int16x2.parameters = min_Int16x2_args;
     Symbol::Resolved(&min_Int16x2_x)->typeSymbol = &Int16x2Type;
@@ -1530,7 +1804,7 @@ void SetupIntrinsics5()
     min_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
     min_Int16x3.documentation = "Returns the minimum of x and y."_c;
     min_Int16x3.name = min_Int16x3_name;
-    min_Int16x3.backendIndex = 1620;
+    min_Int16x3.backendIndex = 1664;
     min_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     min_Int16x3.parameters = min_Int16x3_args;
     Symbol::Resolved(&min_Int16x3_x)->typeSymbol = &Int16x3Type;
@@ -1547,7 +1821,7 @@ void SetupIntrinsics5()
     min_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
     min_Int16x4.documentation = "Returns the minimum of x and y."_c;
     min_Int16x4.name = min_Int16x4_name;
-    min_Int16x4.backendIndex = 1621;
+    min_Int16x4.backendIndex = 1665;
     min_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     min_Int16x4.parameters = min_Int16x4_args;
     Symbol::Resolved(&min_Int16x4_x)->typeSymbol = &Int16x4Type;
@@ -1564,7 +1838,7 @@ void SetupIntrinsics5()
     min_UInt32_y.type = Type::FullType{ UInt32Type.name };
     min_UInt32.documentation = "Returns the minimum of x and y."_c;
     min_UInt32.name = min_UInt32_name;
-    min_UInt32.backendIndex = 1622;
+    min_UInt32.backendIndex = 1666;
     min_UInt32.returnType = Type::FullType { UInt32Type.name };
     min_UInt32.parameters = min_UInt32_args;
     Symbol::Resolved(&min_UInt32_x)->typeSymbol = &UInt32Type;
@@ -1581,7 +1855,7 @@ void SetupIntrinsics5()
     min_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
     min_UInt32x2.documentation = "Returns the minimum of x and y."_c;
     min_UInt32x2.name = min_UInt32x2_name;
-    min_UInt32x2.backendIndex = 1623;
+    min_UInt32x2.backendIndex = 1667;
     min_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     min_UInt32x2.parameters = min_UInt32x2_args;
     Symbol::Resolved(&min_UInt32x2_x)->typeSymbol = &UInt32x2Type;
@@ -1598,7 +1872,7 @@ void SetupIntrinsics5()
     min_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
     min_UInt32x3.documentation = "Returns the minimum of x and y."_c;
     min_UInt32x3.name = min_UInt32x3_name;
-    min_UInt32x3.backendIndex = 1624;
+    min_UInt32x3.backendIndex = 1668;
     min_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     min_UInt32x3.parameters = min_UInt32x3_args;
     Symbol::Resolved(&min_UInt32x3_x)->typeSymbol = &UInt32x3Type;
@@ -1615,7 +1889,7 @@ void SetupIntrinsics5()
     min_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
     min_UInt32x4.documentation = "Returns the minimum of x and y."_c;
     min_UInt32x4.name = min_UInt32x4_name;
-    min_UInt32x4.backendIndex = 1625;
+    min_UInt32x4.backendIndex = 1669;
     min_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     min_UInt32x4.parameters = min_UInt32x4_args;
     Symbol::Resolved(&min_UInt32x4_x)->typeSymbol = &UInt32x4Type;
@@ -1632,7 +1906,7 @@ void SetupIntrinsics5()
     min_UInt16_y.type = Type::FullType{ UInt16Type.name };
     min_UInt16.documentation = "Returns the minimum of x and y."_c;
     min_UInt16.name = min_UInt16_name;
-    min_UInt16.backendIndex = 1626;
+    min_UInt16.backendIndex = 1670;
     min_UInt16.returnType = Type::FullType { UInt16Type.name };
     min_UInt16.parameters = min_UInt16_args;
     Symbol::Resolved(&min_UInt16_x)->typeSymbol = &UInt16Type;
@@ -1649,7 +1923,7 @@ void SetupIntrinsics5()
     min_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
     min_UInt16x2.documentation = "Returns the minimum of x and y."_c;
     min_UInt16x2.name = min_UInt16x2_name;
-    min_UInt16x2.backendIndex = 1627;
+    min_UInt16x2.backendIndex = 1671;
     min_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     min_UInt16x2.parameters = min_UInt16x2_args;
     Symbol::Resolved(&min_UInt16x2_x)->typeSymbol = &UInt16x2Type;
@@ -1666,7 +1940,7 @@ void SetupIntrinsics5()
     min_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
     min_UInt16x3.documentation = "Returns the minimum of x and y."_c;
     min_UInt16x3.name = min_UInt16x3_name;
-    min_UInt16x3.backendIndex = 1628;
+    min_UInt16x3.backendIndex = 1672;
     min_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     min_UInt16x3.parameters = min_UInt16x3_args;
     Symbol::Resolved(&min_UInt16x3_x)->typeSymbol = &UInt16x3Type;
@@ -1683,7 +1957,7 @@ void SetupIntrinsics5()
     min_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
     min_UInt16x4.documentation = "Returns the minimum of x and y."_c;
     min_UInt16x4.name = min_UInt16x4_name;
-    min_UInt16x4.backendIndex = 1629;
+    min_UInt16x4.backendIndex = 1673;
     min_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     min_UInt16x4.parameters = min_UInt16x4_args;
     Symbol::Resolved(&min_UInt16x4_x)->typeSymbol = &UInt16x4Type;
@@ -1700,7 +1974,7 @@ void SetupIntrinsics5()
     max_Float32_y.type = Type::FullType{ Float32Type.name };
     max_Float32.documentation = "Returns the maximum of x and y."_c;
     max_Float32.name = max_Float32_name;
-    max_Float32.backendIndex = 1630;
+    max_Float32.backendIndex = 1674;
     max_Float32.returnType = Type::FullType { Float32Type.name };
     max_Float32.parameters = max_Float32_args;
     Symbol::Resolved(&max_Float32_x)->typeSymbol = &Float32Type;
@@ -1717,7 +1991,7 @@ void SetupIntrinsics5()
     max_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     max_Float32x2.documentation = "Returns the maximum of x and y."_c;
     max_Float32x2.name = max_Float32x2_name;
-    max_Float32x2.backendIndex = 1631;
+    max_Float32x2.backendIndex = 1675;
     max_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     max_Float32x2.parameters = max_Float32x2_args;
     Symbol::Resolved(&max_Float32x2_x)->typeSymbol = &Float32x2Type;
@@ -1734,7 +2008,7 @@ void SetupIntrinsics5()
     max_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     max_Float32x3.documentation = "Returns the maximum of x and y."_c;
     max_Float32x3.name = max_Float32x3_name;
-    max_Float32x3.backendIndex = 1632;
+    max_Float32x3.backendIndex = 1676;
     max_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     max_Float32x3.parameters = max_Float32x3_args;
     Symbol::Resolved(&max_Float32x3_x)->typeSymbol = &Float32x3Type;
@@ -1751,7 +2025,7 @@ void SetupIntrinsics5()
     max_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     max_Float32x4.documentation = "Returns the maximum of x and y."_c;
     max_Float32x4.name = max_Float32x4_name;
-    max_Float32x4.backendIndex = 1633;
+    max_Float32x4.backendIndex = 1677;
     max_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     max_Float32x4.parameters = max_Float32x4_args;
     Symbol::Resolved(&max_Float32x4_x)->typeSymbol = &Float32x4Type;
@@ -1768,7 +2042,7 @@ void SetupIntrinsics5()
     max_Float16_y.type = Type::FullType{ Float16Type.name };
     max_Float16.documentation = "Returns the maximum of x and y."_c;
     max_Float16.name = max_Float16_name;
-    max_Float16.backendIndex = 1634;
+    max_Float16.backendIndex = 1678;
     max_Float16.returnType = Type::FullType { Float16Type.name };
     max_Float16.parameters = max_Float16_args;
     Symbol::Resolved(&max_Float16_x)->typeSymbol = &Float16Type;
@@ -1785,7 +2059,7 @@ void SetupIntrinsics5()
     max_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     max_Float16x2.documentation = "Returns the maximum of x and y."_c;
     max_Float16x2.name = max_Float16x2_name;
-    max_Float16x2.backendIndex = 1635;
+    max_Float16x2.backendIndex = 1679;
     max_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     max_Float16x2.parameters = max_Float16x2_args;
     Symbol::Resolved(&max_Float16x2_x)->typeSymbol = &Float16x2Type;
@@ -1802,7 +2076,7 @@ void SetupIntrinsics5()
     max_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     max_Float16x3.documentation = "Returns the maximum of x and y."_c;
     max_Float16x3.name = max_Float16x3_name;
-    max_Float16x3.backendIndex = 1636;
+    max_Float16x3.backendIndex = 1680;
     max_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     max_Float16x3.parameters = max_Float16x3_args;
     Symbol::Resolved(&max_Float16x3_x)->typeSymbol = &Float16x3Type;
@@ -1819,7 +2093,7 @@ void SetupIntrinsics5()
     max_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     max_Float16x4.documentation = "Returns the maximum of x and y."_c;
     max_Float16x4.name = max_Float16x4_name;
-    max_Float16x4.backendIndex = 1637;
+    max_Float16x4.backendIndex = 1681;
     max_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     max_Float16x4.parameters = max_Float16x4_args;
     Symbol::Resolved(&max_Float16x4_x)->typeSymbol = &Float16x4Type;
@@ -1836,7 +2110,7 @@ void SetupIntrinsics5()
     max_Int32_y.type = Type::FullType{ Int32Type.name };
     max_Int32.documentation = "Returns the maximum of x and y."_c;
     max_Int32.name = max_Int32_name;
-    max_Int32.backendIndex = 1638;
+    max_Int32.backendIndex = 1682;
     max_Int32.returnType = Type::FullType { Int32Type.name };
     max_Int32.parameters = max_Int32_args;
     Symbol::Resolved(&max_Int32_x)->typeSymbol = &Int32Type;
@@ -1853,7 +2127,7 @@ void SetupIntrinsics5()
     max_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
     max_Int32x2.documentation = "Returns the maximum of x and y."_c;
     max_Int32x2.name = max_Int32x2_name;
-    max_Int32x2.backendIndex = 1639;
+    max_Int32x2.backendIndex = 1683;
     max_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     max_Int32x2.parameters = max_Int32x2_args;
     Symbol::Resolved(&max_Int32x2_x)->typeSymbol = &Int32x2Type;
@@ -1870,7 +2144,7 @@ void SetupIntrinsics5()
     max_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
     max_Int32x3.documentation = "Returns the maximum of x and y."_c;
     max_Int32x3.name = max_Int32x3_name;
-    max_Int32x3.backendIndex = 1640;
+    max_Int32x3.backendIndex = 1684;
     max_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     max_Int32x3.parameters = max_Int32x3_args;
     Symbol::Resolved(&max_Int32x3_x)->typeSymbol = &Int32x3Type;
@@ -1887,7 +2161,7 @@ void SetupIntrinsics5()
     max_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
     max_Int32x4.documentation = "Returns the maximum of x and y."_c;
     max_Int32x4.name = max_Int32x4_name;
-    max_Int32x4.backendIndex = 1641;
+    max_Int32x4.backendIndex = 1685;
     max_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     max_Int32x4.parameters = max_Int32x4_args;
     Symbol::Resolved(&max_Int32x4_x)->typeSymbol = &Int32x4Type;
@@ -1904,7 +2178,7 @@ void SetupIntrinsics5()
     max_Int16_y.type = Type::FullType{ Int16Type.name };
     max_Int16.documentation = "Returns the maximum of x and y."_c;
     max_Int16.name = max_Int16_name;
-    max_Int16.backendIndex = 1642;
+    max_Int16.backendIndex = 1686;
     max_Int16.returnType = Type::FullType { Int16Type.name };
     max_Int16.parameters = max_Int16_args;
     Symbol::Resolved(&max_Int16_x)->typeSymbol = &Int16Type;
@@ -1921,7 +2195,7 @@ void SetupIntrinsics5()
     max_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
     max_Int16x2.documentation = "Returns the maximum of x and y."_c;
     max_Int16x2.name = max_Int16x2_name;
-    max_Int16x2.backendIndex = 1643;
+    max_Int16x2.backendIndex = 1687;
     max_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     max_Int16x2.parameters = max_Int16x2_args;
     Symbol::Resolved(&max_Int16x2_x)->typeSymbol = &Int16x2Type;
@@ -1938,7 +2212,7 @@ void SetupIntrinsics5()
     max_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
     max_Int16x3.documentation = "Returns the maximum of x and y."_c;
     max_Int16x3.name = max_Int16x3_name;
-    max_Int16x3.backendIndex = 1644;
+    max_Int16x3.backendIndex = 1688;
     max_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     max_Int16x3.parameters = max_Int16x3_args;
     Symbol::Resolved(&max_Int16x3_x)->typeSymbol = &Int16x3Type;
@@ -1955,7 +2229,7 @@ void SetupIntrinsics5()
     max_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
     max_Int16x4.documentation = "Returns the maximum of x and y."_c;
     max_Int16x4.name = max_Int16x4_name;
-    max_Int16x4.backendIndex = 1645;
+    max_Int16x4.backendIndex = 1689;
     max_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     max_Int16x4.parameters = max_Int16x4_args;
     Symbol::Resolved(&max_Int16x4_x)->typeSymbol = &Int16x4Type;
@@ -1972,7 +2246,7 @@ void SetupIntrinsics5()
     max_UInt32_y.type = Type::FullType{ UInt32Type.name };
     max_UInt32.documentation = "Returns the maximum of x and y."_c;
     max_UInt32.name = max_UInt32_name;
-    max_UInt32.backendIndex = 1646;
+    max_UInt32.backendIndex = 1690;
     max_UInt32.returnType = Type::FullType { UInt32Type.name };
     max_UInt32.parameters = max_UInt32_args;
     Symbol::Resolved(&max_UInt32_x)->typeSymbol = &UInt32Type;
@@ -1989,7 +2263,7 @@ void SetupIntrinsics5()
     max_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
     max_UInt32x2.documentation = "Returns the maximum of x and y."_c;
     max_UInt32x2.name = max_UInt32x2_name;
-    max_UInt32x2.backendIndex = 1647;
+    max_UInt32x2.backendIndex = 1691;
     max_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     max_UInt32x2.parameters = max_UInt32x2_args;
     Symbol::Resolved(&max_UInt32x2_x)->typeSymbol = &UInt32x2Type;
@@ -2006,7 +2280,7 @@ void SetupIntrinsics5()
     max_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
     max_UInt32x3.documentation = "Returns the maximum of x and y."_c;
     max_UInt32x3.name = max_UInt32x3_name;
-    max_UInt32x3.backendIndex = 1648;
+    max_UInt32x3.backendIndex = 1692;
     max_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     max_UInt32x3.parameters = max_UInt32x3_args;
     Symbol::Resolved(&max_UInt32x3_x)->typeSymbol = &UInt32x3Type;
@@ -2023,7 +2297,7 @@ void SetupIntrinsics5()
     max_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
     max_UInt32x4.documentation = "Returns the maximum of x and y."_c;
     max_UInt32x4.name = max_UInt32x4_name;
-    max_UInt32x4.backendIndex = 1649;
+    max_UInt32x4.backendIndex = 1693;
     max_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     max_UInt32x4.parameters = max_UInt32x4_args;
     Symbol::Resolved(&max_UInt32x4_x)->typeSymbol = &UInt32x4Type;
@@ -2040,7 +2314,7 @@ void SetupIntrinsics5()
     max_UInt16_y.type = Type::FullType{ UInt16Type.name };
     max_UInt16.documentation = "Returns the maximum of x and y."_c;
     max_UInt16.name = max_UInt16_name;
-    max_UInt16.backendIndex = 1650;
+    max_UInt16.backendIndex = 1694;
     max_UInt16.returnType = Type::FullType { UInt16Type.name };
     max_UInt16.parameters = max_UInt16_args;
     Symbol::Resolved(&max_UInt16_x)->typeSymbol = &UInt16Type;
@@ -2057,7 +2331,7 @@ void SetupIntrinsics5()
     max_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
     max_UInt16x2.documentation = "Returns the maximum of x and y."_c;
     max_UInt16x2.name = max_UInt16x2_name;
-    max_UInt16x2.backendIndex = 1651;
+    max_UInt16x2.backendIndex = 1695;
     max_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     max_UInt16x2.parameters = max_UInt16x2_args;
     Symbol::Resolved(&max_UInt16x2_x)->typeSymbol = &UInt16x2Type;
@@ -2074,7 +2348,7 @@ void SetupIntrinsics5()
     max_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
     max_UInt16x3.documentation = "Returns the maximum of x and y."_c;
     max_UInt16x3.name = max_UInt16x3_name;
-    max_UInt16x3.backendIndex = 1652;
+    max_UInt16x3.backendIndex = 1696;
     max_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     max_UInt16x3.parameters = max_UInt16x3_args;
     Symbol::Resolved(&max_UInt16x3_x)->typeSymbol = &UInt16x3Type;
@@ -2091,7 +2365,7 @@ void SetupIntrinsics5()
     max_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
     max_UInt16x4.documentation = "Returns the maximum of x and y."_c;
     max_UInt16x4.name = max_UInt16x4_name;
-    max_UInt16x4.backendIndex = 1653;
+    max_UInt16x4.backendIndex = 1697;
     max_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     max_UInt16x4.parameters = max_UInt16x4_args;
     Symbol::Resolved(&max_UInt16x4_x)->typeSymbol = &UInt16x4Type;
@@ -2110,7 +2384,7 @@ void SetupIntrinsics5()
     clamp_Float32_max.type = Type::FullType{ Float32Type.name };
     clamp_Float32.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float32.name = clamp_Float32_name;
-    clamp_Float32.backendIndex = 1654;
+    clamp_Float32.backendIndex = 1698;
     clamp_Float32.returnType = Type::FullType { Float32Type.name };
     clamp_Float32.parameters = clamp_Float32_args;
     Symbol::Resolved(&clamp_Float32_val)->typeSymbol = &Float32Type;
@@ -2130,7 +2404,7 @@ void SetupIntrinsics5()
     clamp_Float32x2_max.type = Type::FullType{ Float32x2Type.name };
     clamp_Float32x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float32x2.name = clamp_Float32x2_name;
-    clamp_Float32x2.backendIndex = 1655;
+    clamp_Float32x2.backendIndex = 1699;
     clamp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     clamp_Float32x2.parameters = clamp_Float32x2_args;
     Symbol::Resolved(&clamp_Float32x2_val)->typeSymbol = &Float32x2Type;
@@ -2150,7 +2424,7 @@ void SetupIntrinsics5()
     clamp_Float32x3_max.type = Type::FullType{ Float32x3Type.name };
     clamp_Float32x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float32x3.name = clamp_Float32x3_name;
-    clamp_Float32x3.backendIndex = 1656;
+    clamp_Float32x3.backendIndex = 1700;
     clamp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     clamp_Float32x3.parameters = clamp_Float32x3_args;
     Symbol::Resolved(&clamp_Float32x3_val)->typeSymbol = &Float32x3Type;
@@ -2170,7 +2444,7 @@ void SetupIntrinsics5()
     clamp_Float32x4_max.type = Type::FullType{ Float32x4Type.name };
     clamp_Float32x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float32x4.name = clamp_Float32x4_name;
-    clamp_Float32x4.backendIndex = 1657;
+    clamp_Float32x4.backendIndex = 1701;
     clamp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     clamp_Float32x4.parameters = clamp_Float32x4_args;
     Symbol::Resolved(&clamp_Float32x4_val)->typeSymbol = &Float32x4Type;
@@ -2190,7 +2464,7 @@ void SetupIntrinsics5()
     clamp_Float16_max.type = Type::FullType{ Float16Type.name };
     clamp_Float16.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float16.name = clamp_Float16_name;
-    clamp_Float16.backendIndex = 1658;
+    clamp_Float16.backendIndex = 1702;
     clamp_Float16.returnType = Type::FullType { Float16Type.name };
     clamp_Float16.parameters = clamp_Float16_args;
     Symbol::Resolved(&clamp_Float16_val)->typeSymbol = &Float16Type;
@@ -2210,7 +2484,7 @@ void SetupIntrinsics5()
     clamp_Float16x2_max.type = Type::FullType{ Float16x2Type.name };
     clamp_Float16x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float16x2.name = clamp_Float16x2_name;
-    clamp_Float16x2.backendIndex = 1659;
+    clamp_Float16x2.backendIndex = 1703;
     clamp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     clamp_Float16x2.parameters = clamp_Float16x2_args;
     Symbol::Resolved(&clamp_Float16x2_val)->typeSymbol = &Float16x2Type;
@@ -2230,7 +2504,7 @@ void SetupIntrinsics5()
     clamp_Float16x3_max.type = Type::FullType{ Float16x3Type.name };
     clamp_Float16x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float16x3.name = clamp_Float16x3_name;
-    clamp_Float16x3.backendIndex = 1660;
+    clamp_Float16x3.backendIndex = 1704;
     clamp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     clamp_Float16x3.parameters = clamp_Float16x3_args;
     Symbol::Resolved(&clamp_Float16x3_val)->typeSymbol = &Float16x3Type;
@@ -2250,7 +2524,7 @@ void SetupIntrinsics5()
     clamp_Float16x4_max.type = Type::FullType{ Float16x4Type.name };
     clamp_Float16x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float16x4.name = clamp_Float16x4_name;
-    clamp_Float16x4.backendIndex = 1661;
+    clamp_Float16x4.backendIndex = 1705;
     clamp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     clamp_Float16x4.parameters = clamp_Float16x4_args;
     Symbol::Resolved(&clamp_Float16x4_val)->typeSymbol = &Float16x4Type;
@@ -2270,7 +2544,7 @@ void SetupIntrinsics5()
     clamp_Int32_max.type = Type::FullType{ Int32Type.name };
     clamp_Int32.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int32.name = clamp_Int32_name;
-    clamp_Int32.backendIndex = 1662;
+    clamp_Int32.backendIndex = 1706;
     clamp_Int32.returnType = Type::FullType { Int32Type.name };
     clamp_Int32.parameters = clamp_Int32_args;
     Symbol::Resolved(&clamp_Int32_val)->typeSymbol = &Int32Type;
@@ -2290,7 +2564,7 @@ void SetupIntrinsics5()
     clamp_Int32x2_max.type = Type::FullType{ Int32x2Type.name };
     clamp_Int32x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int32x2.name = clamp_Int32x2_name;
-    clamp_Int32x2.backendIndex = 1663;
+    clamp_Int32x2.backendIndex = 1707;
     clamp_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     clamp_Int32x2.parameters = clamp_Int32x2_args;
     Symbol::Resolved(&clamp_Int32x2_val)->typeSymbol = &Int32x2Type;
@@ -2310,7 +2584,7 @@ void SetupIntrinsics5()
     clamp_Int32x3_max.type = Type::FullType{ Int32x3Type.name };
     clamp_Int32x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int32x3.name = clamp_Int32x3_name;
-    clamp_Int32x3.backendIndex = 1664;
+    clamp_Int32x3.backendIndex = 1708;
     clamp_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     clamp_Int32x3.parameters = clamp_Int32x3_args;
     Symbol::Resolved(&clamp_Int32x3_val)->typeSymbol = &Int32x3Type;
@@ -2330,7 +2604,7 @@ void SetupIntrinsics5()
     clamp_Int32x4_max.type = Type::FullType{ Int32x4Type.name };
     clamp_Int32x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int32x4.name = clamp_Int32x4_name;
-    clamp_Int32x4.backendIndex = 1665;
+    clamp_Int32x4.backendIndex = 1709;
     clamp_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     clamp_Int32x4.parameters = clamp_Int32x4_args;
     Symbol::Resolved(&clamp_Int32x4_val)->typeSymbol = &Int32x4Type;
@@ -2350,7 +2624,7 @@ void SetupIntrinsics5()
     clamp_Int16_max.type = Type::FullType{ Int16Type.name };
     clamp_Int16.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int16.name = clamp_Int16_name;
-    clamp_Int16.backendIndex = 1666;
+    clamp_Int16.backendIndex = 1710;
     clamp_Int16.returnType = Type::FullType { Int16Type.name };
     clamp_Int16.parameters = clamp_Int16_args;
     Symbol::Resolved(&clamp_Int16_val)->typeSymbol = &Int16Type;
@@ -2370,7 +2644,7 @@ void SetupIntrinsics5()
     clamp_Int16x2_max.type = Type::FullType{ Int16x2Type.name };
     clamp_Int16x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int16x2.name = clamp_Int16x2_name;
-    clamp_Int16x2.backendIndex = 1667;
+    clamp_Int16x2.backendIndex = 1711;
     clamp_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     clamp_Int16x2.parameters = clamp_Int16x2_args;
     Symbol::Resolved(&clamp_Int16x2_val)->typeSymbol = &Int16x2Type;
@@ -2390,7 +2664,7 @@ void SetupIntrinsics5()
     clamp_Int16x3_max.type = Type::FullType{ Int16x3Type.name };
     clamp_Int16x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int16x3.name = clamp_Int16x3_name;
-    clamp_Int16x3.backendIndex = 1668;
+    clamp_Int16x3.backendIndex = 1712;
     clamp_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     clamp_Int16x3.parameters = clamp_Int16x3_args;
     Symbol::Resolved(&clamp_Int16x3_val)->typeSymbol = &Int16x3Type;
@@ -2410,7 +2684,7 @@ void SetupIntrinsics5()
     clamp_Int16x4_max.type = Type::FullType{ Int16x4Type.name };
     clamp_Int16x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int16x4.name = clamp_Int16x4_name;
-    clamp_Int16x4.backendIndex = 1669;
+    clamp_Int16x4.backendIndex = 1713;
     clamp_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     clamp_Int16x4.parameters = clamp_Int16x4_args;
     Symbol::Resolved(&clamp_Int16x4_val)->typeSymbol = &Int16x4Type;
@@ -2430,7 +2704,7 @@ void SetupIntrinsics5()
     clamp_UInt32_max.type = Type::FullType{ UInt32Type.name };
     clamp_UInt32.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt32.name = clamp_UInt32_name;
-    clamp_UInt32.backendIndex = 1670;
+    clamp_UInt32.backendIndex = 1714;
     clamp_UInt32.returnType = Type::FullType { UInt32Type.name };
     clamp_UInt32.parameters = clamp_UInt32_args;
     Symbol::Resolved(&clamp_UInt32_val)->typeSymbol = &UInt32Type;
@@ -2450,7 +2724,7 @@ void SetupIntrinsics5()
     clamp_UInt32x2_max.type = Type::FullType{ UInt32x2Type.name };
     clamp_UInt32x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt32x2.name = clamp_UInt32x2_name;
-    clamp_UInt32x2.backendIndex = 1671;
+    clamp_UInt32x2.backendIndex = 1715;
     clamp_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     clamp_UInt32x2.parameters = clamp_UInt32x2_args;
     Symbol::Resolved(&clamp_UInt32x2_val)->typeSymbol = &UInt32x2Type;
@@ -2470,7 +2744,7 @@ void SetupIntrinsics5()
     clamp_UInt32x3_max.type = Type::FullType{ UInt32x3Type.name };
     clamp_UInt32x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt32x3.name = clamp_UInt32x3_name;
-    clamp_UInt32x3.backendIndex = 1672;
+    clamp_UInt32x3.backendIndex = 1716;
     clamp_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     clamp_UInt32x3.parameters = clamp_UInt32x3_args;
     Symbol::Resolved(&clamp_UInt32x3_val)->typeSymbol = &UInt32x3Type;
@@ -2490,7 +2764,7 @@ void SetupIntrinsics5()
     clamp_UInt32x4_max.type = Type::FullType{ UInt32x4Type.name };
     clamp_UInt32x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt32x4.name = clamp_UInt32x4_name;
-    clamp_UInt32x4.backendIndex = 1673;
+    clamp_UInt32x4.backendIndex = 1717;
     clamp_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     clamp_UInt32x4.parameters = clamp_UInt32x4_args;
     Symbol::Resolved(&clamp_UInt32x4_val)->typeSymbol = &UInt32x4Type;
@@ -2510,7 +2784,7 @@ void SetupIntrinsics5()
     clamp_UInt16_max.type = Type::FullType{ UInt16Type.name };
     clamp_UInt16.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt16.name = clamp_UInt16_name;
-    clamp_UInt16.backendIndex = 1674;
+    clamp_UInt16.backendIndex = 1718;
     clamp_UInt16.returnType = Type::FullType { UInt16Type.name };
     clamp_UInt16.parameters = clamp_UInt16_args;
     Symbol::Resolved(&clamp_UInt16_val)->typeSymbol = &UInt16Type;
@@ -2530,7 +2804,7 @@ void SetupIntrinsics5()
     clamp_UInt16x2_max.type = Type::FullType{ UInt16x2Type.name };
     clamp_UInt16x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt16x2.name = clamp_UInt16x2_name;
-    clamp_UInt16x2.backendIndex = 1675;
+    clamp_UInt16x2.backendIndex = 1719;
     clamp_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     clamp_UInt16x2.parameters = clamp_UInt16x2_args;
     Symbol::Resolved(&clamp_UInt16x2_val)->typeSymbol = &UInt16x2Type;
@@ -2550,7 +2824,7 @@ void SetupIntrinsics5()
     clamp_UInt16x3_max.type = Type::FullType{ UInt16x3Type.name };
     clamp_UInt16x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt16x3.name = clamp_UInt16x3_name;
-    clamp_UInt16x3.backendIndex = 1676;
+    clamp_UInt16x3.backendIndex = 1720;
     clamp_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     clamp_UInt16x3.parameters = clamp_UInt16x3_args;
     Symbol::Resolved(&clamp_UInt16x3_val)->typeSymbol = &UInt16x3Type;
@@ -2570,7 +2844,7 @@ void SetupIntrinsics5()
     clamp_UInt16x4_max.type = Type::FullType{ UInt16x4Type.name };
     clamp_UInt16x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt16x4.name = clamp_UInt16x4_name;
-    clamp_UInt16x4.backendIndex = 1677;
+    clamp_UInt16x4.backendIndex = 1721;
     clamp_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     clamp_UInt16x4.parameters = clamp_UInt16x4_args;
     Symbol::Resolved(&clamp_UInt16x4_val)->typeSymbol = &UInt16x4Type;
@@ -2590,7 +2864,7 @@ void SetupIntrinsics5()
     lerp_Float32_t.type = Type::FullType{ Float32Type.name };
     lerp_Float32.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float32.name = lerp_Float32_name;
-    lerp_Float32.backendIndex = 1678;
+    lerp_Float32.backendIndex = 1722;
     lerp_Float32.returnType = Type::FullType { Float32Type.name };
     lerp_Float32.parameters = lerp_Float32_args;
     Symbol::Resolved(&lerp_Float32_a)->typeSymbol = &Float32Type;
@@ -2610,7 +2884,7 @@ void SetupIntrinsics5()
     lerp_Float32x2_t.type = Type::FullType{ Float32x2Type.name };
     lerp_Float32x2.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float32x2.name = lerp_Float32x2_name;
-    lerp_Float32x2.backendIndex = 1679;
+    lerp_Float32x2.backendIndex = 1723;
     lerp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     lerp_Float32x2.parameters = lerp_Float32x2_args;
     Symbol::Resolved(&lerp_Float32x2_a)->typeSymbol = &Float32x2Type;
@@ -2630,7 +2904,7 @@ void SetupIntrinsics5()
     lerp_Float32x3_t.type = Type::FullType{ Float32x3Type.name };
     lerp_Float32x3.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float32x3.name = lerp_Float32x3_name;
-    lerp_Float32x3.backendIndex = 1680;
+    lerp_Float32x3.backendIndex = 1724;
     lerp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     lerp_Float32x3.parameters = lerp_Float32x3_args;
     Symbol::Resolved(&lerp_Float32x3_a)->typeSymbol = &Float32x3Type;
@@ -2650,7 +2924,7 @@ void SetupIntrinsics5()
     lerp_Float32x4_t.type = Type::FullType{ Float32x4Type.name };
     lerp_Float32x4.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float32x4.name = lerp_Float32x4_name;
-    lerp_Float32x4.backendIndex = 1681;
+    lerp_Float32x4.backendIndex = 1725;
     lerp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     lerp_Float32x4.parameters = lerp_Float32x4_args;
     Symbol::Resolved(&lerp_Float32x4_a)->typeSymbol = &Float32x4Type;
@@ -2670,7 +2944,7 @@ void SetupIntrinsics5()
     lerp_Float16_t.type = Type::FullType{ Float16Type.name };
     lerp_Float16.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float16.name = lerp_Float16_name;
-    lerp_Float16.backendIndex = 1682;
+    lerp_Float16.backendIndex = 1726;
     lerp_Float16.returnType = Type::FullType { Float16Type.name };
     lerp_Float16.parameters = lerp_Float16_args;
     Symbol::Resolved(&lerp_Float16_a)->typeSymbol = &Float16Type;
@@ -2690,7 +2964,7 @@ void SetupIntrinsics5()
     lerp_Float16x2_t.type = Type::FullType{ Float16x2Type.name };
     lerp_Float16x2.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float16x2.name = lerp_Float16x2_name;
-    lerp_Float16x2.backendIndex = 1683;
+    lerp_Float16x2.backendIndex = 1727;
     lerp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     lerp_Float16x2.parameters = lerp_Float16x2_args;
     Symbol::Resolved(&lerp_Float16x2_a)->typeSymbol = &Float16x2Type;
@@ -2710,7 +2984,7 @@ void SetupIntrinsics5()
     lerp_Float16x3_t.type = Type::FullType{ Float16x3Type.name };
     lerp_Float16x3.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float16x3.name = lerp_Float16x3_name;
-    lerp_Float16x3.backendIndex = 1684;
+    lerp_Float16x3.backendIndex = 1728;
     lerp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     lerp_Float16x3.parameters = lerp_Float16x3_args;
     Symbol::Resolved(&lerp_Float16x3_a)->typeSymbol = &Float16x3Type;
@@ -2730,7 +3004,7 @@ void SetupIntrinsics5()
     lerp_Float16x4_t.type = Type::FullType{ Float16x4Type.name };
     lerp_Float16x4.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float16x4.name = lerp_Float16x4_name;
-    lerp_Float16x4.backendIndex = 1685;
+    lerp_Float16x4.backendIndex = 1729;
     lerp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     lerp_Float16x4.parameters = lerp_Float16x4_args;
     Symbol::Resolved(&lerp_Float16x4_a)->typeSymbol = &Float16x4Type;
@@ -2748,7 +3022,7 @@ void SetupIntrinsics5()
     step_Float32_x.type = Type::FullType{ Float32Type.name };
     step_Float32.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float32.name = step_Float32_name;
-    step_Float32.backendIndex = 1686;
+    step_Float32.backendIndex = 1730;
     step_Float32.returnType = Type::FullType { Float32Type.name };
     step_Float32.parameters = step_Float32_args;
     Symbol::Resolved(&step_Float32_edge)->typeSymbol = &Float32Type;
@@ -2765,7 +3039,7 @@ void SetupIntrinsics5()
     step_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     step_Float32x2.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float32x2.name = step_Float32x2_name;
-    step_Float32x2.backendIndex = 1687;
+    step_Float32x2.backendIndex = 1731;
     step_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     step_Float32x2.parameters = step_Float32x2_args;
     Symbol::Resolved(&step_Float32x2_edge)->typeSymbol = &Float32x2Type;
@@ -2782,7 +3056,7 @@ void SetupIntrinsics5()
     step_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     step_Float32x3.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float32x3.name = step_Float32x3_name;
-    step_Float32x3.backendIndex = 1688;
+    step_Float32x3.backendIndex = 1732;
     step_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     step_Float32x3.parameters = step_Float32x3_args;
     Symbol::Resolved(&step_Float32x3_edge)->typeSymbol = &Float32x3Type;
@@ -2799,7 +3073,7 @@ void SetupIntrinsics5()
     step_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     step_Float32x4.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float32x4.name = step_Float32x4_name;
-    step_Float32x4.backendIndex = 1689;
+    step_Float32x4.backendIndex = 1733;
     step_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     step_Float32x4.parameters = step_Float32x4_args;
     Symbol::Resolved(&step_Float32x4_edge)->typeSymbol = &Float32x4Type;
@@ -2808,276 +3082,6 @@ void SetupIntrinsics5()
     Symbol::Resolved(&step_Float32x4)->name = "step(f32x4,f32x4)"_c;
     Symbol::Resolved(&step_Float32x4)->nameWithVarNames = "step(edge : f32x4, x : f32x4)"_c;
     Symbol::Resolved(&step_Float32x4)->returnTypeSymbol = &Float32x4Type;
-
-    /// step with Float16, Float16
-    step_Float16_edge.name = "edge"_c;
-    step_Float16_edge.type = Type::FullType{ Float16Type.name };
-    step_Float16_x.name = "x"_c;
-    step_Float16_x.type = Type::FullType{ Float16Type.name };
-    step_Float16.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float16.name = step_Float16_name;
-    step_Float16.backendIndex = 1690;
-    step_Float16.returnType = Type::FullType { Float16Type.name };
-    step_Float16.parameters = step_Float16_args;
-    Symbol::Resolved(&step_Float16_edge)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&step_Float16_x)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&step_Float16)->signature = "step(f16,f16) f16"_c;
-    Symbol::Resolved(&step_Float16)->name = "step(f16,f16)"_c;
-    Symbol::Resolved(&step_Float16)->nameWithVarNames = "step(edge : f16, x : f16)"_c;
-    Symbol::Resolved(&step_Float16)->returnTypeSymbol = &Float16Type;
-
-    /// step with Float16x2, Float16x2
-    step_Float16x2_edge.name = "edge"_c;
-    step_Float16x2_edge.type = Type::FullType{ Float16x2Type.name };
-    step_Float16x2_x.name = "x"_c;
-    step_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
-    step_Float16x2.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float16x2.name = step_Float16x2_name;
-    step_Float16x2.backendIndex = 1691;
-    step_Float16x2.returnType = Type::FullType { Float16x2Type.name };
-    step_Float16x2.parameters = step_Float16x2_args;
-    Symbol::Resolved(&step_Float16x2_edge)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&step_Float16x2_x)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&step_Float16x2)->signature = "step(f16x2,f16x2) f16x2"_c;
-    Symbol::Resolved(&step_Float16x2)->name = "step(f16x2,f16x2)"_c;
-    Symbol::Resolved(&step_Float16x2)->nameWithVarNames = "step(edge : f16x2, x : f16x2)"_c;
-    Symbol::Resolved(&step_Float16x2)->returnTypeSymbol = &Float16x2Type;
-
-    /// step with Float16x3, Float16x3
-    step_Float16x3_edge.name = "edge"_c;
-    step_Float16x3_edge.type = Type::FullType{ Float16x3Type.name };
-    step_Float16x3_x.name = "x"_c;
-    step_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
-    step_Float16x3.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float16x3.name = step_Float16x3_name;
-    step_Float16x3.backendIndex = 1692;
-    step_Float16x3.returnType = Type::FullType { Float16x3Type.name };
-    step_Float16x3.parameters = step_Float16x3_args;
-    Symbol::Resolved(&step_Float16x3_edge)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&step_Float16x3_x)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&step_Float16x3)->signature = "step(f16x3,f16x3) f16x3"_c;
-    Symbol::Resolved(&step_Float16x3)->name = "step(f16x3,f16x3)"_c;
-    Symbol::Resolved(&step_Float16x3)->nameWithVarNames = "step(edge : f16x3, x : f16x3)"_c;
-    Symbol::Resolved(&step_Float16x3)->returnTypeSymbol = &Float16x3Type;
-
-    /// step with Float16x4, Float16x4
-    step_Float16x4_edge.name = "edge"_c;
-    step_Float16x4_edge.type = Type::FullType{ Float16x4Type.name };
-    step_Float16x4_x.name = "x"_c;
-    step_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
-    step_Float16x4.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float16x4.name = step_Float16x4_name;
-    step_Float16x4.backendIndex = 1693;
-    step_Float16x4.returnType = Type::FullType { Float16x4Type.name };
-    step_Float16x4.parameters = step_Float16x4_args;
-    Symbol::Resolved(&step_Float16x4_edge)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&step_Float16x4_x)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&step_Float16x4)->signature = "step(f16x4,f16x4) f16x4"_c;
-    Symbol::Resolved(&step_Float16x4)->name = "step(f16x4,f16x4)"_c;
-    Symbol::Resolved(&step_Float16x4)->nameWithVarNames = "step(edge : f16x4, x : f16x4)"_c;
-    Symbol::Resolved(&step_Float16x4)->returnTypeSymbol = &Float16x4Type;
-
-    /// smoothstep with Float32, Float32, Float32
-    smoothstep_Float32_edge0.name = "edge0"_c;
-    smoothstep_Float32_edge0.type = Type::FullType{ Float32Type.name };
-    smoothstep_Float32_edge1.name = "edge1"_c;
-    smoothstep_Float32_edge1.type = Type::FullType{ Float32Type.name };
-    smoothstep_Float32_x.name = "x"_c;
-    smoothstep_Float32_x.type = Type::FullType{ Float32Type.name };
-    smoothstep_Float32.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float32.name = smoothstep_Float32_name;
-    smoothstep_Float32.backendIndex = 1694;
-    smoothstep_Float32.returnType = Type::FullType { Float32Type.name };
-    smoothstep_Float32.parameters = smoothstep_Float32_args;
-    Symbol::Resolved(&smoothstep_Float32_edge0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&smoothstep_Float32_edge1)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&smoothstep_Float32_x)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&smoothstep_Float32)->signature = "smoothstep(f32,f32,f32) f32"_c;
-    Symbol::Resolved(&smoothstep_Float32)->name = "smoothstep(f32,f32,f32)"_c;
-    Symbol::Resolved(&smoothstep_Float32)->nameWithVarNames = "smoothstep(edge0 : f32, edge1 : f32, x : f32)"_c;
-    Symbol::Resolved(&smoothstep_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// smoothstep with Float32x2, Float32x2, Float32x2
-    smoothstep_Float32x2_edge0.name = "edge0"_c;
-    smoothstep_Float32x2_edge0.type = Type::FullType{ Float32x2Type.name };
-    smoothstep_Float32x2_edge1.name = "edge1"_c;
-    smoothstep_Float32x2_edge1.type = Type::FullType{ Float32x2Type.name };
-    smoothstep_Float32x2_x.name = "x"_c;
-    smoothstep_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
-    smoothstep_Float32x2.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float32x2.name = smoothstep_Float32x2_name;
-    smoothstep_Float32x2.backendIndex = 1695;
-    smoothstep_Float32x2.returnType = Type::FullType { Float32x2Type.name };
-    smoothstep_Float32x2.parameters = smoothstep_Float32x2_args;
-    Symbol::Resolved(&smoothstep_Float32x2_edge0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&smoothstep_Float32x2_edge1)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&smoothstep_Float32x2_x)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&smoothstep_Float32x2)->signature = "smoothstep(f32x2,f32x2,f32x2) f32x2"_c;
-    Symbol::Resolved(&smoothstep_Float32x2)->name = "smoothstep(f32x2,f32x2,f32x2)"_c;
-    Symbol::Resolved(&smoothstep_Float32x2)->nameWithVarNames = "smoothstep(edge0 : f32x2, edge1 : f32x2, x : f32x2)"_c;
-    Symbol::Resolved(&smoothstep_Float32x2)->returnTypeSymbol = &Float32x2Type;
-
-    /// smoothstep with Float32x3, Float32x3, Float32x3
-    smoothstep_Float32x3_edge0.name = "edge0"_c;
-    smoothstep_Float32x3_edge0.type = Type::FullType{ Float32x3Type.name };
-    smoothstep_Float32x3_edge1.name = "edge1"_c;
-    smoothstep_Float32x3_edge1.type = Type::FullType{ Float32x3Type.name };
-    smoothstep_Float32x3_x.name = "x"_c;
-    smoothstep_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
-    smoothstep_Float32x3.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float32x3.name = smoothstep_Float32x3_name;
-    smoothstep_Float32x3.backendIndex = 1696;
-    smoothstep_Float32x3.returnType = Type::FullType { Float32x3Type.name };
-    smoothstep_Float32x3.parameters = smoothstep_Float32x3_args;
-    Symbol::Resolved(&smoothstep_Float32x3_edge0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&smoothstep_Float32x3_edge1)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&smoothstep_Float32x3_x)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&smoothstep_Float32x3)->signature = "smoothstep(f32x3,f32x3,f32x3) f32x3"_c;
-    Symbol::Resolved(&smoothstep_Float32x3)->name = "smoothstep(f32x3,f32x3,f32x3)"_c;
-    Symbol::Resolved(&smoothstep_Float32x3)->nameWithVarNames = "smoothstep(edge0 : f32x3, edge1 : f32x3, x : f32x3)"_c;
-    Symbol::Resolved(&smoothstep_Float32x3)->returnTypeSymbol = &Float32x3Type;
-
-    /// smoothstep with Float32x4, Float32x4, Float32x4
-    smoothstep_Float32x4_edge0.name = "edge0"_c;
-    smoothstep_Float32x4_edge0.type = Type::FullType{ Float32x4Type.name };
-    smoothstep_Float32x4_edge1.name = "edge1"_c;
-    smoothstep_Float32x4_edge1.type = Type::FullType{ Float32x4Type.name };
-    smoothstep_Float32x4_x.name = "x"_c;
-    smoothstep_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
-    smoothstep_Float32x4.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float32x4.name = smoothstep_Float32x4_name;
-    smoothstep_Float32x4.backendIndex = 1697;
-    smoothstep_Float32x4.returnType = Type::FullType { Float32x4Type.name };
-    smoothstep_Float32x4.parameters = smoothstep_Float32x4_args;
-    Symbol::Resolved(&smoothstep_Float32x4_edge0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&smoothstep_Float32x4_edge1)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&smoothstep_Float32x4_x)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&smoothstep_Float32x4)->signature = "smoothstep(f32x4,f32x4,f32x4) f32x4"_c;
-    Symbol::Resolved(&smoothstep_Float32x4)->name = "smoothstep(f32x4,f32x4,f32x4)"_c;
-    Symbol::Resolved(&smoothstep_Float32x4)->nameWithVarNames = "smoothstep(edge0 : f32x4, edge1 : f32x4, x : f32x4)"_c;
-    Symbol::Resolved(&smoothstep_Float32x4)->returnTypeSymbol = &Float32x4Type;
-
-    /// smoothstep with Float16, Float16, Float16
-    smoothstep_Float16_edge0.name = "edge0"_c;
-    smoothstep_Float16_edge0.type = Type::FullType{ Float16Type.name };
-    smoothstep_Float16_edge1.name = "edge1"_c;
-    smoothstep_Float16_edge1.type = Type::FullType{ Float16Type.name };
-    smoothstep_Float16_x.name = "x"_c;
-    smoothstep_Float16_x.type = Type::FullType{ Float16Type.name };
-    smoothstep_Float16.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float16.name = smoothstep_Float16_name;
-    smoothstep_Float16.backendIndex = 1698;
-    smoothstep_Float16.returnType = Type::FullType { Float16Type.name };
-    smoothstep_Float16.parameters = smoothstep_Float16_args;
-    Symbol::Resolved(&smoothstep_Float16_edge0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&smoothstep_Float16_edge1)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&smoothstep_Float16_x)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&smoothstep_Float16)->signature = "smoothstep(f16,f16,f16) f16"_c;
-    Symbol::Resolved(&smoothstep_Float16)->name = "smoothstep(f16,f16,f16)"_c;
-    Symbol::Resolved(&smoothstep_Float16)->nameWithVarNames = "smoothstep(edge0 : f16, edge1 : f16, x : f16)"_c;
-    Symbol::Resolved(&smoothstep_Float16)->returnTypeSymbol = &Float16Type;
-
-    /// smoothstep with Float16x2, Float16x2, Float16x2
-    smoothstep_Float16x2_edge0.name = "edge0"_c;
-    smoothstep_Float16x2_edge0.type = Type::FullType{ Float16x2Type.name };
-    smoothstep_Float16x2_edge1.name = "edge1"_c;
-    smoothstep_Float16x2_edge1.type = Type::FullType{ Float16x2Type.name };
-    smoothstep_Float16x2_x.name = "x"_c;
-    smoothstep_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
-    smoothstep_Float16x2.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float16x2.name = smoothstep_Float16x2_name;
-    smoothstep_Float16x2.backendIndex = 1699;
-    smoothstep_Float16x2.returnType = Type::FullType { Float16x2Type.name };
-    smoothstep_Float16x2.parameters = smoothstep_Float16x2_args;
-    Symbol::Resolved(&smoothstep_Float16x2_edge0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&smoothstep_Float16x2_edge1)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&smoothstep_Float16x2_x)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&smoothstep_Float16x2)->signature = "smoothstep(f16x2,f16x2,f16x2) f16x2"_c;
-    Symbol::Resolved(&smoothstep_Float16x2)->name = "smoothstep(f16x2,f16x2,f16x2)"_c;
-    Symbol::Resolved(&smoothstep_Float16x2)->nameWithVarNames = "smoothstep(edge0 : f16x2, edge1 : f16x2, x : f16x2)"_c;
-    Symbol::Resolved(&smoothstep_Float16x2)->returnTypeSymbol = &Float16x2Type;
-
-    /// smoothstep with Float16x3, Float16x3, Float16x3
-    smoothstep_Float16x3_edge0.name = "edge0"_c;
-    smoothstep_Float16x3_edge0.type = Type::FullType{ Float16x3Type.name };
-    smoothstep_Float16x3_edge1.name = "edge1"_c;
-    smoothstep_Float16x3_edge1.type = Type::FullType{ Float16x3Type.name };
-    smoothstep_Float16x3_x.name = "x"_c;
-    smoothstep_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
-    smoothstep_Float16x3.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float16x3.name = smoothstep_Float16x3_name;
-    smoothstep_Float16x3.backendIndex = 1700;
-    smoothstep_Float16x3.returnType = Type::FullType { Float16x3Type.name };
-    smoothstep_Float16x3.parameters = smoothstep_Float16x3_args;
-    Symbol::Resolved(&smoothstep_Float16x3_edge0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&smoothstep_Float16x3_edge1)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&smoothstep_Float16x3_x)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&smoothstep_Float16x3)->signature = "smoothstep(f16x3,f16x3,f16x3) f16x3"_c;
-    Symbol::Resolved(&smoothstep_Float16x3)->name = "smoothstep(f16x3,f16x3,f16x3)"_c;
-    Symbol::Resolved(&smoothstep_Float16x3)->nameWithVarNames = "smoothstep(edge0 : f16x3, edge1 : f16x3, x : f16x3)"_c;
-    Symbol::Resolved(&smoothstep_Float16x3)->returnTypeSymbol = &Float16x3Type;
-
-    /// smoothstep with Float16x4, Float16x4, Float16x4
-    smoothstep_Float16x4_edge0.name = "edge0"_c;
-    smoothstep_Float16x4_edge0.type = Type::FullType{ Float16x4Type.name };
-    smoothstep_Float16x4_edge1.name = "edge1"_c;
-    smoothstep_Float16x4_edge1.type = Type::FullType{ Float16x4Type.name };
-    smoothstep_Float16x4_x.name = "x"_c;
-    smoothstep_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
-    smoothstep_Float16x4.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float16x4.name = smoothstep_Float16x4_name;
-    smoothstep_Float16x4.backendIndex = 1701;
-    smoothstep_Float16x4.returnType = Type::FullType { Float16x4Type.name };
-    smoothstep_Float16x4.parameters = smoothstep_Float16x4_args;
-    Symbol::Resolved(&smoothstep_Float16x4_edge0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&smoothstep_Float16x4_edge1)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&smoothstep_Float16x4_x)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&smoothstep_Float16x4)->signature = "smoothstep(f16x4,f16x4,f16x4) f16x4"_c;
-    Symbol::Resolved(&smoothstep_Float16x4)->name = "smoothstep(f16x4,f16x4,f16x4)"_c;
-    Symbol::Resolved(&smoothstep_Float16x4)->nameWithVarNames = "smoothstep(edge0 : f16x4, edge1 : f16x4, x : f16x4)"_c;
-    Symbol::Resolved(&smoothstep_Float16x4)->returnTypeSymbol = &Float16x4Type;
-
-    /// ceil with Float32
-    ceil_Float32_arg.name = "val"_c;
-    ceil_Float32_arg.type = Type::FullType{ Float32Type.name };
-    ceil_Float32.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
-    ceil_Float32.name = ceil_Float32_name;
-    ceil_Float32.backendIndex = 1702;
-    ceil_Float32.returnType = Type::FullType { Float32Type.name };
-    ceil_Float32.parameters = ceil_Float32_args;
-    Symbol::Resolved(&ceil_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&ceil_Float32)->signature = "ceil(f32) f32"_c;
-    Symbol::Resolved(&ceil_Float32)->name = "ceil(f32)"_c;
-    Symbol::Resolved(&ceil_Float32)->nameWithVarNames = "ceil(val : f32)"_c;
-    Symbol::Resolved(&ceil_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// ceil with Float32x2
-    ceil_Float32x2_arg.name = "val"_c;
-    ceil_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    ceil_Float32x2.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
-    ceil_Float32x2.name = ceil_Float32x2_name;
-    ceil_Float32x2.backendIndex = 1703;
-    ceil_Float32x2.returnType = Type::FullType { Float32x2Type.name };
-    ceil_Float32x2.parameters = ceil_Float32x2_args;
-    Symbol::Resolved(&ceil_Float32x2_arg)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&ceil_Float32x2)->signature = "ceil(f32x2) f32x2"_c;
-    Symbol::Resolved(&ceil_Float32x2)->name = "ceil(f32x2)"_c;
-    Symbol::Resolved(&ceil_Float32x2)->nameWithVarNames = "ceil(val : f32x2)"_c;
-    Symbol::Resolved(&ceil_Float32x2)->returnTypeSymbol = &Float32x2Type;
-
-    /// ceil with Float32x3
-    ceil_Float32x3_arg.name = "val"_c;
-    ceil_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    ceil_Float32x3.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
-    ceil_Float32x3.name = ceil_Float32x3_name;
-    ceil_Float32x3.backendIndex = 1704;
-    ceil_Float32x3.returnType = Type::FullType { Float32x3Type.name };
-    ceil_Float32x3.parameters = ceil_Float32x3_args;
-    Symbol::Resolved(&ceil_Float32x3_arg)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&ceil_Float32x3)->signature = "ceil(f32x3) f32x3"_c;
-    Symbol::Resolved(&ceil_Float32x3)->name = "ceil(f32x3)"_c;
-    Symbol::Resolved(&ceil_Float32x3)->nameWithVarNames = "ceil(val : f32x3)"_c;
-    Symbol::Resolved(&ceil_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
 }
 } // namespace GPULang

@@ -33,10 +33,8 @@ union AccessBits
 
     struct
     {
-        uint32_t readAccess : 1;
-        uint32_t writeAccess : 1;
-        uint32_t atomicAccess : 1;
         uint32_t volatileAccess : 1;
+        uint32_t nonTemporalAccess : 1;
     } flags;
     uint32_t bits;
 };

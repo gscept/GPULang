@@ -1080,15 +1080,17 @@ struct FixedString
 
     bool StartsWith(const char* str) const
     {
+        size_t len = strlen(str);
         if (this->buf == nullptr)
         {
-            if (strlen(str) == 0)
+            if (len == 0)
                 return true;
             else
                 return false;
         }
-        return strncmp(this->buf, str, strlen(str)) == 0;
+        return strncmp(this->buf, str, len) == 0;
     }
+
 
     bool StartsWith(const std::string_view& str) const
     {
@@ -1113,6 +1115,23 @@ struct FixedString
         }
         return strncmp(this->buf, str.data(), str.length()) == 0;
     }
+
+    const char* Trailing(const char* str) const
+    {
+        size_t len = strlen(str);
+        if (this->buf == nullptr)
+        {
+            if (len == 0)
+                return nullptr;
+            else
+                return nullptr;
+        }
+        int diff = strncmp(this->buf, str, len);
+        if (diff != 0)
+            return nullptr;
+        return this->buf + len;
+    }
+
 
     const char* c_str() const { return this->buf; }
 

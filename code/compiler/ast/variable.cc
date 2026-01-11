@@ -20,7 +20,6 @@ Variable::Variable()
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(this->resolved);
     varResolved->typeSymbol = nullptr;
     varResolved->accessBits.bits = 0x0;
-    varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
     varResolved->parameterBits.bits = 0x0;
     varResolved->usageBits.bits = 0x0;
     varResolved->group = __Resolved::NOT_BOUND;
@@ -42,19 +41,6 @@ Variable::Variable()
 Variable::~Variable()
 {
 
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void
-Variable::SetupAsBuiltinParameter()
-{
-    Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(this->resolved);
-    varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
-    varResolved->byteSize = varResolved->typeSymbol->byteSize;
-    varResolved->storage = Storage::Default;
-    varResolved->usageBits.flags.isParameter = true;
 }
 
 } // namespace GPULang
