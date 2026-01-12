@@ -3163,9 +3163,14 @@ struct IndirectionState
 
 //------------------------------------------------------------------------------
 /**
+    Unrolls the indirections on a SPIRVResult.
+    The indirection list is segmented into two parts, first is the type indirections which come at the beginning of the list. The last item in this list indicates the final pointer type.
+    The second part are the array, struct and address accesses, all of which results in the final pointer type.
+
+    Any subsequent indirection unroll will peel of one more pointer type from the stack. If the resulting indirection list is empty, then the final type is the data type.
 */
 uint32_t
-IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t name, uint32_t& type, const std::vector<SPIRVResult::Indirection>& chain, IndirectionState& state)
+IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t name, uint32_t& type, SPIRVResult::Storage& storage, std::vector<SPIRVResult::Indirection>& chain, IndirectionState& state)
 {
     uint32_t val = name;
 
@@ -3176,9 +3181,11 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
     TransientArray<SPVArg> accessChain(chain.size());
     SPIRVResult::Indirection::Type currentType = SPIRVResult::Indirection::Type::Access;
     uint32_t ptrType = type;
-    for (uint32_t i = 0; i < chain.size(); i++)
+    auto it = chain.begin();
+    auto startType = chain.begin();
+    while (it != chain.end())
     {
-        const SPIRVResult::Indirection& indirection = chain[i];
+        const SPIRVResult::Indirection& indirection = *it;
 
         TransientArray<SPVEnum> memOps(2);
         if (state.volatileData)
@@ -3190,20 +3197,11 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
 
         if (indirection.type == SPIRVResult::Indirection::Type::Pointer)
         {
-            // If we are not already a pointer, load the value so we can load the next pointer
-            if (state.needsLoad)
-            {
-                if (!state.needsAlignment)
-                    val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, indirection.pointerInfo.dataType, SPVArg(val), memoryOperands);
-                else
-                {
-                    val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, indirection.pointerInfo.dataType, SPVArg(val), MemoryOperands::Aligned, state.alignment, memoryOperands);
-                    state.needsAlignment = false;
-                    state.alignment = 0;
-                }
-            }
+            // The last pointer in the list will be the type loaded by the rest of the expression
+            startType = it;
             type = indirection.pointerInfo.dataType;
             ptrType = indirection.pointerInfo.ptrType;
+            storage = (SPIRVResult::Storage)indirection.pointerInfo.storage;
             state.needsLoad = true;
             //val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, indirection.pointerInfo.dataType, SPVArg(val));
         }
@@ -3215,17 +3213,17 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
             ptrType = indirection.accessInfo.ptrType;
 
             // If last part of chain or next is different type, flush access chain
-            if (i == chain.size() - 1)
+            if (it+1 == chain.end())
             {
                 val = generator->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, ptrType, SPVArg(val), SPVArgList(accessChain));
                 accessChain.Clear();
             }
-            else if (chain[i + 1].type != SPIRVResult::Indirection::Type::Access && chain[i + 1].type != SPIRVResult::Indirection::Type::Pointer)
+            else if ((it+1)->type != SPIRVResult::Indirection::Type::Access)
             {
                 val = generator->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, ptrType, SPVArg(val), SPVArgList(accessChain));
                 accessChain.Clear();
             }
-            state.needsLoad = true;
+            //state.needsLoad = false;
         }
         else if (indirection.type == SPIRVResult::Indirection::Type::Address)
         {
@@ -3254,9 +3252,13 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
             state.needsAlignment = true;
             state.needsLoad = true;
         }
+        it++;
 
         currentType = indirection.type;
     }
+
+    // Erase the processed indirections, leaving the initial pointer indirection (if any)
+    chain.erase(startType, chain.end());
     
     return val;
 }
@@ -3302,11 +3304,11 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
 
     uint32_t val = arg.name;
     uint32_t type = arg.typeName;
-    SPIRVResult::Storage scope = arg.scope;
+    SPIRVResult::Storage storage = arg.scope;
     bool isValue = arg.isValue;
 
     IndirectionState state;
-    val = IndirectionUnrollSPIRV(compiler, generator, val, type, arg.indirections, state);
+    val = IndirectionUnrollSPIRV(compiler, generator, val, type, storage, arg.indirections, state);
 
     TransientArray<SPVEnum> memOps(2);
     if (state.volatileData)
@@ -3350,11 +3352,11 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
     res.isValue = true; // The result is only a value if there are no more parent types (indirections)
     res.isConst = arg.isConst;
     res.isSpecialization = arg.isSpecialization;
-    res.indirections = {};
+    res.indirections = arg.indirections;
     res.parentTypes = arg.parentTypes;
     res.parentScopes = arg.parentScopes;
     res.derefs = 0;
-    res.scope = scope;
+    res.scope = storage;
     return res;
 }
 
@@ -3366,9 +3368,12 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
 {
     uint32_t val = target.name;
     uint32_t type = target.typeName;
+    SPIRVResult::Storage storage = target.scope;
     
     IndirectionState state;
-    val = IndirectionUnrollSPIRV(compiler, generator, val, type, target.indirections, state);
+    assert(target.indirections.size() > 0);
+    auto indirections = target.indirections;
+    val = IndirectionUnrollSPIRV(compiler, generator, val, type, storage, indirections, state);
     assert(state.needsLoad); // For Store operations, we assume the value is a pointer (needs loading)
 
     TransientArray<SPVEnum> memOps(2);
@@ -3379,7 +3384,6 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
 
     SPVEnumList memoryOperands(memOps);
 
-    assert(target.indirections.size() > 0);
 
     // Perform OpStore if source is a value, otherwise copy memory
     if (source.isValue)
@@ -4086,7 +4090,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             g->typeState.storage = SPIRVResult::Storage::Function;
 
             index = { SPIRVResult::Access(LoadValueSPIRV(c, g, args[1]).name, ptrReturnType.indirections[0].pointerInfo.ptrType, ptrReturnType.indirections[0].pointerInfo.dataType) };
-
+            
             accessedArg.AddIndirection(index);
             accessedArg.typeName = ptrReturnType.typeName;
             accessedArg.parentTypes = ptrReturnType.parentTypes;
@@ -4353,6 +4357,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         if (!logicallyAddressed)
         {
             TStr ptrType = TStr("ptr_", ToSPIRVTypeString(compiler, generator, var->type, varResolved->typeSymbol));
+            auto prevScope = typeName.scope;
             typeName.parentScopes.push_back(typeName.scope);
 
             if (typeName.scope == SPIRVResult::Storage::StorageBuffer
@@ -4367,7 +4372,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             }
             typePtrName = AddType(generator, TStr::Compact(ptrType, "_", scope), OpTypePointer, ScopeToEnum(typeName.scope), SPVArg{ typeName.typeName });
             typeName.parentTypes.push_back(typeName.typeName);
-            typeName.AddIndirection({ SPIRVResult::Pointer(typePtrName, typeName.typeName, typeName.scope) });
+            typeName.AddIndirection({ SPIRVResult::Pointer(typePtrName, typeName.typeName, prevScope) });
             
             typeName.typeName = typePtrName;
         }
@@ -4391,9 +4396,9 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                     generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
 
                 SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
-                if (loaded.typeName != typeName.indirections.back().pointerInfo.dataType)
+                if (loaded.typeName != typeName.indirections.front().pointerInfo.dataType)
                 {
-                    loaded.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, typeName.indirections.back().pointerInfo.dataType, SPVArg(loaded.name));
+                    loaded.name = generator->writer->MappedInstruction(OpCopyLogical, SPVWriter::Section::LocalFunction, typeName.indirections.front().pointerInfo.dataType, SPVArg(loaded.name));
                 }
                 generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(name), loaded);
             }
@@ -5229,14 +5234,14 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
                         
                         // Push a temporary value without any access chains
                         SPIRVResult temp = lhs;
-                        temp.indirections = {};
+                        //temp.indirections = {};
                         generator->PushAccessChain(temp);
                         SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, accessExpression->right);
                         generator->PopAccessChain();
 
                         // Merge the result of the rhs with the lhs
                         lhs.typeName = rhs.typeName;
-                        lhs.indirections.insert(lhs.indirections.end(), rhs.indirections.begin(), rhs.indirections.end());
+                        lhs.indirections = rhs.indirections;
 
                         if (accessExpression->tailDeref)
                         {
@@ -5250,8 +5255,7 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
                         }
                         if (accessExpression->tailRef)
                         {
-                            assert(lhs.indirections.back().type == SPIRVResult::Indirection::Type::Pointer);
-                            lhs.indirections.pop_back();
+                            lhs.indirections.erase(lhs.indirections.begin());
                             lhs.isValue = rhs.indirections.size() == 0;
                         }
                         return lhs;
@@ -5475,16 +5479,13 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         }
         case '*':
         {
-            //SPIRVResult dataName = GeneratePointerTypeSPIRV(compiler, generator, unaryExpressionResolved->fullType, unaryExpressionResolved->type);
-            //rhs.AddIndirection({ SPIRVResult::Pointer(dataName.indirections[0].pointerInfo.ptrType, dataName.indirections[0].pointerInfo.dataType, rhs.scope) });
-
             // Split indirections by shaving off the topmost one
             SPIRVResult temp = rhs;
             temp.indirections = { rhs.indirections.back() };
             temp = LoadValueSPIRV(compiler, generator, temp);
             temp.indirections = rhs.indirections;
             temp.indirections.pop_back();
-            temp.isValue = temp.indirections.size() == 0;
+            temp.isValue = temp.indirections.empty();
             rhs = temp;
             rhs.derefs++;
             return rhs;
@@ -5495,10 +5496,19 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         }
         case '&':
         {
-            assert(rhs.indirections.back().type == SPIRVResult::Indirection::Type::Pointer);
-            rhs.indirections.pop_back();
-            rhs.isValue = rhs.indirections.size() == 0;
+            // Find the last pointer indirection and erase it
+            auto it = rhs.indirections.begin();
+            while (it != rhs.indirections.end())
+            {
+                if (it->type == SPIRVResult::Indirection::Type::Pointer)
+                {
+                    rhs.indirections.erase(it);
+                    break;
+                }
+                it++;
+            }
 
+            rhs.isValue = rhs.indirections.empty();
             rhs.addrefs++;
             return rhs;
         }

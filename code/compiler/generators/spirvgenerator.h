@@ -110,7 +110,7 @@ struct SPIRVResult
             } accessInfo;
             struct PointerInfo
             {
-                uint32_t ptrType, dataType, scope;
+                uint32_t ptrType, dataType, storage;
             } pointerInfo;
             struct AddressInfo
             {
@@ -154,9 +154,9 @@ struct SPIRVResult
         return Indirection{ .type = Indirection::Type::Address, .addressInfo = { .ptrType = ptrType, .dataType = dataType, .indexType = 0xFFFFFFFF, .offset = 0xFFFFFFFF, .alignment = alignment } };
     }
 
-    static Indirection Pointer(uint32_t ptrType, uint32_t dataType, SPIRVResult::Storage scope)
+    static Indirection Pointer(uint32_t ptrType, uint32_t dataType, SPIRVResult::Storage storage)
     {
-        return Indirection{ .type = Indirection::Type::Pointer, .pointerInfo = { .ptrType = ptrType, .dataType = dataType, .scope = (uint32_t)scope } };
+        return Indirection{ .type = Indirection::Type::Pointer, .pointerInfo = { .ptrType = ptrType, .dataType = dataType, .storage = (uint32_t)storage } };
     }
 
     static Indirection Array(uint32_t ptrType, uint32_t dataType, uint32_t indexType, uint32_t size)
