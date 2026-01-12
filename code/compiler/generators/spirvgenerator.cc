@@ -4804,7 +4804,6 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
             
             SPIRVResult ret = leftSymbol;
             ret.typeName = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt64);
-            //ret.indirections = {};
             ret.parentTypes = returnType.parentTypes;
             ret.parentScopes = returnType.parentScopes;
 
@@ -4852,12 +4851,10 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
         {
             SPIRVResult ret = leftSymbol;
             ret.typeName = returnType.typeName;
-            ret.indirections = {};
             ret.parentTypes = returnType.parentTypes;
             ret.parentScopes = returnType.parentScopes;
 
             ret.AddIndirection({ SPIRVResult::Access(indexConstant.name, returnType.indirections.back().pointerInfo.ptrType, returnType.indirections.back().pointerInfo.dataType) });
-
             return ret;
         }
     }
@@ -5243,15 +5240,19 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
 
                         if (accessExpression->tailDeref)
                         {
-                            lhs.derefs++;
-                            SPIRVResult dataName = GenerateTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol);
-                            lhs.indirections.push_back({ SPIRVResult::Pointer(typeName.typeName, dataName.typeName, typeName.scope) });
+                            SPIRVResult temp = lhs;
+                            temp.indirections = { lhs.indirections.back() };
+                            temp = LoadValueSPIRV(compiler, generator, temp);
+                            temp.indirections = rhs.indirections;
+                            temp.indirections.pop_back();
+                            temp.isValue = temp.indirections.size() == 0;
+                            lhs = temp;
                         }
                         if (accessExpression->tailRef)
                         {
-                            lhs.addrefs++;
                             assert(lhs.indirections.back().type == SPIRVResult::Indirection::Type::Pointer);
                             lhs.indirections.pop_back();
+                            lhs.isValue = rhs.indirections.size() == 0;
                         }
                         return lhs;
                     }
