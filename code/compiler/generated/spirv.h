@@ -5,8 +5,8 @@
 //-------------------------------------------------
 static auto CreateSampledImageSPIRV = [](const Compiler* c, SPIRVGenerator* g, SPIRVResult img, SPIRVResult samp) -> SPIRVResult
 {
-    SPIRVResult image = LoadValueSPIRV(c, g, img, true);
-    SPIRVResult sampler = LoadValueSPIRV(c, g, samp, true);
+    SPIRVResult image = LoadValueSPIRV(c, g, img);
+    SPIRVResult sampler = LoadValueSPIRV(c, g, samp);
     uint32_t typeSymbol = AddType(g, TStr::Compact("sampledImage_", image.typeName), OpTypeSampledImage, SPVArg(image.typeName));
     uint32_t sampledImage = g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, typeSymbol, image, sampler);
     return SPIRVResult(sampledImage, typeSymbol, true);
@@ -1280,8 +1280,6 @@ SPIRVResult SPIRV_Float32_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1296,8 +1294,6 @@ SPIRVResult SPIRV_Float32_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1312,8 +1308,6 @@ SPIRVResult SPIRV_Float32_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1328,8 +1322,6 @@ SPIRVResult SPIRV_Float32_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1505,8 +1497,6 @@ SPIRVResult SPIRV_UInt32_operator_index_Int32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1521,8 +1511,6 @@ SPIRVResult SPIRV_UInt32_operator_index_UInt32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1537,8 +1525,6 @@ SPIRVResult SPIRV_UInt32_operator_index_Int16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1553,8 +1539,6 @@ SPIRVResult SPIRV_UInt32_operator_index_UInt16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1810,8 +1794,6 @@ SPIRVResult SPIRV_Int32_operator_index_Int32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1826,8 +1808,6 @@ SPIRVResult SPIRV_Int32_operator_index_UInt32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1842,8 +1822,6 @@ SPIRVResult SPIRV_Int32_operator_index_Int16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -1858,8 +1836,6 @@ SPIRVResult SPIRV_Int32_operator_index_UInt16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2105,8 +2081,6 @@ SPIRVResult SPIRV_Bool8_operator_index_Int32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2121,8 +2095,6 @@ SPIRVResult SPIRV_Bool8_operator_index_UInt32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2137,8 +2109,6 @@ SPIRVResult SPIRV_Bool8_operator_index_Int16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2153,8 +2123,6 @@ SPIRVResult SPIRV_Bool8_operator_index_UInt16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2242,8 +2210,6 @@ SPIRVResult SPIRV_Float16_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2258,8 +2224,6 @@ SPIRVResult SPIRV_Float16_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2274,8 +2238,6 @@ SPIRVResult SPIRV_Float16_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2290,8 +2252,6 @@ SPIRVResult SPIRV_Float16_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2467,8 +2427,6 @@ SPIRVResult SPIRV_UInt16_operator_index_Int32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2483,8 +2441,6 @@ SPIRVResult SPIRV_UInt16_operator_index_UInt32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2499,8 +2455,6 @@ SPIRVResult SPIRV_UInt16_operator_index_Int16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2515,8 +2469,6 @@ SPIRVResult SPIRV_UInt16_operator_index_UInt16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2772,8 +2724,6 @@ SPIRVResult SPIRV_Int16_operator_index_Int32(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2788,8 +2738,6 @@ SPIRVResult SPIRV_Int16_operator_index_UInt32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2804,8 +2752,6 @@ SPIRVResult SPIRV_Int16_operator_index_Int16(const Compiler* c, SPIRVGenerator* 
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -2820,8 +2766,6 @@ SPIRVResult SPIRV_Int16_operator_index_UInt16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3077,8 +3021,6 @@ SPIRVResult SPIRV_UInt64_operator_index_Int32(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3093,8 +3035,6 @@ SPIRVResult SPIRV_UInt64_operator_index_UInt32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3109,8 +3049,6 @@ SPIRVResult SPIRV_UInt64_operator_index_Int16(const Compiler* c, SPIRVGenerator*
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3125,8 +3063,6 @@ SPIRVResult SPIRV_UInt64_operator_index_UInt16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3448,8 +3384,6 @@ SPIRVResult SPIRV_Float32x2_operator_index_Int32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3464,8 +3398,6 @@ SPIRVResult SPIRV_Float32x2_operator_index_UInt32(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3480,8 +3412,6 @@ SPIRVResult SPIRV_Float32x2_operator_index_Int16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3496,8 +3426,6 @@ SPIRVResult SPIRV_Float32x2_operator_index_UInt16(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3787,8 +3715,6 @@ SPIRVResult SPIRV_UInt32x2_operator_index_Int32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3803,8 +3729,6 @@ SPIRVResult SPIRV_UInt32x2_operator_index_UInt32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3819,8 +3743,6 @@ SPIRVResult SPIRV_UInt32x2_operator_index_Int16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -3835,8 +3757,6 @@ SPIRVResult SPIRV_UInt32x2_operator_index_UInt16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4184,8 +4104,6 @@ SPIRVResult SPIRV_Int32x2_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4200,8 +4118,6 @@ SPIRVResult SPIRV_Int32x2_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4216,8 +4132,6 @@ SPIRVResult SPIRV_Int32x2_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4232,8 +4146,6 @@ SPIRVResult SPIRV_Int32x2_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4551,8 +4463,6 @@ SPIRVResult SPIRV_Bool8x2_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4567,8 +4477,6 @@ SPIRVResult SPIRV_Bool8x2_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4583,8 +4491,6 @@ SPIRVResult SPIRV_Bool8x2_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4599,8 +4505,6 @@ SPIRVResult SPIRV_Bool8x2_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4754,8 +4658,6 @@ SPIRVResult SPIRV_Float16x2_operator_index_Int32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4770,8 +4672,6 @@ SPIRVResult SPIRV_Float16x2_operator_index_UInt32(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4786,8 +4686,6 @@ SPIRVResult SPIRV_Float16x2_operator_index_Int16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -4802,8 +4700,6 @@ SPIRVResult SPIRV_Float16x2_operator_index_UInt16(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5093,8 +4989,6 @@ SPIRVResult SPIRV_UInt16x2_operator_index_Int32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5109,8 +5003,6 @@ SPIRVResult SPIRV_UInt16x2_operator_index_UInt32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5125,8 +5017,6 @@ SPIRVResult SPIRV_UInt16x2_operator_index_Int16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5141,8 +5031,6 @@ SPIRVResult SPIRV_UInt16x2_operator_index_UInt16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5490,8 +5378,6 @@ SPIRVResult SPIRV_Int16x2_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5506,8 +5392,6 @@ SPIRVResult SPIRV_Int16x2_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5522,8 +5406,6 @@ SPIRVResult SPIRV_Int16x2_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5538,8 +5420,6 @@ SPIRVResult SPIRV_Int16x2_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5899,8 +5779,6 @@ SPIRVResult SPIRV_Float32x3_operator_index_Int32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5915,8 +5793,6 @@ SPIRVResult SPIRV_Float32x3_operator_index_UInt32(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5931,8 +5807,6 @@ SPIRVResult SPIRV_Float32x3_operator_index_Int16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -5947,8 +5821,6 @@ SPIRVResult SPIRV_Float32x3_operator_index_UInt16(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -6250,8 +6122,6 @@ SPIRVResult SPIRV_UInt32x3_operator_index_Int32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -6266,8 +6136,6 @@ SPIRVResult SPIRV_UInt32x3_operator_index_UInt32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -6282,8 +6150,6 @@ SPIRVResult SPIRV_UInt32x3_operator_index_Int16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -6298,8 +6164,6 @@ SPIRVResult SPIRV_UInt32x3_operator_index_UInt16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -6659,8 +6523,6 @@ SPIRVResult SPIRV_Int32x3_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -6675,8 +6537,6 @@ SPIRVResult SPIRV_Int32x3_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -6691,8 +6551,6 @@ SPIRVResult SPIRV_Int32x3_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -6707,8 +6565,6 @@ SPIRVResult SPIRV_Int32x3_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7038,8 +6894,6 @@ SPIRVResult SPIRV_Bool8x3_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7054,8 +6908,6 @@ SPIRVResult SPIRV_Bool8x3_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7070,8 +6922,6 @@ SPIRVResult SPIRV_Bool8x3_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7086,8 +6936,6 @@ SPIRVResult SPIRV_Bool8x3_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7253,8 +7101,6 @@ SPIRVResult SPIRV_Float16x3_operator_index_Int32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7269,8 +7115,6 @@ SPIRVResult SPIRV_Float16x3_operator_index_UInt32(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7285,8 +7129,6 @@ SPIRVResult SPIRV_Float16x3_operator_index_Int16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7301,8 +7143,6 @@ SPIRVResult SPIRV_Float16x3_operator_index_UInt16(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7604,8 +7444,6 @@ SPIRVResult SPIRV_UInt16x3_operator_index_Int32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7620,8 +7458,6 @@ SPIRVResult SPIRV_UInt16x3_operator_index_UInt32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7636,8 +7472,6 @@ SPIRVResult SPIRV_UInt16x3_operator_index_Int16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -7652,8 +7486,6 @@ SPIRVResult SPIRV_UInt16x3_operator_index_UInt16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8013,8 +7845,6 @@ SPIRVResult SPIRV_Int16x3_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8029,8 +7859,6 @@ SPIRVResult SPIRV_Int16x3_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8045,8 +7873,6 @@ SPIRVResult SPIRV_Int16x3_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8061,8 +7887,6 @@ SPIRVResult SPIRV_Int16x3_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8446,8 +8270,6 @@ SPIRVResult SPIRV_Float32x4_operator_index_Int32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8462,8 +8284,6 @@ SPIRVResult SPIRV_Float32x4_operator_index_UInt32(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8478,8 +8298,6 @@ SPIRVResult SPIRV_Float32x4_operator_index_Int16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8494,8 +8312,6 @@ SPIRVResult SPIRV_Float32x4_operator_index_UInt16(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8821,8 +8637,6 @@ SPIRVResult SPIRV_UInt32x4_operator_index_Int32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8837,8 +8651,6 @@ SPIRVResult SPIRV_UInt32x4_operator_index_UInt32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8853,8 +8665,6 @@ SPIRVResult SPIRV_UInt32x4_operator_index_Int16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -8869,8 +8679,6 @@ SPIRVResult SPIRV_UInt32x4_operator_index_UInt16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9254,8 +9062,6 @@ SPIRVResult SPIRV_Int32x4_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9270,8 +9076,6 @@ SPIRVResult SPIRV_Int32x4_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9286,8 +9090,6 @@ SPIRVResult SPIRV_Int32x4_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9302,8 +9104,6 @@ SPIRVResult SPIRV_Int32x4_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9657,8 +9457,6 @@ SPIRVResult SPIRV_Bool8x4_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9673,8 +9471,6 @@ SPIRVResult SPIRV_Bool8x4_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9689,8 +9485,6 @@ SPIRVResult SPIRV_Bool8x4_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9705,8 +9499,6 @@ SPIRVResult SPIRV_Bool8x4_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9896,8 +9688,6 @@ SPIRVResult SPIRV_Float16x4_operator_index_Int32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9912,8 +9702,6 @@ SPIRVResult SPIRV_Float16x4_operator_index_UInt32(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9928,8 +9716,6 @@ SPIRVResult SPIRV_Float16x4_operator_index_Int16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -9944,8 +9730,6 @@ SPIRVResult SPIRV_Float16x4_operator_index_UInt16(const Compiler* c, SPIRVGenera
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -10271,8 +10055,6 @@ SPIRVResult SPIRV_UInt16x4_operator_index_Int32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -10287,8 +10069,6 @@ SPIRVResult SPIRV_UInt16x4_operator_index_UInt32(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -10303,8 +10083,6 @@ SPIRVResult SPIRV_UInt16x4_operator_index_Int16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -10319,8 +10097,6 @@ SPIRVResult SPIRV_UInt16x4_operator_index_UInt16(const Compiler* c, SPIRVGenerat
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -10704,8 +10480,6 @@ SPIRVResult SPIRV_Int16x4_operator_index_Int32(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -10720,8 +10494,6 @@ SPIRVResult SPIRV_Int16x4_operator_index_UInt32(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -10736,8 +10508,6 @@ SPIRVResult SPIRV_Int16x4_operator_index_Int16(const Compiler* c, SPIRVGenerator
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -10752,8 +10522,6 @@ SPIRVResult SPIRV_Int16x4_operator_index_UInt16(const Compiler* c, SPIRVGenerato
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11017,8 +10785,6 @@ SPIRVResult SPIRV_Float32x2x2_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11033,8 +10799,6 @@ SPIRVResult SPIRV_Float32x2x2_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11049,8 +10813,6 @@ SPIRVResult SPIRV_Float32x2x2_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11065,8 +10827,6 @@ SPIRVResult SPIRV_Float32x2x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11195,8 +10955,6 @@ SPIRVResult SPIRV_Float32x3x2_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11211,8 +10969,6 @@ SPIRVResult SPIRV_Float32x3x2_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11227,8 +10983,6 @@ SPIRVResult SPIRV_Float32x3x2_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11243,8 +10997,6 @@ SPIRVResult SPIRV_Float32x3x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11374,8 +11126,6 @@ SPIRVResult SPIRV_Float32x4x2_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11390,8 +11140,6 @@ SPIRVResult SPIRV_Float32x4x2_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11406,8 +11154,6 @@ SPIRVResult SPIRV_Float32x4x2_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11422,8 +11168,6 @@ SPIRVResult SPIRV_Float32x4x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11551,8 +11295,6 @@ SPIRVResult SPIRV_Float32x2x3_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11567,8 +11309,6 @@ SPIRVResult SPIRV_Float32x2x3_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11583,8 +11323,6 @@ SPIRVResult SPIRV_Float32x2x3_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11599,8 +11337,6 @@ SPIRVResult SPIRV_Float32x2x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11740,8 +11476,6 @@ SPIRVResult SPIRV_Float32x3x3_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11756,8 +11490,6 @@ SPIRVResult SPIRV_Float32x3x3_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11772,8 +11504,6 @@ SPIRVResult SPIRV_Float32x3x3_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11788,8 +11518,6 @@ SPIRVResult SPIRV_Float32x3x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11919,8 +11647,6 @@ SPIRVResult SPIRV_Float32x4x3_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11935,8 +11661,6 @@ SPIRVResult SPIRV_Float32x4x3_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11951,8 +11675,6 @@ SPIRVResult SPIRV_Float32x4x3_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -11967,8 +11689,6 @@ SPIRVResult SPIRV_Float32x4x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12096,8 +11816,6 @@ SPIRVResult SPIRV_Float32x2x4_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12112,8 +11830,6 @@ SPIRVResult SPIRV_Float32x2x4_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12128,8 +11844,6 @@ SPIRVResult SPIRV_Float32x2x4_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12144,8 +11858,6 @@ SPIRVResult SPIRV_Float32x2x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12274,8 +11986,6 @@ SPIRVResult SPIRV_Float32x3x4_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12290,8 +12000,6 @@ SPIRVResult SPIRV_Float32x3x4_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12306,8 +12014,6 @@ SPIRVResult SPIRV_Float32x3x4_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12322,8 +12028,6 @@ SPIRVResult SPIRV_Float32x3x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12465,8 +12169,6 @@ SPIRVResult SPIRV_Float32x4x4_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12481,8 +12183,6 @@ SPIRVResult SPIRV_Float32x4x4_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12497,8 +12197,6 @@ SPIRVResult SPIRV_Float32x4x4_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12513,8 +12211,6 @@ SPIRVResult SPIRV_Float32x4x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12652,8 +12348,6 @@ SPIRVResult SPIRV_Float16x2x2_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12668,8 +12362,6 @@ SPIRVResult SPIRV_Float16x2x2_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12684,8 +12376,6 @@ SPIRVResult SPIRV_Float16x2x2_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12700,8 +12390,6 @@ SPIRVResult SPIRV_Float16x2x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12830,8 +12518,6 @@ SPIRVResult SPIRV_Float16x3x2_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12846,8 +12532,6 @@ SPIRVResult SPIRV_Float16x3x2_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12862,8 +12546,6 @@ SPIRVResult SPIRV_Float16x3x2_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -12878,8 +12560,6 @@ SPIRVResult SPIRV_Float16x3x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13009,8 +12689,6 @@ SPIRVResult SPIRV_Float16x4x2_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13025,8 +12703,6 @@ SPIRVResult SPIRV_Float16x4x2_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13041,8 +12717,6 @@ SPIRVResult SPIRV_Float16x4x2_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13057,8 +12731,6 @@ SPIRVResult SPIRV_Float16x4x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13186,8 +12858,6 @@ SPIRVResult SPIRV_Float16x2x3_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13202,8 +12872,6 @@ SPIRVResult SPIRV_Float16x2x3_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13218,8 +12886,6 @@ SPIRVResult SPIRV_Float16x2x3_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13234,8 +12900,6 @@ SPIRVResult SPIRV_Float16x2x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13375,8 +13039,6 @@ SPIRVResult SPIRV_Float16x3x3_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13391,8 +13053,6 @@ SPIRVResult SPIRV_Float16x3x3_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13407,8 +13067,6 @@ SPIRVResult SPIRV_Float16x3x3_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13423,8 +13081,6 @@ SPIRVResult SPIRV_Float16x3x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13554,8 +13210,6 @@ SPIRVResult SPIRV_Float16x4x3_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13570,8 +13224,6 @@ SPIRVResult SPIRV_Float16x4x3_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13586,8 +13238,6 @@ SPIRVResult SPIRV_Float16x4x3_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13602,8 +13252,6 @@ SPIRVResult SPIRV_Float16x4x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13731,8 +13379,6 @@ SPIRVResult SPIRV_Float16x2x4_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13747,8 +13393,6 @@ SPIRVResult SPIRV_Float16x2x4_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13763,8 +13407,6 @@ SPIRVResult SPIRV_Float16x2x4_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13779,8 +13421,6 @@ SPIRVResult SPIRV_Float16x2x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13909,8 +13549,6 @@ SPIRVResult SPIRV_Float16x3x4_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13925,8 +13563,6 @@ SPIRVResult SPIRV_Float16x3x4_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13941,8 +13577,6 @@ SPIRVResult SPIRV_Float16x3x4_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -13957,8 +13591,6 @@ SPIRVResult SPIRV_Float16x3x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -14100,8 +13732,6 @@ SPIRVResult SPIRV_Float16x4x4_operator_index_Int32(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -14116,8 +13746,6 @@ SPIRVResult SPIRV_Float16x4x4_operator_index_UInt32(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -14132,8 +13760,6 @@ SPIRVResult SPIRV_Float16x4x4_operator_index_Int16(const Compiler* c, SPIRVGener
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -14148,8 +13774,6 @@ SPIRVResult SPIRV_Float16x4x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     SPIRVResult ret = args[0];
     ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});
     ret.typeName = returnTypePtr.typeName;
-    ret.parentTypes = returnTypePtr.parentTypes;
-    ret.parentScopes = returnTypePtr.parentScopes;
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
@@ -18122,8 +17746,6 @@ SPIRVResult SPIRV_VertexGetOutputLayer(const Compiler* c, SPIRVGenerator* g, uin
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::Layer);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18137,8 +17759,6 @@ SPIRVResult SPIRV_VertexGetOutputViewport(const Compiler* c, SPIRVGenerator* g, 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ViewportIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18152,8 +17772,6 @@ SPIRVResult SPIRV_VertexGetIndex(const Compiler* c, SPIRVGenerator* g, uint32_t 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::VertexIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18167,8 +17785,6 @@ SPIRVResult SPIRV_VertexGetInstanceIndex(const Compiler* c, SPIRVGenerator* g, u
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InstanceIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18182,8 +17798,6 @@ SPIRVResult SPIRV_VertexGetBaseIndex(const Compiler* c, SPIRVGenerator* g, uint3
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::BaseVertex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18197,8 +17811,6 @@ SPIRVResult SPIRV_VertexGetBaseInstanceIndex(const Compiler* c, SPIRVGenerator* 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::BaseInstance);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18212,8 +17824,6 @@ SPIRVResult SPIRV_VertexGetDrawIndex(const Compiler* c, SPIRVGenerator* g, uint3
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::DrawIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18371,8 +17981,6 @@ SPIRVResult SPIRV_GeometryGetVertexIndex(const Compiler* c, SPIRVGenerator* g, u
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InvocationId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18387,8 +17995,6 @@ SPIRVResult SPIRV_HullGetVertexIndex(const Compiler* c, SPIRVGenerator* g, uint3
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InvocationId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18480,8 +18086,6 @@ SPIRVResult SPIRV_DomainGetTessellationCoordinates(const Compiler* c, SPIRVGener
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::TessCoord);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18551,8 +18155,6 @@ SPIRVResult SPIRV_GeometryGetPoint(const Compiler* c, SPIRVGenerator* g, uint32_
     g->interfaceVariables.Insert(cullDistances);
     g->interfaceVariables.Insert(clipDistances);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);
-    res.parentTypes.push_back(returnType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Function);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});
     return res;
 }
@@ -18596,8 +18198,6 @@ SPIRVResult SPIRV_GeometryGetLine(const Compiler* c, SPIRVGenerator* g, uint32_t
     g->interfaceVariables.Insert(cullDistances);
     g->interfaceVariables.Insert(clipDistances);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);
-    res.parentTypes.push_back(returnType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Function);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});
     return res;
 }
@@ -18641,8 +18241,6 @@ SPIRVResult SPIRV_GeometryGetTriangle(const Compiler* c, SPIRVGenerator* g, uint
     g->interfaceVariables.Insert(cullDistances);
     g->interfaceVariables.Insert(clipDistances);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);
-    res.parentTypes.push_back(returnType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Function);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});
     return res;
 }
@@ -18656,8 +18254,6 @@ SPIRVResult SPIRV_PixelGetCoordinates_Float32x4(const Compiler* c, SPIRVGenerato
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FragCoord);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18671,8 +18267,6 @@ SPIRVResult SPIRV_PixelGetCoordinates_Float16x4(const Compiler* c, SPIRVGenerato
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FragCoord);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18686,8 +18280,6 @@ SPIRVResult SPIRV_PixelGetFrontFacing(const Compiler* c, SPIRVGenerator* g, uint
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FrontFacing);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18701,8 +18293,6 @@ SPIRVResult SPIRV_PixelGetSubpixelPosition(const Compiler* c, SPIRVGenerator* g,
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PointCoord);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -18716,8 +18306,6 @@ SPIRVResult SPIRV_PixelGetDepth(const Compiler* c, SPIRVGenerator* g, uint32_t r
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::FragDepth);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -19991,8 +19579,6 @@ SPIRVResult SPIRV_ComputeGetLocalThreadIndices(const Compiler* c, SPIRVGenerator
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::LocalInvocationId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20005,8 +19591,6 @@ SPIRVResult SPIRV_ComputeGetGlobalThreadIndices(const Compiler* c, SPIRVGenerato
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::GlobalInvocationId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20019,8 +19603,6 @@ SPIRVResult SPIRV_ComputeGetWorkgroupIndices(const Compiler* c, SPIRVGenerator* 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::WorkgroupId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20033,8 +19615,6 @@ SPIRVResult SPIRV_ComputeGetNumWorkgroups(const Compiler* c, SPIRVGenerator* g, 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::NumWorkgroups);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20047,8 +19627,6 @@ SPIRVResult SPIRV_ComputeGetIndexInWorkgroup(const Compiler* c, SPIRVGenerator* 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::LocalInvocationIndex);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20062,8 +19640,6 @@ SPIRVResult SPIRV_SubgroupGetId(const Compiler* c, SPIRVGenerator* g, uint32_t r
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20077,8 +19653,6 @@ SPIRVResult SPIRV_SubgroupGetSize(const Compiler* c, SPIRVGenerator* g, uint32_t
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupSize);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20092,8 +19666,6 @@ SPIRVResult SPIRV_SubgroupGetNum(const Compiler* c, SPIRVGenerator* g, uint32_t 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::NumSubgroups);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20107,8 +19679,6 @@ SPIRVResult SPIRV_SubgroupGetThreadMask(const Compiler* c, SPIRVGenerator* g, ui
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupEqMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20122,8 +19692,6 @@ SPIRVResult SPIRV_SubgroupGetThreadAndLowerMask(const Compiler* c, SPIRVGenerato
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupLeMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20137,8 +19705,6 @@ SPIRVResult SPIRV_SubgroupGetLowerMask(const Compiler* c, SPIRVGenerator* g, uin
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupLtMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20152,8 +19718,6 @@ SPIRVResult SPIRV_SubgroupGetThreadAndGreaterMask(const Compiler* c, SPIRVGenera
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupGeMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -20167,8 +19731,6 @@ SPIRVResult SPIRV_SubgroupGetGreaterMask(const Compiler* c, SPIRVGenerator* g, u
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupGtMask);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33171,8 +32733,6 @@ SPIRVResult SPIRV_RayLaunchIndex(const Compiler* c, SPIRVGenerator* g, uint32_t 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::LaunchIdKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33186,8 +32746,6 @@ SPIRVResult SPIRV_RayLaunchSize(const Compiler* c, SPIRVGenerator* g, uint32_t r
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::LaunchSizeKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33201,8 +32759,6 @@ SPIRVResult SPIRV_BLASPrimitiveIndex(const Compiler* c, SPIRVGenerator* g, uint3
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::PrimitiveId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33216,8 +32772,6 @@ SPIRVResult SPIRV_BLASGeometryIndex(const Compiler* c, SPIRVGenerator* g, uint32
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayGeometryIndexKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33231,8 +32785,6 @@ SPIRVResult SPIRV_TLASInstanceIndex(const Compiler* c, SPIRVGenerator* g, uint32
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InstanceId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33246,8 +32798,6 @@ SPIRVResult SPIRV_TLASInstanceCustomIndex(const Compiler* c, SPIRVGenerator* g, 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InstanceCustomIndexKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33261,8 +32811,6 @@ SPIRVResult SPIRV_RayWorldOrigin(const Compiler* c, SPIRVGenerator* g, uint32_t 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::WorldRayOriginKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33276,8 +32824,6 @@ SPIRVResult SPIRV_RayWorldDirection(const Compiler* c, SPIRVGenerator* g, uint32
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::WorldRayDirectionKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33291,8 +32837,6 @@ SPIRVResult SPIRV_RayObjectOrigin(const Compiler* c, SPIRVGenerator* g, uint32_t
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ObjectRayOriginKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33306,8 +32850,6 @@ SPIRVResult SPIRV_RayObjectDirection(const Compiler* c, SPIRVGenerator* g, uint3
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ObjectRayDirectionKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33321,8 +32863,6 @@ SPIRVResult SPIRV_RayTMin(const Compiler* c, SPIRVGenerator* g, uint32_t returnT
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayTminKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33336,8 +32876,6 @@ SPIRVResult SPIRV_RayTMax(const Compiler* c, SPIRVGenerator* g, uint32_t returnT
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayTmaxKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33351,8 +32889,6 @@ SPIRVResult SPIRV_RayFlags(const Compiler* c, SPIRVGenerator* g, uint32_t return
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::IncomingRayFlagsKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33366,8 +32902,6 @@ SPIRVResult SPIRV_RayHitDistance(const Compiler* c, SPIRVGenerator* g, uint32_t 
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::RayTmaxKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33381,8 +32915,6 @@ SPIRVResult SPIRV_RayHitKind(const Compiler* c, SPIRVGenerator* g, uint32_t retu
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::HitKindKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33396,8 +32928,6 @@ SPIRVResult SPIRV_TLASObjectToWorld(const Compiler* c, SPIRVGenerator* g, uint32
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::ObjectToWorldKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }
@@ -33411,8 +32941,6 @@ SPIRVResult SPIRV_TLASWorldToObject(const Compiler* c, SPIRVGenerator* g, uint32
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::WorldToObjectKHR);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    res.parentScopes.push_back(SPIRVResult::Storage::Input);
     res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});
     return res;
 }

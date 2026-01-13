@@ -349,8 +349,8 @@ def generate_types():
     spirv_intrinsics.write("//-------------------------------------------------\n")
     spirv_intrinsics.write("static auto CreateSampledImageSPIRV = [](const Compiler* c, SPIRVGenerator* g, SPIRVResult img, SPIRVResult samp) -> SPIRVResult\n")
     spirv_intrinsics.write("{\n")
-    spirv_intrinsics.write("    SPIRVResult image = LoadValueSPIRV(c, g, img, true);\n")
-    spirv_intrinsics.write("    SPIRVResult sampler = LoadValueSPIRV(c, g, samp, true);\n")
+    spirv_intrinsics.write("    SPIRVResult image = LoadValueSPIRV(c, g, img);\n")
+    spirv_intrinsics.write("    SPIRVResult sampler = LoadValueSPIRV(c, g, samp);\n")
     spirv_intrinsics.write("    uint32_t typeSymbol = AddType(g, TStr::Compact(\"sampledImage_\", image.typeName), OpTypeSampledImage, SPVArg(image.typeName));\n")
     spirv_intrinsics.write("    uint32_t sampledImage = g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, typeSymbol, image, sampler);\n")
     spirv_intrinsics.write("    return SPIRVResult(sampledImage, typeSymbol, true);\n")
@@ -854,8 +854,6 @@ def generate_types():
                 spirv_function += '    SPIRVResult ret = args[0];\n'
                 spirv_function += '    ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});\n'
                 spirv_function += '    ret.typeName = returnTypePtr.typeName;\n'
-                spirv_function += '    ret.parentTypes = returnTypePtr.parentTypes;\n'
-                spirv_function += '    ret.parentScopes = returnTypePtr.parentScopes;\n'
                 spirv_function += '    ret.scope = args[0].scope;\n'
                 spirv_function += '    ret.isValue = false;\n'
                 spirv_function += '    return ret;\n'
@@ -1251,8 +1249,6 @@ def generate_types():
                     spirv_function += '    SPIRVResult ret = args[0];\n'
                     spirv_function += '    ret.AddIndirection({SPIRVResult::Access(index.name, returnTypePtr.indirections[0].pointerInfo.ptrType, returnTypePtr.indirections[0].pointerInfo.dataType)});\n'
                     spirv_function += '    ret.typeName = returnTypePtr.typeName;\n'
-                    spirv_function += '    ret.parentTypes = returnTypePtr.parentTypes;\n'
-                    spirv_function += '    ret.parentScopes = returnTypePtr.parentScopes;\n'
                     spirv_function += '    ret.scope = args[0].scope;\n'
                     spirv_function += '    ret.isValue = false;\n'
                     spirv_function += '    return ret;\n'
@@ -2993,8 +2989,6 @@ def generate_types():
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-        spirv_function += '    res.parentTypes.push_back(baseType);\n'
-        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
@@ -3197,8 +3191,6 @@ def generate_types():
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::InvocationId);\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-        spirv_function += '    res.parentTypes.push_back(baseType);\n'
-        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
 
@@ -3353,8 +3345,6 @@ def generate_types():
     spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::TessCoord);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-    spirv_function += '    res.parentTypes.push_back(baseType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
 
     spirv_function += '    return res;\n'
@@ -3449,8 +3439,6 @@ def generate_types():
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
     spirv_function += geometry_read_function(1, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);\n'
-    spirv_function += '    res.parentTypes.push_back(returnType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
     spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});\n'
 
     spirv_function += '    return res;\n'
@@ -3475,8 +3463,6 @@ def generate_types():
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
     spirv_function += geometry_read_function(2, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);\n'
-    spirv_function += '    res.parentTypes.push_back(returnType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
     spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});\n'
 
     spirv_function += '    return res;\n'
@@ -3503,8 +3489,6 @@ def generate_types():
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::LocalFunction, OpVariable, typePtr, VariableStorage::Function);\n'
     spirv_function += geometry_read_function(3, "ret")
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Function);\n'
-    spirv_function += '    res.parentTypes.push_back(returnType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Function);\n'
     spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, returnType, SPIRVResult::Storage::Function)});\n'
 
     spirv_function += '    return res;\n'
@@ -3534,8 +3518,6 @@ def generate_types():
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-        spirv_function += '    res.parentTypes.push_back(baseType);\n'
-        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
@@ -3562,8 +3544,6 @@ def generate_types():
     spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-    spirv_function += '    res.parentTypes.push_back(baseType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
     spirv_function += '    return res;\n'
     fun.spirv = spirv_function
@@ -3589,8 +3569,6 @@ def generate_types():
     spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-    spirv_function += '    res.parentTypes.push_back(baseType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
     spirv_function += '    return res;\n'
     fun.spirv = spirv_function
@@ -3616,8 +3594,6 @@ def generate_types():
     spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-    spirv_function += '    res.parentTypes.push_back(baseType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
     spirv_function += '    return res;\n'
 
@@ -3716,8 +3692,6 @@ def generate_types():
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-        spirv_function += '    res.parentTypes.push_back(baseType);\n'
-        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
@@ -3745,8 +3719,6 @@ def generate_types():
     spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
     spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-    spirv_function += '    res.parentTypes.push_back(baseType);\n'
-    spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
     spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
     spirv_function += '    return res;\n'
     
@@ -3781,8 +3753,6 @@ def generate_types():
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-        spirv_function += '    res.parentTypes.push_back(baseType);\n'
-        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
@@ -3819,8 +3789,6 @@ def generate_types():
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-        spirv_function += '    res.parentTypes.push_back(baseType);\n'
-        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
         
@@ -5266,8 +5234,6 @@ def generate_types():
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
-        spirv_function += '    res.parentTypes.push_back(baseType);\n'
-        spirv_function += '    res.parentScopes.push_back(SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.AddIndirection({SPIRVResult::Pointer(typePtr, baseType, SPIRVResult::Storage::Input)});\n'
         spirv_function += '    return res;\n'
 

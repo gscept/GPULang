@@ -2482,8 +2482,6 @@ GenerateTypeSPIRV(
 {
     assert(generator->typeState.storage != SPIRVResult::Storage::Invalid);
     std::tuple<uint32_t, TStr> baseType;
-    std::vector<uint32_t> parentType;
-    std::vector<SPIRVResult::Storage> parentScope;
     TransientString typeNameStr;
     std::vector<SPIRVResult::Indirection> indirections;
     ConstantString scopeString = SPIRVResult::ScopeToString(generator->typeState.storage);
@@ -2495,8 +2493,6 @@ GenerateTypeSPIRV(
         if (type.address)
         {
             // If we are generating a pointer type, then we need to generate the base type first
-            parentType.push_back(std::get<0>(baseType));
-            parentScope.push_back(generator->typeState.storage);
             //indirections.push_back(SPIRVResult::Pointer(0xFFFFFFFF, std::get<0>(baseType), generator->typeState.storage));
             baseType = GenerateBaseTypeSPIRV(compiler, generator, TypeCode::UInt64, 1);
             typeNameStr = "u64";
@@ -2624,8 +2620,6 @@ GenerateTypeSPIRV(
         if (type.address)
         {
             // When generating an addr type, make a higher type as u64 and parent the actual type
-            parentType.push_back(std::get<0>(baseType));
-            parentScope.push_back(generator->typeState.storage);
             //indirections.push_back(SPIRVResult::Pointer(0xFFFFFFFF, std::get<0>(baseType), generator->typeState.storage));
             baseType = GenerateBaseTypeSPIRV(compiler, generator, TypeCode::UInt64, 1);
             typeNameStr = "u64";
@@ -2660,8 +2654,6 @@ GenerateTypeSPIRV(
                     gpulangType.Append(scopeString);
                 }
 
-                parentType.push_back(typeName);
-                parentScope.push_back(generator->typeState.storage);
                 uint32_t prevType = typeName;
                 typeName = AddType(generator, typeNameStr, OpTypePointer, scopeEnum, SPVArg{ typeName });
                 indirections.push_back(SPIRVResult::Pointer(typeName, prevType, generator->typeState.storage));
@@ -2676,8 +2668,6 @@ GenerateTypeSPIRV(
                         generator->typeState.layout = SPIRVGenerator::TypeState::TypeLayout::Explicit;
                     gpulangType = TStr("[]_", gpulangType);
                     typeNameStr = FormatExplicitLayout(gpulangType, generator->typeState.layout);
-                    parentType.push_back(typeName);
-                    parentScope.push_back(generator->typeState.storage);
                     uint32_t structType = typeName;
 
                     bool newType = !HasType(generator, typeNameStr);
@@ -2744,8 +2734,6 @@ GenerateTypeSPIRV(
                     gpulangType = TStr("[", size, "]_", gpulangType);
                     typeNameStr = FormatExplicitLayout(gpulangType, generator->typeState.layout);
 
-                    parentType.push_back(typeName);
-                    parentScope.push_back(generator->typeState.storage);
                     uint32_t intType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, 1);
 
                     SPIRVResult arraySizeConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(size));
@@ -2809,8 +2797,6 @@ GenerateTypeSPIRV(
         gpulangType = TStr("ptr_", gpulangType);
         typeNameStr = TStr("ptr_", typeNameStr, "_", scopeString);
 
-        parentType.push_back(typeName);
-        parentScope.push_back(generator->typeState.storage);
         uint32_t prevType = typeName;
         typeName = AddType(generator, typeNameStr, OpTypePointer, scopeEnum, SPVArg{ typeName });
         indirections.push_back(SPIRVResult::Pointer(typeName, prevType, generator->typeState.storage));
@@ -3268,7 +3254,7 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
 /**
 */
 SPIRVResult
-LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg, bool loadParentType = false)
+LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
 {
     if (arg.isLiteral)
     {
@@ -3353,8 +3339,6 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
     res.isConst = arg.isConst;
     res.isSpecialization = arg.isSpecialization;
     res.indirections = arg.indirections;
-    res.parentTypes = arg.parentTypes;
-    res.parentScopes = arg.parentScopes;
     res.derefs = 0;
     res.scope = storage;
     return res;
@@ -3857,10 +3841,6 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 res.typeName = typePtrName;
                 res.indirections = varType.indirections;
                 res.AddIndirection({ SPIRVResult::Pointer(typePtrName, varType.typeName, varType.scope) });
-                res.parentTypes = varType.parentTypes;
-                res.parentScopes = varType.parentScopes;
-                res.parentTypes.push_back(varType.typeName);
-                res.parentScopes.push_back(varType.scope);
                 res.isValue = false;
 
                 BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
@@ -3874,8 +3854,6 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 res.name = paramName;
                 res.typeName = varType.typeName;
                 res.indirections = varType.indirections;
-                res.parentTypes = varType.parentTypes;
-                res.parentScopes = varType.parentScopes;
                 res.isValue = false;
                 BindSymbol(generator, SPVWriter::Section::VariableDeclarations, param->name, res);
             }
@@ -3992,8 +3970,6 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             g->typeState.storage = SPIRVResult::Storage::Function;
             SPIRVResult accessedArg = args[0];
             accessedArg.typeName = ptrReturnType.typeName;
-            accessedArg.parentTypes = ptrReturnType.parentTypes;
-            accessedArg.parentScopes = ptrReturnType.parentScopes;
             return accessedArg;
         };
         loadIt++;
@@ -4020,8 +3996,6 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
 
             accessedArg.AddIndirection(index);
             accessedArg.typeName = ptrReturnType.typeName;
-            accessedArg.parentTypes = ptrReturnType.parentTypes;
-            accessedArg.parentScopes = ptrReturnType.parentScopes;
             return accessedArg;
         };
         loadIndexedIt++;
@@ -4064,8 +4038,6 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
 
             accessedArg.AddIndirection(index);
             accessedArg.typeName = ptrToDataType.typeName;
-            accessedArg.parentTypes = ptrToDataType.parentTypes;
-            accessedArg.parentScopes = ptrToDataType.parentScopes;
             StoreValueSPIRV(c, g, accessedArg, args[2]);
             return SPIRVResult::Invalid();
         };
@@ -4093,8 +4065,6 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             
             accessedArg.AddIndirection(index);
             accessedArg.typeName = ptrReturnType.typeName;
-            accessedArg.parentTypes = ptrReturnType.parentTypes;
-            accessedArg.parentScopes = ptrReturnType.parentScopes;
             return accessedArg;
         };
         refIndexedIt++;
@@ -4300,8 +4270,6 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     //std::string type = varResolved->type.name;
     ConstantString scope = SPIRVResult::ScopeToString(typeName.scope);
 
-    std::vector<uint32_t> parentTypes = { typeName.typeName };
-    std::vector<SPIRVResult::Storage> parentScopes = { typeName.scope };
     std::vector<SPIRVResult::Indirection> parentIndirections = typeName.indirections;
     uint32_t name = INVALID_ARG;
 
@@ -4358,7 +4326,6 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         {
             TStr ptrType = TStr("ptr_", ToSPIRVTypeString(compiler, generator, var->type, varResolved->typeSymbol));
             auto prevScope = typeName.scope;
-            typeName.parentScopes.push_back(typeName.scope);
 
             if (typeName.scope == SPIRVResult::Storage::StorageBuffer
                 || typeName.scope == SPIRVResult::Storage::Uniform)
@@ -4371,7 +4338,6 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 ptrType = TStr(ptrType, "_Explicit");
             }
             typePtrName = AddType(generator, TStr::Compact(ptrType, "_", scope), OpTypePointer, ScopeToEnum(typeName.scope), SPVArg{ typeName.typeName });
-            typeName.parentTypes.push_back(typeName.typeName);
             typeName.AddIndirection({ SPIRVResult::Pointer(typePtrName, typeName.typeName, prevScope) });
             
             typeName.typeName = typePtrName;
@@ -4472,8 +4438,6 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         
         ret.isStructPadded = typeName.isStructPadded;
         ret.derefs = typeName.derefs;
-        ret.parentTypes = typeName.parentTypes;
-        ret.parentScopes = typeName.parentScopes;
         ret.indirections = typeName.indirections;
         ret.memoryModifiers.volatileAccess = varResolved->accessBits.flags.volatileAccess;
         ret.memoryModifiers.nonTemporalAccess = varResolved->accessBits.flags.nonTemporalAccess;
@@ -4497,8 +4461,6 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         res.scope = typeName.scope;
         res.isStructPadded = typeName.isStructPadded;
         res.indirections = parentIndirections;
-        res.parentTypes = parentTypes;
-        res.parentScopes = parentScopes;
         return res;
     }
 }
@@ -4797,7 +4759,6 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
 
             /// Generate array access
             assert(res.typeName == returnType.typeName);
-            assert(res.parentTypes == returnType.parentTypes);
             assert(res.scope == returnType.scope);
             return res;
         }
@@ -4809,8 +4770,6 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
             
             SPIRVResult ret = leftSymbol;
             ret.typeName = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt64);
-            ret.parentTypes = returnType.parentTypes;
-            ret.parentScopes = returnType.parentScopes;
 
             // If the left side is an unbound array, it lives in a struct, so access chain must first get the first (0) element
             if (ret.isStructPadded)
@@ -4856,8 +4815,6 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
         {
             SPIRVResult ret = leftSymbol;
             ret.typeName = returnType.typeName;
-            ret.parentTypes = returnType.parentTypes;
-            ret.parentScopes = returnType.parentScopes;
 
             ret.AddIndirection({ SPIRVResult::Access(indexConstant.name, returnType.indirections.back().pointerInfo.ptrType, returnType.indirections.back().pointerInfo.dataType) });
             return ret;
@@ -5115,7 +5072,7 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
             }
             
             leftValue.swizzleMask = Type::SwizzleMask();
-            SPIRVResult leftLoaded = LoadValueSPIRV(compiler, generator, leftValue, true);
+            SPIRVResult leftLoaded = LoadValueSPIRV(compiler, generator, leftValue);
 
             // If right hand side is not a vector, make it into a splatted composite
             if (!rhsType->IsVector())
@@ -5766,8 +5723,6 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                     ret.typeName = type.typeName;
                     ret.scope = type.scope;
                     ret.indirections = type.indirections;
-                    ret.parentTypes = type.parentTypes;
-                    ret.parentScopes = type.parentScopes;
                     return ret;
                 }
             }

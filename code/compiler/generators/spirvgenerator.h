@@ -69,8 +69,6 @@ struct SPIRVResult
     bool isStructPadded = false;    // If true, the type is padded in a struct and requires an extra access indirection
     uint32_t derefs = 0;
     uint32_t addrefs = 0;
-    std::vector<uint32_t> parentTypes;
-    std::vector<SPIRVResult::Storage> parentScopes;
 
     struct MemoryModifiers
     {
@@ -421,7 +419,6 @@ struct SPIRVResult
         , isValue(isValue)
         , isConst(isConstant)
         , scope(scope)
-        , parentTypes({})
         , literalValue({})
     {
         this->swizzleMask.bits.x = Type::SwizzleMask::Invalid;
