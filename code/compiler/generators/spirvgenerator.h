@@ -117,7 +117,7 @@ struct SPIRVResult
             uint32_t ptrType, dataType, indexType, size;
         };
 
-        union IndirectionData
+        union
         {
             AccessInfo accessInfo;
             PointerInfo pointerInfo;
