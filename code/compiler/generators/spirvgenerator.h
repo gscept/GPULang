@@ -100,24 +100,29 @@ struct SPIRVResult
             Array,           // Access is through an array
         } type;
 
+        struct AccessInfo
+        {
+            uint32_t ptrType, dataType, offset;
+        };
+        struct PointerInfo
+        {
+            uint32_t ptrType, dataType, storage;
+        };
+        struct AddressInfo
+        {
+            uint32_t ptrType, dataType, indexType, offset, alignment;
+        };
+        struct ArrayInfo
+        {
+            uint32_t ptrType, dataType, indexType, size;
+        };
+
         union IndirectionData
         {
-            struct AccessInfo
-            {
-                uint32_t ptrType, dataType, offset;
-            } accessInfo;
-            struct PointerInfo
-            {
-                uint32_t ptrType, dataType, storage;
-            } pointerInfo;
-            struct AddressInfo
-            {
-                uint32_t ptrType, dataType, indexType, offset, alignment;
-            } addressInfo;
-            struct ArrayInfo
-            {
-                uint32_t ptrType, dataType, indexType, size;
-            } arrayInfo;
+            AccessInfo accessInfo;
+            PointerInfo pointerInfo;
+            AddressInfo addressInfo;
+            ArrayInfo arrayInfo;
         };
     };
     std::vector<Indirection> indirections;
