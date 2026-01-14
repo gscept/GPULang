@@ -100,7 +100,7 @@ struct SPIRVResult
             Array,           // Access is through an array
         } type;
 
-        union
+        union IndirectionData
         {
             struct AccessInfo
             {
