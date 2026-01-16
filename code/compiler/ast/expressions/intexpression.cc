@@ -113,4 +113,14 @@ IntExpression::EvalStorage(Storage& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+IntExpression::EvalDomain(Domain& out) const
+{
+    out = Domain::Device; // Static value, uniform across all threads and workgroups
+    return true;
+}
+
 } // namespace GPULang

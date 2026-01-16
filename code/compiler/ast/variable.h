@@ -21,7 +21,6 @@ struct Variable : public Symbol
     Variable();
     /// destructor
     virtual ~Variable();
-
     
     Type::FullType type;
     Expression* valueExpression;
@@ -91,6 +90,7 @@ struct Variable : public Symbol
         Function* valueConversionFunction = nullptr;
 
         ShaderUsage visibilityBits;
+        Domain domain;
         bool builtin = false;
     } variableResolved;
     __Resolved* thisResolved;

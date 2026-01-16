@@ -191,6 +191,15 @@ Expression::EvalStorage(Storage& out) const
 //------------------------------------------------------------------------------
 /**
 */
+bool 
+Expression::EvalDomain(Domain& out) const
+{
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 TransientString
 Expression::EvalString() const
 {

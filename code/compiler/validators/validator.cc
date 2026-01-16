@@ -2384,6 +2384,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
             // Uncheck the literal bit if the variable is link-defined
             var->type.literal = false;
+            varResolved->domain = Domain::Device; // Link-defined variables are static
             varResolved->binding = compiler->linkDefineCounter++;
         }
         else if (attr->name == "uniform")
@@ -2394,6 +2395,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
             varResolved->storage = Storage::Uniform;
+            varResolved->domain = Domain::Workgroup; // Uniforms are per-workgroup
             varResolved->usageBits.flags.isConst = true & !var->type.IsMutable();
         }
         else if (attr->name == "inline")
@@ -2404,6 +2406,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
             varResolved->storage = Storage::InlineUniform;
+            varResolved->domain = Domain::Workgroup; // Inline uniforms are per-workgroup
             varResolved->usageBits.flags.isConst = true;
         }
         else if (attr->name == "workgroup")
@@ -2455,6 +2458,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     compiler->Error(Format("'in' storage only supported on functions marked as entry_point"), symbol);
                     return false;
                 }
+                varResolved->domain = Domain::Invocation; // All input values are per-invocation
                 varResolved->storage = Storage::Input;
             }
             else if (attr->name == "out")
@@ -2469,6 +2473,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     compiler->Error(Format("'out' storage only supported on functions marked as entry_point"), symbol);
                     return false;
                 }
+                varResolved->domain = Domain::Invocation; // All output values are per-invocation
                 varResolved->storage = Storage::Output;
             }
             else if (attr->name == "ray_payload")

@@ -36,7 +36,9 @@ public:
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
-    
+    /// Evaluates domain
+    bool EvalDomain(Domain& out) const override;
+
     int value;
 
     struct __Resolved : public Expression::__Resolved

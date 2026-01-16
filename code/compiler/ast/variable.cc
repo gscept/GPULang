@@ -32,7 +32,7 @@ Variable::Variable()
     varResolved->startPadding = 0;
     varResolved->visibilityBits.bits = 0x0;
     varResolved->storage = Storage::Default;
-    
+    varResolved->domain = Domain::Device; // Assume best case which is that variable value is identical across all invocations and workgroups
 }
 
 //------------------------------------------------------------------------------

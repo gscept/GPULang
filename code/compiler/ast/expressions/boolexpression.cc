@@ -126,4 +126,14 @@ BoolExpression::EvalStorage(Storage& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+BoolExpression::EvalDomain(Domain& out) const
+{
+    out = Domain::Device;
+    return true;
+}
+
 } // namespace GPULang

@@ -117,4 +117,14 @@ FloatExpression::EvalStorage(Storage& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+FloatExpression::EvalDomain(Domain& out) const
+{
+    out = Domain::Device; // Static value, uniform across all threads and workgroups
+    return true;
+}
+
 } // namespace GPULang

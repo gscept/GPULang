@@ -115,4 +115,14 @@ UIntExpression::EvalStorage(Storage& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+UIntExpression::EvalDomain(Domain& out) const
+{
+    out = Domain::Device;
+    return true;
+}
+
 } // namespace GPULang

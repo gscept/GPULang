@@ -138,4 +138,14 @@ FloatVecExpression::EvalStorage(Storage& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+FloatVecExpression::EvalDomain(Domain& out) const
+{
+    out = Domain::Device; // Static value, uniform across all threads and workgroups
+    return true;
+}
+
 } // namespace GPULang

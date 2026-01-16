@@ -291,38 +291,32 @@ struct ValueUnion
 struct Compiler;
 struct Expression : public Symbol
 {
-    /// constructor
+    /// Constructor
     Expression();
-    /// destructor
+    /// Destructor
     virtual ~Expression();
 
     /// Evaluate expression and store data in resolved
     virtual bool Resolve(Compiler* compiler);
 
-    /// eval type
+    /// Eval type
     virtual bool EvalType(Type::FullType& out) const;
-    /// eval type symbol
+    /// Eval type symbol
     virtual bool EvalTypeSymbol(Type*& out) const;
-    /// eval unswizzle type symbol
+    /// Eval unswizzle type symbol
     virtual bool EvalUnswizzledTypeSymbol(Type*& out) const;
-    /// eval symbol
+    /// Eval symbol
     virtual bool EvalSymbol(FixedString& out) const;
     /// Evaluate value
     virtual bool EvalValue(ValueUnion& out) const;
-    ///// evaluates expression as an integer
-    //virtual bool EvalIntVec(std::vector<int>& out) const;
-    ///// evaluates expression as an integer
-    //virtual bool EvalUIntVec(std::vector<unsigned>& out) const;
-    ///// evaulates expression as a float
-    //virtual bool EvalFloatVec(std::vector<float>& out) const;
-    ///// evaluates expression as a boolean
-    //virtual bool EvalBoolVec(std::vector<bool>& out) const;
-    /// evaluates access flags
+    /// Evaluates access flags
     virtual bool EvalAccessFlags(unsigned& out) const;
-    /// evaluates storage
+    /// Evaluates storage
     virtual bool EvalStorage(Storage& out) const;
+    /// Evalutes domain
+    virtual bool EvalDomain(Domain& out) const;
     
-    /// evaluates expression as a string
+    /// Evaluates expression as a string
     virtual TransientString EvalString() const;
 
     bool isLhsValue;
@@ -338,6 +332,7 @@ struct Expression : public Symbol
             bool b;
         } value;
         Storage storage = Storage::Default;
+        Domain domain = Domain::Invalid;
         //std::string text;
     };
 }; 

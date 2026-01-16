@@ -177,5 +177,25 @@ struct Scope
     bool unreachable = false;
 };
 
+// A domain denotes the context in which a symbol exists, be it unique per workgroup or per invocation
+// A domain can be promoted implicitly but demotion requires an explicit operation
+enum class Domain
+{
+    Invalid,
+    Device,
+    Workgroup,
+    Invocation,
+};
+
+// Implicit domain promotion can only go upwards in the hierarchy
+inline Domain
+PromoteDomain(Domain leftDomain, Domain rightDomain)
+{
+    if ((uint32_t)leftDomain < (uint32_t)rightDomain)
+        return rightDomain;
+    return leftDomain;
+}
+
+
 } // namespace GPULang
 //------------------------------------------------------------------------------

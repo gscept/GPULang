@@ -138,4 +138,14 @@ BoolVecExpression::EvalStorage(Storage& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+BoolVecExpression::EvalDomain(Domain& out) const
+{
+    out = Domain::Device;
+    return true;
+}
+
 } // namespace GPULang

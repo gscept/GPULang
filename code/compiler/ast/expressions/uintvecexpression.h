@@ -36,6 +36,8 @@ public:
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
+    /// Evaluates domain
+    bool EvalDomain(Domain& out) const override;
     
     FixedArray<unsigned int> values;
 
