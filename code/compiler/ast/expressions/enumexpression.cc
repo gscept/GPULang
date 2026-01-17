@@ -125,4 +125,14 @@ EnumExpression::EvalStorage(Storage& out) const
     return Expression::EvalStorage(out);
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+EnumExpression::EvalDomain(Domain& out) const
+{
+    out = Domain::Invalid;
+    return true;
+}
+
 } // namespace GPULang

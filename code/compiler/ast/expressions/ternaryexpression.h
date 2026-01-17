@@ -35,7 +35,9 @@ struct TernaryExpression : public Expression
     bool EvalStorage(Storage& out) const override;
     /// Evaluate value compile time
     bool EvalValue(ValueUnion& out) const override;
-    
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
+
     Expression* lhs;
     Expression* ifExpression;
     Expression* elseExpression;
@@ -45,6 +47,7 @@ struct TernaryExpression : public Expression
         virtual ~__Resolved() {};
         Type::FullType fullType;
         Type* type = nullptr;
+        Domain domain;
     };
 };
 

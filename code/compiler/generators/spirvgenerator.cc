@@ -1037,6 +1037,14 @@ SPV_ENUM(FMix, 46)
 SPV_ENUM(Step, 48)
 SPV_ENUM(SmoothStep, 49)
 SPV_ENUM(Fma, 50)
+SPV_ENUM(PackSnorm4x8, 54)
+SPV_ENUM(PackUnorm4x8, 55)
+SPV_ENUM(PackSnorm2x16, 56)
+SPV_ENUM(PackUnorm2x16, 57)
+SPV_ENUM(UnpackSnorm2x16, 60)
+SPV_ENUM(UnpackUnorm2x16, 61)
+SPV_ENUM(UnpackSnorm4x8, 63)
+SPV_ENUM(UnpackUnorm4x8, 64)
 SPV_ENUM(Length, 66)
 SPV_ENUM(Distance, 67)
 SPV_ENUM(Cross, 68)
@@ -4779,14 +4787,19 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
                 ret.AddIndirection({ SPIRVResult::Access(zero.name, ret.indirections.back().pointerInfo.ptrType, ret.indirections.back().pointerInfo.dataType) });
             }
 
-            // Convert to UInt, add/sub, and convert back to ptr
-            SPIRVResult stride = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt64(arrayIndexExpressionResolved->lhsType->byteSize));
             if (indexConstant.typeName != ret.typeName)
             {
                 indexConstant.name = generator->writer->MappedInstruction(OpUConvert, SPVWriter::Section::LocalFunction, ret.typeName, indexConstant);
                 indexConstant.typeName = ret.typeName;
             }
-            uint32_t indexOffset = generator->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, indexConstant.typeName, stride, indexConstant);
+            uint32_t indexOffset = indexConstant.name;
+
+            // If the accessed type is not void, multiply by stride
+            if (arrayIndexExpressionResolved->lhsType->category != Type::Category::VoidCategory)
+            {
+                SPIRVResult stride = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt64(arrayIndexExpressionResolved->lhsType->byteSize));
+                indexOffset = generator->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, indexConstant.typeName, stride, indexConstant);
+            }
 
             // Change layout to be explicit first, then generate data type
             auto oldLayout = generator->typeState.layout;
@@ -5024,7 +5037,11 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         else
         {
             // Scale with size of type first
-            uint32_t scaledOffset = generator->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, rightValue.typeName, rightValue, GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(rhsType->byteSize)));
+            uint32_t scaledOffset = rightValue.name;
+
+            // If rhs is void, then just add the integers together
+            if (rhsType->category != Type::Category::VoidCategory)
+                scaledOffset = generator->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, rightValue.typeName, rightValue, GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(rhsType->byteSize)));
             uint32_t offsetPtr = 0x0;
             if (binaryExpression->op == '+')
                 offsetPtr = generator->writer->MappedInstruction(OpIAdd, SPVWriter::Section::LocalFunction, rightValue.typeName, leftValue, SPVArg(scaledOffset));

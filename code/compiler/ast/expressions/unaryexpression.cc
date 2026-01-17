@@ -449,4 +449,14 @@ UnaryExpression::EvalStorage(Storage& out) const
     return this->expr->EvalStorage(out);
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+UnaryExpression::EvalDomain(Domain& out) const
+{
+    out = Symbol::Resolved(this)->domain;
+    return true;
+}
+
 } // namespace GPULang

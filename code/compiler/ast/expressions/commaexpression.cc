@@ -62,6 +62,8 @@ CommaExpression::Resolve(Compiler* compiler)
         return false;
     }
 
+    // Domain is that of the right expression
+    this->right->EvalDomain(thisResolved->domain);
     return true;
 }
 

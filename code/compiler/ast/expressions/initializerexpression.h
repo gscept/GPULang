@@ -35,6 +35,8 @@ struct InitializerExpression : public Expression
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
     
     FixedArray<Expression*> values;
     FixedString explicitType;
@@ -44,6 +46,7 @@ struct InitializerExpression : public Expression
         virtual ~__Resolved() {};
         Type::FullType fullType;
         Type* type = nullptr;
+        Domain domain;
     };
 };
 

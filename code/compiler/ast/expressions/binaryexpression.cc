@@ -297,6 +297,14 @@ BinaryExpression::Resolve(Compiler* compiler)
             this->thisResolved->returnType.literal = true;
         }
     }
+
+    Domain left, right;
+    if (!this->left->EvalDomain(left))
+        return false;
+    if (!this->right->EvalDomain(right))
+        return false;
+    this->thisResolved->domain = PromoteDomain(left, right);
+
     return true;
 }
 
@@ -535,6 +543,16 @@ BinaryExpression::EvalStorage(Storage& out) const
 {
     // Binary operations that return a value has to be on the stack
     out = Storage::Default;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+BinaryExpression::EvalDomain(Domain& out) const
+{
+    out = this->thisResolved->domain;
     return true;
 }
 

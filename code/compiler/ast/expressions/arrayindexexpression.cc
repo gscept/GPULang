@@ -158,6 +158,12 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
         return false;
     }
 
+    Domain left, right;
+    if (!this->left->EvalDomain(left))
+        return false;
+    if (!this->right->EvalDomain(right))
+        return false;
+    thisResolved->domain = PromoteDomain(left, right);
 
     return true;
 }
@@ -272,6 +278,16 @@ bool
 ArrayIndexExpression::EvalStorage(Storage& out) const
 {
     return this->left->EvalStorage(out);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+ArrayIndexExpression::EvalDomain(Domain& out) const
+{
+    out = Symbol::Resolved(this)->domain;
+    return true;
 }
 
 } // namespace GPULang

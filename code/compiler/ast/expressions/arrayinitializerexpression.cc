@@ -44,6 +44,8 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
         return false;
     }
 
+    Domain domain = Domain::Device;
+
     bool isLiteral = true;
     for (Expression* expr : this->values)
     {
@@ -61,6 +63,10 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
             compiler->Error(Format("Mismatching types, expected '%s' but got '%s'", inner.name.c_str(), valueType.name.c_str()), expr);
             return false;
         }
+
+        Domain exprDomain;
+        expr->EvalDomain(exprDomain);
+        domain = PromoteDomain(domain, exprDomain);
     }
 
     thisResolved->type = compiler->GetType(inner);
@@ -76,7 +82,7 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     Expression* size = Alloc<UIntExpression>((uint32_t)this->values.size);
     thisResolved->fullType.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(thisResolved->fullType.modifiers, Type::FullType::Modifier::Array, inner.modifiers);
     thisResolved->fullType.modifierValues = TransientArray<Expression*>::Concatenate(thisResolved->fullType.modifierValues, size, inner.modifierValues);
-
+    thisResolved->domain = domain;
     return true;
 }
 
@@ -151,6 +157,17 @@ ArrayInitializerExpression::EvalStorage(Storage& out) const
 {
     auto res = Symbol::Resolved(this);
     out = res->storage;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+ArrayInitializerExpression::EvalDomain(Domain& out) const
+{
+    auto res = Symbol::Resolved(this);
+    out = res->domain;
     return true;
 }
 

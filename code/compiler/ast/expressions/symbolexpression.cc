@@ -60,6 +60,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->fullType = var->type;
             thisResolved->type = varResolved->typeSymbol;
             thisResolved->storage = varResolved->storage;
+            thisResolved->domain = varResolved->domain;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::StructureType)
@@ -68,6 +69,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             assert(struc->symbolType == Symbol::SymbolType::StructureType);
             thisResolved->fullType = Type::FullType{ struc->name };
             thisResolved->type = struc;
+            thisResolved->domain = Domain::Device;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::TypeType)
@@ -76,6 +78,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             assert(type->symbolType == Symbol::SymbolType::TypeType);
             thisResolved->fullType = Type::FullType{ type->name };
             thisResolved->type = type;
+            thisResolved->domain = Domain::Device;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::FunctionType)
@@ -83,6 +86,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             // If lhs, it means it's a function assignment, therefore function pointer
             thisResolved->fullType = Type::FullType{ FUNCTION_TYPE };
             thisResolved->type = &GPULang::FunctionPtrType;
+            thisResolved->domain = Domain::Device;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumerationType)
@@ -91,6 +95,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             assert(type->symbolType == Symbol::SymbolType::EnumerationType);
             thisResolved->fullType = Type::FullType{ type->name };
             thisResolved->type = type;
+            thisResolved->domain = Domain::Device;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumExpressionType)
@@ -103,12 +108,14 @@ SymbolExpression::Resolve(Compiler* compiler)
                 compiler->Error(Format("Symbol is not a valid enum value"), this);
                 return false;
             }
+            thisResolved->domain = Domain::Device;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::RenderStateInstanceType)
         {
             thisResolved->fullType = Type::FullType{ "RenderState"_c };
             thisResolved->type = &RenderStateType;
+            thisResolved->domain = Domain::Device;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::SamplerStateInstanceType)
@@ -117,12 +124,14 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->fullType.modifiers = { Type::FullType::Modifier::Pointer };
             thisResolved->fullType.modifierValues = { nullptr };
             thisResolved->type = &SamplerType;
+            thisResolved->domain = Domain::Device;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::BoolExpressionType)
         {
             thisResolved->fullType = Type::FullType{ "b8"_c };
             thisResolved->type = &Bool8Type;
+            thisResolved->domain = Domain::Device;
             return true;
         }
         else
@@ -287,6 +296,16 @@ SymbolExpression::EvalStorage(Storage& out) const
                 break;
         }
     }
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+SymbolExpression::EvalDomain(Domain& out) const
+{
+    out = Symbol::Resolved(this)->domain;
     return true;
 }
 

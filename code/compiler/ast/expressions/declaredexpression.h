@@ -33,18 +33,12 @@ struct DeclaredExpression : public Expression
     bool EvalSymbol(FixedString& out) const;
     /// Evaluate value
     bool EvalValue(ValueUnion& out) const;
-    ///// evaluates expression as an integer
-    //virtual bool EvalIntVec(std::vector<int>& out) const;
-    ///// evaluates expression as an integer
-    //virtual bool EvalUIntVec(std::vector<unsigned>& out) const;
-    ///// evaulates expression as a float
-    //virtual bool EvalFloatVec(std::vector<float>& out) const;
-    ///// evaluates expression as a boolean
-    //virtual bool EvalBoolVec(std::vector<bool>& out) const;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const;
     /// evaluates storage
     bool EvalStorage(Storage& out) const;
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
     
     /// evaluates expression as a string
     TransientString EvalString() const;

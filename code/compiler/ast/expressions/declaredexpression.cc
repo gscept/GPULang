@@ -114,6 +114,16 @@ DeclaredExpression::EvalStorage(Storage& out) const
 //------------------------------------------------------------------------------
 /**
 */
+bool 
+DeclaredExpression::EvalDomain(Domain& out) const
+{
+    out = Domain::Device;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 TransientString
 DeclaredExpression::EvalString() const
 {

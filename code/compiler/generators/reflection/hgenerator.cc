@@ -35,6 +35,7 @@ HGenerator::Generate(const Compiler* compiler, const ProgramInstance* program, c
 {
     HeaderWriter writer;
     writer.WriteLine("#pragma once");
+    writer.WriteLine("#include <stdint.h>");
     writer.WriteLine(Format("namespace %s", compiler->filename.c_str()));
     writer.WriteLine("{");
 
@@ -399,9 +400,16 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             writer.Write(TransientString("/* Offset: ", varResolved->structureOffset, "*/"));
 
             TStr type = var->type.name;
-            auto it = typeToHeaderType.Find(type.ToView());
-            if (it != typeToHeaderType.end())
-                type = it->second.c_str();
+            if (!var->type.address)
+            {
+                auto it = typeToHeaderType.Find(type.ToView());
+                if (it != typeToHeaderType.end())
+                    type = it->second.c_str();
+            }
+            else
+            {
+                type = "uint64_t";
+            }
             auto item = typeToArraySize.Find(var->type.name);
             TStr arrayType = "";// = typeToArraySize.Find(var->type.name)->second.c_str();
             if (item != typeToArraySize.end())

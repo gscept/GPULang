@@ -38,6 +38,8 @@ public:
     bool EvalAccessFlags(unsigned& out) const override;
 	/// evaluates storage
 	bool EvalStorage(Storage& out) const override;
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
 
 	FixedString symbol;
 
@@ -47,6 +49,7 @@ public:
         Symbol* symbol = nullptr;
         Type::FullType fullType;
         Type* type = nullptr;
+        Domain domain;
     };
 	__Resolved* thisResolved = nullptr;
 }; 

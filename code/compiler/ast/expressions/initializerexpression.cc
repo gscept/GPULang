@@ -49,6 +49,8 @@ InitializerExpression::Resolve(Compiler* compiler)
     thisResolved->type = ty;
     inner.name = ty->name;
 
+    Domain domain = Domain::Device;
+
     if (ty->symbols.size != this->values.size)
     {
         compiler->Error("Struct must be fully initialized", this);
@@ -67,6 +69,10 @@ InitializerExpression::Resolve(Compiler* compiler)
         BinaryExpression* binExpr = static_cast<BinaryExpression*>(expr);
         if (!expr->Resolve(compiler))
             return false;
+
+        Domain exprDomain;
+        expr->EvalDomain(exprDomain);
+        domain = PromoteDomain(domain, exprDomain);
         
         FixedString name;
         binExpr->left->EvalSymbol(name);
@@ -82,7 +88,7 @@ InitializerExpression::Resolve(Compiler* compiler)
     thisResolved->fullType.name = inner.name;
     thisResolved->fullType.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(thisResolved->fullType.modifiers, inner.modifiers);;
     thisResolved->fullType.modifierValues = TransientArray<Expression*>::Concatenate(thisResolved->fullType.modifierValues, inner.modifierValues);
-
+    thisResolved->domain = domain;
     return true;
 }
 
@@ -158,6 +164,17 @@ InitializerExpression::EvalStorage(Storage& out) const
 {
     auto res = Symbol::Resolved(this);
     out = res->storage;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+InitializerExpression::EvalDomain(Domain& out) const
+{
+    auto res = Symbol::Resolved(this);
+    out = res->domain;
     return true;
 }
 

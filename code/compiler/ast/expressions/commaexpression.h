@@ -36,7 +36,9 @@ struct CommaExpression : public Expression
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
-    
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
+
     Expression* left;
     Expression* right;
 
@@ -47,6 +49,7 @@ struct CommaExpression : public Expression
         Type* rhsType = nullptr;
         Type::FullType leftType;
         Type* lhsType = nullptr;
+        Domain domain;
     };
 };
 

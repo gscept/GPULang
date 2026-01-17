@@ -9,6 +9,18 @@
 #include "compiler.h"
 namespace GPULang
 {
+/// rayLaunchSize
+Function RayLaunchSize;
+
+/// bLASPrimitiveIndex
+Function BLASPrimitiveIndex;
+
+/// bLASGeometryIndex
+Function BLASGeometryIndex;
+
+/// tLASInstanceIndex
+Function TLASInstanceIndex;
+
 /// tLASInstanceCustomIndex
 Function TLASInstanceCustomIndex;
 
@@ -47,10 +59,50 @@ Function TLASWorldToObject;
 
 void SetupIntrinsics17()
 {
+    /// rayLaunchSize
+    RayLaunchSize.documentation = "Get the ray tracing built-in value for RayLaunchSize"_c;
+    RayLaunchSize.name = RayLaunchSize_name;
+    RayLaunchSize.backendIndex = 3142;
+    RayLaunchSize.returnType = Type::FullType { UInt32x3Type.name };
+    Symbol::Resolved(&RayLaunchSize)->signature = "rayLaunchSize() u32x3"_c;
+    Symbol::Resolved(&RayLaunchSize)->name = "rayLaunchSize()"_c;
+    Symbol::Resolved(&RayLaunchSize)->nameWithVarNames = "rayLaunchSize()"_c;
+    Symbol::Resolved(&RayLaunchSize)->returnTypeSymbol = &UInt32x3Type;
+
+    /// bLASPrimitiveIndex
+    BLASPrimitiveIndex.documentation = "Get the ray tracing built-in value for BLASPrimitiveIndex"_c;
+    BLASPrimitiveIndex.name = BLASPrimitiveIndex_name;
+    BLASPrimitiveIndex.backendIndex = 3143;
+    BLASPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
+    Symbol::Resolved(&BLASPrimitiveIndex)->signature = "bLASPrimitiveIndex() u32"_c;
+    Symbol::Resolved(&BLASPrimitiveIndex)->name = "bLASPrimitiveIndex()"_c;
+    Symbol::Resolved(&BLASPrimitiveIndex)->nameWithVarNames = "bLASPrimitiveIndex()"_c;
+    Symbol::Resolved(&BLASPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
+
+    /// bLASGeometryIndex
+    BLASGeometryIndex.documentation = "Get the ray tracing built-in value for BLASGeometryIndex"_c;
+    BLASGeometryIndex.name = BLASGeometryIndex_name;
+    BLASGeometryIndex.backendIndex = 3144;
+    BLASGeometryIndex.returnType = Type::FullType { UInt32Type.name };
+    Symbol::Resolved(&BLASGeometryIndex)->signature = "bLASGeometryIndex() u32"_c;
+    Symbol::Resolved(&BLASGeometryIndex)->name = "bLASGeometryIndex()"_c;
+    Symbol::Resolved(&BLASGeometryIndex)->nameWithVarNames = "bLASGeometryIndex()"_c;
+    Symbol::Resolved(&BLASGeometryIndex)->returnTypeSymbol = &UInt32Type;
+
+    /// tLASInstanceIndex
+    TLASInstanceIndex.documentation = "Get the ray tracing built-in value for TLASInstanceIndex"_c;
+    TLASInstanceIndex.name = TLASInstanceIndex_name;
+    TLASInstanceIndex.backendIndex = 3145;
+    TLASInstanceIndex.returnType = Type::FullType { UInt32Type.name };
+    Symbol::Resolved(&TLASInstanceIndex)->signature = "tLASInstanceIndex() u32"_c;
+    Symbol::Resolved(&TLASInstanceIndex)->name = "tLASInstanceIndex()"_c;
+    Symbol::Resolved(&TLASInstanceIndex)->nameWithVarNames = "tLASInstanceIndex()"_c;
+    Symbol::Resolved(&TLASInstanceIndex)->returnTypeSymbol = &UInt32Type;
+
     /// tLASInstanceCustomIndex
     TLASInstanceCustomIndex.documentation = "Get the ray tracing built-in value for TLASInstanceCustomIndex"_c;
     TLASInstanceCustomIndex.name = TLASInstanceCustomIndex_name;
-    TLASInstanceCustomIndex.backendIndex = 3142;
+    TLASInstanceCustomIndex.backendIndex = 3146;
     TLASInstanceCustomIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&TLASInstanceCustomIndex)->signature = "tLASInstanceCustomIndex() u32"_c;
     Symbol::Resolved(&TLASInstanceCustomIndex)->name = "tLASInstanceCustomIndex()"_c;
@@ -60,7 +112,7 @@ void SetupIntrinsics17()
     /// rayWorldOrigin
     RayWorldOrigin.documentation = "Get the ray tracing built-in value for RayWorldOrigin"_c;
     RayWorldOrigin.name = RayWorldOrigin_name;
-    RayWorldOrigin.backendIndex = 3143;
+    RayWorldOrigin.backendIndex = 3147;
     RayWorldOrigin.returnType = Type::FullType { Float32x3Type.name };
     Symbol::Resolved(&RayWorldOrigin)->signature = "rayWorldOrigin() f32x3"_c;
     Symbol::Resolved(&RayWorldOrigin)->name = "rayWorldOrigin()"_c;
@@ -70,7 +122,7 @@ void SetupIntrinsics17()
     /// rayWorldDirection
     RayWorldDirection.documentation = "Get the ray tracing built-in value for RayWorldDirection"_c;
     RayWorldDirection.name = RayWorldDirection_name;
-    RayWorldDirection.backendIndex = 3144;
+    RayWorldDirection.backendIndex = 3148;
     RayWorldDirection.returnType = Type::FullType { Float32x3Type.name };
     Symbol::Resolved(&RayWorldDirection)->signature = "rayWorldDirection() f32x3"_c;
     Symbol::Resolved(&RayWorldDirection)->name = "rayWorldDirection()"_c;
@@ -80,7 +132,7 @@ void SetupIntrinsics17()
     /// rayObjectOrigin
     RayObjectOrigin.documentation = "Get the ray tracing built-in value for RayObjectOrigin"_c;
     RayObjectOrigin.name = RayObjectOrigin_name;
-    RayObjectOrigin.backendIndex = 3145;
+    RayObjectOrigin.backendIndex = 3149;
     RayObjectOrigin.returnType = Type::FullType { Float32x3Type.name };
     Symbol::Resolved(&RayObjectOrigin)->signature = "rayObjectOrigin() f32x3"_c;
     Symbol::Resolved(&RayObjectOrigin)->name = "rayObjectOrigin()"_c;
@@ -90,7 +142,7 @@ void SetupIntrinsics17()
     /// rayObjectDirection
     RayObjectDirection.documentation = "Get the ray tracing built-in value for RayObjectDirection"_c;
     RayObjectDirection.name = RayObjectDirection_name;
-    RayObjectDirection.backendIndex = 3146;
+    RayObjectDirection.backendIndex = 3150;
     RayObjectDirection.returnType = Type::FullType { Float32x3Type.name };
     Symbol::Resolved(&RayObjectDirection)->signature = "rayObjectDirection() f32x3"_c;
     Symbol::Resolved(&RayObjectDirection)->name = "rayObjectDirection()"_c;
@@ -100,7 +152,7 @@ void SetupIntrinsics17()
     /// rayTMin
     RayTMin.documentation = "Get the ray tracing built-in value for RayTMin"_c;
     RayTMin.name = RayTMin_name;
-    RayTMin.backendIndex = 3147;
+    RayTMin.backendIndex = 3151;
     RayTMin.returnType = Type::FullType { Float32Type.name };
     Symbol::Resolved(&RayTMin)->signature = "rayTMin() f32"_c;
     Symbol::Resolved(&RayTMin)->name = "rayTMin()"_c;
@@ -110,7 +162,7 @@ void SetupIntrinsics17()
     /// rayTMax
     RayTMax.documentation = "Get the ray tracing built-in value for RayTMax"_c;
     RayTMax.name = RayTMax_name;
-    RayTMax.backendIndex = 3148;
+    RayTMax.backendIndex = 3152;
     RayTMax.returnType = Type::FullType { Float32Type.name };
     Symbol::Resolved(&RayTMax)->signature = "rayTMax() f32"_c;
     Symbol::Resolved(&RayTMax)->name = "rayTMax()"_c;
@@ -120,7 +172,7 @@ void SetupIntrinsics17()
     /// rayFlags
     RayFlags.documentation = "Get the ray tracing built-in value for RayFlags"_c;
     RayFlags.name = RayFlags_name;
-    RayFlags.backendIndex = 3149;
+    RayFlags.backendIndex = 3153;
     RayFlags.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&RayFlags)->signature = "rayFlags() u32"_c;
     Symbol::Resolved(&RayFlags)->name = "rayFlags()"_c;
@@ -130,7 +182,7 @@ void SetupIntrinsics17()
     /// rayHitDistance
     RayHitDistance.documentation = "Get the ray tracing built-in value for RayHitDistance"_c;
     RayHitDistance.name = RayHitDistance_name;
-    RayHitDistance.backendIndex = 3150;
+    RayHitDistance.backendIndex = 3154;
     RayHitDistance.returnType = Type::FullType { Float32Type.name };
     Symbol::Resolved(&RayHitDistance)->signature = "rayHitDistance() f32"_c;
     Symbol::Resolved(&RayHitDistance)->name = "rayHitDistance()"_c;
@@ -140,7 +192,7 @@ void SetupIntrinsics17()
     /// rayHitKind
     RayHitKind.documentation = "Get the ray tracing built-in value for RayHitKind"_c;
     RayHitKind.name = RayHitKind_name;
-    RayHitKind.backendIndex = 3151;
+    RayHitKind.backendIndex = 3155;
     RayHitKind.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&RayHitKind)->signature = "rayHitKind() u32"_c;
     Symbol::Resolved(&RayHitKind)->name = "rayHitKind()"_c;
@@ -150,7 +202,7 @@ void SetupIntrinsics17()
     /// tLASObjectToWorld
     TLASObjectToWorld.documentation = "Get the ray tracing built-in value for TLASObjectToWorld"_c;
     TLASObjectToWorld.name = TLASObjectToWorld_name;
-    TLASObjectToWorld.backendIndex = 3152;
+    TLASObjectToWorld.backendIndex = 3156;
     TLASObjectToWorld.returnType = Type::FullType { Float32x4x3Type.name };
     Symbol::Resolved(&TLASObjectToWorld)->signature = "tLASObjectToWorld() f32x4x3"_c;
     Symbol::Resolved(&TLASObjectToWorld)->name = "tLASObjectToWorld()"_c;
@@ -160,7 +212,7 @@ void SetupIntrinsics17()
     /// tLASWorldToObject
     TLASWorldToObject.documentation = "Get the ray tracing built-in value for TLASWorldToObject"_c;
     TLASWorldToObject.name = TLASWorldToObject_name;
-    TLASWorldToObject.backendIndex = 3153;
+    TLASWorldToObject.backendIndex = 3157;
     TLASWorldToObject.returnType = Type::FullType { Float32x4x3Type.name };
     Symbol::Resolved(&TLASWorldToObject)->signature = "tLASWorldToObject() f32x4x3"_c;
     Symbol::Resolved(&TLASWorldToObject)->name = "tLASWorldToObject()"_c;

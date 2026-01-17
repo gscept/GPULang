@@ -2880,6 +2880,70 @@ def generate_types():
                     fun.spirv = spirv_function
                     functions.append(fun)
 
+    # Packing and unpacking
+    ops = ["unpackToUNorm2x16", "unpackToSNorm2x16", "unpackToUNorm4x8", "unpackToSNorm4x8"]
+    docs = [
+        "Unpack an integer to a 2d vector of 16 bit float values in the range [0..65536]",
+        "Unpack an integer to a 2d vector of 16 bit float values in the range [-32768..32767]"
+        "Unpack an integer to a 4d vector of 8 bit float values in the range [0..256]"
+        "Unpack an integer to a 4d vector of 8 bit float values in the range [-128..127]"
+    ]
+    spirv_op = ["UnpackUnorm2x16", "UnpackSnorm2x16", "UnpackUnorm4x8", "UnpackSnorm4x8"]
+    pack_types = ["Float32x2", "Float32x2", "Float32x4", "Float32x4"]
+    for intrinsic, spirv_op, doc, type in zip(ops, spirv_op, docs, pack_types):
+        function_name = f'{intrinsic}'
+        argument_name = f'{function_name}_arg'
+
+        fun = Function( 
+            decl_name = function_name,
+            api_name = intrinsic,
+            return_type = type,
+            documentation = doc,
+            parameters = [
+                Variable(decl_name = argument_name, api_name = "val", type_name='UInt32')
+            ]
+        )
+
+        spirv_function = ''
+        spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op}, val);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        
+
+        fun.spirv = spirv_function
+        functions.append(fun)
+
+    ops = ["packToUNorm2x16", "packToSNorm2x16", "packToUNorm4x8", "packToSNorm4x8"]
+    docs = [
+        "Pack a 2d vector of 16 bit float values in the range [0..65536] to a unsigned 32-bit integer",
+        "Pack a 2d vector of 16 bit float values in the range [-32768..32767] to a unsigned 32-bit integer"
+        "Pack a 4d vector of 8 bit float values in the range [0..256] to a unsigned 32-bit integer"
+        "Pack a 4d vector of 8 bit float values in the range [-128..127] to a integer to a unsigned 32-bit integer"
+    ]
+    spirv_op = ["PackUnorm2x16", "PackSnorm2x16", "PackUnorm4x8", "PackSnorm4x8"]
+    for intrinsic, spirv_op, doc, type in zip(ops, spirv_op, docs, pack_types):
+        function_name = f'{intrinsic}'
+        argument_name = f'{function_name}_arg'
+
+        fun = Function( 
+            decl_name = function_name,
+            api_name = intrinsic,
+            return_type = 'UInt32',
+            documentation = doc,
+            parameters = [
+                Variable(decl_name = argument_name, api_name = "val", type_name=type)
+            ]
+        )
+
+        spirv_function = ''
+        spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op}, val);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        
+
+        fun.spirv = spirv_function
+        functions.append(fun)
+
     # Any and all
     ops = ['any', 'all']
     docs = [

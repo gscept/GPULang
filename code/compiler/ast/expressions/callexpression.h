@@ -36,6 +36,8 @@ struct CallExpression : public Expression
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
 
     Expression* function;
     FixedArray<Expression*> args;
@@ -53,6 +55,7 @@ struct CallExpression : public Expression
         FixedArray<Type*> argTypes;
         FixedArray<Storage> argStorages;
         FixedArray<Function*> conversions;
+        Domain domain;
     };
     __Resolved* thisResolved;
 };

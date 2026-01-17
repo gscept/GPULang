@@ -2709,6 +2709,36 @@
         ]
     },
     {
+        "name": "packToSNorm2x16",
+        "documentation": "Pack a 2d vector of 16 bit float values in the range [-32768..32767] to a unsigned 32-bit integerPack a 4d vector of 8 bit float values in the range [0..256] to a unsigned 32-bit integerPack a 4d vector of 8 bit float values in the range [-128..127] to a integer to a unsigned 32-bit integer",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "packToSNorm2x16(val: f32x2) u32"
+            }
+        ]
+    },
+    {
+        "name": "packToUNorm2x16",
+        "documentation": "Pack a 2d vector of 16 bit float values in the range [0..65536] to a unsigned 32-bit integer",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "packToUNorm2x16(val: f32x2) u32"
+            }
+        ]
+    },
+    {
         "name": "pixelExportColor",
         "documentation": "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable.",
         "target_support": [
@@ -7556,6 +7586,36 @@
             },
             {
                 "signature": "trunc(val: f16x4) f16x4"
+            }
+        ]
+    },
+    {
+        "name": "unpackToSNorm2x16",
+        "documentation": "Unpack an integer to a 2d vector of 16 bit float values in the range [-32768..32767]Unpack an integer to a 4d vector of 8 bit float values in the range [0..256]Unpack an integer to a 4d vector of 8 bit float values in the range [-128..127]",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "unpackToSNorm2x16(val: u32) f32x2"
+            }
+        ]
+    },
+    {
+        "name": "unpackToUNorm2x16",
+        "documentation": "Unpack an integer to a 2d vector of 16 bit float values in the range [0..65536]",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "unpackToUNorm2x16(val: u32) f32x2"
             }
         ]
     },

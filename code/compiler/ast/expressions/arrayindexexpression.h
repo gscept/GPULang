@@ -37,6 +37,8 @@ struct ArrayIndexExpression : public Expression
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
 
     Expression* left;
     Expression* right;
@@ -54,6 +56,7 @@ struct ArrayIndexExpression : public Expression
         unsigned int literalAccess = 0xFFFFFFFF;
 
         bool isAddressIndex = false;
+        Domain domain;
     };
 };
 

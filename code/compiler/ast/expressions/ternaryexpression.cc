@@ -69,6 +69,16 @@ TernaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
+    // The domain is the amalgamation of all three domains
+    // The condition can be different as it is only used for branching
+    // The expressions on either side of if or else can influence the domain of the result
+    Domain conditionDomain, leftDomain, rightDomain;
+    this->lhs->EvalDomain(conditionDomain);
+    this->ifExpression->EvalDomain(leftDomain);
+    this->elseExpression->EvalDomain(rightDomain);
+    Domain resultDomain = Domain::Device;
+    thisResolved->domain = PromoteDomain(PromoteDomain(conditionDomain, leftDomain), rightDomain);
+
     if (!type2.literal)
         type1.literal = false;
     thisResolved->fullType = type1;
@@ -84,6 +94,17 @@ TernaryExpression::EvalValue(ValueUnion& out) const
 {
     // Fixme, implement a compile time evaluation path for this
     return Expression::EvalValue(out);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+TernaryExpression::EvalDomain(Domain& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->domain;
+    return true;
 }
 
 //------------------------------------------------------------------------------

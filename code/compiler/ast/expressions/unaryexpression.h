@@ -46,7 +46,9 @@ public:
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
-    
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
+
     uint32_t op;
     bool isPrefix;
     Expression* expr;
@@ -59,6 +61,7 @@ public:
         Type* type = nullptr;
         Type::SwizzleMask swizzleMask;
         Type* swizzleType = nullptr;
+        Domain domain;
     };
 }; 
 } // namespace GPULang

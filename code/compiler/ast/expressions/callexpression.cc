@@ -653,4 +653,14 @@ CallExpression::EvalStorage(Storage& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+CallExpression::EvalDomain(Domain& out) const
+{
+    out = this->thisResolved->domain;
+    return true;
+}
+
 } // namespace GPULang

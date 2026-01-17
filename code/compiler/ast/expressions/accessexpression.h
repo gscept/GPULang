@@ -40,6 +40,8 @@ struct AccessExpression : public Expression
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
 
     bool deref, tailDeref, tailRef;
     Expression* left;
@@ -58,6 +60,7 @@ struct AccessExpression : public Expression
         Type::SwizzleMask swizzleMask;
         Type* swizzleType = nullptr;
         bool isAddressDeref = false;
+        Domain domain;
     };
 };
 

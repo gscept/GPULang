@@ -38,6 +38,8 @@ public:
     bool EvalAccessFlags(unsigned& out) const override;
 	/// evaluates storage
 	bool EvalStorage(Storage& out) const override;
+    /// Evalutes domain
+    bool EvalDomain(Domain& out) const override;
 	
 	/// helper functions for compile time bool evaluations
 	bool EvalBool(int lhs, int rhs) const;
@@ -71,6 +73,7 @@ public:
 
     	bool isAssignment = false;
         bool isAddressOperation = false;
+        Domain domain;
     };
 	__Resolved* thisResolved;
 }; 

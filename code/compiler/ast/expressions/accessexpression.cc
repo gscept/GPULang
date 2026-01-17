@@ -176,6 +176,14 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->returnType.modifiers.size--;
         thisResolved->returnType.modifierValues.size--;
     }
+
+    Domain left, right;
+    if (!this->left->EvalDomain(left))
+        return false;
+    if (!this->right->EvalDomain(right))
+        return false;
+
+    thisResolved->domain = PromoteDomain(left, right);
     return thisResolved->lhsType != nullptr && thisResolved->rhsType != nullptr;
 }
 
@@ -308,5 +316,16 @@ bool
 AccessExpression::EvalStorage(Storage& out) const
 {
     return this->left->EvalStorage(out);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+AccessExpression::EvalDomain(Domain& out) const
+{
+    
+    out = Symbol::Resolved(this)->domain;
+    return true;
 }
 } // namespace GPULang
