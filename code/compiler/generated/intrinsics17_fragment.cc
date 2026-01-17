@@ -12,16 +12,16 @@ namespace GPULang
 /// rayLaunchSize
 Function RayLaunchSize;
 
-/// bLASPrimitiveIndex
+/// BLASPrimitiveIndex
 Function BLASPrimitiveIndex;
 
-/// bLASGeometryIndex
+/// BLASGeometryIndex
 Function BLASGeometryIndex;
 
-/// tLASInstanceIndex
+/// TLASInstanceIndex
 Function TLASInstanceIndex;
 
-/// tLASInstanceCustomIndex
+/// TLASInstanceCustomIndex
 Function TLASInstanceCustomIndex;
 
 /// rayWorldOrigin
@@ -51,10 +51,10 @@ Function RayHitDistance;
 /// rayHitKind
 Function RayHitKind;
 
-/// tLASObjectToWorld
+/// TLASObjectToWorld
 Function TLASObjectToWorld;
 
-/// tLASWorldToObject
+/// TLASWorldToObject
 Function TLASWorldToObject;
 
 void SetupIntrinsics17()
@@ -69,44 +69,44 @@ void SetupIntrinsics17()
     Symbol::Resolved(&RayLaunchSize)->nameWithVarNames = "rayLaunchSize()"_c;
     Symbol::Resolved(&RayLaunchSize)->returnTypeSymbol = &UInt32x3Type;
 
-    /// bLASPrimitiveIndex
+    /// BLASPrimitiveIndex
     BLASPrimitiveIndex.documentation = "Get the ray tracing built-in value for BLASPrimitiveIndex"_c;
     BLASPrimitiveIndex.name = BLASPrimitiveIndex_name;
     BLASPrimitiveIndex.backendIndex = 3143;
     BLASPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&BLASPrimitiveIndex)->signature = "bLASPrimitiveIndex() u32"_c;
-    Symbol::Resolved(&BLASPrimitiveIndex)->name = "bLASPrimitiveIndex()"_c;
-    Symbol::Resolved(&BLASPrimitiveIndex)->nameWithVarNames = "bLASPrimitiveIndex()"_c;
+    Symbol::Resolved(&BLASPrimitiveIndex)->signature = "BLASPrimitiveIndex() u32"_c;
+    Symbol::Resolved(&BLASPrimitiveIndex)->name = "BLASPrimitiveIndex()"_c;
+    Symbol::Resolved(&BLASPrimitiveIndex)->nameWithVarNames = "BLASPrimitiveIndex()"_c;
     Symbol::Resolved(&BLASPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
 
-    /// bLASGeometryIndex
+    /// BLASGeometryIndex
     BLASGeometryIndex.documentation = "Get the ray tracing built-in value for BLASGeometryIndex"_c;
     BLASGeometryIndex.name = BLASGeometryIndex_name;
     BLASGeometryIndex.backendIndex = 3144;
     BLASGeometryIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&BLASGeometryIndex)->signature = "bLASGeometryIndex() u32"_c;
-    Symbol::Resolved(&BLASGeometryIndex)->name = "bLASGeometryIndex()"_c;
-    Symbol::Resolved(&BLASGeometryIndex)->nameWithVarNames = "bLASGeometryIndex()"_c;
+    Symbol::Resolved(&BLASGeometryIndex)->signature = "BLASGeometryIndex() u32"_c;
+    Symbol::Resolved(&BLASGeometryIndex)->name = "BLASGeometryIndex()"_c;
+    Symbol::Resolved(&BLASGeometryIndex)->nameWithVarNames = "BLASGeometryIndex()"_c;
     Symbol::Resolved(&BLASGeometryIndex)->returnTypeSymbol = &UInt32Type;
 
-    /// tLASInstanceIndex
+    /// TLASInstanceIndex
     TLASInstanceIndex.documentation = "Get the ray tracing built-in value for TLASInstanceIndex"_c;
     TLASInstanceIndex.name = TLASInstanceIndex_name;
     TLASInstanceIndex.backendIndex = 3145;
     TLASInstanceIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&TLASInstanceIndex)->signature = "tLASInstanceIndex() u32"_c;
-    Symbol::Resolved(&TLASInstanceIndex)->name = "tLASInstanceIndex()"_c;
-    Symbol::Resolved(&TLASInstanceIndex)->nameWithVarNames = "tLASInstanceIndex()"_c;
+    Symbol::Resolved(&TLASInstanceIndex)->signature = "TLASInstanceIndex() u32"_c;
+    Symbol::Resolved(&TLASInstanceIndex)->name = "TLASInstanceIndex()"_c;
+    Symbol::Resolved(&TLASInstanceIndex)->nameWithVarNames = "TLASInstanceIndex()"_c;
     Symbol::Resolved(&TLASInstanceIndex)->returnTypeSymbol = &UInt32Type;
 
-    /// tLASInstanceCustomIndex
+    /// TLASInstanceCustomIndex
     TLASInstanceCustomIndex.documentation = "Get the ray tracing built-in value for TLASInstanceCustomIndex"_c;
     TLASInstanceCustomIndex.name = TLASInstanceCustomIndex_name;
     TLASInstanceCustomIndex.backendIndex = 3146;
     TLASInstanceCustomIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&TLASInstanceCustomIndex)->signature = "tLASInstanceCustomIndex() u32"_c;
-    Symbol::Resolved(&TLASInstanceCustomIndex)->name = "tLASInstanceCustomIndex()"_c;
-    Symbol::Resolved(&TLASInstanceCustomIndex)->nameWithVarNames = "tLASInstanceCustomIndex()"_c;
+    Symbol::Resolved(&TLASInstanceCustomIndex)->signature = "TLASInstanceCustomIndex() u32"_c;
+    Symbol::Resolved(&TLASInstanceCustomIndex)->name = "TLASInstanceCustomIndex()"_c;
+    Symbol::Resolved(&TLASInstanceCustomIndex)->nameWithVarNames = "TLASInstanceCustomIndex()"_c;
     Symbol::Resolved(&TLASInstanceCustomIndex)->returnTypeSymbol = &UInt32Type;
 
     /// rayWorldOrigin
@@ -199,24 +199,24 @@ void SetupIntrinsics17()
     Symbol::Resolved(&RayHitKind)->nameWithVarNames = "rayHitKind()"_c;
     Symbol::Resolved(&RayHitKind)->returnTypeSymbol = &UInt32Type;
 
-    /// tLASObjectToWorld
+    /// TLASObjectToWorld
     TLASObjectToWorld.documentation = "Get the ray tracing built-in value for TLASObjectToWorld"_c;
     TLASObjectToWorld.name = TLASObjectToWorld_name;
     TLASObjectToWorld.backendIndex = 3156;
     TLASObjectToWorld.returnType = Type::FullType { Float32x4x3Type.name };
-    Symbol::Resolved(&TLASObjectToWorld)->signature = "tLASObjectToWorld() f32x4x3"_c;
-    Symbol::Resolved(&TLASObjectToWorld)->name = "tLASObjectToWorld()"_c;
-    Symbol::Resolved(&TLASObjectToWorld)->nameWithVarNames = "tLASObjectToWorld()"_c;
+    Symbol::Resolved(&TLASObjectToWorld)->signature = "TLASObjectToWorld() f32x4x3"_c;
+    Symbol::Resolved(&TLASObjectToWorld)->name = "TLASObjectToWorld()"_c;
+    Symbol::Resolved(&TLASObjectToWorld)->nameWithVarNames = "TLASObjectToWorld()"_c;
     Symbol::Resolved(&TLASObjectToWorld)->returnTypeSymbol = &Float32x4x3Type;
 
-    /// tLASWorldToObject
+    /// TLASWorldToObject
     TLASWorldToObject.documentation = "Get the ray tracing built-in value for TLASWorldToObject"_c;
     TLASWorldToObject.name = TLASWorldToObject_name;
     TLASWorldToObject.backendIndex = 3157;
     TLASWorldToObject.returnType = Type::FullType { Float32x4x3Type.name };
-    Symbol::Resolved(&TLASWorldToObject)->signature = "tLASWorldToObject() f32x4x3"_c;
-    Symbol::Resolved(&TLASWorldToObject)->name = "tLASWorldToObject()"_c;
-    Symbol::Resolved(&TLASWorldToObject)->nameWithVarNames = "tLASWorldToObject()"_c;
+    Symbol::Resolved(&TLASWorldToObject)->signature = "TLASWorldToObject() f32x4x3"_c;
+    Symbol::Resolved(&TLASWorldToObject)->name = "TLASWorldToObject()"_c;
+    Symbol::Resolved(&TLASWorldToObject)->nameWithVarNames = "TLASWorldToObject()"_c;
     Symbol::Resolved(&TLASWorldToObject)->returnTypeSymbol = &Float32x4x3Type;
 
 }

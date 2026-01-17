@@ -5278,7 +5278,8 @@ def generate_types():
 
     for name, return_type, spirv_builtin, variable_name in zip(ray_tracing_getters, ray_tracing_return_types, ray_tracing_spirv_builtins, ray_tracing_variable_names):
         function_name = name
-        intrinsic = name[0].lower() + name[1:] 
+
+        intrinsic = name[0].lower() + name[1:] if not name.startswith("TLAS") and not name.startswith("BLAS") else name
         fun = Function(
             decl_name = function_name,
             api_name = intrinsic,

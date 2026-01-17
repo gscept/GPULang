@@ -1,5 +1,95 @@
 [
     {
+        "name": "BLASGeometryIndex",
+        "documentation": "Get the ray tracing built-in value for BLASGeometryIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "BLASGeometryIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "BLASPrimitiveIndex",
+        "documentation": "Get the ray tracing built-in value for BLASPrimitiveIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "BLASPrimitiveIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "TLASInstanceCustomIndex",
+        "documentation": "Get the ray tracing built-in value for TLASInstanceCustomIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "TLASInstanceCustomIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "TLASInstanceIndex",
+        "documentation": "Get the ray tracing built-in value for TLASInstanceIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "TLASInstanceIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "TLASObjectToWorld",
+        "documentation": "Get the ray tracing built-in value for TLASObjectToWorld",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "TLASObjectToWorld() f32x4x3"
+            }
+        ]
+    },
+    {
+        "name": "TLASWorldToObject",
+        "documentation": "Get the ray tracing built-in value for TLASWorldToObject",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "TLASWorldToObject() f32x4x3"
+            }
+        ]
+    },
+    {
         "name": "abs",
         "documentation": "Returns the absolute value of the input.",
         "target_support": [
@@ -860,36 +950,6 @@
             },
             {
                 "signature": "atomicXor(ptr: *i16, value: i16, semantics: literal MemorySemantics) i16"
-            }
-        ]
-    },
-    {
-        "name": "bLASGeometryIndex",
-        "documentation": "Get the ray tracing built-in value for BLASGeometryIndex",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "bLASGeometryIndex() u32"
-            }
-        ]
-    },
-    {
-        "name": "bLASPrimitiveIndex",
-        "documentation": "Get the ray tracing built-in value for BLASPrimitiveIndex",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "bLASPrimitiveIndex() u32"
             }
         ]
     },
@@ -4247,66 +4307,6 @@
             },
             {
                 "signature": "subgroupSwapVertical(value: u16x4) u16x4"
-            }
-        ]
-    },
-    {
-        "name": "tLASInstanceCustomIndex",
-        "documentation": "Get the ray tracing built-in value for TLASInstanceCustomIndex",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "tLASInstanceCustomIndex() u32"
-            }
-        ]
-    },
-    {
-        "name": "tLASInstanceIndex",
-        "documentation": "Get the ray tracing built-in value for TLASInstanceIndex",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "tLASInstanceIndex() u32"
-            }
-        ]
-    },
-    {
-        "name": "tLASObjectToWorld",
-        "documentation": "Get the ray tracing built-in value for TLASObjectToWorld",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "tLASObjectToWorld() f32x4x3"
-            }
-        ]
-    },
-    {
-        "name": "tLASWorldToObject",
-        "documentation": "Get the ray tracing built-in value for TLASWorldToObject",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "tLASWorldToObject() f32x4x3"
             }
         ]
     },
