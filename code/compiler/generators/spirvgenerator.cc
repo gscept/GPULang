@@ -5488,6 +5488,26 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         case '++':
         {
             assert(value != UnaryOperatorTable.end());
+            if (rhs.isLiteral)
+            {
+                switch (op)
+                {
+                    case 'F':
+                        rhs.literalValue.f += 1.0f;
+                        break;
+                    case 'U':
+                        rhs.literalValue.ui += 1;
+                        break;
+                    case 'S':
+                        rhs.literalValue.i += 1;
+                        break;
+                    default:
+                        assert(false);
+                        return SPIRVResult::Invalid();
+                }
+                return rhs;
+            }
+
             uint32_t vectorSize = value->second.elements;
             SPIRVResult constOne = SPIRVResult::Invalid();
             if (sign)
@@ -5521,6 +5541,25 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         case '--':
         {
             assert(value != UnaryOperatorTable.end());
+            if (rhs.isLiteral)
+            {
+                switch (op)
+                {
+                    case 'F':
+                        rhs.literalValue.f -= 1.0f;
+                        break;
+                    case 'U':
+                        rhs.literalValue.ui -= 1;
+                        break;
+                    case 'S':
+                        rhs.literalValue.i -= 1;
+                        break;
+                    default:
+                        assert(false);
+                        return SPIRVResult::Invalid();
+                }
+                return rhs;
+            }
             uint32_t vectorSize = value->second.elements;
             SPIRVResult constOne = SPIRVResult::Invalid();
             if (sign)
@@ -5597,15 +5636,19 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
                 switch (op)
                 {
                     case 'F':
-                        return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(-rhs.literalValue.f));            
+                        rhs.literalValue.f = -rhs.literalValue.f;
+                        break;
                     case 'U':
-                        return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(-rhs.literalValue.i));
+                        rhs.literalValue.ui = -rhs.literalValue.ui;
+                        break;
                     case 'S':
-                        return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(-rhs.literalValue.i));
+                        rhs.literalValue.i = -rhs.literalValue.i;
+                        break;
                     default:
                         assert(false);
                         return SPIRVResult::Invalid();
                 }
+                return rhs;
             }
             else
             {
@@ -5630,9 +5673,10 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             if (rhs.isLiteral)
             {
                 if (op == 'B')
-                    return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(!rhs.literalValue.b8));
+                    rhs.literalValue.b8 = !rhs.literalValue.b8;
                 else
-                    return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(~rhs.literalValue.ui));
+                    rhs.literalValue.ui = ~rhs.literalValue.ui;
+                return rhs;
             }
             else
             {
@@ -5668,28 +5712,19 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
 
     // If we can evaluate the expression immediately, don't bother traversing the expression itself
     ValueUnion val;
-    if (expr->EvalValue(val))
-    {
-        if (val.rowSize == 1)
-        {
-            // Literals are only allowed for single value constants
-            if (val.columnSize == 1)
-                return SPIRVResult(val);
-            else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::ValueUnion(val), val.columnSize);
-        }
-    }
-    else
-    {
-        // These expressions MUST evaluate at compile time
-        assert(expr->symbolType != Symbol::FloatExpressionType &&
-               expr->symbolType != Symbol::IntExpressionType &&
-               expr->symbolType != Symbol::UIntExpressionType &&
-               expr->symbolType != Symbol::BoolExpressionType);
-    }
+    bool valueEvaled = expr->EvalValue(val);
 
     switch (expr->symbolType)
     {
+        case Symbol::FloatExpressionType:
+        {
+            FloatExpression* floatExpr = static_cast<FloatExpression*>(expr);
+            assert(valueEvaled);
+            if (generator->literalExtract)
+                return SPIRVResult(val.f[0]);
+            else
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(val.f[0]));
+        }
         case Symbol::FloatVecExpressionType:
         {
             FloatVecExpression* floatVecExpr = static_cast<FloatVecExpression*>(expr);
@@ -5702,6 +5737,15 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             }
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, floatVecExprRes->fullType, floatVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
+        }
+        case Symbol::IntExpressionType:
+        {
+            IntExpression* intExpr = static_cast<IntExpression*>(expr);
+            assert(valueEvaled);
+            if (generator->literalExtract)
+                return SPIRVResult(val.i[0]);
+            else
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(val.i[0]));
         }
         case Symbol::IntVecExpressionType:
         {
@@ -5716,6 +5760,15 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, intVecExprRes->fullType, intVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
         }
+        case Symbol::UIntExpressionType:
+        {
+            UIntExpression* uintExpr = static_cast<UIntExpression*>(expr);
+            assert(valueEvaled);
+            if (generator->literalExtract)
+                return SPIRVResult(val.ui[0]);
+            else
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(val.ui[0]));
+        }
         case Symbol::UIntVecExpressionType:
         {
             UIntVecExpression* uintVecExpr = static_cast<UIntVecExpression*>(expr);
@@ -5728,6 +5781,15 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             }
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, uintVecExprRes->fullType, uintVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
+        }
+        case Symbol::BoolExpressionType:
+        {
+            BoolExpression* boolExpr = static_cast<BoolExpression*>(expr);
+            assert(valueEvaled);
+            if (generator->literalExtract)
+                return SPIRVResult(val.b[0]);
+            else
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(val.b[0]));
         }
         case Symbol::BoolVecExpressionType:
         {
@@ -5975,13 +6037,13 @@ GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, If
 
     SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, stat->condition);
 
-    // First check if branching is static
+    // First check if branching is static, but dio
     if (lhsResult.isLiteral)
     {
         // We don't care about the value of val, all we care about is that only one branch will be visible
         if (lhsResult.literalValue.b)
             GenerateStatementSPIRV(compiler, generator, stat->ifStatement);
-        else
+        else if (stat->elseStatement)
              GenerateStatementSPIRV(compiler, generator, stat->elseStatement);
         return;
     }
