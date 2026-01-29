@@ -221,19 +221,20 @@ struct ConstantCreationInfo
     } type = Type::Float;
     union
     {
-        float f;
-        int32_t i;
-        uint32_t ui;
-        uint64_t ul;
-        bool b;
+        float f[4];
+        int32_t i[4];
+        uint32_t ui[4];
+        uint64_t ul[4];
+        bool b[4];
     } data = {};
     bool linkDefined = false;
+    uint8_t size = 1;
 
     static ConstantCreationInfo Float(float val)
     {
         ConstantCreationInfo ret;
         ret.type = Type::Float;
-        ret.data.f = val;
+        ret.data.f[0] = val;
         return ret;
     }
     
@@ -241,7 +242,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Float32;
-        ret.data.f = val;
+        ret.data.f[0] = val;
         return ret;
     }
 
@@ -249,7 +250,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Float32;
-        ret.data.f = val.literalValue.f32;
+        ret.data.f[0] = val.literalValue.f32;
         return ret;
     }
 
@@ -257,7 +258,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Float16;
-        ret.data.f = val;
+        ret.data.f[0] = val;
         return ret;
     }
 
@@ -265,7 +266,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Float16;
-        ret.data.f = val.literalValue.f16;
+        ret.data.f[0] = val.literalValue.f16;
         return ret;
     }
 
@@ -273,7 +274,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::UInt;
-        ret.data.ui = val;
+        ret.data.ui[0] = val;
         return ret;
     }
     
@@ -281,7 +282,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::UInt32;
-        ret.data.ui = val;
+        ret.data.ui[0] = val;
         return ret;
     }
 
@@ -289,7 +290,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::UInt32;
-        ret.data.ui = val.literalValue.u32;
+        ret.data.ui[0] = val.literalValue.u32;
         return ret;
     }
 
@@ -297,7 +298,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::UInt64;
-        ret.data.ul = val;
+        ret.data.ul[0] = val;
         return ret;
     }
 
@@ -305,7 +306,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::UInt64;
-        ret.data.ul = val.literalValue.u64;
+        ret.data.ul[0] = val.literalValue.u64;
         return ret;
     }
 
@@ -313,7 +314,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::UInt16;
-        ret.data.ui = val;
+        ret.data.ui[0] = val;
         return ret;
     }
 
@@ -321,7 +322,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::UInt16;
-        ret.data.ui = val.literalValue.u16;
+        ret.data.ui[0] = val.literalValue.u16;
         return ret;
     }
 
@@ -329,7 +330,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Int;
-        ret.data.i = val;
+        ret.data.i[0] = val;
         return ret;
     }
     
@@ -337,7 +338,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Int32;
-        ret.data.i = val;
+        ret.data.i[0] = val;
         return ret;
     }
 
@@ -345,7 +346,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Int32;
-        ret.data.i = val.literalValue.i32;
+        ret.data.i[0] = val.literalValue.i32;
         return ret;
     }
 
@@ -353,7 +354,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Int16;
-        ret.data.i = val;
+        ret.data.i[0] = val;
         return ret;
     }
 
@@ -361,7 +362,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Int16;
-        ret.data.i = val.literalValue.i16;
+        ret.data.i[0] = val.literalValue.i16;
         return ret;
     }
 
@@ -369,7 +370,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Bool;
-        ret.data.b = b;
+        ret.data.b[0] = b;
         return ret;
     }
     
@@ -377,7 +378,7 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Bool;
-        ret.data.b = b;
+        ret.data.b[0] = b;
         return ret;
     }
 
@@ -385,7 +386,42 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Bool8;
-        ret.data.b = val.literalValue.b8;
+        ret.data.b[0] = val.literalValue.b8;
+        return ret;
+    }
+
+    static ConstantCreationInfo ValueUnion(const ValueUnion& val)
+    {
+        ConstantCreationInfo ret;
+        memcpy(ret.data.ul, val.ui, val.columnSize);
+        ret.size = val.columnSize;
+        switch (val.code)
+        {
+            case TypeCode::Float32:
+                ret.type = Type::Float32;
+                break;
+            case TypeCode::Float16:
+                ret.type = Type::Float16;
+                break;
+            case TypeCode::Int32:
+                ret.type = Type::Int32;
+                break;
+            case TypeCode::Int16:
+                ret.type = Type::Int16;
+                break;
+            case TypeCode::UInt32:
+                ret.type = Type::UInt32;
+                break;
+            case TypeCode::UInt16:
+                ret.type = Type::UInt16;
+                break;
+            case TypeCode::Bool8:
+                ret.type = Type::Bool8;
+                break;
+            default:
+                assert(false);
+                return ConstantCreationInfo();
+        }
         return ret;
     }
 };
@@ -601,6 +637,7 @@ SPV_ENUM(Float16, 9)
 SPV_ENUM(Int64, 11)
 SPV_ENUM(ImageBasic, 13)
 SPV_ENUM(ImageReadWrite, 14)
+SPV_ENUM(Int16, 22)
 SPV_ENUM(InputAttachment, 40)
 SPV_ENUM(Sampled1D, 43)
 SPV_ENUM(StorageImageExtendedFormats, 49)
@@ -2357,15 +2394,17 @@ GenerateBaseTypeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, TypeC
         generator->writer->Capability(Capabilities::Int64);
     if (code == TypeCode::Float16)
         generator->writer->Capability(Capabilities::Float16);
+    if (code == TypeCode::UInt16 || code == TypeCode::Int16)
+        generator->writer->Capability(Capabilities::Int16);
     
     // Matrix
     if (rowSize > 1)
     {
         assert(vectorSize > 1);
-        TStr vecType = TStr(type, "x", rowSize);
-        TStr matType = TStr(vecType, "x", vectorSize);
-        uint32_t vecTypeArg = AddType(generator, vecType, OpTypeVector, SPVArg{baseType}, rowSize);
-        baseType = AddType(generator, matType, OpTypeMatrix, SPVArg{vecTypeArg}, vectorSize);
+        TStr vecType = TStr(type, "x", vectorSize);
+        TStr matType = TStr(vecType, "x", rowSize);
+        uint32_t vecTypeArg = AddType(generator, vecType, OpTypeVector, SPVArg{baseType}, vectorSize);
+        baseType = AddType(generator, matType, OpTypeMatrix, SPVArg{vecTypeArg}, rowSize);
         type = matType;
     }
     else if (vectorSize > 1)
@@ -2409,11 +2448,22 @@ ResolveSPIRVVariableStorage(
             scope = SPIRVResult::Storage::Private;
         else if (storage == Storage::Device)
             scope = SPIRVResult::Storage::Device;
+        else if (storage == Storage::RayHitAttribute)
+            scope = SPIRVResult::Storage::RayHitAttribute;
+        else if (storage == Storage::RayPayload)
+            scope = SPIRVResult::Storage::RayPayload;
+        else if (storage == Storage::RayPayloadInput)
+            scope = SPIRVResult::Storage::RayPayloadInput;
+        else if (storage == Storage::CallableData)
+            scope = SPIRVResult::Storage::CallableData;
+        else if (storage == Storage::CallableDataInput)
+            scope = SPIRVResult::Storage::CallableDataInput;
         else if (storage == Storage::Uniform)
             if (type.mut)
                 scope = SPIRVResult::Storage::StorageBuffer;
             else
                 scope = SPIRVResult::Storage::Uniform;
+        
     }
     else if (typeSymbol->category == Type::TextureCategory)
     {
@@ -2977,20 +3027,20 @@ SwizzleMaskIndices(const Type::SwizzleMask mask, uint32_t* indices, uint8_t& num
 SPIRVResult
 GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize)
 {
-    SPIRVResult res = SPIRVResult::Invalid();
+    SPIRVResult res[4] = { SPIRVResult::Invalid() };
     uint32_t baseType;
     uint32_t vecType = INVALID_ARG;
 
-#define ADD_CONSTANT(short, ty) \
+#define ADD_CONSTANT(short, ty, idx) \
 if (generator->linkDefineEvaluation)\
 {\
-    TStr symbolName = TStr(info.data.ty, "_", #short"_link-defined", generator->linkDefineSlot);\
-    res.name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, OpSpecConstant, baseType, info.data.ty);\
+    TStr symbolName = TStr(info.data.ty[idx], "_", #short"_link-defined", generator->linkDefineSlot);\
+    res[idx].name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, OpSpecConstant, baseType, info.data.ty[idx]);\
 }\
 else\
 {\
-    TStr symbolName = TStr(info.data.ty, "_", #short);\
-    res.name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, OpConstant, baseType, info.data.ty);\
+    TStr symbolName = TStr(info.data.ty[idx], "_", #short);\
+    res[idx].name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, OpConstant, baseType, info.data.ty[idx]);\
 }
     
 
@@ -3001,8 +3051,11 @@ else\
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt, 1);
             if (vectorSize > 1)
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt, vectorSize);
-            res.typeName = baseType;
-            ADD_CONSTANT(u32, ui)
+            for (uint8_t idx = 0; idx < info.size; idx++)
+            {
+                res[idx].typeName = baseType;
+                ADD_CONSTANT(u32, ui, idx)
+            }
             break;
         }
         case ConstantCreationInfo::Type::UInt16:
@@ -3010,8 +3063,12 @@ else\
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt16, 1);
             if (vectorSize > 1)
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt16, vectorSize);
-            res.typeName = baseType;
-            ADD_CONSTANT(u16, ui)
+            for (uint8_t idx = 0; idx < info.size; idx++)
+            {
+                res[idx].typeName = baseType;
+                ADD_CONSTANT(u16, ui, idx)
+            }
+            
             break;
         }
         case ConstantCreationInfo::Type::UInt64:
@@ -3019,8 +3076,11 @@ else\
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt64, 1);
             if (vectorSize > 1)
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt64, vectorSize);
-            res.typeName = baseType;
-            ADD_CONSTANT(u64, ul) // not a bug, SPIRV expects 32 bit words for constants, so this must be truncated
+            for (uint8_t idx = 0; idx < info.size; idx++)
+            {
+                res[idx].typeName = baseType;
+                ADD_CONSTANT(u64, ul, idx) // not a bug, SPIRV expects 32 bit words for constants, so this must be truncated
+            }
             break;
         }
         case ConstantCreationInfo::Type::Int32:
@@ -3028,8 +3088,11 @@ else\
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, 1);
             if (vectorSize > 1)
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, vectorSize);
-            res.typeName = baseType;
-            ADD_CONSTANT(i32, i)
+            for (uint8_t idx = 0; idx < info.size; idx++)
+            {
+                res[idx].typeName = baseType;
+                ADD_CONSTANT(i32, i, idx)
+            }
             break;
         }
         case ConstantCreationInfo::Type::Int16:
@@ -3037,8 +3100,11 @@ else\
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int16, 1);
             if (vectorSize > 1)
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int16, vectorSize);
-            res.typeName = baseType;
-            ADD_CONSTANT(i16, i)
+            for (uint8_t idx = 0; idx < info.size; idx++)
+            {
+                res[idx].typeName = baseType;
+                ADD_CONSTANT(i16, i, idx)
+            }
             break;
         }
         case ConstantCreationInfo::Type::Float32:
@@ -3046,8 +3112,11 @@ else\
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, 1);
             if (vectorSize > 1)
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, vectorSize);
-            res.typeName = baseType;
-            ADD_CONSTANT(f32, f)
+            for (uint8_t idx = 0; idx < info.size; idx++)
+            {
+                res[idx].typeName = baseType;
+                ADD_CONSTANT(f32, f, idx)
+            }
             break;
         }
         case ConstantCreationInfo::Type::Float16:
@@ -3055,8 +3124,11 @@ else\
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float16, 1);
             if (vectorSize > 1)
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float16, vectorSize);
-            res.typeName = baseType;
-            ADD_CONSTANT(f16, f)
+            for (uint8_t idx = 0; idx < info.size; idx++)
+            {
+                res[idx].typeName = baseType;
+                ADD_CONSTANT(f16, f, idx)
+            }
             break;
         }
         case ConstantCreationInfo::Type::Bool8:
@@ -3064,16 +3136,19 @@ else\
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Bool, 1);
             if (vectorSize > 1)
                 vecType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Bool, vectorSize);
-            res.typeName = baseType;
-            if (generator->linkDefineEvaluation)
+            for (uint8_t idx = 0; idx < info.size; idx++)
             {
-                TStr symbolName = TStr::Compact(info.data.b ? "true" : "false", "_", "link_defined", generator->linkDefineSlot);
-                res.name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, info.data.b ? OpSpecConstantTrue : OpSpecConstantFalse, baseType);
-            }
-            else
-            {
-                TStr symbolName = TStr::Compact(info.data.b ? "true" : "false");
-                res.name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, info.data.b ? OpConstantTrue : OpConstantFalse, baseType);
+                res[idx].typeName = baseType;
+                if (generator->linkDefineEvaluation)
+                {
+                    TStr symbolName = TStr::Compact(info.data.b ? "true" : "false", "_", "link_defined", generator->linkDefineSlot);
+                    res[idx].name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, info.data.b[idx] ? OpSpecConstantTrue : OpSpecConstantFalse, baseType);
+                }
+                else
+                {
+                    TStr symbolName = TStr::Compact(info.data.b ? "true" : "false");
+                    res[idx].name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, info.data.b[idx] ? OpConstantTrue : OpConstantFalse, baseType);
+                }
             }
             break;
         }
@@ -3084,24 +3159,29 @@ else\
         TStr name;
         for (int i = 0; i < vectorSize; i++)
         {
-            vectorArgs.Append(SPVArg{ res.name });
-            name.Append(SPVArg(res.name));
+            uint8_t splatIndex = min(i, info.size - 1);
+            vectorArgs.Append(SPVArg{ res[splatIndex].name });
+            name.Append(SPVArg(res[splatIndex].name));
             if (i < vectorSize - 1)
                 name.Append(" ");
         }
+        
+        // For vectors, reuse index 0 as the composite constant
         if (generator->linkDefineEvaluation)
         {
-            res.name = AddSymbol(generator, TStr("{", name, "}_link_defined"), SPVWriter::Section::Declarations, OpSpecConstantComposite, vecType, SPVArgList{ vectorArgs });
+            res[0].name = AddSymbol(generator, TStr("{", name, "}_link_defined"), SPVWriter::Section::Declarations, OpSpecConstantComposite, vecType, SPVArgList{ vectorArgs });
         }
         else
         {
-            res.name = AddSymbol(generator, TStr("{", name, "}"), SPVWriter::Section::Declarations, OpConstantComposite, vecType, SPVArgList{ vectorArgs });
+            res[0].name = AddSymbol(generator, TStr("{", name, "}"), SPVWriter::Section::Declarations, OpConstantComposite, vecType, SPVArgList{ vectorArgs });
         }
+        res[0].typeName = vecType;
     }
-    res.isValue = true;
-    res.isConst = true;
-    res.isSpecialization = generator->linkDefineEvaluation;
-    return res;
+    // Use index 0 as our final result
+    res[0].isValue = true;
+    res[0].isConst = true;
+    res[0].isSpecialization = generator->linkDefineEvaluation;
+    return res[0];
 }
 
 //------------------------------------------------------------------------------
@@ -4441,6 +4521,11 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             || storage == SPIRVResult::Storage::WorkGroup
             || storage == SPIRVResult::Storage::Input
             || storage == SPIRVResult::Storage::Output
+            || storage == SPIRVResult::Storage::RayPayload
+            || storage == SPIRVResult::Storage::RayPayloadInput
+            || storage == SPIRVResult::Storage::RayHitAttribute
+            || storage == SPIRVResult::Storage::CallableData
+            || storage == SPIRVResult::Storage::CallableDataInput
             )
             generator->interfaceVariables.Insert(name);
         
@@ -5014,6 +5099,11 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
 
     if (binaryExpression->op != '=')
     {
+        // In the case of a void left side, check if adderss is true and transform to u32
+        if (lhsType->category == Type::Category::VoidCategory)
+        {
+            lhsType = &UInt32Type;
+        }
         std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.Name().c_str());
         Function* fun = lhsType->GetSymbol<Function>(functionName);
         Function::__Resolved* funResolved = Symbol::Resolved(fun);
@@ -5039,14 +5129,24 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
             // Scale with size of type first
             uint32_t scaledOffset = rightValue.name;
 
+            SPIRVResult offsetValue = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt64(rhsType->byteSize));
+
+            if (rightValue.typeName != offsetValue.typeName)
+            {
+                rightValue.name = generator->writer->MappedInstruction(OpUConvert, SPVWriter::Section::LocalFunction, offsetValue.typeName, rightValue);
+                rightValue.typeName = offsetValue.typeName;
+            }
+
             // If rhs is void, then just add the integers together
             if (rhsType->category != Type::Category::VoidCategory)
-                scaledOffset = generator->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, rightValue.typeName, rightValue, GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(rhsType->byteSize)));
+                scaledOffset = generator->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, rightValue.typeName, rightValue, offsetValue);
             uint32_t offsetPtr = 0x0;
+            SPIRVResult leftLoaded = LoadValueSPIRV(compiler, generator, leftValue);
+
             if (binaryExpression->op == '+')
-                offsetPtr = generator->writer->MappedInstruction(OpIAdd, SPVWriter::Section::LocalFunction, rightValue.typeName, leftValue, SPVArg(scaledOffset));
+                offsetPtr = generator->writer->MappedInstruction(OpIAdd, SPVWriter::Section::LocalFunction, rightValue.typeName, leftLoaded, SPVArg(scaledOffset));
             else if (binaryExpression->op == '-')
-                offsetPtr = generator->writer->MappedInstruction(OpISub, SPVWriter::Section::LocalFunction, rightValue.typeName, leftValue, SPVArg(scaledOffset));
+                offsetPtr = generator->writer->MappedInstruction(OpISub, SPVWriter::Section::LocalFunction, rightValue.typeName, leftLoaded, SPVArg(scaledOffset));
             else
                 assert(false); // Unsupported pointer operation
             rightValue.name = offsetPtr;
@@ -5565,19 +5665,31 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
+
+    // If we can evaluate the expression immediately, don't bother traversing the expression itself
     ValueUnion val;
-    bool valueEvaled = expr->EvalValue(val);
+    if (expr->EvalValue(val))
+    {
+        if (val.rowSize == 1)
+        {
+            // Literals are only allowed for single value constants
+            if (val.columnSize == 1)
+                return SPIRVResult(val);
+            else
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::ValueUnion(val), val.columnSize);
+        }
+    }
+    else
+    {
+        // These expressions MUST evaluate at compile time
+        assert(expr->symbolType != Symbol::FloatExpressionType &&
+               expr->symbolType != Symbol::IntExpressionType &&
+               expr->symbolType != Symbol::UIntExpressionType &&
+               expr->symbolType != Symbol::BoolExpressionType);
+    }
+
     switch (expr->symbolType)
     {
-        case Symbol::FloatExpressionType:
-        {
-            FloatExpression* floatExpr = static_cast<FloatExpression*>(expr);
-            assert(valueEvaled);
-            if (generator->literalExtract)
-                return SPIRVResult(val.f[0]);
-            else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(val.f[0]));
-        }
         case Symbol::FloatVecExpressionType:
         {
             FloatVecExpression* floatVecExpr = static_cast<FloatVecExpression*>(expr);
@@ -5590,15 +5702,6 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             }
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, floatVecExprRes->fullType, floatVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
-        }
-        case Symbol::IntExpressionType:
-        {
-            IntExpression* intExpr = static_cast<IntExpression*>(expr);
-            assert(valueEvaled);
-            if (generator->literalExtract)
-                return SPIRVResult(val.i[0]);
-            else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(val.i[0]));
         }
         case Symbol::IntVecExpressionType:
         {
@@ -5613,15 +5716,6 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, intVecExprRes->fullType, intVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
         }
-        case Symbol::UIntExpressionType:
-        {
-            UIntExpression* uintExpr = static_cast<UIntExpression*>(expr);
-            assert(valueEvaled);
-            if (generator->literalExtract)
-                return SPIRVResult(val.ui[0]);
-            else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(val.ui[0]));
-        }
         case Symbol::UIntVecExpressionType:
         {
             UIntVecExpression* uintVecExpr = static_cast<UIntVecExpression*>(expr);
@@ -5634,15 +5728,6 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             }
             SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, uintVecExprRes->fullType, uintVecExprRes->type);
             return GenerateCompositeSPIRV(compiler, generator, ty.typeName, results);
-        }
-        case Symbol::BoolExpressionType:
-        {
-            BoolExpression* boolExpr = static_cast<BoolExpression*>(expr);
-            assert(valueEvaled);
-            if (generator->literalExtract)
-                return SPIRVResult(val.b[0]);
-            else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(val.b[0]));
         }
         case Symbol::BoolVecExpressionType:
         {
@@ -6333,7 +6418,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         SPIRVGenerator* gen;
     };
 
-    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_2);
+    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_3);
 
     static std::unordered_map<ProgramInstance::__Resolved::EntryType, std::string> executionModelMap =
     {
@@ -6705,6 +6790,15 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, entryFunction, ExecutionModes::DerivativeGroupQuadsKHR);
             }
             break;
+        case ProgramInstance::__Resolved::RayGenerationShader:
+        case ProgramInstance::__Resolved::RayAnyHitShader:
+        case ProgramInstance::__Resolved::RayClosestHitShader:
+        case ProgramInstance::__Resolved::RayIntersectionShader:
+        case ProgramInstance::__Resolved::RayMissShader:
+        case ProgramInstance::__Resolved::RayCallableShader:
+            this->writer->Extension(SPV_KHR_ray_tracing);
+            this->writer->Capability(Capabilities::RayTracingKHR);
+            break;
         }
         this->shaderValueExpressions[mapping].value = false;
 
@@ -6800,7 +6894,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
         if (compiler->options.optimize)
         {
-            spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_2);
+            spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_3);
             optimizer.RegisterPerformancePasses();
 
             std::vector<uint32_t> optimized;

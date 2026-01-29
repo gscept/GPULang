@@ -1,95 +1,5 @@
 [
     {
-        "name": "BLASGeometryIndex",
-        "documentation": "Get the ray tracing built-in value for BLASGeometryIndex",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "BLASGeometryIndex() u32"
-            }
-        ]
-    },
-    {
-        "name": "BLASPrimitiveIndex",
-        "documentation": "Get the ray tracing built-in value for BLASPrimitiveIndex",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "BLASPrimitiveIndex() u32"
-            }
-        ]
-    },
-    {
-        "name": "TLASInstanceCustomIndex",
-        "documentation": "Get the ray tracing built-in value for TLASInstanceCustomIndex",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "TLASInstanceCustomIndex() u32"
-            }
-        ]
-    },
-    {
-        "name": "TLASInstanceIndex",
-        "documentation": "Get the ray tracing built-in value for TLASInstanceIndex",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "TLASInstanceIndex() u32"
-            }
-        ]
-    },
-    {
-        "name": "TLASObjectToWorld",
-        "documentation": "Get the ray tracing built-in value for TLASObjectToWorld",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "TLASObjectToWorld() f32x4x3"
-            }
-        ]
-    },
-    {
-        "name": "TLASWorldToObject",
-        "documentation": "Get the ray tracing built-in value for TLASWorldToObject",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "TLASWorldToObject() f32x4x3"
-            }
-        ]
-    },
-    {
         "name": "abs",
         "documentation": "Returns the absolute value of the input.",
         "target_support": [
@@ -1049,6 +959,36 @@
             },
             {
                 "signature": "bitReverse(base: u64) u64"
+            }
+        ]
+    },
+    {
+        "name": "blasGetGeometryIndex",
+        "documentation": "Get the ray tracing built-in value for blasGetGeometryIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "blasGetGeometryIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "blasGetPrimitiveIndex",
+        "documentation": "Get the ray tracing built-in value for blasGetPrimitiveIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "blasGetPrimitiveIndex() u32"
             }
         ]
     },
@@ -2770,7 +2710,7 @@
     },
     {
         "name": "packToSNorm2x16",
-        "documentation": "Pack a 2d vector of 16 bit float values in the range [-32768..32767] to a unsigned 32-bit integerPack a 4d vector of 8 bit float values in the range [0..256] to a unsigned 32-bit integerPack a 4d vector of 8 bit float values in the range [-128..127] to a integer to a unsigned 32-bit integer",
+        "documentation": "Pack a 2d vector of 16 bit float values in the range [-32768..32767] to a unsigned 32-bit integer",
         "target_support": [
             1,
             1,
@@ -2780,6 +2720,21 @@
         "overloads": [
             {
                 "signature": "packToSNorm2x16(val: f32x2) u32"
+            }
+        ]
+    },
+    {
+        "name": "packToSNorm4x8",
+        "documentation": "Pack a 4d vector of 8 bit float values in the range [-128..127] to a integer to a unsigned 32-bit integer",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "packToSNorm4x8(val: f32x4) u32"
             }
         ]
     },
@@ -2795,6 +2750,21 @@
         "overloads": [
             {
                 "signature": "packToUNorm2x16(val: f32x2) u32"
+            }
+        ]
+    },
+    {
+        "name": "packToUNorm4x8",
+        "documentation": "Pack a 4d vector of 8 bit float values in the range [0..256] to a unsigned 32-bit integer",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "packToUNorm4x8(val: f32x4) u32"
             }
         ]
     },
@@ -3213,8 +3183,8 @@
         ]
     },
     {
-        "name": "rayFlags",
-        "documentation": "Get the ray tracing built-in value for RayFlags",
+        "name": "rayGetFlags",
+        "documentation": "Get the ray tracing built-in value for rayGetFlags",
         "target_support": [
             1,
             1,
@@ -3223,13 +3193,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayFlags() u32"
+                "signature": "rayGetFlags() u32"
             }
         ]
     },
     {
-        "name": "rayHitDistance",
-        "documentation": "Get the ray tracing built-in value for RayHitDistance",
+        "name": "rayGetHitDistance",
+        "documentation": "Get the ray tracing built-in value for rayGetHitDistance",
         "target_support": [
             1,
             1,
@@ -3238,13 +3208,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayHitDistance() f32"
+                "signature": "rayGetHitDistance() f32"
             }
         ]
     },
     {
-        "name": "rayHitKind",
-        "documentation": "Get the ray tracing built-in value for RayHitKind",
+        "name": "rayGetHitKind",
+        "documentation": "Get the ray tracing built-in value for rayGetHitKind",
         "target_support": [
             1,
             1,
@@ -3253,13 +3223,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayHitKind() u32"
+                "signature": "rayGetHitKind() u32"
             }
         ]
     },
     {
-        "name": "rayLaunchIndex",
-        "documentation": "Get the ray tracing built-in value for RayLaunchIndex",
+        "name": "rayGetLaunchIndex",
+        "documentation": "Get the ray tracing built-in value for rayGetLaunchIndex",
         "target_support": [
             1,
             1,
@@ -3268,13 +3238,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayLaunchIndex() u32x3"
+                "signature": "rayGetLaunchIndex() u32x3"
             }
         ]
     },
     {
-        "name": "rayLaunchSize",
-        "documentation": "Get the ray tracing built-in value for RayLaunchSize",
+        "name": "rayGetLaunchSize",
+        "documentation": "Get the ray tracing built-in value for rayGetLaunchSize",
         "target_support": [
             1,
             1,
@@ -3283,13 +3253,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayLaunchSize() u32x3"
+                "signature": "rayGetLaunchSize() u32x3"
             }
         ]
     },
     {
-        "name": "rayObjectDirection",
-        "documentation": "Get the ray tracing built-in value for RayObjectDirection",
+        "name": "rayGetObjectDirection",
+        "documentation": "Get the ray tracing built-in value for rayGetObjectDirection",
         "target_support": [
             1,
             1,
@@ -3298,13 +3268,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayObjectDirection() f32x3"
+                "signature": "rayGetObjectDirection() f32x3"
             }
         ]
     },
     {
-        "name": "rayObjectOrigin",
-        "documentation": "Get the ray tracing built-in value for RayObjectOrigin",
+        "name": "rayGetObjectOrigin",
+        "documentation": "Get the ray tracing built-in value for rayGetObjectOrigin",
         "target_support": [
             1,
             1,
@@ -3313,13 +3283,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayObjectOrigin() f32x3"
+                "signature": "rayGetObjectOrigin() f32x3"
             }
         ]
     },
     {
-        "name": "rayTMax",
-        "documentation": "Get the ray tracing built-in value for RayTMax",
+        "name": "rayGetTMax",
+        "documentation": "Get the ray tracing built-in value for rayGetTMax",
         "target_support": [
             1,
             1,
@@ -3328,13 +3298,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayTMax() f32"
+                "signature": "rayGetTMax() f32"
             }
         ]
     },
     {
-        "name": "rayTMin",
-        "documentation": "Get the ray tracing built-in value for RayTMin",
+        "name": "rayGetTMin",
+        "documentation": "Get the ray tracing built-in value for rayGetTMin",
         "target_support": [
             1,
             1,
@@ -3343,13 +3313,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayTMin() f32"
+                "signature": "rayGetTMin() f32"
             }
         ]
     },
     {
-        "name": "rayWorldDirection",
-        "documentation": "Get the ray tracing built-in value for RayWorldDirection",
+        "name": "rayGetWorldDirection",
+        "documentation": "Get the ray tracing built-in value for rayGetWorldDirection",
         "target_support": [
             1,
             1,
@@ -3358,13 +3328,13 @@
         ],
         "overloads": [
             {
-                "signature": "rayWorldDirection() f32x3"
+                "signature": "rayGetWorldDirection() f32x3"
             }
         ]
     },
     {
-        "name": "rayWorldOrigin",
-        "documentation": "Get the ray tracing built-in value for RayWorldOrigin",
+        "name": "rayGetWorldOrigin",
+        "documentation": "Get the ray tracing built-in value for rayGetWorldOrigin",
         "target_support": [
             1,
             1,
@@ -3373,7 +3343,7 @@
         ],
         "overloads": [
             {
-                "signature": "rayWorldOrigin() f32x3"
+                "signature": "rayGetWorldOrigin() f32x3"
             }
         ]
     },
@@ -7488,6 +7458,66 @@
         ]
     },
     {
+        "name": "tlasGetInstanceCustomIndex",
+        "documentation": "Get the ray tracing built-in value for tlasGetInstanceCustomIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "tlasGetInstanceCustomIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "tlasGetInstanceIndex",
+        "documentation": "Get the ray tracing built-in value for tlasGetInstanceIndex",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "tlasGetInstanceIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "tlasGetObjectToWorld",
+        "documentation": "Get the ray tracing built-in value for tlasGetObjectToWorld",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "tlasGetObjectToWorld() f32x3x4"
+            }
+        ]
+    },
+    {
+        "name": "tlasGetWorldToObject",
+        "documentation": "Get the ray tracing built-in value for tlasGetWorldToObject",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "tlasGetWorldToObject() f32x3x4"
+            }
+        ]
+    },
+    {
         "name": "transpose",
         "documentation": "Returns the transposed matrix.",
         "target_support": [
@@ -7591,7 +7621,7 @@
     },
     {
         "name": "unpackToSNorm2x16",
-        "documentation": "Unpack an integer to a 2d vector of 16 bit float values in the range [-32768..32767]Unpack an integer to a 4d vector of 8 bit float values in the range [0..256]Unpack an integer to a 4d vector of 8 bit float values in the range [-128..127]",
+        "documentation": "Unpack an integer to a 2d vector of 16 bit float values in the range [-32768..32767]",
         "target_support": [
             1,
             1,
@@ -7601,6 +7631,21 @@
         "overloads": [
             {
                 "signature": "unpackToSNorm2x16(val: u32) f32x2"
+            }
+        ]
+    },
+    {
+        "name": "unpackToSNorm4x8",
+        "documentation": "Unpack an integer to a 4d vector of 8 bit float values in the range [-128..127]",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "unpackToSNorm4x8(val: u32) f32x4"
             }
         ]
     },
@@ -7616,6 +7661,21 @@
         "overloads": [
             {
                 "signature": "unpackToUNorm2x16(val: u32) f32x2"
+            }
+        ]
+    },
+    {
+        "name": "unpackToUNorm4x8",
+        "documentation": "Unpack an integer to a 4d vector of 8 bit float values in the range [0..256]",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "unpackToUNorm4x8(val: u32) f32x4"
             }
         ]
     },

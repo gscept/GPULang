@@ -2884,8 +2884,8 @@ def generate_types():
     ops = ["unpackToUNorm2x16", "unpackToSNorm2x16", "unpackToUNorm4x8", "unpackToSNorm4x8"]
     docs = [
         "Unpack an integer to a 2d vector of 16 bit float values in the range [0..65536]",
-        "Unpack an integer to a 2d vector of 16 bit float values in the range [-32768..32767]"
-        "Unpack an integer to a 4d vector of 8 bit float values in the range [0..256]"
+        "Unpack an integer to a 2d vector of 16 bit float values in the range [-32768..32767]",
+        "Unpack an integer to a 4d vector of 8 bit float values in the range [0..256]",
         "Unpack an integer to a 4d vector of 8 bit float values in the range [-128..127]"
     ]
     spirv_op = ["UnpackUnorm2x16", "UnpackSnorm2x16", "UnpackUnorm4x8", "UnpackSnorm4x8"]
@@ -2916,8 +2916,8 @@ def generate_types():
     ops = ["packToUNorm2x16", "packToSNorm2x16", "packToUNorm4x8", "packToSNorm4x8"]
     docs = [
         "Pack a 2d vector of 16 bit float values in the range [0..65536] to a unsigned 32-bit integer",
-        "Pack a 2d vector of 16 bit float values in the range [-32768..32767] to a unsigned 32-bit integer"
-        "Pack a 4d vector of 8 bit float values in the range [0..256] to a unsigned 32-bit integer"
+        "Pack a 2d vector of 16 bit float values in the range [-32768..32767] to a unsigned 32-bit integer",
+        "Pack a 4d vector of 8 bit float values in the range [0..256] to a unsigned 32-bit integer",
         "Pack a 4d vector of 8 bit float values in the range [-128..127] to a integer to a unsigned 32-bit integer"
     ]
     spirv_op = ["PackUnorm2x16", "PackSnorm2x16", "PackUnorm4x8", "PackSnorm4x8"]
@@ -5177,23 +5177,23 @@ def generate_types():
     functions.append(fun)
 
     ray_tracing_getters = [
-        'RayLaunchIndex', 
-        'RayLaunchSize', 
-        'BLASPrimitiveIndex', 
-        'BLASGeometryIndex', 
-        'TLASInstanceIndex', 
-        'TLASInstanceCustomIndex', 
-        'RayWorldOrigin', 
-        'RayWorldDirection', 
-        'RayObjectOrigin', 
-        'RayObjectDirection', 
-        'RayTMin', 
-        'RayTMax', 
-        'RayFlags', 
-        'RayHitDistance', 
-        'RayHitKind', 
-        'TLASObjectToWorld', 
-        'TLASWorldToObject'
+        'rayGetLaunchIndex', 
+        'rayGetLaunchSize', 
+        'blasGetPrimitiveIndex', 
+        'blasGetGeometryIndex', 
+        'tlasGetInstanceIndex', 
+        'tlasGetInstanceCustomIndex', 
+        'rayGetWorldOrigin', 
+        'rayGetWorldDirection', 
+        'rayGetObjectOrigin', 
+        'rayGetObjectDirection', 
+        'rayGetTMin', 
+        'rayGetTMax', 
+        'rayGetFlags', 
+        'rayGetHitDistance', 
+        'rayGetHitKind', 
+        'tlasGetObjectToWorld', 
+        'tlasGetWorldToObject'
     ]
 
     ray_tracing_spirv_builtins = [ 
@@ -5271,15 +5271,15 @@ def generate_types():
         'UInt32', 
         'Float32', 
         'UInt32', 
-        'Float32x4x3', 
-        'Float32x4x3' 
+        'Float32x3x4', 
+        'Float32x3x4' 
     ]
 
 
     for name, return_type, spirv_builtin, variable_name in zip(ray_tracing_getters, ray_tracing_return_types, ray_tracing_spirv_builtins, ray_tracing_variable_names):
         function_name = name
 
-        intrinsic = name[0].lower() + name[1:] if not name.startswith("TLAS") and not name.startswith("BLAS") else name
+        intrinsic = name
         fun = Function(
             decl_name = function_name,
             api_name = intrinsic,
@@ -5293,7 +5293,7 @@ def generate_types():
         if return_type in vector_size_mapping:
             spirv_function += f'    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::{base_type_mapping[return_type]}, {vector_size_mapping[return_type]});\n'
         elif return_type in matrix_size_mapping:
-            spirv_function += f'    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::{base_type_mapping[return_type]}, {matrix_size_mapping[return_type][0]}, {matrix_size_mapping[return_type][1]});\n'
+            spirv_function += f'    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::{base_type_mapping[return_type]}, {matrix_size_mapping[return_type][1]}, {matrix_size_mapping[return_type][0]});\n'
         spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_{data_type_mapping[return_type]}_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{variable_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'

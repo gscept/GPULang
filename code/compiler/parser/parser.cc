@@ -1916,9 +1916,22 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         }
         else if (stream.Match(TokenType::Colon))
         {
-            while (operatorStack.size > 0 && operatorStack.back().type != TokenType::Question)
+            bool validTernary = false;
+            while (operatorStack.size > 0)
             {
+                if (operatorStack.back().type == TokenType::Question)
+                {
+                    validTernary = true;
+                    break;
+                }
                 reduceTop(operatorStack, operandStack);
+            }
+
+            // If not a valid ternary expression, end the expression
+            if (!validTernary)
+            {
+                stream.Unmatch();
+                break;
             }
             precedenceTable = PrefixPrecedenceTable;
             associativityTable = PrefixAssociativityTable;

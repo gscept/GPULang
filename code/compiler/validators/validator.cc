@@ -1932,7 +1932,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
                     return false;
                 }
 
-                if (!(val.ui[0] & (val.ui[0] - 1))) // check power of two
+                if ((val.ui[0] & (val.ui[0] - 1)) != 0) // check power of two
                 {
                     compiler->Error(Format("Attribute 'alignas' requires alignment to be a power of two"), symbol);
                     return false;
@@ -2301,10 +2301,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             allowedAttributesSet = &this->allowedTextureAttributes;
         else if (type->category == Type::PixelCacheCategory)
             allowedAttributesSet = &this->allowedPointerAttributes;
-        else if (type->category == Type::ScalarCategory || type->category == Type::EnumCategory)
+        else if (type->category == Type::ScalarCategory || type->category == Type::EnumCategory || type->category == Type::VoidCategory)
             allowedAttributesSet = &this->allowedScalarAttributes;
         else if (type->category == Type::SamplerStateCategory)
             allowedAttributesSet = &this->allowedSamplerAttributes;
+        else if (type->category == Type::AccelerationStructureCategory)
+            allowedAttributesSet = &this->allowedPointerAttributes;
         else if (type->category == Type::StructureCategory)
         {
             if (firstIndirectionModifier == Type::FullType::Modifier::Pointer)
@@ -4796,7 +4798,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 compiler->currentState.sideEffects.bits |= (uint32_t)it->second.sideEffect;
             }
 
-            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
+            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> derivativeConditionFunction = [this](Compiler* compiler, Expression* expr, const ConstantString& fun)
             {
                 // The only shader type that implicitly produces derivatives are pixel shaders
                 if (compiler->currentState.shaderType == ProgramInstance::__Resolved::EntryType::PixelShader)
@@ -4811,17 +4813,27 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                     else
                     {
                         const ConstantString& shaderString = ProgramInstance::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
-                        compiler->Error(Format("%s must specify 'compute_derivatives' with a valid value when using derivatives", shaderString.c_str()), expr);
+                        GrowingString callStackMessage;
+                        for (const auto& stack : this->callStack)
+                        {
+                            callStackMessage.Append(TransientString(stack.file, "(", stack.line, ") -- ", stack.message, "\n"));
+                        }
+                        compiler->Error(Format("%s can not be called from a %s\nCall Stack:\n%s", fun.c_str(), shaderString.c_str(), callStackMessage.data), expr);
                         return false;    
                     }
                 }
                 else
                 {
                     const ConstantString& shaderString = ProgramInstance::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
-                    compiler->Error(Format("%s can not be called from a %s", fun.c_str(), shaderString.c_str()), expr);
+                    GrowingString callStackMessage;
+                    for (const auto& stack : this->callStack)
+                    {
+                        callStackMessage.Append(TransientString(stack.file, "(", stack.line, ") -- ", stack.message, "\n"));
+                    }
+                    compiler->Error(Format("%s can not be called from a %s\nCall Stack:\n%s", fun.c_str(), shaderString.c_str(), callStackMessage.data), expr);
+
                     return false;
                 }
-                
                 
                 return false;
             };
@@ -4866,7 +4878,36 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 funResolved->executionModifiers.writesDepth = true;
                 return true;
             };
-            
+
+            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> rayTraversalFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun) -> bool
+            {
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::RayAnyHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayClosestHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayMissShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayIntersectionShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayCallableShader)
+                {
+                    compiler->Error(Format("%s only supported in a raytracing AnyHit, ClosestHit, Miss, Intersection or Callable shader", fun.c_str()), expr);
+                    return false;
+                }
+                return true;
+            };
+
+            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> rayEmitFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun) -> bool
+            {
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::RayGenerationShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayAnyHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayClosestHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayMissShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayIntersectionShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::RayCallableShader)
+                {
+                    compiler->Error(Format("%s only supported in a raytracing Generation, AnyHit, ClosestHit, Miss, Intersection or Callable shader", fun.c_str()), expr);
+                    return false;
+                }
+                return true;
+            };
+
             static const StaticMap conditionalBuiltins =
             std::array{
                 std::pair{ "textureSample"_c, derivativeConditionFunction }
@@ -4893,6 +4934,23 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 , std::pair{ "ddy"_c, derivativeConditionFunction }
                 , std::pair{ "fwidth"_c, derivativeConditionFunction }
                 , std::pair{ "pixelSetDepth"_c, setDepthFunction }
+                , std::pair{ rayGetFlags_name, rayTraversalFunction }
+                , std::pair{ rayGetWorldDirection_name, rayTraversalFunction }
+                , std::pair{ rayGetWorldOrigin_name, rayTraversalFunction }
+                , std::pair{ rayGetObjectDirection_name, rayTraversalFunction }
+                , std::pair{ rayGetObjectOrigin_name, rayTraversalFunction }
+                , std::pair{ rayGetTMax_name, rayTraversalFunction }
+                , std::pair{ rayGetTMin_name, rayTraversalFunction }
+                , std::pair{ rayGetHitDistance_name, rayTraversalFunction }
+                , std::pair{ rayGetHitKind_name, rayTraversalFunction }
+                , std::pair{ blasGetPrimitiveIndex_name, rayTraversalFunction }
+                , std::pair{ blasGetGeometryIndex_name, rayTraversalFunction }
+                , std::pair{ tlasGetInstanceIndex_name, rayTraversalFunction }
+                , std::pair{ tlasGetInstanceCustomIndex_name, rayTraversalFunction }
+                , std::pair{ tlasGetObjectToWorld_name, rayTraversalFunction }
+                , std::pair{ tlasGetWorldToObject_name, rayTraversalFunction }
+                , std::pair{ rayGetLaunchIndex_name, rayEmitFunction }
+                , std::pair{ rayGetLaunchSize_name, rayEmitFunction }
             };
             const auto it2 = conditionalBuiltins.Find(callResolved->functionSymbol);
             if (it2 != conditionalBuiltins.end())
@@ -4903,10 +4961,13 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                     return false;
                 }
             }
-            
+            this->callStack.Append(CallStackEntry{ .message = callResolved->functionSymbol, .file = callExpr->location.file, .line = callExpr->location.line, .column = callExpr->location.start, .length = callExpr->location.end - callExpr->location.start });
+
             for (auto& arg : callExpr->args)
                 res |= this->ResolveVisibility(compiler, arg);
             res |= this->ResolveVisibility(compiler, callResolved->function);
+            this->callStack.RemoveLast();
+
             break;
         }
         case Symbol::CommaExpressionType:

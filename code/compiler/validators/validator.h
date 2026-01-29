@@ -86,6 +86,15 @@ struct Validator
     PinnedMap<uint32_t, uint32_t> resourceIndexCounter = 0xFFFF;
     PinnedMap<uint32_t, PinnedMap<uint32_t, Type::Category>> resourceTypePerGroupAndBinding = 0xFFFF;
     uint8_t defaultGroup;
+
+    struct CallStackEntry
+    {
+        TransientString message;
+        FixedString file;
+        int line, column, length;
+    };
+
+    PinnedArray<CallStackEntry> callStack = 0xFFFF;
     
     uint32_t inParameterIndexCounter;
     uint32_t outParameterIndexCounter;
