@@ -6480,7 +6480,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         SPIRVGenerator* gen;
     };
 
-    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_3);
+    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_2);
 
     static std::unordered_map<ProgramInstance::__Resolved::EntryType, std::string> executionModelMap =
     {
@@ -6956,7 +6956,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
         if (compiler->options.optimize)
         {
-            spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_3);
+            spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_2);
             optimizer.RegisterPerformancePasses();
 
             std::vector<uint32_t> optimized;
