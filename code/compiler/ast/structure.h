@@ -60,7 +60,6 @@ struct Structure : public Type
         PinnedMap<FixedString, Function*> loadFunctions = 0xFF;
         PinnedMap<FixedString, Function*> loadIndexedFunctions = 0xFF;
         PinnedMap<FixedString, Function*> getReferenceFunctions = 0xFF;
-        Function* traceRayFunction = nullptr;
     };
 };
 

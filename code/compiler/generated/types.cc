@@ -28969,6 +28969,119 @@ ComputeDerivatives::ComputeDerivatives()
 };
 ComputeDerivatives ComputeDerivativesType;
 
+EnumExpression RayFlagsNone;
+EnumExpression RayFlagsOpaque;
+EnumExpression RayFlagsNoOpaque;
+EnumExpression RayFlagsTerminateOnFirstHit;
+EnumExpression RayFlagsSkipClosestHit;
+EnumExpression RayFlagsCullBackFacing;
+EnumExpression RayFlagsCullFrontFacing;
+EnumExpression RayFlagsCullOpaque;
+EnumExpression RayFlagsCullNoOpaque;
+EnumExpression RayFlagsSkipTriangles;
+EnumExpression RayFlagsSkipAABBs;
+RayFlags::RayFlags()
+{
+    this->name = "RayFlags"_c;
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{ UInt32Type.name };
+    this->thisResolved->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    RayFlagsNone.value = RayFlagsNone_value;
+    RayFlagsNone.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsNone.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsNone.thisResolved->type = this;
+    RayFlagsOpaque.value = RayFlagsOpaque_value;
+    RayFlagsOpaque.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsOpaque.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsOpaque.thisResolved->type = this;
+    RayFlagsNoOpaque.value = RayFlagsNoOpaque_value;
+    RayFlagsNoOpaque.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsNoOpaque.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsNoOpaque.thisResolved->type = this;
+    RayFlagsTerminateOnFirstHit.value = RayFlagsTerminateOnFirstHit_value;
+    RayFlagsTerminateOnFirstHit.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsTerminateOnFirstHit.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsTerminateOnFirstHit.thisResolved->type = this;
+    RayFlagsSkipClosestHit.value = RayFlagsSkipClosestHit_value;
+    RayFlagsSkipClosestHit.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsSkipClosestHit.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsSkipClosestHit.thisResolved->type = this;
+    RayFlagsCullBackFacing.value = RayFlagsCullBackFacing_value;
+    RayFlagsCullBackFacing.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsCullBackFacing.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsCullBackFacing.thisResolved->type = this;
+    RayFlagsCullFrontFacing.value = RayFlagsCullFrontFacing_value;
+    RayFlagsCullFrontFacing.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsCullFrontFacing.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsCullFrontFacing.thisResolved->type = this;
+    RayFlagsCullOpaque.value = RayFlagsCullOpaque_value;
+    RayFlagsCullOpaque.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsCullOpaque.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsCullOpaque.thisResolved->type = this;
+    RayFlagsCullNoOpaque.value = RayFlagsCullNoOpaque_value;
+    RayFlagsCullNoOpaque.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsCullNoOpaque.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsCullNoOpaque.thisResolved->type = this;
+    RayFlagsSkipTriangles.value = RayFlagsSkipTriangles_value;
+    RayFlagsSkipTriangles.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsSkipTriangles.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsSkipTriangles.thisResolved->type = this;
+    RayFlagsSkipAABBs.value = RayFlagsSkipAABBs_value;
+    RayFlagsSkipAABBs.type = Type::FullType{ RayFlagsType.name, true };
+    RayFlagsSkipAABBs.underlyingType = Type::FullType{ UInt32Type.name };
+    RayFlagsSkipAABBs.thisResolved->type = this;
+    this->labels = std::array{ "None"_c, "Opaque"_c, "NoOpaque"_c, "TerminateOnFirstHit"_c, "SkipClosestHit"_c, "CullBackFacing"_c, "CullFrontFacing"_c, "CullOpaque"_c, "CullNoOpaque"_c, "SkipTriangles"_c, "SkipAABBs"_c };
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = this->thisResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = this->thisResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 13> {
+        std::pair{ "SkipClosestHit"_h, &RayFlagsSkipClosestHit },
+        std::pair{ "NoOpaque"_h, &RayFlagsNoOpaque },
+        std::pair{ "SkipTriangles"_h, &RayFlagsSkipTriangles },
+        std::pair{ "CullNoOpaque"_h, &RayFlagsCullNoOpaque },
+        std::pair{ "None"_h, &RayFlagsNone },
+        std::pair{ "Opaque"_h, &RayFlagsOpaque },
+        std::pair{ "CullFrontFacing"_h, &RayFlagsCullFrontFacing },
+        std::pair{ "SkipAABBs"_h, &RayFlagsSkipAABBs },
+        std::pair{ "CullOpaque"_h, &RayFlagsCullOpaque },
+        std::pair{ "CullBackFacing"_h, &RayFlagsCullBackFacing },
+        std::pair{ "TerminateOnFirstHit"_h, &RayFlagsTerminateOnFirstHit },
+        std::pair{ "operator=="_h, &RayFlagsType.eqOp },
+        std::pair{ "operator!="_h, &RayFlagsType.neqOp }
+    };
+};
+RayFlags RayFlagsType;
+
 Variable GeometryPointPosition;
 Variable GeometryPointPointSize;
 Variable GeometryPointCullDistance;

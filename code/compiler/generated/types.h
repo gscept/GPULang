@@ -6660,6 +6660,34 @@ inline constexpr auto ComputeDerivativesIndexLinear_value = 0x1;
 extern EnumExpression ComputeDerivativesIndexLinear;
 inline constexpr auto ComputeDerivativesIndexQuad_value = 0x2;
 extern EnumExpression ComputeDerivativesIndexQuad;
+struct RayFlags : public Enumeration
+{
+    RayFlags();
+};
+extern RayFlags RayFlagsType;
+
+inline constexpr auto RayFlagsNone_value = 0x0;
+extern EnumExpression RayFlagsNone;
+inline constexpr auto RayFlagsOpaque_value = 0x1;
+extern EnumExpression RayFlagsOpaque;
+inline constexpr auto RayFlagsNoOpaque_value = 0x2;
+extern EnumExpression RayFlagsNoOpaque;
+inline constexpr auto RayFlagsTerminateOnFirstHit_value = 0x4;
+extern EnumExpression RayFlagsTerminateOnFirstHit;
+inline constexpr auto RayFlagsSkipClosestHit_value = 0x8;
+extern EnumExpression RayFlagsSkipClosestHit;
+inline constexpr auto RayFlagsCullBackFacing_value = 0x10;
+extern EnumExpression RayFlagsCullBackFacing;
+inline constexpr auto RayFlagsCullFrontFacing_value = 0x20;
+extern EnumExpression RayFlagsCullFrontFacing;
+inline constexpr auto RayFlagsCullOpaque_value = 0x40;
+extern EnumExpression RayFlagsCullOpaque;
+inline constexpr auto RayFlagsCullNoOpaque_value = 0x80;
+extern EnumExpression RayFlagsCullNoOpaque;
+inline constexpr auto RayFlagsSkipTriangles_value = 0x100;
+extern EnumExpression RayFlagsSkipTriangles;
+inline constexpr auto RayFlagsSkipAABBs_value = 0x200;
+extern EnumExpression RayFlagsSkipAABBs;
 struct GeometryPoint : public Structure
 {
     GeometryPoint();

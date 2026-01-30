@@ -37,7 +37,7 @@ struct Validator
     /// Resolve blend state
     bool ResolveSamplerState(Compiler* compiler, Symbol* symbol);
     /// Resolve function
-    bool ResolveFunction(Compiler* compiler, Symbol* symbol);
+    bool ResolveFunction(Compiler* compiler, Symbol* symbol, bool allowReserved = false);
     /// Resolve program
     bool ResolveProgram(Compiler* compiler, Symbol* symbol);
     /// Resolve render state

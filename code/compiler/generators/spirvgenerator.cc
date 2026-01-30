@@ -451,6 +451,7 @@ SPV_INSTRUCTION(OpTypeMatrix, 24, 4, false)
 SPV_INSTRUCTION(OpTypeImage, 25, 9, true)
 SPV_INSTRUCTION(OpTypeSampler, 26, 2, false)
 SPV_INSTRUCTION(OpTypeSampledImage, 27, 3, false)
+SPV_INSTRUCTION(OpTypeAccelerationStructureKHR, 5341, 2, false)
 SPV_INSTRUCTION(OpTypeArray, 28, 4, false)
 SPV_INSTRUCTION(OpTypeRuntimeArray, 29, 3, false)
 SPV_INSTRUCTION(OpTypeStruct, 30, 2, true)
@@ -2523,6 +2524,10 @@ ResolveSPIRVVariableStorage(
         else if (storage == Storage::CallableDataInput)
             scope = SPIRVResult::Storage::CallableDataInput;
     }
+    else if (typeSymbol->category == Type::AccelerationStructureCategory)
+    {
+        scope = SPIRVResult::Storage::UniformConstant;
+    }
     return scope;
 }
 
@@ -2641,6 +2646,12 @@ GenerateTypeSPIRV(
     else if (typeSymbol->category == Type::EnumCategory)
     {
         baseType = GenerateBaseTypeSPIRV(compiler, generator, TypeCode::UInt, 1);
+    }
+    else if (typeSymbol->category == Type::AccelerationStructureCategory)
+    {
+        typeNameStr = "accelerationStructure"_c;
+        uint32_t name = AddType(generator, typeNameStr, OpTypeAccelerationStructureKHR);
+        baseType = std::tie(name, typeNameStr);
     }
     else if (typeSymbol->category == Type::StructureCategory)
     {
@@ -3848,6 +3859,9 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             return;
     }
 
+    if (funcResolved->isReentrant)
+        return;
+
     if (funcResolved->isEntryPoint && generator->entryPoint != func)
         return;
 
@@ -4158,29 +4172,6 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
         refIndexedIt++;
     }
 
-    if (strucResolved->traceRayFunction != nullptr)
-    {
-        generator->generatorIntrinsics[strucResolved->traceRayFunction] = [fun = strucResolved->traceRayFunction](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
-        {
-            assert(args.size() == 11);
-            assert(!args[0].isValue);
-            g->writer->Capability(Capabilities::RayTracingKHR);
-            SPIRVResult bvh = LoadValueSPIRV(c, g, args[0]);
-            SPIRVResult flags = LoadValueSPIRV(c, g, args[1]);
-            SPIRVResult mask = LoadValueSPIRV(c, g, args[2]);
-            SPIRVResult shaderTableOffset = LoadValueSPIRV(c, g, args[3]);
-            SPIRVResult shaderTableStride = LoadValueSPIRV(c, g, args[4]);
-            SPIRVResult missShaderIndex = LoadValueSPIRV(c, g, args[5]);
-            SPIRVResult rayOrigin = LoadValueSPIRV(c, g, args[6]);
-            SPIRVResult rayDirection = LoadValueSPIRV(c, g, args[7]);
-            SPIRVResult rayTMin = LoadValueSPIRV(c, g, args[8]);
-            SPIRVResult rayTMax = LoadValueSPIRV(c, g, args[9]);
-            SPIRVResult payload = LoadValueSPIRV(c, g, args[10]);
-            uint32_t ret = g->writer->MappedInstruction(OpTraceRayKHR, SPVWriter::Section::LocalFunction, returnType, bvh, flags, mask, shaderTableOffset, shaderTableStride, missShaderIndex, rayOrigin, rayTMin, rayDirection, rayTMax, payload);
-            return SPIRVResult(ret, returnType, true);
-        };
-    }
-
     generator->writer->ReservedType(OpTypeStruct, nameStr, SPVWriter::Section::Declarations, structName, SPVArgList(memberTypeArray), SPVComment{ .str = nameStr.c_str() });
     return structName;
 }
@@ -4335,7 +4326,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         || storage == SPIRVResult::Storage::Sampler
         || storage == SPIRVResult::Storage::MutableImage
         || storage == SPIRVResult::Storage::StorageBuffer && varResolved->typeSymbol->category == Type::Category::StructureCategory
-        || storage == SPIRVResult::Storage::Uniform && varResolved->typeSymbol->category == Type::Category::StructureCategory
+        || storage == SPIRVResult::Storage::Uniform && (varResolved->typeSymbol->category == Type::Category::StructureCategory || varResolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
         || storage == SPIRVResult::Storage::PushConstant;
 
     bool physicalStorage = storage == SPIRVResult::Storage::PhysicalBuffer;
@@ -4363,6 +4354,28 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 
     SPIRVResult initializer = SPIRVResult::Invalid();
     Expression* initializerExpression = var->valueExpression;
+
+    if (varResolved->traceRayFunction != nullptr)
+    {
+        generator->generatorIntrinsics[varResolved->traceRayFunction] = [fun = varResolved->traceRayFunction](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 11);
+            assert(!args[0].isValue);
+            g->writer->Capability(Capabilities::RayTracingKHR);
+            SPIRVResult bvh = LoadValueSPIRV(c, g, args[0]);
+            SPIRVResult flags = LoadValueSPIRV(c, g, args[1]);
+            SPIRVResult mask = LoadValueSPIRV(c, g, args[2]);
+            SPIRVResult shaderTableOffset = LoadValueSPIRV(c, g, args[3]);
+            SPIRVResult shaderTableStride = LoadValueSPIRV(c, g, args[4]);
+            SPIRVResult missShaderIndex = LoadValueSPIRV(c, g, args[5]);
+            SPIRVResult rayOrigin = LoadValueSPIRV(c, g, args[6]);
+            SPIRVResult rayDirection = LoadValueSPIRV(c, g, args[7]);
+            SPIRVResult rayTMin = LoadValueSPIRV(c, g, args[8]);
+            SPIRVResult rayTMax = LoadValueSPIRV(c, g, args[9]);
+            g->writer->Instruction(OpTraceRayKHR, SPVWriter::Section::LocalFunction, bvh, flags, mask, shaderTableOffset, shaderTableStride, missShaderIndex, rayOrigin, rayTMin, rayDirection, rayTMax, args[10]);
+            return SPIRVResult::Invalid();
+        };
+    }
 
     // override initializer if the variable is a gplIs variable
     if (varResolved->builtin && var->name.StartsWith("gplIs"))

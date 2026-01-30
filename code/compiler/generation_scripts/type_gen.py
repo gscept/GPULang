@@ -1851,6 +1851,25 @@ def generate_types():
     )
     enums.append(enum)
 
+    enum = Enumeration(
+        name = 'RayFlags',
+        type_name = 'UInt32',
+        members = [
+            EnumMember("None", value = 0),
+            EnumMember("Opaque", value = 0x1),
+            EnumMember("NoOpaque", value = 0x2),
+            EnumMember("TerminateOnFirstHit", value = 0x4),
+            EnumMember("SkipClosestHit", value = 0x8),
+            EnumMember("CullBackFacing", value = 0x10),
+            EnumMember("CullFrontFacing", value = 0x20),
+            EnumMember("CullOpaque", value = 0x40),
+            EnumMember("CullNoOpaque", value = 0x80),
+            EnumMember("SkipTriangles", value = 0x100),
+            EnumMember("SkipAABBs", value = 0x200),
+        ]
+    )
+    enums.append(enum)
+
     class StructMember:
         def __init__(self, decl_name, api_name, type, array_size=1):
             self.decl_name = decl_name

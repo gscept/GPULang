@@ -127,6 +127,7 @@
         "Partition",
         "PixelOrigin",
         "ComputeDerivatives",
+        "RayFlags",
         "GeometryPoint",
         "GeometryLine",
         "GeometryLineAdjacency",

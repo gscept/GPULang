@@ -89,8 +89,9 @@ struct Function : public Symbol
 
         } executionModifiers;
 
-        bool isEntryPoint = false;
-        bool isPrototype = false;
+        uint32_t isEntryPoint : 1 = 0;
+        uint32_t isReentrant : 1 = 0;
+        uint32_t isPrototype : 1 = 0;
         
         PinnedSet<Symbol*> visibleSymbols;
     } functionResolved;

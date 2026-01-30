@@ -665,15 +665,36 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     return true;
 }
 
+inline constexpr StaticSet ReservedFunctions = {
+    std::array{
+        "bufferLoad"_h,
+        "bufferLoadIndexed"_h,
+        "bufferStore"_h,
+        "bufferStoreIndexed"_h,
+        "bufferPtr"_h,
+        "bufferPtrIndexed"_h,
+        "traceRay"_h
+    }
+};
+
 //------------------------------------------------------------------------------
 /**
 */
 bool 
-Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
+Validator::ResolveFunction(Compiler* compiler, Symbol* symbol, bool allowReserved)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
     funResolved->scope.symbolLookup.Clear();
+
+    if (!allowReserved)
+    {
+        if (ReservedFunctions.Find(HashString(fun->name)) != ReservedFunctions.end())
+        {
+            compiler->Error(Format("%s is a reserved function", fun->name), fun);
+            return false;
+        }
+    }
 
      // run attribute validation
     for (const Attribute* attr : fun->attributes)
@@ -1000,27 +1021,12 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     compiler->PushScope(&funResolved->scope);
 
     // run validation on parameters
-    bool rayHitAttributeConsumed = false;
-    bool rayPayloadConsumed = false;
     for (Variable* var : fun->parameters)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         varResolved->usageBits.flags.isParameter = true;
-        varResolved->usageBits.flags.isEntryPointParameter = funResolved->isEntryPoint;
+        varResolved->usageBits.flags.isEntryPointParameter = funResolved->isEntryPoint | funResolved->isReentrant;
         this->ResolveVariable(compiler, var);
-
-        if (varResolved->storage == Storage::RayHitAttribute)
-        {
-            if (!rayHitAttributeConsumed)
-                rayHitAttributeConsumed = true;
-            else
-                compiler->Error("Only one parameter is allowed to be of storage class 'ray_hit_attribute'", symbol);
-
-            if (!rayPayloadConsumed)
-                rayPayloadConsumed = true;
-            else
-                compiler->Error("Only one parameter is allowed to be of storage class 'ray_payload'", symbol);
-        }
     }
 
     compiler->PopScope();
@@ -2678,6 +2684,89 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
+
+        if (varResolved->storage == Storage::RayPayload || varResolved->storage == Storage::RayPayloadInput)
+        {
+            TransientString intrinsicName = TransientString("traceRay(", var->type.ToString(), ")");
+            Symbol* sym = compiler->GetSymbol(intrinsicName);
+            if (sym == nullptr)
+            {
+                Function* traceRayFunction = Alloc<Function>();
+                traceRayFunction->name = "traceRay";
+                traceRayFunction->returnType = Type::FullType{ "void" };
+                Symbol::Resolved(traceRayFunction)->isReentrant = true; // Mark as an entry point
+
+                TransientArray<Variable*> params(11);
+
+                Variable* bvh = Alloc<Variable>();
+                bvh->name = "bvh";
+                bvh->type = Type::FullType{ "accelerationStructure", { Type::FullType::Modifier::Pointer }, { nullptr } };
+                bvh->attributes = { Alloc<Attribute>("uniform") };
+                params.Append(bvh);
+
+                Variable* rayFlags = Alloc<Variable>();
+                rayFlags->name = "flags";
+                rayFlags->type = Type::FullType{ "u32" };
+                params.Append(rayFlags);
+
+                Variable* mask = Alloc<Variable>();
+                mask->name = "mask";
+                mask->type = Type::FullType{ "u32" };
+                params.Append(mask);
+
+                Variable* shaderTableOffset = Alloc<Variable>();
+                shaderTableOffset->name = "shaderTableOffset";
+                shaderTableOffset->type = Type::FullType{ "u32" };
+                params.Append(shaderTableOffset);
+
+                Variable* shaderTableStride = Alloc<Variable>();
+                shaderTableStride->name = "shaderTableStride";
+                shaderTableStride->type = Type::FullType{ "u32" };
+                params.Append(shaderTableStride);
+
+                Variable* missIndex = Alloc<Variable>();
+                missIndex->name = "missIndex";
+                missIndex->type = Type::FullType{ "u32" };
+                params.Append(missIndex);
+
+                Variable* origin = Alloc<Variable>();
+                origin->name = "origin";
+                origin->type = Type::FullType{ "f32x3" };
+                params.Append(origin);
+
+                Variable* direction = Alloc<Variable>();
+                direction->name = "direction";
+                direction->type = Type::FullType{ "f32x3" };
+                params.Append(direction);
+
+                Variable* tMin = Alloc<Variable>();
+                tMin->name = "tMin";
+                tMin->type = Type::FullType{ "f32" };
+                params.Append(tMin);
+
+                Variable* tMax = Alloc<Variable>();
+                tMax->name = "tMax";
+                tMax->type = Type::FullType{ "f32" };
+                params.Append(tMax);
+
+                Variable* payload = Alloc<Variable>();
+                payload->name = "payload";
+                payload->type = var->type;
+                payload->attributes = var->attributes;
+                params.Append(payload);
+
+                // Add a short-hand version of this function to the global symbol dictionary
+                compiler->AddGlobalSymbol(intrinsicName, traceRayFunction);
+
+                traceRayFunction->parameters = params;
+                this->ResolveFunction(compiler, traceRayFunction, true);
+                varResolved->traceRayFunction = traceRayFunction;
+            }
+            else
+            {
+                varResolved->traceRayFunction = static_cast<Function*>(sym);
+            }
+        }
     }
     else // Local variable
     {
@@ -3156,7 +3245,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
                     arg2->type.modifierValues = TransientArray<Expression*>();
                     storageFunction->parameters = { arg, arg2 };
-                    this->ResolveFunction(compiler, storageFunction);
+                    this->ResolveFunction(compiler, storageFunction, true);
                     currentStrucResolved->storageFunctions.Insert(FixedString(storageFun), storageFunction);
                 }
 
@@ -3177,7 +3266,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     arg->type.modifierValues = var->type.modifierValues;
                     
                     loadFunction->parameters = { arg };
-                    this->ResolveFunction(compiler, loadFunction);   
+                    this->ResolveFunction(compiler, loadFunction, true);
                     currentStrucResolved->loadFunctions.Insert(FixedString(loadFun), loadFunction);
                 }
 
@@ -3213,7 +3302,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         arg3->type.modifiers = TransientArray<Type::FullType::Modifier>();
                         arg3->type.modifierValues = TransientArray<Expression*>();
                         storageIndexedFunction->parameters = { arg, arg2, arg3 };
-                        this->ResolveFunction(compiler, storageIndexedFunction);
+                        this->ResolveFunction(compiler, storageIndexedFunction, true);
                         currentStrucResolved->storageIndexedFunctions.Insert(FixedString(storageIndexedFun), storageIndexedFunction);
                     }
                     if (currentStrucResolved->loadIndexedFunctions.Find(loadIndexedFun) == currentStrucResolved->loadIndexedFunctions.end())
@@ -3240,7 +3329,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         arg2->type.modifierValues = TransientArray<Expression*>();
 
                         loadIndexedFunction->parameters = { arg, arg2 };
-                        this->ResolveFunction(compiler, loadIndexedFunction);
+                        this->ResolveFunction(compiler, loadIndexedFunction, true);
                         currentStrucResolved->loadIndexedFunctions.Insert(FixedString(loadIndexedFun), loadIndexedFunction);
                     }
                     if (currentStrucResolved->getReferenceFunctions.Find(refIndexedFun) == currentStrucResolved->getReferenceFunctions.end())
@@ -3269,80 +3358,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         arg2->type.modifierValues = TransientArray<Expression*>();
 
                         getReferenceFunction->parameters = { arg, arg2 };
-                        this->ResolveFunction(compiler, getReferenceFunction);
+                        this->ResolveFunction(compiler, getReferenceFunction, true);
                         currentStrucResolved->getReferenceFunctions.Insert(FixedString(refIndexedFun), getReferenceFunction);
                     }
                 }
             }
-            else if (currentStrucResolved->traceRayFunction == nullptr && (varResolved->storage == Storage::RayPayload || varResolved->storage == Storage::RayPayloadInput))
-            {
-                Function* traceRayFunction = Alloc<Function>();
-                traceRayFunction->name = "traceRay";
-                traceRayFunction->returnType = Type::FullType{ "void" };
-
-                TransientArray<Variable*> params(11);
-
-                Variable* bvh = Alloc<Variable>();
-                bvh->name = "bvh";
-                bvh->type = Type::FullType{ "accelerationStructure", { Type::FullType::Modifier::Pointer }, { nullptr } };
-                Symbol::Resolved(bvh)->storage = Storage::Uniform;
-                params.Append(bvh);
-
-                Variable* rayFlags = Alloc<Variable>();
-                rayFlags->name = "flags";
-                rayFlags->type = Type::FullType{ "u32" };
-                params.Append(rayFlags);
-
-                Variable* mask = Alloc<Variable>();
-                mask->name = "mask";
-                mask->type = Type::FullType{ "u32" };
-                params.Append(mask);
-
-                Variable* shaderTableOffset = Alloc<Variable>();
-                shaderTableOffset->name = "shaderTableOffset";
-                shaderTableOffset->type = Type::FullType{ "u32" };
-                params.Append(shaderTableOffset);
-
-                Variable* shaderTableStride = Alloc<Variable>();
-                shaderTableStride->name = "shaderTableStride";
-                shaderTableStride->type = Type::FullType{ "u32" };
-                params.Append(shaderTableStride);
-
-                Variable* missIndex = Alloc<Variable>();
-                missIndex->name = "missIndex";
-                missIndex->type = Type::FullType{ "u32" };
-                params.Append(missIndex);
-
-                Variable* origin = Alloc<Variable>();
-                origin->name = "origin";
-                origin->type = Type::FullType{ "f32x3" };
-                params.Append(origin);
-
-                Variable* direction = Alloc<Variable>();
-                direction->name = "direction";
-                direction->type = Type::FullType{ "f32x3" };
-                params.Append(direction);
-
-                Variable* tMin = Alloc<Variable>();
-                tMin->name = "tMin";
-                tMin->type = Type::FullType{ "f32" };
-                params.Append(tMin);
-
-                Variable* tMax = Alloc<Variable>();
-                tMax->name = "tMax";
-                tMax->type = Type::FullType{ "f32" };
-                params.Append(tMax);
-
-                Variable* payload = Alloc<Variable>();
-                payload->name = "payload";
-                payload->type = var->type;
-                params.Append(payload);
-
-                traceRayFunction->parameters = params;
-                this->ResolveFunction(compiler, traceRayFunction);
-                currentStrucResolved->traceRayFunction = traceRayFunction;
-            }
-        }
+        } 
     }
 
     return true;
@@ -4703,6 +4724,22 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             auto binExpRes = Symbol::Resolved(binExp);
             res |= this->ResolveVisibility(compiler, binExp->left);
             res |= this->ResolveVisibility(compiler, binExp->right);
+
+            // If binary expression is assignment, then some assignments are only valid in certain stages
+            if (binExp->thisResolved->isAssignment)
+            {
+                Storage leftStorage;
+                binExp->left->EvalStorage(leftStorage);
+
+                if (leftStorage == Storage::RayHitAttribute)
+                {
+                    if (compiler->currentState.shaderType != ProgramInstance::__Resolved::RayIntersectionShader)
+                    {
+                        compiler->Error(Format("Variables with storage ray_hit_attribute are only writeable in RayIntersection shaders"), binExp);
+                        return false;
+                    }
+                }
+            }
             if (binExpRes->constValueExpression != nullptr)
                 res |= this->ResolveVisibility(compiler, binExpRes->constValueExpression);
             break;
@@ -5030,6 +5067,60 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             
             Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
             entryRes->visibleSymbols.Insert(var);
+
+            if (varResolved->storage == Storage::RayPayloadInput)
+            {
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayAnyHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayClosestHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayMissShader)
+                {
+                    compiler->Error(Format("in ray_payload is only allowed on RayAnyHit, RayClosestHit and RayMiss shaders"), var);
+                    return false;
+                }
+            }
+
+            if (varResolved->storage == Storage::RayPayload)
+            {
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayGenerationShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayClosestHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayMissShader)
+                {
+                    compiler->Error(Format("ray_payload is only allowed on RayGeneration, RayClosestHit and RayMiss shaders"), var);
+                    return false;
+                }
+            }
+
+
+            if (varResolved->storage == Storage::RayHitAttribute)
+            {
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayAnyHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayClosestHitShader)
+                {
+                    compiler->Error(Format("ray_hit_attribute is only allowed on RayAnyHit, RayClosestHit shaders"), var);
+                    return false;
+                }
+            }
+
+            if (varResolved->storage == Storage::CallableData)
+            {
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayGenerationShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayClosestHitShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayCallableShader
+                    && compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayMissShader)
+                {
+                    compiler->Error(Format("ray_callable_data is only allowed on RayGeneration, RayClosestHit, RayCallable and RayMiss shaders"), var);
+                    return false;
+                }
+            }
+
+            if (varResolved->storage == Storage::CallableDataInput)
+            {
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayCallableShader)
+                {
+                    compiler->Error(Format("in ray_callable_data is only allowed on RayCallable shaders"), var);
+                    return false;
+                }
+            }
             
             switch (compiler->currentState.shaderType)
             {

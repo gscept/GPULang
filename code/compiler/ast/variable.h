@@ -88,6 +88,7 @@ struct Variable : public Symbol
         uint32_t startPadding = 0;      // padding before variable
 
         Function* valueConversionFunction = nullptr;
+        Function* traceRayFunction = nullptr;
 
         ShaderUsage visibilityBits;
         Domain domain;
