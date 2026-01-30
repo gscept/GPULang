@@ -691,7 +691,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol, bool allowReserve
     {
         if (ReservedFunctions.Find(HashString(fun->name)) != ReservedFunctions.end())
         {
-            compiler->Error(Format("%s is a reserved function", fun->name), fun);
+            compiler->Error(Format("%s is a reserved function", fun->name.c_str()), fun);
             return false;
         }
     }
