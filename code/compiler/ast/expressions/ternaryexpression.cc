@@ -79,7 +79,7 @@ TernaryExpression::Resolve(Compiler* compiler)
     Domain resultDomain = Domain::Device;
     thisResolved->domain = PromoteDomain(PromoteDomain(conditionDomain, leftDomain), rightDomain);
 
-    if (!type2.literal)
+    if (!type2.literal || !type3.literal)
         type1.literal = false;
     thisResolved->fullType = type1;
     thisResolved->type = compiler->GetType(type1);
