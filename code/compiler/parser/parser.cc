@@ -3043,7 +3043,7 @@ ParseEnumeration(TokenStream& stream, ParseResult& ret)
         Expression* value = nullptr;
         if (stream.Match(TokenType::Assign))
         {
-            value = ParseExpression2(stream, ret);
+            value = ParseExpression2(stream, ret, true);
         }
         
         labels.Append(label);
