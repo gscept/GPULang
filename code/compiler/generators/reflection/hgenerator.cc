@@ -125,14 +125,22 @@ std::array{
     std::pair{ ConstantString("f32x2"), ConstantString("float") },
     std::pair{ ConstantString("f32x3"), ConstantString("float") },
     std::pair{ ConstantString("f32x4"), ConstantString("float") },
-    std::pair{ ConstantString("i32"), ConstantString("int") },
-    std::pair{ ConstantString("i32x2"), ConstantString("int") },
-    std::pair{ ConstantString("i32x3"), ConstantString("int") },
-    std::pair{ ConstantString("i32x4"), ConstantString("int") },
-    std::pair{ ConstantString("u32"), ConstantString("unsigned int") },
-    std::pair{ ConstantString("u32x2"), ConstantString("unsigned int") },
-    std::pair{ ConstantString("u32x3"), ConstantString("unsigned int") },
-    std::pair{ ConstantString("u32x4"), ConstantString("unsigned int") },
+    std::pair{ ConstantString("i32"), ConstantString("int32_t") },
+    std::pair{ ConstantString("i32x2"), ConstantString("int32_t") },
+    std::pair{ ConstantString("i32x3"), ConstantString("int32_t") },
+    std::pair{ ConstantString("i32x4"), ConstantString("int32_t") },
+    std::pair{ ConstantString("u32"), ConstantString("uint32_t") },
+    std::pair{ ConstantString("u32x2"), ConstantString("uint32_t") },
+    std::pair{ ConstantString("u32x3"), ConstantString("uint32_t") },
+    std::pair{ ConstantString("u32x4"), ConstantString("uint32_t") },
+    std::pair{ ConstantString("i16"), ConstantString("int16_t") },
+    std::pair{ ConstantString("i16x2"), ConstantString("int16_t") },
+    std::pair{ ConstantString("i16x3"), ConstantString("int16_t") },
+    std::pair{ ConstantString("i16x4"), ConstantString("int16_t") },
+    std::pair{ ConstantString("u16"), ConstantString("uint16_t") },
+    std::pair{ ConstantString("u16x2"), ConstantString("uint16_t") },
+    std::pair{ ConstantString("u16x3"), ConstantString("uint16_t") },
+    std::pair{ ConstantString("u16x4"), ConstantString("uint16_t") },
     std::pair{ ConstantString("b8"), ConstantString("bool") },
     std::pair{ ConstantString("b8x2"), ConstantString("bool") },
     std::pair{ ConstantString("b8x3"), ConstantString("bool") },
@@ -146,36 +154,6 @@ std::array{
     std::pair{ ConstantString("f32x4x2"), ConstantString("float") },
     std::pair{ ConstantString("f32x4x3"), ConstantString("float") },
     std::pair{ ConstantString("f32x4x4"), ConstantString("float") },
-    std::pair{ ConstantString("void"), ConstantString("void") }
-};
-
-StaticMap typeToArraySize =
-std::array{
-    std::pair{ ConstantString("f32"), ConstantString("") },
-    std::pair{ ConstantString("f32x2"), ConstantString("[2]") },
-    std::pair{ ConstantString("f32x3"), ConstantString("[3]") },
-    std::pair{ ConstantString("f32x4"), ConstantString("[4]") },
-    std::pair{ ConstantString("i32"), ConstantString("") },
-    std::pair{ ConstantString("i32x2"), ConstantString("[2]") },
-    std::pair{ ConstantString("i32x3"), ConstantString("[3]") },
-    std::pair{ ConstantString("i32x4"), ConstantString("[4]") },
-    std::pair{ ConstantString("u32"), ConstantString("") },
-    std::pair{ ConstantString("u32x2"), ConstantString("[2]") },
-    std::pair{ ConstantString("u32x3"), ConstantString("[3]") },
-    std::pair{ ConstantString("u32x4"), ConstantString("[4]") },
-    std::pair{ ConstantString("b8"), ConstantString("") },
-    std::pair{ ConstantString("b8x2"), ConstantString("[2]") },
-    std::pair{ ConstantString("b8x3"), ConstantString("[3]") },
-    std::pair{ ConstantString("b8x4"), ConstantString("[4]") },
-    std::pair{ ConstantString("f32x2x2"), ConstantString("[2][2]") },
-    std::pair{ ConstantString("f32x2x3"), ConstantString("[2][3]") },
-    std::pair{ ConstantString("f32x2x4"), ConstantString("[2][4]") },
-    std::pair{ ConstantString("f32x3x2"), ConstantString("[3][2]") },
-    std::pair{ ConstantString("f32x3x3"), ConstantString("[3][3]") },
-    std::pair{ ConstantString("f32x3x4"), ConstantString("[3][4]") },
-    std::pair{ ConstantString("f32x4x2"), ConstantString("[4][2]") },
-    std::pair{ ConstantString("f32x4x3"), ConstantString("[4][3]") },
-    std::pair{ ConstantString("f32x4x4"), ConstantString("[4][4]") },
     std::pair{ ConstantString("void"), ConstantString("void") }
 };
 
@@ -342,10 +320,11 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                 typeStr = headerType->second.c_str();
             else
                 typeStr = var->type.name;
-            FixedString arrayTypeStr(ConstantString(""));
-            auto arrayTypeIt = typeToArraySize.Find(var->type.name);
-            if (arrayTypeIt != typeToArraySize.end())
-                arrayTypeStr = arrayTypeIt->second;
+            TransientString arrayTypeStr(ConstantString(""));
+            if (varResolved->typeSymbol->columnSize > 1)
+                arrayTypeStr = Format("[%d]", varResolved->typeSymbol->columnSize);
+            if (varResolved->typeSymbol->rowSize > 1)
+                arrayTypeStr = Format("%s[%d]", arrayTypeStr.c_str(), varResolved->typeSymbol->rowSize);
 
             Expression* init = var->valueExpression;
 
@@ -410,10 +389,11 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             {
                 type = "uint64_t";
             }
-            auto item = typeToArraySize.Find(var->type.name);
-            TStr arrayType = "";// = typeToArraySize.Find(var->type.name)->second.c_str();
-            if (item != typeToArraySize.end())
-                arrayType = item->second;
+            TransientString arrayTypeStr(ConstantString(""));
+            if (varResolved->typeSymbol->columnSize > 1)
+                arrayTypeStr = Format("[%d]", varResolved->typeSymbol->columnSize);
+            if (varResolved->typeSymbol->rowSize > 1)
+                arrayTypeStr = Format("%s[%d]", arrayTypeStr.c_str(), varResolved->typeSymbol->rowSize);
             auto modIt = var->type.modifiers.rbegin();
             while (modIt != var->type.modifiers.rend())
             {
@@ -425,7 +405,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                     ValueUnion val;
                     if (var->type.modifierValues[diff] && var->type.modifierValues[diff]->EvalValue(val))
                     {
-                        arrayType = Format("[%d]%s", val.ui[0], arrayType.buf);
+                        arrayTypeStr = Format("[%d]%s", val.ui[0], arrayTypeStr.buf);
                     }
                     else
                     {
@@ -454,14 +434,14 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                         var->type.modifierValues[i]->EvalValue(val);
                         val.Store(size);
                     }
-                    writer.Write(Format("%s %s_%d%s;", type.buf, var->name.c_str(), i, arrayType.buf));
+                    writer.Write(Format("%s %s_%d%s;", type.buf, var->name.c_str(), i, arrayTypeStr.buf));
                     if (i < size - 1)
                         writer.Write("\n");
                 }
             }
             else
             {
-                writer.Write(Format("%s %s%s;", type.buf, var->name.c_str(), arrayType.buf));
+                writer.Write(Format("%s %s%s;", type.buf, var->name.c_str(), arrayTypeStr.buf));
             }
         }
         else if (varResolved->storage == Storage::Uniform)
@@ -470,6 +450,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                 || varResolved->typeSymbol->category == Type::Category::TextureCategory
                 || varResolved->typeSymbol->category == Type::Category::SamplerStateCategory
                 || varResolved->typeSymbol->category == Type::Category::PixelCacheCategory
+                || varResolved->typeSymbol->category == Type::Category::AccelerationStructureCategory
                 )
             {
                 writer.WriteLine(Format("struct %s", var->name.c_str()));
@@ -511,10 +492,12 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             auto it = typeToHeaderType.Find(type.ToView());
             if (it != typeToHeaderType.end())
                 type = it->second.c_str();
-            auto arrayTypeIt = typeToArraySize.Find(var->type.name);
-            TStr arrayType = "";
-            if (arrayTypeIt != typeToArraySize.end())
-                arrayType = arrayTypeIt->second.c_str();
+            TransientString arrayTypeStr(ConstantString(""));
+            if (varResolved->typeSymbol->columnSize > 1)
+                arrayTypeStr = Format("[%d]", varResolved->typeSymbol->columnSize);
+            if (varResolved->typeSymbol->rowSize > 1)
+                arrayTypeStr = Format("%s[%d]", arrayTypeStr.c_str(), varResolved->typeSymbol->rowSize);
+
             auto modIt = var->type.modifiers.rbegin();
             while (modIt != var->type.modifiers.rend())
             {
@@ -526,7 +509,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                     ValueUnion val;
                     if (var->type.modifierValues[diff]->EvalValue(val))
                     {
-                        arrayType = Format("[%d]%s", val.ui[0], arrayType.buf);
+                        arrayTypeStr = Format("[%d]%s", val.ui[0], arrayTypeStr.buf);
                     }
                     else
                     {
@@ -545,11 +528,11 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             if (var->valueExpression != nullptr)
             {
                 GenerateHInitializer(compiler, var->valueExpression, initWriter);
-                writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayType.buf, initWriter.output.c_str()));
+                writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayTypeStr.buf, initWriter.output.c_str()));
             }
             else
             {
-                writer.WriteLine(Format("static const %s %s%s;", type.buf, var->name.c_str(), arrayType.buf));
+                writer.WriteLine(Format("static const %s %s%s;", type.buf, var->name.c_str(), arrayTypeStr.buf));
             }
         }
     }
