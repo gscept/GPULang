@@ -2138,7 +2138,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
             Type::FullType type;
             expr->EvalType(type);
-            if (type != enumeration->type)
+            if (enumeration->type != type)
             {
                 compiler->Error(Format("Enumeration is of type '%s' but label '%s' is of type '%s'", enumeration->type.ToString().c_str(), str.c_str(), type.ToString().c_str()), symbol);
                 return false;
@@ -4279,7 +4279,7 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
                 auto baseType = inResolved->typeSymbol->baseType;
                 if (baseType == TypeCode::UInt16 || baseType == TypeCode::UInt32 || baseType == TypeCode::Int16 || baseType == TypeCode::Int32)
                 {
-                    compiler->Error(Format("Shader '%s' outputs '%s' with type '%s' that doesn't support implicit interpolation to pixel shader '%s'", outFunc->name.c_str(), var->name.c_str(), var->type.ToString().c_str(), inFunc->name.c_str()), inFunc);
+                    compiler->Error(Format("Shader '%s' outputs '%s' with type '%s' that doesn't support implicit interpolation to pixel shader '%s'. Either use 'no_interpolate' or change the type.", outFunc->name.c_str(), var->name.c_str(), var->type.ToString().c_str(), inFunc->name.c_str()), inFunc);
                     return false;
                 }
             }
@@ -4792,7 +4792,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 , std::pair{ ConstantString("pixelExportColor"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_PIXEL_BIT }}
                 , std::pair{ ConstantString("pixelGetDepth"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
                 , std::pair{ ConstantString("pixelSetDepth"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
-                , std::pair{ ConstantString("rayTrace"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("traceRay"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayGenerationShader, ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader }, Compiler::State::SideEffects::Masks() }}
                 , std::pair{ ConstantString("rayExportIntersection"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
                 , std::pair{ ConstantString("rayExecuteCallable"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayGenerationShader, ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
                 , std::pair{ ConstantString("rayGetLaunchIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayGenerationShader, ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
