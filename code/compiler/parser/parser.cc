@@ -4085,19 +4085,19 @@ Parse(TokenStream& stream)
         {
             if (annotations.size != 0)
             {
-                ret.diagnostics.Append(UnexpectedToken(stream, "variable/function/sampler_state/program because of annotation"));
+                ret.diagnostics.Append(UnexpectedToken(stream, "variable (storage and name)/function/sampler_state/program because of annotation"));
                 break;
             }
             if (attributes.size != 0)
             {
-                ret.diagnostics.Append(UnexpectedToken(stream, "variable/function/sampler_state because of attribute"));
+                ret.diagnostics.Append(UnexpectedToken(stream, "variable (storage and name)/function/sampler_state because of attribute"));
                 break;
             }
             break;
         }
         else
         {
-            ret.diagnostics.Append(UnexpectedToken(stream, "annotation/variable/function/sampler_state/program/alias"));
+            ret.diagnostics.Append(UnexpectedToken(stream, "annotation/variable (storage and name)/function/sampler_state/program/alias"));
             break;
         }
     }

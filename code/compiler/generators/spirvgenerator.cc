@@ -2212,7 +2212,7 @@ GPULang::SPVArg operator""_spv(unsigned long long arg)
 };
 
 
-SPIRVResult GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isShaderArgument, bool isGlobal);
+SPIRVResult GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isGlobal);
 SPIRVResult GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Expression* expr);
 bool GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Statement* stat);
 SPIRVResult GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize = 1);
@@ -3881,7 +3881,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 
         if (funcResolved->isEntryPoint)
         {
-            GenerateVariableSPIRV(compiler, generator, param, true, true);
+            GenerateVariableSPIRV(compiler, generator, param, true);
         }
         else
         {
@@ -3918,7 +3918,8 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             TransientString type = ToSPIRVTypeString(compiler, generator, param->type, paramResolved->typeSymbol);
             generator->typeState.storage = SPIRVResult::Storage::Function;
 
-            bool logicallyAddressed = storage == SPIRVResult::Storage::UniformConstant
+            bool logicallyAddressed = 
+                storage == SPIRVResult::Storage::UniformConstant
                 || storage == SPIRVResult::Storage::Image
                 || storage == SPIRVResult::Storage::Sampler
                 || storage == SPIRVResult::Storage::MutableImage
@@ -4311,7 +4312,7 @@ GenerateEnumSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* s
 /**
 */
 SPIRVResult
-GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isShaderArgument, bool isGlobal)
+GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isGlobal)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
@@ -4873,7 +4874,6 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
     {
         if (arrayIndexExpressionResolved->isAddressIndex)
         {
-            
             SPIRVResult ret = leftSymbol;
             ret.typeName = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt64);
 
@@ -5112,13 +5112,15 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
 
     if (binaryExpression->op != '=')
     {
-        // In the case of a void left side, check if adderss is true and transform to u32
-        if (lhsType->category == Type::Category::VoidCategory)
+        // If the left operator is void, assume address operation and use UInt32 as operator type
+        Type* operatorType = lhsType;
+        if (operatorType->category == Type::Category::VoidCategory)
         {
-            lhsType = &UInt32Type;
+            assert(binaryExpressionResolved->isAddressOperation);
+            operatorType = &UInt32Type;
         }
         std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.Name().c_str());
-        Function* fun = lhsType->GetSymbol<Function>(functionName);
+        Function* fun = operatorType->GetSymbol<Function>(functionName);
         Function::__Resolved* funResolved = Symbol::Resolved(fun);
         assert(fun != nullptr);
 
@@ -5141,8 +5143,23 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         {
             // Scale with size of type first
             uint32_t scaledOffset = rightValue.name;
+            uint32_t stride = 0;
 
-            SPIRVResult offsetValue = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt64(rhsType->byteSize));
+            // If either side is void, then the stride is 1 byte
+            if (lhsType->category == Type::Category::VoidCategory || rhsType->category == Type::Category::VoidCategory)
+            {
+                stride = 1;
+            }
+            else
+            {
+                // Otherwise, the stride is the side of the address type
+                if (leftType.address)
+                    stride = binaryExpressionResolved->lhsType->byteSize;
+                else
+                    stride = binaryExpressionResolved->rhsType->byteSize;
+            }
+
+            SPIRVResult offsetValue = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt64(stride));
 
             if (rightValue.typeName != offsetValue.typeName)
             {
@@ -5400,8 +5417,35 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
             return GenerateExpressionSPIRV(compiler, generator, ternaryExpression->elseExpression);
     }
 
+    SPIRVResult type = GenerateTypeSPIRV(compiler, generator, ternaryExpressionResolved->fullType, ternaryExpressionResolved->type);
+
     SPIRVResult ifResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
     SPIRVResult elseResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->elseExpression);
+
+    if (ternaryExpressionResolved->ifValueConversion)
+    {
+        auto it = generator->generatorIntrinsics.find(ternaryExpressionResolved->ifValueConversion);
+        if (it == generator->generatorIntrinsics.end())
+        {
+            assert(ternaryExpressionResolved->ifValueConversion->backendIndex != UINT64_MAX && ternaryExpressionResolved->ifValueConversion->backendIndex < SPIRVDefaultIntrinsics.size());
+            auto it = SPIRVDefaultIntrinsics[ternaryExpressionResolved->ifValueConversion->backendIndex];
+            ifResult = it(compiler, generator, type.typeName, { ifResult });
+        }
+        else
+            ifResult = it->second(compiler, generator, type.typeName, { ifResult });
+    }
+    if (ternaryExpressionResolved->elseValueConversion)
+    {
+        auto it = generator->generatorIntrinsics.find(ternaryExpressionResolved->elseValueConversion);
+        if (it == generator->generatorIntrinsics.end())
+        {
+            assert(ternaryExpressionResolved->elseValueConversion->backendIndex != UINT64_MAX && ternaryExpressionResolved->elseValueConversion->backendIndex < SPIRVDefaultIntrinsics.size());
+            auto it = SPIRVDefaultIntrinsics[ternaryExpressionResolved->elseValueConversion->backendIndex];
+            elseResult = it(compiler, generator, type.typeName, { elseResult });
+        }
+        else
+            elseResult = it->second(compiler, generator, type.typeName, { elseResult });
+    }
     
     if (compiler->options.debugSymbols)
     {
@@ -5411,7 +5455,7 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
     SPIRVResult loadedCondition = LoadValueSPIRV(compiler, generator, lhsResult);
     SPIRVResult loadedLeft = LoadValueSPIRV(compiler, generator, ifResult);
     SPIRVResult loadedRight = LoadValueSPIRV(compiler, generator, elseResult);
-    uint32_t ret = generator->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, loadedLeft.typeName, loadedCondition, loadedLeft, loadedRight);
+    uint32_t ret = generator->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type.typeName, loadedCondition, loadedLeft, loadedRight);
 
     // The type of left and right are identical
     SPIRVResult res = loadedLeft;
@@ -5876,7 +5920,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                     }
                     else
                     {
-                        res = GenerateVariableSPIRV(compiler, generator, var, false, true);
+                        res = GenerateVariableSPIRV(compiler, generator, var, true);
                     }
 
                     return res;
@@ -5968,7 +6012,7 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
     }
     generator->writer->PushScope();
     for (auto decl : stat->declarations)
-        GenerateVariableSPIRV(compiler, generator, decl, false, false);
+        GenerateVariableSPIRV(compiler, generator, decl, false);
     
     uint32_t startLabel = generator->writer->Reserve();
     uint32_t conditionLabel = generator->writer->Reserve();
@@ -6427,7 +6471,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
             for (const auto& symbol : symbols)
             {
                 if (symbol->symbolType == GPULang::Symbol::SymbolType::VariableType)
-                    GenerateVariableSPIRV(compiler, generator, symbol, false, false);
+                    GenerateVariableSPIRV(compiler, generator, symbol, false);
                 else
                 {
                     Statement* stat = static_cast<Statement*>(symbol);
@@ -6741,7 +6785,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
                             GenerateSamplerSPIRV(compiler, this, genSym);
                             break;
                         case Symbol::VariableType:
-                            GenerateVariableSPIRV(compiler, this, genSym, false, true);
+                            GenerateVariableSPIRV(compiler, this, genSym, true);
                             break;
                     }
                 }
@@ -6760,7 +6804,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
                 GenerateSamplerSPIRV(compiler, this, sym);
                 break;
             case Symbol::VariableType:
-                GenerateVariableSPIRV(compiler, this, sym, false, true);
+                GenerateVariableSPIRV(compiler, this, sym, true);
                 break;
             }
         }

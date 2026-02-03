@@ -207,7 +207,7 @@ BinaryExpression::Resolve(Compiler* compiler)
                 else
                 {
                     /// Attempt to promote left and right side to the smallest common denominator
-                    TypeCode promotedType = Type::PromoteTypes(this->thisResolved->lhsType->baseType, this->thisResolved->rhsType->baseType);
+                    TypeCode promotedType = Type::PromoteTypes(this->thisResolved->lhsType->baseType, this->thisResolved->rhsType->baseType, this->op == '>>' || this->op == '<<');
                     if (promotedType == TypeCode::InvalidType)
                     {
                         compiler->Error(Format("Type '%s' could not be promoted to '%s'", this->thisResolved->leftType.ToString().c_str(), this->thisResolved->rightType.ToString().c_str()), this);
@@ -237,7 +237,7 @@ BinaryExpression::Resolve(Compiler* compiler)
                         this->thisResolved->leftConversion = compiler->GetSymbol<Function>(lhsConversion);
                         if (this->thisResolved->leftConversion == nullptr)
                         {
-                            compiler->Error(Format("'%s' can't be constructed from '%s' when promoting left hand", promotedFullType.ToString().c_str(), this->thisResolved->lhsType->name.c_str()), this);
+                            compiler->Error(Format("'%s' can't be constructed from '%s' when promoting left hand", promotedFullType.Name().c_str(), this->thisResolved->lhsType->name.c_str()), this);
                             return false;
                         }
 

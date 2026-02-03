@@ -47,6 +47,8 @@ struct TernaryExpression : public Expression
         virtual ~__Resolved() {};
         Type::FullType fullType;
         Type* type = nullptr;
+        Function* ifValueConversion = nullptr;
+        Function* elseValueConversion = nullptr;
         Domain domain;
     };
 };

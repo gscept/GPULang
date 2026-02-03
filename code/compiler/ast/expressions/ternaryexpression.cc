@@ -4,6 +4,7 @@
 //------------------------------------------------------------------------------
 #include "ternaryexpression.h"
 #include "compiler.h"
+#include "ast/function.h"
 #include "util.h"
 namespace GPULang
 {
@@ -62,11 +63,44 @@ TernaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
+    Type* ifType = compiler->GetType(type1);
+    Type* elseType = compiler->GetType(type2);
+    TypeCode promotedType = Type::PromoteTypes(ifType->baseType, elseType->baseType);
+
+    if (compiler->options.disallowImplicitConversion && (promotedType != ifType->baseType || promotedType != elseType->baseType))
+    {
+        compiler->Error(Format("Ternary results of type '%s' and '%s' cannot be promoted to a common type. Consider explicit casting or turning off 'disallowImplicitConversion'", type1.Name().c_str(), type2.Name().c_str()), this);
+        return false;
+    }
+
     // Not a bug, if type1 is literal, the first will fail but the other succeed, and vice versa
-    if (type1 != type2 && type2 != type1)
+    if (promotedType == TypeCode::InvalidType || ifType->columnSize != elseType->columnSize || ifType->rowSize != elseType->rowSize)
     {
         compiler->Error(Format("Ternary results are of different types '%s' and '%s'", type1.ToString().c_str(), type2.ToString().c_str()), this);
         return false;
+    }
+    Type::FullType promotedFullType = Type::TypeFromCode(promotedType, ifType->columnSize, ifType->rowSize);
+
+    // Check if we need to do any conversions
+    if (promotedType != ifType->baseType)
+    {
+        TransientString conversion = TransientString(promotedFullType.Name(), "(", type1.Name(), ")");
+        thisResolved->ifValueConversion = compiler->GetSymbol<Function>(conversion);
+        if (thisResolved->ifValueConversion == nullptr)
+        {
+            compiler->Error(Format("'%s' can't be constructed from '%s' when promoting ternary 'if' value", promotedFullType.Name().c_str(), type1.Name().c_str()), this);
+            return false;
+        }
+    }
+    else if (promotedType != elseType->baseType)
+    {
+        TransientString conversion = TransientString(promotedFullType.Name(), "(", type2.Name(), ")");
+        thisResolved->elseValueConversion = compiler->GetSymbol<Function>(conversion);
+        if (thisResolved->elseValueConversion == nullptr)
+        {
+            compiler->Error(Format("'%s' can't be constructed from '%s' when promoting ternary 'else' value", promotedFullType.Name().c_str(), type2.Name().c_str()), this);
+            return false;
+        }
     }
 
     // The domain is the amalgamation of all three domains
@@ -80,9 +114,9 @@ TernaryExpression::Resolve(Compiler* compiler)
     thisResolved->domain = PromoteDomain(PromoteDomain(conditionDomain, leftDomain), rightDomain);
 
     if (!type2.literal || !type3.literal)
-        type1.literal = false;
-    thisResolved->fullType = type1;
-    thisResolved->type = compiler->GetType(type1);
+        promotedFullType.literal = false;
+    thisResolved->fullType = promotedFullType;
+    thisResolved->type = compiler->GetType(promotedFullType);
     return true;
 }
 

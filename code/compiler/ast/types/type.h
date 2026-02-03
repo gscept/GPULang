@@ -225,7 +225,7 @@ struct Type : public Symbol
 
     static ConstantString CategoryToString(const Category& cat);
 
-    static TypeCode PromoteTypes(const TypeCode lhs, const TypeCode rhs)
+    static TypeCode PromoteTypes(const TypeCode lhs, const TypeCode rhs, bool retainSign = false)
     {
         switch (lhs)
         {
@@ -237,15 +237,15 @@ struct Type : public Symbol
                     case TypeCode::UInt16:
                         return TypeCode::UInt;
                     case TypeCode::Int:
-                        return TypeCode::UInt;
+                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
                     case TypeCode::Int16:
-                        return TypeCode::UInt;
+                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
                     case TypeCode::Float:
                         return TypeCode::Float;
                     case TypeCode::Float16:
                         return TypeCode::Float;
                     case TypeCode::Bool:
-                        return TypeCode::UInt;
+                        return TypeCode::InvalidType;
                 }
                 break;
             case TypeCode::UInt16:
@@ -256,24 +256,24 @@ struct Type : public Symbol
                     case TypeCode::UInt16:
                         return TypeCode::UInt16;
                     case TypeCode::Int:
-                        return TypeCode::UInt;
+                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
                     case TypeCode::Int16:
-                        return TypeCode::UInt16;
+                        return !retainSign ? TypeCode::UInt16 : TypeCode::Int16;
                     case TypeCode::Float:
                         return TypeCode::Float;
                     case TypeCode::Float16:
                         return TypeCode::Float;
                     case TypeCode::Bool:
-                        return TypeCode::UInt;
+                        return TypeCode::InvalidType;
                 }
                 break;
             case TypeCode::Int:
                 switch (rhs)
                 {
                     case TypeCode::UInt:
-                        return TypeCode::UInt;
+                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
                     case TypeCode::UInt16:
-                        return TypeCode::UInt;
+                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
                     case TypeCode::Int:
                         return TypeCode::Int;
                     case TypeCode::Int16:
@@ -283,16 +283,16 @@ struct Type : public Symbol
                     case TypeCode::Float16:
                         return TypeCode::Float;
                     case TypeCode::Bool:
-                        return TypeCode::Int;
+                        return TypeCode::InvalidType;
                 }
                 break;
             case TypeCode::Int16:
                 switch (rhs)
                 {
                     case TypeCode::UInt:
-                        return TypeCode::UInt;
+                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
                     case TypeCode::UInt16:
-                        return TypeCode::UInt16;
+                        return !retainSign ? TypeCode::UInt16 : TypeCode::Int16;
                     case TypeCode::Int:
                         return TypeCode::Int;
                     case TypeCode::Int16:
@@ -302,7 +302,7 @@ struct Type : public Symbol
                     case TypeCode::Float16:
                         return TypeCode::Float;
                     case TypeCode::Bool:
-                        return TypeCode::Int;
+                        return TypeCode::InvalidType;
                 }
                 break;
             case TypeCode::Float:
@@ -347,9 +347,9 @@ struct Type : public Symbol
                 switch (rhs)
                 {
                     case TypeCode::UInt:
-                        return TypeCode::UInt;
+                        return TypeCode::InvalidType;
                     case TypeCode::Int:
-                        return TypeCode::Int;
+                        return TypeCode::InvalidType;
                     case TypeCode::Float:
                         return TypeCode::InvalidType;
                     case TypeCode::Bool:
