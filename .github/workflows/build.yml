@@ -33,11 +33,11 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Prepare Vulkan SDK
-     uses: humbletim/setup-vulkan-sdk@v1.2.1
-     with:
-       vulkan-query-version: 1.4.304.1
-       vulkan-components: SPIRV-Tools
-       vulkan-use-cache: true
+      uses: humbletim/setup-vulkan-sdk@v1.2.1
+      with:
+        vulkan-query-version: 1.4.304.1
+        vulkan-components: SPIRV-Tools
+        vulkan-use-cache: true
 
     - name: Set up Python 3.x
       uses: actions/setup-python@v3
