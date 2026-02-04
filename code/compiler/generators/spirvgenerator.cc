@@ -45,7 +45,6 @@
 #include "ast/intrinsics.h"
 
 #include "spirv-tools/libspirv.h"
-#include "spirv-tools/optimizer.hpp"
 
 #include <array>
 #include <complex>
