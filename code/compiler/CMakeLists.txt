@@ -36,6 +36,18 @@ if((SPIRV-Tools-opt_LIBRARY OR SPIRV-Tools-opt_DEBUG_LIBRARY) AND NOT TARGET SPI
 		PROPERTY
 			IMPORTED_LOCATION_DEBUG "${SPIRV-Tools-opt_DEBUG_LIBRARY}")
 	endif()
+
+	# Add SPIRV-Tools source directory to include paths if available
+	# This is needed for some Vulkan SDK versions (e.g., 1.4.304.1) where
+	# internal headers like pass_manager.h are referenced by public headers
+	if(DEFINED ENV{VULKAN_SDK})
+		set(SPIRV_TOOLS_SOURCE_DIR "$ENV{VULKAN_SDK}/source")
+		if(EXISTS "${SPIRV_TOOLS_SOURCE_DIR}")
+			set_property(TARGET SPIRV-Tools-opt APPEND
+			PROPERTY
+				INTERFACE_INCLUDE_DIRECTORIES "${SPIRV_TOOLS_SOURCE_DIR}")
+		endif()
+	endif()
 endif()
 
 
