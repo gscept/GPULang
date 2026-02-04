@@ -711,7 +711,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         return false;
 
     // Output binary if file can be opened and there are programs to dump
-    if (programs.size() > 0)
+    //if (programs.size() > 0)
     {
         if (binaryWriter.Open())
         {
