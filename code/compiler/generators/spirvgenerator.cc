@@ -7013,13 +7013,15 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
         if (compiler->options.optimize)
         {
-            spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_2);
-            optimizer.RegisterPerformancePasses();
+            spv_optimizer_t* optimizer = spvOptimizerCreate(SPV_ENV_VULKAN_1_2);
+            spvOptimizerRegisterPerformancePasses(optimizer);
 
-            std::vector<uint32_t> optimized;
-            if (optimizer.Run(spvBinary.data(), spvBinary.size(), &optimized))
+            spv_binary optimizedBinary = nullptr;
+            spv_optimizer_options options = spvOptimizerOptionsCreate();
+            res = spvOptimizerRun(optimizer, spvBinary.data(), spvBinary.size(), &optimizedBinary, options);
+            if (res == SPV_SUCCESS)
             {
-                spvBinary = std::move(optimized);
+                spvBinary = std::vector<uint32_t>(optimizedBinary->code, optimizedBinary->code + optimizedBinary->wordCount);
             }
             else
             {

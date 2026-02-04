@@ -16,7 +16,7 @@ bool
 ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 {
     argh::parser args;
-    args.add_params({ "-o", "-h", "-g", "-I" });
+    args.add_params({ "-o", "-h", "-g", "-I", "-Ox" });
     args.parse(argv, argh::parser::SINGLE_DASH_IS_MULTIFLAG);
 
     if (args["--help"])

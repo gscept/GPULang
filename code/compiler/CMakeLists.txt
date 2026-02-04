@@ -3,6 +3,41 @@
 #-------------------------------------------------------------------------------
 
 fips_begin_lib(gpulang_compiler)
+find_package(Vulkan REQUIRED COMPONENTS SPIRV-Tools)
+
+find_library(SPIRV-Tools-opt_LIBRARY
+NAMES SPIRV-Tools-opt
+HINTS
+    $ENV{VULKAN_SDK}/lib)
+mark_as_advanced(SPIRV-Tools-opt_LIBRARY)
+
+find_library(SPIRV-Tools-opt_DEBUG_LIBRARY
+NAMES SPIRV-Tools-optd
+HINTS
+    $ENV{VULKAN_SDK}/lib)
+mark_as_advanced(SPIRV-Tools-opt_DEBUG_LIBRARY)
+
+
+if((SPIRV-Tools-opt_LIBRARY OR SPIRV-Tools-opt_DEBUG_LIBRARY) AND NOT TARGET SPIRV-Tools-opt)
+    add_library(SPIRV-Tools-opt STATIC IMPORTED)
+	if(SPIRV-Tools-opt_LIBRARY)
+		set_property(TARGET SPIRV-Tools-opt APPEND
+		PROPERTY
+			IMPORTED_CONFIGURATIONS Release)
+		set_property(TARGET SPIRV-Tools-opt
+		PROPERTY
+			IMPORTED_LOCATION_RELEASE "${SPIRV-Tools-opt_LIBRARY}")
+	endif()
+	if(SPIRV-Tools-opt_DEBUG_LIBRARY)
+		set_property(TARGET SPIRV-Tools-opt APPEND
+		PROPERTY
+			IMPORTED_CONFIGURATIONS Debug)
+		set_property(TARGET SPIRV-Tools-opt
+		PROPERTY
+			IMPORTED_LOCATION_DEBUG "${SPIRV-Tools-opt_DEBUG_LIBRARY}")
+	endif()
+endif()
+
 
 target_include_directories(gpulang_compiler PUBLIC
     ${CMAKE_CURRENT_BINARY_DIR}
@@ -165,8 +200,12 @@ fips_dir(generated)
         types.h
     )
 
+
 target_compile_features(gpulang_compiler PUBLIC cxx_std_20)
-fips_deps(gpulang_util glslang)
+target_include_directories(gpulang_compiler PRIVATE
+    ${Vulkan_INCLUDE_DIR}
+)
+fips_deps(gpulang_util Vulkan::SPIRV-Tools SPIRV-Tools-opt)
 SET_DEFAULT_OUTPUT(gpulang_compiler)
 
 IF (MSVC11)

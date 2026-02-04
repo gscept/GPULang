@@ -17,9 +17,11 @@ GPULang also offers a reflection API, which allows an application to reason abou
 
 GPULang uses the following libraries (which are either copied or downloaded through fips):
 
-* [[spv-tools]](https://github.com/KhronosGroup/SPIRV-Tools)
 * [[argh]](https://github.com/adishavit/argh)
 * [[lsp-framework]](https://github.com/leon-bckl/lsp-framework)
+
+GPULang also needs at least Vulkan version 1.2:
+* [[Vulkan SDK]](https://www.vulkan.org/tools#download-these-essential-development-tools)
 
 ### Webpage
 [[GPULang]](https://gscept.github.io/GPULang/)
