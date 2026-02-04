@@ -5,7 +5,7 @@
 fips_begin_app(gpulang_server cmdline)
     target_compile_options(gpulang_server PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/W3>)
     target_include_directories(gpulang_server PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-	    fips_deps(gpulang_compiler lsp Vulkan::SPIRV-Tools SPIRV-Tools-opt)
+	    fips_deps(gpulang_compiler lsp SPIRV-Tools-opt Vulkan::SPIRV-Tools)
     if (WIN32)
         find_library(WSOCK32_LIBRARY wsock32)
         find_library(WS2_32_LIBRARY ws2_32)

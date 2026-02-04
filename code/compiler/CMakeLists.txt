@@ -170,7 +170,7 @@ target_compile_features(gpulang_compiler PUBLIC cxx_std_20)
 target_include_directories(gpulang_compiler PRIVATE
     ${Vulkan_INCLUDE_DIR}
 )
-fips_deps(gpulang_util Vulkan::SPIRV-Tools SPIRV-Tools-opt)
+fips_deps(gpulang_util SPIRV-Tools-opt Vulkan::SPIRV-Tools)
 SET_DEFAULT_OUTPUT(gpulang_compiler)
 
 IF (MSVC11)
