@@ -5,7 +5,7 @@
 fips_begin_app(gpulangc cmdline)
     target_compile_options(gpulangc PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/W3>)
     target_include_directories(gpulangc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-    fips_deps(gpulang_compiler)
+		    fips_deps(gpulang_compiler Vulkan::SPIRV-Tools SPIRV-Tools-opt)
     if(FIPS_LINUX OR FIPS_APPLE)
         fips_deps(stdc++fs)
     endif()
