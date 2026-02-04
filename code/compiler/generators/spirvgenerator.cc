@@ -6952,7 +6952,12 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         {
             // Run spv validation for internal consistency and fault testing
             spv_const_binary_t constBin = { spvBinary.data(), spvBinary.size() };
-            res = spvValidate(spvContext, &constBin, &diag);
+
+            // Use this to support out variables being pointers to function OpVariable
+            spv_validator_options options = spvValidatorOptionsCreate();
+            spvValidatorOptionsSetRelaxLogicalPointer(options, true);
+
+            res = spvValidateWithOptions(spvContext, options, &constBin, &diag);
             if (res != SPV_SUCCESS)
             {
                 if (diag != nullptr)
