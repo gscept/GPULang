@@ -134,7 +134,7 @@ jobs:
         run: |
           cd vscode-extension
           TAG=${GITHUB_REF#refs/tags/}
-          npx "vscode/vsce publish ${TAG#v}
+          npx @vscode/vsce publish ${TAG#v}
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
