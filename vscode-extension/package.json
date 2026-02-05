@@ -1,7 +1,7 @@
 {
 	"name": "GPULang",
 	"description": "GPULang Language Server",
-	"publisher": "gustavsterbrant",
+	"publisher": "GustavSterbrantAzureDevops",
 	"license": "MIT",
 	"version": "1.0.0",
 	"icon": "temp-icon.png",
