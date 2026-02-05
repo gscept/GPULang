@@ -648,6 +648,8 @@ SPV_ENUM(GroupNonUniformBallot, 64)
 SPV_ENUM(GroupNonUniformQuad, 68)
 SPV_ENUM(ShaderLayer, 69)
 SPV_ENUM(ShaderViewportIndex, 70)
+SPV_ENUM(VariablePointersStorageBuffer, 4441)
+SPV_ENUM(VariablePointers, 4442)
 SPV_ENUM(MeshShadingEXT, 5283)
 SPV_ENUM(RayTracingKHR, 4479)
 SPV_ENUM(Int64ImageEXT, 5016)
@@ -1097,6 +1099,7 @@ SPV_ENUM(SPV_EXT_shader_viewport_index_layer, 2)
 SPV_ENUM(SPV_KHR_physical_storage_buffer, 3)
 SPV_ENUM(SPV_KHR_storage_buffer_storage_class, 4)
 SPV_ENUM(SPV_KHR_ray_tracing, 5)
+SPV_ENUM(SPV_KHR_variable_pointers, 6)
 
 static const unsigned INVALID_ARG = 0xFFFFFFFF;
 
@@ -6772,6 +6775,8 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
         this->writer->Capability(extensionEnumMap[(ProgramInstance::__Resolved::EntryType)mapping]);
         this->writer->Extension(SPV_KHR_storage_buffer_storage_class);
+        this->writer->Extension(SPV_KHR_variable_pointers);
+        this->writer->Capability(Capabilities::VariablePointers);
 
         if (compiler->target.supportsPhysicalAddressing)
         {
