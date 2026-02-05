@@ -1386,7 +1386,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture1D_texture.type.modifierValues = TextureLoad_Texture1D_texture_modifierValues;
     TextureLoad_Texture1D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureLoad_Texture1D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_Texture1D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture1D.name = TextureLoad_Texture1D_name;
     TextureLoad_Texture1D.backendIndex = 2378;
     TextureLoad_Texture1D.returnType = Type::FullType { Float32x4Type.name };
@@ -1410,7 +1410,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture1D_mip.name = "mip"_c;
     TextureLoadMip_Texture1D_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture1D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_Texture1D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture1D.name = TextureLoadMip_Texture1D_name;
     TextureLoadMip_Texture1D.backendIndex = 2379;
     TextureLoadMip_Texture1D.returnType = Type::FullType { Float32x4Type.name };
@@ -1435,7 +1435,7 @@ void SetupIntrinsics11()
     TextureStore_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureStore_Texture1D_value.name = "value"_c;
     TextureStore_Texture1D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture1D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_Texture1D.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture1D.name = TextureStore_Texture1D_name;
     TextureStore_Texture1D.backendIndex = 2380;
     TextureStore_Texture1D.returnType = Type::FullType { VoidType.name };
@@ -1462,7 +1462,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture1D_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture1D_value.name = "value"_c;
     TextureStoreMip_Texture1D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture1D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_Texture1D.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture1D.name = TextureStoreMip_Texture1D_name;
     TextureStoreMip_Texture1D.backendIndex = 2381;
     TextureStoreMip_Texture1D.returnType = Type::FullType { VoidType.name };
@@ -1486,7 +1486,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture2D_texture.type.modifierValues = TextureLoad_Texture2D_texture_modifierValues;
     TextureLoad_Texture2D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoad_Texture2D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_Texture2D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2D.name = TextureLoad_Texture2D_name;
     TextureLoad_Texture2D.backendIndex = 2382;
     TextureLoad_Texture2D.returnType = Type::FullType { Float32x4Type.name };
@@ -1510,7 +1510,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture2D_mip.name = "mip"_c;
     TextureLoadMip_Texture2D_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_Texture2D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2D.name = TextureLoadMip_Texture2D_name;
     TextureLoadMip_Texture2D.backendIndex = 2383;
     TextureLoadMip_Texture2D.returnType = Type::FullType { Float32x4Type.name };
@@ -1535,7 +1535,7 @@ void SetupIntrinsics11()
     TextureStore_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture2D_value.name = "value"_c;
     TextureStore_Texture2D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_Texture2D.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2D.name = TextureStore_Texture2D_name;
     TextureStore_Texture2D.backendIndex = 2384;
     TextureStore_Texture2D.returnType = Type::FullType { VoidType.name };
@@ -1562,7 +1562,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture2D_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture2D_value.name = "value"_c;
     TextureStoreMip_Texture2D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_Texture2D.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2D.name = TextureStoreMip_Texture2D_name;
     TextureStoreMip_Texture2D.backendIndex = 2385;
     TextureStoreMip_Texture2D.returnType = Type::FullType { VoidType.name };
@@ -1586,7 +1586,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture3D_texture.type.modifierValues = TextureLoad_Texture3D_texture_modifierValues;
     TextureLoad_Texture3D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_Texture3D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_Texture3D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture3D.name = TextureLoad_Texture3D_name;
     TextureLoad_Texture3D.backendIndex = 2386;
     TextureLoad_Texture3D.returnType = Type::FullType { Float32x4Type.name };
@@ -1610,7 +1610,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture3D_mip.name = "mip"_c;
     TextureLoadMip_Texture3D_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture3D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_Texture3D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture3D.name = TextureLoadMip_Texture3D_name;
     TextureLoadMip_Texture3D.backendIndex = 2387;
     TextureLoadMip_Texture3D.returnType = Type::FullType { Float32x4Type.name };
@@ -1635,7 +1635,7 @@ void SetupIntrinsics11()
     TextureStore_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture3D_value.name = "value"_c;
     TextureStore_Texture3D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture3D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_Texture3D.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture3D.name = TextureStore_Texture3D_name;
     TextureStore_Texture3D.backendIndex = 2388;
     TextureStore_Texture3D.returnType = Type::FullType { VoidType.name };
@@ -1662,7 +1662,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture3D_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture3D_value.name = "value"_c;
     TextureStoreMip_Texture3D_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture3D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_Texture3D.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture3D.name = TextureStoreMip_Texture3D_name;
     TextureStoreMip_Texture3D.backendIndex = 2389;
     TextureStoreMip_Texture3D.returnType = Type::FullType { VoidType.name };
@@ -1686,7 +1686,7 @@ void SetupIntrinsics11()
     TextureLoad_TextureCube_texture.type.modifierValues = TextureLoad_TextureCube_texture_modifierValues;
     TextureLoad_TextureCube_coordinate.name = "coordinate"_c;
     TextureLoad_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_TextureCube.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_TextureCube.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_TextureCube.name = TextureLoad_TextureCube_name;
     TextureLoad_TextureCube.backendIndex = 2390;
     TextureLoad_TextureCube.returnType = Type::FullType { Float32x4Type.name };
@@ -1710,7 +1710,7 @@ void SetupIntrinsics11()
     TextureLoadMip_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_TextureCube_mip.name = "mip"_c;
     TextureLoadMip_TextureCube_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_TextureCube.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_TextureCube.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_TextureCube.name = TextureLoadMip_TextureCube_name;
     TextureLoadMip_TextureCube.backendIndex = 2391;
     TextureLoadMip_TextureCube.returnType = Type::FullType { Float32x4Type.name };
@@ -1735,7 +1735,7 @@ void SetupIntrinsics11()
     TextureStore_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_TextureCube_value.name = "value"_c;
     TextureStore_TextureCube_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_TextureCube.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_TextureCube.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_TextureCube.name = TextureStore_TextureCube_name;
     TextureStore_TextureCube.backendIndex = 2392;
     TextureStore_TextureCube.returnType = Type::FullType { VoidType.name };
@@ -1762,7 +1762,7 @@ void SetupIntrinsics11()
     TextureStoreMip_TextureCube_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_TextureCube_value.name = "value"_c;
     TextureStoreMip_TextureCube_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_TextureCube.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_TextureCube.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_TextureCube.name = TextureStoreMip_TextureCube_name;
     TextureStoreMip_TextureCube.backendIndex = 2393;
     TextureStoreMip_TextureCube.returnType = Type::FullType { VoidType.name };
@@ -1786,7 +1786,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture1DArray_texture.type.modifierValues = TextureLoad_Texture1DArray_texture_modifierValues;
     TextureLoad_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoad_Texture1DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_Texture1DArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture1DArray.name = TextureLoad_Texture1DArray_name;
     TextureLoad_Texture1DArray.backendIndex = 2394;
     TextureLoad_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
@@ -1810,7 +1810,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture1DArray_mip.name = "mip"_c;
     TextureLoadMip_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture1DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_Texture1DArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture1DArray.name = TextureLoadMip_Texture1DArray_name;
     TextureLoadMip_Texture1DArray.backendIndex = 2395;
     TextureLoadMip_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
@@ -1835,7 +1835,7 @@ void SetupIntrinsics11()
     TextureStore_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture1DArray_value.name = "value"_c;
     TextureStore_Texture1DArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture1DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_Texture1DArray.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture1DArray.name = TextureStore_Texture1DArray_name;
     TextureStore_Texture1DArray.backendIndex = 2396;
     TextureStore_Texture1DArray.returnType = Type::FullType { VoidType.name };
@@ -1862,7 +1862,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture1DArray_value.name = "value"_c;
     TextureStoreMip_Texture1DArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture1DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_Texture1DArray.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture1DArray.name = TextureStoreMip_Texture1DArray_name;
     TextureStoreMip_Texture1DArray.backendIndex = 2397;
     TextureStoreMip_Texture1DArray.returnType = Type::FullType { VoidType.name };
@@ -1886,7 +1886,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture2DArray_texture.type.modifierValues = TextureLoad_Texture2DArray_texture_modifierValues;
     TextureLoad_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_Texture2DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_Texture2DArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DArray.name = TextureLoad_Texture2DArray_name;
     TextureLoad_Texture2DArray.backendIndex = 2398;
     TextureLoad_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
@@ -1910,7 +1910,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture2DArray_mip.name = "mip"_c;
     TextureLoadMip_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_Texture2DArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DArray.name = TextureLoadMip_Texture2DArray_name;
     TextureLoadMip_Texture2DArray.backendIndex = 2399;
     TextureLoadMip_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
@@ -1935,7 +1935,7 @@ void SetupIntrinsics11()
     TextureStore_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture2DArray_value.name = "value"_c;
     TextureStore_Texture2DArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_Texture2DArray.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DArray.name = TextureStore_Texture2DArray_name;
     TextureStore_Texture2DArray.backendIndex = 2400;
     TextureStore_Texture2DArray.returnType = Type::FullType { VoidType.name };
@@ -1962,7 +1962,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture2DArray_value.name = "value"_c;
     TextureStoreMip_Texture2DArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_Texture2DArray.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DArray.name = TextureStoreMip_Texture2DArray_name;
     TextureStoreMip_Texture2DArray.backendIndex = 2401;
     TextureStoreMip_Texture2DArray.returnType = Type::FullType { VoidType.name };
@@ -1986,7 +1986,7 @@ void SetupIntrinsics11()
     TextureLoad_TextureCubeArray_texture.type.modifierValues = TextureLoad_TextureCubeArray_texture_modifierValues;
     TextureLoad_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureLoad_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureLoad_TextureCubeArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_TextureCubeArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_TextureCubeArray.name = TextureLoad_TextureCubeArray_name;
     TextureLoad_TextureCubeArray.backendIndex = 2402;
     TextureLoad_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
@@ -2010,7 +2010,7 @@ void SetupIntrinsics11()
     TextureLoadMip_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureLoadMip_TextureCubeArray_mip.name = "mip"_c;
     TextureLoadMip_TextureCubeArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_TextureCubeArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_TextureCubeArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_TextureCubeArray.name = TextureLoadMip_TextureCubeArray_name;
     TextureLoadMip_TextureCubeArray.backendIndex = 2403;
     TextureLoadMip_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
@@ -2035,7 +2035,7 @@ void SetupIntrinsics11()
     TextureStore_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureStore_TextureCubeArray_value.name = "value"_c;
     TextureStore_TextureCubeArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_TextureCubeArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_TextureCubeArray.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_TextureCubeArray.name = TextureStore_TextureCubeArray_name;
     TextureStore_TextureCubeArray.backendIndex = 2404;
     TextureStore_TextureCubeArray.returnType = Type::FullType { VoidType.name };
@@ -2062,7 +2062,7 @@ void SetupIntrinsics11()
     TextureStoreMip_TextureCubeArray_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_TextureCubeArray_value.name = "value"_c;
     TextureStoreMip_TextureCubeArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_TextureCubeArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_TextureCubeArray.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_TextureCubeArray.name = TextureStoreMip_TextureCubeArray_name;
     TextureStoreMip_TextureCubeArray.backendIndex = 2405;
     TextureStoreMip_TextureCubeArray.returnType = Type::FullType { VoidType.name };
@@ -2086,7 +2086,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture2DMS_texture.type.modifierValues = TextureLoad_Texture2DMS_texture_modifierValues;
     TextureLoad_Texture2DMS_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoad_Texture2DMS.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_Texture2DMS.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DMS.name = TextureLoad_Texture2DMS_name;
     TextureLoad_Texture2DMS.backendIndex = 2406;
     TextureLoad_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
@@ -2110,7 +2110,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture2DMS_mip.name = "mip"_c;
     TextureLoadMip_Texture2DMS_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2DMS.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_Texture2DMS.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DMS.name = TextureLoadMip_Texture2DMS_name;
     TextureLoadMip_Texture2DMS.backendIndex = 2407;
     TextureLoadMip_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
@@ -2135,7 +2135,7 @@ void SetupIntrinsics11()
     TextureStore_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture2DMS_value.name = "value"_c;
     TextureStore_Texture2DMS_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2DMS.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_Texture2DMS.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DMS.name = TextureStore_Texture2DMS_name;
     TextureStore_Texture2DMS.backendIndex = 2408;
     TextureStore_Texture2DMS.returnType = Type::FullType { VoidType.name };
@@ -2162,7 +2162,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture2DMS_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture2DMS_value.name = "value"_c;
     TextureStoreMip_Texture2DMS_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2DMS.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_Texture2DMS.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DMS.name = TextureStoreMip_Texture2DMS_name;
     TextureStoreMip_Texture2DMS.backendIndex = 2409;
     TextureStoreMip_Texture2DMS.returnType = Type::FullType { VoidType.name };
@@ -2186,7 +2186,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture2DMSArray_texture.type.modifierValues = TextureLoad_Texture2DMSArray_texture_modifierValues;
     TextureLoad_Texture2DMSArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_Texture2DMSArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureLoad_Texture2DMSArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DMSArray.name = TextureLoad_Texture2DMSArray_name;
     TextureLoad_Texture2DMSArray.backendIndex = 2410;
     TextureLoad_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
@@ -2210,7 +2210,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture2DMSArray_mip.name = "mip"_c;
     TextureLoadMip_Texture2DMSArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2DMSArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureLoadMip_Texture2DMSArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DMSArray.name = TextureLoadMip_Texture2DMSArray_name;
     TextureLoadMip_Texture2DMSArray.backendIndex = 2411;
     TextureLoadMip_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
@@ -2235,7 +2235,7 @@ void SetupIntrinsics11()
     TextureStore_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture2DMSArray_value.name = "value"_c;
     TextureStore_Texture2DMSArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2DMSArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
+    TextureStore_Texture2DMSArray.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DMSArray.name = TextureStore_Texture2DMSArray_name;
     TextureStore_Texture2DMSArray.backendIndex = 2412;
     TextureStore_Texture2DMSArray.returnType = Type::FullType { VoidType.name };
@@ -2262,7 +2262,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture2DMSArray_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture2DMSArray_value.name = "value"_c;
     TextureStoreMip_Texture2DMSArray_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2DMSArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
+    TextureStoreMip_Texture2DMSArray.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DMSArray.name = TextureStoreMip_Texture2DMSArray_name;
     TextureStoreMip_Texture2DMSArray.backendIndex = 2413;
     TextureStoreMip_Texture2DMSArray.returnType = Type::FullType { VoidType.name };

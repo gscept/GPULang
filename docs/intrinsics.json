@@ -964,7 +964,7 @@
     },
     {
         "name": "blasGetGeometryIndex",
-        "documentation": "Get the ray tracing built-in value for blasGetGeometryIndex",
+        "documentation": "Get the bottom-level acceleration structure geometry (mesh) index",
         "target_support": [
             1,
             1,
@@ -979,7 +979,7 @@
     },
     {
         "name": "blasGetPrimitiveIndex",
-        "documentation": "Get the ray tracing built-in value for blasGetPrimitiveIndex",
+        "documentation": "Get the bottom-level acceleration structure primitive (triangle) index",
         "target_support": [
             1,
             1,
@@ -3184,7 +3184,7 @@
     },
     {
         "name": "rayGetFlags",
-        "documentation": "Get the ray tracing built-in value for rayGetFlags",
+        "documentation": "Get the ray flags",
         "target_support": [
             1,
             1,
@@ -3199,7 +3199,7 @@
     },
     {
         "name": "rayGetHitDistance",
-        "documentation": "Get the ray tracing built-in value for rayGetHitDistance",
+        "documentation": "Get the hit distance of the ray",
         "target_support": [
             1,
             1,
@@ -3214,7 +3214,7 @@
     },
     {
         "name": "rayGetHitKind",
-        "documentation": "Get the ray tracing built-in value for rayGetHitKind",
+        "documentation": "Get the hit kind of the ray",
         "target_support": [
             1,
             1,
@@ -3229,7 +3229,7 @@
     },
     {
         "name": "rayGetLaunchIndex",
-        "documentation": "Get the ray tracing built-in value for rayGetLaunchIndex",
+        "documentation": "Get the ray launch index",
         "target_support": [
             1,
             1,
@@ -3244,7 +3244,7 @@
     },
     {
         "name": "rayGetLaunchSize",
-        "documentation": "Get the ray tracing built-in value for rayGetLaunchSize",
+        "documentation": "Get the ray launch size",
         "target_support": [
             1,
             1,
@@ -3259,7 +3259,7 @@
     },
     {
         "name": "rayGetObjectDirection",
-        "documentation": "Get the ray tracing built-in value for rayGetObjectDirection",
+        "documentation": "Get the object space ray direction",
         "target_support": [
             1,
             1,
@@ -3274,7 +3274,7 @@
     },
     {
         "name": "rayGetObjectOrigin",
-        "documentation": "Get the ray tracing built-in value for rayGetObjectOrigin",
+        "documentation": "Get the object space ray origin",
         "target_support": [
             1,
             1,
@@ -3289,7 +3289,7 @@
     },
     {
         "name": "rayGetTMax",
-        "documentation": "Get the ray tracing built-in value for rayGetTMax",
+        "documentation": "Get the maximum t value of the ray",
         "target_support": [
             1,
             1,
@@ -3304,7 +3304,7 @@
     },
     {
         "name": "rayGetTMin",
-        "documentation": "Get the ray tracing built-in value for rayGetTMin",
+        "documentation": "Get the minimum t value of the ray",
         "target_support": [
             1,
             1,
@@ -3319,7 +3319,7 @@
     },
     {
         "name": "rayGetWorldDirection",
-        "documentation": "Get the ray tracing built-in value for rayGetWorldDirection",
+        "documentation": "Get the world space ray direction",
         "target_support": [
             1,
             1,
@@ -3334,7 +3334,7 @@
     },
     {
         "name": "rayGetWorldOrigin",
-        "documentation": "Get the ray tracing built-in value for rayGetWorldOrigin",
+        "documentation": "Get the world space ray origin",
         "target_support": [
             1,
             1,
@@ -4369,7 +4369,7 @@
     },
     {
         "name": "textureAtomicAdd",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically add to a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -4486,7 +4486,7 @@
     },
     {
         "name": "textureAtomicAnd",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically AND a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -4603,7 +4603,7 @@
     },
     {
         "name": "textureAtomicCompareExchange",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically compare and exchange a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -4720,7 +4720,7 @@
     },
     {
         "name": "textureAtomicExchange",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically exchange a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -4879,7 +4879,7 @@
     },
     {
         "name": "textureAtomicLoad",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically load a texel value from a texture",
         "target_support": [
             1,
             1,
@@ -5038,7 +5038,7 @@
     },
     {
         "name": "textureAtomicMax",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically set the maximum of a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -5155,7 +5155,7 @@
     },
     {
         "name": "textureAtomicMin",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically set the minimum of a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -5272,7 +5272,7 @@
     },
     {
         "name": "textureAtomicOr",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically OR a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -5389,7 +5389,7 @@
     },
     {
         "name": "textureAtomicStore",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically store a texel value to a texture",
         "target_support": [
             1,
             1,
@@ -5548,7 +5548,7 @@
     },
     {
         "name": "textureAtomicSubtract",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically subtract from a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -5665,7 +5665,7 @@
     },
     {
         "name": "textureAtomicXor",
-        "documentation": "Get a pointer to a texel. This enables it to be used for atomic operations.",
+        "documentation": "Atomically XOR a texel value in a texture",
         "target_support": [
             1,
             1,
@@ -6085,7 +6085,7 @@
     },
     {
         "name": "textureLoad",
-        "documentation": "Load a single texel without using a sampler value at an absolute non-normalized coordinate",
+        "documentation": "Load a single texel at an absolute non-normalized coordinate",
         "target_support": [
             1,
             1,
@@ -6124,7 +6124,7 @@
     },
     {
         "name": "textureLoadMip",
-        "documentation": "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level",
+        "documentation": "Load a single texel at an absolute non-normalized coordinate at a specific mip level",
         "target_support": [
             1,
             1,
@@ -7381,7 +7381,7 @@
     },
     {
         "name": "textureStore",
-        "documentation": "Store a single texel without using a sampler value at an absolute non-normalized coordinate",
+        "documentation": "Store a single texel at an absolute non-normalized coordinate",
         "target_support": [
             1,
             1,
@@ -7420,7 +7420,7 @@
     },
     {
         "name": "textureStoreMip",
-        "documentation": "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level",
+        "documentation": "Store a single texel at an absolute non-normalized coordinate at a specific mip level",
         "target_support": [
             1,
             1,
@@ -7459,7 +7459,7 @@
     },
     {
         "name": "tlasGetInstanceCustomIndex",
-        "documentation": "Get the ray tracing built-in value for tlasGetInstanceCustomIndex",
+        "documentation": "Get the top-level acceleration structure instance custom index",
         "target_support": [
             1,
             1,
@@ -7474,7 +7474,7 @@
     },
     {
         "name": "tlasGetInstanceIndex",
-        "documentation": "Get the ray tracing built-in value for tlasGetInstanceIndex",
+        "documentation": "Get the top-level acceleration structure instance index",
         "target_support": [
             1,
             1,
@@ -7489,7 +7489,7 @@
     },
     {
         "name": "tlasGetObjectToWorld",
-        "documentation": "Get the ray tracing built-in value for tlasGetObjectToWorld",
+        "documentation": "Get the object-to-world transformation matrix of the top-level acceleration structure instance",
         "target_support": [
             1,
             1,
@@ -7504,7 +7504,7 @@
     },
     {
         "name": "tlasGetWorldToObject",
-        "documentation": "Get the ray tracing built-in value for tlasGetWorldToObject",
+        "documentation": "Get the world-to-object transformation matrix of the top-level acceleration structure instance",
         "target_support": [
             1,
             1,

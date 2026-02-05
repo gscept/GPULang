@@ -4710,9 +4710,9 @@ def generate_types():
             coordinate_argument_name = f'{function_name}_coordinate'
 
             if hasStore:
-                doc = f'Store a single texel without using a sampler value at an absolute non-normalized coordinate'
+                doc = f'Store a single texel at an absolute non-normalized coordinate'
             else:
-                doc = f'Load a single texel without using a sampler value at an absolute non-normalized coordinate'
+                doc = f'Load a single texel at an absolute non-normalized coordinate'
             if hasMip:
                 doc += ' at a specific mip level'
 
@@ -5043,8 +5043,21 @@ def generate_types():
                             functions.append(fun)
 
     # TODO: Implement correctly with different types of textures and value combinations
+    docs = [
+        "Atomically load a texel value from a texture",
+        "Atomically store a texel value to a texture",
+        "Atomically exchange a texel value in a texture",
+        "Atomically compare and exchange a texel value in a texture",
+        "Atomically add to a texel value in a texture",
+        "Atomically subtract from a texel value in a texture",
+        "Atomically set the minimum of a texel value in a texture",
+        "Atomically set the maximum of a texel value in a texture",
+        "Atomically AND a texel value in a texture",
+        "Atomically OR a texel value in a texture",
+        "Atomically XOR a texel value in a texture"
+    ]
     intrinsics = ['AtomicLoad', 'AtomicStore', 'AtomicExchange', 'AtomicCompareExchange', 'AtomicAdd', 'AtomicSubtract', 'AtomicMin', 'AtomicMax', 'AtomicAnd', 'AtomicOr', 'AtomicXor']
-    for intrinsic in intrinsics:
+    for intrinsic, doc in zip(intrinsics, docs):
         for tex_type in texture_types_no_ms:
             for scalar_type in types:
                         
@@ -5064,7 +5077,7 @@ def generate_types():
                     decl_name = function_name,
                     api_name = f'texture{intrinsic}',
                     return_type = scalar_type,
-                    documentation = 'Get a pointer to a texel. This enables it to be used for atomic operations.',
+                    documentation = doc,
                     parameters = [
                         Variable(decl_name = texture_argument_name, api_name = "texture", type_name=tex_type, pointer=True, mutable=True, uniform=True),
                         Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[tex_type]),
@@ -5115,46 +5128,6 @@ def generate_types():
                 
                 fun.spirv = spirv_function
                 functions.append(fun)
-
-    # Since traceRay takes the payload as an argument, we let the compiler generate this intrinsic for every variable with rayPayload as storage.
-    #function_name = 'TraceRay'
-    #intrinsic = 'traceRay'
-    #fun = Function( 
-    #    decl_name = function_name,
-    #    api_name = intrinsic,
-    #    return_type = 'Void',
-    #    documentation = 'Trace a ray through a raytracing acceleration structure',
-    #    parameters = [
-    #        Variable(decl_name = "bvh", api_name = "bvh", type_name="AccelerationStructure", pointer=True, uniform=True),
-    #        Variable(decl_name = "flags", api_name = "flags", type_name="UInt32"),
-    #        Variable(decl_name = "mask", api_name = "mask", type_name="UInt32"),
-    #        Variable(decl_name = "shaderTableOffset", api_name = "shaderTableOffset", type_name="UInt32"),
-    #        Variable(decl_name = "shaderTableStride", api_name = "shaderTableStride", type_name="UInt32"),
-    #        Variable(decl_name = "missShaderIndex", api_name = "missShaderIndex", type_name="UInt32"),
-    #        Variable(decl_name = "rayOrigin", api_name = "rayOrigin", type_name="Float32x3"),
-    #        Variable(decl_name = "rayDirection", api_name = "rayDirection", type_name="Float32x3"),
-    #        Variable(decl_name = "rayTMin", api_name = "rayTMin", type_name="Float32"),
-    #        Variable(decl_name = "rayTMax", api_name = "rayTMax", type_name="Float32"),
-    #    ]
-    #)
-#
-    #spirv_function = ''
-    #spirv_function += '    g->writer->Capability(Capabilities::RayTracingKHR);\n'
-    #spirv_function += '    SPIRVResult bvh = LoadValueSPIRV(c, g, args[0]);\n'
-    #spirv_function += '    SPIRVResult flags = LoadValueSPIRV(c, g, args[1]);\n'
-    #spirv_function += '    SPIRVResult mask = LoadValueSPIRV(c, g, args[2]);\n'
-    #spirv_function += '    SPIRVResult shaderTableOffset = LoadValueSPIRV(c, g, args[3]);\n'
-    #spirv_function += '    SPIRVResult shaderTableStride = LoadValueSPIRV(c, g, args[4]);\n'
-    #spirv_function += '    SPIRVResult missShaderIndex = LoadValueSPIRV(c, g, args[5]);\n'
-    #spirv_function += '    SPIRVResult rayOrigin = LoadValueSPIRV(c, g, args[6]);\n'
-    #spirv_function += '    SPIRVResult rayDirection = LoadValueSPIRV(c, g, args[7]);\n'
-    #spirv_function += '    SPIRVResult rayTMin = LoadValueSPIRV(c, g, args[8]);\n'
-    #spirv_function += '    SPIRVResult rayTMax = LoadValueSPIRV(c, g, args[9]);\n'
-    #spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpTraceRayKHR, SPVWriter::Section::LocalFunction, returnType, bvh, flags, mask, shaderTableOffset, shaderTableStride, missShaderIndex, rayOrigin, rayTMin, rayDirection, rayTMax, g->rayPayload);\n'
-    #spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
-    #
-    #fun.spirv = spirv_function
-    #functions.append(fun)
 
     function_name = "ExportRayIntersection"
     intrinsic = "exportRayIntersection"
@@ -5295,7 +5268,7 @@ def generate_types():
     ]
 
 
-    for name, return_type, spirv_builtin, variable_name in zip(ray_tracing_getters, ray_tracing_return_types, ray_tracing_spirv_builtins, ray_tracing_variable_names):
+    for name, return_type, spirv_builtin, variable_name, doc in zip(ray_tracing_getters, ray_tracing_return_types, ray_tracing_spirv_builtins, ray_tracing_variable_names, ray_tracing_getter_docs):
         function_name = name
 
         intrinsic = name
@@ -5303,7 +5276,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = return_type,
-            documentation = f'Get the ray tracing built-in value for {name}',
+            documentation = doc,
             parameters = []
         )
 

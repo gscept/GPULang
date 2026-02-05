@@ -89,7 +89,7 @@ void SetupIntrinsics17()
     TextureAtomicXor_TextureCubeArray_UInt64_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureAtomicXor_TextureCubeArray_UInt64_value.name = "value"_c;
     TextureAtomicXor_TextureCubeArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicXor_TextureCubeArray_UInt64.documentation = "Get a pointer to a texel. This enables it to be used for atomic operations."_c;
+    TextureAtomicXor_TextureCubeArray_UInt64.documentation = "Atomically XOR a texel value in a texture"_c;
     TextureAtomicXor_TextureCubeArray_UInt64.name = TextureAtomicXor_TextureCubeArray_UInt64_name;
     TextureAtomicXor_TextureCubeArray_UInt64.backendIndex = 3142;
     TextureAtomicXor_TextureCubeArray_UInt64.returnType = Type::FullType { UInt64Type.name };
@@ -128,7 +128,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&ExecuteCallable)->returnTypeSymbol = &VoidType;
 
     /// rayGetLaunchIndex
-    rayGetLaunchIndex.documentation = "Get the ray tracing built-in value for rayGetLaunchIndex"_c;
+    rayGetLaunchIndex.documentation = "Get the ray launch index"_c;
     rayGetLaunchIndex.name = rayGetLaunchIndex_name;
     rayGetLaunchIndex.backendIndex = 3145;
     rayGetLaunchIndex.returnType = Type::FullType { UInt32x3Type.name };
@@ -138,7 +138,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetLaunchIndex)->returnTypeSymbol = &UInt32x3Type;
 
     /// rayGetLaunchSize
-    rayGetLaunchSize.documentation = "Get the ray tracing built-in value for rayGetLaunchSize"_c;
+    rayGetLaunchSize.documentation = "Get the ray launch size"_c;
     rayGetLaunchSize.name = rayGetLaunchSize_name;
     rayGetLaunchSize.backendIndex = 3146;
     rayGetLaunchSize.returnType = Type::FullType { UInt32x3Type.name };
@@ -148,7 +148,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetLaunchSize)->returnTypeSymbol = &UInt32x3Type;
 
     /// blasGetPrimitiveIndex
-    blasGetPrimitiveIndex.documentation = "Get the ray tracing built-in value for blasGetPrimitiveIndex"_c;
+    blasGetPrimitiveIndex.documentation = "Get the bottom-level acceleration structure primitive (triangle) index"_c;
     blasGetPrimitiveIndex.name = blasGetPrimitiveIndex_name;
     blasGetPrimitiveIndex.backendIndex = 3147;
     blasGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
@@ -158,7 +158,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&blasGetPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
 
     /// blasGetGeometryIndex
-    blasGetGeometryIndex.documentation = "Get the ray tracing built-in value for blasGetGeometryIndex"_c;
+    blasGetGeometryIndex.documentation = "Get the bottom-level acceleration structure geometry (mesh) index"_c;
     blasGetGeometryIndex.name = blasGetGeometryIndex_name;
     blasGetGeometryIndex.backendIndex = 3148;
     blasGetGeometryIndex.returnType = Type::FullType { UInt32Type.name };
@@ -168,7 +168,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&blasGetGeometryIndex)->returnTypeSymbol = &UInt32Type;
 
     /// tlasGetInstanceIndex
-    tlasGetInstanceIndex.documentation = "Get the ray tracing built-in value for tlasGetInstanceIndex"_c;
+    tlasGetInstanceIndex.documentation = "Get the top-level acceleration structure instance index"_c;
     tlasGetInstanceIndex.name = tlasGetInstanceIndex_name;
     tlasGetInstanceIndex.backendIndex = 3149;
     tlasGetInstanceIndex.returnType = Type::FullType { UInt32Type.name };
@@ -178,7 +178,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&tlasGetInstanceIndex)->returnTypeSymbol = &UInt32Type;
 
     /// tlasGetInstanceCustomIndex
-    tlasGetInstanceCustomIndex.documentation = "Get the ray tracing built-in value for tlasGetInstanceCustomIndex"_c;
+    tlasGetInstanceCustomIndex.documentation = "Get the top-level acceleration structure instance custom index"_c;
     tlasGetInstanceCustomIndex.name = tlasGetInstanceCustomIndex_name;
     tlasGetInstanceCustomIndex.backendIndex = 3150;
     tlasGetInstanceCustomIndex.returnType = Type::FullType { UInt32Type.name };
@@ -188,7 +188,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&tlasGetInstanceCustomIndex)->returnTypeSymbol = &UInt32Type;
 
     /// rayGetWorldOrigin
-    rayGetWorldOrigin.documentation = "Get the ray tracing built-in value for rayGetWorldOrigin"_c;
+    rayGetWorldOrigin.documentation = "Get the world space ray origin"_c;
     rayGetWorldOrigin.name = rayGetWorldOrigin_name;
     rayGetWorldOrigin.backendIndex = 3151;
     rayGetWorldOrigin.returnType = Type::FullType { Float32x3Type.name };
@@ -198,7 +198,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetWorldOrigin)->returnTypeSymbol = &Float32x3Type;
 
     /// rayGetWorldDirection
-    rayGetWorldDirection.documentation = "Get the ray tracing built-in value for rayGetWorldDirection"_c;
+    rayGetWorldDirection.documentation = "Get the world space ray direction"_c;
     rayGetWorldDirection.name = rayGetWorldDirection_name;
     rayGetWorldDirection.backendIndex = 3152;
     rayGetWorldDirection.returnType = Type::FullType { Float32x3Type.name };
@@ -208,7 +208,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetWorldDirection)->returnTypeSymbol = &Float32x3Type;
 
     /// rayGetObjectOrigin
-    rayGetObjectOrigin.documentation = "Get the ray tracing built-in value for rayGetObjectOrigin"_c;
+    rayGetObjectOrigin.documentation = "Get the object space ray origin"_c;
     rayGetObjectOrigin.name = rayGetObjectOrigin_name;
     rayGetObjectOrigin.backendIndex = 3153;
     rayGetObjectOrigin.returnType = Type::FullType { Float32x3Type.name };
@@ -218,7 +218,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetObjectOrigin)->returnTypeSymbol = &Float32x3Type;
 
     /// rayGetObjectDirection
-    rayGetObjectDirection.documentation = "Get the ray tracing built-in value for rayGetObjectDirection"_c;
+    rayGetObjectDirection.documentation = "Get the object space ray direction"_c;
     rayGetObjectDirection.name = rayGetObjectDirection_name;
     rayGetObjectDirection.backendIndex = 3154;
     rayGetObjectDirection.returnType = Type::FullType { Float32x3Type.name };
@@ -228,7 +228,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetObjectDirection)->returnTypeSymbol = &Float32x3Type;
 
     /// rayGetTMin
-    rayGetTMin.documentation = "Get the ray tracing built-in value for rayGetTMin"_c;
+    rayGetTMin.documentation = "Get the minimum t value of the ray"_c;
     rayGetTMin.name = rayGetTMin_name;
     rayGetTMin.backendIndex = 3155;
     rayGetTMin.returnType = Type::FullType { Float32Type.name };
@@ -238,7 +238,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetTMin)->returnTypeSymbol = &Float32Type;
 
     /// rayGetTMax
-    rayGetTMax.documentation = "Get the ray tracing built-in value for rayGetTMax"_c;
+    rayGetTMax.documentation = "Get the maximum t value of the ray"_c;
     rayGetTMax.name = rayGetTMax_name;
     rayGetTMax.backendIndex = 3156;
     rayGetTMax.returnType = Type::FullType { Float32Type.name };
@@ -248,7 +248,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetTMax)->returnTypeSymbol = &Float32Type;
 
     /// rayGetFlags
-    rayGetFlags.documentation = "Get the ray tracing built-in value for rayGetFlags"_c;
+    rayGetFlags.documentation = "Get the ray flags"_c;
     rayGetFlags.name = rayGetFlags_name;
     rayGetFlags.backendIndex = 3157;
     rayGetFlags.returnType = Type::FullType { UInt32Type.name };
@@ -258,7 +258,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetFlags)->returnTypeSymbol = &UInt32Type;
 
     /// rayGetHitDistance
-    rayGetHitDistance.documentation = "Get the ray tracing built-in value for rayGetHitDistance"_c;
+    rayGetHitDistance.documentation = "Get the hit distance of the ray"_c;
     rayGetHitDistance.name = rayGetHitDistance_name;
     rayGetHitDistance.backendIndex = 3158;
     rayGetHitDistance.returnType = Type::FullType { Float32Type.name };
@@ -268,7 +268,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetHitDistance)->returnTypeSymbol = &Float32Type;
 
     /// rayGetHitKind
-    rayGetHitKind.documentation = "Get the ray tracing built-in value for rayGetHitKind"_c;
+    rayGetHitKind.documentation = "Get the hit kind of the ray"_c;
     rayGetHitKind.name = rayGetHitKind_name;
     rayGetHitKind.backendIndex = 3159;
     rayGetHitKind.returnType = Type::FullType { UInt32Type.name };
@@ -278,7 +278,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&rayGetHitKind)->returnTypeSymbol = &UInt32Type;
 
     /// tlasGetObjectToWorld
-    tlasGetObjectToWorld.documentation = "Get the ray tracing built-in value for tlasGetObjectToWorld"_c;
+    tlasGetObjectToWorld.documentation = "Get the object-to-world transformation matrix of the top-level acceleration structure instance"_c;
     tlasGetObjectToWorld.name = tlasGetObjectToWorld_name;
     tlasGetObjectToWorld.backendIndex = 3160;
     tlasGetObjectToWorld.returnType = Type::FullType { Float32x3x4Type.name };
@@ -288,7 +288,7 @@ void SetupIntrinsics17()
     Symbol::Resolved(&tlasGetObjectToWorld)->returnTypeSymbol = &Float32x3x4Type;
 
     /// tlasGetWorldToObject
-    tlasGetWorldToObject.documentation = "Get the ray tracing built-in value for tlasGetWorldToObject"_c;
+    tlasGetWorldToObject.documentation = "Get the world-to-object transformation matrix of the top-level acceleration structure instance"_c;
     tlasGetWorldToObject.name = tlasGetWorldToObject_name;
     tlasGetWorldToObject.backendIndex = 3161;
     tlasGetWorldToObject.returnType = Type::FullType { Float32x3x4Type.name };

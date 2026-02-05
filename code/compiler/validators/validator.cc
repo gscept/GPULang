@@ -2694,6 +2694,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 Function* traceRayFunction = Alloc<Function>();
                 traceRayFunction->name = "traceRay";
                 traceRayFunction->returnType = Type::FullType{ "void" };
+                traceRayFunction->documentation = TransientString("Trace a ray into the acceleration structure using payload of type ", var->type.ToString());
                 Symbol::Resolved(traceRayFunction)->isReentrant = true; // Mark as an entry point
 
                 TransientArray<Variable*> params(11);
@@ -3226,6 +3227,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 {
                     Function* storageFunction = Alloc<Function>();
                     storageFunction->name = "bufferStore";
+                    storageFunction->documentation = TransientString("Store a '", currentStructure->name, "' value into a pointer to a mutable buffer");
                     storageFunction->returnType = Type::FullType{ ConstantString("void") };
 
                     Variable* arg = Alloc<Variable>();
@@ -3253,6 +3255,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 {
                     Function* loadFunction = Alloc<Function>();
                     loadFunction->name = "bufferLoad";
+                    loadFunction->documentation = TransientString("Load a '", currentStructure->name, "' from a pointer to a buffer");
                     loadFunction->returnType = Type::FullType{currentStructure->name};
 
                     Variable* arg = Alloc<Variable>();
@@ -3276,6 +3279,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     {
                         Function* storageIndexedFunction = Alloc<Function>();
                         storageIndexedFunction->name = "bufferStore";
+                        storageIndexedFunction->documentation = TransientString("Store a '", currentStructure->name, "' value into a pointer to a mutable buffer at a certain index");
                         storageIndexedFunction->returnType = Type::FullType{ ConstantString("void") };
 
                         Variable* arg = Alloc<Variable>();
@@ -3309,6 +3313,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     {
                         Function* loadIndexedFunction = Alloc<Function>();
                         loadIndexedFunction->name = "bufferLoad";
+                        loadIndexedFunction->documentation = TransientString("Load a '", currentStructure->name, "' from a pointer to a buffer at a certain index");
                         loadIndexedFunction->returnType = Type::FullType{ currentStructure->name };
 
                         Variable* arg = Alloc<Variable>();
@@ -3339,6 +3344,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         getReferenceFunction->returnType = Type::FullType{ currentStructure->name, { Type::FullType::Modifier::Pointer }, { nullptr } };
                         getReferenceFunction->returnType.mut = true;
                         getReferenceFunction->returnTypeStorage = Storage::Uniform;
+                        getReferenceFunction->documentation = TransientString("Load reference to a '", currentStructure->name, "' from a pointer to a buffer at a certain index");
 
                         Variable* arg = Alloc<Variable>();
                         arg->name = "buffer";
