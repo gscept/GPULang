@@ -21,6 +21,10 @@
         "struct",
         "enum",
         "generate",
+        "ray_payload",
+        "ray_callable_data",
+        "ray_hit_attribute",
+        "address",
         "#include",
         "#pragma"
     ],
