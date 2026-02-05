@@ -2478,10 +2478,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
                 if (!varResolved->usageBits.flags.isEntryPointParameter)
                 {
-                    compiler->Error(Format("'out' storage only supported on functions marked as entry_point"), symbol);
-                    return false;
+                    varResolved->domain = Domain::Invocation; // All output values are per-invocation
+                    //compiler->Error(Format("'out' storage only supported on functions marked as entry_point"), symbol);
+                    //return false;
                 }
-                varResolved->domain = Domain::Invocation; // All output values are per-invocation
                 varResolved->storage = Storage::Output;
             }
             else if (attr->name == "ray_payload")
@@ -2587,23 +2587,24 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
+    uint16_t numArrays = 0;
+    uint16_t numPointers = 0;
+    for (Type::FullType::Modifier mod : var->type.modifiers)
+    {
+        if (mod == Type::FullType::Modifier::Array)
+            numArrays++;
+        else if (mod == Type::FullType::Modifier::Pointer)
+            numPointers++;
+    }
     if (compiler->IsScopeGlobal())
     {
-        uint16_t numArrays = 0;
-        uint16_t numPointers = 0;
         if (var->type.address)
         {
             compiler->Error(Format("Global variables may not have address space qualifier"), symbol);
             return false;
         }
 
-        for (Type::FullType::Modifier mod : var->type.modifiers)
-        {
-            if (mod == Type::FullType::Modifier::Array)
-                numArrays++;
-            else if (mod == Type::FullType::Modifier::Pointer)
-                numPointers++;
-        }
+    
         if (varResolved->storage == Storage::Uniform)
         {
             if (numArrays > 1)
@@ -2659,6 +2660,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
     else if (varResolved->usageBits.flags.isStructMember)
     {
+        if (numPointers > 0)
+        {
+            compiler->Error(Format("Struct members can not be pointers"), symbol);
+            return false;
+        }
+
         if (varResolved->storage != Storage::Default)
         {
             compiler->Error(Format("Storage type not allowed on struct member %s", type->name.c_str()), symbol);
@@ -2667,6 +2674,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
     else if (varResolved->usageBits.flags.isParameter)
     {
+        if (varResolved->storage != Storage::Uniform && varResolved->storage != Storage::Workgroup)
+        {
+            if (numPointers > 0)
+            {
+                compiler->Error(Format("Function parameters not uniform/workgroup can't be pointers"), symbol);
+                return false;
+            }
+        }
+
         if (varResolved->storage == Storage::Device)
         {
             if (!compiler->target.supportsGlobalDeviceStorage)
@@ -2771,6 +2787,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
     else // Local variable
     {
+        if (varResolved->storage != Storage::Uniform && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Workgroup)
+        {
+            if (numPointers > 0)
+            {
+                compiler->Error(Format("Variables not bound as uniform/inline can't be pointers"), symbol);
+                return false;
+            }
+        }
+
         // If the type is a pointer, we may have uniform and workgroup variables in a function
         if (firstIndirectionModifier == Type::FullType::Modifier::Pointer)
         {

@@ -694,7 +694,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
             // Copy messages from each generator, since they use their own allocator
             for (const auto& msg : generators[programIndex]->messages)
             {
-                this->messages.Append(FixedString(TStr(msg)));
+                this->messages.Append(FixedString(msg));
             }
         }
         DestroyAllocator(&allocators[programIndex]);

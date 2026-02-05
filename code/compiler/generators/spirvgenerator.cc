@@ -3866,6 +3866,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 
     if (funcResolved->isPrototype)
         return;
+
     generator->typeState.storage = SPIRVResult::Storage::Function;
     SPIRVResult returnName = GenerateTypeSPIRV(compiler, generator, func->returnType, static_cast<Type*>(funcResolved->returnTypeSymbol));
     generator->typeState.storage = SPIRVResult::Storage::Function;
@@ -3873,7 +3874,11 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     TStr typeArgs;
     TStr spvTypes;
 
+    TransientArray<SPIRVResult::Storage> paramStorages(func->parameters.size);
+    TransientArray<bool> paramLogicalAddressing(func->parameters.size);
     TransientArray<SPVArg> spvTypeArgs(func->parameters.size);
+    TransientArray<SPIRVResult> paramTypes(func->parameters.size);
+    TransientArray<TransientString> paramTypeNameStrings(func->parameters.size);
     for (auto param : func->parameters)
     {
         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
@@ -3885,17 +3890,45 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         else
         {
             SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
+            paramStorages.Append(storage);
+
+            bool logicallyAddressed =
+                storage == SPIRVResult::Storage::UniformConstant
+                || storage == SPIRVResult::Storage::Image
+                || storage == SPIRVResult::Storage::Sampler
+                || storage == SPIRVResult::Storage::MutableImage
+                || storage == SPIRVResult::Storage::StorageBuffer && paramResolved->typeSymbol->category == Type::Category::StructureCategory
+                || storage == SPIRVResult::Storage::Uniform && paramResolved->typeSymbol->category == Type::Category::StructureCategory
+                || storage == SPIRVResult::Storage::PushConstant
+                || storage == SPIRVResult::Storage::Output && !paramResolved->usageBits.flags.isEntryPointParameter
+                ;
+            paramLogicalAddressing.Append(logicallyAddressed);
+
             assert(generator->typeState.storage == SPIRVResult::Storage::Function);
             generator->typeState.storage = storage;
-            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
-            typeArgs.Append(ToSPIRVTypeString(compiler, generator, param->type, paramResolved->typeSymbol));
+
+            SPIRVResult typeName;
+            if (storage == SPIRVResult::Storage::Output && logicallyAddressed)
+            {
+                generator->typeState.storage = SPIRVResult::Storage::Function;
+                paramStorages.back() = SPIRVResult::Storage::Function;
+                typeName = GeneratePointerTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+            }
+            else
+            {
+                typeName = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+            }
+            paramTypes.Append(typeName);
+            auto name = ToSPIRVTypeString(compiler, generator, param->type, paramResolved->typeSymbol);
+            paramTypeNameStrings.Append(name);
             generator->typeState.storage = SPIRVResult::Storage::Function;
-            if (param != func->parameters.back())
-                typeArgs.Append(",");
 
             spvTypes.Append(SPVArg(typeName.typeName));
             spvTypes.Append(" ");
             spvTypeArgs.Append(SPVArg(typeName.typeName));
+            typeArgs.Append(name);
+            if (param != func->parameters.back())
+                typeArgs.Append(",");
         }
     }
     
@@ -3908,24 +3941,15 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     generator->writer->PushScope();
     if (!funcResolved->isEntryPoint)
     {
-        for (auto& param : func->parameters)
+        for (size_t i = 0; i < func->parameters.size; i++)
         {
+            const auto& param = func->parameters[i];
             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
-            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
-            generator->typeState.storage = storage;
-            SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
-            TransientString type = ToSPIRVTypeString(compiler, generator, param->type, paramResolved->typeSymbol);
-            generator->typeState.storage = SPIRVResult::Storage::Function;
+            SPIRVResult::Storage storage = paramStorages[i];
+            SPIRVResult varType = paramTypes[i];
+            TransientString paramTypeName = paramTypeNameStrings[i];
 
-            bool logicallyAddressed = 
-                storage == SPIRVResult::Storage::UniformConstant
-                || storage == SPIRVResult::Storage::Image
-                || storage == SPIRVResult::Storage::Sampler
-                || storage == SPIRVResult::Storage::MutableImage
-                || storage == SPIRVResult::Storage::StorageBuffer && paramResolved->typeSymbol->category == Type::Category::StructureCategory
-                || storage == SPIRVResult::Storage::Uniform && paramResolved->typeSymbol->category == Type::Category::StructureCategory
-                || storage == SPIRVResult::Storage::PushConstant;
-
+            bool logicallyAddressed = paramLogicalAddressing[i];
 
             // If value is not logically addressed (such arguments are uniform, which is treated as constants for storage), generate a variable that points to the function parameter
             if (!logicallyAddressed)
@@ -3934,7 +3958,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 
                 // Function parameters are values if they are not pointers
                 ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
-                TStr argPtrType = TStr::Compact("ptr_", type, "_", scope);
+                TStr argPtrType = TStr::Compact("ptr_", paramTypeName, "_", scope);
                 uint32_t typePtrName = GPULang::AddType(generator, argPtrType, OpTypePointer, ScopeToEnum(varType.scope), SPVArg{ varType.typeName });
                 uint32_t paramSymbol = generator->writer->MappedInstruction(OpVariable, SPVWriter::Section::VariableDeclarations, typePtrName, VariableStorage::Function, SPVComment(param->name.c_str()));
 
@@ -4603,9 +4627,28 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                 generator->literalExtract = true;
 
             SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
-            if (!resolvedCall->argumentTypes[i].IsPointer())
-                arg = LoadValueSPIRV(compiler, generator, arg);
+            Variable* param = resolvedCall->function->parameters[i];
+            Variable::__Resolved* paramResolved = Symbol::Resolved(param);
+            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
+            generator->typeState.storage = storage;
 
+            SPIRVResult typeName;
+            if (paramResolved->storage == Storage::Output)
+            {
+                arg.isValue = true;
+                storage = SPIRVResult::Storage::Function;
+                generator->typeState.storage = storage;
+                typeName = GeneratePointerTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+            }
+            else
+            {
+                typeName = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+            }
+
+            generator->typeState.storage = SPIRVResult::Storage::Function;
+
+            if (!resolvedCall->argumentTypes[i].IsPointer() && paramResolved->storage != Storage::Output)
+                arg = LoadValueSPIRV(compiler, generator, arg);
 
             generator->literalExtract = false;
 
@@ -4628,13 +4671,6 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                 }
             }
             
-            Variable* param = resolvedCall->function->parameters[i];
-            Variable::__Resolved* paramResolved = Symbol::Resolved(param);
-            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
-            generator->typeState.storage = storage;
-            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
-            generator->typeState.storage = SPIRVResult::Storage::Function;
-
             // If there is a storage mismatch between call and function, make a logical copy
             if (arg.isValue)
             {
@@ -6954,7 +6990,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
             // Use this to support out variables being pointers to function OpVariable
             spv_validator_options options = spvValidatorOptionsCreate();
-            spvValidatorOptionsSetRelaxLogicalPointer(options, true);
+            //spvValidatorOptionsSetRelaxLogicalPointer(options, true);
 
             res = spvValidateWithOptions(spvContext, options, &constBin, &diag);
             if (res != SPV_SUCCESS)

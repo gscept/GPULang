@@ -437,12 +437,12 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     {
         GPULangFile* file = it->second.f;
         assert(file != nullptr && file->contents != nullptr);
-        free(file->contents);
         
         FILE* f = fopen(file->path.c_str(), "rb");
         fseek(f, 0, SEEK_END);
         int size = ftell(f);
 
+        free(file->contents);
         file->contents = (char*)malloc(size);
         rewind(f);
         fread(file->contents, 1, size, f);

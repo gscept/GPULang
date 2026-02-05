@@ -2072,7 +2072,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
 
 //------------------------------------------------------------------------------
 /**
-    Runs compilation without output
+    Runs compilation without output, assumes allocators have been initialized externally
 */
 bool
 GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
