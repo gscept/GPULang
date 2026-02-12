@@ -31,7 +31,7 @@ namespace GPULang
 /**
 */
 uint32_t 
-FirstOne(uint32_t mask)
+FirstBitSetIndex(uint32_t mask)
 {
 #if __WIN32__
     DWORD count = 0;
@@ -164,7 +164,7 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
         {
             uint32_t mask = var->visibility.bits & bit;
             if (mask != 0x0)
-                accessBits |= shaderStageTable[FirstOne(mask)];
+                accessBits |= shaderStageTable[FirstBitSetIndex(mask)];
             bit = bit << 1;
         }
 
