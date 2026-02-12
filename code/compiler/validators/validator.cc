@@ -2787,13 +2787,22 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
     else // Local variable
     {
-        if (varResolved->storage != Storage::Uniform && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Workgroup)
+        if (varResolved->storage != Storage::Uniform && varResolved->storage != Storage::Workgroup)
         {
             if (numPointers > 0)
             {
-                compiler->Error(Format("Variables not bound as uniform/inline can't be pointers"), symbol);
-                return false;
+                if (varResolved->storage == Storage::Uniform && !var->type.mut)
+                {
+                    compiler->Error(Format("Variables pointing to uniform values must point into a 'mutable' type"), symbol);
+                    return false;
+                }
+                else
+                {
+                    compiler->Error(Format("Variables not bound as uniform/inline can't be pointers"), symbol);
+                    return false;
+                }
             }
+            
         }
 
         // If the type is a pointer, we may have uniform and workgroup variables in a function
@@ -4576,6 +4585,8 @@ bool
 Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
 {
     bool res = true;
+    if (symbol->resolved->unreachable)
+        return true;
     switch (symbol->symbolType)
     {
         case Symbol::ScopeStatementType:
