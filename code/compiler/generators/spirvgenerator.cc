@@ -3154,12 +3154,12 @@ else\
                 res[idx].typeName = baseType;
                 if (generator->linkDefineEvaluation)
                 {
-                    TStr symbolName = TStr::Compact(info.data.b ? "true" : "false", "_", "link_defined", generator->linkDefineSlot);
+                    TStr symbolName = TStr::Compact(info.data.b[idx] ? "true" : "false", "_", "link_defined", generator->linkDefineSlot);
                     res[idx].name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, info.data.b[idx] ? OpSpecConstantTrue : OpSpecConstantFalse, baseType);
                 }
                 else
                 {
-                    TStr symbolName = TStr::Compact(info.data.b ? "true" : "false");
+                    TStr symbolName = TStr::Compact(info.data.b[idx] ? "true" : "false");
                     res[idx].name = AddSymbol(generator, symbolName, SPVWriter::Section::Declarations, info.data.b[idx] ? OpConstantTrue : OpConstantFalse, baseType);
                 }
             }
