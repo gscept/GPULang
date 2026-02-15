@@ -1105,7 +1105,10 @@ def generate_types():
                         elif op.startswith('<<'):
                             spirv_op = 'OpShiftLeftLogical'
                         elif op.startswith('>>'):
-                            spirv_op = 'OpShiftRightLogical'
+                            if type.startswith('Int'):
+                                spirv_op = 'OpShiftRightArithmetic'
+                            else:
+                                spirv_op = 'OpShiftRightLogical'
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
                         spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'

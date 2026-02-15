@@ -225,11 +225,14 @@ struct Type : public Symbol
 
     static ConstantString CategoryToString(const Category& cat);
 
-    static TypeCode PromoteTypes(const TypeCode lhs, const TypeCode rhs, bool retainSign = false)
+    static TypeCode PromoteTypes(const TypeCode lhs, const TypeCode rhs, bool leftTypeDominant = false)
     {
+        if (leftTypeDominant)
+            return lhs;
         switch (lhs)
         {
             case TypeCode::UInt:
+                
                 switch (rhs)
                 {
                     case TypeCode::UInt:
@@ -237,9 +240,9 @@ struct Type : public Symbol
                     case TypeCode::UInt16:
                         return TypeCode::UInt;
                     case TypeCode::Int:
-                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
+                        return TypeCode::UInt;
                     case TypeCode::Int16:
-                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
+                        return TypeCode::UInt;
                     case TypeCode::Float:
                         return TypeCode::Float;
                     case TypeCode::Float16:
@@ -256,9 +259,9 @@ struct Type : public Symbol
                     case TypeCode::UInt16:
                         return TypeCode::UInt16;
                     case TypeCode::Int:
-                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
+                        return TypeCode::UInt;
                     case TypeCode::Int16:
-                        return !retainSign ? TypeCode::UInt16 : TypeCode::Int16;
+                        return TypeCode::UInt16;
                     case TypeCode::Float:
                         return TypeCode::Float;
                     case TypeCode::Float16:
@@ -271,9 +274,9 @@ struct Type : public Symbol
                 switch (rhs)
                 {
                     case TypeCode::UInt:
-                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
+                        return TypeCode::Int;
                     case TypeCode::UInt16:
-                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
+                        return TypeCode::Int;
                     case TypeCode::Int:
                         return TypeCode::Int;
                     case TypeCode::Int16:
@@ -290,9 +293,9 @@ struct Type : public Symbol
                 switch (rhs)
                 {
                     case TypeCode::UInt:
-                        return !retainSign ? TypeCode::UInt : TypeCode::Int;
+                        return TypeCode::Int;
                     case TypeCode::UInt16:
-                        return !retainSign ? TypeCode::UInt16 : TypeCode::Int16;
+                        return TypeCode::Int16;
                     case TypeCode::Int:
                         return TypeCode::Int;
                     case TypeCode::Int16:

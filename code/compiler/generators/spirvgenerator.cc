@@ -4411,6 +4411,16 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     }
     else if (initializerExpression != nullptr)
     {
+        // Check if the program overrides this variable
+        if (varResolved->usageBits.flags.isConst)
+        {
+            const auto elem = generator->evaluatingProgram->constVarInitializationOverrides.Find(var);
+            if (elem != generator->evaluatingProgram->constVarInitializationOverrides.end())
+            {
+                initializerExpression = elem->second;
+            }
+        }
+
         // Setup initializer
         generator->linkDefineEvaluation = varResolved->storage == Storage::LinkDefined;
         generator->linkDefineSlot = varResolved->binding;
@@ -6738,8 +6748,6 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
     };
 
     this->evaluatingProgram = progResolved;
-    for (auto& val : this->shaderValueExpressions)
-        val.value;
     for (uint32_t mapping = ProgramInstance::__Resolved::EntryType::FirstShader; mapping < ProgramInstance::__Resolved::EntryType::LastShader; mapping++)
     {
         Cleanup cleanup(this);
@@ -6762,15 +6770,6 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         {
             TransientString str = TransientString("gplIs", ProgramInstance::__Resolved::EntryTypeToString(ProgramInstance::__Resolved::EntryType(switchMapping)));
             this->writer->scopeStack.back().symbols[str.c_str()] = SymbolAssignment{ .sym = nullptr, .value = SPIRVResult(this->shaderValueExpressions[switchMapping].value) };
-        }
-
-        // Temporarily store original variable values
-        std::unordered_map<Variable*, Expression*> originalVariableValues;
-        auto it = progResolved->constVarInitializationOverrides.begin();
-        for (; it != progResolved->constVarInitializationOverrides.end(); it++)
-        {
-            originalVariableValues[it->first] = it->first->valueExpression;
-            it->first->valueExpression = it->second;
         }
 
         this->writer->Capability(extensionEnumMap[(ProgramInstance::__Resolved::EntryType)mapping]);
@@ -6960,13 +6959,6 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             break;
         }
         this->shaderValueExpressions[mapping].value = false;
-
-        // Reset variable values
-        auto it2 = originalVariableValues.begin();
-        for (; it2 != originalVariableValues.end(); it2++)
-        {
-            originalVariableValues[it2->first] = it2->second;
-        }
 
         this->writer->Header(1, 5, 1, 1, this->writer->counter);
 
