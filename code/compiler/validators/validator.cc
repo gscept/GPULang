@@ -3074,6 +3074,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         if (cat == Type::Category::TextureCategory
             || cat == Type::Category::SamplerStateCategory
             || cat == Type::Category::PixelCacheCategory
+            || cat == Type::Category::AccelerationStructureCategory
             || (cat == Type::Category::StructureCategory && varResolved->storage == Storage::Uniform))
         {
             if (varResolved->group == Variable::__Resolved::NOT_BOUND)
