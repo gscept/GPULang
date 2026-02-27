@@ -4952,13 +4952,23 @@ def generate_types():
 
                             fun = Function( 
                                 decl_name = function_name,
-                                api_name = f'texture{intrinsic}{lod}{proj}{comp}{offset}',
+                                api_name = f'texture{intrinsic}{proj}{comp}{lod}{offset}',
                                 return_type = 'Float32x4' if not comp else 'Float32',
                                 documentation = doc,
                                 parameters = args + [
                                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type),
                                 ]
                             )
+
+                            if proj == 'Proj':
+                                fun.parameters.append(
+                                    Variable(decl_name = f'{function_name}_proj', api_name = "proj", type_name='Float32')
+                                )
+                            if comp == 'Compare':
+                                fun.parameters.append(
+                                    Variable(decl_name = f'{function_name}_compare', api_name = "compare", type_name='Float32')
+                                )
+
                             if lod == 'Lod':
                                 fun.parameters.append(
                                     Variable(decl_name = f'{function_name}_lod', api_name = "lod", type_name='Float32')
@@ -4972,19 +4982,11 @@ def generate_types():
                                 fun.parameters.append(
                                     Variable(decl_name = f'{function_name}_bias', api_name = "bias", type_name='Float32')
                                 )
-                            if proj == 'Proj':
-                                fun.parameters.append(
-                                    Variable(decl_name = f'{function_name}_proj', api_name = "proj", type_name='Float32')
-                                )
-                            if comp == 'Compare':
-                                fun.parameters.append(
-                                    Variable(decl_name = f'{function_name}_compare', api_name = "compare", type_name='Float32')
-                                )
                             if offset == 'Offset':
                                 fun.parameters.append(
                                     Variable(decl_name = f'{function_name}_offset', api_name = "offset", type_name=coordinate_type)
                                 )
-                         
+
                             spirv_function = ''
                             spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
                             if prefix: # Prefix here is merely 'Sampled'
@@ -5030,8 +5032,8 @@ def generate_types():
                                 spirv_arg_counter += 1
                                 spirv_args.append('ImageOperands::Bias, bias')
                             if offset:
-                                spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
-                                spirv_function += f'    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);\n'
+                                spirv_function += f'    SPIRVResult offset = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
+                                spirv_arg_counter += 1
                                 spirv_args.append('ImageOperands::Offset, offset')
 
                             if spirv_args:

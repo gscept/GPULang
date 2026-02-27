@@ -392,7 +392,7 @@ Variable SampledTextureSampleLodOffset_Texture2DArray_offset;
 Function SampledTextureSampleLodOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleLodOffset_Texture2DArray_args = { &SampledTextureSampleLodOffset_Texture2DArray_texture, &SampledTextureSampleLodOffset_Texture2DArray_coordinate, &SampledTextureSampleLodOffset_Texture2DArray_lod, &SampledTextureSampleLodOffset_Texture2DArray_offset };
 
-/// textureSampleLodProj with Texture1D, Sampler, Float32, Float32, Float32
+/// textureSampleProjLod with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleLodProj_Texture1D_texture;
 inline constexpr std::array TextureSampleLodProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -400,22 +400,22 @@ Variable TextureSampleLodProj_Texture1D_sampler;
 inline constexpr std::array TextureSampleLodProj_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProj_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture1D_coordinate;
-Variable TextureSampleLodProj_Texture1D_lod;
 Variable TextureSampleLodProj_Texture1D_proj;
+Variable TextureSampleLodProj_Texture1D_lod;
 Function TextureSampleLodProj_Texture1D;
-inline constexpr std::array TextureSampleLodProj_Texture1D_args = { &TextureSampleLodProj_Texture1D_texture, &TextureSampleLodProj_Texture1D_sampler, &TextureSampleLodProj_Texture1D_coordinate, &TextureSampleLodProj_Texture1D_lod, &TextureSampleLodProj_Texture1D_proj };
+inline constexpr std::array TextureSampleLodProj_Texture1D_args = { &TextureSampleLodProj_Texture1D_texture, &TextureSampleLodProj_Texture1D_sampler, &TextureSampleLodProj_Texture1D_coordinate, &TextureSampleLodProj_Texture1D_proj, &TextureSampleLodProj_Texture1D_lod };
 
-/// textureSampleLodProj with SampledTexture1D, Float32, Float32, Float32
+/// textureSampleProjLod with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleLodProj_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleLodProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProj_Texture1D_coordinate;
-Variable SampledTextureSampleLodProj_Texture1D_lod;
 Variable SampledTextureSampleLodProj_Texture1D_proj;
+Variable SampledTextureSampleLodProj_Texture1D_lod;
 Function SampledTextureSampleLodProj_Texture1D;
-inline constexpr std::array SampledTextureSampleLodProj_Texture1D_args = { &SampledTextureSampleLodProj_Texture1D_texture, &SampledTextureSampleLodProj_Texture1D_coordinate, &SampledTextureSampleLodProj_Texture1D_lod, &SampledTextureSampleLodProj_Texture1D_proj };
+inline constexpr std::array SampledTextureSampleLodProj_Texture1D_args = { &SampledTextureSampleLodProj_Texture1D_texture, &SampledTextureSampleLodProj_Texture1D_coordinate, &SampledTextureSampleLodProj_Texture1D_proj, &SampledTextureSampleLodProj_Texture1D_lod };
 
-/// textureSampleLodProj with Texture2D, Sampler, Float32x2, Float32, Float32
+/// textureSampleProjLod with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodProj_Texture2D_texture;
 inline constexpr std::array TextureSampleLodProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -423,22 +423,22 @@ Variable TextureSampleLodProj_Texture2D_sampler;
 inline constexpr std::array TextureSampleLodProj_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProj_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture2D_coordinate;
-Variable TextureSampleLodProj_Texture2D_lod;
 Variable TextureSampleLodProj_Texture2D_proj;
+Variable TextureSampleLodProj_Texture2D_lod;
 Function TextureSampleLodProj_Texture2D;
-inline constexpr std::array TextureSampleLodProj_Texture2D_args = { &TextureSampleLodProj_Texture2D_texture, &TextureSampleLodProj_Texture2D_sampler, &TextureSampleLodProj_Texture2D_coordinate, &TextureSampleLodProj_Texture2D_lod, &TextureSampleLodProj_Texture2D_proj };
+inline constexpr std::array TextureSampleLodProj_Texture2D_args = { &TextureSampleLodProj_Texture2D_texture, &TextureSampleLodProj_Texture2D_sampler, &TextureSampleLodProj_Texture2D_coordinate, &TextureSampleLodProj_Texture2D_proj, &TextureSampleLodProj_Texture2D_lod };
 
-/// textureSampleLodProj with SampledTexture2D, Float32x2, Float32, Float32
+/// textureSampleProjLod with SampledTexture2D, Float32x2, Float32, Float32
 Variable SampledTextureSampleLodProj_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleLodProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProj_Texture2D_coordinate;
-Variable SampledTextureSampleLodProj_Texture2D_lod;
 Variable SampledTextureSampleLodProj_Texture2D_proj;
+Variable SampledTextureSampleLodProj_Texture2D_lod;
 Function SampledTextureSampleLodProj_Texture2D;
-inline constexpr std::array SampledTextureSampleLodProj_Texture2D_args = { &SampledTextureSampleLodProj_Texture2D_texture, &SampledTextureSampleLodProj_Texture2D_coordinate, &SampledTextureSampleLodProj_Texture2D_lod, &SampledTextureSampleLodProj_Texture2D_proj };
+inline constexpr std::array SampledTextureSampleLodProj_Texture2D_args = { &SampledTextureSampleLodProj_Texture2D_texture, &SampledTextureSampleLodProj_Texture2D_coordinate, &SampledTextureSampleLodProj_Texture2D_proj, &SampledTextureSampleLodProj_Texture2D_lod };
 
-/// textureSampleLodProj with Texture3D, Sampler, Float32x3, Float32, Float32
+/// textureSampleProjLod with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodProj_Texture3D_texture;
 inline constexpr std::array TextureSampleLodProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -446,22 +446,22 @@ Variable TextureSampleLodProj_Texture3D_sampler;
 inline constexpr std::array TextureSampleLodProj_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProj_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture3D_coordinate;
-Variable TextureSampleLodProj_Texture3D_lod;
 Variable TextureSampleLodProj_Texture3D_proj;
+Variable TextureSampleLodProj_Texture3D_lod;
 Function TextureSampleLodProj_Texture3D;
-inline constexpr std::array TextureSampleLodProj_Texture3D_args = { &TextureSampleLodProj_Texture3D_texture, &TextureSampleLodProj_Texture3D_sampler, &TextureSampleLodProj_Texture3D_coordinate, &TextureSampleLodProj_Texture3D_lod, &TextureSampleLodProj_Texture3D_proj };
+inline constexpr std::array TextureSampleLodProj_Texture3D_args = { &TextureSampleLodProj_Texture3D_texture, &TextureSampleLodProj_Texture3D_sampler, &TextureSampleLodProj_Texture3D_coordinate, &TextureSampleLodProj_Texture3D_proj, &TextureSampleLodProj_Texture3D_lod };
 
-/// textureSampleLodProj with SampledTexture3D, Float32x3, Float32, Float32
+/// textureSampleProjLod with SampledTexture3D, Float32x3, Float32, Float32
 Variable SampledTextureSampleLodProj_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleLodProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProj_Texture3D_coordinate;
-Variable SampledTextureSampleLodProj_Texture3D_lod;
 Variable SampledTextureSampleLodProj_Texture3D_proj;
+Variable SampledTextureSampleLodProj_Texture3D_lod;
 Function SampledTextureSampleLodProj_Texture3D;
-inline constexpr std::array SampledTextureSampleLodProj_Texture3D_args = { &SampledTextureSampleLodProj_Texture3D_texture, &SampledTextureSampleLodProj_Texture3D_coordinate, &SampledTextureSampleLodProj_Texture3D_lod, &SampledTextureSampleLodProj_Texture3D_proj };
+inline constexpr std::array SampledTextureSampleLodProj_Texture3D_args = { &SampledTextureSampleLodProj_Texture3D_texture, &SampledTextureSampleLodProj_Texture3D_coordinate, &SampledTextureSampleLodProj_Texture3D_proj, &SampledTextureSampleLodProj_Texture3D_lod };
 
-/// textureSampleLodProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
+/// textureSampleProjLodOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjOffset_Texture1D_texture;
 inline constexpr std::array TextureSampleLodProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -469,24 +469,24 @@ Variable TextureSampleLodProjOffset_Texture1D_sampler;
 inline constexpr std::array TextureSampleLodProjOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture1D_coordinate;
-Variable TextureSampleLodProjOffset_Texture1D_lod;
 Variable TextureSampleLodProjOffset_Texture1D_proj;
+Variable TextureSampleLodProjOffset_Texture1D_lod;
 Variable TextureSampleLodProjOffset_Texture1D_offset;
 Function TextureSampleLodProjOffset_Texture1D;
-inline constexpr std::array TextureSampleLodProjOffset_Texture1D_args = { &TextureSampleLodProjOffset_Texture1D_texture, &TextureSampleLodProjOffset_Texture1D_sampler, &TextureSampleLodProjOffset_Texture1D_coordinate, &TextureSampleLodProjOffset_Texture1D_lod, &TextureSampleLodProjOffset_Texture1D_proj, &TextureSampleLodProjOffset_Texture1D_offset };
+inline constexpr std::array TextureSampleLodProjOffset_Texture1D_args = { &TextureSampleLodProjOffset_Texture1D_texture, &TextureSampleLodProjOffset_Texture1D_sampler, &TextureSampleLodProjOffset_Texture1D_coordinate, &TextureSampleLodProjOffset_Texture1D_proj, &TextureSampleLodProjOffset_Texture1D_lod, &TextureSampleLodProjOffset_Texture1D_offset };
 
-/// textureSampleLodProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
+/// textureSampleProjLodOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjOffset_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjOffset_Texture1D_coordinate;
-Variable SampledTextureSampleLodProjOffset_Texture1D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture1D_proj;
+Variable SampledTextureSampleLodProjOffset_Texture1D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture1D_offset;
 Function SampledTextureSampleLodProjOffset_Texture1D;
-inline constexpr std::array SampledTextureSampleLodProjOffset_Texture1D_args = { &SampledTextureSampleLodProjOffset_Texture1D_texture, &SampledTextureSampleLodProjOffset_Texture1D_coordinate, &SampledTextureSampleLodProjOffset_Texture1D_lod, &SampledTextureSampleLodProjOffset_Texture1D_proj, &SampledTextureSampleLodProjOffset_Texture1D_offset };
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture1D_args = { &SampledTextureSampleLodProjOffset_Texture1D_texture, &SampledTextureSampleLodProjOffset_Texture1D_coordinate, &SampledTextureSampleLodProjOffset_Texture1D_proj, &SampledTextureSampleLodProjOffset_Texture1D_lod, &SampledTextureSampleLodProjOffset_Texture1D_offset };
 
-/// textureSampleLodProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
+/// textureSampleProjLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodProjOffset_Texture2D_texture;
 inline constexpr std::array TextureSampleLodProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -494,24 +494,24 @@ Variable TextureSampleLodProjOffset_Texture2D_sampler;
 inline constexpr std::array TextureSampleLodProjOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture2D_coordinate;
-Variable TextureSampleLodProjOffset_Texture2D_lod;
 Variable TextureSampleLodProjOffset_Texture2D_proj;
+Variable TextureSampleLodProjOffset_Texture2D_lod;
 Variable TextureSampleLodProjOffset_Texture2D_offset;
 Function TextureSampleLodProjOffset_Texture2D;
-inline constexpr std::array TextureSampleLodProjOffset_Texture2D_args = { &TextureSampleLodProjOffset_Texture2D_texture, &TextureSampleLodProjOffset_Texture2D_sampler, &TextureSampleLodProjOffset_Texture2D_coordinate, &TextureSampleLodProjOffset_Texture2D_lod, &TextureSampleLodProjOffset_Texture2D_proj, &TextureSampleLodProjOffset_Texture2D_offset };
+inline constexpr std::array TextureSampleLodProjOffset_Texture2D_args = { &TextureSampleLodProjOffset_Texture2D_texture, &TextureSampleLodProjOffset_Texture2D_sampler, &TextureSampleLodProjOffset_Texture2D_coordinate, &TextureSampleLodProjOffset_Texture2D_proj, &TextureSampleLodProjOffset_Texture2D_lod, &TextureSampleLodProjOffset_Texture2D_offset };
 
-/// textureSampleLodProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
+/// textureSampleProjLodOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleLodProjOffset_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjOffset_Texture2D_coordinate;
-Variable SampledTextureSampleLodProjOffset_Texture2D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture2D_proj;
+Variable SampledTextureSampleLodProjOffset_Texture2D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture2D_offset;
 Function SampledTextureSampleLodProjOffset_Texture2D;
-inline constexpr std::array SampledTextureSampleLodProjOffset_Texture2D_args = { &SampledTextureSampleLodProjOffset_Texture2D_texture, &SampledTextureSampleLodProjOffset_Texture2D_coordinate, &SampledTextureSampleLodProjOffset_Texture2D_lod, &SampledTextureSampleLodProjOffset_Texture2D_proj, &SampledTextureSampleLodProjOffset_Texture2D_offset };
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture2D_args = { &SampledTextureSampleLodProjOffset_Texture2D_texture, &SampledTextureSampleLodProjOffset_Texture2D_coordinate, &SampledTextureSampleLodProjOffset_Texture2D_proj, &SampledTextureSampleLodProjOffset_Texture2D_lod, &SampledTextureSampleLodProjOffset_Texture2D_offset };
 
-/// textureSampleLodProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
+/// textureSampleProjLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodProjOffset_Texture3D_texture;
 inline constexpr std::array TextureSampleLodProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -519,24 +519,24 @@ Variable TextureSampleLodProjOffset_Texture3D_sampler;
 inline constexpr std::array TextureSampleLodProjOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture3D_coordinate;
-Variable TextureSampleLodProjOffset_Texture3D_lod;
 Variable TextureSampleLodProjOffset_Texture3D_proj;
+Variable TextureSampleLodProjOffset_Texture3D_lod;
 Variable TextureSampleLodProjOffset_Texture3D_offset;
 Function TextureSampleLodProjOffset_Texture3D;
-inline constexpr std::array TextureSampleLodProjOffset_Texture3D_args = { &TextureSampleLodProjOffset_Texture3D_texture, &TextureSampleLodProjOffset_Texture3D_sampler, &TextureSampleLodProjOffset_Texture3D_coordinate, &TextureSampleLodProjOffset_Texture3D_lod, &TextureSampleLodProjOffset_Texture3D_proj, &TextureSampleLodProjOffset_Texture3D_offset };
+inline constexpr std::array TextureSampleLodProjOffset_Texture3D_args = { &TextureSampleLodProjOffset_Texture3D_texture, &TextureSampleLodProjOffset_Texture3D_sampler, &TextureSampleLodProjOffset_Texture3D_coordinate, &TextureSampleLodProjOffset_Texture3D_proj, &TextureSampleLodProjOffset_Texture3D_lod, &TextureSampleLodProjOffset_Texture3D_offset };
 
-/// textureSampleLodProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
+/// textureSampleProjLodOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleLodProjOffset_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjOffset_Texture3D_coordinate;
-Variable SampledTextureSampleLodProjOffset_Texture3D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture3D_proj;
+Variable SampledTextureSampleLodProjOffset_Texture3D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture3D_offset;
 Function SampledTextureSampleLodProjOffset_Texture3D;
-inline constexpr std::array SampledTextureSampleLodProjOffset_Texture3D_args = { &SampledTextureSampleLodProjOffset_Texture3D_texture, &SampledTextureSampleLodProjOffset_Texture3D_coordinate, &SampledTextureSampleLodProjOffset_Texture3D_lod, &SampledTextureSampleLodProjOffset_Texture3D_proj, &SampledTextureSampleLodProjOffset_Texture3D_offset };
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture3D_args = { &SampledTextureSampleLodProjOffset_Texture3D_texture, &SampledTextureSampleLodProjOffset_Texture3D_coordinate, &SampledTextureSampleLodProjOffset_Texture3D_proj, &SampledTextureSampleLodProjOffset_Texture3D_lod, &SampledTextureSampleLodProjOffset_Texture3D_offset };
 
-/// textureSampleLodCompare with Texture1D, Sampler, Float32, Float32, Float32
+/// textureSampleCompareLod with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleLodCompare_Texture1D_texture;
 inline constexpr std::array TextureSampleLodCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -544,22 +544,22 @@ Variable TextureSampleLodCompare_Texture1D_sampler;
 inline constexpr std::array TextureSampleLodCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture1D_coordinate;
-Variable TextureSampleLodCompare_Texture1D_lod;
 Variable TextureSampleLodCompare_Texture1D_compare;
+Variable TextureSampleLodCompare_Texture1D_lod;
 Function TextureSampleLodCompare_Texture1D;
-inline constexpr std::array TextureSampleLodCompare_Texture1D_args = { &TextureSampleLodCompare_Texture1D_texture, &TextureSampleLodCompare_Texture1D_sampler, &TextureSampleLodCompare_Texture1D_coordinate, &TextureSampleLodCompare_Texture1D_lod, &TextureSampleLodCompare_Texture1D_compare };
+inline constexpr std::array TextureSampleLodCompare_Texture1D_args = { &TextureSampleLodCompare_Texture1D_texture, &TextureSampleLodCompare_Texture1D_sampler, &TextureSampleLodCompare_Texture1D_coordinate, &TextureSampleLodCompare_Texture1D_compare, &TextureSampleLodCompare_Texture1D_lod };
 
-/// textureSampleLodCompare with SampledTexture1D, Float32, Float32, Float32
+/// textureSampleCompareLod with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture1D_coordinate;
-Variable SampledTextureSampleLodCompare_Texture1D_lod;
 Variable SampledTextureSampleLodCompare_Texture1D_compare;
+Variable SampledTextureSampleLodCompare_Texture1D_lod;
 Function SampledTextureSampleLodCompare_Texture1D;
-inline constexpr std::array SampledTextureSampleLodCompare_Texture1D_args = { &SampledTextureSampleLodCompare_Texture1D_texture, &SampledTextureSampleLodCompare_Texture1D_coordinate, &SampledTextureSampleLodCompare_Texture1D_lod, &SampledTextureSampleLodCompare_Texture1D_compare };
+inline constexpr std::array SampledTextureSampleLodCompare_Texture1D_args = { &SampledTextureSampleLodCompare_Texture1D_texture, &SampledTextureSampleLodCompare_Texture1D_coordinate, &SampledTextureSampleLodCompare_Texture1D_compare, &SampledTextureSampleLodCompare_Texture1D_lod };
 
-/// textureSampleLodCompare with Texture2D, Sampler, Float32x2, Float32, Float32
+/// textureSampleCompareLod with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodCompare_Texture2D_texture;
 inline constexpr std::array TextureSampleLodCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -567,22 +567,22 @@ Variable TextureSampleLodCompare_Texture2D_sampler;
 inline constexpr std::array TextureSampleLodCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture2D_coordinate;
-Variable TextureSampleLodCompare_Texture2D_lod;
 Variable TextureSampleLodCompare_Texture2D_compare;
+Variable TextureSampleLodCompare_Texture2D_lod;
 Function TextureSampleLodCompare_Texture2D;
-inline constexpr std::array TextureSampleLodCompare_Texture2D_args = { &TextureSampleLodCompare_Texture2D_texture, &TextureSampleLodCompare_Texture2D_sampler, &TextureSampleLodCompare_Texture2D_coordinate, &TextureSampleLodCompare_Texture2D_lod, &TextureSampleLodCompare_Texture2D_compare };
+inline constexpr std::array TextureSampleLodCompare_Texture2D_args = { &TextureSampleLodCompare_Texture2D_texture, &TextureSampleLodCompare_Texture2D_sampler, &TextureSampleLodCompare_Texture2D_coordinate, &TextureSampleLodCompare_Texture2D_compare, &TextureSampleLodCompare_Texture2D_lod };
 
-/// textureSampleLodCompare with SampledTexture2D, Float32x2, Float32, Float32
+/// textureSampleCompareLod with SampledTexture2D, Float32x2, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture2D_coordinate;
-Variable SampledTextureSampleLodCompare_Texture2D_lod;
 Variable SampledTextureSampleLodCompare_Texture2D_compare;
+Variable SampledTextureSampleLodCompare_Texture2D_lod;
 Function SampledTextureSampleLodCompare_Texture2D;
-inline constexpr std::array SampledTextureSampleLodCompare_Texture2D_args = { &SampledTextureSampleLodCompare_Texture2D_texture, &SampledTextureSampleLodCompare_Texture2D_coordinate, &SampledTextureSampleLodCompare_Texture2D_lod, &SampledTextureSampleLodCompare_Texture2D_compare };
+inline constexpr std::array SampledTextureSampleLodCompare_Texture2D_args = { &SampledTextureSampleLodCompare_Texture2D_texture, &SampledTextureSampleLodCompare_Texture2D_coordinate, &SampledTextureSampleLodCompare_Texture2D_compare, &SampledTextureSampleLodCompare_Texture2D_lod };
 
-/// textureSampleLodCompare with Texture3D, Sampler, Float32x3, Float32, Float32
+/// textureSampleCompareLod with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodCompare_Texture3D_texture;
 inline constexpr std::array TextureSampleLodCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -590,22 +590,22 @@ Variable TextureSampleLodCompare_Texture3D_sampler;
 inline constexpr std::array TextureSampleLodCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture3D_coordinate;
-Variable TextureSampleLodCompare_Texture3D_lod;
 Variable TextureSampleLodCompare_Texture3D_compare;
+Variable TextureSampleLodCompare_Texture3D_lod;
 Function TextureSampleLodCompare_Texture3D;
-inline constexpr std::array TextureSampleLodCompare_Texture3D_args = { &TextureSampleLodCompare_Texture3D_texture, &TextureSampleLodCompare_Texture3D_sampler, &TextureSampleLodCompare_Texture3D_coordinate, &TextureSampleLodCompare_Texture3D_lod, &TextureSampleLodCompare_Texture3D_compare };
+inline constexpr std::array TextureSampleLodCompare_Texture3D_args = { &TextureSampleLodCompare_Texture3D_texture, &TextureSampleLodCompare_Texture3D_sampler, &TextureSampleLodCompare_Texture3D_coordinate, &TextureSampleLodCompare_Texture3D_compare, &TextureSampleLodCompare_Texture3D_lod };
 
-/// textureSampleLodCompare with SampledTexture3D, Float32x3, Float32, Float32
+/// textureSampleCompareLod with SampledTexture3D, Float32x3, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture3D_coordinate;
-Variable SampledTextureSampleLodCompare_Texture3D_lod;
 Variable SampledTextureSampleLodCompare_Texture3D_compare;
+Variable SampledTextureSampleLodCompare_Texture3D_lod;
 Function SampledTextureSampleLodCompare_Texture3D;
-inline constexpr std::array SampledTextureSampleLodCompare_Texture3D_args = { &SampledTextureSampleLodCompare_Texture3D_texture, &SampledTextureSampleLodCompare_Texture3D_coordinate, &SampledTextureSampleLodCompare_Texture3D_lod, &SampledTextureSampleLodCompare_Texture3D_compare };
+inline constexpr std::array SampledTextureSampleLodCompare_Texture3D_args = { &SampledTextureSampleLodCompare_Texture3D_texture, &SampledTextureSampleLodCompare_Texture3D_coordinate, &SampledTextureSampleLodCompare_Texture3D_compare, &SampledTextureSampleLodCompare_Texture3D_lod };
 
-/// textureSampleLodCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
+/// textureSampleCompareLod with Texture1DArray, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodCompare_Texture1DArray_texture;
 inline constexpr std::array TextureSampleLodCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
@@ -613,22 +613,22 @@ Variable TextureSampleLodCompare_Texture1DArray_sampler;
 inline constexpr std::array TextureSampleLodCompare_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture1DArray_coordinate;
-Variable TextureSampleLodCompare_Texture1DArray_lod;
 Variable TextureSampleLodCompare_Texture1DArray_compare;
+Variable TextureSampleLodCompare_Texture1DArray_lod;
 Function TextureSampleLodCompare_Texture1DArray;
-inline constexpr std::array TextureSampleLodCompare_Texture1DArray_args = { &TextureSampleLodCompare_Texture1DArray_texture, &TextureSampleLodCompare_Texture1DArray_sampler, &TextureSampleLodCompare_Texture1DArray_coordinate, &TextureSampleLodCompare_Texture1DArray_lod, &TextureSampleLodCompare_Texture1DArray_compare };
+inline constexpr std::array TextureSampleLodCompare_Texture1DArray_args = { &TextureSampleLodCompare_Texture1DArray_texture, &TextureSampleLodCompare_Texture1DArray_sampler, &TextureSampleLodCompare_Texture1DArray_coordinate, &TextureSampleLodCompare_Texture1DArray_compare, &TextureSampleLodCompare_Texture1DArray_lod };
 
-/// textureSampleLodCompare with SampledTexture1DArray, Float32x2, Float32, Float32
+/// textureSampleCompareLod with SampledTexture1DArray, Float32x2, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture1DArray_texture;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture1DArray_coordinate;
-Variable SampledTextureSampleLodCompare_Texture1DArray_lod;
 Variable SampledTextureSampleLodCompare_Texture1DArray_compare;
+Variable SampledTextureSampleLodCompare_Texture1DArray_lod;
 Function SampledTextureSampleLodCompare_Texture1DArray;
-inline constexpr std::array SampledTextureSampleLodCompare_Texture1DArray_args = { &SampledTextureSampleLodCompare_Texture1DArray_texture, &SampledTextureSampleLodCompare_Texture1DArray_coordinate, &SampledTextureSampleLodCompare_Texture1DArray_lod, &SampledTextureSampleLodCompare_Texture1DArray_compare };
+inline constexpr std::array SampledTextureSampleLodCompare_Texture1DArray_args = { &SampledTextureSampleLodCompare_Texture1DArray_texture, &SampledTextureSampleLodCompare_Texture1DArray_coordinate, &SampledTextureSampleLodCompare_Texture1DArray_compare, &SampledTextureSampleLodCompare_Texture1DArray_lod };
 
-/// textureSampleLodCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
+/// textureSampleCompareLod with Texture2DArray, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodCompare_Texture2DArray_texture;
 inline constexpr std::array TextureSampleLodCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
@@ -636,22 +636,22 @@ Variable TextureSampleLodCompare_Texture2DArray_sampler;
 inline constexpr std::array TextureSampleLodCompare_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompare_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture2DArray_coordinate;
-Variable TextureSampleLodCompare_Texture2DArray_lod;
 Variable TextureSampleLodCompare_Texture2DArray_compare;
+Variable TextureSampleLodCompare_Texture2DArray_lod;
 Function TextureSampleLodCompare_Texture2DArray;
-inline constexpr std::array TextureSampleLodCompare_Texture2DArray_args = { &TextureSampleLodCompare_Texture2DArray_texture, &TextureSampleLodCompare_Texture2DArray_sampler, &TextureSampleLodCompare_Texture2DArray_coordinate, &TextureSampleLodCompare_Texture2DArray_lod, &TextureSampleLodCompare_Texture2DArray_compare };
+inline constexpr std::array TextureSampleLodCompare_Texture2DArray_args = { &TextureSampleLodCompare_Texture2DArray_texture, &TextureSampleLodCompare_Texture2DArray_sampler, &TextureSampleLodCompare_Texture2DArray_coordinate, &TextureSampleLodCompare_Texture2DArray_compare, &TextureSampleLodCompare_Texture2DArray_lod };
 
-/// textureSampleLodCompare with SampledTexture2DArray, Float32x3, Float32, Float32
+/// textureSampleCompareLod with SampledTexture2DArray, Float32x3, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture2DArray_texture;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture2DArray_coordinate;
-Variable SampledTextureSampleLodCompare_Texture2DArray_lod;
 Variable SampledTextureSampleLodCompare_Texture2DArray_compare;
+Variable SampledTextureSampleLodCompare_Texture2DArray_lod;
 Function SampledTextureSampleLodCompare_Texture2DArray;
-inline constexpr std::array SampledTextureSampleLodCompare_Texture2DArray_args = { &SampledTextureSampleLodCompare_Texture2DArray_texture, &SampledTextureSampleLodCompare_Texture2DArray_coordinate, &SampledTextureSampleLodCompare_Texture2DArray_lod, &SampledTextureSampleLodCompare_Texture2DArray_compare };
+inline constexpr std::array SampledTextureSampleLodCompare_Texture2DArray_args = { &SampledTextureSampleLodCompare_Texture2DArray_texture, &SampledTextureSampleLodCompare_Texture2DArray_coordinate, &SampledTextureSampleLodCompare_Texture2DArray_compare, &SampledTextureSampleLodCompare_Texture2DArray_lod };
 
-/// textureSampleLodCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
+/// textureSampleCompareLodOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodCompareOffset_Texture1D_texture;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -659,24 +659,24 @@ Variable TextureSampleLodCompareOffset_Texture1D_sampler;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture1D_coordinate;
-Variable TextureSampleLodCompareOffset_Texture1D_lod;
 Variable TextureSampleLodCompareOffset_Texture1D_compare;
+Variable TextureSampleLodCompareOffset_Texture1D_lod;
 Variable TextureSampleLodCompareOffset_Texture1D_offset;
 Function TextureSampleLodCompareOffset_Texture1D;
-inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_args = { &TextureSampleLodCompareOffset_Texture1D_texture, &TextureSampleLodCompareOffset_Texture1D_sampler, &TextureSampleLodCompareOffset_Texture1D_coordinate, &TextureSampleLodCompareOffset_Texture1D_lod, &TextureSampleLodCompareOffset_Texture1D_compare, &TextureSampleLodCompareOffset_Texture1D_offset };
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_args = { &TextureSampleLodCompareOffset_Texture1D_texture, &TextureSampleLodCompareOffset_Texture1D_sampler, &TextureSampleLodCompareOffset_Texture1D_coordinate, &TextureSampleLodCompareOffset_Texture1D_compare, &TextureSampleLodCompareOffset_Texture1D_lod, &TextureSampleLodCompareOffset_Texture1D_offset };
 
-/// textureSampleLodCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
+/// textureSampleCompareLodOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleLodCompareOffset_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture1D_coordinate;
-Variable SampledTextureSampleLodCompareOffset_Texture1D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture1D_compare;
+Variable SampledTextureSampleLodCompareOffset_Texture1D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture1D_offset;
 Function SampledTextureSampleLodCompareOffset_Texture1D;
-inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1D_args = { &SampledTextureSampleLodCompareOffset_Texture1D_texture, &SampledTextureSampleLodCompareOffset_Texture1D_coordinate, &SampledTextureSampleLodCompareOffset_Texture1D_lod, &SampledTextureSampleLodCompareOffset_Texture1D_compare, &SampledTextureSampleLodCompareOffset_Texture1D_offset };
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1D_args = { &SampledTextureSampleLodCompareOffset_Texture1D_texture, &SampledTextureSampleLodCompareOffset_Texture1D_coordinate, &SampledTextureSampleLodCompareOffset_Texture1D_compare, &SampledTextureSampleLodCompareOffset_Texture1D_lod, &SampledTextureSampleLodCompareOffset_Texture1D_offset };
 
-/// textureSampleLodCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
+/// textureSampleCompareLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodCompareOffset_Texture2D_texture;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -684,24 +684,24 @@ Variable TextureSampleLodCompareOffset_Texture2D_sampler;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture2D_coordinate;
-Variable TextureSampleLodCompareOffset_Texture2D_lod;
 Variable TextureSampleLodCompareOffset_Texture2D_compare;
+Variable TextureSampleLodCompareOffset_Texture2D_lod;
 Variable TextureSampleLodCompareOffset_Texture2D_offset;
 Function TextureSampleLodCompareOffset_Texture2D;
-inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_args = { &TextureSampleLodCompareOffset_Texture2D_texture, &TextureSampleLodCompareOffset_Texture2D_sampler, &TextureSampleLodCompareOffset_Texture2D_coordinate, &TextureSampleLodCompareOffset_Texture2D_lod, &TextureSampleLodCompareOffset_Texture2D_compare, &TextureSampleLodCompareOffset_Texture2D_offset };
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_args = { &TextureSampleLodCompareOffset_Texture2D_texture, &TextureSampleLodCompareOffset_Texture2D_sampler, &TextureSampleLodCompareOffset_Texture2D_coordinate, &TextureSampleLodCompareOffset_Texture2D_compare, &TextureSampleLodCompareOffset_Texture2D_lod, &TextureSampleLodCompareOffset_Texture2D_offset };
 
-/// textureSampleLodCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
+/// textureSampleCompareLodOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleLodCompareOffset_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture2D_coordinate;
-Variable SampledTextureSampleLodCompareOffset_Texture2D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture2D_compare;
+Variable SampledTextureSampleLodCompareOffset_Texture2D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture2D_offset;
 Function SampledTextureSampleLodCompareOffset_Texture2D;
-inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2D_args = { &SampledTextureSampleLodCompareOffset_Texture2D_texture, &SampledTextureSampleLodCompareOffset_Texture2D_coordinate, &SampledTextureSampleLodCompareOffset_Texture2D_lod, &SampledTextureSampleLodCompareOffset_Texture2D_compare, &SampledTextureSampleLodCompareOffset_Texture2D_offset };
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2D_args = { &SampledTextureSampleLodCompareOffset_Texture2D_texture, &SampledTextureSampleLodCompareOffset_Texture2D_coordinate, &SampledTextureSampleLodCompareOffset_Texture2D_compare, &SampledTextureSampleLodCompareOffset_Texture2D_lod, &SampledTextureSampleLodCompareOffset_Texture2D_offset };
 
-/// textureSampleLodCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
+/// textureSampleCompareLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodCompareOffset_Texture3D_texture;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -709,24 +709,24 @@ Variable TextureSampleLodCompareOffset_Texture3D_sampler;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture3D_coordinate;
-Variable TextureSampleLodCompareOffset_Texture3D_lod;
 Variable TextureSampleLodCompareOffset_Texture3D_compare;
+Variable TextureSampleLodCompareOffset_Texture3D_lod;
 Variable TextureSampleLodCompareOffset_Texture3D_offset;
 Function TextureSampleLodCompareOffset_Texture3D;
-inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_args = { &TextureSampleLodCompareOffset_Texture3D_texture, &TextureSampleLodCompareOffset_Texture3D_sampler, &TextureSampleLodCompareOffset_Texture3D_coordinate, &TextureSampleLodCompareOffset_Texture3D_lod, &TextureSampleLodCompareOffset_Texture3D_compare, &TextureSampleLodCompareOffset_Texture3D_offset };
+inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_args = { &TextureSampleLodCompareOffset_Texture3D_texture, &TextureSampleLodCompareOffset_Texture3D_sampler, &TextureSampleLodCompareOffset_Texture3D_coordinate, &TextureSampleLodCompareOffset_Texture3D_compare, &TextureSampleLodCompareOffset_Texture3D_lod, &TextureSampleLodCompareOffset_Texture3D_offset };
 
-/// textureSampleLodCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
+/// textureSampleCompareLodOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleLodCompareOffset_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture3D_coordinate;
-Variable SampledTextureSampleLodCompareOffset_Texture3D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture3D_compare;
+Variable SampledTextureSampleLodCompareOffset_Texture3D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture3D_offset;
 Function SampledTextureSampleLodCompareOffset_Texture3D;
-inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture3D_args = { &SampledTextureSampleLodCompareOffset_Texture3D_texture, &SampledTextureSampleLodCompareOffset_Texture3D_coordinate, &SampledTextureSampleLodCompareOffset_Texture3D_lod, &SampledTextureSampleLodCompareOffset_Texture3D_compare, &SampledTextureSampleLodCompareOffset_Texture3D_offset };
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture3D_args = { &SampledTextureSampleLodCompareOffset_Texture3D_texture, &SampledTextureSampleLodCompareOffset_Texture3D_coordinate, &SampledTextureSampleLodCompareOffset_Texture3D_compare, &SampledTextureSampleLodCompareOffset_Texture3D_lod, &SampledTextureSampleLodCompareOffset_Texture3D_offset };
 
-/// textureSampleLodCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
+/// textureSampleCompareLodOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodCompareOffset_Texture1DArray_texture;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
@@ -734,24 +734,24 @@ Variable TextureSampleLodCompareOffset_Texture1DArray_sampler;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture1DArray_coordinate;
-Variable TextureSampleLodCompareOffset_Texture1DArray_lod;
 Variable TextureSampleLodCompareOffset_Texture1DArray_compare;
+Variable TextureSampleLodCompareOffset_Texture1DArray_lod;
 Variable TextureSampleLodCompareOffset_Texture1DArray_offset;
 Function TextureSampleLodCompareOffset_Texture1DArray;
-inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_args = { &TextureSampleLodCompareOffset_Texture1DArray_texture, &TextureSampleLodCompareOffset_Texture1DArray_sampler, &TextureSampleLodCompareOffset_Texture1DArray_coordinate, &TextureSampleLodCompareOffset_Texture1DArray_lod, &TextureSampleLodCompareOffset_Texture1DArray_compare, &TextureSampleLodCompareOffset_Texture1DArray_offset };
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_args = { &TextureSampleLodCompareOffset_Texture1DArray_texture, &TextureSampleLodCompareOffset_Texture1DArray_sampler, &TextureSampleLodCompareOffset_Texture1DArray_coordinate, &TextureSampleLodCompareOffset_Texture1DArray_compare, &TextureSampleLodCompareOffset_Texture1DArray_lod, &TextureSampleLodCompareOffset_Texture1DArray_offset };
 
-/// textureSampleLodCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
+/// textureSampleCompareLodOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleLodCompareOffset_Texture1DArray_texture;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate;
-Variable SampledTextureSampleLodCompareOffset_Texture1DArray_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture1DArray_compare;
+Variable SampledTextureSampleLodCompareOffset_Texture1DArray_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture1DArray_offset;
 Function SampledTextureSampleLodCompareOffset_Texture1DArray;
-inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1DArray_args = { &SampledTextureSampleLodCompareOffset_Texture1DArray_texture, &SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate, &SampledTextureSampleLodCompareOffset_Texture1DArray_lod, &SampledTextureSampleLodCompareOffset_Texture1DArray_compare, &SampledTextureSampleLodCompareOffset_Texture1DArray_offset };
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1DArray_args = { &SampledTextureSampleLodCompareOffset_Texture1DArray_texture, &SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate, &SampledTextureSampleLodCompareOffset_Texture1DArray_compare, &SampledTextureSampleLodCompareOffset_Texture1DArray_lod, &SampledTextureSampleLodCompareOffset_Texture1DArray_offset };
 
-/// textureSampleLodCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
+/// textureSampleCompareLodOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodCompareOffset_Texture2DArray_texture;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
@@ -759,24 +759,24 @@ Variable TextureSampleLodCompareOffset_Texture2DArray_sampler;
 inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture2DArray_coordinate;
-Variable TextureSampleLodCompareOffset_Texture2DArray_lod;
 Variable TextureSampleLodCompareOffset_Texture2DArray_compare;
+Variable TextureSampleLodCompareOffset_Texture2DArray_lod;
 Variable TextureSampleLodCompareOffset_Texture2DArray_offset;
 Function TextureSampleLodCompareOffset_Texture2DArray;
-inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_args = { &TextureSampleLodCompareOffset_Texture2DArray_texture, &TextureSampleLodCompareOffset_Texture2DArray_sampler, &TextureSampleLodCompareOffset_Texture2DArray_coordinate, &TextureSampleLodCompareOffset_Texture2DArray_lod, &TextureSampleLodCompareOffset_Texture2DArray_compare, &TextureSampleLodCompareOffset_Texture2DArray_offset };
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_args = { &TextureSampleLodCompareOffset_Texture2DArray_texture, &TextureSampleLodCompareOffset_Texture2DArray_sampler, &TextureSampleLodCompareOffset_Texture2DArray_coordinate, &TextureSampleLodCompareOffset_Texture2DArray_compare, &TextureSampleLodCompareOffset_Texture2DArray_lod, &TextureSampleLodCompareOffset_Texture2DArray_offset };
 
-/// textureSampleLodCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
+/// textureSampleCompareLodOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleLodCompareOffset_Texture2DArray_texture;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate;
-Variable SampledTextureSampleLodCompareOffset_Texture2DArray_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture2DArray_compare;
+Variable SampledTextureSampleLodCompareOffset_Texture2DArray_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture2DArray_offset;
 Function SampledTextureSampleLodCompareOffset_Texture2DArray;
-inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2DArray_args = { &SampledTextureSampleLodCompareOffset_Texture2DArray_texture, &SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate, &SampledTextureSampleLodCompareOffset_Texture2DArray_lod, &SampledTextureSampleLodCompareOffset_Texture2DArray_compare, &SampledTextureSampleLodCompareOffset_Texture2DArray_offset };
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2DArray_args = { &SampledTextureSampleLodCompareOffset_Texture2DArray_texture, &SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate, &SampledTextureSampleLodCompareOffset_Texture2DArray_compare, &SampledTextureSampleLodCompareOffset_Texture2DArray_lod, &SampledTextureSampleLodCompareOffset_Texture2DArray_offset };
 
-/// textureSampleLodProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
+/// textureSampleProjCompareLod with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture1D_texture;
 inline constexpr std::array TextureSampleLodProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -784,24 +784,24 @@ Variable TextureSampleLodProjCompare_Texture1D_sampler;
 inline constexpr std::array TextureSampleLodProjCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture1D_coordinate;
-Variable TextureSampleLodProjCompare_Texture1D_lod;
 Variable TextureSampleLodProjCompare_Texture1D_proj;
 Variable TextureSampleLodProjCompare_Texture1D_compare;
+Variable TextureSampleLodProjCompare_Texture1D_lod;
 Function TextureSampleLodProjCompare_Texture1D;
-inline constexpr std::array TextureSampleLodProjCompare_Texture1D_args = { &TextureSampleLodProjCompare_Texture1D_texture, &TextureSampleLodProjCompare_Texture1D_sampler, &TextureSampleLodProjCompare_Texture1D_coordinate, &TextureSampleLodProjCompare_Texture1D_lod, &TextureSampleLodProjCompare_Texture1D_proj, &TextureSampleLodProjCompare_Texture1D_compare };
+inline constexpr std::array TextureSampleLodProjCompare_Texture1D_args = { &TextureSampleLodProjCompare_Texture1D_texture, &TextureSampleLodProjCompare_Texture1D_sampler, &TextureSampleLodProjCompare_Texture1D_coordinate, &TextureSampleLodProjCompare_Texture1D_proj, &TextureSampleLodProjCompare_Texture1D_compare, &TextureSampleLodProjCompare_Texture1D_lod };
 
-/// textureSampleLodProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
+/// textureSampleProjCompareLod with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjCompare_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompare_Texture1D_coordinate;
-Variable SampledTextureSampleLodProjCompare_Texture1D_lod;
 Variable SampledTextureSampleLodProjCompare_Texture1D_proj;
 Variable SampledTextureSampleLodProjCompare_Texture1D_compare;
+Variable SampledTextureSampleLodProjCompare_Texture1D_lod;
 Function SampledTextureSampleLodProjCompare_Texture1D;
-inline constexpr std::array SampledTextureSampleLodProjCompare_Texture1D_args = { &SampledTextureSampleLodProjCompare_Texture1D_texture, &SampledTextureSampleLodProjCompare_Texture1D_coordinate, &SampledTextureSampleLodProjCompare_Texture1D_lod, &SampledTextureSampleLodProjCompare_Texture1D_proj, &SampledTextureSampleLodProjCompare_Texture1D_compare };
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture1D_args = { &SampledTextureSampleLodProjCompare_Texture1D_texture, &SampledTextureSampleLodProjCompare_Texture1D_coordinate, &SampledTextureSampleLodProjCompare_Texture1D_proj, &SampledTextureSampleLodProjCompare_Texture1D_compare, &SampledTextureSampleLodProjCompare_Texture1D_lod };
 
-/// textureSampleLodProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
+/// textureSampleProjCompareLod with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture2D_texture;
 inline constexpr std::array TextureSampleLodProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -809,24 +809,24 @@ Variable TextureSampleLodProjCompare_Texture2D_sampler;
 inline constexpr std::array TextureSampleLodProjCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture2D_coordinate;
-Variable TextureSampleLodProjCompare_Texture2D_lod;
 Variable TextureSampleLodProjCompare_Texture2D_proj;
 Variable TextureSampleLodProjCompare_Texture2D_compare;
+Variable TextureSampleLodProjCompare_Texture2D_lod;
 Function TextureSampleLodProjCompare_Texture2D;
-inline constexpr std::array TextureSampleLodProjCompare_Texture2D_args = { &TextureSampleLodProjCompare_Texture2D_texture, &TextureSampleLodProjCompare_Texture2D_sampler, &TextureSampleLodProjCompare_Texture2D_coordinate, &TextureSampleLodProjCompare_Texture2D_lod, &TextureSampleLodProjCompare_Texture2D_proj, &TextureSampleLodProjCompare_Texture2D_compare };
+inline constexpr std::array TextureSampleLodProjCompare_Texture2D_args = { &TextureSampleLodProjCompare_Texture2D_texture, &TextureSampleLodProjCompare_Texture2D_sampler, &TextureSampleLodProjCompare_Texture2D_coordinate, &TextureSampleLodProjCompare_Texture2D_proj, &TextureSampleLodProjCompare_Texture2D_compare, &TextureSampleLodProjCompare_Texture2D_lod };
 
-/// textureSampleLodProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
+/// textureSampleProjCompareLod with SampledTexture2D, Float32x2, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjCompare_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompare_Texture2D_coordinate;
-Variable SampledTextureSampleLodProjCompare_Texture2D_lod;
 Variable SampledTextureSampleLodProjCompare_Texture2D_proj;
 Variable SampledTextureSampleLodProjCompare_Texture2D_compare;
+Variable SampledTextureSampleLodProjCompare_Texture2D_lod;
 Function SampledTextureSampleLodProjCompare_Texture2D;
-inline constexpr std::array SampledTextureSampleLodProjCompare_Texture2D_args = { &SampledTextureSampleLodProjCompare_Texture2D_texture, &SampledTextureSampleLodProjCompare_Texture2D_coordinate, &SampledTextureSampleLodProjCompare_Texture2D_lod, &SampledTextureSampleLodProjCompare_Texture2D_proj, &SampledTextureSampleLodProjCompare_Texture2D_compare };
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture2D_args = { &SampledTextureSampleLodProjCompare_Texture2D_texture, &SampledTextureSampleLodProjCompare_Texture2D_coordinate, &SampledTextureSampleLodProjCompare_Texture2D_proj, &SampledTextureSampleLodProjCompare_Texture2D_compare, &SampledTextureSampleLodProjCompare_Texture2D_lod };
 
-/// textureSampleLodProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
+/// textureSampleProjCompareLod with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture3D_texture;
 inline constexpr std::array TextureSampleLodProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -834,24 +834,24 @@ Variable TextureSampleLodProjCompare_Texture3D_sampler;
 inline constexpr std::array TextureSampleLodProjCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture3D_coordinate;
-Variable TextureSampleLodProjCompare_Texture3D_lod;
 Variable TextureSampleLodProjCompare_Texture3D_proj;
 Variable TextureSampleLodProjCompare_Texture3D_compare;
+Variable TextureSampleLodProjCompare_Texture3D_lod;
 Function TextureSampleLodProjCompare_Texture3D;
-inline constexpr std::array TextureSampleLodProjCompare_Texture3D_args = { &TextureSampleLodProjCompare_Texture3D_texture, &TextureSampleLodProjCompare_Texture3D_sampler, &TextureSampleLodProjCompare_Texture3D_coordinate, &TextureSampleLodProjCompare_Texture3D_lod, &TextureSampleLodProjCompare_Texture3D_proj, &TextureSampleLodProjCompare_Texture3D_compare };
+inline constexpr std::array TextureSampleLodProjCompare_Texture3D_args = { &TextureSampleLodProjCompare_Texture3D_texture, &TextureSampleLodProjCompare_Texture3D_sampler, &TextureSampleLodProjCompare_Texture3D_coordinate, &TextureSampleLodProjCompare_Texture3D_proj, &TextureSampleLodProjCompare_Texture3D_compare, &TextureSampleLodProjCompare_Texture3D_lod };
 
-/// textureSampleLodProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
+/// textureSampleProjCompareLod with SampledTexture3D, Float32x3, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjCompare_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompare_Texture3D_coordinate;
-Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
 Variable SampledTextureSampleLodProjCompare_Texture3D_proj;
 Variable SampledTextureSampleLodProjCompare_Texture3D_compare;
+Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
 Function SampledTextureSampleLodProjCompare_Texture3D;
-inline constexpr std::array SampledTextureSampleLodProjCompare_Texture3D_args = { &SampledTextureSampleLodProjCompare_Texture3D_texture, &SampledTextureSampleLodProjCompare_Texture3D_coordinate, &SampledTextureSampleLodProjCompare_Texture3D_lod, &SampledTextureSampleLodProjCompare_Texture3D_proj, &SampledTextureSampleLodProjCompare_Texture3D_compare };
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture3D_args = { &SampledTextureSampleLodProjCompare_Texture3D_texture, &SampledTextureSampleLodProjCompare_Texture3D_coordinate, &SampledTextureSampleLodProjCompare_Texture3D_proj, &SampledTextureSampleLodProjCompare_Texture3D_compare, &SampledTextureSampleLodProjCompare_Texture3D_lod };
 
-/// textureSampleLodProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
+/// textureSampleProjCompareLodOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjCompareOffset_Texture1D_texture;
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -859,26 +859,26 @@ Variable TextureSampleLodProjCompareOffset_Texture1D_sampler;
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture1D_coordinate;
-Variable TextureSampleLodProjCompareOffset_Texture1D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture1D_proj;
 Variable TextureSampleLodProjCompareOffset_Texture1D_compare;
+Variable TextureSampleLodProjCompareOffset_Texture1D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture1D_offset;
 Function TextureSampleLodProjCompareOffset_Texture1D;
-inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_args = { &TextureSampleLodProjCompareOffset_Texture1D_texture, &TextureSampleLodProjCompareOffset_Texture1D_sampler, &TextureSampleLodProjCompareOffset_Texture1D_coordinate, &TextureSampleLodProjCompareOffset_Texture1D_lod, &TextureSampleLodProjCompareOffset_Texture1D_proj, &TextureSampleLodProjCompareOffset_Texture1D_compare, &TextureSampleLodProjCompareOffset_Texture1D_offset };
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_args = { &TextureSampleLodProjCompareOffset_Texture1D_texture, &TextureSampleLodProjCompareOffset_Texture1D_sampler, &TextureSampleLodProjCompareOffset_Texture1D_coordinate, &TextureSampleLodProjCompareOffset_Texture1D_proj, &TextureSampleLodProjCompareOffset_Texture1D_compare, &TextureSampleLodProjCompareOffset_Texture1D_lod, &TextureSampleLodProjCompareOffset_Texture1D_offset };
 
-/// textureSampleLodProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
+/// textureSampleProjCompareLodOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate;
-Variable SampledTextureSampleLodProjCompareOffset_Texture1D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_proj;
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_compare;
+Variable SampledTextureSampleLodProjCompareOffset_Texture1D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_offset;
 Function SampledTextureSampleLodProjCompareOffset_Texture1D;
-inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture1D_args = { &SampledTextureSampleLodProjCompareOffset_Texture1D_texture, &SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture1D_lod, &SampledTextureSampleLodProjCompareOffset_Texture1D_proj, &SampledTextureSampleLodProjCompareOffset_Texture1D_compare, &SampledTextureSampleLodProjCompareOffset_Texture1D_offset };
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture1D_args = { &SampledTextureSampleLodProjCompareOffset_Texture1D_texture, &SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture1D_proj, &SampledTextureSampleLodProjCompareOffset_Texture1D_compare, &SampledTextureSampleLodProjCompareOffset_Texture1D_lod, &SampledTextureSampleLodProjCompareOffset_Texture1D_offset };
 
-/// textureSampleLodProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
+/// textureSampleProjCompareLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 Variable TextureSampleLodProjCompareOffset_Texture2D_texture;
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -886,26 +886,26 @@ Variable TextureSampleLodProjCompareOffset_Texture2D_sampler;
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture2D_coordinate;
-Variable TextureSampleLodProjCompareOffset_Texture2D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture2D_proj;
 Variable TextureSampleLodProjCompareOffset_Texture2D_compare;
+Variable TextureSampleLodProjCompareOffset_Texture2D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture2D_offset;
 Function TextureSampleLodProjCompareOffset_Texture2D;
-inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_args = { &TextureSampleLodProjCompareOffset_Texture2D_texture, &TextureSampleLodProjCompareOffset_Texture2D_sampler, &TextureSampleLodProjCompareOffset_Texture2D_coordinate, &TextureSampleLodProjCompareOffset_Texture2D_lod, &TextureSampleLodProjCompareOffset_Texture2D_proj, &TextureSampleLodProjCompareOffset_Texture2D_compare, &TextureSampleLodProjCompareOffset_Texture2D_offset };
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_args = { &TextureSampleLodProjCompareOffset_Texture2D_texture, &TextureSampleLodProjCompareOffset_Texture2D_sampler, &TextureSampleLodProjCompareOffset_Texture2D_coordinate, &TextureSampleLodProjCompareOffset_Texture2D_proj, &TextureSampleLodProjCompareOffset_Texture2D_compare, &TextureSampleLodProjCompareOffset_Texture2D_lod, &TextureSampleLodProjCompareOffset_Texture2D_offset };
 
-/// textureSampleLodProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
+/// textureSampleProjCompareLodOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate;
-Variable SampledTextureSampleLodProjCompareOffset_Texture2D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_proj;
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_compare;
+Variable SampledTextureSampleLodProjCompareOffset_Texture2D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_offset;
 Function SampledTextureSampleLodProjCompareOffset_Texture2D;
-inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture2D_args = { &SampledTextureSampleLodProjCompareOffset_Texture2D_texture, &SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture2D_lod, &SampledTextureSampleLodProjCompareOffset_Texture2D_proj, &SampledTextureSampleLodProjCompareOffset_Texture2D_compare, &SampledTextureSampleLodProjCompareOffset_Texture2D_offset };
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture2D_args = { &SampledTextureSampleLodProjCompareOffset_Texture2D_texture, &SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture2D_proj, &SampledTextureSampleLodProjCompareOffset_Texture2D_compare, &SampledTextureSampleLodProjCompareOffset_Texture2D_lod, &SampledTextureSampleLodProjCompareOffset_Texture2D_offset };
 
-/// textureSampleLodProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
+/// textureSampleProjCompareLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 Variable TextureSampleLodProjCompareOffset_Texture3D_texture;
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -913,24 +913,24 @@ Variable TextureSampleLodProjCompareOffset_Texture3D_sampler;
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture3D_coordinate;
-Variable TextureSampleLodProjCompareOffset_Texture3D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture3D_proj;
 Variable TextureSampleLodProjCompareOffset_Texture3D_compare;
+Variable TextureSampleLodProjCompareOffset_Texture3D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture3D_offset;
 Function TextureSampleLodProjCompareOffset_Texture3D;
-inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_args = { &TextureSampleLodProjCompareOffset_Texture3D_texture, &TextureSampleLodProjCompareOffset_Texture3D_sampler, &TextureSampleLodProjCompareOffset_Texture3D_coordinate, &TextureSampleLodProjCompareOffset_Texture3D_lod, &TextureSampleLodProjCompareOffset_Texture3D_proj, &TextureSampleLodProjCompareOffset_Texture3D_compare, &TextureSampleLodProjCompareOffset_Texture3D_offset };
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_args = { &TextureSampleLodProjCompareOffset_Texture3D_texture, &TextureSampleLodProjCompareOffset_Texture3D_sampler, &TextureSampleLodProjCompareOffset_Texture3D_coordinate, &TextureSampleLodProjCompareOffset_Texture3D_proj, &TextureSampleLodProjCompareOffset_Texture3D_compare, &TextureSampleLodProjCompareOffset_Texture3D_lod, &TextureSampleLodProjCompareOffset_Texture3D_offset };
 
-/// textureSampleLodProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
+/// textureSampleProjCompareLodOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate;
-Variable SampledTextureSampleLodProjCompareOffset_Texture3D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_proj;
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_compare;
+Variable SampledTextureSampleLodProjCompareOffset_Texture3D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_offset;
 Function SampledTextureSampleLodProjCompareOffset_Texture3D;
-inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture3D_args = { &SampledTextureSampleLodProjCompareOffset_Texture3D_texture, &SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture3D_lod, &SampledTextureSampleLodProjCompareOffset_Texture3D_proj, &SampledTextureSampleLodProjCompareOffset_Texture3D_compare, &SampledTextureSampleLodProjCompareOffset_Texture3D_offset };
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture3D_args = { &SampledTextureSampleLodProjCompareOffset_Texture3D_texture, &SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture3D_proj, &SampledTextureSampleLodProjCompareOffset_Texture3D_compare, &SampledTextureSampleLodProjCompareOffset_Texture3D_lod, &SampledTextureSampleLodProjCompareOffset_Texture3D_offset };
 
 /// textureSampleGrad with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleGrad_Texture1D_texture;
@@ -1218,7 +1218,7 @@ Variable SampledTextureSampleGradOffset_Texture2DArray_offset;
 Function SampledTextureSampleGradOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleGradOffset_Texture2DArray_args = { &SampledTextureSampleGradOffset_Texture2DArray_texture, &SampledTextureSampleGradOffset_Texture2DArray_coordinate, &SampledTextureSampleGradOffset_Texture2DArray_grad_x, &SampledTextureSampleGradOffset_Texture2DArray_grad_y, &SampledTextureSampleGradOffset_Texture2DArray_offset };
 
-/// textureSampleGradProj with Texture1D, Sampler, Float32, Float32, Float32, Float32
+/// textureSampleProjGrad with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProj_Texture1D_texture;
 inline constexpr std::array TextureSampleGradProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -1226,24 +1226,24 @@ Variable TextureSampleGradProj_Texture1D_sampler;
 inline constexpr std::array TextureSampleGradProj_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProj_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture1D_coordinate;
+Variable TextureSampleGradProj_Texture1D_proj;
 Variable TextureSampleGradProj_Texture1D_grad_x;
 Variable TextureSampleGradProj_Texture1D_grad_y;
-Variable TextureSampleGradProj_Texture1D_proj;
 Function TextureSampleGradProj_Texture1D;
-inline constexpr std::array TextureSampleGradProj_Texture1D_args = { &TextureSampleGradProj_Texture1D_texture, &TextureSampleGradProj_Texture1D_sampler, &TextureSampleGradProj_Texture1D_coordinate, &TextureSampleGradProj_Texture1D_grad_x, &TextureSampleGradProj_Texture1D_grad_y, &TextureSampleGradProj_Texture1D_proj };
+inline constexpr std::array TextureSampleGradProj_Texture1D_args = { &TextureSampleGradProj_Texture1D_texture, &TextureSampleGradProj_Texture1D_sampler, &TextureSampleGradProj_Texture1D_coordinate, &TextureSampleGradProj_Texture1D_proj, &TextureSampleGradProj_Texture1D_grad_x, &TextureSampleGradProj_Texture1D_grad_y };
 
-/// textureSampleGradProj with SampledTexture1D, Float32, Float32, Float32, Float32
+/// textureSampleProjGrad with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradProj_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleGradProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProj_Texture1D_coordinate;
+Variable SampledTextureSampleGradProj_Texture1D_proj;
 Variable SampledTextureSampleGradProj_Texture1D_grad_x;
 Variable SampledTextureSampleGradProj_Texture1D_grad_y;
-Variable SampledTextureSampleGradProj_Texture1D_proj;
 Function SampledTextureSampleGradProj_Texture1D;
-inline constexpr std::array SampledTextureSampleGradProj_Texture1D_args = { &SampledTextureSampleGradProj_Texture1D_texture, &SampledTextureSampleGradProj_Texture1D_coordinate, &SampledTextureSampleGradProj_Texture1D_grad_x, &SampledTextureSampleGradProj_Texture1D_grad_y, &SampledTextureSampleGradProj_Texture1D_proj };
+inline constexpr std::array SampledTextureSampleGradProj_Texture1D_args = { &SampledTextureSampleGradProj_Texture1D_texture, &SampledTextureSampleGradProj_Texture1D_coordinate, &SampledTextureSampleGradProj_Texture1D_proj, &SampledTextureSampleGradProj_Texture1D_grad_x, &SampledTextureSampleGradProj_Texture1D_grad_y };
 
-/// textureSampleGradProj with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleProjGrad with Texture2D, Sampler, Float32x2, Float32, Float32x2, Float32x2
 Variable TextureSampleGradProj_Texture2D_texture;
 inline constexpr std::array TextureSampleGradProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -1251,24 +1251,24 @@ Variable TextureSampleGradProj_Texture2D_sampler;
 inline constexpr std::array TextureSampleGradProj_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProj_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture2D_coordinate;
+Variable TextureSampleGradProj_Texture2D_proj;
 Variable TextureSampleGradProj_Texture2D_grad_x;
 Variable TextureSampleGradProj_Texture2D_grad_y;
-Variable TextureSampleGradProj_Texture2D_proj;
 Function TextureSampleGradProj_Texture2D;
-inline constexpr std::array TextureSampleGradProj_Texture2D_args = { &TextureSampleGradProj_Texture2D_texture, &TextureSampleGradProj_Texture2D_sampler, &TextureSampleGradProj_Texture2D_coordinate, &TextureSampleGradProj_Texture2D_grad_x, &TextureSampleGradProj_Texture2D_grad_y, &TextureSampleGradProj_Texture2D_proj };
+inline constexpr std::array TextureSampleGradProj_Texture2D_args = { &TextureSampleGradProj_Texture2D_texture, &TextureSampleGradProj_Texture2D_sampler, &TextureSampleGradProj_Texture2D_coordinate, &TextureSampleGradProj_Texture2D_proj, &TextureSampleGradProj_Texture2D_grad_x, &TextureSampleGradProj_Texture2D_grad_y };
 
-/// textureSampleGradProj with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleProjGrad with SampledTexture2D, Float32x2, Float32, Float32x2, Float32x2
 Variable SampledTextureSampleGradProj_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleGradProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProj_Texture2D_coordinate;
+Variable SampledTextureSampleGradProj_Texture2D_proj;
 Variable SampledTextureSampleGradProj_Texture2D_grad_x;
 Variable SampledTextureSampleGradProj_Texture2D_grad_y;
-Variable SampledTextureSampleGradProj_Texture2D_proj;
 Function SampledTextureSampleGradProj_Texture2D;
-inline constexpr std::array SampledTextureSampleGradProj_Texture2D_args = { &SampledTextureSampleGradProj_Texture2D_texture, &SampledTextureSampleGradProj_Texture2D_coordinate, &SampledTextureSampleGradProj_Texture2D_grad_x, &SampledTextureSampleGradProj_Texture2D_grad_y, &SampledTextureSampleGradProj_Texture2D_proj };
+inline constexpr std::array SampledTextureSampleGradProj_Texture2D_args = { &SampledTextureSampleGradProj_Texture2D_texture, &SampledTextureSampleGradProj_Texture2D_coordinate, &SampledTextureSampleGradProj_Texture2D_proj, &SampledTextureSampleGradProj_Texture2D_grad_x, &SampledTextureSampleGradProj_Texture2D_grad_y };
 
-/// textureSampleGradProj with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleProjGrad with Texture3D, Sampler, Float32x3, Float32, Float32x3, Float32x3
 Variable TextureSampleGradProj_Texture3D_texture;
 inline constexpr std::array TextureSampleGradProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -1276,24 +1276,24 @@ Variable TextureSampleGradProj_Texture3D_sampler;
 inline constexpr std::array TextureSampleGradProj_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProj_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture3D_coordinate;
+Variable TextureSampleGradProj_Texture3D_proj;
 Variable TextureSampleGradProj_Texture3D_grad_x;
 Variable TextureSampleGradProj_Texture3D_grad_y;
-Variable TextureSampleGradProj_Texture3D_proj;
 Function TextureSampleGradProj_Texture3D;
-inline constexpr std::array TextureSampleGradProj_Texture3D_args = { &TextureSampleGradProj_Texture3D_texture, &TextureSampleGradProj_Texture3D_sampler, &TextureSampleGradProj_Texture3D_coordinate, &TextureSampleGradProj_Texture3D_grad_x, &TextureSampleGradProj_Texture3D_grad_y, &TextureSampleGradProj_Texture3D_proj };
+inline constexpr std::array TextureSampleGradProj_Texture3D_args = { &TextureSampleGradProj_Texture3D_texture, &TextureSampleGradProj_Texture3D_sampler, &TextureSampleGradProj_Texture3D_coordinate, &TextureSampleGradProj_Texture3D_proj, &TextureSampleGradProj_Texture3D_grad_x, &TextureSampleGradProj_Texture3D_grad_y };
 
-/// textureSampleGradProj with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleProjGrad with SampledTexture3D, Float32x3, Float32, Float32x3, Float32x3
 Variable SampledTextureSampleGradProj_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleGradProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProj_Texture3D_coordinate;
+Variable SampledTextureSampleGradProj_Texture3D_proj;
 Variable SampledTextureSampleGradProj_Texture3D_grad_x;
 Variable SampledTextureSampleGradProj_Texture3D_grad_y;
-Variable SampledTextureSampleGradProj_Texture3D_proj;
 Function SampledTextureSampleGradProj_Texture3D;
-inline constexpr std::array SampledTextureSampleGradProj_Texture3D_args = { &SampledTextureSampleGradProj_Texture3D_texture, &SampledTextureSampleGradProj_Texture3D_coordinate, &SampledTextureSampleGradProj_Texture3D_grad_x, &SampledTextureSampleGradProj_Texture3D_grad_y, &SampledTextureSampleGradProj_Texture3D_proj };
+inline constexpr std::array SampledTextureSampleGradProj_Texture3D_args = { &SampledTextureSampleGradProj_Texture3D_texture, &SampledTextureSampleGradProj_Texture3D_coordinate, &SampledTextureSampleGradProj_Texture3D_proj, &SampledTextureSampleGradProj_Texture3D_grad_x, &SampledTextureSampleGradProj_Texture3D_grad_y };
 
-/// textureSampleGradProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
+/// textureSampleProjGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProjOffset_Texture1D_texture;
 inline constexpr std::array TextureSampleGradProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -1301,26 +1301,26 @@ Variable TextureSampleGradProjOffset_Texture1D_sampler;
 inline constexpr std::array TextureSampleGradProjOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProjOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture1D_coordinate;
+Variable TextureSampleGradProjOffset_Texture1D_proj;
 Variable TextureSampleGradProjOffset_Texture1D_grad_x;
 Variable TextureSampleGradProjOffset_Texture1D_grad_y;
-Variable TextureSampleGradProjOffset_Texture1D_proj;
 Variable TextureSampleGradProjOffset_Texture1D_offset;
 Function TextureSampleGradProjOffset_Texture1D;
-inline constexpr std::array TextureSampleGradProjOffset_Texture1D_args = { &TextureSampleGradProjOffset_Texture1D_texture, &TextureSampleGradProjOffset_Texture1D_sampler, &TextureSampleGradProjOffset_Texture1D_coordinate, &TextureSampleGradProjOffset_Texture1D_grad_x, &TextureSampleGradProjOffset_Texture1D_grad_y, &TextureSampleGradProjOffset_Texture1D_proj, &TextureSampleGradProjOffset_Texture1D_offset };
+inline constexpr std::array TextureSampleGradProjOffset_Texture1D_args = { &TextureSampleGradProjOffset_Texture1D_texture, &TextureSampleGradProjOffset_Texture1D_sampler, &TextureSampleGradProjOffset_Texture1D_coordinate, &TextureSampleGradProjOffset_Texture1D_proj, &TextureSampleGradProjOffset_Texture1D_grad_x, &TextureSampleGradProjOffset_Texture1D_grad_y, &TextureSampleGradProjOffset_Texture1D_offset };
 
-/// textureSampleGradProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
+/// textureSampleProjGradOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradProjOffset_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjOffset_Texture1D_coordinate;
+Variable SampledTextureSampleGradProjOffset_Texture1D_proj;
 Variable SampledTextureSampleGradProjOffset_Texture1D_grad_x;
 Variable SampledTextureSampleGradProjOffset_Texture1D_grad_y;
-Variable SampledTextureSampleGradProjOffset_Texture1D_proj;
 Variable SampledTextureSampleGradProjOffset_Texture1D_offset;
 Function SampledTextureSampleGradProjOffset_Texture1D;
-inline constexpr std::array SampledTextureSampleGradProjOffset_Texture1D_args = { &SampledTextureSampleGradProjOffset_Texture1D_texture, &SampledTextureSampleGradProjOffset_Texture1D_coordinate, &SampledTextureSampleGradProjOffset_Texture1D_grad_x, &SampledTextureSampleGradProjOffset_Texture1D_grad_y, &SampledTextureSampleGradProjOffset_Texture1D_proj, &SampledTextureSampleGradProjOffset_Texture1D_offset };
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture1D_args = { &SampledTextureSampleGradProjOffset_Texture1D_texture, &SampledTextureSampleGradProjOffset_Texture1D_coordinate, &SampledTextureSampleGradProjOffset_Texture1D_proj, &SampledTextureSampleGradProjOffset_Texture1D_grad_x, &SampledTextureSampleGradProjOffset_Texture1D_grad_y, &SampledTextureSampleGradProjOffset_Texture1D_offset };
 
-/// textureSampleGradProjOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleProjGradOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGradProjOffset_Texture2D_texture;
 inline constexpr std::array TextureSampleGradProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -1328,26 +1328,26 @@ Variable TextureSampleGradProjOffset_Texture2D_sampler;
 inline constexpr std::array TextureSampleGradProjOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProjOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture2D_coordinate;
+Variable TextureSampleGradProjOffset_Texture2D_proj;
 Variable TextureSampleGradProjOffset_Texture2D_grad_x;
 Variable TextureSampleGradProjOffset_Texture2D_grad_y;
-Variable TextureSampleGradProjOffset_Texture2D_proj;
 Variable TextureSampleGradProjOffset_Texture2D_offset;
 Function TextureSampleGradProjOffset_Texture2D;
-inline constexpr std::array TextureSampleGradProjOffset_Texture2D_args = { &TextureSampleGradProjOffset_Texture2D_texture, &TextureSampleGradProjOffset_Texture2D_sampler, &TextureSampleGradProjOffset_Texture2D_coordinate, &TextureSampleGradProjOffset_Texture2D_grad_x, &TextureSampleGradProjOffset_Texture2D_grad_y, &TextureSampleGradProjOffset_Texture2D_proj, &TextureSampleGradProjOffset_Texture2D_offset };
+inline constexpr std::array TextureSampleGradProjOffset_Texture2D_args = { &TextureSampleGradProjOffset_Texture2D_texture, &TextureSampleGradProjOffset_Texture2D_sampler, &TextureSampleGradProjOffset_Texture2D_coordinate, &TextureSampleGradProjOffset_Texture2D_proj, &TextureSampleGradProjOffset_Texture2D_grad_x, &TextureSampleGradProjOffset_Texture2D_grad_y, &TextureSampleGradProjOffset_Texture2D_offset };
 
-/// textureSampleGradProjOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleProjGradOffset with SampledTexture2D, Float32x2, Float32, Float32x2, Float32x2, Float32x2
 Variable SampledTextureSampleGradProjOffset_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjOffset_Texture2D_coordinate;
+Variable SampledTextureSampleGradProjOffset_Texture2D_proj;
 Variable SampledTextureSampleGradProjOffset_Texture2D_grad_x;
 Variable SampledTextureSampleGradProjOffset_Texture2D_grad_y;
-Variable SampledTextureSampleGradProjOffset_Texture2D_proj;
 Variable SampledTextureSampleGradProjOffset_Texture2D_offset;
 Function SampledTextureSampleGradProjOffset_Texture2D;
-inline constexpr std::array SampledTextureSampleGradProjOffset_Texture2D_args = { &SampledTextureSampleGradProjOffset_Texture2D_texture, &SampledTextureSampleGradProjOffset_Texture2D_coordinate, &SampledTextureSampleGradProjOffset_Texture2D_grad_x, &SampledTextureSampleGradProjOffset_Texture2D_grad_y, &SampledTextureSampleGradProjOffset_Texture2D_proj, &SampledTextureSampleGradProjOffset_Texture2D_offset };
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture2D_args = { &SampledTextureSampleGradProjOffset_Texture2D_texture, &SampledTextureSampleGradProjOffset_Texture2D_coordinate, &SampledTextureSampleGradProjOffset_Texture2D_proj, &SampledTextureSampleGradProjOffset_Texture2D_grad_x, &SampledTextureSampleGradProjOffset_Texture2D_grad_y, &SampledTextureSampleGradProjOffset_Texture2D_offset };
 
-/// textureSampleGradProjOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleProjGradOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGradProjOffset_Texture3D_texture;
 inline constexpr std::array TextureSampleGradProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -1355,26 +1355,26 @@ Variable TextureSampleGradProjOffset_Texture3D_sampler;
 inline constexpr std::array TextureSampleGradProjOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradProjOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture3D_coordinate;
+Variable TextureSampleGradProjOffset_Texture3D_proj;
 Variable TextureSampleGradProjOffset_Texture3D_grad_x;
 Variable TextureSampleGradProjOffset_Texture3D_grad_y;
-Variable TextureSampleGradProjOffset_Texture3D_proj;
 Variable TextureSampleGradProjOffset_Texture3D_offset;
 Function TextureSampleGradProjOffset_Texture3D;
-inline constexpr std::array TextureSampleGradProjOffset_Texture3D_args = { &TextureSampleGradProjOffset_Texture3D_texture, &TextureSampleGradProjOffset_Texture3D_sampler, &TextureSampleGradProjOffset_Texture3D_coordinate, &TextureSampleGradProjOffset_Texture3D_grad_x, &TextureSampleGradProjOffset_Texture3D_grad_y, &TextureSampleGradProjOffset_Texture3D_proj, &TextureSampleGradProjOffset_Texture3D_offset };
+inline constexpr std::array TextureSampleGradProjOffset_Texture3D_args = { &TextureSampleGradProjOffset_Texture3D_texture, &TextureSampleGradProjOffset_Texture3D_sampler, &TextureSampleGradProjOffset_Texture3D_coordinate, &TextureSampleGradProjOffset_Texture3D_proj, &TextureSampleGradProjOffset_Texture3D_grad_x, &TextureSampleGradProjOffset_Texture3D_grad_y, &TextureSampleGradProjOffset_Texture3D_offset };
 
-/// textureSampleGradProjOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleProjGradOffset with SampledTexture3D, Float32x3, Float32, Float32x3, Float32x3, Float32x3
 Variable SampledTextureSampleGradProjOffset_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjOffset_Texture3D_coordinate;
+Variable SampledTextureSampleGradProjOffset_Texture3D_proj;
 Variable SampledTextureSampleGradProjOffset_Texture3D_grad_x;
 Variable SampledTextureSampleGradProjOffset_Texture3D_grad_y;
-Variable SampledTextureSampleGradProjOffset_Texture3D_proj;
 Variable SampledTextureSampleGradProjOffset_Texture3D_offset;
 Function SampledTextureSampleGradProjOffset_Texture3D;
-inline constexpr std::array SampledTextureSampleGradProjOffset_Texture3D_args = { &SampledTextureSampleGradProjOffset_Texture3D_texture, &SampledTextureSampleGradProjOffset_Texture3D_coordinate, &SampledTextureSampleGradProjOffset_Texture3D_grad_x, &SampledTextureSampleGradProjOffset_Texture3D_grad_y, &SampledTextureSampleGradProjOffset_Texture3D_proj, &SampledTextureSampleGradProjOffset_Texture3D_offset };
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture3D_args = { &SampledTextureSampleGradProjOffset_Texture3D_texture, &SampledTextureSampleGradProjOffset_Texture3D_coordinate, &SampledTextureSampleGradProjOffset_Texture3D_proj, &SampledTextureSampleGradProjOffset_Texture3D_grad_x, &SampledTextureSampleGradProjOffset_Texture3D_grad_y, &SampledTextureSampleGradProjOffset_Texture3D_offset };
 
-/// textureSampleGradCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
+/// textureSampleCompareGrad with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleGradCompare_Texture1D_texture;
 inline constexpr std::array TextureSampleGradCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -1382,24 +1382,24 @@ Variable TextureSampleGradCompare_Texture1D_sampler;
 inline constexpr std::array TextureSampleGradCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture1D_coordinate;
+Variable TextureSampleGradCompare_Texture1D_compare;
 Variable TextureSampleGradCompare_Texture1D_grad_x;
 Variable TextureSampleGradCompare_Texture1D_grad_y;
-Variable TextureSampleGradCompare_Texture1D_compare;
 Function TextureSampleGradCompare_Texture1D;
-inline constexpr std::array TextureSampleGradCompare_Texture1D_args = { &TextureSampleGradCompare_Texture1D_texture, &TextureSampleGradCompare_Texture1D_sampler, &TextureSampleGradCompare_Texture1D_coordinate, &TextureSampleGradCompare_Texture1D_grad_x, &TextureSampleGradCompare_Texture1D_grad_y, &TextureSampleGradCompare_Texture1D_compare };
+inline constexpr std::array TextureSampleGradCompare_Texture1D_args = { &TextureSampleGradCompare_Texture1D_texture, &TextureSampleGradCompare_Texture1D_sampler, &TextureSampleGradCompare_Texture1D_coordinate, &TextureSampleGradCompare_Texture1D_compare, &TextureSampleGradCompare_Texture1D_grad_x, &TextureSampleGradCompare_Texture1D_grad_y };
 
-/// textureSampleGradCompare with SampledTexture1D, Float32, Float32, Float32, Float32
+/// textureSampleCompareGrad with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradCompare_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture1D_coordinate;
+Variable SampledTextureSampleGradCompare_Texture1D_compare;
 Variable SampledTextureSampleGradCompare_Texture1D_grad_x;
 Variable SampledTextureSampleGradCompare_Texture1D_grad_y;
-Variable SampledTextureSampleGradCompare_Texture1D_compare;
 Function SampledTextureSampleGradCompare_Texture1D;
-inline constexpr std::array SampledTextureSampleGradCompare_Texture1D_args = { &SampledTextureSampleGradCompare_Texture1D_texture, &SampledTextureSampleGradCompare_Texture1D_coordinate, &SampledTextureSampleGradCompare_Texture1D_grad_x, &SampledTextureSampleGradCompare_Texture1D_grad_y, &SampledTextureSampleGradCompare_Texture1D_compare };
+inline constexpr std::array SampledTextureSampleGradCompare_Texture1D_args = { &SampledTextureSampleGradCompare_Texture1D_texture, &SampledTextureSampleGradCompare_Texture1D_coordinate, &SampledTextureSampleGradCompare_Texture1D_compare, &SampledTextureSampleGradCompare_Texture1D_grad_x, &SampledTextureSampleGradCompare_Texture1D_grad_y };
 
-/// textureSampleGradCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleCompareGrad with Texture2D, Sampler, Float32x2, Float32, Float32x2, Float32x2
 Variable TextureSampleGradCompare_Texture2D_texture;
 inline constexpr std::array TextureSampleGradCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -1407,24 +1407,24 @@ Variable TextureSampleGradCompare_Texture2D_sampler;
 inline constexpr std::array TextureSampleGradCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture2D_coordinate;
+Variable TextureSampleGradCompare_Texture2D_compare;
 Variable TextureSampleGradCompare_Texture2D_grad_x;
 Variable TextureSampleGradCompare_Texture2D_grad_y;
-Variable TextureSampleGradCompare_Texture2D_compare;
 Function TextureSampleGradCompare_Texture2D;
-inline constexpr std::array TextureSampleGradCompare_Texture2D_args = { &TextureSampleGradCompare_Texture2D_texture, &TextureSampleGradCompare_Texture2D_sampler, &TextureSampleGradCompare_Texture2D_coordinate, &TextureSampleGradCompare_Texture2D_grad_x, &TextureSampleGradCompare_Texture2D_grad_y, &TextureSampleGradCompare_Texture2D_compare };
+inline constexpr std::array TextureSampleGradCompare_Texture2D_args = { &TextureSampleGradCompare_Texture2D_texture, &TextureSampleGradCompare_Texture2D_sampler, &TextureSampleGradCompare_Texture2D_coordinate, &TextureSampleGradCompare_Texture2D_compare, &TextureSampleGradCompare_Texture2D_grad_x, &TextureSampleGradCompare_Texture2D_grad_y };
 
-/// textureSampleGradCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleCompareGrad with SampledTexture2D, Float32x2, Float32, Float32x2, Float32x2
 Variable SampledTextureSampleGradCompare_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture2D_coordinate;
+Variable SampledTextureSampleGradCompare_Texture2D_compare;
 Variable SampledTextureSampleGradCompare_Texture2D_grad_x;
 Variable SampledTextureSampleGradCompare_Texture2D_grad_y;
-Variable SampledTextureSampleGradCompare_Texture2D_compare;
 Function SampledTextureSampleGradCompare_Texture2D;
-inline constexpr std::array SampledTextureSampleGradCompare_Texture2D_args = { &SampledTextureSampleGradCompare_Texture2D_texture, &SampledTextureSampleGradCompare_Texture2D_coordinate, &SampledTextureSampleGradCompare_Texture2D_grad_x, &SampledTextureSampleGradCompare_Texture2D_grad_y, &SampledTextureSampleGradCompare_Texture2D_compare };
+inline constexpr std::array SampledTextureSampleGradCompare_Texture2D_args = { &SampledTextureSampleGradCompare_Texture2D_texture, &SampledTextureSampleGradCompare_Texture2D_coordinate, &SampledTextureSampleGradCompare_Texture2D_compare, &SampledTextureSampleGradCompare_Texture2D_grad_x, &SampledTextureSampleGradCompare_Texture2D_grad_y };
 
-/// textureSampleGradCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleCompareGrad with Texture3D, Sampler, Float32x3, Float32, Float32x3, Float32x3
 Variable TextureSampleGradCompare_Texture3D_texture;
 inline constexpr std::array TextureSampleGradCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
@@ -1432,24 +1432,24 @@ Variable TextureSampleGradCompare_Texture3D_sampler;
 inline constexpr std::array TextureSampleGradCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture3D_coordinate;
+Variable TextureSampleGradCompare_Texture3D_compare;
 Variable TextureSampleGradCompare_Texture3D_grad_x;
 Variable TextureSampleGradCompare_Texture3D_grad_y;
-Variable TextureSampleGradCompare_Texture3D_compare;
 Function TextureSampleGradCompare_Texture3D;
-inline constexpr std::array TextureSampleGradCompare_Texture3D_args = { &TextureSampleGradCompare_Texture3D_texture, &TextureSampleGradCompare_Texture3D_sampler, &TextureSampleGradCompare_Texture3D_coordinate, &TextureSampleGradCompare_Texture3D_grad_x, &TextureSampleGradCompare_Texture3D_grad_y, &TextureSampleGradCompare_Texture3D_compare };
+inline constexpr std::array TextureSampleGradCompare_Texture3D_args = { &TextureSampleGradCompare_Texture3D_texture, &TextureSampleGradCompare_Texture3D_sampler, &TextureSampleGradCompare_Texture3D_coordinate, &TextureSampleGradCompare_Texture3D_compare, &TextureSampleGradCompare_Texture3D_grad_x, &TextureSampleGradCompare_Texture3D_grad_y };
 
-/// textureSampleGradCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleCompareGrad with SampledTexture3D, Float32x3, Float32, Float32x3, Float32x3
 Variable SampledTextureSampleGradCompare_Texture3D_texture;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture3D_coordinate;
+Variable SampledTextureSampleGradCompare_Texture3D_compare;
 Variable SampledTextureSampleGradCompare_Texture3D_grad_x;
 Variable SampledTextureSampleGradCompare_Texture3D_grad_y;
-Variable SampledTextureSampleGradCompare_Texture3D_compare;
 Function SampledTextureSampleGradCompare_Texture3D;
-inline constexpr std::array SampledTextureSampleGradCompare_Texture3D_args = { &SampledTextureSampleGradCompare_Texture3D_texture, &SampledTextureSampleGradCompare_Texture3D_coordinate, &SampledTextureSampleGradCompare_Texture3D_grad_x, &SampledTextureSampleGradCompare_Texture3D_grad_y, &SampledTextureSampleGradCompare_Texture3D_compare };
+inline constexpr std::array SampledTextureSampleGradCompare_Texture3D_args = { &SampledTextureSampleGradCompare_Texture3D_texture, &SampledTextureSampleGradCompare_Texture3D_coordinate, &SampledTextureSampleGradCompare_Texture3D_compare, &SampledTextureSampleGradCompare_Texture3D_grad_x, &SampledTextureSampleGradCompare_Texture3D_grad_y };
 
-/// textureSampleGradCompare with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleCompareGrad with Texture1DArray, Sampler, Float32x2, Float32, Float32x2, Float32x2
 Variable TextureSampleGradCompare_Texture1DArray_texture;
 inline constexpr std::array TextureSampleGradCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
@@ -1457,24 +1457,24 @@ Variable TextureSampleGradCompare_Texture1DArray_sampler;
 inline constexpr std::array TextureSampleGradCompare_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture1DArray_coordinate;
+Variable TextureSampleGradCompare_Texture1DArray_compare;
 Variable TextureSampleGradCompare_Texture1DArray_grad_x;
 Variable TextureSampleGradCompare_Texture1DArray_grad_y;
-Variable TextureSampleGradCompare_Texture1DArray_compare;
 Function TextureSampleGradCompare_Texture1DArray;
-inline constexpr std::array TextureSampleGradCompare_Texture1DArray_args = { &TextureSampleGradCompare_Texture1DArray_texture, &TextureSampleGradCompare_Texture1DArray_sampler, &TextureSampleGradCompare_Texture1DArray_coordinate, &TextureSampleGradCompare_Texture1DArray_grad_x, &TextureSampleGradCompare_Texture1DArray_grad_y, &TextureSampleGradCompare_Texture1DArray_compare };
+inline constexpr std::array TextureSampleGradCompare_Texture1DArray_args = { &TextureSampleGradCompare_Texture1DArray_texture, &TextureSampleGradCompare_Texture1DArray_sampler, &TextureSampleGradCompare_Texture1DArray_coordinate, &TextureSampleGradCompare_Texture1DArray_compare, &TextureSampleGradCompare_Texture1DArray_grad_x, &TextureSampleGradCompare_Texture1DArray_grad_y };
 
-/// textureSampleGradCompare with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleCompareGrad with SampledTexture1DArray, Float32x2, Float32, Float32x2, Float32x2
 Variable SampledTextureSampleGradCompare_Texture1DArray_texture;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture1DArray_coordinate;
+Variable SampledTextureSampleGradCompare_Texture1DArray_compare;
 Variable SampledTextureSampleGradCompare_Texture1DArray_grad_x;
 Variable SampledTextureSampleGradCompare_Texture1DArray_grad_y;
-Variable SampledTextureSampleGradCompare_Texture1DArray_compare;
 Function SampledTextureSampleGradCompare_Texture1DArray;
-inline constexpr std::array SampledTextureSampleGradCompare_Texture1DArray_args = { &SampledTextureSampleGradCompare_Texture1DArray_texture, &SampledTextureSampleGradCompare_Texture1DArray_coordinate, &SampledTextureSampleGradCompare_Texture1DArray_grad_x, &SampledTextureSampleGradCompare_Texture1DArray_grad_y, &SampledTextureSampleGradCompare_Texture1DArray_compare };
+inline constexpr std::array SampledTextureSampleGradCompare_Texture1DArray_args = { &SampledTextureSampleGradCompare_Texture1DArray_texture, &SampledTextureSampleGradCompare_Texture1DArray_coordinate, &SampledTextureSampleGradCompare_Texture1DArray_compare, &SampledTextureSampleGradCompare_Texture1DArray_grad_x, &SampledTextureSampleGradCompare_Texture1DArray_grad_y };
 
-/// textureSampleGradCompare with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleCompareGrad with Texture2DArray, Sampler, Float32x3, Float32, Float32x3, Float32x3
 Variable TextureSampleGradCompare_Texture2DArray_texture;
 inline constexpr std::array TextureSampleGradCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
@@ -1482,24 +1482,24 @@ Variable TextureSampleGradCompare_Texture2DArray_sampler;
 inline constexpr std::array TextureSampleGradCompare_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompare_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture2DArray_coordinate;
+Variable TextureSampleGradCompare_Texture2DArray_compare;
 Variable TextureSampleGradCompare_Texture2DArray_grad_x;
 Variable TextureSampleGradCompare_Texture2DArray_grad_y;
-Variable TextureSampleGradCompare_Texture2DArray_compare;
 Function TextureSampleGradCompare_Texture2DArray;
-inline constexpr std::array TextureSampleGradCompare_Texture2DArray_args = { &TextureSampleGradCompare_Texture2DArray_texture, &TextureSampleGradCompare_Texture2DArray_sampler, &TextureSampleGradCompare_Texture2DArray_coordinate, &TextureSampleGradCompare_Texture2DArray_grad_x, &TextureSampleGradCompare_Texture2DArray_grad_y, &TextureSampleGradCompare_Texture2DArray_compare };
+inline constexpr std::array TextureSampleGradCompare_Texture2DArray_args = { &TextureSampleGradCompare_Texture2DArray_texture, &TextureSampleGradCompare_Texture2DArray_sampler, &TextureSampleGradCompare_Texture2DArray_coordinate, &TextureSampleGradCompare_Texture2DArray_compare, &TextureSampleGradCompare_Texture2DArray_grad_x, &TextureSampleGradCompare_Texture2DArray_grad_y };
 
-/// textureSampleGradCompare with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleCompareGrad with SampledTexture2DArray, Float32x3, Float32, Float32x3, Float32x3
 Variable SampledTextureSampleGradCompare_Texture2DArray_texture;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture2DArray_coordinate;
+Variable SampledTextureSampleGradCompare_Texture2DArray_compare;
 Variable SampledTextureSampleGradCompare_Texture2DArray_grad_x;
 Variable SampledTextureSampleGradCompare_Texture2DArray_grad_y;
-Variable SampledTextureSampleGradCompare_Texture2DArray_compare;
 Function SampledTextureSampleGradCompare_Texture2DArray;
-inline constexpr std::array SampledTextureSampleGradCompare_Texture2DArray_args = { &SampledTextureSampleGradCompare_Texture2DArray_texture, &SampledTextureSampleGradCompare_Texture2DArray_coordinate, &SampledTextureSampleGradCompare_Texture2DArray_grad_x, &SampledTextureSampleGradCompare_Texture2DArray_grad_y, &SampledTextureSampleGradCompare_Texture2DArray_compare };
+inline constexpr std::array SampledTextureSampleGradCompare_Texture2DArray_args = { &SampledTextureSampleGradCompare_Texture2DArray_texture, &SampledTextureSampleGradCompare_Texture2DArray_coordinate, &SampledTextureSampleGradCompare_Texture2DArray_compare, &SampledTextureSampleGradCompare_Texture2DArray_grad_x, &SampledTextureSampleGradCompare_Texture2DArray_grad_y };
 
-/// textureSampleGradCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
+/// textureSampleCompareGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradCompareOffset_Texture1D_texture;
 inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
@@ -1507,26 +1507,26 @@ Variable TextureSampleGradCompareOffset_Texture1D_sampler;
 inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture1D_coordinate;
+Variable TextureSampleGradCompareOffset_Texture1D_compare;
 Variable TextureSampleGradCompareOffset_Texture1D_grad_x;
 Variable TextureSampleGradCompareOffset_Texture1D_grad_y;
-Variable TextureSampleGradCompareOffset_Texture1D_compare;
 Variable TextureSampleGradCompareOffset_Texture1D_offset;
 Function TextureSampleGradCompareOffset_Texture1D;
-inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_args = { &TextureSampleGradCompareOffset_Texture1D_texture, &TextureSampleGradCompareOffset_Texture1D_sampler, &TextureSampleGradCompareOffset_Texture1D_coordinate, &TextureSampleGradCompareOffset_Texture1D_grad_x, &TextureSampleGradCompareOffset_Texture1D_grad_y, &TextureSampleGradCompareOffset_Texture1D_compare, &TextureSampleGradCompareOffset_Texture1D_offset };
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_args = { &TextureSampleGradCompareOffset_Texture1D_texture, &TextureSampleGradCompareOffset_Texture1D_sampler, &TextureSampleGradCompareOffset_Texture1D_coordinate, &TextureSampleGradCompareOffset_Texture1D_compare, &TextureSampleGradCompareOffset_Texture1D_grad_x, &TextureSampleGradCompareOffset_Texture1D_grad_y, &TextureSampleGradCompareOffset_Texture1D_offset };
 
-/// textureSampleGradCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
+/// textureSampleCompareGradOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradCompareOffset_Texture1D_texture;
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompareOffset_Texture1D_coordinate;
+Variable SampledTextureSampleGradCompareOffset_Texture1D_compare;
 Variable SampledTextureSampleGradCompareOffset_Texture1D_grad_x;
 Variable SampledTextureSampleGradCompareOffset_Texture1D_grad_y;
-Variable SampledTextureSampleGradCompareOffset_Texture1D_compare;
 Variable SampledTextureSampleGradCompareOffset_Texture1D_offset;
 Function SampledTextureSampleGradCompareOffset_Texture1D;
-inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1D_args = { &SampledTextureSampleGradCompareOffset_Texture1D_texture, &SampledTextureSampleGradCompareOffset_Texture1D_coordinate, &SampledTextureSampleGradCompareOffset_Texture1D_grad_x, &SampledTextureSampleGradCompareOffset_Texture1D_grad_y, &SampledTextureSampleGradCompareOffset_Texture1D_compare, &SampledTextureSampleGradCompareOffset_Texture1D_offset };
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1D_args = { &SampledTextureSampleGradCompareOffset_Texture1D_texture, &SampledTextureSampleGradCompareOffset_Texture1D_coordinate, &SampledTextureSampleGradCompareOffset_Texture1D_compare, &SampledTextureSampleGradCompareOffset_Texture1D_grad_x, &SampledTextureSampleGradCompareOffset_Texture1D_grad_y, &SampledTextureSampleGradCompareOffset_Texture1D_offset };
 
-/// textureSampleGradCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleCompareGradOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGradCompareOffset_Texture2D_texture;
 inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
@@ -1534,24 +1534,24 @@ Variable TextureSampleGradCompareOffset_Texture2D_sampler;
 inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture2D_coordinate;
+Variable TextureSampleGradCompareOffset_Texture2D_compare;
 Variable TextureSampleGradCompareOffset_Texture2D_grad_x;
 Variable TextureSampleGradCompareOffset_Texture2D_grad_y;
-Variable TextureSampleGradCompareOffset_Texture2D_compare;
 Variable TextureSampleGradCompareOffset_Texture2D_offset;
 Function TextureSampleGradCompareOffset_Texture2D;
-inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_args = { &TextureSampleGradCompareOffset_Texture2D_texture, &TextureSampleGradCompareOffset_Texture2D_sampler, &TextureSampleGradCompareOffset_Texture2D_coordinate, &TextureSampleGradCompareOffset_Texture2D_grad_x, &TextureSampleGradCompareOffset_Texture2D_grad_y, &TextureSampleGradCompareOffset_Texture2D_compare, &TextureSampleGradCompareOffset_Texture2D_offset };
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_args = { &TextureSampleGradCompareOffset_Texture2D_texture, &TextureSampleGradCompareOffset_Texture2D_sampler, &TextureSampleGradCompareOffset_Texture2D_coordinate, &TextureSampleGradCompareOffset_Texture2D_compare, &TextureSampleGradCompareOffset_Texture2D_grad_x, &TextureSampleGradCompareOffset_Texture2D_grad_y, &TextureSampleGradCompareOffset_Texture2D_offset };
 
-/// textureSampleGradCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleCompareGradOffset with SampledTexture2D, Float32x2, Float32, Float32x2, Float32x2, Float32x2
 Variable SampledTextureSampleGradCompareOffset_Texture2D_texture;
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompareOffset_Texture2D_coordinate;
+Variable SampledTextureSampleGradCompareOffset_Texture2D_compare;
 Variable SampledTextureSampleGradCompareOffset_Texture2D_grad_x;
 Variable SampledTextureSampleGradCompareOffset_Texture2D_grad_y;
-Variable SampledTextureSampleGradCompareOffset_Texture2D_compare;
 Variable SampledTextureSampleGradCompareOffset_Texture2D_offset;
 Function SampledTextureSampleGradCompareOffset_Texture2D;
-inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2D_args = { &SampledTextureSampleGradCompareOffset_Texture2D_texture, &SampledTextureSampleGradCompareOffset_Texture2D_coordinate, &SampledTextureSampleGradCompareOffset_Texture2D_grad_x, &SampledTextureSampleGradCompareOffset_Texture2D_grad_y, &SampledTextureSampleGradCompareOffset_Texture2D_compare, &SampledTextureSampleGradCompareOffset_Texture2D_offset };
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2D_args = { &SampledTextureSampleGradCompareOffset_Texture2D_texture, &SampledTextureSampleGradCompareOffset_Texture2D_coordinate, &SampledTextureSampleGradCompareOffset_Texture2D_compare, &SampledTextureSampleGradCompareOffset_Texture2D_grad_x, &SampledTextureSampleGradCompareOffset_Texture2D_grad_y, &SampledTextureSampleGradCompareOffset_Texture2D_offset };
 
 void SetupIntrinsics12()
 {
@@ -2517,7 +2517,7 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture2DArray)->nameWithVarNames = "textureSampleLodOffset(texture : uniform *textureSampled2DArray, coordinate : f32x3, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with Texture1D, Sampler, Float32, Float32, Float32
+    /// textureSampleProjLod with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleLodProj_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodProj_Texture1D_texture.type.modifiers = TextureSampleLodProj_Texture1D_texture_modifiers;
@@ -2528,10 +2528,10 @@ void SetupIntrinsics12()
     TextureSampleLodProj_Texture1D_sampler.type.modifierValues = TextureSampleLodProj_Texture1D_sampler_modifierValues;
     TextureSampleLodProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureSampleLodProj_Texture1D_lod.name = "lod"_c;
-    TextureSampleLodProj_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture1D_proj.name = "proj"_c;
     TextureSampleLodProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProj_Texture1D_lod.name = "lod"_c;
+    TextureSampleLodProj_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     TextureSampleLodProj_Texture1D.name = TextureSampleLodProj_Texture1D_name;
     TextureSampleLodProj_Texture1D.backendIndex = 2536;
@@ -2542,24 +2542,24 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture1D)->signature = "textureSampleLodProj(uniform *texture1D,uniform *sampler,f32,f32,f32) f32x4"_c;
-    Symbol::Resolved(&TextureSampleLodProj_Texture1D)->name = "textureSampleLodProj(uniform *texture1D,uniform *sampler,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodProj_Texture1D)->nameWithVarNames = "textureSampleLodProj(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, lod : f32, proj : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture1D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProj_Texture1D)->signature = "textureSampleProjLod(uniform *texture1D,uniform *sampler,f32,f32,f32) f32x4"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture1D)->name = "textureSampleProjLod(uniform *texture1D,uniform *sampler,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture1D)->nameWithVarNames = "textureSampleProjLod(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, proj : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with SampledTexture1D, Float32, Float32, Float32
+    /// textureSampleProjLod with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleLodProj_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodProj_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleLodProj_Texture1D_texture.type.modifiers = SampledTextureSampleLodProj_Texture1D_texture_modifiers;
     SampledTextureSampleLodProj_Texture1D_texture.type.modifierValues = SampledTextureSampleLodProj_Texture1D_texture_modifierValues;
     SampledTextureSampleLodProj_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleLodProj_Texture1D_lod.name = "lod"_c;
-    SampledTextureSampleLodProj_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture1D_proj.name = "proj"_c;
     SampledTextureSampleLodProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProj_Texture1D_lod.name = "lod"_c;
+    SampledTextureSampleLodProj_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     SampledTextureSampleLodProj_Texture1D.name = SampledTextureSampleLodProj_Texture1D_name;
     SampledTextureSampleLodProj_Texture1D.backendIndex = 2537;
@@ -2568,14 +2568,14 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->signature = "textureSampleLodProj(uniform *textureSampled1D,f32,f32,f32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->name = "textureSampleLodProj(uniform *textureSampled1D,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->nameWithVarNames = "textureSampleLodProj(texture : uniform *textureSampled1D, coordinate : f32, lod : f32, proj : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->signature = "textureSampleProjLod(uniform *textureSampled1D,f32,f32,f32) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->name = "textureSampleProjLod(uniform *textureSampled1D,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->nameWithVarNames = "textureSampleProjLod(texture : uniform *textureSampled1D, coordinate : f32, proj : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with Texture2D, Sampler, Float32x2, Float32, Float32
+    /// textureSampleProjLod with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleLodProj_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodProj_Texture2D_texture.type.modifiers = TextureSampleLodProj_Texture2D_texture_modifiers;
@@ -2586,10 +2586,10 @@ void SetupIntrinsics12()
     TextureSampleLodProj_Texture2D_sampler.type.modifierValues = TextureSampleLodProj_Texture2D_sampler_modifierValues;
     TextureSampleLodProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodProj_Texture2D_lod.name = "lod"_c;
-    TextureSampleLodProj_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture2D_proj.name = "proj"_c;
     TextureSampleLodProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProj_Texture2D_lod.name = "lod"_c;
+    TextureSampleLodProj_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     TextureSampleLodProj_Texture2D.name = TextureSampleLodProj_Texture2D_name;
     TextureSampleLodProj_Texture2D.backendIndex = 2538;
@@ -2600,24 +2600,24 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture2D)->signature = "textureSampleLodProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32) f32x4"_c;
-    Symbol::Resolved(&TextureSampleLodProj_Texture2D)->name = "textureSampleLodProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodProj_Texture2D)->nameWithVarNames = "textureSampleLodProj(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, lod : f32, proj : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture2D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProj_Texture2D)->signature = "textureSampleProjLod(uniform *texture2D,uniform *sampler,f32x2,f32,f32) f32x4"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture2D)->name = "textureSampleProjLod(uniform *texture2D,uniform *sampler,f32x2,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture2D)->nameWithVarNames = "textureSampleProjLod(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, proj : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with SampledTexture2D, Float32x2, Float32, Float32
+    /// textureSampleProjLod with SampledTexture2D, Float32x2, Float32, Float32
     SampledTextureSampleLodProj_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodProj_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleLodProj_Texture2D_texture.type.modifiers = SampledTextureSampleLodProj_Texture2D_texture_modifiers;
     SampledTextureSampleLodProj_Texture2D_texture.type.modifierValues = SampledTextureSampleLodProj_Texture2D_texture_modifierValues;
     SampledTextureSampleLodProj_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodProj_Texture2D_lod.name = "lod"_c;
-    SampledTextureSampleLodProj_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture2D_proj.name = "proj"_c;
     SampledTextureSampleLodProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProj_Texture2D_lod.name = "lod"_c;
+    SampledTextureSampleLodProj_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     SampledTextureSampleLodProj_Texture2D.name = SampledTextureSampleLodProj_Texture2D_name;
     SampledTextureSampleLodProj_Texture2D.backendIndex = 2539;
@@ -2626,14 +2626,14 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->signature = "textureSampleLodProj(uniform *textureSampled2D,f32x2,f32,f32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->name = "textureSampleLodProj(uniform *textureSampled2D,f32x2,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->nameWithVarNames = "textureSampleLodProj(texture : uniform *textureSampled2D, coordinate : f32x2, lod : f32, proj : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->signature = "textureSampleProjLod(uniform *textureSampled2D,f32x2,f32,f32) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->name = "textureSampleProjLod(uniform *textureSampled2D,f32x2,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->nameWithVarNames = "textureSampleProjLod(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with Texture3D, Sampler, Float32x3, Float32, Float32
+    /// textureSampleProjLod with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleLodProj_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodProj_Texture3D_texture.type.modifiers = TextureSampleLodProj_Texture3D_texture_modifiers;
@@ -2644,10 +2644,10 @@ void SetupIntrinsics12()
     TextureSampleLodProj_Texture3D_sampler.type.modifierValues = TextureSampleLodProj_Texture3D_sampler_modifierValues;
     TextureSampleLodProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodProj_Texture3D_lod.name = "lod"_c;
-    TextureSampleLodProj_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture3D_proj.name = "proj"_c;
     TextureSampleLodProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProj_Texture3D_lod.name = "lod"_c;
+    TextureSampleLodProj_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     TextureSampleLodProj_Texture3D.name = TextureSampleLodProj_Texture3D_name;
     TextureSampleLodProj_Texture3D.backendIndex = 2540;
@@ -2658,24 +2658,24 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture3D)->signature = "textureSampleLodProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32) f32x4"_c;
-    Symbol::Resolved(&TextureSampleLodProj_Texture3D)->name = "textureSampleLodProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodProj_Texture3D)->nameWithVarNames = "textureSampleLodProj(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, lod : f32, proj : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture3D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProj_Texture3D)->signature = "textureSampleProjLod(uniform *texture3D,uniform *sampler,f32x3,f32,f32) f32x4"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture3D)->name = "textureSampleProjLod(uniform *texture3D,uniform *sampler,f32x3,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProj_Texture3D)->nameWithVarNames = "textureSampleProjLod(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with SampledTexture3D, Float32x3, Float32, Float32
+    /// textureSampleProjLod with SampledTexture3D, Float32x3, Float32, Float32
     SampledTextureSampleLodProj_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodProj_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleLodProj_Texture3D_texture.type.modifiers = SampledTextureSampleLodProj_Texture3D_texture_modifiers;
     SampledTextureSampleLodProj_Texture3D_texture.type.modifierValues = SampledTextureSampleLodProj_Texture3D_texture_modifierValues;
     SampledTextureSampleLodProj_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodProj_Texture3D_lod.name = "lod"_c;
-    SampledTextureSampleLodProj_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture3D_proj.name = "proj"_c;
     SampledTextureSampleLodProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProj_Texture3D_lod.name = "lod"_c;
+    SampledTextureSampleLodProj_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     SampledTextureSampleLodProj_Texture3D.name = SampledTextureSampleLodProj_Texture3D_name;
     SampledTextureSampleLodProj_Texture3D.backendIndex = 2541;
@@ -2684,14 +2684,14 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->signature = "textureSampleLodProj(uniform *textureSampled3D,f32x3,f32,f32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->name = "textureSampleLodProj(uniform *textureSampled3D,f32x3,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->nameWithVarNames = "textureSampleLodProj(texture : uniform *textureSampled3D, coordinate : f32x3, lod : f32, proj : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->signature = "textureSampleProjLod(uniform *textureSampled3D,f32x3,f32,f32) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->name = "textureSampleProjLod(uniform *textureSampled3D,f32x3,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->nameWithVarNames = "textureSampleProjLod(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
+    /// textureSampleProjLodOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodProjOffset_Texture1D_texture.type.modifiers = TextureSampleLodProjOffset_Texture1D_texture_modifiers;
@@ -2702,10 +2702,10 @@ void SetupIntrinsics12()
     TextureSampleLodProjOffset_Texture1D_sampler.type.modifierValues = TextureSampleLodProjOffset_Texture1D_sampler_modifierValues;
     TextureSampleLodProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureSampleLodProjOffset_Texture1D_lod.name = "lod"_c;
-    TextureSampleLodProjOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture1D_proj.name = "proj"_c;
     TextureSampleLodProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjOffset_Texture1D_lod.name = "lod"_c;
+    TextureSampleLodProjOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleLodProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
@@ -2718,25 +2718,25 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D)->signature = "textureSampleLodProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32x4"_c;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D)->name = "textureSampleLodProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D)->nameWithVarNames = "textureSampleLodProjOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, lod : f32, proj : f32, offset : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D)->signature = "textureSampleProjLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32x4"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D)->name = "textureSampleProjLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D)->nameWithVarNames = "textureSampleProjLodOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, proj : f32, lod : f32, offset : f32)"_c;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
+    /// textureSampleProjLodOffset with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleLodProjOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodProjOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleLodProjOffset_Texture1D_texture.type.modifiers = SampledTextureSampleLodProjOffset_Texture1D_texture_modifiers;
     SampledTextureSampleLodProjOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleLodProjOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleLodProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleLodProjOffset_Texture1D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture1D_proj.name = "proj"_c;
     SampledTextureSampleLodProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjOffset_Texture1D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleLodProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
@@ -2747,15 +2747,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D)->signature = "textureSampleLodProjOffset(uniform *textureSampled1D,f32,f32,f32,f32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D)->name = "textureSampleLodProjOffset(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D)->nameWithVarNames = "textureSampleLodProjOffset(texture : uniform *textureSampled1D, coordinate : f32, lod : f32, proj : f32, offset : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D)->signature = "textureSampleProjLodOffset(uniform *textureSampled1D,f32,f32,f32,f32) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D)->name = "textureSampleProjLodOffset(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D)->nameWithVarNames = "textureSampleProjLodOffset(texture : uniform *textureSampled1D, coordinate : f32, proj : f32, lod : f32, offset : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleProjLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodProjOffset_Texture2D_texture.type.modifiers = TextureSampleLodProjOffset_Texture2D_texture_modifiers;
@@ -2766,10 +2766,10 @@ void SetupIntrinsics12()
     TextureSampleLodProjOffset_Texture2D_sampler.type.modifierValues = TextureSampleLodProjOffset_Texture2D_sampler_modifierValues;
     TextureSampleLodProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodProjOffset_Texture2D_lod.name = "lod"_c;
-    TextureSampleLodProjOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture2D_proj.name = "proj"_c;
     TextureSampleLodProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjOffset_Texture2D_lod.name = "lod"_c;
+    TextureSampleLodProjOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleLodProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodProjOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
@@ -2782,25 +2782,25 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D)->signature = "textureSampleLodProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2) f32x4"_c;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D)->name = "textureSampleLodProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)"_c;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D)->nameWithVarNames = "textureSampleLodProjOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, lod : f32, proj : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D)->signature = "textureSampleProjLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2) f32x4"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D)->name = "textureSampleProjLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D)->nameWithVarNames = "textureSampleProjLodOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, proj : f32, lod : f32, offset : f32x2)"_c;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleProjLodOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleLodProjOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodProjOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleLodProjOffset_Texture2D_texture.type.modifiers = SampledTextureSampleLodProjOffset_Texture2D_texture_modifiers;
     SampledTextureSampleLodProjOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleLodProjOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleLodProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodProjOffset_Texture2D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture2D_proj.name = "proj"_c;
     SampledTextureSampleLodProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjOffset_Texture2D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleLodProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodProjOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
@@ -2811,15 +2811,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D)->signature = "textureSampleLodProjOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D)->name = "textureSampleLodProjOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D)->nameWithVarNames = "textureSampleLodProjOffset(texture : uniform *textureSampled2D, coordinate : f32x2, lod : f32, proj : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D)->signature = "textureSampleProjLodOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D)->name = "textureSampleProjLodOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D)->nameWithVarNames = "textureSampleProjLodOffset(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, lod : f32, offset : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleProjLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodProjOffset_Texture3D_texture.type.modifiers = TextureSampleLodProjOffset_Texture3D_texture_modifiers;
@@ -2830,10 +2830,10 @@ void SetupIntrinsics12()
     TextureSampleLodProjOffset_Texture3D_sampler.type.modifierValues = TextureSampleLodProjOffset_Texture3D_sampler_modifierValues;
     TextureSampleLodProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodProjOffset_Texture3D_lod.name = "lod"_c;
-    TextureSampleLodProjOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture3D_proj.name = "proj"_c;
     TextureSampleLodProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjOffset_Texture3D_lod.name = "lod"_c;
+    TextureSampleLodProjOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleLodProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodProjOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
@@ -2846,25 +2846,25 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D)->signature = "textureSampleLodProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3) f32x4"_c;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D)->name = "textureSampleLodProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)"_c;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D)->nameWithVarNames = "textureSampleLodProjOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, lod : f32, proj : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D)->signature = "textureSampleProjLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3) f32x4"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D)->name = "textureSampleProjLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D)->nameWithVarNames = "textureSampleProjLodOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleProjLodOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleLodProjOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodProjOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleLodProjOffset_Texture3D_texture.type.modifiers = SampledTextureSampleLodProjOffset_Texture3D_texture_modifiers;
     SampledTextureSampleLodProjOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleLodProjOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleLodProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodProjOffset_Texture3D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture3D_proj.name = "proj"_c;
     SampledTextureSampleLodProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjOffset_Texture3D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleLodProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodProjOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
@@ -2875,15 +2875,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D)->signature = "textureSampleLodProjOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D)->name = "textureSampleLodProjOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D)->nameWithVarNames = "textureSampleLodProjOffset(texture : uniform *textureSampled3D, coordinate : f32x3, lod : f32, proj : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D)->signature = "textureSampleProjLodOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D)->name = "textureSampleProjLodOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D)->nameWithVarNames = "textureSampleProjLodOffset(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompare with Texture1D, Sampler, Float32, Float32, Float32
+    /// textureSampleCompareLod with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleLodCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodCompare_Texture1D_texture.type.modifiers = TextureSampleLodCompare_Texture1D_texture_modifiers;
@@ -2894,10 +2894,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompare_Texture1D_sampler.type.modifierValues = TextureSampleLodCompare_Texture1D_sampler_modifierValues;
     TextureSampleLodCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureSampleLodCompare_Texture1D_lod.name = "lod"_c;
-    TextureSampleLodCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture1D_lod.name = "lod"_c;
+    TextureSampleLodCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture1D.name = TextureSampleLodCompare_Texture1D_name;
     TextureSampleLodCompare_Texture1D.backendIndex = 2548;
@@ -2908,24 +2908,24 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1D)->signature = "textureSampleLodCompare(uniform *texture1D,uniform *sampler,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1D)->name = "textureSampleLodCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1D)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1D)->signature = "textureSampleCompareLod(uniform *texture1D,uniform *sampler,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1D)->name = "textureSampleCompareLod(uniform *texture1D,uniform *sampler,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1D)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with SampledTexture1D, Float32, Float32, Float32
+    /// textureSampleCompareLod with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleLodCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleLodCompare_Texture1D_texture.type.modifiers = SampledTextureSampleLodCompare_Texture1D_texture_modifiers;
     SampledTextureSampleLodCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleLodCompare_Texture1D_lod.name = "lod"_c;
-    SampledTextureSampleLodCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture1D_lod.name = "lod"_c;
+    SampledTextureSampleLodCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture1D.name = SampledTextureSampleLodCompare_Texture1D_name;
     SampledTextureSampleLodCompare_Texture1D.backendIndex = 2549;
@@ -2934,14 +2934,14 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D)->signature = "textureSampleLodCompare(uniform *textureSampled1D,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D)->name = "textureSampleLodCompare(uniform *textureSampled1D,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *textureSampled1D, coordinate : f32, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D)->signature = "textureSampleCompareLod(uniform *textureSampled1D,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D)->name = "textureSampleCompareLod(uniform *textureSampled1D,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *textureSampled1D, coordinate : f32, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with Texture2D, Sampler, Float32x2, Float32, Float32
+    /// textureSampleCompareLod with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleLodCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodCompare_Texture2D_texture.type.modifiers = TextureSampleLodCompare_Texture2D_texture_modifiers;
@@ -2952,10 +2952,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompare_Texture2D_sampler.type.modifierValues = TextureSampleLodCompare_Texture2D_sampler_modifierValues;
     TextureSampleLodCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodCompare_Texture2D_lod.name = "lod"_c;
-    TextureSampleLodCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture2D_lod.name = "lod"_c;
+    TextureSampleLodCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture2D.name = TextureSampleLodCompare_Texture2D_name;
     TextureSampleLodCompare_Texture2D.backendIndex = 2550;
@@ -2966,24 +2966,24 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2D)->signature = "textureSampleLodCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2D)->name = "textureSampleLodCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2D)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2D)->signature = "textureSampleCompareLod(uniform *texture2D,uniform *sampler,f32x2,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2D)->name = "textureSampleCompareLod(uniform *texture2D,uniform *sampler,f32x2,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2D)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with SampledTexture2D, Float32x2, Float32, Float32
+    /// textureSampleCompareLod with SampledTexture2D, Float32x2, Float32, Float32
     SampledTextureSampleLodCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleLodCompare_Texture2D_texture.type.modifiers = SampledTextureSampleLodCompare_Texture2D_texture_modifiers;
     SampledTextureSampleLodCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodCompare_Texture2D_lod.name = "lod"_c;
-    SampledTextureSampleLodCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture2D_lod.name = "lod"_c;
+    SampledTextureSampleLodCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture2D.name = SampledTextureSampleLodCompare_Texture2D_name;
     SampledTextureSampleLodCompare_Texture2D.backendIndex = 2551;
@@ -2992,14 +2992,14 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D)->signature = "textureSampleLodCompare(uniform *textureSampled2D,f32x2,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D)->name = "textureSampleLodCompare(uniform *textureSampled2D,f32x2,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *textureSampled2D, coordinate : f32x2, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D)->signature = "textureSampleCompareLod(uniform *textureSampled2D,f32x2,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D)->name = "textureSampleCompareLod(uniform *textureSampled2D,f32x2,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *textureSampled2D, coordinate : f32x2, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with Texture3D, Sampler, Float32x3, Float32, Float32
+    /// textureSampleCompareLod with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleLodCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodCompare_Texture3D_texture.type.modifiers = TextureSampleLodCompare_Texture3D_texture_modifiers;
@@ -3010,10 +3010,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompare_Texture3D_sampler.type.modifierValues = TextureSampleLodCompare_Texture3D_sampler_modifierValues;
     TextureSampleLodCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodCompare_Texture3D_lod.name = "lod"_c;
-    TextureSampleLodCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture3D_lod.name = "lod"_c;
+    TextureSampleLodCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture3D.name = TextureSampleLodCompare_Texture3D_name;
     TextureSampleLodCompare_Texture3D.backendIndex = 2552;
@@ -3024,24 +3024,24 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture3D)->signature = "textureSampleLodCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture3D)->name = "textureSampleLodCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture3D)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture3D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture3D)->signature = "textureSampleCompareLod(uniform *texture3D,uniform *sampler,f32x3,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture3D)->name = "textureSampleCompareLod(uniform *texture3D,uniform *sampler,f32x3,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture3D)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with SampledTexture3D, Float32x3, Float32, Float32
+    /// textureSampleCompareLod with SampledTexture3D, Float32x3, Float32, Float32
     SampledTextureSampleLodCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleLodCompare_Texture3D_texture.type.modifiers = SampledTextureSampleLodCompare_Texture3D_texture_modifiers;
     SampledTextureSampleLodCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodCompare_Texture3D_lod.name = "lod"_c;
-    SampledTextureSampleLodCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture3D_lod.name = "lod"_c;
+    SampledTextureSampleLodCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture3D.name = SampledTextureSampleLodCompare_Texture3D_name;
     SampledTextureSampleLodCompare_Texture3D.backendIndex = 2553;
@@ -3050,14 +3050,14 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D)->signature = "textureSampleLodCompare(uniform *textureSampled3D,f32x3,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D)->name = "textureSampleLodCompare(uniform *textureSampled3D,f32x3,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *textureSampled3D, coordinate : f32x3, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D)->signature = "textureSampleCompareLod(uniform *textureSampled3D,f32x3,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D)->name = "textureSampleCompareLod(uniform *textureSampled3D,f32x3,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *textureSampled3D, coordinate : f32x3, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
+    /// textureSampleCompareLod with Texture1DArray, Sampler, Float32x2, Float32, Float32
     TextureSampleLodCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleLodCompare_Texture1DArray_texture.type.modifiers = TextureSampleLodCompare_Texture1DArray_texture_modifiers;
@@ -3068,10 +3068,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompare_Texture1DArray_sampler.type.modifierValues = TextureSampleLodCompare_Texture1DArray_sampler_modifierValues;
     TextureSampleLodCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodCompare_Texture1DArray_lod.name = "lod"_c;
-    TextureSampleLodCompare_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture1DArray_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture1DArray_lod.name = "lod"_c;
+    TextureSampleLodCompare_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture1DArray.name = TextureSampleLodCompare_Texture1DArray_name;
     TextureSampleLodCompare_Texture1DArray.backendIndex = 2554;
@@ -3082,24 +3082,24 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray)->signature = "textureSampleLodCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray)->name = "textureSampleLodCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray)->signature = "textureSampleCompareLod(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray)->name = "textureSampleCompareLod(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with SampledTexture1DArray, Float32x2, Float32, Float32
+    /// textureSampleCompareLod with SampledTexture1DArray, Float32x2, Float32, Float32
     SampledTextureSampleLodCompare_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
     SampledTextureSampleLodCompare_Texture1DArray_texture.type.modifiers = SampledTextureSampleLodCompare_Texture1DArray_texture_modifiers;
     SampledTextureSampleLodCompare_Texture1DArray_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture1DArray_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodCompare_Texture1DArray_lod.name = "lod"_c;
-    SampledTextureSampleLodCompare_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture1DArray_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture1DArray_lod.name = "lod"_c;
+    SampledTextureSampleLodCompare_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture1DArray.name = SampledTextureSampleLodCompare_Texture1DArray_name;
     SampledTextureSampleLodCompare_Texture1DArray.backendIndex = 2555;
@@ -3108,14 +3108,14 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray)->signature = "textureSampleLodCompare(uniform *textureSampled1DArray,f32x2,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray)->name = "textureSampleLodCompare(uniform *textureSampled1DArray,f32x2,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *textureSampled1DArray, coordinate : f32x2, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray)->signature = "textureSampleCompareLod(uniform *textureSampled1DArray,f32x2,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray)->name = "textureSampleCompareLod(uniform *textureSampled1DArray,f32x2,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *textureSampled1DArray, coordinate : f32x2, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
+    /// textureSampleCompareLod with Texture2DArray, Sampler, Float32x3, Float32, Float32
     TextureSampleLodCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleLodCompare_Texture2DArray_texture.type.modifiers = TextureSampleLodCompare_Texture2DArray_texture_modifiers;
@@ -3126,10 +3126,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompare_Texture2DArray_sampler.type.modifierValues = TextureSampleLodCompare_Texture2DArray_sampler_modifierValues;
     TextureSampleLodCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodCompare_Texture2DArray_lod.name = "lod"_c;
-    TextureSampleLodCompare_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture2DArray_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture2DArray_lod.name = "lod"_c;
+    TextureSampleLodCompare_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture2DArray.name = TextureSampleLodCompare_Texture2DArray_name;
     TextureSampleLodCompare_Texture2DArray.backendIndex = 2556;
@@ -3140,24 +3140,24 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray)->signature = "textureSampleLodCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray)->name = "textureSampleLodCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray)->signature = "textureSampleCompareLod(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray)->name = "textureSampleCompareLod(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompare with SampledTexture2DArray, Float32x3, Float32, Float32
+    /// textureSampleCompareLod with SampledTexture2DArray, Float32x3, Float32, Float32
     SampledTextureSampleLodCompare_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
     SampledTextureSampleLodCompare_Texture2DArray_texture.type.modifiers = SampledTextureSampleLodCompare_Texture2DArray_texture_modifiers;
     SampledTextureSampleLodCompare_Texture2DArray_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture2DArray_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodCompare_Texture2DArray_lod.name = "lod"_c;
-    SampledTextureSampleLodCompare_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture2DArray_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture2DArray_lod.name = "lod"_c;
+    SampledTextureSampleLodCompare_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture2DArray.name = SampledTextureSampleLodCompare_Texture2DArray_name;
     SampledTextureSampleLodCompare_Texture2DArray.backendIndex = 2557;
@@ -3166,14 +3166,14 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray)->signature = "textureSampleLodCompare(uniform *textureSampled2DArray,f32x3,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray)->name = "textureSampleLodCompare(uniform *textureSampled2DArray,f32x3,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray)->nameWithVarNames = "textureSampleLodCompare(texture : uniform *textureSampled2DArray, coordinate : f32x3, lod : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray)->signature = "textureSampleCompareLod(uniform *textureSampled2DArray,f32x3,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray)->name = "textureSampleCompareLod(uniform *textureSampled2DArray,f32x3,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray)->nameWithVarNames = "textureSampleCompareLod(texture : uniform *textureSampled2DArray, coordinate : f32x3, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
+    /// textureSampleCompareLodOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodCompareOffset_Texture1D_texture.type.modifiers = TextureSampleLodCompareOffset_Texture1D_texture_modifiers;
@@ -3184,10 +3184,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureSampleLodCompareOffset_Texture1D_lod.name = "lod"_c;
-    TextureSampleLodCompareOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture1D_compare.name = "compare"_c;
     TextureSampleLodCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompareOffset_Texture1D_lod.name = "lod"_c;
+    TextureSampleLodCompareOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3200,25 +3200,25 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D)->signature = "textureSampleLodCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D)->name = "textureSampleLodCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, lod : f32, compare : f32, offset : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D)->signature = "textureSampleCompareLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D)->name = "textureSampleCompareLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, compare : f32, lod : f32, offset : f32)"_c;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
+    /// textureSampleCompareLodOffset with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleLodCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleLodCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture1D_texture_modifiers;
     SampledTextureSampleLodCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleLodCompareOffset_Texture1D_lod.name = "lod"_c;
-    SampledTextureSampleLodCompareOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleLodCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompareOffset_Texture1D_lod.name = "lod"_c;
+    SampledTextureSampleLodCompareOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3229,15 +3229,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D)->signature = "textureSampleLodCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D)->name = "textureSampleLodCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *textureSampled1D, coordinate : f32, lod : f32, compare : f32, offset : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D)->signature = "textureSampleCompareLodOffset(uniform *textureSampled1D,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D)->name = "textureSampleCompareLodOffset(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *textureSampled1D, coordinate : f32, compare : f32, lod : f32, offset : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleCompareLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodCompareOffset_Texture2D_texture.type.modifiers = TextureSampleLodCompareOffset_Texture2D_texture_modifiers;
@@ -3248,10 +3248,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodCompareOffset_Texture2D_lod.name = "lod"_c;
-    TextureSampleLodCompareOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture2D_compare.name = "compare"_c;
     TextureSampleLodCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompareOffset_Texture2D_lod.name = "lod"_c;
+    TextureSampleLodCompareOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3264,25 +3264,25 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D)->signature = "textureSampleLodCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D)->name = "textureSampleLodCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, lod : f32, compare : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D)->signature = "textureSampleCompareLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D)->name = "textureSampleCompareLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, compare : f32, lod : f32, offset : f32x2)"_c;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleCompareLodOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleLodCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleLodCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture2D_texture_modifiers;
     SampledTextureSampleLodCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodCompareOffset_Texture2D_lod.name = "lod"_c;
-    SampledTextureSampleLodCompareOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleLodCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompareOffset_Texture2D_lod.name = "lod"_c;
+    SampledTextureSampleLodCompareOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3293,15 +3293,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D)->signature = "textureSampleLodCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D)->name = "textureSampleLodCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *textureSampled2D, coordinate : f32x2, lod : f32, compare : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D)->signature = "textureSampleCompareLodOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D)->name = "textureSampleCompareLodOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *textureSampled2D, coordinate : f32x2, compare : f32, lod : f32, offset : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleCompareLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodCompareOffset_Texture3D_texture.type.modifiers = TextureSampleLodCompareOffset_Texture3D_texture_modifiers;
@@ -3312,10 +3312,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodCompareOffset_Texture3D_lod.name = "lod"_c;
-    TextureSampleLodCompareOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture3D_compare.name = "compare"_c;
     TextureSampleLodCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompareOffset_Texture3D_lod.name = "lod"_c;
+    TextureSampleLodCompareOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3328,25 +3328,25 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D)->signature = "textureSampleLodCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D)->name = "textureSampleLodCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, lod : f32, compare : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D)->signature = "textureSampleCompareLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D)->name = "textureSampleCompareLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, compare : f32, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleCompareLodOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleLodCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleLodCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture3D_texture_modifiers;
     SampledTextureSampleLodCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodCompareOffset_Texture3D_lod.name = "lod"_c;
-    SampledTextureSampleLodCompareOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleLodCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompareOffset_Texture3D_lod.name = "lod"_c;
+    SampledTextureSampleLodCompareOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3357,15 +3357,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D)->signature = "textureSampleLodCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D)->name = "textureSampleLodCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *textureSampled3D, coordinate : f32x3, lod : f32, compare : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D)->signature = "textureSampleCompareLodOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D)->name = "textureSampleCompareLodOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *textureSampled3D, coordinate : f32x3, compare : f32, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleCompareLodOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleLodCompareOffset_Texture1DArray_texture.type.modifiers = TextureSampleLodCompareOffset_Texture1DArray_texture_modifiers;
@@ -3376,10 +3376,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompareOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodCompareOffset_Texture1DArray_lod.name = "lod"_c;
-    TextureSampleLodCompareOffset_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture1DArray_compare.name = "compare"_c;
     TextureSampleLodCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompareOffset_Texture1DArray_lod.name = "lod"_c;
+    TextureSampleLodCompareOffset_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3392,25 +3392,25 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray)->signature = "textureSampleLodCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray)->name = "textureSampleLodCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2, lod : f32, compare : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray)->signature = "textureSampleCompareLodOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray)->name = "textureSampleCompareLodOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2, compare : f32, lod : f32, offset : f32x2)"_c;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleCompareLodOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleLodCompareOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
     SampledTextureSampleLodCompareOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture1DArray_texture_modifiers;
     SampledTextureSampleLodCompareOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodCompareOffset_Texture1DArray_lod.name = "lod"_c;
-    SampledTextureSampleLodCompareOffset_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1DArray_compare.name = "compare"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompareOffset_Texture1DArray_lod.name = "lod"_c;
+    SampledTextureSampleLodCompareOffset_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3421,15 +3421,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray)->signature = "textureSampleLodCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray)->name = "textureSampleLodCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *textureSampled1DArray, coordinate : f32x2, lod : f32, compare : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray)->signature = "textureSampleCompareLodOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray)->name = "textureSampleCompareLodOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *textureSampled1DArray, coordinate : f32x2, compare : f32, lod : f32, offset : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleCompareLodOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleLodCompareOffset_Texture2DArray_texture.type.modifiers = TextureSampleLodCompareOffset_Texture2DArray_texture_modifiers;
@@ -3440,10 +3440,10 @@ void SetupIntrinsics12()
     TextureSampleLodCompareOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodCompareOffset_Texture2DArray_lod.name = "lod"_c;
-    TextureSampleLodCompareOffset_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture2DArray_compare.name = "compare"_c;
     TextureSampleLodCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompareOffset_Texture2DArray_lod.name = "lod"_c;
+    TextureSampleLodCompareOffset_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3456,25 +3456,25 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray)->signature = "textureSampleLodCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3) f32"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray)->name = "textureSampleLodCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)"_c;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, lod : f32, compare : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray)->signature = "textureSampleCompareLodOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray)->name = "textureSampleCompareLodOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, compare : f32, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleCompareLodOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleLodCompareOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
     SampledTextureSampleLodCompareOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture2DArray_texture_modifiers;
     SampledTextureSampleLodCompareOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodCompareOffset_Texture2DArray_lod.name = "lod"_c;
-    SampledTextureSampleLodCompareOffset_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture2DArray_compare.name = "compare"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompareOffset_Texture2DArray_lod.name = "lod"_c;
+    SampledTextureSampleLodCompareOffset_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
@@ -3485,15 +3485,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray)->signature = "textureSampleLodCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray)->name = "textureSampleLodCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray)->nameWithVarNames = "textureSampleLodCompareOffset(texture : uniform *textureSampled2DArray, coordinate : f32x3, lod : f32, compare : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray)->signature = "textureSampleCompareLodOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray)->name = "textureSampleCompareLodOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray)->nameWithVarNames = "textureSampleCompareLodOffset(texture : uniform *textureSampled2DArray, coordinate : f32x3, compare : f32, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
+    /// textureSampleProjCompareLod with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodProjCompare_Texture1D_texture.type.modifiers = TextureSampleLodProjCompare_Texture1D_texture_modifiers;
@@ -3504,12 +3504,12 @@ void SetupIntrinsics12()
     TextureSampleLodProjCompare_Texture1D_sampler.type.modifierValues = TextureSampleLodProjCompare_Texture1D_sampler_modifierValues;
     TextureSampleLodProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureSampleLodProjCompare_Texture1D_lod.name = "lod"_c;
-    TextureSampleLodProjCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture1D_proj.name = "proj"_c;
     TextureSampleLodProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompare_Texture1D_lod.name = "lod"_c;
+    TextureSampleLodProjCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     TextureSampleLodProjCompare_Texture1D.name = TextureSampleLodProjCompare_Texture1D_name;
     TextureSampleLodProjCompare_Texture1D.backendIndex = 2568;
@@ -3520,27 +3520,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D)->signature = "textureSampleLodProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D)->name = "textureSampleLodProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D)->nameWithVarNames = "textureSampleLodProjCompare(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, lod : f32, proj : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D)->signature = "textureSampleProjCompareLod(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D)->name = "textureSampleProjCompareLod(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D)->nameWithVarNames = "textureSampleProjCompareLod(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, proj : f32, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
+    /// textureSampleProjCompareLod with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleLodProjCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleLodProjCompare_Texture1D_texture.type.modifiers = SampledTextureSampleLodProjCompare_Texture1D_texture_modifiers;
     SampledTextureSampleLodProjCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleLodProjCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleLodProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleLodProjCompare_Texture1D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D_proj.name = "proj"_c;
     SampledTextureSampleLodProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompare_Texture1D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     SampledTextureSampleLodProjCompare_Texture1D.name = SampledTextureSampleLodProjCompare_Texture1D_name;
     SampledTextureSampleLodProjCompare_Texture1D.backendIndex = 2569;
@@ -3549,15 +3549,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->signature = "textureSampleLodProjCompare(uniform *textureSampled1D,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->name = "textureSampleLodProjCompare(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->nameWithVarNames = "textureSampleLodProjCompare(texture : uniform *textureSampled1D, coordinate : f32, lod : f32, proj : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->signature = "textureSampleProjCompareLod(uniform *textureSampled1D,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->name = "textureSampleProjCompareLod(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->nameWithVarNames = "textureSampleProjCompareLod(texture : uniform *textureSampled1D, coordinate : f32, proj : f32, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
+    /// textureSampleProjCompareLod with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodProjCompare_Texture2D_texture.type.modifiers = TextureSampleLodProjCompare_Texture2D_texture_modifiers;
@@ -3568,12 +3568,12 @@ void SetupIntrinsics12()
     TextureSampleLodProjCompare_Texture2D_sampler.type.modifierValues = TextureSampleLodProjCompare_Texture2D_sampler_modifierValues;
     TextureSampleLodProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodProjCompare_Texture2D_lod.name = "lod"_c;
-    TextureSampleLodProjCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture2D_proj.name = "proj"_c;
     TextureSampleLodProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompare_Texture2D_lod.name = "lod"_c;
+    TextureSampleLodProjCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     TextureSampleLodProjCompare_Texture2D.name = TextureSampleLodProjCompare_Texture2D_name;
     TextureSampleLodProjCompare_Texture2D.backendIndex = 2570;
@@ -3584,27 +3584,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D)->signature = "textureSampleLodProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D)->name = "textureSampleLodProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D)->nameWithVarNames = "textureSampleLodProjCompare(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, lod : f32, proj : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D)->signature = "textureSampleProjCompareLod(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D)->name = "textureSampleProjCompareLod(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D)->nameWithVarNames = "textureSampleProjCompareLod(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, proj : f32, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
+    /// textureSampleProjCompareLod with SampledTexture2D, Float32x2, Float32, Float32, Float32
     SampledTextureSampleLodProjCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleLodProjCompare_Texture2D_texture.type.modifiers = SampledTextureSampleLodProjCompare_Texture2D_texture_modifiers;
     SampledTextureSampleLodProjCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleLodProjCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleLodProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodProjCompare_Texture2D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture2D_proj.name = "proj"_c;
     SampledTextureSampleLodProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompare_Texture2D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     SampledTextureSampleLodProjCompare_Texture2D.name = SampledTextureSampleLodProjCompare_Texture2D_name;
     SampledTextureSampleLodProjCompare_Texture2D.backendIndex = 2571;
@@ -3613,15 +3613,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->signature = "textureSampleLodProjCompare(uniform *textureSampled2D,f32x2,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->name = "textureSampleLodProjCompare(uniform *textureSampled2D,f32x2,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->nameWithVarNames = "textureSampleLodProjCompare(texture : uniform *textureSampled2D, coordinate : f32x2, lod : f32, proj : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->signature = "textureSampleProjCompareLod(uniform *textureSampled2D,f32x2,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->name = "textureSampleProjCompareLod(uniform *textureSampled2D,f32x2,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->nameWithVarNames = "textureSampleProjCompareLod(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
+    /// textureSampleProjCompareLod with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodProjCompare_Texture3D_texture.type.modifiers = TextureSampleLodProjCompare_Texture3D_texture_modifiers;
@@ -3632,12 +3632,12 @@ void SetupIntrinsics12()
     TextureSampleLodProjCompare_Texture3D_sampler.type.modifierValues = TextureSampleLodProjCompare_Texture3D_sampler_modifierValues;
     TextureSampleLodProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodProjCompare_Texture3D_lod.name = "lod"_c;
-    TextureSampleLodProjCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture3D_proj.name = "proj"_c;
     TextureSampleLodProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompare_Texture3D_lod.name = "lod"_c;
+    TextureSampleLodProjCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     TextureSampleLodProjCompare_Texture3D.name = TextureSampleLodProjCompare_Texture3D_name;
     TextureSampleLodProjCompare_Texture3D.backendIndex = 2572;
@@ -3648,27 +3648,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D)->signature = "textureSampleLodProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D)->name = "textureSampleLodProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D)->nameWithVarNames = "textureSampleLodProjCompare(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, lod : f32, proj : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D)->signature = "textureSampleProjCompareLod(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D)->name = "textureSampleProjCompareLod(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D)->nameWithVarNames = "textureSampleProjCompareLod(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
+    /// textureSampleProjCompareLod with SampledTexture3D, Float32x3, Float32, Float32, Float32
     SampledTextureSampleLodProjCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleLodProjCompare_Texture3D_texture.type.modifiers = SampledTextureSampleLodProjCompare_Texture3D_texture_modifiers;
     SampledTextureSampleLodProjCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleLodProjCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleLodProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodProjCompare_Texture3D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture3D_proj.name = "proj"_c;
     SampledTextureSampleLodProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompare_Texture3D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     SampledTextureSampleLodProjCompare_Texture3D.name = SampledTextureSampleLodProjCompare_Texture3D_name;
     SampledTextureSampleLodProjCompare_Texture3D.backendIndex = 2573;
@@ -3677,15 +3677,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->signature = "textureSampleLodProjCompare(uniform *textureSampled3D,f32x3,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->name = "textureSampleLodProjCompare(uniform *textureSampled3D,f32x3,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->nameWithVarNames = "textureSampleLodProjCompare(texture : uniform *textureSampled3D, coordinate : f32x3, lod : f32, proj : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_lod)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->signature = "textureSampleProjCompareLod(uniform *textureSampled3D,f32x3,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->name = "textureSampleProjCompareLod(uniform *textureSampled3D,f32x3,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->nameWithVarNames = "textureSampleProjCompareLod(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, compare : f32, lod : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleProjCompareLodOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleLodProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodProjCompareOffset_Texture1D_texture.type.modifiers = TextureSampleLodProjCompareOffset_Texture1D_texture_modifiers;
@@ -3696,12 +3696,12 @@ void SetupIntrinsics12()
     TextureSampleLodProjCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleLodProjCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleLodProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureSampleLodProjCompareOffset_Texture1D_lod.name = "lod"_c;
-    TextureSampleLodProjCompareOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture1D_proj.name = "proj"_c;
     TextureSampleLodProjCompareOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture1D_compare.name = "compare"_c;
     TextureSampleLodProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompareOffset_Texture1D_lod.name = "lod"_c;
+    TextureSampleLodProjCompareOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleLodProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
@@ -3714,28 +3714,28 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D)->signature = "textureSampleLodProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D)->name = "textureSampleLodProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D)->nameWithVarNames = "textureSampleLodProjCompareOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, lod : f32, proj : f32, compare : f32, offset : f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D)->signature = "textureSampleProjCompareLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D)->name = "textureSampleProjCompareLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D)->nameWithVarNames = "textureSampleProjCompareLodOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, proj : f32, compare : f32, lod : f32, offset : f32)"_c;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleProjCompareLodOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleLodProjCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleLodProjCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleLodProjCompareOffset_Texture1D_texture_modifiers;
     SampledTextureSampleLodProjCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleLodProjCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleLodProjCompareOffset_Texture1D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjCompareOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture1D_proj.name = "proj"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompareOffset_Texture1D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjCompareOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
@@ -3746,16 +3746,16 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D)->signature = "textureSampleLodProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D)->name = "textureSampleLodProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D)->nameWithVarNames = "textureSampleLodProjCompareOffset(texture : uniform *textureSampled1D, coordinate : f32, lod : f32, proj : f32, compare : f32, offset : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D)->signature = "textureSampleProjCompareLodOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D)->name = "textureSampleProjCompareLodOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D)->nameWithVarNames = "textureSampleProjCompareLodOffset(texture : uniform *textureSampled1D, coordinate : f32, proj : f32, compare : f32, lod : f32, offset : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
+    /// textureSampleProjCompareLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
     TextureSampleLodProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodProjCompareOffset_Texture2D_texture.type.modifiers = TextureSampleLodProjCompareOffset_Texture2D_texture_modifiers;
@@ -3766,12 +3766,12 @@ void SetupIntrinsics12()
     TextureSampleLodProjCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleLodProjCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleLodProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodProjCompareOffset_Texture2D_lod.name = "lod"_c;
-    TextureSampleLodProjCompareOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture2D_proj.name = "proj"_c;
     TextureSampleLodProjCompareOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture2D_compare.name = "compare"_c;
     TextureSampleLodProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompareOffset_Texture2D_lod.name = "lod"_c;
+    TextureSampleLodProjCompareOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleLodProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
@@ -3784,28 +3784,28 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D)->signature = "textureSampleLodProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2) f32"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D)->name = "textureSampleLodProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D)->nameWithVarNames = "textureSampleLodProjCompareOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, lod : f32, proj : f32, compare : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D)->signature = "textureSampleProjCompareLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D)->name = "textureSampleProjCompareLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D)->nameWithVarNames = "textureSampleProjCompareLodOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, proj : f32, compare : f32, lod : f32, offset : f32x2)"_c;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
+    /// textureSampleProjCompareLodOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
     SampledTextureSampleLodProjCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleLodProjCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleLodProjCompareOffset_Texture2D_texture_modifiers;
     SampledTextureSampleLodProjCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleLodProjCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodProjCompareOffset_Texture2D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjCompareOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture2D_proj.name = "proj"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompareOffset_Texture2D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjCompareOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
@@ -3816,16 +3816,16 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D)->signature = "textureSampleLodProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D)->name = "textureSampleLodProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D)->nameWithVarNames = "textureSampleLodProjCompareOffset(texture : uniform *textureSampled2D, coordinate : f32x2, lod : f32, proj : f32, compare : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D)->signature = "textureSampleProjCompareLodOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D)->name = "textureSampleProjCompareLodOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D)->nameWithVarNames = "textureSampleProjCompareLodOffset(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, compare : f32, lod : f32, offset : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
+    /// textureSampleProjCompareLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
     TextureSampleLodProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodProjCompareOffset_Texture3D_texture.type.modifiers = TextureSampleLodProjCompareOffset_Texture3D_texture_modifiers;
@@ -3836,12 +3836,12 @@ void SetupIntrinsics12()
     TextureSampleLodProjCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleLodProjCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleLodProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodProjCompareOffset_Texture3D_lod.name = "lod"_c;
-    TextureSampleLodProjCompareOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture3D_proj.name = "proj"_c;
     TextureSampleLodProjCompareOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture3D_compare.name = "compare"_c;
     TextureSampleLodProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompareOffset_Texture3D_lod.name = "lod"_c;
+    TextureSampleLodProjCompareOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleLodProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
@@ -3854,28 +3854,28 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D)->signature = "textureSampleLodProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3) f32"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D)->name = "textureSampleLodProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)"_c;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D)->nameWithVarNames = "textureSampleLodProjCompareOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, lod : f32, proj : f32, compare : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D)->signature = "textureSampleProjCompareLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D)->name = "textureSampleProjCompareLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D)->nameWithVarNames = "textureSampleProjCompareLodOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, compare : f32, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleLodProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
+    /// textureSampleProjCompareLodOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
     SampledTextureSampleLodProjCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleLodProjCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleLodProjCompareOffset_Texture3D_texture_modifiers;
     SampledTextureSampleLodProjCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleLodProjCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodProjCompareOffset_Texture3D_lod.name = "lod"_c;
-    SampledTextureSampleLodProjCompareOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture3D_proj.name = "proj"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompareOffset_Texture3D_lod.name = "lod"_c;
+    SampledTextureSampleLodProjCompareOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
@@ -3886,13 +3886,13 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D)->signature = "textureSampleLodProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D)->name = "textureSampleLodProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D)->nameWithVarNames = "textureSampleLodProjCompareOffset(texture : uniform *textureSampled3D, coordinate : f32x3, lod : f32, proj : f32, compare : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D)->signature = "textureSampleProjCompareLodOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D)->name = "textureSampleProjCompareLodOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D)->nameWithVarNames = "textureSampleProjCompareLodOffset(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, compare : f32, lod : f32, offset : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D)->returnTypeSymbol = &Float32Type;
 
     /// textureSampleGrad with Texture1D, Sampler, Float32, Float32, Float32
@@ -4621,7 +4621,7 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture2DArray)->nameWithVarNames = "textureSampleGradOffset(texture : uniform *textureSampled2DArray, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, offset : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with Texture1D, Sampler, Float32, Float32, Float32, Float32
+    /// textureSampleProjGrad with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleGradProj_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradProj_Texture1D_texture.type.modifiers = TextureSampleGradProj_Texture1D_texture_modifiers;
@@ -4632,12 +4632,12 @@ void SetupIntrinsics12()
     TextureSampleGradProj_Texture1D_sampler.type.modifierValues = TextureSampleGradProj_Texture1D_sampler_modifierValues;
     TextureSampleGradProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProj_Texture1D_proj.name = "proj"_c;
+    TextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture1D_grad_x.name = "grad_x"_c;
     TextureSampleGradProj_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture1D_grad_y.name = "grad_y"_c;
     TextureSampleGradProj_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
-    TextureSampleGradProj_Texture1D_proj.name = "proj"_c;
-    TextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     TextureSampleGradProj_Texture1D.name = TextureSampleGradProj_Texture1D_name;
     TextureSampleGradProj_Texture1D.backendIndex = 2604;
@@ -4648,27 +4648,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_grad_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_grad_y)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProj_Texture1D)->signature = "textureSampleGradProj(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32x4"_c;
-    Symbol::Resolved(&TextureSampleGradProj_Texture1D)->name = "textureSampleGradProj(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradProj_Texture1D)->nameWithVarNames = "textureSampleGradProj(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, grad_x : f32, grad_y : f32, proj : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture1D)->signature = "textureSampleProjGrad(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32x4"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture1D)->name = "textureSampleProjGrad(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture1D)->nameWithVarNames = "textureSampleProjGrad(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, proj : f32, grad_x : f32, grad_y : f32)"_c;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with SampledTexture1D, Float32, Float32, Float32, Float32
+    /// textureSampleProjGrad with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleGradProj_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradProj_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleGradProj_Texture1D_texture.type.modifiers = SampledTextureSampleGradProj_Texture1D_texture_modifiers;
     SampledTextureSampleGradProj_Texture1D_texture.type.modifierValues = SampledTextureSampleGradProj_Texture1D_texture_modifierValues;
     SampledTextureSampleGradProj_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProj_Texture1D_proj.name = "proj"_c;
+    SampledTextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture1D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradProj_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture1D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradProj_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleGradProj_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     SampledTextureSampleGradProj_Texture1D.name = SampledTextureSampleGradProj_Texture1D_name;
     SampledTextureSampleGradProj_Texture1D.backendIndex = 2605;
@@ -4677,15 +4677,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_grad_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_grad_y)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->signature = "textureSampleGradProj(uniform *textureSampled1D,f32,f32,f32,f32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->name = "textureSampleGradProj(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->nameWithVarNames = "textureSampleGradProj(texture : uniform *textureSampled1D, coordinate : f32, grad_x : f32, grad_y : f32, proj : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->signature = "textureSampleProjGrad(uniform *textureSampled1D,f32,f32,f32,f32) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->name = "textureSampleProjGrad(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->nameWithVarNames = "textureSampleProjGrad(texture : uniform *textureSampled1D, coordinate : f32, proj : f32, grad_x : f32, grad_y : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleProjGrad with Texture2D, Sampler, Float32x2, Float32, Float32x2, Float32x2
     TextureSampleGradProj_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradProj_Texture2D_texture.type.modifiers = TextureSampleGradProj_Texture2D_texture_modifiers;
@@ -4696,12 +4696,12 @@ void SetupIntrinsics12()
     TextureSampleGradProj_Texture2D_sampler.type.modifierValues = TextureSampleGradProj_Texture2D_sampler_modifierValues;
     TextureSampleGradProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProj_Texture2D_proj.name = "proj"_c;
+    TextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture2D_grad_x.name = "grad_x"_c;
     TextureSampleGradProj_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradProj_Texture2D_grad_y.name = "grad_y"_c;
     TextureSampleGradProj_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleGradProj_Texture2D_proj.name = "proj"_c;
-    TextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     TextureSampleGradProj_Texture2D.name = TextureSampleGradProj_Texture2D_name;
     TextureSampleGradProj_Texture2D.backendIndex = 2606;
@@ -4712,27 +4712,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProj_Texture2D)->signature = "textureSampleGradProj(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32) f32x4"_c;
-    Symbol::Resolved(&TextureSampleGradProj_Texture2D)->name = "textureSampleGradProj(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradProj_Texture2D)->nameWithVarNames = "textureSampleGradProj(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, proj : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture2D)->signature = "textureSampleProjGrad(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2,f32x2) f32x4"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture2D)->name = "textureSampleProjGrad(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture2D)->nameWithVarNames = "textureSampleProjGrad(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, proj : f32, grad_x : f32x2, grad_y : f32x2)"_c;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleProjGrad with SampledTexture2D, Float32x2, Float32, Float32x2, Float32x2
     SampledTextureSampleGradProj_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradProj_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleGradProj_Texture2D_texture.type.modifiers = SampledTextureSampleGradProj_Texture2D_texture_modifiers;
     SampledTextureSampleGradProj_Texture2D_texture.type.modifierValues = SampledTextureSampleGradProj_Texture2D_texture_modifierValues;
     SampledTextureSampleGradProj_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProj_Texture2D_proj.name = "proj"_c;
+    SampledTextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture2D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradProj_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradProj_Texture2D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradProj_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleGradProj_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     SampledTextureSampleGradProj_Texture2D.name = SampledTextureSampleGradProj_Texture2D_name;
     SampledTextureSampleGradProj_Texture2D.backendIndex = 2607;
@@ -4741,15 +4741,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->signature = "textureSampleGradProj(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->name = "textureSampleGradProj(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->nameWithVarNames = "textureSampleGradProj(texture : uniform *textureSampled2D, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, proj : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->signature = "textureSampleProjGrad(uniform *textureSampled2D,f32x2,f32,f32x2,f32x2) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->name = "textureSampleProjGrad(uniform *textureSampled2D,f32x2,f32,f32x2,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->nameWithVarNames = "textureSampleProjGrad(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, grad_x : f32x2, grad_y : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleProjGrad with Texture3D, Sampler, Float32x3, Float32, Float32x3, Float32x3
     TextureSampleGradProj_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradProj_Texture3D_texture.type.modifiers = TextureSampleGradProj_Texture3D_texture_modifiers;
@@ -4760,12 +4760,12 @@ void SetupIntrinsics12()
     TextureSampleGradProj_Texture3D_sampler.type.modifierValues = TextureSampleGradProj_Texture3D_sampler_modifierValues;
     TextureSampleGradProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradProj_Texture3D_proj.name = "proj"_c;
+    TextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture3D_grad_x.name = "grad_x"_c;
     TextureSampleGradProj_Texture3D_grad_x.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradProj_Texture3D_grad_y.name = "grad_y"_c;
     TextureSampleGradProj_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleGradProj_Texture3D_proj.name = "proj"_c;
-    TextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     TextureSampleGradProj_Texture3D.name = TextureSampleGradProj_Texture3D_name;
     TextureSampleGradProj_Texture3D.backendIndex = 2608;
@@ -4776,27 +4776,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_grad_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProj_Texture3D)->signature = "textureSampleGradProj(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32) f32x4"_c;
-    Symbol::Resolved(&TextureSampleGradProj_Texture3D)->name = "textureSampleGradProj(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradProj_Texture3D)->nameWithVarNames = "textureSampleGradProj(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, proj : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture3D)->signature = "textureSampleProjGrad(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3,f32x3) f32x4"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture3D)->name = "textureSampleProjGrad(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleGradProj_Texture3D)->nameWithVarNames = "textureSampleProjGrad(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, grad_x : f32x3, grad_y : f32x3)"_c;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleProjGrad with SampledTexture3D, Float32x3, Float32, Float32x3, Float32x3
     SampledTextureSampleGradProj_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradProj_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleGradProj_Texture3D_texture.type.modifiers = SampledTextureSampleGradProj_Texture3D_texture_modifiers;
     SampledTextureSampleGradProj_Texture3D_texture.type.modifierValues = SampledTextureSampleGradProj_Texture3D_texture_modifierValues;
     SampledTextureSampleGradProj_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradProj_Texture3D_proj.name = "proj"_c;
+    SampledTextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture3D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradProj_Texture3D_grad_x.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradProj_Texture3D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradProj_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleGradProj_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     SampledTextureSampleGradProj_Texture3D.name = SampledTextureSampleGradProj_Texture3D_name;
     SampledTextureSampleGradProj_Texture3D.backendIndex = 2609;
@@ -4805,15 +4805,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_grad_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->signature = "textureSampleGradProj(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->name = "textureSampleGradProj(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->nameWithVarNames = "textureSampleGradProj(texture : uniform *textureSampled3D, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, proj : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->signature = "textureSampleProjGrad(uniform *textureSampled3D,f32x3,f32,f32x3,f32x3) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->name = "textureSampleProjGrad(uniform *textureSampled3D,f32x3,f32,f32x3,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->nameWithVarNames = "textureSampleProjGrad(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, grad_x : f32x3, grad_y : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleProjGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradProjOffset_Texture1D_texture.type.modifiers = TextureSampleGradProjOffset_Texture1D_texture_modifiers;
@@ -4824,12 +4824,12 @@ void SetupIntrinsics12()
     TextureSampleGradProjOffset_Texture1D_sampler.type.modifierValues = TextureSampleGradProjOffset_Texture1D_sampler_modifierValues;
     TextureSampleGradProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProjOffset_Texture1D_proj.name = "proj"_c;
+    TextureSampleGradProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture1D_grad_x.name = "grad_x"_c;
     TextureSampleGradProjOffset_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture1D_grad_y.name = "grad_y"_c;
     TextureSampleGradProjOffset_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
-    TextureSampleGradProjOffset_Texture1D_proj.name = "proj"_c;
-    TextureSampleGradProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleGradProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
@@ -4842,28 +4842,28 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_grad_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_grad_y)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D)->signature = "textureSampleGradProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32) f32x4"_c;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D)->name = "textureSampleGradProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D)->nameWithVarNames = "textureSampleGradProjOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, grad_x : f32, grad_y : f32, proj : f32, offset : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D)->signature = "textureSampleProjGradOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32) f32x4"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D)->name = "textureSampleProjGradOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D)->nameWithVarNames = "textureSampleProjGradOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, proj : f32, grad_x : f32, grad_y : f32, offset : f32)"_c;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleProjGradOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleGradProjOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradProjOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleGradProjOffset_Texture1D_texture.type.modifiers = SampledTextureSampleGradProjOffset_Texture1D_texture_modifiers;
     SampledTextureSampleGradProjOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleGradProjOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleGradProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProjOffset_Texture1D_proj.name = "proj"_c;
+    SampledTextureSampleGradProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture1D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradProjOffset_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture1D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradProjOffset_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleGradProjOffset_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleGradProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleGradProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
@@ -4874,16 +4874,16 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_grad_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_grad_y)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D)->signature = "textureSampleGradProjOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D)->name = "textureSampleGradProjOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D)->nameWithVarNames = "textureSampleGradProjOffset(texture : uniform *textureSampled1D, coordinate : f32, grad_x : f32, grad_y : f32, proj : f32, offset : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D)->signature = "textureSampleProjGradOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D)->name = "textureSampleProjGradOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D)->nameWithVarNames = "textureSampleProjGradOffset(texture : uniform *textureSampled1D, coordinate : f32, proj : f32, grad_x : f32, grad_y : f32, offset : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+    /// textureSampleProjGradOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2, Float32x2, Float32x2
     TextureSampleGradProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradProjOffset_Texture2D_texture.type.modifiers = TextureSampleGradProjOffset_Texture2D_texture_modifiers;
@@ -4894,12 +4894,12 @@ void SetupIntrinsics12()
     TextureSampleGradProjOffset_Texture2D_sampler.type.modifierValues = TextureSampleGradProjOffset_Texture2D_sampler_modifierValues;
     TextureSampleGradProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProjOffset_Texture2D_proj.name = "proj"_c;
+    TextureSampleGradProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture2D_grad_x.name = "grad_x"_c;
     TextureSampleGradProjOffset_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradProjOffset_Texture2D_grad_y.name = "grad_y"_c;
     TextureSampleGradProjOffset_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleGradProjOffset_Texture2D_proj.name = "proj"_c;
-    TextureSampleGradProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleGradProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradProjOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
@@ -4912,28 +4912,28 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D)->signature = "textureSampleGradProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2) f32x4"_c;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D)->name = "textureSampleGradProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)"_c;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D)->nameWithVarNames = "textureSampleGradProjOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, proj : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D)->signature = "textureSampleProjGradOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2,f32x2,f32x2) f32x4"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D)->name = "textureSampleProjGradOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2,f32x2,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D)->nameWithVarNames = "textureSampleProjGradOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, proj : f32, grad_x : f32x2, grad_y : f32x2, offset : f32x2)"_c;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+    /// textureSampleProjGradOffset with SampledTexture2D, Float32x2, Float32, Float32x2, Float32x2, Float32x2
     SampledTextureSampleGradProjOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradProjOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleGradProjOffset_Texture2D_texture.type.modifiers = SampledTextureSampleGradProjOffset_Texture2D_texture_modifiers;
     SampledTextureSampleGradProjOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleGradProjOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleGradProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProjOffset_Texture2D_proj.name = "proj"_c;
+    SampledTextureSampleGradProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture2D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradProjOffset_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradProjOffset_Texture2D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradProjOffset_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleGradProjOffset_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleGradProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleGradProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradProjOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
@@ -4944,16 +4944,16 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D)->signature = "textureSampleGradProjOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D)->name = "textureSampleGradProjOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D)->nameWithVarNames = "textureSampleGradProjOffset(texture : uniform *textureSampled2D, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, proj : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D)->signature = "textureSampleProjGradOffset(uniform *textureSampled2D,f32x2,f32,f32x2,f32x2,f32x2) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D)->name = "textureSampleProjGradOffset(uniform *textureSampled2D,f32x2,f32,f32x2,f32x2,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D)->nameWithVarNames = "textureSampleProjGradOffset(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, grad_x : f32x2, grad_y : f32x2, offset : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+    /// textureSampleProjGradOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3, Float32x3, Float32x3
     TextureSampleGradProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradProjOffset_Texture3D_texture.type.modifiers = TextureSampleGradProjOffset_Texture3D_texture_modifiers;
@@ -4964,12 +4964,12 @@ void SetupIntrinsics12()
     TextureSampleGradProjOffset_Texture3D_sampler.type.modifierValues = TextureSampleGradProjOffset_Texture3D_sampler_modifierValues;
     TextureSampleGradProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradProjOffset_Texture3D_proj.name = "proj"_c;
+    TextureSampleGradProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture3D_grad_x.name = "grad_x"_c;
     TextureSampleGradProjOffset_Texture3D_grad_x.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradProjOffset_Texture3D_grad_y.name = "grad_y"_c;
     TextureSampleGradProjOffset_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleGradProjOffset_Texture3D_proj.name = "proj"_c;
-    TextureSampleGradProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleGradProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradProjOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
@@ -4982,28 +4982,28 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_grad_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D)->signature = "textureSampleGradProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3) f32x4"_c;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D)->name = "textureSampleGradProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)"_c;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D)->nameWithVarNames = "textureSampleGradProjOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, proj : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D)->signature = "textureSampleProjGradOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3,f32x3,f32x3) f32x4"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D)->name = "textureSampleProjGradOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3,f32x3,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D)->nameWithVarNames = "textureSampleProjGradOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, grad_x : f32x3, grad_y : f32x3, offset : f32x3)"_c;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+    /// textureSampleProjGradOffset with SampledTexture3D, Float32x3, Float32, Float32x3, Float32x3, Float32x3
     SampledTextureSampleGradProjOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradProjOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleGradProjOffset_Texture3D_texture.type.modifiers = SampledTextureSampleGradProjOffset_Texture3D_texture_modifiers;
     SampledTextureSampleGradProjOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleGradProjOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleGradProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradProjOffset_Texture3D_proj.name = "proj"_c;
+    SampledTextureSampleGradProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture3D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradProjOffset_Texture3D_grad_x.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradProjOffset_Texture3D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradProjOffset_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleGradProjOffset_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleGradProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleGradProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradProjOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
@@ -5014,16 +5014,16 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_grad_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D)->signature = "textureSampleGradProjOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32x3) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D)->name = "textureSampleGradProjOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D)->nameWithVarNames = "textureSampleGradProjOffset(texture : uniform *textureSampled3D, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, proj : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D)->signature = "textureSampleProjGradOffset(uniform *textureSampled3D,f32x3,f32,f32x3,f32x3,f32x3) f32x4"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D)->name = "textureSampleProjGradOffset(uniform *textureSampled3D,f32x3,f32,f32x3,f32x3,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D)->nameWithVarNames = "textureSampleProjGradOffset(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, grad_x : f32x3, grad_y : f32x3, offset : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
+    /// textureSampleCompareGrad with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleGradCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradCompare_Texture1D_texture.type.modifiers = TextureSampleGradCompare_Texture1D_texture_modifiers;
@@ -5034,12 +5034,12 @@ void SetupIntrinsics12()
     TextureSampleGradCompare_Texture1D_sampler.type.modifierValues = TextureSampleGradCompare_Texture1D_sampler_modifierValues;
     TextureSampleGradCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradCompare_Texture1D_compare.name = "compare"_c;
+    TextureSampleGradCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture1D_grad_x.name = "grad_x"_c;
     TextureSampleGradCompare_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture1D_grad_y.name = "grad_y"_c;
     TextureSampleGradCompare_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
-    TextureSampleGradCompare_Texture1D_compare.name = "compare"_c;
-    TextureSampleGradCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture1D.name = TextureSampleGradCompare_Texture1D_name;
     TextureSampleGradCompare_Texture1D.backendIndex = 2616;
@@ -5050,27 +5050,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_grad_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_grad_y)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1D)->signature = "textureSampleGradCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1D)->name = "textureSampleGradCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1D)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, grad_x : f32, grad_y : f32, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1D)->signature = "textureSampleCompareGrad(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1D)->name = "textureSampleCompareGrad(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1D)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, compare : f32, grad_x : f32, grad_y : f32)"_c;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with SampledTexture1D, Float32, Float32, Float32, Float32
+    /// textureSampleCompareGrad with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleGradCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleGradCompare_Texture1D_texture.type.modifiers = SampledTextureSampleGradCompare_Texture1D_texture_modifiers;
     SampledTextureSampleGradCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradCompare_Texture1D_compare.name = "compare"_c;
+    SampledTextureSampleGradCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture1D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradCompare_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture1D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradCompare_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleGradCompare_Texture1D_compare.name = "compare"_c;
-    SampledTextureSampleGradCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture1D.name = SampledTextureSampleGradCompare_Texture1D_name;
     SampledTextureSampleGradCompare_Texture1D.backendIndex = 2617;
@@ -5079,15 +5079,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D_grad_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D_grad_y)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D)->signature = "textureSampleGradCompare(uniform *textureSampled1D,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D)->name = "textureSampleGradCompare(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *textureSampled1D, coordinate : f32, grad_x : f32, grad_y : f32, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D)->signature = "textureSampleCompareGrad(uniform *textureSampled1D,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D)->name = "textureSampleCompareGrad(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *textureSampled1D, coordinate : f32, compare : f32, grad_x : f32, grad_y : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleCompareGrad with Texture2D, Sampler, Float32x2, Float32, Float32x2, Float32x2
     TextureSampleGradCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradCompare_Texture2D_texture.type.modifiers = TextureSampleGradCompare_Texture2D_texture_modifiers;
@@ -5098,12 +5098,12 @@ void SetupIntrinsics12()
     TextureSampleGradCompare_Texture2D_sampler.type.modifierValues = TextureSampleGradCompare_Texture2D_sampler_modifierValues;
     TextureSampleGradCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradCompare_Texture2D_compare.name = "compare"_c;
+    TextureSampleGradCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture2D_grad_x.name = "grad_x"_c;
     TextureSampleGradCompare_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompare_Texture2D_grad_y.name = "grad_y"_c;
     TextureSampleGradCompare_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleGradCompare_Texture2D_compare.name = "compare"_c;
-    TextureSampleGradCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture2D.name = TextureSampleGradCompare_Texture2D_name;
     TextureSampleGradCompare_Texture2D.backendIndex = 2618;
@@ -5114,27 +5114,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2D)->signature = "textureSampleGradCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2D)->name = "textureSampleGradCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2D)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2D)->signature = "textureSampleCompareGrad(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2D)->name = "textureSampleCompareGrad(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2D)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, compare : f32, grad_x : f32x2, grad_y : f32x2)"_c;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleCompareGrad with SampledTexture2D, Float32x2, Float32, Float32x2, Float32x2
     SampledTextureSampleGradCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleGradCompare_Texture2D_texture.type.modifiers = SampledTextureSampleGradCompare_Texture2D_texture_modifiers;
     SampledTextureSampleGradCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradCompare_Texture2D_compare.name = "compare"_c;
+    SampledTextureSampleGradCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture2D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradCompare_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompare_Texture2D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradCompare_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleGradCompare_Texture2D_compare.name = "compare"_c;
-    SampledTextureSampleGradCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture2D.name = SampledTextureSampleGradCompare_Texture2D_name;
     SampledTextureSampleGradCompare_Texture2D.backendIndex = 2619;
@@ -5143,15 +5143,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D)->signature = "textureSampleGradCompare(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D)->name = "textureSampleGradCompare(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *textureSampled2D, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D)->signature = "textureSampleCompareGrad(uniform *textureSampled2D,f32x2,f32,f32x2,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D)->name = "textureSampleCompareGrad(uniform *textureSampled2D,f32x2,f32,f32x2,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *textureSampled2D, coordinate : f32x2, compare : f32, grad_x : f32x2, grad_y : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleCompareGrad with Texture3D, Sampler, Float32x3, Float32, Float32x3, Float32x3
     TextureSampleGradCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradCompare_Texture3D_texture.type.modifiers = TextureSampleGradCompare_Texture3D_texture_modifiers;
@@ -5162,12 +5162,12 @@ void SetupIntrinsics12()
     TextureSampleGradCompare_Texture3D_sampler.type.modifierValues = TextureSampleGradCompare_Texture3D_sampler_modifierValues;
     TextureSampleGradCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradCompare_Texture3D_compare.name = "compare"_c;
+    TextureSampleGradCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture3D_grad_x.name = "grad_x"_c;
     TextureSampleGradCompare_Texture3D_grad_x.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradCompare_Texture3D_grad_y.name = "grad_y"_c;
     TextureSampleGradCompare_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleGradCompare_Texture3D_compare.name = "compare"_c;
-    TextureSampleGradCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture3D.name = TextureSampleGradCompare_Texture3D_name;
     TextureSampleGradCompare_Texture3D.backendIndex = 2620;
@@ -5178,27 +5178,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_grad_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture3D)->signature = "textureSampleGradCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture3D)->name = "textureSampleGradCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture3D)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture3D)->signature = "textureSampleCompareGrad(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3,f32x3) f32"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture3D)->name = "textureSampleCompareGrad(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture3D)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, compare : f32, grad_x : f32x3, grad_y : f32x3)"_c;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleCompareGrad with SampledTexture3D, Float32x3, Float32, Float32x3, Float32x3
     SampledTextureSampleGradCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
     SampledTextureSampleGradCompare_Texture3D_texture.type.modifiers = SampledTextureSampleGradCompare_Texture3D_texture_modifiers;
     SampledTextureSampleGradCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradCompare_Texture3D_compare.name = "compare"_c;
+    SampledTextureSampleGradCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture3D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradCompare_Texture3D_grad_x.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradCompare_Texture3D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradCompare_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleGradCompare_Texture3D_compare.name = "compare"_c;
-    SampledTextureSampleGradCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture3D.name = SampledTextureSampleGradCompare_Texture3D_name;
     SampledTextureSampleGradCompare_Texture3D.backendIndex = 2621;
@@ -5207,15 +5207,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D_grad_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D)->signature = "textureSampleGradCompare(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D)->name = "textureSampleGradCompare(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *textureSampled3D, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D)->signature = "textureSampleCompareGrad(uniform *textureSampled3D,f32x3,f32,f32x3,f32x3) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D)->name = "textureSampleCompareGrad(uniform *textureSampled3D,f32x3,f32,f32x3,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *textureSampled3D, coordinate : f32x3, compare : f32, grad_x : f32x3, grad_y : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleCompareGrad with Texture1DArray, Sampler, Float32x2, Float32, Float32x2, Float32x2
     TextureSampleGradCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleGradCompare_Texture1DArray_texture.type.modifiers = TextureSampleGradCompare_Texture1DArray_texture_modifiers;
@@ -5226,12 +5226,12 @@ void SetupIntrinsics12()
     TextureSampleGradCompare_Texture1DArray_sampler.type.modifierValues = TextureSampleGradCompare_Texture1DArray_sampler_modifierValues;
     TextureSampleGradCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradCompare_Texture1DArray_compare.name = "compare"_c;
+    TextureSampleGradCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture1DArray_grad_x.name = "grad_x"_c;
     TextureSampleGradCompare_Texture1DArray_grad_x.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompare_Texture1DArray_grad_y.name = "grad_y"_c;
     TextureSampleGradCompare_Texture1DArray_grad_y.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleGradCompare_Texture1DArray_compare.name = "compare"_c;
-    TextureSampleGradCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture1DArray.name = TextureSampleGradCompare_Texture1DArray_name;
     TextureSampleGradCompare_Texture1DArray.backendIndex = 2622;
@@ -5242,27 +5242,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray)->signature = "textureSampleGradCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray)->name = "textureSampleGradCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray)->signature = "textureSampleCompareGrad(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray)->name = "textureSampleCompareGrad(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2, compare : f32, grad_x : f32x2, grad_y : f32x2)"_c;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleCompareGrad with SampledTexture1DArray, Float32x2, Float32, Float32x2, Float32x2
     SampledTextureSampleGradCompare_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
     SampledTextureSampleGradCompare_Texture1DArray_texture.type.modifiers = SampledTextureSampleGradCompare_Texture1DArray_texture_modifiers;
     SampledTextureSampleGradCompare_Texture1DArray_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture1DArray_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradCompare_Texture1DArray_compare.name = "compare"_c;
+    SampledTextureSampleGradCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture1DArray_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradCompare_Texture1DArray_grad_x.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompare_Texture1DArray_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradCompare_Texture1DArray_grad_y.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleGradCompare_Texture1DArray_compare.name = "compare"_c;
-    SampledTextureSampleGradCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture1DArray.name = SampledTextureSampleGradCompare_Texture1DArray_name;
     SampledTextureSampleGradCompare_Texture1DArray.backendIndex = 2623;
@@ -5271,15 +5271,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray)->signature = "textureSampleGradCompare(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray)->name = "textureSampleGradCompare(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *textureSampled1DArray, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray)->signature = "textureSampleCompareGrad(uniform *textureSampled1DArray,f32x2,f32,f32x2,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray)->name = "textureSampleCompareGrad(uniform *textureSampled1DArray,f32x2,f32,f32x2,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *textureSampled1DArray, coordinate : f32x2, compare : f32, grad_x : f32x2, grad_y : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleCompareGrad with Texture2DArray, Sampler, Float32x3, Float32, Float32x3, Float32x3
     TextureSampleGradCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleGradCompare_Texture2DArray_texture.type.modifiers = TextureSampleGradCompare_Texture2DArray_texture_modifiers;
@@ -5290,12 +5290,12 @@ void SetupIntrinsics12()
     TextureSampleGradCompare_Texture2DArray_sampler.type.modifierValues = TextureSampleGradCompare_Texture2DArray_sampler_modifierValues;
     TextureSampleGradCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradCompare_Texture2DArray_compare.name = "compare"_c;
+    TextureSampleGradCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture2DArray_grad_x.name = "grad_x"_c;
     TextureSampleGradCompare_Texture2DArray_grad_x.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradCompare_Texture2DArray_grad_y.name = "grad_y"_c;
     TextureSampleGradCompare_Texture2DArray_grad_y.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleGradCompare_Texture2DArray_compare.name = "compare"_c;
-    TextureSampleGradCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture2DArray.name = TextureSampleGradCompare_Texture2DArray_name;
     TextureSampleGradCompare_Texture2DArray.backendIndex = 2624;
@@ -5306,27 +5306,27 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_grad_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_grad_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray)->signature = "textureSampleGradCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray)->name = "textureSampleGradCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, compare : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray)->signature = "textureSampleCompareGrad(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3,f32x3) f32"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray)->name = "textureSampleCompareGrad(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, compare : f32, grad_x : f32x3, grad_y : f32x3)"_c;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompare with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleCompareGrad with SampledTexture2DArray, Float32x3, Float32, Float32x3, Float32x3
     SampledTextureSampleGradCompare_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
     SampledTextureSampleGradCompare_Texture2DArray_texture.type.modifiers = SampledTextureSampleGradCompare_Texture2DArray_texture_modifiers;
     SampledTextureSampleGradCompare_Texture2DArray_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture2DArray_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradCompare_Texture2DArray_compare.name = "compare"_c;
+    SampledTextureSampleGradCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture2DArray_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradCompare_Texture2DArray_grad_x.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradCompare_Texture2DArray_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradCompare_Texture2DArray_grad_y.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleGradCompare_Texture2DArray_compare.name = "compare"_c;
-    SampledTextureSampleGradCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture2DArray.name = SampledTextureSampleGradCompare_Texture2DArray_name;
     SampledTextureSampleGradCompare_Texture2DArray.backendIndex = 2625;
@@ -5335,15 +5335,15 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray_grad_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray_grad_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray)->signature = "textureSampleGradCompare(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray)->name = "textureSampleGradCompare(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray)->nameWithVarNames = "textureSampleGradCompare(texture : uniform *textureSampled2DArray, coordinate : f32x3, grad_x : f32x3, grad_y : f32x3, compare : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray)->signature = "textureSampleCompareGrad(uniform *textureSampled2DArray,f32x3,f32,f32x3,f32x3) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray)->name = "textureSampleCompareGrad(uniform *textureSampled2DArray,f32x3,f32,f32x3,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray)->nameWithVarNames = "textureSampleCompareGrad(texture : uniform *textureSampled2DArray, coordinate : f32x3, compare : f32, grad_x : f32x3, grad_y : f32x3)"_c;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleCompareGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradCompareOffset_Texture1D_texture.type.modifiers = TextureSampleGradCompareOffset_Texture1D_texture_modifiers;
@@ -5354,12 +5354,12 @@ void SetupIntrinsics12()
     TextureSampleGradCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleGradCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleGradCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradCompareOffset_Texture1D_compare.name = "compare"_c;
+    TextureSampleGradCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture1D_grad_x.name = "grad_x"_c;
     TextureSampleGradCompareOffset_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture1D_grad_y.name = "grad_y"_c;
     TextureSampleGradCompareOffset_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
-    TextureSampleGradCompareOffset_Texture1D_compare.name = "compare"_c;
-    TextureSampleGradCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleGradCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
@@ -5372,28 +5372,28 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_grad_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_grad_y)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D)->signature = "textureSampleGradCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D)->name = "textureSampleGradCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D)->nameWithVarNames = "textureSampleGradCompareOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, grad_x : f32, grad_y : f32, compare : f32, offset : f32)"_c;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D)->signature = "textureSampleCompareGradOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D)->name = "textureSampleCompareGradOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D)->nameWithVarNames = "textureSampleCompareGradOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, compare : f32, grad_x : f32, grad_y : f32, offset : f32)"_c;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleCompareGradOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleGradCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
     SampledTextureSampleGradCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleGradCompareOffset_Texture1D_texture_modifiers;
     SampledTextureSampleGradCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleGradCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleGradCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradCompareOffset_Texture1D_compare.name = "compare"_c;
+    SampledTextureSampleGradCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradCompareOffset_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradCompareOffset_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleGradCompareOffset_Texture1D_compare.name = "compare"_c;
-    SampledTextureSampleGradCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleGradCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
@@ -5404,16 +5404,16 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_grad_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_grad_y)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D)->signature = "textureSampleGradCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D)->name = "textureSampleGradCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D)->nameWithVarNames = "textureSampleGradCompareOffset(texture : uniform *textureSampled1D, coordinate : f32, grad_x : f32, grad_y : f32, compare : f32, offset : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D)->signature = "textureSampleCompareGradOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D)->name = "textureSampleCompareGradOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D)->nameWithVarNames = "textureSampleCompareGradOffset(texture : uniform *textureSampled1D, coordinate : f32, compare : f32, grad_x : f32, grad_y : f32, offset : f32)"_c;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+    /// textureSampleCompareGradOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2, Float32x2, Float32x2
     TextureSampleGradCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradCompareOffset_Texture2D_texture.type.modifiers = TextureSampleGradCompareOffset_Texture2D_texture_modifiers;
@@ -5424,12 +5424,12 @@ void SetupIntrinsics12()
     TextureSampleGradCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleGradCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleGradCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradCompareOffset_Texture2D_compare.name = "compare"_c;
+    TextureSampleGradCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture2D_grad_x.name = "grad_x"_c;
     TextureSampleGradCompareOffset_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompareOffset_Texture2D_grad_y.name = "grad_y"_c;
     TextureSampleGradCompareOffset_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleGradCompareOffset_Texture2D_compare.name = "compare"_c;
-    TextureSampleGradCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleGradCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
@@ -5442,28 +5442,28 @@ void SetupIntrinsics12()
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D)->signature = "textureSampleGradCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2) f32"_c;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D)->name = "textureSampleGradCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)"_c;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D)->nameWithVarNames = "textureSampleGradCompareOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, compare : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D)->signature = "textureSampleCompareGradOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2,f32x2,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D)->name = "textureSampleCompareGradOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2,f32x2,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D)->nameWithVarNames = "textureSampleCompareGradOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, compare : f32, grad_x : f32x2, grad_y : f32x2, offset : f32x2)"_c;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
 
-    /// textureSampleGradCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+    /// textureSampleCompareGradOffset with SampledTexture2D, Float32x2, Float32, Float32x2, Float32x2, Float32x2
     SampledTextureSampleGradCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
     SampledTextureSampleGradCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleGradCompareOffset_Texture2D_texture_modifiers;
     SampledTextureSampleGradCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleGradCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleGradCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradCompareOffset_Texture2D_compare.name = "compare"_c;
+    SampledTextureSampleGradCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture2D_grad_x.name = "grad_x"_c;
     SampledTextureSampleGradCompareOffset_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompareOffset_Texture2D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGradCompareOffset_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleGradCompareOffset_Texture2D_compare.name = "compare"_c;
-    SampledTextureSampleGradCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleGradCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
@@ -5474,13 +5474,13 @@ void SetupIntrinsics12()
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D)->signature = "textureSampleGradCompareOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D)->name = "textureSampleGradCompareOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D)->nameWithVarNames = "textureSampleGradCompareOffset(texture : uniform *textureSampled2D, coordinate : f32x2, grad_x : f32x2, grad_y : f32x2, compare : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D)->signature = "textureSampleCompareGradOffset(uniform *textureSampled2D,f32x2,f32,f32x2,f32x2,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D)->name = "textureSampleCompareGradOffset(uniform *textureSampled2D,f32x2,f32,f32x2,f32x2,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D)->nameWithVarNames = "textureSampleCompareGradOffset(texture : uniform *textureSampled2D, coordinate : f32x2, compare : f32, grad_x : f32x2, grad_y : f32x2, offset : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
 
 }

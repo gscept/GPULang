@@ -6288,90 +6288,6 @@
         ]
     },
     {
-        "name": "textureSampleBiasCompare",
-        "documentation": "Sample a texture at coordinate with a mip bias with depth comparison",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled1DArray, coordinate: f32x2, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, bias: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled2DArray, coordinate: f32x3, bias: f32, compare: f32) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleBiasCompareOffset",
-        "documentation": "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
-            }
-        ]
-    },
-    {
         "name": "textureSampleBiasOffset",
         "documentation": "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate",
         "target_support": [
@@ -6414,126 +6330,6 @@
         ]
     },
     {
-        "name": "textureSampleBiasProj",
-        "documentation": "Sample a texture at coordinate with a mip bias with projection",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleBiasProj(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProj(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProj(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProj(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProj(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProj(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, proj: f32) f32x4"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleBiasProjCompare",
-        "documentation": "Sample a texture at coordinate with a mip bias with projection with depth comparison",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, proj: f32, compare: f32) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleBiasProjCompareOffset",
-        "documentation": "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, proj: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, proj: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, proj: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, proj: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, proj: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, proj: f32, compare: f32, offset: f32x3) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleBiasProjOffset",
-        "documentation": "Sample a texture at coordinate with a mip bias with projection with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, proj: f32, offset: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, proj: f32, offset: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, proj: f32, offset: f32x2) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, proj: f32, offset: f32x2) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, proj: f32, offset: f32x3) f32x4"
-            },
-            {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, proj: f32, offset: f32x3) f32x4"
-            }
-        ]
-    },
-    {
         "name": "textureSampleCompare",
         "documentation": "Sample a texture at coordinate with depth comparison",
         "target_support": [
@@ -6572,6 +6368,258 @@
             },
             {
                 "signature": "textureSampleCompare(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleCompareBias",
+        "documentation": "Sample a texture at coordinate with a mip bias with depth comparison",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *textureSampled1D, coordinate: f32, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *textureSampled2D, coordinate: f32x2, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *textureSampled3D, coordinate: f32x3, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *textureSampled1DArray, coordinate: f32x2, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBias(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32, bias: f32) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleCompareBiasOffset",
+        "documentation": "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, compare: f32, bias: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *textureSampled1D, coordinate: f32, compare: f32, bias: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, compare: f32, bias: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *textureSampled2D, coordinate: f32x2, compare: f32, bias: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, compare: f32, bias: f32, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *textureSampled3D, coordinate: f32x3, compare: f32, bias: f32, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, compare: f32, bias: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, compare: f32, bias: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, compare: f32, bias: f32, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareBiasOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32, bias: f32, offset: f32x3) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleCompareGrad",
+        "documentation": "Sample a texture at coordinate with explicit gradient with depth comparison",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, compare: f32, grad_x: f32, grad_y: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *textureSampled1D, coordinate: f32, compare: f32, grad_x: f32, grad_y: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, compare: f32, grad_x: f32x2, grad_y: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *textureSampled2D, coordinate: f32x2, compare: f32, grad_x: f32x2, grad_y: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, compare: f32, grad_x: f32x3, grad_y: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *textureSampled3D, coordinate: f32x3, compare: f32, grad_x: f32x3, grad_y: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, compare: f32, grad_x: f32x2, grad_y: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *textureSampled1DArray, coordinate: f32x2, compare: f32, grad_x: f32x2, grad_y: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, compare: f32, grad_x: f32x3, grad_y: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareGrad(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32, grad_x: f32x3, grad_y: f32x3) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleCompareGradOffset",
+        "documentation": "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, compare: f32, grad_x: f32, grad_y: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *textureSampled1D, coordinate: f32, compare: f32, grad_x: f32, grad_y: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, compare: f32, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *textureSampled2D, coordinate: f32x2, compare: f32, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, compare: f32, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *textureSampled3D, coordinate: f32x3, compare: f32, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, compare: f32, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, compare: f32, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, compare: f32, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareGradOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleCompareLod",
+        "documentation": "Sample a texture at coordinate with explicit level of detail with depth comparison",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *textureSampled1D, coordinate: f32, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *textureSampled2D, coordinate: f32x2, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *textureSampled3D, coordinate: f32x3, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *textureSampled1DArray, coordinate: f32x2, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLod(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32, lod: f32) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleCompareLodOffset",
+        "documentation": "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, compare: f32, lod: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *textureSampled1D, coordinate: f32, compare: f32, lod: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, compare: f32, lod: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *textureSampled2D, coordinate: f32x2, compare: f32, lod: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, compare: f32, lod: f32, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *textureSampled3D, coordinate: f32x3, compare: f32, lod: f32, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, compare: f32, lod: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, compare: f32, lod: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, compare: f32, lod: f32, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleCompareLodOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32, lod: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -6672,90 +6720,6 @@
         ]
     },
     {
-        "name": "textureSampleGradCompare",
-        "documentation": "Sample a texture at coordinate with explicit gradient with depth comparison",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *textureSampled1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompare(uniform texture: *textureSampled2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleGradCompareOffset",
-        "documentation": "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
-            }
-        ]
-    },
-    {
         "name": "textureSampleGradOffset",
         "documentation": "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate",
         "target_support": [
@@ -6794,126 +6758,6 @@
             },
             {
                 "signature": "textureSampleGradOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleGradProj",
-        "documentation": "Sample a texture at coordinate with explicit gradient with projection",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleGradProj(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProj(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProj(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProj(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProj(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProj(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32) f32x4"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleGradProjCompare",
-        "documentation": "Sample a texture at coordinate with explicit gradient with projection with depth comparison",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleGradProjCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompare(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompare(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompare(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleGradProjCompareOffset",
-        "documentation": "Sample a texture at coordinate with explicit gradient with projection with depth comparison with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleGradProjOffset",
-        "documentation": "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleGradProjOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, offset: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProjOffset(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, offset: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProjOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, offset: f32x2) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProjOffset(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, offset: f32x2) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProjOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, offset: f32x3) f32x4"
-            },
-            {
-                "signature": "textureSampleGradProjOffset(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, offset: f32x3) f32x4"
             }
         ]
     },
@@ -6972,90 +6816,6 @@
         ]
     },
     {
-        "name": "textureSampleLodCompare",
-        "documentation": "Sample a texture at coordinate with explicit level of detail with depth comparison",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *textureSampled1DArray, coordinate: f32x2, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, lod: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompare(uniform texture: *textureSampled2DArray, coordinate: f32x3, lod: f32, compare: f32) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleLodCompareOffset",
-        "documentation": "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
-            }
-        ]
-    },
-    {
         "name": "textureSampleLodOffset",
         "documentation": "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate",
         "target_support": [
@@ -7094,126 +6854,6 @@
             },
             {
                 "signature": "textureSampleLodOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, lod: f32, offset: f32x3) f32x4"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleLodProj",
-        "documentation": "Sample a texture at coordinate with explicit level of detail with projection",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleLodProj(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProj(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProj(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProj(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProj(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, proj: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProj(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, proj: f32) f32x4"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleLodProjCompare",
-        "documentation": "Sample a texture at coordinate with explicit level of detail with projection with depth comparison",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleLodProjCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompare(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompare(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, proj: f32, compare: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompare(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, proj: f32, compare: f32) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleLodProjCompareOffset",
-        "documentation": "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, proj: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, proj: f32, compare: f32, offset: f32) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, proj: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, proj: f32, compare: f32, offset: f32x2) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, proj: f32, compare: f32, offset: f32x3) f32"
-            },
-            {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, proj: f32, compare: f32, offset: f32x3) f32"
-            }
-        ]
-    },
-    {
-        "name": "textureSampleLodProjOffset",
-        "documentation": "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate",
-        "target_support": [
-            1,
-            1,
-            1,
-            1
-        ],
-        "overloads": [
-            {
-                "signature": "textureSampleLodProjOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, proj: f32, offset: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProjOffset(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, proj: f32, offset: f32) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProjOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, proj: f32, offset: f32x2) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProjOffset(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, proj: f32, offset: f32x2) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProjOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, proj: f32, offset: f32x3) f32x4"
-            },
-            {
-                "signature": "textureSampleLodProjOffset(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, proj: f32, offset: f32x3) f32x4"
             }
         ]
     },
@@ -7290,6 +6930,66 @@
         ]
     },
     {
+        "name": "textureSampleProjBias",
+        "documentation": "Sample a texture at coordinate with a mip bias with projection",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjBias(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, bias: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBias(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, bias: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBias(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, bias: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBias(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, bias: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBias(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, bias: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBias(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, bias: f32) f32x4"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjBiasOffset",
+        "documentation": "Sample a texture at coordinate with a mip bias with projection with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjBiasOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, bias: f32, offset: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBiasOffset(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, bias: f32, offset: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBiasOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, bias: f32, offset: f32x2) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBiasOffset(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, bias: f32, offset: f32x2) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBiasOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, bias: f32, offset: f32x3) f32x4"
+            },
+            {
+                "signature": "textureSampleProjBiasOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, bias: f32, offset: f32x3) f32x4"
+            }
+        ]
+    },
+    {
         "name": "textureSampleProjCompare",
         "documentation": "Sample a texture at coordinate with projection with depth comparison",
         "target_support": [
@@ -7320,6 +7020,186 @@
         ]
     },
     {
+        "name": "textureSampleProjCompareBias",
+        "documentation": "Sample a texture at coordinate with a mip bias with projection with depth comparison",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjCompareBias(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBias(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBias(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBias(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBias(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, compare: f32, bias: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBias(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32, bias: f32) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjCompareBiasOffset",
+        "documentation": "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjCompareBiasOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, compare: f32, bias: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBiasOffset(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, compare: f32, bias: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBiasOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, compare: f32, bias: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBiasOffset(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, compare: f32, bias: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBiasOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, compare: f32, bias: f32, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareBiasOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32, bias: f32, offset: f32x3) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjCompareGrad",
+        "documentation": "Sample a texture at coordinate with explicit gradient with projection with depth comparison",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjCompareGrad(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, compare: f32, grad_x: f32, grad_y: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGrad(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, compare: f32, grad_x: f32, grad_y: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGrad(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, compare: f32, grad_x: f32x2, grad_y: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGrad(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, compare: f32, grad_x: f32x2, grad_y: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGrad(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, compare: f32, grad_x: f32x3, grad_y: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGrad(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32, grad_x: f32x3, grad_y: f32x3) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjCompareGradOffset",
+        "documentation": "Sample a texture at coordinate with explicit gradient with projection with depth comparison with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjCompareGradOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, compare: f32, grad_x: f32, grad_y: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGradOffset(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, compare: f32, grad_x: f32, grad_y: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGradOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, compare: f32, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGradOffset(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, compare: f32, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGradOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, compare: f32, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareGradOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjCompareLod",
+        "documentation": "Sample a texture at coordinate with explicit level of detail with projection with depth comparison",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjCompareLod(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLod(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLod(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLod(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLod(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, compare: f32, lod: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLod(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32, lod: f32) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjCompareLodOffset",
+        "documentation": "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjCompareLodOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, compare: f32, lod: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLodOffset(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, compare: f32, lod: f32, offset: f32) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLodOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, compare: f32, lod: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLodOffset(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, compare: f32, lod: f32, offset: f32x2) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLodOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, compare: f32, lod: f32, offset: f32x3) f32"
+            },
+            {
+                "signature": "textureSampleProjCompareLodOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32, lod: f32, offset: f32x3) f32"
+            }
+        ]
+    },
+    {
         "name": "textureSampleProjCompareOffset",
         "documentation": "Sample a texture at coordinate with projection with depth comparison with an offset applied to the coordinate",
         "target_support": [
@@ -7346,6 +7226,126 @@
             },
             {
                 "signature": "textureSampleProjCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjGrad",
+        "documentation": "Sample a texture at coordinate with explicit gradient with projection",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjGrad(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, grad_x: f32, grad_y: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGrad(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, grad_x: f32, grad_y: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGrad(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, grad_x: f32x2, grad_y: f32x2) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGrad(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, grad_x: f32x2, grad_y: f32x2) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGrad(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, grad_x: f32x3, grad_y: f32x3) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGrad(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, grad_x: f32x3, grad_y: f32x3) f32x4"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjGradOffset",
+        "documentation": "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjGradOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, grad_x: f32, grad_y: f32, offset: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGradOffset(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, grad_x: f32, grad_y: f32, offset: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGradOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGradOffset(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGradOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
+            },
+            {
+                "signature": "textureSampleProjGradOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjLod",
+        "documentation": "Sample a texture at coordinate with explicit level of detail with projection",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjLod(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, lod: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLod(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, lod: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLod(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, lod: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLod(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, lod: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLod(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, lod: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLod(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, lod: f32) f32x4"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleProjLodOffset",
+        "documentation": "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "textureSampleProjLodOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, lod: f32, offset: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLodOffset(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, lod: f32, offset: f32) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLodOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, lod: f32, offset: f32x2) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLodOffset(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, lod: f32, offset: f32x2) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLodOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, lod: f32, offset: f32x3) f32x4"
+            },
+            {
+                "signature": "textureSampleProjLodOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, lod: f32, offset: f32x3) f32x4"
             }
         ]
     },

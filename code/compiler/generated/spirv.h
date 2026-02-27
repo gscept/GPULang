@@ -23526,8 +23526,7 @@ SPIRVResult SPIRV_TextureSampleOffset_Texture1D(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23537,8 +23536,7 @@ SPIRVResult SPIRV_SampledTextureSampleOffset_Texture1D(const Compiler* c, SPIRVG
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23548,8 +23546,7 @@ SPIRVResult SPIRV_TextureSampleOffset_Texture2D(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23559,8 +23556,7 @@ SPIRVResult SPIRV_SampledTextureSampleOffset_Texture2D(const Compiler* c, SPIRVG
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23570,8 +23566,7 @@ SPIRVResult SPIRV_TextureSampleOffset_Texture3D(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23581,8 +23576,7 @@ SPIRVResult SPIRV_SampledTextureSampleOffset_Texture3D(const Compiler* c, SPIRVG
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23592,8 +23586,7 @@ SPIRVResult SPIRV_TextureSampleOffset_Texture1DArray(const Compiler* c, SPIRVGen
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23603,8 +23596,7 @@ SPIRVResult SPIRV_SampledTextureSampleOffset_Texture1DArray(const Compiler* c, S
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23614,8 +23606,7 @@ SPIRVResult SPIRV_TextureSampleOffset_Texture2DArray(const Compiler* c, SPIRVGen
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23625,8 +23616,7 @@ SPIRVResult SPIRV_SampledTextureSampleOffset_Texture2DArray(const Compiler* c, S
     g->writer->Capability(Capabilities::Shader);
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23711,8 +23701,7 @@ SPIRVResult SPIRV_TextureSampleProjOffset_Texture1D(const Compiler* c, SPIRVGene
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23725,8 +23714,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjOffset_Texture1D(const Compiler* c, SP
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23739,8 +23727,7 @@ SPIRVResult SPIRV_TextureSampleProjOffset_Texture2D(const Compiler* c, SPIRVGene
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23753,8 +23740,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjOffset_Texture2D(const Compiler* c, SP
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23767,8 +23753,7 @@ SPIRVResult SPIRV_TextureSampleProjOffset_Texture3D(const Compiler* c, SPIRVGene
     SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23781,8 +23766,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjOffset_Texture3D(const Compiler* c, SP
     SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23893,8 +23877,7 @@ SPIRVResult SPIRV_TextureSampleCompareOffset_Texture1D(const Compiler* c, SPIRVG
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23905,8 +23888,7 @@ SPIRVResult SPIRV_SampledTextureSampleCompareOffset_Texture1D(const Compiler* c,
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23917,8 +23899,7 @@ SPIRVResult SPIRV_TextureSampleCompareOffset_Texture2D(const Compiler* c, SPIRVG
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23929,8 +23910,7 @@ SPIRVResult SPIRV_SampledTextureSampleCompareOffset_Texture2D(const Compiler* c,
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23941,8 +23921,7 @@ SPIRVResult SPIRV_TextureSampleCompareOffset_Texture3D(const Compiler* c, SPIRVG
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23953,8 +23932,7 @@ SPIRVResult SPIRV_SampledTextureSampleCompareOffset_Texture3D(const Compiler* c,
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23965,8 +23943,7 @@ SPIRVResult SPIRV_TextureSampleCompareOffset_Texture1DArray(const Compiler* c, S
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23977,8 +23954,7 @@ SPIRVResult SPIRV_SampledTextureSampleCompareOffset_Texture1DArray(const Compile
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -23989,8 +23965,7 @@ SPIRVResult SPIRV_TextureSampleCompareOffset_Texture2DArray(const Compiler* c, S
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24001,8 +23976,7 @@ SPIRVResult SPIRV_SampledTextureSampleCompareOffset_Texture2DArray(const Compile
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24094,8 +24068,7 @@ SPIRVResult SPIRV_TextureSampleProjCompareOffset_Texture1D(const Compiler* c, SP
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24109,8 +24082,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompareOffset_Texture1D(const Compiler
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24124,8 +24096,7 @@ SPIRVResult SPIRV_TextureSampleProjCompareOffset_Texture2D(const Compiler* c, SP
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24139,8 +24110,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompareOffset_Texture2D(const Compiler
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24154,8 +24124,7 @@ SPIRVResult SPIRV_TextureSampleProjCompareOffset_Texture3D(const Compiler* c, SP
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24169,8 +24138,7 @@ SPIRVResult SPIRV_SampledTextureSampleProjCompareOffset_Texture3D(const Compiler
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24321,8 +24289,7 @@ SPIRVResult SPIRV_TextureSampleLodOffset_Texture1D(const Compiler* c, SPIRVGener
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24333,8 +24300,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodOffset_Texture1D(const Compiler* c, SPI
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24345,8 +24311,7 @@ SPIRVResult SPIRV_TextureSampleLodOffset_Texture2D(const Compiler* c, SPIRVGener
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24357,8 +24322,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodOffset_Texture2D(const Compiler* c, SPI
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24369,8 +24333,7 @@ SPIRVResult SPIRV_TextureSampleLodOffset_Texture3D(const Compiler* c, SPIRVGener
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24381,8 +24344,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodOffset_Texture3D(const Compiler* c, SPI
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24393,8 +24355,7 @@ SPIRVResult SPIRV_TextureSampleLodOffset_Texture1DArray(const Compiler* c, SPIRV
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24405,8 +24366,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodOffset_Texture1DArray(const Compiler* c
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24417,8 +24377,7 @@ SPIRVResult SPIRV_TextureSampleLodOffset_Texture2DArray(const Compiler* c, SPIRV
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24429,8 +24388,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodOffset_Texture2DArray(const Compiler* c
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24522,8 +24480,7 @@ SPIRVResult SPIRV_TextureSampleLodProjOffset_Texture1D(const Compiler* c, SPIRVG
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24537,8 +24494,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjOffset_Texture1D(const Compiler* c,
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24552,8 +24508,7 @@ SPIRVResult SPIRV_TextureSampleLodProjOffset_Texture2D(const Compiler* c, SPIRVG
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24567,8 +24522,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjOffset_Texture2D(const Compiler* c,
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24582,8 +24536,7 @@ SPIRVResult SPIRV_TextureSampleLodProjOffset_Texture3D(const Compiler* c, SPIRVG
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24597,8 +24550,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjOffset_Texture3D(const Compiler* c,
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24720,8 +24672,7 @@ SPIRVResult SPIRV_TextureSampleLodCompareOffset_Texture1D(const Compiler* c, SPI
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24733,8 +24684,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodCompareOffset_Texture1D(const Compiler*
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24746,8 +24696,7 @@ SPIRVResult SPIRV_TextureSampleLodCompareOffset_Texture2D(const Compiler* c, SPI
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24759,8 +24708,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodCompareOffset_Texture2D(const Compiler*
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24772,8 +24720,7 @@ SPIRVResult SPIRV_TextureSampleLodCompareOffset_Texture3D(const Compiler* c, SPI
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24785,8 +24732,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodCompareOffset_Texture3D(const Compiler*
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24798,8 +24744,7 @@ SPIRVResult SPIRV_TextureSampleLodCompareOffset_Texture1DArray(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24811,8 +24756,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodCompareOffset_Texture1DArray(const Comp
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24824,8 +24768,7 @@ SPIRVResult SPIRV_TextureSampleLodCompareOffset_Texture2DArray(const Compiler* c
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24837,8 +24780,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodCompareOffset_Texture2DArray(const Comp
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24937,8 +24879,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompareOffset_Texture1D(const Compiler* c,
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24953,8 +24894,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompareOffset_Texture1D(const Compi
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24969,8 +24909,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompareOffset_Texture2D(const Compiler* c,
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -24985,8 +24924,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompareOffset_Texture2D(const Compi
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25001,8 +24939,7 @@ SPIRVResult SPIRV_TextureSampleLodProjCompareOffset_Texture3D(const Compiler* c,
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25017,8 +24954,7 @@ SPIRVResult SPIRV_SampledTextureSampleLodProjCompareOffset_Texture3D(const Compi
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25184,8 +25120,7 @@ SPIRVResult SPIRV_TextureSampleGradOffset_Texture1D(const Compiler* c, SPIRVGene
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25197,8 +25132,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradOffset_Texture1D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25210,8 +25144,7 @@ SPIRVResult SPIRV_TextureSampleGradOffset_Texture2D(const Compiler* c, SPIRVGene
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25223,8 +25156,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradOffset_Texture2D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25236,8 +25168,7 @@ SPIRVResult SPIRV_TextureSampleGradOffset_Texture3D(const Compiler* c, SPIRVGene
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25249,8 +25180,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradOffset_Texture3D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25262,8 +25192,7 @@ SPIRVResult SPIRV_TextureSampleGradOffset_Texture1DArray(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25275,8 +25204,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradOffset_Texture1DArray(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25288,8 +25216,7 @@ SPIRVResult SPIRV_TextureSampleGradOffset_Texture2DArray(const Compiler* c, SPIR
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25301,8 +25228,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradOffset_Texture2DArray(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25401,8 +25327,7 @@ SPIRVResult SPIRV_TextureSampleGradProjOffset_Texture1D(const Compiler* c, SPIRV
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25417,8 +25342,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjOffset_Texture1D(const Compiler* c
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25433,8 +25357,7 @@ SPIRVResult SPIRV_TextureSampleGradProjOffset_Texture2D(const Compiler* c, SPIRV
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25449,8 +25372,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjOffset_Texture2D(const Compiler* c
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25465,8 +25387,7 @@ SPIRVResult SPIRV_TextureSampleGradProjOffset_Texture3D(const Compiler* c, SPIRV
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25481,8 +25402,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjOffset_Texture3D(const Compiler* c
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25615,8 +25535,7 @@ SPIRVResult SPIRV_TextureSampleGradCompareOffset_Texture1D(const Compiler* c, SP
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25629,8 +25548,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradCompareOffset_Texture1D(const Compiler
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25643,8 +25561,7 @@ SPIRVResult SPIRV_TextureSampleGradCompareOffset_Texture2D(const Compiler* c, SP
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25657,8 +25574,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradCompareOffset_Texture2D(const Compiler
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25671,8 +25587,7 @@ SPIRVResult SPIRV_TextureSampleGradCompareOffset_Texture3D(const Compiler* c, SP
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25685,8 +25600,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradCompareOffset_Texture3D(const Compiler
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25699,8 +25613,7 @@ SPIRVResult SPIRV_TextureSampleGradCompareOffset_Texture1DArray(const Compiler* 
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25713,8 +25626,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradCompareOffset_Texture1DArray(const Com
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25727,8 +25639,7 @@ SPIRVResult SPIRV_TextureSampleGradCompareOffset_Texture2DArray(const Compiler* 
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25741,8 +25652,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradCompareOffset_Texture2DArray(const Com
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25848,8 +25758,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompareOffset_Texture1D(const Compiler* c
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[7]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25865,8 +25774,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompareOffset_Texture1D(const Comp
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25882,8 +25790,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompareOffset_Texture2D(const Compiler* c
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[7]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25899,8 +25806,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompareOffset_Texture2D(const Comp
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25916,8 +25822,7 @@ SPIRVResult SPIRV_TextureSampleGradProjCompareOffset_Texture3D(const Compiler* c
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[7]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -25933,8 +25838,7 @@ SPIRVResult SPIRV_SampledTextureSampleGradProjCompareOffset_Texture3D(const Comp
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Grad, gradX, gradY, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26085,8 +25989,7 @@ SPIRVResult SPIRV_TextureSampleBiasOffset_Texture1D(const Compiler* c, SPIRVGene
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26097,8 +26000,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasOffset_Texture1D(const Compiler* c, SP
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26109,8 +26011,7 @@ SPIRVResult SPIRV_TextureSampleBiasOffset_Texture2D(const Compiler* c, SPIRVGene
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26121,8 +26022,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasOffset_Texture2D(const Compiler* c, SP
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26133,8 +26033,7 @@ SPIRVResult SPIRV_TextureSampleBiasOffset_Texture3D(const Compiler* c, SPIRVGene
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26145,8 +26044,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasOffset_Texture3D(const Compiler* c, SP
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26157,8 +26055,7 @@ SPIRVResult SPIRV_TextureSampleBiasOffset_Texture1DArray(const Compiler* c, SPIR
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26169,8 +26066,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasOffset_Texture1DArray(const Compiler* 
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26181,8 +26077,7 @@ SPIRVResult SPIRV_TextureSampleBiasOffset_Texture2DArray(const Compiler* c, SPIR
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26193,8 +26088,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasOffset_Texture2DArray(const Compiler* 
     SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26286,8 +26180,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjOffset_Texture1D(const Compiler* c, SPIRV
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26301,8 +26194,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjOffset_Texture1D(const Compiler* c
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26316,8 +26208,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjOffset_Texture2D(const Compiler* c, SPIRV
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26331,8 +26222,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjOffset_Texture2D(const Compiler* c
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26346,8 +26236,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjOffset_Texture3D(const Compiler* c, SPIRV
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26361,8 +26250,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjOffset_Texture3D(const Compiler* c
     uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26484,8 +26372,7 @@ SPIRVResult SPIRV_TextureSampleBiasCompareOffset_Texture1D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26497,8 +26384,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasCompareOffset_Texture1D(const Compiler
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26510,8 +26396,7 @@ SPIRVResult SPIRV_TextureSampleBiasCompareOffset_Texture2D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26523,8 +26408,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasCompareOffset_Texture2D(const Compiler
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26536,8 +26420,7 @@ SPIRVResult SPIRV_TextureSampleBiasCompareOffset_Texture3D(const Compiler* c, SP
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26549,8 +26432,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasCompareOffset_Texture3D(const Compiler
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26562,8 +26444,7 @@ SPIRVResult SPIRV_TextureSampleBiasCompareOffset_Texture1DArray(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26575,8 +26456,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasCompareOffset_Texture1DArray(const Com
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26588,8 +26468,7 @@ SPIRVResult SPIRV_TextureSampleBiasCompareOffset_Texture2DArray(const Compiler* 
     SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26601,8 +26480,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasCompareOffset_Texture2DArray(const Com
     SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[4]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26701,8 +26579,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompareOffset_Texture1D(const Compiler* c
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26717,8 +26594,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture1D(const Comp
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26733,8 +26609,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompareOffset_Texture2D(const Compiler* c
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26749,8 +26624,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture2D(const Comp
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26765,8 +26639,7 @@ SPIRVResult SPIRV_TextureSampleBiasProjCompareOffset_Texture3D(const Compiler* c
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[6]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
@@ -26781,8 +26654,7 @@ SPIRVResult SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture3D(const Comp
     coord = GenerateCompositeSPIRV(c, g, vectorType, TransientArray<SPIRVResult>({ coord, proj }));
     SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
     SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
-    g->writer->Capability(Capabilities::ImageQuery);
-    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[5]);
     uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }
