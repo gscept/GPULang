@@ -4412,7 +4412,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     else if (initializerExpression != nullptr)
     {
         // Check if the program overrides this variable
-        if (varResolved->usageBits.flags.isConst)
+        if (varResolved->usageBits.flags.isConst || varResolved->storage == Storage::LinkDefined)
         {
             const auto elem = generator->evaluatingProgram->constVarInitializationOverrides.Find(var);
             if (elem != generator->evaluatingProgram->constVarInitializationOverrides.end())
