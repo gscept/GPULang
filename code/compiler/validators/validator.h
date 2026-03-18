@@ -98,6 +98,7 @@ struct Validator
     
     uint32_t inParameterIndexCounter;
     uint32_t outParameterIndexCounter;
+    uint32_t pixelCacheCounter;
 };
 
 } // namespace GPULang

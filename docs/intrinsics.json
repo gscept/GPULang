@@ -6172,10 +6172,10 @@
         ],
         "overloads": [
             {
-                "signature": "texturePixelCacheLoad(uniform texture: *pixelCache) pixelCache"
+                "signature": "texturePixelCacheLoad(uniform texture: *pixelCache) f32x4"
             },
             {
-                "signature": "texturePixelCacheLoad(uniform texture: *pixelCacheMS, sample: u32) pixelCacheMS"
+                "signature": "texturePixelCacheLoad(uniform texture: *pixelCacheMS, sample: u32) f32x4"
             }
         ]
     },

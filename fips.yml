@@ -14,7 +14,7 @@ imports:
 
 exports:
     header-dirs:
-    - code/reflection
+    - code/api
     - code/util
     - code
     modules:

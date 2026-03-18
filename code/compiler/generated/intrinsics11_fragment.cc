@@ -3013,14 +3013,14 @@ void SetupIntrinsics11()
     TexturePixelCacheLoad_PixelCache.documentation = "Load a pixel value from a previous thread"_c;
     TexturePixelCacheLoad_PixelCache.name = TexturePixelCacheLoad_PixelCache_name;
     TexturePixelCacheLoad_PixelCache.backendIndex = 2442;
-    TexturePixelCacheLoad_PixelCache.returnType = Type::FullType { PixelCacheType.name };
+    TexturePixelCacheLoad_PixelCache.returnType = Type::FullType { Float32x4Type.name };
     TexturePixelCacheLoad_PixelCache.parameters = TexturePixelCacheLoad_PixelCache_args;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCache_texture)->typeSymbol = &PixelCacheType;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCache_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TexturePixelCacheLoad_PixelCache)->signature = "texturePixelCacheLoad(uniform *pixelCache) pixelCache"_c;
+    Symbol::Resolved(&TexturePixelCacheLoad_PixelCache)->signature = "texturePixelCacheLoad(uniform *pixelCache) f32x4"_c;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCache)->name = "texturePixelCacheLoad(uniform *pixelCache)"_c;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCache)->nameWithVarNames = "texturePixelCacheLoad(texture : uniform *pixelCache)"_c;
-    Symbol::Resolved(&TexturePixelCacheLoad_PixelCache)->returnTypeSymbol = &PixelCacheType;
+    Symbol::Resolved(&TexturePixelCacheLoad_PixelCache)->returnTypeSymbol = &Float32x4Type;
 
     /// texturePixelCacheLoad with PixelCacheMS, UInt32
     TexturePixelCacheLoad_PixelCacheMS_texture.name = "texture"_c;
@@ -3032,15 +3032,15 @@ void SetupIntrinsics11()
     TexturePixelCacheLoad_PixelCacheMS.documentation = "Load a pixel value from a previous thread"_c;
     TexturePixelCacheLoad_PixelCacheMS.name = TexturePixelCacheLoad_PixelCacheMS_name;
     TexturePixelCacheLoad_PixelCacheMS.backendIndex = 2443;
-    TexturePixelCacheLoad_PixelCacheMS.returnType = Type::FullType { PixelCacheMSType.name };
+    TexturePixelCacheLoad_PixelCacheMS.returnType = Type::FullType { Float32x4Type.name };
     TexturePixelCacheLoad_PixelCacheMS.parameters = TexturePixelCacheLoad_PixelCacheMS_args;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS_texture)->typeSymbol = &PixelCacheMSType;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS_sample)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS)->signature = "texturePixelCacheLoad(uniform *pixelCacheMS,u32) pixelCacheMS"_c;
+    Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS)->signature = "texturePixelCacheLoad(uniform *pixelCacheMS,u32) f32x4"_c;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS)->name = "texturePixelCacheLoad(uniform *pixelCacheMS,u32)"_c;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS)->nameWithVarNames = "texturePixelCacheLoad(texture : uniform *pixelCacheMS, sample : u32)"_c;
-    Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS)->returnTypeSymbol = &PixelCacheMSType;
+    Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS)->returnTypeSymbol = &Float32x4Type;
 
     /// textureSample with Texture1D, Sampler, Float32
     TextureSample_Texture1D_texture.name = "texture"_c;

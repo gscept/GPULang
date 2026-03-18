@@ -81,6 +81,7 @@ struct Variable : public Symbol
 
         uint8_t inBinding = Variable::__Resolved::NOT_BOUND;      // parameter input binding
         uint8_t outBinding = Variable::__Resolved::NOT_BOUND;     // parameter output binding
+        uint8_t pixelCacheBinding = Variable::__Resolved::NOT_BOUND;
 
         uint32_t byteSize = 0;          // size in bytes
         uint32_t structureOffset = 0;   // offset within structure

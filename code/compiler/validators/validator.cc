@@ -137,6 +137,8 @@ Validator::Validator()
         this->allowedTextureAttributes.Insert(FixedString(it.first));
     }
 
+    this->pixelCacheCounter = 0;
+
     this->allowedTextureAttributes.Insert(bindingQualifiers);
     this->allowedTextureAttributes.Insert(pointerQualifiers);
     this->allowedTextureAttributes.Insert(storageQualifiers);
@@ -3031,6 +3033,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         compiler->Error(Format("Texture type must provide a format qualifier because it's marked as 'mutable'"), var);
         return false;
+    }
+    if (type->category == Type::PixelCacheCategory)
+    {
+        varResolved->pixelCacheBinding = this->pixelCacheCounter++;
     }
 
     if (varResolved->usageBits.flags.isParameter)

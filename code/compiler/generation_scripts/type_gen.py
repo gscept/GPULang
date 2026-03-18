@@ -4878,7 +4878,7 @@ def generate_types():
         fun = Function( 
             decl_name = function_name,
             api_name = f'texture{intrinsic}',
-            return_type = type,
+            return_type = 'Float32x4',
             documentation = 'Load a pixel value from a previous thread',
             parameters = [
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True)
