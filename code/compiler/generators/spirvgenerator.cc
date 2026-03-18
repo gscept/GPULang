@@ -4529,6 +4529,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             generator->writer->Decorate(SPVArg(name), Decorations::Binding, (uint32_t)varResolved->binding);
             if (varResolved->typeSymbol == &PixelCacheType || varResolved->typeSymbol == &PixelCacheMSType)
             {
+                generator->writer->Capability(Capabilities::InputAttachment);
                 generator->writer->Decorate(SPVArg(name), Decorations::InputAttachmentIndex, (uint32_t)varResolved->pixelCacheBinding);
             }
         }
