@@ -186,7 +186,8 @@ SPIRVResult SPIRV_UInt32ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t v
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
-            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt32(0));
+        value = LoadValueSPIRV(c, g, value);
+        SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt32(0));
         uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
         return SPIRVResult(res, type, true);
     }
@@ -326,7 +327,8 @@ SPIRVResult SPIRV_Int32ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t ve
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
-            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
+        value = LoadValueSPIRV(c, g, value);
+        SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
         uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
         return SPIRVResult(res, type, true);
     }
@@ -753,7 +755,8 @@ SPIRVResult SPIRV_UInt16ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t v
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
-            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt16(0));
+        value = LoadValueSPIRV(c, g, value);
+        SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt16(0));
         uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
         return SPIRVResult(res, type, true);
     }
@@ -893,7 +896,8 @@ SPIRVResult SPIRV_Int16ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t ve
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
-            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int16(0));
+        value = LoadValueSPIRV(c, g, value);
+        SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int16(0));
         uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
         return SPIRVResult(res, type, true);
     }
@@ -1033,7 +1037,8 @@ SPIRVResult SPIRV_UInt64ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t v
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
-            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt64(0));
+        value = LoadValueSPIRV(c, g, value);
+        SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt64(0));
         uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
         return SPIRVResult(res, type, true);
     }

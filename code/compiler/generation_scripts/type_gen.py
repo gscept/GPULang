@@ -283,13 +283,14 @@ def generate_types():
     conversion_table_enum += '{\n'
 
     class TypeConverter:
-        def __init__(self, enu, target, source_data_type, spirv_conversion_function, spirv_conversion_prep, spirv_conversion_arguments):
+        def __init__(self, enu, target, source_data_type, spirv_conversion_function, spirv_conversion_prep, spirv_conversion_arguments, load_target = False):
             self.enum = enu
             self.target = target
             self.source_data_type = source_data_type    
             self.spirv_conversion_function = spirv_conversion_function
             self.spirv_conversion_prep = spirv_conversion_prep
             self.spirv_conversion_arguments = spirv_conversion_arguments
+            self.load_target = load_target
 
     type_conversions = []
     for type1 in types:
@@ -332,9 +333,10 @@ def generate_types():
                                 spirv_conversion_function = 'OpConvertSToF'
                         type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type_mapping[type1], spirv_conversion_function, spirv_conversion_prep, ''))
                     else:
+                        # Bool to int or uint
                         if type1.startswith('UInt') or type1.startswith('Int'):
-                            spirv_conversion_prep += f'            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type1}(0));\n'
-                            type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type_mapping[type1], 'OpINotEqual', spirv_conversion_prep, 'falseValue'))
+                            spirv_conversion_prep += f'        SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type1}(0));\n'
+                            type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type_mapping[type1], 'OpINotEqual', spirv_conversion_prep, 'falseValue', True))
 
 
     conversion_table_enum = conversion_table_enum[0:-2]
@@ -372,7 +374,7 @@ def generate_types():
         spirv_type_construction += f'            type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target}, vectorSize);\n'
         spirv_type_construction += f'        else\n'
         spirv_type_construction += f'            type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target});\n'
-        if not converter.spirv_conversion_arguments:
+        if not converter.spirv_conversion_arguments or converter.load_target:
             spirv_type_construction += f'        value = LoadValueSPIRV(c, g, value);\n'
         if converter.spirv_conversion_prep:
             spirv_type_construction += converter.spirv_conversion_prep
