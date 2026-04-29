@@ -1566,6 +1566,72 @@
         ]
     },
     {
+        "name": "determinant",
+        "documentation": "Returns the determinant of the matrix.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "determinant(val: f32x2x2) f32"
+            },
+            {
+                "signature": "determinant(val: f16x2x2) f32"
+            },
+            {
+                "signature": "determinant(val: f32x2x3) f32"
+            },
+            {
+                "signature": "determinant(val: f16x2x3) f32"
+            },
+            {
+                "signature": "determinant(val: f32x2x4) f32"
+            },
+            {
+                "signature": "determinant(val: f16x2x4) f32"
+            },
+            {
+                "signature": "determinant(val: f32x3x2) f32"
+            },
+            {
+                "signature": "determinant(val: f16x3x2) f32"
+            },
+            {
+                "signature": "determinant(val: f32x3x3) f32"
+            },
+            {
+                "signature": "determinant(val: f16x3x3) f32"
+            },
+            {
+                "signature": "determinant(val: f32x3x4) f32"
+            },
+            {
+                "signature": "determinant(val: f16x3x4) f32"
+            },
+            {
+                "signature": "determinant(val: f32x4x2) f32"
+            },
+            {
+                "signature": "determinant(val: f16x4x2) f32"
+            },
+            {
+                "signature": "determinant(val: f32x4x3) f32"
+            },
+            {
+                "signature": "determinant(val: f16x4x3) f32"
+            },
+            {
+                "signature": "determinant(val: f32x4x4) f32"
+            },
+            {
+                "signature": "determinant(val: f16x4x4) f32"
+            }
+        ]
+    },
+    {
         "name": "distance",
         "documentation": "Returns the distance between two points.",
         "target_support": [

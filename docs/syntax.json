@@ -182,6 +182,7 @@
         "cross",
         "ddx",
         "ddy",
+        "determinant",
         "distance",
         "domainExportCoordinates",
         "domainGetTessellationCoordinates",

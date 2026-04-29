@@ -449,6 +449,96 @@ Variable inverse_Float16x4x4_arg;
 Function inverse_Float16x4x4;
 inline constexpr std::array inverse_Float16x4x4_args = { &inverse_Float16x4x4_arg };
 
+/// determinant with Float32x2x2
+Variable determinant_Float32x2x2_arg;
+Function determinant_Float32x2x2;
+inline constexpr std::array determinant_Float32x2x2_args = { &determinant_Float32x2x2_arg };
+
+/// determinant with Float16x2x2
+Variable determinant_Float16x2x2_arg;
+Function determinant_Float16x2x2;
+inline constexpr std::array determinant_Float16x2x2_args = { &determinant_Float16x2x2_arg };
+
+/// determinant with Float32x2x3
+Variable determinant_Float32x2x3_arg;
+Function determinant_Float32x2x3;
+inline constexpr std::array determinant_Float32x2x3_args = { &determinant_Float32x2x3_arg };
+
+/// determinant with Float16x2x3
+Variable determinant_Float16x2x3_arg;
+Function determinant_Float16x2x3;
+inline constexpr std::array determinant_Float16x2x3_args = { &determinant_Float16x2x3_arg };
+
+/// determinant with Float32x2x4
+Variable determinant_Float32x2x4_arg;
+Function determinant_Float32x2x4;
+inline constexpr std::array determinant_Float32x2x4_args = { &determinant_Float32x2x4_arg };
+
+/// determinant with Float16x2x4
+Variable determinant_Float16x2x4_arg;
+Function determinant_Float16x2x4;
+inline constexpr std::array determinant_Float16x2x4_args = { &determinant_Float16x2x4_arg };
+
+/// determinant with Float32x3x2
+Variable determinant_Float32x3x2_arg;
+Function determinant_Float32x3x2;
+inline constexpr std::array determinant_Float32x3x2_args = { &determinant_Float32x3x2_arg };
+
+/// determinant with Float16x3x2
+Variable determinant_Float16x3x2_arg;
+Function determinant_Float16x3x2;
+inline constexpr std::array determinant_Float16x3x2_args = { &determinant_Float16x3x2_arg };
+
+/// determinant with Float32x3x3
+Variable determinant_Float32x3x3_arg;
+Function determinant_Float32x3x3;
+inline constexpr std::array determinant_Float32x3x3_args = { &determinant_Float32x3x3_arg };
+
+/// determinant with Float16x3x3
+Variable determinant_Float16x3x3_arg;
+Function determinant_Float16x3x3;
+inline constexpr std::array determinant_Float16x3x3_args = { &determinant_Float16x3x3_arg };
+
+/// determinant with Float32x3x4
+Variable determinant_Float32x3x4_arg;
+Function determinant_Float32x3x4;
+inline constexpr std::array determinant_Float32x3x4_args = { &determinant_Float32x3x4_arg };
+
+/// determinant with Float16x3x4
+Variable determinant_Float16x3x4_arg;
+Function determinant_Float16x3x4;
+inline constexpr std::array determinant_Float16x3x4_args = { &determinant_Float16x3x4_arg };
+
+/// determinant with Float32x4x2
+Variable determinant_Float32x4x2_arg;
+Function determinant_Float32x4x2;
+inline constexpr std::array determinant_Float32x4x2_args = { &determinant_Float32x4x2_arg };
+
+/// determinant with Float16x4x2
+Variable determinant_Float16x4x2_arg;
+Function determinant_Float16x4x2;
+inline constexpr std::array determinant_Float16x4x2_args = { &determinant_Float16x4x2_arg };
+
+/// determinant with Float32x4x3
+Variable determinant_Float32x4x3_arg;
+Function determinant_Float32x4x3;
+inline constexpr std::array determinant_Float32x4x3_args = { &determinant_Float32x4x3_arg };
+
+/// determinant with Float16x4x3
+Variable determinant_Float16x4x3_arg;
+Function determinant_Float16x4x3;
+inline constexpr std::array determinant_Float16x4x3_args = { &determinant_Float16x4x3_arg };
+
+/// determinant with Float32x4x4
+Variable determinant_Float32x4x4_arg;
+Function determinant_Float32x4x4;
+inline constexpr std::array determinant_Float32x4x4_args = { &determinant_Float32x4x4_arg };
+
+/// determinant with Float16x4x4
+Variable determinant_Float16x4x4_arg;
+Function determinant_Float16x4x4;
+inline constexpr std::array determinant_Float16x4x4_args = { &determinant_Float16x4x4_arg };
+
 /// vertexGetOutputLayer
 Function VertexGetOutputLayer;
 
@@ -540,83 +630,6 @@ inline constexpr std::array GeometryExportVertex_Float32x4_args = { &GeometryExp
 Variable GeometryExportVertex_Float16x4_arg;
 Function GeometryExportVertex_Float16x4;
 inline constexpr std::array GeometryExportVertex_Float16x4_args = { &GeometryExportVertex_Float16x4_arg };
-
-/// geometryExportPrimitive
-Function GeometryExportPrimitive;
-
-/// hullExportOuterTessellationLevels with Float32, Float32, Float32, Float32
-Variable HullExportOuterTessellationLevels_arg0;
-Variable HullExportOuterTessellationLevels_arg1;
-Variable HullExportOuterTessellationLevels_arg2;
-Variable HullExportOuterTessellationLevels_arg3;
-Function HullExportOuterTessellationLevels;
-inline constexpr std::array HullExportOuterTessellationLevels_args = { &HullExportOuterTessellationLevels_arg0, &HullExportOuterTessellationLevels_arg1, &HullExportOuterTessellationLevels_arg2, &HullExportOuterTessellationLevels_arg3 };
-
-/// hullExportInnerTessellationLevels with Float32, Float32
-Variable HullExportInnerTessellationLevels_arg0;
-Variable HullExportInnerTessellationLevels_arg1;
-Function HullExportInnerTessellationLevels;
-inline constexpr std::array HullExportInnerTessellationLevels_args = { &HullExportInnerTessellationLevels_arg0, &HullExportInnerTessellationLevels_arg1 };
-
-/// domainGetTessellationCoordinates
-Function DomainGetTessellationCoordinates;
-
-/// domainExportCoordinates with Float32x4
-Variable DomainExportCoordinates_Float32x4_arg;
-Function DomainExportCoordinates_Float32x4;
-inline constexpr std::array DomainExportCoordinates_Float32x4_args = { &DomainExportCoordinates_Float32x4_arg };
-
-/// domainExportCoordinates with Float16x4
-Variable DomainExportCoordinates_Float16x4_arg;
-Function DomainExportCoordinates_Float16x4;
-inline constexpr std::array DomainExportCoordinates_Float16x4_args = { &DomainExportCoordinates_Float16x4_arg };
-
-/// geometryGetPoint
-Function GeometryGetPoint;
-
-/// geometryGetLine
-Function GeometryGetLine;
-
-/// geometryGetTriangle
-Function GeometryGetTriangle;
-
-/// pixelGetCoordinates
-Function PixelGetCoordinates_Float32x4;
-
-/// pixelGetCoordinates
-Function PixelGetCoordinates_Float16x4;
-
-/// pixelGetFrontFacing
-Function PixelGetFrontFacing;
-
-/// pixelGetSubpixelPosition
-Function PixelGetSubpixelPosition;
-
-/// pixelGetDepth
-Function PixelGetDepth;
-
-/// pixelSetDepth with Float32
-Variable PixelSetDepth_val;
-Function PixelSetDepth;
-inline constexpr std::array PixelSetDepth_args = { &PixelSetDepth_val };
-
-/// pixelExportColor with Float32, Int32
-Variable PixelExportColor_Float32_Int32_color;
-Variable PixelExportColor_Float32_Int32_index;
-Function PixelExportColor_Float32_Int32;
-inline constexpr std::array PixelExportColor_Float32_Int32_args = { &PixelExportColor_Float32_Int32_color, &PixelExportColor_Float32_Int32_index };
-
-/// pixelExportColor with Float32, UInt32
-Variable PixelExportColor_Float32_UInt32_color;
-Variable PixelExportColor_Float32_UInt32_index;
-Function PixelExportColor_Float32_UInt32;
-inline constexpr std::array PixelExportColor_Float32_UInt32_args = { &PixelExportColor_Float32_UInt32_color, &PixelExportColor_Float32_UInt32_index };
-
-/// pixelExportColor with Float32, Int16
-Variable PixelExportColor_Float32_Int16_color;
-Variable PixelExportColor_Float32_Int16_index;
-Function PixelExportColor_Float32_Int16;
-inline constexpr std::array PixelExportColor_Float32_Int16_args = { &PixelExportColor_Float32_Int16_color, &PixelExportColor_Float32_Int16_index };
 
 void SetupIntrinsics7()
 {
@@ -1852,10 +1865,262 @@ void SetupIntrinsics7()
     Symbol::Resolved(&inverse_Float16x4x4)->nameWithVarNames = "inverse(val : f16x4x4)"_c;
     Symbol::Resolved(&inverse_Float16x4x4)->returnTypeSymbol = &Float16x4x4Type;
 
+    /// determinant with Float32x2x2
+    determinant_Float32x2x2_arg.name = "val"_c;
+    determinant_Float32x2x2_arg.type = Type::FullType{ Float32x2x2Type.name };
+    determinant_Float32x2x2.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x2x2.name = determinant_Float32x2x2_name;
+    determinant_Float32x2x2.backendIndex = 1950;
+    determinant_Float32x2x2.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x2x2.parameters = determinant_Float32x2x2_args;
+    Symbol::Resolved(&determinant_Float32x2x2_arg)->typeSymbol = &Float32x2x2Type;
+    Symbol::Resolved(&determinant_Float32x2x2)->signature = "determinant(f32x2x2) f32"_c;
+    Symbol::Resolved(&determinant_Float32x2x2)->name = "determinant(f32x2x2)"_c;
+    Symbol::Resolved(&determinant_Float32x2x2)->nameWithVarNames = "determinant(val : f32x2x2)"_c;
+    Symbol::Resolved(&determinant_Float32x2x2)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x2x2
+    determinant_Float16x2x2_arg.name = "val"_c;
+    determinant_Float16x2x2_arg.type = Type::FullType{ Float16x2x2Type.name };
+    determinant_Float16x2x2.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x2x2.name = determinant_Float16x2x2_name;
+    determinant_Float16x2x2.backendIndex = 1951;
+    determinant_Float16x2x2.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x2x2.parameters = determinant_Float16x2x2_args;
+    Symbol::Resolved(&determinant_Float16x2x2_arg)->typeSymbol = &Float16x2x2Type;
+    Symbol::Resolved(&determinant_Float16x2x2)->signature = "determinant(f16x2x2) f32"_c;
+    Symbol::Resolved(&determinant_Float16x2x2)->name = "determinant(f16x2x2)"_c;
+    Symbol::Resolved(&determinant_Float16x2x2)->nameWithVarNames = "determinant(val : f16x2x2)"_c;
+    Symbol::Resolved(&determinant_Float16x2x2)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float32x2x3
+    determinant_Float32x2x3_arg.name = "val"_c;
+    determinant_Float32x2x3_arg.type = Type::FullType{ Float32x2x3Type.name };
+    determinant_Float32x2x3.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x2x3.name = determinant_Float32x2x3_name;
+    determinant_Float32x2x3.backendIndex = 1952;
+    determinant_Float32x2x3.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x2x3.parameters = determinant_Float32x2x3_args;
+    Symbol::Resolved(&determinant_Float32x2x3_arg)->typeSymbol = &Float32x2x3Type;
+    Symbol::Resolved(&determinant_Float32x2x3)->signature = "determinant(f32x2x3) f32"_c;
+    Symbol::Resolved(&determinant_Float32x2x3)->name = "determinant(f32x2x3)"_c;
+    Symbol::Resolved(&determinant_Float32x2x3)->nameWithVarNames = "determinant(val : f32x2x3)"_c;
+    Symbol::Resolved(&determinant_Float32x2x3)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x2x3
+    determinant_Float16x2x3_arg.name = "val"_c;
+    determinant_Float16x2x3_arg.type = Type::FullType{ Float16x2x3Type.name };
+    determinant_Float16x2x3.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x2x3.name = determinant_Float16x2x3_name;
+    determinant_Float16x2x3.backendIndex = 1953;
+    determinant_Float16x2x3.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x2x3.parameters = determinant_Float16x2x3_args;
+    Symbol::Resolved(&determinant_Float16x2x3_arg)->typeSymbol = &Float16x2x3Type;
+    Symbol::Resolved(&determinant_Float16x2x3)->signature = "determinant(f16x2x3) f32"_c;
+    Symbol::Resolved(&determinant_Float16x2x3)->name = "determinant(f16x2x3)"_c;
+    Symbol::Resolved(&determinant_Float16x2x3)->nameWithVarNames = "determinant(val : f16x2x3)"_c;
+    Symbol::Resolved(&determinant_Float16x2x3)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float32x2x4
+    determinant_Float32x2x4_arg.name = "val"_c;
+    determinant_Float32x2x4_arg.type = Type::FullType{ Float32x2x4Type.name };
+    determinant_Float32x2x4.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x2x4.name = determinant_Float32x2x4_name;
+    determinant_Float32x2x4.backendIndex = 1954;
+    determinant_Float32x2x4.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x2x4.parameters = determinant_Float32x2x4_args;
+    Symbol::Resolved(&determinant_Float32x2x4_arg)->typeSymbol = &Float32x2x4Type;
+    Symbol::Resolved(&determinant_Float32x2x4)->signature = "determinant(f32x2x4) f32"_c;
+    Symbol::Resolved(&determinant_Float32x2x4)->name = "determinant(f32x2x4)"_c;
+    Symbol::Resolved(&determinant_Float32x2x4)->nameWithVarNames = "determinant(val : f32x2x4)"_c;
+    Symbol::Resolved(&determinant_Float32x2x4)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x2x4
+    determinant_Float16x2x4_arg.name = "val"_c;
+    determinant_Float16x2x4_arg.type = Type::FullType{ Float16x2x4Type.name };
+    determinant_Float16x2x4.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x2x4.name = determinant_Float16x2x4_name;
+    determinant_Float16x2x4.backendIndex = 1955;
+    determinant_Float16x2x4.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x2x4.parameters = determinant_Float16x2x4_args;
+    Symbol::Resolved(&determinant_Float16x2x4_arg)->typeSymbol = &Float16x2x4Type;
+    Symbol::Resolved(&determinant_Float16x2x4)->signature = "determinant(f16x2x4) f32"_c;
+    Symbol::Resolved(&determinant_Float16x2x4)->name = "determinant(f16x2x4)"_c;
+    Symbol::Resolved(&determinant_Float16x2x4)->nameWithVarNames = "determinant(val : f16x2x4)"_c;
+    Symbol::Resolved(&determinant_Float16x2x4)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float32x3x2
+    determinant_Float32x3x2_arg.name = "val"_c;
+    determinant_Float32x3x2_arg.type = Type::FullType{ Float32x3x2Type.name };
+    determinant_Float32x3x2.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x3x2.name = determinant_Float32x3x2_name;
+    determinant_Float32x3x2.backendIndex = 1956;
+    determinant_Float32x3x2.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x3x2.parameters = determinant_Float32x3x2_args;
+    Symbol::Resolved(&determinant_Float32x3x2_arg)->typeSymbol = &Float32x3x2Type;
+    Symbol::Resolved(&determinant_Float32x3x2)->signature = "determinant(f32x3x2) f32"_c;
+    Symbol::Resolved(&determinant_Float32x3x2)->name = "determinant(f32x3x2)"_c;
+    Symbol::Resolved(&determinant_Float32x3x2)->nameWithVarNames = "determinant(val : f32x3x2)"_c;
+    Symbol::Resolved(&determinant_Float32x3x2)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x3x2
+    determinant_Float16x3x2_arg.name = "val"_c;
+    determinant_Float16x3x2_arg.type = Type::FullType{ Float16x3x2Type.name };
+    determinant_Float16x3x2.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x3x2.name = determinant_Float16x3x2_name;
+    determinant_Float16x3x2.backendIndex = 1957;
+    determinant_Float16x3x2.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x3x2.parameters = determinant_Float16x3x2_args;
+    Symbol::Resolved(&determinant_Float16x3x2_arg)->typeSymbol = &Float16x3x2Type;
+    Symbol::Resolved(&determinant_Float16x3x2)->signature = "determinant(f16x3x2) f32"_c;
+    Symbol::Resolved(&determinant_Float16x3x2)->name = "determinant(f16x3x2)"_c;
+    Symbol::Resolved(&determinant_Float16x3x2)->nameWithVarNames = "determinant(val : f16x3x2)"_c;
+    Symbol::Resolved(&determinant_Float16x3x2)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float32x3x3
+    determinant_Float32x3x3_arg.name = "val"_c;
+    determinant_Float32x3x3_arg.type = Type::FullType{ Float32x3x3Type.name };
+    determinant_Float32x3x3.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x3x3.name = determinant_Float32x3x3_name;
+    determinant_Float32x3x3.backendIndex = 1958;
+    determinant_Float32x3x3.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x3x3.parameters = determinant_Float32x3x3_args;
+    Symbol::Resolved(&determinant_Float32x3x3_arg)->typeSymbol = &Float32x3x3Type;
+    Symbol::Resolved(&determinant_Float32x3x3)->signature = "determinant(f32x3x3) f32"_c;
+    Symbol::Resolved(&determinant_Float32x3x3)->name = "determinant(f32x3x3)"_c;
+    Symbol::Resolved(&determinant_Float32x3x3)->nameWithVarNames = "determinant(val : f32x3x3)"_c;
+    Symbol::Resolved(&determinant_Float32x3x3)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x3x3
+    determinant_Float16x3x3_arg.name = "val"_c;
+    determinant_Float16x3x3_arg.type = Type::FullType{ Float16x3x3Type.name };
+    determinant_Float16x3x3.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x3x3.name = determinant_Float16x3x3_name;
+    determinant_Float16x3x3.backendIndex = 1959;
+    determinant_Float16x3x3.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x3x3.parameters = determinant_Float16x3x3_args;
+    Symbol::Resolved(&determinant_Float16x3x3_arg)->typeSymbol = &Float16x3x3Type;
+    Symbol::Resolved(&determinant_Float16x3x3)->signature = "determinant(f16x3x3) f32"_c;
+    Symbol::Resolved(&determinant_Float16x3x3)->name = "determinant(f16x3x3)"_c;
+    Symbol::Resolved(&determinant_Float16x3x3)->nameWithVarNames = "determinant(val : f16x3x3)"_c;
+    Symbol::Resolved(&determinant_Float16x3x3)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float32x3x4
+    determinant_Float32x3x4_arg.name = "val"_c;
+    determinant_Float32x3x4_arg.type = Type::FullType{ Float32x3x4Type.name };
+    determinant_Float32x3x4.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x3x4.name = determinant_Float32x3x4_name;
+    determinant_Float32x3x4.backendIndex = 1960;
+    determinant_Float32x3x4.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x3x4.parameters = determinant_Float32x3x4_args;
+    Symbol::Resolved(&determinant_Float32x3x4_arg)->typeSymbol = &Float32x3x4Type;
+    Symbol::Resolved(&determinant_Float32x3x4)->signature = "determinant(f32x3x4) f32"_c;
+    Symbol::Resolved(&determinant_Float32x3x4)->name = "determinant(f32x3x4)"_c;
+    Symbol::Resolved(&determinant_Float32x3x4)->nameWithVarNames = "determinant(val : f32x3x4)"_c;
+    Symbol::Resolved(&determinant_Float32x3x4)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x3x4
+    determinant_Float16x3x4_arg.name = "val"_c;
+    determinant_Float16x3x4_arg.type = Type::FullType{ Float16x3x4Type.name };
+    determinant_Float16x3x4.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x3x4.name = determinant_Float16x3x4_name;
+    determinant_Float16x3x4.backendIndex = 1961;
+    determinant_Float16x3x4.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x3x4.parameters = determinant_Float16x3x4_args;
+    Symbol::Resolved(&determinant_Float16x3x4_arg)->typeSymbol = &Float16x3x4Type;
+    Symbol::Resolved(&determinant_Float16x3x4)->signature = "determinant(f16x3x4) f32"_c;
+    Symbol::Resolved(&determinant_Float16x3x4)->name = "determinant(f16x3x4)"_c;
+    Symbol::Resolved(&determinant_Float16x3x4)->nameWithVarNames = "determinant(val : f16x3x4)"_c;
+    Symbol::Resolved(&determinant_Float16x3x4)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float32x4x2
+    determinant_Float32x4x2_arg.name = "val"_c;
+    determinant_Float32x4x2_arg.type = Type::FullType{ Float32x4x2Type.name };
+    determinant_Float32x4x2.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x4x2.name = determinant_Float32x4x2_name;
+    determinant_Float32x4x2.backendIndex = 1962;
+    determinant_Float32x4x2.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x4x2.parameters = determinant_Float32x4x2_args;
+    Symbol::Resolved(&determinant_Float32x4x2_arg)->typeSymbol = &Float32x4x2Type;
+    Symbol::Resolved(&determinant_Float32x4x2)->signature = "determinant(f32x4x2) f32"_c;
+    Symbol::Resolved(&determinant_Float32x4x2)->name = "determinant(f32x4x2)"_c;
+    Symbol::Resolved(&determinant_Float32x4x2)->nameWithVarNames = "determinant(val : f32x4x2)"_c;
+    Symbol::Resolved(&determinant_Float32x4x2)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x4x2
+    determinant_Float16x4x2_arg.name = "val"_c;
+    determinant_Float16x4x2_arg.type = Type::FullType{ Float16x4x2Type.name };
+    determinant_Float16x4x2.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x4x2.name = determinant_Float16x4x2_name;
+    determinant_Float16x4x2.backendIndex = 1963;
+    determinant_Float16x4x2.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x4x2.parameters = determinant_Float16x4x2_args;
+    Symbol::Resolved(&determinant_Float16x4x2_arg)->typeSymbol = &Float16x4x2Type;
+    Symbol::Resolved(&determinant_Float16x4x2)->signature = "determinant(f16x4x2) f32"_c;
+    Symbol::Resolved(&determinant_Float16x4x2)->name = "determinant(f16x4x2)"_c;
+    Symbol::Resolved(&determinant_Float16x4x2)->nameWithVarNames = "determinant(val : f16x4x2)"_c;
+    Symbol::Resolved(&determinant_Float16x4x2)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float32x4x3
+    determinant_Float32x4x3_arg.name = "val"_c;
+    determinant_Float32x4x3_arg.type = Type::FullType{ Float32x4x3Type.name };
+    determinant_Float32x4x3.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x4x3.name = determinant_Float32x4x3_name;
+    determinant_Float32x4x3.backendIndex = 1964;
+    determinant_Float32x4x3.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x4x3.parameters = determinant_Float32x4x3_args;
+    Symbol::Resolved(&determinant_Float32x4x3_arg)->typeSymbol = &Float32x4x3Type;
+    Symbol::Resolved(&determinant_Float32x4x3)->signature = "determinant(f32x4x3) f32"_c;
+    Symbol::Resolved(&determinant_Float32x4x3)->name = "determinant(f32x4x3)"_c;
+    Symbol::Resolved(&determinant_Float32x4x3)->nameWithVarNames = "determinant(val : f32x4x3)"_c;
+    Symbol::Resolved(&determinant_Float32x4x3)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x4x3
+    determinant_Float16x4x3_arg.name = "val"_c;
+    determinant_Float16x4x3_arg.type = Type::FullType{ Float16x4x3Type.name };
+    determinant_Float16x4x3.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x4x3.name = determinant_Float16x4x3_name;
+    determinant_Float16x4x3.backendIndex = 1965;
+    determinant_Float16x4x3.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x4x3.parameters = determinant_Float16x4x3_args;
+    Symbol::Resolved(&determinant_Float16x4x3_arg)->typeSymbol = &Float16x4x3Type;
+    Symbol::Resolved(&determinant_Float16x4x3)->signature = "determinant(f16x4x3) f32"_c;
+    Symbol::Resolved(&determinant_Float16x4x3)->name = "determinant(f16x4x3)"_c;
+    Symbol::Resolved(&determinant_Float16x4x3)->nameWithVarNames = "determinant(val : f16x4x3)"_c;
+    Symbol::Resolved(&determinant_Float16x4x3)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float32x4x4
+    determinant_Float32x4x4_arg.name = "val"_c;
+    determinant_Float32x4x4_arg.type = Type::FullType{ Float32x4x4Type.name };
+    determinant_Float32x4x4.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float32x4x4.name = determinant_Float32x4x4_name;
+    determinant_Float32x4x4.backendIndex = 1966;
+    determinant_Float32x4x4.returnType = Type::FullType { Float32Type.name };
+    determinant_Float32x4x4.parameters = determinant_Float32x4x4_args;
+    Symbol::Resolved(&determinant_Float32x4x4_arg)->typeSymbol = &Float32x4x4Type;
+    Symbol::Resolved(&determinant_Float32x4x4)->signature = "determinant(f32x4x4) f32"_c;
+    Symbol::Resolved(&determinant_Float32x4x4)->name = "determinant(f32x4x4)"_c;
+    Symbol::Resolved(&determinant_Float32x4x4)->nameWithVarNames = "determinant(val : f32x4x4)"_c;
+    Symbol::Resolved(&determinant_Float32x4x4)->returnTypeSymbol = &Float32Type;
+
+    /// determinant with Float16x4x4
+    determinant_Float16x4x4_arg.name = "val"_c;
+    determinant_Float16x4x4_arg.type = Type::FullType{ Float16x4x4Type.name };
+    determinant_Float16x4x4.documentation = "Returns the determinant of the matrix."_c;
+    determinant_Float16x4x4.name = determinant_Float16x4x4_name;
+    determinant_Float16x4x4.backendIndex = 1967;
+    determinant_Float16x4x4.returnType = Type::FullType { Float32Type.name };
+    determinant_Float16x4x4.parameters = determinant_Float16x4x4_args;
+    Symbol::Resolved(&determinant_Float16x4x4_arg)->typeSymbol = &Float16x4x4Type;
+    Symbol::Resolved(&determinant_Float16x4x4)->signature = "determinant(f16x4x4) f32"_c;
+    Symbol::Resolved(&determinant_Float16x4x4)->name = "determinant(f16x4x4)"_c;
+    Symbol::Resolved(&determinant_Float16x4x4)->nameWithVarNames = "determinant(val : f16x4x4)"_c;
+    Symbol::Resolved(&determinant_Float16x4x4)->returnTypeSymbol = &Float32Type;
+
     /// vertexGetOutputLayer
     VertexGetOutputLayer.documentation = "Returns the output layer for the current vertex."_c;
     VertexGetOutputLayer.name = VertexGetOutputLayer_name;
-    VertexGetOutputLayer.backendIndex = 1950;
+    VertexGetOutputLayer.backendIndex = 1968;
     VertexGetOutputLayer.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetOutputLayer)->signature = "vertexGetOutputLayer() u32"_c;
     Symbol::Resolved(&VertexGetOutputLayer)->name = "vertexGetOutputLayer()"_c;
@@ -1865,7 +2130,7 @@ void SetupIntrinsics7()
     /// vertexGetOutputViewport
     VertexGetOutputViewport.documentation = "Returns the output viewport for the current vertex."_c;
     VertexGetOutputViewport.name = VertexGetOutputViewport_name;
-    VertexGetOutputViewport.backendIndex = 1951;
+    VertexGetOutputViewport.backendIndex = 1969;
     VertexGetOutputViewport.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetOutputViewport)->signature = "vertexGetOutputViewport() u32"_c;
     Symbol::Resolved(&VertexGetOutputViewport)->name = "vertexGetOutputViewport()"_c;
@@ -1875,7 +2140,7 @@ void SetupIntrinsics7()
     /// vertexGetIndex
     VertexGetIndex.documentation = "Returns the index of the current vertex."_c;
     VertexGetIndex.name = VertexGetIndex_name;
-    VertexGetIndex.backendIndex = 1952;
+    VertexGetIndex.backendIndex = 1970;
     VertexGetIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetIndex)->signature = "vertexGetIndex() u32"_c;
     Symbol::Resolved(&VertexGetIndex)->name = "vertexGetIndex()"_c;
@@ -1885,7 +2150,7 @@ void SetupIntrinsics7()
     /// vertexGetInstanceIndex
     VertexGetInstanceIndex.documentation = "Returns the instance index of the current vertex."_c;
     VertexGetInstanceIndex.name = VertexGetInstanceIndex_name;
-    VertexGetInstanceIndex.backendIndex = 1953;
+    VertexGetInstanceIndex.backendIndex = 1971;
     VertexGetInstanceIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetInstanceIndex)->signature = "vertexGetInstanceIndex() u32"_c;
     Symbol::Resolved(&VertexGetInstanceIndex)->name = "vertexGetInstanceIndex()"_c;
@@ -1895,7 +2160,7 @@ void SetupIntrinsics7()
     /// vertexGetBaseIndex
     VertexGetBaseIndex.documentation = "Returns the base index of the current vertex."_c;
     VertexGetBaseIndex.name = VertexGetBaseIndex_name;
-    VertexGetBaseIndex.backendIndex = 1954;
+    VertexGetBaseIndex.backendIndex = 1972;
     VertexGetBaseIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetBaseIndex)->signature = "vertexGetBaseIndex() u32"_c;
     Symbol::Resolved(&VertexGetBaseIndex)->name = "vertexGetBaseIndex()"_c;
@@ -1905,7 +2170,7 @@ void SetupIntrinsics7()
     /// vertexGetBaseInstanceIndex
     VertexGetBaseInstanceIndex.documentation = "Returns the base instance index of the current vertex."_c;
     VertexGetBaseInstanceIndex.name = VertexGetBaseInstanceIndex_name;
-    VertexGetBaseInstanceIndex.backendIndex = 1955;
+    VertexGetBaseInstanceIndex.backendIndex = 1973;
     VertexGetBaseInstanceIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetBaseInstanceIndex)->signature = "vertexGetBaseInstanceIndex() u32"_c;
     Symbol::Resolved(&VertexGetBaseInstanceIndex)->name = "vertexGetBaseInstanceIndex()"_c;
@@ -1915,7 +2180,7 @@ void SetupIntrinsics7()
     /// vertexGetDrawIndex
     VertexGetDrawIndex.documentation = "Returns the draw index of the current vertex."_c;
     VertexGetDrawIndex.name = VertexGetDrawIndex_name;
-    VertexGetDrawIndex.backendIndex = 1956;
+    VertexGetDrawIndex.backendIndex = 1974;
     VertexGetDrawIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetDrawIndex)->signature = "vertexGetDrawIndex() u32"_c;
     Symbol::Resolved(&VertexGetDrawIndex)->name = "vertexGetDrawIndex()"_c;
@@ -1927,7 +2192,7 @@ void SetupIntrinsics7()
     VertexSetOutputLayer_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     VertexSetOutputLayer_UInt16.documentation = "Sets the output layer for the current vertex."_c;
     VertexSetOutputLayer_UInt16.name = VertexSetOutputLayer_UInt16_name;
-    VertexSetOutputLayer_UInt16.backendIndex = 1957;
+    VertexSetOutputLayer_UInt16.backendIndex = 1975;
     VertexSetOutputLayer_UInt16.returnType = Type::FullType { VoidType.name };
     VertexSetOutputLayer_UInt16.parameters = VertexSetOutputLayer_UInt16_args;
     Symbol::Resolved(&VertexSetOutputLayer_UInt16_arg)->typeSymbol = &UInt16Type;
@@ -1941,7 +2206,7 @@ void SetupIntrinsics7()
     VertexSetOutputLayer_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     VertexSetOutputLayer_UInt32.documentation = "Sets the output layer for the current vertex."_c;
     VertexSetOutputLayer_UInt32.name = VertexSetOutputLayer_UInt32_name;
-    VertexSetOutputLayer_UInt32.backendIndex = 1958;
+    VertexSetOutputLayer_UInt32.backendIndex = 1976;
     VertexSetOutputLayer_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetOutputLayer_UInt32.parameters = VertexSetOutputLayer_UInt32_args;
     Symbol::Resolved(&VertexSetOutputLayer_UInt32_arg)->typeSymbol = &UInt32Type;
@@ -1955,7 +2220,7 @@ void SetupIntrinsics7()
     VertexSetOutputViewport_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     VertexSetOutputViewport_UInt16.documentation = "Sets the output viewport for the current vertex."_c;
     VertexSetOutputViewport_UInt16.name = VertexSetOutputViewport_UInt16_name;
-    VertexSetOutputViewport_UInt16.backendIndex = 1959;
+    VertexSetOutputViewport_UInt16.backendIndex = 1977;
     VertexSetOutputViewport_UInt16.returnType = Type::FullType { VoidType.name };
     VertexSetOutputViewport_UInt16.parameters = VertexSetOutputViewport_UInt16_args;
     Symbol::Resolved(&VertexSetOutputViewport_UInt16_arg)->typeSymbol = &UInt16Type;
@@ -1969,7 +2234,7 @@ void SetupIntrinsics7()
     VertexSetOutputViewport_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     VertexSetOutputViewport_UInt32.documentation = "Sets the output viewport for the current vertex."_c;
     VertexSetOutputViewport_UInt32.name = VertexSetOutputViewport_UInt32_name;
-    VertexSetOutputViewport_UInt32.backendIndex = 1960;
+    VertexSetOutputViewport_UInt32.backendIndex = 1978;
     VertexSetOutputViewport_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetOutputViewport_UInt32.parameters = VertexSetOutputViewport_UInt32_args;
     Symbol::Resolved(&VertexSetOutputViewport_UInt32_arg)->typeSymbol = &UInt32Type;
@@ -1983,7 +2248,7 @@ void SetupIntrinsics7()
     VertexSetPointSize_UInt32_arg.type = Type::FullType{ Float32Type.name };
     VertexSetPointSize_UInt32.documentation = "Sets the output point size for the current vertex."_c;
     VertexSetPointSize_UInt32.name = VertexSetPointSize_UInt32_name;
-    VertexSetPointSize_UInt32.backendIndex = 1961;
+    VertexSetPointSize_UInt32.backendIndex = 1979;
     VertexSetPointSize_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetPointSize_UInt32.parameters = VertexSetPointSize_UInt32_args;
     Symbol::Resolved(&VertexSetPointSize_UInt32_arg)->typeSymbol = &Float32Type;
@@ -1997,7 +2262,7 @@ void SetupIntrinsics7()
     VertexExportCoordinates_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     VertexExportCoordinates_Float32x4.documentation = "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL."_c;
     VertexExportCoordinates_Float32x4.name = VertexExportCoordinates_Float32x4_name;
-    VertexExportCoordinates_Float32x4.backendIndex = 1962;
+    VertexExportCoordinates_Float32x4.backendIndex = 1980;
     VertexExportCoordinates_Float32x4.returnType = Type::FullType { VoidType.name };
     VertexExportCoordinates_Float32x4.parameters = VertexExportCoordinates_Float32x4_args;
     Symbol::Resolved(&VertexExportCoordinates_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -2011,7 +2276,7 @@ void SetupIntrinsics7()
     VertexExportCoordinates_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     VertexExportCoordinates_Float16x4.documentation = "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL."_c;
     VertexExportCoordinates_Float16x4.name = VertexExportCoordinates_Float16x4_name;
-    VertexExportCoordinates_Float16x4.backendIndex = 1963;
+    VertexExportCoordinates_Float16x4.backendIndex = 1981;
     VertexExportCoordinates_Float16x4.returnType = Type::FullType { VoidType.name };
     VertexExportCoordinates_Float16x4.parameters = VertexExportCoordinates_Float16x4_args;
     Symbol::Resolved(&VertexExportCoordinates_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -2025,7 +2290,7 @@ void SetupIntrinsics7()
     GeometryExportPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     GeometryExportPrimitiveIndex.documentation = "Sets the output viewport for the current vertex."_c;
     GeometryExportPrimitiveIndex.name = GeometryExportPrimitiveIndex_name;
-    GeometryExportPrimitiveIndex.backendIndex = 1964;
+    GeometryExportPrimitiveIndex.backendIndex = 1982;
     GeometryExportPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     GeometryExportPrimitiveIndex.parameters = GeometryExportPrimitiveIndex_args;
     Symbol::Resolved(&GeometryExportPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
@@ -2039,7 +2304,7 @@ void SetupIntrinsics7()
     GeometryGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     GeometryGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     GeometryGetPrimitiveIndex.name = GeometryGetPrimitiveIndex_name;
-    GeometryGetPrimitiveIndex.backendIndex = 1965;
+    GeometryGetPrimitiveIndex.backendIndex = 1983;
     GeometryGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     GeometryGetPrimitiveIndex.parameters = GeometryGetPrimitiveIndex_args;
     Symbol::Resolved(&GeometryGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
@@ -2053,7 +2318,7 @@ void SetupIntrinsics7()
     TaskGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     TaskGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     TaskGetPrimitiveIndex.name = TaskGetPrimitiveIndex_name;
-    TaskGetPrimitiveIndex.backendIndex = 1966;
+    TaskGetPrimitiveIndex.backendIndex = 1984;
     TaskGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     TaskGetPrimitiveIndex.parameters = TaskGetPrimitiveIndex_args;
     Symbol::Resolved(&TaskGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
@@ -2067,7 +2332,7 @@ void SetupIntrinsics7()
     MeshGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     MeshGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     MeshGetPrimitiveIndex.name = MeshGetPrimitiveIndex_name;
-    MeshGetPrimitiveIndex.backendIndex = 1967;
+    MeshGetPrimitiveIndex.backendIndex = 1985;
     MeshGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     MeshGetPrimitiveIndex.parameters = MeshGetPrimitiveIndex_args;
     Symbol::Resolved(&MeshGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
@@ -2079,7 +2344,7 @@ void SetupIntrinsics7()
     /// geometryGetVertexIndex
     GeometryGetVertexIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     GeometryGetVertexIndex.name = GeometryGetVertexIndex_name;
-    GeometryGetVertexIndex.backendIndex = 1968;
+    GeometryGetVertexIndex.backendIndex = 1986;
     GeometryGetVertexIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&GeometryGetVertexIndex)->signature = "geometryGetVertexIndex() u32"_c;
     Symbol::Resolved(&GeometryGetVertexIndex)->name = "geometryGetVertexIndex()"_c;
@@ -2089,7 +2354,7 @@ void SetupIntrinsics7()
     /// hullGetVertexIndex
     HullGetVertexIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     HullGetVertexIndex.name = HullGetVertexIndex_name;
-    HullGetVertexIndex.backendIndex = 1969;
+    HullGetVertexIndex.backendIndex = 1987;
     HullGetVertexIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&HullGetVertexIndex)->signature = "hullGetVertexIndex() u32"_c;
     Symbol::Resolved(&HullGetVertexIndex)->name = "hullGetVertexIndex()"_c;
@@ -2101,7 +2366,7 @@ void SetupIntrinsics7()
     GeometryExportVertex_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     GeometryExportVertex_Float32x4.documentation = "Exports the state of all *out* values as vertex data, and sets the argument *val* as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL."_c;
     GeometryExportVertex_Float32x4.name = GeometryExportVertex_Float32x4_name;
-    GeometryExportVertex_Float32x4.backendIndex = 1970;
+    GeometryExportVertex_Float32x4.backendIndex = 1988;
     GeometryExportVertex_Float32x4.returnType = Type::FullType { VoidType.name };
     GeometryExportVertex_Float32x4.parameters = GeometryExportVertex_Float32x4_args;
     Symbol::Resolved(&GeometryExportVertex_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -2115,7 +2380,7 @@ void SetupIntrinsics7()
     GeometryExportVertex_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     GeometryExportVertex_Float16x4.documentation = "Exports the state of all *out* values as vertex data, and sets the argument *val* as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL."_c;
     GeometryExportVertex_Float16x4.name = GeometryExportVertex_Float16x4_name;
-    GeometryExportVertex_Float16x4.backendIndex = 1971;
+    GeometryExportVertex_Float16x4.backendIndex = 1989;
     GeometryExportVertex_Float16x4.returnType = Type::FullType { VoidType.name };
     GeometryExportVertex_Float16x4.parameters = GeometryExportVertex_Float16x4_args;
     Symbol::Resolved(&GeometryExportVertex_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -2123,242 +2388,6 @@ void SetupIntrinsics7()
     Symbol::Resolved(&GeometryExportVertex_Float16x4)->name = "geometryExportVertex(f16x4)"_c;
     Symbol::Resolved(&GeometryExportVertex_Float16x4)->nameWithVarNames = "geometryExportVertex(val : f16x4)"_c;
     Symbol::Resolved(&GeometryExportVertex_Float16x4)->returnTypeSymbol = &VoidType;
-
-    /// geometryExportPrimitive
-    GeometryExportPrimitive.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
-    GeometryExportPrimitive.name = GeometryExportPrimitive_name;
-    GeometryExportPrimitive.backendIndex = 1972;
-    GeometryExportPrimitive.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&GeometryExportPrimitive)->signature = "geometryExportPrimitive() void"_c;
-    Symbol::Resolved(&GeometryExportPrimitive)->name = "geometryExportPrimitive()"_c;
-    Symbol::Resolved(&GeometryExportPrimitive)->nameWithVarNames = "geometryExportPrimitive()"_c;
-    Symbol::Resolved(&GeometryExportPrimitive)->returnTypeSymbol = &VoidType;
-
-    /// hullExportOuterTessellationLevels with Float32, Float32, Float32, Float32
-    HullExportOuterTessellationLevels_arg0.name = "f0"_c;
-    HullExportOuterTessellationLevels_arg0.type = Type::FullType{ Float32Type.name };
-    HullExportOuterTessellationLevels_arg1.name = "f1"_c;
-    HullExportOuterTessellationLevels_arg1.type = Type::FullType{ Float32Type.name };
-    HullExportOuterTessellationLevels_arg2.name = "f2"_c;
-    HullExportOuterTessellationLevels_arg2.type = Type::FullType{ Float32Type.name };
-    HullExportOuterTessellationLevels_arg3.name = "f3"_c;
-    HullExportOuterTessellationLevels_arg3.type = Type::FullType{ Float32Type.name };
-    HullExportOuterTessellationLevels.documentation = "Sets the outer tessellation levels for the current patch. This function must be called once per patch."_c;
-    HullExportOuterTessellationLevels.name = HullExportOuterTessellationLevels_name;
-    HullExportOuterTessellationLevels.backendIndex = 1973;
-    HullExportOuterTessellationLevels.returnType = Type::FullType { VoidType.name };
-    HullExportOuterTessellationLevels.parameters = HullExportOuterTessellationLevels_args;
-    Symbol::Resolved(&HullExportOuterTessellationLevels_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&HullExportOuterTessellationLevels_arg1)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&HullExportOuterTessellationLevels_arg2)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&HullExportOuterTessellationLevels_arg3)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&HullExportOuterTessellationLevels)->signature = "hullExportOuterTessellationLevels(f32,f32,f32,f32) void"_c;
-    Symbol::Resolved(&HullExportOuterTessellationLevels)->name = "hullExportOuterTessellationLevels(f32,f32,f32,f32)"_c;
-    Symbol::Resolved(&HullExportOuterTessellationLevels)->nameWithVarNames = "hullExportOuterTessellationLevels(f0 : f32, f1 : f32, f2 : f32, f3 : f32)"_c;
-    Symbol::Resolved(&HullExportOuterTessellationLevels)->returnTypeSymbol = &VoidType;
-
-    /// hullExportInnerTessellationLevels with Float32, Float32
-    HullExportInnerTessellationLevels_arg0.name = "f0"_c;
-    HullExportInnerTessellationLevels_arg0.type = Type::FullType{ Float32Type.name };
-    HullExportInnerTessellationLevels_arg1.name = "f1"_c;
-    HullExportInnerTessellationLevels_arg1.type = Type::FullType{ Float32Type.name };
-    HullExportInnerTessellationLevels.documentation = "Sets the inner tessellation levels for the current patch. This function must be called once per patch."_c;
-    HullExportInnerTessellationLevels.name = HullExportInnerTessellationLevels_name;
-    HullExportInnerTessellationLevels.backendIndex = 1974;
-    HullExportInnerTessellationLevels.returnType = Type::FullType { VoidType.name };
-    HullExportInnerTessellationLevels.parameters = HullExportInnerTessellationLevels_args;
-    Symbol::Resolved(&HullExportInnerTessellationLevels_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&HullExportInnerTessellationLevels_arg1)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&HullExportInnerTessellationLevels)->signature = "hullExportInnerTessellationLevels(f32,f32) void"_c;
-    Symbol::Resolved(&HullExportInnerTessellationLevels)->name = "hullExportInnerTessellationLevels(f32,f32)"_c;
-    Symbol::Resolved(&HullExportInnerTessellationLevels)->nameWithVarNames = "hullExportInnerTessellationLevels(f0 : f32, f1 : f32)"_c;
-    Symbol::Resolved(&HullExportInnerTessellationLevels)->returnTypeSymbol = &VoidType;
-
-    /// domainGetTessellationCoordinates
-    DomainGetTessellationCoordinates.documentation = "Returns the tessellation coordinates of the point being processed. For quads, the z coordinate is meaningless and will always be 0, and x,y are bilinear weights. For triangles, x,y,z form barycentric coordinates."_c;
-    DomainGetTessellationCoordinates.name = DomainGetTessellationCoordinates_name;
-    DomainGetTessellationCoordinates.backendIndex = 1975;
-    DomainGetTessellationCoordinates.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&DomainGetTessellationCoordinates)->signature = "domainGetTessellationCoordinates() f32x3"_c;
-    Symbol::Resolved(&DomainGetTessellationCoordinates)->name = "domainGetTessellationCoordinates()"_c;
-    Symbol::Resolved(&DomainGetTessellationCoordinates)->nameWithVarNames = "domainGetTessellationCoordinates()"_c;
-    Symbol::Resolved(&DomainGetTessellationCoordinates)->returnTypeSymbol = &Float32x3Type;
-
-    /// domainExportCoordinates with Float32x4
-    DomainExportCoordinates_Float32x4_arg.name = "val"_c;
-    DomainExportCoordinates_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    DomainExportCoordinates_Float32x4.documentation = "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a domain shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL."_c;
-    DomainExportCoordinates_Float32x4.name = DomainExportCoordinates_Float32x4_name;
-    DomainExportCoordinates_Float32x4.backendIndex = 1976;
-    DomainExportCoordinates_Float32x4.returnType = Type::FullType { VoidType.name };
-    DomainExportCoordinates_Float32x4.parameters = DomainExportCoordinates_Float32x4_args;
-    Symbol::Resolved(&DomainExportCoordinates_Float32x4_arg)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&DomainExportCoordinates_Float32x4)->signature = "domainExportCoordinates(f32x4) void"_c;
-    Symbol::Resolved(&DomainExportCoordinates_Float32x4)->name = "domainExportCoordinates(f32x4)"_c;
-    Symbol::Resolved(&DomainExportCoordinates_Float32x4)->nameWithVarNames = "domainExportCoordinates(val : f32x4)"_c;
-    Symbol::Resolved(&DomainExportCoordinates_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// domainExportCoordinates with Float16x4
-    DomainExportCoordinates_Float16x4_arg.name = "val"_c;
-    DomainExportCoordinates_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    DomainExportCoordinates_Float16x4.documentation = "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a domain shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL."_c;
-    DomainExportCoordinates_Float16x4.name = DomainExportCoordinates_Float16x4_name;
-    DomainExportCoordinates_Float16x4.backendIndex = 1977;
-    DomainExportCoordinates_Float16x4.returnType = Type::FullType { VoidType.name };
-    DomainExportCoordinates_Float16x4.parameters = DomainExportCoordinates_Float16x4_args;
-    Symbol::Resolved(&DomainExportCoordinates_Float16x4_arg)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&DomainExportCoordinates_Float16x4)->signature = "domainExportCoordinates(f16x4) void"_c;
-    Symbol::Resolved(&DomainExportCoordinates_Float16x4)->name = "domainExportCoordinates(f16x4)"_c;
-    Symbol::Resolved(&DomainExportCoordinates_Float16x4)->nameWithVarNames = "domainExportCoordinates(val : f16x4)"_c;
-    Symbol::Resolved(&DomainExportCoordinates_Float16x4)->returnTypeSymbol = &VoidType;
-
-    /// geometryGetPoint
-    GeometryGetPoint.documentation = "Returns a struct of the current point."_c;
-    GeometryGetPoint.name = GeometryGetPoint_name;
-    GeometryGetPoint.backendIndex = 1978;
-    GeometryGetPoint.returnType = Type::FullType { GeometryPointType.name };
-    Symbol::Resolved(&GeometryGetPoint)->signature = "geometryGetPoint() GeometryPoint"_c;
-    Symbol::Resolved(&GeometryGetPoint)->name = "geometryGetPoint()"_c;
-    Symbol::Resolved(&GeometryGetPoint)->nameWithVarNames = "geometryGetPoint()"_c;
-    Symbol::Resolved(&GeometryGetPoint)->returnTypeSymbol = &GeometryPointType;
-
-    /// geometryGetLine
-    GeometryGetLine.documentation = "Returns a struct of the current line."_c;
-    GeometryGetLine.name = GeometryGetLine_name;
-    GeometryGetLine.backendIndex = 1979;
-    GeometryGetLine.returnType = Type::FullType { GeometryLineType.name };
-    Symbol::Resolved(&GeometryGetLine)->signature = "geometryGetLine() GeometryLine"_c;
-    Symbol::Resolved(&GeometryGetLine)->name = "geometryGetLine()"_c;
-    Symbol::Resolved(&GeometryGetLine)->nameWithVarNames = "geometryGetLine()"_c;
-    Symbol::Resolved(&GeometryGetLine)->returnTypeSymbol = &GeometryLineType;
-
-    /// geometryGetTriangle
-    GeometryGetTriangle.documentation = "Returns a struct of the current triangle."_c;
-    GeometryGetTriangle.name = GeometryGetTriangle_name;
-    GeometryGetTriangle.backendIndex = 1980;
-    GeometryGetTriangle.returnType = Type::FullType { GeometryTriangleType.name };
-    Symbol::Resolved(&GeometryGetTriangle)->signature = "geometryGetTriangle() GeometryTriangle"_c;
-    Symbol::Resolved(&GeometryGetTriangle)->name = "geometryGetTriangle()"_c;
-    Symbol::Resolved(&GeometryGetTriangle)->nameWithVarNames = "geometryGetTriangle()"_c;
-    Symbol::Resolved(&GeometryGetTriangle)->returnTypeSymbol = &GeometryTriangleType;
-
-    /// pixelGetCoordinates
-    PixelGetCoordinates_Float32x4.documentation = "Returns the post transformation coordinates of the current pixel. xy is the pixel position in non-normalized coordinates, z is the depth in the range [0, 1] or [-1, 1] based on the graphics API."_c;
-    PixelGetCoordinates_Float32x4.name = PixelGetCoordinates_Float32x4_name;
-    PixelGetCoordinates_Float32x4.backendIndex = 1981;
-    PixelGetCoordinates_Float32x4.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&PixelGetCoordinates_Float32x4)->signature = "pixelGetCoordinates() f32x4"_c;
-    Symbol::Resolved(&PixelGetCoordinates_Float32x4)->name = "pixelGetCoordinates()"_c;
-    Symbol::Resolved(&PixelGetCoordinates_Float32x4)->nameWithVarNames = "pixelGetCoordinates()"_c;
-    Symbol::Resolved(&PixelGetCoordinates_Float32x4)->returnTypeSymbol = &Float32x4Type;
-
-    /// pixelGetCoordinates
-    PixelGetCoordinates_Float16x4.documentation = "Returns the post transformation coordinates of the current pixel. xy is the pixel position in non-normalized coordinates, z is the depth in the range [0, 1] or [-1, 1] based on the graphics API."_c;
-    PixelGetCoordinates_Float16x4.name = PixelGetCoordinates_Float16x4_name;
-    PixelGetCoordinates_Float16x4.backendIndex = 1982;
-    PixelGetCoordinates_Float16x4.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&PixelGetCoordinates_Float16x4)->signature = "pixelGetCoordinates() f16x4"_c;
-    Symbol::Resolved(&PixelGetCoordinates_Float16x4)->name = "pixelGetCoordinates()"_c;
-    Symbol::Resolved(&PixelGetCoordinates_Float16x4)->nameWithVarNames = "pixelGetCoordinates()"_c;
-    Symbol::Resolved(&PixelGetCoordinates_Float16x4)->returnTypeSymbol = &Float16x4Type;
-
-    /// pixelGetFrontFacing
-    PixelGetFrontFacing.documentation = "Returns the facing direction of the current pixel"_c;
-    PixelGetFrontFacing.name = PixelGetFrontFacing_name;
-    PixelGetFrontFacing.backendIndex = 1983;
-    PixelGetFrontFacing.returnType = Type::FullType { Bool8Type.name };
-    Symbol::Resolved(&PixelGetFrontFacing)->signature = "pixelGetFrontFacing() b8"_c;
-    Symbol::Resolved(&PixelGetFrontFacing)->name = "pixelGetFrontFacing()"_c;
-    Symbol::Resolved(&PixelGetFrontFacing)->nameWithVarNames = "pixelGetFrontFacing()"_c;
-    Symbol::Resolved(&PixelGetFrontFacing)->returnTypeSymbol = &Bool8Type;
-
-    /// pixelGetSubpixelPosition
-    PixelGetSubpixelPosition.documentation = "Returns the subpixel position of the current texel"_c;
-    PixelGetSubpixelPosition.name = PixelGetSubpixelPosition_name;
-    PixelGetSubpixelPosition.backendIndex = 1984;
-    PixelGetSubpixelPosition.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&PixelGetSubpixelPosition)->signature = "pixelGetSubpixelPosition() f32x2"_c;
-    Symbol::Resolved(&PixelGetSubpixelPosition)->name = "pixelGetSubpixelPosition()"_c;
-    Symbol::Resolved(&PixelGetSubpixelPosition)->nameWithVarNames = "pixelGetSubpixelPosition()"_c;
-    Symbol::Resolved(&PixelGetSubpixelPosition)->returnTypeSymbol = &Float32x2Type;
-
-    /// pixelGetDepth
-    PixelGetDepth.documentation = "Returns the depth value for the current pixel"_c;
-    PixelGetDepth.name = PixelGetDepth_name;
-    PixelGetDepth.backendIndex = 1985;
-    PixelGetDepth.returnType = Type::FullType { Float32Type.name };
-    Symbol::Resolved(&PixelGetDepth)->signature = "pixelGetDepth() f32"_c;
-    Symbol::Resolved(&PixelGetDepth)->name = "pixelGetDepth()"_c;
-    Symbol::Resolved(&PixelGetDepth)->nameWithVarNames = "pixelGetDepth()"_c;
-    Symbol::Resolved(&PixelGetDepth)->returnTypeSymbol = &Float32Type;
-
-    /// pixelSetDepth with Float32
-    PixelSetDepth_val.name = "val"_c;
-    PixelSetDepth_val.type = Type::FullType{ Float32Type.name };
-    PixelSetDepth.documentation = "Sets the depth value for the current pixel"_c;
-    PixelSetDepth.name = PixelSetDepth_name;
-    PixelSetDepth.backendIndex = 1986;
-    PixelSetDepth.returnType = Type::FullType { VoidType.name };
-    PixelSetDepth.parameters = PixelSetDepth_args;
-    Symbol::Resolved(&PixelSetDepth_val)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&PixelSetDepth)->signature = "pixelSetDepth(f32) void"_c;
-    Symbol::Resolved(&PixelSetDepth)->name = "pixelSetDepth(f32)"_c;
-    Symbol::Resolved(&PixelSetDepth)->nameWithVarNames = "pixelSetDepth(val : f32)"_c;
-    Symbol::Resolved(&PixelSetDepth)->returnTypeSymbol = &VoidType;
-
-    /// pixelExportColor with Float32, Int32
-    PixelExportColor_Float32_Int32_color.name = "color"_c;
-    PixelExportColor_Float32_Int32_color.type = Type::FullType{ Float32Type.name };
-    PixelExportColor_Float32_Int32_index.name = "index"_c;
-    PixelExportColor_Float32_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32_Int32_index.type.literal = true;
-    PixelExportColor_Float32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
-    PixelExportColor_Float32_Int32.name = PixelExportColor_Float32_Int32_name;
-    PixelExportColor_Float32_Int32.backendIndex = 1987;
-    PixelExportColor_Float32_Int32.returnType = Type::FullType { VoidType.name };
-    PixelExportColor_Float32_Int32.parameters = PixelExportColor_Float32_Int32_args;
-    Symbol::Resolved(&PixelExportColor_Float32_Int32_color)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&PixelExportColor_Float32_Int32_index)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&PixelExportColor_Float32_Int32)->signature = "pixelExportColor(f32,literal i32) void"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_Int32)->name = "pixelExportColor(f32,literal i32)"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_Int32)->nameWithVarNames = "pixelExportColor(color : f32, index : literal i32)"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_Int32)->returnTypeSymbol = &VoidType;
-
-    /// pixelExportColor with Float32, UInt32
-    PixelExportColor_Float32_UInt32_color.name = "color"_c;
-    PixelExportColor_Float32_UInt32_color.type = Type::FullType{ Float32Type.name };
-    PixelExportColor_Float32_UInt32_index.name = "index"_c;
-    PixelExportColor_Float32_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32_UInt32_index.type.literal = true;
-    PixelExportColor_Float32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
-    PixelExportColor_Float32_UInt32.name = PixelExportColor_Float32_UInt32_name;
-    PixelExportColor_Float32_UInt32.backendIndex = 1988;
-    PixelExportColor_Float32_UInt32.returnType = Type::FullType { VoidType.name };
-    PixelExportColor_Float32_UInt32.parameters = PixelExportColor_Float32_UInt32_args;
-    Symbol::Resolved(&PixelExportColor_Float32_UInt32_color)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&PixelExportColor_Float32_UInt32_index)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&PixelExportColor_Float32_UInt32)->signature = "pixelExportColor(f32,literal u32) void"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_UInt32)->name = "pixelExportColor(f32,literal u32)"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_UInt32)->nameWithVarNames = "pixelExportColor(color : f32, index : literal u32)"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_UInt32)->returnTypeSymbol = &VoidType;
-
-    /// pixelExportColor with Float32, Int16
-    PixelExportColor_Float32_Int16_color.name = "color"_c;
-    PixelExportColor_Float32_Int16_color.type = Type::FullType{ Float32Type.name };
-    PixelExportColor_Float32_Int16_index.name = "index"_c;
-    PixelExportColor_Float32_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32_Int16_index.type.literal = true;
-    PixelExportColor_Float32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
-    PixelExportColor_Float32_Int16.name = PixelExportColor_Float32_Int16_name;
-    PixelExportColor_Float32_Int16.backendIndex = 1989;
-    PixelExportColor_Float32_Int16.returnType = Type::FullType { VoidType.name };
-    PixelExportColor_Float32_Int16.parameters = PixelExportColor_Float32_Int16_args;
-    Symbol::Resolved(&PixelExportColor_Float32_Int16_color)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&PixelExportColor_Float32_Int16_index)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&PixelExportColor_Float32_Int16)->signature = "pixelExportColor(f32,literal i16) void"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_Int16)->name = "pixelExportColor(f32,literal i16)"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_Int16)->nameWithVarNames = "pixelExportColor(color : f32, index : literal i16)"_c;
-    Symbol::Resolved(&PixelExportColor_Float32_Int16)->returnTypeSymbol = &VoidType;
 
 }
 } // namespace GPULang

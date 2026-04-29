@@ -2997,10 +2997,11 @@ def generate_types():
             fun.spirv = spirv_function
             functions.append(fun)
 
-    ops = ['transpose', 'inverse']
+    ops = ['transpose', 'inverse', 'determinant']
     docs = [
         'Returns the transposed matrix.',
-        'Returns the inverse of the matrix.'
+        'Returns the inverse of the matrix.',
+        'Returns the determinant of the matrix.'
     ]
     matrix_types = []
     for i in range(2, 5):
@@ -3016,7 +3017,7 @@ def generate_types():
             fun = Function( 
                 decl_name = function_name,
                 api_name = intrinsic,
-                return_type = type,
+                return_type = type if intrinsic != 'determinant' else 'Float32',
                 documentation = doc,
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
@@ -3027,8 +3028,10 @@ def generate_types():
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
             if intrinsic == 'transpose':
                 spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);\n'
-            else:
+            elif intrinsic == 'inverse':
                 spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);\n'
+            elif intrinsic == 'determinant':
+                spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Determinant, val);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
 

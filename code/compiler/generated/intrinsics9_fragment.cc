@@ -9,6 +9,96 @@
 #include "compiler.h"
 namespace GPULang
 {
+/// subgroupBroadcastFirstActiveThread with Float32x4
+Variable SubgroupBroadcastFirstActiveThread_Float32x4_value;
+Function SubgroupBroadcastFirstActiveThread_Float32x4;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32x4_args = { &SubgroupBroadcastFirstActiveThread_Float32x4_value };
+
+/// subgroupBroadcastFirstActiveThread with Float16
+Variable SubgroupBroadcastFirstActiveThread_Float16_value;
+Function SubgroupBroadcastFirstActiveThread_Float16;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16_args = { &SubgroupBroadcastFirstActiveThread_Float16_value };
+
+/// subgroupBroadcastFirstActiveThread with Float16x2
+Variable SubgroupBroadcastFirstActiveThread_Float16x2_value;
+Function SubgroupBroadcastFirstActiveThread_Float16x2;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x2_args = { &SubgroupBroadcastFirstActiveThread_Float16x2_value };
+
+/// subgroupBroadcastFirstActiveThread with Float16x3
+Variable SubgroupBroadcastFirstActiveThread_Float16x3_value;
+Function SubgroupBroadcastFirstActiveThread_Float16x3;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x3_args = { &SubgroupBroadcastFirstActiveThread_Float16x3_value };
+
+/// subgroupBroadcastFirstActiveThread with Float16x4
+Variable SubgroupBroadcastFirstActiveThread_Float16x4_value;
+Function SubgroupBroadcastFirstActiveThread_Float16x4;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x4_args = { &SubgroupBroadcastFirstActiveThread_Float16x4_value };
+
+/// subgroupBroadcastFirstActiveThread with Int32
+Variable SubgroupBroadcastFirstActiveThread_Int32_value;
+Function SubgroupBroadcastFirstActiveThread_Int32;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32_args = { &SubgroupBroadcastFirstActiveThread_Int32_value };
+
+/// subgroupBroadcastFirstActiveThread with Int32x2
+Variable SubgroupBroadcastFirstActiveThread_Int32x2_value;
+Function SubgroupBroadcastFirstActiveThread_Int32x2;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x2_args = { &SubgroupBroadcastFirstActiveThread_Int32x2_value };
+
+/// subgroupBroadcastFirstActiveThread with Int32x3
+Variable SubgroupBroadcastFirstActiveThread_Int32x3_value;
+Function SubgroupBroadcastFirstActiveThread_Int32x3;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x3_args = { &SubgroupBroadcastFirstActiveThread_Int32x3_value };
+
+/// subgroupBroadcastFirstActiveThread with Int32x4
+Variable SubgroupBroadcastFirstActiveThread_Int32x4_value;
+Function SubgroupBroadcastFirstActiveThread_Int32x4;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x4_args = { &SubgroupBroadcastFirstActiveThread_Int32x4_value };
+
+/// subgroupBroadcastFirstActiveThread with Int16
+Variable SubgroupBroadcastFirstActiveThread_Int16_value;
+Function SubgroupBroadcastFirstActiveThread_Int16;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16_args = { &SubgroupBroadcastFirstActiveThread_Int16_value };
+
+/// subgroupBroadcastFirstActiveThread with Int16x2
+Variable SubgroupBroadcastFirstActiveThread_Int16x2_value;
+Function SubgroupBroadcastFirstActiveThread_Int16x2;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x2_args = { &SubgroupBroadcastFirstActiveThread_Int16x2_value };
+
+/// subgroupBroadcastFirstActiveThread with Int16x3
+Variable SubgroupBroadcastFirstActiveThread_Int16x3_value;
+Function SubgroupBroadcastFirstActiveThread_Int16x3;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x3_args = { &SubgroupBroadcastFirstActiveThread_Int16x3_value };
+
+/// subgroupBroadcastFirstActiveThread with Int16x4
+Variable SubgroupBroadcastFirstActiveThread_Int16x4_value;
+Function SubgroupBroadcastFirstActiveThread_Int16x4;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x4_args = { &SubgroupBroadcastFirstActiveThread_Int16x4_value };
+
+/// subgroupBroadcastFirstActiveThread with UInt32
+Variable SubgroupBroadcastFirstActiveThread_UInt32_value;
+Function SubgroupBroadcastFirstActiveThread_UInt32;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32_args = { &SubgroupBroadcastFirstActiveThread_UInt32_value };
+
+/// subgroupBroadcastFirstActiveThread with UInt32x2
+Variable SubgroupBroadcastFirstActiveThread_UInt32x2_value;
+Function SubgroupBroadcastFirstActiveThread_UInt32x2;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x2_args = { &SubgroupBroadcastFirstActiveThread_UInt32x2_value };
+
+/// subgroupBroadcastFirstActiveThread with UInt32x3
+Variable SubgroupBroadcastFirstActiveThread_UInt32x3_value;
+Function SubgroupBroadcastFirstActiveThread_UInt32x3;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x3_args = { &SubgroupBroadcastFirstActiveThread_UInt32x3_value };
+
+/// subgroupBroadcastFirstActiveThread with UInt32x4
+Variable SubgroupBroadcastFirstActiveThread_UInt32x4_value;
+Function SubgroupBroadcastFirstActiveThread_UInt32x4;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x4_args = { &SubgroupBroadcastFirstActiveThread_UInt32x4_value };
+
+/// subgroupBroadcastFirstActiveThread with UInt16
+Variable SubgroupBroadcastFirstActiveThread_UInt16_value;
+Function SubgroupBroadcastFirstActiveThread_UInt16;
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16_args = { &SubgroupBroadcastFirstActiveThread_UInt16_value };
+
 /// subgroupBroadcastFirstActiveThread with UInt16x2
 Variable SubgroupBroadcastFirstActiveThread_UInt16x2_value;
 Function SubgroupBroadcastFirstActiveThread_UInt16x2;
@@ -648,176 +738,266 @@ Variable AtomicStore_Uniform_UInt32_semantics;
 Function AtomicStore_Uniform_UInt32;
 inline constexpr std::array AtomicStore_Uniform_UInt32_args = { &AtomicStore_Uniform_UInt32_ptr, &AtomicStore_Uniform_UInt32_value, &AtomicStore_Uniform_UInt32_semantics };
 
-/// atomicStore with UInt32, UInt32, MemorySemantics
-Variable AtomicStore_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicStore_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Workgroup_UInt32_value;
-Variable AtomicStore_Workgroup_UInt32_semantics;
-Function AtomicStore_Workgroup_UInt32;
-inline constexpr std::array AtomicStore_Workgroup_UInt32_args = { &AtomicStore_Workgroup_UInt32_ptr, &AtomicStore_Workgroup_UInt32_value, &AtomicStore_Workgroup_UInt32_semantics };
-
-/// atomicExchange with UInt32, UInt32, MemorySemantics
-Variable AtomicExchange_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicExchange_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Uniform_UInt32_value;
-Variable AtomicExchange_Uniform_UInt32_semantics;
-Function AtomicExchange_Uniform_UInt32;
-inline constexpr std::array AtomicExchange_Uniform_UInt32_args = { &AtomicExchange_Uniform_UInt32_ptr, &AtomicExchange_Uniform_UInt32_value, &AtomicExchange_Uniform_UInt32_semantics };
-
-/// atomicExchange with UInt32, UInt32, MemorySemantics
-Variable AtomicExchange_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicExchange_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Workgroup_UInt32_value;
-Variable AtomicExchange_Workgroup_UInt32_semantics;
-Function AtomicExchange_Workgroup_UInt32;
-inline constexpr std::array AtomicExchange_Workgroup_UInt32_args = { &AtomicExchange_Workgroup_UInt32_ptr, &AtomicExchange_Workgroup_UInt32_value, &AtomicExchange_Workgroup_UInt32_semantics };
-
-/// atomicAdd with UInt32, UInt32, MemorySemantics
-Variable AtomicAdd_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicAdd_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Uniform_UInt32_value;
-Variable AtomicAdd_Uniform_UInt32_semantics;
-Function AtomicAdd_Uniform_UInt32;
-inline constexpr std::array AtomicAdd_Uniform_UInt32_args = { &AtomicAdd_Uniform_UInt32_ptr, &AtomicAdd_Uniform_UInt32_value, &AtomicAdd_Uniform_UInt32_semantics };
-
-/// atomicAdd with UInt32, UInt32, MemorySemantics
-Variable AtomicAdd_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicAdd_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Workgroup_UInt32_value;
-Variable AtomicAdd_Workgroup_UInt32_semantics;
-Function AtomicAdd_Workgroup_UInt32;
-inline constexpr std::array AtomicAdd_Workgroup_UInt32_args = { &AtomicAdd_Workgroup_UInt32_ptr, &AtomicAdd_Workgroup_UInt32_value, &AtomicAdd_Workgroup_UInt32_semantics };
-
-/// atomicSubtract with UInt32, UInt32, MemorySemantics
-Variable AtomicSubtract_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicSubtract_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Uniform_UInt32_value;
-Variable AtomicSubtract_Uniform_UInt32_semantics;
-Function AtomicSubtract_Uniform_UInt32;
-inline constexpr std::array AtomicSubtract_Uniform_UInt32_args = { &AtomicSubtract_Uniform_UInt32_ptr, &AtomicSubtract_Uniform_UInt32_value, &AtomicSubtract_Uniform_UInt32_semantics };
-
-/// atomicSubtract with UInt32, UInt32, MemorySemantics
-Variable AtomicSubtract_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicSubtract_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Workgroup_UInt32_value;
-Variable AtomicSubtract_Workgroup_UInt32_semantics;
-Function AtomicSubtract_Workgroup_UInt32;
-inline constexpr std::array AtomicSubtract_Workgroup_UInt32_args = { &AtomicSubtract_Workgroup_UInt32_ptr, &AtomicSubtract_Workgroup_UInt32_value, &AtomicSubtract_Workgroup_UInt32_semantics };
-
-/// atomicAnd with UInt32, UInt32, MemorySemantics
-Variable AtomicAnd_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicAnd_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Uniform_UInt32_value;
-Variable AtomicAnd_Uniform_UInt32_semantics;
-Function AtomicAnd_Uniform_UInt32;
-inline constexpr std::array AtomicAnd_Uniform_UInt32_args = { &AtomicAnd_Uniform_UInt32_ptr, &AtomicAnd_Uniform_UInt32_value, &AtomicAnd_Uniform_UInt32_semantics };
-
-/// atomicAnd with UInt32, UInt32, MemorySemantics
-Variable AtomicAnd_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicAnd_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Workgroup_UInt32_value;
-Variable AtomicAnd_Workgroup_UInt32_semantics;
-Function AtomicAnd_Workgroup_UInt32;
-inline constexpr std::array AtomicAnd_Workgroup_UInt32_args = { &AtomicAnd_Workgroup_UInt32_ptr, &AtomicAnd_Workgroup_UInt32_value, &AtomicAnd_Workgroup_UInt32_semantics };
-
-/// atomicOr with UInt32, UInt32, MemorySemantics
-Variable AtomicOr_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicOr_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Uniform_UInt32_value;
-Variable AtomicOr_Uniform_UInt32_semantics;
-Function AtomicOr_Uniform_UInt32;
-inline constexpr std::array AtomicOr_Uniform_UInt32_args = { &AtomicOr_Uniform_UInt32_ptr, &AtomicOr_Uniform_UInt32_value, &AtomicOr_Uniform_UInt32_semantics };
-
-/// atomicOr with UInt32, UInt32, MemorySemantics
-Variable AtomicOr_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicOr_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Workgroup_UInt32_value;
-Variable AtomicOr_Workgroup_UInt32_semantics;
-Function AtomicOr_Workgroup_UInt32;
-inline constexpr std::array AtomicOr_Workgroup_UInt32_args = { &AtomicOr_Workgroup_UInt32_ptr, &AtomicOr_Workgroup_UInt32_value, &AtomicOr_Workgroup_UInt32_semantics };
-
-/// atomicXor with UInt32, UInt32, MemorySemantics
-Variable AtomicXor_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicXor_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Uniform_UInt32_value;
-Variable AtomicXor_Uniform_UInt32_semantics;
-Function AtomicXor_Uniform_UInt32;
-inline constexpr std::array AtomicXor_Uniform_UInt32_args = { &AtomicXor_Uniform_UInt32_ptr, &AtomicXor_Uniform_UInt32_value, &AtomicXor_Uniform_UInt32_semantics };
-
-/// atomicXor with UInt32, UInt32, MemorySemantics
-Variable AtomicXor_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicXor_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Workgroup_UInt32_value;
-Variable AtomicXor_Workgroup_UInt32_semantics;
-Function AtomicXor_Workgroup_UInt32;
-inline constexpr std::array AtomicXor_Workgroup_UInt32_args = { &AtomicXor_Workgroup_UInt32_ptr, &AtomicXor_Workgroup_UInt32_value, &AtomicXor_Workgroup_UInt32_semantics };
-
-/// atomicStore with Int32, Int32, MemorySemantics
-Variable AtomicStore_Uniform_Int32_ptr;
-inline constexpr std::array AtomicStore_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Uniform_Int32_value;
-Variable AtomicStore_Uniform_Int32_semantics;
-Function AtomicStore_Uniform_Int32;
-inline constexpr std::array AtomicStore_Uniform_Int32_args = { &AtomicStore_Uniform_Int32_ptr, &AtomicStore_Uniform_Int32_value, &AtomicStore_Uniform_Int32_semantics };
-
-/// atomicStore with Int32, Int32, MemorySemantics
-Variable AtomicStore_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicStore_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Workgroup_Int32_value;
-Variable AtomicStore_Workgroup_Int32_semantics;
-Function AtomicStore_Workgroup_Int32;
-inline constexpr std::array AtomicStore_Workgroup_Int32_args = { &AtomicStore_Workgroup_Int32_ptr, &AtomicStore_Workgroup_Int32_value, &AtomicStore_Workgroup_Int32_semantics };
-
-/// atomicExchange with Int32, Int32, MemorySemantics
-Variable AtomicExchange_Uniform_Int32_ptr;
-inline constexpr std::array AtomicExchange_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Uniform_Int32_value;
-Variable AtomicExchange_Uniform_Int32_semantics;
-Function AtomicExchange_Uniform_Int32;
-inline constexpr std::array AtomicExchange_Uniform_Int32_args = { &AtomicExchange_Uniform_Int32_ptr, &AtomicExchange_Uniform_Int32_value, &AtomicExchange_Uniform_Int32_semantics };
-
-/// atomicExchange with Int32, Int32, MemorySemantics
-Variable AtomicExchange_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicExchange_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Workgroup_Int32_value;
-Variable AtomicExchange_Workgroup_Int32_semantics;
-Function AtomicExchange_Workgroup_Int32;
-inline constexpr std::array AtomicExchange_Workgroup_Int32_args = { &AtomicExchange_Workgroup_Int32_ptr, &AtomicExchange_Workgroup_Int32_value, &AtomicExchange_Workgroup_Int32_semantics };
-
-/// atomicAdd with Int32, Int32, MemorySemantics
-Variable AtomicAdd_Uniform_Int32_ptr;
-inline constexpr std::array AtomicAdd_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Uniform_Int32_value;
-Variable AtomicAdd_Uniform_Int32_semantics;
-Function AtomicAdd_Uniform_Int32;
-inline constexpr std::array AtomicAdd_Uniform_Int32_args = { &AtomicAdd_Uniform_Int32_ptr, &AtomicAdd_Uniform_Int32_value, &AtomicAdd_Uniform_Int32_semantics };
-
 void SetupIntrinsics9()
 {
+    /// subgroupBroadcastFirstActiveThread with Float32x4
+    SubgroupBroadcastFirstActiveThread_Float32x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Float32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Float32x4.name = SubgroupBroadcastFirstActiveThread_Float32x4_name;
+    SubgroupBroadcastFirstActiveThread_Float32x4.backendIndex = 2118;
+    SubgroupBroadcastFirstActiveThread_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Float32x4.parameters = SubgroupBroadcastFirstActiveThread_Float32x4_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x4_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x4)->signature = "subgroupBroadcastFirstActiveThread(f32x4) f32x4"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x4)->name = "subgroupBroadcastFirstActiveThread(f32x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x4)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : f32x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// subgroupBroadcastFirstActiveThread with Float16
+    SubgroupBroadcastFirstActiveThread_Float16_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float16_value.type = Type::FullType{ Float16Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Float16.name = SubgroupBroadcastFirstActiveThread_Float16_name;
+    SubgroupBroadcastFirstActiveThread_Float16.backendIndex = 2119;
+    SubgroupBroadcastFirstActiveThread_Float16.returnType = Type::FullType { Float16Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16.parameters = SubgroupBroadcastFirstActiveThread_Float16_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16)->signature = "subgroupBroadcastFirstActiveThread(f16) f16"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16)->name = "subgroupBroadcastFirstActiveThread(f16)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : f16)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// subgroupBroadcastFirstActiveThread with Float16x2
+    SubgroupBroadcastFirstActiveThread_Float16x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x2.name = SubgroupBroadcastFirstActiveThread_Float16x2_name;
+    SubgroupBroadcastFirstActiveThread_Float16x2.backendIndex = 2120;
+    SubgroupBroadcastFirstActiveThread_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x2.parameters = SubgroupBroadcastFirstActiveThread_Float16x2_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x2_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x2)->signature = "subgroupBroadcastFirstActiveThread(f16x2) f16x2"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x2)->name = "subgroupBroadcastFirstActiveThread(f16x2)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x2)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : f16x2)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// subgroupBroadcastFirstActiveThread with Float16x3
+    SubgroupBroadcastFirstActiveThread_Float16x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x3.name = SubgroupBroadcastFirstActiveThread_Float16x3_name;
+    SubgroupBroadcastFirstActiveThread_Float16x3.backendIndex = 2121;
+    SubgroupBroadcastFirstActiveThread_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x3.parameters = SubgroupBroadcastFirstActiveThread_Float16x3_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x3_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x3)->signature = "subgroupBroadcastFirstActiveThread(f16x3) f16x3"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x3)->name = "subgroupBroadcastFirstActiveThread(f16x3)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x3)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : f16x3)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// subgroupBroadcastFirstActiveThread with Float16x4
+    SubgroupBroadcastFirstActiveThread_Float16x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x4.name = SubgroupBroadcastFirstActiveThread_Float16x4_name;
+    SubgroupBroadcastFirstActiveThread_Float16x4.backendIndex = 2122;
+    SubgroupBroadcastFirstActiveThread_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x4.parameters = SubgroupBroadcastFirstActiveThread_Float16x4_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x4_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x4)->signature = "subgroupBroadcastFirstActiveThread(f16x4) f16x4"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x4)->name = "subgroupBroadcastFirstActiveThread(f16x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x4)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : f16x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
+    /// subgroupBroadcastFirstActiveThread with Int32
+    SubgroupBroadcastFirstActiveThread_Int32_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Int32.name = SubgroupBroadcastFirstActiveThread_Int32_name;
+    SubgroupBroadcastFirstActiveThread_Int32.backendIndex = 2123;
+    SubgroupBroadcastFirstActiveThread_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32.parameters = SubgroupBroadcastFirstActiveThread_Int32_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32)->signature = "subgroupBroadcastFirstActiveThread(i32) i32"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32)->name = "subgroupBroadcastFirstActiveThread(i32)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : i32)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupBroadcastFirstActiveThread with Int32x2
+    SubgroupBroadcastFirstActiveThread_Int32x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x2.name = SubgroupBroadcastFirstActiveThread_Int32x2_name;
+    SubgroupBroadcastFirstActiveThread_Int32x2.backendIndex = 2124;
+    SubgroupBroadcastFirstActiveThread_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x2.parameters = SubgroupBroadcastFirstActiveThread_Int32x2_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x2)->signature = "subgroupBroadcastFirstActiveThread(i32x2) i32x2"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x2)->name = "subgroupBroadcastFirstActiveThread(i32x2)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x2)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : i32x2)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupBroadcastFirstActiveThread with Int32x3
+    SubgroupBroadcastFirstActiveThread_Int32x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x3.name = SubgroupBroadcastFirstActiveThread_Int32x3_name;
+    SubgroupBroadcastFirstActiveThread_Int32x3.backendIndex = 2125;
+    SubgroupBroadcastFirstActiveThread_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x3.parameters = SubgroupBroadcastFirstActiveThread_Int32x3_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x3)->signature = "subgroupBroadcastFirstActiveThread(i32x3) i32x3"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x3)->name = "subgroupBroadcastFirstActiveThread(i32x3)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x3)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : i32x3)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupBroadcastFirstActiveThread with Int32x4
+    SubgroupBroadcastFirstActiveThread_Int32x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x4.name = SubgroupBroadcastFirstActiveThread_Int32x4_name;
+    SubgroupBroadcastFirstActiveThread_Int32x4.backendIndex = 2126;
+    SubgroupBroadcastFirstActiveThread_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x4.parameters = SubgroupBroadcastFirstActiveThread_Int32x4_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x4)->signature = "subgroupBroadcastFirstActiveThread(i32x4) i32x4"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x4)->name = "subgroupBroadcastFirstActiveThread(i32x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x4)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : i32x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupBroadcastFirstActiveThread with Int16
+    SubgroupBroadcastFirstActiveThread_Int16_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Int16.name = SubgroupBroadcastFirstActiveThread_Int16_name;
+    SubgroupBroadcastFirstActiveThread_Int16.backendIndex = 2127;
+    SubgroupBroadcastFirstActiveThread_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16.parameters = SubgroupBroadcastFirstActiveThread_Int16_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16)->signature = "subgroupBroadcastFirstActiveThread(i16) i16"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16)->name = "subgroupBroadcastFirstActiveThread(i16)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : i16)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupBroadcastFirstActiveThread with Int16x2
+    SubgroupBroadcastFirstActiveThread_Int16x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x2.name = SubgroupBroadcastFirstActiveThread_Int16x2_name;
+    SubgroupBroadcastFirstActiveThread_Int16x2.backendIndex = 2128;
+    SubgroupBroadcastFirstActiveThread_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x2.parameters = SubgroupBroadcastFirstActiveThread_Int16x2_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x2)->signature = "subgroupBroadcastFirstActiveThread(i16x2) i16x2"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x2)->name = "subgroupBroadcastFirstActiveThread(i16x2)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x2)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : i16x2)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupBroadcastFirstActiveThread with Int16x3
+    SubgroupBroadcastFirstActiveThread_Int16x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x3.name = SubgroupBroadcastFirstActiveThread_Int16x3_name;
+    SubgroupBroadcastFirstActiveThread_Int16x3.backendIndex = 2129;
+    SubgroupBroadcastFirstActiveThread_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x3.parameters = SubgroupBroadcastFirstActiveThread_Int16x3_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x3)->signature = "subgroupBroadcastFirstActiveThread(i16x3) i16x3"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x3)->name = "subgroupBroadcastFirstActiveThread(i16x3)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x3)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : i16x3)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupBroadcastFirstActiveThread with Int16x4
+    SubgroupBroadcastFirstActiveThread_Int16x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x4.name = SubgroupBroadcastFirstActiveThread_Int16x4_name;
+    SubgroupBroadcastFirstActiveThread_Int16x4.backendIndex = 2130;
+    SubgroupBroadcastFirstActiveThread_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x4.parameters = SubgroupBroadcastFirstActiveThread_Int16x4_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x4)->signature = "subgroupBroadcastFirstActiveThread(i16x4) i16x4"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x4)->name = "subgroupBroadcastFirstActiveThread(i16x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x4)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : i16x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupBroadcastFirstActiveThread with UInt32
+    SubgroupBroadcastFirstActiveThread_UInt32_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32.name = SubgroupBroadcastFirstActiveThread_UInt32_name;
+    SubgroupBroadcastFirstActiveThread_UInt32.backendIndex = 2131;
+    SubgroupBroadcastFirstActiveThread_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32.parameters = SubgroupBroadcastFirstActiveThread_UInt32_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32)->signature = "subgroupBroadcastFirstActiveThread(u32) u32"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32)->name = "subgroupBroadcastFirstActiveThread(u32)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : u32)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupBroadcastFirstActiveThread with UInt32x2
+    SubgroupBroadcastFirstActiveThread_UInt32x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x2.name = SubgroupBroadcastFirstActiveThread_UInt32x2_name;
+    SubgroupBroadcastFirstActiveThread_UInt32x2.backendIndex = 2132;
+    SubgroupBroadcastFirstActiveThread_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x2.parameters = SubgroupBroadcastFirstActiveThread_UInt32x2_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x2)->signature = "subgroupBroadcastFirstActiveThread(u32x2) u32x2"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x2)->name = "subgroupBroadcastFirstActiveThread(u32x2)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x2)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : u32x2)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupBroadcastFirstActiveThread with UInt32x3
+    SubgroupBroadcastFirstActiveThread_UInt32x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x3.name = SubgroupBroadcastFirstActiveThread_UInt32x3_name;
+    SubgroupBroadcastFirstActiveThread_UInt32x3.backendIndex = 2133;
+    SubgroupBroadcastFirstActiveThread_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x3.parameters = SubgroupBroadcastFirstActiveThread_UInt32x3_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x3)->signature = "subgroupBroadcastFirstActiveThread(u32x3) u32x3"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x3)->name = "subgroupBroadcastFirstActiveThread(u32x3)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x3)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : u32x3)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupBroadcastFirstActiveThread with UInt32x4
+    SubgroupBroadcastFirstActiveThread_UInt32x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x4.name = SubgroupBroadcastFirstActiveThread_UInt32x4_name;
+    SubgroupBroadcastFirstActiveThread_UInt32x4.backendIndex = 2134;
+    SubgroupBroadcastFirstActiveThread_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x4.parameters = SubgroupBroadcastFirstActiveThread_UInt32x4_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x4)->signature = "subgroupBroadcastFirstActiveThread(u32x4) u32x4"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x4)->name = "subgroupBroadcastFirstActiveThread(u32x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x4)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : u32x4)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupBroadcastFirstActiveThread with UInt16
+    SubgroupBroadcastFirstActiveThread_UInt16_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread_UInt16.name = SubgroupBroadcastFirstActiveThread_UInt16_name;
+    SubgroupBroadcastFirstActiveThread_UInt16.backendIndex = 2135;
+    SubgroupBroadcastFirstActiveThread_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt16.parameters = SubgroupBroadcastFirstActiveThread_UInt16_args;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16)->signature = "subgroupBroadcastFirstActiveThread(u16) u16"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16)->name = "subgroupBroadcastFirstActiveThread(u16)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16)->nameWithVarNames = "subgroupBroadcastFirstActiveThread(value : u16)"_c;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16)->returnTypeSymbol = &UInt16Type;
+
     /// subgroupBroadcastFirstActiveThread with UInt16x2
     SubgroupBroadcastFirstActiveThread_UInt16x2_value.name = "value"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x2.name = SubgroupBroadcastFirstActiveThread_UInt16x2_name;
-    SubgroupBroadcastFirstActiveThread_UInt16x2.backendIndex = 2118;
+    SubgroupBroadcastFirstActiveThread_UInt16x2.backendIndex = 2136;
     SubgroupBroadcastFirstActiveThread_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x2.parameters = SubgroupBroadcastFirstActiveThread_UInt16x2_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x2_value)->typeSymbol = &UInt16x2Type;
@@ -831,7 +1011,7 @@ void SetupIntrinsics9()
     SubgroupBroadcastFirstActiveThread_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x3.name = SubgroupBroadcastFirstActiveThread_UInt16x3_name;
-    SubgroupBroadcastFirstActiveThread_UInt16x3.backendIndex = 2119;
+    SubgroupBroadcastFirstActiveThread_UInt16x3.backendIndex = 2137;
     SubgroupBroadcastFirstActiveThread_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x3.parameters = SubgroupBroadcastFirstActiveThread_UInt16x3_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x3_value)->typeSymbol = &UInt16x3Type;
@@ -845,7 +1025,7 @@ void SetupIntrinsics9()
     SubgroupBroadcastFirstActiveThread_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x4.name = SubgroupBroadcastFirstActiveThread_UInt16x4_name;
-    SubgroupBroadcastFirstActiveThread_UInt16x4.backendIndex = 2120;
+    SubgroupBroadcastFirstActiveThread_UInt16x4.backendIndex = 2138;
     SubgroupBroadcastFirstActiveThread_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x4.parameters = SubgroupBroadcastFirstActiveThread_UInt16x4_args;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x4_value)->typeSymbol = &UInt16x4Type;
@@ -859,7 +1039,7 @@ void SetupIntrinsics9()
     SubgroupBallot_predicate.type = Type::FullType{ Bool8Type.name };
     SubgroupBallot.documentation = "Constructs a 128 bit subgroup thread mask to the value of the predicate argument for each active thread"_c;
     SubgroupBallot.name = SubgroupBallot_name;
-    SubgroupBallot.backendIndex = 2121;
+    SubgroupBallot.backendIndex = 2139;
     SubgroupBallot.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupBallot.parameters = SubgroupBallot_args;
     Symbol::Resolved(&SubgroupBallot_predicate)->typeSymbol = &Bool8Type;
@@ -873,7 +1053,7 @@ void SetupIntrinsics9()
     SubgroupInverseBallot_predicate.type = Type::FullType{ Bool8Type.name };
     SubgroupInverseBallot.documentation = "Constructs a 128 bit subgroup thread mask to the inverse of the value of the predicate argument for each active thread"_c;
     SubgroupInverseBallot.name = SubgroupInverseBallot_name;
-    SubgroupInverseBallot.backendIndex = 2122;
+    SubgroupInverseBallot.backendIndex = 2140;
     SubgroupInverseBallot.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupInverseBallot.parameters = SubgroupInverseBallot_args;
     Symbol::Resolved(&SubgroupInverseBallot_predicate)->typeSymbol = &Bool8Type;
@@ -887,7 +1067,7 @@ void SetupIntrinsics9()
     SubgroupBallotBitCount_mask.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBallotBitCount.documentation = "Returns the number of bits set to 1 in a 128 bit subgroup thread mask"_c;
     SubgroupBallotBitCount.name = SubgroupBallotBitCount_name;
-    SubgroupBallotBitCount.backendIndex = 2123;
+    SubgroupBallotBitCount.backendIndex = 2141;
     SubgroupBallotBitCount.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotBitCount.parameters = SubgroupBallotBitCount_args;
     Symbol::Resolved(&SubgroupBallotBitCount_mask)->typeSymbol = &UInt32x4Type;
@@ -901,7 +1081,7 @@ void SetupIntrinsics9()
     SubgroupBallotFirstOne_mask.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBallotFirstOne.documentation = "Returns the first one (ctz) in a 128 bit subgroup thread mask"_c;
     SubgroupBallotFirstOne.name = SubgroupBallotFirstOne_name;
-    SubgroupBallotFirstOne.backendIndex = 2124;
+    SubgroupBallotFirstOne.backendIndex = 2142;
     SubgroupBallotFirstOne.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotFirstOne.parameters = SubgroupBallotFirstOne_args;
     Symbol::Resolved(&SubgroupBallotFirstOne_mask)->typeSymbol = &UInt32x4Type;
@@ -915,7 +1095,7 @@ void SetupIntrinsics9()
     SubgroupBallotLastOne_mask.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBallotLastOne.documentation = "Returns the last one (clz) in a 128 bit subgroup thread mask"_c;
     SubgroupBallotLastOne.name = SubgroupBallotLastOne_name;
-    SubgroupBallotLastOne.backendIndex = 2125;
+    SubgroupBallotLastOne.backendIndex = 2143;
     SubgroupBallotLastOne.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotLastOne.parameters = SubgroupBallotLastOne_args;
     Symbol::Resolved(&SubgroupBallotLastOne_mask)->typeSymbol = &UInt32x4Type;
@@ -932,7 +1112,7 @@ void SetupIntrinsics9()
     SubgroupBallotBit_index.type.literal = true;
     SubgroupBallotBit.documentation = "Extracts a specific bit from a 128 bit subgroup thread mask"_c;
     SubgroupBallotBit.name = SubgroupBallotBit_name;
-    SubgroupBallotBit.backendIndex = 2126;
+    SubgroupBallotBit.backendIndex = 2144;
     SubgroupBallotBit.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotBit.parameters = SubgroupBallotBit_args;
     Symbol::Resolved(&SubgroupBallotBit_mask)->typeSymbol = &UInt32x4Type;
@@ -947,7 +1127,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupSwapDiagonal_Float32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32.name = SubgroupSwapDiagonal_Float32_name;
-    SubgroupSwapDiagonal_Float32.backendIndex = 2127;
+    SubgroupSwapDiagonal_Float32.backendIndex = 2145;
     SubgroupSwapDiagonal_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapDiagonal_Float32.parameters = SubgroupSwapDiagonal_Float32_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32_value)->typeSymbol = &Float32Type;
@@ -961,7 +1141,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupSwapDiagonal_Float32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x2.name = SubgroupSwapDiagonal_Float32x2_name;
-    SubgroupSwapDiagonal_Float32x2.backendIndex = 2128;
+    SubgroupSwapDiagonal_Float32x2.backendIndex = 2146;
     SubgroupSwapDiagonal_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapDiagonal_Float32x2.parameters = SubgroupSwapDiagonal_Float32x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x2_value)->typeSymbol = &Float32x2Type;
@@ -975,7 +1155,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupSwapDiagonal_Float32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x3.name = SubgroupSwapDiagonal_Float32x3_name;
-    SubgroupSwapDiagonal_Float32x3.backendIndex = 2129;
+    SubgroupSwapDiagonal_Float32x3.backendIndex = 2147;
     SubgroupSwapDiagonal_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapDiagonal_Float32x3.parameters = SubgroupSwapDiagonal_Float32x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x3_value)->typeSymbol = &Float32x3Type;
@@ -989,7 +1169,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupSwapDiagonal_Float32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x4.name = SubgroupSwapDiagonal_Float32x4_name;
-    SubgroupSwapDiagonal_Float32x4.backendIndex = 2130;
+    SubgroupSwapDiagonal_Float32x4.backendIndex = 2148;
     SubgroupSwapDiagonal_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapDiagonal_Float32x4.parameters = SubgroupSwapDiagonal_Float32x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x4_value)->typeSymbol = &Float32x4Type;
@@ -1003,7 +1183,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupSwapDiagonal_Float16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16.name = SubgroupSwapDiagonal_Float16_name;
-    SubgroupSwapDiagonal_Float16.backendIndex = 2131;
+    SubgroupSwapDiagonal_Float16.backendIndex = 2149;
     SubgroupSwapDiagonal_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapDiagonal_Float16.parameters = SubgroupSwapDiagonal_Float16_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16_value)->typeSymbol = &Float16Type;
@@ -1017,7 +1197,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupSwapDiagonal_Float16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x2.name = SubgroupSwapDiagonal_Float16x2_name;
-    SubgroupSwapDiagonal_Float16x2.backendIndex = 2132;
+    SubgroupSwapDiagonal_Float16x2.backendIndex = 2150;
     SubgroupSwapDiagonal_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapDiagonal_Float16x2.parameters = SubgroupSwapDiagonal_Float16x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x2_value)->typeSymbol = &Float16x2Type;
@@ -1031,7 +1211,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupSwapDiagonal_Float16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x3.name = SubgroupSwapDiagonal_Float16x3_name;
-    SubgroupSwapDiagonal_Float16x3.backendIndex = 2133;
+    SubgroupSwapDiagonal_Float16x3.backendIndex = 2151;
     SubgroupSwapDiagonal_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapDiagonal_Float16x3.parameters = SubgroupSwapDiagonal_Float16x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x3_value)->typeSymbol = &Float16x3Type;
@@ -1045,7 +1225,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupSwapDiagonal_Float16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x4.name = SubgroupSwapDiagonal_Float16x4_name;
-    SubgroupSwapDiagonal_Float16x4.backendIndex = 2134;
+    SubgroupSwapDiagonal_Float16x4.backendIndex = 2152;
     SubgroupSwapDiagonal_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapDiagonal_Float16x4.parameters = SubgroupSwapDiagonal_Float16x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x4_value)->typeSymbol = &Float16x4Type;
@@ -1059,7 +1239,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupSwapDiagonal_Int32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32.name = SubgroupSwapDiagonal_Int32_name;
-    SubgroupSwapDiagonal_Int32.backendIndex = 2135;
+    SubgroupSwapDiagonal_Int32.backendIndex = 2153;
     SubgroupSwapDiagonal_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapDiagonal_Int32.parameters = SubgroupSwapDiagonal_Int32_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32_value)->typeSymbol = &Int32Type;
@@ -1073,7 +1253,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupSwapDiagonal_Int32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x2.name = SubgroupSwapDiagonal_Int32x2_name;
-    SubgroupSwapDiagonal_Int32x2.backendIndex = 2136;
+    SubgroupSwapDiagonal_Int32x2.backendIndex = 2154;
     SubgroupSwapDiagonal_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapDiagonal_Int32x2.parameters = SubgroupSwapDiagonal_Int32x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x2_value)->typeSymbol = &Int32x2Type;
@@ -1087,7 +1267,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupSwapDiagonal_Int32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x3.name = SubgroupSwapDiagonal_Int32x3_name;
-    SubgroupSwapDiagonal_Int32x3.backendIndex = 2137;
+    SubgroupSwapDiagonal_Int32x3.backendIndex = 2155;
     SubgroupSwapDiagonal_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapDiagonal_Int32x3.parameters = SubgroupSwapDiagonal_Int32x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x3_value)->typeSymbol = &Int32x3Type;
@@ -1101,7 +1281,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupSwapDiagonal_Int32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x4.name = SubgroupSwapDiagonal_Int32x4_name;
-    SubgroupSwapDiagonal_Int32x4.backendIndex = 2138;
+    SubgroupSwapDiagonal_Int32x4.backendIndex = 2156;
     SubgroupSwapDiagonal_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapDiagonal_Int32x4.parameters = SubgroupSwapDiagonal_Int32x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x4_value)->typeSymbol = &Int32x4Type;
@@ -1115,7 +1295,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupSwapDiagonal_Int16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16.name = SubgroupSwapDiagonal_Int16_name;
-    SubgroupSwapDiagonal_Int16.backendIndex = 2139;
+    SubgroupSwapDiagonal_Int16.backendIndex = 2157;
     SubgroupSwapDiagonal_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapDiagonal_Int16.parameters = SubgroupSwapDiagonal_Int16_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16_value)->typeSymbol = &Int16Type;
@@ -1129,7 +1309,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupSwapDiagonal_Int16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16x2.name = SubgroupSwapDiagonal_Int16x2_name;
-    SubgroupSwapDiagonal_Int16x2.backendIndex = 2140;
+    SubgroupSwapDiagonal_Int16x2.backendIndex = 2158;
     SubgroupSwapDiagonal_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapDiagonal_Int16x2.parameters = SubgroupSwapDiagonal_Int16x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x2_value)->typeSymbol = &Int16x2Type;
@@ -1143,7 +1323,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupSwapDiagonal_Int16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16x3.name = SubgroupSwapDiagonal_Int16x3_name;
-    SubgroupSwapDiagonal_Int16x3.backendIndex = 2141;
+    SubgroupSwapDiagonal_Int16x3.backendIndex = 2159;
     SubgroupSwapDiagonal_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapDiagonal_Int16x3.parameters = SubgroupSwapDiagonal_Int16x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3_value)->typeSymbol = &Int16x3Type;
@@ -1157,7 +1337,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupSwapDiagonal_Int16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16x4.name = SubgroupSwapDiagonal_Int16x4_name;
-    SubgroupSwapDiagonal_Int16x4.backendIndex = 2142;
+    SubgroupSwapDiagonal_Int16x4.backendIndex = 2160;
     SubgroupSwapDiagonal_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapDiagonal_Int16x4.parameters = SubgroupSwapDiagonal_Int16x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4_value)->typeSymbol = &Int16x4Type;
@@ -1171,7 +1351,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupSwapDiagonal_UInt32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt32.name = SubgroupSwapDiagonal_UInt32_name;
-    SubgroupSwapDiagonal_UInt32.backendIndex = 2143;
+    SubgroupSwapDiagonal_UInt32.backendIndex = 2161;
     SubgroupSwapDiagonal_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapDiagonal_UInt32.parameters = SubgroupSwapDiagonal_UInt32_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt32_value)->typeSymbol = &UInt32Type;
@@ -1185,7 +1365,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupSwapDiagonal_UInt32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt32x2.name = SubgroupSwapDiagonal_UInt32x2_name;
-    SubgroupSwapDiagonal_UInt32x2.backendIndex = 2144;
+    SubgroupSwapDiagonal_UInt32x2.backendIndex = 2162;
     SubgroupSwapDiagonal_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapDiagonal_UInt32x2.parameters = SubgroupSwapDiagonal_UInt32x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2_value)->typeSymbol = &UInt32x2Type;
@@ -1199,7 +1379,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupSwapDiagonal_UInt32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt32x3.name = SubgroupSwapDiagonal_UInt32x3_name;
-    SubgroupSwapDiagonal_UInt32x3.backendIndex = 2145;
+    SubgroupSwapDiagonal_UInt32x3.backendIndex = 2163;
     SubgroupSwapDiagonal_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapDiagonal_UInt32x3.parameters = SubgroupSwapDiagonal_UInt32x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3_value)->typeSymbol = &UInt32x3Type;
@@ -1213,7 +1393,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupSwapDiagonal_UInt32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt32x4.name = SubgroupSwapDiagonal_UInt32x4_name;
-    SubgroupSwapDiagonal_UInt32x4.backendIndex = 2146;
+    SubgroupSwapDiagonal_UInt32x4.backendIndex = 2164;
     SubgroupSwapDiagonal_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapDiagonal_UInt32x4.parameters = SubgroupSwapDiagonal_UInt32x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4_value)->typeSymbol = &UInt32x4Type;
@@ -1227,7 +1407,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupSwapDiagonal_UInt16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt16.name = SubgroupSwapDiagonal_UInt16_name;
-    SubgroupSwapDiagonal_UInt16.backendIndex = 2147;
+    SubgroupSwapDiagonal_UInt16.backendIndex = 2165;
     SubgroupSwapDiagonal_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapDiagonal_UInt16.parameters = SubgroupSwapDiagonal_UInt16_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt16_value)->typeSymbol = &UInt16Type;
@@ -1241,7 +1421,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupSwapDiagonal_UInt16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt16x2.name = SubgroupSwapDiagonal_UInt16x2_name;
-    SubgroupSwapDiagonal_UInt16x2.backendIndex = 2148;
+    SubgroupSwapDiagonal_UInt16x2.backendIndex = 2166;
     SubgroupSwapDiagonal_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapDiagonal_UInt16x2.parameters = SubgroupSwapDiagonal_UInt16x2_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2_value)->typeSymbol = &UInt16x2Type;
@@ -1255,7 +1435,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupSwapDiagonal_UInt16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt16x3.name = SubgroupSwapDiagonal_UInt16x3_name;
-    SubgroupSwapDiagonal_UInt16x3.backendIndex = 2149;
+    SubgroupSwapDiagonal_UInt16x3.backendIndex = 2167;
     SubgroupSwapDiagonal_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapDiagonal_UInt16x3.parameters = SubgroupSwapDiagonal_UInt16x3_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3_value)->typeSymbol = &UInt16x3Type;
@@ -1269,7 +1449,7 @@ void SetupIntrinsics9()
     SubgroupSwapDiagonal_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupSwapDiagonal_UInt16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt16x4.name = SubgroupSwapDiagonal_UInt16x4_name;
-    SubgroupSwapDiagonal_UInt16x4.backendIndex = 2150;
+    SubgroupSwapDiagonal_UInt16x4.backendIndex = 2168;
     SubgroupSwapDiagonal_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapDiagonal_UInt16x4.parameters = SubgroupSwapDiagonal_UInt16x4_args;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4_value)->typeSymbol = &UInt16x4Type;
@@ -1283,7 +1463,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupSwapVertical_Float32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float32.name = SubgroupSwapVertical_Float32_name;
-    SubgroupSwapVertical_Float32.backendIndex = 2151;
+    SubgroupSwapVertical_Float32.backendIndex = 2169;
     SubgroupSwapVertical_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapVertical_Float32.parameters = SubgroupSwapVertical_Float32_args;
     Symbol::Resolved(&SubgroupSwapVertical_Float32_value)->typeSymbol = &Float32Type;
@@ -1297,7 +1477,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupSwapVertical_Float32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float32x2.name = SubgroupSwapVertical_Float32x2_name;
-    SubgroupSwapVertical_Float32x2.backendIndex = 2152;
+    SubgroupSwapVertical_Float32x2.backendIndex = 2170;
     SubgroupSwapVertical_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapVertical_Float32x2.parameters = SubgroupSwapVertical_Float32x2_args;
     Symbol::Resolved(&SubgroupSwapVertical_Float32x2_value)->typeSymbol = &Float32x2Type;
@@ -1311,7 +1491,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupSwapVertical_Float32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float32x3.name = SubgroupSwapVertical_Float32x3_name;
-    SubgroupSwapVertical_Float32x3.backendIndex = 2153;
+    SubgroupSwapVertical_Float32x3.backendIndex = 2171;
     SubgroupSwapVertical_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapVertical_Float32x3.parameters = SubgroupSwapVertical_Float32x3_args;
     Symbol::Resolved(&SubgroupSwapVertical_Float32x3_value)->typeSymbol = &Float32x3Type;
@@ -1325,7 +1505,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupSwapVertical_Float32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float32x4.name = SubgroupSwapVertical_Float32x4_name;
-    SubgroupSwapVertical_Float32x4.backendIndex = 2154;
+    SubgroupSwapVertical_Float32x4.backendIndex = 2172;
     SubgroupSwapVertical_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapVertical_Float32x4.parameters = SubgroupSwapVertical_Float32x4_args;
     Symbol::Resolved(&SubgroupSwapVertical_Float32x4_value)->typeSymbol = &Float32x4Type;
@@ -1339,7 +1519,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupSwapVertical_Float16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float16.name = SubgroupSwapVertical_Float16_name;
-    SubgroupSwapVertical_Float16.backendIndex = 2155;
+    SubgroupSwapVertical_Float16.backendIndex = 2173;
     SubgroupSwapVertical_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapVertical_Float16.parameters = SubgroupSwapVertical_Float16_args;
     Symbol::Resolved(&SubgroupSwapVertical_Float16_value)->typeSymbol = &Float16Type;
@@ -1353,7 +1533,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupSwapVertical_Float16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float16x2.name = SubgroupSwapVertical_Float16x2_name;
-    SubgroupSwapVertical_Float16x2.backendIndex = 2156;
+    SubgroupSwapVertical_Float16x2.backendIndex = 2174;
     SubgroupSwapVertical_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapVertical_Float16x2.parameters = SubgroupSwapVertical_Float16x2_args;
     Symbol::Resolved(&SubgroupSwapVertical_Float16x2_value)->typeSymbol = &Float16x2Type;
@@ -1367,7 +1547,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupSwapVertical_Float16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float16x3.name = SubgroupSwapVertical_Float16x3_name;
-    SubgroupSwapVertical_Float16x3.backendIndex = 2157;
+    SubgroupSwapVertical_Float16x3.backendIndex = 2175;
     SubgroupSwapVertical_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapVertical_Float16x3.parameters = SubgroupSwapVertical_Float16x3_args;
     Symbol::Resolved(&SubgroupSwapVertical_Float16x3_value)->typeSymbol = &Float16x3Type;
@@ -1381,7 +1561,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupSwapVertical_Float16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float16x4.name = SubgroupSwapVertical_Float16x4_name;
-    SubgroupSwapVertical_Float16x4.backendIndex = 2158;
+    SubgroupSwapVertical_Float16x4.backendIndex = 2176;
     SubgroupSwapVertical_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapVertical_Float16x4.parameters = SubgroupSwapVertical_Float16x4_args;
     Symbol::Resolved(&SubgroupSwapVertical_Float16x4_value)->typeSymbol = &Float16x4Type;
@@ -1395,7 +1575,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupSwapVertical_Int32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int32.name = SubgroupSwapVertical_Int32_name;
-    SubgroupSwapVertical_Int32.backendIndex = 2159;
+    SubgroupSwapVertical_Int32.backendIndex = 2177;
     SubgroupSwapVertical_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapVertical_Int32.parameters = SubgroupSwapVertical_Int32_args;
     Symbol::Resolved(&SubgroupSwapVertical_Int32_value)->typeSymbol = &Int32Type;
@@ -1409,7 +1589,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupSwapVertical_Int32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int32x2.name = SubgroupSwapVertical_Int32x2_name;
-    SubgroupSwapVertical_Int32x2.backendIndex = 2160;
+    SubgroupSwapVertical_Int32x2.backendIndex = 2178;
     SubgroupSwapVertical_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapVertical_Int32x2.parameters = SubgroupSwapVertical_Int32x2_args;
     Symbol::Resolved(&SubgroupSwapVertical_Int32x2_value)->typeSymbol = &Int32x2Type;
@@ -1423,7 +1603,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupSwapVertical_Int32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int32x3.name = SubgroupSwapVertical_Int32x3_name;
-    SubgroupSwapVertical_Int32x3.backendIndex = 2161;
+    SubgroupSwapVertical_Int32x3.backendIndex = 2179;
     SubgroupSwapVertical_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapVertical_Int32x3.parameters = SubgroupSwapVertical_Int32x3_args;
     Symbol::Resolved(&SubgroupSwapVertical_Int32x3_value)->typeSymbol = &Int32x3Type;
@@ -1437,7 +1617,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupSwapVertical_Int32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int32x4.name = SubgroupSwapVertical_Int32x4_name;
-    SubgroupSwapVertical_Int32x4.backendIndex = 2162;
+    SubgroupSwapVertical_Int32x4.backendIndex = 2180;
     SubgroupSwapVertical_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapVertical_Int32x4.parameters = SubgroupSwapVertical_Int32x4_args;
     Symbol::Resolved(&SubgroupSwapVertical_Int32x4_value)->typeSymbol = &Int32x4Type;
@@ -1451,7 +1631,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupSwapVertical_Int16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int16.name = SubgroupSwapVertical_Int16_name;
-    SubgroupSwapVertical_Int16.backendIndex = 2163;
+    SubgroupSwapVertical_Int16.backendIndex = 2181;
     SubgroupSwapVertical_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapVertical_Int16.parameters = SubgroupSwapVertical_Int16_args;
     Symbol::Resolved(&SubgroupSwapVertical_Int16_value)->typeSymbol = &Int16Type;
@@ -1465,7 +1645,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupSwapVertical_Int16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int16x2.name = SubgroupSwapVertical_Int16x2_name;
-    SubgroupSwapVertical_Int16x2.backendIndex = 2164;
+    SubgroupSwapVertical_Int16x2.backendIndex = 2182;
     SubgroupSwapVertical_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapVertical_Int16x2.parameters = SubgroupSwapVertical_Int16x2_args;
     Symbol::Resolved(&SubgroupSwapVertical_Int16x2_value)->typeSymbol = &Int16x2Type;
@@ -1479,7 +1659,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupSwapVertical_Int16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int16x3.name = SubgroupSwapVertical_Int16x3_name;
-    SubgroupSwapVertical_Int16x3.backendIndex = 2165;
+    SubgroupSwapVertical_Int16x3.backendIndex = 2183;
     SubgroupSwapVertical_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapVertical_Int16x3.parameters = SubgroupSwapVertical_Int16x3_args;
     Symbol::Resolved(&SubgroupSwapVertical_Int16x3_value)->typeSymbol = &Int16x3Type;
@@ -1493,7 +1673,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupSwapVertical_Int16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int16x4.name = SubgroupSwapVertical_Int16x4_name;
-    SubgroupSwapVertical_Int16x4.backendIndex = 2166;
+    SubgroupSwapVertical_Int16x4.backendIndex = 2184;
     SubgroupSwapVertical_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapVertical_Int16x4.parameters = SubgroupSwapVertical_Int16x4_args;
     Symbol::Resolved(&SubgroupSwapVertical_Int16x4_value)->typeSymbol = &Int16x4Type;
@@ -1507,7 +1687,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupSwapVertical_UInt32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt32.name = SubgroupSwapVertical_UInt32_name;
-    SubgroupSwapVertical_UInt32.backendIndex = 2167;
+    SubgroupSwapVertical_UInt32.backendIndex = 2185;
     SubgroupSwapVertical_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapVertical_UInt32.parameters = SubgroupSwapVertical_UInt32_args;
     Symbol::Resolved(&SubgroupSwapVertical_UInt32_value)->typeSymbol = &UInt32Type;
@@ -1521,7 +1701,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupSwapVertical_UInt32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt32x2.name = SubgroupSwapVertical_UInt32x2_name;
-    SubgroupSwapVertical_UInt32x2.backendIndex = 2168;
+    SubgroupSwapVertical_UInt32x2.backendIndex = 2186;
     SubgroupSwapVertical_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapVertical_UInt32x2.parameters = SubgroupSwapVertical_UInt32x2_args;
     Symbol::Resolved(&SubgroupSwapVertical_UInt32x2_value)->typeSymbol = &UInt32x2Type;
@@ -1535,7 +1715,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupSwapVertical_UInt32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt32x3.name = SubgroupSwapVertical_UInt32x3_name;
-    SubgroupSwapVertical_UInt32x3.backendIndex = 2169;
+    SubgroupSwapVertical_UInt32x3.backendIndex = 2187;
     SubgroupSwapVertical_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapVertical_UInt32x3.parameters = SubgroupSwapVertical_UInt32x3_args;
     Symbol::Resolved(&SubgroupSwapVertical_UInt32x3_value)->typeSymbol = &UInt32x3Type;
@@ -1549,7 +1729,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupSwapVertical_UInt32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt32x4.name = SubgroupSwapVertical_UInt32x4_name;
-    SubgroupSwapVertical_UInt32x4.backendIndex = 2170;
+    SubgroupSwapVertical_UInt32x4.backendIndex = 2188;
     SubgroupSwapVertical_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapVertical_UInt32x4.parameters = SubgroupSwapVertical_UInt32x4_args;
     Symbol::Resolved(&SubgroupSwapVertical_UInt32x4_value)->typeSymbol = &UInt32x4Type;
@@ -1563,7 +1743,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupSwapVertical_UInt16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt16.name = SubgroupSwapVertical_UInt16_name;
-    SubgroupSwapVertical_UInt16.backendIndex = 2171;
+    SubgroupSwapVertical_UInt16.backendIndex = 2189;
     SubgroupSwapVertical_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapVertical_UInt16.parameters = SubgroupSwapVertical_UInt16_args;
     Symbol::Resolved(&SubgroupSwapVertical_UInt16_value)->typeSymbol = &UInt16Type;
@@ -1577,7 +1757,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupSwapVertical_UInt16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt16x2.name = SubgroupSwapVertical_UInt16x2_name;
-    SubgroupSwapVertical_UInt16x2.backendIndex = 2172;
+    SubgroupSwapVertical_UInt16x2.backendIndex = 2190;
     SubgroupSwapVertical_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapVertical_UInt16x2.parameters = SubgroupSwapVertical_UInt16x2_args;
     Symbol::Resolved(&SubgroupSwapVertical_UInt16x2_value)->typeSymbol = &UInt16x2Type;
@@ -1591,7 +1771,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupSwapVertical_UInt16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt16x3.name = SubgroupSwapVertical_UInt16x3_name;
-    SubgroupSwapVertical_UInt16x3.backendIndex = 2173;
+    SubgroupSwapVertical_UInt16x3.backendIndex = 2191;
     SubgroupSwapVertical_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapVertical_UInt16x3.parameters = SubgroupSwapVertical_UInt16x3_args;
     Symbol::Resolved(&SubgroupSwapVertical_UInt16x3_value)->typeSymbol = &UInt16x3Type;
@@ -1605,7 +1785,7 @@ void SetupIntrinsics9()
     SubgroupSwapVertical_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupSwapVertical_UInt16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt16x4.name = SubgroupSwapVertical_UInt16x4_name;
-    SubgroupSwapVertical_UInt16x4.backendIndex = 2174;
+    SubgroupSwapVertical_UInt16x4.backendIndex = 2192;
     SubgroupSwapVertical_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapVertical_UInt16x4.parameters = SubgroupSwapVertical_UInt16x4_args;
     Symbol::Resolved(&SubgroupSwapVertical_UInt16x4_value)->typeSymbol = &UInt16x4Type;
@@ -1619,7 +1799,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupSwapHorizontal_Float32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float32.name = SubgroupSwapHorizontal_Float32_name;
-    SubgroupSwapHorizontal_Float32.backendIndex = 2175;
+    SubgroupSwapHorizontal_Float32.backendIndex = 2193;
     SubgroupSwapHorizontal_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapHorizontal_Float32.parameters = SubgroupSwapHorizontal_Float32_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float32_value)->typeSymbol = &Float32Type;
@@ -1633,7 +1813,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupSwapHorizontal_Float32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float32x2.name = SubgroupSwapHorizontal_Float32x2_name;
-    SubgroupSwapHorizontal_Float32x2.backendIndex = 2176;
+    SubgroupSwapHorizontal_Float32x2.backendIndex = 2194;
     SubgroupSwapHorizontal_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapHorizontal_Float32x2.parameters = SubgroupSwapHorizontal_Float32x2_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2_value)->typeSymbol = &Float32x2Type;
@@ -1647,7 +1827,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupSwapHorizontal_Float32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float32x3.name = SubgroupSwapHorizontal_Float32x3_name;
-    SubgroupSwapHorizontal_Float32x3.backendIndex = 2177;
+    SubgroupSwapHorizontal_Float32x3.backendIndex = 2195;
     SubgroupSwapHorizontal_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapHorizontal_Float32x3.parameters = SubgroupSwapHorizontal_Float32x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3_value)->typeSymbol = &Float32x3Type;
@@ -1661,7 +1841,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupSwapHorizontal_Float32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float32x4.name = SubgroupSwapHorizontal_Float32x4_name;
-    SubgroupSwapHorizontal_Float32x4.backendIndex = 2178;
+    SubgroupSwapHorizontal_Float32x4.backendIndex = 2196;
     SubgroupSwapHorizontal_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapHorizontal_Float32x4.parameters = SubgroupSwapHorizontal_Float32x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4_value)->typeSymbol = &Float32x4Type;
@@ -1675,7 +1855,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupSwapHorizontal_Float16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float16.name = SubgroupSwapHorizontal_Float16_name;
-    SubgroupSwapHorizontal_Float16.backendIndex = 2179;
+    SubgroupSwapHorizontal_Float16.backendIndex = 2197;
     SubgroupSwapHorizontal_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapHorizontal_Float16.parameters = SubgroupSwapHorizontal_Float16_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float16_value)->typeSymbol = &Float16Type;
@@ -1689,7 +1869,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupSwapHorizontal_Float16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float16x2.name = SubgroupSwapHorizontal_Float16x2_name;
-    SubgroupSwapHorizontal_Float16x2.backendIndex = 2180;
+    SubgroupSwapHorizontal_Float16x2.backendIndex = 2198;
     SubgroupSwapHorizontal_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapHorizontal_Float16x2.parameters = SubgroupSwapHorizontal_Float16x2_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2_value)->typeSymbol = &Float16x2Type;
@@ -1703,7 +1883,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupSwapHorizontal_Float16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float16x3.name = SubgroupSwapHorizontal_Float16x3_name;
-    SubgroupSwapHorizontal_Float16x3.backendIndex = 2181;
+    SubgroupSwapHorizontal_Float16x3.backendIndex = 2199;
     SubgroupSwapHorizontal_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapHorizontal_Float16x3.parameters = SubgroupSwapHorizontal_Float16x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3_value)->typeSymbol = &Float16x3Type;
@@ -1717,7 +1897,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupSwapHorizontal_Float16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float16x4.name = SubgroupSwapHorizontal_Float16x4_name;
-    SubgroupSwapHorizontal_Float16x4.backendIndex = 2182;
+    SubgroupSwapHorizontal_Float16x4.backendIndex = 2200;
     SubgroupSwapHorizontal_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapHorizontal_Float16x4.parameters = SubgroupSwapHorizontal_Float16x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4_value)->typeSymbol = &Float16x4Type;
@@ -1731,7 +1911,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupSwapHorizontal_Int32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int32.name = SubgroupSwapHorizontal_Int32_name;
-    SubgroupSwapHorizontal_Int32.backendIndex = 2183;
+    SubgroupSwapHorizontal_Int32.backendIndex = 2201;
     SubgroupSwapHorizontal_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapHorizontal_Int32.parameters = SubgroupSwapHorizontal_Int32_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int32_value)->typeSymbol = &Int32Type;
@@ -1745,7 +1925,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupSwapHorizontal_Int32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int32x2.name = SubgroupSwapHorizontal_Int32x2_name;
-    SubgroupSwapHorizontal_Int32x2.backendIndex = 2184;
+    SubgroupSwapHorizontal_Int32x2.backendIndex = 2202;
     SubgroupSwapHorizontal_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapHorizontal_Int32x2.parameters = SubgroupSwapHorizontal_Int32x2_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2_value)->typeSymbol = &Int32x2Type;
@@ -1759,7 +1939,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupSwapHorizontal_Int32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int32x3.name = SubgroupSwapHorizontal_Int32x3_name;
-    SubgroupSwapHorizontal_Int32x3.backendIndex = 2185;
+    SubgroupSwapHorizontal_Int32x3.backendIndex = 2203;
     SubgroupSwapHorizontal_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapHorizontal_Int32x3.parameters = SubgroupSwapHorizontal_Int32x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3_value)->typeSymbol = &Int32x3Type;
@@ -1773,7 +1953,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupSwapHorizontal_Int32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int32x4.name = SubgroupSwapHorizontal_Int32x4_name;
-    SubgroupSwapHorizontal_Int32x4.backendIndex = 2186;
+    SubgroupSwapHorizontal_Int32x4.backendIndex = 2204;
     SubgroupSwapHorizontal_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapHorizontal_Int32x4.parameters = SubgroupSwapHorizontal_Int32x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4_value)->typeSymbol = &Int32x4Type;
@@ -1787,7 +1967,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupSwapHorizontal_Int16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16.name = SubgroupSwapHorizontal_Int16_name;
-    SubgroupSwapHorizontal_Int16.backendIndex = 2187;
+    SubgroupSwapHorizontal_Int16.backendIndex = 2205;
     SubgroupSwapHorizontal_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapHorizontal_Int16.parameters = SubgroupSwapHorizontal_Int16_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16_value)->typeSymbol = &Int16Type;
@@ -1801,7 +1981,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupSwapHorizontal_Int16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16x2.name = SubgroupSwapHorizontal_Int16x2_name;
-    SubgroupSwapHorizontal_Int16x2.backendIndex = 2188;
+    SubgroupSwapHorizontal_Int16x2.backendIndex = 2206;
     SubgroupSwapHorizontal_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapHorizontal_Int16x2.parameters = SubgroupSwapHorizontal_Int16x2_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2_value)->typeSymbol = &Int16x2Type;
@@ -1815,7 +1995,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupSwapHorizontal_Int16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16x3.name = SubgroupSwapHorizontal_Int16x3_name;
-    SubgroupSwapHorizontal_Int16x3.backendIndex = 2189;
+    SubgroupSwapHorizontal_Int16x3.backendIndex = 2207;
     SubgroupSwapHorizontal_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapHorizontal_Int16x3.parameters = SubgroupSwapHorizontal_Int16x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16x3_value)->typeSymbol = &Int16x3Type;
@@ -1829,7 +2009,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupSwapHorizontal_Int16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16x4.name = SubgroupSwapHorizontal_Int16x4_name;
-    SubgroupSwapHorizontal_Int16x4.backendIndex = 2190;
+    SubgroupSwapHorizontal_Int16x4.backendIndex = 2208;
     SubgroupSwapHorizontal_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapHorizontal_Int16x4.parameters = SubgroupSwapHorizontal_Int16x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16x4_value)->typeSymbol = &Int16x4Type;
@@ -1843,7 +2023,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupSwapHorizontal_UInt32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32.name = SubgroupSwapHorizontal_UInt32_name;
-    SubgroupSwapHorizontal_UInt32.backendIndex = 2191;
+    SubgroupSwapHorizontal_UInt32.backendIndex = 2209;
     SubgroupSwapHorizontal_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapHorizontal_UInt32.parameters = SubgroupSwapHorizontal_UInt32_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32_value)->typeSymbol = &UInt32Type;
@@ -1857,7 +2037,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupSwapHorizontal_UInt32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x2.name = SubgroupSwapHorizontal_UInt32x2_name;
-    SubgroupSwapHorizontal_UInt32x2.backendIndex = 2192;
+    SubgroupSwapHorizontal_UInt32x2.backendIndex = 2210;
     SubgroupSwapHorizontal_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapHorizontal_UInt32x2.parameters = SubgroupSwapHorizontal_UInt32x2_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x2_value)->typeSymbol = &UInt32x2Type;
@@ -1871,7 +2051,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupSwapHorizontal_UInt32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x3.name = SubgroupSwapHorizontal_UInt32x3_name;
-    SubgroupSwapHorizontal_UInt32x3.backendIndex = 2193;
+    SubgroupSwapHorizontal_UInt32x3.backendIndex = 2211;
     SubgroupSwapHorizontal_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapHorizontal_UInt32x3.parameters = SubgroupSwapHorizontal_UInt32x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x3_value)->typeSymbol = &UInt32x3Type;
@@ -1885,7 +2065,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupSwapHorizontal_UInt32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x4.name = SubgroupSwapHorizontal_UInt32x4_name;
-    SubgroupSwapHorizontal_UInt32x4.backendIndex = 2194;
+    SubgroupSwapHorizontal_UInt32x4.backendIndex = 2212;
     SubgroupSwapHorizontal_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapHorizontal_UInt32x4.parameters = SubgroupSwapHorizontal_UInt32x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x4_value)->typeSymbol = &UInt32x4Type;
@@ -1899,7 +2079,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupSwapHorizontal_UInt16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16.name = SubgroupSwapHorizontal_UInt16_name;
-    SubgroupSwapHorizontal_UInt16.backendIndex = 2195;
+    SubgroupSwapHorizontal_UInt16.backendIndex = 2213;
     SubgroupSwapHorizontal_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapHorizontal_UInt16.parameters = SubgroupSwapHorizontal_UInt16_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16_value)->typeSymbol = &UInt16Type;
@@ -1913,7 +2093,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupSwapHorizontal_UInt16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x2.name = SubgroupSwapHorizontal_UInt16x2_name;
-    SubgroupSwapHorizontal_UInt16x2.backendIndex = 2196;
+    SubgroupSwapHorizontal_UInt16x2.backendIndex = 2214;
     SubgroupSwapHorizontal_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapHorizontal_UInt16x2.parameters = SubgroupSwapHorizontal_UInt16x2_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x2_value)->typeSymbol = &UInt16x2Type;
@@ -1927,7 +2107,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupSwapHorizontal_UInt16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x3.name = SubgroupSwapHorizontal_UInt16x3_name;
-    SubgroupSwapHorizontal_UInt16x3.backendIndex = 2197;
+    SubgroupSwapHorizontal_UInt16x3.backendIndex = 2215;
     SubgroupSwapHorizontal_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapHorizontal_UInt16x3.parameters = SubgroupSwapHorizontal_UInt16x3_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x3_value)->typeSymbol = &UInt16x3Type;
@@ -1941,7 +2121,7 @@ void SetupIntrinsics9()
     SubgroupSwapHorizontal_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupSwapHorizontal_UInt16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x4.name = SubgroupSwapHorizontal_UInt16x4_name;
-    SubgroupSwapHorizontal_UInt16x4.backendIndex = 2198;
+    SubgroupSwapHorizontal_UInt16x4.backendIndex = 2216;
     SubgroupSwapHorizontal_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapHorizontal_UInt16x4.parameters = SubgroupSwapHorizontal_UInt16x4_args;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x4_value)->typeSymbol = &UInt16x4Type;
@@ -1962,7 +2142,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_UInt32_semantics.type.literal = true;
     AtomicLoad_Uniform_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_UInt32.name = AtomicLoad_Uniform_UInt32_name;
-    AtomicLoad_Uniform_UInt32.backendIndex = 2199;
+    AtomicLoad_Uniform_UInt32.backendIndex = 2217;
     AtomicLoad_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicLoad_Uniform_UInt32.parameters = AtomicLoad_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -1985,7 +2165,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_UInt32_semantics.type.literal = true;
     AtomicLoad_Workgroup_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_UInt32.name = AtomicLoad_Workgroup_UInt32_name;
-    AtomicLoad_Workgroup_UInt32.backendIndex = 2200;
+    AtomicLoad_Workgroup_UInt32.backendIndex = 2218;
     AtomicLoad_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicLoad_Workgroup_UInt32.parameters = AtomicLoad_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2008,7 +2188,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Uniform_UInt32_semantics.type.literal = true;
     AtomicIncrement_Uniform_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Uniform_UInt32.name = AtomicIncrement_Uniform_UInt32_name;
-    AtomicIncrement_Uniform_UInt32.backendIndex = 2201;
+    AtomicIncrement_Uniform_UInt32.backendIndex = 2219;
     AtomicIncrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicIncrement_Uniform_UInt32.parameters = AtomicIncrement_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2031,7 +2211,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Workgroup_UInt32_semantics.type.literal = true;
     AtomicIncrement_Workgroup_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Workgroup_UInt32.name = AtomicIncrement_Workgroup_UInt32_name;
-    AtomicIncrement_Workgroup_UInt32.backendIndex = 2202;
+    AtomicIncrement_Workgroup_UInt32.backendIndex = 2220;
     AtomicIncrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicIncrement_Workgroup_UInt32.parameters = AtomicIncrement_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2054,7 +2234,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Uniform_UInt32_semantics.type.literal = true;
     AtomicDecrement_Uniform_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Uniform_UInt32.name = AtomicDecrement_Uniform_UInt32_name;
-    AtomicDecrement_Uniform_UInt32.backendIndex = 2203;
+    AtomicDecrement_Uniform_UInt32.backendIndex = 2221;
     AtomicDecrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicDecrement_Uniform_UInt32.parameters = AtomicDecrement_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2077,7 +2257,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Workgroup_UInt32_semantics.type.literal = true;
     AtomicDecrement_Workgroup_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Workgroup_UInt32.name = AtomicDecrement_Workgroup_UInt32_name;
-    AtomicDecrement_Workgroup_UInt32.backendIndex = 2204;
+    AtomicDecrement_Workgroup_UInt32.backendIndex = 2222;
     AtomicDecrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicDecrement_Workgroup_UInt32.parameters = AtomicDecrement_Workgroup_UInt32_args;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2100,7 +2280,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_Int32_semantics.type.literal = true;
     AtomicLoad_Uniform_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_Int32.name = AtomicLoad_Uniform_Int32_name;
-    AtomicLoad_Uniform_Int32.backendIndex = 2205;
+    AtomicLoad_Uniform_Int32.backendIndex = 2223;
     AtomicLoad_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicLoad_Uniform_Int32.parameters = AtomicLoad_Uniform_Int32_args;
     Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2123,7 +2303,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_Int32_semantics.type.literal = true;
     AtomicLoad_Workgroup_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_Int32.name = AtomicLoad_Workgroup_Int32_name;
-    AtomicLoad_Workgroup_Int32.backendIndex = 2206;
+    AtomicLoad_Workgroup_Int32.backendIndex = 2224;
     AtomicLoad_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicLoad_Workgroup_Int32.parameters = AtomicLoad_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2146,7 +2326,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Uniform_Int32_semantics.type.literal = true;
     AtomicIncrement_Uniform_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Uniform_Int32.name = AtomicIncrement_Uniform_Int32_name;
-    AtomicIncrement_Uniform_Int32.backendIndex = 2207;
+    AtomicIncrement_Uniform_Int32.backendIndex = 2225;
     AtomicIncrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicIncrement_Uniform_Int32.parameters = AtomicIncrement_Uniform_Int32_args;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2169,7 +2349,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Workgroup_Int32_semantics.type.literal = true;
     AtomicIncrement_Workgroup_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Workgroup_Int32.name = AtomicIncrement_Workgroup_Int32_name;
-    AtomicIncrement_Workgroup_Int32.backendIndex = 2208;
+    AtomicIncrement_Workgroup_Int32.backendIndex = 2226;
     AtomicIncrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicIncrement_Workgroup_Int32.parameters = AtomicIncrement_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2192,7 +2372,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Uniform_Int32_semantics.type.literal = true;
     AtomicDecrement_Uniform_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Uniform_Int32.name = AtomicDecrement_Uniform_Int32_name;
-    AtomicDecrement_Uniform_Int32.backendIndex = 2209;
+    AtomicDecrement_Uniform_Int32.backendIndex = 2227;
     AtomicDecrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicDecrement_Uniform_Int32.parameters = AtomicDecrement_Uniform_Int32_args;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2215,7 +2395,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Workgroup_Int32_semantics.type.literal = true;
     AtomicDecrement_Workgroup_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Workgroup_Int32.name = AtomicDecrement_Workgroup_Int32_name;
-    AtomicDecrement_Workgroup_Int32.backendIndex = 2210;
+    AtomicDecrement_Workgroup_Int32.backendIndex = 2228;
     AtomicDecrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicDecrement_Workgroup_Int32.parameters = AtomicDecrement_Workgroup_Int32_args;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
@@ -2238,7 +2418,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_UInt16_semantics.type.literal = true;
     AtomicLoad_Uniform_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_UInt16.name = AtomicLoad_Uniform_UInt16_name;
-    AtomicLoad_Uniform_UInt16.backendIndex = 2211;
+    AtomicLoad_Uniform_UInt16.backendIndex = 2229;
     AtomicLoad_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicLoad_Uniform_UInt16.parameters = AtomicLoad_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2261,7 +2441,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_UInt16_semantics.type.literal = true;
     AtomicLoad_Workgroup_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_UInt16.name = AtomicLoad_Workgroup_UInt16_name;
-    AtomicLoad_Workgroup_UInt16.backendIndex = 2212;
+    AtomicLoad_Workgroup_UInt16.backendIndex = 2230;
     AtomicLoad_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicLoad_Workgroup_UInt16.parameters = AtomicLoad_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2284,7 +2464,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Uniform_UInt16_semantics.type.literal = true;
     AtomicIncrement_Uniform_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Uniform_UInt16.name = AtomicIncrement_Uniform_UInt16_name;
-    AtomicIncrement_Uniform_UInt16.backendIndex = 2213;
+    AtomicIncrement_Uniform_UInt16.backendIndex = 2231;
     AtomicIncrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicIncrement_Uniform_UInt16.parameters = AtomicIncrement_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2307,7 +2487,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Workgroup_UInt16_semantics.type.literal = true;
     AtomicIncrement_Workgroup_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Workgroup_UInt16.name = AtomicIncrement_Workgroup_UInt16_name;
-    AtomicIncrement_Workgroup_UInt16.backendIndex = 2214;
+    AtomicIncrement_Workgroup_UInt16.backendIndex = 2232;
     AtomicIncrement_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicIncrement_Workgroup_UInt16.parameters = AtomicIncrement_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2330,7 +2510,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Uniform_UInt16_semantics.type.literal = true;
     AtomicDecrement_Uniform_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Uniform_UInt16.name = AtomicDecrement_Uniform_UInt16_name;
-    AtomicDecrement_Uniform_UInt16.backendIndex = 2215;
+    AtomicDecrement_Uniform_UInt16.backendIndex = 2233;
     AtomicDecrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicDecrement_Uniform_UInt16.parameters = AtomicDecrement_Uniform_UInt16_args;
     Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2353,7 +2533,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Workgroup_UInt16_semantics.type.literal = true;
     AtomicDecrement_Workgroup_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Workgroup_UInt16.name = AtomicDecrement_Workgroup_UInt16_name;
-    AtomicDecrement_Workgroup_UInt16.backendIndex = 2216;
+    AtomicDecrement_Workgroup_UInt16.backendIndex = 2234;
     AtomicDecrement_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicDecrement_Workgroup_UInt16.parameters = AtomicDecrement_Workgroup_UInt16_args;
     Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
@@ -2376,7 +2556,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_Int16_semantics.type.literal = true;
     AtomicLoad_Uniform_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_Int16.name = AtomicLoad_Uniform_Int16_name;
-    AtomicLoad_Uniform_Int16.backendIndex = 2217;
+    AtomicLoad_Uniform_Int16.backendIndex = 2235;
     AtomicLoad_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicLoad_Uniform_Int16.parameters = AtomicLoad_Uniform_Int16_args;
     Symbol::Resolved(&AtomicLoad_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2399,7 +2579,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_Int16_semantics.type.literal = true;
     AtomicLoad_Workgroup_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_Int16.name = AtomicLoad_Workgroup_Int16_name;
-    AtomicLoad_Workgroup_Int16.backendIndex = 2218;
+    AtomicLoad_Workgroup_Int16.backendIndex = 2236;
     AtomicLoad_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicLoad_Workgroup_Int16.parameters = AtomicLoad_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2422,7 +2602,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Uniform_Int16_semantics.type.literal = true;
     AtomicIncrement_Uniform_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Uniform_Int16.name = AtomicIncrement_Uniform_Int16_name;
-    AtomicIncrement_Uniform_Int16.backendIndex = 2219;
+    AtomicIncrement_Uniform_Int16.backendIndex = 2237;
     AtomicIncrement_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicIncrement_Uniform_Int16.parameters = AtomicIncrement_Uniform_Int16_args;
     Symbol::Resolved(&AtomicIncrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2445,7 +2625,7 @@ void SetupIntrinsics9()
     AtomicIncrement_Workgroup_Int16_semantics.type.literal = true;
     AtomicIncrement_Workgroup_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Workgroup_Int16.name = AtomicIncrement_Workgroup_Int16_name;
-    AtomicIncrement_Workgroup_Int16.backendIndex = 2220;
+    AtomicIncrement_Workgroup_Int16.backendIndex = 2238;
     AtomicIncrement_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicIncrement_Workgroup_Int16.parameters = AtomicIncrement_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2468,7 +2648,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Uniform_Int16_semantics.type.literal = true;
     AtomicDecrement_Uniform_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Uniform_Int16.name = AtomicDecrement_Uniform_Int16_name;
-    AtomicDecrement_Uniform_Int16.backendIndex = 2221;
+    AtomicDecrement_Uniform_Int16.backendIndex = 2239;
     AtomicDecrement_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicDecrement_Uniform_Int16.parameters = AtomicDecrement_Uniform_Int16_args;
     Symbol::Resolved(&AtomicDecrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2491,7 +2671,7 @@ void SetupIntrinsics9()
     AtomicDecrement_Workgroup_Int16_semantics.type.literal = true;
     AtomicDecrement_Workgroup_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Workgroup_Int16.name = AtomicDecrement_Workgroup_Int16_name;
-    AtomicDecrement_Workgroup_Int16.backendIndex = 2222;
+    AtomicDecrement_Workgroup_Int16.backendIndex = 2240;
     AtomicDecrement_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicDecrement_Workgroup_Int16.parameters = AtomicDecrement_Workgroup_Int16_args;
     Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
@@ -2514,7 +2694,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_Float32_semantics.type.literal = true;
     AtomicLoad_Uniform_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_Float32.name = AtomicLoad_Uniform_Float32_name;
-    AtomicLoad_Uniform_Float32.backendIndex = 2223;
+    AtomicLoad_Uniform_Float32.backendIndex = 2241;
     AtomicLoad_Uniform_Float32.returnType = Type::FullType { Float32Type.name };
     AtomicLoad_Uniform_Float32.parameters = AtomicLoad_Uniform_Float32_args;
     Symbol::Resolved(&AtomicLoad_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
@@ -2537,7 +2717,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_Float32_semantics.type.literal = true;
     AtomicLoad_Workgroup_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_Float32.name = AtomicLoad_Workgroup_Float32_name;
-    AtomicLoad_Workgroup_Float32.backendIndex = 2224;
+    AtomicLoad_Workgroup_Float32.backendIndex = 2242;
     AtomicLoad_Workgroup_Float32.returnType = Type::FullType { Float32Type.name };
     AtomicLoad_Workgroup_Float32.parameters = AtomicLoad_Workgroup_Float32_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
@@ -2560,7 +2740,7 @@ void SetupIntrinsics9()
     AtomicLoad_Uniform_Float16_semantics.type.literal = true;
     AtomicLoad_Uniform_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Uniform_Float16.name = AtomicLoad_Uniform_Float16_name;
-    AtomicLoad_Uniform_Float16.backendIndex = 2225;
+    AtomicLoad_Uniform_Float16.backendIndex = 2243;
     AtomicLoad_Uniform_Float16.returnType = Type::FullType { Float16Type.name };
     AtomicLoad_Uniform_Float16.parameters = AtomicLoad_Uniform_Float16_args;
     Symbol::Resolved(&AtomicLoad_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
@@ -2583,7 +2763,7 @@ void SetupIntrinsics9()
     AtomicLoad_Workgroup_Float16_semantics.type.literal = true;
     AtomicLoad_Workgroup_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Workgroup_Float16.name = AtomicLoad_Workgroup_Float16_name;
-    AtomicLoad_Workgroup_Float16.backendIndex = 2226;
+    AtomicLoad_Workgroup_Float16.backendIndex = 2244;
     AtomicLoad_Workgroup_Float16.returnType = Type::FullType { Float16Type.name };
     AtomicLoad_Workgroup_Float16.parameters = AtomicLoad_Workgroup_Float16_args;
     Symbol::Resolved(&AtomicLoad_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
@@ -2608,7 +2788,7 @@ void SetupIntrinsics9()
     AtomicStore_Uniform_UInt32_semantics.type.literal = true;
     AtomicStore_Uniform_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Uniform_UInt32.name = AtomicStore_Uniform_UInt32_name;
-    AtomicStore_Uniform_UInt32.backendIndex = 2227;
+    AtomicStore_Uniform_UInt32.backendIndex = 2245;
     AtomicStore_Uniform_UInt32.returnType = Type::FullType { VoidType.name };
     AtomicStore_Uniform_UInt32.parameters = AtomicStore_Uniform_UInt32_args;
     Symbol::Resolved(&AtomicStore_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
@@ -2619,465 +2799,6 @@ void SetupIntrinsics9()
     Symbol::Resolved(&AtomicStore_Uniform_UInt32)->name = "atomicStore(uniform *mutable u32,u32,literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicStore_Uniform_UInt32)->nameWithVarNames = "atomicStore(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
     Symbol::Resolved(&AtomicStore_Uniform_UInt32)->returnTypeSymbol = &VoidType;
-
-    /// atomicStore with UInt32, UInt32, MemorySemantics
-    AtomicStore_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicStore_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicStore_Workgroup_UInt32_ptr.type.modifiers = AtomicStore_Workgroup_UInt32_ptr_modifiers;
-    AtomicStore_Workgroup_UInt32_ptr.type.modifierValues = AtomicStore_Workgroup_UInt32_ptr_modifierValues;
-    AtomicStore_Workgroup_UInt32_value.name = "value"_c;
-    AtomicStore_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicStore_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicStore_Workgroup_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Workgroup_UInt32.name = AtomicStore_Workgroup_UInt32_name;
-    AtomicStore_Workgroup_UInt32.backendIndex = 2228;
-    AtomicStore_Workgroup_UInt32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Workgroup_UInt32.parameters = AtomicStore_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->signature = "atomicStore(workgroup *u32,u32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->name = "atomicStore(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->nameWithVarNames = "atomicStore(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->returnTypeSymbol = &VoidType;
-
-    /// atomicExchange with UInt32, UInt32, MemorySemantics
-    AtomicExchange_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicExchange_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_Uniform_UInt32_ptr.type.strict = true;
-    AtomicExchange_Uniform_UInt32_ptr.type.mut = true;
-    AtomicExchange_Uniform_UInt32_ptr.type.modifiers = AtomicExchange_Uniform_UInt32_ptr_modifiers;
-    AtomicExchange_Uniform_UInt32_ptr.type.modifierValues = AtomicExchange_Uniform_UInt32_ptr_modifierValues;
-    AtomicExchange_Uniform_UInt32_value.name = "value"_c;
-    AtomicExchange_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicExchange_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Uniform_UInt32_semantics.type.literal = true;
-    AtomicExchange_Uniform_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Uniform_UInt32.name = AtomicExchange_Uniform_UInt32_name;
-    AtomicExchange_Uniform_UInt32.backendIndex = 2229;
-    AtomicExchange_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicExchange_Uniform_UInt32.parameters = AtomicExchange_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->signature = "atomicExchange(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->name = "atomicExchange(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicExchange with UInt32, UInt32, MemorySemantics
-    AtomicExchange_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicExchange_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicExchange_Workgroup_UInt32_ptr.type.modifiers = AtomicExchange_Workgroup_UInt32_ptr_modifiers;
-    AtomicExchange_Workgroup_UInt32_ptr.type.modifierValues = AtomicExchange_Workgroup_UInt32_ptr_modifierValues;
-    AtomicExchange_Workgroup_UInt32_value.name = "value"_c;
-    AtomicExchange_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicExchange_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicExchange_Workgroup_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Workgroup_UInt32.name = AtomicExchange_Workgroup_UInt32_name;
-    AtomicExchange_Workgroup_UInt32.backendIndex = 2230;
-    AtomicExchange_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicExchange_Workgroup_UInt32.parameters = AtomicExchange_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->signature = "atomicExchange(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->name = "atomicExchange(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->nameWithVarNames = "atomicExchange(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicAdd with UInt32, UInt32, MemorySemantics
-    AtomicAdd_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicAdd_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_Uniform_UInt32_ptr.type.strict = true;
-    AtomicAdd_Uniform_UInt32_ptr.type.mut = true;
-    AtomicAdd_Uniform_UInt32_ptr.type.modifiers = AtomicAdd_Uniform_UInt32_ptr_modifiers;
-    AtomicAdd_Uniform_UInt32_ptr.type.modifierValues = AtomicAdd_Uniform_UInt32_ptr_modifierValues;
-    AtomicAdd_Uniform_UInt32_value.name = "value"_c;
-    AtomicAdd_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicAdd_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Uniform_UInt32_semantics.type.literal = true;
-    AtomicAdd_Uniform_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Uniform_UInt32.name = AtomicAdd_Uniform_UInt32_name;
-    AtomicAdd_Uniform_UInt32.backendIndex = 2231;
-    AtomicAdd_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAdd_Uniform_UInt32.parameters = AtomicAdd_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->signature = "atomicAdd(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->name = "atomicAdd(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicAdd with UInt32, UInt32, MemorySemantics
-    AtomicAdd_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicAdd_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicAdd_Workgroup_UInt32_ptr.type.modifiers = AtomicAdd_Workgroup_UInt32_ptr_modifiers;
-    AtomicAdd_Workgroup_UInt32_ptr.type.modifierValues = AtomicAdd_Workgroup_UInt32_ptr_modifierValues;
-    AtomicAdd_Workgroup_UInt32_value.name = "value"_c;
-    AtomicAdd_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicAdd_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicAdd_Workgroup_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Workgroup_UInt32.name = AtomicAdd_Workgroup_UInt32_name;
-    AtomicAdd_Workgroup_UInt32.backendIndex = 2232;
-    AtomicAdd_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAdd_Workgroup_UInt32.parameters = AtomicAdd_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->signature = "atomicAdd(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->name = "atomicAdd(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->nameWithVarNames = "atomicAdd(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicSubtract with UInt32, UInt32, MemorySemantics
-    AtomicSubtract_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicSubtract_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_Uniform_UInt32_ptr.type.strict = true;
-    AtomicSubtract_Uniform_UInt32_ptr.type.mut = true;
-    AtomicSubtract_Uniform_UInt32_ptr.type.modifiers = AtomicSubtract_Uniform_UInt32_ptr_modifiers;
-    AtomicSubtract_Uniform_UInt32_ptr.type.modifierValues = AtomicSubtract_Uniform_UInt32_ptr_modifierValues;
-    AtomicSubtract_Uniform_UInt32_value.name = "value"_c;
-    AtomicSubtract_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicSubtract_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Uniform_UInt32_semantics.type.literal = true;
-    AtomicSubtract_Uniform_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Uniform_UInt32.name = AtomicSubtract_Uniform_UInt32_name;
-    AtomicSubtract_Uniform_UInt32.backendIndex = 2233;
-    AtomicSubtract_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicSubtract_Uniform_UInt32.parameters = AtomicSubtract_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->signature = "atomicSubtract(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->name = "atomicSubtract(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicSubtract with UInt32, UInt32, MemorySemantics
-    AtomicSubtract_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicSubtract_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicSubtract_Workgroup_UInt32_ptr.type.modifiers = AtomicSubtract_Workgroup_UInt32_ptr_modifiers;
-    AtomicSubtract_Workgroup_UInt32_ptr.type.modifierValues = AtomicSubtract_Workgroup_UInt32_ptr_modifierValues;
-    AtomicSubtract_Workgroup_UInt32_value.name = "value"_c;
-    AtomicSubtract_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicSubtract_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicSubtract_Workgroup_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Workgroup_UInt32.name = AtomicSubtract_Workgroup_UInt32_name;
-    AtomicSubtract_Workgroup_UInt32.backendIndex = 2234;
-    AtomicSubtract_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicSubtract_Workgroup_UInt32.parameters = AtomicSubtract_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->signature = "atomicSubtract(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->name = "atomicSubtract(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->nameWithVarNames = "atomicSubtract(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicAnd with UInt32, UInt32, MemorySemantics
-    AtomicAnd_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicAnd_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_Uniform_UInt32_ptr.type.strict = true;
-    AtomicAnd_Uniform_UInt32_ptr.type.mut = true;
-    AtomicAnd_Uniform_UInt32_ptr.type.modifiers = AtomicAnd_Uniform_UInt32_ptr_modifiers;
-    AtomicAnd_Uniform_UInt32_ptr.type.modifierValues = AtomicAnd_Uniform_UInt32_ptr_modifierValues;
-    AtomicAnd_Uniform_UInt32_value.name = "value"_c;
-    AtomicAnd_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicAnd_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Uniform_UInt32_semantics.type.literal = true;
-    AtomicAnd_Uniform_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Uniform_UInt32.name = AtomicAnd_Uniform_UInt32_name;
-    AtomicAnd_Uniform_UInt32.backendIndex = 2235;
-    AtomicAnd_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAnd_Uniform_UInt32.parameters = AtomicAnd_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->signature = "atomicAnd(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->name = "atomicAnd(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicAnd with UInt32, UInt32, MemorySemantics
-    AtomicAnd_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicAnd_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicAnd_Workgroup_UInt32_ptr.type.modifiers = AtomicAnd_Workgroup_UInt32_ptr_modifiers;
-    AtomicAnd_Workgroup_UInt32_ptr.type.modifierValues = AtomicAnd_Workgroup_UInt32_ptr_modifierValues;
-    AtomicAnd_Workgroup_UInt32_value.name = "value"_c;
-    AtomicAnd_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicAnd_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicAnd_Workgroup_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Workgroup_UInt32.name = AtomicAnd_Workgroup_UInt32_name;
-    AtomicAnd_Workgroup_UInt32.backendIndex = 2236;
-    AtomicAnd_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAnd_Workgroup_UInt32.parameters = AtomicAnd_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->signature = "atomicAnd(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->name = "atomicAnd(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->nameWithVarNames = "atomicAnd(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicOr with UInt32, UInt32, MemorySemantics
-    AtomicOr_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicOr_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_Uniform_UInt32_ptr.type.strict = true;
-    AtomicOr_Uniform_UInt32_ptr.type.mut = true;
-    AtomicOr_Uniform_UInt32_ptr.type.modifiers = AtomicOr_Uniform_UInt32_ptr_modifiers;
-    AtomicOr_Uniform_UInt32_ptr.type.modifierValues = AtomicOr_Uniform_UInt32_ptr_modifierValues;
-    AtomicOr_Uniform_UInt32_value.name = "value"_c;
-    AtomicOr_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicOr_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Uniform_UInt32_semantics.type.literal = true;
-    AtomicOr_Uniform_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Uniform_UInt32.name = AtomicOr_Uniform_UInt32_name;
-    AtomicOr_Uniform_UInt32.backendIndex = 2237;
-    AtomicOr_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicOr_Uniform_UInt32.parameters = AtomicOr_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->signature = "atomicOr(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->name = "atomicOr(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->nameWithVarNames = "atomicOr(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicOr with UInt32, UInt32, MemorySemantics
-    AtomicOr_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicOr_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicOr_Workgroup_UInt32_ptr.type.modifiers = AtomicOr_Workgroup_UInt32_ptr_modifiers;
-    AtomicOr_Workgroup_UInt32_ptr.type.modifierValues = AtomicOr_Workgroup_UInt32_ptr_modifierValues;
-    AtomicOr_Workgroup_UInt32_value.name = "value"_c;
-    AtomicOr_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicOr_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicOr_Workgroup_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Workgroup_UInt32.name = AtomicOr_Workgroup_UInt32_name;
-    AtomicOr_Workgroup_UInt32.backendIndex = 2238;
-    AtomicOr_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicOr_Workgroup_UInt32.parameters = AtomicOr_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->signature = "atomicOr(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->name = "atomicOr(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->nameWithVarNames = "atomicOr(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicXor with UInt32, UInt32, MemorySemantics
-    AtomicXor_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicXor_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_Uniform_UInt32_ptr.type.strict = true;
-    AtomicXor_Uniform_UInt32_ptr.type.mut = true;
-    AtomicXor_Uniform_UInt32_ptr.type.modifiers = AtomicXor_Uniform_UInt32_ptr_modifiers;
-    AtomicXor_Uniform_UInt32_ptr.type.modifierValues = AtomicXor_Uniform_UInt32_ptr_modifierValues;
-    AtomicXor_Uniform_UInt32_value.name = "value"_c;
-    AtomicXor_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicXor_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Uniform_UInt32_semantics.type.literal = true;
-    AtomicXor_Uniform_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Uniform_UInt32.name = AtomicXor_Uniform_UInt32_name;
-    AtomicXor_Uniform_UInt32.backendIndex = 2239;
-    AtomicXor_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicXor_Uniform_UInt32.parameters = AtomicXor_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->signature = "atomicXor(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->name = "atomicXor(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->nameWithVarNames = "atomicXor(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicXor with UInt32, UInt32, MemorySemantics
-    AtomicXor_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicXor_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicXor_Workgroup_UInt32_ptr.type.modifiers = AtomicXor_Workgroup_UInt32_ptr_modifiers;
-    AtomicXor_Workgroup_UInt32_ptr.type.modifierValues = AtomicXor_Workgroup_UInt32_ptr_modifierValues;
-    AtomicXor_Workgroup_UInt32_value.name = "value"_c;
-    AtomicXor_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicXor_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicXor_Workgroup_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Workgroup_UInt32.name = AtomicXor_Workgroup_UInt32_name;
-    AtomicXor_Workgroup_UInt32.backendIndex = 2240;
-    AtomicXor_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicXor_Workgroup_UInt32.parameters = AtomicXor_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->signature = "atomicXor(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->name = "atomicXor(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->nameWithVarNames = "atomicXor(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicStore with Int32, Int32, MemorySemantics
-    AtomicStore_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicStore_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Uniform_Int32_ptr.type.strict = true;
-    AtomicStore_Uniform_Int32_ptr.type.mut = true;
-    AtomicStore_Uniform_Int32_ptr.type.modifiers = AtomicStore_Uniform_Int32_ptr_modifiers;
-    AtomicStore_Uniform_Int32_ptr.type.modifierValues = AtomicStore_Uniform_Int32_ptr_modifierValues;
-    AtomicStore_Uniform_Int32_value.name = "value"_c;
-    AtomicStore_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicStore_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Uniform_Int32_semantics.type.literal = true;
-    AtomicStore_Uniform_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Uniform_Int32.name = AtomicStore_Uniform_Int32_name;
-    AtomicStore_Uniform_Int32.backendIndex = 2241;
-    AtomicStore_Uniform_Int32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Uniform_Int32.parameters = AtomicStore_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32)->signature = "atomicStore(uniform *mutable i32,i32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32)->name = "atomicStore(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32)->nameWithVarNames = "atomicStore(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32)->returnTypeSymbol = &VoidType;
-
-    /// atomicStore with Int32, Int32, MemorySemantics
-    AtomicStore_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicStore_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Workgroup_Int32_ptr.type.strict = true;
-    AtomicStore_Workgroup_Int32_ptr.type.modifiers = AtomicStore_Workgroup_Int32_ptr_modifiers;
-    AtomicStore_Workgroup_Int32_ptr.type.modifierValues = AtomicStore_Workgroup_Int32_ptr_modifierValues;
-    AtomicStore_Workgroup_Int32_value.name = "value"_c;
-    AtomicStore_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicStore_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Workgroup_Int32_semantics.type.literal = true;
-    AtomicStore_Workgroup_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Workgroup_Int32.name = AtomicStore_Workgroup_Int32_name;
-    AtomicStore_Workgroup_Int32.backendIndex = 2242;
-    AtomicStore_Workgroup_Int32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Workgroup_Int32.parameters = AtomicStore_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->signature = "atomicStore(workgroup *i32,i32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->name = "atomicStore(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->nameWithVarNames = "atomicStore(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->returnTypeSymbol = &VoidType;
-
-    /// atomicExchange with Int32, Int32, MemorySemantics
-    AtomicExchange_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicExchange_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Uniform_Int32_ptr.type.strict = true;
-    AtomicExchange_Uniform_Int32_ptr.type.mut = true;
-    AtomicExchange_Uniform_Int32_ptr.type.modifiers = AtomicExchange_Uniform_Int32_ptr_modifiers;
-    AtomicExchange_Uniform_Int32_ptr.type.modifierValues = AtomicExchange_Uniform_Int32_ptr_modifierValues;
-    AtomicExchange_Uniform_Int32_value.name = "value"_c;
-    AtomicExchange_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicExchange_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Uniform_Int32_semantics.type.literal = true;
-    AtomicExchange_Uniform_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Uniform_Int32.name = AtomicExchange_Uniform_Int32_name;
-    AtomicExchange_Uniform_Int32.backendIndex = 2243;
-    AtomicExchange_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicExchange_Uniform_Int32.parameters = AtomicExchange_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->signature = "atomicExchange(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->name = "atomicExchange(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicExchange with Int32, Int32, MemorySemantics
-    AtomicExchange_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicExchange_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Workgroup_Int32_ptr.type.strict = true;
-    AtomicExchange_Workgroup_Int32_ptr.type.modifiers = AtomicExchange_Workgroup_Int32_ptr_modifiers;
-    AtomicExchange_Workgroup_Int32_ptr.type.modifierValues = AtomicExchange_Workgroup_Int32_ptr_modifierValues;
-    AtomicExchange_Workgroup_Int32_value.name = "value"_c;
-    AtomicExchange_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicExchange_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Workgroup_Int32_semantics.type.literal = true;
-    AtomicExchange_Workgroup_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Workgroup_Int32.name = AtomicExchange_Workgroup_Int32_name;
-    AtomicExchange_Workgroup_Int32.backendIndex = 2244;
-    AtomicExchange_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicExchange_Workgroup_Int32.parameters = AtomicExchange_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->signature = "atomicExchange(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->name = "atomicExchange(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->nameWithVarNames = "atomicExchange(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicAdd with Int32, Int32, MemorySemantics
-    AtomicAdd_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicAdd_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Uniform_Int32_ptr.type.strict = true;
-    AtomicAdd_Uniform_Int32_ptr.type.mut = true;
-    AtomicAdd_Uniform_Int32_ptr.type.modifiers = AtomicAdd_Uniform_Int32_ptr_modifiers;
-    AtomicAdd_Uniform_Int32_ptr.type.modifierValues = AtomicAdd_Uniform_Int32_ptr_modifierValues;
-    AtomicAdd_Uniform_Int32_value.name = "value"_c;
-    AtomicAdd_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicAdd_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Uniform_Int32_semantics.type.literal = true;
-    AtomicAdd_Uniform_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Uniform_Int32.name = AtomicAdd_Uniform_Int32_name;
-    AtomicAdd_Uniform_Int32.backendIndex = 2245;
-    AtomicAdd_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicAdd_Uniform_Int32.parameters = AtomicAdd_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->signature = "atomicAdd(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->name = "atomicAdd(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->returnTypeSymbol = &Int32Type;
 
 }
 } // namespace GPULang
