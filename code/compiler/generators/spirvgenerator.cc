@@ -1371,9 +1371,50 @@ struct SPVWriter
             TStr argsStr;
             for (uint32_t arg : args)
                 argsStr.Concatenate<false>(SPVArg(arg), " ");
-            texts[(uint32_t)section].Append(TStr::Separated(op.str, SPVArg(type), argsStr));
-            texts[(uint32_t)section].Append("\n");
+            this->texts[(uint32_t)section].Append(TStr::Separated(op.str, SPVArg(type), argsStr));
+            this->texts[(uint32_t)section].Append("\n");
         }
+    }
+
+    template<typename ...ARGS>
+    void Instruction(const SPVOp& op, SPVWriter::Section section, uint32_t type, const ARGS&... args)
+    {
+        this->section = section;
+        SPVInstruction instr;
+        instr.flags.wordCount = op.wordCount;
+        instr.flags.code = op.c;
+
+        if (op.dynamicWords)
+        {
+            uint32_t dynamicWordCount = 0;
+            ([&]
+            {
+                dynamicWordCount += ArgCount(args);
+            } (), ...);
+
+            // Subtract all necessary words
+            dynamicWordCount -= (op.wordCount - 2);
+            instr.flags.wordCount += dynamicWordCount;
+        }
+        else
+        {
+            uint32_t totalArgs = 2;
+            ([&] {totalArgs += ArgCount(args);} (), ...);
+            assert(op.wordCount == totalArgs);            
+        }
+        assert(instr.flags.wordCount >= op.wordCount);
+        this->binaries[(uint32_t)section].push_back(instr.bits);
+        this->binaries[(uint32_t)section].push_back(type);
+        
+        if (this->outputText)
+        {
+            this->texts[(uint32_t)section].Append(TStr::Separated(op.str, SPVArg(type)));
+        }
+
+        (Append(args), ...);
+
+        if (this->outputText)
+            this->texts[(uint32_t)section].Append("\n");
     }
 
     template<typename ...ARGS>
@@ -1579,8 +1620,8 @@ struct SPVWriter
     template<>
     void Append(const char* const& str)
     {        
-        size_t len = strlen(str) + 1;
-        size_t lenInWords = std::ceil(len / 4.0f);
+        size_t len = strlen(str);
+        size_t lenInWords = std::ceil(len / (float)sizeof(uint32_t));
         uint32_t* strAsWords = (uint32_t*)str;
 
         for (size_t i = 0; i < lenInWords; i++)
@@ -1599,8 +1640,8 @@ struct SPVWriter
     template<>
     void Append(const FixedString& str)
     {
-        size_t len = str.len + 1;
-        size_t lenInWords = std::ceil(len / 4.0f);
+        size_t len = str.len;
+        size_t lenInWords = std::ceil(len / (float)sizeof(uint32_t));
         uint32_t* strAsWords = (uint32_t*)str.buf;
 
         for (size_t i = 0; i < lenInWords; i++)
@@ -1620,7 +1661,7 @@ struct SPVWriter
     void Append(const char (&str)[SIZE])
     {
         size_t len = SIZE;
-        size_t lenInWords = std::ceil(len / 4.0f);
+        size_t lenInWords = std::ceil(len / (float)sizeof(uint32_t));
         uint32_t* strAsWords = (uint32_t*)str;
         for (size_t i = 0; i < lenInWords; i++)
         {
@@ -1917,9 +1958,15 @@ struct SPVWriter
     }
 
     template<>
+    uint32_t ArgCount(const FixedString& str)
+    {
+        return std::ceil((str.len) / (float)sizeof(uint32_t));
+    }
+
+    template<>
     uint32_t ArgCount(const char* const& args)
     {
-        return std::ceil((strlen(args) + 1) / (float)sizeof(uint32_t));
+        return std::ceil((strlen(args)) / (float)sizeof(uint32_t));
     }
 
     template<>
@@ -4063,7 +4110,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
             if (compiler->options.debugSymbols)
-                generator->writer->Instruction(OpMemberName, SPVWriter::Section::DebugNames, SPVArg{ structName }, i, var->name.c_str());
+                generator->writer->Instruction(OpMemberName, SPVWriter::Section::DebugNames, structName, (int)i, var->name.c_str());
             
             SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol);
             memberTypes.append(Format("%%%d ", varType.typeName));
@@ -5079,8 +5126,11 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
 
     if (compiler->options.debugSymbols)
     {
-        uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
+        if (expr->location.file.len > 0)
+        {
+            uint32_t name = generator->writer->String(expr->location.file.c_str());
+            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{ name }, expr->location.line, expr->location.start);
+        }
     }
     if (isConst)
     {
@@ -5816,8 +5866,11 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
 {
     if (compiler->options.debugSymbols)
     {
-        uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
+        if (expr->location.file.len > 0)
+        {
+            uint32_t name = generator->writer->String(expr->location.file.c_str());
+            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{ name }, expr->location.line, expr->location.start);
+        }
     }
 
     // If we can evaluate the expression immediately, don't bother traversing the expression itself
@@ -6489,8 +6542,11 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
 {    
     if (compiler->options.debugSymbols)
     {
-        uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
+        if (stat->location.file.len > 0)
+        {
+            uint32_t name = generator->writer->String(stat->location.file.c_str());
+            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
+        }
     }
     bool ret = false;
     Symbol::__Resolved* symResolved = Symbol::Resolved(stat);
