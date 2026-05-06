@@ -1620,7 +1620,7 @@ struct SPVWriter
     template<>
     void Append(const char* const& str)
     {        
-        size_t len = strlen(str);
+        size_t len = strlen(str) + 1;
         size_t lenInWords = std::ceil(len / (float)sizeof(uint32_t));
         uint32_t* strAsWords = (uint32_t*)str;
 
@@ -1629,7 +1629,14 @@ struct SPVWriter
             this->binaries[(uint32_t)this->section].push_back(strAsWords[i]);
         }
         char* lastInt = (char*)&this->binaries[(uint32_t)this->section].back();
-        lastInt[3] = '\0';
+        char usedBits = (len % sizeof(uint32_t));
+        if (usedBits > 0)
+        {
+            for (char i = usedBits; i < sizeof(uint32_t); i++)
+            {
+                lastInt[i] = '\0';
+            }
+        }
         
         if (this->outputText)
         {
@@ -1640,7 +1647,7 @@ struct SPVWriter
     template<>
     void Append(const FixedString& str)
     {
-        size_t len = str.len;
+        size_t len = str.len + 1;
         size_t lenInWords = std::ceil(len / (float)sizeof(uint32_t));
         uint32_t* strAsWords = (uint32_t*)str.buf;
 
@@ -1649,7 +1656,14 @@ struct SPVWriter
             this->binaries[(uint32_t)this->section].push_back(strAsWords[i]);
         }
         char* lastInt = (char*)&this->binaries[(uint32_t)this->section].back();
-        lastInt[3] = '\0';
+        char usedBits = (len % sizeof(uint32_t));
+        if (usedBits > 0)
+        {
+            for (char i = usedBits; i < sizeof(uint32_t); i++)
+            {
+                lastInt[i] = '\0';
+            }
+        }
 
         if (this->outputText)
         {
@@ -1960,13 +1974,13 @@ struct SPVWriter
     template<>
     uint32_t ArgCount(const FixedString& str)
     {
-        return std::ceil((str.len) / (float)sizeof(uint32_t));
+        return std::ceil((str.len + 1) / (float)sizeof(uint32_t));
     }
 
     template<>
     uint32_t ArgCount(const char* const& args)
     {
-        return std::ceil((strlen(args)) / (float)sizeof(uint32_t));
+        return std::ceil((strlen(args) + 1) / (float)sizeof(uint32_t));
     }
 
     template<>
