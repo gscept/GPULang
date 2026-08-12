@@ -80,6 +80,11 @@ Loader::Load(const char* data, const size_t length)
     if (*magic != 'AFX3')
         return false;
 
+    const uint64_t* signature = reinterpret_cast<const uint64_t*>(data + frontIterator);
+    frontIterator += sizeof(uint64_t);
+
+    this->signature = *signature;
+
     // read the blob at the bottom of the file
     backIterator -= sizeof(uint32_t);
     const uint32_t* totalSize = reinterpret_cast<const uint32_t*>(data + backIterator);

@@ -67,7 +67,17 @@ void
 BinWriter::WriteInt(int val)
 {
 	// convert to char* and write
-	this->output.write((const char*)&val, sizeof(int));
+	this->output.write((const char*)&val, sizeof(val));
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+BinWriter::WriteInt64(int64_t val)
+{
+	// convert to char* and write
+	this->output.write((const char*)&val, sizeof(val));
 }
 
 //------------------------------------------------------------------------------
@@ -77,7 +87,17 @@ void
 BinWriter::WriteUInt(unsigned val)
 {
 	// convert to char* and write
-	this->output.write((const char*)&val, sizeof(unsigned));
+	this->output.write((const char*)&val, sizeof(val));
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+BinWriter::WriteUInt64(uint64_t val)
+{
+	// convert to char* and write
+	this->output.write((const char*)&val, sizeof(val));
 }
 
 //------------------------------------------------------------------------------
@@ -87,7 +107,7 @@ void
 BinWriter::WriteBool(bool val)
 {
 	// convert to char* and write
-	this->output.write((const char*)&val, sizeof(bool));
+	this->output.write((const char*)&val, sizeof(val));
 }
 
 //------------------------------------------------------------------------------
@@ -97,7 +117,7 @@ void
 BinWriter::WriteFloat(float val)
 {
 	// convert to char* and write
-	this->output.write((const char*)&val, sizeof(float));
+	this->output.write((const char*)&val, sizeof(val));
 }
 
 //------------------------------------------------------------------------------
@@ -107,7 +127,7 @@ void
 BinWriter::WriteDouble(double val)
 {
 	// convert to char* and write
-	this->output.write((const char*)&val, sizeof(double));
+	this->output.write((const char*)&val, sizeof(val));
 }
 
 //------------------------------------------------------------------------------
@@ -117,7 +137,7 @@ void
 BinWriter::WriteShort(short val)
 {
 	// convert to char* and write
-	this->output.write((const char*)&val, sizeof(short));
+	this->output.write((const char*)&val, sizeof(val));
 }
 
 //------------------------------------------------------------------------------

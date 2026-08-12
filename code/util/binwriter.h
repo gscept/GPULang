@@ -34,8 +34,12 @@ public:
 
 	/// write integer
 	void WriteInt(int val);
+	/// write integer
+	void WriteInt64(int64_t val);
 	/// write unsigned integer
 	void WriteUInt(unsigned val);
+	/// write unsigned integer
+	void WriteUInt64(uint64_t val);
 	/// write boolean
 	void WriteBool(bool val);
 	/// write float

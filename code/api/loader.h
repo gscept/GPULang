@@ -32,6 +32,7 @@ struct Loader
     /// Get symbol and cast to it's type
     template<typename T> T* Get(std::string name);
 
+    uint64_t signature;
     std::unordered_map<std::string, GPULang::Deserialize::Deserializable*> nameToObject;
     std::vector<GPULang::Deserialize::Variable*> variables;
 };
