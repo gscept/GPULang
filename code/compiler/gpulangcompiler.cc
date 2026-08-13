@@ -131,30 +131,35 @@ GPULangLoadFile(const std::string_view& path)
 }
 
 
+// 0xFF in each valid lane for a 0..8 byte load (little-endian).
+static const uint64_t SwarLaneMasks[] = {
+    0x0000000000000000ULL,
+    0x00000000000000FFULL,
+    0x000000000000FFFFULL,
+    0x0000000000FFFFFFULL,
+    0x00000000FFFFFFFFULL,
+    0x000000FFFFFFFFFFULL,
+    0x0000FFFFFFFFFFFFULL,
+    0x00FFFFFFFFFFFFFFULL,
+    0xFFFFFFFFFFFFFFFFULL
+};
+
+// High bit set in each byte that is 0x00. No cross-byte carry, no false positives.
+static auto swar_haszero = [](uint64_t x) -> uint64_t
+{
+    return ~(((x & 0x7F7F7F7F7F7F7F7FULL) + 0x7F7F7F7F7F7F7F7FULL) | x) & 0x8080808080808080ULL;
+};
+
 static auto match_mask = [](const char* begin, const char* end, char c) -> uint64_t
 {
     int len = min(end - begin, 8);
-    if (len < 0)
-        return 255;
-    static const uint64_t masks[] = {
-        0x0000000000000000ULL,
-        0x00000000000000FFULL,
-        0x000000000000FFFFULL,
-        0x0000000000FFFFFFULL,
-        0x00000000FFFFFFFFULL,
-        0x000000FFFFFFFFFFULL,
-        0x0000FFFFFFFFFFFFULL,
-        0x00FFFFFFFFFFFFFFULL,
-        0xFFFFFFFFFFFFFFFFULL
-    };
-    uint64_t mask = masks[len];
-    uint64_t byte_mask = 0x0101010101010101ULL * c;
-    uint64_t* wordPtr = (uint64_t*)begin;
-    uint64_t word = 0x0;
-    memcpy(&word, wordPtr, len);
-    //uint64_t word = *(uint64_t*)begin;
-    uint64_t strMask = (word & mask) ^ byte_mask;
-    return (strMask - 0x0101010101010101ULL) & ~strMask & 0x8080808080808080ULL;
+    if (len <= 0)
+        return 0;
+    uint64_t lane = SwarLaneMasks[len];
+    uint64_t word = 0;
+    memcpy(&word, begin, len);
+    uint64_t x = (word ^ (0x0101010101010101ULL * (uint8_t)c)) & lane;
+    return swar_haszero(x) & (lane & 0x8080808080808080ULL);
 };
 
 
@@ -171,17 +176,19 @@ static auto anyCharPos = [](const char* begin, const char* end, const std::initi
     else return CountLeadingZeroes(resultMask) / 8;
 };
 
-// Find position where none of the characters in list are present
+// Find first byte that is not any character in list. 255 = every valid byte was in the list.
 static auto noCharPos = [](const char* begin, const char* end, const std::initializer_list<char>& list) -> uint8_t
 {
-    uint64_t resultMask = 0x0;
+    int len = min(end - begin, 8);
+    if (len <= 0)
+        return 255;
+    uint64_t matched = 0;
     for (auto c : list)
-    {
-        resultMask |= match_mask(begin, end, c);;
-    }
-    resultMask = ~resultMask & 0x8080808080808080ULL;
-    if (resultMask == 0x0) return 255;
-    else return CountLeadingZeroes(resultMask) / 8;
+        matched |= match_mask(begin, end, c);
+    uint64_t absent = ~matched & SwarLaneMasks[len] & 0x8080808080808080ULL;
+    if (absent == 0)
+        return 255;
+    return CountLeadingZeroes(absent) / 8;
 };
 
 static auto charPos = [](const char* begin, const char* end, char c) -> uint8_t
@@ -193,10 +200,13 @@ static auto charPos = [](const char* begin, const char* end, char c) -> uint8_t
 
 static auto notCharPos = [](const char* begin, const char* end, char c) -> uint8_t
 {
-    uint64_t mask = match_mask(begin, end, c);
-    mask = ~mask & 0x8080808080808080ULL;
-    if (mask == 0x0) return 255;
-    else return CountLeadingZeroes(mask) / 8;
+    int len = min(end - begin, 8);
+    if (len <= 0)
+        return 255;
+    uint64_t absent = ~match_mask(begin, end, c) & SwarLaneMasks[len] & 0x8080808080808080ULL;
+    if (absent == 0)
+        return 255;
+    return CountLeadingZeroes(absent) / 8;
 };
 
 static auto lineEnd = [](const char* begin, const char* end) -> const char*
@@ -256,8 +266,7 @@ static auto wordStart = [](const char* begin, const char* end) -> const char*
         uint8_t nonWsOffset = noCharPos(start, end, WHITESPACE_CHARS);
         if (nonWsOffset != 255)
             return start + nonWsOffset;
-        else
-            start += 8;
+        start += min(end - start, 8);
     }
     return end;
 };
@@ -270,8 +279,7 @@ static auto trim = [](const char* begin, const char* end) -> const char*
         uint8_t nonWsOffset = noCharPos(start, end, { ' ' });
         if (nonWsOffset != 255)
             return start + nonWsOffset;
-        else
-            start += 8;
+        start += min(end - start, 8);
     }
     return end;
 };

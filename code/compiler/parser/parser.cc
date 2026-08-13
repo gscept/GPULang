@@ -540,30 +540,37 @@ constexpr StaticMap HardCodedTokens = std::array{
 };
 
 
+
+
+// High bit set in each byte that is 0x00. No cross-byte carry, no false positives.
+static auto swar_haszero = [](uint64_t x) -> uint64_t
+{
+    return ~(((x & 0x7F7F7F7F7F7F7F7FULL) + 0x7F7F7F7F7F7F7F7FULL) | x) & 0x8080808080808080ULL;
+};
+
+// 0xFF in each valid lane for a 0..8 byte load (little-endian).
+static const uint64_t SwarLaneMasks[] = {
+    0x0000000000000000ULL,
+    0x00000000000000FFULL,
+    0x000000000000FFFFULL,
+    0x0000000000FFFFFFULL,
+    0x00000000FFFFFFFFULL,
+    0x000000FFFFFFFFFFULL,
+    0x0000FFFFFFFFFFFFULL,
+    0x00FFFFFFFFFFFFFFULL,
+    0xFFFFFFFFFFFFFFFFULL
+};
+
 static auto match_mask = [](const char* begin, const char* end, char c) -> uint64_t
 {
     int len = min(end - begin, 8);
-    if (len < 0)
-        return 255;
-    static const uint64_t masks[] = {
-        0x0000000000000000ULL,
-        0x00000000000000FFULL,
-        0x000000000000FFFFULL,
-        0x0000000000FFFFFFULL,
-        0x00000000FFFFFFFFULL,
-        0x000000FFFFFFFFFFULL,
-        0x0000FFFFFFFFFFFFULL,
-        0x00FFFFFFFFFFFFFFULL,
-        0xFFFFFFFFFFFFFFFFULL
-    };
-    uint64_t mask = masks[len];
-    uint64_t byte_mask = 0x0101010101010101ULL * c;
-    uint64_t* wordPtr = (uint64_t*)begin;
-    uint64_t word = 0x0;
-    memcpy(&word, wordPtr, len);
-    //uint64_t word = *(uint64_t*)begin;
-    uint64_t strMask = (word & mask) ^ byte_mask;
-    return (strMask - 0x0101010101010101ULL) & ~strMask & 0x8080808080808080ULL;
+    if (len <= 0)
+        return 0;
+    uint64_t lane = SwarLaneMasks[len];
+    uint64_t word = 0;
+    memcpy(&word, begin, len);
+    uint64_t x = (word ^ (0x0101010101010101ULL * (uint8_t)c)) & lane;
+    return swar_haszero(x) & (lane & 0x8080808080808080ULL);
 };
 
 static auto whitespace = [](const char c) -> bool
@@ -571,17 +578,19 @@ static auto whitespace = [](const char c) -> bool
     return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == '\f' || c == '\v';
 };
 
-// Find position where none of the characters in list are present
-static auto noCharPos = [](const char* begin, const char* end, const std::initializer_list<char>& list) -> uint8_t
+// Find first byte that is not any character in list. 255 = every valid byte was in the list.
+static auto noCharPos = [](const char* begin, const char* end, const char* characters, uint8_t numChars) -> uint8_t
 {
-    uint64_t resultMask = 0x0;
-    for (auto c : list)
-    {
-        resultMask |= match_mask(begin, end, c);;
-    }
-    resultMask = ~resultMask & 0x8080808080808080ULL;
-    if (resultMask == 0x0) return 255;
-    else return CountLeadingZeroes(resultMask) / 8;
+    int len = min(end - begin, 8);
+    if (len <= 0)
+        return 255;
+    uint64_t matched = 0;
+    for (int counter = 0; counter < numChars; counter++)
+        matched |= match_mask(begin, end, characters[counter]);
+    uint64_t absent = ~matched & SwarLaneMasks[len] & 0x8080808080808080ULL;
+    if (absent == 0)
+        return 255;
+    return CountLeadingZeroes(absent) / 8;
 };
 
 static auto findCharPos = [](const char* begin, const char* end, char c) -> uint8_t
@@ -591,17 +600,28 @@ static auto findCharPos = [](const char* begin, const char* end, char c) -> uint
     else return CountLeadingZeroes(mask) / 8;
 };
 
-#define WHITESPACE_CHARS {' ', '\t', '\f', '\v'}
+static auto anyCharPos = [](const char* begin, const char* end, const char* characters, uint8_t numChars) -> uint8_t
+{
+    uint64_t matched = 0;
+    for (int counter = 0; counter < numChars; counter++)
+        matched |= match_mask(begin, end, characters[counter]);
+    if (matched == 0)
+        return 255;
+    return CountLeadingZeroes(matched) / 8;
+};
+
+static const char WHITESPACE_CHARS[] = {' ', '\t', '\f', '\v'};
+static const char EOL_CHARS[] = { '\n', '\0' };
 
 static auto skipWS = [](const char* begin, const char* end) -> const char*
 {
     const char* start = begin;
     while (start < end)
     {
-        if ((CharacterClassTable[start[0]] & WHITESPACE_CHARACTER) == WHITESPACE_CHARACTER)
-            start++;
-        else
-            return start;
+        uint8_t nonWsOffset = noCharPos(start, end, WHITESPACE_CHARS, sizeof(WHITESPACE_CHARS) / sizeof(WHITESPACE_CHARS[0]));
+        if (nonWsOffset != 255)
+            return start + nonWsOffset;
+        start += min(end - start, 8);
     }
     return end;
 };
@@ -611,10 +631,10 @@ static auto lineEnd = [](const char* begin, const char* end) -> const char*
     const char* start = begin;
     while (start < end)
     {
-        if ((CharacterClassTable[start[0]] & EOL_CHARACTER) != EOL_CHARACTER)
-            start++;
-        else
-            return start+1;
+        uint8_t eolOffset = anyCharPos(start, end, EOL_CHARS, sizeof(EOL_CHARS) / sizeof(EOL_CHARS[0]));
+        if (eolOffset != 255)
+            return start + eolOffset + 1;
+        start += min(end - start, 8);
     }
     return end;
 };
