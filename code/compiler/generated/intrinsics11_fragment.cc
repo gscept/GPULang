@@ -9,6 +9,53 @@
 #include "compiler.h"
 namespace GPULang
 {
+/// textureGetSizeMip with Texture3D, UInt32
+Variable TextureGetSizeMip_Texture3D_texture;
+inline constexpr std::array TextureGetSizeMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureGetSizeMip_Texture3D_mip;
+Function TextureGetSizeMip_Texture3D;
+inline constexpr std::array TextureGetSizeMip_Texture3D_args = { &TextureGetSizeMip_Texture3D_texture, &TextureGetSizeMip_Texture3D_mip };
+
+/// textureGetSizeMip with TextureCube, UInt32
+Variable TextureGetSizeMip_TextureCube_texture;
+inline constexpr std::array TextureGetSizeMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureGetSizeMip_TextureCube_mip;
+Function TextureGetSizeMip_TextureCube;
+inline constexpr std::array TextureGetSizeMip_TextureCube_args = { &TextureGetSizeMip_TextureCube_texture, &TextureGetSizeMip_TextureCube_mip };
+
+/// textureGetSizeMip with Texture1DArray, UInt32
+Variable TextureGetSizeMip_Texture1DArray_texture;
+inline constexpr std::array TextureGetSizeMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureGetSizeMip_Texture1DArray_mip;
+Function TextureGetSizeMip_Texture1DArray;
+inline constexpr std::array TextureGetSizeMip_Texture1DArray_args = { &TextureGetSizeMip_Texture1DArray_texture, &TextureGetSizeMip_Texture1DArray_mip };
+
+/// textureGetSizeMip with Texture2DArray, UInt32
+Variable TextureGetSizeMip_Texture2DArray_texture;
+inline constexpr std::array TextureGetSizeMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureGetSizeMip_Texture2DArray_mip;
+Function TextureGetSizeMip_Texture2DArray;
+inline constexpr std::array TextureGetSizeMip_Texture2DArray_args = { &TextureGetSizeMip_Texture2DArray_texture, &TextureGetSizeMip_Texture2DArray_mip };
+
+/// textureGetSizeMip with TextureCubeArray, UInt32
+Variable TextureGetSizeMip_TextureCubeArray_texture;
+inline constexpr std::array TextureGetSizeMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureGetSizeMip_TextureCubeArray_mip;
+Function TextureGetSizeMip_TextureCubeArray;
+inline constexpr std::array TextureGetSizeMip_TextureCubeArray_args = { &TextureGetSizeMip_TextureCubeArray_texture, &TextureGetSizeMip_TextureCubeArray_mip };
+
+/// textureGetMips with Texture1D
+Variable TextureGetMips_Texture1D_texture;
+inline constexpr std::array TextureGetMips_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetMips_Texture1D_texture_modifierValues = {(Expression*)nullptr};
+Function TextureGetMips_Texture1D;
+inline constexpr std::array TextureGetMips_Texture1D_args = { &TextureGetMips_Texture1D_texture };
+
 /// textureGetMips with Texture2D
 Variable TextureGetMips_Texture2D_texture;
 inline constexpr std::array TextureGetMips_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
@@ -1168,73 +1215,130 @@ Variable SampledTextureSampleProjOffset_Texture2D_offset;
 Function SampledTextureSampleProjOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleProjOffset_Texture2D_args = { &SampledTextureSampleProjOffset_Texture2D_texture, &SampledTextureSampleProjOffset_Texture2D_coordinate, &SampledTextureSampleProjOffset_Texture2D_proj, &SampledTextureSampleProjOffset_Texture2D_offset };
 
-/// textureSampleProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
-Variable TextureSampleProjOffset_Texture3D_texture;
-inline constexpr std::array TextureSampleProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureSampleProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureSampleProjOffset_Texture3D_sampler;
-inline constexpr std::array TextureSampleProjOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureSampleProjOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureSampleProjOffset_Texture3D_coordinate;
-Variable TextureSampleProjOffset_Texture3D_proj;
-Variable TextureSampleProjOffset_Texture3D_offset;
-Function TextureSampleProjOffset_Texture3D;
-inline constexpr std::array TextureSampleProjOffset_Texture3D_args = { &TextureSampleProjOffset_Texture3D_texture, &TextureSampleProjOffset_Texture3D_sampler, &TextureSampleProjOffset_Texture3D_coordinate, &TextureSampleProjOffset_Texture3D_proj, &TextureSampleProjOffset_Texture3D_offset };
-
-/// textureSampleProjOffset with SampledTexture3D, Float32x3, Float32, Float32x3
-Variable SampledTextureSampleProjOffset_Texture3D_texture;
-inline constexpr std::array SampledTextureSampleProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureSampleProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureSampleProjOffset_Texture3D_coordinate;
-Variable SampledTextureSampleProjOffset_Texture3D_proj;
-Variable SampledTextureSampleProjOffset_Texture3D_offset;
-Function SampledTextureSampleProjOffset_Texture3D;
-inline constexpr std::array SampledTextureSampleProjOffset_Texture3D_args = { &SampledTextureSampleProjOffset_Texture3D_texture, &SampledTextureSampleProjOffset_Texture3D_coordinate, &SampledTextureSampleProjOffset_Texture3D_proj, &SampledTextureSampleProjOffset_Texture3D_offset };
-
-/// textureSampleCompare with Texture1D, Sampler, Float32, Float32
-Variable TextureSampleCompare_Texture1D_texture;
-inline constexpr std::array TextureSampleCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureSampleCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureSampleCompare_Texture1D_sampler;
-inline constexpr std::array TextureSampleCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureSampleCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureSampleCompare_Texture1D_coordinate;
-Variable TextureSampleCompare_Texture1D_compare;
-Function TextureSampleCompare_Texture1D;
-inline constexpr std::array TextureSampleCompare_Texture1D_args = { &TextureSampleCompare_Texture1D_texture, &TextureSampleCompare_Texture1D_sampler, &TextureSampleCompare_Texture1D_coordinate, &TextureSampleCompare_Texture1D_compare };
-
-/// textureSampleCompare with SampledTexture1D, Float32, Float32
-Variable SampledTextureSampleCompare_Texture1D_texture;
-inline constexpr std::array SampledTextureSampleCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureSampleCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureSampleCompare_Texture1D_coordinate;
-Variable SampledTextureSampleCompare_Texture1D_compare;
-Function SampledTextureSampleCompare_Texture1D;
-inline constexpr std::array SampledTextureSampleCompare_Texture1D_args = { &SampledTextureSampleCompare_Texture1D_texture, &SampledTextureSampleCompare_Texture1D_coordinate, &SampledTextureSampleCompare_Texture1D_compare };
-
-/// textureSampleCompare with Texture2D, Sampler, Float32x2, Float32
-Variable TextureSampleCompare_Texture2D_texture;
-inline constexpr std::array TextureSampleCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureSampleCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureSampleCompare_Texture2D_sampler;
-inline constexpr std::array TextureSampleCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureSampleCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureSampleCompare_Texture2D_coordinate;
-Variable TextureSampleCompare_Texture2D_compare;
-Function TextureSampleCompare_Texture2D;
-inline constexpr std::array TextureSampleCompare_Texture2D_args = { &TextureSampleCompare_Texture2D_texture, &TextureSampleCompare_Texture2D_sampler, &TextureSampleCompare_Texture2D_coordinate, &TextureSampleCompare_Texture2D_compare };
-
-/// textureSampleCompare with SampledTexture2D, Float32x2, Float32
-Variable SampledTextureSampleCompare_Texture2D_texture;
-inline constexpr std::array SampledTextureSampleCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureSampleCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureSampleCompare_Texture2D_coordinate;
-Variable SampledTextureSampleCompare_Texture2D_compare;
-Function SampledTextureSampleCompare_Texture2D;
-inline constexpr std::array SampledTextureSampleCompare_Texture2D_args = { &SampledTextureSampleCompare_Texture2D_texture, &SampledTextureSampleCompare_Texture2D_coordinate, &SampledTextureSampleCompare_Texture2D_compare };
-
 void SetupIntrinsics11()
 {
+    /// textureGetSizeMip with Texture3D, UInt32
+    TextureGetSizeMip_Texture3D_texture.name = "texture"_c;
+    TextureGetSizeMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureGetSizeMip_Texture3D_texture.type.strict = true;
+    TextureGetSizeMip_Texture3D_texture.type.modifiers = TextureGetSizeMip_Texture3D_texture_modifiers;
+    TextureGetSizeMip_Texture3D_texture.type.modifierValues = TextureGetSizeMip_Texture3D_texture_modifierValues;
+    TextureGetSizeMip_Texture3D_mip.name = "mip"_c;
+    TextureGetSizeMip_Texture3D_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_Texture3D.documentation = "Get the size of a texture at a specific mip level"_c;
+    TextureGetSizeMip_Texture3D.name = TextureGetSizeMip_Texture3D_name;
+    TextureGetSizeMip_Texture3D.backendIndex = 2374;
+    TextureGetSizeMip_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
+    TextureGetSizeMip_Texture3D.parameters = TextureGetSizeMip_Texture3D_args;
+    Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureGetSizeMip_Texture3D_mip)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->signature = "textureGetSizeMip(uniform *texture3D,u32) u32x3"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->name = "textureGetSizeMip(uniform *texture3D,u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture3D, mip : u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->returnTypeSymbol = &UInt32x3Type;
+
+    /// textureGetSizeMip with TextureCube, UInt32
+    TextureGetSizeMip_TextureCube_texture.name = "texture"_c;
+    TextureGetSizeMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureGetSizeMip_TextureCube_texture.type.strict = true;
+    TextureGetSizeMip_TextureCube_texture.type.modifiers = TextureGetSizeMip_TextureCube_texture_modifiers;
+    TextureGetSizeMip_TextureCube_texture.type.modifierValues = TextureGetSizeMip_TextureCube_texture_modifierValues;
+    TextureGetSizeMip_TextureCube_mip.name = "mip"_c;
+    TextureGetSizeMip_TextureCube_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_TextureCube.documentation = "Get the size of a texture at a specific mip level"_c;
+    TextureGetSizeMip_TextureCube.name = TextureGetSizeMip_TextureCube_name;
+    TextureGetSizeMip_TextureCube.backendIndex = 2375;
+    TextureGetSizeMip_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
+    TextureGetSizeMip_TextureCube.parameters = TextureGetSizeMip_TextureCube_args;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCube_mip)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->signature = "textureGetSizeMip(uniform *textureCube,u32) u32x3"_c;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->name = "textureGetSizeMip(uniform *textureCube,u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->nameWithVarNames = "textureGetSizeMip(texture : uniform *textureCube, mip : u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->returnTypeSymbol = &UInt32x3Type;
+
+    /// textureGetSizeMip with Texture1DArray, UInt32
+    TextureGetSizeMip_Texture1DArray_texture.name = "texture"_c;
+    TextureGetSizeMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureGetSizeMip_Texture1DArray_texture.type.strict = true;
+    TextureGetSizeMip_Texture1DArray_texture.type.modifiers = TextureGetSizeMip_Texture1DArray_texture_modifiers;
+    TextureGetSizeMip_Texture1DArray_texture.type.modifierValues = TextureGetSizeMip_Texture1DArray_texture_modifierValues;
+    TextureGetSizeMip_Texture1DArray_mip.name = "mip"_c;
+    TextureGetSizeMip_Texture1DArray_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_Texture1DArray.documentation = "Get the size of a texture at a specific mip level"_c;
+    TextureGetSizeMip_Texture1DArray.name = TextureGetSizeMip_Texture1DArray_name;
+    TextureGetSizeMip_Texture1DArray.backendIndex = 2376;
+    TextureGetSizeMip_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
+    TextureGetSizeMip_Texture1DArray.parameters = TextureGetSizeMip_Texture1DArray_args;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_mip)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->signature = "textureGetSizeMip(uniform *texture1DArray,u32) u32x2"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->name = "textureGetSizeMip(uniform *texture1DArray,u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture1DArray, mip : u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->returnTypeSymbol = &UInt32x2Type;
+
+    /// textureGetSizeMip with Texture2DArray, UInt32
+    TextureGetSizeMip_Texture2DArray_texture.name = "texture"_c;
+    TextureGetSizeMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureGetSizeMip_Texture2DArray_texture.type.strict = true;
+    TextureGetSizeMip_Texture2DArray_texture.type.modifiers = TextureGetSizeMip_Texture2DArray_texture_modifiers;
+    TextureGetSizeMip_Texture2DArray_texture.type.modifierValues = TextureGetSizeMip_Texture2DArray_texture_modifierValues;
+    TextureGetSizeMip_Texture2DArray_mip.name = "mip"_c;
+    TextureGetSizeMip_Texture2DArray_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_Texture2DArray.documentation = "Get the size of a texture at a specific mip level"_c;
+    TextureGetSizeMip_Texture2DArray.name = TextureGetSizeMip_Texture2DArray_name;
+    TextureGetSizeMip_Texture2DArray.backendIndex = 2377;
+    TextureGetSizeMip_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
+    TextureGetSizeMip_Texture2DArray.parameters = TextureGetSizeMip_Texture2DArray_args;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_mip)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->signature = "textureGetSizeMip(uniform *texture2DArray,u32) u32x3"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->name = "textureGetSizeMip(uniform *texture2DArray,u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture2DArray, mip : u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->returnTypeSymbol = &UInt32x3Type;
+
+    /// textureGetSizeMip with TextureCubeArray, UInt32
+    TextureGetSizeMip_TextureCubeArray_texture.name = "texture"_c;
+    TextureGetSizeMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureGetSizeMip_TextureCubeArray_texture.type.strict = true;
+    TextureGetSizeMip_TextureCubeArray_texture.type.modifiers = TextureGetSizeMip_TextureCubeArray_texture_modifiers;
+    TextureGetSizeMip_TextureCubeArray_texture.type.modifierValues = TextureGetSizeMip_TextureCubeArray_texture_modifierValues;
+    TextureGetSizeMip_TextureCubeArray_mip.name = "mip"_c;
+    TextureGetSizeMip_TextureCubeArray_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_TextureCubeArray.documentation = "Get the size of a texture at a specific mip level"_c;
+    TextureGetSizeMip_TextureCubeArray.name = TextureGetSizeMip_TextureCubeArray_name;
+    TextureGetSizeMip_TextureCubeArray.backendIndex = 2378;
+    TextureGetSizeMip_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
+    TextureGetSizeMip_TextureCubeArray.parameters = TextureGetSizeMip_TextureCubeArray_args;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_mip)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->signature = "textureGetSizeMip(uniform *textureCubeArray,u32) u32x4"_c;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->name = "textureGetSizeMip(uniform *textureCubeArray,u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *textureCubeArray, mip : u32)"_c;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->returnTypeSymbol = &UInt32x4Type;
+
+    /// textureGetMips with Texture1D
+    TextureGetMips_Texture1D_texture.name = "texture"_c;
+    TextureGetMips_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureGetMips_Texture1D_texture.type.modifiers = TextureGetMips_Texture1D_texture_modifiers;
+    TextureGetMips_Texture1D_texture.type.modifierValues = TextureGetMips_Texture1D_texture_modifierValues;
+    TextureGetMips_Texture1D.documentation = "Get the number of mips in a texture"_c;
+    TextureGetMips_Texture1D.name = TextureGetMips_Texture1D_name;
+    TextureGetMips_Texture1D.backendIndex = 2379;
+    TextureGetMips_Texture1D.returnType = Type::FullType { Texture1DType.name };
+    TextureGetMips_Texture1D.parameters = TextureGetMips_Texture1D_args;
+    Symbol::Resolved(&TextureGetMips_Texture1D_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureGetMips_Texture1D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureGetMips_Texture1D)->signature = "textureGetMips(uniform *texture1D) texture1D"_c;
+    Symbol::Resolved(&TextureGetMips_Texture1D)->name = "textureGetMips(uniform *texture1D)"_c;
+    Symbol::Resolved(&TextureGetMips_Texture1D)->nameWithVarNames = "textureGetMips(texture : uniform *texture1D)"_c;
+    Symbol::Resolved(&TextureGetMips_Texture1D)->returnTypeSymbol = &Texture1DType;
+
     /// textureGetMips with Texture2D
     TextureGetMips_Texture2D_texture.name = "texture"_c;
     TextureGetMips_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
@@ -1242,7 +1346,7 @@ void SetupIntrinsics11()
     TextureGetMips_Texture2D_texture.type.modifierValues = TextureGetMips_Texture2D_texture_modifierValues;
     TextureGetMips_Texture2D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture2D.name = TextureGetMips_Texture2D_name;
-    TextureGetMips_Texture2D.backendIndex = 2374;
+    TextureGetMips_Texture2D.backendIndex = 2380;
     TextureGetMips_Texture2D.returnType = Type::FullType { Texture2DType.name };
     TextureGetMips_Texture2D.parameters = TextureGetMips_Texture2D_args;
     Symbol::Resolved(&TextureGetMips_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -1259,7 +1363,7 @@ void SetupIntrinsics11()
     TextureGetMips_Texture3D_texture.type.modifierValues = TextureGetMips_Texture3D_texture_modifierValues;
     TextureGetMips_Texture3D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture3D.name = TextureGetMips_Texture3D_name;
-    TextureGetMips_Texture3D.backendIndex = 2375;
+    TextureGetMips_Texture3D.backendIndex = 2381;
     TextureGetMips_Texture3D.returnType = Type::FullType { Texture3DType.name };
     TextureGetMips_Texture3D.parameters = TextureGetMips_Texture3D_args;
     Symbol::Resolved(&TextureGetMips_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -1276,7 +1380,7 @@ void SetupIntrinsics11()
     TextureGetMips_TextureCube_texture.type.modifierValues = TextureGetMips_TextureCube_texture_modifierValues;
     TextureGetMips_TextureCube.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_TextureCube.name = TextureGetMips_TextureCube_name;
-    TextureGetMips_TextureCube.backendIndex = 2376;
+    TextureGetMips_TextureCube.backendIndex = 2382;
     TextureGetMips_TextureCube.returnType = Type::FullType { TextureCubeType.name };
     TextureGetMips_TextureCube.parameters = TextureGetMips_TextureCube_args;
     Symbol::Resolved(&TextureGetMips_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -1293,7 +1397,7 @@ void SetupIntrinsics11()
     TextureGetMips_Texture1DArray_texture.type.modifierValues = TextureGetMips_Texture1DArray_texture_modifierValues;
     TextureGetMips_Texture1DArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture1DArray.name = TextureGetMips_Texture1DArray_name;
-    TextureGetMips_Texture1DArray.backendIndex = 2377;
+    TextureGetMips_Texture1DArray.backendIndex = 2383;
     TextureGetMips_Texture1DArray.returnType = Type::FullType { Texture1DArrayType.name };
     TextureGetMips_Texture1DArray.parameters = TextureGetMips_Texture1DArray_args;
     Symbol::Resolved(&TextureGetMips_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -1310,7 +1414,7 @@ void SetupIntrinsics11()
     TextureGetMips_Texture2DArray_texture.type.modifierValues = TextureGetMips_Texture2DArray_texture_modifierValues;
     TextureGetMips_Texture2DArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture2DArray.name = TextureGetMips_Texture2DArray_name;
-    TextureGetMips_Texture2DArray.backendIndex = 2378;
+    TextureGetMips_Texture2DArray.backendIndex = 2384;
     TextureGetMips_Texture2DArray.returnType = Type::FullType { Texture2DArrayType.name };
     TextureGetMips_Texture2DArray.parameters = TextureGetMips_Texture2DArray_args;
     Symbol::Resolved(&TextureGetMips_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -1327,7 +1431,7 @@ void SetupIntrinsics11()
     TextureGetMips_TextureCubeArray_texture.type.modifierValues = TextureGetMips_TextureCubeArray_texture_modifierValues;
     TextureGetMips_TextureCubeArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_TextureCubeArray.name = TextureGetMips_TextureCubeArray_name;
-    TextureGetMips_TextureCubeArray.backendIndex = 2379;
+    TextureGetMips_TextureCubeArray.backendIndex = 2385;
     TextureGetMips_TextureCubeArray.returnType = Type::FullType { TextureCubeArrayType.name };
     TextureGetMips_TextureCubeArray.parameters = TextureGetMips_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetMips_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -1344,7 +1448,7 @@ void SetupIntrinsics11()
     TextureGetSamples_Texture2DMS_texture.type.modifierValues = TextureGetSamples_Texture2DMS_texture_modifierValues;
     TextureGetSamples_Texture2DMS.documentation = "Get the number of samples in a multisampled texture"_c;
     TextureGetSamples_Texture2DMS.name = TextureGetSamples_Texture2DMS_name;
-    TextureGetSamples_Texture2DMS.backendIndex = 2380;
+    TextureGetSamples_Texture2DMS.backendIndex = 2386;
     TextureGetSamples_Texture2DMS.returnType = Type::FullType { Texture2DMSType.name };
     TextureGetSamples_Texture2DMS.parameters = TextureGetSamples_Texture2DMS_args;
     Symbol::Resolved(&TextureGetSamples_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
@@ -1361,7 +1465,7 @@ void SetupIntrinsics11()
     TextureGetSamples_Texture2DMSArray_texture.type.modifierValues = TextureGetSamples_Texture2DMSArray_texture_modifierValues;
     TextureGetSamples_Texture2DMSArray.documentation = "Get the number of samples in a multisampled texture"_c;
     TextureGetSamples_Texture2DMSArray.name = TextureGetSamples_Texture2DMSArray_name;
-    TextureGetSamples_Texture2DMSArray.backendIndex = 2381;
+    TextureGetSamples_Texture2DMSArray.backendIndex = 2387;
     TextureGetSamples_Texture2DMSArray.returnType = Type::FullType { Texture2DMSArrayType.name };
     TextureGetSamples_Texture2DMSArray.parameters = TextureGetSamples_Texture2DMSArray_args;
     Symbol::Resolved(&TextureGetSamples_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
@@ -1384,7 +1488,7 @@ void SetupIntrinsics11()
     TextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture1D.name = TextureGetSampledMip_Texture1D_name;
-    TextureGetSampledMip_Texture1D.backendIndex = 2382;
+    TextureGetSampledMip_Texture1D.backendIndex = 2388;
     TextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture1D.parameters = TextureGetSampledMip_Texture1D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -1406,7 +1510,7 @@ void SetupIntrinsics11()
     SampledTextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture1D.name = SampledTextureGetSampledMip_Texture1D_name;
-    SampledTextureGetSampledMip_Texture1D.backendIndex = 2383;
+    SampledTextureGetSampledMip_Texture1D.backendIndex = 2389;
     SampledTextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1D.parameters = SampledTextureGetSampledMip_Texture1D_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
@@ -1430,7 +1534,7 @@ void SetupIntrinsics11()
     TextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture2D.name = TextureGetSampledMip_Texture2D_name;
-    TextureGetSampledMip_Texture2D.backendIndex = 2384;
+    TextureGetSampledMip_Texture2D.backendIndex = 2390;
     TextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture2D.parameters = TextureGetSampledMip_Texture2D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -1452,7 +1556,7 @@ void SetupIntrinsics11()
     SampledTextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture2D.name = SampledTextureGetSampledMip_Texture2D_name;
-    SampledTextureGetSampledMip_Texture2D.backendIndex = 2385;
+    SampledTextureGetSampledMip_Texture2D.backendIndex = 2391;
     SampledTextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2D.parameters = SampledTextureGetSampledMip_Texture2D_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
@@ -1476,7 +1580,7 @@ void SetupIntrinsics11()
     TextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture3D.name = TextureGetSampledMip_Texture3D_name;
-    TextureGetSampledMip_Texture3D.backendIndex = 2386;
+    TextureGetSampledMip_Texture3D.backendIndex = 2392;
     TextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture3D.parameters = TextureGetSampledMip_Texture3D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -1498,7 +1602,7 @@ void SetupIntrinsics11()
     SampledTextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture3D.name = SampledTextureGetSampledMip_Texture3D_name;
-    SampledTextureGetSampledMip_Texture3D.backendIndex = 2387;
+    SampledTextureGetSampledMip_Texture3D.backendIndex = 2393;
     SampledTextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture3D.parameters = SampledTextureGetSampledMip_Texture3D_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
@@ -1522,7 +1626,7 @@ void SetupIntrinsics11()
     TextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_TextureCube.name = TextureGetSampledMip_TextureCube_name;
-    TextureGetSampledMip_TextureCube.backendIndex = 2388;
+    TextureGetSampledMip_TextureCube.backendIndex = 2394;
     TextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_TextureCube.parameters = TextureGetSampledMip_TextureCube_args;
     Symbol::Resolved(&TextureGetSampledMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -1544,7 +1648,7 @@ void SetupIntrinsics11()
     SampledTextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_TextureCube.name = SampledTextureGetSampledMip_TextureCube_name;
-    SampledTextureGetSampledMip_TextureCube.backendIndex = 2389;
+    SampledTextureGetSampledMip_TextureCube.backendIndex = 2395;
     SampledTextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_TextureCube.parameters = SampledTextureGetSampledMip_TextureCube_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
@@ -1568,7 +1672,7 @@ void SetupIntrinsics11()
     TextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture1DArray.name = TextureGetSampledMip_Texture1DArray_name;
-    TextureGetSampledMip_Texture1DArray.backendIndex = 2390;
+    TextureGetSampledMip_Texture1DArray.backendIndex = 2396;
     TextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture1DArray.parameters = TextureGetSampledMip_Texture1DArray_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -1590,7 +1694,7 @@ void SetupIntrinsics11()
     SampledTextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture1DArray.name = SampledTextureGetSampledMip_Texture1DArray_name;
-    SampledTextureGetSampledMip_Texture1DArray.backendIndex = 2391;
+    SampledTextureGetSampledMip_Texture1DArray.backendIndex = 2397;
     SampledTextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1DArray.parameters = SampledTextureGetSampledMip_Texture1DArray_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
@@ -1614,7 +1718,7 @@ void SetupIntrinsics11()
     TextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture2DArray.name = TextureGetSampledMip_Texture2DArray_name;
-    TextureGetSampledMip_Texture2DArray.backendIndex = 2392;
+    TextureGetSampledMip_Texture2DArray.backendIndex = 2398;
     TextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture2DArray.parameters = TextureGetSampledMip_Texture2DArray_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -1636,7 +1740,7 @@ void SetupIntrinsics11()
     SampledTextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture2DArray.name = SampledTextureGetSampledMip_Texture2DArray_name;
-    SampledTextureGetSampledMip_Texture2DArray.backendIndex = 2393;
+    SampledTextureGetSampledMip_Texture2DArray.backendIndex = 2399;
     SampledTextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2DArray.parameters = SampledTextureGetSampledMip_Texture2DArray_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
@@ -1660,7 +1764,7 @@ void SetupIntrinsics11()
     TextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_TextureCubeArray.name = TextureGetSampledMip_TextureCubeArray_name;
-    TextureGetSampledMip_TextureCubeArray.backendIndex = 2394;
+    TextureGetSampledMip_TextureCubeArray.backendIndex = 2400;
     TextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_TextureCubeArray.parameters = TextureGetSampledMip_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -1682,7 +1786,7 @@ void SetupIntrinsics11()
     SampledTextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_TextureCubeArray.name = SampledTextureGetSampledMip_TextureCubeArray_name;
-    SampledTextureGetSampledMip_TextureCubeArray.backendIndex = 2395;
+    SampledTextureGetSampledMip_TextureCubeArray.backendIndex = 2401;
     SampledTextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_TextureCubeArray.parameters = SampledTextureGetSampledMip_TextureCubeArray_args;
     Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
@@ -1704,7 +1808,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureLoad_Texture1D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture1D.name = TextureLoad_Texture1D_name;
-    TextureLoad_Texture1D.backendIndex = 2396;
+    TextureLoad_Texture1D.backendIndex = 2402;
     TextureLoad_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture1D.parameters = TextureLoad_Texture1D_args;
     Symbol::Resolved(&TextureLoad_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -1728,7 +1832,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture1D_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture1D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture1D.name = TextureLoadMip_Texture1D_name;
-    TextureLoadMip_Texture1D.backendIndex = 2397;
+    TextureLoadMip_Texture1D.backendIndex = 2403;
     TextureLoadMip_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture1D.parameters = TextureLoadMip_Texture1D_args;
     Symbol::Resolved(&TextureLoadMip_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -1753,7 +1857,7 @@ void SetupIntrinsics11()
     TextureStore_Texture1D_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_Texture1D.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture1D.name = TextureStore_Texture1D_name;
-    TextureStore_Texture1D.backendIndex = 2398;
+    TextureStore_Texture1D.backendIndex = 2404;
     TextureStore_Texture1D.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture1D.parameters = TextureStore_Texture1D_args;
     Symbol::Resolved(&TextureStore_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -1780,7 +1884,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture1D_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_Texture1D.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture1D.name = TextureStoreMip_Texture1D_name;
-    TextureStoreMip_Texture1D.backendIndex = 2399;
+    TextureStoreMip_Texture1D.backendIndex = 2405;
     TextureStoreMip_Texture1D.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture1D.parameters = TextureStoreMip_Texture1D_args;
     Symbol::Resolved(&TextureStoreMip_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -1804,7 +1908,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoad_Texture2D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2D.name = TextureLoad_Texture2D_name;
-    TextureLoad_Texture2D.backendIndex = 2400;
+    TextureLoad_Texture2D.backendIndex = 2406;
     TextureLoad_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture2D.parameters = TextureLoad_Texture2D_args;
     Symbol::Resolved(&TextureLoad_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -1828,7 +1932,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture2D_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture2D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2D.name = TextureLoadMip_Texture2D_name;
-    TextureLoadMip_Texture2D.backendIndex = 2401;
+    TextureLoadMip_Texture2D.backendIndex = 2407;
     TextureLoadMip_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture2D.parameters = TextureLoadMip_Texture2D_args;
     Symbol::Resolved(&TextureLoadMip_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -1853,7 +1957,7 @@ void SetupIntrinsics11()
     TextureStore_Texture2D_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_Texture2D.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2D.name = TextureStore_Texture2D_name;
-    TextureStore_Texture2D.backendIndex = 2402;
+    TextureStore_Texture2D.backendIndex = 2408;
     TextureStore_Texture2D.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture2D.parameters = TextureStore_Texture2D_args;
     Symbol::Resolved(&TextureStore_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -1880,7 +1984,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture2D_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_Texture2D.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2D.name = TextureStoreMip_Texture2D_name;
-    TextureStoreMip_Texture2D.backendIndex = 2403;
+    TextureStoreMip_Texture2D.backendIndex = 2409;
     TextureStoreMip_Texture2D.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture2D.parameters = TextureStoreMip_Texture2D_args;
     Symbol::Resolved(&TextureStoreMip_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -1904,7 +2008,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoad_Texture3D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture3D.name = TextureLoad_Texture3D_name;
-    TextureLoad_Texture3D.backendIndex = 2404;
+    TextureLoad_Texture3D.backendIndex = 2410;
     TextureLoad_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture3D.parameters = TextureLoad_Texture3D_args;
     Symbol::Resolved(&TextureLoad_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -1928,7 +2032,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture3D_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture3D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture3D.name = TextureLoadMip_Texture3D_name;
-    TextureLoadMip_Texture3D.backendIndex = 2405;
+    TextureLoadMip_Texture3D.backendIndex = 2411;
     TextureLoadMip_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture3D.parameters = TextureLoadMip_Texture3D_args;
     Symbol::Resolved(&TextureLoadMip_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -1953,7 +2057,7 @@ void SetupIntrinsics11()
     TextureStore_Texture3D_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_Texture3D.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture3D.name = TextureStore_Texture3D_name;
-    TextureStore_Texture3D.backendIndex = 2406;
+    TextureStore_Texture3D.backendIndex = 2412;
     TextureStore_Texture3D.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture3D.parameters = TextureStore_Texture3D_args;
     Symbol::Resolved(&TextureStore_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -1980,7 +2084,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture3D_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_Texture3D.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture3D.name = TextureStoreMip_Texture3D_name;
-    TextureStoreMip_Texture3D.backendIndex = 2407;
+    TextureStoreMip_Texture3D.backendIndex = 2413;
     TextureStoreMip_Texture3D.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture3D.parameters = TextureStoreMip_Texture3D_args;
     Symbol::Resolved(&TextureStoreMip_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -2004,7 +2108,7 @@ void SetupIntrinsics11()
     TextureLoad_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoad_TextureCube.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_TextureCube.name = TextureLoad_TextureCube_name;
-    TextureLoad_TextureCube.backendIndex = 2408;
+    TextureLoad_TextureCube.backendIndex = 2414;
     TextureLoad_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_TextureCube.parameters = TextureLoad_TextureCube_args;
     Symbol::Resolved(&TextureLoad_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -2028,7 +2132,7 @@ void SetupIntrinsics11()
     TextureLoadMip_TextureCube_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_TextureCube.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_TextureCube.name = TextureLoadMip_TextureCube_name;
-    TextureLoadMip_TextureCube.backendIndex = 2409;
+    TextureLoadMip_TextureCube.backendIndex = 2415;
     TextureLoadMip_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_TextureCube.parameters = TextureLoadMip_TextureCube_args;
     Symbol::Resolved(&TextureLoadMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -2053,7 +2157,7 @@ void SetupIntrinsics11()
     TextureStore_TextureCube_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_TextureCube.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_TextureCube.name = TextureStore_TextureCube_name;
-    TextureStore_TextureCube.backendIndex = 2410;
+    TextureStore_TextureCube.backendIndex = 2416;
     TextureStore_TextureCube.returnType = Type::FullType { VoidType.name };
     TextureStore_TextureCube.parameters = TextureStore_TextureCube_args;
     Symbol::Resolved(&TextureStore_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -2080,7 +2184,7 @@ void SetupIntrinsics11()
     TextureStoreMip_TextureCube_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_TextureCube.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_TextureCube.name = TextureStoreMip_TextureCube_name;
-    TextureStoreMip_TextureCube.backendIndex = 2411;
+    TextureStoreMip_TextureCube.backendIndex = 2417;
     TextureStoreMip_TextureCube.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_TextureCube.parameters = TextureStoreMip_TextureCube_args;
     Symbol::Resolved(&TextureStoreMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -2104,7 +2208,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoad_Texture1DArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture1DArray.name = TextureLoad_Texture1DArray_name;
-    TextureLoad_Texture1DArray.backendIndex = 2412;
+    TextureLoad_Texture1DArray.backendIndex = 2418;
     TextureLoad_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture1DArray.parameters = TextureLoad_Texture1DArray_args;
     Symbol::Resolved(&TextureLoad_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2128,7 +2232,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture1DArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture1DArray.name = TextureLoadMip_Texture1DArray_name;
-    TextureLoadMip_Texture1DArray.backendIndex = 2413;
+    TextureLoadMip_Texture1DArray.backendIndex = 2419;
     TextureLoadMip_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture1DArray.parameters = TextureLoadMip_Texture1DArray_args;
     Symbol::Resolved(&TextureLoadMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2153,7 +2257,7 @@ void SetupIntrinsics11()
     TextureStore_Texture1DArray_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_Texture1DArray.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture1DArray.name = TextureStore_Texture1DArray_name;
-    TextureStore_Texture1DArray.backendIndex = 2414;
+    TextureStore_Texture1DArray.backendIndex = 2420;
     TextureStore_Texture1DArray.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture1DArray.parameters = TextureStore_Texture1DArray_args;
     Symbol::Resolved(&TextureStore_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2180,7 +2284,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture1DArray_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_Texture1DArray.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture1DArray.name = TextureStoreMip_Texture1DArray_name;
-    TextureStoreMip_Texture1DArray.backendIndex = 2415;
+    TextureStoreMip_Texture1DArray.backendIndex = 2421;
     TextureStoreMip_Texture1DArray.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture1DArray.parameters = TextureStoreMip_Texture1DArray_args;
     Symbol::Resolved(&TextureStoreMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2204,7 +2308,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoad_Texture2DArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DArray.name = TextureLoad_Texture2DArray_name;
-    TextureLoad_Texture2DArray.backendIndex = 2416;
+    TextureLoad_Texture2DArray.backendIndex = 2422;
     TextureLoad_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture2DArray.parameters = TextureLoad_Texture2DArray_args;
     Symbol::Resolved(&TextureLoad_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2228,7 +2332,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture2DArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DArray.name = TextureLoadMip_Texture2DArray_name;
-    TextureLoadMip_Texture2DArray.backendIndex = 2417;
+    TextureLoadMip_Texture2DArray.backendIndex = 2423;
     TextureLoadMip_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture2DArray.parameters = TextureLoadMip_Texture2DArray_args;
     Symbol::Resolved(&TextureLoadMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2253,7 +2357,7 @@ void SetupIntrinsics11()
     TextureStore_Texture2DArray_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_Texture2DArray.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DArray.name = TextureStore_Texture2DArray_name;
-    TextureStore_Texture2DArray.backendIndex = 2418;
+    TextureStore_Texture2DArray.backendIndex = 2424;
     TextureStore_Texture2DArray.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture2DArray.parameters = TextureStore_Texture2DArray_args;
     Symbol::Resolved(&TextureStore_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2280,7 +2384,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture2DArray_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_Texture2DArray.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DArray.name = TextureStoreMip_Texture2DArray_name;
-    TextureStoreMip_Texture2DArray.backendIndex = 2419;
+    TextureStoreMip_Texture2DArray.backendIndex = 2425;
     TextureStoreMip_Texture2DArray.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture2DArray.parameters = TextureStoreMip_Texture2DArray_args;
     Symbol::Resolved(&TextureStoreMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2304,7 +2408,7 @@ void SetupIntrinsics11()
     TextureLoad_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureLoad_TextureCubeArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_TextureCubeArray.name = TextureLoad_TextureCubeArray_name;
-    TextureLoad_TextureCubeArray.backendIndex = 2420;
+    TextureLoad_TextureCubeArray.backendIndex = 2426;
     TextureLoad_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_TextureCubeArray.parameters = TextureLoad_TextureCubeArray_args;
     Symbol::Resolved(&TextureLoad_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -2328,7 +2432,7 @@ void SetupIntrinsics11()
     TextureLoadMip_TextureCubeArray_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_TextureCubeArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_TextureCubeArray.name = TextureLoadMip_TextureCubeArray_name;
-    TextureLoadMip_TextureCubeArray.backendIndex = 2421;
+    TextureLoadMip_TextureCubeArray.backendIndex = 2427;
     TextureLoadMip_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_TextureCubeArray.parameters = TextureLoadMip_TextureCubeArray_args;
     Symbol::Resolved(&TextureLoadMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -2353,7 +2457,7 @@ void SetupIntrinsics11()
     TextureStore_TextureCubeArray_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_TextureCubeArray.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_TextureCubeArray.name = TextureStore_TextureCubeArray_name;
-    TextureStore_TextureCubeArray.backendIndex = 2422;
+    TextureStore_TextureCubeArray.backendIndex = 2428;
     TextureStore_TextureCubeArray.returnType = Type::FullType { VoidType.name };
     TextureStore_TextureCubeArray.parameters = TextureStore_TextureCubeArray_args;
     Symbol::Resolved(&TextureStore_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -2380,7 +2484,7 @@ void SetupIntrinsics11()
     TextureStoreMip_TextureCubeArray_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_TextureCubeArray.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_TextureCubeArray.name = TextureStoreMip_TextureCubeArray_name;
-    TextureStoreMip_TextureCubeArray.backendIndex = 2423;
+    TextureStoreMip_TextureCubeArray.backendIndex = 2429;
     TextureStoreMip_TextureCubeArray.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_TextureCubeArray.parameters = TextureStoreMip_TextureCubeArray_args;
     Symbol::Resolved(&TextureStoreMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -2404,7 +2508,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoad_Texture2DMS.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DMS.name = TextureLoad_Texture2DMS_name;
-    TextureLoad_Texture2DMS.backendIndex = 2424;
+    TextureLoad_Texture2DMS.backendIndex = 2430;
     TextureLoad_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture2DMS.parameters = TextureLoad_Texture2DMS_args;
     Symbol::Resolved(&TextureLoad_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
@@ -2428,7 +2532,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture2DMS_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture2DMS.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DMS.name = TextureLoadMip_Texture2DMS_name;
-    TextureLoadMip_Texture2DMS.backendIndex = 2425;
+    TextureLoadMip_Texture2DMS.backendIndex = 2431;
     TextureLoadMip_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture2DMS.parameters = TextureLoadMip_Texture2DMS_args;
     Symbol::Resolved(&TextureLoadMip_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
@@ -2453,7 +2557,7 @@ void SetupIntrinsics11()
     TextureStore_Texture2DMS_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_Texture2DMS.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DMS.name = TextureStore_Texture2DMS_name;
-    TextureStore_Texture2DMS.backendIndex = 2426;
+    TextureStore_Texture2DMS.backendIndex = 2432;
     TextureStore_Texture2DMS.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture2DMS.parameters = TextureStore_Texture2DMS_args;
     Symbol::Resolved(&TextureStore_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
@@ -2480,7 +2584,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture2DMS_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_Texture2DMS.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DMS.name = TextureStoreMip_Texture2DMS_name;
-    TextureStoreMip_Texture2DMS.backendIndex = 2427;
+    TextureStoreMip_Texture2DMS.backendIndex = 2433;
     TextureStoreMip_Texture2DMS.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture2DMS.parameters = TextureStoreMip_Texture2DMS_args;
     Symbol::Resolved(&TextureStoreMip_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
@@ -2504,7 +2608,7 @@ void SetupIntrinsics11()
     TextureLoad_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoad_Texture2DMSArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DMSArray.name = TextureLoad_Texture2DMSArray_name;
-    TextureLoad_Texture2DMSArray.backendIndex = 2428;
+    TextureLoad_Texture2DMSArray.backendIndex = 2434;
     TextureLoad_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture2DMSArray.parameters = TextureLoad_Texture2DMSArray_args;
     Symbol::Resolved(&TextureLoad_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
@@ -2528,7 +2632,7 @@ void SetupIntrinsics11()
     TextureLoadMip_Texture2DMSArray_mip.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture2DMSArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DMSArray.name = TextureLoadMip_Texture2DMSArray_name;
-    TextureLoadMip_Texture2DMSArray.backendIndex = 2429;
+    TextureLoadMip_Texture2DMSArray.backendIndex = 2435;
     TextureLoadMip_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture2DMSArray.parameters = TextureLoadMip_Texture2DMSArray_args;
     Symbol::Resolved(&TextureLoadMip_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
@@ -2553,7 +2657,7 @@ void SetupIntrinsics11()
     TextureStore_Texture2DMSArray_value.type = Type::FullType{ Float32x4Type.name };
     TextureStore_Texture2DMSArray.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DMSArray.name = TextureStore_Texture2DMSArray_name;
-    TextureStore_Texture2DMSArray.backendIndex = 2430;
+    TextureStore_Texture2DMSArray.backendIndex = 2436;
     TextureStore_Texture2DMSArray.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture2DMSArray.parameters = TextureStore_Texture2DMSArray_args;
     Symbol::Resolved(&TextureStore_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
@@ -2580,7 +2684,7 @@ void SetupIntrinsics11()
     TextureStoreMip_Texture2DMSArray_value.type = Type::FullType{ Float32x4Type.name };
     TextureStoreMip_Texture2DMSArray.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DMSArray.name = TextureStoreMip_Texture2DMSArray_name;
-    TextureStoreMip_Texture2DMSArray.backendIndex = 2431;
+    TextureStoreMip_Texture2DMSArray.backendIndex = 2437;
     TextureStoreMip_Texture2DMSArray.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture2DMSArray.parameters = TextureStoreMip_Texture2DMSArray_args;
     Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
@@ -2605,7 +2709,7 @@ void SetupIntrinsics11()
     TextureFetch_Texture1D_mip.type = Type::FullType{ Int32Type.name };
     TextureFetch_Texture1D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
     TextureFetch_Texture1D.name = TextureFetch_Texture1D_name;
-    TextureFetch_Texture1D.backendIndex = 2432;
+    TextureFetch_Texture1D.backendIndex = 2438;
     TextureFetch_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture1D.parameters = TextureFetch_Texture1D_args;
     Symbol::Resolved(&TextureFetch_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -2629,7 +2733,7 @@ void SetupIntrinsics11()
     TextureFetchSample_Texture1D_sample.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture1D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture1D.name = TextureFetchSample_Texture1D_name;
-    TextureFetchSample_Texture1D.backendIndex = 2433;
+    TextureFetchSample_Texture1D.backendIndex = 2439;
     TextureFetchSample_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture1D.parameters = TextureFetchSample_Texture1D_args;
     Symbol::Resolved(&TextureFetchSample_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -2653,7 +2757,7 @@ void SetupIntrinsics11()
     TextureFetch_Texture2D_mip.type = Type::FullType{ Int32Type.name };
     TextureFetch_Texture2D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
     TextureFetch_Texture2D.name = TextureFetch_Texture2D_name;
-    TextureFetch_Texture2D.backendIndex = 2434;
+    TextureFetch_Texture2D.backendIndex = 2440;
     TextureFetch_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture2D.parameters = TextureFetch_Texture2D_args;
     Symbol::Resolved(&TextureFetch_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -2677,7 +2781,7 @@ void SetupIntrinsics11()
     TextureFetchSample_Texture2D_sample.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture2D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture2D.name = TextureFetchSample_Texture2D_name;
-    TextureFetchSample_Texture2D.backendIndex = 2435;
+    TextureFetchSample_Texture2D.backendIndex = 2441;
     TextureFetchSample_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture2D.parameters = TextureFetchSample_Texture2D_args;
     Symbol::Resolved(&TextureFetchSample_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -2701,7 +2805,7 @@ void SetupIntrinsics11()
     TextureFetch_Texture3D_mip.type = Type::FullType{ Int32Type.name };
     TextureFetch_Texture3D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
     TextureFetch_Texture3D.name = TextureFetch_Texture3D_name;
-    TextureFetch_Texture3D.backendIndex = 2436;
+    TextureFetch_Texture3D.backendIndex = 2442;
     TextureFetch_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture3D.parameters = TextureFetch_Texture3D_args;
     Symbol::Resolved(&TextureFetch_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -2725,7 +2829,7 @@ void SetupIntrinsics11()
     TextureFetchSample_Texture3D_sample.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture3D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture3D.name = TextureFetchSample_Texture3D_name;
-    TextureFetchSample_Texture3D.backendIndex = 2437;
+    TextureFetchSample_Texture3D.backendIndex = 2443;
     TextureFetchSample_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture3D.parameters = TextureFetchSample_Texture3D_args;
     Symbol::Resolved(&TextureFetchSample_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -2749,7 +2853,7 @@ void SetupIntrinsics11()
     TextureFetch_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
     TextureFetch_Texture1DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
     TextureFetch_Texture1DArray.name = TextureFetch_Texture1DArray_name;
-    TextureFetch_Texture1DArray.backendIndex = 2438;
+    TextureFetch_Texture1DArray.backendIndex = 2444;
     TextureFetch_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture1DArray.parameters = TextureFetch_Texture1DArray_args;
     Symbol::Resolved(&TextureFetch_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2773,7 +2877,7 @@ void SetupIntrinsics11()
     TextureFetchSample_Texture1DArray_sample.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture1DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture1DArray.name = TextureFetchSample_Texture1DArray_name;
-    TextureFetchSample_Texture1DArray.backendIndex = 2439;
+    TextureFetchSample_Texture1DArray.backendIndex = 2445;
     TextureFetchSample_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture1DArray.parameters = TextureFetchSample_Texture1DArray_args;
     Symbol::Resolved(&TextureFetchSample_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -2797,7 +2901,7 @@ void SetupIntrinsics11()
     TextureFetch_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
     TextureFetch_Texture2DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
     TextureFetch_Texture2DArray.name = TextureFetch_Texture2DArray_name;
-    TextureFetch_Texture2DArray.backendIndex = 2440;
+    TextureFetch_Texture2DArray.backendIndex = 2446;
     TextureFetch_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture2DArray.parameters = TextureFetch_Texture2DArray_args;
     Symbol::Resolved(&TextureFetch_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2821,7 +2925,7 @@ void SetupIntrinsics11()
     TextureFetchSample_Texture2DArray_sample.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture2DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture2DArray.name = TextureFetchSample_Texture2DArray_name;
-    TextureFetchSample_Texture2DArray.backendIndex = 2441;
+    TextureFetchSample_Texture2DArray.backendIndex = 2447;
     TextureFetchSample_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture2DArray.parameters = TextureFetchSample_Texture2DArray_args;
     Symbol::Resolved(&TextureFetchSample_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -2845,7 +2949,7 @@ void SetupIntrinsics11()
     TextureFetchSample_Texture2DMS_sample.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture2DMS.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture2DMS.name = TextureFetchSample_Texture2DMS_name;
-    TextureFetchSample_Texture2DMS.backendIndex = 2442;
+    TextureFetchSample_Texture2DMS.backendIndex = 2448;
     TextureFetchSample_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture2DMS.parameters = TextureFetchSample_Texture2DMS_args;
     Symbol::Resolved(&TextureFetchSample_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
@@ -2869,7 +2973,7 @@ void SetupIntrinsics11()
     TextureFetchSample_Texture2DMSArray_sample.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture2DMSArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture2DMSArray.name = TextureFetchSample_Texture2DMSArray_name;
-    TextureFetchSample_Texture2DMSArray.backendIndex = 2443;
+    TextureFetchSample_Texture2DMSArray.backendIndex = 2449;
     TextureFetchSample_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture2DMSArray.parameters = TextureFetchSample_Texture2DMSArray_args;
     Symbol::Resolved(&TextureFetchSample_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
@@ -2896,7 +3000,7 @@ void SetupIntrinsics11()
     TextureGather_Texture2D_component.type = Type::FullType{ Int32Type.name };
     TextureGather_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     TextureGather_Texture2D.name = TextureGather_Texture2D_name;
-    TextureGather_Texture2D.backendIndex = 2444;
+    TextureGather_Texture2D.backendIndex = 2450;
     TextureGather_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureGather_Texture2D.parameters = TextureGather_Texture2D_args;
     Symbol::Resolved(&TextureGather_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -2921,7 +3025,7 @@ void SetupIntrinsics11()
     SampledTextureGather_Texture2D_component.type = Type::FullType{ Int32Type.name };
     SampledTextureGather_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     SampledTextureGather_Texture2D.name = SampledTextureGather_Texture2D_name;
-    SampledTextureGather_Texture2D.backendIndex = 2445;
+    SampledTextureGather_Texture2D.backendIndex = 2451;
     SampledTextureGather_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGather_Texture2D.parameters = SampledTextureGather_Texture2D_args;
     Symbol::Resolved(&SampledTextureGather_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
@@ -2950,7 +3054,7 @@ void SetupIntrinsics11()
     TextureGatherOffset_Texture2D_offset.type = Type::FullType{ Int32x2Type.name };
     TextureGatherOffset_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     TextureGatherOffset_Texture2D.name = TextureGatherOffset_Texture2D_name;
-    TextureGatherOffset_Texture2D.backendIndex = 2446;
+    TextureGatherOffset_Texture2D.backendIndex = 2452;
     TextureGatherOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureGatherOffset_Texture2D.parameters = TextureGatherOffset_Texture2D_args;
     Symbol::Resolved(&TextureGatherOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -2978,7 +3082,7 @@ void SetupIntrinsics11()
     SampledTextureGatherOffset_Texture2D_offset.type = Type::FullType{ Int32x2Type.name };
     SampledTextureGatherOffset_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     SampledTextureGatherOffset_Texture2D.name = SampledTextureGatherOffset_Texture2D_name;
-    SampledTextureGatherOffset_Texture2D.backendIndex = 2447;
+    SampledTextureGatherOffset_Texture2D.backendIndex = 2453;
     SampledTextureGatherOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGatherOffset_Texture2D.parameters = SampledTextureGatherOffset_Texture2D_args;
     Symbol::Resolved(&SampledTextureGatherOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
@@ -3006,7 +3110,7 @@ void SetupIntrinsics11()
     TextureGather_TextureCube_component.type = Type::FullType{ Int32Type.name };
     TextureGather_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     TextureGather_TextureCube.name = TextureGather_TextureCube_name;
-    TextureGather_TextureCube.backendIndex = 2448;
+    TextureGather_TextureCube.backendIndex = 2454;
     TextureGather_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureGather_TextureCube.parameters = TextureGather_TextureCube_args;
     Symbol::Resolved(&TextureGather_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -3031,7 +3135,7 @@ void SetupIntrinsics11()
     SampledTextureGather_TextureCube_component.type = Type::FullType{ Int32Type.name };
     SampledTextureGather_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     SampledTextureGather_TextureCube.name = SampledTextureGather_TextureCube_name;
-    SampledTextureGather_TextureCube.backendIndex = 2449;
+    SampledTextureGather_TextureCube.backendIndex = 2455;
     SampledTextureGather_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGather_TextureCube.parameters = SampledTextureGather_TextureCube_args;
     Symbol::Resolved(&SampledTextureGather_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
@@ -3060,7 +3164,7 @@ void SetupIntrinsics11()
     TextureGatherOffset_TextureCube_offset.type = Type::FullType{ Int32x2Type.name };
     TextureGatherOffset_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     TextureGatherOffset_TextureCube.name = TextureGatherOffset_TextureCube_name;
-    TextureGatherOffset_TextureCube.backendIndex = 2450;
+    TextureGatherOffset_TextureCube.backendIndex = 2456;
     TextureGatherOffset_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureGatherOffset_TextureCube.parameters = TextureGatherOffset_TextureCube_args;
     Symbol::Resolved(&TextureGatherOffset_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -3088,7 +3192,7 @@ void SetupIntrinsics11()
     SampledTextureGatherOffset_TextureCube_offset.type = Type::FullType{ Int32x2Type.name };
     SampledTextureGatherOffset_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     SampledTextureGatherOffset_TextureCube.name = SampledTextureGatherOffset_TextureCube_name;
-    SampledTextureGatherOffset_TextureCube.backendIndex = 2451;
+    SampledTextureGatherOffset_TextureCube.backendIndex = 2457;
     SampledTextureGatherOffset_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGatherOffset_TextureCube.parameters = SampledTextureGatherOffset_TextureCube_args;
     Symbol::Resolved(&SampledTextureGatherOffset_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
@@ -3116,7 +3220,7 @@ void SetupIntrinsics11()
     TextureGather_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
     TextureGather_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     TextureGather_Texture2DArray.name = TextureGather_Texture2DArray_name;
-    TextureGather_Texture2DArray.backendIndex = 2452;
+    TextureGather_Texture2DArray.backendIndex = 2458;
     TextureGather_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureGather_Texture2DArray.parameters = TextureGather_Texture2DArray_args;
     Symbol::Resolved(&TextureGather_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -3141,7 +3245,7 @@ void SetupIntrinsics11()
     SampledTextureGather_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
     SampledTextureGather_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     SampledTextureGather_Texture2DArray.name = SampledTextureGather_Texture2DArray_name;
-    SampledTextureGather_Texture2DArray.backendIndex = 2453;
+    SampledTextureGather_Texture2DArray.backendIndex = 2459;
     SampledTextureGather_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGather_Texture2DArray.parameters = SampledTextureGather_Texture2DArray_args;
     Symbol::Resolved(&SampledTextureGather_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
@@ -3170,7 +3274,7 @@ void SetupIntrinsics11()
     TextureGatherOffset_Texture2DArray_offset.type = Type::FullType{ Int32x2Type.name };
     TextureGatherOffset_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     TextureGatherOffset_Texture2DArray.name = TextureGatherOffset_Texture2DArray_name;
-    TextureGatherOffset_Texture2DArray.backendIndex = 2454;
+    TextureGatherOffset_Texture2DArray.backendIndex = 2460;
     TextureGatherOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureGatherOffset_Texture2DArray.parameters = TextureGatherOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureGatherOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -3198,7 +3302,7 @@ void SetupIntrinsics11()
     SampledTextureGatherOffset_Texture2DArray_offset.type = Type::FullType{ Int32x2Type.name };
     SampledTextureGatherOffset_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     SampledTextureGatherOffset_Texture2DArray.name = SampledTextureGatherOffset_Texture2DArray_name;
-    SampledTextureGatherOffset_Texture2DArray.backendIndex = 2455;
+    SampledTextureGatherOffset_Texture2DArray.backendIndex = 2461;
     SampledTextureGatherOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGatherOffset_Texture2DArray.parameters = SampledTextureGatherOffset_Texture2DArray_args;
     Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
@@ -3226,7 +3330,7 @@ void SetupIntrinsics11()
     TextureGather_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
     TextureGather_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     TextureGather_TextureCubeArray.name = TextureGather_TextureCubeArray_name;
-    TextureGather_TextureCubeArray.backendIndex = 2456;
+    TextureGather_TextureCubeArray.backendIndex = 2462;
     TextureGather_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureGather_TextureCubeArray.parameters = TextureGather_TextureCubeArray_args;
     Symbol::Resolved(&TextureGather_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -3251,7 +3355,7 @@ void SetupIntrinsics11()
     SampledTextureGather_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
     SampledTextureGather_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     SampledTextureGather_TextureCubeArray.name = SampledTextureGather_TextureCubeArray_name;
-    SampledTextureGather_TextureCubeArray.backendIndex = 2457;
+    SampledTextureGather_TextureCubeArray.backendIndex = 2463;
     SampledTextureGather_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGather_TextureCubeArray.parameters = SampledTextureGather_TextureCubeArray_args;
     Symbol::Resolved(&SampledTextureGather_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
@@ -3280,7 +3384,7 @@ void SetupIntrinsics11()
     TextureGatherOffset_TextureCubeArray_offset.type = Type::FullType{ Int32x2Type.name };
     TextureGatherOffset_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     TextureGatherOffset_TextureCubeArray.name = TextureGatherOffset_TextureCubeArray_name;
-    TextureGatherOffset_TextureCubeArray.backendIndex = 2458;
+    TextureGatherOffset_TextureCubeArray.backendIndex = 2464;
     TextureGatherOffset_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureGatherOffset_TextureCubeArray.parameters = TextureGatherOffset_TextureCubeArray_args;
     Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -3308,7 +3412,7 @@ void SetupIntrinsics11()
     SampledTextureGatherOffset_TextureCubeArray_offset.type = Type::FullType{ Int32x2Type.name };
     SampledTextureGatherOffset_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     SampledTextureGatherOffset_TextureCubeArray.name = SampledTextureGatherOffset_TextureCubeArray_name;
-    SampledTextureGatherOffset_TextureCubeArray.backendIndex = 2459;
+    SampledTextureGatherOffset_TextureCubeArray.backendIndex = 2465;
     SampledTextureGatherOffset_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGatherOffset_TextureCubeArray.parameters = SampledTextureGatherOffset_TextureCubeArray_args;
     Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
@@ -3328,7 +3432,7 @@ void SetupIntrinsics11()
     TexturePixelCacheLoad_PixelCache_texture.type.modifierValues = TexturePixelCacheLoad_PixelCache_texture_modifierValues;
     TexturePixelCacheLoad_PixelCache.documentation = "Load a pixel value from a previous thread"_c;
     TexturePixelCacheLoad_PixelCache.name = TexturePixelCacheLoad_PixelCache_name;
-    TexturePixelCacheLoad_PixelCache.backendIndex = 2460;
+    TexturePixelCacheLoad_PixelCache.backendIndex = 2466;
     TexturePixelCacheLoad_PixelCache.returnType = Type::FullType { Float32x4Type.name };
     TexturePixelCacheLoad_PixelCache.parameters = TexturePixelCacheLoad_PixelCache_args;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCache_texture)->typeSymbol = &PixelCacheType;
@@ -3347,7 +3451,7 @@ void SetupIntrinsics11()
     TexturePixelCacheLoad_PixelCacheMS_sample.type = Type::FullType{ UInt32Type.name };
     TexturePixelCacheLoad_PixelCacheMS.documentation = "Load a pixel value from a previous thread"_c;
     TexturePixelCacheLoad_PixelCacheMS.name = TexturePixelCacheLoad_PixelCacheMS_name;
-    TexturePixelCacheLoad_PixelCacheMS.backendIndex = 2461;
+    TexturePixelCacheLoad_PixelCacheMS.backendIndex = 2467;
     TexturePixelCacheLoad_PixelCacheMS.returnType = Type::FullType { Float32x4Type.name };
     TexturePixelCacheLoad_PixelCacheMS.parameters = TexturePixelCacheLoad_PixelCacheMS_args;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS_texture)->typeSymbol = &PixelCacheMSType;
@@ -3371,7 +3475,7 @@ void SetupIntrinsics11()
     TextureSample_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSample_Texture1D.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture1D.name = TextureSample_Texture1D_name;
-    TextureSample_Texture1D.backendIndex = 2462;
+    TextureSample_Texture1D.backendIndex = 2468;
     TextureSample_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture1D.parameters = TextureSample_Texture1D_args;
     Symbol::Resolved(&TextureSample_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -3393,7 +3497,7 @@ void SetupIntrinsics11()
     SampledTextureSample_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSample_Texture1D.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture1D.name = SampledTextureSample_Texture1D_name;
-    SampledTextureSample_Texture1D.backendIndex = 2463;
+    SampledTextureSample_Texture1D.backendIndex = 2469;
     SampledTextureSample_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture1D.parameters = SampledTextureSample_Texture1D_args;
     Symbol::Resolved(&SampledTextureSample_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
@@ -3417,7 +3521,7 @@ void SetupIntrinsics11()
     TextureSample_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSample_Texture2D.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture2D.name = TextureSample_Texture2D_name;
-    TextureSample_Texture2D.backendIndex = 2464;
+    TextureSample_Texture2D.backendIndex = 2470;
     TextureSample_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture2D.parameters = TextureSample_Texture2D_args;
     Symbol::Resolved(&TextureSample_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -3439,7 +3543,7 @@ void SetupIntrinsics11()
     SampledTextureSample_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSample_Texture2D.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture2D.name = SampledTextureSample_Texture2D_name;
-    SampledTextureSample_Texture2D.backendIndex = 2465;
+    SampledTextureSample_Texture2D.backendIndex = 2471;
     SampledTextureSample_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture2D.parameters = SampledTextureSample_Texture2D_args;
     Symbol::Resolved(&SampledTextureSample_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
@@ -3463,7 +3567,7 @@ void SetupIntrinsics11()
     TextureSample_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSample_Texture3D.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture3D.name = TextureSample_Texture3D_name;
-    TextureSample_Texture3D.backendIndex = 2466;
+    TextureSample_Texture3D.backendIndex = 2472;
     TextureSample_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture3D.parameters = TextureSample_Texture3D_args;
     Symbol::Resolved(&TextureSample_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -3485,7 +3589,7 @@ void SetupIntrinsics11()
     SampledTextureSample_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSample_Texture3D.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture3D.name = SampledTextureSample_Texture3D_name;
-    SampledTextureSample_Texture3D.backendIndex = 2467;
+    SampledTextureSample_Texture3D.backendIndex = 2473;
     SampledTextureSample_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture3D.parameters = SampledTextureSample_Texture3D_args;
     Symbol::Resolved(&SampledTextureSample_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
@@ -3509,7 +3613,7 @@ void SetupIntrinsics11()
     TextureSample_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSample_TextureCube.documentation = "Sample a texture at coordinate"_c;
     TextureSample_TextureCube.name = TextureSample_TextureCube_name;
-    TextureSample_TextureCube.backendIndex = 2468;
+    TextureSample_TextureCube.backendIndex = 2474;
     TextureSample_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_TextureCube.parameters = TextureSample_TextureCube_args;
     Symbol::Resolved(&TextureSample_TextureCube_texture)->typeSymbol = &TextureCubeType;
@@ -3531,7 +3635,7 @@ void SetupIntrinsics11()
     SampledTextureSample_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSample_TextureCube.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_TextureCube.name = SampledTextureSample_TextureCube_name;
-    SampledTextureSample_TextureCube.backendIndex = 2469;
+    SampledTextureSample_TextureCube.backendIndex = 2475;
     SampledTextureSample_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_TextureCube.parameters = SampledTextureSample_TextureCube_args;
     Symbol::Resolved(&SampledTextureSample_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
@@ -3555,7 +3659,7 @@ void SetupIntrinsics11()
     TextureSample_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSample_Texture1DArray.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture1DArray.name = TextureSample_Texture1DArray_name;
-    TextureSample_Texture1DArray.backendIndex = 2470;
+    TextureSample_Texture1DArray.backendIndex = 2476;
     TextureSample_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture1DArray.parameters = TextureSample_Texture1DArray_args;
     Symbol::Resolved(&TextureSample_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -3577,7 +3681,7 @@ void SetupIntrinsics11()
     SampledTextureSample_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSample_Texture1DArray.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture1DArray.name = SampledTextureSample_Texture1DArray_name;
-    SampledTextureSample_Texture1DArray.backendIndex = 2471;
+    SampledTextureSample_Texture1DArray.backendIndex = 2477;
     SampledTextureSample_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture1DArray.parameters = SampledTextureSample_Texture1DArray_args;
     Symbol::Resolved(&SampledTextureSample_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
@@ -3601,7 +3705,7 @@ void SetupIntrinsics11()
     TextureSample_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSample_Texture2DArray.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture2DArray.name = TextureSample_Texture2DArray_name;
-    TextureSample_Texture2DArray.backendIndex = 2472;
+    TextureSample_Texture2DArray.backendIndex = 2478;
     TextureSample_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture2DArray.parameters = TextureSample_Texture2DArray_args;
     Symbol::Resolved(&TextureSample_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -3623,7 +3727,7 @@ void SetupIntrinsics11()
     SampledTextureSample_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSample_Texture2DArray.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture2DArray.name = SampledTextureSample_Texture2DArray_name;
-    SampledTextureSample_Texture2DArray.backendIndex = 2473;
+    SampledTextureSample_Texture2DArray.backendIndex = 2479;
     SampledTextureSample_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture2DArray.parameters = SampledTextureSample_Texture2DArray_args;
     Symbol::Resolved(&SampledTextureSample_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
@@ -3647,7 +3751,7 @@ void SetupIntrinsics11()
     TextureSample_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureSample_TextureCubeArray.documentation = "Sample a texture at coordinate"_c;
     TextureSample_TextureCubeArray.name = TextureSample_TextureCubeArray_name;
-    TextureSample_TextureCubeArray.backendIndex = 2474;
+    TextureSample_TextureCubeArray.backendIndex = 2480;
     TextureSample_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_TextureCubeArray.parameters = TextureSample_TextureCubeArray_args;
     Symbol::Resolved(&TextureSample_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
@@ -3669,7 +3773,7 @@ void SetupIntrinsics11()
     SampledTextureSample_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureSample_TextureCubeArray.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_TextureCubeArray.name = SampledTextureSample_TextureCubeArray_name;
-    SampledTextureSample_TextureCubeArray.backendIndex = 2475;
+    SampledTextureSample_TextureCubeArray.backendIndex = 2481;
     SampledTextureSample_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_TextureCubeArray.parameters = SampledTextureSample_TextureCubeArray_args;
     Symbol::Resolved(&SampledTextureSample_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
@@ -3695,7 +3799,7 @@ void SetupIntrinsics11()
     TextureSampleOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     TextureSampleOffset_Texture1D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture1D.name = TextureSampleOffset_Texture1D_name;
-    TextureSampleOffset_Texture1D.backendIndex = 2476;
+    TextureSampleOffset_Texture1D.backendIndex = 2482;
     TextureSampleOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture1D.parameters = TextureSampleOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -3720,7 +3824,7 @@ void SetupIntrinsics11()
     SampledTextureSampleOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleOffset_Texture1D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture1D.name = SampledTextureSampleOffset_Texture1D_name;
-    SampledTextureSampleOffset_Texture1D.backendIndex = 2477;
+    SampledTextureSampleOffset_Texture1D.backendIndex = 2483;
     SampledTextureSampleOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture1D.parameters = SampledTextureSampleOffset_Texture1D_args;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
@@ -3747,7 +3851,7 @@ void SetupIntrinsics11()
     TextureSampleOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleOffset_Texture2D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture2D.name = TextureSampleOffset_Texture2D_name;
-    TextureSampleOffset_Texture2D.backendIndex = 2478;
+    TextureSampleOffset_Texture2D.backendIndex = 2484;
     TextureSampleOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture2D.parameters = TextureSampleOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -3772,7 +3876,7 @@ void SetupIntrinsics11()
     SampledTextureSampleOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleOffset_Texture2D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture2D.name = SampledTextureSampleOffset_Texture2D_name;
-    SampledTextureSampleOffset_Texture2D.backendIndex = 2479;
+    SampledTextureSampleOffset_Texture2D.backendIndex = 2485;
     SampledTextureSampleOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture2D.parameters = SampledTextureSampleOffset_Texture2D_args;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
@@ -3799,7 +3903,7 @@ void SetupIntrinsics11()
     TextureSampleOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     TextureSampleOffset_Texture3D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture3D.name = TextureSampleOffset_Texture3D_name;
-    TextureSampleOffset_Texture3D.backendIndex = 2480;
+    TextureSampleOffset_Texture3D.backendIndex = 2486;
     TextureSampleOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture3D.parameters = TextureSampleOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -3824,7 +3928,7 @@ void SetupIntrinsics11()
     SampledTextureSampleOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleOffset_Texture3D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture3D.name = SampledTextureSampleOffset_Texture3D_name;
-    SampledTextureSampleOffset_Texture3D.backendIndex = 2481;
+    SampledTextureSampleOffset_Texture3D.backendIndex = 2487;
     SampledTextureSampleOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture3D.parameters = SampledTextureSampleOffset_Texture3D_args;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
@@ -3851,7 +3955,7 @@ void SetupIntrinsics11()
     TextureSampleOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleOffset_Texture1DArray.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture1DArray.name = TextureSampleOffset_Texture1DArray_name;
-    TextureSampleOffset_Texture1DArray.backendIndex = 2482;
+    TextureSampleOffset_Texture1DArray.backendIndex = 2488;
     TextureSampleOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture1DArray.parameters = TextureSampleOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
@@ -3876,7 +3980,7 @@ void SetupIntrinsics11()
     SampledTextureSampleOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleOffset_Texture1DArray.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture1DArray.name = SampledTextureSampleOffset_Texture1DArray_name;
-    SampledTextureSampleOffset_Texture1DArray.backendIndex = 2483;
+    SampledTextureSampleOffset_Texture1DArray.backendIndex = 2489;
     SampledTextureSampleOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture1DArray.parameters = SampledTextureSampleOffset_Texture1DArray_args;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
@@ -3903,7 +4007,7 @@ void SetupIntrinsics11()
     TextureSampleOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
     TextureSampleOffset_Texture2DArray.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture2DArray.name = TextureSampleOffset_Texture2DArray_name;
-    TextureSampleOffset_Texture2DArray.backendIndex = 2484;
+    TextureSampleOffset_Texture2DArray.backendIndex = 2490;
     TextureSampleOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture2DArray.parameters = TextureSampleOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
@@ -3928,7 +4032,7 @@ void SetupIntrinsics11()
     SampledTextureSampleOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleOffset_Texture2DArray.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture2DArray.name = SampledTextureSampleOffset_Texture2DArray_name;
-    SampledTextureSampleOffset_Texture2DArray.backendIndex = 2485;
+    SampledTextureSampleOffset_Texture2DArray.backendIndex = 2491;
     SampledTextureSampleOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture2DArray.parameters = SampledTextureSampleOffset_Texture2DArray_args;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
@@ -3955,7 +4059,7 @@ void SetupIntrinsics11()
     TextureSampleProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture1D.documentation = "Sample a texture at coordinate with projection"_c;
     TextureSampleProj_Texture1D.name = TextureSampleProj_Texture1D_name;
-    TextureSampleProj_Texture1D.backendIndex = 2486;
+    TextureSampleProj_Texture1D.backendIndex = 2492;
     TextureSampleProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProj_Texture1D.parameters = TextureSampleProj_Texture1D_args;
     Symbol::Resolved(&TextureSampleProj_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -3980,7 +4084,7 @@ void SetupIntrinsics11()
     SampledTextureSampleProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture1D.documentation = "Sample a texture at coordinate with projection"_c;
     SampledTextureSampleProj_Texture1D.name = SampledTextureSampleProj_Texture1D_name;
-    SampledTextureSampleProj_Texture1D.backendIndex = 2487;
+    SampledTextureSampleProj_Texture1D.backendIndex = 2493;
     SampledTextureSampleProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProj_Texture1D.parameters = SampledTextureSampleProj_Texture1D_args;
     Symbol::Resolved(&SampledTextureSampleProj_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
@@ -4007,7 +4111,7 @@ void SetupIntrinsics11()
     TextureSampleProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture2D.documentation = "Sample a texture at coordinate with projection"_c;
     TextureSampleProj_Texture2D.name = TextureSampleProj_Texture2D_name;
-    TextureSampleProj_Texture2D.backendIndex = 2488;
+    TextureSampleProj_Texture2D.backendIndex = 2494;
     TextureSampleProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProj_Texture2D.parameters = TextureSampleProj_Texture2D_args;
     Symbol::Resolved(&TextureSampleProj_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -4032,7 +4136,7 @@ void SetupIntrinsics11()
     SampledTextureSampleProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture2D.documentation = "Sample a texture at coordinate with projection"_c;
     SampledTextureSampleProj_Texture2D.name = SampledTextureSampleProj_Texture2D_name;
-    SampledTextureSampleProj_Texture2D.backendIndex = 2489;
+    SampledTextureSampleProj_Texture2D.backendIndex = 2495;
     SampledTextureSampleProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProj_Texture2D.parameters = SampledTextureSampleProj_Texture2D_args;
     Symbol::Resolved(&SampledTextureSampleProj_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
@@ -4059,7 +4163,7 @@ void SetupIntrinsics11()
     TextureSampleProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture3D.documentation = "Sample a texture at coordinate with projection"_c;
     TextureSampleProj_Texture3D.name = TextureSampleProj_Texture3D_name;
-    TextureSampleProj_Texture3D.backendIndex = 2490;
+    TextureSampleProj_Texture3D.backendIndex = 2496;
     TextureSampleProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProj_Texture3D.parameters = TextureSampleProj_Texture3D_args;
     Symbol::Resolved(&TextureSampleProj_Texture3D_texture)->typeSymbol = &Texture3DType;
@@ -4084,7 +4188,7 @@ void SetupIntrinsics11()
     SampledTextureSampleProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture3D.documentation = "Sample a texture at coordinate with projection"_c;
     SampledTextureSampleProj_Texture3D.name = SampledTextureSampleProj_Texture3D_name;
-    SampledTextureSampleProj_Texture3D.backendIndex = 2491;
+    SampledTextureSampleProj_Texture3D.backendIndex = 2497;
     SampledTextureSampleProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProj_Texture3D.parameters = SampledTextureSampleProj_Texture3D_args;
     Symbol::Resolved(&SampledTextureSampleProj_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
@@ -4113,7 +4217,7 @@ void SetupIntrinsics11()
     TextureSampleProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     TextureSampleProjOffset_Texture1D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     TextureSampleProjOffset_Texture1D.name = TextureSampleProjOffset_Texture1D_name;
-    TextureSampleProjOffset_Texture1D.backendIndex = 2492;
+    TextureSampleProjOffset_Texture1D.backendIndex = 2498;
     TextureSampleProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProjOffset_Texture1D.parameters = TextureSampleProjOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleProjOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
@@ -4141,7 +4245,7 @@ void SetupIntrinsics11()
     SampledTextureSampleProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjOffset_Texture1D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleProjOffset_Texture1D.name = SampledTextureSampleProjOffset_Texture1D_name;
-    SampledTextureSampleProjOffset_Texture1D.backendIndex = 2493;
+    SampledTextureSampleProjOffset_Texture1D.backendIndex = 2499;
     SampledTextureSampleProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProjOffset_Texture1D.parameters = SampledTextureSampleProjOffset_Texture1D_args;
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
@@ -4171,7 +4275,7 @@ void SetupIntrinsics11()
     TextureSampleProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     TextureSampleProjOffset_Texture2D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     TextureSampleProjOffset_Texture2D.name = TextureSampleProjOffset_Texture2D_name;
-    TextureSampleProjOffset_Texture2D.backendIndex = 2494;
+    TextureSampleProjOffset_Texture2D.backendIndex = 2500;
     TextureSampleProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProjOffset_Texture2D.parameters = TextureSampleProjOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleProjOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
@@ -4199,7 +4303,7 @@ void SetupIntrinsics11()
     SampledTextureSampleProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleProjOffset_Texture2D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleProjOffset_Texture2D.name = SampledTextureSampleProjOffset_Texture2D_name;
-    SampledTextureSampleProjOffset_Texture2D.backendIndex = 2495;
+    SampledTextureSampleProjOffset_Texture2D.backendIndex = 2501;
     SampledTextureSampleProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProjOffset_Texture2D.parameters = SampledTextureSampleProjOffset_Texture2D_args;
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
@@ -4211,168 +4315,6 @@ void SetupIntrinsics11()
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture2D)->name = "textureSampleProjOffset(uniform *textureSampled2D,f32x2,f32,f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture2D)->nameWithVarNames = "textureSampleProjOffset(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, offset : f32x2)"_c;
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureSampleProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
-    TextureSampleProjOffset_Texture3D_texture.name = "texture"_c;
-    TextureSampleProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleProjOffset_Texture3D_texture.type.modifiers = TextureSampleProjOffset_Texture3D_texture_modifiers;
-    TextureSampleProjOffset_Texture3D_texture.type.modifierValues = TextureSampleProjOffset_Texture3D_texture_modifierValues;
-    TextureSampleProjOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjOffset_Texture3D_sampler.type.modifiers = TextureSampleProjOffset_Texture3D_sampler_modifiers;
-    TextureSampleProjOffset_Texture3D_sampler.type.modifierValues = TextureSampleProjOffset_Texture3D_sampler_modifierValues;
-    TextureSampleProjOffset_Texture3D_coordinate.name = "coordinate"_c;
-    TextureSampleProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleProjOffset_Texture3D_proj.name = "proj"_c;
-    TextureSampleProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
-    TextureSampleProjOffset_Texture3D_offset.name = "offset"_c;
-    TextureSampleProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleProjOffset_Texture3D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
-    TextureSampleProjOffset_Texture3D.name = TextureSampleProjOffset_Texture3D_name;
-    TextureSampleProjOffset_Texture3D.backendIndex = 2496;
-    TextureSampleProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
-    TextureSampleProjOffset_Texture3D.parameters = TextureSampleProjOffset_Texture3D_args;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D)->signature = "textureSampleProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3) f32x4"_c;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D)->name = "textureSampleProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)"_c;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D)->nameWithVarNames = "textureSampleProjOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, offset : f32x3)"_c;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureSampleProjOffset with SampledTexture3D, Float32x3, Float32, Float32x3
-    SampledTextureSampleProjOffset_Texture3D_texture.name = "texture"_c;
-    SampledTextureSampleProjOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleProjOffset_Texture3D_texture.type.modifiers = SampledTextureSampleProjOffset_Texture3D_texture_modifiers;
-    SampledTextureSampleProjOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleProjOffset_Texture3D_texture_modifierValues;
-    SampledTextureSampleProjOffset_Texture3D_coordinate.name = "coordinate"_c;
-    SampledTextureSampleProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleProjOffset_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleProjOffset_Texture3D_offset.name = "offset"_c;
-    SampledTextureSampleProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleProjOffset_Texture3D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
-    SampledTextureSampleProjOffset_Texture3D.name = SampledTextureSampleProjOffset_Texture3D_name;
-    SampledTextureSampleProjOffset_Texture3D.backendIndex = 2497;
-    SampledTextureSampleProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureSampleProjOffset_Texture3D.parameters = SampledTextureSampleProjOffset_Texture3D_args;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D)->signature = "textureSampleProjOffset(uniform *textureSampled3D,f32x3,f32,f32x3) f32x4"_c;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D)->name = "textureSampleProjOffset(uniform *textureSampled3D,f32x3,f32,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D)->nameWithVarNames = "textureSampleProjOffset(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, offset : f32x3)"_c;
-    Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureSampleCompare with Texture1D, Sampler, Float32, Float32
-    TextureSampleCompare_Texture1D_texture.name = "texture"_c;
-    TextureSampleCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleCompare_Texture1D_texture.type.modifiers = TextureSampleCompare_Texture1D_texture_modifiers;
-    TextureSampleCompare_Texture1D_texture.type.modifierValues = TextureSampleCompare_Texture1D_texture_modifierValues;
-    TextureSampleCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompare_Texture1D_sampler.type.modifiers = TextureSampleCompare_Texture1D_sampler_modifiers;
-    TextureSampleCompare_Texture1D_sampler.type.modifierValues = TextureSampleCompare_Texture1D_sampler_modifierValues;
-    TextureSampleCompare_Texture1D_coordinate.name = "coordinate"_c;
-    TextureSampleCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureSampleCompare_Texture1D_compare.name = "compare"_c;
-    TextureSampleCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
-    TextureSampleCompare_Texture1D.documentation = "Sample a texture at coordinate with depth comparison"_c;
-    TextureSampleCompare_Texture1D.name = TextureSampleCompare_Texture1D_name;
-    TextureSampleCompare_Texture1D.backendIndex = 2498;
-    TextureSampleCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
-    TextureSampleCompare_Texture1D.parameters = TextureSampleCompare_Texture1D_args;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D)->signature = "textureSampleCompare(uniform *texture1D,uniform *sampler,f32,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D)->name = "textureSampleCompare(uniform *texture1D,uniform *sampler,f32,f32)"_c;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D)->nameWithVarNames = "textureSampleCompare(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, compare : f32)"_c;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D)->returnTypeSymbol = &Float32Type;
-
-    /// textureSampleCompare with SampledTexture1D, Float32, Float32
-    SampledTextureSampleCompare_Texture1D_texture.name = "texture"_c;
-    SampledTextureSampleCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleCompare_Texture1D_texture.type.modifiers = SampledTextureSampleCompare_Texture1D_texture_modifiers;
-    SampledTextureSampleCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleCompare_Texture1D_texture_modifierValues;
-    SampledTextureSampleCompare_Texture1D_coordinate.name = "coordinate"_c;
-    SampledTextureSampleCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleCompare_Texture1D_compare.name = "compare"_c;
-    SampledTextureSampleCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleCompare_Texture1D.documentation = "Sample a texture at coordinate with depth comparison"_c;
-    SampledTextureSampleCompare_Texture1D.name = SampledTextureSampleCompare_Texture1D_name;
-    SampledTextureSampleCompare_Texture1D.backendIndex = 2499;
-    SampledTextureSampleCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
-    SampledTextureSampleCompare_Texture1D.parameters = SampledTextureSampleCompare_Texture1D_args;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture1D)->signature = "textureSampleCompare(uniform *textureSampled1D,f32,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture1D)->name = "textureSampleCompare(uniform *textureSampled1D,f32,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture1D)->nameWithVarNames = "textureSampleCompare(texture : uniform *textureSampled1D, coordinate : f32, compare : f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture1D)->returnTypeSymbol = &Float32Type;
-
-    /// textureSampleCompare with Texture2D, Sampler, Float32x2, Float32
-    TextureSampleCompare_Texture2D_texture.name = "texture"_c;
-    TextureSampleCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleCompare_Texture2D_texture.type.modifiers = TextureSampleCompare_Texture2D_texture_modifiers;
-    TextureSampleCompare_Texture2D_texture.type.modifierValues = TextureSampleCompare_Texture2D_texture_modifierValues;
-    TextureSampleCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompare_Texture2D_sampler.type.modifiers = TextureSampleCompare_Texture2D_sampler_modifiers;
-    TextureSampleCompare_Texture2D_sampler.type.modifierValues = TextureSampleCompare_Texture2D_sampler_modifierValues;
-    TextureSampleCompare_Texture2D_coordinate.name = "coordinate"_c;
-    TextureSampleCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleCompare_Texture2D_compare.name = "compare"_c;
-    TextureSampleCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
-    TextureSampleCompare_Texture2D.documentation = "Sample a texture at coordinate with depth comparison"_c;
-    TextureSampleCompare_Texture2D.name = TextureSampleCompare_Texture2D_name;
-    TextureSampleCompare_Texture2D.backendIndex = 2500;
-    TextureSampleCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
-    TextureSampleCompare_Texture2D.parameters = TextureSampleCompare_Texture2D_args;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D)->signature = "textureSampleCompare(uniform *texture2D,uniform *sampler,f32x2,f32) f32"_c;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D)->name = "textureSampleCompare(uniform *texture2D,uniform *sampler,f32x2,f32)"_c;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D)->nameWithVarNames = "textureSampleCompare(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, compare : f32)"_c;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D)->returnTypeSymbol = &Float32Type;
-
-    /// textureSampleCompare with SampledTexture2D, Float32x2, Float32
-    SampledTextureSampleCompare_Texture2D_texture.name = "texture"_c;
-    SampledTextureSampleCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleCompare_Texture2D_texture.type.modifiers = SampledTextureSampleCompare_Texture2D_texture_modifiers;
-    SampledTextureSampleCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleCompare_Texture2D_texture_modifierValues;
-    SampledTextureSampleCompare_Texture2D_coordinate.name = "coordinate"_c;
-    SampledTextureSampleCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleCompare_Texture2D_compare.name = "compare"_c;
-    SampledTextureSampleCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleCompare_Texture2D.documentation = "Sample a texture at coordinate with depth comparison"_c;
-    SampledTextureSampleCompare_Texture2D.name = SampledTextureSampleCompare_Texture2D_name;
-    SampledTextureSampleCompare_Texture2D.backendIndex = 2501;
-    SampledTextureSampleCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
-    SampledTextureSampleCompare_Texture2D.parameters = SampledTextureSampleCompare_Texture2D_args;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture2D)->signature = "textureSampleCompare(uniform *textureSampled2D,f32x2,f32) f32"_c;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture2D)->name = "textureSampleCompare(uniform *textureSampled2D,f32x2,f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture2D)->nameWithVarNames = "textureSampleCompare(texture : uniform *textureSampled2D, coordinate : f32x2, compare : f32)"_c;
-    Symbol::Resolved(&SampledTextureSampleCompare_Texture2D)->returnTypeSymbol = &Float32Type;
 
 }
 } // namespace GPULang

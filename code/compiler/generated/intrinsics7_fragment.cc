@@ -539,6 +539,56 @@ Variable determinant_Float16x4x4_arg;
 Function determinant_Float16x4x4;
 inline constexpr std::array determinant_Float16x4x4_args = { &determinant_Float16x4x4_arg };
 
+/// coopMatLoad with Float32, Int32, Int32
+Variable coopMatLoad_CooperativeMatrixFloat32_ptr;
+inline constexpr std::array coopMatLoad_CooperativeMatrixFloat32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array coopMatLoad_CooperativeMatrixFloat32_ptr_modifierValues = {(Expression*)nullptr};
+Variable coopMatLoad_CooperativeMatrixFloat32_layout;
+Variable coopMatLoad_CooperativeMatrixFloat32_stride;
+Function coopMatLoad_CooperativeMatrixFloat32;
+inline constexpr std::array coopMatLoad_CooperativeMatrixFloat32_args = { &coopMatLoad_CooperativeMatrixFloat32_ptr, &coopMatLoad_CooperativeMatrixFloat32_layout, &coopMatLoad_CooperativeMatrixFloat32_stride };
+
+/// coopMatLoad with Float32, Int32, Int32
+Variable coopMatLoad_CooperativeMatrixFloat16_ptr;
+inline constexpr std::array coopMatLoad_CooperativeMatrixFloat16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array coopMatLoad_CooperativeMatrixFloat16_ptr_modifierValues = {(Expression*)nullptr};
+Variable coopMatLoad_CooperativeMatrixFloat16_layout;
+Variable coopMatLoad_CooperativeMatrixFloat16_stride;
+Function coopMatLoad_CooperativeMatrixFloat16;
+inline constexpr std::array coopMatLoad_CooperativeMatrixFloat16_args = { &coopMatLoad_CooperativeMatrixFloat16_ptr, &coopMatLoad_CooperativeMatrixFloat16_layout, &coopMatLoad_CooperativeMatrixFloat16_stride };
+
+/// coopMatStore with Float32, Int32, Int32
+Variable coopMatStore_CooperativeMatrixFloat32_ptr;
+inline constexpr std::array coopMatStore_CooperativeMatrixFloat32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array coopMatStore_CooperativeMatrixFloat32_ptr_modifierValues = {(Expression*)nullptr};
+Variable coopMatStore_CooperativeMatrixFloat32_layout;
+Variable coopMatStore_CooperativeMatrixFloat32_stride;
+Function coopMatStore_CooperativeMatrixFloat32;
+inline constexpr std::array coopMatStore_CooperativeMatrixFloat32_args = { &coopMatStore_CooperativeMatrixFloat32_ptr, &coopMatStore_CooperativeMatrixFloat32_layout, &coopMatStore_CooperativeMatrixFloat32_stride };
+
+/// coopMatStore with Float32, Int32, Int32
+Variable coopMatStore_CooperativeMatrixFloat16_ptr;
+inline constexpr std::array coopMatStore_CooperativeMatrixFloat16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array coopMatStore_CooperativeMatrixFloat16_ptr_modifierValues = {(Expression*)nullptr};
+Variable coopMatStore_CooperativeMatrixFloat16_layout;
+Variable coopMatStore_CooperativeMatrixFloat16_stride;
+Function coopMatStore_CooperativeMatrixFloat16;
+inline constexpr std::array coopMatStore_CooperativeMatrixFloat16_args = { &coopMatStore_CooperativeMatrixFloat16_ptr, &coopMatStore_CooperativeMatrixFloat16_layout, &coopMatStore_CooperativeMatrixFloat16_stride };
+
+/// coopMatMulAdd with CooperativeMatrixFloat32, CooperativeMatrixFloat32, CooperativeMatrixFloat32
+Variable coopMatMulAdd_CooperativeMatrixFloat32_a;
+Variable coopMatMulAdd_CooperativeMatrixFloat32_b;
+Variable coopMatMulAdd_CooperativeMatrixFloat32_c;
+Function coopMatMulAdd_CooperativeMatrixFloat32;
+inline constexpr std::array coopMatMulAdd_CooperativeMatrixFloat32_args = { &coopMatMulAdd_CooperativeMatrixFloat32_a, &coopMatMulAdd_CooperativeMatrixFloat32_b, &coopMatMulAdd_CooperativeMatrixFloat32_c };
+
+/// coopMatMulAdd with CooperativeMatrixFloat16, CooperativeMatrixFloat16, CooperativeMatrixFloat16
+Variable coopMatMulAdd_CooperativeMatrixFloat16_a;
+Variable coopMatMulAdd_CooperativeMatrixFloat16_b;
+Variable coopMatMulAdd_CooperativeMatrixFloat16_c;
+Function coopMatMulAdd_CooperativeMatrixFloat16;
+inline constexpr std::array coopMatMulAdd_CooperativeMatrixFloat16_args = { &coopMatMulAdd_CooperativeMatrixFloat16_a, &coopMatMulAdd_CooperativeMatrixFloat16_b, &coopMatMulAdd_CooperativeMatrixFloat16_c };
+
 /// vertexGetOutputLayer
 Function VertexGetOutputLayer;
 
@@ -604,32 +654,6 @@ inline constexpr std::array GeometryExportPrimitiveIndex_args = { &GeometryExpor
 Variable GeometryGetPrimitiveIndex_arg;
 Function GeometryGetPrimitiveIndex;
 inline constexpr std::array GeometryGetPrimitiveIndex_args = { &GeometryGetPrimitiveIndex_arg };
-
-/// taskGetPrimitiveIndex with UInt32
-Variable TaskGetPrimitiveIndex_arg;
-Function TaskGetPrimitiveIndex;
-inline constexpr std::array TaskGetPrimitiveIndex_args = { &TaskGetPrimitiveIndex_arg };
-
-/// meshGetPrimitiveIndex with UInt32
-Variable MeshGetPrimitiveIndex_arg;
-Function MeshGetPrimitiveIndex;
-inline constexpr std::array MeshGetPrimitiveIndex_args = { &MeshGetPrimitiveIndex_arg };
-
-/// geometryGetVertexIndex
-Function GeometryGetVertexIndex;
-
-/// hullGetVertexIndex
-Function HullGetVertexIndex;
-
-/// geometryExportVertex with Float32x4
-Variable GeometryExportVertex_Float32x4_arg;
-Function GeometryExportVertex_Float32x4;
-inline constexpr std::array GeometryExportVertex_Float32x4_args = { &GeometryExportVertex_Float32x4_arg };
-
-/// geometryExportVertex with Float16x4
-Variable GeometryExportVertex_Float16x4_arg;
-Function GeometryExportVertex_Float16x4;
-inline constexpr std::array GeometryExportVertex_Float16x4_args = { &GeometryExportVertex_Float16x4_arg };
 
 void SetupIntrinsics7()
 {
@@ -2117,10 +2141,138 @@ void SetupIntrinsics7()
     Symbol::Resolved(&determinant_Float16x4x4)->nameWithVarNames = "determinant(val : f16x4x4)"_c;
     Symbol::Resolved(&determinant_Float16x4x4)->returnTypeSymbol = &Float32Type;
 
+    /// coopMatLoad with Float32, Int32, Int32
+    coopMatLoad_CooperativeMatrixFloat32_ptr.name = "ptr"_c;
+    coopMatLoad_CooperativeMatrixFloat32_ptr.type = Type::FullType{ Float32Type.name };
+    coopMatLoad_CooperativeMatrixFloat32_ptr.type.modifiers = coopMatLoad_CooperativeMatrixFloat32_ptr_modifiers;
+    coopMatLoad_CooperativeMatrixFloat32_ptr.type.modifierValues = coopMatLoad_CooperativeMatrixFloat32_ptr_modifierValues;
+    coopMatLoad_CooperativeMatrixFloat32_layout.name = "majority"_c;
+    coopMatLoad_CooperativeMatrixFloat32_layout.type = Type::FullType{ Int32Type.name };
+    coopMatLoad_CooperativeMatrixFloat32_stride.name = "stride"_c;
+    coopMatLoad_CooperativeMatrixFloat32_stride.type = Type::FullType{ Int32Type.name };
+    coopMatLoad_CooperativeMatrixFloat32.documentation = "Loads a cooperative matrix from a buffer"_c;
+    coopMatLoad_CooperativeMatrixFloat32.name = coopMatLoad_CooperativeMatrixFloat32_name;
+    coopMatLoad_CooperativeMatrixFloat32.backendIndex = 1968;
+    coopMatLoad_CooperativeMatrixFloat32.returnType = Type::FullType { CooperativeMatrixFloat32Type.name };
+    coopMatLoad_CooperativeMatrixFloat32.parameters = coopMatLoad_CooperativeMatrixFloat32_args;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat32_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat32_layout)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat32_stride)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat32)->signature = "coopMatLoad(*f32,i32,i32) coop_mat_f32"_c;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat32)->name = "coopMatLoad(*f32,i32,i32)"_c;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat32)->nameWithVarNames = "coopMatLoad(ptr : *f32, majority : i32, stride : i32)"_c;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat32)->returnTypeSymbol = &CooperativeMatrixFloat32Type;
+
+    /// coopMatLoad with Float32, Int32, Int32
+    coopMatLoad_CooperativeMatrixFloat16_ptr.name = "ptr"_c;
+    coopMatLoad_CooperativeMatrixFloat16_ptr.type = Type::FullType{ Float32Type.name };
+    coopMatLoad_CooperativeMatrixFloat16_ptr.type.modifiers = coopMatLoad_CooperativeMatrixFloat16_ptr_modifiers;
+    coopMatLoad_CooperativeMatrixFloat16_ptr.type.modifierValues = coopMatLoad_CooperativeMatrixFloat16_ptr_modifierValues;
+    coopMatLoad_CooperativeMatrixFloat16_layout.name = "majority"_c;
+    coopMatLoad_CooperativeMatrixFloat16_layout.type = Type::FullType{ Int32Type.name };
+    coopMatLoad_CooperativeMatrixFloat16_stride.name = "stride"_c;
+    coopMatLoad_CooperativeMatrixFloat16_stride.type = Type::FullType{ Int32Type.name };
+    coopMatLoad_CooperativeMatrixFloat16.documentation = "Loads a cooperative matrix from a buffer"_c;
+    coopMatLoad_CooperativeMatrixFloat16.name = coopMatLoad_CooperativeMatrixFloat16_name;
+    coopMatLoad_CooperativeMatrixFloat16.backendIndex = 1969;
+    coopMatLoad_CooperativeMatrixFloat16.returnType = Type::FullType { CooperativeMatrixFloat16Type.name };
+    coopMatLoad_CooperativeMatrixFloat16.parameters = coopMatLoad_CooperativeMatrixFloat16_args;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat16_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat16_layout)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat16_stride)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat16)->signature = "coopMatLoad(*f32,i32,i32) coop_mat_f16"_c;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat16)->name = "coopMatLoad(*f32,i32,i32)"_c;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat16)->nameWithVarNames = "coopMatLoad(ptr : *f32, majority : i32, stride : i32)"_c;
+    Symbol::Resolved(&coopMatLoad_CooperativeMatrixFloat16)->returnTypeSymbol = &CooperativeMatrixFloat16Type;
+
+    /// coopMatStore with Float32, Int32, Int32
+    coopMatStore_CooperativeMatrixFloat32_ptr.name = "ptr"_c;
+    coopMatStore_CooperativeMatrixFloat32_ptr.type = Type::FullType{ Float32Type.name };
+    coopMatStore_CooperativeMatrixFloat32_ptr.type.modifiers = coopMatStore_CooperativeMatrixFloat32_ptr_modifiers;
+    coopMatStore_CooperativeMatrixFloat32_ptr.type.modifierValues = coopMatStore_CooperativeMatrixFloat32_ptr_modifierValues;
+    coopMatStore_CooperativeMatrixFloat32_layout.name = "majority"_c;
+    coopMatStore_CooperativeMatrixFloat32_layout.type = Type::FullType{ Int32Type.name };
+    coopMatStore_CooperativeMatrixFloat32_stride.name = "stride"_c;
+    coopMatStore_CooperativeMatrixFloat32_stride.type = Type::FullType{ Int32Type.name };
+    coopMatStore_CooperativeMatrixFloat32.documentation = "Store a cooperative matrix to a buffer"_c;
+    coopMatStore_CooperativeMatrixFloat32.name = coopMatStore_CooperativeMatrixFloat32_name;
+    coopMatStore_CooperativeMatrixFloat32.backendIndex = 1970;
+    coopMatStore_CooperativeMatrixFloat32.returnType = Type::FullType { CooperativeMatrixFloat32Type.name };
+    coopMatStore_CooperativeMatrixFloat32.parameters = coopMatStore_CooperativeMatrixFloat32_args;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat32_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat32_layout)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat32_stride)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat32)->signature = "coopMatStore(*f32,i32,i32) coop_mat_f32"_c;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat32)->name = "coopMatStore(*f32,i32,i32)"_c;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat32)->nameWithVarNames = "coopMatStore(ptr : *f32, majority : i32, stride : i32)"_c;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat32)->returnTypeSymbol = &CooperativeMatrixFloat32Type;
+
+    /// coopMatStore with Float32, Int32, Int32
+    coopMatStore_CooperativeMatrixFloat16_ptr.name = "ptr"_c;
+    coopMatStore_CooperativeMatrixFloat16_ptr.type = Type::FullType{ Float32Type.name };
+    coopMatStore_CooperativeMatrixFloat16_ptr.type.modifiers = coopMatStore_CooperativeMatrixFloat16_ptr_modifiers;
+    coopMatStore_CooperativeMatrixFloat16_ptr.type.modifierValues = coopMatStore_CooperativeMatrixFloat16_ptr_modifierValues;
+    coopMatStore_CooperativeMatrixFloat16_layout.name = "majority"_c;
+    coopMatStore_CooperativeMatrixFloat16_layout.type = Type::FullType{ Int32Type.name };
+    coopMatStore_CooperativeMatrixFloat16_stride.name = "stride"_c;
+    coopMatStore_CooperativeMatrixFloat16_stride.type = Type::FullType{ Int32Type.name };
+    coopMatStore_CooperativeMatrixFloat16.documentation = "Store a cooperative matrix to a buffer"_c;
+    coopMatStore_CooperativeMatrixFloat16.name = coopMatStore_CooperativeMatrixFloat16_name;
+    coopMatStore_CooperativeMatrixFloat16.backendIndex = 1971;
+    coopMatStore_CooperativeMatrixFloat16.returnType = Type::FullType { CooperativeMatrixFloat16Type.name };
+    coopMatStore_CooperativeMatrixFloat16.parameters = coopMatStore_CooperativeMatrixFloat16_args;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat16_ptr)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat16_layout)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat16_stride)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat16)->signature = "coopMatStore(*f32,i32,i32) coop_mat_f16"_c;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat16)->name = "coopMatStore(*f32,i32,i32)"_c;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat16)->nameWithVarNames = "coopMatStore(ptr : *f32, majority : i32, stride : i32)"_c;
+    Symbol::Resolved(&coopMatStore_CooperativeMatrixFloat16)->returnTypeSymbol = &CooperativeMatrixFloat16Type;
+
+    /// coopMatMulAdd with CooperativeMatrixFloat32, CooperativeMatrixFloat32, CooperativeMatrixFloat32
+    coopMatMulAdd_CooperativeMatrixFloat32_a.name = "A"_c;
+    coopMatMulAdd_CooperativeMatrixFloat32_a.type = Type::FullType{ CooperativeMatrixFloat32Type.name };
+    coopMatMulAdd_CooperativeMatrixFloat32_b.name = "B"_c;
+    coopMatMulAdd_CooperativeMatrixFloat32_b.type = Type::FullType{ CooperativeMatrixFloat32Type.name };
+    coopMatMulAdd_CooperativeMatrixFloat32_c.name = "C"_c;
+    coopMatMulAdd_CooperativeMatrixFloat32_c.type = Type::FullType{ CooperativeMatrixFloat32Type.name };
+    coopMatMulAdd_CooperativeMatrixFloat32.documentation = "Performs a cooperative mulitplication and addition on two cooperative matrices"_c;
+    coopMatMulAdd_CooperativeMatrixFloat32.name = coopMatMulAdd_CooperativeMatrixFloat32_name;
+    coopMatMulAdd_CooperativeMatrixFloat32.backendIndex = 1972;
+    coopMatMulAdd_CooperativeMatrixFloat32.returnType = Type::FullType { CooperativeMatrixFloat32Type.name };
+    coopMatMulAdd_CooperativeMatrixFloat32.parameters = coopMatMulAdd_CooperativeMatrixFloat32_args;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat32_a)->typeSymbol = &CooperativeMatrixFloat32Type;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat32_b)->typeSymbol = &CooperativeMatrixFloat32Type;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat32_c)->typeSymbol = &CooperativeMatrixFloat32Type;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat32)->signature = "coopMatMulAdd(coop_mat_f32,coop_mat_f32,coop_mat_f32) coop_mat_f32"_c;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat32)->name = "coopMatMulAdd(coop_mat_f32,coop_mat_f32,coop_mat_f32)"_c;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat32)->nameWithVarNames = "coopMatMulAdd(A : coop_mat_f32, B : coop_mat_f32, C : coop_mat_f32)"_c;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat32)->returnTypeSymbol = &CooperativeMatrixFloat32Type;
+
+    /// coopMatMulAdd with CooperativeMatrixFloat16, CooperativeMatrixFloat16, CooperativeMatrixFloat16
+    coopMatMulAdd_CooperativeMatrixFloat16_a.name = "A"_c;
+    coopMatMulAdd_CooperativeMatrixFloat16_a.type = Type::FullType{ CooperativeMatrixFloat16Type.name };
+    coopMatMulAdd_CooperativeMatrixFloat16_b.name = "B"_c;
+    coopMatMulAdd_CooperativeMatrixFloat16_b.type = Type::FullType{ CooperativeMatrixFloat16Type.name };
+    coopMatMulAdd_CooperativeMatrixFloat16_c.name = "C"_c;
+    coopMatMulAdd_CooperativeMatrixFloat16_c.type = Type::FullType{ CooperativeMatrixFloat16Type.name };
+    coopMatMulAdd_CooperativeMatrixFloat16.documentation = "Performs a cooperative mulitplication and addition on two cooperative matrices"_c;
+    coopMatMulAdd_CooperativeMatrixFloat16.name = coopMatMulAdd_CooperativeMatrixFloat16_name;
+    coopMatMulAdd_CooperativeMatrixFloat16.backendIndex = 1973;
+    coopMatMulAdd_CooperativeMatrixFloat16.returnType = Type::FullType { CooperativeMatrixFloat16Type.name };
+    coopMatMulAdd_CooperativeMatrixFloat16.parameters = coopMatMulAdd_CooperativeMatrixFloat16_args;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat16_a)->typeSymbol = &CooperativeMatrixFloat16Type;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat16_b)->typeSymbol = &CooperativeMatrixFloat16Type;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat16_c)->typeSymbol = &CooperativeMatrixFloat16Type;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat16)->signature = "coopMatMulAdd(coop_mat_f16,coop_mat_f16,coop_mat_f16) coop_mat_f16"_c;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat16)->name = "coopMatMulAdd(coop_mat_f16,coop_mat_f16,coop_mat_f16)"_c;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat16)->nameWithVarNames = "coopMatMulAdd(A : coop_mat_f16, B : coop_mat_f16, C : coop_mat_f16)"_c;
+    Symbol::Resolved(&coopMatMulAdd_CooperativeMatrixFloat16)->returnTypeSymbol = &CooperativeMatrixFloat16Type;
+
     /// vertexGetOutputLayer
     VertexGetOutputLayer.documentation = "Returns the output layer for the current vertex."_c;
     VertexGetOutputLayer.name = VertexGetOutputLayer_name;
-    VertexGetOutputLayer.backendIndex = 1968;
+    VertexGetOutputLayer.backendIndex = 1974;
     VertexGetOutputLayer.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetOutputLayer)->signature = "vertexGetOutputLayer() u32"_c;
     Symbol::Resolved(&VertexGetOutputLayer)->name = "vertexGetOutputLayer()"_c;
@@ -2130,7 +2282,7 @@ void SetupIntrinsics7()
     /// vertexGetOutputViewport
     VertexGetOutputViewport.documentation = "Returns the output viewport for the current vertex."_c;
     VertexGetOutputViewport.name = VertexGetOutputViewport_name;
-    VertexGetOutputViewport.backendIndex = 1969;
+    VertexGetOutputViewport.backendIndex = 1975;
     VertexGetOutputViewport.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetOutputViewport)->signature = "vertexGetOutputViewport() u32"_c;
     Symbol::Resolved(&VertexGetOutputViewport)->name = "vertexGetOutputViewport()"_c;
@@ -2140,7 +2292,7 @@ void SetupIntrinsics7()
     /// vertexGetIndex
     VertexGetIndex.documentation = "Returns the index of the current vertex."_c;
     VertexGetIndex.name = VertexGetIndex_name;
-    VertexGetIndex.backendIndex = 1970;
+    VertexGetIndex.backendIndex = 1976;
     VertexGetIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetIndex)->signature = "vertexGetIndex() u32"_c;
     Symbol::Resolved(&VertexGetIndex)->name = "vertexGetIndex()"_c;
@@ -2150,7 +2302,7 @@ void SetupIntrinsics7()
     /// vertexGetInstanceIndex
     VertexGetInstanceIndex.documentation = "Returns the instance index of the current vertex."_c;
     VertexGetInstanceIndex.name = VertexGetInstanceIndex_name;
-    VertexGetInstanceIndex.backendIndex = 1971;
+    VertexGetInstanceIndex.backendIndex = 1977;
     VertexGetInstanceIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetInstanceIndex)->signature = "vertexGetInstanceIndex() u32"_c;
     Symbol::Resolved(&VertexGetInstanceIndex)->name = "vertexGetInstanceIndex()"_c;
@@ -2160,7 +2312,7 @@ void SetupIntrinsics7()
     /// vertexGetBaseIndex
     VertexGetBaseIndex.documentation = "Returns the base index of the current vertex."_c;
     VertexGetBaseIndex.name = VertexGetBaseIndex_name;
-    VertexGetBaseIndex.backendIndex = 1972;
+    VertexGetBaseIndex.backendIndex = 1978;
     VertexGetBaseIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetBaseIndex)->signature = "vertexGetBaseIndex() u32"_c;
     Symbol::Resolved(&VertexGetBaseIndex)->name = "vertexGetBaseIndex()"_c;
@@ -2170,7 +2322,7 @@ void SetupIntrinsics7()
     /// vertexGetBaseInstanceIndex
     VertexGetBaseInstanceIndex.documentation = "Returns the base instance index of the current vertex."_c;
     VertexGetBaseInstanceIndex.name = VertexGetBaseInstanceIndex_name;
-    VertexGetBaseInstanceIndex.backendIndex = 1973;
+    VertexGetBaseInstanceIndex.backendIndex = 1979;
     VertexGetBaseInstanceIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetBaseInstanceIndex)->signature = "vertexGetBaseInstanceIndex() u32"_c;
     Symbol::Resolved(&VertexGetBaseInstanceIndex)->name = "vertexGetBaseInstanceIndex()"_c;
@@ -2180,7 +2332,7 @@ void SetupIntrinsics7()
     /// vertexGetDrawIndex
     VertexGetDrawIndex.documentation = "Returns the draw index of the current vertex."_c;
     VertexGetDrawIndex.name = VertexGetDrawIndex_name;
-    VertexGetDrawIndex.backendIndex = 1974;
+    VertexGetDrawIndex.backendIndex = 1980;
     VertexGetDrawIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetDrawIndex)->signature = "vertexGetDrawIndex() u32"_c;
     Symbol::Resolved(&VertexGetDrawIndex)->name = "vertexGetDrawIndex()"_c;
@@ -2192,7 +2344,7 @@ void SetupIntrinsics7()
     VertexSetOutputLayer_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     VertexSetOutputLayer_UInt16.documentation = "Sets the output layer for the current vertex."_c;
     VertexSetOutputLayer_UInt16.name = VertexSetOutputLayer_UInt16_name;
-    VertexSetOutputLayer_UInt16.backendIndex = 1975;
+    VertexSetOutputLayer_UInt16.backendIndex = 1981;
     VertexSetOutputLayer_UInt16.returnType = Type::FullType { VoidType.name };
     VertexSetOutputLayer_UInt16.parameters = VertexSetOutputLayer_UInt16_args;
     Symbol::Resolved(&VertexSetOutputLayer_UInt16_arg)->typeSymbol = &UInt16Type;
@@ -2206,7 +2358,7 @@ void SetupIntrinsics7()
     VertexSetOutputLayer_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     VertexSetOutputLayer_UInt32.documentation = "Sets the output layer for the current vertex."_c;
     VertexSetOutputLayer_UInt32.name = VertexSetOutputLayer_UInt32_name;
-    VertexSetOutputLayer_UInt32.backendIndex = 1976;
+    VertexSetOutputLayer_UInt32.backendIndex = 1982;
     VertexSetOutputLayer_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetOutputLayer_UInt32.parameters = VertexSetOutputLayer_UInt32_args;
     Symbol::Resolved(&VertexSetOutputLayer_UInt32_arg)->typeSymbol = &UInt32Type;
@@ -2220,7 +2372,7 @@ void SetupIntrinsics7()
     VertexSetOutputViewport_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     VertexSetOutputViewport_UInt16.documentation = "Sets the output viewport for the current vertex."_c;
     VertexSetOutputViewport_UInt16.name = VertexSetOutputViewport_UInt16_name;
-    VertexSetOutputViewport_UInt16.backendIndex = 1977;
+    VertexSetOutputViewport_UInt16.backendIndex = 1983;
     VertexSetOutputViewport_UInt16.returnType = Type::FullType { VoidType.name };
     VertexSetOutputViewport_UInt16.parameters = VertexSetOutputViewport_UInt16_args;
     Symbol::Resolved(&VertexSetOutputViewport_UInt16_arg)->typeSymbol = &UInt16Type;
@@ -2234,7 +2386,7 @@ void SetupIntrinsics7()
     VertexSetOutputViewport_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     VertexSetOutputViewport_UInt32.documentation = "Sets the output viewport for the current vertex."_c;
     VertexSetOutputViewport_UInt32.name = VertexSetOutputViewport_UInt32_name;
-    VertexSetOutputViewport_UInt32.backendIndex = 1978;
+    VertexSetOutputViewport_UInt32.backendIndex = 1984;
     VertexSetOutputViewport_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetOutputViewport_UInt32.parameters = VertexSetOutputViewport_UInt32_args;
     Symbol::Resolved(&VertexSetOutputViewport_UInt32_arg)->typeSymbol = &UInt32Type;
@@ -2248,7 +2400,7 @@ void SetupIntrinsics7()
     VertexSetPointSize_UInt32_arg.type = Type::FullType{ Float32Type.name };
     VertexSetPointSize_UInt32.documentation = "Sets the output point size for the current vertex."_c;
     VertexSetPointSize_UInt32.name = VertexSetPointSize_UInt32_name;
-    VertexSetPointSize_UInt32.backendIndex = 1979;
+    VertexSetPointSize_UInt32.backendIndex = 1985;
     VertexSetPointSize_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetPointSize_UInt32.parameters = VertexSetPointSize_UInt32_args;
     Symbol::Resolved(&VertexSetPointSize_UInt32_arg)->typeSymbol = &Float32Type;
@@ -2262,7 +2414,7 @@ void SetupIntrinsics7()
     VertexExportCoordinates_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     VertexExportCoordinates_Float32x4.documentation = "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL."_c;
     VertexExportCoordinates_Float32x4.name = VertexExportCoordinates_Float32x4_name;
-    VertexExportCoordinates_Float32x4.backendIndex = 1980;
+    VertexExportCoordinates_Float32x4.backendIndex = 1986;
     VertexExportCoordinates_Float32x4.returnType = Type::FullType { VoidType.name };
     VertexExportCoordinates_Float32x4.parameters = VertexExportCoordinates_Float32x4_args;
     Symbol::Resolved(&VertexExportCoordinates_Float32x4_arg)->typeSymbol = &Float32x4Type;
@@ -2276,7 +2428,7 @@ void SetupIntrinsics7()
     VertexExportCoordinates_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     VertexExportCoordinates_Float16x4.documentation = "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL."_c;
     VertexExportCoordinates_Float16x4.name = VertexExportCoordinates_Float16x4_name;
-    VertexExportCoordinates_Float16x4.backendIndex = 1981;
+    VertexExportCoordinates_Float16x4.backendIndex = 1987;
     VertexExportCoordinates_Float16x4.returnType = Type::FullType { VoidType.name };
     VertexExportCoordinates_Float16x4.parameters = VertexExportCoordinates_Float16x4_args;
     Symbol::Resolved(&VertexExportCoordinates_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -2290,7 +2442,7 @@ void SetupIntrinsics7()
     GeometryExportPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     GeometryExportPrimitiveIndex.documentation = "Sets the output viewport for the current vertex."_c;
     GeometryExportPrimitiveIndex.name = GeometryExportPrimitiveIndex_name;
-    GeometryExportPrimitiveIndex.backendIndex = 1982;
+    GeometryExportPrimitiveIndex.backendIndex = 1988;
     GeometryExportPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     GeometryExportPrimitiveIndex.parameters = GeometryExportPrimitiveIndex_args;
     Symbol::Resolved(&GeometryExportPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
@@ -2304,7 +2456,7 @@ void SetupIntrinsics7()
     GeometryGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     GeometryGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     GeometryGetPrimitiveIndex.name = GeometryGetPrimitiveIndex_name;
-    GeometryGetPrimitiveIndex.backendIndex = 1983;
+    GeometryGetPrimitiveIndex.backendIndex = 1989;
     GeometryGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     GeometryGetPrimitiveIndex.parameters = GeometryGetPrimitiveIndex_args;
     Symbol::Resolved(&GeometryGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
@@ -2312,82 +2464,6 @@ void SetupIntrinsics7()
     Symbol::Resolved(&GeometryGetPrimitiveIndex)->name = "geometryGetPrimitiveIndex(u32)"_c;
     Symbol::Resolved(&GeometryGetPrimitiveIndex)->nameWithVarNames = "geometryGetPrimitiveIndex(index : u32)"_c;
     Symbol::Resolved(&GeometryGetPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
-
-    /// taskGetPrimitiveIndex with UInt32
-    TaskGetPrimitiveIndex_arg.name = "index"_c;
-    TaskGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
-    TaskGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
-    TaskGetPrimitiveIndex.name = TaskGetPrimitiveIndex_name;
-    TaskGetPrimitiveIndex.backendIndex = 1984;
-    TaskGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
-    TaskGetPrimitiveIndex.parameters = TaskGetPrimitiveIndex_args;
-    Symbol::Resolved(&TaskGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TaskGetPrimitiveIndex)->signature = "taskGetPrimitiveIndex(u32) u32"_c;
-    Symbol::Resolved(&TaskGetPrimitiveIndex)->name = "taskGetPrimitiveIndex(u32)"_c;
-    Symbol::Resolved(&TaskGetPrimitiveIndex)->nameWithVarNames = "taskGetPrimitiveIndex(index : u32)"_c;
-    Symbol::Resolved(&TaskGetPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
-
-    /// meshGetPrimitiveIndex with UInt32
-    MeshGetPrimitiveIndex_arg.name = "index"_c;
-    MeshGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
-    MeshGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
-    MeshGetPrimitiveIndex.name = MeshGetPrimitiveIndex_name;
-    MeshGetPrimitiveIndex.backendIndex = 1985;
-    MeshGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
-    MeshGetPrimitiveIndex.parameters = MeshGetPrimitiveIndex_args;
-    Symbol::Resolved(&MeshGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&MeshGetPrimitiveIndex)->signature = "meshGetPrimitiveIndex(u32) u32"_c;
-    Symbol::Resolved(&MeshGetPrimitiveIndex)->name = "meshGetPrimitiveIndex(u32)"_c;
-    Symbol::Resolved(&MeshGetPrimitiveIndex)->nameWithVarNames = "meshGetPrimitiveIndex(index : u32)"_c;
-    Symbol::Resolved(&MeshGetPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
-
-    /// geometryGetVertexIndex
-    GeometryGetVertexIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
-    GeometryGetVertexIndex.name = GeometryGetVertexIndex_name;
-    GeometryGetVertexIndex.backendIndex = 1986;
-    GeometryGetVertexIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&GeometryGetVertexIndex)->signature = "geometryGetVertexIndex() u32"_c;
-    Symbol::Resolved(&GeometryGetVertexIndex)->name = "geometryGetVertexIndex()"_c;
-    Symbol::Resolved(&GeometryGetVertexIndex)->nameWithVarNames = "geometryGetVertexIndex()"_c;
-    Symbol::Resolved(&GeometryGetVertexIndex)->returnTypeSymbol = &UInt32Type;
-
-    /// hullGetVertexIndex
-    HullGetVertexIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
-    HullGetVertexIndex.name = HullGetVertexIndex_name;
-    HullGetVertexIndex.backendIndex = 1987;
-    HullGetVertexIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&HullGetVertexIndex)->signature = "hullGetVertexIndex() u32"_c;
-    Symbol::Resolved(&HullGetVertexIndex)->name = "hullGetVertexIndex()"_c;
-    Symbol::Resolved(&HullGetVertexIndex)->nameWithVarNames = "hullGetVertexIndex()"_c;
-    Symbol::Resolved(&HullGetVertexIndex)->returnTypeSymbol = &UInt32Type;
-
-    /// geometryExportVertex with Float32x4
-    GeometryExportVertex_Float32x4_arg.name = "val"_c;
-    GeometryExportVertex_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    GeometryExportVertex_Float32x4.documentation = "Exports the state of all *out* values as vertex data, and sets the argument *val* as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL."_c;
-    GeometryExportVertex_Float32x4.name = GeometryExportVertex_Float32x4_name;
-    GeometryExportVertex_Float32x4.backendIndex = 1988;
-    GeometryExportVertex_Float32x4.returnType = Type::FullType { VoidType.name };
-    GeometryExportVertex_Float32x4.parameters = GeometryExportVertex_Float32x4_args;
-    Symbol::Resolved(&GeometryExportVertex_Float32x4_arg)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&GeometryExportVertex_Float32x4)->signature = "geometryExportVertex(f32x4) void"_c;
-    Symbol::Resolved(&GeometryExportVertex_Float32x4)->name = "geometryExportVertex(f32x4)"_c;
-    Symbol::Resolved(&GeometryExportVertex_Float32x4)->nameWithVarNames = "geometryExportVertex(val : f32x4)"_c;
-    Symbol::Resolved(&GeometryExportVertex_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// geometryExportVertex with Float16x4
-    GeometryExportVertex_Float16x4_arg.name = "val"_c;
-    GeometryExportVertex_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    GeometryExportVertex_Float16x4.documentation = "Exports the state of all *out* values as vertex data, and sets the argument *val* as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL."_c;
-    GeometryExportVertex_Float16x4.name = GeometryExportVertex_Float16x4_name;
-    GeometryExportVertex_Float16x4.backendIndex = 1989;
-    GeometryExportVertex_Float16x4.returnType = Type::FullType { VoidType.name };
-    GeometryExportVertex_Float16x4.parameters = GeometryExportVertex_Float16x4_args;
-    Symbol::Resolved(&GeometryExportVertex_Float16x4_arg)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&GeometryExportVertex_Float16x4)->signature = "geometryExportVertex(f16x4) void"_c;
-    Symbol::Resolved(&GeometryExportVertex_Float16x4)->name = "geometryExportVertex(f16x4)"_c;
-    Symbol::Resolved(&GeometryExportVertex_Float16x4)->nameWithVarNames = "geometryExportVertex(val : f16x4)"_c;
-    Symbol::Resolved(&GeometryExportVertex_Float16x4)->returnTypeSymbol = &VoidType;
 
 }
 } // namespace GPULang

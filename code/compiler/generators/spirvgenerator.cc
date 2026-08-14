@@ -620,6 +620,11 @@ SPV_INSTRUCTION(OpTraceRayKHR, 4445, 12, false)
 SPV_INSTRUCTION(OpExecuteCallableKHR, 4446, 3, false)
 SPV_INSTRUCTION(OpIgnoreIntersectionKHR, 4448, 1, false)
 SPV_INSTRUCTION(OpTerminateRayKHR, 4449, 1, false)
+SPV_INSTRUCTION(OpTypeCooperativeMatrixKHR, 4456, 7, false)
+SPV_INSTRUCTION(OpCooperativeMatrixLengthKHR, 4460, 4, false)
+SPV_INSTRUCTION(OpCooperativeMatrixLoadKHR, 4457, 5, true)
+SPV_INSTRUCTION(OpCooperativeMatrixStoreKHR, 4458, 4, true)
+SPV_INSTRUCTION(OpCooperativeMatrixMulAddKHR, 4458, 6, true)
 SPV_INSTRUCTION(OpReportIntersectionKHR, 5334, 5, false)
 
 
@@ -657,6 +662,7 @@ SPV_ENUM(ShaderViewportIndexLayerEXT, 5254)
 SPV_ENUM(ComputeDerivativeGroupQuadsKHR, 5288)
 SPV_ENUM(PhysicalStorageBufferAddresses, 5347)
 SPV_ENUM(ComputeDerivativeGroupLinearKHR, 5350)
+SPV_ENUM(CooperativeMatrixKHR, 6022)
 SPV_ENUM(BitInstructions, 6025)
 }
 
@@ -981,6 +987,22 @@ namespace MemoryOperands
 SPV_ENUM(Volatile, 0x1)
 SPV_ENUM(Aligned, 0x2)
 SPV_ENUM(Nontemporal, 0x4)
+}
+
+namespace CooperativeMatrixOperands
+{
+SPV_ENUM(NoneKHR, 0x0)
+SPV_ENUM(MatrixASignedComponentsKHR, 0x1)
+SPV_ENUM(MatrixBSignedComponentsKHR, 0x2)
+SPV_ENUM(MatrixCSignedComponentsKHR, 0x4)
+SPV_ENUM(MatrixResultSignedComponentsKHR, 0x8)
+SPV_ENUM(SaturatingAccumulationKHR, 0x10)
+}
+
+namespace CooperativeMatrixLayouts
+{
+SPV_ENUM(RowMajorKHR, 0x0)
+SPV_ENUM(ColumnMajorKHR, 0x1)
 }
 
 SPVEnum ScopeToEnum(SPIRVResult::Storage s)

@@ -1404,6 +1404,60 @@
         ]
     },
     {
+        "name": "coopMatLoad",
+        "documentation": "Loads a cooperative matrix from a buffer",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "coopMatLoad(ptr: *f32, majority: i32, stride: i32) coop_mat_f32"
+            },
+            {
+                "signature": "coopMatLoad(ptr: *f32, majority: i32, stride: i32) coop_mat_f16"
+            }
+        ]
+    },
+    {
+        "name": "coopMatMulAdd",
+        "documentation": "Performs a cooperative mulitplication and addition on two cooperative matrices",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "coopMatMulAdd(A: coop_mat_f32, B: coop_mat_f32, C: coop_mat_f32) coop_mat_f32"
+            },
+            {
+                "signature": "coopMatMulAdd(A: coop_mat_f16, B: coop_mat_f16, C: coop_mat_f16) coop_mat_f16"
+            }
+        ]
+    },
+    {
+        "name": "coopMatStore",
+        "documentation": "Store a cooperative matrix to a buffer",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "coopMatStore(ptr: *f32, majority: i32, stride: i32) coop_mat_f32"
+            },
+            {
+                "signature": "coopMatStore(ptr: *f32, majority: i32, stride: i32) coop_mat_f16"
+            }
+        ]
+    },
+    {
         "name": "cos",
         "documentation": "Returns the cosine of a value.",
         "target_support": [

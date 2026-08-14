@@ -142,9 +142,12 @@ def generate_types():
         "Float16x4x4": "f16x4x4",
         "GeometryTriangle": "GeometryTriangle",
         "GeometryLine": "GeometryLine",
-        "GeometryPoint": "GeometryPoint"
+        "GeometryPoint": "GeometryPoint",
+        "CooperativeMatrixFloat32": "coop_mat_f32",
+        "CooperativeMatrixFloat16": "coop_mat_f16",
+        "CooperativeVectorFloat32": "coop_vec_f32",
+        "CooperativeVectorFloat16": "coop_vec_f16"
     }
-
     
     base_type_mapping = {
         'Float32': 'Float32',
@@ -456,7 +459,7 @@ def generate_types():
         return spirv_intrinsic_code
 
     class Variable():
-        def __init__(self, decl_name, api_name, type_name, pointer=False, uniform=False, workgroup=False, mutable=False, literal=False, strict=False):
+        def __init__(self, decl_name, api_name, type_name, pointer=False, uniform=False, workgroup=False, mutable=False, literal=False, strict=False, array=False):
             self.decl_name = decl_name
             self.api_name = api_name
             self.type_name = type_name
@@ -468,6 +471,7 @@ def generate_types():
             self.mutable = mutable
             self.literal = literal
             self.strict = strict
+            self.array = array
 
     class Function():
         def __init__(self, decl_name, api_name, return_type, parameters, documentation=None, compile_time=False, is_constructor=False, is_member=False):
@@ -1132,6 +1136,7 @@ def generate_types():
 
     # Matrix types
     matrix_types = ['Float32', 'Float16']
+    coop_matrix_types = ['Float32', 'Float16'] # Add int8
 
     scalar_operator_names = ['add', 'sub', 'mul']
     scalar_operators = ['+', '-', '*']
@@ -1360,6 +1365,48 @@ def generate_types():
                     definition_string += fun.definition()
                     setup_string += fun.setup()
                 definition_string += builtin_type.definition(setup_string, pair_list)
+
+    for type in coop_matrix_types:
+        member_functions = []
+        type_name = f'CooperativeMatrix{type}'
+        data_type_name = f'coop_mat_{data_type_mapping[type]}'
+        intrinsic_list.append(IntrinsicPair(decl_name=f'{type_name}Type', api_name=data_type_name))
+        namer.names.append(NamerEntry(type_name, data_type_name))
+        web_types['types'].append(data_type_name)
+        setup_string = ""
+        
+        builtin_type = ScalarType(name=type_name, base_type=type, column_size=column_size, row_size=row_size)
+        declaration_string += builtin_type.declaration()
+
+        pair_list = []
+        for fun in member_functions:
+            pair_list.append(fun.pair())
+            pair_list.append(fun.typed_pair())
+            declaration_string += fun.declaration()
+            definition_string += fun.definition()
+            setup_string += fun.setup()
+        definition_string += builtin_type.definition(setup_string, pair_list)
+
+    for type in coop_matrix_types:
+        member_functions = []
+        type_name = f'CooperativeVector{type}'
+        data_type_name = f'coop_vec_{data_type_mapping[type]}'
+        intrinsic_list.append(IntrinsicPair(decl_name=f'{type_name}Type', api_name=data_type_name))
+        namer.names.append(NamerEntry(type_name, data_type_name))
+        web_types['types'].append(data_type_name)
+        setup_string = ""
+        
+        builtin_type = ScalarType(name=type_name, base_type=type, column_size=column_size, row_size=row_size)
+        declaration_string += builtin_type.declaration()
+
+        pair_list = []
+        for fun in member_functions:
+            pair_list.append(fun.pair())
+            pair_list.append(fun.typed_pair())
+            declaration_string += fun.declaration()
+            definition_string += fun.definition()
+            setup_string += fun.setup()
+        definition_string += builtin_type.definition(setup_string, pair_list)
 
     class Type:
         def __init__(self, name, category=None, base_type = None, api_name=None):
@@ -3036,10 +3083,86 @@ def generate_types():
                 spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Determinant, val);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
+            fun.spirv = spirv_function
+            functions.append(fun)
+
+    # cooperative matrix and vector operations
+    coop_matrix_types = [
+        'CooperativeMatrixFloat32',
+        'CooperativeMatrixFloat16'
+    ]
+
+    ops = ["coopMatLoad", "coopMatStore"]
+    docs = [
+        'Loads a cooperative matrix from a buffer',
+        'Store a cooperative matrix to a buffer'
+    ]
+
+    for intrinsic, doc in zip(ops, docs):
+        for type in coop_matrix_types:
+            function_name = f'{intrinsic}_{type}'
+            argument_ptr_name = f'{intrinsic}_{type}_ptr'
+            argument_layout_name = f'{intrinsic}_{type}_layout'
+            argument_stride_name = f'{intrinsic}_{type}_stride'
+
+            fun = Function(
+                decl_name = function_name,
+                api_name = intrinsic,
+                return_type = type,
+                documentation = doc,
+                parameters = [
+                    Variable(decl_name = argument_ptr_name, api_name="ptr", type_name="Float32", pointer=True),
+                    Variable(decl_name = argument_layout_name, api_name="majority", type_name="Int32"),
+                    Variable(decl_name = argument_stride_name, api_name="stride", type_name="Int32")
+                ]
+            )
+
+            spirv_function = ''
+            spirv_function += '    SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    SPIRVResult layout = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult stride = LoadValueSPIRV(c, g, args[2]);\n'
+            if intrinsic == 'coopMatLoad':
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpCooperativeMatrixLoadKHR, SPVWriter::Section::LocalFunction, returnType, ptr, layout, stride);'
+                spirv_function += '    return SPIRVResult(ret, returnType, true);'
+            else:
+                spirv_function += f'    g->writer->Instruction(OpCooperativeMatrixStoreKHR, SPVWriter::Section::LocalFunction, ptr, layout, stride);'
+                spirv_function += '    return SPIRVResult::Invalid();'
 
             fun.spirv = spirv_function
             functions.append(fun)
 
+    ops = ["coopMatMulAdd"]
+    docs = [
+        "Performs a cooperative mulitplication and addition on two cooperative matrices"
+    ]
+    for intrinsic, doc in zip(ops, docs):
+        for type in coop_matrix_types:
+            function_name = f'{intrinsic}_{type}'
+            argument_a_name = f'{intrinsic}_{type}_a'
+            argument_b_name = f'{intrinsic}_{type}_b'
+            argument_c_name = f'{intrinsic}_{type}_c'
+
+            fun = Function(
+                decl_name = function_name,
+                api_name = intrinsic,
+                return_type = type,
+                documentation = doc,
+                parameters = [
+                    Variable(decl_name = argument_a_name, api_name="A", type_name=type),
+                    Variable(decl_name = argument_b_name, api_name="B", type_name=type),
+                    Variable(decl_name = argument_c_name, api_name="C", type_name=type)
+                ]
+            )
+
+            spirv_function = ''
+            spirv_function += '    SPIRVResult a_mat = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    SPIRVResult b_mat = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult c_mat = LoadValueSPIRV(c, g, args[2]);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpCooperativeMatrixMulAddKHR, SPVWriter::Section::LocalFunction, returnType, a_mat, b_mat, c_mat);'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);'
+
+            fun.spirv = spirv_function
+            functions.append(fun)
 
     # Builtin value getters
     intrinsics = ['GetOutputLayer', 'GetOutputViewport', 'GetIndex', 'GetInstanceIndex', 'GetBaseIndex', 'GetBaseInstanceIndex', 'GetDrawIndex']

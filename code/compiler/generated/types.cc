@@ -56,6 +56,10 @@ struct Namer
         Float16x2x4Type.name = "f16x2x4"_c;
         Float16x3x4Type.name = "f16x3x4"_c;
         Float16x4x4Type.name = "f16x4x4"_c;
+        CooperativeMatrixFloat32Type.name = "coop_mat_f32"_c;
+        CooperativeMatrixFloat16Type.name = "coop_mat_f16"_c;
+        CooperativeVectorFloat32Type.name = "coop_vec_f32"_c;
+        CooperativeVectorFloat16Type.name = "coop_vec_f16"_c;
     }
 };
 Namer namer;
@@ -27023,6 +27027,78 @@ Float16x4x4::Float16x4x4()
     this->scope.symbolLookup = Float16x4x4_symbolLookup;
 }
 Float16x4x4 Float16x4x4Type;
+
+static constexpr StaticMap<HashString, Symbol*, 0> CooperativeMatrixFloat32_symbolLookup = {
+
+    };
+
+CooperativeMatrixFloat32::CooperativeMatrixFloat32()
+{
+    this->name = "coop_mat_f32"_c;
+    this->columnSize = 4;
+    this->rowSize = 4;
+    this->byteSize = 64;
+    this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
+
+    this->scope.symbolLookup = CooperativeMatrixFloat32_symbolLookup;
+}
+CooperativeMatrixFloat32 CooperativeMatrixFloat32Type;
+
+static constexpr StaticMap<HashString, Symbol*, 0> CooperativeMatrixFloat16_symbolLookup = {
+
+    };
+
+CooperativeMatrixFloat16::CooperativeMatrixFloat16()
+{
+    this->name = "coop_mat_f16"_c;
+    this->columnSize = 4;
+    this->rowSize = 4;
+    this->byteSize = 32;
+    this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
+
+    this->scope.symbolLookup = CooperativeMatrixFloat16_symbolLookup;
+}
+CooperativeMatrixFloat16 CooperativeMatrixFloat16Type;
+
+static constexpr StaticMap<HashString, Symbol*, 0> CooperativeVectorFloat32_symbolLookup = {
+
+    };
+
+CooperativeVectorFloat32::CooperativeVectorFloat32()
+{
+    this->name = "coop_vec_f32"_c;
+    this->columnSize = 4;
+    this->rowSize = 4;
+    this->byteSize = 64;
+    this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
+
+    this->scope.symbolLookup = CooperativeVectorFloat32_symbolLookup;
+}
+CooperativeVectorFloat32 CooperativeVectorFloat32Type;
+
+static constexpr StaticMap<HashString, Symbol*, 0> CooperativeVectorFloat16_symbolLookup = {
+
+    };
+
+CooperativeVectorFloat16::CooperativeVectorFloat16()
+{
+    this->name = "coop_vec_f16"_c;
+    this->columnSize = 4;
+    this->rowSize = 4;
+    this->byteSize = 32;
+    this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
+
+    this->scope.symbolLookup = CooperativeVectorFloat16_symbolLookup;
+}
+CooperativeVectorFloat16 CooperativeVectorFloat16Type;
 
 Texture1D::Texture1D()
 {

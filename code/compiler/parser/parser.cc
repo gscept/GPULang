@@ -1511,7 +1511,16 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 break;
             }
         }
-        if (stream.Match(TokenType::Quote))
+        if (stream.Match(TokenType::Identifier))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* res = Alloc<SymbolExpression>(FixedString(tok.text));
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::Quote))
         {
             
             const Token& tok = stream.Data(-1);
@@ -1578,15 +1587,6 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         {
             const Token& tok = stream.Data(-1);
             Expression* res = Alloc<BoolExpression>(tok.text == "true" ? true : false);
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Identifier))
-        {
-            const Token& tok = stream.Data(-1);
-            Expression* res = Alloc<SymbolExpression>(FixedString(tok.text));
             res->location = LocationFromToken(tok);
             operandStack.Append(res);
             precedenceTable = PostfixPrecedenceTable;

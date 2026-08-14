@@ -6142,6 +6142,30 @@ extern Function Float16x4x4_operator_scale_Float16;
 inline constexpr auto Float16x4x4_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x4x4_operator_scale_Float16_backend_index = 1427u;
 
+struct CooperativeMatrixFloat32 : public Type
+{
+    CooperativeMatrixFloat32();
+};
+extern CooperativeMatrixFloat32 CooperativeMatrixFloat32Type;
+
+struct CooperativeMatrixFloat16 : public Type
+{
+    CooperativeMatrixFloat16();
+};
+extern CooperativeMatrixFloat16 CooperativeMatrixFloat16Type;
+
+struct CooperativeVectorFloat32 : public Type
+{
+    CooperativeVectorFloat32();
+};
+extern CooperativeVectorFloat32 CooperativeVectorFloat32Type;
+
+struct CooperativeVectorFloat16 : public Type
+{
+    CooperativeVectorFloat16();
+};
+extern CooperativeVectorFloat16 CooperativeVectorFloat16Type;
+
 struct Texture1D : public Type
 {
     Texture1D();
