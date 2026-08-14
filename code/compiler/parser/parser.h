@@ -15,7 +15,7 @@ struct GPULangFile;
 namespace GPULang
 {
 struct Effect;
-enum class TokenType
+enum class TokenType : uint8_t
 {
     InvalidToken
     , End
@@ -269,15 +269,19 @@ struct TokenStream
             return *(this->dataIt + lookAhead);
     }
     
-    inline bool Match(TokenType type)
+    inline void SkipComments()
     {
-        // If not matching comments, skip all comment tokens
         while (*this->typeIt == TokenType::Comment)
         {
             this->lastComment = this->dataIt;
             this->typeIt++;
             this->dataIt++;
         }
+    }
+
+    inline bool Match(TokenType type)
+    {
+        this->SkipComments();
         if (*this->typeIt == type)
         {
             this->typeIt++;
@@ -295,13 +299,7 @@ struct TokenStream
     
     inline bool MatchClass(uint32_t bits)
     {
-        // Always skip comments when matching a class
-        while (*this->typeIt == TokenType::Comment)
-        {
-            this->lastComment = this->dataIt;
-            this->typeIt++;
-            this->dataIt++;
-        }
+        this->SkipComments();
         if ((TokenClassTable[(uint32_t)*this->typeIt] & bits) == bits)
         {
             this->typeIt++;

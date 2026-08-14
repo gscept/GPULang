@@ -1476,7 +1476,6 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
     };
     
     TransientArray<Operator> operatorStack(256);
-    TokenType type = stream.Type();
     TransientArray<Expression*> operandStack(256);
     TransientArray<TransientArray<Expression*>> expressionListStack(32);
     size_t paranthesisDepth = 0;
@@ -1485,18 +1484,13 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
     uint32_t* precedenceTable = PrefixPrecedenceTable;
     uint32_t* associativityTable = PrefixAssociativityTable;
     
-    while (type != TokenType::End)
+    while (true)
     {
-        if (stream.MatchClass(TOKEN_EXPRESSION_BIT))
-        {
-            // If it's a valid token, unmatch it for expression evaluation
-            stream.Unmatch();
-        }
-        else
-        {
-            // Otherwise, break because the expression is over
+        stream.SkipComments();
+        const TokenType type = stream.Type();
+        const uint32_t cls = TokenClassTable[(uint32_t)type];
+        if ((cls & TOKEN_EXPRESSION_BIT) == 0)
             break;
-        }
 
         // Special rule to deal with access operator (.) not allowing anything to follow it
         if (precedenceTable == PrefixPrecedenceTable)
@@ -1504,141 +1498,29 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
             if (
                 (stream.Type(-1) == TokenType::Dot || stream.Type(-1) == TokenType::Arrow)
                 && type != TokenType::Identifier
-                && (TokenClassTable[(uint32_t)type] & TOKEN_OPERATOR_BIT) == 0x0
+                && (cls & TOKEN_OPERATOR_BIT) == 0x0
                 )
             {
                 ret.diagnostics.Append(UnexpectedToken(stream, "unary expression or identifier"));
                 break;
             }
         }
-        if (stream.Match(TokenType::Identifier))
+
+        const Token* tok = &stream.Data();
+        if (cls & TOKEN_OPERATOR_BIT)
         {
-            const Token& tok = stream.Data(-1);
-            Expression* res = Alloc<SymbolExpression>(FixedString(tok.text));
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Quote))
-        {
-            
-            const Token& tok = stream.Data(-1);
-            Expression* res = Alloc<StringExpression>(std::string(tok.text));
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Integer))
-        {
-            const Token& tok = stream.Data(-1);
-            int value;
-            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
-            Expression* res = Alloc<IntExpression>(value);
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::UnsignedInteger))
-        {
-            const Token& tok = stream.Data(-1);
-            unsigned int value;
-            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
-            Expression* res = Alloc<UIntExpression>(value);
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Hex))
-        {
-            const Token& tok = stream.Data(-1);
-            unsigned int value; // Not a bug, from_chars doesn't implement two's complement, so rely on the compiler to do that instead
-            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value, 16);
-            Expression* res = Alloc<IntExpression>(value);
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::UnsignedHex))
-        {
-            const Token& tok = stream.Data(-1);
-            unsigned int value;
-            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value, 16);
-            Expression* res = Alloc<UIntExpression>(value);
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Float) || stream.Match(TokenType::Double))
-        {
-            const Token& tok = stream.Data(-1);
-            Expression* res = Alloc<FloatExpression>(std::stof(std::string(tok.text)));
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Bool))
-        {
-            const Token& tok = stream.Data(-1);
-            Expression* res = Alloc<BoolExpression>(tok.text == "true" ? true : false);
-            res->location = LocationFromToken(tok);
-            operandStack.Append(res);
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Declared))
-        {
-            const Token& tok = stream.Data(-1);
-            if (stream.Match(TokenType::LeftAngle))
-            {
-                if (stream.Match(TokenType::Identifier))
-                {
-                    const Token& tok = stream.Data(-1);
-                    Expression* res = Alloc<DeclaredExpression>(FixedString(tok.text));
-                    res->location = LocationFromToken(tok);
-                    
-                    if (!stream.Match(TokenType::RightAngle))
-                    {
-                        ret.diagnostics.Append(UnexpectedToken(stream, ">"));
-                        break;
-                    }
-                    operandStack.Append(res);
-                    precedenceTable = PostfixPrecedenceTable;
-                    associativityTable = PostfixAssociativityTable;
-                }
-                else
-                {
-                    ret.diagnostics.Append(UnexpectedToken(stream, "identifier"));
-                    break;
-                }
-            }
-            else
-            {
-                ret.diagnostics.Append(UnexpectedToken(stream, "<"));
-                break;
-            }
-        }
-        else if (stream.MatchClass(TOKEN_OPERATOR_BIT))
-        {
-            const Token* matchedTok = &stream.Data(-1);
-            TokenType matchedType = stream.Type(-1);
+            stream.Consume();
             Operator parseTok;
-            parseTok.type = matchedType;
-            parseTok.fourcc = StringToFourCC(matchedTok->text);
-            parseTok.token = matchedTok;
+            parseTok.type = type;
+            parseTok.fourcc = StringToFourCC(tok->text);
+            parseTok.token = tok;
             
             // If using prefix precedence, this is a prefix unary operator
             if (precedenceTable == PrefixPrecedenceTable)
             {
                 parseTok.arity = UNARY_ARITY;
                 parseTok.prefix = 1;
-                switch (matchedType)
+                switch (type)
                 {
                     case TokenType::Add:
                         parseTok.type = TokenType::PrefixAdd;
@@ -1665,7 +1547,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                         ret.diagnostics.Append(UnexpectedToken(stream, "valid prefix operator (+ - * ! ~ ++ --)"));
                 }
             }
-            else if ((TokenClassTable[(uint32_t)matchedType] & TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT) == TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT)
+            else if ((cls & TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT) == TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT)
             {
                 parseTok.arity = UNARY_ARITY;
                 parseTok.prefix = 0;
@@ -1675,10 +1557,9 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 // Otherwise it's a binary
                 while (operatorStack.size > 0)
                 {
-                    const Operator& tok = operatorStack.back();
-                    uint32_t p1 = precedenceTable[(uint32_t)matchedType];
+                    uint32_t p1 = precedenceTable[(uint32_t)type];
                     uint32_t p2 = precedenceTable[(uint32_t)operatorStack.back().type];
-                    uint32_t assoc = associativityTable[(uint32_t)matchedType];
+                    uint32_t assoc = associativityTable[(uint32_t)type];
                     
                     if ((assoc == ASSOC_LEFT && p2 <= p1) ||
                         (assoc == ASSOC_RIGHT && p2 < p1))
@@ -1694,286 +1575,409 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
             }
             
             operatorStack.Append(parseTok);
+            continue;
         }
-        else if (stream.Match(TokenType::LeftParant))
+
+        switch (type)
         {
-            // No previous operand, assume '(' expr ')'
-            if (precedenceTable == PrefixPrecedenceTable)
+            case TokenType::Identifier:
             {
-                Operator parseTok;
-                parseTok.type = TokenType::LeftParant;
-                parseTok.token = &stream.Data(-1);
-                operatorStack.Append(parseTok);
+                stream.Consume();
+                Expression* res = Alloc<SymbolExpression>(FixedString(tok->text));
+                res->location = LocationFromToken(*tok);
+                operandStack.Append(res);
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
             }
-            else // Assume call
+            case TokenType::Quote:
             {
-
-
-                Operator parseTok;
-                parseTok.type = TokenType::Call;
-                parseTok.operandDepth = operandStack.size;
-                parseTok.token = &stream.Data(-1);
-                operatorStack.Append(parseTok);
-                expressionListStack.Append(TransientArray<Expression*>(32));
+                stream.Consume();
+                Expression* res = Alloc<StringExpression>(std::string(tok->text));
+                res->location = LocationFromToken(*tok);
+                operandStack.Append(res);
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
             }
-            paranthesisDepth++;
-            precedenceTable = PrefixPrecedenceTable;
-            associativityTable = PrefixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::RightParant))
-        {
-            if (paranthesisDepth == 0)
+            case TokenType::Integer:
             {
-                stream.Unmatch();
-                break; // No matching left parant
+                stream.Consume();
+                int value;
+                std::from_chars(tok->text.data(), tok->text.data() + tok->text.size(), value);
+                Expression* res = Alloc<IntExpression>(value);
+                res->location = LocationFromToken(*tok);
+                operandStack.Append(res);
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
             }
-            paranthesisDepth--;
-            uint8_t callOrParen = 0;
-
-            // Reduce to '('
-            while (operatorStack.size > 0)
+            case TokenType::UnsignedInteger:
             {
-                if (operatorStack.back().type == TokenType::LeftParant)
-                {
-                    callOrParen = 1;
-                    break;
-                }
-                else if (operatorStack.back().type == TokenType::Call)
-                {
-                    callOrParen = 0;
-                    break;
-                }
-                reduceTop(operatorStack, operandStack);
+                stream.Consume();
+                unsigned int value;
+                std::from_chars(tok->text.data(), tok->text.data() + tok->text.size(), value);
+                Expression* res = Alloc<UIntExpression>(value);
+                res->location = LocationFromToken(*tok);
+                operandStack.Append(res);
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
             }
-            
-            const Operator& lastOp = operatorStack.back();
-            if (callOrParen == 0)
+            case TokenType::Hex:
             {
-                if (operatorStack.size == 0 || lastOp.type != TokenType::Call)
+                stream.Consume();
+                unsigned int value; // Not a bug, from_chars doesn't implement two's complement, so rely on the compiler to do that instead
+                std::from_chars(tok->text.data(), tok->text.data() + tok->text.size(), value, 16);
+                Expression* res = Alloc<IntExpression>(value);
+                res->location = LocationFromToken(*tok);
+                operandStack.Append(res);
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
+            }
+            case TokenType::UnsignedHex:
+            {
+                stream.Consume();
+                unsigned int value;
+                std::from_chars(tok->text.data(), tok->text.data() + tok->text.size(), value, 16);
+                Expression* res = Alloc<UIntExpression>(value);
+                res->location = LocationFromToken(*tok);
+                operandStack.Append(res);
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
+            }
+            case TokenType::Float:
+            case TokenType::Double:
+            {
+                stream.Consume();
+                Expression* res = Alloc<FloatExpression>(std::stof(std::string(tok->text)));
+                res->location = LocationFromToken(*tok);
+                operandStack.Append(res);
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
+            }
+            case TokenType::Bool:
+            {
+                stream.Consume();
+                Expression* res = Alloc<BoolExpression>(tok->text == "true" ? true : false);
+                res->location = LocationFromToken(*tok);
+                operandStack.Append(res);
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
+            }
+            case TokenType::Declared:
+            {
+                stream.Consume();
+                if (stream.Match(TokenType::LeftAngle))
                 {
-                    ret.diagnostics.Append(UnexpectedToken(stream, ")"));
-                    break;
-                }
-                
-                uint8_t hasArguments = (operandStack.size - lastOp.operandDepth) > 0;
-                Expression* name = nullptr;
-                TransientArray<Expression*>& expressionList = expressionListStack.back();
-                if (hasArguments)
-                {
-                    if (expressionList.Full())
+                    if (stream.Match(TokenType::Identifier))
                     {
-                        ret.diagnostics.Append(Limit(stream, "expression list", 256));
-                        break;
+                        const Token& identTok = stream.Data(-1);
+                        Expression* res = Alloc<DeclaredExpression>(FixedString(identTok.text));
+                        res->location = LocationFromToken(identTok);
+                        
+                        if (!stream.Match(TokenType::RightAngle))
+                        {
+                            ret.diagnostics.Append(UnexpectedToken(stream, ">"));
+                            goto expression_end;
+                        }
+                        operandStack.Append(res);
+                        precedenceTable = PostfixPrecedenceTable;
+                        associativityTable = PostfixAssociativityTable;
                     }
-                    Expression* arguments = operandStack.back(); operandStack.size--;
-                    name = operandStack.back(); operandStack.size--;
-                    expressionList.Append(arguments);
+                    else
+                    {
+                        ret.diagnostics.Append(UnexpectedToken(stream, "identifier"));
+                        goto expression_end;
+                    }
                 }
                 else
                 {
-                    name = operandStack.back(); operandStack.size--;
+                    ret.diagnostics.Append(UnexpectedToken(stream, "<"));
+                    goto expression_end;
+                }
+                break;
+            }
+            case TokenType::LeftParant:
+            {
+                stream.Consume();
+                // No previous operand, assume '(' expr ')'
+                if (precedenceTable == PrefixPrecedenceTable)
+                {
+                    Operator parseTok;
+                    parseTok.type = TokenType::LeftParant;
+                    parseTok.token = tok;
+                    operatorStack.Append(parseTok);
+                }
+                else // Assume call
+                {
+                    Operator parseTok;
+                    parseTok.type = TokenType::Call;
+                    parseTok.operandDepth = operandStack.size;
+                    parseTok.token = tok;
+                    operatorStack.Append(parseTok);
+                    expressionListStack.Append(TransientArray<Expression*>(32));
+                }
+                paranthesisDepth++;
+                precedenceTable = PrefixPrecedenceTable;
+                associativityTable = PrefixAssociativityTable;
+                break;
+            }
+            case TokenType::RightParant:
+            {
+                if (paranthesisDepth == 0)
+                    goto expression_end; // No matching left parant
+                stream.Consume();
+                paranthesisDepth--;
+                uint8_t callOrParen = 0;
+
+                // Reduce to '('
+                while (operatorStack.size > 0)
+                {
+                    if (operatorStack.back().type == TokenType::LeftParant)
+                    {
+                        callOrParen = 1;
+                        break;
+                    }
+                    else if (operatorStack.back().type == TokenType::Call)
+                    {
+                        callOrParen = 0;
+                        break;
+                    }
+                    reduceTop(operatorStack, operandStack);
                 }
                 
-                Expression* expr = Alloc<CallExpression>(name, expressionList);
-                expressionListStack.Pop();
-                expr->location = name->location;
-                operandStack.Append(expr);
-            }
-            else
-            {
-                if (operatorStack.size == 0 || lastOp.type != TokenType::LeftParant)
+                const Operator& lastOp = operatorStack.back();
+                if (callOrParen == 0)
                 {
-                    ret.diagnostics.Append(UnexpectedToken(stream, ")"));
-                    break;
+                    if (operatorStack.size == 0 || lastOp.type != TokenType::Call)
+                    {
+                        ret.diagnostics.Append(UnexpectedToken(stream, ")"));
+                        goto expression_end;
+                    }
+                    
+                    uint8_t hasArguments = (operandStack.size - lastOp.operandDepth) > 0;
+                    Expression* name = nullptr;
+                    TransientArray<Expression*>& expressionList = expressionListStack.back();
+                    if (hasArguments)
+                    {
+                        if (expressionList.Full())
+                        {
+                            ret.diagnostics.Append(Limit(stream, "expression list", 256));
+                            goto expression_end;
+                        }
+                        Expression* arguments = operandStack.back(); operandStack.size--;
+                        name = operandStack.back(); operandStack.size--;
+                        expressionList.Append(arguments);
+                    }
+                    else
+                    {
+                        name = operandStack.back(); operandStack.size--;
+                    }
+                    
+                    Expression* expr = Alloc<CallExpression>(name, expressionList);
+                    expressionListStack.Pop();
+                    expr->location = name->location;
+                    operandStack.Append(expr);
                 }
+                else
+                {
+                    if (operatorStack.size == 0 || lastOp.type != TokenType::LeftParant)
+                    {
+                        ret.diagnostics.Append(UnexpectedToken(stream, ")"));
+                        goto expression_end;
+                    }
+                }
+                operatorStack.size--; // Remove the left parant
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
             }
-            operatorStack.size--; // Remove the left parant
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::LeftBracket))
-        {
-            if (precedenceTable == PostfixPrecedenceTable)
+            case TokenType::LeftBracket:
             {
+                stream.Consume();
+                if (precedenceTable == PostfixPrecedenceTable)
+                {
+                    Operator parseTok;
+                    parseTok.type = TokenType::Subscript;
+                    parseTok.operandDepth = operandStack.size;
+                    parseTok.token = tok;
+                    operatorStack.Append(parseTok);
+                }
+                else
+                {
+                    Operator parseTok;
+                    parseTok.type = TokenType::ArrayInitializer;
+                    parseTok.operandDepth = operandStack.size;
+                    parseTok.token = tok;
+                    operatorStack.Append(parseTok);
+                    expressionListStack.Append(TransientArray<Expression*>(256));
+                }
+                bracketDepth++;
+                precedenceTable = PrefixPrecedenceTable;
+                associativityTable = PrefixAssociativityTable;
+                break;
+            }
+            case TokenType::RightBracket:
+            {
+                if (bracketDepth == 0)
+                    goto expression_end; // No matching left bracket
+                stream.Consume();
+                bracketDepth--;
+                
+                uint8_t subscriptOrArray = 0;
+                while (operatorStack.size > 0)
+                {
+                    if (operatorStack.back().type == TokenType::Subscript)
+                    {
+                        subscriptOrArray = 0;
+                        break;
+                    }
+                    else if (operatorStack.back().type == TokenType::ArrayInitializer)
+                    {
+                        subscriptOrArray = 1;
+                        break;
+                    }
+                    
+                    reduceTop(operatorStack, operandStack);
+                }
+                
+                const Operator& lastOp = operatorStack.back();
+                if (subscriptOrArray == 0)
+                {
+                    uint16_t numIndexExpressions = operandStack.size - lastOp.operandDepth;
+                    if (numIndexExpressions == 0)
+                    {
+                        ret.diagnostics.Append(UnexpectedToken(stream, "index expression"));
+                        goto expression_end;
+                    }
+                    Expression* index = operandStack.back(); operandStack.size--;
+                    
+                    if (operatorStack.size == 0 || lastOp.type != TokenType::Subscript)
+                    {
+                        ret.diagnostics.Append(UnexpectedToken(stream, "]"));
+                        goto expression_end;
+                    }
+                    
+                    Expression* target = operandStack.back(); operandStack.size--;
+                    Expression* expr = Alloc<ArrayIndexExpression>(target, index);
+                    expr->location = target->location;
+                    operandStack.Append(expr);
+                }
+                else if (subscriptOrArray == 1)
+                {
+                    if (operatorStack.size == 0 || lastOp.type != TokenType::ArrayInitializer)
+                    {
+                        ret.diagnostics.Append(UnexpectedToken(stream, "]"));
+                        goto expression_end;
+                    }
+                    
+                    // Flatten comma separated binary expression to a list
+                    Expression* target = operandStack.back(); operandStack.size--;
+                    TransientArray<Expression*>& expressionList = expressionListStack.back();
+                    if (expressionList.Full())
+                    {
+                        ret.diagnostics.Append(Limit(stream, "expression list", 256));
+                        goto expression_end;
+                    }
+                    expressionList.Append(target);
+                    Expression* expr = Alloc<ArrayInitializerExpression>(expressionList);
+                    expressionListStack.Pop();
+                    operandStack.Append(expr);
+                }
+                operatorStack.size--; // Remove the left bracket
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                break;
+            }
+            case TokenType::Question:
+            {
+                stream.Consume();
+                while (operatorStack.size > 0)
+                {
+                    uint32_t p1 = precedenceTable[(uint32_t)TokenType::Question];
+                    uint32_t p2 = precedenceTable[(uint32_t)operatorStack.back().type];
+                    uint32_t assoc = associativityTable[(uint32_t)TokenType::Question];
+
+                    if ((assoc == ASSOC_LEFT && p2 <= p1) ||
+                        (assoc == ASSOC_RIGHT && p2 < p1))
+                    {
+                        reduceTop(operatorStack, operandStack);
+                    }
+                    else
+                        break;
+                }
+
                 Operator parseTok;
-                parseTok.type = TokenType::Subscript;
-                parseTok.operandDepth = operandStack.size;
-                parseTok.token = &stream.Data(-1);
+                parseTok.type = TokenType::Question;
+                parseTok.arity = TERNARY_ARITY;
+                parseTok.token = tok;
+                precedenceTable = PrefixPrecedenceTable;
+                associativityTable = PrefixAssociativityTable;
                 operatorStack.Append(parseTok);
+                break;
             }
-            else
+            case TokenType::Colon:
             {
-                Operator parseTok;
-                parseTok.type = TokenType::ArrayInitializer;
-                parseTok.operandDepth = operandStack.size;
-                parseTok.token = &stream.Data(-1);
-                operatorStack.Append(parseTok);
-                expressionListStack.Append(TransientArray<Expression*>(256));
-            }
-            bracketDepth++;
-            precedenceTable = PrefixPrecedenceTable;
-            associativityTable = PrefixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::RightBracket))
-        {
-            if (bracketDepth == 0)
-            {
-                stream.Unmatch();
-                break; // No matching left parant
-            }
-            
-            bracketDepth--;
-            
-            uint8_t subscriptOrArray = 0;
-            while (operatorStack.size > 0)
-            {
-                if (operatorStack.back().type == TokenType::Subscript)
+                bool validTernary = false;
+                while (operatorStack.size > 0)
                 {
-                    subscriptOrArray = 0;
-                    break;
+                    if (operatorStack.back().type == TokenType::Question)
+                    {
+                        validTernary = true;
+                        break;
+                    }
+                    reduceTop(operatorStack, operandStack);
                 }
-                else if (operatorStack.back().type == TokenType::ArrayInitializer)
-                {
-                    subscriptOrArray = 1;
-                    break;
-                }
-                
-                reduceTop(operatorStack, operandStack);
+
+                // If not a valid ternary expression, end the expression
+                if (!validTernary)
+                    goto expression_end;
+                stream.Consume();
+                precedenceTable = PrefixPrecedenceTable;
+                associativityTable = PrefixAssociativityTable;
+                break;
             }
-            
-            const Operator& lastOp = operatorStack.back();
-            if (subscriptOrArray == 0)
+            case TokenType::Comma:
             {
-                uint16_t numIndexExpressions = operandStack.size - lastOp.operandDepth;
-                if (numIndexExpressions == 0)
+                if (stopAtComma && paranthesisDepth == 0 && bracketDepth == 0)
+                    goto expression_end;
+                stream.Consume();
+                // Reduce to left of comma
+                while (operatorStack.size > 0)
                 {
-                    ret.diagnostics.Append(UnexpectedToken(stream, "index expression"));
-                    break;
-                }
-                Expression* index = operandStack.back(); operandStack.size--;
-                
-                if (operatorStack.size == 0 || lastOp.type != TokenType::Subscript)
-                {
-                    ret.diagnostics.Append(UnexpectedToken(stream, "]"));
-                    break;
+                    uint32_t p1 = precedenceTable[(uint32_t)operatorStack.back().type];
+                    
+                    if (p1 != 0xFFFFFFFF)
+                    {
+                        reduceTop(operatorStack, operandStack);
+                    }
+                    else
+                        break;
                 }
                 
-                Expression* target = operandStack.back(); operandStack.size--;
-                Expression* expr = Alloc<ArrayIndexExpression>(target, index);
-                expr->location = target->location;
-                operandStack.Append(expr);
-            }
-            else if (subscriptOrArray == 1)
-            {
-                if (operatorStack.size == 0 || lastOp.type != TokenType::ArrayInitializer)
-                {
-                    ret.diagnostics.Append(UnexpectedToken(stream, "]"));
-                    break;
-                }
-                
-                // Flatten comma separated binary expression to a list
-                Expression* target = operandStack.back(); operandStack.size--;
                 TransientArray<Expression*>& expressionList = expressionListStack.back();
                 if (expressionList.Full())
                 {
                     ret.diagnostics.Append(Limit(stream, "expression list", 256));
-                    break;
+                    goto expression_end;
                 }
-                expressionList.Append(target);
-                Expression* expr = Alloc<ArrayInitializerExpression>(expressionList);
-                expressionListStack.Pop();
-                operandStack.Append(expr);
-            }
-            operatorStack.size--; // Remove the left bracket
-            precedenceTable = PostfixPrecedenceTable;
-            associativityTable = PostfixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Question))
-        {
-            while (operatorStack.size > 0)
-            {
-                const Operator& tok = operatorStack.back();
-                uint32_t p1 = precedenceTable[(uint32_t)TokenType::Question];
-                uint32_t p2 = precedenceTable[(uint32_t)operatorStack.back().type];
-                uint32_t assoc = associativityTable[(uint32_t)TokenType::Question];
-
-                if ((assoc == ASSOC_LEFT && p2 <= p1) ||
-                    (assoc == ASSOC_RIGHT && p2 < p1))
-                {
-                    reduceTop(operatorStack, operandStack);
-                }
-                else
-                    break;
-            }
-
-            Operator parseTok;
-            parseTok.type = TokenType::Question;
-            parseTok.arity = TERNARY_ARITY;
-            parseTok.token = &stream.Data(-1);
-            precedenceTable = PrefixPrecedenceTable;
-            associativityTable = PrefixAssociativityTable;
-            operatorStack.Append(parseTok);
-        }
-        else if (stream.Match(TokenType::Colon))
-        {
-            bool validTernary = false;
-            while (operatorStack.size > 0)
-            {
-                if (operatorStack.back().type == TokenType::Question)
-                {
-                    validTernary = true;
-                    break;
-                }
-                reduceTop(operatorStack, operandStack);
-            }
-
-            // If not a valid ternary expression, end the expression
-            if (!validTernary)
-            {
-                stream.Unmatch();
-                break;
-            }
-            precedenceTable = PrefixPrecedenceTable;
-            associativityTable = PrefixAssociativityTable;
-        }
-        else if (stream.Match(TokenType::Comma))
-        {
-            if (stopAtComma && paranthesisDepth == 0 && bracketDepth == 0)
-            {
-                stream.Unmatch();
-                break;
-            }
-            // Reduce to left of comma
-            // Otherwise it's a binary
-            while (operatorStack.size > 0)
-            {
-                const Operator& tok = operatorStack.back();
-                uint32_t p1 = precedenceTable[(uint32_t)operatorStack.back().type];
+                expressionList.Append(operandStack.back());
                 
-                if (p1 != 0xFFFFFFFF)
-                {
-                    reduceTop(operatorStack, operandStack);
-                }
-                else
-                    break;
-            }
-            
-            TransientArray<Expression*>& expressionList = expressionListStack.back();
-            if (expressionList.Full())
-            {
-                ret.diagnostics.Append(Limit(stream, "expression list", 256));
+                operandStack.size--;
+                precedenceTable = PrefixPrecedenceTable;
+                associativityTable = PrefixAssociativityTable;
                 break;
             }
-            expressionList.Append(operandStack.back());
-            
-            operandStack.size--;
-            precedenceTable = PrefixPrecedenceTable;
-            associativityTable = PrefixAssociativityTable;
+            default:
+                goto expression_end;
         }
-        else
-            break;
-        type = stream.Type();
     }
+expression_end:
     
     while (operatorStack.size > 0)
     {
