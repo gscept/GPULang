@@ -48,10 +48,15 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <io.h>
+#include <stdlib.h>
 #define stat _stat
+#define realpath(src, dst) _fullpath(dst, src, _MAX_PATH)
+#define PATH_MAX _MAX_PATH
 #else
 #include <unistd.h>
 #include <sys/stat.h>
+#include <stdlib.h>
+#include <limits.h>
 #endif
 
 namespace GPULang
@@ -791,10 +796,19 @@ static auto commentEnd = [](const char* it, const char* end) -> const char*
 
 static auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, const PinnedSet<TransientString>& resolvedPaths) -> TransientString
 {
-    struct stat sb;
-    if (stat(path.data(), &sb) == 0)
+    auto makeAbsolute = [](const char* foundPath) -> TransientString
     {
-        return TransientString(path);
+        char resolved[PATH_MAX];
+        if (realpath(foundPath, resolved) == nullptr)
+            return TransientString(foundPath);
+        return TransientString(resolved);
+    };
+
+    struct stat sb;
+    TStr pathStr = TStr(path);
+    if (stat(pathStr.Data(), &sb) == 0)
+    {
+        return makeAbsolute(pathStr.Data());
     }
     else
     {
@@ -807,7 +821,7 @@ static auto resolvePath = [](const std::string_view& path, const GPULang::FixedS
             struct stat sb;
             if (stat(fullPath.Data(), &sb) == 0)
             {
-                return fullPath;
+                return makeAbsolute(fullPath.Data());
             }
         }
         
@@ -819,7 +833,7 @@ static auto resolvePath = [](const std::string_view& path, const GPULang::FixedS
             struct stat sb;
             if (stat(fullPath.Data(), &sb) == 0)
             {
-                return fullPath;
+                return makeAbsolute(fullPath.Data());
             }
         }
     }
