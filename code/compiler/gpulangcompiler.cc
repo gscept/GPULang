@@ -17,10 +17,15 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <io.h>
+#include <stdlib.h>
 #define stat _stat
+#define PATH_MAX 1024
+#define realpath(src, dst) _fullpath(dst, src, PATH_MAX)
 #else
 #include <unistd.h>
 #include <sys/stat.h>
+#include <stdlib.h>
+#include <limits.h>
 #endif
 
 namespace GPULang
@@ -1847,7 +1852,7 @@ GPULangPreprocessFile(
 FixedArray<FixedString>
 GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& defines, PinnedArray<GPULangDiagnostic>& diagnostics)
 {
-    TransientArray<std::string_view> searchPaths(128);
+    TransientArray<TransientString> searchPaths(128);
     for (auto& arg : defines)
     {
         std::string_view argView = arg;
@@ -1860,7 +1865,16 @@ GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& d
                     //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
                     return false;
                 }
-                searchPaths.Append(argView.substr(2));
+                
+                char resolved[PATH_MAX];
+                if (realpath(argView.substr(2).data(), resolved) == nullptr)
+                {
+                    searchPaths.Append(argView.substr(2));
+                }
+                else
+                {
+                    searchPaths.Append(TransientString(resolved, strlen(resolved)));
+                }
             }
         }
     }
@@ -1928,7 +1942,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     compiler.Setup(target, options);
     GrowingString errorString;
 
-    TransientArray<std::string_view> searchPaths(128);
+    TransientArray<TransientString> searchPaths(128);
     for (auto& arg : defines)
     {
         std::string_view argView = arg;
@@ -1941,7 +1955,16 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
                     //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
                     return false;
                 }
-                searchPaths.Append(argView.substr(2));
+
+                char resolved[PATH_MAX];
+                if (realpath(argView.substr(2).data(), resolved) == nullptr)
+                {
+                    searchPaths.Append(argView.substr(2));
+                }
+                else
+                {
+                    searchPaths.Append(TransientString(resolved, strlen(resolved)));
+                }
             }
         }
     }
@@ -2092,7 +2115,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
     
-    TransientArray<std::string_view> searchPaths(128);
+    TransientArray<TransientString> searchPaths(128);
     for (auto& arg : defines)
     {
         std::string_view argView = arg;
@@ -2105,7 +2128,15 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
                     //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
                     return false;
                 }
-                searchPaths.Append(argView.substr(2));
+                char resolved[PATH_MAX];
+                if (realpath(argView.substr(2).data(), resolved) == nullptr)
+                {
+                    searchPaths.Append(argView.substr(2));
+                }
+                else
+                {
+                    searchPaths.Append(TransientString(resolved, strlen(resolved)));
+                }
             }
         }
     }

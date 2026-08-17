@@ -224,7 +224,7 @@ struct TokenizationResult
 };
 
 // Tokenize string
-void Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret, bool captureComments = false);
+void Tokenize(const GPULangFile* file, const TransientArray<TransientString>& searchPaths, TokenizationResult& ret, bool captureComments = false);
 
 struct ParseResult
 {

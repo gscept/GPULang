@@ -50,8 +50,8 @@
 #include <io.h>
 #include <stdlib.h>
 #define stat _stat
-#define realpath(src, dst) _fullpath(dst, src, _MAX_PATH)
-#define PATH_MAX _MAX_PATH
+#define PATH_MAX 1024
+#define realpath(src, dst) _fullpath(dst, src, PATH_MAX)
 #else
 #include <unistd.h>
 #include <sys/stat.h>
@@ -794,14 +794,22 @@ static auto commentEnd = [](const char* it, const char* end) -> const char*
     return it;
 };
 
-static auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, const PinnedSet<TransientString>& resolvedPaths) -> TransientString
+static auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<TransientString>& searchPaths, const PinnedSet<TransientString>& resolvedPaths) -> TransientString
 {
     auto makeAbsolute = [](const char* foundPath) -> TransientString
     {
         char resolved[PATH_MAX];
         if (realpath(foundPath, resolved) == nullptr)
             return TransientString(foundPath);
-        return TransientString(resolved);
+
+#ifdef __WIN32__
+        for (char* p = resolved; *p != '\0'; ++p)
+        {
+            if (*p == '\\')
+                *p = '/';
+        }
+#endif
+        return TransientString(resolved, strlen(resolved));
     };
 
     struct stat sb;
@@ -829,7 +837,6 @@ static auto resolvePath = [](const std::string_view& path, const GPULang::FixedS
         for (auto& searchPath : searchPaths)
         {
             TStr fullPath = TStr::Compact(searchPath, path);
-            auto it = resolvedPaths.Find(fullPath);
             struct stat sb;
             if (stat(fullPath.Data(), &sb) == 0)
             {
@@ -845,7 +852,7 @@ static auto resolvePath = [](const std::string_view& path, const GPULang::FixedS
 /**
  */
 void
-Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret, bool captureComments)
+Tokenize(const GPULangFile* file, const TransientArray<TransientString>& searchPaths, TokenizationResult& ret, bool captureComments)
 {
     const char* it = file->contents;
     const char* end = file->contents + file->contentSize;
@@ -1183,6 +1190,11 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
                                             ret.tokens.size--;
                                             ret.tokenTypes.size--;
                                         }
+                                    }
+                                    else
+                                    {
+                                        // Reentrant include, skip...
+                                        int f = 5;
                                     }
                                 }
 
