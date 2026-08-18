@@ -12,6 +12,7 @@
 #include "ast/effect.h"
 #include "memory.h"
 #include "parser/parser.h"
+#include <filesystem>
 
 #ifdef __WIN32__
 #define WIN32_LEAN_AND_MEAN
@@ -1849,36 +1850,36 @@ GPULangPreprocessFile(
 //------------------------------------------------------------------------------
 /**
 */
-FixedArray<FixedString>
-GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& defines, PinnedArray<GPULangDiagnostic>& diagnostics)
+static TransientArray<TransientString> 
+GPULangGetSearchPaths(const std::vector<std::string>& defines)
 {
+    namespace fs = std::filesystem;
     TransientArray<TransientString> searchPaths(128);
     for (auto& arg : defines)
     {
-        std::string_view argView = arg;
-        if (arg[0] == '-')
+        if (arg.size() >= 2 && arg[0] == '-' && arg[1] == 'I')
         {
-            if (arg[1] == 'I')
+            if (searchPaths.Full())
             {
-                if (searchPaths.Full())
-                {
-                    //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
-                    return false;
-                }
-                
-                char resolved[PATH_MAX];
-                if (realpath(argView.substr(2).data(), resolved) == nullptr)
-                {
-                    searchPaths.Append(argView.substr(2));
-                }
-                else
-                {
-                    searchPaths.Append(TransientString(resolved, strlen(resolved)));
-                }
+                return searchPaths;
             }
+
+            std::string includePath = arg.substr(2);
+            std::error_code ec;
+            fs::path resolved = fs::absolute(fs::path(includePath), ec);
+            std::string finalPath = ec ? includePath : resolved.lexically_normal().string();
+            searchPaths.Append(TransientString(finalPath.c_str(), finalPath.length()));
         }
     }
-    
+    return searchPaths;
+}
+//------------------------------------------------------------------------------
+/**
+*/
+FixedArray<FixedString>
+GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& defines, PinnedArray<GPULangDiagnostic>& diagnostics)
+{
+    TransientArray<TransientString> searchPaths = GPULangGetSearchPaths(defines);
     TokenizationResult res;
     Tokenize(file, searchPaths, res);
     
@@ -1942,32 +1943,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     compiler.Setup(target, options);
     GrowingString errorString;
 
-    TransientArray<TransientString> searchPaths(128);
-    for (auto& arg : defines)
-    {
-        std::string_view argView = arg;
-        if (arg[0] == '-')
-        {
-            if (arg[1] == 'I')
-            {
-                if (searchPaths.Full())
-                {
-                    //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
-                    return false;
-                }
-
-                char resolved[PATH_MAX];
-                if (realpath(argView.substr(2).data(), resolved) == nullptr)
-                {
-                    searchPaths.Append(argView.substr(2));
-                }
-                else
-                {
-                    searchPaths.Append(TransientString(resolved, strlen(resolved)));
-                }
-            }
-        }
-    }
+    TransientArray<TransientString> searchPaths = GPULangGetSearchPaths(defines);
     
     GPULang::Compiler::Timer timer;
     timer.Start();
@@ -2115,31 +2091,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
     
-    TransientArray<TransientString> searchPaths(128);
-    for (auto& arg : defines)
-    {
-        std::string_view argView = arg;
-        if (arg[0] == '-')
-        {
-            if (arg[1] == 'I')
-            {
-                if (searchPaths.Full())
-                {
-                    //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
-                    return false;
-                }
-                char resolved[PATH_MAX];
-                if (realpath(argView.substr(2).data(), resolved) == nullptr)
-                {
-                    searchPaths.Append(argView.substr(2));
-                }
-                else
-                {
-                    searchPaths.Append(TransientString(resolved, strlen(resolved)));
-                }
-            }
-        }
-    }
+    TransientArray<TransientString> searchPaths = GPULangGetSearchPaths(defines);
     
     TokenizationResult tokenizationResult;
     Tokenize(file, searchPaths, tokenizationResult, true);
