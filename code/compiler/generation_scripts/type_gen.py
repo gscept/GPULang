@@ -4830,27 +4830,25 @@ def generate_types():
             fun.spirv = spirv_function
             functions.append(fun)
 
-    texture_load_store_intrinsics = ['Load', 'LoadMip', 'Store', 'StoreMip']
+    texture_load_intrinsics = ['Load', 'LoadMip']
+
     for type in texture_types:
         coordinate_type = texture_denormalized_index_types[type]
-        for intrinsic in texture_load_store_intrinsics:
-            hasMip = intrinsic in ['LoadMip', 'StoreMip']
-            hasStore = intrinsic in ['Store', 'StoreMip']
+        for intrinsic in texture_load_intrinsics:
+            hasMip = intrinsic in ['LoadMip']
             function_name = f'Texture{intrinsic}_{type}'
+
             texture_argument_name = f'{function_name}_texture'
             coordinate_argument_name = f'{function_name}_coordinate'
 
-            if hasStore:
-                doc = f'Store a single texel at an absolute non-normalized coordinate'
-            else:
-                doc = f'Load a single texel at an absolute non-normalized coordinate'
+            doc = f'Load a single texel at an absolute non-normalized coordinate'
             if hasMip:
                 doc += ' at a specific mip level'
 
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'texture{intrinsic}',
-                return_type = 'Float32x4' if not hasStore else 'Void',
+                return_type = 'Float32x4',
                 documentation = doc,
                 parameters = [
                     Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, mutable=True, strict=True),
@@ -4862,38 +4860,72 @@ def generate_types():
                 fun.parameters.append(
                     Variable(decl_name = f'{function_name}_mip', api_name = "mip", type_name='Int32')
                 )
-            if hasStore:
-                fun.parameters.append(
-                    Variable(decl_name = f'{function_name}_value', api_name = "value", type_name='Float32x4')
-                )
 
             spirv_function = ''
             spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
             spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
-            if hasStore:
-                spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);\n'
-                if hasMip:
-                    spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);\n'
-            else:
-                if hasMip:
-                    spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);\n'
 
-            if hasStore:
-                spirv_function += '    uint32_t ret = 0xFFFFFFFF;\n'
-                if hasMip:
-                    spirv_function += f'    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, texture, coord, value, ImageOperands::Lod, mip);\n'
-                else:
-                    spirv_function += f'    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, texture, coord, value);\n'
+            if hasMip:
+                spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);\n'
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);\n'
             else:
-                if hasMip:
-                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);\n'
-                else:
-                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);\n'
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
 
             fun.spirv = spirv_function
             functions.append(fun)
+
+    texture_store_intrinsics = ['Store', 'StoreMip']
+    texture_store_types = ['Float32x4', 'Int32x4', 'UInt32x4']
+    for type in texture_types:
+        for store_type in texture_store_types:
+            coordinate_type = texture_denormalized_index_types[type]
+            for intrinsic in texture_store_intrinsics:
+                hasMip = intrinsic in ['StoreMip']
+                function_name = f'Texture{intrinsic}_{type}_{store_type}'
+
+                texture_argument_name = f'{function_name}_texture'
+                coordinate_argument_name = f'{function_name}_coordinate'
+
+                doc = f'Store a single texel at an absolute non-normalized coordinate'
+                if hasMip:
+                    doc += ' at a specific mip level'
+
+                fun = Function( 
+                    decl_name = function_name,
+                    api_name = f'texture{intrinsic}',
+                    return_type = 'Void',
+                    documentation = doc,
+                    parameters = [
+                        Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, mutable=True, strict=True),
+                        Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
+                    ]
+                )
+
+                if hasMip:
+                    fun.parameters.append(
+                        Variable(decl_name = f'{function_name}_mip', api_name = "mip", type_name='Int32')
+                    )
+                fun.parameters.append(
+                    Variable(decl_name = f'{function_name}_value', api_name = "value", type_name=store_type)
+                )
+
+                spirv_function = ''
+                spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+                spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
+                spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);\n'
+
+                if hasMip:
+                    spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);\n'
+                    spirv_function += f'    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, texture, coord, value, ImageOperands::Lod, mip);\n'
+                else:
+                    spirv_function += f'    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, texture, coord, value);\n'
+                spirv_function += '    return SPIRVResult(0xFFFFFFFF, returnType, true);\n'
+                
+
+                fun.spirv = spirv_function
+                functions.append(fun)
 
     texture_fetch_intrinsics = ['Fetch', 'FetchSample']
     for type in texture_types:

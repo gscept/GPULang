@@ -111,7 +111,7 @@ std::array{
     , std::pair{ "r32i"_c, R32I }
     , std::pair{ "r16i"_c, R16I }
     , std::pair{ "r8i"_c, R8I }
-    , std::pair{ "rga32u"_c, Rgba32U }
+    , std::pair{ "rgba32u"_c, Rgba32U }
     , std::pair{ "rgba16u"_c, Rgba16U }
     , std::pair{ "rgb10_a2u"_c, Rgb10_A2U }
     , std::pair{ "rgba8u"_c, Rgba8U }
@@ -136,6 +136,7 @@ enum class TypeCode
     , Int
     , Int32 = Int
     , Int16
+    , Int64
     , UInt
     , UInt32 = UInt
     , UInt64

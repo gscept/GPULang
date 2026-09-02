@@ -7513,28 +7513,82 @@
                 "signature": "textureStore(uniform texture: *mutable texture1D, coordinate: i32, value: f32x4) void"
             },
             {
+                "signature": "textureStore(uniform texture: *mutable texture1D, coordinate: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture1D, coordinate: i32, value: u32x4) void"
+            },
+            {
                 "signature": "textureStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: f32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture2D, coordinate: i32x2, value: u32x4) void"
             },
             {
                 "signature": "textureStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: f32x4) void"
             },
             {
+                "signature": "textureStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture3D, coordinate: i32x3, value: u32x4) void"
+            },
+            {
                 "signature": "textureStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: f32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable textureCube, coordinate: i32x3, value: u32x4) void"
             },
             {
                 "signature": "textureStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: f32x4) void"
             },
             {
+                "signature": "textureStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture1DArray, coordinate: i32x2, value: u32x4) void"
+            },
+            {
                 "signature": "textureStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: f32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture2DArray, coordinate: i32x3, value: u32x4) void"
             },
             {
                 "signature": "textureStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: f32x4) void"
             },
             {
+                "signature": "textureStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable textureCubeArray, coordinate: i32x4, value: u32x4) void"
+            },
+            {
                 "signature": "textureStore(uniform texture: *mutable texture2DMS, coordinate: i32x2, value: f32x4) void"
             },
             {
+                "signature": "textureStore(uniform texture: *mutable texture2DMS, coordinate: i32x2, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture2DMS, coordinate: i32x2, value: u32x4) void"
+            },
+            {
                 "signature": "textureStore(uniform texture: *mutable texture2DMSArray, coordinate: i32x3, value: f32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture2DMSArray, coordinate: i32x3, value: i32x4) void"
+            },
+            {
+                "signature": "textureStore(uniform texture: *mutable texture2DMSArray, coordinate: i32x3, value: u32x4) void"
             }
         ]
     },
@@ -7552,28 +7606,82 @@
                 "signature": "textureStoreMip(uniform texture: *mutable texture1D, coordinate: i32, mip: i32, value: f32x4) void"
             },
             {
+                "signature": "textureStoreMip(uniform texture: *mutable texture1D, coordinate: i32, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture1D, coordinate: i32, mip: i32, value: u32x4) void"
+            },
+            {
                 "signature": "textureStoreMip(uniform texture: *mutable texture2D, coordinate: i32x2, mip: i32, value: f32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture2D, coordinate: i32x2, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture2D, coordinate: i32x2, mip: i32, value: u32x4) void"
             },
             {
                 "signature": "textureStoreMip(uniform texture: *mutable texture3D, coordinate: i32x3, mip: i32, value: f32x4) void"
             },
             {
+                "signature": "textureStoreMip(uniform texture: *mutable texture3D, coordinate: i32x3, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture3D, coordinate: i32x3, mip: i32, value: u32x4) void"
+            },
+            {
                 "signature": "textureStoreMip(uniform texture: *mutable textureCube, coordinate: i32x3, mip: i32, value: f32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable textureCube, coordinate: i32x3, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable textureCube, coordinate: i32x3, mip: i32, value: u32x4) void"
             },
             {
                 "signature": "textureStoreMip(uniform texture: *mutable texture1DArray, coordinate: i32x2, mip: i32, value: f32x4) void"
             },
             {
+                "signature": "textureStoreMip(uniform texture: *mutable texture1DArray, coordinate: i32x2, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture1DArray, coordinate: i32x2, mip: i32, value: u32x4) void"
+            },
+            {
                 "signature": "textureStoreMip(uniform texture: *mutable texture2DArray, coordinate: i32x3, mip: i32, value: f32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture2DArray, coordinate: i32x3, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture2DArray, coordinate: i32x3, mip: i32, value: u32x4) void"
             },
             {
                 "signature": "textureStoreMip(uniform texture: *mutable textureCubeArray, coordinate: i32x4, mip: i32, value: f32x4) void"
             },
             {
+                "signature": "textureStoreMip(uniform texture: *mutable textureCubeArray, coordinate: i32x4, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable textureCubeArray, coordinate: i32x4, mip: i32, value: u32x4) void"
+            },
+            {
                 "signature": "textureStoreMip(uniform texture: *mutable texture2DMS, coordinate: i32x2, mip: i32, value: f32x4) void"
             },
             {
+                "signature": "textureStoreMip(uniform texture: *mutable texture2DMS, coordinate: i32x2, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture2DMS, coordinate: i32x2, mip: i32, value: u32x4) void"
+            },
+            {
                 "signature": "textureStoreMip(uniform texture: *mutable texture2DMSArray, coordinate: i32x3, mip: i32, value: f32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture2DMSArray, coordinate: i32x3, mip: i32, value: i32x4) void"
+            },
+            {
+                "signature": "textureStoreMip(uniform texture: *mutable texture2DMSArray, coordinate: i32x3, mip: i32, value: u32x4) void"
             }
         ]
     },

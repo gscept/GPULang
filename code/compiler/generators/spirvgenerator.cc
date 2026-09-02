@@ -2382,57 +2382,57 @@ static const std::unordered_map<TypeCode, std::tuple<ConstantString, ConstantStr
     , { TypeCode::Void, { "void", "OpTypeVoid", OpTypeVoid, { } } }
 };
 
-std::unordered_map<ImageFormat, std::tuple<ConstantString, ConstantString, SPVEnum, SPVEnum>> imageFormatToSpirvType =
+std::unordered_map<ImageFormat, std::tuple<ConstantString, ConstantString, SPVEnum, SPVEnum, GPULang::TypeCode>> imageFormatToSpirvType =
 {
-    { ImageFormat::Rgba16,          { "Rgba16", "", ImageFormats::Rgba16, SPVEnum() }}
-    , { ImageFormat::Rgb10_A2,      { "Rgb10A2", "StorageImageExtendedFormats", ImageFormats::Rgb10A2, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rgba8,         { "Rgba8", "", ImageFormats::Rgba8, SPVEnum() } }
-    , { ImageFormat::Rg16,          { "Rg16", "StorageImageExtendedFormats", ImageFormats::Rg16, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rg8,           { "Rg8", "StorageImageExtendedFormats", ImageFormats::Rg8, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R16,           { "R16", "StorageImageExtendedFormats", ImageFormats::R16, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R8,            { "R8", "StorageImageExtendedFormats", ImageFormats::R8, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rgba16_Snorm,  { "Rgba16Snorm", "StorageImageExtendedFormats", ImageFormats::Rgba16Snorm, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rgba8_Snorm,   { "Rgba8Snorm", "", ImageFormats::Rgba8Snorm, SPVEnum() } }
-    , { ImageFormat::Rg16_Snorm,    { "Rg16Snorm", "StorageImageExtendedFormats", ImageFormats::Rg16Snorm, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rg8_Snorm,     { "Rg8Snorm", "StorageImageExtendedFormats", ImageFormats::Rg8Snorm, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R16_Snorm,     { "R16Snorm", "StorageImageExtendedFormats", ImageFormats::R16Snorm, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R8_Snorm,      { "R8Snorm", "StorageImageExtendedFormats", ImageFormats::R8Snorm, Capabilities::StorageImageExtendedFormats } }
+    { ImageFormat::Rgba16,          { "Rgba16", "", ImageFormats::Rgba16, SPVEnum(), GPULang::TypeCode::Float32 }}
+    , { ImageFormat::Rgb10_A2,      { "Rgb10A2", "StorageImageExtendedFormats", ImageFormats::Rgb10A2, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rgba8,         { "Rgba8", "", ImageFormats::Rgba8, SPVEnum(), GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rg16,          { "Rg16", "StorageImageExtendedFormats", ImageFormats::Rg16, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rg8,           { "Rg8", "StorageImageExtendedFormats", ImageFormats::Rg8, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::R16,           { "R16", "StorageImageExtendedFormats", ImageFormats::R16, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::R8,            { "R8", "StorageImageExtendedFormats", ImageFormats::R8, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rgba16_Snorm,  { "Rgba16Snorm", "StorageImageExtendedFormats", ImageFormats::Rgba16Snorm, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rgba8_Snorm,   { "Rgba8Snorm", "", ImageFormats::Rgba8Snorm, SPVEnum(), GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rg16_Snorm,    { "Rg16Snorm", "StorageImageExtendedFormats", ImageFormats::Rg16Snorm, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rg8_Snorm,     { "Rg8Snorm", "StorageImageExtendedFormats", ImageFormats::Rg8Snorm, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::R16_Snorm,     { "R16Snorm", "StorageImageExtendedFormats", ImageFormats::R16Snorm, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::R8_Snorm,      { "R8Snorm", "StorageImageExtendedFormats", ImageFormats::R8Snorm, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
 
     // float
-    , { ImageFormat::Rgba32F,       { "Rgba32f", "", ImageFormats::Rgba32f, SPVEnum() } }
-    , { ImageFormat::Rgba16F,       { "Rgba16f", "", ImageFormats::Rgba16f, SPVEnum() } }
-    , { ImageFormat::Rg32F,         { "Rg32f", "StorageImageExtendedFormats", ImageFormats::Rg32f, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rg16F,         { "Rg16f", "StorageImageExtendedFormats", ImageFormats::Rg16f, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R11G11B10F,    { "R11fG11fB10f", "StorageImageExtendedFormats", ImageFormats::R11fG11fB10f, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R32F,          { "R32f", "", ImageFormats::R32f, SPVEnum() } }
-    , { ImageFormat::R16F,          { "R16f", "StorageImageExtendedFormats", ImageFormats::R16f, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rgba32F,       { "Rgba32f", "", ImageFormats::Rgba32f, SPVEnum(), GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rgba16F,       { "Rgba16f", "", ImageFormats::Rgba16f, SPVEnum(), GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rg32F,         { "Rg32f", "StorageImageExtendedFormats", ImageFormats::Rg32f, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::Rg16F,         { "Rg16f", "StorageImageExtendedFormats", ImageFormats::Rg16f, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::R11G11B10F,    { "R11fG11fB10f", "StorageImageExtendedFormats", ImageFormats::R11fG11fB10f, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
+    , { ImageFormat::R32F,          { "R32f", "", ImageFormats::R32f, SPVEnum(), GPULang::TypeCode::Float32 } }
+    , { ImageFormat::R16F,          { "R16f", "StorageImageExtendedFormats", ImageFormats::R16f, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Float32 } }
 
     // integer
-    , { ImageFormat::Rgba32I,       { "Rgba32i", "", ImageFormats::Rgba32i, SPVEnum() } }
-    , { ImageFormat::Rgba16I,       { "Rgba16i", "", ImageFormats::Rgba16i, SPVEnum() } }
-    , { ImageFormat::Rgba8I,        { "Rgba8i", "", ImageFormats::Rgba8i, SPVEnum() } }
-    , { ImageFormat::Rg32I,         { "Rg32i", "StorageImageExtendedFormats", ImageFormats::Rg32i, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rg16I,         { "Rg16i", "StorageImageExtendedFormats", ImageFormats::Rg16i, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rg8I,          { "Rg8i", "StorageImageExtendedFormats", ImageFormats::Rg8i, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R32I,          { "R32i", "", ImageFormats::R32i, SPVEnum() } }
-    , { ImageFormat::R16I,          { "R16i", "StorageImageExtendedFormats", ImageFormats::R16i, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R8I,           { "R8i", "StorageImageExtendedFormats", ImageFormats::R8i, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rgba32I,       { "Rgba32i", "", ImageFormats::Rgba32i, SPVEnum(), GPULang::TypeCode::Int32 } }
+    , { ImageFormat::Rgba16I,       { "Rgba16i", "", ImageFormats::Rgba16i, SPVEnum(), GPULang::TypeCode::Int32 } }
+    , { ImageFormat::Rgba8I,        { "Rgba8i", "", ImageFormats::Rgba8i, SPVEnum(), GPULang::TypeCode::Int32 } }
+    , { ImageFormat::Rg32I,         { "Rg32i", "StorageImageExtendedFormats", ImageFormats::Rg32i, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Int32 } }
+    , { ImageFormat::Rg16I,         { "Rg16i", "StorageImageExtendedFormats", ImageFormats::Rg16i, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Int32 } }
+    , { ImageFormat::Rg8I,          { "Rg8i", "StorageImageExtendedFormats", ImageFormats::Rg8i, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Int32 } }
+    , { ImageFormat::R32I,          { "R32i", "", ImageFormats::R32i, SPVEnum(), GPULang::TypeCode::Int32 } }
+    , { ImageFormat::R16I,          { "R16i", "StorageImageExtendedFormats", ImageFormats::R16i, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Int32 } }
+    , { ImageFormat::R8I,           { "R8i", "StorageImageExtendedFormats", ImageFormats::R8i, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::Int32 } }
 
     // unsigned integer
-    , { ImageFormat::Rgba32U,       { "Rgba32ui", "", ImageFormats::Rgba32ui, SPVEnum() } }
-    , { ImageFormat::Rgba16U,       { "Rgba16ui", "", ImageFormats::Rgba16ui, SPVEnum() } }
-    , { ImageFormat::Rgb10_A2U,     { "Rgb10a2ui", "StorageImageExtendedFormats", ImageFormats::Rgb10a2ui, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rgba8U,        { "Rgba8ui", "", ImageFormats::Rgba8ui, SPVEnum() } }
-    , { ImageFormat::Rg32U,         { "Rg32ui", "StorageImageExtendedFormats", ImageFormats::Rg32ui, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rg16U,         { "Rg16ui", "StorageImageExtendedFormats", ImageFormats::Rg16ui, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::Rg8U,          { "Rg8ui", "StorageImageExtendedFormats", ImageFormats::Rg8ui, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R32U,          { "R32ui", "", ImageFormats::R32ui, SPVEnum() } }
-    , { ImageFormat::R16U,          { "R16ui", "StorageImageExtendedFormats", ImageFormats::R16ui, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R8U,           { "R8ui", "StorageImageExtendedFormats", ImageFormats::R8ui, Capabilities::StorageImageExtendedFormats } }
-    , { ImageFormat::R64U,          { "R64ui", "Int64ImageEXT", ImageFormats::R64ui, Capabilities::Int64ImageEXT } }
-    , { ImageFormat::R64I,          { "R64i", "Int64ImageEXT", ImageFormats::R64i, Capabilities::Int64ImageEXT } }
+    , { ImageFormat::Rgba32U,       { "Rgba32ui", "", ImageFormats::Rgba32ui, SPVEnum(), GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::Rgba16U,       { "Rgba16ui", "", ImageFormats::Rgba16ui, SPVEnum(), GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::Rgb10_A2U,     { "Rgb10a2ui", "StorageImageExtendedFormats", ImageFormats::Rgb10a2ui, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::Rgba8U,        { "Rgba8ui", "", ImageFormats::Rgba8ui, SPVEnum(), GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::Rg32U,         { "Rg32ui", "StorageImageExtendedFormats", ImageFormats::Rg32ui, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::Rg16U,         { "Rg16ui", "StorageImageExtendedFormats", ImageFormats::Rg16ui, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::Rg8U,          { "Rg8ui", "StorageImageExtendedFormats", ImageFormats::Rg8ui, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::R32U,          { "R32ui", "", ImageFormats::R32ui, SPVEnum(), GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::R16U,          { "R16ui", "StorageImageExtendedFormats", ImageFormats::R16ui, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::R8U,           { "R8ui", "StorageImageExtendedFormats", ImageFormats::R8ui, Capabilities::StorageImageExtendedFormats, GPULang::TypeCode::UInt32 } }
+    , { ImageFormat::R64U,          { "R64ui", "Int64ImageEXT", ImageFormats::R64ui, Capabilities::Int64ImageEXT, GPULang::TypeCode::UInt64 } }
+    , { ImageFormat::R64I,          { "R64i", "Int64ImageEXT", ImageFormats::R64i, Capabilities::Int64ImageEXT, GPULang::TypeCode::Int64 } }
 
-    , { ImageFormat::Unknown,       { "Unknown", "", ImageFormats::Unknown, SPVEnum() } }
+    , { ImageFormat::Unknown,       { "Unknown", "", ImageFormats::Unknown, SPVEnum(), GPULang::TypeCode::Float32 } }
 };
 
 //------------------------------------------------------------------------------
@@ -2650,7 +2650,6 @@ GenerateTypeSPIRV(
     }
     else if (typeSymbol->category == Type::TextureCategory)
     {
-        uint32_t floatType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, 1);
         auto handleTypeIt = handleTable.find(typeSymbol->baseType);
         auto [gpulangType, spirvFormatter] = handleTypeIt->second;
 
@@ -2666,21 +2665,22 @@ GenerateTypeSPIRV(
             generator->writer->Capability(Capabilities::Sampled1D);
         }
 
-        auto [spirvFormat, extension, format, cap] = imageFormatToSpirvType[type.imageFormat];
+        auto [spirvFormat, extension, format, cap, formatType] = imageFormatToSpirvType[type.imageFormat];
+        uint32_t pixelType = GeneratePODTypeSPIRV(compiler, generator, formatType, 1);
+
         TStr gpuLangStr = TStr::Compact(spirvFormat, "_", gpulangType, "Sample_", sampleBits, "Depth_", depthBits);
         if (extension.size > 0)
         {   
             generator->writer->Capability(cap);
         }
         auto handleGenerator = generators.find(typeSymbol->baseType);
-        uint32_t name = handleGenerator->second(generator, gpuLangStr, floatType, depthBits, sampleBits, format);
+        uint32_t name = handleGenerator->second(generator, gpuLangStr, pixelType, depthBits, sampleBits, format);
 
         baseType = std::tie(name, gpuLangStr);
         typeNameStr = gpuLangStr;
     }
     else if (typeSymbol->category == Type::SampledTextureCategory)
     {
-        uint32_t floatType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, 1);
         auto handleTypeIt = handleTable.find(typeSymbol->baseType);
         auto [gpulangType, spirvFormatter] = handleTypeIt->second;
 
@@ -2692,14 +2692,16 @@ GenerateTypeSPIRV(
             generator->writer->Capability(Capabilities::Sampled1D);
         }
 
-        auto [spirvFormat, extension, format, cap] = imageFormatToSpirvType[type.imageFormat];
+        auto [spirvFormat, extension, format, cap, formatType] = imageFormatToSpirvType[type.imageFormat];
+        uint32_t pixelType = GeneratePODTypeSPIRV(compiler, generator, formatType, 1);
+
         TStr gpuLangStr = TStr::Compact(spirvFormat, "_", gpulangType, "Sample_", sampleBits, "Depth_", depthBits);
         if (extension.size > 0)
         {
             generator->writer->Capability(cap);
         }
         auto handleGenerator = generators.find(typeSymbol->baseType);
-        uint32_t name = handleGenerator->second(generator, gpuLangStr, floatType, depthBits, sampleBits, format);
+        uint32_t name = handleGenerator->second(generator, gpuLangStr, pixelType, depthBits, sampleBits, format);
 
         baseType = std::tie(name, gpuLangStr);
         typeNameStr = gpuLangStr;
@@ -3020,23 +3022,23 @@ ToSPIRVTypeString(
         else
             sampleBits = 1;
 
-        uint32_t floatType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, 1);
-        auto [spirvFormat, extension, format, cap] = imageFormatToSpirvType[type.imageFormat];
-        ret = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
+        auto [spirvFormat, extension, format, cap, formatType] = imageFormatToSpirvType[type.imageFormat];
+        uint32_t pixelType = GeneratePODTypeSPIRV(compiler, generator, formatType, 1);
+        ret = spirvFormatter(pixelType, depthBits, sampleBits, spirvFormat.buf);
     }
     else if (typeSymbol->category == Type::SampledTextureCategory)
     {
-        uint32_t floatType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, 1);
         auto handleTypeIt = handleTable.find(typeSymbol->baseType);
         auto [gpulangType, spirvFormatter] = handleTypeIt->second;
 
         std::string accessPattern = "";
         uint32_t sampleBits = 1, depthBits = 0;
 
-        auto [spirvFormat, extension, format, cap] = imageFormatToSpirvType[type.imageFormat];
+        auto [spirvFormat, extension, format, cap, formatType] = imageFormatToSpirvType[type.imageFormat];
+        uint32_t pixelType = GeneratePODTypeSPIRV(compiler, generator, formatType, 1);
         TStr gpuLangStr = TStr::Compact(spirvFormat, "_", gpulangType, "Sample_", sampleBits, "Depth_", depthBits);
 
-        ret = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
+        ret = spirvFormatter(pixelType, depthBits, sampleBits, spirvFormat.buf);
     }
     else if (typeSymbol->category == Type::SamplerStateCategory)
     {

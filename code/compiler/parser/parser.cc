@@ -526,7 +526,7 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "r32i"_h, TokenType::R32I }
     , std::pair{ "r16i"_h, TokenType::R16I }
     , std::pair{ "r8i"_h, TokenType::R8I }
-    , std::pair{ "rga32u"_h, TokenType::Rgba32U }
+    , std::pair{ "rgba32u"_h, TokenType::Rgba32U }
     , std::pair{ "rgba16u"_h, TokenType::Rgba16U }
     , std::pair{ "rgb10_a2u"_h, TokenType::Rgb10_A2U }
     , std::pair{ "rgba8u"_h, TokenType::Rgba8U }
@@ -1308,14 +1308,7 @@ UnexpectedToken(const TokenStream& stream, const char* expected)
     
     GPULangDiagnostic diagnostic;
     diagnostic.severity = GPULangDiagnostic::Severity::Error;
-    if ((TokenClassTable[(uint32_t)stream.Type(0)] & TOKEN_KEYWORD_BIT) == TOKEN_KEYWORD_BIT)
-    {
-        diagnostic.error = TStr("Expected ", expected, ", got keyword '", tok.text, "'");
-    }
-    else
-    {
-        diagnostic.error = TStr("Expected ", expected);
-    }
+    diagnostic.error = TStr("Expected ", expected, ", got token '", tok.text, "'");
     diagnostic.file = tok.path;
     diagnostic.line = tok.startLine;
     diagnostic.column = tok.startChar;
@@ -3011,7 +3004,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
     // If no comma and parameter is fully parsed, but there is no ), it means invalid argument list
     if (!stream.Match(TokenType::RightParant))
     {
-        ret.diagnostics.Append(UnexpectedToken(stream, ")"));
+        ret.diagnostics.Append(UnexpectedToken(stream, "')' or identifier (for parameter)"));
         return res;
     }
     

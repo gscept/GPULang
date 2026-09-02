@@ -729,21 +729,26 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
                 {
                     const Variable* var = static_cast<const Variable*>(sym);
                     const Variable::__Resolved* resolved = static_cast<const Variable::__Resolved*>(sym->resolved);
-                    signature.Append(var->name);
-                    signature.Append(var->type.ToString());
-                    signature.Append(resolved->usageBits.bits);
-                    signature.Append(resolved->accessBits.bits);
-                    signature.Append(resolved->storage);
-                    signature.Append(resolved->group);
-                    signature.Append(resolved->binding);
-                    signature.Append(resolved->inBinding);
-                    signature.Append(resolved->outBinding);
-                    signature.Append(resolved->pixelCacheBinding);
-                    signature.Append(resolved->byteSize);
-                    signature.Append(resolved->structureOffset);
-                    signature.Append(resolved->elementPadding);
-                    signature.Append(resolved->startPadding);
-                    signature.Append(resolved->domain);
+
+                    // Only apply to ABI defining (CPU->GPU) interface
+                    if (resolved->storage == GPULang::Storage::Uniform || resolved->storage == GPULang::Storage::InlineUniform)
+                    {
+                        signature.Append(var->name);
+                        signature.Append(var->type.ToString());
+                        signature.Append(resolved->usageBits.bits);
+                        signature.Append(resolved->accessBits.bits);
+                        signature.Append(resolved->storage);
+                        signature.Append(resolved->group);
+                        signature.Append(resolved->binding);
+                        signature.Append(resolved->inBinding);
+                        signature.Append(resolved->outBinding);
+                        signature.Append(resolved->pixelCacheBinding);
+                        signature.Append(resolved->byteSize);
+                        signature.Append(resolved->structureOffset);
+                        signature.Append(resolved->elementPadding);
+                        signature.Append(resolved->startPadding);
+                        signature.Append(resolved->domain);
+                    }
                 }
             }
 
