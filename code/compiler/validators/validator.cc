@@ -45,6 +45,7 @@
 #include "compiler.h"
 #include "util.h"
 #include <algorithm>
+#include <climits>
 
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/boolvecexpression.h"

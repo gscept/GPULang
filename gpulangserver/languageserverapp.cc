@@ -44,6 +44,7 @@
 #include <filesystem>
 #include <chrono>
 #include <streambuf>
+#include <climits>
 #include "memory.h"
 
 GPULang::Allocator GlobalStringAllocator;

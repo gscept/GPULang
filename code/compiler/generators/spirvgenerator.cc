@@ -49,6 +49,7 @@
 #include <array>
 #include <complex>
 #include <algorithm>
+#include <climits>
 
 #include "ast/samplerstate.h"
 #include "ast/expressions/arrayinitializerexpression.h"
