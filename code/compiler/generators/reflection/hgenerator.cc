@@ -168,7 +168,7 @@ HGenerator::GenerateStructureH(const Compiler* compiler, const ProgramInstance* 
     if (strucResolved->packMembers)
         writer.WriteLine(Format("struct %s", struc->name.c_str()));
     else
-        writer.WriteLine(Format("struct alignas(16) %s", struc->name.c_str()));
+        writer.WriteLine(Format("struct alignas(%d) %s", strucResolved->baseAlignment, struc->name.c_str()));
     writer.WriteLine("{");
     writer.Indent();
     for (Symbol* sym : struc->symbols)
