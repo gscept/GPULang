@@ -1883,7 +1883,8 @@ GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& d
     TokenizationResult res;
     Tokenize(file, searchPaths, res);
     
-    TransientArray<FixedString> ret(res.resolvedPaths.size());
+    TransientArray<FixedString> ret(res.resolvedPaths.size() + 1);
+    ret.Append(file->path);
     for (const auto& file : res.resolvedPaths)
     {
         ret.Append(FixedString(file));
