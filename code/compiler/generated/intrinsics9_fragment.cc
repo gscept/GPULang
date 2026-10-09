@@ -529,189 +529,143 @@ Variable SubgroupSwapHorizontal_UInt16x4_value;
 Function SubgroupSwapHorizontal_UInt16x4;
 inline constexpr std::array SubgroupSwapHorizontal_UInt16x4_args = { &SubgroupSwapHorizontal_UInt16x4_value };
 
-/// atomicLoad with UInt32, MemorySemantics
-Variable AtomicLoad_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicLoad_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Uniform_UInt32_semantics;
-Function AtomicLoad_Uniform_UInt32;
-inline constexpr std::array AtomicLoad_Uniform_UInt32_args = { &AtomicLoad_Uniform_UInt32_ptr, &AtomicLoad_Uniform_UInt32_semantics };
+/// subgroupMin with Float32, SubgroupOperation
+Variable SubgroupMin_Float32_value;
+Variable SubgroupMin_Float32_op;
+Function SubgroupMin_Float32;
+inline constexpr std::array SubgroupMin_Float32_args = { &SubgroupMin_Float32_value, &SubgroupMin_Float32_op };
 
-/// atomicLoad with UInt32, MemorySemantics
-Variable AtomicLoad_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicLoad_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Workgroup_UInt32_semantics;
-Function AtomicLoad_Workgroup_UInt32;
-inline constexpr std::array AtomicLoad_Workgroup_UInt32_args = { &AtomicLoad_Workgroup_UInt32_ptr, &AtomicLoad_Workgroup_UInt32_semantics };
+/// subgroupMin with Float32x2, SubgroupOperation
+Variable SubgroupMin_Float32x2_value;
+Variable SubgroupMin_Float32x2_op;
+Function SubgroupMin_Float32x2;
+inline constexpr std::array SubgroupMin_Float32x2_args = { &SubgroupMin_Float32x2_value, &SubgroupMin_Float32x2_op };
 
-/// atomicIncrement with UInt32, MemorySemantics
-Variable AtomicIncrement_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicIncrement_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Uniform_UInt32_semantics;
-Function AtomicIncrement_Uniform_UInt32;
-inline constexpr std::array AtomicIncrement_Uniform_UInt32_args = { &AtomicIncrement_Uniform_UInt32_ptr, &AtomicIncrement_Uniform_UInt32_semantics };
+/// subgroupMin with Float32x3, SubgroupOperation
+Variable SubgroupMin_Float32x3_value;
+Variable SubgroupMin_Float32x3_op;
+Function SubgroupMin_Float32x3;
+inline constexpr std::array SubgroupMin_Float32x3_args = { &SubgroupMin_Float32x3_value, &SubgroupMin_Float32x3_op };
 
-/// atomicIncrement with UInt32, MemorySemantics
-Variable AtomicIncrement_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicIncrement_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Workgroup_UInt32_semantics;
-Function AtomicIncrement_Workgroup_UInt32;
-inline constexpr std::array AtomicIncrement_Workgroup_UInt32_args = { &AtomicIncrement_Workgroup_UInt32_ptr, &AtomicIncrement_Workgroup_UInt32_semantics };
+/// subgroupMin with Float32x4, SubgroupOperation
+Variable SubgroupMin_Float32x4_value;
+Variable SubgroupMin_Float32x4_op;
+Function SubgroupMin_Float32x4;
+inline constexpr std::array SubgroupMin_Float32x4_args = { &SubgroupMin_Float32x4_value, &SubgroupMin_Float32x4_op };
 
-/// atomicDecrement with UInt32, MemorySemantics
-Variable AtomicDecrement_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicDecrement_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Uniform_UInt32_semantics;
-Function AtomicDecrement_Uniform_UInt32;
-inline constexpr std::array AtomicDecrement_Uniform_UInt32_args = { &AtomicDecrement_Uniform_UInt32_ptr, &AtomicDecrement_Uniform_UInt32_semantics };
+/// subgroupMin with Float16, SubgroupOperation
+Variable SubgroupMin_Float16_value;
+Variable SubgroupMin_Float16_op;
+Function SubgroupMin_Float16;
+inline constexpr std::array SubgroupMin_Float16_args = { &SubgroupMin_Float16_value, &SubgroupMin_Float16_op };
 
-/// atomicDecrement with UInt32, MemorySemantics
-Variable AtomicDecrement_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicDecrement_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Workgroup_UInt32_semantics;
-Function AtomicDecrement_Workgroup_UInt32;
-inline constexpr std::array AtomicDecrement_Workgroup_UInt32_args = { &AtomicDecrement_Workgroup_UInt32_ptr, &AtomicDecrement_Workgroup_UInt32_semantics };
+/// subgroupMin with Float16x2, SubgroupOperation
+Variable SubgroupMin_Float16x2_value;
+Variable SubgroupMin_Float16x2_op;
+Function SubgroupMin_Float16x2;
+inline constexpr std::array SubgroupMin_Float16x2_args = { &SubgroupMin_Float16x2_value, &SubgroupMin_Float16x2_op };
 
-/// atomicLoad with Int32, MemorySemantics
-Variable AtomicLoad_Uniform_Int32_ptr;
-inline constexpr std::array AtomicLoad_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Uniform_Int32_semantics;
-Function AtomicLoad_Uniform_Int32;
-inline constexpr std::array AtomicLoad_Uniform_Int32_args = { &AtomicLoad_Uniform_Int32_ptr, &AtomicLoad_Uniform_Int32_semantics };
+/// subgroupMin with Float16x3, SubgroupOperation
+Variable SubgroupMin_Float16x3_value;
+Variable SubgroupMin_Float16x3_op;
+Function SubgroupMin_Float16x3;
+inline constexpr std::array SubgroupMin_Float16x3_args = { &SubgroupMin_Float16x3_value, &SubgroupMin_Float16x3_op };
 
-/// atomicLoad with Int32, MemorySemantics
-Variable AtomicLoad_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicLoad_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Workgroup_Int32_semantics;
-Function AtomicLoad_Workgroup_Int32;
-inline constexpr std::array AtomicLoad_Workgroup_Int32_args = { &AtomicLoad_Workgroup_Int32_ptr, &AtomicLoad_Workgroup_Int32_semantics };
+/// subgroupMin with Float16x4, SubgroupOperation
+Variable SubgroupMin_Float16x4_value;
+Variable SubgroupMin_Float16x4_op;
+Function SubgroupMin_Float16x4;
+inline constexpr std::array SubgroupMin_Float16x4_args = { &SubgroupMin_Float16x4_value, &SubgroupMin_Float16x4_op };
 
-/// atomicIncrement with Int32, MemorySemantics
-Variable AtomicIncrement_Uniform_Int32_ptr;
-inline constexpr std::array AtomicIncrement_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Uniform_Int32_semantics;
-Function AtomicIncrement_Uniform_Int32;
-inline constexpr std::array AtomicIncrement_Uniform_Int32_args = { &AtomicIncrement_Uniform_Int32_ptr, &AtomicIncrement_Uniform_Int32_semantics };
+/// subgroupMin with Int32, SubgroupOperation
+Variable SubgroupMin_Int32_value;
+Variable SubgroupMin_Int32_op;
+Function SubgroupMin_Int32;
+inline constexpr std::array SubgroupMin_Int32_args = { &SubgroupMin_Int32_value, &SubgroupMin_Int32_op };
 
-/// atomicIncrement with Int32, MemorySemantics
-Variable AtomicIncrement_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicIncrement_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Workgroup_Int32_semantics;
-Function AtomicIncrement_Workgroup_Int32;
-inline constexpr std::array AtomicIncrement_Workgroup_Int32_args = { &AtomicIncrement_Workgroup_Int32_ptr, &AtomicIncrement_Workgroup_Int32_semantics };
+/// subgroupMin with Int32x2, SubgroupOperation
+Variable SubgroupMin_Int32x2_value;
+Variable SubgroupMin_Int32x2_op;
+Function SubgroupMin_Int32x2;
+inline constexpr std::array SubgroupMin_Int32x2_args = { &SubgroupMin_Int32x2_value, &SubgroupMin_Int32x2_op };
 
-/// atomicDecrement with Int32, MemorySemantics
-Variable AtomicDecrement_Uniform_Int32_ptr;
-inline constexpr std::array AtomicDecrement_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Uniform_Int32_semantics;
-Function AtomicDecrement_Uniform_Int32;
-inline constexpr std::array AtomicDecrement_Uniform_Int32_args = { &AtomicDecrement_Uniform_Int32_ptr, &AtomicDecrement_Uniform_Int32_semantics };
+/// subgroupMin with Int32x3, SubgroupOperation
+Variable SubgroupMin_Int32x3_value;
+Variable SubgroupMin_Int32x3_op;
+Function SubgroupMin_Int32x3;
+inline constexpr std::array SubgroupMin_Int32x3_args = { &SubgroupMin_Int32x3_value, &SubgroupMin_Int32x3_op };
 
-/// atomicDecrement with Int32, MemorySemantics
-Variable AtomicDecrement_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicDecrement_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Workgroup_Int32_semantics;
-Function AtomicDecrement_Workgroup_Int32;
-inline constexpr std::array AtomicDecrement_Workgroup_Int32_args = { &AtomicDecrement_Workgroup_Int32_ptr, &AtomicDecrement_Workgroup_Int32_semantics };
+/// subgroupMin with Int32x4, SubgroupOperation
+Variable SubgroupMin_Int32x4_value;
+Variable SubgroupMin_Int32x4_op;
+Function SubgroupMin_Int32x4;
+inline constexpr std::array SubgroupMin_Int32x4_args = { &SubgroupMin_Int32x4_value, &SubgroupMin_Int32x4_op };
 
-/// atomicLoad with UInt16, MemorySemantics
-Variable AtomicLoad_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicLoad_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Uniform_UInt16_semantics;
-Function AtomicLoad_Uniform_UInt16;
-inline constexpr std::array AtomicLoad_Uniform_UInt16_args = { &AtomicLoad_Uniform_UInt16_ptr, &AtomicLoad_Uniform_UInt16_semantics };
+/// subgroupMin with Int16, SubgroupOperation
+Variable SubgroupMin_Int16_value;
+Variable SubgroupMin_Int16_op;
+Function SubgroupMin_Int16;
+inline constexpr std::array SubgroupMin_Int16_args = { &SubgroupMin_Int16_value, &SubgroupMin_Int16_op };
 
-/// atomicLoad with UInt16, MemorySemantics
-Variable AtomicLoad_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicLoad_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Workgroup_UInt16_semantics;
-Function AtomicLoad_Workgroup_UInt16;
-inline constexpr std::array AtomicLoad_Workgroup_UInt16_args = { &AtomicLoad_Workgroup_UInt16_ptr, &AtomicLoad_Workgroup_UInt16_semantics };
+/// subgroupMin with Int16x2, SubgroupOperation
+Variable SubgroupMin_Int16x2_value;
+Variable SubgroupMin_Int16x2_op;
+Function SubgroupMin_Int16x2;
+inline constexpr std::array SubgroupMin_Int16x2_args = { &SubgroupMin_Int16x2_value, &SubgroupMin_Int16x2_op };
 
-/// atomicIncrement with UInt16, MemorySemantics
-Variable AtomicIncrement_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicIncrement_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Uniform_UInt16_semantics;
-Function AtomicIncrement_Uniform_UInt16;
-inline constexpr std::array AtomicIncrement_Uniform_UInt16_args = { &AtomicIncrement_Uniform_UInt16_ptr, &AtomicIncrement_Uniform_UInt16_semantics };
+/// subgroupMin with Int16x3, SubgroupOperation
+Variable SubgroupMin_Int16x3_value;
+Variable SubgroupMin_Int16x3_op;
+Function SubgroupMin_Int16x3;
+inline constexpr std::array SubgroupMin_Int16x3_args = { &SubgroupMin_Int16x3_value, &SubgroupMin_Int16x3_op };
 
-/// atomicIncrement with UInt16, MemorySemantics
-Variable AtomicIncrement_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicIncrement_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Workgroup_UInt16_semantics;
-Function AtomicIncrement_Workgroup_UInt16;
-inline constexpr std::array AtomicIncrement_Workgroup_UInt16_args = { &AtomicIncrement_Workgroup_UInt16_ptr, &AtomicIncrement_Workgroup_UInt16_semantics };
+/// subgroupMin with Int16x4, SubgroupOperation
+Variable SubgroupMin_Int16x4_value;
+Variable SubgroupMin_Int16x4_op;
+Function SubgroupMin_Int16x4;
+inline constexpr std::array SubgroupMin_Int16x4_args = { &SubgroupMin_Int16x4_value, &SubgroupMin_Int16x4_op };
 
-/// atomicDecrement with UInt16, MemorySemantics
-Variable AtomicDecrement_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicDecrement_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Uniform_UInt16_semantics;
-Function AtomicDecrement_Uniform_UInt16;
-inline constexpr std::array AtomicDecrement_Uniform_UInt16_args = { &AtomicDecrement_Uniform_UInt16_ptr, &AtomicDecrement_Uniform_UInt16_semantics };
+/// subgroupMin with UInt32, SubgroupOperation
+Variable SubgroupMin_UInt32_value;
+Variable SubgroupMin_UInt32_op;
+Function SubgroupMin_UInt32;
+inline constexpr std::array SubgroupMin_UInt32_args = { &SubgroupMin_UInt32_value, &SubgroupMin_UInt32_op };
 
-/// atomicDecrement with UInt16, MemorySemantics
-Variable AtomicDecrement_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicDecrement_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Workgroup_UInt16_semantics;
-Function AtomicDecrement_Workgroup_UInt16;
-inline constexpr std::array AtomicDecrement_Workgroup_UInt16_args = { &AtomicDecrement_Workgroup_UInt16_ptr, &AtomicDecrement_Workgroup_UInt16_semantics };
+/// subgroupMin with UInt32x2, SubgroupOperation
+Variable SubgroupMin_UInt32x2_value;
+Variable SubgroupMin_UInt32x2_op;
+Function SubgroupMin_UInt32x2;
+inline constexpr std::array SubgroupMin_UInt32x2_args = { &SubgroupMin_UInt32x2_value, &SubgroupMin_UInt32x2_op };
 
-/// atomicLoad with Int16, MemorySemantics
-Variable AtomicLoad_Uniform_Int16_ptr;
-inline constexpr std::array AtomicLoad_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Uniform_Int16_semantics;
-Function AtomicLoad_Uniform_Int16;
-inline constexpr std::array AtomicLoad_Uniform_Int16_args = { &AtomicLoad_Uniform_Int16_ptr, &AtomicLoad_Uniform_Int16_semantics };
+/// subgroupMin with UInt32x3, SubgroupOperation
+Variable SubgroupMin_UInt32x3_value;
+Variable SubgroupMin_UInt32x3_op;
+Function SubgroupMin_UInt32x3;
+inline constexpr std::array SubgroupMin_UInt32x3_args = { &SubgroupMin_UInt32x3_value, &SubgroupMin_UInt32x3_op };
 
-/// atomicLoad with Int16, MemorySemantics
-Variable AtomicLoad_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicLoad_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Workgroup_Int16_semantics;
-Function AtomicLoad_Workgroup_Int16;
-inline constexpr std::array AtomicLoad_Workgroup_Int16_args = { &AtomicLoad_Workgroup_Int16_ptr, &AtomicLoad_Workgroup_Int16_semantics };
+/// subgroupMin with UInt32x4, SubgroupOperation
+Variable SubgroupMin_UInt32x4_value;
+Variable SubgroupMin_UInt32x4_op;
+Function SubgroupMin_UInt32x4;
+inline constexpr std::array SubgroupMin_UInt32x4_args = { &SubgroupMin_UInt32x4_value, &SubgroupMin_UInt32x4_op };
 
-/// atomicIncrement with Int16, MemorySemantics
-Variable AtomicIncrement_Uniform_Int16_ptr;
-inline constexpr std::array AtomicIncrement_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Uniform_Int16_semantics;
-Function AtomicIncrement_Uniform_Int16;
-inline constexpr std::array AtomicIncrement_Uniform_Int16_args = { &AtomicIncrement_Uniform_Int16_ptr, &AtomicIncrement_Uniform_Int16_semantics };
+/// subgroupMin with UInt16, SubgroupOperation
+Variable SubgroupMin_UInt16_value;
+Variable SubgroupMin_UInt16_op;
+Function SubgroupMin_UInt16;
+inline constexpr std::array SubgroupMin_UInt16_args = { &SubgroupMin_UInt16_value, &SubgroupMin_UInt16_op };
 
-/// atomicIncrement with Int16, MemorySemantics
-Variable AtomicIncrement_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicIncrement_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicIncrement_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicIncrement_Workgroup_Int16_semantics;
-Function AtomicIncrement_Workgroup_Int16;
-inline constexpr std::array AtomicIncrement_Workgroup_Int16_args = { &AtomicIncrement_Workgroup_Int16_ptr, &AtomicIncrement_Workgroup_Int16_semantics };
+/// subgroupMin with UInt16x2, SubgroupOperation
+Variable SubgroupMin_UInt16x2_value;
+Variable SubgroupMin_UInt16x2_op;
+Function SubgroupMin_UInt16x2;
+inline constexpr std::array SubgroupMin_UInt16x2_args = { &SubgroupMin_UInt16x2_value, &SubgroupMin_UInt16x2_op };
 
-/// atomicDecrement with Int16, MemorySemantics
-Variable AtomicDecrement_Uniform_Int16_ptr;
-inline constexpr std::array AtomicDecrement_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Uniform_Int16_semantics;
-Function AtomicDecrement_Uniform_Int16;
-inline constexpr std::array AtomicDecrement_Uniform_Int16_args = { &AtomicDecrement_Uniform_Int16_ptr, &AtomicDecrement_Uniform_Int16_semantics };
+/// subgroupMin with UInt16x3, SubgroupOperation
+Variable SubgroupMin_UInt16x3_value;
+Variable SubgroupMin_UInt16x3_op;
+Function SubgroupMin_UInt16x3;
+inline constexpr std::array SubgroupMin_UInt16x3_args = { &SubgroupMin_UInt16x3_value, &SubgroupMin_UInt16x3_op };
 
 void SetupIntrinsics9()
 {
@@ -2177,534 +2131,396 @@ void SetupIntrinsics9()
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x4)->nameWithVarNames = "subgroupSwapHorizontal(value : u16x4)"_c;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
-    /// atomicLoad with UInt32, MemorySemantics
-    AtomicLoad_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicLoad_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicLoad_Uniform_UInt32_ptr.type.strict = true;
-    AtomicLoad_Uniform_UInt32_ptr.type.mut = true;
-    AtomicLoad_Uniform_UInt32_ptr.type.modifiers = AtomicLoad_Uniform_UInt32_ptr_modifiers;
-    AtomicLoad_Uniform_UInt32_ptr.type.modifierValues = AtomicLoad_Uniform_UInt32_ptr_modifierValues;
-    AtomicLoad_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicLoad_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Uniform_UInt32_semantics.type.literal = true;
-    AtomicLoad_Uniform_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Uniform_UInt32.name = AtomicLoad_Uniform_UInt32_name;
-    AtomicLoad_Uniform_UInt32.backendIndex = 2223;
-    AtomicLoad_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicLoad_Uniform_UInt32.parameters = AtomicLoad_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->signature = "atomicLoad(uniform *mutable u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->name = "atomicLoad(uniform *mutable u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+    /// subgroupMin with Float32, SubgroupOperation
+    SubgroupMin_Float32_value.name = "value"_c;
+    SubgroupMin_Float32_value.type = Type::FullType{ Float32Type.name };
+    SubgroupMin_Float32_op.name = "operation"_c;
+    SubgroupMin_Float32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float32.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Float32.name = SubgroupMin_Float32_name;
+    SubgroupMin_Float32.backendIndex = 2223;
+    SubgroupMin_Float32.returnType = Type::FullType { Float32Type.name };
+    SubgroupMin_Float32.parameters = SubgroupMin_Float32_args;
+    Symbol::Resolved(&SubgroupMin_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupMin_Float32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Float32)->signature = "subgroupMin(f32,SubgroupOperation) f32"_c;
+    Symbol::Resolved(&SubgroupMin_Float32)->name = "subgroupMin(f32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32)->nameWithVarNames = "subgroupMin(value : f32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32)->returnTypeSymbol = &Float32Type;
 
-    /// atomicLoad with UInt32, MemorySemantics
-    AtomicLoad_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicLoad_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicLoad_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicLoad_Workgroup_UInt32_ptr.type.mut = true;
-    AtomicLoad_Workgroup_UInt32_ptr.type.modifiers = AtomicLoad_Workgroup_UInt32_ptr_modifiers;
-    AtomicLoad_Workgroup_UInt32_ptr.type.modifierValues = AtomicLoad_Workgroup_UInt32_ptr_modifierValues;
-    AtomicLoad_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicLoad_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicLoad_Workgroup_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Workgroup_UInt32.name = AtomicLoad_Workgroup_UInt32_name;
-    AtomicLoad_Workgroup_UInt32.backendIndex = 2224;
-    AtomicLoad_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicLoad_Workgroup_UInt32.parameters = AtomicLoad_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->signature = "atomicLoad(workgroup *mutable u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->name = "atomicLoad(workgroup *mutable u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
+    /// subgroupMin with Float32x2, SubgroupOperation
+    SubgroupMin_Float32x2_value.name = "value"_c;
+    SubgroupMin_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
+    SubgroupMin_Float32x2_op.name = "operation"_c;
+    SubgroupMin_Float32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float32x2.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Float32x2.name = SubgroupMin_Float32x2_name;
+    SubgroupMin_Float32x2.backendIndex = 2224;
+    SubgroupMin_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    SubgroupMin_Float32x2.parameters = SubgroupMin_Float32x2_args;
+    Symbol::Resolved(&SubgroupMin_Float32x2_value)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupMin_Float32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Float32x2)->signature = "subgroupMin(f32x2,SubgroupOperation) f32x2"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x2)->name = "subgroupMin(f32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x2)->nameWithVarNames = "subgroupMin(value : f32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
-    /// atomicIncrement with UInt32, MemorySemantics
-    AtomicIncrement_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicIncrement_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicIncrement_Uniform_UInt32_ptr.type.strict = true;
-    AtomicIncrement_Uniform_UInt32_ptr.type.mut = true;
-    AtomicIncrement_Uniform_UInt32_ptr.type.modifiers = AtomicIncrement_Uniform_UInt32_ptr_modifiers;
-    AtomicIncrement_Uniform_UInt32_ptr.type.modifierValues = AtomicIncrement_Uniform_UInt32_ptr_modifierValues;
-    AtomicIncrement_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicIncrement_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Uniform_UInt32_semantics.type.literal = true;
-    AtomicIncrement_Uniform_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Uniform_UInt32.name = AtomicIncrement_Uniform_UInt32_name;
-    AtomicIncrement_Uniform_UInt32.backendIndex = 2225;
-    AtomicIncrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicIncrement_Uniform_UInt32.parameters = AtomicIncrement_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->signature = "atomicIncrement(uniform *mutable u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->name = "atomicIncrement(uniform *mutable u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+    /// subgroupMin with Float32x3, SubgroupOperation
+    SubgroupMin_Float32x3_value.name = "value"_c;
+    SubgroupMin_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
+    SubgroupMin_Float32x3_op.name = "operation"_c;
+    SubgroupMin_Float32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float32x3.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Float32x3.name = SubgroupMin_Float32x3_name;
+    SubgroupMin_Float32x3.backendIndex = 2225;
+    SubgroupMin_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    SubgroupMin_Float32x3.parameters = SubgroupMin_Float32x3_args;
+    Symbol::Resolved(&SubgroupMin_Float32x3_value)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupMin_Float32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Float32x3)->signature = "subgroupMin(f32x3,SubgroupOperation) f32x3"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x3)->name = "subgroupMin(f32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x3)->nameWithVarNames = "subgroupMin(value : f32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
-    /// atomicIncrement with UInt32, MemorySemantics
-    AtomicIncrement_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicIncrement_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicIncrement_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicIncrement_Workgroup_UInt32_ptr.type.mut = true;
-    AtomicIncrement_Workgroup_UInt32_ptr.type.modifiers = AtomicIncrement_Workgroup_UInt32_ptr_modifiers;
-    AtomicIncrement_Workgroup_UInt32_ptr.type.modifierValues = AtomicIncrement_Workgroup_UInt32_ptr_modifierValues;
-    AtomicIncrement_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicIncrement_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicIncrement_Workgroup_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Workgroup_UInt32.name = AtomicIncrement_Workgroup_UInt32_name;
-    AtomicIncrement_Workgroup_UInt32.backendIndex = 2226;
-    AtomicIncrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicIncrement_Workgroup_UInt32.parameters = AtomicIncrement_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->signature = "atomicIncrement(workgroup *mutable u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->name = "atomicIncrement(workgroup *mutable u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
+    /// subgroupMin with Float32x4, SubgroupOperation
+    SubgroupMin_Float32x4_value.name = "value"_c;
+    SubgroupMin_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupMin_Float32x4_op.name = "operation"_c;
+    SubgroupMin_Float32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float32x4.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Float32x4.name = SubgroupMin_Float32x4_name;
+    SubgroupMin_Float32x4.backendIndex = 2226;
+    SubgroupMin_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    SubgroupMin_Float32x4.parameters = SubgroupMin_Float32x4_args;
+    Symbol::Resolved(&SubgroupMin_Float32x4_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupMin_Float32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Float32x4)->signature = "subgroupMin(f32x4,SubgroupOperation) f32x4"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x4)->name = "subgroupMin(f32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x4)->nameWithVarNames = "subgroupMin(value : f32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
-    /// atomicDecrement with UInt32, MemorySemantics
-    AtomicDecrement_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicDecrement_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicDecrement_Uniform_UInt32_ptr.type.strict = true;
-    AtomicDecrement_Uniform_UInt32_ptr.type.mut = true;
-    AtomicDecrement_Uniform_UInt32_ptr.type.modifiers = AtomicDecrement_Uniform_UInt32_ptr_modifiers;
-    AtomicDecrement_Uniform_UInt32_ptr.type.modifierValues = AtomicDecrement_Uniform_UInt32_ptr_modifierValues;
-    AtomicDecrement_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicDecrement_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Uniform_UInt32_semantics.type.literal = true;
-    AtomicDecrement_Uniform_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Uniform_UInt32.name = AtomicDecrement_Uniform_UInt32_name;
-    AtomicDecrement_Uniform_UInt32.backendIndex = 2227;
-    AtomicDecrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicDecrement_Uniform_UInt32.parameters = AtomicDecrement_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->signature = "atomicDecrement(uniform *mutable u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->name = "atomicDecrement(uniform *mutable u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+    /// subgroupMin with Float16, SubgroupOperation
+    SubgroupMin_Float16_value.name = "value"_c;
+    SubgroupMin_Float16_value.type = Type::FullType{ Float16Type.name };
+    SubgroupMin_Float16_op.name = "operation"_c;
+    SubgroupMin_Float16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float16.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Float16.name = SubgroupMin_Float16_name;
+    SubgroupMin_Float16.backendIndex = 2227;
+    SubgroupMin_Float16.returnType = Type::FullType { Float16Type.name };
+    SubgroupMin_Float16.parameters = SubgroupMin_Float16_args;
+    Symbol::Resolved(&SubgroupMin_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupMin_Float16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Float16)->signature = "subgroupMin(f16,SubgroupOperation) f16"_c;
+    Symbol::Resolved(&SubgroupMin_Float16)->name = "subgroupMin(f16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16)->nameWithVarNames = "subgroupMin(value : f16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16)->returnTypeSymbol = &Float16Type;
 
-    /// atomicDecrement with UInt32, MemorySemantics
-    AtomicDecrement_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicDecrement_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicDecrement_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicDecrement_Workgroup_UInt32_ptr.type.mut = true;
-    AtomicDecrement_Workgroup_UInt32_ptr.type.modifiers = AtomicDecrement_Workgroup_UInt32_ptr_modifiers;
-    AtomicDecrement_Workgroup_UInt32_ptr.type.modifierValues = AtomicDecrement_Workgroup_UInt32_ptr_modifierValues;
-    AtomicDecrement_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicDecrement_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicDecrement_Workgroup_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Workgroup_UInt32.name = AtomicDecrement_Workgroup_UInt32_name;
-    AtomicDecrement_Workgroup_UInt32.backendIndex = 2228;
-    AtomicDecrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicDecrement_Workgroup_UInt32.parameters = AtomicDecrement_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->signature = "atomicDecrement(workgroup *mutable u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->name = "atomicDecrement(workgroup *mutable u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
+    /// subgroupMin with Float16x2, SubgroupOperation
+    SubgroupMin_Float16x2_value.name = "value"_c;
+    SubgroupMin_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupMin_Float16x2_op.name = "operation"_c;
+    SubgroupMin_Float16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float16x2.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Float16x2.name = SubgroupMin_Float16x2_name;
+    SubgroupMin_Float16x2.backendIndex = 2228;
+    SubgroupMin_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    SubgroupMin_Float16x2.parameters = SubgroupMin_Float16x2_args;
+    Symbol::Resolved(&SubgroupMin_Float16x2_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupMin_Float16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Float16x2)->signature = "subgroupMin(f16x2,SubgroupOperation) f16x2"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x2)->name = "subgroupMin(f16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x2)->nameWithVarNames = "subgroupMin(value : f16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
-    /// atomicLoad with Int32, MemorySemantics
-    AtomicLoad_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicLoad_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicLoad_Uniform_Int32_ptr.type.strict = true;
-    AtomicLoad_Uniform_Int32_ptr.type.mut = true;
-    AtomicLoad_Uniform_Int32_ptr.type.modifiers = AtomicLoad_Uniform_Int32_ptr_modifiers;
-    AtomicLoad_Uniform_Int32_ptr.type.modifierValues = AtomicLoad_Uniform_Int32_ptr_modifierValues;
-    AtomicLoad_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicLoad_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Uniform_Int32_semantics.type.literal = true;
-    AtomicLoad_Uniform_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Uniform_Int32.name = AtomicLoad_Uniform_Int32_name;
-    AtomicLoad_Uniform_Int32.backendIndex = 2229;
-    AtomicLoad_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicLoad_Uniform_Int32.parameters = AtomicLoad_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->signature = "atomicLoad(uniform *mutable i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->name = "atomicLoad(uniform *mutable i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+    /// subgroupMin with Float16x3, SubgroupOperation
+    SubgroupMin_Float16x3_value.name = "value"_c;
+    SubgroupMin_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupMin_Float16x3_op.name = "operation"_c;
+    SubgroupMin_Float16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float16x3.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Float16x3.name = SubgroupMin_Float16x3_name;
+    SubgroupMin_Float16x3.backendIndex = 2229;
+    SubgroupMin_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    SubgroupMin_Float16x3.parameters = SubgroupMin_Float16x3_args;
+    Symbol::Resolved(&SubgroupMin_Float16x3_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupMin_Float16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Float16x3)->signature = "subgroupMin(f16x3,SubgroupOperation) f16x3"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x3)->name = "subgroupMin(f16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x3)->nameWithVarNames = "subgroupMin(value : f16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
-    /// atomicLoad with Int32, MemorySemantics
-    AtomicLoad_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicLoad_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicLoad_Workgroup_Int32_ptr.type.strict = true;
-    AtomicLoad_Workgroup_Int32_ptr.type.mut = true;
-    AtomicLoad_Workgroup_Int32_ptr.type.modifiers = AtomicLoad_Workgroup_Int32_ptr_modifiers;
-    AtomicLoad_Workgroup_Int32_ptr.type.modifierValues = AtomicLoad_Workgroup_Int32_ptr_modifierValues;
-    AtomicLoad_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicLoad_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Workgroup_Int32_semantics.type.literal = true;
-    AtomicLoad_Workgroup_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Workgroup_Int32.name = AtomicLoad_Workgroup_Int32_name;
-    AtomicLoad_Workgroup_Int32.backendIndex = 2230;
-    AtomicLoad_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicLoad_Workgroup_Int32.parameters = AtomicLoad_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->signature = "atomicLoad(workgroup *mutable i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->name = "atomicLoad(workgroup *mutable i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
+    /// subgroupMin with Float16x4, SubgroupOperation
+    SubgroupMin_Float16x4_value.name = "value"_c;
+    SubgroupMin_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupMin_Float16x4_op.name = "operation"_c;
+    SubgroupMin_Float16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float16x4.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Float16x4.name = SubgroupMin_Float16x4_name;
+    SubgroupMin_Float16x4.backendIndex = 2230;
+    SubgroupMin_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    SubgroupMin_Float16x4.parameters = SubgroupMin_Float16x4_args;
+    Symbol::Resolved(&SubgroupMin_Float16x4_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupMin_Float16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Float16x4)->signature = "subgroupMin(f16x4,SubgroupOperation) f16x4"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x4)->name = "subgroupMin(f16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x4)->nameWithVarNames = "subgroupMin(value : f16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
-    /// atomicIncrement with Int32, MemorySemantics
-    AtomicIncrement_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicIncrement_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicIncrement_Uniform_Int32_ptr.type.strict = true;
-    AtomicIncrement_Uniform_Int32_ptr.type.mut = true;
-    AtomicIncrement_Uniform_Int32_ptr.type.modifiers = AtomicIncrement_Uniform_Int32_ptr_modifiers;
-    AtomicIncrement_Uniform_Int32_ptr.type.modifierValues = AtomicIncrement_Uniform_Int32_ptr_modifierValues;
-    AtomicIncrement_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicIncrement_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Uniform_Int32_semantics.type.literal = true;
-    AtomicIncrement_Uniform_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Uniform_Int32.name = AtomicIncrement_Uniform_Int32_name;
-    AtomicIncrement_Uniform_Int32.backendIndex = 2231;
-    AtomicIncrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicIncrement_Uniform_Int32.parameters = AtomicIncrement_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->signature = "atomicIncrement(uniform *mutable i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->name = "atomicIncrement(uniform *mutable i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+    /// subgroupMin with Int32, SubgroupOperation
+    SubgroupMin_Int32_value.name = "value"_c;
+    SubgroupMin_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupMin_Int32_op.name = "operation"_c;
+    SubgroupMin_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int32.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Int32.name = SubgroupMin_Int32_name;
+    SubgroupMin_Int32.backendIndex = 2231;
+    SubgroupMin_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupMin_Int32.parameters = SubgroupMin_Int32_args;
+    Symbol::Resolved(&SubgroupMin_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupMin_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Int32)->signature = "subgroupMin(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupMin_Int32)->name = "subgroupMin(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32)->nameWithVarNames = "subgroupMin(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32)->returnTypeSymbol = &Int32Type;
 
-    /// atomicIncrement with Int32, MemorySemantics
-    AtomicIncrement_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicIncrement_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicIncrement_Workgroup_Int32_ptr.type.strict = true;
-    AtomicIncrement_Workgroup_Int32_ptr.type.mut = true;
-    AtomicIncrement_Workgroup_Int32_ptr.type.modifiers = AtomicIncrement_Workgroup_Int32_ptr_modifiers;
-    AtomicIncrement_Workgroup_Int32_ptr.type.modifierValues = AtomicIncrement_Workgroup_Int32_ptr_modifierValues;
-    AtomicIncrement_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicIncrement_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Workgroup_Int32_semantics.type.literal = true;
-    AtomicIncrement_Workgroup_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Workgroup_Int32.name = AtomicIncrement_Workgroup_Int32_name;
-    AtomicIncrement_Workgroup_Int32.backendIndex = 2232;
-    AtomicIncrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicIncrement_Workgroup_Int32.parameters = AtomicIncrement_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->signature = "atomicIncrement(workgroup *mutable i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->name = "atomicIncrement(workgroup *mutable i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
+    /// subgroupMin with Int32x2, SubgroupOperation
+    SubgroupMin_Int32x2_value.name = "value"_c;
+    SubgroupMin_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupMin_Int32x2_op.name = "operation"_c;
+    SubgroupMin_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int32x2.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Int32x2.name = SubgroupMin_Int32x2_name;
+    SubgroupMin_Int32x2.backendIndex = 2232;
+    SubgroupMin_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupMin_Int32x2.parameters = SubgroupMin_Int32x2_args;
+    Symbol::Resolved(&SubgroupMin_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupMin_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Int32x2)->signature = "subgroupMin(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x2)->name = "subgroupMin(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x2)->nameWithVarNames = "subgroupMin(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
-    /// atomicDecrement with Int32, MemorySemantics
-    AtomicDecrement_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicDecrement_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicDecrement_Uniform_Int32_ptr.type.strict = true;
-    AtomicDecrement_Uniform_Int32_ptr.type.mut = true;
-    AtomicDecrement_Uniform_Int32_ptr.type.modifiers = AtomicDecrement_Uniform_Int32_ptr_modifiers;
-    AtomicDecrement_Uniform_Int32_ptr.type.modifierValues = AtomicDecrement_Uniform_Int32_ptr_modifierValues;
-    AtomicDecrement_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicDecrement_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Uniform_Int32_semantics.type.literal = true;
-    AtomicDecrement_Uniform_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Uniform_Int32.name = AtomicDecrement_Uniform_Int32_name;
-    AtomicDecrement_Uniform_Int32.backendIndex = 2233;
-    AtomicDecrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicDecrement_Uniform_Int32.parameters = AtomicDecrement_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->signature = "atomicDecrement(uniform *mutable i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->name = "atomicDecrement(uniform *mutable i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+    /// subgroupMin with Int32x3, SubgroupOperation
+    SubgroupMin_Int32x3_value.name = "value"_c;
+    SubgroupMin_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupMin_Int32x3_op.name = "operation"_c;
+    SubgroupMin_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int32x3.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Int32x3.name = SubgroupMin_Int32x3_name;
+    SubgroupMin_Int32x3.backendIndex = 2233;
+    SubgroupMin_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupMin_Int32x3.parameters = SubgroupMin_Int32x3_args;
+    Symbol::Resolved(&SubgroupMin_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupMin_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Int32x3)->signature = "subgroupMin(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x3)->name = "subgroupMin(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x3)->nameWithVarNames = "subgroupMin(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
-    /// atomicDecrement with Int32, MemorySemantics
-    AtomicDecrement_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicDecrement_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicDecrement_Workgroup_Int32_ptr.type.strict = true;
-    AtomicDecrement_Workgroup_Int32_ptr.type.mut = true;
-    AtomicDecrement_Workgroup_Int32_ptr.type.modifiers = AtomicDecrement_Workgroup_Int32_ptr_modifiers;
-    AtomicDecrement_Workgroup_Int32_ptr.type.modifierValues = AtomicDecrement_Workgroup_Int32_ptr_modifierValues;
-    AtomicDecrement_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicDecrement_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Workgroup_Int32_semantics.type.literal = true;
-    AtomicDecrement_Workgroup_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Workgroup_Int32.name = AtomicDecrement_Workgroup_Int32_name;
-    AtomicDecrement_Workgroup_Int32.backendIndex = 2234;
-    AtomicDecrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicDecrement_Workgroup_Int32.parameters = AtomicDecrement_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->signature = "atomicDecrement(workgroup *mutable i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->name = "atomicDecrement(workgroup *mutable i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
+    /// subgroupMin with Int32x4, SubgroupOperation
+    SubgroupMin_Int32x4_value.name = "value"_c;
+    SubgroupMin_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupMin_Int32x4_op.name = "operation"_c;
+    SubgroupMin_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int32x4.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Int32x4.name = SubgroupMin_Int32x4_name;
+    SubgroupMin_Int32x4.backendIndex = 2234;
+    SubgroupMin_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupMin_Int32x4.parameters = SubgroupMin_Int32x4_args;
+    Symbol::Resolved(&SubgroupMin_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupMin_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Int32x4)->signature = "subgroupMin(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x4)->name = "subgroupMin(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x4)->nameWithVarNames = "subgroupMin(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
-    /// atomicLoad with UInt16, MemorySemantics
-    AtomicLoad_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicLoad_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicLoad_Uniform_UInt16_ptr.type.strict = true;
-    AtomicLoad_Uniform_UInt16_ptr.type.mut = true;
-    AtomicLoad_Uniform_UInt16_ptr.type.modifiers = AtomicLoad_Uniform_UInt16_ptr_modifiers;
-    AtomicLoad_Uniform_UInt16_ptr.type.modifierValues = AtomicLoad_Uniform_UInt16_ptr_modifierValues;
-    AtomicLoad_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicLoad_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Uniform_UInt16_semantics.type.literal = true;
-    AtomicLoad_Uniform_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Uniform_UInt16.name = AtomicLoad_Uniform_UInt16_name;
-    AtomicLoad_Uniform_UInt16.backendIndex = 2235;
-    AtomicLoad_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicLoad_Uniform_UInt16.parameters = AtomicLoad_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->signature = "atomicLoad(uniform *mutable u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->name = "atomicLoad(uniform *mutable u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+    /// subgroupMin with Int16, SubgroupOperation
+    SubgroupMin_Int16_value.name = "value"_c;
+    SubgroupMin_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupMin_Int16_op.name = "operation"_c;
+    SubgroupMin_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int16.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Int16.name = SubgroupMin_Int16_name;
+    SubgroupMin_Int16.backendIndex = 2235;
+    SubgroupMin_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupMin_Int16.parameters = SubgroupMin_Int16_args;
+    Symbol::Resolved(&SubgroupMin_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupMin_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Int16)->signature = "subgroupMin(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupMin_Int16)->name = "subgroupMin(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16)->nameWithVarNames = "subgroupMin(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16)->returnTypeSymbol = &Int16Type;
 
-    /// atomicLoad with UInt16, MemorySemantics
-    AtomicLoad_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicLoad_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicLoad_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicLoad_Workgroup_UInt16_ptr.type.mut = true;
-    AtomicLoad_Workgroup_UInt16_ptr.type.modifiers = AtomicLoad_Workgroup_UInt16_ptr_modifiers;
-    AtomicLoad_Workgroup_UInt16_ptr.type.modifierValues = AtomicLoad_Workgroup_UInt16_ptr_modifierValues;
-    AtomicLoad_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicLoad_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicLoad_Workgroup_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Workgroup_UInt16.name = AtomicLoad_Workgroup_UInt16_name;
-    AtomicLoad_Workgroup_UInt16.backendIndex = 2236;
-    AtomicLoad_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicLoad_Workgroup_UInt16.parameters = AtomicLoad_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->signature = "atomicLoad(workgroup *mutable u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->name = "atomicLoad(workgroup *mutable u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+    /// subgroupMin with Int16x2, SubgroupOperation
+    SubgroupMin_Int16x2_value.name = "value"_c;
+    SubgroupMin_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupMin_Int16x2_op.name = "operation"_c;
+    SubgroupMin_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int16x2.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Int16x2.name = SubgroupMin_Int16x2_name;
+    SubgroupMin_Int16x2.backendIndex = 2236;
+    SubgroupMin_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupMin_Int16x2.parameters = SubgroupMin_Int16x2_args;
+    Symbol::Resolved(&SubgroupMin_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupMin_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Int16x2)->signature = "subgroupMin(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x2)->name = "subgroupMin(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x2)->nameWithVarNames = "subgroupMin(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
-    /// atomicIncrement with UInt16, MemorySemantics
-    AtomicIncrement_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicIncrement_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicIncrement_Uniform_UInt16_ptr.type.strict = true;
-    AtomicIncrement_Uniform_UInt16_ptr.type.mut = true;
-    AtomicIncrement_Uniform_UInt16_ptr.type.modifiers = AtomicIncrement_Uniform_UInt16_ptr_modifiers;
-    AtomicIncrement_Uniform_UInt16_ptr.type.modifierValues = AtomicIncrement_Uniform_UInt16_ptr_modifierValues;
-    AtomicIncrement_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicIncrement_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Uniform_UInt16_semantics.type.literal = true;
-    AtomicIncrement_Uniform_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Uniform_UInt16.name = AtomicIncrement_Uniform_UInt16_name;
-    AtomicIncrement_Uniform_UInt16.backendIndex = 2237;
-    AtomicIncrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicIncrement_Uniform_UInt16.parameters = AtomicIncrement_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->signature = "atomicIncrement(uniform *mutable u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->name = "atomicIncrement(uniform *mutable u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+    /// subgroupMin with Int16x3, SubgroupOperation
+    SubgroupMin_Int16x3_value.name = "value"_c;
+    SubgroupMin_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupMin_Int16x3_op.name = "operation"_c;
+    SubgroupMin_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int16x3.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Int16x3.name = SubgroupMin_Int16x3_name;
+    SubgroupMin_Int16x3.backendIndex = 2237;
+    SubgroupMin_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupMin_Int16x3.parameters = SubgroupMin_Int16x3_args;
+    Symbol::Resolved(&SubgroupMin_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupMin_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Int16x3)->signature = "subgroupMin(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x3)->name = "subgroupMin(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x3)->nameWithVarNames = "subgroupMin(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
-    /// atomicIncrement with UInt16, MemorySemantics
-    AtomicIncrement_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicIncrement_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicIncrement_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicIncrement_Workgroup_UInt16_ptr.type.mut = true;
-    AtomicIncrement_Workgroup_UInt16_ptr.type.modifiers = AtomicIncrement_Workgroup_UInt16_ptr_modifiers;
-    AtomicIncrement_Workgroup_UInt16_ptr.type.modifierValues = AtomicIncrement_Workgroup_UInt16_ptr_modifierValues;
-    AtomicIncrement_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicIncrement_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicIncrement_Workgroup_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Workgroup_UInt16.name = AtomicIncrement_Workgroup_UInt16_name;
-    AtomicIncrement_Workgroup_UInt16.backendIndex = 2238;
-    AtomicIncrement_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicIncrement_Workgroup_UInt16.parameters = AtomicIncrement_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->signature = "atomicIncrement(workgroup *mutable u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->name = "atomicIncrement(workgroup *mutable u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+    /// subgroupMin with Int16x4, SubgroupOperation
+    SubgroupMin_Int16x4_value.name = "value"_c;
+    SubgroupMin_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupMin_Int16x4_op.name = "operation"_c;
+    SubgroupMin_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int16x4.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_Int16x4.name = SubgroupMin_Int16x4_name;
+    SubgroupMin_Int16x4.backendIndex = 2238;
+    SubgroupMin_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupMin_Int16x4.parameters = SubgroupMin_Int16x4_args;
+    Symbol::Resolved(&SubgroupMin_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupMin_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_Int16x4)->signature = "subgroupMin(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x4)->name = "subgroupMin(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x4)->nameWithVarNames = "subgroupMin(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
-    /// atomicDecrement with UInt16, MemorySemantics
-    AtomicDecrement_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicDecrement_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicDecrement_Uniform_UInt16_ptr.type.strict = true;
-    AtomicDecrement_Uniform_UInt16_ptr.type.mut = true;
-    AtomicDecrement_Uniform_UInt16_ptr.type.modifiers = AtomicDecrement_Uniform_UInt16_ptr_modifiers;
-    AtomicDecrement_Uniform_UInt16_ptr.type.modifierValues = AtomicDecrement_Uniform_UInt16_ptr_modifierValues;
-    AtomicDecrement_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicDecrement_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Uniform_UInt16_semantics.type.literal = true;
-    AtomicDecrement_Uniform_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Uniform_UInt16.name = AtomicDecrement_Uniform_UInt16_name;
-    AtomicDecrement_Uniform_UInt16.backendIndex = 2239;
-    AtomicDecrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicDecrement_Uniform_UInt16.parameters = AtomicDecrement_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->signature = "atomicDecrement(uniform *mutable u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->name = "atomicDecrement(uniform *mutable u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+    /// subgroupMin with UInt32, SubgroupOperation
+    SubgroupMin_UInt32_value.name = "value"_c;
+    SubgroupMin_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupMin_UInt32_op.name = "operation"_c;
+    SubgroupMin_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt32.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_UInt32.name = SubgroupMin_UInt32_name;
+    SubgroupMin_UInt32.backendIndex = 2239;
+    SubgroupMin_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupMin_UInt32.parameters = SubgroupMin_UInt32_args;
+    Symbol::Resolved(&SubgroupMin_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupMin_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_UInt32)->signature = "subgroupMin(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32)->name = "subgroupMin(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32)->nameWithVarNames = "subgroupMin(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32)->returnTypeSymbol = &UInt32Type;
 
-    /// atomicDecrement with UInt16, MemorySemantics
-    AtomicDecrement_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicDecrement_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicDecrement_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicDecrement_Workgroup_UInt16_ptr.type.mut = true;
-    AtomicDecrement_Workgroup_UInt16_ptr.type.modifiers = AtomicDecrement_Workgroup_UInt16_ptr_modifiers;
-    AtomicDecrement_Workgroup_UInt16_ptr.type.modifierValues = AtomicDecrement_Workgroup_UInt16_ptr_modifierValues;
-    AtomicDecrement_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicDecrement_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicDecrement_Workgroup_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Workgroup_UInt16.name = AtomicDecrement_Workgroup_UInt16_name;
-    AtomicDecrement_Workgroup_UInt16.backendIndex = 2240;
-    AtomicDecrement_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicDecrement_Workgroup_UInt16.parameters = AtomicDecrement_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->signature = "atomicDecrement(workgroup *mutable u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->name = "atomicDecrement(workgroup *mutable u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+    /// subgroupMin with UInt32x2, SubgroupOperation
+    SubgroupMin_UInt32x2_value.name = "value"_c;
+    SubgroupMin_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupMin_UInt32x2_op.name = "operation"_c;
+    SubgroupMin_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt32x2.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_UInt32x2.name = SubgroupMin_UInt32x2_name;
+    SubgroupMin_UInt32x2.backendIndex = 2240;
+    SubgroupMin_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupMin_UInt32x2.parameters = SubgroupMin_UInt32x2_args;
+    Symbol::Resolved(&SubgroupMin_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupMin_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_UInt32x2)->signature = "subgroupMin(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x2)->name = "subgroupMin(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x2)->nameWithVarNames = "subgroupMin(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
-    /// atomicLoad with Int16, MemorySemantics
-    AtomicLoad_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicLoad_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicLoad_Uniform_Int16_ptr.type.strict = true;
-    AtomicLoad_Uniform_Int16_ptr.type.mut = true;
-    AtomicLoad_Uniform_Int16_ptr.type.modifiers = AtomicLoad_Uniform_Int16_ptr_modifiers;
-    AtomicLoad_Uniform_Int16_ptr.type.modifierValues = AtomicLoad_Uniform_Int16_ptr_modifierValues;
-    AtomicLoad_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicLoad_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Uniform_Int16_semantics.type.literal = true;
-    AtomicLoad_Uniform_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Uniform_Int16.name = AtomicLoad_Uniform_Int16_name;
-    AtomicLoad_Uniform_Int16.backendIndex = 2241;
-    AtomicLoad_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicLoad_Uniform_Int16.parameters = AtomicLoad_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->signature = "atomicLoad(uniform *mutable i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->name = "atomicLoad(uniform *mutable i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+    /// subgroupMin with UInt32x3, SubgroupOperation
+    SubgroupMin_UInt32x3_value.name = "value"_c;
+    SubgroupMin_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupMin_UInt32x3_op.name = "operation"_c;
+    SubgroupMin_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt32x3.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_UInt32x3.name = SubgroupMin_UInt32x3_name;
+    SubgroupMin_UInt32x3.backendIndex = 2241;
+    SubgroupMin_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupMin_UInt32x3.parameters = SubgroupMin_UInt32x3_args;
+    Symbol::Resolved(&SubgroupMin_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupMin_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_UInt32x3)->signature = "subgroupMin(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x3)->name = "subgroupMin(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x3)->nameWithVarNames = "subgroupMin(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
-    /// atomicLoad with Int16, MemorySemantics
-    AtomicLoad_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicLoad_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicLoad_Workgroup_Int16_ptr.type.strict = true;
-    AtomicLoad_Workgroup_Int16_ptr.type.mut = true;
-    AtomicLoad_Workgroup_Int16_ptr.type.modifiers = AtomicLoad_Workgroup_Int16_ptr_modifiers;
-    AtomicLoad_Workgroup_Int16_ptr.type.modifierValues = AtomicLoad_Workgroup_Int16_ptr_modifierValues;
-    AtomicLoad_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicLoad_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Workgroup_Int16_semantics.type.literal = true;
-    AtomicLoad_Workgroup_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Workgroup_Int16.name = AtomicLoad_Workgroup_Int16_name;
-    AtomicLoad_Workgroup_Int16.backendIndex = 2242;
-    AtomicLoad_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicLoad_Workgroup_Int16.parameters = AtomicLoad_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->signature = "atomicLoad(workgroup *mutable i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->name = "atomicLoad(workgroup *mutable i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
+    /// subgroupMin with UInt32x4, SubgroupOperation
+    SubgroupMin_UInt32x4_value.name = "value"_c;
+    SubgroupMin_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupMin_UInt32x4_op.name = "operation"_c;
+    SubgroupMin_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt32x4.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_UInt32x4.name = SubgroupMin_UInt32x4_name;
+    SubgroupMin_UInt32x4.backendIndex = 2242;
+    SubgroupMin_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupMin_UInt32x4.parameters = SubgroupMin_UInt32x4_args;
+    Symbol::Resolved(&SubgroupMin_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupMin_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_UInt32x4)->signature = "subgroupMin(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x4)->name = "subgroupMin(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x4)->nameWithVarNames = "subgroupMin(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
-    /// atomicIncrement with Int16, MemorySemantics
-    AtomicIncrement_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicIncrement_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicIncrement_Uniform_Int16_ptr.type.strict = true;
-    AtomicIncrement_Uniform_Int16_ptr.type.mut = true;
-    AtomicIncrement_Uniform_Int16_ptr.type.modifiers = AtomicIncrement_Uniform_Int16_ptr_modifiers;
-    AtomicIncrement_Uniform_Int16_ptr.type.modifierValues = AtomicIncrement_Uniform_Int16_ptr_modifierValues;
-    AtomicIncrement_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicIncrement_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Uniform_Int16_semantics.type.literal = true;
-    AtomicIncrement_Uniform_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Uniform_Int16.name = AtomicIncrement_Uniform_Int16_name;
-    AtomicIncrement_Uniform_Int16.backendIndex = 2243;
-    AtomicIncrement_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicIncrement_Uniform_Int16.parameters = AtomicIncrement_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->signature = "atomicIncrement(uniform *mutable i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->name = "atomicIncrement(uniform *mutable i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+    /// subgroupMin with UInt16, SubgroupOperation
+    SubgroupMin_UInt16_value.name = "value"_c;
+    SubgroupMin_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupMin_UInt16_op.name = "operation"_c;
+    SubgroupMin_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt16.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_UInt16.name = SubgroupMin_UInt16_name;
+    SubgroupMin_UInt16.backendIndex = 2243;
+    SubgroupMin_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupMin_UInt16.parameters = SubgroupMin_UInt16_args;
+    Symbol::Resolved(&SubgroupMin_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupMin_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_UInt16)->signature = "subgroupMin(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16)->name = "subgroupMin(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16)->nameWithVarNames = "subgroupMin(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16)->returnTypeSymbol = &UInt16Type;
 
-    /// atomicIncrement with Int16, MemorySemantics
-    AtomicIncrement_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicIncrement_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicIncrement_Workgroup_Int16_ptr.type.strict = true;
-    AtomicIncrement_Workgroup_Int16_ptr.type.mut = true;
-    AtomicIncrement_Workgroup_Int16_ptr.type.modifiers = AtomicIncrement_Workgroup_Int16_ptr_modifiers;
-    AtomicIncrement_Workgroup_Int16_ptr.type.modifierValues = AtomicIncrement_Workgroup_Int16_ptr_modifierValues;
-    AtomicIncrement_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicIncrement_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Workgroup_Int16_semantics.type.literal = true;
-    AtomicIncrement_Workgroup_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicIncrement_Workgroup_Int16.name = AtomicIncrement_Workgroup_Int16_name;
-    AtomicIncrement_Workgroup_Int16.backendIndex = 2244;
-    AtomicIncrement_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicIncrement_Workgroup_Int16.parameters = AtomicIncrement_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->signature = "atomicIncrement(workgroup *mutable i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->name = "atomicIncrement(workgroup *mutable i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicIncrement_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
+    /// subgroupMin with UInt16x2, SubgroupOperation
+    SubgroupMin_UInt16x2_value.name = "value"_c;
+    SubgroupMin_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupMin_UInt16x2_op.name = "operation"_c;
+    SubgroupMin_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt16x2.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_UInt16x2.name = SubgroupMin_UInt16x2_name;
+    SubgroupMin_UInt16x2.backendIndex = 2244;
+    SubgroupMin_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupMin_UInt16x2.parameters = SubgroupMin_UInt16x2_args;
+    Symbol::Resolved(&SubgroupMin_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupMin_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_UInt16x2)->signature = "subgroupMin(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x2)->name = "subgroupMin(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x2)->nameWithVarNames = "subgroupMin(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
-    /// atomicDecrement with Int16, MemorySemantics
-    AtomicDecrement_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicDecrement_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicDecrement_Uniform_Int16_ptr.type.strict = true;
-    AtomicDecrement_Uniform_Int16_ptr.type.mut = true;
-    AtomicDecrement_Uniform_Int16_ptr.type.modifiers = AtomicDecrement_Uniform_Int16_ptr_modifiers;
-    AtomicDecrement_Uniform_Int16_ptr.type.modifierValues = AtomicDecrement_Uniform_Int16_ptr_modifierValues;
-    AtomicDecrement_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicDecrement_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Uniform_Int16_semantics.type.literal = true;
-    AtomicDecrement_Uniform_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Uniform_Int16.name = AtomicDecrement_Uniform_Int16_name;
-    AtomicDecrement_Uniform_Int16.backendIndex = 2245;
-    AtomicDecrement_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicDecrement_Uniform_Int16.parameters = AtomicDecrement_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->signature = "atomicDecrement(uniform *mutable i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->name = "atomicDecrement(uniform *mutable i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Uniform_Int16)->returnTypeSymbol = &Int16Type;
+    /// subgroupMin with UInt16x3, SubgroupOperation
+    SubgroupMin_UInt16x3_value.name = "value"_c;
+    SubgroupMin_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupMin_UInt16x3_op.name = "operation"_c;
+    SubgroupMin_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt16x3.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_UInt16x3.name = SubgroupMin_UInt16x3_name;
+    SubgroupMin_UInt16x3.backendIndex = 2245;
+    SubgroupMin_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupMin_UInt16x3.parameters = SubgroupMin_UInt16x3_args;
+    Symbol::Resolved(&SubgroupMin_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupMin_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_UInt16x3)->signature = "subgroupMin(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x3)->name = "subgroupMin(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x3)->nameWithVarNames = "subgroupMin(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
 }
 } // namespace GPULang

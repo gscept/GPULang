@@ -35,8 +35,8 @@ fips_dir(ast)
         enumeration.h
         function.cc
         function.h
-	generate.cc
-	generate.h
+		generate.cc
+		generate.h
         intrinsics.cc
         intrinsics.h
         preprocessor.cc
@@ -156,7 +156,28 @@ fips_dir(validators)
         validator.h
     )
 fips_dir(generated)
-    fips_files_ex(generated/ *_fragment.cc)
+	fips_files(
+		intrinsics0_fragment.cc
+		intrinsics1_fragment.cc
+		intrinsics2_fragment.cc
+		intrinsics3_fragment.cc
+		intrinsics4_fragment.cc
+		intrinsics5_fragment.cc
+		intrinsics6_fragment.cc
+		intrinsics7_fragment.cc
+		intrinsics8_fragment.cc
+		intrinsics9_fragment.cc
+		intrinsics10_fragment.cc
+		intrinsics11_fragment.cc
+		intrinsics12_fragment.cc
+		intrinsics13_fragment.cc
+		intrinsics14_fragment.cc
+		intrinsics15_fragment.cc
+		intrinsics16_fragment.cc
+		intrinsics17_fragment.cc
+		intrinsics18_fragment.cc
+		intrinsics19_fragment.cc
+	)
     fips_files(
         intrinsics.cc
         intrinsics.h

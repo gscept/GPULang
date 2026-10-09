@@ -3840,6 +3840,150 @@
         ]
     },
     {
+        "name": "subgroupAdd",
+        "documentation": "Take the sum of the values across subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupAdd(value: f32, operation: SubgroupOperation) f32"
+            },
+            {
+                "signature": "subgroupAdd(value: f32x2, operation: SubgroupOperation) f32x2"
+            },
+            {
+                "signature": "subgroupAdd(value: f32x3, operation: SubgroupOperation) f32x3"
+            },
+            {
+                "signature": "subgroupAdd(value: f32x4, operation: SubgroupOperation) f32x4"
+            },
+            {
+                "signature": "subgroupAdd(value: f16, operation: SubgroupOperation) f16"
+            },
+            {
+                "signature": "subgroupAdd(value: f16x2, operation: SubgroupOperation) f16x2"
+            },
+            {
+                "signature": "subgroupAdd(value: f16x3, operation: SubgroupOperation) f16x3"
+            },
+            {
+                "signature": "subgroupAdd(value: f16x4, operation: SubgroupOperation) f16x4"
+            },
+            {
+                "signature": "subgroupAdd(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupAdd(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupAdd(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupAdd(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupAdd(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupAdd(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupAdd(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupAdd(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupAdd(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupAdd(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupAdd(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupAdd(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupAdd(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupAdd(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupAdd(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupAdd(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupAnd",
+        "documentation": "Perform bitwise AND across all subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupAnd(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupAnd(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupAnd(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupAnd(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupAnd(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupAnd(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupAnd(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupAnd(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupAnd(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupAnd(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupAnd(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupAnd(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupAnd(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupAnd(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupAnd(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupAnd(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
         "name": "subgroupBallot",
         "documentation": "Constructs a 128 bit subgroup thread mask to the value of the predicate argument for each active thread",
         "target_support": [
@@ -4149,6 +4293,750 @@
         ]
     },
     {
+        "name": "subgroupLogicalAnd",
+        "documentation": "Perform logical AND across all subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupLogicalAnd(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupLogicalAnd(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupLogicalOr",
+        "documentation": "Perform logical OR across all subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupLogicalOr(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupLogicalOr(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupLogicalXor",
+        "documentation": "Perform logical XOR across all subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupLogicalXor(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupLogicalXor(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupMax",
+        "documentation": "Take the max of the value across subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupMax(value: f32, operation: SubgroupOperation) f32"
+            },
+            {
+                "signature": "subgroupMax(value: f32x2, operation: SubgroupOperation) f32x2"
+            },
+            {
+                "signature": "subgroupMax(value: f32x3, operation: SubgroupOperation) f32x3"
+            },
+            {
+                "signature": "subgroupMax(value: f32x4, operation: SubgroupOperation) f32x4"
+            },
+            {
+                "signature": "subgroupMax(value: f16, operation: SubgroupOperation) f16"
+            },
+            {
+                "signature": "subgroupMax(value: f16x2, operation: SubgroupOperation) f16x2"
+            },
+            {
+                "signature": "subgroupMax(value: f16x3, operation: SubgroupOperation) f16x3"
+            },
+            {
+                "signature": "subgroupMax(value: f16x4, operation: SubgroupOperation) f16x4"
+            },
+            {
+                "signature": "subgroupMax(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupMax(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupMax(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupMax(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupMax(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupMax(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupMax(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupMax(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupMax(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupMax(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupMax(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupMax(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupMax(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupMax(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupMax(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupMax(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupMin",
+        "documentation": "Take the min of the value across subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupMin(value: f32, operation: SubgroupOperation) f32"
+            },
+            {
+                "signature": "subgroupMin(value: f32x2, operation: SubgroupOperation) f32x2"
+            },
+            {
+                "signature": "subgroupMin(value: f32x3, operation: SubgroupOperation) f32x3"
+            },
+            {
+                "signature": "subgroupMin(value: f32x4, operation: SubgroupOperation) f32x4"
+            },
+            {
+                "signature": "subgroupMin(value: f16, operation: SubgroupOperation) f16"
+            },
+            {
+                "signature": "subgroupMin(value: f16x2, operation: SubgroupOperation) f16x2"
+            },
+            {
+                "signature": "subgroupMin(value: f16x3, operation: SubgroupOperation) f16x3"
+            },
+            {
+                "signature": "subgroupMin(value: f16x4, operation: SubgroupOperation) f16x4"
+            },
+            {
+                "signature": "subgroupMin(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupMin(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupMin(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupMin(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupMin(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupMin(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupMin(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupMin(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupMin(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupMin(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupMin(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupMin(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupMin(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupMin(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupMin(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupMin(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupMul",
+        "documentation": "Take the product of the values across subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupMul(value: f32, operation: SubgroupOperation) f32"
+            },
+            {
+                "signature": "subgroupMul(value: f32x2, operation: SubgroupOperation) f32x2"
+            },
+            {
+                "signature": "subgroupMul(value: f32x3, operation: SubgroupOperation) f32x3"
+            },
+            {
+                "signature": "subgroupMul(value: f32x4, operation: SubgroupOperation) f32x4"
+            },
+            {
+                "signature": "subgroupMul(value: f16, operation: SubgroupOperation) f16"
+            },
+            {
+                "signature": "subgroupMul(value: f16x2, operation: SubgroupOperation) f16x2"
+            },
+            {
+                "signature": "subgroupMul(value: f16x3, operation: SubgroupOperation) f16x3"
+            },
+            {
+                "signature": "subgroupMul(value: f16x4, operation: SubgroupOperation) f16x4"
+            },
+            {
+                "signature": "subgroupMul(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupMul(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupMul(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupMul(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupMul(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupMul(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupMul(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupMul(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupMul(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupMul(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupMul(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupMul(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupMul(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupMul(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupMul(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupMul(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupOr",
+        "documentation": "Perform bitwise OR across all subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupOr(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupOr(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupOr(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupOr(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupOr(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupOr(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupOr(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupOr(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupOr(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupOr(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupOr(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupOr(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupOr(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupOr(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupOr(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupOr(value: u16x4, operation: SubgroupOperation) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupShuffle",
+        "documentation": "Returns the version of the value for specified invocation",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupShuffle(value: f32, id: u32) f32"
+            },
+            {
+                "signature": "subgroupShuffle(value: f32x2, id: u32) f32x2"
+            },
+            {
+                "signature": "subgroupShuffle(value: f32x3, id: u32) f32x3"
+            },
+            {
+                "signature": "subgroupShuffle(value: f32x4, id: u32) f32x4"
+            },
+            {
+                "signature": "subgroupShuffle(value: f16, id: u32) f16"
+            },
+            {
+                "signature": "subgroupShuffle(value: f16x2, id: u32) f16x2"
+            },
+            {
+                "signature": "subgroupShuffle(value: f16x3, id: u32) f16x3"
+            },
+            {
+                "signature": "subgroupShuffle(value: f16x4, id: u32) f16x4"
+            },
+            {
+                "signature": "subgroupShuffle(value: i32, id: u32) i32"
+            },
+            {
+                "signature": "subgroupShuffle(value: i32x2, id: u32) i32x2"
+            },
+            {
+                "signature": "subgroupShuffle(value: i32x3, id: u32) i32x3"
+            },
+            {
+                "signature": "subgroupShuffle(value: i32x4, id: u32) i32x4"
+            },
+            {
+                "signature": "subgroupShuffle(value: i16, id: u32) i16"
+            },
+            {
+                "signature": "subgroupShuffle(value: i16x2, id: u32) i16x2"
+            },
+            {
+                "signature": "subgroupShuffle(value: i16x3, id: u32) i16x3"
+            },
+            {
+                "signature": "subgroupShuffle(value: i16x4, id: u32) i16x4"
+            },
+            {
+                "signature": "subgroupShuffle(value: u32, id: u32) u32"
+            },
+            {
+                "signature": "subgroupShuffle(value: u32x2, id: u32) u32x2"
+            },
+            {
+                "signature": "subgroupShuffle(value: u32x3, id: u32) u32x3"
+            },
+            {
+                "signature": "subgroupShuffle(value: u32x4, id: u32) u32x4"
+            },
+            {
+                "signature": "subgroupShuffle(value: u16, id: u32) u16"
+            },
+            {
+                "signature": "subgroupShuffle(value: u16x2, id: u32) u16x2"
+            },
+            {
+                "signature": "subgroupShuffle(value: u16x3, id: u32) u16x3"
+            },
+            {
+                "signature": "subgroupShuffle(value: u16x4, id: u32) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupShuffleUp",
+        "documentation": "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupShuffleUp(value: f32, delta: u32) f32"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: f32x2, delta: u32) f32x2"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: f32x3, delta: u32) f32x3"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: f32x4, delta: u32) f32x4"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: f16, delta: u32) f16"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: f16x2, delta: u32) f16x2"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: f16x3, delta: u32) f16x3"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: f16x4, delta: u32) f16x4"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: i32, delta: u32) i32"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: i32x2, delta: u32) i32x2"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: i32x3, delta: u32) i32x3"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: i32x4, delta: u32) i32x4"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: i16, delta: u32) i16"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: i16x2, delta: u32) i16x2"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: i16x3, delta: u32) i16x3"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: i16x4, delta: u32) i16x4"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: u32, delta: u32) u32"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: u32x2, delta: u32) u32x2"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: u32x3, delta: u32) u32x3"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: u32x4, delta: u32) u32x4"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: u16, delta: u32) u16"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: u16x2, delta: u32) u16x2"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: u16x3, delta: u32) u16x3"
+            },
+            {
+                "signature": "subgroupShuffleUp(value: u16x4, delta: u32) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupShuffleXor",
+        "documentation": "Returns the value identified by the current invocations ID XORed by the mask",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupShuffleXor(value: f32, mask: u32) f32"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: f32x2, mask: u32) f32x2"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: f32x3, mask: u32) f32x3"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: f32x4, mask: u32) f32x4"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: f16, mask: u32) f16"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: f16x2, mask: u32) f16x2"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: f16x3, mask: u32) f16x3"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: f16x4, mask: u32) f16x4"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: i32, mask: u32) i32"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: i32x2, mask: u32) i32x2"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: i32x3, mask: u32) i32x3"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: i32x4, mask: u32) i32x4"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: i16, mask: u32) i16"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: i16x2, mask: u32) i16x2"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: i16x3, mask: u32) i16x3"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: i16x4, mask: u32) i16x4"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: u32, mask: u32) u32"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: u32x2, mask: u32) u32x2"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: u32x3, mask: u32) u32x3"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: u32x4, mask: u32) u32x4"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: u16, mask: u32) u16"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: u16x2, mask: u32) u16x2"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: u16x3, mask: u32) u16x3"
+            },
+            {
+                "signature": "subgroupShuffleXor(value: u16x4, mask: u32) u16x4"
+            }
+        ]
+    },
+    {
         "name": "subgroupSwapDiagonal",
         "documentation": "Swaps the value at the current thread with the value at the diagonal thread in the subgroup",
         "target_support": [
@@ -4397,6 +5285,66 @@
             },
             {
                 "signature": "subgroupSwapVertical(value: u16x4) u16x4"
+            }
+        ]
+    },
+    {
+        "name": "subgroupXor",
+        "documentation": "Perform bitwise XOR across all subgroups",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "subgroupXor(value: i32, operation: SubgroupOperation) i32"
+            },
+            {
+                "signature": "subgroupXor(value: i32x2, operation: SubgroupOperation) i32x2"
+            },
+            {
+                "signature": "subgroupXor(value: i32x3, operation: SubgroupOperation) i32x3"
+            },
+            {
+                "signature": "subgroupXor(value: i32x4, operation: SubgroupOperation) i32x4"
+            },
+            {
+                "signature": "subgroupXor(value: i16, operation: SubgroupOperation) i16"
+            },
+            {
+                "signature": "subgroupXor(value: i16x2, operation: SubgroupOperation) i16x2"
+            },
+            {
+                "signature": "subgroupXor(value: i16x3, operation: SubgroupOperation) i16x3"
+            },
+            {
+                "signature": "subgroupXor(value: i16x4, operation: SubgroupOperation) i16x4"
+            },
+            {
+                "signature": "subgroupXor(value: u32, operation: SubgroupOperation) u32"
+            },
+            {
+                "signature": "subgroupXor(value: u32x2, operation: SubgroupOperation) u32x2"
+            },
+            {
+                "signature": "subgroupXor(value: u32x3, operation: SubgroupOperation) u32x3"
+            },
+            {
+                "signature": "subgroupXor(value: u32x4, operation: SubgroupOperation) u32x4"
+            },
+            {
+                "signature": "subgroupXor(value: u16, operation: SubgroupOperation) u16"
+            },
+            {
+                "signature": "subgroupXor(value: u16x2, operation: SubgroupOperation) u16x2"
+            },
+            {
+                "signature": "subgroupXor(value: u16x3, operation: SubgroupOperation) u16x3"
+            },
+            {
+                "signature": "subgroupXor(value: u16x4, operation: SubgroupOperation) u16x4"
             }
         ]
     },

@@ -27664,6 +27664,71 @@ MemorySemantics::MemorySemantics()
 };
 MemorySemantics MemorySemanticsType;
 
+EnumExpression SubgroupOperationReduce;
+EnumExpression SubgroupOperationInclusive;
+EnumExpression SubgroupOperationExclusive;
+SubgroupOperation::SubgroupOperation()
+{
+    this->name = "SubgroupOperation"_c;
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{ UInt32Type.name };
+    this->thisResolved->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    SubgroupOperationReduce.value = SubgroupOperationReduce_value;
+    SubgroupOperationReduce.type = Type::FullType{ SubgroupOperationType.name, true };
+    SubgroupOperationReduce.underlyingType = Type::FullType{ UInt32Type.name };
+    SubgroupOperationReduce.thisResolved->type = this;
+    SubgroupOperationInclusive.value = SubgroupOperationInclusive_value;
+    SubgroupOperationInclusive.type = Type::FullType{ SubgroupOperationType.name, true };
+    SubgroupOperationInclusive.underlyingType = Type::FullType{ UInt32Type.name };
+    SubgroupOperationInclusive.thisResolved->type = this;
+    SubgroupOperationExclusive.value = SubgroupOperationExclusive_value;
+    SubgroupOperationExclusive.type = Type::FullType{ SubgroupOperationType.name, true };
+    SubgroupOperationExclusive.underlyingType = Type::FullType{ UInt32Type.name };
+    SubgroupOperationExclusive.thisResolved->type = this;
+    this->labels = std::array{ "Reduce"_c, "Inclusive"_c, "Exclusive"_c };
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = this->thisResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = this->thisResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 5> {
+        std::pair{ "Reduce"_h, &SubgroupOperationReduce },
+        std::pair{ "Inclusive"_h, &SubgroupOperationInclusive },
+        std::pair{ "Exclusive"_h, &SubgroupOperationExclusive },
+        std::pair{ "operator=="_h, &SubgroupOperationType.eqOp },
+        std::pair{ "operator!="_h, &SubgroupOperationType.neqOp }
+    };
+};
+SubgroupOperation SubgroupOperationType;
+
 EnumExpression RasterizationModeFill;
 EnumExpression RasterizationModeLine;
 EnumExpression RasterizationModePoint;

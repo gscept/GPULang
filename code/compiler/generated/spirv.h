@@ -20932,6 +20932,2646 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt16x4(const Compiler* c, SPIRVGenera
     return SPIRVResult(ret, returnType, true);
 }
 
+SPIRVResult SPIRV_SubgroupMin_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMin_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMax_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAdd_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupMul_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupAnd_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupOr_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupXor_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalAnd_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalOr_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupLogicalXor_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffle_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleXor_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupShuffleUp_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_AtomicLoad_Uniform_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult ptr = LoadValueSPIRV(c, g, args[0]);
@@ -33371,7 +36011,7 @@ SPIRVResult SPIRV_tlasGetWorldToObject(const Compiler* c, SPIRVGenerator* g, uin
 }
 
 using SPIRVIntrinsic = SPIRVResult(*)(const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&);
-constexpr std::array<SPIRVIntrinsic, 3222> SPIRVDefaultIntrinsics = {
+constexpr std::array<SPIRVIntrinsic, 3486> SPIRVDefaultIntrinsics = {
         &SPIRV_Float32_from_UInt32 /* 0 -> 0 */,
         &SPIRV_Float32_from_Int32 /* 1 -> 1 */,
         &SPIRV_Float32_from_Bool8 /* 2 -> 2 */,
@@ -35595,1003 +38235,1267 @@ constexpr std::array<SPIRVIntrinsic, 3222> SPIRVDefaultIntrinsics = {
         &SPIRV_SubgroupSwapHorizontal_UInt16x2 /* 2220 -> 2220 */,
         &SPIRV_SubgroupSwapHorizontal_UInt16x3 /* 2221 -> 2221 */,
         &SPIRV_SubgroupSwapHorizontal_UInt16x4 /* 2222 -> 2222 */,
-        &SPIRV_AtomicLoad_Uniform_UInt32 /* 2223 -> 2223 */,
-        &SPIRV_AtomicLoad_Workgroup_UInt32 /* 2224 -> 2224 */,
-        &SPIRV_AtomicIncrement_Uniform_UInt32 /* 2225 -> 2225 */,
-        &SPIRV_AtomicIncrement_Workgroup_UInt32 /* 2226 -> 2226 */,
-        &SPIRV_AtomicDecrement_Uniform_UInt32 /* 2227 -> 2227 */,
-        &SPIRV_AtomicDecrement_Workgroup_UInt32 /* 2228 -> 2228 */,
-        &SPIRV_AtomicLoad_Uniform_Int32 /* 2229 -> 2229 */,
-        &SPIRV_AtomicLoad_Workgroup_Int32 /* 2230 -> 2230 */,
-        &SPIRV_AtomicIncrement_Uniform_Int32 /* 2231 -> 2231 */,
-        &SPIRV_AtomicIncrement_Workgroup_Int32 /* 2232 -> 2232 */,
-        &SPIRV_AtomicDecrement_Uniform_Int32 /* 2233 -> 2233 */,
-        &SPIRV_AtomicDecrement_Workgroup_Int32 /* 2234 -> 2234 */,
-        &SPIRV_AtomicLoad_Uniform_UInt16 /* 2235 -> 2235 */,
-        &SPIRV_AtomicLoad_Workgroup_UInt16 /* 2236 -> 2236 */,
-        &SPIRV_AtomicIncrement_Uniform_UInt16 /* 2237 -> 2237 */,
-        &SPIRV_AtomicIncrement_Workgroup_UInt16 /* 2238 -> 2238 */,
-        &SPIRV_AtomicDecrement_Uniform_UInt16 /* 2239 -> 2239 */,
-        &SPIRV_AtomicDecrement_Workgroup_UInt16 /* 2240 -> 2240 */,
-        &SPIRV_AtomicLoad_Uniform_Int16 /* 2241 -> 2241 */,
-        &SPIRV_AtomicLoad_Workgroup_Int16 /* 2242 -> 2242 */,
-        &SPIRV_AtomicIncrement_Uniform_Int16 /* 2243 -> 2243 */,
-        &SPIRV_AtomicIncrement_Workgroup_Int16 /* 2244 -> 2244 */,
-        &SPIRV_AtomicDecrement_Uniform_Int16 /* 2245 -> 2245 */,
-        &SPIRV_AtomicDecrement_Workgroup_Int16 /* 2246 -> 2246 */,
-        &SPIRV_AtomicLoad_Uniform_Float32 /* 2247 -> 2247 */,
-        &SPIRV_AtomicLoad_Workgroup_Float32 /* 2248 -> 2248 */,
-        &SPIRV_AtomicLoad_Uniform_Float16 /* 2249 -> 2249 */,
-        &SPIRV_AtomicLoad_Workgroup_Float16 /* 2250 -> 2250 */,
-        &SPIRV_AtomicStore_Uniform_UInt32 /* 2251 -> 2251 */,
-        &SPIRV_AtomicStore_Workgroup_UInt32 /* 2252 -> 2252 */,
-        &SPIRV_AtomicExchange_Uniform_UInt32 /* 2253 -> 2253 */,
-        &SPIRV_AtomicExchange_Workgroup_UInt32 /* 2254 -> 2254 */,
-        &SPIRV_AtomicAdd_Uniform_UInt32 /* 2255 -> 2255 */,
-        &SPIRV_AtomicAdd_Workgroup_UInt32 /* 2256 -> 2256 */,
-        &SPIRV_AtomicSubtract_Uniform_UInt32 /* 2257 -> 2257 */,
-        &SPIRV_AtomicSubtract_Workgroup_UInt32 /* 2258 -> 2258 */,
-        &SPIRV_AtomicAnd_Uniform_UInt32 /* 2259 -> 2259 */,
-        &SPIRV_AtomicAnd_Workgroup_UInt32 /* 2260 -> 2260 */,
-        &SPIRV_AtomicOr_Uniform_UInt32 /* 2261 -> 2261 */,
-        &SPIRV_AtomicOr_Workgroup_UInt32 /* 2262 -> 2262 */,
-        &SPIRV_AtomicXor_Uniform_UInt32 /* 2263 -> 2263 */,
-        &SPIRV_AtomicXor_Workgroup_UInt32 /* 2264 -> 2264 */,
-        &SPIRV_AtomicStore_Uniform_Int32 /* 2265 -> 2265 */,
-        &SPIRV_AtomicStore_Workgroup_Int32 /* 2266 -> 2266 */,
-        &SPIRV_AtomicExchange_Uniform_Int32 /* 2267 -> 2267 */,
-        &SPIRV_AtomicExchange_Workgroup_Int32 /* 2268 -> 2268 */,
-        &SPIRV_AtomicAdd_Uniform_Int32 /* 2269 -> 2269 */,
-        &SPIRV_AtomicAdd_Workgroup_Int32 /* 2270 -> 2270 */,
-        &SPIRV_AtomicSubtract_Uniform_Int32 /* 2271 -> 2271 */,
-        &SPIRV_AtomicSubtract_Workgroup_Int32 /* 2272 -> 2272 */,
-        &SPIRV_AtomicAnd_Uniform_Int32 /* 2273 -> 2273 */,
-        &SPIRV_AtomicAnd_Workgroup_Int32 /* 2274 -> 2274 */,
-        &SPIRV_AtomicOr_Uniform_Int32 /* 2275 -> 2275 */,
-        &SPIRV_AtomicOr_Workgroup_Int32 /* 2276 -> 2276 */,
-        &SPIRV_AtomicXor_Uniform_Int32 /* 2277 -> 2277 */,
-        &SPIRV_AtomicXor_Workgroup_Int32 /* 2278 -> 2278 */,
-        &SPIRV_AtomicStore_Uniform_UInt16 /* 2279 -> 2279 */,
-        &SPIRV_AtomicStore_Workgroup_UInt16 /* 2280 -> 2280 */,
-        &SPIRV_AtomicExchange_Uniform_UInt16 /* 2281 -> 2281 */,
-        &SPIRV_AtomicExchange_Workgroup_UInt16 /* 2282 -> 2282 */,
-        &SPIRV_AtomicAdd_Uniform_UInt16 /* 2283 -> 2283 */,
-        &SPIRV_AtomicAdd_Workgroup_UInt16 /* 2284 -> 2284 */,
-        &SPIRV_AtomicSubtract_Uniform_UInt16 /* 2285 -> 2285 */,
-        &SPIRV_AtomicSubtract_Workgroup_UInt16 /* 2286 -> 2286 */,
-        &SPIRV_AtomicAnd_Uniform_UInt16 /* 2287 -> 2287 */,
-        &SPIRV_AtomicAnd_Workgroup_UInt16 /* 2288 -> 2288 */,
-        &SPIRV_AtomicOr_Uniform_UInt16 /* 2289 -> 2289 */,
-        &SPIRV_AtomicOr_Workgroup_UInt16 /* 2290 -> 2290 */,
-        &SPIRV_AtomicXor_Uniform_UInt16 /* 2291 -> 2291 */,
-        &SPIRV_AtomicXor_Workgroup_UInt16 /* 2292 -> 2292 */,
-        &SPIRV_AtomicStore_Uniform_Int16 /* 2293 -> 2293 */,
-        &SPIRV_AtomicStore_Workgroup_Int16 /* 2294 -> 2294 */,
-        &SPIRV_AtomicExchange_Uniform_Int16 /* 2295 -> 2295 */,
-        &SPIRV_AtomicExchange_Workgroup_Int16 /* 2296 -> 2296 */,
-        &SPIRV_AtomicAdd_Uniform_Int16 /* 2297 -> 2297 */,
-        &SPIRV_AtomicAdd_Workgroup_Int16 /* 2298 -> 2298 */,
-        &SPIRV_AtomicSubtract_Uniform_Int16 /* 2299 -> 2299 */,
-        &SPIRV_AtomicSubtract_Workgroup_Int16 /* 2300 -> 2300 */,
-        &SPIRV_AtomicAnd_Uniform_Int16 /* 2301 -> 2301 */,
-        &SPIRV_AtomicAnd_Workgroup_Int16 /* 2302 -> 2302 */,
-        &SPIRV_AtomicOr_Uniform_Int16 /* 2303 -> 2303 */,
-        &SPIRV_AtomicOr_Workgroup_Int16 /* 2304 -> 2304 */,
-        &SPIRV_AtomicXor_Uniform_Int16 /* 2305 -> 2305 */,
-        &SPIRV_AtomicXor_Workgroup_Int16 /* 2306 -> 2306 */,
-        &SPIRV_AtomicStore_Uniform_Float32 /* 2307 -> 2307 */,
-        &SPIRV_AtomicStore_Workgroup_Float32 /* 2308 -> 2308 */,
-        &SPIRV_AtomicExchange_Uniform_Float32 /* 2309 -> 2309 */,
-        &SPIRV_AtomicExchange_Workgroup_Float32 /* 2310 -> 2310 */,
-        &SPIRV_AtomicStore_Uniform_Float16 /* 2311 -> 2311 */,
-        &SPIRV_AtomicStore_Workgroup_Float16 /* 2312 -> 2312 */,
-        &SPIRV_AtomicExchange_Uniform_Float16 /* 2313 -> 2313 */,
-        &SPIRV_AtomicExchange_Workgroup_Float16 /* 2314 -> 2314 */,
-        &SPIRV_AtomicMin_Uniform_UInt32 /* 2315 -> 2315 */,
-        &SPIRV_AtomicMin_Workgroup_UInt32 /* 2316 -> 2316 */,
-        &SPIRV_AtomicMax_Uniform_UInt32 /* 2317 -> 2317 */,
-        &SPIRV_AtomicMax_Workgroup_UInt32 /* 2318 -> 2318 */,
-        &SPIRV_AtomicMin_Uniform_Int32 /* 2319 -> 2319 */,
-        &SPIRV_AtomicMin_Workgroup_Int32 /* 2320 -> 2320 */,
-        &SPIRV_AtomicMax_Uniform_Int32 /* 2321 -> 2321 */,
-        &SPIRV_AtomicMax_Workgroup_Int32 /* 2322 -> 2322 */,
-        &SPIRV_AtomicMin_Uniform_UInt16 /* 2323 -> 2323 */,
-        &SPIRV_AtomicMin_Workgroup_UInt16 /* 2324 -> 2324 */,
-        &SPIRV_AtomicMax_Uniform_UInt16 /* 2325 -> 2325 */,
-        &SPIRV_AtomicMax_Workgroup_UInt16 /* 2326 -> 2326 */,
-        &SPIRV_AtomicMin_Uniform_Int16 /* 2327 -> 2327 */,
-        &SPIRV_AtomicMin_Workgroup_Int16 /* 2328 -> 2328 */,
-        &SPIRV_AtomicMax_Uniform_Int16 /* 2329 -> 2329 */,
-        &SPIRV_AtomicMax_Workgroup_Int16 /* 2330 -> 2330 */,
-        &SPIRV_AtomicCompareExchange_Uniform_UInt32 /* 2331 -> 2331 */,
-        &SPIRV_AtomicCompareExchange_Workgroup_UInt32 /* 2332 -> 2332 */,
-        &SPIRV_AtomicCompareExchange_Uniform_Int32 /* 2333 -> 2333 */,
-        &SPIRV_AtomicCompareExchange_Workgroup_Int32 /* 2334 -> 2334 */,
-        &SPIRV_AtomicCompareExchange_Uniform_UInt16 /* 2335 -> 2335 */,
-        &SPIRV_AtomicCompareExchange_Workgroup_UInt16 /* 2336 -> 2336 */,
-        &SPIRV_AtomicCompareExchange_Uniform_Int16 /* 2337 -> 2337 */,
-        &SPIRV_AtomicCompareExchange_Workgroup_Int16 /* 2338 -> 2338 */,
-        &SPIRV_BitInsert_UInt16 /* 2339 -> 2339 */,
-        &SPIRV_BitInsert_UInt32 /* 2340 -> 2340 */,
-        &SPIRV_BitExtract_UInt32 /* 2341 -> 2341 */,
-        &SPIRV_BitExtract_Int32 /* 2342 -> 2342 */,
-        &SPIRV_BitExtract_UInt16 /* 2343 -> 2343 */,
-        &SPIRV_BitExtract_Int16 /* 2344 -> 2344 */,
-        &SPIRV_BitExtract_UInt64 /* 2345 -> 2345 */,
-        &SPIRV_BitReverse_UInt32 /* 2346 -> 2346 */,
-        &SPIRV_BitReverse_Int32 /* 2347 -> 2347 */,
-        &SPIRV_BitReverse_UInt16 /* 2348 -> 2348 */,
-        &SPIRV_BitReverse_Int16 /* 2349 -> 2349 */,
-        &SPIRV_BitReverse_UInt64 /* 2350 -> 2350 */,
-        &SPIRV_BitCount_UInt32 /* 2351 -> 2351 */,
-        &SPIRV_BitCount_Int32 /* 2352 -> 2352 */,
-        &SPIRV_BitCount_UInt16 /* 2353 -> 2353 */,
-        &SPIRV_BitCount_Int16 /* 2354 -> 2354 */,
-        &SPIRV_BitCount_UInt64 /* 2355 -> 2355 */,
-        &SPIRV_ExecutionBarrier /* 2356 -> 2356 */,
-        &SPIRV_ExecutionBarrierSubgroup /* 2357 -> 2357 */,
-        &SPIRV_ExecutionBarrierWorkgroup /* 2358 -> 2358 */,
-        &SPIRV_MemoryBarrier /* 2359 -> 2359 */,
-        &SPIRV_MemoryBarrierBuffer /* 2360 -> 2360 */,
-        &SPIRV_MemoryBarrierTexture /* 2361 -> 2361 */,
-        &SPIRV_MemoryBarrierAtomic /* 2362 -> 2362 */,
-        &SPIRV_MemoryBarrierSubgroup /* 2363 -> 2363 */,
-        &SPIRV_MemoryBarrierWorkgroup /* 2364 -> 2364 */,
-        &SPIRV_TextureGetSize_Texture1D /* 2365 -> 2365 */,
-        &SPIRV_TextureGetSize_Texture2D /* 2366 -> 2366 */,
-        &SPIRV_TextureGetSize_Texture3D /* 2367 -> 2367 */,
-        &SPIRV_TextureGetSize_TextureCube /* 2368 -> 2368 */,
-        &SPIRV_TextureGetSize_Texture1DArray /* 2369 -> 2369 */,
-        &SPIRV_TextureGetSize_Texture2DArray /* 2370 -> 2370 */,
-        &SPIRV_TextureGetSize_TextureCubeArray /* 2371 -> 2371 */,
-        &SPIRV_TextureGetSizeMip_Texture1D /* 2372 -> 2372 */,
-        &SPIRV_TextureGetSizeMip_Texture2D /* 2373 -> 2373 */,
-        &SPIRV_TextureGetSizeMip_Texture3D /* 2374 -> 2374 */,
-        &SPIRV_TextureGetSizeMip_TextureCube /* 2375 -> 2375 */,
-        &SPIRV_TextureGetSizeMip_Texture1DArray /* 2376 -> 2376 */,
-        &SPIRV_TextureGetSizeMip_Texture2DArray /* 2377 -> 2377 */,
-        &SPIRV_TextureGetSizeMip_TextureCubeArray /* 2378 -> 2378 */,
-        &SPIRV_TextureGetMips_Texture1D /* 2379 -> 2379 */,
-        &SPIRV_TextureGetMips_Texture2D /* 2380 -> 2380 */,
-        &SPIRV_TextureGetMips_Texture3D /* 2381 -> 2381 */,
-        &SPIRV_TextureGetMips_TextureCube /* 2382 -> 2382 */,
-        &SPIRV_TextureGetMips_Texture1DArray /* 2383 -> 2383 */,
-        &SPIRV_TextureGetMips_Texture2DArray /* 2384 -> 2384 */,
-        &SPIRV_TextureGetMips_TextureCubeArray /* 2385 -> 2385 */,
-        &SPIRV_TextureGetSamples_Texture2DMS /* 2386 -> 2386 */,
-        &SPIRV_TextureGetSamples_Texture2DMSArray /* 2387 -> 2387 */,
-        &SPIRV_TextureGetSampledMip_Texture1D /* 2388 -> 2388 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture1D /* 2389 -> 2389 */,
-        &SPIRV_TextureGetSampledMip_Texture2D /* 2390 -> 2390 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture2D /* 2391 -> 2391 */,
-        &SPIRV_TextureGetSampledMip_Texture3D /* 2392 -> 2392 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture3D /* 2393 -> 2393 */,
-        &SPIRV_TextureGetSampledMip_TextureCube /* 2394 -> 2394 */,
-        &SPIRV_SampledTextureGetSampledMip_TextureCube /* 2395 -> 2395 */,
-        &SPIRV_TextureGetSampledMip_Texture1DArray /* 2396 -> 2396 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture1DArray /* 2397 -> 2397 */,
-        &SPIRV_TextureGetSampledMip_Texture2DArray /* 2398 -> 2398 */,
-        &SPIRV_SampledTextureGetSampledMip_Texture2DArray /* 2399 -> 2399 */,
-        &SPIRV_TextureGetSampledMip_TextureCubeArray /* 2400 -> 2400 */,
-        &SPIRV_SampledTextureGetSampledMip_TextureCubeArray /* 2401 -> 2401 */,
-        &SPIRV_TextureLoad_Texture1D /* 2402 -> 2402 */,
-        &SPIRV_TextureLoadMip_Texture1D /* 2403 -> 2403 */,
-        &SPIRV_TextureLoad_Texture2D /* 2404 -> 2404 */,
-        &SPIRV_TextureLoadMip_Texture2D /* 2405 -> 2405 */,
-        &SPIRV_TextureLoad_Texture3D /* 2406 -> 2406 */,
-        &SPIRV_TextureLoadMip_Texture3D /* 2407 -> 2407 */,
-        &SPIRV_TextureLoad_TextureCube /* 2408 -> 2408 */,
-        &SPIRV_TextureLoadMip_TextureCube /* 2409 -> 2409 */,
-        &SPIRV_TextureLoad_Texture1DArray /* 2410 -> 2410 */,
-        &SPIRV_TextureLoadMip_Texture1DArray /* 2411 -> 2411 */,
-        &SPIRV_TextureLoad_Texture2DArray /* 2412 -> 2412 */,
-        &SPIRV_TextureLoadMip_Texture2DArray /* 2413 -> 2413 */,
-        &SPIRV_TextureLoad_TextureCubeArray /* 2414 -> 2414 */,
-        &SPIRV_TextureLoadMip_TextureCubeArray /* 2415 -> 2415 */,
-        &SPIRV_TextureLoad_Texture2DMS /* 2416 -> 2416 */,
-        &SPIRV_TextureLoadMip_Texture2DMS /* 2417 -> 2417 */,
-        &SPIRV_TextureLoad_Texture2DMSArray /* 2418 -> 2418 */,
-        &SPIRV_TextureLoadMip_Texture2DMSArray /* 2419 -> 2419 */,
-        &SPIRV_TextureStore_Texture1D_Float32x4 /* 2420 -> 2420 */,
-        &SPIRV_TextureStoreMip_Texture1D_Float32x4 /* 2421 -> 2421 */,
-        &SPIRV_TextureStore_Texture1D_Int32x4 /* 2422 -> 2422 */,
-        &SPIRV_TextureStoreMip_Texture1D_Int32x4 /* 2423 -> 2423 */,
-        &SPIRV_TextureStore_Texture1D_UInt32x4 /* 2424 -> 2424 */,
-        &SPIRV_TextureStoreMip_Texture1D_UInt32x4 /* 2425 -> 2425 */,
-        &SPIRV_TextureStore_Texture2D_Float32x4 /* 2426 -> 2426 */,
-        &SPIRV_TextureStoreMip_Texture2D_Float32x4 /* 2427 -> 2427 */,
-        &SPIRV_TextureStore_Texture2D_Int32x4 /* 2428 -> 2428 */,
-        &SPIRV_TextureStoreMip_Texture2D_Int32x4 /* 2429 -> 2429 */,
-        &SPIRV_TextureStore_Texture2D_UInt32x4 /* 2430 -> 2430 */,
-        &SPIRV_TextureStoreMip_Texture2D_UInt32x4 /* 2431 -> 2431 */,
-        &SPIRV_TextureStore_Texture3D_Float32x4 /* 2432 -> 2432 */,
-        &SPIRV_TextureStoreMip_Texture3D_Float32x4 /* 2433 -> 2433 */,
-        &SPIRV_TextureStore_Texture3D_Int32x4 /* 2434 -> 2434 */,
-        &SPIRV_TextureStoreMip_Texture3D_Int32x4 /* 2435 -> 2435 */,
-        &SPIRV_TextureStore_Texture3D_UInt32x4 /* 2436 -> 2436 */,
-        &SPIRV_TextureStoreMip_Texture3D_UInt32x4 /* 2437 -> 2437 */,
-        &SPIRV_TextureStore_TextureCube_Float32x4 /* 2438 -> 2438 */,
-        &SPIRV_TextureStoreMip_TextureCube_Float32x4 /* 2439 -> 2439 */,
-        &SPIRV_TextureStore_TextureCube_Int32x4 /* 2440 -> 2440 */,
-        &SPIRV_TextureStoreMip_TextureCube_Int32x4 /* 2441 -> 2441 */,
-        &SPIRV_TextureStore_TextureCube_UInt32x4 /* 2442 -> 2442 */,
-        &SPIRV_TextureStoreMip_TextureCube_UInt32x4 /* 2443 -> 2443 */,
-        &SPIRV_TextureStore_Texture1DArray_Float32x4 /* 2444 -> 2444 */,
-        &SPIRV_TextureStoreMip_Texture1DArray_Float32x4 /* 2445 -> 2445 */,
-        &SPIRV_TextureStore_Texture1DArray_Int32x4 /* 2446 -> 2446 */,
-        &SPIRV_TextureStoreMip_Texture1DArray_Int32x4 /* 2447 -> 2447 */,
-        &SPIRV_TextureStore_Texture1DArray_UInt32x4 /* 2448 -> 2448 */,
-        &SPIRV_TextureStoreMip_Texture1DArray_UInt32x4 /* 2449 -> 2449 */,
-        &SPIRV_TextureStore_Texture2DArray_Float32x4 /* 2450 -> 2450 */,
-        &SPIRV_TextureStoreMip_Texture2DArray_Float32x4 /* 2451 -> 2451 */,
-        &SPIRV_TextureStore_Texture2DArray_Int32x4 /* 2452 -> 2452 */,
-        &SPIRV_TextureStoreMip_Texture2DArray_Int32x4 /* 2453 -> 2453 */,
-        &SPIRV_TextureStore_Texture2DArray_UInt32x4 /* 2454 -> 2454 */,
-        &SPIRV_TextureStoreMip_Texture2DArray_UInt32x4 /* 2455 -> 2455 */,
-        &SPIRV_TextureStore_TextureCubeArray_Float32x4 /* 2456 -> 2456 */,
-        &SPIRV_TextureStoreMip_TextureCubeArray_Float32x4 /* 2457 -> 2457 */,
-        &SPIRV_TextureStore_TextureCubeArray_Int32x4 /* 2458 -> 2458 */,
-        &SPIRV_TextureStoreMip_TextureCubeArray_Int32x4 /* 2459 -> 2459 */,
-        &SPIRV_TextureStore_TextureCubeArray_UInt32x4 /* 2460 -> 2460 */,
-        &SPIRV_TextureStoreMip_TextureCubeArray_UInt32x4 /* 2461 -> 2461 */,
-        &SPIRV_TextureStore_Texture2DMS_Float32x4 /* 2462 -> 2462 */,
-        &SPIRV_TextureStoreMip_Texture2DMS_Float32x4 /* 2463 -> 2463 */,
-        &SPIRV_TextureStore_Texture2DMS_Int32x4 /* 2464 -> 2464 */,
-        &SPIRV_TextureStoreMip_Texture2DMS_Int32x4 /* 2465 -> 2465 */,
-        &SPIRV_TextureStore_Texture2DMS_UInt32x4 /* 2466 -> 2466 */,
-        &SPIRV_TextureStoreMip_Texture2DMS_UInt32x4 /* 2467 -> 2467 */,
-        &SPIRV_TextureStore_Texture2DMSArray_Float32x4 /* 2468 -> 2468 */,
-        &SPIRV_TextureStoreMip_Texture2DMSArray_Float32x4 /* 2469 -> 2469 */,
-        &SPIRV_TextureStore_Texture2DMSArray_Int32x4 /* 2470 -> 2470 */,
-        &SPIRV_TextureStoreMip_Texture2DMSArray_Int32x4 /* 2471 -> 2471 */,
-        &SPIRV_TextureStore_Texture2DMSArray_UInt32x4 /* 2472 -> 2472 */,
-        &SPIRV_TextureStoreMip_Texture2DMSArray_UInt32x4 /* 2473 -> 2473 */,
-        &SPIRV_TextureFetch_Texture1D /* 2474 -> 2474 */,
-        &SPIRV_TextureFetchSample_Texture1D /* 2475 -> 2475 */,
-        &SPIRV_TextureFetch_Texture2D /* 2476 -> 2476 */,
-        &SPIRV_TextureFetchSample_Texture2D /* 2477 -> 2477 */,
-        &SPIRV_TextureFetch_Texture3D /* 2478 -> 2478 */,
-        &SPIRV_TextureFetchSample_Texture3D /* 2479 -> 2479 */,
-        &SPIRV_TextureFetch_Texture1DArray /* 2480 -> 2480 */,
-        &SPIRV_TextureFetchSample_Texture1DArray /* 2481 -> 2481 */,
-        &SPIRV_TextureFetch_Texture2DArray /* 2482 -> 2482 */,
-        &SPIRV_TextureFetchSample_Texture2DArray /* 2483 -> 2483 */,
-        &SPIRV_TextureFetchSample_Texture2DMS /* 2484 -> 2484 */,
-        &SPIRV_TextureFetchSample_Texture2DMSArray /* 2485 -> 2485 */,
-        &SPIRV_TextureGather_Texture2D /* 2486 -> 2486 */,
-        &SPIRV_SampledTextureGather_Texture2D /* 2487 -> 2487 */,
-        &SPIRV_TextureGatherOffset_Texture2D /* 2488 -> 2488 */,
-        &SPIRV_SampledTextureGatherOffset_Texture2D /* 2489 -> 2489 */,
-        &SPIRV_TextureGather_TextureCube /* 2490 -> 2490 */,
-        &SPIRV_SampledTextureGather_TextureCube /* 2491 -> 2491 */,
-        &SPIRV_TextureGatherOffset_TextureCube /* 2492 -> 2492 */,
-        &SPIRV_SampledTextureGatherOffset_TextureCube /* 2493 -> 2493 */,
-        &SPIRV_TextureGather_Texture2DArray /* 2494 -> 2494 */,
-        &SPIRV_SampledTextureGather_Texture2DArray /* 2495 -> 2495 */,
-        &SPIRV_TextureGatherOffset_Texture2DArray /* 2496 -> 2496 */,
-        &SPIRV_SampledTextureGatherOffset_Texture2DArray /* 2497 -> 2497 */,
-        &SPIRV_TextureGather_TextureCubeArray /* 2498 -> 2498 */,
-        &SPIRV_SampledTextureGather_TextureCubeArray /* 2499 -> 2499 */,
-        &SPIRV_TextureGatherOffset_TextureCubeArray /* 2500 -> 2500 */,
-        &SPIRV_SampledTextureGatherOffset_TextureCubeArray /* 2501 -> 2501 */,
-        &SPIRV_TexturePixelCacheLoad_PixelCache /* 2502 -> 2502 */,
-        &SPIRV_TexturePixelCacheLoad_PixelCacheMS /* 2503 -> 2503 */,
-        &SPIRV_TextureSample_Texture1D /* 2504 -> 2504 */,
-        &SPIRV_SampledTextureSample_Texture1D /* 2505 -> 2505 */,
-        &SPIRV_TextureSample_Texture2D /* 2506 -> 2506 */,
-        &SPIRV_SampledTextureSample_Texture2D /* 2507 -> 2507 */,
-        &SPIRV_TextureSample_Texture3D /* 2508 -> 2508 */,
-        &SPIRV_SampledTextureSample_Texture3D /* 2509 -> 2509 */,
-        &SPIRV_TextureSample_TextureCube /* 2510 -> 2510 */,
-        &SPIRV_SampledTextureSample_TextureCube /* 2511 -> 2511 */,
-        &SPIRV_TextureSample_Texture1DArray /* 2512 -> 2512 */,
-        &SPIRV_SampledTextureSample_Texture1DArray /* 2513 -> 2513 */,
-        &SPIRV_TextureSample_Texture2DArray /* 2514 -> 2514 */,
-        &SPIRV_SampledTextureSample_Texture2DArray /* 2515 -> 2515 */,
-        &SPIRV_TextureSample_TextureCubeArray /* 2516 -> 2516 */,
-        &SPIRV_SampledTextureSample_TextureCubeArray /* 2517 -> 2517 */,
-        &SPIRV_TextureSampleOffset_Texture1D /* 2518 -> 2518 */,
-        &SPIRV_SampledTextureSampleOffset_Texture1D /* 2519 -> 2519 */,
-        &SPIRV_TextureSampleOffset_Texture2D /* 2520 -> 2520 */,
-        &SPIRV_SampledTextureSampleOffset_Texture2D /* 2521 -> 2521 */,
-        &SPIRV_TextureSampleOffset_Texture3D /* 2522 -> 2522 */,
-        &SPIRV_SampledTextureSampleOffset_Texture3D /* 2523 -> 2523 */,
-        &SPIRV_TextureSampleOffset_Texture1DArray /* 2524 -> 2524 */,
-        &SPIRV_SampledTextureSampleOffset_Texture1DArray /* 2525 -> 2525 */,
-        &SPIRV_TextureSampleOffset_Texture2DArray /* 2526 -> 2526 */,
-        &SPIRV_SampledTextureSampleOffset_Texture2DArray /* 2527 -> 2527 */,
-        &SPIRV_TextureSampleProj_Texture1D /* 2528 -> 2528 */,
-        &SPIRV_SampledTextureSampleProj_Texture1D /* 2529 -> 2529 */,
-        &SPIRV_TextureSampleProj_Texture2D /* 2530 -> 2530 */,
-        &SPIRV_SampledTextureSampleProj_Texture2D /* 2531 -> 2531 */,
-        &SPIRV_TextureSampleProj_Texture3D /* 2532 -> 2532 */,
-        &SPIRV_SampledTextureSampleProj_Texture3D /* 2533 -> 2533 */,
-        &SPIRV_TextureSampleProjOffset_Texture1D /* 2534 -> 2534 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture1D /* 2535 -> 2535 */,
-        &SPIRV_TextureSampleProjOffset_Texture2D /* 2536 -> 2536 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture2D /* 2537 -> 2537 */,
-        &SPIRV_TextureSampleProjOffset_Texture3D /* 2538 -> 2538 */,
-        &SPIRV_SampledTextureSampleProjOffset_Texture3D /* 2539 -> 2539 */,
-        &SPIRV_TextureSampleCompare_Texture1D /* 2540 -> 2540 */,
-        &SPIRV_SampledTextureSampleCompare_Texture1D /* 2541 -> 2541 */,
-        &SPIRV_TextureSampleCompare_Texture2D /* 2542 -> 2542 */,
-        &SPIRV_SampledTextureSampleCompare_Texture2D /* 2543 -> 2543 */,
-        &SPIRV_TextureSampleCompare_Texture3D /* 2544 -> 2544 */,
-        &SPIRV_SampledTextureSampleCompare_Texture3D /* 2545 -> 2545 */,
-        &SPIRV_TextureSampleCompare_Texture1DArray /* 2546 -> 2546 */,
-        &SPIRV_SampledTextureSampleCompare_Texture1DArray /* 2547 -> 2547 */,
-        &SPIRV_TextureSampleCompare_Texture2DArray /* 2548 -> 2548 */,
-        &SPIRV_SampledTextureSampleCompare_Texture2DArray /* 2549 -> 2549 */,
-        &SPIRV_TextureSampleCompareOffset_Texture1D /* 2550 -> 2550 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture1D /* 2551 -> 2551 */,
-        &SPIRV_TextureSampleCompareOffset_Texture2D /* 2552 -> 2552 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture2D /* 2553 -> 2553 */,
-        &SPIRV_TextureSampleCompareOffset_Texture3D /* 2554 -> 2554 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture3D /* 2555 -> 2555 */,
-        &SPIRV_TextureSampleCompareOffset_Texture1DArray /* 2556 -> 2556 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture1DArray /* 2557 -> 2557 */,
-        &SPIRV_TextureSampleCompareOffset_Texture2DArray /* 2558 -> 2558 */,
-        &SPIRV_SampledTextureSampleCompareOffset_Texture2DArray /* 2559 -> 2559 */,
-        &SPIRV_TextureSampleProjCompare_Texture1D /* 2560 -> 2560 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture1D /* 2561 -> 2561 */,
-        &SPIRV_TextureSampleProjCompare_Texture2D /* 2562 -> 2562 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture2D /* 2563 -> 2563 */,
-        &SPIRV_TextureSampleProjCompare_Texture3D /* 2564 -> 2564 */,
-        &SPIRV_SampledTextureSampleProjCompare_Texture3D /* 2565 -> 2565 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture1D /* 2566 -> 2566 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture1D /* 2567 -> 2567 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture2D /* 2568 -> 2568 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture2D /* 2569 -> 2569 */,
-        &SPIRV_TextureSampleProjCompareOffset_Texture3D /* 2570 -> 2570 */,
-        &SPIRV_SampledTextureSampleProjCompareOffset_Texture3D /* 2571 -> 2571 */,
-        &SPIRV_TextureSampleLod_Texture1D /* 2572 -> 2572 */,
-        &SPIRV_SampledTextureSampleLod_Texture1D /* 2573 -> 2573 */,
-        &SPIRV_TextureSampleLod_Texture2D /* 2574 -> 2574 */,
-        &SPIRV_SampledTextureSampleLod_Texture2D /* 2575 -> 2575 */,
-        &SPIRV_TextureSampleLod_Texture3D /* 2576 -> 2576 */,
-        &SPIRV_SampledTextureSampleLod_Texture3D /* 2577 -> 2577 */,
-        &SPIRV_TextureSampleLod_TextureCube /* 2578 -> 2578 */,
-        &SPIRV_SampledTextureSampleLod_TextureCube /* 2579 -> 2579 */,
-        &SPIRV_TextureSampleLod_Texture1DArray /* 2580 -> 2580 */,
-        &SPIRV_SampledTextureSampleLod_Texture1DArray /* 2581 -> 2581 */,
-        &SPIRV_TextureSampleLod_Texture2DArray /* 2582 -> 2582 */,
-        &SPIRV_SampledTextureSampleLod_Texture2DArray /* 2583 -> 2583 */,
-        &SPIRV_TextureSampleLod_TextureCubeArray /* 2584 -> 2584 */,
-        &SPIRV_SampledTextureSampleLod_TextureCubeArray /* 2585 -> 2585 */,
-        &SPIRV_TextureSampleLodOffset_Texture1D /* 2586 -> 2586 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture1D /* 2587 -> 2587 */,
-        &SPIRV_TextureSampleLodOffset_Texture2D /* 2588 -> 2588 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture2D /* 2589 -> 2589 */,
-        &SPIRV_TextureSampleLodOffset_Texture3D /* 2590 -> 2590 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture3D /* 2591 -> 2591 */,
-        &SPIRV_TextureSampleLodOffset_Texture1DArray /* 2592 -> 2592 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture1DArray /* 2593 -> 2593 */,
-        &SPIRV_TextureSampleLodOffset_Texture2DArray /* 2594 -> 2594 */,
-        &SPIRV_SampledTextureSampleLodOffset_Texture2DArray /* 2595 -> 2595 */,
-        &SPIRV_TextureSampleLodProj_Texture1D /* 2596 -> 2596 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture1D /* 2597 -> 2597 */,
-        &SPIRV_TextureSampleLodProj_Texture2D /* 2598 -> 2598 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture2D /* 2599 -> 2599 */,
-        &SPIRV_TextureSampleLodProj_Texture3D /* 2600 -> 2600 */,
-        &SPIRV_SampledTextureSampleLodProj_Texture3D /* 2601 -> 2601 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture1D /* 2602 -> 2602 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture1D /* 2603 -> 2603 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture2D /* 2604 -> 2604 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture2D /* 2605 -> 2605 */,
-        &SPIRV_TextureSampleLodProjOffset_Texture3D /* 2606 -> 2606 */,
-        &SPIRV_SampledTextureSampleLodProjOffset_Texture3D /* 2607 -> 2607 */,
-        &SPIRV_TextureSampleLodCompare_Texture1D /* 2608 -> 2608 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture1D /* 2609 -> 2609 */,
-        &SPIRV_TextureSampleLodCompare_Texture2D /* 2610 -> 2610 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture2D /* 2611 -> 2611 */,
-        &SPIRV_TextureSampleLodCompare_Texture3D /* 2612 -> 2612 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture3D /* 2613 -> 2613 */,
-        &SPIRV_TextureSampleLodCompare_Texture1DArray /* 2614 -> 2614 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture1DArray /* 2615 -> 2615 */,
-        &SPIRV_TextureSampleLodCompare_Texture2DArray /* 2616 -> 2616 */,
-        &SPIRV_SampledTextureSampleLodCompare_Texture2DArray /* 2617 -> 2617 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture1D /* 2618 -> 2618 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1D /* 2619 -> 2619 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture2D /* 2620 -> 2620 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2D /* 2621 -> 2621 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture3D /* 2622 -> 2622 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture3D /* 2623 -> 2623 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture1DArray /* 2624 -> 2624 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1DArray /* 2625 -> 2625 */,
-        &SPIRV_TextureSampleLodCompareOffset_Texture2DArray /* 2626 -> 2626 */,
-        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2DArray /* 2627 -> 2627 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture1D /* 2628 -> 2628 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture1D /* 2629 -> 2629 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture2D /* 2630 -> 2630 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture2D /* 2631 -> 2631 */,
-        &SPIRV_TextureSampleLodProjCompare_Texture3D /* 2632 -> 2632 */,
-        &SPIRV_SampledTextureSampleLodProjCompare_Texture3D /* 2633 -> 2633 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture1D /* 2634 -> 2634 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture1D /* 2635 -> 2635 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture2D /* 2636 -> 2636 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture2D /* 2637 -> 2637 */,
-        &SPIRV_TextureSampleLodProjCompareOffset_Texture3D /* 2638 -> 2638 */,
-        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture3D /* 2639 -> 2639 */,
-        &SPIRV_TextureSampleGrad_Texture1D /* 2640 -> 2640 */,
-        &SPIRV_SampledTextureSampleGrad_Texture1D /* 2641 -> 2641 */,
-        &SPIRV_TextureSampleGrad_Texture2D /* 2642 -> 2642 */,
-        &SPIRV_SampledTextureSampleGrad_Texture2D /* 2643 -> 2643 */,
-        &SPIRV_TextureSampleGrad_Texture3D /* 2644 -> 2644 */,
-        &SPIRV_SampledTextureSampleGrad_Texture3D /* 2645 -> 2645 */,
-        &SPIRV_TextureSampleGrad_TextureCube /* 2646 -> 2646 */,
-        &SPIRV_SampledTextureSampleGrad_TextureCube /* 2647 -> 2647 */,
-        &SPIRV_TextureSampleGrad_Texture1DArray /* 2648 -> 2648 */,
-        &SPIRV_SampledTextureSampleGrad_Texture1DArray /* 2649 -> 2649 */,
-        &SPIRV_TextureSampleGrad_Texture2DArray /* 2650 -> 2650 */,
-        &SPIRV_SampledTextureSampleGrad_Texture2DArray /* 2651 -> 2651 */,
-        &SPIRV_TextureSampleGrad_TextureCubeArray /* 2652 -> 2652 */,
-        &SPIRV_SampledTextureSampleGrad_TextureCubeArray /* 2653 -> 2653 */,
-        &SPIRV_TextureSampleGradOffset_Texture1D /* 2654 -> 2654 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture1D /* 2655 -> 2655 */,
-        &SPIRV_TextureSampleGradOffset_Texture2D /* 2656 -> 2656 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture2D /* 2657 -> 2657 */,
-        &SPIRV_TextureSampleGradOffset_Texture3D /* 2658 -> 2658 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture3D /* 2659 -> 2659 */,
-        &SPIRV_TextureSampleGradOffset_Texture1DArray /* 2660 -> 2660 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture1DArray /* 2661 -> 2661 */,
-        &SPIRV_TextureSampleGradOffset_Texture2DArray /* 2662 -> 2662 */,
-        &SPIRV_SampledTextureSampleGradOffset_Texture2DArray /* 2663 -> 2663 */,
-        &SPIRV_TextureSampleGradProj_Texture1D /* 2664 -> 2664 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture1D /* 2665 -> 2665 */,
-        &SPIRV_TextureSampleGradProj_Texture2D /* 2666 -> 2666 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture2D /* 2667 -> 2667 */,
-        &SPIRV_TextureSampleGradProj_Texture3D /* 2668 -> 2668 */,
-        &SPIRV_SampledTextureSampleGradProj_Texture3D /* 2669 -> 2669 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture1D /* 2670 -> 2670 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture1D /* 2671 -> 2671 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture2D /* 2672 -> 2672 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture2D /* 2673 -> 2673 */,
-        &SPIRV_TextureSampleGradProjOffset_Texture3D /* 2674 -> 2674 */,
-        &SPIRV_SampledTextureSampleGradProjOffset_Texture3D /* 2675 -> 2675 */,
-        &SPIRV_TextureSampleGradCompare_Texture1D /* 2676 -> 2676 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture1D /* 2677 -> 2677 */,
-        &SPIRV_TextureSampleGradCompare_Texture2D /* 2678 -> 2678 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture2D /* 2679 -> 2679 */,
-        &SPIRV_TextureSampleGradCompare_Texture3D /* 2680 -> 2680 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture3D /* 2681 -> 2681 */,
-        &SPIRV_TextureSampleGradCompare_Texture1DArray /* 2682 -> 2682 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture1DArray /* 2683 -> 2683 */,
-        &SPIRV_TextureSampleGradCompare_Texture2DArray /* 2684 -> 2684 */,
-        &SPIRV_SampledTextureSampleGradCompare_Texture2DArray /* 2685 -> 2685 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture1D /* 2686 -> 2686 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1D /* 2687 -> 2687 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture2D /* 2688 -> 2688 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2D /* 2689 -> 2689 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture3D /* 2690 -> 2690 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture3D /* 2691 -> 2691 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture1DArray /* 2692 -> 2692 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1DArray /* 2693 -> 2693 */,
-        &SPIRV_TextureSampleGradCompareOffset_Texture2DArray /* 2694 -> 2694 */,
-        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2DArray /* 2695 -> 2695 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture1D /* 2696 -> 2696 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture1D /* 2697 -> 2697 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture2D /* 2698 -> 2698 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture2D /* 2699 -> 2699 */,
-        &SPIRV_TextureSampleGradProjCompare_Texture3D /* 2700 -> 2700 */,
-        &SPIRV_SampledTextureSampleGradProjCompare_Texture3D /* 2701 -> 2701 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture1D /* 2702 -> 2702 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture1D /* 2703 -> 2703 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture2D /* 2704 -> 2704 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture2D /* 2705 -> 2705 */,
-        &SPIRV_TextureSampleGradProjCompareOffset_Texture3D /* 2706 -> 2706 */,
-        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture3D /* 2707 -> 2707 */,
-        &SPIRV_TextureSampleBias_Texture1D /* 2708 -> 2708 */,
-        &SPIRV_SampledTextureSampleBias_Texture1D /* 2709 -> 2709 */,
-        &SPIRV_TextureSampleBias_Texture2D /* 2710 -> 2710 */,
-        &SPIRV_SampledTextureSampleBias_Texture2D /* 2711 -> 2711 */,
-        &SPIRV_TextureSampleBias_Texture3D /* 2712 -> 2712 */,
-        &SPIRV_SampledTextureSampleBias_Texture3D /* 2713 -> 2713 */,
-        &SPIRV_TextureSampleBias_TextureCube /* 2714 -> 2714 */,
-        &SPIRV_SampledTextureSampleBias_TextureCube /* 2715 -> 2715 */,
-        &SPIRV_TextureSampleBias_Texture1DArray /* 2716 -> 2716 */,
-        &SPIRV_SampledTextureSampleBias_Texture1DArray /* 2717 -> 2717 */,
-        &SPIRV_TextureSampleBias_Texture2DArray /* 2718 -> 2718 */,
-        &SPIRV_SampledTextureSampleBias_Texture2DArray /* 2719 -> 2719 */,
-        &SPIRV_TextureSampleBias_TextureCubeArray /* 2720 -> 2720 */,
-        &SPIRV_SampledTextureSampleBias_TextureCubeArray /* 2721 -> 2721 */,
-        &SPIRV_TextureSampleBiasOffset_Texture1D /* 2722 -> 2722 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture1D /* 2723 -> 2723 */,
-        &SPIRV_TextureSampleBiasOffset_Texture2D /* 2724 -> 2724 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture2D /* 2725 -> 2725 */,
-        &SPIRV_TextureSampleBiasOffset_Texture3D /* 2726 -> 2726 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture3D /* 2727 -> 2727 */,
-        &SPIRV_TextureSampleBiasOffset_Texture1DArray /* 2728 -> 2728 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture1DArray /* 2729 -> 2729 */,
-        &SPIRV_TextureSampleBiasOffset_Texture2DArray /* 2730 -> 2730 */,
-        &SPIRV_SampledTextureSampleBiasOffset_Texture2DArray /* 2731 -> 2731 */,
-        &SPIRV_TextureSampleBiasProj_Texture1D /* 2732 -> 2732 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture1D /* 2733 -> 2733 */,
-        &SPIRV_TextureSampleBiasProj_Texture2D /* 2734 -> 2734 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture2D /* 2735 -> 2735 */,
-        &SPIRV_TextureSampleBiasProj_Texture3D /* 2736 -> 2736 */,
-        &SPIRV_SampledTextureSampleBiasProj_Texture3D /* 2737 -> 2737 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture1D /* 2738 -> 2738 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture1D /* 2739 -> 2739 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture2D /* 2740 -> 2740 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture2D /* 2741 -> 2741 */,
-        &SPIRV_TextureSampleBiasProjOffset_Texture3D /* 2742 -> 2742 */,
-        &SPIRV_SampledTextureSampleBiasProjOffset_Texture3D /* 2743 -> 2743 */,
-        &SPIRV_TextureSampleBiasCompare_Texture1D /* 2744 -> 2744 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture1D /* 2745 -> 2745 */,
-        &SPIRV_TextureSampleBiasCompare_Texture2D /* 2746 -> 2746 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture2D /* 2747 -> 2747 */,
-        &SPIRV_TextureSampleBiasCompare_Texture3D /* 2748 -> 2748 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture3D /* 2749 -> 2749 */,
-        &SPIRV_TextureSampleBiasCompare_Texture1DArray /* 2750 -> 2750 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture1DArray /* 2751 -> 2751 */,
-        &SPIRV_TextureSampleBiasCompare_Texture2DArray /* 2752 -> 2752 */,
-        &SPIRV_SampledTextureSampleBiasCompare_Texture2DArray /* 2753 -> 2753 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture1D /* 2754 -> 2754 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1D /* 2755 -> 2755 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture2D /* 2756 -> 2756 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2D /* 2757 -> 2757 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture3D /* 2758 -> 2758 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture3D /* 2759 -> 2759 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture1DArray /* 2760 -> 2760 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1DArray /* 2761 -> 2761 */,
-        &SPIRV_TextureSampleBiasCompareOffset_Texture2DArray /* 2762 -> 2762 */,
-        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2DArray /* 2763 -> 2763 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture1D /* 2764 -> 2764 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture1D /* 2765 -> 2765 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture2D /* 2766 -> 2766 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture2D /* 2767 -> 2767 */,
-        &SPIRV_TextureSampleBiasProjCompare_Texture3D /* 2768 -> 2768 */,
-        &SPIRV_SampledTextureSampleBiasProjCompare_Texture3D /* 2769 -> 2769 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture1D /* 2770 -> 2770 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture1D /* 2771 -> 2771 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture2D /* 2772 -> 2772 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture2D /* 2773 -> 2773 */,
-        &SPIRV_TextureSampleBiasProjCompareOffset_Texture3D /* 2774 -> 2774 */,
-        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture3D /* 2775 -> 2775 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Float32 /* 2776 -> 2776 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_UInt32 /* 2777 -> 2777 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Int32 /* 2778 -> 2778 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Float16 /* 2779 -> 2779 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_UInt16 /* 2780 -> 2780 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_Int16 /* 2781 -> 2781 */,
-        &SPIRV_TextureAtomicLoad_Texture1D_UInt64 /* 2782 -> 2782 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Float32 /* 2783 -> 2783 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_UInt32 /* 2784 -> 2784 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Int32 /* 2785 -> 2785 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Float16 /* 2786 -> 2786 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_UInt16 /* 2787 -> 2787 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_Int16 /* 2788 -> 2788 */,
-        &SPIRV_TextureAtomicLoad_Texture2D_UInt64 /* 2789 -> 2789 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Float32 /* 2790 -> 2790 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_UInt32 /* 2791 -> 2791 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Int32 /* 2792 -> 2792 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Float16 /* 2793 -> 2793 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_UInt16 /* 2794 -> 2794 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_Int16 /* 2795 -> 2795 */,
-        &SPIRV_TextureAtomicLoad_Texture3D_UInt64 /* 2796 -> 2796 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Float32 /* 2797 -> 2797 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_UInt32 /* 2798 -> 2798 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Int32 /* 2799 -> 2799 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Float16 /* 2800 -> 2800 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_UInt16 /* 2801 -> 2801 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_Int16 /* 2802 -> 2802 */,
-        &SPIRV_TextureAtomicLoad_TextureCube_UInt64 /* 2803 -> 2803 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Float32 /* 2804 -> 2804 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt32 /* 2805 -> 2805 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Int32 /* 2806 -> 2806 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Float16 /* 2807 -> 2807 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt16 /* 2808 -> 2808 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_Int16 /* 2809 -> 2809 */,
-        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt64 /* 2810 -> 2810 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Float32 /* 2811 -> 2811 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt32 /* 2812 -> 2812 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Int32 /* 2813 -> 2813 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Float16 /* 2814 -> 2814 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt16 /* 2815 -> 2815 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_Int16 /* 2816 -> 2816 */,
-        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt64 /* 2817 -> 2817 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float32 /* 2818 -> 2818 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt32 /* 2819 -> 2819 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int32 /* 2820 -> 2820 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float16 /* 2821 -> 2821 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt16 /* 2822 -> 2822 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int16 /* 2823 -> 2823 */,
-        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt64 /* 2824 -> 2824 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Float32 /* 2825 -> 2825 */,
-        &SPIRV_TextureAtomicStore_Texture1D_UInt32 /* 2826 -> 2826 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Int32 /* 2827 -> 2827 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Float16 /* 2828 -> 2828 */,
-        &SPIRV_TextureAtomicStore_Texture1D_UInt16 /* 2829 -> 2829 */,
-        &SPIRV_TextureAtomicStore_Texture1D_Int16 /* 2830 -> 2830 */,
-        &SPIRV_TextureAtomicStore_Texture1D_UInt64 /* 2831 -> 2831 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Float32 /* 2832 -> 2832 */,
-        &SPIRV_TextureAtomicStore_Texture2D_UInt32 /* 2833 -> 2833 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Int32 /* 2834 -> 2834 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Float16 /* 2835 -> 2835 */,
-        &SPIRV_TextureAtomicStore_Texture2D_UInt16 /* 2836 -> 2836 */,
-        &SPIRV_TextureAtomicStore_Texture2D_Int16 /* 2837 -> 2837 */,
-        &SPIRV_TextureAtomicStore_Texture2D_UInt64 /* 2838 -> 2838 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Float32 /* 2839 -> 2839 */,
-        &SPIRV_TextureAtomicStore_Texture3D_UInt32 /* 2840 -> 2840 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Int32 /* 2841 -> 2841 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Float16 /* 2842 -> 2842 */,
-        &SPIRV_TextureAtomicStore_Texture3D_UInt16 /* 2843 -> 2843 */,
-        &SPIRV_TextureAtomicStore_Texture3D_Int16 /* 2844 -> 2844 */,
-        &SPIRV_TextureAtomicStore_Texture3D_UInt64 /* 2845 -> 2845 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Float32 /* 2846 -> 2846 */,
-        &SPIRV_TextureAtomicStore_TextureCube_UInt32 /* 2847 -> 2847 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Int32 /* 2848 -> 2848 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Float16 /* 2849 -> 2849 */,
-        &SPIRV_TextureAtomicStore_TextureCube_UInt16 /* 2850 -> 2850 */,
-        &SPIRV_TextureAtomicStore_TextureCube_Int16 /* 2851 -> 2851 */,
-        &SPIRV_TextureAtomicStore_TextureCube_UInt64 /* 2852 -> 2852 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Float32 /* 2853 -> 2853 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_UInt32 /* 2854 -> 2854 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Int32 /* 2855 -> 2855 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Float16 /* 2856 -> 2856 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_UInt16 /* 2857 -> 2857 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_Int16 /* 2858 -> 2858 */,
-        &SPIRV_TextureAtomicStore_Texture1DArray_UInt64 /* 2859 -> 2859 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Float32 /* 2860 -> 2860 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_UInt32 /* 2861 -> 2861 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Int32 /* 2862 -> 2862 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Float16 /* 2863 -> 2863 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_UInt16 /* 2864 -> 2864 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_Int16 /* 2865 -> 2865 */,
-        &SPIRV_TextureAtomicStore_Texture2DArray_UInt64 /* 2866 -> 2866 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Float32 /* 2867 -> 2867 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt32 /* 2868 -> 2868 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Int32 /* 2869 -> 2869 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Float16 /* 2870 -> 2870 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt16 /* 2871 -> 2871 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_Int16 /* 2872 -> 2872 */,
-        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt64 /* 2873 -> 2873 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Float32 /* 2874 -> 2874 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_UInt32 /* 2875 -> 2875 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Int32 /* 2876 -> 2876 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Float16 /* 2877 -> 2877 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_UInt16 /* 2878 -> 2878 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_Int16 /* 2879 -> 2879 */,
-        &SPIRV_TextureAtomicExchange_Texture1D_UInt64 /* 2880 -> 2880 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Float32 /* 2881 -> 2881 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_UInt32 /* 2882 -> 2882 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Int32 /* 2883 -> 2883 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Float16 /* 2884 -> 2884 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_UInt16 /* 2885 -> 2885 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_Int16 /* 2886 -> 2886 */,
-        &SPIRV_TextureAtomicExchange_Texture2D_UInt64 /* 2887 -> 2887 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Float32 /* 2888 -> 2888 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_UInt32 /* 2889 -> 2889 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Int32 /* 2890 -> 2890 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Float16 /* 2891 -> 2891 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_UInt16 /* 2892 -> 2892 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_Int16 /* 2893 -> 2893 */,
-        &SPIRV_TextureAtomicExchange_Texture3D_UInt64 /* 2894 -> 2894 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Float32 /* 2895 -> 2895 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_UInt32 /* 2896 -> 2896 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Int32 /* 2897 -> 2897 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Float16 /* 2898 -> 2898 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_UInt16 /* 2899 -> 2899 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_Int16 /* 2900 -> 2900 */,
-        &SPIRV_TextureAtomicExchange_TextureCube_UInt64 /* 2901 -> 2901 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Float32 /* 2902 -> 2902 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt32 /* 2903 -> 2903 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Int32 /* 2904 -> 2904 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Float16 /* 2905 -> 2905 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt16 /* 2906 -> 2906 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_Int16 /* 2907 -> 2907 */,
-        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt64 /* 2908 -> 2908 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Float32 /* 2909 -> 2909 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt32 /* 2910 -> 2910 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Int32 /* 2911 -> 2911 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Float16 /* 2912 -> 2912 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt16 /* 2913 -> 2913 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_Int16 /* 2914 -> 2914 */,
-        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt64 /* 2915 -> 2915 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float32 /* 2916 -> 2916 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt32 /* 2917 -> 2917 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int32 /* 2918 -> 2918 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float16 /* 2919 -> 2919 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt16 /* 2920 -> 2920 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int16 /* 2921 -> 2921 */,
-        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt64 /* 2922 -> 2922 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt32 /* 2923 -> 2923 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int32 /* 2924 -> 2924 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt16 /* 2925 -> 2925 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int16 /* 2926 -> 2926 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt64 /* 2927 -> 2927 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt32 /* 2928 -> 2928 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int32 /* 2929 -> 2929 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt16 /* 2930 -> 2930 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int16 /* 2931 -> 2931 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt64 /* 2932 -> 2932 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt32 /* 2933 -> 2933 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int32 /* 2934 -> 2934 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt16 /* 2935 -> 2935 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int16 /* 2936 -> 2936 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt64 /* 2937 -> 2937 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt32 /* 2938 -> 2938 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int32 /* 2939 -> 2939 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt16 /* 2940 -> 2940 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int16 /* 2941 -> 2941 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt64 /* 2942 -> 2942 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt32 /* 2943 -> 2943 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int32 /* 2944 -> 2944 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt16 /* 2945 -> 2945 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int16 /* 2946 -> 2946 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt64 /* 2947 -> 2947 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt32 /* 2948 -> 2948 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int32 /* 2949 -> 2949 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt16 /* 2950 -> 2950 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int16 /* 2951 -> 2951 */,
-        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt64 /* 2952 -> 2952 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt32 /* 2953 -> 2953 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int32 /* 2954 -> 2954 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt16 /* 2955 -> 2955 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int16 /* 2956 -> 2956 */,
-        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt64 /* 2957 -> 2957 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_UInt32 /* 2958 -> 2958 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_Int32 /* 2959 -> 2959 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_UInt16 /* 2960 -> 2960 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_Int16 /* 2961 -> 2961 */,
-        &SPIRV_TextureAtomicAdd_Texture1D_UInt64 /* 2962 -> 2962 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_UInt32 /* 2963 -> 2963 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_Int32 /* 2964 -> 2964 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_UInt16 /* 2965 -> 2965 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_Int16 /* 2966 -> 2966 */,
-        &SPIRV_TextureAtomicAdd_Texture2D_UInt64 /* 2967 -> 2967 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_UInt32 /* 2968 -> 2968 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_Int32 /* 2969 -> 2969 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_UInt16 /* 2970 -> 2970 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_Int16 /* 2971 -> 2971 */,
-        &SPIRV_TextureAtomicAdd_Texture3D_UInt64 /* 2972 -> 2972 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_UInt32 /* 2973 -> 2973 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_Int32 /* 2974 -> 2974 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_UInt16 /* 2975 -> 2975 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_Int16 /* 2976 -> 2976 */,
-        &SPIRV_TextureAtomicAdd_TextureCube_UInt64 /* 2977 -> 2977 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt32 /* 2978 -> 2978 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_Int32 /* 2979 -> 2979 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt16 /* 2980 -> 2980 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_Int16 /* 2981 -> 2981 */,
-        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt64 /* 2982 -> 2982 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt32 /* 2983 -> 2983 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_Int32 /* 2984 -> 2984 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt16 /* 2985 -> 2985 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_Int16 /* 2986 -> 2986 */,
-        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt64 /* 2987 -> 2987 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt32 /* 2988 -> 2988 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int32 /* 2989 -> 2989 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt16 /* 2990 -> 2990 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int16 /* 2991 -> 2991 */,
-        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt64 /* 2992 -> 2992 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_UInt32 /* 2993 -> 2993 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_Int32 /* 2994 -> 2994 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_UInt16 /* 2995 -> 2995 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_Int16 /* 2996 -> 2996 */,
-        &SPIRV_TextureAtomicSubtract_Texture1D_UInt64 /* 2997 -> 2997 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_UInt32 /* 2998 -> 2998 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_Int32 /* 2999 -> 2999 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_UInt16 /* 3000 -> 3000 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_Int16 /* 3001 -> 3001 */,
-        &SPIRV_TextureAtomicSubtract_Texture2D_UInt64 /* 3002 -> 3002 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_UInt32 /* 3003 -> 3003 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_Int32 /* 3004 -> 3004 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_UInt16 /* 3005 -> 3005 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_Int16 /* 3006 -> 3006 */,
-        &SPIRV_TextureAtomicSubtract_Texture3D_UInt64 /* 3007 -> 3007 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_UInt32 /* 3008 -> 3008 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_Int32 /* 3009 -> 3009 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_UInt16 /* 3010 -> 3010 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_Int16 /* 3011 -> 3011 */,
-        &SPIRV_TextureAtomicSubtract_TextureCube_UInt64 /* 3012 -> 3012 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt32 /* 3013 -> 3013 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int32 /* 3014 -> 3014 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt16 /* 3015 -> 3015 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int16 /* 3016 -> 3016 */,
-        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt64 /* 3017 -> 3017 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt32 /* 3018 -> 3018 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int32 /* 3019 -> 3019 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt16 /* 3020 -> 3020 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int16 /* 3021 -> 3021 */,
-        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt64 /* 3022 -> 3022 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt32 /* 3023 -> 3023 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int32 /* 3024 -> 3024 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt16 /* 3025 -> 3025 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int16 /* 3026 -> 3026 */,
-        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt64 /* 3027 -> 3027 */,
-        &SPIRV_TextureAtomicMin_Texture1D_UInt32 /* 3028 -> 3028 */,
-        &SPIRV_TextureAtomicMin_Texture1D_Int32 /* 3029 -> 3029 */,
-        &SPIRV_TextureAtomicMin_Texture1D_UInt16 /* 3030 -> 3030 */,
-        &SPIRV_TextureAtomicMin_Texture1D_Int16 /* 3031 -> 3031 */,
-        &SPIRV_TextureAtomicMin_Texture1D_UInt64 /* 3032 -> 3032 */,
-        &SPIRV_TextureAtomicMin_Texture2D_UInt32 /* 3033 -> 3033 */,
-        &SPIRV_TextureAtomicMin_Texture2D_Int32 /* 3034 -> 3034 */,
-        &SPIRV_TextureAtomicMin_Texture2D_UInt16 /* 3035 -> 3035 */,
-        &SPIRV_TextureAtomicMin_Texture2D_Int16 /* 3036 -> 3036 */,
-        &SPIRV_TextureAtomicMin_Texture2D_UInt64 /* 3037 -> 3037 */,
-        &SPIRV_TextureAtomicMin_Texture3D_UInt32 /* 3038 -> 3038 */,
-        &SPIRV_TextureAtomicMin_Texture3D_Int32 /* 3039 -> 3039 */,
-        &SPIRV_TextureAtomicMin_Texture3D_UInt16 /* 3040 -> 3040 */,
-        &SPIRV_TextureAtomicMin_Texture3D_Int16 /* 3041 -> 3041 */,
-        &SPIRV_TextureAtomicMin_Texture3D_UInt64 /* 3042 -> 3042 */,
-        &SPIRV_TextureAtomicMin_TextureCube_UInt32 /* 3043 -> 3043 */,
-        &SPIRV_TextureAtomicMin_TextureCube_Int32 /* 3044 -> 3044 */,
-        &SPIRV_TextureAtomicMin_TextureCube_UInt16 /* 3045 -> 3045 */,
-        &SPIRV_TextureAtomicMin_TextureCube_Int16 /* 3046 -> 3046 */,
-        &SPIRV_TextureAtomicMin_TextureCube_UInt64 /* 3047 -> 3047 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_UInt32 /* 3048 -> 3048 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_Int32 /* 3049 -> 3049 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_UInt16 /* 3050 -> 3050 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_Int16 /* 3051 -> 3051 */,
-        &SPIRV_TextureAtomicMin_Texture1DArray_UInt64 /* 3052 -> 3052 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_UInt32 /* 3053 -> 3053 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_Int32 /* 3054 -> 3054 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_UInt16 /* 3055 -> 3055 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_Int16 /* 3056 -> 3056 */,
-        &SPIRV_TextureAtomicMin_Texture2DArray_UInt64 /* 3057 -> 3057 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt32 /* 3058 -> 3058 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_Int32 /* 3059 -> 3059 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt16 /* 3060 -> 3060 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_Int16 /* 3061 -> 3061 */,
-        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt64 /* 3062 -> 3062 */,
-        &SPIRV_TextureAtomicMax_Texture1D_UInt32 /* 3063 -> 3063 */,
-        &SPIRV_TextureAtomicMax_Texture1D_Int32 /* 3064 -> 3064 */,
-        &SPIRV_TextureAtomicMax_Texture1D_UInt16 /* 3065 -> 3065 */,
-        &SPIRV_TextureAtomicMax_Texture1D_Int16 /* 3066 -> 3066 */,
-        &SPIRV_TextureAtomicMax_Texture1D_UInt64 /* 3067 -> 3067 */,
-        &SPIRV_TextureAtomicMax_Texture2D_UInt32 /* 3068 -> 3068 */,
-        &SPIRV_TextureAtomicMax_Texture2D_Int32 /* 3069 -> 3069 */,
-        &SPIRV_TextureAtomicMax_Texture2D_UInt16 /* 3070 -> 3070 */,
-        &SPIRV_TextureAtomicMax_Texture2D_Int16 /* 3071 -> 3071 */,
-        &SPIRV_TextureAtomicMax_Texture2D_UInt64 /* 3072 -> 3072 */,
-        &SPIRV_TextureAtomicMax_Texture3D_UInt32 /* 3073 -> 3073 */,
-        &SPIRV_TextureAtomicMax_Texture3D_Int32 /* 3074 -> 3074 */,
-        &SPIRV_TextureAtomicMax_Texture3D_UInt16 /* 3075 -> 3075 */,
-        &SPIRV_TextureAtomicMax_Texture3D_Int16 /* 3076 -> 3076 */,
-        &SPIRV_TextureAtomicMax_Texture3D_UInt64 /* 3077 -> 3077 */,
-        &SPIRV_TextureAtomicMax_TextureCube_UInt32 /* 3078 -> 3078 */,
-        &SPIRV_TextureAtomicMax_TextureCube_Int32 /* 3079 -> 3079 */,
-        &SPIRV_TextureAtomicMax_TextureCube_UInt16 /* 3080 -> 3080 */,
-        &SPIRV_TextureAtomicMax_TextureCube_Int16 /* 3081 -> 3081 */,
-        &SPIRV_TextureAtomicMax_TextureCube_UInt64 /* 3082 -> 3082 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_UInt32 /* 3083 -> 3083 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_Int32 /* 3084 -> 3084 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_UInt16 /* 3085 -> 3085 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_Int16 /* 3086 -> 3086 */,
-        &SPIRV_TextureAtomicMax_Texture1DArray_UInt64 /* 3087 -> 3087 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_UInt32 /* 3088 -> 3088 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_Int32 /* 3089 -> 3089 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_UInt16 /* 3090 -> 3090 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_Int16 /* 3091 -> 3091 */,
-        &SPIRV_TextureAtomicMax_Texture2DArray_UInt64 /* 3092 -> 3092 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt32 /* 3093 -> 3093 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_Int32 /* 3094 -> 3094 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt16 /* 3095 -> 3095 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_Int16 /* 3096 -> 3096 */,
-        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt64 /* 3097 -> 3097 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_UInt32 /* 3098 -> 3098 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_Int32 /* 3099 -> 3099 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_UInt16 /* 3100 -> 3100 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_Int16 /* 3101 -> 3101 */,
-        &SPIRV_TextureAtomicAnd_Texture1D_UInt64 /* 3102 -> 3102 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_UInt32 /* 3103 -> 3103 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_Int32 /* 3104 -> 3104 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_UInt16 /* 3105 -> 3105 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_Int16 /* 3106 -> 3106 */,
-        &SPIRV_TextureAtomicAnd_Texture2D_UInt64 /* 3107 -> 3107 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_UInt32 /* 3108 -> 3108 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_Int32 /* 3109 -> 3109 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_UInt16 /* 3110 -> 3110 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_Int16 /* 3111 -> 3111 */,
-        &SPIRV_TextureAtomicAnd_Texture3D_UInt64 /* 3112 -> 3112 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_UInt32 /* 3113 -> 3113 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_Int32 /* 3114 -> 3114 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_UInt16 /* 3115 -> 3115 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_Int16 /* 3116 -> 3116 */,
-        &SPIRV_TextureAtomicAnd_TextureCube_UInt64 /* 3117 -> 3117 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt32 /* 3118 -> 3118 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_Int32 /* 3119 -> 3119 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt16 /* 3120 -> 3120 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_Int16 /* 3121 -> 3121 */,
-        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt64 /* 3122 -> 3122 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt32 /* 3123 -> 3123 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_Int32 /* 3124 -> 3124 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt16 /* 3125 -> 3125 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_Int16 /* 3126 -> 3126 */,
-        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt64 /* 3127 -> 3127 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt32 /* 3128 -> 3128 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int32 /* 3129 -> 3129 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt16 /* 3130 -> 3130 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int16 /* 3131 -> 3131 */,
-        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt64 /* 3132 -> 3132 */,
-        &SPIRV_TextureAtomicOr_Texture1D_UInt32 /* 3133 -> 3133 */,
-        &SPIRV_TextureAtomicOr_Texture1D_Int32 /* 3134 -> 3134 */,
-        &SPIRV_TextureAtomicOr_Texture1D_UInt16 /* 3135 -> 3135 */,
-        &SPIRV_TextureAtomicOr_Texture1D_Int16 /* 3136 -> 3136 */,
-        &SPIRV_TextureAtomicOr_Texture1D_UInt64 /* 3137 -> 3137 */,
-        &SPIRV_TextureAtomicOr_Texture2D_UInt32 /* 3138 -> 3138 */,
-        &SPIRV_TextureAtomicOr_Texture2D_Int32 /* 3139 -> 3139 */,
-        &SPIRV_TextureAtomicOr_Texture2D_UInt16 /* 3140 -> 3140 */,
-        &SPIRV_TextureAtomicOr_Texture2D_Int16 /* 3141 -> 3141 */,
-        &SPIRV_TextureAtomicOr_Texture2D_UInt64 /* 3142 -> 3142 */,
-        &SPIRV_TextureAtomicOr_Texture3D_UInt32 /* 3143 -> 3143 */,
-        &SPIRV_TextureAtomicOr_Texture3D_Int32 /* 3144 -> 3144 */,
-        &SPIRV_TextureAtomicOr_Texture3D_UInt16 /* 3145 -> 3145 */,
-        &SPIRV_TextureAtomicOr_Texture3D_Int16 /* 3146 -> 3146 */,
-        &SPIRV_TextureAtomicOr_Texture3D_UInt64 /* 3147 -> 3147 */,
-        &SPIRV_TextureAtomicOr_TextureCube_UInt32 /* 3148 -> 3148 */,
-        &SPIRV_TextureAtomicOr_TextureCube_Int32 /* 3149 -> 3149 */,
-        &SPIRV_TextureAtomicOr_TextureCube_UInt16 /* 3150 -> 3150 */,
-        &SPIRV_TextureAtomicOr_TextureCube_Int16 /* 3151 -> 3151 */,
-        &SPIRV_TextureAtomicOr_TextureCube_UInt64 /* 3152 -> 3152 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_UInt32 /* 3153 -> 3153 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_Int32 /* 3154 -> 3154 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_UInt16 /* 3155 -> 3155 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_Int16 /* 3156 -> 3156 */,
-        &SPIRV_TextureAtomicOr_Texture1DArray_UInt64 /* 3157 -> 3157 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_UInt32 /* 3158 -> 3158 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_Int32 /* 3159 -> 3159 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_UInt16 /* 3160 -> 3160 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_Int16 /* 3161 -> 3161 */,
-        &SPIRV_TextureAtomicOr_Texture2DArray_UInt64 /* 3162 -> 3162 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt32 /* 3163 -> 3163 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_Int32 /* 3164 -> 3164 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt16 /* 3165 -> 3165 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_Int16 /* 3166 -> 3166 */,
-        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt64 /* 3167 -> 3167 */,
-        &SPIRV_TextureAtomicXor_Texture1D_UInt32 /* 3168 -> 3168 */,
-        &SPIRV_TextureAtomicXor_Texture1D_Int32 /* 3169 -> 3169 */,
-        &SPIRV_TextureAtomicXor_Texture1D_UInt16 /* 3170 -> 3170 */,
-        &SPIRV_TextureAtomicXor_Texture1D_Int16 /* 3171 -> 3171 */,
-        &SPIRV_TextureAtomicXor_Texture1D_UInt64 /* 3172 -> 3172 */,
-        &SPIRV_TextureAtomicXor_Texture2D_UInt32 /* 3173 -> 3173 */,
-        &SPIRV_TextureAtomicXor_Texture2D_Int32 /* 3174 -> 3174 */,
-        &SPIRV_TextureAtomicXor_Texture2D_UInt16 /* 3175 -> 3175 */,
-        &SPIRV_TextureAtomicXor_Texture2D_Int16 /* 3176 -> 3176 */,
-        &SPIRV_TextureAtomicXor_Texture2D_UInt64 /* 3177 -> 3177 */,
-        &SPIRV_TextureAtomicXor_Texture3D_UInt32 /* 3178 -> 3178 */,
-        &SPIRV_TextureAtomicXor_Texture3D_Int32 /* 3179 -> 3179 */,
-        &SPIRV_TextureAtomicXor_Texture3D_UInt16 /* 3180 -> 3180 */,
-        &SPIRV_TextureAtomicXor_Texture3D_Int16 /* 3181 -> 3181 */,
-        &SPIRV_TextureAtomicXor_Texture3D_UInt64 /* 3182 -> 3182 */,
-        &SPIRV_TextureAtomicXor_TextureCube_UInt32 /* 3183 -> 3183 */,
-        &SPIRV_TextureAtomicXor_TextureCube_Int32 /* 3184 -> 3184 */,
-        &SPIRV_TextureAtomicXor_TextureCube_UInt16 /* 3185 -> 3185 */,
-        &SPIRV_TextureAtomicXor_TextureCube_Int16 /* 3186 -> 3186 */,
-        &SPIRV_TextureAtomicXor_TextureCube_UInt64 /* 3187 -> 3187 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_UInt32 /* 3188 -> 3188 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_Int32 /* 3189 -> 3189 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_UInt16 /* 3190 -> 3190 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_Int16 /* 3191 -> 3191 */,
-        &SPIRV_TextureAtomicXor_Texture1DArray_UInt64 /* 3192 -> 3192 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_UInt32 /* 3193 -> 3193 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_Int32 /* 3194 -> 3194 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_UInt16 /* 3195 -> 3195 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_Int16 /* 3196 -> 3196 */,
-        &SPIRV_TextureAtomicXor_Texture2DArray_UInt64 /* 3197 -> 3197 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt32 /* 3198 -> 3198 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_Int32 /* 3199 -> 3199 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt16 /* 3200 -> 3200 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_Int16 /* 3201 -> 3201 */,
-        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt64 /* 3202 -> 3202 */,
-        &SPIRV_ExportRayIntersection /* 3203 -> 3203 */,
-        &SPIRV_ExecuteCallable /* 3204 -> 3204 */,
-        &SPIRV_rayGetLaunchIndex /* 3205 -> 3205 */,
-        &SPIRV_rayGetLaunchSize /* 3206 -> 3206 */,
-        &SPIRV_blasGetPrimitiveIndex /* 3207 -> 3207 */,
-        &SPIRV_blasGetGeometryIndex /* 3208 -> 3208 */,
-        &SPIRV_tlasGetInstanceIndex /* 3209 -> 3209 */,
-        &SPIRV_tlasGetInstanceCustomIndex /* 3210 -> 3210 */,
-        &SPIRV_rayGetWorldOrigin /* 3211 -> 3211 */,
-        &SPIRV_rayGetWorldDirection /* 3212 -> 3212 */,
-        &SPIRV_rayGetObjectOrigin /* 3213 -> 3213 */,
-        &SPIRV_rayGetObjectDirection /* 3214 -> 3214 */,
-        &SPIRV_rayGetTMin /* 3215 -> 3215 */,
-        &SPIRV_rayGetTMax /* 3216 -> 3216 */,
-        &SPIRV_rayGetFlags /* 3217 -> 3217 */,
-        &SPIRV_rayGetHitDistance /* 3218 -> 3218 */,
-        &SPIRV_rayGetHitKind /* 3219 -> 3219 */,
-        &SPIRV_tlasGetObjectToWorld /* 3220 -> 3220 */,
-        &SPIRV_tlasGetWorldToObject /* 3221 -> 3221 */
+        &SPIRV_SubgroupMin_Float32 /* 2223 -> 2223 */,
+        &SPIRV_SubgroupMin_Float32x2 /* 2224 -> 2224 */,
+        &SPIRV_SubgroupMin_Float32x3 /* 2225 -> 2225 */,
+        &SPIRV_SubgroupMin_Float32x4 /* 2226 -> 2226 */,
+        &SPIRV_SubgroupMin_Float16 /* 2227 -> 2227 */,
+        &SPIRV_SubgroupMin_Float16x2 /* 2228 -> 2228 */,
+        &SPIRV_SubgroupMin_Float16x3 /* 2229 -> 2229 */,
+        &SPIRV_SubgroupMin_Float16x4 /* 2230 -> 2230 */,
+        &SPIRV_SubgroupMin_Int32 /* 2231 -> 2231 */,
+        &SPIRV_SubgroupMin_Int32x2 /* 2232 -> 2232 */,
+        &SPIRV_SubgroupMin_Int32x3 /* 2233 -> 2233 */,
+        &SPIRV_SubgroupMin_Int32x4 /* 2234 -> 2234 */,
+        &SPIRV_SubgroupMin_Int16 /* 2235 -> 2235 */,
+        &SPIRV_SubgroupMin_Int16x2 /* 2236 -> 2236 */,
+        &SPIRV_SubgroupMin_Int16x3 /* 2237 -> 2237 */,
+        &SPIRV_SubgroupMin_Int16x4 /* 2238 -> 2238 */,
+        &SPIRV_SubgroupMin_UInt32 /* 2239 -> 2239 */,
+        &SPIRV_SubgroupMin_UInt32x2 /* 2240 -> 2240 */,
+        &SPIRV_SubgroupMin_UInt32x3 /* 2241 -> 2241 */,
+        &SPIRV_SubgroupMin_UInt32x4 /* 2242 -> 2242 */,
+        &SPIRV_SubgroupMin_UInt16 /* 2243 -> 2243 */,
+        &SPIRV_SubgroupMin_UInt16x2 /* 2244 -> 2244 */,
+        &SPIRV_SubgroupMin_UInt16x3 /* 2245 -> 2245 */,
+        &SPIRV_SubgroupMin_UInt16x4 /* 2246 -> 2246 */,
+        &SPIRV_SubgroupMax_Float32 /* 2247 -> 2247 */,
+        &SPIRV_SubgroupMax_Float32x2 /* 2248 -> 2248 */,
+        &SPIRV_SubgroupMax_Float32x3 /* 2249 -> 2249 */,
+        &SPIRV_SubgroupMax_Float32x4 /* 2250 -> 2250 */,
+        &SPIRV_SubgroupMax_Float16 /* 2251 -> 2251 */,
+        &SPIRV_SubgroupMax_Float16x2 /* 2252 -> 2252 */,
+        &SPIRV_SubgroupMax_Float16x3 /* 2253 -> 2253 */,
+        &SPIRV_SubgroupMax_Float16x4 /* 2254 -> 2254 */,
+        &SPIRV_SubgroupMax_Int32 /* 2255 -> 2255 */,
+        &SPIRV_SubgroupMax_Int32x2 /* 2256 -> 2256 */,
+        &SPIRV_SubgroupMax_Int32x3 /* 2257 -> 2257 */,
+        &SPIRV_SubgroupMax_Int32x4 /* 2258 -> 2258 */,
+        &SPIRV_SubgroupMax_Int16 /* 2259 -> 2259 */,
+        &SPIRV_SubgroupMax_Int16x2 /* 2260 -> 2260 */,
+        &SPIRV_SubgroupMax_Int16x3 /* 2261 -> 2261 */,
+        &SPIRV_SubgroupMax_Int16x4 /* 2262 -> 2262 */,
+        &SPIRV_SubgroupMax_UInt32 /* 2263 -> 2263 */,
+        &SPIRV_SubgroupMax_UInt32x2 /* 2264 -> 2264 */,
+        &SPIRV_SubgroupMax_UInt32x3 /* 2265 -> 2265 */,
+        &SPIRV_SubgroupMax_UInt32x4 /* 2266 -> 2266 */,
+        &SPIRV_SubgroupMax_UInt16 /* 2267 -> 2267 */,
+        &SPIRV_SubgroupMax_UInt16x2 /* 2268 -> 2268 */,
+        &SPIRV_SubgroupMax_UInt16x3 /* 2269 -> 2269 */,
+        &SPIRV_SubgroupMax_UInt16x4 /* 2270 -> 2270 */,
+        &SPIRV_SubgroupAdd_Float32 /* 2271 -> 2271 */,
+        &SPIRV_SubgroupAdd_Float32x2 /* 2272 -> 2272 */,
+        &SPIRV_SubgroupAdd_Float32x3 /* 2273 -> 2273 */,
+        &SPIRV_SubgroupAdd_Float32x4 /* 2274 -> 2274 */,
+        &SPIRV_SubgroupAdd_Float16 /* 2275 -> 2275 */,
+        &SPIRV_SubgroupAdd_Float16x2 /* 2276 -> 2276 */,
+        &SPIRV_SubgroupAdd_Float16x3 /* 2277 -> 2277 */,
+        &SPIRV_SubgroupAdd_Float16x4 /* 2278 -> 2278 */,
+        &SPIRV_SubgroupAdd_Int32 /* 2279 -> 2279 */,
+        &SPIRV_SubgroupAdd_Int32x2 /* 2280 -> 2280 */,
+        &SPIRV_SubgroupAdd_Int32x3 /* 2281 -> 2281 */,
+        &SPIRV_SubgroupAdd_Int32x4 /* 2282 -> 2282 */,
+        &SPIRV_SubgroupAdd_Int16 /* 2283 -> 2283 */,
+        &SPIRV_SubgroupAdd_Int16x2 /* 2284 -> 2284 */,
+        &SPIRV_SubgroupAdd_Int16x3 /* 2285 -> 2285 */,
+        &SPIRV_SubgroupAdd_Int16x4 /* 2286 -> 2286 */,
+        &SPIRV_SubgroupAdd_UInt32 /* 2287 -> 2287 */,
+        &SPIRV_SubgroupAdd_UInt32x2 /* 2288 -> 2288 */,
+        &SPIRV_SubgroupAdd_UInt32x3 /* 2289 -> 2289 */,
+        &SPIRV_SubgroupAdd_UInt32x4 /* 2290 -> 2290 */,
+        &SPIRV_SubgroupAdd_UInt16 /* 2291 -> 2291 */,
+        &SPIRV_SubgroupAdd_UInt16x2 /* 2292 -> 2292 */,
+        &SPIRV_SubgroupAdd_UInt16x3 /* 2293 -> 2293 */,
+        &SPIRV_SubgroupAdd_UInt16x4 /* 2294 -> 2294 */,
+        &SPIRV_SubgroupMul_Float32 /* 2295 -> 2295 */,
+        &SPIRV_SubgroupMul_Float32x2 /* 2296 -> 2296 */,
+        &SPIRV_SubgroupMul_Float32x3 /* 2297 -> 2297 */,
+        &SPIRV_SubgroupMul_Float32x4 /* 2298 -> 2298 */,
+        &SPIRV_SubgroupMul_Float16 /* 2299 -> 2299 */,
+        &SPIRV_SubgroupMul_Float16x2 /* 2300 -> 2300 */,
+        &SPIRV_SubgroupMul_Float16x3 /* 2301 -> 2301 */,
+        &SPIRV_SubgroupMul_Float16x4 /* 2302 -> 2302 */,
+        &SPIRV_SubgroupMul_Int32 /* 2303 -> 2303 */,
+        &SPIRV_SubgroupMul_Int32x2 /* 2304 -> 2304 */,
+        &SPIRV_SubgroupMul_Int32x3 /* 2305 -> 2305 */,
+        &SPIRV_SubgroupMul_Int32x4 /* 2306 -> 2306 */,
+        &SPIRV_SubgroupMul_Int16 /* 2307 -> 2307 */,
+        &SPIRV_SubgroupMul_Int16x2 /* 2308 -> 2308 */,
+        &SPIRV_SubgroupMul_Int16x3 /* 2309 -> 2309 */,
+        &SPIRV_SubgroupMul_Int16x4 /* 2310 -> 2310 */,
+        &SPIRV_SubgroupMul_UInt32 /* 2311 -> 2311 */,
+        &SPIRV_SubgroupMul_UInt32x2 /* 2312 -> 2312 */,
+        &SPIRV_SubgroupMul_UInt32x3 /* 2313 -> 2313 */,
+        &SPIRV_SubgroupMul_UInt32x4 /* 2314 -> 2314 */,
+        &SPIRV_SubgroupMul_UInt16 /* 2315 -> 2315 */,
+        &SPIRV_SubgroupMul_UInt16x2 /* 2316 -> 2316 */,
+        &SPIRV_SubgroupMul_UInt16x3 /* 2317 -> 2317 */,
+        &SPIRV_SubgroupMul_UInt16x4 /* 2318 -> 2318 */,
+        &SPIRV_SubgroupAnd_Int32 /* 2319 -> 2319 */,
+        &SPIRV_SubgroupAnd_Int32x2 /* 2320 -> 2320 */,
+        &SPIRV_SubgroupAnd_Int32x3 /* 2321 -> 2321 */,
+        &SPIRV_SubgroupAnd_Int32x4 /* 2322 -> 2322 */,
+        &SPIRV_SubgroupAnd_Int16 /* 2323 -> 2323 */,
+        &SPIRV_SubgroupAnd_Int16x2 /* 2324 -> 2324 */,
+        &SPIRV_SubgroupAnd_Int16x3 /* 2325 -> 2325 */,
+        &SPIRV_SubgroupAnd_Int16x4 /* 2326 -> 2326 */,
+        &SPIRV_SubgroupAnd_UInt32 /* 2327 -> 2327 */,
+        &SPIRV_SubgroupAnd_UInt32x2 /* 2328 -> 2328 */,
+        &SPIRV_SubgroupAnd_UInt32x3 /* 2329 -> 2329 */,
+        &SPIRV_SubgroupAnd_UInt32x4 /* 2330 -> 2330 */,
+        &SPIRV_SubgroupAnd_UInt16 /* 2331 -> 2331 */,
+        &SPIRV_SubgroupAnd_UInt16x2 /* 2332 -> 2332 */,
+        &SPIRV_SubgroupAnd_UInt16x3 /* 2333 -> 2333 */,
+        &SPIRV_SubgroupAnd_UInt16x4 /* 2334 -> 2334 */,
+        &SPIRV_SubgroupOr_Int32 /* 2335 -> 2335 */,
+        &SPIRV_SubgroupOr_Int32x2 /* 2336 -> 2336 */,
+        &SPIRV_SubgroupOr_Int32x3 /* 2337 -> 2337 */,
+        &SPIRV_SubgroupOr_Int32x4 /* 2338 -> 2338 */,
+        &SPIRV_SubgroupOr_Int16 /* 2339 -> 2339 */,
+        &SPIRV_SubgroupOr_Int16x2 /* 2340 -> 2340 */,
+        &SPIRV_SubgroupOr_Int16x3 /* 2341 -> 2341 */,
+        &SPIRV_SubgroupOr_Int16x4 /* 2342 -> 2342 */,
+        &SPIRV_SubgroupOr_UInt32 /* 2343 -> 2343 */,
+        &SPIRV_SubgroupOr_UInt32x2 /* 2344 -> 2344 */,
+        &SPIRV_SubgroupOr_UInt32x3 /* 2345 -> 2345 */,
+        &SPIRV_SubgroupOr_UInt32x4 /* 2346 -> 2346 */,
+        &SPIRV_SubgroupOr_UInt16 /* 2347 -> 2347 */,
+        &SPIRV_SubgroupOr_UInt16x2 /* 2348 -> 2348 */,
+        &SPIRV_SubgroupOr_UInt16x3 /* 2349 -> 2349 */,
+        &SPIRV_SubgroupOr_UInt16x4 /* 2350 -> 2350 */,
+        &SPIRV_SubgroupXor_Int32 /* 2351 -> 2351 */,
+        &SPIRV_SubgroupXor_Int32x2 /* 2352 -> 2352 */,
+        &SPIRV_SubgroupXor_Int32x3 /* 2353 -> 2353 */,
+        &SPIRV_SubgroupXor_Int32x4 /* 2354 -> 2354 */,
+        &SPIRV_SubgroupXor_Int16 /* 2355 -> 2355 */,
+        &SPIRV_SubgroupXor_Int16x2 /* 2356 -> 2356 */,
+        &SPIRV_SubgroupXor_Int16x3 /* 2357 -> 2357 */,
+        &SPIRV_SubgroupXor_Int16x4 /* 2358 -> 2358 */,
+        &SPIRV_SubgroupXor_UInt32 /* 2359 -> 2359 */,
+        &SPIRV_SubgroupXor_UInt32x2 /* 2360 -> 2360 */,
+        &SPIRV_SubgroupXor_UInt32x3 /* 2361 -> 2361 */,
+        &SPIRV_SubgroupXor_UInt32x4 /* 2362 -> 2362 */,
+        &SPIRV_SubgroupXor_UInt16 /* 2363 -> 2363 */,
+        &SPIRV_SubgroupXor_UInt16x2 /* 2364 -> 2364 */,
+        &SPIRV_SubgroupXor_UInt16x3 /* 2365 -> 2365 */,
+        &SPIRV_SubgroupXor_UInt16x4 /* 2366 -> 2366 */,
+        &SPIRV_SubgroupLogicalAnd_Int32 /* 2367 -> 2367 */,
+        &SPIRV_SubgroupLogicalAnd_Int32x2 /* 2368 -> 2368 */,
+        &SPIRV_SubgroupLogicalAnd_Int32x3 /* 2369 -> 2369 */,
+        &SPIRV_SubgroupLogicalAnd_Int32x4 /* 2370 -> 2370 */,
+        &SPIRV_SubgroupLogicalAnd_Int16 /* 2371 -> 2371 */,
+        &SPIRV_SubgroupLogicalAnd_Int16x2 /* 2372 -> 2372 */,
+        &SPIRV_SubgroupLogicalAnd_Int16x3 /* 2373 -> 2373 */,
+        &SPIRV_SubgroupLogicalAnd_Int16x4 /* 2374 -> 2374 */,
+        &SPIRV_SubgroupLogicalAnd_UInt32 /* 2375 -> 2375 */,
+        &SPIRV_SubgroupLogicalAnd_UInt32x2 /* 2376 -> 2376 */,
+        &SPIRV_SubgroupLogicalAnd_UInt32x3 /* 2377 -> 2377 */,
+        &SPIRV_SubgroupLogicalAnd_UInt32x4 /* 2378 -> 2378 */,
+        &SPIRV_SubgroupLogicalAnd_UInt16 /* 2379 -> 2379 */,
+        &SPIRV_SubgroupLogicalAnd_UInt16x2 /* 2380 -> 2380 */,
+        &SPIRV_SubgroupLogicalAnd_UInt16x3 /* 2381 -> 2381 */,
+        &SPIRV_SubgroupLogicalAnd_UInt16x4 /* 2382 -> 2382 */,
+        &SPIRV_SubgroupLogicalOr_Int32 /* 2383 -> 2383 */,
+        &SPIRV_SubgroupLogicalOr_Int32x2 /* 2384 -> 2384 */,
+        &SPIRV_SubgroupLogicalOr_Int32x3 /* 2385 -> 2385 */,
+        &SPIRV_SubgroupLogicalOr_Int32x4 /* 2386 -> 2386 */,
+        &SPIRV_SubgroupLogicalOr_Int16 /* 2387 -> 2387 */,
+        &SPIRV_SubgroupLogicalOr_Int16x2 /* 2388 -> 2388 */,
+        &SPIRV_SubgroupLogicalOr_Int16x3 /* 2389 -> 2389 */,
+        &SPIRV_SubgroupLogicalOr_Int16x4 /* 2390 -> 2390 */,
+        &SPIRV_SubgroupLogicalOr_UInt32 /* 2391 -> 2391 */,
+        &SPIRV_SubgroupLogicalOr_UInt32x2 /* 2392 -> 2392 */,
+        &SPIRV_SubgroupLogicalOr_UInt32x3 /* 2393 -> 2393 */,
+        &SPIRV_SubgroupLogicalOr_UInt32x4 /* 2394 -> 2394 */,
+        &SPIRV_SubgroupLogicalOr_UInt16 /* 2395 -> 2395 */,
+        &SPIRV_SubgroupLogicalOr_UInt16x2 /* 2396 -> 2396 */,
+        &SPIRV_SubgroupLogicalOr_UInt16x3 /* 2397 -> 2397 */,
+        &SPIRV_SubgroupLogicalOr_UInt16x4 /* 2398 -> 2398 */,
+        &SPIRV_SubgroupLogicalXor_Int32 /* 2399 -> 2399 */,
+        &SPIRV_SubgroupLogicalXor_Int32x2 /* 2400 -> 2400 */,
+        &SPIRV_SubgroupLogicalXor_Int32x3 /* 2401 -> 2401 */,
+        &SPIRV_SubgroupLogicalXor_Int32x4 /* 2402 -> 2402 */,
+        &SPIRV_SubgroupLogicalXor_Int16 /* 2403 -> 2403 */,
+        &SPIRV_SubgroupLogicalXor_Int16x2 /* 2404 -> 2404 */,
+        &SPIRV_SubgroupLogicalXor_Int16x3 /* 2405 -> 2405 */,
+        &SPIRV_SubgroupLogicalXor_Int16x4 /* 2406 -> 2406 */,
+        &SPIRV_SubgroupLogicalXor_UInt32 /* 2407 -> 2407 */,
+        &SPIRV_SubgroupLogicalXor_UInt32x2 /* 2408 -> 2408 */,
+        &SPIRV_SubgroupLogicalXor_UInt32x3 /* 2409 -> 2409 */,
+        &SPIRV_SubgroupLogicalXor_UInt32x4 /* 2410 -> 2410 */,
+        &SPIRV_SubgroupLogicalXor_UInt16 /* 2411 -> 2411 */,
+        &SPIRV_SubgroupLogicalXor_UInt16x2 /* 2412 -> 2412 */,
+        &SPIRV_SubgroupLogicalXor_UInt16x3 /* 2413 -> 2413 */,
+        &SPIRV_SubgroupLogicalXor_UInt16x4 /* 2414 -> 2414 */,
+        &SPIRV_SubgroupShuffle_Float32 /* 2415 -> 2415 */,
+        &SPIRV_SubgroupShuffle_Float32x2 /* 2416 -> 2416 */,
+        &SPIRV_SubgroupShuffle_Float32x3 /* 2417 -> 2417 */,
+        &SPIRV_SubgroupShuffle_Float32x4 /* 2418 -> 2418 */,
+        &SPIRV_SubgroupShuffle_Float16 /* 2419 -> 2419 */,
+        &SPIRV_SubgroupShuffle_Float16x2 /* 2420 -> 2420 */,
+        &SPIRV_SubgroupShuffle_Float16x3 /* 2421 -> 2421 */,
+        &SPIRV_SubgroupShuffle_Float16x4 /* 2422 -> 2422 */,
+        &SPIRV_SubgroupShuffle_Int32 /* 2423 -> 2423 */,
+        &SPIRV_SubgroupShuffle_Int32x2 /* 2424 -> 2424 */,
+        &SPIRV_SubgroupShuffle_Int32x3 /* 2425 -> 2425 */,
+        &SPIRV_SubgroupShuffle_Int32x4 /* 2426 -> 2426 */,
+        &SPIRV_SubgroupShuffle_Int16 /* 2427 -> 2427 */,
+        &SPIRV_SubgroupShuffle_Int16x2 /* 2428 -> 2428 */,
+        &SPIRV_SubgroupShuffle_Int16x3 /* 2429 -> 2429 */,
+        &SPIRV_SubgroupShuffle_Int16x4 /* 2430 -> 2430 */,
+        &SPIRV_SubgroupShuffle_UInt32 /* 2431 -> 2431 */,
+        &SPIRV_SubgroupShuffle_UInt32x2 /* 2432 -> 2432 */,
+        &SPIRV_SubgroupShuffle_UInt32x3 /* 2433 -> 2433 */,
+        &SPIRV_SubgroupShuffle_UInt32x4 /* 2434 -> 2434 */,
+        &SPIRV_SubgroupShuffle_UInt16 /* 2435 -> 2435 */,
+        &SPIRV_SubgroupShuffle_UInt16x2 /* 2436 -> 2436 */,
+        &SPIRV_SubgroupShuffle_UInt16x3 /* 2437 -> 2437 */,
+        &SPIRV_SubgroupShuffle_UInt16x4 /* 2438 -> 2438 */,
+        &SPIRV_SubgroupShuffleXor_Float32 /* 2439 -> 2439 */,
+        &SPIRV_SubgroupShuffleXor_Float32x2 /* 2440 -> 2440 */,
+        &SPIRV_SubgroupShuffleXor_Float32x3 /* 2441 -> 2441 */,
+        &SPIRV_SubgroupShuffleXor_Float32x4 /* 2442 -> 2442 */,
+        &SPIRV_SubgroupShuffleXor_Float16 /* 2443 -> 2443 */,
+        &SPIRV_SubgroupShuffleXor_Float16x2 /* 2444 -> 2444 */,
+        &SPIRV_SubgroupShuffleXor_Float16x3 /* 2445 -> 2445 */,
+        &SPIRV_SubgroupShuffleXor_Float16x4 /* 2446 -> 2446 */,
+        &SPIRV_SubgroupShuffleXor_Int32 /* 2447 -> 2447 */,
+        &SPIRV_SubgroupShuffleXor_Int32x2 /* 2448 -> 2448 */,
+        &SPIRV_SubgroupShuffleXor_Int32x3 /* 2449 -> 2449 */,
+        &SPIRV_SubgroupShuffleXor_Int32x4 /* 2450 -> 2450 */,
+        &SPIRV_SubgroupShuffleXor_Int16 /* 2451 -> 2451 */,
+        &SPIRV_SubgroupShuffleXor_Int16x2 /* 2452 -> 2452 */,
+        &SPIRV_SubgroupShuffleXor_Int16x3 /* 2453 -> 2453 */,
+        &SPIRV_SubgroupShuffleXor_Int16x4 /* 2454 -> 2454 */,
+        &SPIRV_SubgroupShuffleXor_UInt32 /* 2455 -> 2455 */,
+        &SPIRV_SubgroupShuffleXor_UInt32x2 /* 2456 -> 2456 */,
+        &SPIRV_SubgroupShuffleXor_UInt32x3 /* 2457 -> 2457 */,
+        &SPIRV_SubgroupShuffleXor_UInt32x4 /* 2458 -> 2458 */,
+        &SPIRV_SubgroupShuffleXor_UInt16 /* 2459 -> 2459 */,
+        &SPIRV_SubgroupShuffleXor_UInt16x2 /* 2460 -> 2460 */,
+        &SPIRV_SubgroupShuffleXor_UInt16x3 /* 2461 -> 2461 */,
+        &SPIRV_SubgroupShuffleXor_UInt16x4 /* 2462 -> 2462 */,
+        &SPIRV_SubgroupShuffleUp_Float32 /* 2463 -> 2463 */,
+        &SPIRV_SubgroupShuffleUp_Float32x2 /* 2464 -> 2464 */,
+        &SPIRV_SubgroupShuffleUp_Float32x3 /* 2465 -> 2465 */,
+        &SPIRV_SubgroupShuffleUp_Float32x4 /* 2466 -> 2466 */,
+        &SPIRV_SubgroupShuffleUp_Float16 /* 2467 -> 2467 */,
+        &SPIRV_SubgroupShuffleUp_Float16x2 /* 2468 -> 2468 */,
+        &SPIRV_SubgroupShuffleUp_Float16x3 /* 2469 -> 2469 */,
+        &SPIRV_SubgroupShuffleUp_Float16x4 /* 2470 -> 2470 */,
+        &SPIRV_SubgroupShuffleUp_Int32 /* 2471 -> 2471 */,
+        &SPIRV_SubgroupShuffleUp_Int32x2 /* 2472 -> 2472 */,
+        &SPIRV_SubgroupShuffleUp_Int32x3 /* 2473 -> 2473 */,
+        &SPIRV_SubgroupShuffleUp_Int32x4 /* 2474 -> 2474 */,
+        &SPIRV_SubgroupShuffleUp_Int16 /* 2475 -> 2475 */,
+        &SPIRV_SubgroupShuffleUp_Int16x2 /* 2476 -> 2476 */,
+        &SPIRV_SubgroupShuffleUp_Int16x3 /* 2477 -> 2477 */,
+        &SPIRV_SubgroupShuffleUp_Int16x4 /* 2478 -> 2478 */,
+        &SPIRV_SubgroupShuffleUp_UInt32 /* 2479 -> 2479 */,
+        &SPIRV_SubgroupShuffleUp_UInt32x2 /* 2480 -> 2480 */,
+        &SPIRV_SubgroupShuffleUp_UInt32x3 /* 2481 -> 2481 */,
+        &SPIRV_SubgroupShuffleUp_UInt32x4 /* 2482 -> 2482 */,
+        &SPIRV_SubgroupShuffleUp_UInt16 /* 2483 -> 2483 */,
+        &SPIRV_SubgroupShuffleUp_UInt16x2 /* 2484 -> 2484 */,
+        &SPIRV_SubgroupShuffleUp_UInt16x3 /* 2485 -> 2485 */,
+        &SPIRV_SubgroupShuffleUp_UInt16x4 /* 2486 -> 2486 */,
+        &SPIRV_AtomicLoad_Uniform_UInt32 /* 2487 -> 2487 */,
+        &SPIRV_AtomicLoad_Workgroup_UInt32 /* 2488 -> 2488 */,
+        &SPIRV_AtomicIncrement_Uniform_UInt32 /* 2489 -> 2489 */,
+        &SPIRV_AtomicIncrement_Workgroup_UInt32 /* 2490 -> 2490 */,
+        &SPIRV_AtomicDecrement_Uniform_UInt32 /* 2491 -> 2491 */,
+        &SPIRV_AtomicDecrement_Workgroup_UInt32 /* 2492 -> 2492 */,
+        &SPIRV_AtomicLoad_Uniform_Int32 /* 2493 -> 2493 */,
+        &SPIRV_AtomicLoad_Workgroup_Int32 /* 2494 -> 2494 */,
+        &SPIRV_AtomicIncrement_Uniform_Int32 /* 2495 -> 2495 */,
+        &SPIRV_AtomicIncrement_Workgroup_Int32 /* 2496 -> 2496 */,
+        &SPIRV_AtomicDecrement_Uniform_Int32 /* 2497 -> 2497 */,
+        &SPIRV_AtomicDecrement_Workgroup_Int32 /* 2498 -> 2498 */,
+        &SPIRV_AtomicLoad_Uniform_UInt16 /* 2499 -> 2499 */,
+        &SPIRV_AtomicLoad_Workgroup_UInt16 /* 2500 -> 2500 */,
+        &SPIRV_AtomicIncrement_Uniform_UInt16 /* 2501 -> 2501 */,
+        &SPIRV_AtomicIncrement_Workgroup_UInt16 /* 2502 -> 2502 */,
+        &SPIRV_AtomicDecrement_Uniform_UInt16 /* 2503 -> 2503 */,
+        &SPIRV_AtomicDecrement_Workgroup_UInt16 /* 2504 -> 2504 */,
+        &SPIRV_AtomicLoad_Uniform_Int16 /* 2505 -> 2505 */,
+        &SPIRV_AtomicLoad_Workgroup_Int16 /* 2506 -> 2506 */,
+        &SPIRV_AtomicIncrement_Uniform_Int16 /* 2507 -> 2507 */,
+        &SPIRV_AtomicIncrement_Workgroup_Int16 /* 2508 -> 2508 */,
+        &SPIRV_AtomicDecrement_Uniform_Int16 /* 2509 -> 2509 */,
+        &SPIRV_AtomicDecrement_Workgroup_Int16 /* 2510 -> 2510 */,
+        &SPIRV_AtomicLoad_Uniform_Float32 /* 2511 -> 2511 */,
+        &SPIRV_AtomicLoad_Workgroup_Float32 /* 2512 -> 2512 */,
+        &SPIRV_AtomicLoad_Uniform_Float16 /* 2513 -> 2513 */,
+        &SPIRV_AtomicLoad_Workgroup_Float16 /* 2514 -> 2514 */,
+        &SPIRV_AtomicStore_Uniform_UInt32 /* 2515 -> 2515 */,
+        &SPIRV_AtomicStore_Workgroup_UInt32 /* 2516 -> 2516 */,
+        &SPIRV_AtomicExchange_Uniform_UInt32 /* 2517 -> 2517 */,
+        &SPIRV_AtomicExchange_Workgroup_UInt32 /* 2518 -> 2518 */,
+        &SPIRV_AtomicAdd_Uniform_UInt32 /* 2519 -> 2519 */,
+        &SPIRV_AtomicAdd_Workgroup_UInt32 /* 2520 -> 2520 */,
+        &SPIRV_AtomicSubtract_Uniform_UInt32 /* 2521 -> 2521 */,
+        &SPIRV_AtomicSubtract_Workgroup_UInt32 /* 2522 -> 2522 */,
+        &SPIRV_AtomicAnd_Uniform_UInt32 /* 2523 -> 2523 */,
+        &SPIRV_AtomicAnd_Workgroup_UInt32 /* 2524 -> 2524 */,
+        &SPIRV_AtomicOr_Uniform_UInt32 /* 2525 -> 2525 */,
+        &SPIRV_AtomicOr_Workgroup_UInt32 /* 2526 -> 2526 */,
+        &SPIRV_AtomicXor_Uniform_UInt32 /* 2527 -> 2527 */,
+        &SPIRV_AtomicXor_Workgroup_UInt32 /* 2528 -> 2528 */,
+        &SPIRV_AtomicStore_Uniform_Int32 /* 2529 -> 2529 */,
+        &SPIRV_AtomicStore_Workgroup_Int32 /* 2530 -> 2530 */,
+        &SPIRV_AtomicExchange_Uniform_Int32 /* 2531 -> 2531 */,
+        &SPIRV_AtomicExchange_Workgroup_Int32 /* 2532 -> 2532 */,
+        &SPIRV_AtomicAdd_Uniform_Int32 /* 2533 -> 2533 */,
+        &SPIRV_AtomicAdd_Workgroup_Int32 /* 2534 -> 2534 */,
+        &SPIRV_AtomicSubtract_Uniform_Int32 /* 2535 -> 2535 */,
+        &SPIRV_AtomicSubtract_Workgroup_Int32 /* 2536 -> 2536 */,
+        &SPIRV_AtomicAnd_Uniform_Int32 /* 2537 -> 2537 */,
+        &SPIRV_AtomicAnd_Workgroup_Int32 /* 2538 -> 2538 */,
+        &SPIRV_AtomicOr_Uniform_Int32 /* 2539 -> 2539 */,
+        &SPIRV_AtomicOr_Workgroup_Int32 /* 2540 -> 2540 */,
+        &SPIRV_AtomicXor_Uniform_Int32 /* 2541 -> 2541 */,
+        &SPIRV_AtomicXor_Workgroup_Int32 /* 2542 -> 2542 */,
+        &SPIRV_AtomicStore_Uniform_UInt16 /* 2543 -> 2543 */,
+        &SPIRV_AtomicStore_Workgroup_UInt16 /* 2544 -> 2544 */,
+        &SPIRV_AtomicExchange_Uniform_UInt16 /* 2545 -> 2545 */,
+        &SPIRV_AtomicExchange_Workgroup_UInt16 /* 2546 -> 2546 */,
+        &SPIRV_AtomicAdd_Uniform_UInt16 /* 2547 -> 2547 */,
+        &SPIRV_AtomicAdd_Workgroup_UInt16 /* 2548 -> 2548 */,
+        &SPIRV_AtomicSubtract_Uniform_UInt16 /* 2549 -> 2549 */,
+        &SPIRV_AtomicSubtract_Workgroup_UInt16 /* 2550 -> 2550 */,
+        &SPIRV_AtomicAnd_Uniform_UInt16 /* 2551 -> 2551 */,
+        &SPIRV_AtomicAnd_Workgroup_UInt16 /* 2552 -> 2552 */,
+        &SPIRV_AtomicOr_Uniform_UInt16 /* 2553 -> 2553 */,
+        &SPIRV_AtomicOr_Workgroup_UInt16 /* 2554 -> 2554 */,
+        &SPIRV_AtomicXor_Uniform_UInt16 /* 2555 -> 2555 */,
+        &SPIRV_AtomicXor_Workgroup_UInt16 /* 2556 -> 2556 */,
+        &SPIRV_AtomicStore_Uniform_Int16 /* 2557 -> 2557 */,
+        &SPIRV_AtomicStore_Workgroup_Int16 /* 2558 -> 2558 */,
+        &SPIRV_AtomicExchange_Uniform_Int16 /* 2559 -> 2559 */,
+        &SPIRV_AtomicExchange_Workgroup_Int16 /* 2560 -> 2560 */,
+        &SPIRV_AtomicAdd_Uniform_Int16 /* 2561 -> 2561 */,
+        &SPIRV_AtomicAdd_Workgroup_Int16 /* 2562 -> 2562 */,
+        &SPIRV_AtomicSubtract_Uniform_Int16 /* 2563 -> 2563 */,
+        &SPIRV_AtomicSubtract_Workgroup_Int16 /* 2564 -> 2564 */,
+        &SPIRV_AtomicAnd_Uniform_Int16 /* 2565 -> 2565 */,
+        &SPIRV_AtomicAnd_Workgroup_Int16 /* 2566 -> 2566 */,
+        &SPIRV_AtomicOr_Uniform_Int16 /* 2567 -> 2567 */,
+        &SPIRV_AtomicOr_Workgroup_Int16 /* 2568 -> 2568 */,
+        &SPIRV_AtomicXor_Uniform_Int16 /* 2569 -> 2569 */,
+        &SPIRV_AtomicXor_Workgroup_Int16 /* 2570 -> 2570 */,
+        &SPIRV_AtomicStore_Uniform_Float32 /* 2571 -> 2571 */,
+        &SPIRV_AtomicStore_Workgroup_Float32 /* 2572 -> 2572 */,
+        &SPIRV_AtomicExchange_Uniform_Float32 /* 2573 -> 2573 */,
+        &SPIRV_AtomicExchange_Workgroup_Float32 /* 2574 -> 2574 */,
+        &SPIRV_AtomicStore_Uniform_Float16 /* 2575 -> 2575 */,
+        &SPIRV_AtomicStore_Workgroup_Float16 /* 2576 -> 2576 */,
+        &SPIRV_AtomicExchange_Uniform_Float16 /* 2577 -> 2577 */,
+        &SPIRV_AtomicExchange_Workgroup_Float16 /* 2578 -> 2578 */,
+        &SPIRV_AtomicMin_Uniform_UInt32 /* 2579 -> 2579 */,
+        &SPIRV_AtomicMin_Workgroup_UInt32 /* 2580 -> 2580 */,
+        &SPIRV_AtomicMax_Uniform_UInt32 /* 2581 -> 2581 */,
+        &SPIRV_AtomicMax_Workgroup_UInt32 /* 2582 -> 2582 */,
+        &SPIRV_AtomicMin_Uniform_Int32 /* 2583 -> 2583 */,
+        &SPIRV_AtomicMin_Workgroup_Int32 /* 2584 -> 2584 */,
+        &SPIRV_AtomicMax_Uniform_Int32 /* 2585 -> 2585 */,
+        &SPIRV_AtomicMax_Workgroup_Int32 /* 2586 -> 2586 */,
+        &SPIRV_AtomicMin_Uniform_UInt16 /* 2587 -> 2587 */,
+        &SPIRV_AtomicMin_Workgroup_UInt16 /* 2588 -> 2588 */,
+        &SPIRV_AtomicMax_Uniform_UInt16 /* 2589 -> 2589 */,
+        &SPIRV_AtomicMax_Workgroup_UInt16 /* 2590 -> 2590 */,
+        &SPIRV_AtomicMin_Uniform_Int16 /* 2591 -> 2591 */,
+        &SPIRV_AtomicMin_Workgroup_Int16 /* 2592 -> 2592 */,
+        &SPIRV_AtomicMax_Uniform_Int16 /* 2593 -> 2593 */,
+        &SPIRV_AtomicMax_Workgroup_Int16 /* 2594 -> 2594 */,
+        &SPIRV_AtomicCompareExchange_Uniform_UInt32 /* 2595 -> 2595 */,
+        &SPIRV_AtomicCompareExchange_Workgroup_UInt32 /* 2596 -> 2596 */,
+        &SPIRV_AtomicCompareExchange_Uniform_Int32 /* 2597 -> 2597 */,
+        &SPIRV_AtomicCompareExchange_Workgroup_Int32 /* 2598 -> 2598 */,
+        &SPIRV_AtomicCompareExchange_Uniform_UInt16 /* 2599 -> 2599 */,
+        &SPIRV_AtomicCompareExchange_Workgroup_UInt16 /* 2600 -> 2600 */,
+        &SPIRV_AtomicCompareExchange_Uniform_Int16 /* 2601 -> 2601 */,
+        &SPIRV_AtomicCompareExchange_Workgroup_Int16 /* 2602 -> 2602 */,
+        &SPIRV_BitInsert_UInt16 /* 2603 -> 2603 */,
+        &SPIRV_BitInsert_UInt32 /* 2604 -> 2604 */,
+        &SPIRV_BitExtract_UInt32 /* 2605 -> 2605 */,
+        &SPIRV_BitExtract_Int32 /* 2606 -> 2606 */,
+        &SPIRV_BitExtract_UInt16 /* 2607 -> 2607 */,
+        &SPIRV_BitExtract_Int16 /* 2608 -> 2608 */,
+        &SPIRV_BitExtract_UInt64 /* 2609 -> 2609 */,
+        &SPIRV_BitReverse_UInt32 /* 2610 -> 2610 */,
+        &SPIRV_BitReverse_Int32 /* 2611 -> 2611 */,
+        &SPIRV_BitReverse_UInt16 /* 2612 -> 2612 */,
+        &SPIRV_BitReverse_Int16 /* 2613 -> 2613 */,
+        &SPIRV_BitReverse_UInt64 /* 2614 -> 2614 */,
+        &SPIRV_BitCount_UInt32 /* 2615 -> 2615 */,
+        &SPIRV_BitCount_Int32 /* 2616 -> 2616 */,
+        &SPIRV_BitCount_UInt16 /* 2617 -> 2617 */,
+        &SPIRV_BitCount_Int16 /* 2618 -> 2618 */,
+        &SPIRV_BitCount_UInt64 /* 2619 -> 2619 */,
+        &SPIRV_ExecutionBarrier /* 2620 -> 2620 */,
+        &SPIRV_ExecutionBarrierSubgroup /* 2621 -> 2621 */,
+        &SPIRV_ExecutionBarrierWorkgroup /* 2622 -> 2622 */,
+        &SPIRV_MemoryBarrier /* 2623 -> 2623 */,
+        &SPIRV_MemoryBarrierBuffer /* 2624 -> 2624 */,
+        &SPIRV_MemoryBarrierTexture /* 2625 -> 2625 */,
+        &SPIRV_MemoryBarrierAtomic /* 2626 -> 2626 */,
+        &SPIRV_MemoryBarrierSubgroup /* 2627 -> 2627 */,
+        &SPIRV_MemoryBarrierWorkgroup /* 2628 -> 2628 */,
+        &SPIRV_TextureGetSize_Texture1D /* 2629 -> 2629 */,
+        &SPIRV_TextureGetSize_Texture2D /* 2630 -> 2630 */,
+        &SPIRV_TextureGetSize_Texture3D /* 2631 -> 2631 */,
+        &SPIRV_TextureGetSize_TextureCube /* 2632 -> 2632 */,
+        &SPIRV_TextureGetSize_Texture1DArray /* 2633 -> 2633 */,
+        &SPIRV_TextureGetSize_Texture2DArray /* 2634 -> 2634 */,
+        &SPIRV_TextureGetSize_TextureCubeArray /* 2635 -> 2635 */,
+        &SPIRV_TextureGetSizeMip_Texture1D /* 2636 -> 2636 */,
+        &SPIRV_TextureGetSizeMip_Texture2D /* 2637 -> 2637 */,
+        &SPIRV_TextureGetSizeMip_Texture3D /* 2638 -> 2638 */,
+        &SPIRV_TextureGetSizeMip_TextureCube /* 2639 -> 2639 */,
+        &SPIRV_TextureGetSizeMip_Texture1DArray /* 2640 -> 2640 */,
+        &SPIRV_TextureGetSizeMip_Texture2DArray /* 2641 -> 2641 */,
+        &SPIRV_TextureGetSizeMip_TextureCubeArray /* 2642 -> 2642 */,
+        &SPIRV_TextureGetMips_Texture1D /* 2643 -> 2643 */,
+        &SPIRV_TextureGetMips_Texture2D /* 2644 -> 2644 */,
+        &SPIRV_TextureGetMips_Texture3D /* 2645 -> 2645 */,
+        &SPIRV_TextureGetMips_TextureCube /* 2646 -> 2646 */,
+        &SPIRV_TextureGetMips_Texture1DArray /* 2647 -> 2647 */,
+        &SPIRV_TextureGetMips_Texture2DArray /* 2648 -> 2648 */,
+        &SPIRV_TextureGetMips_TextureCubeArray /* 2649 -> 2649 */,
+        &SPIRV_TextureGetSamples_Texture2DMS /* 2650 -> 2650 */,
+        &SPIRV_TextureGetSamples_Texture2DMSArray /* 2651 -> 2651 */,
+        &SPIRV_TextureGetSampledMip_Texture1D /* 2652 -> 2652 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture1D /* 2653 -> 2653 */,
+        &SPIRV_TextureGetSampledMip_Texture2D /* 2654 -> 2654 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture2D /* 2655 -> 2655 */,
+        &SPIRV_TextureGetSampledMip_Texture3D /* 2656 -> 2656 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture3D /* 2657 -> 2657 */,
+        &SPIRV_TextureGetSampledMip_TextureCube /* 2658 -> 2658 */,
+        &SPIRV_SampledTextureGetSampledMip_TextureCube /* 2659 -> 2659 */,
+        &SPIRV_TextureGetSampledMip_Texture1DArray /* 2660 -> 2660 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture1DArray /* 2661 -> 2661 */,
+        &SPIRV_TextureGetSampledMip_Texture2DArray /* 2662 -> 2662 */,
+        &SPIRV_SampledTextureGetSampledMip_Texture2DArray /* 2663 -> 2663 */,
+        &SPIRV_TextureGetSampledMip_TextureCubeArray /* 2664 -> 2664 */,
+        &SPIRV_SampledTextureGetSampledMip_TextureCubeArray /* 2665 -> 2665 */,
+        &SPIRV_TextureLoad_Texture1D /* 2666 -> 2666 */,
+        &SPIRV_TextureLoadMip_Texture1D /* 2667 -> 2667 */,
+        &SPIRV_TextureLoad_Texture2D /* 2668 -> 2668 */,
+        &SPIRV_TextureLoadMip_Texture2D /* 2669 -> 2669 */,
+        &SPIRV_TextureLoad_Texture3D /* 2670 -> 2670 */,
+        &SPIRV_TextureLoadMip_Texture3D /* 2671 -> 2671 */,
+        &SPIRV_TextureLoad_TextureCube /* 2672 -> 2672 */,
+        &SPIRV_TextureLoadMip_TextureCube /* 2673 -> 2673 */,
+        &SPIRV_TextureLoad_Texture1DArray /* 2674 -> 2674 */,
+        &SPIRV_TextureLoadMip_Texture1DArray /* 2675 -> 2675 */,
+        &SPIRV_TextureLoad_Texture2DArray /* 2676 -> 2676 */,
+        &SPIRV_TextureLoadMip_Texture2DArray /* 2677 -> 2677 */,
+        &SPIRV_TextureLoad_TextureCubeArray /* 2678 -> 2678 */,
+        &SPIRV_TextureLoadMip_TextureCubeArray /* 2679 -> 2679 */,
+        &SPIRV_TextureLoad_Texture2DMS /* 2680 -> 2680 */,
+        &SPIRV_TextureLoadMip_Texture2DMS /* 2681 -> 2681 */,
+        &SPIRV_TextureLoad_Texture2DMSArray /* 2682 -> 2682 */,
+        &SPIRV_TextureLoadMip_Texture2DMSArray /* 2683 -> 2683 */,
+        &SPIRV_TextureStore_Texture1D_Float32x4 /* 2684 -> 2684 */,
+        &SPIRV_TextureStoreMip_Texture1D_Float32x4 /* 2685 -> 2685 */,
+        &SPIRV_TextureStore_Texture1D_Int32x4 /* 2686 -> 2686 */,
+        &SPIRV_TextureStoreMip_Texture1D_Int32x4 /* 2687 -> 2687 */,
+        &SPIRV_TextureStore_Texture1D_UInt32x4 /* 2688 -> 2688 */,
+        &SPIRV_TextureStoreMip_Texture1D_UInt32x4 /* 2689 -> 2689 */,
+        &SPIRV_TextureStore_Texture2D_Float32x4 /* 2690 -> 2690 */,
+        &SPIRV_TextureStoreMip_Texture2D_Float32x4 /* 2691 -> 2691 */,
+        &SPIRV_TextureStore_Texture2D_Int32x4 /* 2692 -> 2692 */,
+        &SPIRV_TextureStoreMip_Texture2D_Int32x4 /* 2693 -> 2693 */,
+        &SPIRV_TextureStore_Texture2D_UInt32x4 /* 2694 -> 2694 */,
+        &SPIRV_TextureStoreMip_Texture2D_UInt32x4 /* 2695 -> 2695 */,
+        &SPIRV_TextureStore_Texture3D_Float32x4 /* 2696 -> 2696 */,
+        &SPIRV_TextureStoreMip_Texture3D_Float32x4 /* 2697 -> 2697 */,
+        &SPIRV_TextureStore_Texture3D_Int32x4 /* 2698 -> 2698 */,
+        &SPIRV_TextureStoreMip_Texture3D_Int32x4 /* 2699 -> 2699 */,
+        &SPIRV_TextureStore_Texture3D_UInt32x4 /* 2700 -> 2700 */,
+        &SPIRV_TextureStoreMip_Texture3D_UInt32x4 /* 2701 -> 2701 */,
+        &SPIRV_TextureStore_TextureCube_Float32x4 /* 2702 -> 2702 */,
+        &SPIRV_TextureStoreMip_TextureCube_Float32x4 /* 2703 -> 2703 */,
+        &SPIRV_TextureStore_TextureCube_Int32x4 /* 2704 -> 2704 */,
+        &SPIRV_TextureStoreMip_TextureCube_Int32x4 /* 2705 -> 2705 */,
+        &SPIRV_TextureStore_TextureCube_UInt32x4 /* 2706 -> 2706 */,
+        &SPIRV_TextureStoreMip_TextureCube_UInt32x4 /* 2707 -> 2707 */,
+        &SPIRV_TextureStore_Texture1DArray_Float32x4 /* 2708 -> 2708 */,
+        &SPIRV_TextureStoreMip_Texture1DArray_Float32x4 /* 2709 -> 2709 */,
+        &SPIRV_TextureStore_Texture1DArray_Int32x4 /* 2710 -> 2710 */,
+        &SPIRV_TextureStoreMip_Texture1DArray_Int32x4 /* 2711 -> 2711 */,
+        &SPIRV_TextureStore_Texture1DArray_UInt32x4 /* 2712 -> 2712 */,
+        &SPIRV_TextureStoreMip_Texture1DArray_UInt32x4 /* 2713 -> 2713 */,
+        &SPIRV_TextureStore_Texture2DArray_Float32x4 /* 2714 -> 2714 */,
+        &SPIRV_TextureStoreMip_Texture2DArray_Float32x4 /* 2715 -> 2715 */,
+        &SPIRV_TextureStore_Texture2DArray_Int32x4 /* 2716 -> 2716 */,
+        &SPIRV_TextureStoreMip_Texture2DArray_Int32x4 /* 2717 -> 2717 */,
+        &SPIRV_TextureStore_Texture2DArray_UInt32x4 /* 2718 -> 2718 */,
+        &SPIRV_TextureStoreMip_Texture2DArray_UInt32x4 /* 2719 -> 2719 */,
+        &SPIRV_TextureStore_TextureCubeArray_Float32x4 /* 2720 -> 2720 */,
+        &SPIRV_TextureStoreMip_TextureCubeArray_Float32x4 /* 2721 -> 2721 */,
+        &SPIRV_TextureStore_TextureCubeArray_Int32x4 /* 2722 -> 2722 */,
+        &SPIRV_TextureStoreMip_TextureCubeArray_Int32x4 /* 2723 -> 2723 */,
+        &SPIRV_TextureStore_TextureCubeArray_UInt32x4 /* 2724 -> 2724 */,
+        &SPIRV_TextureStoreMip_TextureCubeArray_UInt32x4 /* 2725 -> 2725 */,
+        &SPIRV_TextureStore_Texture2DMS_Float32x4 /* 2726 -> 2726 */,
+        &SPIRV_TextureStoreMip_Texture2DMS_Float32x4 /* 2727 -> 2727 */,
+        &SPIRV_TextureStore_Texture2DMS_Int32x4 /* 2728 -> 2728 */,
+        &SPIRV_TextureStoreMip_Texture2DMS_Int32x4 /* 2729 -> 2729 */,
+        &SPIRV_TextureStore_Texture2DMS_UInt32x4 /* 2730 -> 2730 */,
+        &SPIRV_TextureStoreMip_Texture2DMS_UInt32x4 /* 2731 -> 2731 */,
+        &SPIRV_TextureStore_Texture2DMSArray_Float32x4 /* 2732 -> 2732 */,
+        &SPIRV_TextureStoreMip_Texture2DMSArray_Float32x4 /* 2733 -> 2733 */,
+        &SPIRV_TextureStore_Texture2DMSArray_Int32x4 /* 2734 -> 2734 */,
+        &SPIRV_TextureStoreMip_Texture2DMSArray_Int32x4 /* 2735 -> 2735 */,
+        &SPIRV_TextureStore_Texture2DMSArray_UInt32x4 /* 2736 -> 2736 */,
+        &SPIRV_TextureStoreMip_Texture2DMSArray_UInt32x4 /* 2737 -> 2737 */,
+        &SPIRV_TextureFetch_Texture1D /* 2738 -> 2738 */,
+        &SPIRV_TextureFetchSample_Texture1D /* 2739 -> 2739 */,
+        &SPIRV_TextureFetch_Texture2D /* 2740 -> 2740 */,
+        &SPIRV_TextureFetchSample_Texture2D /* 2741 -> 2741 */,
+        &SPIRV_TextureFetch_Texture3D /* 2742 -> 2742 */,
+        &SPIRV_TextureFetchSample_Texture3D /* 2743 -> 2743 */,
+        &SPIRV_TextureFetch_Texture1DArray /* 2744 -> 2744 */,
+        &SPIRV_TextureFetchSample_Texture1DArray /* 2745 -> 2745 */,
+        &SPIRV_TextureFetch_Texture2DArray /* 2746 -> 2746 */,
+        &SPIRV_TextureFetchSample_Texture2DArray /* 2747 -> 2747 */,
+        &SPIRV_TextureFetchSample_Texture2DMS /* 2748 -> 2748 */,
+        &SPIRV_TextureFetchSample_Texture2DMSArray /* 2749 -> 2749 */,
+        &SPIRV_TextureGather_Texture2D /* 2750 -> 2750 */,
+        &SPIRV_SampledTextureGather_Texture2D /* 2751 -> 2751 */,
+        &SPIRV_TextureGatherOffset_Texture2D /* 2752 -> 2752 */,
+        &SPIRV_SampledTextureGatherOffset_Texture2D /* 2753 -> 2753 */,
+        &SPIRV_TextureGather_TextureCube /* 2754 -> 2754 */,
+        &SPIRV_SampledTextureGather_TextureCube /* 2755 -> 2755 */,
+        &SPIRV_TextureGatherOffset_TextureCube /* 2756 -> 2756 */,
+        &SPIRV_SampledTextureGatherOffset_TextureCube /* 2757 -> 2757 */,
+        &SPIRV_TextureGather_Texture2DArray /* 2758 -> 2758 */,
+        &SPIRV_SampledTextureGather_Texture2DArray /* 2759 -> 2759 */,
+        &SPIRV_TextureGatherOffset_Texture2DArray /* 2760 -> 2760 */,
+        &SPIRV_SampledTextureGatherOffset_Texture2DArray /* 2761 -> 2761 */,
+        &SPIRV_TextureGather_TextureCubeArray /* 2762 -> 2762 */,
+        &SPIRV_SampledTextureGather_TextureCubeArray /* 2763 -> 2763 */,
+        &SPIRV_TextureGatherOffset_TextureCubeArray /* 2764 -> 2764 */,
+        &SPIRV_SampledTextureGatherOffset_TextureCubeArray /* 2765 -> 2765 */,
+        &SPIRV_TexturePixelCacheLoad_PixelCache /* 2766 -> 2766 */,
+        &SPIRV_TexturePixelCacheLoad_PixelCacheMS /* 2767 -> 2767 */,
+        &SPIRV_TextureSample_Texture1D /* 2768 -> 2768 */,
+        &SPIRV_SampledTextureSample_Texture1D /* 2769 -> 2769 */,
+        &SPIRV_TextureSample_Texture2D /* 2770 -> 2770 */,
+        &SPIRV_SampledTextureSample_Texture2D /* 2771 -> 2771 */,
+        &SPIRV_TextureSample_Texture3D /* 2772 -> 2772 */,
+        &SPIRV_SampledTextureSample_Texture3D /* 2773 -> 2773 */,
+        &SPIRV_TextureSample_TextureCube /* 2774 -> 2774 */,
+        &SPIRV_SampledTextureSample_TextureCube /* 2775 -> 2775 */,
+        &SPIRV_TextureSample_Texture1DArray /* 2776 -> 2776 */,
+        &SPIRV_SampledTextureSample_Texture1DArray /* 2777 -> 2777 */,
+        &SPIRV_TextureSample_Texture2DArray /* 2778 -> 2778 */,
+        &SPIRV_SampledTextureSample_Texture2DArray /* 2779 -> 2779 */,
+        &SPIRV_TextureSample_TextureCubeArray /* 2780 -> 2780 */,
+        &SPIRV_SampledTextureSample_TextureCubeArray /* 2781 -> 2781 */,
+        &SPIRV_TextureSampleOffset_Texture1D /* 2782 -> 2782 */,
+        &SPIRV_SampledTextureSampleOffset_Texture1D /* 2783 -> 2783 */,
+        &SPIRV_TextureSampleOffset_Texture2D /* 2784 -> 2784 */,
+        &SPIRV_SampledTextureSampleOffset_Texture2D /* 2785 -> 2785 */,
+        &SPIRV_TextureSampleOffset_Texture3D /* 2786 -> 2786 */,
+        &SPIRV_SampledTextureSampleOffset_Texture3D /* 2787 -> 2787 */,
+        &SPIRV_TextureSampleOffset_Texture1DArray /* 2788 -> 2788 */,
+        &SPIRV_SampledTextureSampleOffset_Texture1DArray /* 2789 -> 2789 */,
+        &SPIRV_TextureSampleOffset_Texture2DArray /* 2790 -> 2790 */,
+        &SPIRV_SampledTextureSampleOffset_Texture2DArray /* 2791 -> 2791 */,
+        &SPIRV_TextureSampleProj_Texture1D /* 2792 -> 2792 */,
+        &SPIRV_SampledTextureSampleProj_Texture1D /* 2793 -> 2793 */,
+        &SPIRV_TextureSampleProj_Texture2D /* 2794 -> 2794 */,
+        &SPIRV_SampledTextureSampleProj_Texture2D /* 2795 -> 2795 */,
+        &SPIRV_TextureSampleProj_Texture3D /* 2796 -> 2796 */,
+        &SPIRV_SampledTextureSampleProj_Texture3D /* 2797 -> 2797 */,
+        &SPIRV_TextureSampleProjOffset_Texture1D /* 2798 -> 2798 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture1D /* 2799 -> 2799 */,
+        &SPIRV_TextureSampleProjOffset_Texture2D /* 2800 -> 2800 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture2D /* 2801 -> 2801 */,
+        &SPIRV_TextureSampleProjOffset_Texture3D /* 2802 -> 2802 */,
+        &SPIRV_SampledTextureSampleProjOffset_Texture3D /* 2803 -> 2803 */,
+        &SPIRV_TextureSampleCompare_Texture1D /* 2804 -> 2804 */,
+        &SPIRV_SampledTextureSampleCompare_Texture1D /* 2805 -> 2805 */,
+        &SPIRV_TextureSampleCompare_Texture2D /* 2806 -> 2806 */,
+        &SPIRV_SampledTextureSampleCompare_Texture2D /* 2807 -> 2807 */,
+        &SPIRV_TextureSampleCompare_Texture3D /* 2808 -> 2808 */,
+        &SPIRV_SampledTextureSampleCompare_Texture3D /* 2809 -> 2809 */,
+        &SPIRV_TextureSampleCompare_Texture1DArray /* 2810 -> 2810 */,
+        &SPIRV_SampledTextureSampleCompare_Texture1DArray /* 2811 -> 2811 */,
+        &SPIRV_TextureSampleCompare_Texture2DArray /* 2812 -> 2812 */,
+        &SPIRV_SampledTextureSampleCompare_Texture2DArray /* 2813 -> 2813 */,
+        &SPIRV_TextureSampleCompareOffset_Texture1D /* 2814 -> 2814 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture1D /* 2815 -> 2815 */,
+        &SPIRV_TextureSampleCompareOffset_Texture2D /* 2816 -> 2816 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture2D /* 2817 -> 2817 */,
+        &SPIRV_TextureSampleCompareOffset_Texture3D /* 2818 -> 2818 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture3D /* 2819 -> 2819 */,
+        &SPIRV_TextureSampleCompareOffset_Texture1DArray /* 2820 -> 2820 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture1DArray /* 2821 -> 2821 */,
+        &SPIRV_TextureSampleCompareOffset_Texture2DArray /* 2822 -> 2822 */,
+        &SPIRV_SampledTextureSampleCompareOffset_Texture2DArray /* 2823 -> 2823 */,
+        &SPIRV_TextureSampleProjCompare_Texture1D /* 2824 -> 2824 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture1D /* 2825 -> 2825 */,
+        &SPIRV_TextureSampleProjCompare_Texture2D /* 2826 -> 2826 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture2D /* 2827 -> 2827 */,
+        &SPIRV_TextureSampleProjCompare_Texture3D /* 2828 -> 2828 */,
+        &SPIRV_SampledTextureSampleProjCompare_Texture3D /* 2829 -> 2829 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture1D /* 2830 -> 2830 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture1D /* 2831 -> 2831 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture2D /* 2832 -> 2832 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture2D /* 2833 -> 2833 */,
+        &SPIRV_TextureSampleProjCompareOffset_Texture3D /* 2834 -> 2834 */,
+        &SPIRV_SampledTextureSampleProjCompareOffset_Texture3D /* 2835 -> 2835 */,
+        &SPIRV_TextureSampleLod_Texture1D /* 2836 -> 2836 */,
+        &SPIRV_SampledTextureSampleLod_Texture1D /* 2837 -> 2837 */,
+        &SPIRV_TextureSampleLod_Texture2D /* 2838 -> 2838 */,
+        &SPIRV_SampledTextureSampleLod_Texture2D /* 2839 -> 2839 */,
+        &SPIRV_TextureSampleLod_Texture3D /* 2840 -> 2840 */,
+        &SPIRV_SampledTextureSampleLod_Texture3D /* 2841 -> 2841 */,
+        &SPIRV_TextureSampleLod_TextureCube /* 2842 -> 2842 */,
+        &SPIRV_SampledTextureSampleLod_TextureCube /* 2843 -> 2843 */,
+        &SPIRV_TextureSampleLod_Texture1DArray /* 2844 -> 2844 */,
+        &SPIRV_SampledTextureSampleLod_Texture1DArray /* 2845 -> 2845 */,
+        &SPIRV_TextureSampleLod_Texture2DArray /* 2846 -> 2846 */,
+        &SPIRV_SampledTextureSampleLod_Texture2DArray /* 2847 -> 2847 */,
+        &SPIRV_TextureSampleLod_TextureCubeArray /* 2848 -> 2848 */,
+        &SPIRV_SampledTextureSampleLod_TextureCubeArray /* 2849 -> 2849 */,
+        &SPIRV_TextureSampleLodOffset_Texture1D /* 2850 -> 2850 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture1D /* 2851 -> 2851 */,
+        &SPIRV_TextureSampleLodOffset_Texture2D /* 2852 -> 2852 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture2D /* 2853 -> 2853 */,
+        &SPIRV_TextureSampleLodOffset_Texture3D /* 2854 -> 2854 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture3D /* 2855 -> 2855 */,
+        &SPIRV_TextureSampleLodOffset_Texture1DArray /* 2856 -> 2856 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture1DArray /* 2857 -> 2857 */,
+        &SPIRV_TextureSampleLodOffset_Texture2DArray /* 2858 -> 2858 */,
+        &SPIRV_SampledTextureSampleLodOffset_Texture2DArray /* 2859 -> 2859 */,
+        &SPIRV_TextureSampleLodProj_Texture1D /* 2860 -> 2860 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture1D /* 2861 -> 2861 */,
+        &SPIRV_TextureSampleLodProj_Texture2D /* 2862 -> 2862 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture2D /* 2863 -> 2863 */,
+        &SPIRV_TextureSampleLodProj_Texture3D /* 2864 -> 2864 */,
+        &SPIRV_SampledTextureSampleLodProj_Texture3D /* 2865 -> 2865 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture1D /* 2866 -> 2866 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture1D /* 2867 -> 2867 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture2D /* 2868 -> 2868 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture2D /* 2869 -> 2869 */,
+        &SPIRV_TextureSampleLodProjOffset_Texture3D /* 2870 -> 2870 */,
+        &SPIRV_SampledTextureSampleLodProjOffset_Texture3D /* 2871 -> 2871 */,
+        &SPIRV_TextureSampleLodCompare_Texture1D /* 2872 -> 2872 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture1D /* 2873 -> 2873 */,
+        &SPIRV_TextureSampleLodCompare_Texture2D /* 2874 -> 2874 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture2D /* 2875 -> 2875 */,
+        &SPIRV_TextureSampleLodCompare_Texture3D /* 2876 -> 2876 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture3D /* 2877 -> 2877 */,
+        &SPIRV_TextureSampleLodCompare_Texture1DArray /* 2878 -> 2878 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture1DArray /* 2879 -> 2879 */,
+        &SPIRV_TextureSampleLodCompare_Texture2DArray /* 2880 -> 2880 */,
+        &SPIRV_SampledTextureSampleLodCompare_Texture2DArray /* 2881 -> 2881 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture1D /* 2882 -> 2882 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1D /* 2883 -> 2883 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture2D /* 2884 -> 2884 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2D /* 2885 -> 2885 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture3D /* 2886 -> 2886 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture3D /* 2887 -> 2887 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture1DArray /* 2888 -> 2888 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture1DArray /* 2889 -> 2889 */,
+        &SPIRV_TextureSampleLodCompareOffset_Texture2DArray /* 2890 -> 2890 */,
+        &SPIRV_SampledTextureSampleLodCompareOffset_Texture2DArray /* 2891 -> 2891 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture1D /* 2892 -> 2892 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture1D /* 2893 -> 2893 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture2D /* 2894 -> 2894 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture2D /* 2895 -> 2895 */,
+        &SPIRV_TextureSampleLodProjCompare_Texture3D /* 2896 -> 2896 */,
+        &SPIRV_SampledTextureSampleLodProjCompare_Texture3D /* 2897 -> 2897 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture1D /* 2898 -> 2898 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture1D /* 2899 -> 2899 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture2D /* 2900 -> 2900 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture2D /* 2901 -> 2901 */,
+        &SPIRV_TextureSampleLodProjCompareOffset_Texture3D /* 2902 -> 2902 */,
+        &SPIRV_SampledTextureSampleLodProjCompareOffset_Texture3D /* 2903 -> 2903 */,
+        &SPIRV_TextureSampleGrad_Texture1D /* 2904 -> 2904 */,
+        &SPIRV_SampledTextureSampleGrad_Texture1D /* 2905 -> 2905 */,
+        &SPIRV_TextureSampleGrad_Texture2D /* 2906 -> 2906 */,
+        &SPIRV_SampledTextureSampleGrad_Texture2D /* 2907 -> 2907 */,
+        &SPIRV_TextureSampleGrad_Texture3D /* 2908 -> 2908 */,
+        &SPIRV_SampledTextureSampleGrad_Texture3D /* 2909 -> 2909 */,
+        &SPIRV_TextureSampleGrad_TextureCube /* 2910 -> 2910 */,
+        &SPIRV_SampledTextureSampleGrad_TextureCube /* 2911 -> 2911 */,
+        &SPIRV_TextureSampleGrad_Texture1DArray /* 2912 -> 2912 */,
+        &SPIRV_SampledTextureSampleGrad_Texture1DArray /* 2913 -> 2913 */,
+        &SPIRV_TextureSampleGrad_Texture2DArray /* 2914 -> 2914 */,
+        &SPIRV_SampledTextureSampleGrad_Texture2DArray /* 2915 -> 2915 */,
+        &SPIRV_TextureSampleGrad_TextureCubeArray /* 2916 -> 2916 */,
+        &SPIRV_SampledTextureSampleGrad_TextureCubeArray /* 2917 -> 2917 */,
+        &SPIRV_TextureSampleGradOffset_Texture1D /* 2918 -> 2918 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture1D /* 2919 -> 2919 */,
+        &SPIRV_TextureSampleGradOffset_Texture2D /* 2920 -> 2920 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture2D /* 2921 -> 2921 */,
+        &SPIRV_TextureSampleGradOffset_Texture3D /* 2922 -> 2922 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture3D /* 2923 -> 2923 */,
+        &SPIRV_TextureSampleGradOffset_Texture1DArray /* 2924 -> 2924 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture1DArray /* 2925 -> 2925 */,
+        &SPIRV_TextureSampleGradOffset_Texture2DArray /* 2926 -> 2926 */,
+        &SPIRV_SampledTextureSampleGradOffset_Texture2DArray /* 2927 -> 2927 */,
+        &SPIRV_TextureSampleGradProj_Texture1D /* 2928 -> 2928 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture1D /* 2929 -> 2929 */,
+        &SPIRV_TextureSampleGradProj_Texture2D /* 2930 -> 2930 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture2D /* 2931 -> 2931 */,
+        &SPIRV_TextureSampleGradProj_Texture3D /* 2932 -> 2932 */,
+        &SPIRV_SampledTextureSampleGradProj_Texture3D /* 2933 -> 2933 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture1D /* 2934 -> 2934 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture1D /* 2935 -> 2935 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture2D /* 2936 -> 2936 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture2D /* 2937 -> 2937 */,
+        &SPIRV_TextureSampleGradProjOffset_Texture3D /* 2938 -> 2938 */,
+        &SPIRV_SampledTextureSampleGradProjOffset_Texture3D /* 2939 -> 2939 */,
+        &SPIRV_TextureSampleGradCompare_Texture1D /* 2940 -> 2940 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture1D /* 2941 -> 2941 */,
+        &SPIRV_TextureSampleGradCompare_Texture2D /* 2942 -> 2942 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture2D /* 2943 -> 2943 */,
+        &SPIRV_TextureSampleGradCompare_Texture3D /* 2944 -> 2944 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture3D /* 2945 -> 2945 */,
+        &SPIRV_TextureSampleGradCompare_Texture1DArray /* 2946 -> 2946 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture1DArray /* 2947 -> 2947 */,
+        &SPIRV_TextureSampleGradCompare_Texture2DArray /* 2948 -> 2948 */,
+        &SPIRV_SampledTextureSampleGradCompare_Texture2DArray /* 2949 -> 2949 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture1D /* 2950 -> 2950 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1D /* 2951 -> 2951 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture2D /* 2952 -> 2952 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2D /* 2953 -> 2953 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture3D /* 2954 -> 2954 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture3D /* 2955 -> 2955 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture1DArray /* 2956 -> 2956 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture1DArray /* 2957 -> 2957 */,
+        &SPIRV_TextureSampleGradCompareOffset_Texture2DArray /* 2958 -> 2958 */,
+        &SPIRV_SampledTextureSampleGradCompareOffset_Texture2DArray /* 2959 -> 2959 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture1D /* 2960 -> 2960 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture1D /* 2961 -> 2961 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture2D /* 2962 -> 2962 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture2D /* 2963 -> 2963 */,
+        &SPIRV_TextureSampleGradProjCompare_Texture3D /* 2964 -> 2964 */,
+        &SPIRV_SampledTextureSampleGradProjCompare_Texture3D /* 2965 -> 2965 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture1D /* 2966 -> 2966 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture1D /* 2967 -> 2967 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture2D /* 2968 -> 2968 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture2D /* 2969 -> 2969 */,
+        &SPIRV_TextureSampleGradProjCompareOffset_Texture3D /* 2970 -> 2970 */,
+        &SPIRV_SampledTextureSampleGradProjCompareOffset_Texture3D /* 2971 -> 2971 */,
+        &SPIRV_TextureSampleBias_Texture1D /* 2972 -> 2972 */,
+        &SPIRV_SampledTextureSampleBias_Texture1D /* 2973 -> 2973 */,
+        &SPIRV_TextureSampleBias_Texture2D /* 2974 -> 2974 */,
+        &SPIRV_SampledTextureSampleBias_Texture2D /* 2975 -> 2975 */,
+        &SPIRV_TextureSampleBias_Texture3D /* 2976 -> 2976 */,
+        &SPIRV_SampledTextureSampleBias_Texture3D /* 2977 -> 2977 */,
+        &SPIRV_TextureSampleBias_TextureCube /* 2978 -> 2978 */,
+        &SPIRV_SampledTextureSampleBias_TextureCube /* 2979 -> 2979 */,
+        &SPIRV_TextureSampleBias_Texture1DArray /* 2980 -> 2980 */,
+        &SPIRV_SampledTextureSampleBias_Texture1DArray /* 2981 -> 2981 */,
+        &SPIRV_TextureSampleBias_Texture2DArray /* 2982 -> 2982 */,
+        &SPIRV_SampledTextureSampleBias_Texture2DArray /* 2983 -> 2983 */,
+        &SPIRV_TextureSampleBias_TextureCubeArray /* 2984 -> 2984 */,
+        &SPIRV_SampledTextureSampleBias_TextureCubeArray /* 2985 -> 2985 */,
+        &SPIRV_TextureSampleBiasOffset_Texture1D /* 2986 -> 2986 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture1D /* 2987 -> 2987 */,
+        &SPIRV_TextureSampleBiasOffset_Texture2D /* 2988 -> 2988 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture2D /* 2989 -> 2989 */,
+        &SPIRV_TextureSampleBiasOffset_Texture3D /* 2990 -> 2990 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture3D /* 2991 -> 2991 */,
+        &SPIRV_TextureSampleBiasOffset_Texture1DArray /* 2992 -> 2992 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture1DArray /* 2993 -> 2993 */,
+        &SPIRV_TextureSampleBiasOffset_Texture2DArray /* 2994 -> 2994 */,
+        &SPIRV_SampledTextureSampleBiasOffset_Texture2DArray /* 2995 -> 2995 */,
+        &SPIRV_TextureSampleBiasProj_Texture1D /* 2996 -> 2996 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture1D /* 2997 -> 2997 */,
+        &SPIRV_TextureSampleBiasProj_Texture2D /* 2998 -> 2998 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture2D /* 2999 -> 2999 */,
+        &SPIRV_TextureSampleBiasProj_Texture3D /* 3000 -> 3000 */,
+        &SPIRV_SampledTextureSampleBiasProj_Texture3D /* 3001 -> 3001 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture1D /* 3002 -> 3002 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture1D /* 3003 -> 3003 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture2D /* 3004 -> 3004 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture2D /* 3005 -> 3005 */,
+        &SPIRV_TextureSampleBiasProjOffset_Texture3D /* 3006 -> 3006 */,
+        &SPIRV_SampledTextureSampleBiasProjOffset_Texture3D /* 3007 -> 3007 */,
+        &SPIRV_TextureSampleBiasCompare_Texture1D /* 3008 -> 3008 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture1D /* 3009 -> 3009 */,
+        &SPIRV_TextureSampleBiasCompare_Texture2D /* 3010 -> 3010 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture2D /* 3011 -> 3011 */,
+        &SPIRV_TextureSampleBiasCompare_Texture3D /* 3012 -> 3012 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture3D /* 3013 -> 3013 */,
+        &SPIRV_TextureSampleBiasCompare_Texture1DArray /* 3014 -> 3014 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture1DArray /* 3015 -> 3015 */,
+        &SPIRV_TextureSampleBiasCompare_Texture2DArray /* 3016 -> 3016 */,
+        &SPIRV_SampledTextureSampleBiasCompare_Texture2DArray /* 3017 -> 3017 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture1D /* 3018 -> 3018 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1D /* 3019 -> 3019 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture2D /* 3020 -> 3020 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2D /* 3021 -> 3021 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture3D /* 3022 -> 3022 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture3D /* 3023 -> 3023 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture1DArray /* 3024 -> 3024 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture1DArray /* 3025 -> 3025 */,
+        &SPIRV_TextureSampleBiasCompareOffset_Texture2DArray /* 3026 -> 3026 */,
+        &SPIRV_SampledTextureSampleBiasCompareOffset_Texture2DArray /* 3027 -> 3027 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture1D /* 3028 -> 3028 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture1D /* 3029 -> 3029 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture2D /* 3030 -> 3030 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture2D /* 3031 -> 3031 */,
+        &SPIRV_TextureSampleBiasProjCompare_Texture3D /* 3032 -> 3032 */,
+        &SPIRV_SampledTextureSampleBiasProjCompare_Texture3D /* 3033 -> 3033 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture1D /* 3034 -> 3034 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture1D /* 3035 -> 3035 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture2D /* 3036 -> 3036 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture2D /* 3037 -> 3037 */,
+        &SPIRV_TextureSampleBiasProjCompareOffset_Texture3D /* 3038 -> 3038 */,
+        &SPIRV_SampledTextureSampleBiasProjCompareOffset_Texture3D /* 3039 -> 3039 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Float32 /* 3040 -> 3040 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_UInt32 /* 3041 -> 3041 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Int32 /* 3042 -> 3042 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Float16 /* 3043 -> 3043 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_UInt16 /* 3044 -> 3044 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_Int16 /* 3045 -> 3045 */,
+        &SPIRV_TextureAtomicLoad_Texture1D_UInt64 /* 3046 -> 3046 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Float32 /* 3047 -> 3047 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_UInt32 /* 3048 -> 3048 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Int32 /* 3049 -> 3049 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Float16 /* 3050 -> 3050 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_UInt16 /* 3051 -> 3051 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_Int16 /* 3052 -> 3052 */,
+        &SPIRV_TextureAtomicLoad_Texture2D_UInt64 /* 3053 -> 3053 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Float32 /* 3054 -> 3054 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_UInt32 /* 3055 -> 3055 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Int32 /* 3056 -> 3056 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Float16 /* 3057 -> 3057 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_UInt16 /* 3058 -> 3058 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_Int16 /* 3059 -> 3059 */,
+        &SPIRV_TextureAtomicLoad_Texture3D_UInt64 /* 3060 -> 3060 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Float32 /* 3061 -> 3061 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_UInt32 /* 3062 -> 3062 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Int32 /* 3063 -> 3063 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Float16 /* 3064 -> 3064 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_UInt16 /* 3065 -> 3065 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_Int16 /* 3066 -> 3066 */,
+        &SPIRV_TextureAtomicLoad_TextureCube_UInt64 /* 3067 -> 3067 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Float32 /* 3068 -> 3068 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt32 /* 3069 -> 3069 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Int32 /* 3070 -> 3070 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Float16 /* 3071 -> 3071 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt16 /* 3072 -> 3072 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_Int16 /* 3073 -> 3073 */,
+        &SPIRV_TextureAtomicLoad_Texture1DArray_UInt64 /* 3074 -> 3074 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Float32 /* 3075 -> 3075 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt32 /* 3076 -> 3076 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Int32 /* 3077 -> 3077 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Float16 /* 3078 -> 3078 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt16 /* 3079 -> 3079 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_Int16 /* 3080 -> 3080 */,
+        &SPIRV_TextureAtomicLoad_Texture2DArray_UInt64 /* 3081 -> 3081 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float32 /* 3082 -> 3082 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt32 /* 3083 -> 3083 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int32 /* 3084 -> 3084 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Float16 /* 3085 -> 3085 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt16 /* 3086 -> 3086 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_Int16 /* 3087 -> 3087 */,
+        &SPIRV_TextureAtomicLoad_TextureCubeArray_UInt64 /* 3088 -> 3088 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Float32 /* 3089 -> 3089 */,
+        &SPIRV_TextureAtomicStore_Texture1D_UInt32 /* 3090 -> 3090 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Int32 /* 3091 -> 3091 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Float16 /* 3092 -> 3092 */,
+        &SPIRV_TextureAtomicStore_Texture1D_UInt16 /* 3093 -> 3093 */,
+        &SPIRV_TextureAtomicStore_Texture1D_Int16 /* 3094 -> 3094 */,
+        &SPIRV_TextureAtomicStore_Texture1D_UInt64 /* 3095 -> 3095 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Float32 /* 3096 -> 3096 */,
+        &SPIRV_TextureAtomicStore_Texture2D_UInt32 /* 3097 -> 3097 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Int32 /* 3098 -> 3098 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Float16 /* 3099 -> 3099 */,
+        &SPIRV_TextureAtomicStore_Texture2D_UInt16 /* 3100 -> 3100 */,
+        &SPIRV_TextureAtomicStore_Texture2D_Int16 /* 3101 -> 3101 */,
+        &SPIRV_TextureAtomicStore_Texture2D_UInt64 /* 3102 -> 3102 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Float32 /* 3103 -> 3103 */,
+        &SPIRV_TextureAtomicStore_Texture3D_UInt32 /* 3104 -> 3104 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Int32 /* 3105 -> 3105 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Float16 /* 3106 -> 3106 */,
+        &SPIRV_TextureAtomicStore_Texture3D_UInt16 /* 3107 -> 3107 */,
+        &SPIRV_TextureAtomicStore_Texture3D_Int16 /* 3108 -> 3108 */,
+        &SPIRV_TextureAtomicStore_Texture3D_UInt64 /* 3109 -> 3109 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Float32 /* 3110 -> 3110 */,
+        &SPIRV_TextureAtomicStore_TextureCube_UInt32 /* 3111 -> 3111 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Int32 /* 3112 -> 3112 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Float16 /* 3113 -> 3113 */,
+        &SPIRV_TextureAtomicStore_TextureCube_UInt16 /* 3114 -> 3114 */,
+        &SPIRV_TextureAtomicStore_TextureCube_Int16 /* 3115 -> 3115 */,
+        &SPIRV_TextureAtomicStore_TextureCube_UInt64 /* 3116 -> 3116 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Float32 /* 3117 -> 3117 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_UInt32 /* 3118 -> 3118 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Int32 /* 3119 -> 3119 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Float16 /* 3120 -> 3120 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_UInt16 /* 3121 -> 3121 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_Int16 /* 3122 -> 3122 */,
+        &SPIRV_TextureAtomicStore_Texture1DArray_UInt64 /* 3123 -> 3123 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Float32 /* 3124 -> 3124 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_UInt32 /* 3125 -> 3125 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Int32 /* 3126 -> 3126 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Float16 /* 3127 -> 3127 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_UInt16 /* 3128 -> 3128 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_Int16 /* 3129 -> 3129 */,
+        &SPIRV_TextureAtomicStore_Texture2DArray_UInt64 /* 3130 -> 3130 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Float32 /* 3131 -> 3131 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt32 /* 3132 -> 3132 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Int32 /* 3133 -> 3133 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Float16 /* 3134 -> 3134 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt16 /* 3135 -> 3135 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_Int16 /* 3136 -> 3136 */,
+        &SPIRV_TextureAtomicStore_TextureCubeArray_UInt64 /* 3137 -> 3137 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Float32 /* 3138 -> 3138 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_UInt32 /* 3139 -> 3139 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Int32 /* 3140 -> 3140 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Float16 /* 3141 -> 3141 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_UInt16 /* 3142 -> 3142 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_Int16 /* 3143 -> 3143 */,
+        &SPIRV_TextureAtomicExchange_Texture1D_UInt64 /* 3144 -> 3144 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Float32 /* 3145 -> 3145 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_UInt32 /* 3146 -> 3146 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Int32 /* 3147 -> 3147 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Float16 /* 3148 -> 3148 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_UInt16 /* 3149 -> 3149 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_Int16 /* 3150 -> 3150 */,
+        &SPIRV_TextureAtomicExchange_Texture2D_UInt64 /* 3151 -> 3151 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Float32 /* 3152 -> 3152 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_UInt32 /* 3153 -> 3153 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Int32 /* 3154 -> 3154 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Float16 /* 3155 -> 3155 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_UInt16 /* 3156 -> 3156 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_Int16 /* 3157 -> 3157 */,
+        &SPIRV_TextureAtomicExchange_Texture3D_UInt64 /* 3158 -> 3158 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Float32 /* 3159 -> 3159 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_UInt32 /* 3160 -> 3160 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Int32 /* 3161 -> 3161 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Float16 /* 3162 -> 3162 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_UInt16 /* 3163 -> 3163 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_Int16 /* 3164 -> 3164 */,
+        &SPIRV_TextureAtomicExchange_TextureCube_UInt64 /* 3165 -> 3165 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Float32 /* 3166 -> 3166 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt32 /* 3167 -> 3167 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Int32 /* 3168 -> 3168 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Float16 /* 3169 -> 3169 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt16 /* 3170 -> 3170 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_Int16 /* 3171 -> 3171 */,
+        &SPIRV_TextureAtomicExchange_Texture1DArray_UInt64 /* 3172 -> 3172 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Float32 /* 3173 -> 3173 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt32 /* 3174 -> 3174 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Int32 /* 3175 -> 3175 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Float16 /* 3176 -> 3176 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt16 /* 3177 -> 3177 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_Int16 /* 3178 -> 3178 */,
+        &SPIRV_TextureAtomicExchange_Texture2DArray_UInt64 /* 3179 -> 3179 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float32 /* 3180 -> 3180 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt32 /* 3181 -> 3181 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int32 /* 3182 -> 3182 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Float16 /* 3183 -> 3183 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt16 /* 3184 -> 3184 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_Int16 /* 3185 -> 3185 */,
+        &SPIRV_TextureAtomicExchange_TextureCubeArray_UInt64 /* 3186 -> 3186 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt32 /* 3187 -> 3187 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int32 /* 3188 -> 3188 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt16 /* 3189 -> 3189 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_Int16 /* 3190 -> 3190 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1D_UInt64 /* 3191 -> 3191 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt32 /* 3192 -> 3192 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int32 /* 3193 -> 3193 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt16 /* 3194 -> 3194 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_Int16 /* 3195 -> 3195 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2D_UInt64 /* 3196 -> 3196 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt32 /* 3197 -> 3197 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int32 /* 3198 -> 3198 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt16 /* 3199 -> 3199 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_Int16 /* 3200 -> 3200 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture3D_UInt64 /* 3201 -> 3201 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt32 /* 3202 -> 3202 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int32 /* 3203 -> 3203 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt16 /* 3204 -> 3204 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_Int16 /* 3205 -> 3205 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCube_UInt64 /* 3206 -> 3206 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt32 /* 3207 -> 3207 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int32 /* 3208 -> 3208 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt16 /* 3209 -> 3209 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_Int16 /* 3210 -> 3210 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture1DArray_UInt64 /* 3211 -> 3211 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt32 /* 3212 -> 3212 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int32 /* 3213 -> 3213 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt16 /* 3214 -> 3214 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_Int16 /* 3215 -> 3215 */,
+        &SPIRV_TextureAtomicCompareExchange_Texture2DArray_UInt64 /* 3216 -> 3216 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt32 /* 3217 -> 3217 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int32 /* 3218 -> 3218 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt16 /* 3219 -> 3219 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_Int16 /* 3220 -> 3220 */,
+        &SPIRV_TextureAtomicCompareExchange_TextureCubeArray_UInt64 /* 3221 -> 3221 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_UInt32 /* 3222 -> 3222 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_Int32 /* 3223 -> 3223 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_UInt16 /* 3224 -> 3224 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_Int16 /* 3225 -> 3225 */,
+        &SPIRV_TextureAtomicAdd_Texture1D_UInt64 /* 3226 -> 3226 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_UInt32 /* 3227 -> 3227 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_Int32 /* 3228 -> 3228 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_UInt16 /* 3229 -> 3229 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_Int16 /* 3230 -> 3230 */,
+        &SPIRV_TextureAtomicAdd_Texture2D_UInt64 /* 3231 -> 3231 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_UInt32 /* 3232 -> 3232 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_Int32 /* 3233 -> 3233 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_UInt16 /* 3234 -> 3234 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_Int16 /* 3235 -> 3235 */,
+        &SPIRV_TextureAtomicAdd_Texture3D_UInt64 /* 3236 -> 3236 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_UInt32 /* 3237 -> 3237 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_Int32 /* 3238 -> 3238 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_UInt16 /* 3239 -> 3239 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_Int16 /* 3240 -> 3240 */,
+        &SPIRV_TextureAtomicAdd_TextureCube_UInt64 /* 3241 -> 3241 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt32 /* 3242 -> 3242 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_Int32 /* 3243 -> 3243 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt16 /* 3244 -> 3244 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_Int16 /* 3245 -> 3245 */,
+        &SPIRV_TextureAtomicAdd_Texture1DArray_UInt64 /* 3246 -> 3246 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt32 /* 3247 -> 3247 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_Int32 /* 3248 -> 3248 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt16 /* 3249 -> 3249 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_Int16 /* 3250 -> 3250 */,
+        &SPIRV_TextureAtomicAdd_Texture2DArray_UInt64 /* 3251 -> 3251 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt32 /* 3252 -> 3252 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int32 /* 3253 -> 3253 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt16 /* 3254 -> 3254 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_Int16 /* 3255 -> 3255 */,
+        &SPIRV_TextureAtomicAdd_TextureCubeArray_UInt64 /* 3256 -> 3256 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_UInt32 /* 3257 -> 3257 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_Int32 /* 3258 -> 3258 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_UInt16 /* 3259 -> 3259 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_Int16 /* 3260 -> 3260 */,
+        &SPIRV_TextureAtomicSubtract_Texture1D_UInt64 /* 3261 -> 3261 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_UInt32 /* 3262 -> 3262 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_Int32 /* 3263 -> 3263 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_UInt16 /* 3264 -> 3264 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_Int16 /* 3265 -> 3265 */,
+        &SPIRV_TextureAtomicSubtract_Texture2D_UInt64 /* 3266 -> 3266 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_UInt32 /* 3267 -> 3267 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_Int32 /* 3268 -> 3268 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_UInt16 /* 3269 -> 3269 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_Int16 /* 3270 -> 3270 */,
+        &SPIRV_TextureAtomicSubtract_Texture3D_UInt64 /* 3271 -> 3271 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_UInt32 /* 3272 -> 3272 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_Int32 /* 3273 -> 3273 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_UInt16 /* 3274 -> 3274 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_Int16 /* 3275 -> 3275 */,
+        &SPIRV_TextureAtomicSubtract_TextureCube_UInt64 /* 3276 -> 3276 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt32 /* 3277 -> 3277 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int32 /* 3278 -> 3278 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt16 /* 3279 -> 3279 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_Int16 /* 3280 -> 3280 */,
+        &SPIRV_TextureAtomicSubtract_Texture1DArray_UInt64 /* 3281 -> 3281 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt32 /* 3282 -> 3282 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int32 /* 3283 -> 3283 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt16 /* 3284 -> 3284 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_Int16 /* 3285 -> 3285 */,
+        &SPIRV_TextureAtomicSubtract_Texture2DArray_UInt64 /* 3286 -> 3286 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt32 /* 3287 -> 3287 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int32 /* 3288 -> 3288 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt16 /* 3289 -> 3289 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_Int16 /* 3290 -> 3290 */,
+        &SPIRV_TextureAtomicSubtract_TextureCubeArray_UInt64 /* 3291 -> 3291 */,
+        &SPIRV_TextureAtomicMin_Texture1D_UInt32 /* 3292 -> 3292 */,
+        &SPIRV_TextureAtomicMin_Texture1D_Int32 /* 3293 -> 3293 */,
+        &SPIRV_TextureAtomicMin_Texture1D_UInt16 /* 3294 -> 3294 */,
+        &SPIRV_TextureAtomicMin_Texture1D_Int16 /* 3295 -> 3295 */,
+        &SPIRV_TextureAtomicMin_Texture1D_UInt64 /* 3296 -> 3296 */,
+        &SPIRV_TextureAtomicMin_Texture2D_UInt32 /* 3297 -> 3297 */,
+        &SPIRV_TextureAtomicMin_Texture2D_Int32 /* 3298 -> 3298 */,
+        &SPIRV_TextureAtomicMin_Texture2D_UInt16 /* 3299 -> 3299 */,
+        &SPIRV_TextureAtomicMin_Texture2D_Int16 /* 3300 -> 3300 */,
+        &SPIRV_TextureAtomicMin_Texture2D_UInt64 /* 3301 -> 3301 */,
+        &SPIRV_TextureAtomicMin_Texture3D_UInt32 /* 3302 -> 3302 */,
+        &SPIRV_TextureAtomicMin_Texture3D_Int32 /* 3303 -> 3303 */,
+        &SPIRV_TextureAtomicMin_Texture3D_UInt16 /* 3304 -> 3304 */,
+        &SPIRV_TextureAtomicMin_Texture3D_Int16 /* 3305 -> 3305 */,
+        &SPIRV_TextureAtomicMin_Texture3D_UInt64 /* 3306 -> 3306 */,
+        &SPIRV_TextureAtomicMin_TextureCube_UInt32 /* 3307 -> 3307 */,
+        &SPIRV_TextureAtomicMin_TextureCube_Int32 /* 3308 -> 3308 */,
+        &SPIRV_TextureAtomicMin_TextureCube_UInt16 /* 3309 -> 3309 */,
+        &SPIRV_TextureAtomicMin_TextureCube_Int16 /* 3310 -> 3310 */,
+        &SPIRV_TextureAtomicMin_TextureCube_UInt64 /* 3311 -> 3311 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_UInt32 /* 3312 -> 3312 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_Int32 /* 3313 -> 3313 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_UInt16 /* 3314 -> 3314 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_Int16 /* 3315 -> 3315 */,
+        &SPIRV_TextureAtomicMin_Texture1DArray_UInt64 /* 3316 -> 3316 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_UInt32 /* 3317 -> 3317 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_Int32 /* 3318 -> 3318 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_UInt16 /* 3319 -> 3319 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_Int16 /* 3320 -> 3320 */,
+        &SPIRV_TextureAtomicMin_Texture2DArray_UInt64 /* 3321 -> 3321 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt32 /* 3322 -> 3322 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_Int32 /* 3323 -> 3323 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt16 /* 3324 -> 3324 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_Int16 /* 3325 -> 3325 */,
+        &SPIRV_TextureAtomicMin_TextureCubeArray_UInt64 /* 3326 -> 3326 */,
+        &SPIRV_TextureAtomicMax_Texture1D_UInt32 /* 3327 -> 3327 */,
+        &SPIRV_TextureAtomicMax_Texture1D_Int32 /* 3328 -> 3328 */,
+        &SPIRV_TextureAtomicMax_Texture1D_UInt16 /* 3329 -> 3329 */,
+        &SPIRV_TextureAtomicMax_Texture1D_Int16 /* 3330 -> 3330 */,
+        &SPIRV_TextureAtomicMax_Texture1D_UInt64 /* 3331 -> 3331 */,
+        &SPIRV_TextureAtomicMax_Texture2D_UInt32 /* 3332 -> 3332 */,
+        &SPIRV_TextureAtomicMax_Texture2D_Int32 /* 3333 -> 3333 */,
+        &SPIRV_TextureAtomicMax_Texture2D_UInt16 /* 3334 -> 3334 */,
+        &SPIRV_TextureAtomicMax_Texture2D_Int16 /* 3335 -> 3335 */,
+        &SPIRV_TextureAtomicMax_Texture2D_UInt64 /* 3336 -> 3336 */,
+        &SPIRV_TextureAtomicMax_Texture3D_UInt32 /* 3337 -> 3337 */,
+        &SPIRV_TextureAtomicMax_Texture3D_Int32 /* 3338 -> 3338 */,
+        &SPIRV_TextureAtomicMax_Texture3D_UInt16 /* 3339 -> 3339 */,
+        &SPIRV_TextureAtomicMax_Texture3D_Int16 /* 3340 -> 3340 */,
+        &SPIRV_TextureAtomicMax_Texture3D_UInt64 /* 3341 -> 3341 */,
+        &SPIRV_TextureAtomicMax_TextureCube_UInt32 /* 3342 -> 3342 */,
+        &SPIRV_TextureAtomicMax_TextureCube_Int32 /* 3343 -> 3343 */,
+        &SPIRV_TextureAtomicMax_TextureCube_UInt16 /* 3344 -> 3344 */,
+        &SPIRV_TextureAtomicMax_TextureCube_Int16 /* 3345 -> 3345 */,
+        &SPIRV_TextureAtomicMax_TextureCube_UInt64 /* 3346 -> 3346 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_UInt32 /* 3347 -> 3347 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_Int32 /* 3348 -> 3348 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_UInt16 /* 3349 -> 3349 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_Int16 /* 3350 -> 3350 */,
+        &SPIRV_TextureAtomicMax_Texture1DArray_UInt64 /* 3351 -> 3351 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_UInt32 /* 3352 -> 3352 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_Int32 /* 3353 -> 3353 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_UInt16 /* 3354 -> 3354 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_Int16 /* 3355 -> 3355 */,
+        &SPIRV_TextureAtomicMax_Texture2DArray_UInt64 /* 3356 -> 3356 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt32 /* 3357 -> 3357 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_Int32 /* 3358 -> 3358 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt16 /* 3359 -> 3359 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_Int16 /* 3360 -> 3360 */,
+        &SPIRV_TextureAtomicMax_TextureCubeArray_UInt64 /* 3361 -> 3361 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_UInt32 /* 3362 -> 3362 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_Int32 /* 3363 -> 3363 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_UInt16 /* 3364 -> 3364 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_Int16 /* 3365 -> 3365 */,
+        &SPIRV_TextureAtomicAnd_Texture1D_UInt64 /* 3366 -> 3366 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_UInt32 /* 3367 -> 3367 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_Int32 /* 3368 -> 3368 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_UInt16 /* 3369 -> 3369 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_Int16 /* 3370 -> 3370 */,
+        &SPIRV_TextureAtomicAnd_Texture2D_UInt64 /* 3371 -> 3371 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_UInt32 /* 3372 -> 3372 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_Int32 /* 3373 -> 3373 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_UInt16 /* 3374 -> 3374 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_Int16 /* 3375 -> 3375 */,
+        &SPIRV_TextureAtomicAnd_Texture3D_UInt64 /* 3376 -> 3376 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_UInt32 /* 3377 -> 3377 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_Int32 /* 3378 -> 3378 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_UInt16 /* 3379 -> 3379 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_Int16 /* 3380 -> 3380 */,
+        &SPIRV_TextureAtomicAnd_TextureCube_UInt64 /* 3381 -> 3381 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt32 /* 3382 -> 3382 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_Int32 /* 3383 -> 3383 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt16 /* 3384 -> 3384 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_Int16 /* 3385 -> 3385 */,
+        &SPIRV_TextureAtomicAnd_Texture1DArray_UInt64 /* 3386 -> 3386 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt32 /* 3387 -> 3387 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_Int32 /* 3388 -> 3388 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt16 /* 3389 -> 3389 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_Int16 /* 3390 -> 3390 */,
+        &SPIRV_TextureAtomicAnd_Texture2DArray_UInt64 /* 3391 -> 3391 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt32 /* 3392 -> 3392 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int32 /* 3393 -> 3393 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt16 /* 3394 -> 3394 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_Int16 /* 3395 -> 3395 */,
+        &SPIRV_TextureAtomicAnd_TextureCubeArray_UInt64 /* 3396 -> 3396 */,
+        &SPIRV_TextureAtomicOr_Texture1D_UInt32 /* 3397 -> 3397 */,
+        &SPIRV_TextureAtomicOr_Texture1D_Int32 /* 3398 -> 3398 */,
+        &SPIRV_TextureAtomicOr_Texture1D_UInt16 /* 3399 -> 3399 */,
+        &SPIRV_TextureAtomicOr_Texture1D_Int16 /* 3400 -> 3400 */,
+        &SPIRV_TextureAtomicOr_Texture1D_UInt64 /* 3401 -> 3401 */,
+        &SPIRV_TextureAtomicOr_Texture2D_UInt32 /* 3402 -> 3402 */,
+        &SPIRV_TextureAtomicOr_Texture2D_Int32 /* 3403 -> 3403 */,
+        &SPIRV_TextureAtomicOr_Texture2D_UInt16 /* 3404 -> 3404 */,
+        &SPIRV_TextureAtomicOr_Texture2D_Int16 /* 3405 -> 3405 */,
+        &SPIRV_TextureAtomicOr_Texture2D_UInt64 /* 3406 -> 3406 */,
+        &SPIRV_TextureAtomicOr_Texture3D_UInt32 /* 3407 -> 3407 */,
+        &SPIRV_TextureAtomicOr_Texture3D_Int32 /* 3408 -> 3408 */,
+        &SPIRV_TextureAtomicOr_Texture3D_UInt16 /* 3409 -> 3409 */,
+        &SPIRV_TextureAtomicOr_Texture3D_Int16 /* 3410 -> 3410 */,
+        &SPIRV_TextureAtomicOr_Texture3D_UInt64 /* 3411 -> 3411 */,
+        &SPIRV_TextureAtomicOr_TextureCube_UInt32 /* 3412 -> 3412 */,
+        &SPIRV_TextureAtomicOr_TextureCube_Int32 /* 3413 -> 3413 */,
+        &SPIRV_TextureAtomicOr_TextureCube_UInt16 /* 3414 -> 3414 */,
+        &SPIRV_TextureAtomicOr_TextureCube_Int16 /* 3415 -> 3415 */,
+        &SPIRV_TextureAtomicOr_TextureCube_UInt64 /* 3416 -> 3416 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_UInt32 /* 3417 -> 3417 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_Int32 /* 3418 -> 3418 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_UInt16 /* 3419 -> 3419 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_Int16 /* 3420 -> 3420 */,
+        &SPIRV_TextureAtomicOr_Texture1DArray_UInt64 /* 3421 -> 3421 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_UInt32 /* 3422 -> 3422 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_Int32 /* 3423 -> 3423 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_UInt16 /* 3424 -> 3424 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_Int16 /* 3425 -> 3425 */,
+        &SPIRV_TextureAtomicOr_Texture2DArray_UInt64 /* 3426 -> 3426 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt32 /* 3427 -> 3427 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_Int32 /* 3428 -> 3428 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt16 /* 3429 -> 3429 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_Int16 /* 3430 -> 3430 */,
+        &SPIRV_TextureAtomicOr_TextureCubeArray_UInt64 /* 3431 -> 3431 */,
+        &SPIRV_TextureAtomicXor_Texture1D_UInt32 /* 3432 -> 3432 */,
+        &SPIRV_TextureAtomicXor_Texture1D_Int32 /* 3433 -> 3433 */,
+        &SPIRV_TextureAtomicXor_Texture1D_UInt16 /* 3434 -> 3434 */,
+        &SPIRV_TextureAtomicXor_Texture1D_Int16 /* 3435 -> 3435 */,
+        &SPIRV_TextureAtomicXor_Texture1D_UInt64 /* 3436 -> 3436 */,
+        &SPIRV_TextureAtomicXor_Texture2D_UInt32 /* 3437 -> 3437 */,
+        &SPIRV_TextureAtomicXor_Texture2D_Int32 /* 3438 -> 3438 */,
+        &SPIRV_TextureAtomicXor_Texture2D_UInt16 /* 3439 -> 3439 */,
+        &SPIRV_TextureAtomicXor_Texture2D_Int16 /* 3440 -> 3440 */,
+        &SPIRV_TextureAtomicXor_Texture2D_UInt64 /* 3441 -> 3441 */,
+        &SPIRV_TextureAtomicXor_Texture3D_UInt32 /* 3442 -> 3442 */,
+        &SPIRV_TextureAtomicXor_Texture3D_Int32 /* 3443 -> 3443 */,
+        &SPIRV_TextureAtomicXor_Texture3D_UInt16 /* 3444 -> 3444 */,
+        &SPIRV_TextureAtomicXor_Texture3D_Int16 /* 3445 -> 3445 */,
+        &SPIRV_TextureAtomicXor_Texture3D_UInt64 /* 3446 -> 3446 */,
+        &SPIRV_TextureAtomicXor_TextureCube_UInt32 /* 3447 -> 3447 */,
+        &SPIRV_TextureAtomicXor_TextureCube_Int32 /* 3448 -> 3448 */,
+        &SPIRV_TextureAtomicXor_TextureCube_UInt16 /* 3449 -> 3449 */,
+        &SPIRV_TextureAtomicXor_TextureCube_Int16 /* 3450 -> 3450 */,
+        &SPIRV_TextureAtomicXor_TextureCube_UInt64 /* 3451 -> 3451 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_UInt32 /* 3452 -> 3452 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_Int32 /* 3453 -> 3453 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_UInt16 /* 3454 -> 3454 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_Int16 /* 3455 -> 3455 */,
+        &SPIRV_TextureAtomicXor_Texture1DArray_UInt64 /* 3456 -> 3456 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_UInt32 /* 3457 -> 3457 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_Int32 /* 3458 -> 3458 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_UInt16 /* 3459 -> 3459 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_Int16 /* 3460 -> 3460 */,
+        &SPIRV_TextureAtomicXor_Texture2DArray_UInt64 /* 3461 -> 3461 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt32 /* 3462 -> 3462 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_Int32 /* 3463 -> 3463 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt16 /* 3464 -> 3464 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_Int16 /* 3465 -> 3465 */,
+        &SPIRV_TextureAtomicXor_TextureCubeArray_UInt64 /* 3466 -> 3466 */,
+        &SPIRV_ExportRayIntersection /* 3467 -> 3467 */,
+        &SPIRV_ExecuteCallable /* 3468 -> 3468 */,
+        &SPIRV_rayGetLaunchIndex /* 3469 -> 3469 */,
+        &SPIRV_rayGetLaunchSize /* 3470 -> 3470 */,
+        &SPIRV_blasGetPrimitiveIndex /* 3471 -> 3471 */,
+        &SPIRV_blasGetGeometryIndex /* 3472 -> 3472 */,
+        &SPIRV_tlasGetInstanceIndex /* 3473 -> 3473 */,
+        &SPIRV_tlasGetInstanceCustomIndex /* 3474 -> 3474 */,
+        &SPIRV_rayGetWorldOrigin /* 3475 -> 3475 */,
+        &SPIRV_rayGetWorldDirection /* 3476 -> 3476 */,
+        &SPIRV_rayGetObjectOrigin /* 3477 -> 3477 */,
+        &SPIRV_rayGetObjectDirection /* 3478 -> 3478 */,
+        &SPIRV_rayGetTMin /* 3479 -> 3479 */,
+        &SPIRV_rayGetTMax /* 3480 -> 3480 */,
+        &SPIRV_rayGetFlags /* 3481 -> 3481 */,
+        &SPIRV_rayGetHitDistance /* 3482 -> 3482 */,
+        &SPIRV_rayGetHitKind /* 3483 -> 3483 */,
+        &SPIRV_tlasGetObjectToWorld /* 3484 -> 3484 */,
+        &SPIRV_tlasGetWorldToObject /* 3485 -> 3485 */
 };

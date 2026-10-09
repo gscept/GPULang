@@ -9,4231 +9,4538 @@
 #include "compiler.h"
 namespace GPULang
 {
-/// textureAtomicSubtract with Texture1DArray, Int32x2, Int32
-Variable TextureAtomicSubtract_Texture1DArray_Int32_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture1DArray_Int32_coordinate;
-Variable TextureAtomicSubtract_Texture1DArray_Int32_value;
-Function TextureAtomicSubtract_Texture1DArray_Int32;
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_Int32_args = { &TextureAtomicSubtract_Texture1DArray_Int32_texture, &TextureAtomicSubtract_Texture1DArray_Int32_coordinate, &TextureAtomicSubtract_Texture1DArray_Int32_value };
-
-/// textureAtomicSubtract with Texture1DArray, Int32x2, UInt16
-Variable TextureAtomicSubtract_Texture1DArray_UInt16_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture1DArray_UInt16_coordinate;
-Variable TextureAtomicSubtract_Texture1DArray_UInt16_value;
-Function TextureAtomicSubtract_Texture1DArray_UInt16;
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_UInt16_args = { &TextureAtomicSubtract_Texture1DArray_UInt16_texture, &TextureAtomicSubtract_Texture1DArray_UInt16_coordinate, &TextureAtomicSubtract_Texture1DArray_UInt16_value };
-
-/// textureAtomicSubtract with Texture1DArray, Int32x2, Int16
-Variable TextureAtomicSubtract_Texture1DArray_Int16_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture1DArray_Int16_coordinate;
-Variable TextureAtomicSubtract_Texture1DArray_Int16_value;
-Function TextureAtomicSubtract_Texture1DArray_Int16;
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_Int16_args = { &TextureAtomicSubtract_Texture1DArray_Int16_texture, &TextureAtomicSubtract_Texture1DArray_Int16_coordinate, &TextureAtomicSubtract_Texture1DArray_Int16_value };
-
-/// textureAtomicSubtract with Texture1DArray, Int32x2, UInt64
-Variable TextureAtomicSubtract_Texture1DArray_UInt64_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture1DArray_UInt64_coordinate;
-Variable TextureAtomicSubtract_Texture1DArray_UInt64_value;
-Function TextureAtomicSubtract_Texture1DArray_UInt64;
-inline constexpr std::array TextureAtomicSubtract_Texture1DArray_UInt64_args = { &TextureAtomicSubtract_Texture1DArray_UInt64_texture, &TextureAtomicSubtract_Texture1DArray_UInt64_coordinate, &TextureAtomicSubtract_Texture1DArray_UInt64_value };
-
-/// textureAtomicSubtract with Texture2DArray, Int32x3, UInt32
-Variable TextureAtomicSubtract_Texture2DArray_UInt32_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture2DArray_UInt32_coordinate;
-Variable TextureAtomicSubtract_Texture2DArray_UInt32_value;
-Function TextureAtomicSubtract_Texture2DArray_UInt32;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt32_args = { &TextureAtomicSubtract_Texture2DArray_UInt32_texture, &TextureAtomicSubtract_Texture2DArray_UInt32_coordinate, &TextureAtomicSubtract_Texture2DArray_UInt32_value };
-
-/// textureAtomicSubtract with Texture2DArray, Int32x3, Int32
-Variable TextureAtomicSubtract_Texture2DArray_Int32_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture2DArray_Int32_coordinate;
-Variable TextureAtomicSubtract_Texture2DArray_Int32_value;
-Function TextureAtomicSubtract_Texture2DArray_Int32;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_Int32_args = { &TextureAtomicSubtract_Texture2DArray_Int32_texture, &TextureAtomicSubtract_Texture2DArray_Int32_coordinate, &TextureAtomicSubtract_Texture2DArray_Int32_value };
-
-/// textureAtomicSubtract with Texture2DArray, Int32x3, UInt16
-Variable TextureAtomicSubtract_Texture2DArray_UInt16_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture2DArray_UInt16_coordinate;
-Variable TextureAtomicSubtract_Texture2DArray_UInt16_value;
-Function TextureAtomicSubtract_Texture2DArray_UInt16;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt16_args = { &TextureAtomicSubtract_Texture2DArray_UInt16_texture, &TextureAtomicSubtract_Texture2DArray_UInt16_coordinate, &TextureAtomicSubtract_Texture2DArray_UInt16_value };
-
-/// textureAtomicSubtract with Texture2DArray, Int32x3, Int16
-Variable TextureAtomicSubtract_Texture2DArray_Int16_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture2DArray_Int16_coordinate;
-Variable TextureAtomicSubtract_Texture2DArray_Int16_value;
-Function TextureAtomicSubtract_Texture2DArray_Int16;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_Int16_args = { &TextureAtomicSubtract_Texture2DArray_Int16_texture, &TextureAtomicSubtract_Texture2DArray_Int16_coordinate, &TextureAtomicSubtract_Texture2DArray_Int16_value };
-
-/// textureAtomicSubtract with Texture2DArray, Int32x3, UInt64
-Variable TextureAtomicSubtract_Texture2DArray_UInt64_texture;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_Texture2DArray_UInt64_coordinate;
-Variable TextureAtomicSubtract_Texture2DArray_UInt64_value;
-Function TextureAtomicSubtract_Texture2DArray_UInt64;
-inline constexpr std::array TextureAtomicSubtract_Texture2DArray_UInt64_args = { &TextureAtomicSubtract_Texture2DArray_UInt64_texture, &TextureAtomicSubtract_Texture2DArray_UInt64_coordinate, &TextureAtomicSubtract_Texture2DArray_UInt64_value };
-
-/// textureAtomicSubtract with TextureCubeArray, Int32x4, UInt32
-Variable TextureAtomicSubtract_TextureCubeArray_UInt32_texture;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_TextureCubeArray_UInt32_coordinate;
-Variable TextureAtomicSubtract_TextureCubeArray_UInt32_value;
-Function TextureAtomicSubtract_TextureCubeArray_UInt32;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt32_args = { &TextureAtomicSubtract_TextureCubeArray_UInt32_texture, &TextureAtomicSubtract_TextureCubeArray_UInt32_coordinate, &TextureAtomicSubtract_TextureCubeArray_UInt32_value };
-
-/// textureAtomicSubtract with TextureCubeArray, Int32x4, Int32
-Variable TextureAtomicSubtract_TextureCubeArray_Int32_texture;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_TextureCubeArray_Int32_coordinate;
-Variable TextureAtomicSubtract_TextureCubeArray_Int32_value;
-Function TextureAtomicSubtract_TextureCubeArray_Int32;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_Int32_args = { &TextureAtomicSubtract_TextureCubeArray_Int32_texture, &TextureAtomicSubtract_TextureCubeArray_Int32_coordinate, &TextureAtomicSubtract_TextureCubeArray_Int32_value };
-
-/// textureAtomicSubtract with TextureCubeArray, Int32x4, UInt16
-Variable TextureAtomicSubtract_TextureCubeArray_UInt16_texture;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_TextureCubeArray_UInt16_coordinate;
-Variable TextureAtomicSubtract_TextureCubeArray_UInt16_value;
-Function TextureAtomicSubtract_TextureCubeArray_UInt16;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt16_args = { &TextureAtomicSubtract_TextureCubeArray_UInt16_texture, &TextureAtomicSubtract_TextureCubeArray_UInt16_coordinate, &TextureAtomicSubtract_TextureCubeArray_UInt16_value };
-
-/// textureAtomicSubtract with TextureCubeArray, Int32x4, Int16
-Variable TextureAtomicSubtract_TextureCubeArray_Int16_texture;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_TextureCubeArray_Int16_coordinate;
-Variable TextureAtomicSubtract_TextureCubeArray_Int16_value;
-Function TextureAtomicSubtract_TextureCubeArray_Int16;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_Int16_args = { &TextureAtomicSubtract_TextureCubeArray_Int16_texture, &TextureAtomicSubtract_TextureCubeArray_Int16_coordinate, &TextureAtomicSubtract_TextureCubeArray_Int16_value };
-
-/// textureAtomicSubtract with TextureCubeArray, Int32x4, UInt64
-Variable TextureAtomicSubtract_TextureCubeArray_UInt64_texture;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicSubtract_TextureCubeArray_UInt64_coordinate;
-Variable TextureAtomicSubtract_TextureCubeArray_UInt64_value;
-Function TextureAtomicSubtract_TextureCubeArray_UInt64;
-inline constexpr std::array TextureAtomicSubtract_TextureCubeArray_UInt64_args = { &TextureAtomicSubtract_TextureCubeArray_UInt64_texture, &TextureAtomicSubtract_TextureCubeArray_UInt64_coordinate, &TextureAtomicSubtract_TextureCubeArray_UInt64_value };
-
-/// textureAtomicMin with Texture1D, Int32, UInt32
-Variable TextureAtomicMin_Texture1D_UInt32_texture;
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1D_UInt32_coordinate;
-Variable TextureAtomicMin_Texture1D_UInt32_value;
-Function TextureAtomicMin_Texture1D_UInt32;
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt32_args = { &TextureAtomicMin_Texture1D_UInt32_texture, &TextureAtomicMin_Texture1D_UInt32_coordinate, &TextureAtomicMin_Texture1D_UInt32_value };
-
-/// textureAtomicMin with Texture1D, Int32, Int32
-Variable TextureAtomicMin_Texture1D_Int32_texture;
-inline constexpr std::array TextureAtomicMin_Texture1D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1D_Int32_coordinate;
-Variable TextureAtomicMin_Texture1D_Int32_value;
-Function TextureAtomicMin_Texture1D_Int32;
-inline constexpr std::array TextureAtomicMin_Texture1D_Int32_args = { &TextureAtomicMin_Texture1D_Int32_texture, &TextureAtomicMin_Texture1D_Int32_coordinate, &TextureAtomicMin_Texture1D_Int32_value };
-
-/// textureAtomicMin with Texture1D, Int32, UInt16
-Variable TextureAtomicMin_Texture1D_UInt16_texture;
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1D_UInt16_coordinate;
-Variable TextureAtomicMin_Texture1D_UInt16_value;
-Function TextureAtomicMin_Texture1D_UInt16;
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt16_args = { &TextureAtomicMin_Texture1D_UInt16_texture, &TextureAtomicMin_Texture1D_UInt16_coordinate, &TextureAtomicMin_Texture1D_UInt16_value };
-
-/// textureAtomicMin with Texture1D, Int32, Int16
-Variable TextureAtomicMin_Texture1D_Int16_texture;
-inline constexpr std::array TextureAtomicMin_Texture1D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1D_Int16_coordinate;
-Variable TextureAtomicMin_Texture1D_Int16_value;
-Function TextureAtomicMin_Texture1D_Int16;
-inline constexpr std::array TextureAtomicMin_Texture1D_Int16_args = { &TextureAtomicMin_Texture1D_Int16_texture, &TextureAtomicMin_Texture1D_Int16_coordinate, &TextureAtomicMin_Texture1D_Int16_value };
-
-/// textureAtomicMin with Texture1D, Int32, UInt64
-Variable TextureAtomicMin_Texture1D_UInt64_texture;
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1D_UInt64_coordinate;
-Variable TextureAtomicMin_Texture1D_UInt64_value;
-Function TextureAtomicMin_Texture1D_UInt64;
-inline constexpr std::array TextureAtomicMin_Texture1D_UInt64_args = { &TextureAtomicMin_Texture1D_UInt64_texture, &TextureAtomicMin_Texture1D_UInt64_coordinate, &TextureAtomicMin_Texture1D_UInt64_value };
-
-/// textureAtomicMin with Texture2D, Int32x2, UInt32
-Variable TextureAtomicMin_Texture2D_UInt32_texture;
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2D_UInt32_coordinate;
-Variable TextureAtomicMin_Texture2D_UInt32_value;
-Function TextureAtomicMin_Texture2D_UInt32;
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt32_args = { &TextureAtomicMin_Texture2D_UInt32_texture, &TextureAtomicMin_Texture2D_UInt32_coordinate, &TextureAtomicMin_Texture2D_UInt32_value };
-
-/// textureAtomicMin with Texture2D, Int32x2, Int32
-Variable TextureAtomicMin_Texture2D_Int32_texture;
-inline constexpr std::array TextureAtomicMin_Texture2D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2D_Int32_coordinate;
-Variable TextureAtomicMin_Texture2D_Int32_value;
-Function TextureAtomicMin_Texture2D_Int32;
-inline constexpr std::array TextureAtomicMin_Texture2D_Int32_args = { &TextureAtomicMin_Texture2D_Int32_texture, &TextureAtomicMin_Texture2D_Int32_coordinate, &TextureAtomicMin_Texture2D_Int32_value };
-
-/// textureAtomicMin with Texture2D, Int32x2, UInt16
-Variable TextureAtomicMin_Texture2D_UInt16_texture;
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2D_UInt16_coordinate;
-Variable TextureAtomicMin_Texture2D_UInt16_value;
-Function TextureAtomicMin_Texture2D_UInt16;
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt16_args = { &TextureAtomicMin_Texture2D_UInt16_texture, &TextureAtomicMin_Texture2D_UInt16_coordinate, &TextureAtomicMin_Texture2D_UInt16_value };
-
-/// textureAtomicMin with Texture2D, Int32x2, Int16
-Variable TextureAtomicMin_Texture2D_Int16_texture;
-inline constexpr std::array TextureAtomicMin_Texture2D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2D_Int16_coordinate;
-Variable TextureAtomicMin_Texture2D_Int16_value;
-Function TextureAtomicMin_Texture2D_Int16;
-inline constexpr std::array TextureAtomicMin_Texture2D_Int16_args = { &TextureAtomicMin_Texture2D_Int16_texture, &TextureAtomicMin_Texture2D_Int16_coordinate, &TextureAtomicMin_Texture2D_Int16_value };
-
-/// textureAtomicMin with Texture2D, Int32x2, UInt64
-Variable TextureAtomicMin_Texture2D_UInt64_texture;
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2D_UInt64_coordinate;
-Variable TextureAtomicMin_Texture2D_UInt64_value;
-Function TextureAtomicMin_Texture2D_UInt64;
-inline constexpr std::array TextureAtomicMin_Texture2D_UInt64_args = { &TextureAtomicMin_Texture2D_UInt64_texture, &TextureAtomicMin_Texture2D_UInt64_coordinate, &TextureAtomicMin_Texture2D_UInt64_value };
-
-/// textureAtomicMin with Texture3D, Int32x3, UInt32
-Variable TextureAtomicMin_Texture3D_UInt32_texture;
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture3D_UInt32_coordinate;
-Variable TextureAtomicMin_Texture3D_UInt32_value;
-Function TextureAtomicMin_Texture3D_UInt32;
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt32_args = { &TextureAtomicMin_Texture3D_UInt32_texture, &TextureAtomicMin_Texture3D_UInt32_coordinate, &TextureAtomicMin_Texture3D_UInt32_value };
-
-/// textureAtomicMin with Texture3D, Int32x3, Int32
-Variable TextureAtomicMin_Texture3D_Int32_texture;
-inline constexpr std::array TextureAtomicMin_Texture3D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture3D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture3D_Int32_coordinate;
-Variable TextureAtomicMin_Texture3D_Int32_value;
-Function TextureAtomicMin_Texture3D_Int32;
-inline constexpr std::array TextureAtomicMin_Texture3D_Int32_args = { &TextureAtomicMin_Texture3D_Int32_texture, &TextureAtomicMin_Texture3D_Int32_coordinate, &TextureAtomicMin_Texture3D_Int32_value };
-
-/// textureAtomicMin with Texture3D, Int32x3, UInt16
-Variable TextureAtomicMin_Texture3D_UInt16_texture;
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture3D_UInt16_coordinate;
-Variable TextureAtomicMin_Texture3D_UInt16_value;
-Function TextureAtomicMin_Texture3D_UInt16;
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt16_args = { &TextureAtomicMin_Texture3D_UInt16_texture, &TextureAtomicMin_Texture3D_UInt16_coordinate, &TextureAtomicMin_Texture3D_UInt16_value };
-
-/// textureAtomicMin with Texture3D, Int32x3, Int16
-Variable TextureAtomicMin_Texture3D_Int16_texture;
-inline constexpr std::array TextureAtomicMin_Texture3D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture3D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture3D_Int16_coordinate;
-Variable TextureAtomicMin_Texture3D_Int16_value;
-Function TextureAtomicMin_Texture3D_Int16;
-inline constexpr std::array TextureAtomicMin_Texture3D_Int16_args = { &TextureAtomicMin_Texture3D_Int16_texture, &TextureAtomicMin_Texture3D_Int16_coordinate, &TextureAtomicMin_Texture3D_Int16_value };
-
-/// textureAtomicMin with Texture3D, Int32x3, UInt64
-Variable TextureAtomicMin_Texture3D_UInt64_texture;
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture3D_UInt64_coordinate;
-Variable TextureAtomicMin_Texture3D_UInt64_value;
-Function TextureAtomicMin_Texture3D_UInt64;
-inline constexpr std::array TextureAtomicMin_Texture3D_UInt64_args = { &TextureAtomicMin_Texture3D_UInt64_texture, &TextureAtomicMin_Texture3D_UInt64_coordinate, &TextureAtomicMin_Texture3D_UInt64_value };
-
-/// textureAtomicMin with TextureCube, Int32x3, UInt32
-Variable TextureAtomicMin_TextureCube_UInt32_texture;
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCube_UInt32_coordinate;
-Variable TextureAtomicMin_TextureCube_UInt32_value;
-Function TextureAtomicMin_TextureCube_UInt32;
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt32_args = { &TextureAtomicMin_TextureCube_UInt32_texture, &TextureAtomicMin_TextureCube_UInt32_coordinate, &TextureAtomicMin_TextureCube_UInt32_value };
-
-/// textureAtomicMin with TextureCube, Int32x3, Int32
-Variable TextureAtomicMin_TextureCube_Int32_texture;
-inline constexpr std::array TextureAtomicMin_TextureCube_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCube_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCube_Int32_coordinate;
-Variable TextureAtomicMin_TextureCube_Int32_value;
-Function TextureAtomicMin_TextureCube_Int32;
-inline constexpr std::array TextureAtomicMin_TextureCube_Int32_args = { &TextureAtomicMin_TextureCube_Int32_texture, &TextureAtomicMin_TextureCube_Int32_coordinate, &TextureAtomicMin_TextureCube_Int32_value };
-
-/// textureAtomicMin with TextureCube, Int32x3, UInt16
-Variable TextureAtomicMin_TextureCube_UInt16_texture;
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCube_UInt16_coordinate;
-Variable TextureAtomicMin_TextureCube_UInt16_value;
-Function TextureAtomicMin_TextureCube_UInt16;
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt16_args = { &TextureAtomicMin_TextureCube_UInt16_texture, &TextureAtomicMin_TextureCube_UInt16_coordinate, &TextureAtomicMin_TextureCube_UInt16_value };
-
-/// textureAtomicMin with TextureCube, Int32x3, Int16
-Variable TextureAtomicMin_TextureCube_Int16_texture;
-inline constexpr std::array TextureAtomicMin_TextureCube_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCube_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCube_Int16_coordinate;
-Variable TextureAtomicMin_TextureCube_Int16_value;
-Function TextureAtomicMin_TextureCube_Int16;
-inline constexpr std::array TextureAtomicMin_TextureCube_Int16_args = { &TextureAtomicMin_TextureCube_Int16_texture, &TextureAtomicMin_TextureCube_Int16_coordinate, &TextureAtomicMin_TextureCube_Int16_value };
-
-/// textureAtomicMin with TextureCube, Int32x3, UInt64
-Variable TextureAtomicMin_TextureCube_UInt64_texture;
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCube_UInt64_coordinate;
-Variable TextureAtomicMin_TextureCube_UInt64_value;
-Function TextureAtomicMin_TextureCube_UInt64;
-inline constexpr std::array TextureAtomicMin_TextureCube_UInt64_args = { &TextureAtomicMin_TextureCube_UInt64_texture, &TextureAtomicMin_TextureCube_UInt64_coordinate, &TextureAtomicMin_TextureCube_UInt64_value };
-
-/// textureAtomicMin with Texture1DArray, Int32x2, UInt32
-Variable TextureAtomicMin_Texture1DArray_UInt32_texture;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1DArray_UInt32_coordinate;
-Variable TextureAtomicMin_Texture1DArray_UInt32_value;
-Function TextureAtomicMin_Texture1DArray_UInt32;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt32_args = { &TextureAtomicMin_Texture1DArray_UInt32_texture, &TextureAtomicMin_Texture1DArray_UInt32_coordinate, &TextureAtomicMin_Texture1DArray_UInt32_value };
-
-/// textureAtomicMin with Texture1DArray, Int32x2, Int32
-Variable TextureAtomicMin_Texture1DArray_Int32_texture;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1DArray_Int32_coordinate;
-Variable TextureAtomicMin_Texture1DArray_Int32_value;
-Function TextureAtomicMin_Texture1DArray_Int32;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_Int32_args = { &TextureAtomicMin_Texture1DArray_Int32_texture, &TextureAtomicMin_Texture1DArray_Int32_coordinate, &TextureAtomicMin_Texture1DArray_Int32_value };
-
-/// textureAtomicMin with Texture1DArray, Int32x2, UInt16
-Variable TextureAtomicMin_Texture1DArray_UInt16_texture;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1DArray_UInt16_coordinate;
-Variable TextureAtomicMin_Texture1DArray_UInt16_value;
-Function TextureAtomicMin_Texture1DArray_UInt16;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt16_args = { &TextureAtomicMin_Texture1DArray_UInt16_texture, &TextureAtomicMin_Texture1DArray_UInt16_coordinate, &TextureAtomicMin_Texture1DArray_UInt16_value };
-
-/// textureAtomicMin with Texture1DArray, Int32x2, Int16
-Variable TextureAtomicMin_Texture1DArray_Int16_texture;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1DArray_Int16_coordinate;
-Variable TextureAtomicMin_Texture1DArray_Int16_value;
-Function TextureAtomicMin_Texture1DArray_Int16;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_Int16_args = { &TextureAtomicMin_Texture1DArray_Int16_texture, &TextureAtomicMin_Texture1DArray_Int16_coordinate, &TextureAtomicMin_Texture1DArray_Int16_value };
-
-/// textureAtomicMin with Texture1DArray, Int32x2, UInt64
-Variable TextureAtomicMin_Texture1DArray_UInt64_texture;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture1DArray_UInt64_coordinate;
-Variable TextureAtomicMin_Texture1DArray_UInt64_value;
-Function TextureAtomicMin_Texture1DArray_UInt64;
-inline constexpr std::array TextureAtomicMin_Texture1DArray_UInt64_args = { &TextureAtomicMin_Texture1DArray_UInt64_texture, &TextureAtomicMin_Texture1DArray_UInt64_coordinate, &TextureAtomicMin_Texture1DArray_UInt64_value };
-
-/// textureAtomicMin with Texture2DArray, Int32x3, UInt32
-Variable TextureAtomicMin_Texture2DArray_UInt32_texture;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2DArray_UInt32_coordinate;
-Variable TextureAtomicMin_Texture2DArray_UInt32_value;
-Function TextureAtomicMin_Texture2DArray_UInt32;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt32_args = { &TextureAtomicMin_Texture2DArray_UInt32_texture, &TextureAtomicMin_Texture2DArray_UInt32_coordinate, &TextureAtomicMin_Texture2DArray_UInt32_value };
-
-/// textureAtomicMin with Texture2DArray, Int32x3, Int32
-Variable TextureAtomicMin_Texture2DArray_Int32_texture;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2DArray_Int32_coordinate;
-Variable TextureAtomicMin_Texture2DArray_Int32_value;
-Function TextureAtomicMin_Texture2DArray_Int32;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_Int32_args = { &TextureAtomicMin_Texture2DArray_Int32_texture, &TextureAtomicMin_Texture2DArray_Int32_coordinate, &TextureAtomicMin_Texture2DArray_Int32_value };
-
-/// textureAtomicMin with Texture2DArray, Int32x3, UInt16
-Variable TextureAtomicMin_Texture2DArray_UInt16_texture;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2DArray_UInt16_coordinate;
-Variable TextureAtomicMin_Texture2DArray_UInt16_value;
-Function TextureAtomicMin_Texture2DArray_UInt16;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt16_args = { &TextureAtomicMin_Texture2DArray_UInt16_texture, &TextureAtomicMin_Texture2DArray_UInt16_coordinate, &TextureAtomicMin_Texture2DArray_UInt16_value };
-
-/// textureAtomicMin with Texture2DArray, Int32x3, Int16
-Variable TextureAtomicMin_Texture2DArray_Int16_texture;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2DArray_Int16_coordinate;
-Variable TextureAtomicMin_Texture2DArray_Int16_value;
-Function TextureAtomicMin_Texture2DArray_Int16;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_Int16_args = { &TextureAtomicMin_Texture2DArray_Int16_texture, &TextureAtomicMin_Texture2DArray_Int16_coordinate, &TextureAtomicMin_Texture2DArray_Int16_value };
-
-/// textureAtomicMin with Texture2DArray, Int32x3, UInt64
-Variable TextureAtomicMin_Texture2DArray_UInt64_texture;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_Texture2DArray_UInt64_coordinate;
-Variable TextureAtomicMin_Texture2DArray_UInt64_value;
-Function TextureAtomicMin_Texture2DArray_UInt64;
-inline constexpr std::array TextureAtomicMin_Texture2DArray_UInt64_args = { &TextureAtomicMin_Texture2DArray_UInt64_texture, &TextureAtomicMin_Texture2DArray_UInt64_coordinate, &TextureAtomicMin_Texture2DArray_UInt64_value };
-
-/// textureAtomicMin with TextureCubeArray, Int32x4, UInt32
-Variable TextureAtomicMin_TextureCubeArray_UInt32_texture;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCubeArray_UInt32_coordinate;
-Variable TextureAtomicMin_TextureCubeArray_UInt32_value;
-Function TextureAtomicMin_TextureCubeArray_UInt32;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt32_args = { &TextureAtomicMin_TextureCubeArray_UInt32_texture, &TextureAtomicMin_TextureCubeArray_UInt32_coordinate, &TextureAtomicMin_TextureCubeArray_UInt32_value };
-
-/// textureAtomicMin with TextureCubeArray, Int32x4, Int32
-Variable TextureAtomicMin_TextureCubeArray_Int32_texture;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCubeArray_Int32_coordinate;
-Variable TextureAtomicMin_TextureCubeArray_Int32_value;
-Function TextureAtomicMin_TextureCubeArray_Int32;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_Int32_args = { &TextureAtomicMin_TextureCubeArray_Int32_texture, &TextureAtomicMin_TextureCubeArray_Int32_coordinate, &TextureAtomicMin_TextureCubeArray_Int32_value };
-
-/// textureAtomicMin with TextureCubeArray, Int32x4, UInt16
-Variable TextureAtomicMin_TextureCubeArray_UInt16_texture;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCubeArray_UInt16_coordinate;
-Variable TextureAtomicMin_TextureCubeArray_UInt16_value;
-Function TextureAtomicMin_TextureCubeArray_UInt16;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt16_args = { &TextureAtomicMin_TextureCubeArray_UInt16_texture, &TextureAtomicMin_TextureCubeArray_UInt16_coordinate, &TextureAtomicMin_TextureCubeArray_UInt16_value };
-
-/// textureAtomicMin with TextureCubeArray, Int32x4, Int16
-Variable TextureAtomicMin_TextureCubeArray_Int16_texture;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCubeArray_Int16_coordinate;
-Variable TextureAtomicMin_TextureCubeArray_Int16_value;
-Function TextureAtomicMin_TextureCubeArray_Int16;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_Int16_args = { &TextureAtomicMin_TextureCubeArray_Int16_texture, &TextureAtomicMin_TextureCubeArray_Int16_coordinate, &TextureAtomicMin_TextureCubeArray_Int16_value };
-
-/// textureAtomicMin with TextureCubeArray, Int32x4, UInt64
-Variable TextureAtomicMin_TextureCubeArray_UInt64_texture;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMin_TextureCubeArray_UInt64_coordinate;
-Variable TextureAtomicMin_TextureCubeArray_UInt64_value;
-Function TextureAtomicMin_TextureCubeArray_UInt64;
-inline constexpr std::array TextureAtomicMin_TextureCubeArray_UInt64_args = { &TextureAtomicMin_TextureCubeArray_UInt64_texture, &TextureAtomicMin_TextureCubeArray_UInt64_coordinate, &TextureAtomicMin_TextureCubeArray_UInt64_value };
-
-/// textureAtomicMax with Texture1D, Int32, UInt32
-Variable TextureAtomicMax_Texture1D_UInt32_texture;
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1D_UInt32_coordinate;
-Variable TextureAtomicMax_Texture1D_UInt32_value;
-Function TextureAtomicMax_Texture1D_UInt32;
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt32_args = { &TextureAtomicMax_Texture1D_UInt32_texture, &TextureAtomicMax_Texture1D_UInt32_coordinate, &TextureAtomicMax_Texture1D_UInt32_value };
-
-/// textureAtomicMax with Texture1D, Int32, Int32
-Variable TextureAtomicMax_Texture1D_Int32_texture;
-inline constexpr std::array TextureAtomicMax_Texture1D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1D_Int32_coordinate;
-Variable TextureAtomicMax_Texture1D_Int32_value;
-Function TextureAtomicMax_Texture1D_Int32;
-inline constexpr std::array TextureAtomicMax_Texture1D_Int32_args = { &TextureAtomicMax_Texture1D_Int32_texture, &TextureAtomicMax_Texture1D_Int32_coordinate, &TextureAtomicMax_Texture1D_Int32_value };
-
-/// textureAtomicMax with Texture1D, Int32, UInt16
-Variable TextureAtomicMax_Texture1D_UInt16_texture;
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1D_UInt16_coordinate;
-Variable TextureAtomicMax_Texture1D_UInt16_value;
-Function TextureAtomicMax_Texture1D_UInt16;
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt16_args = { &TextureAtomicMax_Texture1D_UInt16_texture, &TextureAtomicMax_Texture1D_UInt16_coordinate, &TextureAtomicMax_Texture1D_UInt16_value };
-
-/// textureAtomicMax with Texture1D, Int32, Int16
-Variable TextureAtomicMax_Texture1D_Int16_texture;
-inline constexpr std::array TextureAtomicMax_Texture1D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1D_Int16_coordinate;
-Variable TextureAtomicMax_Texture1D_Int16_value;
-Function TextureAtomicMax_Texture1D_Int16;
-inline constexpr std::array TextureAtomicMax_Texture1D_Int16_args = { &TextureAtomicMax_Texture1D_Int16_texture, &TextureAtomicMax_Texture1D_Int16_coordinate, &TextureAtomicMax_Texture1D_Int16_value };
-
-/// textureAtomicMax with Texture1D, Int32, UInt64
-Variable TextureAtomicMax_Texture1D_UInt64_texture;
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1D_UInt64_coordinate;
-Variable TextureAtomicMax_Texture1D_UInt64_value;
-Function TextureAtomicMax_Texture1D_UInt64;
-inline constexpr std::array TextureAtomicMax_Texture1D_UInt64_args = { &TextureAtomicMax_Texture1D_UInt64_texture, &TextureAtomicMax_Texture1D_UInt64_coordinate, &TextureAtomicMax_Texture1D_UInt64_value };
-
-/// textureAtomicMax with Texture2D, Int32x2, UInt32
-Variable TextureAtomicMax_Texture2D_UInt32_texture;
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2D_UInt32_coordinate;
-Variable TextureAtomicMax_Texture2D_UInt32_value;
-Function TextureAtomicMax_Texture2D_UInt32;
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt32_args = { &TextureAtomicMax_Texture2D_UInt32_texture, &TextureAtomicMax_Texture2D_UInt32_coordinate, &TextureAtomicMax_Texture2D_UInt32_value };
-
-/// textureAtomicMax with Texture2D, Int32x2, Int32
-Variable TextureAtomicMax_Texture2D_Int32_texture;
-inline constexpr std::array TextureAtomicMax_Texture2D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2D_Int32_coordinate;
-Variable TextureAtomicMax_Texture2D_Int32_value;
-Function TextureAtomicMax_Texture2D_Int32;
-inline constexpr std::array TextureAtomicMax_Texture2D_Int32_args = { &TextureAtomicMax_Texture2D_Int32_texture, &TextureAtomicMax_Texture2D_Int32_coordinate, &TextureAtomicMax_Texture2D_Int32_value };
-
-/// textureAtomicMax with Texture2D, Int32x2, UInt16
-Variable TextureAtomicMax_Texture2D_UInt16_texture;
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2D_UInt16_coordinate;
-Variable TextureAtomicMax_Texture2D_UInt16_value;
-Function TextureAtomicMax_Texture2D_UInt16;
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt16_args = { &TextureAtomicMax_Texture2D_UInt16_texture, &TextureAtomicMax_Texture2D_UInt16_coordinate, &TextureAtomicMax_Texture2D_UInt16_value };
-
-/// textureAtomicMax with Texture2D, Int32x2, Int16
-Variable TextureAtomicMax_Texture2D_Int16_texture;
-inline constexpr std::array TextureAtomicMax_Texture2D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2D_Int16_coordinate;
-Variable TextureAtomicMax_Texture2D_Int16_value;
-Function TextureAtomicMax_Texture2D_Int16;
-inline constexpr std::array TextureAtomicMax_Texture2D_Int16_args = { &TextureAtomicMax_Texture2D_Int16_texture, &TextureAtomicMax_Texture2D_Int16_coordinate, &TextureAtomicMax_Texture2D_Int16_value };
-
-/// textureAtomicMax with Texture2D, Int32x2, UInt64
-Variable TextureAtomicMax_Texture2D_UInt64_texture;
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2D_UInt64_coordinate;
-Variable TextureAtomicMax_Texture2D_UInt64_value;
-Function TextureAtomicMax_Texture2D_UInt64;
-inline constexpr std::array TextureAtomicMax_Texture2D_UInt64_args = { &TextureAtomicMax_Texture2D_UInt64_texture, &TextureAtomicMax_Texture2D_UInt64_coordinate, &TextureAtomicMax_Texture2D_UInt64_value };
-
-/// textureAtomicMax with Texture3D, Int32x3, UInt32
-Variable TextureAtomicMax_Texture3D_UInt32_texture;
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture3D_UInt32_coordinate;
-Variable TextureAtomicMax_Texture3D_UInt32_value;
-Function TextureAtomicMax_Texture3D_UInt32;
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt32_args = { &TextureAtomicMax_Texture3D_UInt32_texture, &TextureAtomicMax_Texture3D_UInt32_coordinate, &TextureAtomicMax_Texture3D_UInt32_value };
-
-/// textureAtomicMax with Texture3D, Int32x3, Int32
-Variable TextureAtomicMax_Texture3D_Int32_texture;
-inline constexpr std::array TextureAtomicMax_Texture3D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture3D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture3D_Int32_coordinate;
-Variable TextureAtomicMax_Texture3D_Int32_value;
-Function TextureAtomicMax_Texture3D_Int32;
-inline constexpr std::array TextureAtomicMax_Texture3D_Int32_args = { &TextureAtomicMax_Texture3D_Int32_texture, &TextureAtomicMax_Texture3D_Int32_coordinate, &TextureAtomicMax_Texture3D_Int32_value };
-
-/// textureAtomicMax with Texture3D, Int32x3, UInt16
-Variable TextureAtomicMax_Texture3D_UInt16_texture;
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture3D_UInt16_coordinate;
-Variable TextureAtomicMax_Texture3D_UInt16_value;
-Function TextureAtomicMax_Texture3D_UInt16;
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt16_args = { &TextureAtomicMax_Texture3D_UInt16_texture, &TextureAtomicMax_Texture3D_UInt16_coordinate, &TextureAtomicMax_Texture3D_UInt16_value };
-
-/// textureAtomicMax with Texture3D, Int32x3, Int16
-Variable TextureAtomicMax_Texture3D_Int16_texture;
-inline constexpr std::array TextureAtomicMax_Texture3D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture3D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture3D_Int16_coordinate;
-Variable TextureAtomicMax_Texture3D_Int16_value;
-Function TextureAtomicMax_Texture3D_Int16;
-inline constexpr std::array TextureAtomicMax_Texture3D_Int16_args = { &TextureAtomicMax_Texture3D_Int16_texture, &TextureAtomicMax_Texture3D_Int16_coordinate, &TextureAtomicMax_Texture3D_Int16_value };
-
-/// textureAtomicMax with Texture3D, Int32x3, UInt64
-Variable TextureAtomicMax_Texture3D_UInt64_texture;
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture3D_UInt64_coordinate;
-Variable TextureAtomicMax_Texture3D_UInt64_value;
-Function TextureAtomicMax_Texture3D_UInt64;
-inline constexpr std::array TextureAtomicMax_Texture3D_UInt64_args = { &TextureAtomicMax_Texture3D_UInt64_texture, &TextureAtomicMax_Texture3D_UInt64_coordinate, &TextureAtomicMax_Texture3D_UInt64_value };
-
-/// textureAtomicMax with TextureCube, Int32x3, UInt32
-Variable TextureAtomicMax_TextureCube_UInt32_texture;
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCube_UInt32_coordinate;
-Variable TextureAtomicMax_TextureCube_UInt32_value;
-Function TextureAtomicMax_TextureCube_UInt32;
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt32_args = { &TextureAtomicMax_TextureCube_UInt32_texture, &TextureAtomicMax_TextureCube_UInt32_coordinate, &TextureAtomicMax_TextureCube_UInt32_value };
-
-/// textureAtomicMax with TextureCube, Int32x3, Int32
-Variable TextureAtomicMax_TextureCube_Int32_texture;
-inline constexpr std::array TextureAtomicMax_TextureCube_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCube_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCube_Int32_coordinate;
-Variable TextureAtomicMax_TextureCube_Int32_value;
-Function TextureAtomicMax_TextureCube_Int32;
-inline constexpr std::array TextureAtomicMax_TextureCube_Int32_args = { &TextureAtomicMax_TextureCube_Int32_texture, &TextureAtomicMax_TextureCube_Int32_coordinate, &TextureAtomicMax_TextureCube_Int32_value };
-
-/// textureAtomicMax with TextureCube, Int32x3, UInt16
-Variable TextureAtomicMax_TextureCube_UInt16_texture;
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCube_UInt16_coordinate;
-Variable TextureAtomicMax_TextureCube_UInt16_value;
-Function TextureAtomicMax_TextureCube_UInt16;
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt16_args = { &TextureAtomicMax_TextureCube_UInt16_texture, &TextureAtomicMax_TextureCube_UInt16_coordinate, &TextureAtomicMax_TextureCube_UInt16_value };
-
-/// textureAtomicMax with TextureCube, Int32x3, Int16
-Variable TextureAtomicMax_TextureCube_Int16_texture;
-inline constexpr std::array TextureAtomicMax_TextureCube_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCube_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCube_Int16_coordinate;
-Variable TextureAtomicMax_TextureCube_Int16_value;
-Function TextureAtomicMax_TextureCube_Int16;
-inline constexpr std::array TextureAtomicMax_TextureCube_Int16_args = { &TextureAtomicMax_TextureCube_Int16_texture, &TextureAtomicMax_TextureCube_Int16_coordinate, &TextureAtomicMax_TextureCube_Int16_value };
-
-/// textureAtomicMax with TextureCube, Int32x3, UInt64
-Variable TextureAtomicMax_TextureCube_UInt64_texture;
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCube_UInt64_coordinate;
-Variable TextureAtomicMax_TextureCube_UInt64_value;
-Function TextureAtomicMax_TextureCube_UInt64;
-inline constexpr std::array TextureAtomicMax_TextureCube_UInt64_args = { &TextureAtomicMax_TextureCube_UInt64_texture, &TextureAtomicMax_TextureCube_UInt64_coordinate, &TextureAtomicMax_TextureCube_UInt64_value };
-
-/// textureAtomicMax with Texture1DArray, Int32x2, UInt32
-Variable TextureAtomicMax_Texture1DArray_UInt32_texture;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1DArray_UInt32_coordinate;
-Variable TextureAtomicMax_Texture1DArray_UInt32_value;
-Function TextureAtomicMax_Texture1DArray_UInt32;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt32_args = { &TextureAtomicMax_Texture1DArray_UInt32_texture, &TextureAtomicMax_Texture1DArray_UInt32_coordinate, &TextureAtomicMax_Texture1DArray_UInt32_value };
-
-/// textureAtomicMax with Texture1DArray, Int32x2, Int32
-Variable TextureAtomicMax_Texture1DArray_Int32_texture;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1DArray_Int32_coordinate;
-Variable TextureAtomicMax_Texture1DArray_Int32_value;
-Function TextureAtomicMax_Texture1DArray_Int32;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_Int32_args = { &TextureAtomicMax_Texture1DArray_Int32_texture, &TextureAtomicMax_Texture1DArray_Int32_coordinate, &TextureAtomicMax_Texture1DArray_Int32_value };
-
-/// textureAtomicMax with Texture1DArray, Int32x2, UInt16
-Variable TextureAtomicMax_Texture1DArray_UInt16_texture;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1DArray_UInt16_coordinate;
-Variable TextureAtomicMax_Texture1DArray_UInt16_value;
-Function TextureAtomicMax_Texture1DArray_UInt16;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt16_args = { &TextureAtomicMax_Texture1DArray_UInt16_texture, &TextureAtomicMax_Texture1DArray_UInt16_coordinate, &TextureAtomicMax_Texture1DArray_UInt16_value };
-
-/// textureAtomicMax with Texture1DArray, Int32x2, Int16
-Variable TextureAtomicMax_Texture1DArray_Int16_texture;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1DArray_Int16_coordinate;
-Variable TextureAtomicMax_Texture1DArray_Int16_value;
-Function TextureAtomicMax_Texture1DArray_Int16;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_Int16_args = { &TextureAtomicMax_Texture1DArray_Int16_texture, &TextureAtomicMax_Texture1DArray_Int16_coordinate, &TextureAtomicMax_Texture1DArray_Int16_value };
-
-/// textureAtomicMax with Texture1DArray, Int32x2, UInt64
-Variable TextureAtomicMax_Texture1DArray_UInt64_texture;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture1DArray_UInt64_coordinate;
-Variable TextureAtomicMax_Texture1DArray_UInt64_value;
-Function TextureAtomicMax_Texture1DArray_UInt64;
-inline constexpr std::array TextureAtomicMax_Texture1DArray_UInt64_args = { &TextureAtomicMax_Texture1DArray_UInt64_texture, &TextureAtomicMax_Texture1DArray_UInt64_coordinate, &TextureAtomicMax_Texture1DArray_UInt64_value };
-
-/// textureAtomicMax with Texture2DArray, Int32x3, UInt32
-Variable TextureAtomicMax_Texture2DArray_UInt32_texture;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2DArray_UInt32_coordinate;
-Variable TextureAtomicMax_Texture2DArray_UInt32_value;
-Function TextureAtomicMax_Texture2DArray_UInt32;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt32_args = { &TextureAtomicMax_Texture2DArray_UInt32_texture, &TextureAtomicMax_Texture2DArray_UInt32_coordinate, &TextureAtomicMax_Texture2DArray_UInt32_value };
-
-/// textureAtomicMax with Texture2DArray, Int32x3, Int32
-Variable TextureAtomicMax_Texture2DArray_Int32_texture;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2DArray_Int32_coordinate;
-Variable TextureAtomicMax_Texture2DArray_Int32_value;
-Function TextureAtomicMax_Texture2DArray_Int32;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_Int32_args = { &TextureAtomicMax_Texture2DArray_Int32_texture, &TextureAtomicMax_Texture2DArray_Int32_coordinate, &TextureAtomicMax_Texture2DArray_Int32_value };
-
-/// textureAtomicMax with Texture2DArray, Int32x3, UInt16
-Variable TextureAtomicMax_Texture2DArray_UInt16_texture;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2DArray_UInt16_coordinate;
-Variable TextureAtomicMax_Texture2DArray_UInt16_value;
-Function TextureAtomicMax_Texture2DArray_UInt16;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt16_args = { &TextureAtomicMax_Texture2DArray_UInt16_texture, &TextureAtomicMax_Texture2DArray_UInt16_coordinate, &TextureAtomicMax_Texture2DArray_UInt16_value };
-
-/// textureAtomicMax with Texture2DArray, Int32x3, Int16
-Variable TextureAtomicMax_Texture2DArray_Int16_texture;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2DArray_Int16_coordinate;
-Variable TextureAtomicMax_Texture2DArray_Int16_value;
-Function TextureAtomicMax_Texture2DArray_Int16;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_Int16_args = { &TextureAtomicMax_Texture2DArray_Int16_texture, &TextureAtomicMax_Texture2DArray_Int16_coordinate, &TextureAtomicMax_Texture2DArray_Int16_value };
-
-/// textureAtomicMax with Texture2DArray, Int32x3, UInt64
-Variable TextureAtomicMax_Texture2DArray_UInt64_texture;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_Texture2DArray_UInt64_coordinate;
-Variable TextureAtomicMax_Texture2DArray_UInt64_value;
-Function TextureAtomicMax_Texture2DArray_UInt64;
-inline constexpr std::array TextureAtomicMax_Texture2DArray_UInt64_args = { &TextureAtomicMax_Texture2DArray_UInt64_texture, &TextureAtomicMax_Texture2DArray_UInt64_coordinate, &TextureAtomicMax_Texture2DArray_UInt64_value };
-
-/// textureAtomicMax with TextureCubeArray, Int32x4, UInt32
-Variable TextureAtomicMax_TextureCubeArray_UInt32_texture;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCubeArray_UInt32_coordinate;
-Variable TextureAtomicMax_TextureCubeArray_UInt32_value;
-Function TextureAtomicMax_TextureCubeArray_UInt32;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt32_args = { &TextureAtomicMax_TextureCubeArray_UInt32_texture, &TextureAtomicMax_TextureCubeArray_UInt32_coordinate, &TextureAtomicMax_TextureCubeArray_UInt32_value };
-
-/// textureAtomicMax with TextureCubeArray, Int32x4, Int32
-Variable TextureAtomicMax_TextureCubeArray_Int32_texture;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCubeArray_Int32_coordinate;
-Variable TextureAtomicMax_TextureCubeArray_Int32_value;
-Function TextureAtomicMax_TextureCubeArray_Int32;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_Int32_args = { &TextureAtomicMax_TextureCubeArray_Int32_texture, &TextureAtomicMax_TextureCubeArray_Int32_coordinate, &TextureAtomicMax_TextureCubeArray_Int32_value };
-
-/// textureAtomicMax with TextureCubeArray, Int32x4, UInt16
-Variable TextureAtomicMax_TextureCubeArray_UInt16_texture;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCubeArray_UInt16_coordinate;
-Variable TextureAtomicMax_TextureCubeArray_UInt16_value;
-Function TextureAtomicMax_TextureCubeArray_UInt16;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt16_args = { &TextureAtomicMax_TextureCubeArray_UInt16_texture, &TextureAtomicMax_TextureCubeArray_UInt16_coordinate, &TextureAtomicMax_TextureCubeArray_UInt16_value };
-
-/// textureAtomicMax with TextureCubeArray, Int32x4, Int16
-Variable TextureAtomicMax_TextureCubeArray_Int16_texture;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCubeArray_Int16_coordinate;
-Variable TextureAtomicMax_TextureCubeArray_Int16_value;
-Function TextureAtomicMax_TextureCubeArray_Int16;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_Int16_args = { &TextureAtomicMax_TextureCubeArray_Int16_texture, &TextureAtomicMax_TextureCubeArray_Int16_coordinate, &TextureAtomicMax_TextureCubeArray_Int16_value };
-
-/// textureAtomicMax with TextureCubeArray, Int32x4, UInt64
-Variable TextureAtomicMax_TextureCubeArray_UInt64_texture;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicMax_TextureCubeArray_UInt64_coordinate;
-Variable TextureAtomicMax_TextureCubeArray_UInt64_value;
-Function TextureAtomicMax_TextureCubeArray_UInt64;
-inline constexpr std::array TextureAtomicMax_TextureCubeArray_UInt64_args = { &TextureAtomicMax_TextureCubeArray_UInt64_texture, &TextureAtomicMax_TextureCubeArray_UInt64_coordinate, &TextureAtomicMax_TextureCubeArray_UInt64_value };
-
-/// textureAtomicAnd with Texture1D, Int32, UInt32
-Variable TextureAtomicAnd_Texture1D_UInt32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1D_UInt32_coordinate;
-Variable TextureAtomicAnd_Texture1D_UInt32_value;
-Function TextureAtomicAnd_Texture1D_UInt32;
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt32_args = { &TextureAtomicAnd_Texture1D_UInt32_texture, &TextureAtomicAnd_Texture1D_UInt32_coordinate, &TextureAtomicAnd_Texture1D_UInt32_value };
-
-/// textureAtomicAnd with Texture1D, Int32, Int32
-Variable TextureAtomicAnd_Texture1D_Int32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1D_Int32_coordinate;
-Variable TextureAtomicAnd_Texture1D_Int32_value;
-Function TextureAtomicAnd_Texture1D_Int32;
-inline constexpr std::array TextureAtomicAnd_Texture1D_Int32_args = { &TextureAtomicAnd_Texture1D_Int32_texture, &TextureAtomicAnd_Texture1D_Int32_coordinate, &TextureAtomicAnd_Texture1D_Int32_value };
-
-/// textureAtomicAnd with Texture1D, Int32, UInt16
-Variable TextureAtomicAnd_Texture1D_UInt16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1D_UInt16_coordinate;
-Variable TextureAtomicAnd_Texture1D_UInt16_value;
-Function TextureAtomicAnd_Texture1D_UInt16;
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt16_args = { &TextureAtomicAnd_Texture1D_UInt16_texture, &TextureAtomicAnd_Texture1D_UInt16_coordinate, &TextureAtomicAnd_Texture1D_UInt16_value };
-
-/// textureAtomicAnd with Texture1D, Int32, Int16
-Variable TextureAtomicAnd_Texture1D_Int16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1D_Int16_coordinate;
-Variable TextureAtomicAnd_Texture1D_Int16_value;
-Function TextureAtomicAnd_Texture1D_Int16;
-inline constexpr std::array TextureAtomicAnd_Texture1D_Int16_args = { &TextureAtomicAnd_Texture1D_Int16_texture, &TextureAtomicAnd_Texture1D_Int16_coordinate, &TextureAtomicAnd_Texture1D_Int16_value };
-
-/// textureAtomicAnd with Texture1D, Int32, UInt64
-Variable TextureAtomicAnd_Texture1D_UInt64_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1D_UInt64_coordinate;
-Variable TextureAtomicAnd_Texture1D_UInt64_value;
-Function TextureAtomicAnd_Texture1D_UInt64;
-inline constexpr std::array TextureAtomicAnd_Texture1D_UInt64_args = { &TextureAtomicAnd_Texture1D_UInt64_texture, &TextureAtomicAnd_Texture1D_UInt64_coordinate, &TextureAtomicAnd_Texture1D_UInt64_value };
-
-/// textureAtomicAnd with Texture2D, Int32x2, UInt32
-Variable TextureAtomicAnd_Texture2D_UInt32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2D_UInt32_coordinate;
-Variable TextureAtomicAnd_Texture2D_UInt32_value;
-Function TextureAtomicAnd_Texture2D_UInt32;
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt32_args = { &TextureAtomicAnd_Texture2D_UInt32_texture, &TextureAtomicAnd_Texture2D_UInt32_coordinate, &TextureAtomicAnd_Texture2D_UInt32_value };
-
-/// textureAtomicAnd with Texture2D, Int32x2, Int32
-Variable TextureAtomicAnd_Texture2D_Int32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2D_Int32_coordinate;
-Variable TextureAtomicAnd_Texture2D_Int32_value;
-Function TextureAtomicAnd_Texture2D_Int32;
-inline constexpr std::array TextureAtomicAnd_Texture2D_Int32_args = { &TextureAtomicAnd_Texture2D_Int32_texture, &TextureAtomicAnd_Texture2D_Int32_coordinate, &TextureAtomicAnd_Texture2D_Int32_value };
-
-/// textureAtomicAnd with Texture2D, Int32x2, UInt16
-Variable TextureAtomicAnd_Texture2D_UInt16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2D_UInt16_coordinate;
-Variable TextureAtomicAnd_Texture2D_UInt16_value;
-Function TextureAtomicAnd_Texture2D_UInt16;
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt16_args = { &TextureAtomicAnd_Texture2D_UInt16_texture, &TextureAtomicAnd_Texture2D_UInt16_coordinate, &TextureAtomicAnd_Texture2D_UInt16_value };
-
-/// textureAtomicAnd with Texture2D, Int32x2, Int16
-Variable TextureAtomicAnd_Texture2D_Int16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2D_Int16_coordinate;
-Variable TextureAtomicAnd_Texture2D_Int16_value;
-Function TextureAtomicAnd_Texture2D_Int16;
-inline constexpr std::array TextureAtomicAnd_Texture2D_Int16_args = { &TextureAtomicAnd_Texture2D_Int16_texture, &TextureAtomicAnd_Texture2D_Int16_coordinate, &TextureAtomicAnd_Texture2D_Int16_value };
-
-/// textureAtomicAnd with Texture2D, Int32x2, UInt64
-Variable TextureAtomicAnd_Texture2D_UInt64_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2D_UInt64_coordinate;
-Variable TextureAtomicAnd_Texture2D_UInt64_value;
-Function TextureAtomicAnd_Texture2D_UInt64;
-inline constexpr std::array TextureAtomicAnd_Texture2D_UInt64_args = { &TextureAtomicAnd_Texture2D_UInt64_texture, &TextureAtomicAnd_Texture2D_UInt64_coordinate, &TextureAtomicAnd_Texture2D_UInt64_value };
-
-/// textureAtomicAnd with Texture3D, Int32x3, UInt32
-Variable TextureAtomicAnd_Texture3D_UInt32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture3D_UInt32_coordinate;
-Variable TextureAtomicAnd_Texture3D_UInt32_value;
-Function TextureAtomicAnd_Texture3D_UInt32;
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt32_args = { &TextureAtomicAnd_Texture3D_UInt32_texture, &TextureAtomicAnd_Texture3D_UInt32_coordinate, &TextureAtomicAnd_Texture3D_UInt32_value };
-
-/// textureAtomicAnd with Texture3D, Int32x3, Int32
-Variable TextureAtomicAnd_Texture3D_Int32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture3D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture3D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture3D_Int32_coordinate;
-Variable TextureAtomicAnd_Texture3D_Int32_value;
-Function TextureAtomicAnd_Texture3D_Int32;
-inline constexpr std::array TextureAtomicAnd_Texture3D_Int32_args = { &TextureAtomicAnd_Texture3D_Int32_texture, &TextureAtomicAnd_Texture3D_Int32_coordinate, &TextureAtomicAnd_Texture3D_Int32_value };
-
-/// textureAtomicAnd with Texture3D, Int32x3, UInt16
-Variable TextureAtomicAnd_Texture3D_UInt16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture3D_UInt16_coordinate;
-Variable TextureAtomicAnd_Texture3D_UInt16_value;
-Function TextureAtomicAnd_Texture3D_UInt16;
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt16_args = { &TextureAtomicAnd_Texture3D_UInt16_texture, &TextureAtomicAnd_Texture3D_UInt16_coordinate, &TextureAtomicAnd_Texture3D_UInt16_value };
-
-/// textureAtomicAnd with Texture3D, Int32x3, Int16
-Variable TextureAtomicAnd_Texture3D_Int16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture3D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture3D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture3D_Int16_coordinate;
-Variable TextureAtomicAnd_Texture3D_Int16_value;
-Function TextureAtomicAnd_Texture3D_Int16;
-inline constexpr std::array TextureAtomicAnd_Texture3D_Int16_args = { &TextureAtomicAnd_Texture3D_Int16_texture, &TextureAtomicAnd_Texture3D_Int16_coordinate, &TextureAtomicAnd_Texture3D_Int16_value };
-
-/// textureAtomicAnd with Texture3D, Int32x3, UInt64
-Variable TextureAtomicAnd_Texture3D_UInt64_texture;
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture3D_UInt64_coordinate;
-Variable TextureAtomicAnd_Texture3D_UInt64_value;
-Function TextureAtomicAnd_Texture3D_UInt64;
-inline constexpr std::array TextureAtomicAnd_Texture3D_UInt64_args = { &TextureAtomicAnd_Texture3D_UInt64_texture, &TextureAtomicAnd_Texture3D_UInt64_coordinate, &TextureAtomicAnd_Texture3D_UInt64_value };
-
-/// textureAtomicAnd with TextureCube, Int32x3, UInt32
-Variable TextureAtomicAnd_TextureCube_UInt32_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCube_UInt32_coordinate;
-Variable TextureAtomicAnd_TextureCube_UInt32_value;
-Function TextureAtomicAnd_TextureCube_UInt32;
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt32_args = { &TextureAtomicAnd_TextureCube_UInt32_texture, &TextureAtomicAnd_TextureCube_UInt32_coordinate, &TextureAtomicAnd_TextureCube_UInt32_value };
-
-/// textureAtomicAnd with TextureCube, Int32x3, Int32
-Variable TextureAtomicAnd_TextureCube_Int32_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCube_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCube_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCube_Int32_coordinate;
-Variable TextureAtomicAnd_TextureCube_Int32_value;
-Function TextureAtomicAnd_TextureCube_Int32;
-inline constexpr std::array TextureAtomicAnd_TextureCube_Int32_args = { &TextureAtomicAnd_TextureCube_Int32_texture, &TextureAtomicAnd_TextureCube_Int32_coordinate, &TextureAtomicAnd_TextureCube_Int32_value };
-
-/// textureAtomicAnd with TextureCube, Int32x3, UInt16
-Variable TextureAtomicAnd_TextureCube_UInt16_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCube_UInt16_coordinate;
-Variable TextureAtomicAnd_TextureCube_UInt16_value;
-Function TextureAtomicAnd_TextureCube_UInt16;
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt16_args = { &TextureAtomicAnd_TextureCube_UInt16_texture, &TextureAtomicAnd_TextureCube_UInt16_coordinate, &TextureAtomicAnd_TextureCube_UInt16_value };
-
-/// textureAtomicAnd with TextureCube, Int32x3, Int16
-Variable TextureAtomicAnd_TextureCube_Int16_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCube_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCube_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCube_Int16_coordinate;
-Variable TextureAtomicAnd_TextureCube_Int16_value;
-Function TextureAtomicAnd_TextureCube_Int16;
-inline constexpr std::array TextureAtomicAnd_TextureCube_Int16_args = { &TextureAtomicAnd_TextureCube_Int16_texture, &TextureAtomicAnd_TextureCube_Int16_coordinate, &TextureAtomicAnd_TextureCube_Int16_value };
-
-/// textureAtomicAnd with TextureCube, Int32x3, UInt64
-Variable TextureAtomicAnd_TextureCube_UInt64_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCube_UInt64_coordinate;
-Variable TextureAtomicAnd_TextureCube_UInt64_value;
-Function TextureAtomicAnd_TextureCube_UInt64;
-inline constexpr std::array TextureAtomicAnd_TextureCube_UInt64_args = { &TextureAtomicAnd_TextureCube_UInt64_texture, &TextureAtomicAnd_TextureCube_UInt64_coordinate, &TextureAtomicAnd_TextureCube_UInt64_value };
-
-/// textureAtomicAnd with Texture1DArray, Int32x2, UInt32
-Variable TextureAtomicAnd_Texture1DArray_UInt32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1DArray_UInt32_coordinate;
-Variable TextureAtomicAnd_Texture1DArray_UInt32_value;
-Function TextureAtomicAnd_Texture1DArray_UInt32;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt32_args = { &TextureAtomicAnd_Texture1DArray_UInt32_texture, &TextureAtomicAnd_Texture1DArray_UInt32_coordinate, &TextureAtomicAnd_Texture1DArray_UInt32_value };
-
-/// textureAtomicAnd with Texture1DArray, Int32x2, Int32
-Variable TextureAtomicAnd_Texture1DArray_Int32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1DArray_Int32_coordinate;
-Variable TextureAtomicAnd_Texture1DArray_Int32_value;
-Function TextureAtomicAnd_Texture1DArray_Int32;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_Int32_args = { &TextureAtomicAnd_Texture1DArray_Int32_texture, &TextureAtomicAnd_Texture1DArray_Int32_coordinate, &TextureAtomicAnd_Texture1DArray_Int32_value };
-
-/// textureAtomicAnd with Texture1DArray, Int32x2, UInt16
-Variable TextureAtomicAnd_Texture1DArray_UInt16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1DArray_UInt16_coordinate;
-Variable TextureAtomicAnd_Texture1DArray_UInt16_value;
-Function TextureAtomicAnd_Texture1DArray_UInt16;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt16_args = { &TextureAtomicAnd_Texture1DArray_UInt16_texture, &TextureAtomicAnd_Texture1DArray_UInt16_coordinate, &TextureAtomicAnd_Texture1DArray_UInt16_value };
-
-/// textureAtomicAnd with Texture1DArray, Int32x2, Int16
-Variable TextureAtomicAnd_Texture1DArray_Int16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1DArray_Int16_coordinate;
-Variable TextureAtomicAnd_Texture1DArray_Int16_value;
-Function TextureAtomicAnd_Texture1DArray_Int16;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_Int16_args = { &TextureAtomicAnd_Texture1DArray_Int16_texture, &TextureAtomicAnd_Texture1DArray_Int16_coordinate, &TextureAtomicAnd_Texture1DArray_Int16_value };
-
-/// textureAtomicAnd with Texture1DArray, Int32x2, UInt64
-Variable TextureAtomicAnd_Texture1DArray_UInt64_texture;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture1DArray_UInt64_coordinate;
-Variable TextureAtomicAnd_Texture1DArray_UInt64_value;
-Function TextureAtomicAnd_Texture1DArray_UInt64;
-inline constexpr std::array TextureAtomicAnd_Texture1DArray_UInt64_args = { &TextureAtomicAnd_Texture1DArray_UInt64_texture, &TextureAtomicAnd_Texture1DArray_UInt64_coordinate, &TextureAtomicAnd_Texture1DArray_UInt64_value };
-
-/// textureAtomicAnd with Texture2DArray, Int32x3, UInt32
-Variable TextureAtomicAnd_Texture2DArray_UInt32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2DArray_UInt32_coordinate;
-Variable TextureAtomicAnd_Texture2DArray_UInt32_value;
-Function TextureAtomicAnd_Texture2DArray_UInt32;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt32_args = { &TextureAtomicAnd_Texture2DArray_UInt32_texture, &TextureAtomicAnd_Texture2DArray_UInt32_coordinate, &TextureAtomicAnd_Texture2DArray_UInt32_value };
-
-/// textureAtomicAnd with Texture2DArray, Int32x3, Int32
-Variable TextureAtomicAnd_Texture2DArray_Int32_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2DArray_Int32_coordinate;
-Variable TextureAtomicAnd_Texture2DArray_Int32_value;
-Function TextureAtomicAnd_Texture2DArray_Int32;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_Int32_args = { &TextureAtomicAnd_Texture2DArray_Int32_texture, &TextureAtomicAnd_Texture2DArray_Int32_coordinate, &TextureAtomicAnd_Texture2DArray_Int32_value };
-
-/// textureAtomicAnd with Texture2DArray, Int32x3, UInt16
-Variable TextureAtomicAnd_Texture2DArray_UInt16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2DArray_UInt16_coordinate;
-Variable TextureAtomicAnd_Texture2DArray_UInt16_value;
-Function TextureAtomicAnd_Texture2DArray_UInt16;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt16_args = { &TextureAtomicAnd_Texture2DArray_UInt16_texture, &TextureAtomicAnd_Texture2DArray_UInt16_coordinate, &TextureAtomicAnd_Texture2DArray_UInt16_value };
-
-/// textureAtomicAnd with Texture2DArray, Int32x3, Int16
-Variable TextureAtomicAnd_Texture2DArray_Int16_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2DArray_Int16_coordinate;
-Variable TextureAtomicAnd_Texture2DArray_Int16_value;
-Function TextureAtomicAnd_Texture2DArray_Int16;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_Int16_args = { &TextureAtomicAnd_Texture2DArray_Int16_texture, &TextureAtomicAnd_Texture2DArray_Int16_coordinate, &TextureAtomicAnd_Texture2DArray_Int16_value };
-
-/// textureAtomicAnd with Texture2DArray, Int32x3, UInt64
-Variable TextureAtomicAnd_Texture2DArray_UInt64_texture;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_Texture2DArray_UInt64_coordinate;
-Variable TextureAtomicAnd_Texture2DArray_UInt64_value;
-Function TextureAtomicAnd_Texture2DArray_UInt64;
-inline constexpr std::array TextureAtomicAnd_Texture2DArray_UInt64_args = { &TextureAtomicAnd_Texture2DArray_UInt64_texture, &TextureAtomicAnd_Texture2DArray_UInt64_coordinate, &TextureAtomicAnd_Texture2DArray_UInt64_value };
-
-/// textureAtomicAnd with TextureCubeArray, Int32x4, UInt32
-Variable TextureAtomicAnd_TextureCubeArray_UInt32_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCubeArray_UInt32_coordinate;
-Variable TextureAtomicAnd_TextureCubeArray_UInt32_value;
-Function TextureAtomicAnd_TextureCubeArray_UInt32;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt32_args = { &TextureAtomicAnd_TextureCubeArray_UInt32_texture, &TextureAtomicAnd_TextureCubeArray_UInt32_coordinate, &TextureAtomicAnd_TextureCubeArray_UInt32_value };
-
-/// textureAtomicAnd with TextureCubeArray, Int32x4, Int32
-Variable TextureAtomicAnd_TextureCubeArray_Int32_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCubeArray_Int32_coordinate;
-Variable TextureAtomicAnd_TextureCubeArray_Int32_value;
-Function TextureAtomicAnd_TextureCubeArray_Int32;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_Int32_args = { &TextureAtomicAnd_TextureCubeArray_Int32_texture, &TextureAtomicAnd_TextureCubeArray_Int32_coordinate, &TextureAtomicAnd_TextureCubeArray_Int32_value };
-
-/// textureAtomicAnd with TextureCubeArray, Int32x4, UInt16
-Variable TextureAtomicAnd_TextureCubeArray_UInt16_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCubeArray_UInt16_coordinate;
-Variable TextureAtomicAnd_TextureCubeArray_UInt16_value;
-Function TextureAtomicAnd_TextureCubeArray_UInt16;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt16_args = { &TextureAtomicAnd_TextureCubeArray_UInt16_texture, &TextureAtomicAnd_TextureCubeArray_UInt16_coordinate, &TextureAtomicAnd_TextureCubeArray_UInt16_value };
-
-/// textureAtomicAnd with TextureCubeArray, Int32x4, Int16
-Variable TextureAtomicAnd_TextureCubeArray_Int16_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCubeArray_Int16_coordinate;
-Variable TextureAtomicAnd_TextureCubeArray_Int16_value;
-Function TextureAtomicAnd_TextureCubeArray_Int16;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_Int16_args = { &TextureAtomicAnd_TextureCubeArray_Int16_texture, &TextureAtomicAnd_TextureCubeArray_Int16_coordinate, &TextureAtomicAnd_TextureCubeArray_Int16_value };
-
-/// textureAtomicAnd with TextureCubeArray, Int32x4, UInt64
-Variable TextureAtomicAnd_TextureCubeArray_UInt64_texture;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicAnd_TextureCubeArray_UInt64_coordinate;
-Variable TextureAtomicAnd_TextureCubeArray_UInt64_value;
-Function TextureAtomicAnd_TextureCubeArray_UInt64;
-inline constexpr std::array TextureAtomicAnd_TextureCubeArray_UInt64_args = { &TextureAtomicAnd_TextureCubeArray_UInt64_texture, &TextureAtomicAnd_TextureCubeArray_UInt64_coordinate, &TextureAtomicAnd_TextureCubeArray_UInt64_value };
-
-/// textureAtomicOr with Texture1D, Int32, UInt32
-Variable TextureAtomicOr_Texture1D_UInt32_texture;
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture1D_UInt32_coordinate;
-Variable TextureAtomicOr_Texture1D_UInt32_value;
-Function TextureAtomicOr_Texture1D_UInt32;
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt32_args = { &TextureAtomicOr_Texture1D_UInt32_texture, &TextureAtomicOr_Texture1D_UInt32_coordinate, &TextureAtomicOr_Texture1D_UInt32_value };
-
-/// textureAtomicOr with Texture1D, Int32, Int32
-Variable TextureAtomicOr_Texture1D_Int32_texture;
-inline constexpr std::array TextureAtomicOr_Texture1D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture1D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture1D_Int32_coordinate;
-Variable TextureAtomicOr_Texture1D_Int32_value;
-Function TextureAtomicOr_Texture1D_Int32;
-inline constexpr std::array TextureAtomicOr_Texture1D_Int32_args = { &TextureAtomicOr_Texture1D_Int32_texture, &TextureAtomicOr_Texture1D_Int32_coordinate, &TextureAtomicOr_Texture1D_Int32_value };
-
-/// textureAtomicOr with Texture1D, Int32, UInt16
-Variable TextureAtomicOr_Texture1D_UInt16_texture;
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture1D_UInt16_coordinate;
-Variable TextureAtomicOr_Texture1D_UInt16_value;
-Function TextureAtomicOr_Texture1D_UInt16;
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt16_args = { &TextureAtomicOr_Texture1D_UInt16_texture, &TextureAtomicOr_Texture1D_UInt16_coordinate, &TextureAtomicOr_Texture1D_UInt16_value };
-
-/// textureAtomicOr with Texture1D, Int32, Int16
-Variable TextureAtomicOr_Texture1D_Int16_texture;
-inline constexpr std::array TextureAtomicOr_Texture1D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture1D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture1D_Int16_coordinate;
-Variable TextureAtomicOr_Texture1D_Int16_value;
-Function TextureAtomicOr_Texture1D_Int16;
-inline constexpr std::array TextureAtomicOr_Texture1D_Int16_args = { &TextureAtomicOr_Texture1D_Int16_texture, &TextureAtomicOr_Texture1D_Int16_coordinate, &TextureAtomicOr_Texture1D_Int16_value };
-
-/// textureAtomicOr with Texture1D, Int32, UInt64
-Variable TextureAtomicOr_Texture1D_UInt64_texture;
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt64_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture1D_UInt64_coordinate;
-Variable TextureAtomicOr_Texture1D_UInt64_value;
-Function TextureAtomicOr_Texture1D_UInt64;
-inline constexpr std::array TextureAtomicOr_Texture1D_UInt64_args = { &TextureAtomicOr_Texture1D_UInt64_texture, &TextureAtomicOr_Texture1D_UInt64_coordinate, &TextureAtomicOr_Texture1D_UInt64_value };
-
-/// textureAtomicOr with Texture2D, Int32x2, UInt32
-Variable TextureAtomicOr_Texture2D_UInt32_texture;
-inline constexpr std::array TextureAtomicOr_Texture2D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture2D_UInt32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture2D_UInt32_coordinate;
-Variable TextureAtomicOr_Texture2D_UInt32_value;
-Function TextureAtomicOr_Texture2D_UInt32;
-inline constexpr std::array TextureAtomicOr_Texture2D_UInt32_args = { &TextureAtomicOr_Texture2D_UInt32_texture, &TextureAtomicOr_Texture2D_UInt32_coordinate, &TextureAtomicOr_Texture2D_UInt32_value };
-
-/// textureAtomicOr with Texture2D, Int32x2, Int32
-Variable TextureAtomicOr_Texture2D_Int32_texture;
-inline constexpr std::array TextureAtomicOr_Texture2D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture2D_Int32_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture2D_Int32_coordinate;
-Variable TextureAtomicOr_Texture2D_Int32_value;
-Function TextureAtomicOr_Texture2D_Int32;
-inline constexpr std::array TextureAtomicOr_Texture2D_Int32_args = { &TextureAtomicOr_Texture2D_Int32_texture, &TextureAtomicOr_Texture2D_Int32_coordinate, &TextureAtomicOr_Texture2D_Int32_value };
-
-/// textureAtomicOr with Texture2D, Int32x2, UInt16
-Variable TextureAtomicOr_Texture2D_UInt16_texture;
-inline constexpr std::array TextureAtomicOr_Texture2D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture2D_UInt16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture2D_UInt16_coordinate;
-Variable TextureAtomicOr_Texture2D_UInt16_value;
-Function TextureAtomicOr_Texture2D_UInt16;
-inline constexpr std::array TextureAtomicOr_Texture2D_UInt16_args = { &TextureAtomicOr_Texture2D_UInt16_texture, &TextureAtomicOr_Texture2D_UInt16_coordinate, &TextureAtomicOr_Texture2D_UInt16_value };
-
-/// textureAtomicOr with Texture2D, Int32x2, Int16
-Variable TextureAtomicOr_Texture2D_Int16_texture;
-inline constexpr std::array TextureAtomicOr_Texture2D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureAtomicOr_Texture2D_Int16_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureAtomicOr_Texture2D_Int16_coordinate;
-Variable TextureAtomicOr_Texture2D_Int16_value;
-Function TextureAtomicOr_Texture2D_Int16;
-inline constexpr std::array TextureAtomicOr_Texture2D_Int16_args = { &TextureAtomicOr_Texture2D_Int16_texture, &TextureAtomicOr_Texture2D_Int16_coordinate, &TextureAtomicOr_Texture2D_Int16_value };
+/// textureSampleCompareBias with Texture1DArray, Sampler, Float32x2, Float32, Float32
+Variable TextureSampleBiasCompare_Texture1DArray_texture;
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompare_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompare_Texture1DArray_coordinate;
+Variable TextureSampleBiasCompare_Texture1DArray_compare;
+Variable TextureSampleBiasCompare_Texture1DArray_bias;
+Function TextureSampleBiasCompare_Texture1DArray;
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_args = { &TextureSampleBiasCompare_Texture1DArray_texture, &TextureSampleBiasCompare_Texture1DArray_sampler, &TextureSampleBiasCompare_Texture1DArray_coordinate, &TextureSampleBiasCompare_Texture1DArray_compare, &TextureSampleBiasCompare_Texture1DArray_bias };
+
+/// textureSampleCompareBias with SampledTexture1DArray, Float32x2, Float32, Float32
+Variable SampledTextureSampleBiasCompare_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasCompare_Texture1DArray_coordinate;
+Variable SampledTextureSampleBiasCompare_Texture1DArray_compare;
+Variable SampledTextureSampleBiasCompare_Texture1DArray_bias;
+Function SampledTextureSampleBiasCompare_Texture1DArray;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture1DArray_args = { &SampledTextureSampleBiasCompare_Texture1DArray_texture, &SampledTextureSampleBiasCompare_Texture1DArray_coordinate, &SampledTextureSampleBiasCompare_Texture1DArray_compare, &SampledTextureSampleBiasCompare_Texture1DArray_bias };
+
+/// textureSampleCompareBias with Texture2DArray, Sampler, Float32x3, Float32, Float32
+Variable TextureSampleBiasCompare_Texture2DArray_texture;
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompare_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompare_Texture2DArray_coordinate;
+Variable TextureSampleBiasCompare_Texture2DArray_compare;
+Variable TextureSampleBiasCompare_Texture2DArray_bias;
+Function TextureSampleBiasCompare_Texture2DArray;
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_args = { &TextureSampleBiasCompare_Texture2DArray_texture, &TextureSampleBiasCompare_Texture2DArray_sampler, &TextureSampleBiasCompare_Texture2DArray_coordinate, &TextureSampleBiasCompare_Texture2DArray_compare, &TextureSampleBiasCompare_Texture2DArray_bias };
+
+/// textureSampleCompareBias with SampledTexture2DArray, Float32x3, Float32, Float32
+Variable SampledTextureSampleBiasCompare_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasCompare_Texture2DArray_coordinate;
+Variable SampledTextureSampleBiasCompare_Texture2DArray_compare;
+Variable SampledTextureSampleBiasCompare_Texture2DArray_bias;
+Function SampledTextureSampleBiasCompare_Texture2DArray;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture2DArray_args = { &SampledTextureSampleBiasCompare_Texture2DArray_texture, &SampledTextureSampleBiasCompare_Texture2DArray_coordinate, &SampledTextureSampleBiasCompare_Texture2DArray_compare, &SampledTextureSampleBiasCompare_Texture2DArray_bias };
+
+/// textureSampleCompareBiasOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
+Variable TextureSampleBiasCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture1D_coordinate;
+Variable TextureSampleBiasCompareOffset_Texture1D_compare;
+Variable TextureSampleBiasCompareOffset_Texture1D_bias;
+Variable TextureSampleBiasCompareOffset_Texture1D_offset;
+Function TextureSampleBiasCompareOffset_Texture1D;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_args = { &TextureSampleBiasCompareOffset_Texture1D_texture, &TextureSampleBiasCompareOffset_Texture1D_sampler, &TextureSampleBiasCompareOffset_Texture1D_coordinate, &TextureSampleBiasCompareOffset_Texture1D_compare, &TextureSampleBiasCompareOffset_Texture1D_bias, &TextureSampleBiasCompareOffset_Texture1D_offset };
+
+/// textureSampleCompareBiasOffset with SampledTexture1D, Float32, Float32, Float32, Float32
+Variable SampledTextureSampleBiasCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasCompareOffset_Texture1D_coordinate;
+Variable SampledTextureSampleBiasCompareOffset_Texture1D_compare;
+Variable SampledTextureSampleBiasCompareOffset_Texture1D_bias;
+Variable SampledTextureSampleBiasCompareOffset_Texture1D_offset;
+Function SampledTextureSampleBiasCompareOffset_Texture1D;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1D_args = { &SampledTextureSampleBiasCompareOffset_Texture1D_texture, &SampledTextureSampleBiasCompareOffset_Texture1D_coordinate, &SampledTextureSampleBiasCompareOffset_Texture1D_compare, &SampledTextureSampleBiasCompareOffset_Texture1D_bias, &SampledTextureSampleBiasCompareOffset_Texture1D_offset };
+
+/// textureSampleCompareBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
+Variable TextureSampleBiasCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture2D_coordinate;
+Variable TextureSampleBiasCompareOffset_Texture2D_compare;
+Variable TextureSampleBiasCompareOffset_Texture2D_bias;
+Variable TextureSampleBiasCompareOffset_Texture2D_offset;
+Function TextureSampleBiasCompareOffset_Texture2D;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_args = { &TextureSampleBiasCompareOffset_Texture2D_texture, &TextureSampleBiasCompareOffset_Texture2D_sampler, &TextureSampleBiasCompareOffset_Texture2D_coordinate, &TextureSampleBiasCompareOffset_Texture2D_compare, &TextureSampleBiasCompareOffset_Texture2D_bias, &TextureSampleBiasCompareOffset_Texture2D_offset };
+
+/// textureSampleCompareBiasOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
+Variable SampledTextureSampleBiasCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasCompareOffset_Texture2D_coordinate;
+Variable SampledTextureSampleBiasCompareOffset_Texture2D_compare;
+Variable SampledTextureSampleBiasCompareOffset_Texture2D_bias;
+Variable SampledTextureSampleBiasCompareOffset_Texture2D_offset;
+Function SampledTextureSampleBiasCompareOffset_Texture2D;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2D_args = { &SampledTextureSampleBiasCompareOffset_Texture2D_texture, &SampledTextureSampleBiasCompareOffset_Texture2D_coordinate, &SampledTextureSampleBiasCompareOffset_Texture2D_compare, &SampledTextureSampleBiasCompareOffset_Texture2D_bias, &SampledTextureSampleBiasCompareOffset_Texture2D_offset };
+
+/// textureSampleCompareBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
+Variable TextureSampleBiasCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture3D_coordinate;
+Variable TextureSampleBiasCompareOffset_Texture3D_compare;
+Variable TextureSampleBiasCompareOffset_Texture3D_bias;
+Variable TextureSampleBiasCompareOffset_Texture3D_offset;
+Function TextureSampleBiasCompareOffset_Texture3D;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_args = { &TextureSampleBiasCompareOffset_Texture3D_texture, &TextureSampleBiasCompareOffset_Texture3D_sampler, &TextureSampleBiasCompareOffset_Texture3D_coordinate, &TextureSampleBiasCompareOffset_Texture3D_compare, &TextureSampleBiasCompareOffset_Texture3D_bias, &TextureSampleBiasCompareOffset_Texture3D_offset };
+
+/// textureSampleCompareBiasOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
+Variable SampledTextureSampleBiasCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasCompareOffset_Texture3D_coordinate;
+Variable SampledTextureSampleBiasCompareOffset_Texture3D_compare;
+Variable SampledTextureSampleBiasCompareOffset_Texture3D_bias;
+Variable SampledTextureSampleBiasCompareOffset_Texture3D_offset;
+Function SampledTextureSampleBiasCompareOffset_Texture3D;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture3D_args = { &SampledTextureSampleBiasCompareOffset_Texture3D_texture, &SampledTextureSampleBiasCompareOffset_Texture3D_coordinate, &SampledTextureSampleBiasCompareOffset_Texture3D_compare, &SampledTextureSampleBiasCompareOffset_Texture3D_bias, &SampledTextureSampleBiasCompareOffset_Texture3D_offset };
+
+/// textureSampleCompareBiasOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
+Variable TextureSampleBiasCompareOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture1DArray_coordinate;
+Variable TextureSampleBiasCompareOffset_Texture1DArray_compare;
+Variable TextureSampleBiasCompareOffset_Texture1DArray_bias;
+Variable TextureSampleBiasCompareOffset_Texture1DArray_offset;
+Function TextureSampleBiasCompareOffset_Texture1DArray;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_args = { &TextureSampleBiasCompareOffset_Texture1DArray_texture, &TextureSampleBiasCompareOffset_Texture1DArray_sampler, &TextureSampleBiasCompareOffset_Texture1DArray_coordinate, &TextureSampleBiasCompareOffset_Texture1DArray_compare, &TextureSampleBiasCompareOffset_Texture1DArray_bias, &TextureSampleBiasCompareOffset_Texture1DArray_offset };
+
+/// textureSampleCompareBiasOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
+Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate;
+Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_compare;
+Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_bias;
+Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_offset;
+Function SampledTextureSampleBiasCompareOffset_Texture1DArray;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1DArray_args = { &SampledTextureSampleBiasCompareOffset_Texture1DArray_texture, &SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate, &SampledTextureSampleBiasCompareOffset_Texture1DArray_compare, &SampledTextureSampleBiasCompareOffset_Texture1DArray_bias, &SampledTextureSampleBiasCompareOffset_Texture1DArray_offset };
+
+/// textureSampleCompareBiasOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
+Variable TextureSampleBiasCompareOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasCompareOffset_Texture2DArray_coordinate;
+Variable TextureSampleBiasCompareOffset_Texture2DArray_compare;
+Variable TextureSampleBiasCompareOffset_Texture2DArray_bias;
+Variable TextureSampleBiasCompareOffset_Texture2DArray_offset;
+Function TextureSampleBiasCompareOffset_Texture2DArray;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_args = { &TextureSampleBiasCompareOffset_Texture2DArray_texture, &TextureSampleBiasCompareOffset_Texture2DArray_sampler, &TextureSampleBiasCompareOffset_Texture2DArray_coordinate, &TextureSampleBiasCompareOffset_Texture2DArray_compare, &TextureSampleBiasCompareOffset_Texture2DArray_bias, &TextureSampleBiasCompareOffset_Texture2DArray_offset };
+
+/// textureSampleCompareBiasOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
+Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate;
+Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_compare;
+Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_bias;
+Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_offset;
+Function SampledTextureSampleBiasCompareOffset_Texture2DArray;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2DArray_args = { &SampledTextureSampleBiasCompareOffset_Texture2DArray_texture, &SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate, &SampledTextureSampleBiasCompareOffset_Texture2DArray_compare, &SampledTextureSampleBiasCompareOffset_Texture2DArray_bias, &SampledTextureSampleBiasCompareOffset_Texture2DArray_offset };
+
+/// textureSampleProjCompareBias with Texture1D, Sampler, Float32, Float32, Float32, Float32
+Variable TextureSampleBiasProjCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompare_Texture1D_coordinate;
+Variable TextureSampleBiasProjCompare_Texture1D_proj;
+Variable TextureSampleBiasProjCompare_Texture1D_compare;
+Variable TextureSampleBiasProjCompare_Texture1D_bias;
+Function TextureSampleBiasProjCompare_Texture1D;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_args = { &TextureSampleBiasProjCompare_Texture1D_texture, &TextureSampleBiasProjCompare_Texture1D_sampler, &TextureSampleBiasProjCompare_Texture1D_coordinate, &TextureSampleBiasProjCompare_Texture1D_proj, &TextureSampleBiasProjCompare_Texture1D_compare, &TextureSampleBiasProjCompare_Texture1D_bias };
+
+/// textureSampleProjCompareBias with SampledTexture1D, Float32, Float32, Float32, Float32
+Variable SampledTextureSampleBiasProjCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasProjCompare_Texture1D_coordinate;
+Variable SampledTextureSampleBiasProjCompare_Texture1D_proj;
+Variable SampledTextureSampleBiasProjCompare_Texture1D_compare;
+Variable SampledTextureSampleBiasProjCompare_Texture1D_bias;
+Function SampledTextureSampleBiasProjCompare_Texture1D;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture1D_args = { &SampledTextureSampleBiasProjCompare_Texture1D_texture, &SampledTextureSampleBiasProjCompare_Texture1D_coordinate, &SampledTextureSampleBiasProjCompare_Texture1D_proj, &SampledTextureSampleBiasProjCompare_Texture1D_compare, &SampledTextureSampleBiasProjCompare_Texture1D_bias };
+
+/// textureSampleProjCompareBias with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
+Variable TextureSampleBiasProjCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompare_Texture2D_coordinate;
+Variable TextureSampleBiasProjCompare_Texture2D_proj;
+Variable TextureSampleBiasProjCompare_Texture2D_compare;
+Variable TextureSampleBiasProjCompare_Texture2D_bias;
+Function TextureSampleBiasProjCompare_Texture2D;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_args = { &TextureSampleBiasProjCompare_Texture2D_texture, &TextureSampleBiasProjCompare_Texture2D_sampler, &TextureSampleBiasProjCompare_Texture2D_coordinate, &TextureSampleBiasProjCompare_Texture2D_proj, &TextureSampleBiasProjCompare_Texture2D_compare, &TextureSampleBiasProjCompare_Texture2D_bias };
+
+/// textureSampleProjCompareBias with SampledTexture2D, Float32x2, Float32, Float32, Float32
+Variable SampledTextureSampleBiasProjCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasProjCompare_Texture2D_coordinate;
+Variable SampledTextureSampleBiasProjCompare_Texture2D_proj;
+Variable SampledTextureSampleBiasProjCompare_Texture2D_compare;
+Variable SampledTextureSampleBiasProjCompare_Texture2D_bias;
+Function SampledTextureSampleBiasProjCompare_Texture2D;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture2D_args = { &SampledTextureSampleBiasProjCompare_Texture2D_texture, &SampledTextureSampleBiasProjCompare_Texture2D_coordinate, &SampledTextureSampleBiasProjCompare_Texture2D_proj, &SampledTextureSampleBiasProjCompare_Texture2D_compare, &SampledTextureSampleBiasProjCompare_Texture2D_bias };
+
+/// textureSampleProjCompareBias with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
+Variable TextureSampleBiasProjCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompare_Texture3D_coordinate;
+Variable TextureSampleBiasProjCompare_Texture3D_proj;
+Variable TextureSampleBiasProjCompare_Texture3D_compare;
+Variable TextureSampleBiasProjCompare_Texture3D_bias;
+Function TextureSampleBiasProjCompare_Texture3D;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_args = { &TextureSampleBiasProjCompare_Texture3D_texture, &TextureSampleBiasProjCompare_Texture3D_sampler, &TextureSampleBiasProjCompare_Texture3D_coordinate, &TextureSampleBiasProjCompare_Texture3D_proj, &TextureSampleBiasProjCompare_Texture3D_compare, &TextureSampleBiasProjCompare_Texture3D_bias };
+
+/// textureSampleProjCompareBias with SampledTexture3D, Float32x3, Float32, Float32, Float32
+Variable SampledTextureSampleBiasProjCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasProjCompare_Texture3D_coordinate;
+Variable SampledTextureSampleBiasProjCompare_Texture3D_proj;
+Variable SampledTextureSampleBiasProjCompare_Texture3D_compare;
+Variable SampledTextureSampleBiasProjCompare_Texture3D_bias;
+Function SampledTextureSampleBiasProjCompare_Texture3D;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture3D_args = { &SampledTextureSampleBiasProjCompare_Texture3D_texture, &SampledTextureSampleBiasProjCompare_Texture3D_coordinate, &SampledTextureSampleBiasProjCompare_Texture3D_proj, &SampledTextureSampleBiasProjCompare_Texture3D_compare, &SampledTextureSampleBiasProjCompare_Texture3D_bias };
+
+/// textureSampleProjCompareBiasOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
+Variable TextureSampleBiasProjCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompareOffset_Texture1D_coordinate;
+Variable TextureSampleBiasProjCompareOffset_Texture1D_proj;
+Variable TextureSampleBiasProjCompareOffset_Texture1D_compare;
+Variable TextureSampleBiasProjCompareOffset_Texture1D_bias;
+Variable TextureSampleBiasProjCompareOffset_Texture1D_offset;
+Function TextureSampleBiasProjCompareOffset_Texture1D;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_args = { &TextureSampleBiasProjCompareOffset_Texture1D_texture, &TextureSampleBiasProjCompareOffset_Texture1D_sampler, &TextureSampleBiasProjCompareOffset_Texture1D_coordinate, &TextureSampleBiasProjCompareOffset_Texture1D_proj, &TextureSampleBiasProjCompareOffset_Texture1D_compare, &TextureSampleBiasProjCompareOffset_Texture1D_bias, &TextureSampleBiasProjCompareOffset_Texture1D_offset };
+
+/// textureSampleProjCompareBiasOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
+Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_proj;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_compare;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_bias;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_offset;
+Function SampledTextureSampleBiasProjCompareOffset_Texture1D;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture1D_args = { &SampledTextureSampleBiasProjCompareOffset_Texture1D_texture, &SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate, &SampledTextureSampleBiasProjCompareOffset_Texture1D_proj, &SampledTextureSampleBiasProjCompareOffset_Texture1D_compare, &SampledTextureSampleBiasProjCompareOffset_Texture1D_bias, &SampledTextureSampleBiasProjCompareOffset_Texture1D_offset };
+
+/// textureSampleProjCompareBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
+Variable TextureSampleBiasProjCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompareOffset_Texture2D_coordinate;
+Variable TextureSampleBiasProjCompareOffset_Texture2D_proj;
+Variable TextureSampleBiasProjCompareOffset_Texture2D_compare;
+Variable TextureSampleBiasProjCompareOffset_Texture2D_bias;
+Variable TextureSampleBiasProjCompareOffset_Texture2D_offset;
+Function TextureSampleBiasProjCompareOffset_Texture2D;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_args = { &TextureSampleBiasProjCompareOffset_Texture2D_texture, &TextureSampleBiasProjCompareOffset_Texture2D_sampler, &TextureSampleBiasProjCompareOffset_Texture2D_coordinate, &TextureSampleBiasProjCompareOffset_Texture2D_proj, &TextureSampleBiasProjCompareOffset_Texture2D_compare, &TextureSampleBiasProjCompareOffset_Texture2D_bias, &TextureSampleBiasProjCompareOffset_Texture2D_offset };
+
+/// textureSampleProjCompareBiasOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
+Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_proj;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_compare;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_bias;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_offset;
+Function SampledTextureSampleBiasProjCompareOffset_Texture2D;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture2D_args = { &SampledTextureSampleBiasProjCompareOffset_Texture2D_texture, &SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate, &SampledTextureSampleBiasProjCompareOffset_Texture2D_proj, &SampledTextureSampleBiasProjCompareOffset_Texture2D_compare, &SampledTextureSampleBiasProjCompareOffset_Texture2D_bias, &SampledTextureSampleBiasProjCompareOffset_Texture2D_offset };
+
+/// textureSampleProjCompareBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
+Variable TextureSampleBiasProjCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
+Variable TextureSampleBiasProjCompareOffset_Texture3D_coordinate;
+Variable TextureSampleBiasProjCompareOffset_Texture3D_proj;
+Variable TextureSampleBiasProjCompareOffset_Texture3D_compare;
+Variable TextureSampleBiasProjCompareOffset_Texture3D_bias;
+Variable TextureSampleBiasProjCompareOffset_Texture3D_offset;
+Function TextureSampleBiasProjCompareOffset_Texture3D;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_args = { &TextureSampleBiasProjCompareOffset_Texture3D_texture, &TextureSampleBiasProjCompareOffset_Texture3D_sampler, &TextureSampleBiasProjCompareOffset_Texture3D_coordinate, &TextureSampleBiasProjCompareOffset_Texture3D_proj, &TextureSampleBiasProjCompareOffset_Texture3D_compare, &TextureSampleBiasProjCompareOffset_Texture3D_bias, &TextureSampleBiasProjCompareOffset_Texture3D_offset };
+
+/// textureSampleProjCompareBiasOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
+Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
+Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_proj;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_compare;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_bias;
+Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_offset;
+Function SampledTextureSampleBiasProjCompareOffset_Texture3D;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture3D_args = { &SampledTextureSampleBiasProjCompareOffset_Texture3D_texture, &SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate, &SampledTextureSampleBiasProjCompareOffset_Texture3D_proj, &SampledTextureSampleBiasProjCompareOffset_Texture3D_compare, &SampledTextureSampleBiasProjCompareOffset_Texture3D_bias, &SampledTextureSampleBiasProjCompareOffset_Texture3D_offset };
+
+/// textureAtomicLoad with Texture1D, Int32, Float32
+Variable TextureAtomicLoad_Texture1D_Float32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1D_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1D_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1D_Float32_coordinate;
+Variable TextureAtomicLoad_Texture1D_Float32_value;
+Function TextureAtomicLoad_Texture1D_Float32;
+inline constexpr std::array TextureAtomicLoad_Texture1D_Float32_args = { &TextureAtomicLoad_Texture1D_Float32_texture, &TextureAtomicLoad_Texture1D_Float32_coordinate, &TextureAtomicLoad_Texture1D_Float32_value };
+
+/// textureAtomicLoad with Texture1D, Int32, UInt32
+Variable TextureAtomicLoad_Texture1D_UInt32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1D_UInt32_coordinate;
+Variable TextureAtomicLoad_Texture1D_UInt32_value;
+Function TextureAtomicLoad_Texture1D_UInt32;
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt32_args = { &TextureAtomicLoad_Texture1D_UInt32_texture, &TextureAtomicLoad_Texture1D_UInt32_coordinate, &TextureAtomicLoad_Texture1D_UInt32_value };
+
+/// textureAtomicLoad with Texture1D, Int32, Int32
+Variable TextureAtomicLoad_Texture1D_Int32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1D_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1D_Int32_coordinate;
+Variable TextureAtomicLoad_Texture1D_Int32_value;
+Function TextureAtomicLoad_Texture1D_Int32;
+inline constexpr std::array TextureAtomicLoad_Texture1D_Int32_args = { &TextureAtomicLoad_Texture1D_Int32_texture, &TextureAtomicLoad_Texture1D_Int32_coordinate, &TextureAtomicLoad_Texture1D_Int32_value };
+
+/// textureAtomicLoad with Texture1D, Int32, Float16
+Variable TextureAtomicLoad_Texture1D_Float16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1D_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1D_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1D_Float16_coordinate;
+Variable TextureAtomicLoad_Texture1D_Float16_value;
+Function TextureAtomicLoad_Texture1D_Float16;
+inline constexpr std::array TextureAtomicLoad_Texture1D_Float16_args = { &TextureAtomicLoad_Texture1D_Float16_texture, &TextureAtomicLoad_Texture1D_Float16_coordinate, &TextureAtomicLoad_Texture1D_Float16_value };
+
+/// textureAtomicLoad with Texture1D, Int32, UInt16
+Variable TextureAtomicLoad_Texture1D_UInt16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1D_UInt16_coordinate;
+Variable TextureAtomicLoad_Texture1D_UInt16_value;
+Function TextureAtomicLoad_Texture1D_UInt16;
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt16_args = { &TextureAtomicLoad_Texture1D_UInt16_texture, &TextureAtomicLoad_Texture1D_UInt16_coordinate, &TextureAtomicLoad_Texture1D_UInt16_value };
+
+/// textureAtomicLoad with Texture1D, Int32, Int16
+Variable TextureAtomicLoad_Texture1D_Int16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1D_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1D_Int16_coordinate;
+Variable TextureAtomicLoad_Texture1D_Int16_value;
+Function TextureAtomicLoad_Texture1D_Int16;
+inline constexpr std::array TextureAtomicLoad_Texture1D_Int16_args = { &TextureAtomicLoad_Texture1D_Int16_texture, &TextureAtomicLoad_Texture1D_Int16_coordinate, &TextureAtomicLoad_Texture1D_Int16_value };
+
+/// textureAtomicLoad with Texture1D, Int32, UInt64
+Variable TextureAtomicLoad_Texture1D_UInt64_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1D_UInt64_coordinate;
+Variable TextureAtomicLoad_Texture1D_UInt64_value;
+Function TextureAtomicLoad_Texture1D_UInt64;
+inline constexpr std::array TextureAtomicLoad_Texture1D_UInt64_args = { &TextureAtomicLoad_Texture1D_UInt64_texture, &TextureAtomicLoad_Texture1D_UInt64_coordinate, &TextureAtomicLoad_Texture1D_UInt64_value };
+
+/// textureAtomicLoad with Texture2D, Int32x2, Float32
+Variable TextureAtomicLoad_Texture2D_Float32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2D_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2D_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2D_Float32_coordinate;
+Variable TextureAtomicLoad_Texture2D_Float32_value;
+Function TextureAtomicLoad_Texture2D_Float32;
+inline constexpr std::array TextureAtomicLoad_Texture2D_Float32_args = { &TextureAtomicLoad_Texture2D_Float32_texture, &TextureAtomicLoad_Texture2D_Float32_coordinate, &TextureAtomicLoad_Texture2D_Float32_value };
+
+/// textureAtomicLoad with Texture2D, Int32x2, UInt32
+Variable TextureAtomicLoad_Texture2D_UInt32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2D_UInt32_coordinate;
+Variable TextureAtomicLoad_Texture2D_UInt32_value;
+Function TextureAtomicLoad_Texture2D_UInt32;
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt32_args = { &TextureAtomicLoad_Texture2D_UInt32_texture, &TextureAtomicLoad_Texture2D_UInt32_coordinate, &TextureAtomicLoad_Texture2D_UInt32_value };
+
+/// textureAtomicLoad with Texture2D, Int32x2, Int32
+Variable TextureAtomicLoad_Texture2D_Int32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2D_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2D_Int32_coordinate;
+Variable TextureAtomicLoad_Texture2D_Int32_value;
+Function TextureAtomicLoad_Texture2D_Int32;
+inline constexpr std::array TextureAtomicLoad_Texture2D_Int32_args = { &TextureAtomicLoad_Texture2D_Int32_texture, &TextureAtomicLoad_Texture2D_Int32_coordinate, &TextureAtomicLoad_Texture2D_Int32_value };
+
+/// textureAtomicLoad with Texture2D, Int32x2, Float16
+Variable TextureAtomicLoad_Texture2D_Float16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2D_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2D_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2D_Float16_coordinate;
+Variable TextureAtomicLoad_Texture2D_Float16_value;
+Function TextureAtomicLoad_Texture2D_Float16;
+inline constexpr std::array TextureAtomicLoad_Texture2D_Float16_args = { &TextureAtomicLoad_Texture2D_Float16_texture, &TextureAtomicLoad_Texture2D_Float16_coordinate, &TextureAtomicLoad_Texture2D_Float16_value };
+
+/// textureAtomicLoad with Texture2D, Int32x2, UInt16
+Variable TextureAtomicLoad_Texture2D_UInt16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2D_UInt16_coordinate;
+Variable TextureAtomicLoad_Texture2D_UInt16_value;
+Function TextureAtomicLoad_Texture2D_UInt16;
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt16_args = { &TextureAtomicLoad_Texture2D_UInt16_texture, &TextureAtomicLoad_Texture2D_UInt16_coordinate, &TextureAtomicLoad_Texture2D_UInt16_value };
+
+/// textureAtomicLoad with Texture2D, Int32x2, Int16
+Variable TextureAtomicLoad_Texture2D_Int16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2D_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2D_Int16_coordinate;
+Variable TextureAtomicLoad_Texture2D_Int16_value;
+Function TextureAtomicLoad_Texture2D_Int16;
+inline constexpr std::array TextureAtomicLoad_Texture2D_Int16_args = { &TextureAtomicLoad_Texture2D_Int16_texture, &TextureAtomicLoad_Texture2D_Int16_coordinate, &TextureAtomicLoad_Texture2D_Int16_value };
+
+/// textureAtomicLoad with Texture2D, Int32x2, UInt64
+Variable TextureAtomicLoad_Texture2D_UInt64_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2D_UInt64_coordinate;
+Variable TextureAtomicLoad_Texture2D_UInt64_value;
+Function TextureAtomicLoad_Texture2D_UInt64;
+inline constexpr std::array TextureAtomicLoad_Texture2D_UInt64_args = { &TextureAtomicLoad_Texture2D_UInt64_texture, &TextureAtomicLoad_Texture2D_UInt64_coordinate, &TextureAtomicLoad_Texture2D_UInt64_value };
+
+/// textureAtomicLoad with Texture3D, Int32x3, Float32
+Variable TextureAtomicLoad_Texture3D_Float32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture3D_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture3D_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture3D_Float32_coordinate;
+Variable TextureAtomicLoad_Texture3D_Float32_value;
+Function TextureAtomicLoad_Texture3D_Float32;
+inline constexpr std::array TextureAtomicLoad_Texture3D_Float32_args = { &TextureAtomicLoad_Texture3D_Float32_texture, &TextureAtomicLoad_Texture3D_Float32_coordinate, &TextureAtomicLoad_Texture3D_Float32_value };
+
+/// textureAtomicLoad with Texture3D, Int32x3, UInt32
+Variable TextureAtomicLoad_Texture3D_UInt32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture3D_UInt32_coordinate;
+Variable TextureAtomicLoad_Texture3D_UInt32_value;
+Function TextureAtomicLoad_Texture3D_UInt32;
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt32_args = { &TextureAtomicLoad_Texture3D_UInt32_texture, &TextureAtomicLoad_Texture3D_UInt32_coordinate, &TextureAtomicLoad_Texture3D_UInt32_value };
+
+/// textureAtomicLoad with Texture3D, Int32x3, Int32
+Variable TextureAtomicLoad_Texture3D_Int32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture3D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture3D_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture3D_Int32_coordinate;
+Variable TextureAtomicLoad_Texture3D_Int32_value;
+Function TextureAtomicLoad_Texture3D_Int32;
+inline constexpr std::array TextureAtomicLoad_Texture3D_Int32_args = { &TextureAtomicLoad_Texture3D_Int32_texture, &TextureAtomicLoad_Texture3D_Int32_coordinate, &TextureAtomicLoad_Texture3D_Int32_value };
+
+/// textureAtomicLoad with Texture3D, Int32x3, Float16
+Variable TextureAtomicLoad_Texture3D_Float16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture3D_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture3D_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture3D_Float16_coordinate;
+Variable TextureAtomicLoad_Texture3D_Float16_value;
+Function TextureAtomicLoad_Texture3D_Float16;
+inline constexpr std::array TextureAtomicLoad_Texture3D_Float16_args = { &TextureAtomicLoad_Texture3D_Float16_texture, &TextureAtomicLoad_Texture3D_Float16_coordinate, &TextureAtomicLoad_Texture3D_Float16_value };
+
+/// textureAtomicLoad with Texture3D, Int32x3, UInt16
+Variable TextureAtomicLoad_Texture3D_UInt16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture3D_UInt16_coordinate;
+Variable TextureAtomicLoad_Texture3D_UInt16_value;
+Function TextureAtomicLoad_Texture3D_UInt16;
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt16_args = { &TextureAtomicLoad_Texture3D_UInt16_texture, &TextureAtomicLoad_Texture3D_UInt16_coordinate, &TextureAtomicLoad_Texture3D_UInt16_value };
+
+/// textureAtomicLoad with Texture3D, Int32x3, Int16
+Variable TextureAtomicLoad_Texture3D_Int16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture3D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture3D_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture3D_Int16_coordinate;
+Variable TextureAtomicLoad_Texture3D_Int16_value;
+Function TextureAtomicLoad_Texture3D_Int16;
+inline constexpr std::array TextureAtomicLoad_Texture3D_Int16_args = { &TextureAtomicLoad_Texture3D_Int16_texture, &TextureAtomicLoad_Texture3D_Int16_coordinate, &TextureAtomicLoad_Texture3D_Int16_value };
+
+/// textureAtomicLoad with Texture3D, Int32x3, UInt64
+Variable TextureAtomicLoad_Texture3D_UInt64_texture;
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture3D_UInt64_coordinate;
+Variable TextureAtomicLoad_Texture3D_UInt64_value;
+Function TextureAtomicLoad_Texture3D_UInt64;
+inline constexpr std::array TextureAtomicLoad_Texture3D_UInt64_args = { &TextureAtomicLoad_Texture3D_UInt64_texture, &TextureAtomicLoad_Texture3D_UInt64_coordinate, &TextureAtomicLoad_Texture3D_UInt64_value };
+
+/// textureAtomicLoad with TextureCube, Int32x3, Float32
+Variable TextureAtomicLoad_TextureCube_Float32_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCube_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCube_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCube_Float32_coordinate;
+Variable TextureAtomicLoad_TextureCube_Float32_value;
+Function TextureAtomicLoad_TextureCube_Float32;
+inline constexpr std::array TextureAtomicLoad_TextureCube_Float32_args = { &TextureAtomicLoad_TextureCube_Float32_texture, &TextureAtomicLoad_TextureCube_Float32_coordinate, &TextureAtomicLoad_TextureCube_Float32_value };
+
+/// textureAtomicLoad with TextureCube, Int32x3, UInt32
+Variable TextureAtomicLoad_TextureCube_UInt32_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCube_UInt32_coordinate;
+Variable TextureAtomicLoad_TextureCube_UInt32_value;
+Function TextureAtomicLoad_TextureCube_UInt32;
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt32_args = { &TextureAtomicLoad_TextureCube_UInt32_texture, &TextureAtomicLoad_TextureCube_UInt32_coordinate, &TextureAtomicLoad_TextureCube_UInt32_value };
+
+/// textureAtomicLoad with TextureCube, Int32x3, Int32
+Variable TextureAtomicLoad_TextureCube_Int32_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCube_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCube_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCube_Int32_coordinate;
+Variable TextureAtomicLoad_TextureCube_Int32_value;
+Function TextureAtomicLoad_TextureCube_Int32;
+inline constexpr std::array TextureAtomicLoad_TextureCube_Int32_args = { &TextureAtomicLoad_TextureCube_Int32_texture, &TextureAtomicLoad_TextureCube_Int32_coordinate, &TextureAtomicLoad_TextureCube_Int32_value };
+
+/// textureAtomicLoad with TextureCube, Int32x3, Float16
+Variable TextureAtomicLoad_TextureCube_Float16_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCube_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCube_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCube_Float16_coordinate;
+Variable TextureAtomicLoad_TextureCube_Float16_value;
+Function TextureAtomicLoad_TextureCube_Float16;
+inline constexpr std::array TextureAtomicLoad_TextureCube_Float16_args = { &TextureAtomicLoad_TextureCube_Float16_texture, &TextureAtomicLoad_TextureCube_Float16_coordinate, &TextureAtomicLoad_TextureCube_Float16_value };
+
+/// textureAtomicLoad with TextureCube, Int32x3, UInt16
+Variable TextureAtomicLoad_TextureCube_UInt16_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCube_UInt16_coordinate;
+Variable TextureAtomicLoad_TextureCube_UInt16_value;
+Function TextureAtomicLoad_TextureCube_UInt16;
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt16_args = { &TextureAtomicLoad_TextureCube_UInt16_texture, &TextureAtomicLoad_TextureCube_UInt16_coordinate, &TextureAtomicLoad_TextureCube_UInt16_value };
+
+/// textureAtomicLoad with TextureCube, Int32x3, Int16
+Variable TextureAtomicLoad_TextureCube_Int16_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCube_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCube_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCube_Int16_coordinate;
+Variable TextureAtomicLoad_TextureCube_Int16_value;
+Function TextureAtomicLoad_TextureCube_Int16;
+inline constexpr std::array TextureAtomicLoad_TextureCube_Int16_args = { &TextureAtomicLoad_TextureCube_Int16_texture, &TextureAtomicLoad_TextureCube_Int16_coordinate, &TextureAtomicLoad_TextureCube_Int16_value };
+
+/// textureAtomicLoad with TextureCube, Int32x3, UInt64
+Variable TextureAtomicLoad_TextureCube_UInt64_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCube_UInt64_coordinate;
+Variable TextureAtomicLoad_TextureCube_UInt64_value;
+Function TextureAtomicLoad_TextureCube_UInt64;
+inline constexpr std::array TextureAtomicLoad_TextureCube_UInt64_args = { &TextureAtomicLoad_TextureCube_UInt64_texture, &TextureAtomicLoad_TextureCube_UInt64_coordinate, &TextureAtomicLoad_TextureCube_UInt64_value };
+
+/// textureAtomicLoad with Texture1DArray, Int32x2, Float32
+Variable TextureAtomicLoad_Texture1DArray_Float32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1DArray_Float32_coordinate;
+Variable TextureAtomicLoad_Texture1DArray_Float32_value;
+Function TextureAtomicLoad_Texture1DArray_Float32;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Float32_args = { &TextureAtomicLoad_Texture1DArray_Float32_texture, &TextureAtomicLoad_Texture1DArray_Float32_coordinate, &TextureAtomicLoad_Texture1DArray_Float32_value };
+
+/// textureAtomicLoad with Texture1DArray, Int32x2, UInt32
+Variable TextureAtomicLoad_Texture1DArray_UInt32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1DArray_UInt32_coordinate;
+Variable TextureAtomicLoad_Texture1DArray_UInt32_value;
+Function TextureAtomicLoad_Texture1DArray_UInt32;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt32_args = { &TextureAtomicLoad_Texture1DArray_UInt32_texture, &TextureAtomicLoad_Texture1DArray_UInt32_coordinate, &TextureAtomicLoad_Texture1DArray_UInt32_value };
+
+/// textureAtomicLoad with Texture1DArray, Int32x2, Int32
+Variable TextureAtomicLoad_Texture1DArray_Int32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1DArray_Int32_coordinate;
+Variable TextureAtomicLoad_Texture1DArray_Int32_value;
+Function TextureAtomicLoad_Texture1DArray_Int32;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Int32_args = { &TextureAtomicLoad_Texture1DArray_Int32_texture, &TextureAtomicLoad_Texture1DArray_Int32_coordinate, &TextureAtomicLoad_Texture1DArray_Int32_value };
+
+/// textureAtomicLoad with Texture1DArray, Int32x2, Float16
+Variable TextureAtomicLoad_Texture1DArray_Float16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1DArray_Float16_coordinate;
+Variable TextureAtomicLoad_Texture1DArray_Float16_value;
+Function TextureAtomicLoad_Texture1DArray_Float16;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Float16_args = { &TextureAtomicLoad_Texture1DArray_Float16_texture, &TextureAtomicLoad_Texture1DArray_Float16_coordinate, &TextureAtomicLoad_Texture1DArray_Float16_value };
+
+/// textureAtomicLoad with Texture1DArray, Int32x2, UInt16
+Variable TextureAtomicLoad_Texture1DArray_UInt16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1DArray_UInt16_coordinate;
+Variable TextureAtomicLoad_Texture1DArray_UInt16_value;
+Function TextureAtomicLoad_Texture1DArray_UInt16;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt16_args = { &TextureAtomicLoad_Texture1DArray_UInt16_texture, &TextureAtomicLoad_Texture1DArray_UInt16_coordinate, &TextureAtomicLoad_Texture1DArray_UInt16_value };
+
+/// textureAtomicLoad with Texture1DArray, Int32x2, Int16
+Variable TextureAtomicLoad_Texture1DArray_Int16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1DArray_Int16_coordinate;
+Variable TextureAtomicLoad_Texture1DArray_Int16_value;
+Function TextureAtomicLoad_Texture1DArray_Int16;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_Int16_args = { &TextureAtomicLoad_Texture1DArray_Int16_texture, &TextureAtomicLoad_Texture1DArray_Int16_coordinate, &TextureAtomicLoad_Texture1DArray_Int16_value };
+
+/// textureAtomicLoad with Texture1DArray, Int32x2, UInt64
+Variable TextureAtomicLoad_Texture1DArray_UInt64_texture;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture1DArray_UInt64_coordinate;
+Variable TextureAtomicLoad_Texture1DArray_UInt64_value;
+Function TextureAtomicLoad_Texture1DArray_UInt64;
+inline constexpr std::array TextureAtomicLoad_Texture1DArray_UInt64_args = { &TextureAtomicLoad_Texture1DArray_UInt64_texture, &TextureAtomicLoad_Texture1DArray_UInt64_coordinate, &TextureAtomicLoad_Texture1DArray_UInt64_value };
+
+/// textureAtomicLoad with Texture2DArray, Int32x3, Float32
+Variable TextureAtomicLoad_Texture2DArray_Float32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2DArray_Float32_coordinate;
+Variable TextureAtomicLoad_Texture2DArray_Float32_value;
+Function TextureAtomicLoad_Texture2DArray_Float32;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Float32_args = { &TextureAtomicLoad_Texture2DArray_Float32_texture, &TextureAtomicLoad_Texture2DArray_Float32_coordinate, &TextureAtomicLoad_Texture2DArray_Float32_value };
+
+/// textureAtomicLoad with Texture2DArray, Int32x3, UInt32
+Variable TextureAtomicLoad_Texture2DArray_UInt32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2DArray_UInt32_coordinate;
+Variable TextureAtomicLoad_Texture2DArray_UInt32_value;
+Function TextureAtomicLoad_Texture2DArray_UInt32;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt32_args = { &TextureAtomicLoad_Texture2DArray_UInt32_texture, &TextureAtomicLoad_Texture2DArray_UInt32_coordinate, &TextureAtomicLoad_Texture2DArray_UInt32_value };
+
+/// textureAtomicLoad with Texture2DArray, Int32x3, Int32
+Variable TextureAtomicLoad_Texture2DArray_Int32_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2DArray_Int32_coordinate;
+Variable TextureAtomicLoad_Texture2DArray_Int32_value;
+Function TextureAtomicLoad_Texture2DArray_Int32;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Int32_args = { &TextureAtomicLoad_Texture2DArray_Int32_texture, &TextureAtomicLoad_Texture2DArray_Int32_coordinate, &TextureAtomicLoad_Texture2DArray_Int32_value };
+
+/// textureAtomicLoad with Texture2DArray, Int32x3, Float16
+Variable TextureAtomicLoad_Texture2DArray_Float16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2DArray_Float16_coordinate;
+Variable TextureAtomicLoad_Texture2DArray_Float16_value;
+Function TextureAtomicLoad_Texture2DArray_Float16;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Float16_args = { &TextureAtomicLoad_Texture2DArray_Float16_texture, &TextureAtomicLoad_Texture2DArray_Float16_coordinate, &TextureAtomicLoad_Texture2DArray_Float16_value };
+
+/// textureAtomicLoad with Texture2DArray, Int32x3, UInt16
+Variable TextureAtomicLoad_Texture2DArray_UInt16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2DArray_UInt16_coordinate;
+Variable TextureAtomicLoad_Texture2DArray_UInt16_value;
+Function TextureAtomicLoad_Texture2DArray_UInt16;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt16_args = { &TextureAtomicLoad_Texture2DArray_UInt16_texture, &TextureAtomicLoad_Texture2DArray_UInt16_coordinate, &TextureAtomicLoad_Texture2DArray_UInt16_value };
+
+/// textureAtomicLoad with Texture2DArray, Int32x3, Int16
+Variable TextureAtomicLoad_Texture2DArray_Int16_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2DArray_Int16_coordinate;
+Variable TextureAtomicLoad_Texture2DArray_Int16_value;
+Function TextureAtomicLoad_Texture2DArray_Int16;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_Int16_args = { &TextureAtomicLoad_Texture2DArray_Int16_texture, &TextureAtomicLoad_Texture2DArray_Int16_coordinate, &TextureAtomicLoad_Texture2DArray_Int16_value };
+
+/// textureAtomicLoad with Texture2DArray, Int32x3, UInt64
+Variable TextureAtomicLoad_Texture2DArray_UInt64_texture;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_Texture2DArray_UInt64_coordinate;
+Variable TextureAtomicLoad_Texture2DArray_UInt64_value;
+Function TextureAtomicLoad_Texture2DArray_UInt64;
+inline constexpr std::array TextureAtomicLoad_Texture2DArray_UInt64_args = { &TextureAtomicLoad_Texture2DArray_UInt64_texture, &TextureAtomicLoad_Texture2DArray_UInt64_coordinate, &TextureAtomicLoad_Texture2DArray_UInt64_value };
+
+/// textureAtomicLoad with TextureCubeArray, Int32x4, Float32
+Variable TextureAtomicLoad_TextureCubeArray_Float32_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCubeArray_Float32_coordinate;
+Variable TextureAtomicLoad_TextureCubeArray_Float32_value;
+Function TextureAtomicLoad_TextureCubeArray_Float32;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Float32_args = { &TextureAtomicLoad_TextureCubeArray_Float32_texture, &TextureAtomicLoad_TextureCubeArray_Float32_coordinate, &TextureAtomicLoad_TextureCubeArray_Float32_value };
+
+/// textureAtomicLoad with TextureCubeArray, Int32x4, UInt32
+Variable TextureAtomicLoad_TextureCubeArray_UInt32_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCubeArray_UInt32_coordinate;
+Variable TextureAtomicLoad_TextureCubeArray_UInt32_value;
+Function TextureAtomicLoad_TextureCubeArray_UInt32;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt32_args = { &TextureAtomicLoad_TextureCubeArray_UInt32_texture, &TextureAtomicLoad_TextureCubeArray_UInt32_coordinate, &TextureAtomicLoad_TextureCubeArray_UInt32_value };
+
+/// textureAtomicLoad with TextureCubeArray, Int32x4, Int32
+Variable TextureAtomicLoad_TextureCubeArray_Int32_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCubeArray_Int32_coordinate;
+Variable TextureAtomicLoad_TextureCubeArray_Int32_value;
+Function TextureAtomicLoad_TextureCubeArray_Int32;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Int32_args = { &TextureAtomicLoad_TextureCubeArray_Int32_texture, &TextureAtomicLoad_TextureCubeArray_Int32_coordinate, &TextureAtomicLoad_TextureCubeArray_Int32_value };
+
+/// textureAtomicLoad with TextureCubeArray, Int32x4, Float16
+Variable TextureAtomicLoad_TextureCubeArray_Float16_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCubeArray_Float16_coordinate;
+Variable TextureAtomicLoad_TextureCubeArray_Float16_value;
+Function TextureAtomicLoad_TextureCubeArray_Float16;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Float16_args = { &TextureAtomicLoad_TextureCubeArray_Float16_texture, &TextureAtomicLoad_TextureCubeArray_Float16_coordinate, &TextureAtomicLoad_TextureCubeArray_Float16_value };
+
+/// textureAtomicLoad with TextureCubeArray, Int32x4, UInt16
+Variable TextureAtomicLoad_TextureCubeArray_UInt16_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCubeArray_UInt16_coordinate;
+Variable TextureAtomicLoad_TextureCubeArray_UInt16_value;
+Function TextureAtomicLoad_TextureCubeArray_UInt16;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt16_args = { &TextureAtomicLoad_TextureCubeArray_UInt16_texture, &TextureAtomicLoad_TextureCubeArray_UInt16_coordinate, &TextureAtomicLoad_TextureCubeArray_UInt16_value };
+
+/// textureAtomicLoad with TextureCubeArray, Int32x4, Int16
+Variable TextureAtomicLoad_TextureCubeArray_Int16_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCubeArray_Int16_coordinate;
+Variable TextureAtomicLoad_TextureCubeArray_Int16_value;
+Function TextureAtomicLoad_TextureCubeArray_Int16;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_Int16_args = { &TextureAtomicLoad_TextureCubeArray_Int16_texture, &TextureAtomicLoad_TextureCubeArray_Int16_coordinate, &TextureAtomicLoad_TextureCubeArray_Int16_value };
+
+/// textureAtomicLoad with TextureCubeArray, Int32x4, UInt64
+Variable TextureAtomicLoad_TextureCubeArray_UInt64_texture;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicLoad_TextureCubeArray_UInt64_coordinate;
+Variable TextureAtomicLoad_TextureCubeArray_UInt64_value;
+Function TextureAtomicLoad_TextureCubeArray_UInt64;
+inline constexpr std::array TextureAtomicLoad_TextureCubeArray_UInt64_args = { &TextureAtomicLoad_TextureCubeArray_UInt64_texture, &TextureAtomicLoad_TextureCubeArray_UInt64_coordinate, &TextureAtomicLoad_TextureCubeArray_UInt64_value };
+
+/// textureAtomicStore with Texture1D, Int32, Float32
+Variable TextureAtomicStore_Texture1D_Float32_texture;
+inline constexpr std::array TextureAtomicStore_Texture1D_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1D_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1D_Float32_coordinate;
+Variable TextureAtomicStore_Texture1D_Float32_value;
+Function TextureAtomicStore_Texture1D_Float32;
+inline constexpr std::array TextureAtomicStore_Texture1D_Float32_args = { &TextureAtomicStore_Texture1D_Float32_texture, &TextureAtomicStore_Texture1D_Float32_coordinate, &TextureAtomicStore_Texture1D_Float32_value };
+
+/// textureAtomicStore with Texture1D, Int32, UInt32
+Variable TextureAtomicStore_Texture1D_UInt32_texture;
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1D_UInt32_coordinate;
+Variable TextureAtomicStore_Texture1D_UInt32_value;
+Function TextureAtomicStore_Texture1D_UInt32;
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt32_args = { &TextureAtomicStore_Texture1D_UInt32_texture, &TextureAtomicStore_Texture1D_UInt32_coordinate, &TextureAtomicStore_Texture1D_UInt32_value };
+
+/// textureAtomicStore with Texture1D, Int32, Int32
+Variable TextureAtomicStore_Texture1D_Int32_texture;
+inline constexpr std::array TextureAtomicStore_Texture1D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1D_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1D_Int32_coordinate;
+Variable TextureAtomicStore_Texture1D_Int32_value;
+Function TextureAtomicStore_Texture1D_Int32;
+inline constexpr std::array TextureAtomicStore_Texture1D_Int32_args = { &TextureAtomicStore_Texture1D_Int32_texture, &TextureAtomicStore_Texture1D_Int32_coordinate, &TextureAtomicStore_Texture1D_Int32_value };
+
+/// textureAtomicStore with Texture1D, Int32, Float16
+Variable TextureAtomicStore_Texture1D_Float16_texture;
+inline constexpr std::array TextureAtomicStore_Texture1D_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1D_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1D_Float16_coordinate;
+Variable TextureAtomicStore_Texture1D_Float16_value;
+Function TextureAtomicStore_Texture1D_Float16;
+inline constexpr std::array TextureAtomicStore_Texture1D_Float16_args = { &TextureAtomicStore_Texture1D_Float16_texture, &TextureAtomicStore_Texture1D_Float16_coordinate, &TextureAtomicStore_Texture1D_Float16_value };
+
+/// textureAtomicStore with Texture1D, Int32, UInt16
+Variable TextureAtomicStore_Texture1D_UInt16_texture;
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1D_UInt16_coordinate;
+Variable TextureAtomicStore_Texture1D_UInt16_value;
+Function TextureAtomicStore_Texture1D_UInt16;
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt16_args = { &TextureAtomicStore_Texture1D_UInt16_texture, &TextureAtomicStore_Texture1D_UInt16_coordinate, &TextureAtomicStore_Texture1D_UInt16_value };
+
+/// textureAtomicStore with Texture1D, Int32, Int16
+Variable TextureAtomicStore_Texture1D_Int16_texture;
+inline constexpr std::array TextureAtomicStore_Texture1D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1D_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1D_Int16_coordinate;
+Variable TextureAtomicStore_Texture1D_Int16_value;
+Function TextureAtomicStore_Texture1D_Int16;
+inline constexpr std::array TextureAtomicStore_Texture1D_Int16_args = { &TextureAtomicStore_Texture1D_Int16_texture, &TextureAtomicStore_Texture1D_Int16_coordinate, &TextureAtomicStore_Texture1D_Int16_value };
+
+/// textureAtomicStore with Texture1D, Int32, UInt64
+Variable TextureAtomicStore_Texture1D_UInt64_texture;
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1D_UInt64_coordinate;
+Variable TextureAtomicStore_Texture1D_UInt64_value;
+Function TextureAtomicStore_Texture1D_UInt64;
+inline constexpr std::array TextureAtomicStore_Texture1D_UInt64_args = { &TextureAtomicStore_Texture1D_UInt64_texture, &TextureAtomicStore_Texture1D_UInt64_coordinate, &TextureAtomicStore_Texture1D_UInt64_value };
+
+/// textureAtomicStore with Texture2D, Int32x2, Float32
+Variable TextureAtomicStore_Texture2D_Float32_texture;
+inline constexpr std::array TextureAtomicStore_Texture2D_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2D_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2D_Float32_coordinate;
+Variable TextureAtomicStore_Texture2D_Float32_value;
+Function TextureAtomicStore_Texture2D_Float32;
+inline constexpr std::array TextureAtomicStore_Texture2D_Float32_args = { &TextureAtomicStore_Texture2D_Float32_texture, &TextureAtomicStore_Texture2D_Float32_coordinate, &TextureAtomicStore_Texture2D_Float32_value };
+
+/// textureAtomicStore with Texture2D, Int32x2, UInt32
+Variable TextureAtomicStore_Texture2D_UInt32_texture;
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2D_UInt32_coordinate;
+Variable TextureAtomicStore_Texture2D_UInt32_value;
+Function TextureAtomicStore_Texture2D_UInt32;
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt32_args = { &TextureAtomicStore_Texture2D_UInt32_texture, &TextureAtomicStore_Texture2D_UInt32_coordinate, &TextureAtomicStore_Texture2D_UInt32_value };
+
+/// textureAtomicStore with Texture2D, Int32x2, Int32
+Variable TextureAtomicStore_Texture2D_Int32_texture;
+inline constexpr std::array TextureAtomicStore_Texture2D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2D_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2D_Int32_coordinate;
+Variable TextureAtomicStore_Texture2D_Int32_value;
+Function TextureAtomicStore_Texture2D_Int32;
+inline constexpr std::array TextureAtomicStore_Texture2D_Int32_args = { &TextureAtomicStore_Texture2D_Int32_texture, &TextureAtomicStore_Texture2D_Int32_coordinate, &TextureAtomicStore_Texture2D_Int32_value };
+
+/// textureAtomicStore with Texture2D, Int32x2, Float16
+Variable TextureAtomicStore_Texture2D_Float16_texture;
+inline constexpr std::array TextureAtomicStore_Texture2D_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2D_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2D_Float16_coordinate;
+Variable TextureAtomicStore_Texture2D_Float16_value;
+Function TextureAtomicStore_Texture2D_Float16;
+inline constexpr std::array TextureAtomicStore_Texture2D_Float16_args = { &TextureAtomicStore_Texture2D_Float16_texture, &TextureAtomicStore_Texture2D_Float16_coordinate, &TextureAtomicStore_Texture2D_Float16_value };
+
+/// textureAtomicStore with Texture2D, Int32x2, UInt16
+Variable TextureAtomicStore_Texture2D_UInt16_texture;
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2D_UInt16_coordinate;
+Variable TextureAtomicStore_Texture2D_UInt16_value;
+Function TextureAtomicStore_Texture2D_UInt16;
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt16_args = { &TextureAtomicStore_Texture2D_UInt16_texture, &TextureAtomicStore_Texture2D_UInt16_coordinate, &TextureAtomicStore_Texture2D_UInt16_value };
+
+/// textureAtomicStore with Texture2D, Int32x2, Int16
+Variable TextureAtomicStore_Texture2D_Int16_texture;
+inline constexpr std::array TextureAtomicStore_Texture2D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2D_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2D_Int16_coordinate;
+Variable TextureAtomicStore_Texture2D_Int16_value;
+Function TextureAtomicStore_Texture2D_Int16;
+inline constexpr std::array TextureAtomicStore_Texture2D_Int16_args = { &TextureAtomicStore_Texture2D_Int16_texture, &TextureAtomicStore_Texture2D_Int16_coordinate, &TextureAtomicStore_Texture2D_Int16_value };
+
+/// textureAtomicStore with Texture2D, Int32x2, UInt64
+Variable TextureAtomicStore_Texture2D_UInt64_texture;
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2D_UInt64_coordinate;
+Variable TextureAtomicStore_Texture2D_UInt64_value;
+Function TextureAtomicStore_Texture2D_UInt64;
+inline constexpr std::array TextureAtomicStore_Texture2D_UInt64_args = { &TextureAtomicStore_Texture2D_UInt64_texture, &TextureAtomicStore_Texture2D_UInt64_coordinate, &TextureAtomicStore_Texture2D_UInt64_value };
+
+/// textureAtomicStore with Texture3D, Int32x3, Float32
+Variable TextureAtomicStore_Texture3D_Float32_texture;
+inline constexpr std::array TextureAtomicStore_Texture3D_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture3D_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture3D_Float32_coordinate;
+Variable TextureAtomicStore_Texture3D_Float32_value;
+Function TextureAtomicStore_Texture3D_Float32;
+inline constexpr std::array TextureAtomicStore_Texture3D_Float32_args = { &TextureAtomicStore_Texture3D_Float32_texture, &TextureAtomicStore_Texture3D_Float32_coordinate, &TextureAtomicStore_Texture3D_Float32_value };
+
+/// textureAtomicStore with Texture3D, Int32x3, UInt32
+Variable TextureAtomicStore_Texture3D_UInt32_texture;
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture3D_UInt32_coordinate;
+Variable TextureAtomicStore_Texture3D_UInt32_value;
+Function TextureAtomicStore_Texture3D_UInt32;
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt32_args = { &TextureAtomicStore_Texture3D_UInt32_texture, &TextureAtomicStore_Texture3D_UInt32_coordinate, &TextureAtomicStore_Texture3D_UInt32_value };
+
+/// textureAtomicStore with Texture3D, Int32x3, Int32
+Variable TextureAtomicStore_Texture3D_Int32_texture;
+inline constexpr std::array TextureAtomicStore_Texture3D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture3D_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture3D_Int32_coordinate;
+Variable TextureAtomicStore_Texture3D_Int32_value;
+Function TextureAtomicStore_Texture3D_Int32;
+inline constexpr std::array TextureAtomicStore_Texture3D_Int32_args = { &TextureAtomicStore_Texture3D_Int32_texture, &TextureAtomicStore_Texture3D_Int32_coordinate, &TextureAtomicStore_Texture3D_Int32_value };
+
+/// textureAtomicStore with Texture3D, Int32x3, Float16
+Variable TextureAtomicStore_Texture3D_Float16_texture;
+inline constexpr std::array TextureAtomicStore_Texture3D_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture3D_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture3D_Float16_coordinate;
+Variable TextureAtomicStore_Texture3D_Float16_value;
+Function TextureAtomicStore_Texture3D_Float16;
+inline constexpr std::array TextureAtomicStore_Texture3D_Float16_args = { &TextureAtomicStore_Texture3D_Float16_texture, &TextureAtomicStore_Texture3D_Float16_coordinate, &TextureAtomicStore_Texture3D_Float16_value };
+
+/// textureAtomicStore with Texture3D, Int32x3, UInt16
+Variable TextureAtomicStore_Texture3D_UInt16_texture;
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture3D_UInt16_coordinate;
+Variable TextureAtomicStore_Texture3D_UInt16_value;
+Function TextureAtomicStore_Texture3D_UInt16;
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt16_args = { &TextureAtomicStore_Texture3D_UInt16_texture, &TextureAtomicStore_Texture3D_UInt16_coordinate, &TextureAtomicStore_Texture3D_UInt16_value };
+
+/// textureAtomicStore with Texture3D, Int32x3, Int16
+Variable TextureAtomicStore_Texture3D_Int16_texture;
+inline constexpr std::array TextureAtomicStore_Texture3D_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture3D_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture3D_Int16_coordinate;
+Variable TextureAtomicStore_Texture3D_Int16_value;
+Function TextureAtomicStore_Texture3D_Int16;
+inline constexpr std::array TextureAtomicStore_Texture3D_Int16_args = { &TextureAtomicStore_Texture3D_Int16_texture, &TextureAtomicStore_Texture3D_Int16_coordinate, &TextureAtomicStore_Texture3D_Int16_value };
+
+/// textureAtomicStore with Texture3D, Int32x3, UInt64
+Variable TextureAtomicStore_Texture3D_UInt64_texture;
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture3D_UInt64_coordinate;
+Variable TextureAtomicStore_Texture3D_UInt64_value;
+Function TextureAtomicStore_Texture3D_UInt64;
+inline constexpr std::array TextureAtomicStore_Texture3D_UInt64_args = { &TextureAtomicStore_Texture3D_UInt64_texture, &TextureAtomicStore_Texture3D_UInt64_coordinate, &TextureAtomicStore_Texture3D_UInt64_value };
+
+/// textureAtomicStore with TextureCube, Int32x3, Float32
+Variable TextureAtomicStore_TextureCube_Float32_texture;
+inline constexpr std::array TextureAtomicStore_TextureCube_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCube_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCube_Float32_coordinate;
+Variable TextureAtomicStore_TextureCube_Float32_value;
+Function TextureAtomicStore_TextureCube_Float32;
+inline constexpr std::array TextureAtomicStore_TextureCube_Float32_args = { &TextureAtomicStore_TextureCube_Float32_texture, &TextureAtomicStore_TextureCube_Float32_coordinate, &TextureAtomicStore_TextureCube_Float32_value };
+
+/// textureAtomicStore with TextureCube, Int32x3, UInt32
+Variable TextureAtomicStore_TextureCube_UInt32_texture;
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCube_UInt32_coordinate;
+Variable TextureAtomicStore_TextureCube_UInt32_value;
+Function TextureAtomicStore_TextureCube_UInt32;
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt32_args = { &TextureAtomicStore_TextureCube_UInt32_texture, &TextureAtomicStore_TextureCube_UInt32_coordinate, &TextureAtomicStore_TextureCube_UInt32_value };
+
+/// textureAtomicStore with TextureCube, Int32x3, Int32
+Variable TextureAtomicStore_TextureCube_Int32_texture;
+inline constexpr std::array TextureAtomicStore_TextureCube_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCube_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCube_Int32_coordinate;
+Variable TextureAtomicStore_TextureCube_Int32_value;
+Function TextureAtomicStore_TextureCube_Int32;
+inline constexpr std::array TextureAtomicStore_TextureCube_Int32_args = { &TextureAtomicStore_TextureCube_Int32_texture, &TextureAtomicStore_TextureCube_Int32_coordinate, &TextureAtomicStore_TextureCube_Int32_value };
+
+/// textureAtomicStore with TextureCube, Int32x3, Float16
+Variable TextureAtomicStore_TextureCube_Float16_texture;
+inline constexpr std::array TextureAtomicStore_TextureCube_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCube_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCube_Float16_coordinate;
+Variable TextureAtomicStore_TextureCube_Float16_value;
+Function TextureAtomicStore_TextureCube_Float16;
+inline constexpr std::array TextureAtomicStore_TextureCube_Float16_args = { &TextureAtomicStore_TextureCube_Float16_texture, &TextureAtomicStore_TextureCube_Float16_coordinate, &TextureAtomicStore_TextureCube_Float16_value };
+
+/// textureAtomicStore with TextureCube, Int32x3, UInt16
+Variable TextureAtomicStore_TextureCube_UInt16_texture;
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCube_UInt16_coordinate;
+Variable TextureAtomicStore_TextureCube_UInt16_value;
+Function TextureAtomicStore_TextureCube_UInt16;
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt16_args = { &TextureAtomicStore_TextureCube_UInt16_texture, &TextureAtomicStore_TextureCube_UInt16_coordinate, &TextureAtomicStore_TextureCube_UInt16_value };
+
+/// textureAtomicStore with TextureCube, Int32x3, Int16
+Variable TextureAtomicStore_TextureCube_Int16_texture;
+inline constexpr std::array TextureAtomicStore_TextureCube_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCube_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCube_Int16_coordinate;
+Variable TextureAtomicStore_TextureCube_Int16_value;
+Function TextureAtomicStore_TextureCube_Int16;
+inline constexpr std::array TextureAtomicStore_TextureCube_Int16_args = { &TextureAtomicStore_TextureCube_Int16_texture, &TextureAtomicStore_TextureCube_Int16_coordinate, &TextureAtomicStore_TextureCube_Int16_value };
+
+/// textureAtomicStore with TextureCube, Int32x3, UInt64
+Variable TextureAtomicStore_TextureCube_UInt64_texture;
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCube_UInt64_coordinate;
+Variable TextureAtomicStore_TextureCube_UInt64_value;
+Function TextureAtomicStore_TextureCube_UInt64;
+inline constexpr std::array TextureAtomicStore_TextureCube_UInt64_args = { &TextureAtomicStore_TextureCube_UInt64_texture, &TextureAtomicStore_TextureCube_UInt64_coordinate, &TextureAtomicStore_TextureCube_UInt64_value };
+
+/// textureAtomicStore with Texture1DArray, Int32x2, Float32
+Variable TextureAtomicStore_Texture1DArray_Float32_texture;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1DArray_Float32_coordinate;
+Variable TextureAtomicStore_Texture1DArray_Float32_value;
+Function TextureAtomicStore_Texture1DArray_Float32;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Float32_args = { &TextureAtomicStore_Texture1DArray_Float32_texture, &TextureAtomicStore_Texture1DArray_Float32_coordinate, &TextureAtomicStore_Texture1DArray_Float32_value };
+
+/// textureAtomicStore with Texture1DArray, Int32x2, UInt32
+Variable TextureAtomicStore_Texture1DArray_UInt32_texture;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1DArray_UInt32_coordinate;
+Variable TextureAtomicStore_Texture1DArray_UInt32_value;
+Function TextureAtomicStore_Texture1DArray_UInt32;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt32_args = { &TextureAtomicStore_Texture1DArray_UInt32_texture, &TextureAtomicStore_Texture1DArray_UInt32_coordinate, &TextureAtomicStore_Texture1DArray_UInt32_value };
+
+/// textureAtomicStore with Texture1DArray, Int32x2, Int32
+Variable TextureAtomicStore_Texture1DArray_Int32_texture;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1DArray_Int32_coordinate;
+Variable TextureAtomicStore_Texture1DArray_Int32_value;
+Function TextureAtomicStore_Texture1DArray_Int32;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Int32_args = { &TextureAtomicStore_Texture1DArray_Int32_texture, &TextureAtomicStore_Texture1DArray_Int32_coordinate, &TextureAtomicStore_Texture1DArray_Int32_value };
+
+/// textureAtomicStore with Texture1DArray, Int32x2, Float16
+Variable TextureAtomicStore_Texture1DArray_Float16_texture;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1DArray_Float16_coordinate;
+Variable TextureAtomicStore_Texture1DArray_Float16_value;
+Function TextureAtomicStore_Texture1DArray_Float16;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Float16_args = { &TextureAtomicStore_Texture1DArray_Float16_texture, &TextureAtomicStore_Texture1DArray_Float16_coordinate, &TextureAtomicStore_Texture1DArray_Float16_value };
+
+/// textureAtomicStore with Texture1DArray, Int32x2, UInt16
+Variable TextureAtomicStore_Texture1DArray_UInt16_texture;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1DArray_UInt16_coordinate;
+Variable TextureAtomicStore_Texture1DArray_UInt16_value;
+Function TextureAtomicStore_Texture1DArray_UInt16;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt16_args = { &TextureAtomicStore_Texture1DArray_UInt16_texture, &TextureAtomicStore_Texture1DArray_UInt16_coordinate, &TextureAtomicStore_Texture1DArray_UInt16_value };
+
+/// textureAtomicStore with Texture1DArray, Int32x2, Int16
+Variable TextureAtomicStore_Texture1DArray_Int16_texture;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1DArray_Int16_coordinate;
+Variable TextureAtomicStore_Texture1DArray_Int16_value;
+Function TextureAtomicStore_Texture1DArray_Int16;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_Int16_args = { &TextureAtomicStore_Texture1DArray_Int16_texture, &TextureAtomicStore_Texture1DArray_Int16_coordinate, &TextureAtomicStore_Texture1DArray_Int16_value };
+
+/// textureAtomicStore with Texture1DArray, Int32x2, UInt64
+Variable TextureAtomicStore_Texture1DArray_UInt64_texture;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture1DArray_UInt64_coordinate;
+Variable TextureAtomicStore_Texture1DArray_UInt64_value;
+Function TextureAtomicStore_Texture1DArray_UInt64;
+inline constexpr std::array TextureAtomicStore_Texture1DArray_UInt64_args = { &TextureAtomicStore_Texture1DArray_UInt64_texture, &TextureAtomicStore_Texture1DArray_UInt64_coordinate, &TextureAtomicStore_Texture1DArray_UInt64_value };
+
+/// textureAtomicStore with Texture2DArray, Int32x3, Float32
+Variable TextureAtomicStore_Texture2DArray_Float32_texture;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2DArray_Float32_coordinate;
+Variable TextureAtomicStore_Texture2DArray_Float32_value;
+Function TextureAtomicStore_Texture2DArray_Float32;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Float32_args = { &TextureAtomicStore_Texture2DArray_Float32_texture, &TextureAtomicStore_Texture2DArray_Float32_coordinate, &TextureAtomicStore_Texture2DArray_Float32_value };
+
+/// textureAtomicStore with Texture2DArray, Int32x3, UInt32
+Variable TextureAtomicStore_Texture2DArray_UInt32_texture;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2DArray_UInt32_coordinate;
+Variable TextureAtomicStore_Texture2DArray_UInt32_value;
+Function TextureAtomicStore_Texture2DArray_UInt32;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt32_args = { &TextureAtomicStore_Texture2DArray_UInt32_texture, &TextureAtomicStore_Texture2DArray_UInt32_coordinate, &TextureAtomicStore_Texture2DArray_UInt32_value };
+
+/// textureAtomicStore with Texture2DArray, Int32x3, Int32
+Variable TextureAtomicStore_Texture2DArray_Int32_texture;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2DArray_Int32_coordinate;
+Variable TextureAtomicStore_Texture2DArray_Int32_value;
+Function TextureAtomicStore_Texture2DArray_Int32;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Int32_args = { &TextureAtomicStore_Texture2DArray_Int32_texture, &TextureAtomicStore_Texture2DArray_Int32_coordinate, &TextureAtomicStore_Texture2DArray_Int32_value };
+
+/// textureAtomicStore with Texture2DArray, Int32x3, Float16
+Variable TextureAtomicStore_Texture2DArray_Float16_texture;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2DArray_Float16_coordinate;
+Variable TextureAtomicStore_Texture2DArray_Float16_value;
+Function TextureAtomicStore_Texture2DArray_Float16;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Float16_args = { &TextureAtomicStore_Texture2DArray_Float16_texture, &TextureAtomicStore_Texture2DArray_Float16_coordinate, &TextureAtomicStore_Texture2DArray_Float16_value };
+
+/// textureAtomicStore with Texture2DArray, Int32x3, UInt16
+Variable TextureAtomicStore_Texture2DArray_UInt16_texture;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2DArray_UInt16_coordinate;
+Variable TextureAtomicStore_Texture2DArray_UInt16_value;
+Function TextureAtomicStore_Texture2DArray_UInt16;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt16_args = { &TextureAtomicStore_Texture2DArray_UInt16_texture, &TextureAtomicStore_Texture2DArray_UInt16_coordinate, &TextureAtomicStore_Texture2DArray_UInt16_value };
+
+/// textureAtomicStore with Texture2DArray, Int32x3, Int16
+Variable TextureAtomicStore_Texture2DArray_Int16_texture;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2DArray_Int16_coordinate;
+Variable TextureAtomicStore_Texture2DArray_Int16_value;
+Function TextureAtomicStore_Texture2DArray_Int16;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_Int16_args = { &TextureAtomicStore_Texture2DArray_Int16_texture, &TextureAtomicStore_Texture2DArray_Int16_coordinate, &TextureAtomicStore_Texture2DArray_Int16_value };
+
+/// textureAtomicStore with Texture2DArray, Int32x3, UInt64
+Variable TextureAtomicStore_Texture2DArray_UInt64_texture;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_Texture2DArray_UInt64_coordinate;
+Variable TextureAtomicStore_Texture2DArray_UInt64_value;
+Function TextureAtomicStore_Texture2DArray_UInt64;
+inline constexpr std::array TextureAtomicStore_Texture2DArray_UInt64_args = { &TextureAtomicStore_Texture2DArray_UInt64_texture, &TextureAtomicStore_Texture2DArray_UInt64_coordinate, &TextureAtomicStore_Texture2DArray_UInt64_value };
+
+/// textureAtomicStore with TextureCubeArray, Int32x4, Float32
+Variable TextureAtomicStore_TextureCubeArray_Float32_texture;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCubeArray_Float32_coordinate;
+Variable TextureAtomicStore_TextureCubeArray_Float32_value;
+Function TextureAtomicStore_TextureCubeArray_Float32;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Float32_args = { &TextureAtomicStore_TextureCubeArray_Float32_texture, &TextureAtomicStore_TextureCubeArray_Float32_coordinate, &TextureAtomicStore_TextureCubeArray_Float32_value };
+
+/// textureAtomicStore with TextureCubeArray, Int32x4, UInt32
+Variable TextureAtomicStore_TextureCubeArray_UInt32_texture;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCubeArray_UInt32_coordinate;
+Variable TextureAtomicStore_TextureCubeArray_UInt32_value;
+Function TextureAtomicStore_TextureCubeArray_UInt32;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt32_args = { &TextureAtomicStore_TextureCubeArray_UInt32_texture, &TextureAtomicStore_TextureCubeArray_UInt32_coordinate, &TextureAtomicStore_TextureCubeArray_UInt32_value };
+
+/// textureAtomicStore with TextureCubeArray, Int32x4, Int32
+Variable TextureAtomicStore_TextureCubeArray_Int32_texture;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCubeArray_Int32_coordinate;
+Variable TextureAtomicStore_TextureCubeArray_Int32_value;
+Function TextureAtomicStore_TextureCubeArray_Int32;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Int32_args = { &TextureAtomicStore_TextureCubeArray_Int32_texture, &TextureAtomicStore_TextureCubeArray_Int32_coordinate, &TextureAtomicStore_TextureCubeArray_Int32_value };
+
+/// textureAtomicStore with TextureCubeArray, Int32x4, Float16
+Variable TextureAtomicStore_TextureCubeArray_Float16_texture;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCubeArray_Float16_coordinate;
+Variable TextureAtomicStore_TextureCubeArray_Float16_value;
+Function TextureAtomicStore_TextureCubeArray_Float16;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Float16_args = { &TextureAtomicStore_TextureCubeArray_Float16_texture, &TextureAtomicStore_TextureCubeArray_Float16_coordinate, &TextureAtomicStore_TextureCubeArray_Float16_value };
+
+/// textureAtomicStore with TextureCubeArray, Int32x4, UInt16
+Variable TextureAtomicStore_TextureCubeArray_UInt16_texture;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCubeArray_UInt16_coordinate;
+Variable TextureAtomicStore_TextureCubeArray_UInt16_value;
+Function TextureAtomicStore_TextureCubeArray_UInt16;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt16_args = { &TextureAtomicStore_TextureCubeArray_UInt16_texture, &TextureAtomicStore_TextureCubeArray_UInt16_coordinate, &TextureAtomicStore_TextureCubeArray_UInt16_value };
+
+/// textureAtomicStore with TextureCubeArray, Int32x4, Int16
+Variable TextureAtomicStore_TextureCubeArray_Int16_texture;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Int16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Int16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCubeArray_Int16_coordinate;
+Variable TextureAtomicStore_TextureCubeArray_Int16_value;
+Function TextureAtomicStore_TextureCubeArray_Int16;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_Int16_args = { &TextureAtomicStore_TextureCubeArray_Int16_texture, &TextureAtomicStore_TextureCubeArray_Int16_coordinate, &TextureAtomicStore_TextureCubeArray_Int16_value };
+
+/// textureAtomicStore with TextureCubeArray, Int32x4, UInt64
+Variable TextureAtomicStore_TextureCubeArray_UInt64_texture;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt64_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt64_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicStore_TextureCubeArray_UInt64_coordinate;
+Variable TextureAtomicStore_TextureCubeArray_UInt64_value;
+Function TextureAtomicStore_TextureCubeArray_UInt64;
+inline constexpr std::array TextureAtomicStore_TextureCubeArray_UInt64_args = { &TextureAtomicStore_TextureCubeArray_UInt64_texture, &TextureAtomicStore_TextureCubeArray_UInt64_coordinate, &TextureAtomicStore_TextureCubeArray_UInt64_value };
+
+/// textureAtomicExchange with Texture1D, Int32, Float32
+Variable TextureAtomicExchange_Texture1D_Float32_texture;
+inline constexpr std::array TextureAtomicExchange_Texture1D_Float32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicExchange_Texture1D_Float32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicExchange_Texture1D_Float32_coordinate;
+Variable TextureAtomicExchange_Texture1D_Float32_value;
+Function TextureAtomicExchange_Texture1D_Float32;
+inline constexpr std::array TextureAtomicExchange_Texture1D_Float32_args = { &TextureAtomicExchange_Texture1D_Float32_texture, &TextureAtomicExchange_Texture1D_Float32_coordinate, &TextureAtomicExchange_Texture1D_Float32_value };
+
+/// textureAtomicExchange with Texture1D, Int32, UInt32
+Variable TextureAtomicExchange_Texture1D_UInt32_texture;
+inline constexpr std::array TextureAtomicExchange_Texture1D_UInt32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicExchange_Texture1D_UInt32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicExchange_Texture1D_UInt32_coordinate;
+Variable TextureAtomicExchange_Texture1D_UInt32_value;
+Function TextureAtomicExchange_Texture1D_UInt32;
+inline constexpr std::array TextureAtomicExchange_Texture1D_UInt32_args = { &TextureAtomicExchange_Texture1D_UInt32_texture, &TextureAtomicExchange_Texture1D_UInt32_coordinate, &TextureAtomicExchange_Texture1D_UInt32_value };
+
+/// textureAtomicExchange with Texture1D, Int32, Int32
+Variable TextureAtomicExchange_Texture1D_Int32_texture;
+inline constexpr std::array TextureAtomicExchange_Texture1D_Int32_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicExchange_Texture1D_Int32_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicExchange_Texture1D_Int32_coordinate;
+Variable TextureAtomicExchange_Texture1D_Int32_value;
+Function TextureAtomicExchange_Texture1D_Int32;
+inline constexpr std::array TextureAtomicExchange_Texture1D_Int32_args = { &TextureAtomicExchange_Texture1D_Int32_texture, &TextureAtomicExchange_Texture1D_Int32_coordinate, &TextureAtomicExchange_Texture1D_Int32_value };
+
+/// textureAtomicExchange with Texture1D, Int32, Float16
+Variable TextureAtomicExchange_Texture1D_Float16_texture;
+inline constexpr std::array TextureAtomicExchange_Texture1D_Float16_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureAtomicExchange_Texture1D_Float16_texture_modifierValues = {(Expression*)nullptr};
+Variable TextureAtomicExchange_Texture1D_Float16_coordinate;
+Variable TextureAtomicExchange_Texture1D_Float16_value;
+Function TextureAtomicExchange_Texture1D_Float16;
+inline constexpr std::array TextureAtomicExchange_Texture1D_Float16_args = { &TextureAtomicExchange_Texture1D_Float16_texture, &TextureAtomicExchange_Texture1D_Float16_coordinate, &TextureAtomicExchange_Texture1D_Float16_value };
 
 void SetupIntrinsics16()
 {
-    /// textureAtomicSubtract with Texture1DArray, Int32x2, Int32
-    TextureAtomicSubtract_Texture1DArray_Int32_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicSubtract_Texture1DArray_Int32_texture.type.mut = true;
-    TextureAtomicSubtract_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicSubtract_Texture1DArray_Int32_texture_modifiers;
-    TextureAtomicSubtract_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicSubtract_Texture1DArray_Int32_texture_modifierValues;
-    TextureAtomicSubtract_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture1DArray_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicSubtract_Texture1DArray_Int32_value.name = "value"_c;
-    TextureAtomicSubtract_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicSubtract_Texture1DArray_Int32.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture1DArray_Int32.name = TextureAtomicSubtract_Texture1DArray_Int32_name;
-    TextureAtomicSubtract_Texture1DArray_Int32.backendIndex = 3014;
-    TextureAtomicSubtract_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicSubtract_Texture1DArray_Int32.parameters = TextureAtomicSubtract_Texture1DArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32)->signature = "textureAtomicSubtract(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32)->name = "textureAtomicSubtract(uniform *mutable texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicSubtract with Texture1DArray, Int32x2, UInt16
-    TextureAtomicSubtract_Texture1DArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicSubtract_Texture1DArray_UInt16_texture.type.mut = true;
-    TextureAtomicSubtract_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicSubtract_Texture1DArray_UInt16_texture_modifiers;
-    TextureAtomicSubtract_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicSubtract_Texture1DArray_UInt16_texture_modifierValues;
-    TextureAtomicSubtract_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture1DArray_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicSubtract_Texture1DArray_UInt16_value.name = "value"_c;
-    TextureAtomicSubtract_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicSubtract_Texture1DArray_UInt16.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture1DArray_UInt16.name = TextureAtomicSubtract_Texture1DArray_UInt16_name;
-    TextureAtomicSubtract_Texture1DArray_UInt16.backendIndex = 3015;
-    TextureAtomicSubtract_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicSubtract_Texture1DArray_UInt16.parameters = TextureAtomicSubtract_Texture1DArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16)->signature = "textureAtomicSubtract(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16)->name = "textureAtomicSubtract(uniform *mutable texture1DArray,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicSubtract with Texture1DArray, Int32x2, Int16
-    TextureAtomicSubtract_Texture1DArray_Int16_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicSubtract_Texture1DArray_Int16_texture.type.mut = true;
-    TextureAtomicSubtract_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicSubtract_Texture1DArray_Int16_texture_modifiers;
-    TextureAtomicSubtract_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicSubtract_Texture1DArray_Int16_texture_modifierValues;
-    TextureAtomicSubtract_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture1DArray_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicSubtract_Texture1DArray_Int16_value.name = "value"_c;
-    TextureAtomicSubtract_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicSubtract_Texture1DArray_Int16.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture1DArray_Int16.name = TextureAtomicSubtract_Texture1DArray_Int16_name;
-    TextureAtomicSubtract_Texture1DArray_Int16.backendIndex = 3016;
-    TextureAtomicSubtract_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicSubtract_Texture1DArray_Int16.parameters = TextureAtomicSubtract_Texture1DArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16)->signature = "textureAtomicSubtract(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16)->name = "textureAtomicSubtract(uniform *mutable texture1DArray,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicSubtract with Texture1DArray, Int32x2, UInt64
-    TextureAtomicSubtract_Texture1DArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture1DArray_UInt64_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicSubtract_Texture1DArray_UInt64_texture.type.mut = true;
-    TextureAtomicSubtract_Texture1DArray_UInt64_texture.type.modifiers = TextureAtomicSubtract_Texture1DArray_UInt64_texture_modifiers;
-    TextureAtomicSubtract_Texture1DArray_UInt64_texture.type.modifierValues = TextureAtomicSubtract_Texture1DArray_UInt64_texture_modifierValues;
-    TextureAtomicSubtract_Texture1DArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture1DArray_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicSubtract_Texture1DArray_UInt64_value.name = "value"_c;
-    TextureAtomicSubtract_Texture1DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicSubtract_Texture1DArray_UInt64.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture1DArray_UInt64.name = TextureAtomicSubtract_Texture1DArray_UInt64_name;
-    TextureAtomicSubtract_Texture1DArray_UInt64.backendIndex = 3017;
-    TextureAtomicSubtract_Texture1DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicSubtract_Texture1DArray_UInt64.parameters = TextureAtomicSubtract_Texture1DArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt64_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt64_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt64)->signature = "textureAtomicSubtract(uniform *mutable texture1DArray,i32x2,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt64)->name = "textureAtomicSubtract(uniform *mutable texture1DArray,i32x2,u64)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt64)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture1DArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicSubtract with Texture2DArray, Int32x3, UInt32
-    TextureAtomicSubtract_Texture2DArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicSubtract_Texture2DArray_UInt32_texture.type.mut = true;
-    TextureAtomicSubtract_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicSubtract_Texture2DArray_UInt32_texture_modifiers;
-    TextureAtomicSubtract_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicSubtract_Texture2DArray_UInt32_texture_modifierValues;
-    TextureAtomicSubtract_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt32_value.name = "value"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt32.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt32.name = TextureAtomicSubtract_Texture2DArray_UInt32_name;
-    TextureAtomicSubtract_Texture2DArray_UInt32.backendIndex = 3018;
-    TextureAtomicSubtract_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt32.parameters = TextureAtomicSubtract_Texture2DArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32)->signature = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32)->name = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicSubtract with Texture2DArray, Int32x3, Int32
-    TextureAtomicSubtract_Texture2DArray_Int32_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicSubtract_Texture2DArray_Int32_texture.type.mut = true;
-    TextureAtomicSubtract_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicSubtract_Texture2DArray_Int32_texture_modifiers;
-    TextureAtomicSubtract_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicSubtract_Texture2DArray_Int32_texture_modifierValues;
-    TextureAtomicSubtract_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture2DArray_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicSubtract_Texture2DArray_Int32_value.name = "value"_c;
-    TextureAtomicSubtract_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicSubtract_Texture2DArray_Int32.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture2DArray_Int32.name = TextureAtomicSubtract_Texture2DArray_Int32_name;
-    TextureAtomicSubtract_Texture2DArray_Int32.backendIndex = 3019;
-    TextureAtomicSubtract_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicSubtract_Texture2DArray_Int32.parameters = TextureAtomicSubtract_Texture2DArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32)->signature = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32)->name = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicSubtract with Texture2DArray, Int32x3, UInt16
-    TextureAtomicSubtract_Texture2DArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicSubtract_Texture2DArray_UInt16_texture.type.mut = true;
-    TextureAtomicSubtract_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicSubtract_Texture2DArray_UInt16_texture_modifiers;
-    TextureAtomicSubtract_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicSubtract_Texture2DArray_UInt16_texture_modifierValues;
-    TextureAtomicSubtract_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt16_value.name = "value"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt16.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt16.name = TextureAtomicSubtract_Texture2DArray_UInt16_name;
-    TextureAtomicSubtract_Texture2DArray_UInt16.backendIndex = 3020;
-    TextureAtomicSubtract_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt16.parameters = TextureAtomicSubtract_Texture2DArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16)->signature = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16)->name = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicSubtract with Texture2DArray, Int32x3, Int16
-    TextureAtomicSubtract_Texture2DArray_Int16_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicSubtract_Texture2DArray_Int16_texture.type.mut = true;
-    TextureAtomicSubtract_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicSubtract_Texture2DArray_Int16_texture_modifiers;
-    TextureAtomicSubtract_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicSubtract_Texture2DArray_Int16_texture_modifierValues;
-    TextureAtomicSubtract_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture2DArray_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicSubtract_Texture2DArray_Int16_value.name = "value"_c;
-    TextureAtomicSubtract_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicSubtract_Texture2DArray_Int16.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture2DArray_Int16.name = TextureAtomicSubtract_Texture2DArray_Int16_name;
-    TextureAtomicSubtract_Texture2DArray_Int16.backendIndex = 3021;
-    TextureAtomicSubtract_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicSubtract_Texture2DArray_Int16.parameters = TextureAtomicSubtract_Texture2DArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16)->signature = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16)->name = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicSubtract with Texture2DArray, Int32x3, UInt64
-    TextureAtomicSubtract_Texture2DArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt64_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicSubtract_Texture2DArray_UInt64_texture.type.mut = true;
-    TextureAtomicSubtract_Texture2DArray_UInt64_texture.type.modifiers = TextureAtomicSubtract_Texture2DArray_UInt64_texture_modifiers;
-    TextureAtomicSubtract_Texture2DArray_UInt64_texture.type.modifierValues = TextureAtomicSubtract_Texture2DArray_UInt64_texture_modifierValues;
-    TextureAtomicSubtract_Texture2DArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt64_value.name = "value"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt64.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_Texture2DArray_UInt64.name = TextureAtomicSubtract_Texture2DArray_UInt64_name;
-    TextureAtomicSubtract_Texture2DArray_UInt64.backendIndex = 3022;
-    TextureAtomicSubtract_Texture2DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicSubtract_Texture2DArray_UInt64.parameters = TextureAtomicSubtract_Texture2DArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt64_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt64)->signature = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt64)->name = "textureAtomicSubtract(uniform *mutable texture2DArray,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt64)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_Texture2DArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicSubtract with TextureCubeArray, Int32x4, UInt32
-    TextureAtomicSubtract_TextureCubeArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt32_texture.type.mut = true;
-    TextureAtomicSubtract_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicSubtract_TextureCubeArray_UInt32_texture_modifiers;
-    TextureAtomicSubtract_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicSubtract_TextureCubeArray_UInt32_texture_modifierValues;
-    TextureAtomicSubtract_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt32_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt32_value.name = "value"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt32.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt32.name = TextureAtomicSubtract_TextureCubeArray_UInt32_name;
-    TextureAtomicSubtract_TextureCubeArray_UInt32.backendIndex = 3023;
-    TextureAtomicSubtract_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt32.parameters = TextureAtomicSubtract_TextureCubeArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32)->signature = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32)->name = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,u32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicSubtract with TextureCubeArray, Int32x4, Int32
-    TextureAtomicSubtract_TextureCubeArray_Int32_texture.name = "texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicSubtract_TextureCubeArray_Int32_texture.type.mut = true;
-    TextureAtomicSubtract_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicSubtract_TextureCubeArray_Int32_texture_modifiers;
-    TextureAtomicSubtract_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicSubtract_TextureCubeArray_Int32_texture_modifierValues;
-    TextureAtomicSubtract_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_TextureCubeArray_Int32_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicSubtract_TextureCubeArray_Int32_value.name = "value"_c;
-    TextureAtomicSubtract_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicSubtract_TextureCubeArray_Int32.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_Int32.name = TextureAtomicSubtract_TextureCubeArray_Int32_name;
-    TextureAtomicSubtract_TextureCubeArray_Int32.backendIndex = 3024;
-    TextureAtomicSubtract_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicSubtract_TextureCubeArray_Int32.parameters = TextureAtomicSubtract_TextureCubeArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32)->signature = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32)->name = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicSubtract with TextureCubeArray, Int32x4, UInt16
-    TextureAtomicSubtract_TextureCubeArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt16_texture.type.mut = true;
-    TextureAtomicSubtract_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicSubtract_TextureCubeArray_UInt16_texture_modifiers;
-    TextureAtomicSubtract_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicSubtract_TextureCubeArray_UInt16_texture_modifierValues;
-    TextureAtomicSubtract_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt16_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt16_value.name = "value"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt16.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt16.name = TextureAtomicSubtract_TextureCubeArray_UInt16_name;
-    TextureAtomicSubtract_TextureCubeArray_UInt16.backendIndex = 3025;
-    TextureAtomicSubtract_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt16.parameters = TextureAtomicSubtract_TextureCubeArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16)->signature = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16)->name = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicSubtract with TextureCubeArray, Int32x4, Int16
-    TextureAtomicSubtract_TextureCubeArray_Int16_texture.name = "texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicSubtract_TextureCubeArray_Int16_texture.type.mut = true;
-    TextureAtomicSubtract_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicSubtract_TextureCubeArray_Int16_texture_modifiers;
-    TextureAtomicSubtract_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicSubtract_TextureCubeArray_Int16_texture_modifierValues;
-    TextureAtomicSubtract_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_TextureCubeArray_Int16_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicSubtract_TextureCubeArray_Int16_value.name = "value"_c;
-    TextureAtomicSubtract_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicSubtract_TextureCubeArray_Int16.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_Int16.name = TextureAtomicSubtract_TextureCubeArray_Int16_name;
-    TextureAtomicSubtract_TextureCubeArray_Int16.backendIndex = 3026;
-    TextureAtomicSubtract_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicSubtract_TextureCubeArray_Int16.parameters = TextureAtomicSubtract_TextureCubeArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16)->signature = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16)->name = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicSubtract with TextureCubeArray, Int32x4, UInt64
-    TextureAtomicSubtract_TextureCubeArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt64_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt64_texture.type.mut = true;
-    TextureAtomicSubtract_TextureCubeArray_UInt64_texture.type.modifiers = TextureAtomicSubtract_TextureCubeArray_UInt64_texture_modifiers;
-    TextureAtomicSubtract_TextureCubeArray_UInt64_texture.type.modifierValues = TextureAtomicSubtract_TextureCubeArray_UInt64_texture_modifierValues;
-    TextureAtomicSubtract_TextureCubeArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt64_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt64_value.name = "value"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt64.documentation = "Atomically subtract from a texel value in a texture"_c;
-    TextureAtomicSubtract_TextureCubeArray_UInt64.name = TextureAtomicSubtract_TextureCubeArray_UInt64_name;
-    TextureAtomicSubtract_TextureCubeArray_UInt64.backendIndex = 3027;
-    TextureAtomicSubtract_TextureCubeArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicSubtract_TextureCubeArray_UInt64.parameters = TextureAtomicSubtract_TextureCubeArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt64_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt64_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt64)->signature = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt64)->name = "textureAtomicSubtract(uniform *mutable textureCubeArray,i32x4,u64)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt64)->nameWithVarNames = "textureAtomicSubtract(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicSubtract_TextureCubeArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMin with Texture1D, Int32, UInt32
-    TextureAtomicMin_Texture1D_UInt32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMin_Texture1D_UInt32_texture.type.mut = true;
-    TextureAtomicMin_Texture1D_UInt32_texture.type.modifiers = TextureAtomicMin_Texture1D_UInt32_texture_modifiers;
-    TextureAtomicMin_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicMin_Texture1D_UInt32_texture_modifierValues;
-    TextureAtomicMin_Texture1D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1D_UInt32_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture1D_UInt32_value.name = "value"_c;
-    TextureAtomicMin_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMin_Texture1D_UInt32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1D_UInt32.name = TextureAtomicMin_Texture1D_UInt32_name;
-    TextureAtomicMin_Texture1D_UInt32.backendIndex = 3028;
-    TextureAtomicMin_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMin_Texture1D_UInt32.parameters = TextureAtomicMin_Texture1D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32)->signature = "textureAtomicMin(uniform *mutable texture1D,i32,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32)->name = "textureAtomicMin(uniform *mutable texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMin with Texture1D, Int32, Int32
-    TextureAtomicMin_Texture1D_Int32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMin_Texture1D_Int32_texture.type.mut = true;
-    TextureAtomicMin_Texture1D_Int32_texture.type.modifiers = TextureAtomicMin_Texture1D_Int32_texture_modifiers;
-    TextureAtomicMin_Texture1D_Int32_texture.type.modifierValues = TextureAtomicMin_Texture1D_Int32_texture_modifierValues;
-    TextureAtomicMin_Texture1D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1D_Int32_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture1D_Int32_value.name = "value"_c;
-    TextureAtomicMin_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture1D_Int32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1D_Int32.name = TextureAtomicMin_Texture1D_Int32_name;
-    TextureAtomicMin_Texture1D_Int32.backendIndex = 3029;
-    TextureAtomicMin_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMin_Texture1D_Int32.parameters = TextureAtomicMin_Texture1D_Int32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32)->signature = "textureAtomicMin(uniform *mutable texture1D,i32,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32)->name = "textureAtomicMin(uniform *mutable texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMin with Texture1D, Int32, UInt16
-    TextureAtomicMin_Texture1D_UInt16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMin_Texture1D_UInt16_texture.type.mut = true;
-    TextureAtomicMin_Texture1D_UInt16_texture.type.modifiers = TextureAtomicMin_Texture1D_UInt16_texture_modifiers;
-    TextureAtomicMin_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicMin_Texture1D_UInt16_texture_modifierValues;
-    TextureAtomicMin_Texture1D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1D_UInt16_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture1D_UInt16_value.name = "value"_c;
-    TextureAtomicMin_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMin_Texture1D_UInt16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1D_UInt16.name = TextureAtomicMin_Texture1D_UInt16_name;
-    TextureAtomicMin_Texture1D_UInt16.backendIndex = 3030;
-    TextureAtomicMin_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMin_Texture1D_UInt16.parameters = TextureAtomicMin_Texture1D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16)->signature = "textureAtomicMin(uniform *mutable texture1D,i32,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16)->name = "textureAtomicMin(uniform *mutable texture1D,i32,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMin with Texture1D, Int32, Int16
-    TextureAtomicMin_Texture1D_Int16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMin_Texture1D_Int16_texture.type.mut = true;
-    TextureAtomicMin_Texture1D_Int16_texture.type.modifiers = TextureAtomicMin_Texture1D_Int16_texture_modifiers;
-    TextureAtomicMin_Texture1D_Int16_texture.type.modifierValues = TextureAtomicMin_Texture1D_Int16_texture_modifierValues;
-    TextureAtomicMin_Texture1D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1D_Int16_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture1D_Int16_value.name = "value"_c;
-    TextureAtomicMin_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMin_Texture1D_Int16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1D_Int16.name = TextureAtomicMin_Texture1D_Int16_name;
-    TextureAtomicMin_Texture1D_Int16.backendIndex = 3031;
-    TextureAtomicMin_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMin_Texture1D_Int16.parameters = TextureAtomicMin_Texture1D_Int16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16)->signature = "textureAtomicMin(uniform *mutable texture1D,i32,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16)->name = "textureAtomicMin(uniform *mutable texture1D,i32,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMin with Texture1D, Int32, UInt64
-    TextureAtomicMin_Texture1D_UInt64_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1D_UInt64_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMin_Texture1D_UInt64_texture.type.mut = true;
-    TextureAtomicMin_Texture1D_UInt64_texture.type.modifiers = TextureAtomicMin_Texture1D_UInt64_texture_modifiers;
-    TextureAtomicMin_Texture1D_UInt64_texture.type.modifierValues = TextureAtomicMin_Texture1D_UInt64_texture_modifierValues;
-    TextureAtomicMin_Texture1D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1D_UInt64_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture1D_UInt64_value.name = "value"_c;
-    TextureAtomicMin_Texture1D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMin_Texture1D_UInt64.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1D_UInt64.name = TextureAtomicMin_Texture1D_UInt64_name;
-    TextureAtomicMin_Texture1D_UInt64.backendIndex = 3032;
-    TextureAtomicMin_Texture1D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMin_Texture1D_UInt64.parameters = TextureAtomicMin_Texture1D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt64_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt64_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt64)->signature = "textureAtomicMin(uniform *mutable texture1D,i32,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt64)->name = "textureAtomicMin(uniform *mutable texture1D,i32,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt64)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1D, coordinate : i32, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMin with Texture2D, Int32x2, UInt32
-    TextureAtomicMin_Texture2D_UInt32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMin_Texture2D_UInt32_texture.type.mut = true;
-    TextureAtomicMin_Texture2D_UInt32_texture.type.modifiers = TextureAtomicMin_Texture2D_UInt32_texture_modifiers;
-    TextureAtomicMin_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicMin_Texture2D_UInt32_texture_modifierValues;
-    TextureAtomicMin_Texture2D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2D_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture2D_UInt32_value.name = "value"_c;
-    TextureAtomicMin_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMin_Texture2D_UInt32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2D_UInt32.name = TextureAtomicMin_Texture2D_UInt32_name;
-    TextureAtomicMin_Texture2D_UInt32.backendIndex = 3033;
-    TextureAtomicMin_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMin_Texture2D_UInt32.parameters = TextureAtomicMin_Texture2D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32)->signature = "textureAtomicMin(uniform *mutable texture2D,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32)->name = "textureAtomicMin(uniform *mutable texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMin with Texture2D, Int32x2, Int32
-    TextureAtomicMin_Texture2D_Int32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMin_Texture2D_Int32_texture.type.mut = true;
-    TextureAtomicMin_Texture2D_Int32_texture.type.modifiers = TextureAtomicMin_Texture2D_Int32_texture_modifiers;
-    TextureAtomicMin_Texture2D_Int32_texture.type.modifierValues = TextureAtomicMin_Texture2D_Int32_texture_modifierValues;
-    TextureAtomicMin_Texture2D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2D_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture2D_Int32_value.name = "value"_c;
-    TextureAtomicMin_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture2D_Int32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2D_Int32.name = TextureAtomicMin_Texture2D_Int32_name;
-    TextureAtomicMin_Texture2D_Int32.backendIndex = 3034;
-    TextureAtomicMin_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMin_Texture2D_Int32.parameters = TextureAtomicMin_Texture2D_Int32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32)->signature = "textureAtomicMin(uniform *mutable texture2D,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32)->name = "textureAtomicMin(uniform *mutable texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMin with Texture2D, Int32x2, UInt16
-    TextureAtomicMin_Texture2D_UInt16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMin_Texture2D_UInt16_texture.type.mut = true;
-    TextureAtomicMin_Texture2D_UInt16_texture.type.modifiers = TextureAtomicMin_Texture2D_UInt16_texture_modifiers;
-    TextureAtomicMin_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicMin_Texture2D_UInt16_texture_modifierValues;
-    TextureAtomicMin_Texture2D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2D_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture2D_UInt16_value.name = "value"_c;
-    TextureAtomicMin_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMin_Texture2D_UInt16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2D_UInt16.name = TextureAtomicMin_Texture2D_UInt16_name;
-    TextureAtomicMin_Texture2D_UInt16.backendIndex = 3035;
-    TextureAtomicMin_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMin_Texture2D_UInt16.parameters = TextureAtomicMin_Texture2D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16)->signature = "textureAtomicMin(uniform *mutable texture2D,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16)->name = "textureAtomicMin(uniform *mutable texture2D,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMin with Texture2D, Int32x2, Int16
-    TextureAtomicMin_Texture2D_Int16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMin_Texture2D_Int16_texture.type.mut = true;
-    TextureAtomicMin_Texture2D_Int16_texture.type.modifiers = TextureAtomicMin_Texture2D_Int16_texture_modifiers;
-    TextureAtomicMin_Texture2D_Int16_texture.type.modifierValues = TextureAtomicMin_Texture2D_Int16_texture_modifierValues;
-    TextureAtomicMin_Texture2D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2D_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture2D_Int16_value.name = "value"_c;
-    TextureAtomicMin_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMin_Texture2D_Int16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2D_Int16.name = TextureAtomicMin_Texture2D_Int16_name;
-    TextureAtomicMin_Texture2D_Int16.backendIndex = 3036;
-    TextureAtomicMin_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMin_Texture2D_Int16.parameters = TextureAtomicMin_Texture2D_Int16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16)->signature = "textureAtomicMin(uniform *mutable texture2D,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16)->name = "textureAtomicMin(uniform *mutable texture2D,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMin with Texture2D, Int32x2, UInt64
-    TextureAtomicMin_Texture2D_UInt64_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2D_UInt64_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMin_Texture2D_UInt64_texture.type.mut = true;
-    TextureAtomicMin_Texture2D_UInt64_texture.type.modifiers = TextureAtomicMin_Texture2D_UInt64_texture_modifiers;
-    TextureAtomicMin_Texture2D_UInt64_texture.type.modifierValues = TextureAtomicMin_Texture2D_UInt64_texture_modifierValues;
-    TextureAtomicMin_Texture2D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2D_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture2D_UInt64_value.name = "value"_c;
-    TextureAtomicMin_Texture2D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMin_Texture2D_UInt64.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2D_UInt64.name = TextureAtomicMin_Texture2D_UInt64_name;
-    TextureAtomicMin_Texture2D_UInt64.backendIndex = 3037;
-    TextureAtomicMin_Texture2D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMin_Texture2D_UInt64.parameters = TextureAtomicMin_Texture2D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt64_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt64_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt64)->signature = "textureAtomicMin(uniform *mutable texture2D,i32x2,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt64)->name = "textureAtomicMin(uniform *mutable texture2D,i32x2,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt64)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2D, coordinate : i32x2, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMin with Texture3D, Int32x3, UInt32
-    TextureAtomicMin_Texture3D_UInt32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMin_Texture3D_UInt32_texture.type.mut = true;
-    TextureAtomicMin_Texture3D_UInt32_texture.type.modifiers = TextureAtomicMin_Texture3D_UInt32_texture_modifiers;
-    TextureAtomicMin_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicMin_Texture3D_UInt32_texture_modifierValues;
-    TextureAtomicMin_Texture3D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture3D_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture3D_UInt32_value.name = "value"_c;
-    TextureAtomicMin_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMin_Texture3D_UInt32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture3D_UInt32.name = TextureAtomicMin_Texture3D_UInt32_name;
-    TextureAtomicMin_Texture3D_UInt32.backendIndex = 3038;
-    TextureAtomicMin_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMin_Texture3D_UInt32.parameters = TextureAtomicMin_Texture3D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32)->signature = "textureAtomicMin(uniform *mutable texture3D,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32)->name = "textureAtomicMin(uniform *mutable texture3D,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMin with Texture3D, Int32x3, Int32
-    TextureAtomicMin_Texture3D_Int32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMin_Texture3D_Int32_texture.type.mut = true;
-    TextureAtomicMin_Texture3D_Int32_texture.type.modifiers = TextureAtomicMin_Texture3D_Int32_texture_modifiers;
-    TextureAtomicMin_Texture3D_Int32_texture.type.modifierValues = TextureAtomicMin_Texture3D_Int32_texture_modifierValues;
-    TextureAtomicMin_Texture3D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture3D_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture3D_Int32_value.name = "value"_c;
-    TextureAtomicMin_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture3D_Int32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture3D_Int32.name = TextureAtomicMin_Texture3D_Int32_name;
-    TextureAtomicMin_Texture3D_Int32.backendIndex = 3039;
-    TextureAtomicMin_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMin_Texture3D_Int32.parameters = TextureAtomicMin_Texture3D_Int32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32)->signature = "textureAtomicMin(uniform *mutable texture3D,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32)->name = "textureAtomicMin(uniform *mutable texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMin with Texture3D, Int32x3, UInt16
-    TextureAtomicMin_Texture3D_UInt16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMin_Texture3D_UInt16_texture.type.mut = true;
-    TextureAtomicMin_Texture3D_UInt16_texture.type.modifiers = TextureAtomicMin_Texture3D_UInt16_texture_modifiers;
-    TextureAtomicMin_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicMin_Texture3D_UInt16_texture_modifierValues;
-    TextureAtomicMin_Texture3D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture3D_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture3D_UInt16_value.name = "value"_c;
-    TextureAtomicMin_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMin_Texture3D_UInt16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture3D_UInt16.name = TextureAtomicMin_Texture3D_UInt16_name;
-    TextureAtomicMin_Texture3D_UInt16.backendIndex = 3040;
-    TextureAtomicMin_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMin_Texture3D_UInt16.parameters = TextureAtomicMin_Texture3D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16)->signature = "textureAtomicMin(uniform *mutable texture3D,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16)->name = "textureAtomicMin(uniform *mutable texture3D,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMin with Texture3D, Int32x3, Int16
-    TextureAtomicMin_Texture3D_Int16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMin_Texture3D_Int16_texture.type.mut = true;
-    TextureAtomicMin_Texture3D_Int16_texture.type.modifiers = TextureAtomicMin_Texture3D_Int16_texture_modifiers;
-    TextureAtomicMin_Texture3D_Int16_texture.type.modifierValues = TextureAtomicMin_Texture3D_Int16_texture_modifierValues;
-    TextureAtomicMin_Texture3D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture3D_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture3D_Int16_value.name = "value"_c;
-    TextureAtomicMin_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMin_Texture3D_Int16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture3D_Int16.name = TextureAtomicMin_Texture3D_Int16_name;
-    TextureAtomicMin_Texture3D_Int16.backendIndex = 3041;
-    TextureAtomicMin_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMin_Texture3D_Int16.parameters = TextureAtomicMin_Texture3D_Int16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16)->signature = "textureAtomicMin(uniform *mutable texture3D,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16)->name = "textureAtomicMin(uniform *mutable texture3D,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMin with Texture3D, Int32x3, UInt64
-    TextureAtomicMin_Texture3D_UInt64_texture.name = "texture"_c;
-    TextureAtomicMin_Texture3D_UInt64_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMin_Texture3D_UInt64_texture.type.mut = true;
-    TextureAtomicMin_Texture3D_UInt64_texture.type.modifiers = TextureAtomicMin_Texture3D_UInt64_texture_modifiers;
-    TextureAtomicMin_Texture3D_UInt64_texture.type.modifierValues = TextureAtomicMin_Texture3D_UInt64_texture_modifierValues;
-    TextureAtomicMin_Texture3D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture3D_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture3D_UInt64_value.name = "value"_c;
-    TextureAtomicMin_Texture3D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMin_Texture3D_UInt64.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture3D_UInt64.name = TextureAtomicMin_Texture3D_UInt64_name;
-    TextureAtomicMin_Texture3D_UInt64.backendIndex = 3042;
-    TextureAtomicMin_Texture3D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMin_Texture3D_UInt64.parameters = TextureAtomicMin_Texture3D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt64_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt64)->signature = "textureAtomicMin(uniform *mutable texture3D,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt64)->name = "textureAtomicMin(uniform *mutable texture3D,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt64)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture3D, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture3D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMin with TextureCube, Int32x3, UInt32
-    TextureAtomicMin_TextureCube_UInt32_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMin_TextureCube_UInt32_texture.type.mut = true;
-    TextureAtomicMin_TextureCube_UInt32_texture.type.modifiers = TextureAtomicMin_TextureCube_UInt32_texture_modifiers;
-    TextureAtomicMin_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicMin_TextureCube_UInt32_texture_modifierValues;
-    TextureAtomicMin_TextureCube_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCube_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_TextureCube_UInt32_value.name = "value"_c;
-    TextureAtomicMin_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMin_TextureCube_UInt32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCube_UInt32.name = TextureAtomicMin_TextureCube_UInt32_name;
-    TextureAtomicMin_TextureCube_UInt32.backendIndex = 3043;
-    TextureAtomicMin_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMin_TextureCube_UInt32.parameters = TextureAtomicMin_TextureCube_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32)->signature = "textureAtomicMin(uniform *mutable textureCube,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32)->name = "textureAtomicMin(uniform *mutable textureCube,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMin with TextureCube, Int32x3, Int32
-    TextureAtomicMin_TextureCube_Int32_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMin_TextureCube_Int32_texture.type.mut = true;
-    TextureAtomicMin_TextureCube_Int32_texture.type.modifiers = TextureAtomicMin_TextureCube_Int32_texture_modifiers;
-    TextureAtomicMin_TextureCube_Int32_texture.type.modifierValues = TextureAtomicMin_TextureCube_Int32_texture_modifierValues;
-    TextureAtomicMin_TextureCube_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCube_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_TextureCube_Int32_value.name = "value"_c;
-    TextureAtomicMin_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_TextureCube_Int32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCube_Int32.name = TextureAtomicMin_TextureCube_Int32_name;
-    TextureAtomicMin_TextureCube_Int32.backendIndex = 3044;
-    TextureAtomicMin_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMin_TextureCube_Int32.parameters = TextureAtomicMin_TextureCube_Int32_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32)->signature = "textureAtomicMin(uniform *mutable textureCube,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32)->name = "textureAtomicMin(uniform *mutable textureCube,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMin with TextureCube, Int32x3, UInt16
-    TextureAtomicMin_TextureCube_UInt16_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCube_UInt16_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMin_TextureCube_UInt16_texture.type.mut = true;
-    TextureAtomicMin_TextureCube_UInt16_texture.type.modifiers = TextureAtomicMin_TextureCube_UInt16_texture_modifiers;
-    TextureAtomicMin_TextureCube_UInt16_texture.type.modifierValues = TextureAtomicMin_TextureCube_UInt16_texture_modifierValues;
-    TextureAtomicMin_TextureCube_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCube_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_TextureCube_UInt16_value.name = "value"_c;
-    TextureAtomicMin_TextureCube_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMin_TextureCube_UInt16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCube_UInt16.name = TextureAtomicMin_TextureCube_UInt16_name;
-    TextureAtomicMin_TextureCube_UInt16.backendIndex = 3045;
-    TextureAtomicMin_TextureCube_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMin_TextureCube_UInt16.parameters = TextureAtomicMin_TextureCube_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16)->signature = "textureAtomicMin(uniform *mutable textureCube,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16)->name = "textureAtomicMin(uniform *mutable textureCube,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCube, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMin with TextureCube, Int32x3, Int16
-    TextureAtomicMin_TextureCube_Int16_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCube_Int16_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMin_TextureCube_Int16_texture.type.mut = true;
-    TextureAtomicMin_TextureCube_Int16_texture.type.modifiers = TextureAtomicMin_TextureCube_Int16_texture_modifiers;
-    TextureAtomicMin_TextureCube_Int16_texture.type.modifierValues = TextureAtomicMin_TextureCube_Int16_texture_modifierValues;
-    TextureAtomicMin_TextureCube_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCube_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_TextureCube_Int16_value.name = "value"_c;
-    TextureAtomicMin_TextureCube_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMin_TextureCube_Int16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCube_Int16.name = TextureAtomicMin_TextureCube_Int16_name;
-    TextureAtomicMin_TextureCube_Int16.backendIndex = 3046;
-    TextureAtomicMin_TextureCube_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMin_TextureCube_Int16.parameters = TextureAtomicMin_TextureCube_Int16_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16)->signature = "textureAtomicMin(uniform *mutable textureCube,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16)->name = "textureAtomicMin(uniform *mutable textureCube,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCube, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMin with TextureCube, Int32x3, UInt64
-    TextureAtomicMin_TextureCube_UInt64_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCube_UInt64_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMin_TextureCube_UInt64_texture.type.mut = true;
-    TextureAtomicMin_TextureCube_UInt64_texture.type.modifiers = TextureAtomicMin_TextureCube_UInt64_texture_modifiers;
-    TextureAtomicMin_TextureCube_UInt64_texture.type.modifierValues = TextureAtomicMin_TextureCube_UInt64_texture_modifierValues;
-    TextureAtomicMin_TextureCube_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCube_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_TextureCube_UInt64_value.name = "value"_c;
-    TextureAtomicMin_TextureCube_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMin_TextureCube_UInt64.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCube_UInt64.name = TextureAtomicMin_TextureCube_UInt64_name;
-    TextureAtomicMin_TextureCube_UInt64.backendIndex = 3047;
-    TextureAtomicMin_TextureCube_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMin_TextureCube_UInt64.parameters = TextureAtomicMin_TextureCube_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt64_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt64)->signature = "textureAtomicMin(uniform *mutable textureCube,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt64)->name = "textureAtomicMin(uniform *mutable textureCube,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt64)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCube, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCube_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMin with Texture1DArray, Int32x2, UInt32
-    TextureAtomicMin_Texture1DArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMin_Texture1DArray_UInt32_texture.type.mut = true;
-    TextureAtomicMin_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicMin_Texture1DArray_UInt32_texture_modifiers;
-    TextureAtomicMin_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicMin_Texture1DArray_UInt32_texture_modifierValues;
-    TextureAtomicMin_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1DArray_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture1DArray_UInt32_value.name = "value"_c;
-    TextureAtomicMin_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMin_Texture1DArray_UInt32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1DArray_UInt32.name = TextureAtomicMin_Texture1DArray_UInt32_name;
-    TextureAtomicMin_Texture1DArray_UInt32.backendIndex = 3048;
-    TextureAtomicMin_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMin_Texture1DArray_UInt32.parameters = TextureAtomicMin_Texture1DArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32)->signature = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32)->name = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMin with Texture1DArray, Int32x2, Int32
-    TextureAtomicMin_Texture1DArray_Int32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMin_Texture1DArray_Int32_texture.type.mut = true;
-    TextureAtomicMin_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicMin_Texture1DArray_Int32_texture_modifiers;
-    TextureAtomicMin_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicMin_Texture1DArray_Int32_texture_modifierValues;
-    TextureAtomicMin_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1DArray_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture1DArray_Int32_value.name = "value"_c;
-    TextureAtomicMin_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture1DArray_Int32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1DArray_Int32.name = TextureAtomicMin_Texture1DArray_Int32_name;
-    TextureAtomicMin_Texture1DArray_Int32.backendIndex = 3049;
-    TextureAtomicMin_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMin_Texture1DArray_Int32.parameters = TextureAtomicMin_Texture1DArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32)->signature = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32)->name = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMin with Texture1DArray, Int32x2, UInt16
-    TextureAtomicMin_Texture1DArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMin_Texture1DArray_UInt16_texture.type.mut = true;
-    TextureAtomicMin_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicMin_Texture1DArray_UInt16_texture_modifiers;
-    TextureAtomicMin_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicMin_Texture1DArray_UInt16_texture_modifierValues;
-    TextureAtomicMin_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1DArray_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture1DArray_UInt16_value.name = "value"_c;
-    TextureAtomicMin_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMin_Texture1DArray_UInt16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1DArray_UInt16.name = TextureAtomicMin_Texture1DArray_UInt16_name;
-    TextureAtomicMin_Texture1DArray_UInt16.backendIndex = 3050;
-    TextureAtomicMin_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMin_Texture1DArray_UInt16.parameters = TextureAtomicMin_Texture1DArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16)->signature = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16)->name = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMin with Texture1DArray, Int32x2, Int16
-    TextureAtomicMin_Texture1DArray_Int16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMin_Texture1DArray_Int16_texture.type.mut = true;
-    TextureAtomicMin_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicMin_Texture1DArray_Int16_texture_modifiers;
-    TextureAtomicMin_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicMin_Texture1DArray_Int16_texture_modifierValues;
-    TextureAtomicMin_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1DArray_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture1DArray_Int16_value.name = "value"_c;
-    TextureAtomicMin_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMin_Texture1DArray_Int16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1DArray_Int16.name = TextureAtomicMin_Texture1DArray_Int16_name;
-    TextureAtomicMin_Texture1DArray_Int16.backendIndex = 3051;
-    TextureAtomicMin_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMin_Texture1DArray_Int16.parameters = TextureAtomicMin_Texture1DArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16)->signature = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16)->name = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMin with Texture1DArray, Int32x2, UInt64
-    TextureAtomicMin_Texture1DArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicMin_Texture1DArray_UInt64_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMin_Texture1DArray_UInt64_texture.type.mut = true;
-    TextureAtomicMin_Texture1DArray_UInt64_texture.type.modifiers = TextureAtomicMin_Texture1DArray_UInt64_texture_modifiers;
-    TextureAtomicMin_Texture1DArray_UInt64_texture.type.modifierValues = TextureAtomicMin_Texture1DArray_UInt64_texture_modifierValues;
-    TextureAtomicMin_Texture1DArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture1DArray_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMin_Texture1DArray_UInt64_value.name = "value"_c;
-    TextureAtomicMin_Texture1DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMin_Texture1DArray_UInt64.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture1DArray_UInt64.name = TextureAtomicMin_Texture1DArray_UInt64_name;
-    TextureAtomicMin_Texture1DArray_UInt64.backendIndex = 3052;
-    TextureAtomicMin_Texture1DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMin_Texture1DArray_UInt64.parameters = TextureAtomicMin_Texture1DArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt64_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt64_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt64)->signature = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt64)->name = "textureAtomicMin(uniform *mutable texture1DArray,i32x2,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt64)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture1DArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMin with Texture2DArray, Int32x3, UInt32
-    TextureAtomicMin_Texture2DArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMin_Texture2DArray_UInt32_texture.type.mut = true;
-    TextureAtomicMin_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicMin_Texture2DArray_UInt32_texture_modifiers;
-    TextureAtomicMin_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicMin_Texture2DArray_UInt32_texture_modifierValues;
-    TextureAtomicMin_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2DArray_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture2DArray_UInt32_value.name = "value"_c;
-    TextureAtomicMin_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMin_Texture2DArray_UInt32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2DArray_UInt32.name = TextureAtomicMin_Texture2DArray_UInt32_name;
-    TextureAtomicMin_Texture2DArray_UInt32.backendIndex = 3053;
-    TextureAtomicMin_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMin_Texture2DArray_UInt32.parameters = TextureAtomicMin_Texture2DArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32)->signature = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32)->name = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMin with Texture2DArray, Int32x3, Int32
-    TextureAtomicMin_Texture2DArray_Int32_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMin_Texture2DArray_Int32_texture.type.mut = true;
-    TextureAtomicMin_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicMin_Texture2DArray_Int32_texture_modifiers;
-    TextureAtomicMin_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicMin_Texture2DArray_Int32_texture_modifierValues;
-    TextureAtomicMin_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2DArray_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture2DArray_Int32_value.name = "value"_c;
-    TextureAtomicMin_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_Texture2DArray_Int32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2DArray_Int32.name = TextureAtomicMin_Texture2DArray_Int32_name;
-    TextureAtomicMin_Texture2DArray_Int32.backendIndex = 3054;
-    TextureAtomicMin_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMin_Texture2DArray_Int32.parameters = TextureAtomicMin_Texture2DArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32)->signature = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32)->name = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMin with Texture2DArray, Int32x3, UInt16
-    TextureAtomicMin_Texture2DArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMin_Texture2DArray_UInt16_texture.type.mut = true;
-    TextureAtomicMin_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicMin_Texture2DArray_UInt16_texture_modifiers;
-    TextureAtomicMin_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicMin_Texture2DArray_UInt16_texture_modifierValues;
-    TextureAtomicMin_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2DArray_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture2DArray_UInt16_value.name = "value"_c;
-    TextureAtomicMin_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMin_Texture2DArray_UInt16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2DArray_UInt16.name = TextureAtomicMin_Texture2DArray_UInt16_name;
-    TextureAtomicMin_Texture2DArray_UInt16.backendIndex = 3055;
-    TextureAtomicMin_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMin_Texture2DArray_UInt16.parameters = TextureAtomicMin_Texture2DArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16)->signature = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16)->name = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMin with Texture2DArray, Int32x3, Int16
-    TextureAtomicMin_Texture2DArray_Int16_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMin_Texture2DArray_Int16_texture.type.mut = true;
-    TextureAtomicMin_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicMin_Texture2DArray_Int16_texture_modifiers;
-    TextureAtomicMin_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicMin_Texture2DArray_Int16_texture_modifierValues;
-    TextureAtomicMin_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2DArray_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture2DArray_Int16_value.name = "value"_c;
-    TextureAtomicMin_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMin_Texture2DArray_Int16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2DArray_Int16.name = TextureAtomicMin_Texture2DArray_Int16_name;
-    TextureAtomicMin_Texture2DArray_Int16.backendIndex = 3056;
-    TextureAtomicMin_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMin_Texture2DArray_Int16.parameters = TextureAtomicMin_Texture2DArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16)->signature = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16)->name = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMin with Texture2DArray, Int32x3, UInt64
-    TextureAtomicMin_Texture2DArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicMin_Texture2DArray_UInt64_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMin_Texture2DArray_UInt64_texture.type.mut = true;
-    TextureAtomicMin_Texture2DArray_UInt64_texture.type.modifiers = TextureAtomicMin_Texture2DArray_UInt64_texture_modifiers;
-    TextureAtomicMin_Texture2DArray_UInt64_texture.type.modifierValues = TextureAtomicMin_Texture2DArray_UInt64_texture_modifierValues;
-    TextureAtomicMin_Texture2DArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_Texture2DArray_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMin_Texture2DArray_UInt64_value.name = "value"_c;
-    TextureAtomicMin_Texture2DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMin_Texture2DArray_UInt64.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_Texture2DArray_UInt64.name = TextureAtomicMin_Texture2DArray_UInt64_name;
-    TextureAtomicMin_Texture2DArray_UInt64.backendIndex = 3057;
-    TextureAtomicMin_Texture2DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMin_Texture2DArray_UInt64.parameters = TextureAtomicMin_Texture2DArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt64_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt64)->signature = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt64)->name = "textureAtomicMin(uniform *mutable texture2DArray,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt64)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_Texture2DArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMin with TextureCubeArray, Int32x4, UInt32
-    TextureAtomicMin_TextureCubeArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMin_TextureCubeArray_UInt32_texture.type.mut = true;
-    TextureAtomicMin_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicMin_TextureCubeArray_UInt32_texture_modifiers;
-    TextureAtomicMin_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicMin_TextureCubeArray_UInt32_texture_modifierValues;
-    TextureAtomicMin_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCubeArray_UInt32_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt32_value.name = "value"_c;
-    TextureAtomicMin_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCubeArray_UInt32.name = TextureAtomicMin_TextureCubeArray_UInt32_name;
-    TextureAtomicMin_TextureCubeArray_UInt32.backendIndex = 3058;
-    TextureAtomicMin_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt32.parameters = TextureAtomicMin_TextureCubeArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32)->signature = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32)->name = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMin with TextureCubeArray, Int32x4, Int32
-    TextureAtomicMin_TextureCubeArray_Int32_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMin_TextureCubeArray_Int32_texture.type.mut = true;
-    TextureAtomicMin_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicMin_TextureCubeArray_Int32_texture_modifiers;
-    TextureAtomicMin_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicMin_TextureCubeArray_Int32_texture_modifierValues;
-    TextureAtomicMin_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCubeArray_Int32_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMin_TextureCubeArray_Int32_value.name = "value"_c;
-    TextureAtomicMin_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMin_TextureCubeArray_Int32.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCubeArray_Int32.name = TextureAtomicMin_TextureCubeArray_Int32_name;
-    TextureAtomicMin_TextureCubeArray_Int32.backendIndex = 3059;
-    TextureAtomicMin_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMin_TextureCubeArray_Int32.parameters = TextureAtomicMin_TextureCubeArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32)->signature = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32)->name = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMin with TextureCubeArray, Int32x4, UInt16
-    TextureAtomicMin_TextureCubeArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMin_TextureCubeArray_UInt16_texture.type.mut = true;
-    TextureAtomicMin_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicMin_TextureCubeArray_UInt16_texture_modifiers;
-    TextureAtomicMin_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicMin_TextureCubeArray_UInt16_texture_modifierValues;
-    TextureAtomicMin_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCubeArray_UInt16_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt16_value.name = "value"_c;
-    TextureAtomicMin_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCubeArray_UInt16.name = TextureAtomicMin_TextureCubeArray_UInt16_name;
-    TextureAtomicMin_TextureCubeArray_UInt16.backendIndex = 3060;
-    TextureAtomicMin_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt16.parameters = TextureAtomicMin_TextureCubeArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16)->signature = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16)->name = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMin with TextureCubeArray, Int32x4, Int16
-    TextureAtomicMin_TextureCubeArray_Int16_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMin_TextureCubeArray_Int16_texture.type.mut = true;
-    TextureAtomicMin_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicMin_TextureCubeArray_Int16_texture_modifiers;
-    TextureAtomicMin_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicMin_TextureCubeArray_Int16_texture_modifierValues;
-    TextureAtomicMin_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCubeArray_Int16_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMin_TextureCubeArray_Int16_value.name = "value"_c;
-    TextureAtomicMin_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMin_TextureCubeArray_Int16.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCubeArray_Int16.name = TextureAtomicMin_TextureCubeArray_Int16_name;
-    TextureAtomicMin_TextureCubeArray_Int16.backendIndex = 3061;
-    TextureAtomicMin_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMin_TextureCubeArray_Int16.parameters = TextureAtomicMin_TextureCubeArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16)->signature = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16)->name = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMin with TextureCubeArray, Int32x4, UInt64
-    TextureAtomicMin_TextureCubeArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicMin_TextureCubeArray_UInt64_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMin_TextureCubeArray_UInt64_texture.type.mut = true;
-    TextureAtomicMin_TextureCubeArray_UInt64_texture.type.modifiers = TextureAtomicMin_TextureCubeArray_UInt64_texture_modifiers;
-    TextureAtomicMin_TextureCubeArray_UInt64_texture.type.modifierValues = TextureAtomicMin_TextureCubeArray_UInt64_texture_modifierValues;
-    TextureAtomicMin_TextureCubeArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMin_TextureCubeArray_UInt64_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt64_value.name = "value"_c;
-    TextureAtomicMin_TextureCubeArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt64.documentation = "Atomically set the minimum of a texel value in a texture"_c;
-    TextureAtomicMin_TextureCubeArray_UInt64.name = TextureAtomicMin_TextureCubeArray_UInt64_name;
-    TextureAtomicMin_TextureCubeArray_UInt64.backendIndex = 3062;
-    TextureAtomicMin_TextureCubeArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMin_TextureCubeArray_UInt64.parameters = TextureAtomicMin_TextureCubeArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt64_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt64_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt64)->signature = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt64)->name = "textureAtomicMin(uniform *mutable textureCubeArray,i32x4,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt64)->nameWithVarNames = "textureAtomicMin(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMin_TextureCubeArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMax with Texture1D, Int32, UInt32
-    TextureAtomicMax_Texture1D_UInt32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMax_Texture1D_UInt32_texture.type.mut = true;
-    TextureAtomicMax_Texture1D_UInt32_texture.type.modifiers = TextureAtomicMax_Texture1D_UInt32_texture_modifiers;
-    TextureAtomicMax_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicMax_Texture1D_UInt32_texture_modifierValues;
-    TextureAtomicMax_Texture1D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1D_UInt32_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture1D_UInt32_value.name = "value"_c;
-    TextureAtomicMax_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMax_Texture1D_UInt32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1D_UInt32.name = TextureAtomicMax_Texture1D_UInt32_name;
-    TextureAtomicMax_Texture1D_UInt32.backendIndex = 3063;
-    TextureAtomicMax_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMax_Texture1D_UInt32.parameters = TextureAtomicMax_Texture1D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32)->signature = "textureAtomicMax(uniform *mutable texture1D,i32,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32)->name = "textureAtomicMax(uniform *mutable texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMax with Texture1D, Int32, Int32
-    TextureAtomicMax_Texture1D_Int32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMax_Texture1D_Int32_texture.type.mut = true;
-    TextureAtomicMax_Texture1D_Int32_texture.type.modifiers = TextureAtomicMax_Texture1D_Int32_texture_modifiers;
-    TextureAtomicMax_Texture1D_Int32_texture.type.modifierValues = TextureAtomicMax_Texture1D_Int32_texture_modifierValues;
-    TextureAtomicMax_Texture1D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1D_Int32_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture1D_Int32_value.name = "value"_c;
-    TextureAtomicMax_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture1D_Int32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1D_Int32.name = TextureAtomicMax_Texture1D_Int32_name;
-    TextureAtomicMax_Texture1D_Int32.backendIndex = 3064;
-    TextureAtomicMax_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMax_Texture1D_Int32.parameters = TextureAtomicMax_Texture1D_Int32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32)->signature = "textureAtomicMax(uniform *mutable texture1D,i32,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32)->name = "textureAtomicMax(uniform *mutable texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMax with Texture1D, Int32, UInt16
-    TextureAtomicMax_Texture1D_UInt16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMax_Texture1D_UInt16_texture.type.mut = true;
-    TextureAtomicMax_Texture1D_UInt16_texture.type.modifiers = TextureAtomicMax_Texture1D_UInt16_texture_modifiers;
-    TextureAtomicMax_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicMax_Texture1D_UInt16_texture_modifierValues;
-    TextureAtomicMax_Texture1D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1D_UInt16_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture1D_UInt16_value.name = "value"_c;
-    TextureAtomicMax_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMax_Texture1D_UInt16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1D_UInt16.name = TextureAtomicMax_Texture1D_UInt16_name;
-    TextureAtomicMax_Texture1D_UInt16.backendIndex = 3065;
-    TextureAtomicMax_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMax_Texture1D_UInt16.parameters = TextureAtomicMax_Texture1D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16)->signature = "textureAtomicMax(uniform *mutable texture1D,i32,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16)->name = "textureAtomicMax(uniform *mutable texture1D,i32,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMax with Texture1D, Int32, Int16
-    TextureAtomicMax_Texture1D_Int16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMax_Texture1D_Int16_texture.type.mut = true;
-    TextureAtomicMax_Texture1D_Int16_texture.type.modifiers = TextureAtomicMax_Texture1D_Int16_texture_modifiers;
-    TextureAtomicMax_Texture1D_Int16_texture.type.modifierValues = TextureAtomicMax_Texture1D_Int16_texture_modifierValues;
-    TextureAtomicMax_Texture1D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1D_Int16_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture1D_Int16_value.name = "value"_c;
-    TextureAtomicMax_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMax_Texture1D_Int16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1D_Int16.name = TextureAtomicMax_Texture1D_Int16_name;
-    TextureAtomicMax_Texture1D_Int16.backendIndex = 3066;
-    TextureAtomicMax_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMax_Texture1D_Int16.parameters = TextureAtomicMax_Texture1D_Int16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16)->signature = "textureAtomicMax(uniform *mutable texture1D,i32,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16)->name = "textureAtomicMax(uniform *mutable texture1D,i32,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMax with Texture1D, Int32, UInt64
-    TextureAtomicMax_Texture1D_UInt64_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1D_UInt64_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicMax_Texture1D_UInt64_texture.type.mut = true;
-    TextureAtomicMax_Texture1D_UInt64_texture.type.modifiers = TextureAtomicMax_Texture1D_UInt64_texture_modifiers;
-    TextureAtomicMax_Texture1D_UInt64_texture.type.modifierValues = TextureAtomicMax_Texture1D_UInt64_texture_modifierValues;
-    TextureAtomicMax_Texture1D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1D_UInt64_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture1D_UInt64_value.name = "value"_c;
-    TextureAtomicMax_Texture1D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMax_Texture1D_UInt64.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1D_UInt64.name = TextureAtomicMax_Texture1D_UInt64_name;
-    TextureAtomicMax_Texture1D_UInt64.backendIndex = 3067;
-    TextureAtomicMax_Texture1D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMax_Texture1D_UInt64.parameters = TextureAtomicMax_Texture1D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt64_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt64_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt64)->signature = "textureAtomicMax(uniform *mutable texture1D,i32,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt64)->name = "textureAtomicMax(uniform *mutable texture1D,i32,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt64)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1D, coordinate : i32, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMax with Texture2D, Int32x2, UInt32
-    TextureAtomicMax_Texture2D_UInt32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMax_Texture2D_UInt32_texture.type.mut = true;
-    TextureAtomicMax_Texture2D_UInt32_texture.type.modifiers = TextureAtomicMax_Texture2D_UInt32_texture_modifiers;
-    TextureAtomicMax_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicMax_Texture2D_UInt32_texture_modifierValues;
-    TextureAtomicMax_Texture2D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2D_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture2D_UInt32_value.name = "value"_c;
-    TextureAtomicMax_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMax_Texture2D_UInt32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2D_UInt32.name = TextureAtomicMax_Texture2D_UInt32_name;
-    TextureAtomicMax_Texture2D_UInt32.backendIndex = 3068;
-    TextureAtomicMax_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMax_Texture2D_UInt32.parameters = TextureAtomicMax_Texture2D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32)->signature = "textureAtomicMax(uniform *mutable texture2D,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32)->name = "textureAtomicMax(uniform *mutable texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMax with Texture2D, Int32x2, Int32
-    TextureAtomicMax_Texture2D_Int32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMax_Texture2D_Int32_texture.type.mut = true;
-    TextureAtomicMax_Texture2D_Int32_texture.type.modifiers = TextureAtomicMax_Texture2D_Int32_texture_modifiers;
-    TextureAtomicMax_Texture2D_Int32_texture.type.modifierValues = TextureAtomicMax_Texture2D_Int32_texture_modifierValues;
-    TextureAtomicMax_Texture2D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2D_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture2D_Int32_value.name = "value"_c;
-    TextureAtomicMax_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture2D_Int32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2D_Int32.name = TextureAtomicMax_Texture2D_Int32_name;
-    TextureAtomicMax_Texture2D_Int32.backendIndex = 3069;
-    TextureAtomicMax_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMax_Texture2D_Int32.parameters = TextureAtomicMax_Texture2D_Int32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32)->signature = "textureAtomicMax(uniform *mutable texture2D,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32)->name = "textureAtomicMax(uniform *mutable texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMax with Texture2D, Int32x2, UInt16
-    TextureAtomicMax_Texture2D_UInt16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMax_Texture2D_UInt16_texture.type.mut = true;
-    TextureAtomicMax_Texture2D_UInt16_texture.type.modifiers = TextureAtomicMax_Texture2D_UInt16_texture_modifiers;
-    TextureAtomicMax_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicMax_Texture2D_UInt16_texture_modifierValues;
-    TextureAtomicMax_Texture2D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2D_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture2D_UInt16_value.name = "value"_c;
-    TextureAtomicMax_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMax_Texture2D_UInt16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2D_UInt16.name = TextureAtomicMax_Texture2D_UInt16_name;
-    TextureAtomicMax_Texture2D_UInt16.backendIndex = 3070;
-    TextureAtomicMax_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMax_Texture2D_UInt16.parameters = TextureAtomicMax_Texture2D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16)->signature = "textureAtomicMax(uniform *mutable texture2D,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16)->name = "textureAtomicMax(uniform *mutable texture2D,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMax with Texture2D, Int32x2, Int16
-    TextureAtomicMax_Texture2D_Int16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMax_Texture2D_Int16_texture.type.mut = true;
-    TextureAtomicMax_Texture2D_Int16_texture.type.modifiers = TextureAtomicMax_Texture2D_Int16_texture_modifiers;
-    TextureAtomicMax_Texture2D_Int16_texture.type.modifierValues = TextureAtomicMax_Texture2D_Int16_texture_modifierValues;
-    TextureAtomicMax_Texture2D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2D_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture2D_Int16_value.name = "value"_c;
-    TextureAtomicMax_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMax_Texture2D_Int16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2D_Int16.name = TextureAtomicMax_Texture2D_Int16_name;
-    TextureAtomicMax_Texture2D_Int16.backendIndex = 3071;
-    TextureAtomicMax_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMax_Texture2D_Int16.parameters = TextureAtomicMax_Texture2D_Int16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16)->signature = "textureAtomicMax(uniform *mutable texture2D,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16)->name = "textureAtomicMax(uniform *mutable texture2D,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMax with Texture2D, Int32x2, UInt64
-    TextureAtomicMax_Texture2D_UInt64_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2D_UInt64_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicMax_Texture2D_UInt64_texture.type.mut = true;
-    TextureAtomicMax_Texture2D_UInt64_texture.type.modifiers = TextureAtomicMax_Texture2D_UInt64_texture_modifiers;
-    TextureAtomicMax_Texture2D_UInt64_texture.type.modifierValues = TextureAtomicMax_Texture2D_UInt64_texture_modifierValues;
-    TextureAtomicMax_Texture2D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2D_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture2D_UInt64_value.name = "value"_c;
-    TextureAtomicMax_Texture2D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMax_Texture2D_UInt64.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2D_UInt64.name = TextureAtomicMax_Texture2D_UInt64_name;
-    TextureAtomicMax_Texture2D_UInt64.backendIndex = 3072;
-    TextureAtomicMax_Texture2D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMax_Texture2D_UInt64.parameters = TextureAtomicMax_Texture2D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt64_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt64_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt64)->signature = "textureAtomicMax(uniform *mutable texture2D,i32x2,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt64)->name = "textureAtomicMax(uniform *mutable texture2D,i32x2,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt64)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2D, coordinate : i32x2, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMax with Texture3D, Int32x3, UInt32
-    TextureAtomicMax_Texture3D_UInt32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMax_Texture3D_UInt32_texture.type.mut = true;
-    TextureAtomicMax_Texture3D_UInt32_texture.type.modifiers = TextureAtomicMax_Texture3D_UInt32_texture_modifiers;
-    TextureAtomicMax_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicMax_Texture3D_UInt32_texture_modifierValues;
-    TextureAtomicMax_Texture3D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture3D_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture3D_UInt32_value.name = "value"_c;
-    TextureAtomicMax_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMax_Texture3D_UInt32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture3D_UInt32.name = TextureAtomicMax_Texture3D_UInt32_name;
-    TextureAtomicMax_Texture3D_UInt32.backendIndex = 3073;
-    TextureAtomicMax_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMax_Texture3D_UInt32.parameters = TextureAtomicMax_Texture3D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32)->signature = "textureAtomicMax(uniform *mutable texture3D,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32)->name = "textureAtomicMax(uniform *mutable texture3D,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMax with Texture3D, Int32x3, Int32
-    TextureAtomicMax_Texture3D_Int32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMax_Texture3D_Int32_texture.type.mut = true;
-    TextureAtomicMax_Texture3D_Int32_texture.type.modifiers = TextureAtomicMax_Texture3D_Int32_texture_modifiers;
-    TextureAtomicMax_Texture3D_Int32_texture.type.modifierValues = TextureAtomicMax_Texture3D_Int32_texture_modifierValues;
-    TextureAtomicMax_Texture3D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture3D_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture3D_Int32_value.name = "value"_c;
-    TextureAtomicMax_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture3D_Int32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture3D_Int32.name = TextureAtomicMax_Texture3D_Int32_name;
-    TextureAtomicMax_Texture3D_Int32.backendIndex = 3074;
-    TextureAtomicMax_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMax_Texture3D_Int32.parameters = TextureAtomicMax_Texture3D_Int32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32)->signature = "textureAtomicMax(uniform *mutable texture3D,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32)->name = "textureAtomicMax(uniform *mutable texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMax with Texture3D, Int32x3, UInt16
-    TextureAtomicMax_Texture3D_UInt16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMax_Texture3D_UInt16_texture.type.mut = true;
-    TextureAtomicMax_Texture3D_UInt16_texture.type.modifiers = TextureAtomicMax_Texture3D_UInt16_texture_modifiers;
-    TextureAtomicMax_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicMax_Texture3D_UInt16_texture_modifierValues;
-    TextureAtomicMax_Texture3D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture3D_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture3D_UInt16_value.name = "value"_c;
-    TextureAtomicMax_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMax_Texture3D_UInt16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture3D_UInt16.name = TextureAtomicMax_Texture3D_UInt16_name;
-    TextureAtomicMax_Texture3D_UInt16.backendIndex = 3075;
-    TextureAtomicMax_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMax_Texture3D_UInt16.parameters = TextureAtomicMax_Texture3D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16)->signature = "textureAtomicMax(uniform *mutable texture3D,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16)->name = "textureAtomicMax(uniform *mutable texture3D,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMax with Texture3D, Int32x3, Int16
-    TextureAtomicMax_Texture3D_Int16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMax_Texture3D_Int16_texture.type.mut = true;
-    TextureAtomicMax_Texture3D_Int16_texture.type.modifiers = TextureAtomicMax_Texture3D_Int16_texture_modifiers;
-    TextureAtomicMax_Texture3D_Int16_texture.type.modifierValues = TextureAtomicMax_Texture3D_Int16_texture_modifierValues;
-    TextureAtomicMax_Texture3D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture3D_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture3D_Int16_value.name = "value"_c;
-    TextureAtomicMax_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMax_Texture3D_Int16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture3D_Int16.name = TextureAtomicMax_Texture3D_Int16_name;
-    TextureAtomicMax_Texture3D_Int16.backendIndex = 3076;
-    TextureAtomicMax_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMax_Texture3D_Int16.parameters = TextureAtomicMax_Texture3D_Int16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16)->signature = "textureAtomicMax(uniform *mutable texture3D,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16)->name = "textureAtomicMax(uniform *mutable texture3D,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMax with Texture3D, Int32x3, UInt64
-    TextureAtomicMax_Texture3D_UInt64_texture.name = "texture"_c;
-    TextureAtomicMax_Texture3D_UInt64_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicMax_Texture3D_UInt64_texture.type.mut = true;
-    TextureAtomicMax_Texture3D_UInt64_texture.type.modifiers = TextureAtomicMax_Texture3D_UInt64_texture_modifiers;
-    TextureAtomicMax_Texture3D_UInt64_texture.type.modifierValues = TextureAtomicMax_Texture3D_UInt64_texture_modifierValues;
-    TextureAtomicMax_Texture3D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture3D_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture3D_UInt64_value.name = "value"_c;
-    TextureAtomicMax_Texture3D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMax_Texture3D_UInt64.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture3D_UInt64.name = TextureAtomicMax_Texture3D_UInt64_name;
-    TextureAtomicMax_Texture3D_UInt64.backendIndex = 3077;
-    TextureAtomicMax_Texture3D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMax_Texture3D_UInt64.parameters = TextureAtomicMax_Texture3D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt64_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt64)->signature = "textureAtomicMax(uniform *mutable texture3D,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt64)->name = "textureAtomicMax(uniform *mutable texture3D,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt64)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture3D, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture3D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMax with TextureCube, Int32x3, UInt32
-    TextureAtomicMax_TextureCube_UInt32_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMax_TextureCube_UInt32_texture.type.mut = true;
-    TextureAtomicMax_TextureCube_UInt32_texture.type.modifiers = TextureAtomicMax_TextureCube_UInt32_texture_modifiers;
-    TextureAtomicMax_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicMax_TextureCube_UInt32_texture_modifierValues;
-    TextureAtomicMax_TextureCube_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCube_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_TextureCube_UInt32_value.name = "value"_c;
-    TextureAtomicMax_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMax_TextureCube_UInt32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCube_UInt32.name = TextureAtomicMax_TextureCube_UInt32_name;
-    TextureAtomicMax_TextureCube_UInt32.backendIndex = 3078;
-    TextureAtomicMax_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMax_TextureCube_UInt32.parameters = TextureAtomicMax_TextureCube_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32)->signature = "textureAtomicMax(uniform *mutable textureCube,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32)->name = "textureAtomicMax(uniform *mutable textureCube,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMax with TextureCube, Int32x3, Int32
-    TextureAtomicMax_TextureCube_Int32_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMax_TextureCube_Int32_texture.type.mut = true;
-    TextureAtomicMax_TextureCube_Int32_texture.type.modifiers = TextureAtomicMax_TextureCube_Int32_texture_modifiers;
-    TextureAtomicMax_TextureCube_Int32_texture.type.modifierValues = TextureAtomicMax_TextureCube_Int32_texture_modifierValues;
-    TextureAtomicMax_TextureCube_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCube_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_TextureCube_Int32_value.name = "value"_c;
-    TextureAtomicMax_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_TextureCube_Int32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCube_Int32.name = TextureAtomicMax_TextureCube_Int32_name;
-    TextureAtomicMax_TextureCube_Int32.backendIndex = 3079;
-    TextureAtomicMax_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMax_TextureCube_Int32.parameters = TextureAtomicMax_TextureCube_Int32_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32)->signature = "textureAtomicMax(uniform *mutable textureCube,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32)->name = "textureAtomicMax(uniform *mutable textureCube,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMax with TextureCube, Int32x3, UInt16
-    TextureAtomicMax_TextureCube_UInt16_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCube_UInt16_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMax_TextureCube_UInt16_texture.type.mut = true;
-    TextureAtomicMax_TextureCube_UInt16_texture.type.modifiers = TextureAtomicMax_TextureCube_UInt16_texture_modifiers;
-    TextureAtomicMax_TextureCube_UInt16_texture.type.modifierValues = TextureAtomicMax_TextureCube_UInt16_texture_modifierValues;
-    TextureAtomicMax_TextureCube_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCube_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_TextureCube_UInt16_value.name = "value"_c;
-    TextureAtomicMax_TextureCube_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMax_TextureCube_UInt16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCube_UInt16.name = TextureAtomicMax_TextureCube_UInt16_name;
-    TextureAtomicMax_TextureCube_UInt16.backendIndex = 3080;
-    TextureAtomicMax_TextureCube_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMax_TextureCube_UInt16.parameters = TextureAtomicMax_TextureCube_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16)->signature = "textureAtomicMax(uniform *mutable textureCube,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16)->name = "textureAtomicMax(uniform *mutable textureCube,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCube, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMax with TextureCube, Int32x3, Int16
-    TextureAtomicMax_TextureCube_Int16_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCube_Int16_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMax_TextureCube_Int16_texture.type.mut = true;
-    TextureAtomicMax_TextureCube_Int16_texture.type.modifiers = TextureAtomicMax_TextureCube_Int16_texture_modifiers;
-    TextureAtomicMax_TextureCube_Int16_texture.type.modifierValues = TextureAtomicMax_TextureCube_Int16_texture_modifierValues;
-    TextureAtomicMax_TextureCube_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCube_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_TextureCube_Int16_value.name = "value"_c;
-    TextureAtomicMax_TextureCube_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMax_TextureCube_Int16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCube_Int16.name = TextureAtomicMax_TextureCube_Int16_name;
-    TextureAtomicMax_TextureCube_Int16.backendIndex = 3081;
-    TextureAtomicMax_TextureCube_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMax_TextureCube_Int16.parameters = TextureAtomicMax_TextureCube_Int16_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16)->signature = "textureAtomicMax(uniform *mutable textureCube,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16)->name = "textureAtomicMax(uniform *mutable textureCube,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCube, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMax with TextureCube, Int32x3, UInt64
-    TextureAtomicMax_TextureCube_UInt64_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCube_UInt64_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicMax_TextureCube_UInt64_texture.type.mut = true;
-    TextureAtomicMax_TextureCube_UInt64_texture.type.modifiers = TextureAtomicMax_TextureCube_UInt64_texture_modifiers;
-    TextureAtomicMax_TextureCube_UInt64_texture.type.modifierValues = TextureAtomicMax_TextureCube_UInt64_texture_modifierValues;
-    TextureAtomicMax_TextureCube_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCube_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_TextureCube_UInt64_value.name = "value"_c;
-    TextureAtomicMax_TextureCube_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMax_TextureCube_UInt64.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCube_UInt64.name = TextureAtomicMax_TextureCube_UInt64_name;
-    TextureAtomicMax_TextureCube_UInt64.backendIndex = 3082;
-    TextureAtomicMax_TextureCube_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMax_TextureCube_UInt64.parameters = TextureAtomicMax_TextureCube_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt64_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt64)->signature = "textureAtomicMax(uniform *mutable textureCube,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt64)->name = "textureAtomicMax(uniform *mutable textureCube,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt64)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCube, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCube_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMax with Texture1DArray, Int32x2, UInt32
-    TextureAtomicMax_Texture1DArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMax_Texture1DArray_UInt32_texture.type.mut = true;
-    TextureAtomicMax_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicMax_Texture1DArray_UInt32_texture_modifiers;
-    TextureAtomicMax_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicMax_Texture1DArray_UInt32_texture_modifierValues;
-    TextureAtomicMax_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1DArray_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture1DArray_UInt32_value.name = "value"_c;
-    TextureAtomicMax_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMax_Texture1DArray_UInt32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1DArray_UInt32.name = TextureAtomicMax_Texture1DArray_UInt32_name;
-    TextureAtomicMax_Texture1DArray_UInt32.backendIndex = 3083;
-    TextureAtomicMax_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMax_Texture1DArray_UInt32.parameters = TextureAtomicMax_Texture1DArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32)->signature = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32)->name = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMax with Texture1DArray, Int32x2, Int32
-    TextureAtomicMax_Texture1DArray_Int32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMax_Texture1DArray_Int32_texture.type.mut = true;
-    TextureAtomicMax_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicMax_Texture1DArray_Int32_texture_modifiers;
-    TextureAtomicMax_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicMax_Texture1DArray_Int32_texture_modifierValues;
-    TextureAtomicMax_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1DArray_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture1DArray_Int32_value.name = "value"_c;
-    TextureAtomicMax_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture1DArray_Int32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1DArray_Int32.name = TextureAtomicMax_Texture1DArray_Int32_name;
-    TextureAtomicMax_Texture1DArray_Int32.backendIndex = 3084;
-    TextureAtomicMax_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMax_Texture1DArray_Int32.parameters = TextureAtomicMax_Texture1DArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32)->signature = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32)->name = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMax with Texture1DArray, Int32x2, UInt16
-    TextureAtomicMax_Texture1DArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMax_Texture1DArray_UInt16_texture.type.mut = true;
-    TextureAtomicMax_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicMax_Texture1DArray_UInt16_texture_modifiers;
-    TextureAtomicMax_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicMax_Texture1DArray_UInt16_texture_modifierValues;
-    TextureAtomicMax_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1DArray_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture1DArray_UInt16_value.name = "value"_c;
-    TextureAtomicMax_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMax_Texture1DArray_UInt16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1DArray_UInt16.name = TextureAtomicMax_Texture1DArray_UInt16_name;
-    TextureAtomicMax_Texture1DArray_UInt16.backendIndex = 3085;
-    TextureAtomicMax_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMax_Texture1DArray_UInt16.parameters = TextureAtomicMax_Texture1DArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16)->signature = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16)->name = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMax with Texture1DArray, Int32x2, Int16
-    TextureAtomicMax_Texture1DArray_Int16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMax_Texture1DArray_Int16_texture.type.mut = true;
-    TextureAtomicMax_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicMax_Texture1DArray_Int16_texture_modifiers;
-    TextureAtomicMax_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicMax_Texture1DArray_Int16_texture_modifierValues;
-    TextureAtomicMax_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1DArray_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture1DArray_Int16_value.name = "value"_c;
-    TextureAtomicMax_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMax_Texture1DArray_Int16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1DArray_Int16.name = TextureAtomicMax_Texture1DArray_Int16_name;
-    TextureAtomicMax_Texture1DArray_Int16.backendIndex = 3086;
-    TextureAtomicMax_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMax_Texture1DArray_Int16.parameters = TextureAtomicMax_Texture1DArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16)->signature = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16)->name = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMax with Texture1DArray, Int32x2, UInt64
-    TextureAtomicMax_Texture1DArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicMax_Texture1DArray_UInt64_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicMax_Texture1DArray_UInt64_texture.type.mut = true;
-    TextureAtomicMax_Texture1DArray_UInt64_texture.type.modifiers = TextureAtomicMax_Texture1DArray_UInt64_texture_modifiers;
-    TextureAtomicMax_Texture1DArray_UInt64_texture.type.modifierValues = TextureAtomicMax_Texture1DArray_UInt64_texture_modifierValues;
-    TextureAtomicMax_Texture1DArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture1DArray_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicMax_Texture1DArray_UInt64_value.name = "value"_c;
-    TextureAtomicMax_Texture1DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMax_Texture1DArray_UInt64.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture1DArray_UInt64.name = TextureAtomicMax_Texture1DArray_UInt64_name;
-    TextureAtomicMax_Texture1DArray_UInt64.backendIndex = 3087;
-    TextureAtomicMax_Texture1DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMax_Texture1DArray_UInt64.parameters = TextureAtomicMax_Texture1DArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt64_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt64_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt64)->signature = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt64)->name = "textureAtomicMax(uniform *mutable texture1DArray,i32x2,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt64)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture1DArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMax with Texture2DArray, Int32x3, UInt32
-    TextureAtomicMax_Texture2DArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMax_Texture2DArray_UInt32_texture.type.mut = true;
-    TextureAtomicMax_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicMax_Texture2DArray_UInt32_texture_modifiers;
-    TextureAtomicMax_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicMax_Texture2DArray_UInt32_texture_modifierValues;
-    TextureAtomicMax_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2DArray_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture2DArray_UInt32_value.name = "value"_c;
-    TextureAtomicMax_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMax_Texture2DArray_UInt32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2DArray_UInt32.name = TextureAtomicMax_Texture2DArray_UInt32_name;
-    TextureAtomicMax_Texture2DArray_UInt32.backendIndex = 3088;
-    TextureAtomicMax_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMax_Texture2DArray_UInt32.parameters = TextureAtomicMax_Texture2DArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32)->signature = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32)->name = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMax with Texture2DArray, Int32x3, Int32
-    TextureAtomicMax_Texture2DArray_Int32_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMax_Texture2DArray_Int32_texture.type.mut = true;
-    TextureAtomicMax_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicMax_Texture2DArray_Int32_texture_modifiers;
-    TextureAtomicMax_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicMax_Texture2DArray_Int32_texture_modifierValues;
-    TextureAtomicMax_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2DArray_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture2DArray_Int32_value.name = "value"_c;
-    TextureAtomicMax_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_Texture2DArray_Int32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2DArray_Int32.name = TextureAtomicMax_Texture2DArray_Int32_name;
-    TextureAtomicMax_Texture2DArray_Int32.backendIndex = 3089;
-    TextureAtomicMax_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMax_Texture2DArray_Int32.parameters = TextureAtomicMax_Texture2DArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32)->signature = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32)->name = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMax with Texture2DArray, Int32x3, UInt16
-    TextureAtomicMax_Texture2DArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMax_Texture2DArray_UInt16_texture.type.mut = true;
-    TextureAtomicMax_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicMax_Texture2DArray_UInt16_texture_modifiers;
-    TextureAtomicMax_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicMax_Texture2DArray_UInt16_texture_modifierValues;
-    TextureAtomicMax_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2DArray_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture2DArray_UInt16_value.name = "value"_c;
-    TextureAtomicMax_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMax_Texture2DArray_UInt16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2DArray_UInt16.name = TextureAtomicMax_Texture2DArray_UInt16_name;
-    TextureAtomicMax_Texture2DArray_UInt16.backendIndex = 3090;
-    TextureAtomicMax_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMax_Texture2DArray_UInt16.parameters = TextureAtomicMax_Texture2DArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16)->signature = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16)->name = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMax with Texture2DArray, Int32x3, Int16
-    TextureAtomicMax_Texture2DArray_Int16_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMax_Texture2DArray_Int16_texture.type.mut = true;
-    TextureAtomicMax_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicMax_Texture2DArray_Int16_texture_modifiers;
-    TextureAtomicMax_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicMax_Texture2DArray_Int16_texture_modifierValues;
-    TextureAtomicMax_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2DArray_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture2DArray_Int16_value.name = "value"_c;
-    TextureAtomicMax_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMax_Texture2DArray_Int16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2DArray_Int16.name = TextureAtomicMax_Texture2DArray_Int16_name;
-    TextureAtomicMax_Texture2DArray_Int16.backendIndex = 3091;
-    TextureAtomicMax_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMax_Texture2DArray_Int16.parameters = TextureAtomicMax_Texture2DArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16)->signature = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16)->name = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMax with Texture2DArray, Int32x3, UInt64
-    TextureAtomicMax_Texture2DArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicMax_Texture2DArray_UInt64_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicMax_Texture2DArray_UInt64_texture.type.mut = true;
-    TextureAtomicMax_Texture2DArray_UInt64_texture.type.modifiers = TextureAtomicMax_Texture2DArray_UInt64_texture_modifiers;
-    TextureAtomicMax_Texture2DArray_UInt64_texture.type.modifierValues = TextureAtomicMax_Texture2DArray_UInt64_texture_modifierValues;
-    TextureAtomicMax_Texture2DArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_Texture2DArray_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicMax_Texture2DArray_UInt64_value.name = "value"_c;
-    TextureAtomicMax_Texture2DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMax_Texture2DArray_UInt64.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_Texture2DArray_UInt64.name = TextureAtomicMax_Texture2DArray_UInt64_name;
-    TextureAtomicMax_Texture2DArray_UInt64.backendIndex = 3092;
-    TextureAtomicMax_Texture2DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMax_Texture2DArray_UInt64.parameters = TextureAtomicMax_Texture2DArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt64_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt64)->signature = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt64)->name = "textureAtomicMax(uniform *mutable texture2DArray,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt64)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_Texture2DArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicMax with TextureCubeArray, Int32x4, UInt32
-    TextureAtomicMax_TextureCubeArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMax_TextureCubeArray_UInt32_texture.type.mut = true;
-    TextureAtomicMax_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicMax_TextureCubeArray_UInt32_texture_modifiers;
-    TextureAtomicMax_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicMax_TextureCubeArray_UInt32_texture_modifierValues;
-    TextureAtomicMax_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCubeArray_UInt32_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt32_value.name = "value"_c;
-    TextureAtomicMax_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCubeArray_UInt32.name = TextureAtomicMax_TextureCubeArray_UInt32_name;
-    TextureAtomicMax_TextureCubeArray_UInt32.backendIndex = 3093;
-    TextureAtomicMax_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt32.parameters = TextureAtomicMax_TextureCubeArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32)->signature = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32)->name = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicMax with TextureCubeArray, Int32x4, Int32
-    TextureAtomicMax_TextureCubeArray_Int32_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMax_TextureCubeArray_Int32_texture.type.mut = true;
-    TextureAtomicMax_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicMax_TextureCubeArray_Int32_texture_modifiers;
-    TextureAtomicMax_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicMax_TextureCubeArray_Int32_texture_modifierValues;
-    TextureAtomicMax_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCubeArray_Int32_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMax_TextureCubeArray_Int32_value.name = "value"_c;
-    TextureAtomicMax_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicMax_TextureCubeArray_Int32.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCubeArray_Int32.name = TextureAtomicMax_TextureCubeArray_Int32_name;
-    TextureAtomicMax_TextureCubeArray_Int32.backendIndex = 3094;
-    TextureAtomicMax_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicMax_TextureCubeArray_Int32.parameters = TextureAtomicMax_TextureCubeArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32)->signature = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32)->name = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicMax with TextureCubeArray, Int32x4, UInt16
-    TextureAtomicMax_TextureCubeArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMax_TextureCubeArray_UInt16_texture.type.mut = true;
-    TextureAtomicMax_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicMax_TextureCubeArray_UInt16_texture_modifiers;
-    TextureAtomicMax_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicMax_TextureCubeArray_UInt16_texture_modifierValues;
-    TextureAtomicMax_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCubeArray_UInt16_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt16_value.name = "value"_c;
-    TextureAtomicMax_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCubeArray_UInt16.name = TextureAtomicMax_TextureCubeArray_UInt16_name;
-    TextureAtomicMax_TextureCubeArray_UInt16.backendIndex = 3095;
-    TextureAtomicMax_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt16.parameters = TextureAtomicMax_TextureCubeArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16)->signature = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16)->name = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicMax with TextureCubeArray, Int32x4, Int16
-    TextureAtomicMax_TextureCubeArray_Int16_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMax_TextureCubeArray_Int16_texture.type.mut = true;
-    TextureAtomicMax_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicMax_TextureCubeArray_Int16_texture_modifiers;
-    TextureAtomicMax_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicMax_TextureCubeArray_Int16_texture_modifierValues;
-    TextureAtomicMax_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCubeArray_Int16_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMax_TextureCubeArray_Int16_value.name = "value"_c;
-    TextureAtomicMax_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicMax_TextureCubeArray_Int16.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCubeArray_Int16.name = TextureAtomicMax_TextureCubeArray_Int16_name;
-    TextureAtomicMax_TextureCubeArray_Int16.backendIndex = 3096;
-    TextureAtomicMax_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicMax_TextureCubeArray_Int16.parameters = TextureAtomicMax_TextureCubeArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16)->signature = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16)->name = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicMax with TextureCubeArray, Int32x4, UInt64
-    TextureAtomicMax_TextureCubeArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicMax_TextureCubeArray_UInt64_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicMax_TextureCubeArray_UInt64_texture.type.mut = true;
-    TextureAtomicMax_TextureCubeArray_UInt64_texture.type.modifiers = TextureAtomicMax_TextureCubeArray_UInt64_texture_modifiers;
-    TextureAtomicMax_TextureCubeArray_UInt64_texture.type.modifierValues = TextureAtomicMax_TextureCubeArray_UInt64_texture_modifierValues;
-    TextureAtomicMax_TextureCubeArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicMax_TextureCubeArray_UInt64_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt64_value.name = "value"_c;
-    TextureAtomicMax_TextureCubeArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt64.documentation = "Atomically set the maximum of a texel value in a texture"_c;
-    TextureAtomicMax_TextureCubeArray_UInt64.name = TextureAtomicMax_TextureCubeArray_UInt64_name;
-    TextureAtomicMax_TextureCubeArray_UInt64.backendIndex = 3097;
-    TextureAtomicMax_TextureCubeArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicMax_TextureCubeArray_UInt64.parameters = TextureAtomicMax_TextureCubeArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt64_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt64_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt64)->signature = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt64)->name = "textureAtomicMax(uniform *mutable textureCubeArray,i32x4,u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt64)->nameWithVarNames = "textureAtomicMax(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicMax_TextureCubeArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicAnd with Texture1D, Int32, UInt32
-    TextureAtomicAnd_Texture1D_UInt32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicAnd_Texture1D_UInt32_texture.type.mut = true;
-    TextureAtomicAnd_Texture1D_UInt32_texture.type.modifiers = TextureAtomicAnd_Texture1D_UInt32_texture_modifiers;
-    TextureAtomicAnd_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicAnd_Texture1D_UInt32_texture_modifierValues;
-    TextureAtomicAnd_Texture1D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1D_UInt32_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture1D_UInt32_value.name = "value"_c;
-    TextureAtomicAnd_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicAnd_Texture1D_UInt32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1D_UInt32.name = TextureAtomicAnd_Texture1D_UInt32_name;
-    TextureAtomicAnd_Texture1D_UInt32.backendIndex = 3098;
-    TextureAtomicAnd_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicAnd_Texture1D_UInt32.parameters = TextureAtomicAnd_Texture1D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32)->signature = "textureAtomicAnd(uniform *mutable texture1D,i32,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32)->name = "textureAtomicAnd(uniform *mutable texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicAnd with Texture1D, Int32, Int32
-    TextureAtomicAnd_Texture1D_Int32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicAnd_Texture1D_Int32_texture.type.mut = true;
-    TextureAtomicAnd_Texture1D_Int32_texture.type.modifiers = TextureAtomicAnd_Texture1D_Int32_texture_modifiers;
-    TextureAtomicAnd_Texture1D_Int32_texture.type.modifierValues = TextureAtomicAnd_Texture1D_Int32_texture_modifierValues;
-    TextureAtomicAnd_Texture1D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1D_Int32_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture1D_Int32_value.name = "value"_c;
-    TextureAtomicAnd_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture1D_Int32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1D_Int32.name = TextureAtomicAnd_Texture1D_Int32_name;
-    TextureAtomicAnd_Texture1D_Int32.backendIndex = 3099;
-    TextureAtomicAnd_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicAnd_Texture1D_Int32.parameters = TextureAtomicAnd_Texture1D_Int32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32)->signature = "textureAtomicAnd(uniform *mutable texture1D,i32,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32)->name = "textureAtomicAnd(uniform *mutable texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicAnd with Texture1D, Int32, UInt16
-    TextureAtomicAnd_Texture1D_UInt16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicAnd_Texture1D_UInt16_texture.type.mut = true;
-    TextureAtomicAnd_Texture1D_UInt16_texture.type.modifiers = TextureAtomicAnd_Texture1D_UInt16_texture_modifiers;
-    TextureAtomicAnd_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicAnd_Texture1D_UInt16_texture_modifierValues;
-    TextureAtomicAnd_Texture1D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1D_UInt16_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture1D_UInt16_value.name = "value"_c;
-    TextureAtomicAnd_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicAnd_Texture1D_UInt16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1D_UInt16.name = TextureAtomicAnd_Texture1D_UInt16_name;
-    TextureAtomicAnd_Texture1D_UInt16.backendIndex = 3100;
-    TextureAtomicAnd_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicAnd_Texture1D_UInt16.parameters = TextureAtomicAnd_Texture1D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16)->signature = "textureAtomicAnd(uniform *mutable texture1D,i32,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16)->name = "textureAtomicAnd(uniform *mutable texture1D,i32,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicAnd with Texture1D, Int32, Int16
-    TextureAtomicAnd_Texture1D_Int16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicAnd_Texture1D_Int16_texture.type.mut = true;
-    TextureAtomicAnd_Texture1D_Int16_texture.type.modifiers = TextureAtomicAnd_Texture1D_Int16_texture_modifiers;
-    TextureAtomicAnd_Texture1D_Int16_texture.type.modifierValues = TextureAtomicAnd_Texture1D_Int16_texture_modifierValues;
-    TextureAtomicAnd_Texture1D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1D_Int16_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture1D_Int16_value.name = "value"_c;
-    TextureAtomicAnd_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicAnd_Texture1D_Int16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1D_Int16.name = TextureAtomicAnd_Texture1D_Int16_name;
-    TextureAtomicAnd_Texture1D_Int16.backendIndex = 3101;
-    TextureAtomicAnd_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicAnd_Texture1D_Int16.parameters = TextureAtomicAnd_Texture1D_Int16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16)->signature = "textureAtomicAnd(uniform *mutable texture1D,i32,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16)->name = "textureAtomicAnd(uniform *mutable texture1D,i32,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicAnd with Texture1D, Int32, UInt64
-    TextureAtomicAnd_Texture1D_UInt64_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1D_UInt64_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicAnd_Texture1D_UInt64_texture.type.mut = true;
-    TextureAtomicAnd_Texture1D_UInt64_texture.type.modifiers = TextureAtomicAnd_Texture1D_UInt64_texture_modifiers;
-    TextureAtomicAnd_Texture1D_UInt64_texture.type.modifierValues = TextureAtomicAnd_Texture1D_UInt64_texture_modifierValues;
-    TextureAtomicAnd_Texture1D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1D_UInt64_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture1D_UInt64_value.name = "value"_c;
-    TextureAtomicAnd_Texture1D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicAnd_Texture1D_UInt64.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1D_UInt64.name = TextureAtomicAnd_Texture1D_UInt64_name;
-    TextureAtomicAnd_Texture1D_UInt64.backendIndex = 3102;
-    TextureAtomicAnd_Texture1D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicAnd_Texture1D_UInt64.parameters = TextureAtomicAnd_Texture1D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt64_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt64_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt64)->signature = "textureAtomicAnd(uniform *mutable texture1D,i32,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt64)->name = "textureAtomicAnd(uniform *mutable texture1D,i32,u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt64)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1D, coordinate : i32, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicAnd with Texture2D, Int32x2, UInt32
-    TextureAtomicAnd_Texture2D_UInt32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicAnd_Texture2D_UInt32_texture.type.mut = true;
-    TextureAtomicAnd_Texture2D_UInt32_texture.type.modifiers = TextureAtomicAnd_Texture2D_UInt32_texture_modifiers;
-    TextureAtomicAnd_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicAnd_Texture2D_UInt32_texture_modifierValues;
-    TextureAtomicAnd_Texture2D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2D_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture2D_UInt32_value.name = "value"_c;
-    TextureAtomicAnd_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicAnd_Texture2D_UInt32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2D_UInt32.name = TextureAtomicAnd_Texture2D_UInt32_name;
-    TextureAtomicAnd_Texture2D_UInt32.backendIndex = 3103;
-    TextureAtomicAnd_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicAnd_Texture2D_UInt32.parameters = TextureAtomicAnd_Texture2D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32)->signature = "textureAtomicAnd(uniform *mutable texture2D,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32)->name = "textureAtomicAnd(uniform *mutable texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicAnd with Texture2D, Int32x2, Int32
-    TextureAtomicAnd_Texture2D_Int32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicAnd_Texture2D_Int32_texture.type.mut = true;
-    TextureAtomicAnd_Texture2D_Int32_texture.type.modifiers = TextureAtomicAnd_Texture2D_Int32_texture_modifiers;
-    TextureAtomicAnd_Texture2D_Int32_texture.type.modifierValues = TextureAtomicAnd_Texture2D_Int32_texture_modifierValues;
-    TextureAtomicAnd_Texture2D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2D_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture2D_Int32_value.name = "value"_c;
-    TextureAtomicAnd_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture2D_Int32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2D_Int32.name = TextureAtomicAnd_Texture2D_Int32_name;
-    TextureAtomicAnd_Texture2D_Int32.backendIndex = 3104;
-    TextureAtomicAnd_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicAnd_Texture2D_Int32.parameters = TextureAtomicAnd_Texture2D_Int32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32)->signature = "textureAtomicAnd(uniform *mutable texture2D,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32)->name = "textureAtomicAnd(uniform *mutable texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicAnd with Texture2D, Int32x2, UInt16
-    TextureAtomicAnd_Texture2D_UInt16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicAnd_Texture2D_UInt16_texture.type.mut = true;
-    TextureAtomicAnd_Texture2D_UInt16_texture.type.modifiers = TextureAtomicAnd_Texture2D_UInt16_texture_modifiers;
-    TextureAtomicAnd_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicAnd_Texture2D_UInt16_texture_modifierValues;
-    TextureAtomicAnd_Texture2D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2D_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture2D_UInt16_value.name = "value"_c;
-    TextureAtomicAnd_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicAnd_Texture2D_UInt16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2D_UInt16.name = TextureAtomicAnd_Texture2D_UInt16_name;
-    TextureAtomicAnd_Texture2D_UInt16.backendIndex = 3105;
-    TextureAtomicAnd_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicAnd_Texture2D_UInt16.parameters = TextureAtomicAnd_Texture2D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16)->signature = "textureAtomicAnd(uniform *mutable texture2D,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16)->name = "textureAtomicAnd(uniform *mutable texture2D,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicAnd with Texture2D, Int32x2, Int16
-    TextureAtomicAnd_Texture2D_Int16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicAnd_Texture2D_Int16_texture.type.mut = true;
-    TextureAtomicAnd_Texture2D_Int16_texture.type.modifiers = TextureAtomicAnd_Texture2D_Int16_texture_modifiers;
-    TextureAtomicAnd_Texture2D_Int16_texture.type.modifierValues = TextureAtomicAnd_Texture2D_Int16_texture_modifierValues;
-    TextureAtomicAnd_Texture2D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2D_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture2D_Int16_value.name = "value"_c;
-    TextureAtomicAnd_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicAnd_Texture2D_Int16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2D_Int16.name = TextureAtomicAnd_Texture2D_Int16_name;
-    TextureAtomicAnd_Texture2D_Int16.backendIndex = 3106;
-    TextureAtomicAnd_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicAnd_Texture2D_Int16.parameters = TextureAtomicAnd_Texture2D_Int16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16)->signature = "textureAtomicAnd(uniform *mutable texture2D,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16)->name = "textureAtomicAnd(uniform *mutable texture2D,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicAnd with Texture2D, Int32x2, UInt64
-    TextureAtomicAnd_Texture2D_UInt64_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2D_UInt64_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicAnd_Texture2D_UInt64_texture.type.mut = true;
-    TextureAtomicAnd_Texture2D_UInt64_texture.type.modifiers = TextureAtomicAnd_Texture2D_UInt64_texture_modifiers;
-    TextureAtomicAnd_Texture2D_UInt64_texture.type.modifierValues = TextureAtomicAnd_Texture2D_UInt64_texture_modifierValues;
-    TextureAtomicAnd_Texture2D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2D_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture2D_UInt64_value.name = "value"_c;
-    TextureAtomicAnd_Texture2D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicAnd_Texture2D_UInt64.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2D_UInt64.name = TextureAtomicAnd_Texture2D_UInt64_name;
-    TextureAtomicAnd_Texture2D_UInt64.backendIndex = 3107;
-    TextureAtomicAnd_Texture2D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicAnd_Texture2D_UInt64.parameters = TextureAtomicAnd_Texture2D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt64_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt64_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt64)->signature = "textureAtomicAnd(uniform *mutable texture2D,i32x2,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt64)->name = "textureAtomicAnd(uniform *mutable texture2D,i32x2,u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt64)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2D, coordinate : i32x2, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicAnd with Texture3D, Int32x3, UInt32
-    TextureAtomicAnd_Texture3D_UInt32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicAnd_Texture3D_UInt32_texture.type.mut = true;
-    TextureAtomicAnd_Texture3D_UInt32_texture.type.modifiers = TextureAtomicAnd_Texture3D_UInt32_texture_modifiers;
-    TextureAtomicAnd_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicAnd_Texture3D_UInt32_texture_modifierValues;
-    TextureAtomicAnd_Texture3D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture3D_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture3D_UInt32_value.name = "value"_c;
-    TextureAtomicAnd_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicAnd_Texture3D_UInt32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture3D_UInt32.name = TextureAtomicAnd_Texture3D_UInt32_name;
-    TextureAtomicAnd_Texture3D_UInt32.backendIndex = 3108;
-    TextureAtomicAnd_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicAnd_Texture3D_UInt32.parameters = TextureAtomicAnd_Texture3D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32)->signature = "textureAtomicAnd(uniform *mutable texture3D,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32)->name = "textureAtomicAnd(uniform *mutable texture3D,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicAnd with Texture3D, Int32x3, Int32
-    TextureAtomicAnd_Texture3D_Int32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicAnd_Texture3D_Int32_texture.type.mut = true;
-    TextureAtomicAnd_Texture3D_Int32_texture.type.modifiers = TextureAtomicAnd_Texture3D_Int32_texture_modifiers;
-    TextureAtomicAnd_Texture3D_Int32_texture.type.modifierValues = TextureAtomicAnd_Texture3D_Int32_texture_modifierValues;
-    TextureAtomicAnd_Texture3D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture3D_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture3D_Int32_value.name = "value"_c;
-    TextureAtomicAnd_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture3D_Int32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture3D_Int32.name = TextureAtomicAnd_Texture3D_Int32_name;
-    TextureAtomicAnd_Texture3D_Int32.backendIndex = 3109;
-    TextureAtomicAnd_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicAnd_Texture3D_Int32.parameters = TextureAtomicAnd_Texture3D_Int32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32)->signature = "textureAtomicAnd(uniform *mutable texture3D,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32)->name = "textureAtomicAnd(uniform *mutable texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicAnd with Texture3D, Int32x3, UInt16
-    TextureAtomicAnd_Texture3D_UInt16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicAnd_Texture3D_UInt16_texture.type.mut = true;
-    TextureAtomicAnd_Texture3D_UInt16_texture.type.modifiers = TextureAtomicAnd_Texture3D_UInt16_texture_modifiers;
-    TextureAtomicAnd_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicAnd_Texture3D_UInt16_texture_modifierValues;
-    TextureAtomicAnd_Texture3D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture3D_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture3D_UInt16_value.name = "value"_c;
-    TextureAtomicAnd_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicAnd_Texture3D_UInt16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture3D_UInt16.name = TextureAtomicAnd_Texture3D_UInt16_name;
-    TextureAtomicAnd_Texture3D_UInt16.backendIndex = 3110;
-    TextureAtomicAnd_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicAnd_Texture3D_UInt16.parameters = TextureAtomicAnd_Texture3D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16)->signature = "textureAtomicAnd(uniform *mutable texture3D,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16)->name = "textureAtomicAnd(uniform *mutable texture3D,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicAnd with Texture3D, Int32x3, Int16
-    TextureAtomicAnd_Texture3D_Int16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicAnd_Texture3D_Int16_texture.type.mut = true;
-    TextureAtomicAnd_Texture3D_Int16_texture.type.modifiers = TextureAtomicAnd_Texture3D_Int16_texture_modifiers;
-    TextureAtomicAnd_Texture3D_Int16_texture.type.modifierValues = TextureAtomicAnd_Texture3D_Int16_texture_modifierValues;
-    TextureAtomicAnd_Texture3D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture3D_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture3D_Int16_value.name = "value"_c;
-    TextureAtomicAnd_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicAnd_Texture3D_Int16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture3D_Int16.name = TextureAtomicAnd_Texture3D_Int16_name;
-    TextureAtomicAnd_Texture3D_Int16.backendIndex = 3111;
-    TextureAtomicAnd_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicAnd_Texture3D_Int16.parameters = TextureAtomicAnd_Texture3D_Int16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16)->signature = "textureAtomicAnd(uniform *mutable texture3D,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16)->name = "textureAtomicAnd(uniform *mutable texture3D,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicAnd with Texture3D, Int32x3, UInt64
-    TextureAtomicAnd_Texture3D_UInt64_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture3D_UInt64_texture.type = Type::FullType{ Texture3DType.name };
-    TextureAtomicAnd_Texture3D_UInt64_texture.type.mut = true;
-    TextureAtomicAnd_Texture3D_UInt64_texture.type.modifiers = TextureAtomicAnd_Texture3D_UInt64_texture_modifiers;
-    TextureAtomicAnd_Texture3D_UInt64_texture.type.modifierValues = TextureAtomicAnd_Texture3D_UInt64_texture_modifierValues;
-    TextureAtomicAnd_Texture3D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture3D_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture3D_UInt64_value.name = "value"_c;
-    TextureAtomicAnd_Texture3D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicAnd_Texture3D_UInt64.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture3D_UInt64.name = TextureAtomicAnd_Texture3D_UInt64_name;
-    TextureAtomicAnd_Texture3D_UInt64.backendIndex = 3112;
-    TextureAtomicAnd_Texture3D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicAnd_Texture3D_UInt64.parameters = TextureAtomicAnd_Texture3D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt64_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt64)->signature = "textureAtomicAnd(uniform *mutable texture3D,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt64)->name = "textureAtomicAnd(uniform *mutable texture3D,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt64)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture3D, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture3D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicAnd with TextureCube, Int32x3, UInt32
-    TextureAtomicAnd_TextureCube_UInt32_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicAnd_TextureCube_UInt32_texture.type.mut = true;
-    TextureAtomicAnd_TextureCube_UInt32_texture.type.modifiers = TextureAtomicAnd_TextureCube_UInt32_texture_modifiers;
-    TextureAtomicAnd_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicAnd_TextureCube_UInt32_texture_modifierValues;
-    TextureAtomicAnd_TextureCube_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCube_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_TextureCube_UInt32_value.name = "value"_c;
-    TextureAtomicAnd_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicAnd_TextureCube_UInt32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCube_UInt32.name = TextureAtomicAnd_TextureCube_UInt32_name;
-    TextureAtomicAnd_TextureCube_UInt32.backendIndex = 3113;
-    TextureAtomicAnd_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicAnd_TextureCube_UInt32.parameters = TextureAtomicAnd_TextureCube_UInt32_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32)->signature = "textureAtomicAnd(uniform *mutable textureCube,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32)->name = "textureAtomicAnd(uniform *mutable textureCube,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicAnd with TextureCube, Int32x3, Int32
-    TextureAtomicAnd_TextureCube_Int32_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicAnd_TextureCube_Int32_texture.type.mut = true;
-    TextureAtomicAnd_TextureCube_Int32_texture.type.modifiers = TextureAtomicAnd_TextureCube_Int32_texture_modifiers;
-    TextureAtomicAnd_TextureCube_Int32_texture.type.modifierValues = TextureAtomicAnd_TextureCube_Int32_texture_modifierValues;
-    TextureAtomicAnd_TextureCube_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCube_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_TextureCube_Int32_value.name = "value"_c;
-    TextureAtomicAnd_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_TextureCube_Int32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCube_Int32.name = TextureAtomicAnd_TextureCube_Int32_name;
-    TextureAtomicAnd_TextureCube_Int32.backendIndex = 3114;
-    TextureAtomicAnd_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicAnd_TextureCube_Int32.parameters = TextureAtomicAnd_TextureCube_Int32_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32)->signature = "textureAtomicAnd(uniform *mutable textureCube,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32)->name = "textureAtomicAnd(uniform *mutable textureCube,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicAnd with TextureCube, Int32x3, UInt16
-    TextureAtomicAnd_TextureCube_UInt16_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCube_UInt16_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicAnd_TextureCube_UInt16_texture.type.mut = true;
-    TextureAtomicAnd_TextureCube_UInt16_texture.type.modifiers = TextureAtomicAnd_TextureCube_UInt16_texture_modifiers;
-    TextureAtomicAnd_TextureCube_UInt16_texture.type.modifierValues = TextureAtomicAnd_TextureCube_UInt16_texture_modifierValues;
-    TextureAtomicAnd_TextureCube_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCube_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_TextureCube_UInt16_value.name = "value"_c;
-    TextureAtomicAnd_TextureCube_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicAnd_TextureCube_UInt16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCube_UInt16.name = TextureAtomicAnd_TextureCube_UInt16_name;
-    TextureAtomicAnd_TextureCube_UInt16.backendIndex = 3115;
-    TextureAtomicAnd_TextureCube_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicAnd_TextureCube_UInt16.parameters = TextureAtomicAnd_TextureCube_UInt16_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16)->signature = "textureAtomicAnd(uniform *mutable textureCube,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16)->name = "textureAtomicAnd(uniform *mutable textureCube,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCube, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicAnd with TextureCube, Int32x3, Int16
-    TextureAtomicAnd_TextureCube_Int16_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCube_Int16_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicAnd_TextureCube_Int16_texture.type.mut = true;
-    TextureAtomicAnd_TextureCube_Int16_texture.type.modifiers = TextureAtomicAnd_TextureCube_Int16_texture_modifiers;
-    TextureAtomicAnd_TextureCube_Int16_texture.type.modifierValues = TextureAtomicAnd_TextureCube_Int16_texture_modifierValues;
-    TextureAtomicAnd_TextureCube_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCube_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_TextureCube_Int16_value.name = "value"_c;
-    TextureAtomicAnd_TextureCube_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicAnd_TextureCube_Int16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCube_Int16.name = TextureAtomicAnd_TextureCube_Int16_name;
-    TextureAtomicAnd_TextureCube_Int16.backendIndex = 3116;
-    TextureAtomicAnd_TextureCube_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicAnd_TextureCube_Int16.parameters = TextureAtomicAnd_TextureCube_Int16_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16)->signature = "textureAtomicAnd(uniform *mutable textureCube,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16)->name = "textureAtomicAnd(uniform *mutable textureCube,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCube, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicAnd with TextureCube, Int32x3, UInt64
-    TextureAtomicAnd_TextureCube_UInt64_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCube_UInt64_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureAtomicAnd_TextureCube_UInt64_texture.type.mut = true;
-    TextureAtomicAnd_TextureCube_UInt64_texture.type.modifiers = TextureAtomicAnd_TextureCube_UInt64_texture_modifiers;
-    TextureAtomicAnd_TextureCube_UInt64_texture.type.modifierValues = TextureAtomicAnd_TextureCube_UInt64_texture_modifierValues;
-    TextureAtomicAnd_TextureCube_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCube_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_TextureCube_UInt64_value.name = "value"_c;
-    TextureAtomicAnd_TextureCube_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicAnd_TextureCube_UInt64.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCube_UInt64.name = TextureAtomicAnd_TextureCube_UInt64_name;
-    TextureAtomicAnd_TextureCube_UInt64.backendIndex = 3117;
-    TextureAtomicAnd_TextureCube_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicAnd_TextureCube_UInt64.parameters = TextureAtomicAnd_TextureCube_UInt64_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt64_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt64)->signature = "textureAtomicAnd(uniform *mutable textureCube,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt64)->name = "textureAtomicAnd(uniform *mutable textureCube,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt64)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCube, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCube_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicAnd with Texture1DArray, Int32x2, UInt32
-    TextureAtomicAnd_Texture1DArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicAnd_Texture1DArray_UInt32_texture.type.mut = true;
-    TextureAtomicAnd_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicAnd_Texture1DArray_UInt32_texture_modifiers;
-    TextureAtomicAnd_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicAnd_Texture1DArray_UInt32_texture_modifierValues;
-    TextureAtomicAnd_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1DArray_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt32_value.name = "value"_c;
-    TextureAtomicAnd_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1DArray_UInt32.name = TextureAtomicAnd_Texture1DArray_UInt32_name;
-    TextureAtomicAnd_Texture1DArray_UInt32.backendIndex = 3118;
-    TextureAtomicAnd_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt32.parameters = TextureAtomicAnd_Texture1DArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32)->signature = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32)->name = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicAnd with Texture1DArray, Int32x2, Int32
-    TextureAtomicAnd_Texture1DArray_Int32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicAnd_Texture1DArray_Int32_texture.type.mut = true;
-    TextureAtomicAnd_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicAnd_Texture1DArray_Int32_texture_modifiers;
-    TextureAtomicAnd_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicAnd_Texture1DArray_Int32_texture_modifierValues;
-    TextureAtomicAnd_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1DArray_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture1DArray_Int32_value.name = "value"_c;
-    TextureAtomicAnd_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture1DArray_Int32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1DArray_Int32.name = TextureAtomicAnd_Texture1DArray_Int32_name;
-    TextureAtomicAnd_Texture1DArray_Int32.backendIndex = 3119;
-    TextureAtomicAnd_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicAnd_Texture1DArray_Int32.parameters = TextureAtomicAnd_Texture1DArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32)->signature = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32)->name = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicAnd with Texture1DArray, Int32x2, UInt16
-    TextureAtomicAnd_Texture1DArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicAnd_Texture1DArray_UInt16_texture.type.mut = true;
-    TextureAtomicAnd_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicAnd_Texture1DArray_UInt16_texture_modifiers;
-    TextureAtomicAnd_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicAnd_Texture1DArray_UInt16_texture_modifierValues;
-    TextureAtomicAnd_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1DArray_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt16_value.name = "value"_c;
-    TextureAtomicAnd_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1DArray_UInt16.name = TextureAtomicAnd_Texture1DArray_UInt16_name;
-    TextureAtomicAnd_Texture1DArray_UInt16.backendIndex = 3120;
-    TextureAtomicAnd_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt16.parameters = TextureAtomicAnd_Texture1DArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16)->signature = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16)->name = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicAnd with Texture1DArray, Int32x2, Int16
-    TextureAtomicAnd_Texture1DArray_Int16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicAnd_Texture1DArray_Int16_texture.type.mut = true;
-    TextureAtomicAnd_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicAnd_Texture1DArray_Int16_texture_modifiers;
-    TextureAtomicAnd_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicAnd_Texture1DArray_Int16_texture_modifierValues;
-    TextureAtomicAnd_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1DArray_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture1DArray_Int16_value.name = "value"_c;
-    TextureAtomicAnd_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicAnd_Texture1DArray_Int16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1DArray_Int16.name = TextureAtomicAnd_Texture1DArray_Int16_name;
-    TextureAtomicAnd_Texture1DArray_Int16.backendIndex = 3121;
-    TextureAtomicAnd_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicAnd_Texture1DArray_Int16.parameters = TextureAtomicAnd_Texture1DArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16)->signature = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16)->name = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicAnd with Texture1DArray, Int32x2, UInt64
-    TextureAtomicAnd_Texture1DArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture1DArray_UInt64_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureAtomicAnd_Texture1DArray_UInt64_texture.type.mut = true;
-    TextureAtomicAnd_Texture1DArray_UInt64_texture.type.modifiers = TextureAtomicAnd_Texture1DArray_UInt64_texture_modifiers;
-    TextureAtomicAnd_Texture1DArray_UInt64_texture.type.modifierValues = TextureAtomicAnd_Texture1DArray_UInt64_texture_modifierValues;
-    TextureAtomicAnd_Texture1DArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture1DArray_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt64_value.name = "value"_c;
-    TextureAtomicAnd_Texture1DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt64.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture1DArray_UInt64.name = TextureAtomicAnd_Texture1DArray_UInt64_name;
-    TextureAtomicAnd_Texture1DArray_UInt64.backendIndex = 3122;
-    TextureAtomicAnd_Texture1DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicAnd_Texture1DArray_UInt64.parameters = TextureAtomicAnd_Texture1DArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt64_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt64_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt64)->signature = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt64)->name = "textureAtomicAnd(uniform *mutable texture1DArray,i32x2,u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt64)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture1DArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicAnd with Texture2DArray, Int32x3, UInt32
-    TextureAtomicAnd_Texture2DArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicAnd_Texture2DArray_UInt32_texture.type.mut = true;
-    TextureAtomicAnd_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicAnd_Texture2DArray_UInt32_texture_modifiers;
-    TextureAtomicAnd_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicAnd_Texture2DArray_UInt32_texture_modifierValues;
-    TextureAtomicAnd_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2DArray_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt32_value.name = "value"_c;
-    TextureAtomicAnd_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2DArray_UInt32.name = TextureAtomicAnd_Texture2DArray_UInt32_name;
-    TextureAtomicAnd_Texture2DArray_UInt32.backendIndex = 3123;
-    TextureAtomicAnd_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt32.parameters = TextureAtomicAnd_Texture2DArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32)->signature = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32)->name = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicAnd with Texture2DArray, Int32x3, Int32
-    TextureAtomicAnd_Texture2DArray_Int32_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicAnd_Texture2DArray_Int32_texture.type.mut = true;
-    TextureAtomicAnd_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicAnd_Texture2DArray_Int32_texture_modifiers;
-    TextureAtomicAnd_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicAnd_Texture2DArray_Int32_texture_modifierValues;
-    TextureAtomicAnd_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2DArray_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture2DArray_Int32_value.name = "value"_c;
-    TextureAtomicAnd_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_Texture2DArray_Int32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2DArray_Int32.name = TextureAtomicAnd_Texture2DArray_Int32_name;
-    TextureAtomicAnd_Texture2DArray_Int32.backendIndex = 3124;
-    TextureAtomicAnd_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicAnd_Texture2DArray_Int32.parameters = TextureAtomicAnd_Texture2DArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32)->signature = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32)->name = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicAnd with Texture2DArray, Int32x3, UInt16
-    TextureAtomicAnd_Texture2DArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicAnd_Texture2DArray_UInt16_texture.type.mut = true;
-    TextureAtomicAnd_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicAnd_Texture2DArray_UInt16_texture_modifiers;
-    TextureAtomicAnd_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicAnd_Texture2DArray_UInt16_texture_modifierValues;
-    TextureAtomicAnd_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2DArray_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt16_value.name = "value"_c;
-    TextureAtomicAnd_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2DArray_UInt16.name = TextureAtomicAnd_Texture2DArray_UInt16_name;
-    TextureAtomicAnd_Texture2DArray_UInt16.backendIndex = 3125;
-    TextureAtomicAnd_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt16.parameters = TextureAtomicAnd_Texture2DArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16)->signature = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16)->name = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicAnd with Texture2DArray, Int32x3, Int16
-    TextureAtomicAnd_Texture2DArray_Int16_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicAnd_Texture2DArray_Int16_texture.type.mut = true;
-    TextureAtomicAnd_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicAnd_Texture2DArray_Int16_texture_modifiers;
-    TextureAtomicAnd_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicAnd_Texture2DArray_Int16_texture_modifierValues;
-    TextureAtomicAnd_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2DArray_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture2DArray_Int16_value.name = "value"_c;
-    TextureAtomicAnd_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicAnd_Texture2DArray_Int16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2DArray_Int16.name = TextureAtomicAnd_Texture2DArray_Int16_name;
-    TextureAtomicAnd_Texture2DArray_Int16.backendIndex = 3126;
-    TextureAtomicAnd_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicAnd_Texture2DArray_Int16.parameters = TextureAtomicAnd_Texture2DArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16)->signature = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16)->name = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicAnd with Texture2DArray, Int32x3, UInt64
-    TextureAtomicAnd_Texture2DArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicAnd_Texture2DArray_UInt64_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureAtomicAnd_Texture2DArray_UInt64_texture.type.mut = true;
-    TextureAtomicAnd_Texture2DArray_UInt64_texture.type.modifiers = TextureAtomicAnd_Texture2DArray_UInt64_texture_modifiers;
-    TextureAtomicAnd_Texture2DArray_UInt64_texture.type.modifierValues = TextureAtomicAnd_Texture2DArray_UInt64_texture_modifierValues;
-    TextureAtomicAnd_Texture2DArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_Texture2DArray_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt64_value.name = "value"_c;
-    TextureAtomicAnd_Texture2DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt64.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_Texture2DArray_UInt64.name = TextureAtomicAnd_Texture2DArray_UInt64_name;
-    TextureAtomicAnd_Texture2DArray_UInt64.backendIndex = 3127;
-    TextureAtomicAnd_Texture2DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicAnd_Texture2DArray_UInt64.parameters = TextureAtomicAnd_Texture2DArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt64_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt64_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt64)->signature = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt64)->name = "textureAtomicAnd(uniform *mutable texture2DArray,i32x3,u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt64)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_Texture2DArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicAnd with TextureCubeArray, Int32x4, UInt32
-    TextureAtomicAnd_TextureCubeArray_UInt32_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicAnd_TextureCubeArray_UInt32_texture.type.mut = true;
-    TextureAtomicAnd_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicAnd_TextureCubeArray_UInt32_texture_modifiers;
-    TextureAtomicAnd_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicAnd_TextureCubeArray_UInt32_texture_modifierValues;
-    TextureAtomicAnd_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt32_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt32_value.name = "value"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt32.name = TextureAtomicAnd_TextureCubeArray_UInt32_name;
-    TextureAtomicAnd_TextureCubeArray_UInt32.backendIndex = 3128;
-    TextureAtomicAnd_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt32.parameters = TextureAtomicAnd_TextureCubeArray_UInt32_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32)->signature = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32)->name = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicAnd with TextureCubeArray, Int32x4, Int32
-    TextureAtomicAnd_TextureCubeArray_Int32_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicAnd_TextureCubeArray_Int32_texture.type.mut = true;
-    TextureAtomicAnd_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicAnd_TextureCubeArray_Int32_texture_modifiers;
-    TextureAtomicAnd_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicAnd_TextureCubeArray_Int32_texture_modifierValues;
-    TextureAtomicAnd_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCubeArray_Int32_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicAnd_TextureCubeArray_Int32_value.name = "value"_c;
-    TextureAtomicAnd_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicAnd_TextureCubeArray_Int32.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCubeArray_Int32.name = TextureAtomicAnd_TextureCubeArray_Int32_name;
-    TextureAtomicAnd_TextureCubeArray_Int32.backendIndex = 3129;
-    TextureAtomicAnd_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicAnd_TextureCubeArray_Int32.parameters = TextureAtomicAnd_TextureCubeArray_Int32_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32)->signature = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32)->name = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicAnd with TextureCubeArray, Int32x4, UInt16
-    TextureAtomicAnd_TextureCubeArray_UInt16_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicAnd_TextureCubeArray_UInt16_texture.type.mut = true;
-    TextureAtomicAnd_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicAnd_TextureCubeArray_UInt16_texture_modifiers;
-    TextureAtomicAnd_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicAnd_TextureCubeArray_UInt16_texture_modifierValues;
-    TextureAtomicAnd_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt16_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt16_value.name = "value"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt16.name = TextureAtomicAnd_TextureCubeArray_UInt16_name;
-    TextureAtomicAnd_TextureCubeArray_UInt16.backendIndex = 3130;
-    TextureAtomicAnd_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt16.parameters = TextureAtomicAnd_TextureCubeArray_UInt16_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16)->signature = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16)->name = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicAnd with TextureCubeArray, Int32x4, Int16
-    TextureAtomicAnd_TextureCubeArray_Int16_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicAnd_TextureCubeArray_Int16_texture.type.mut = true;
-    TextureAtomicAnd_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicAnd_TextureCubeArray_Int16_texture_modifiers;
-    TextureAtomicAnd_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicAnd_TextureCubeArray_Int16_texture_modifierValues;
-    TextureAtomicAnd_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCubeArray_Int16_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicAnd_TextureCubeArray_Int16_value.name = "value"_c;
-    TextureAtomicAnd_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicAnd_TextureCubeArray_Int16.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCubeArray_Int16.name = TextureAtomicAnd_TextureCubeArray_Int16_name;
-    TextureAtomicAnd_TextureCubeArray_Int16.backendIndex = 3131;
-    TextureAtomicAnd_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicAnd_TextureCubeArray_Int16.parameters = TextureAtomicAnd_TextureCubeArray_Int16_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16)->signature = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16)->name = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicAnd with TextureCubeArray, Int32x4, UInt64
-    TextureAtomicAnd_TextureCubeArray_UInt64_texture.name = "texture"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt64_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureAtomicAnd_TextureCubeArray_UInt64_texture.type.mut = true;
-    TextureAtomicAnd_TextureCubeArray_UInt64_texture.type.modifiers = TextureAtomicAnd_TextureCubeArray_UInt64_texture_modifiers;
-    TextureAtomicAnd_TextureCubeArray_UInt64_texture.type.modifierValues = TextureAtomicAnd_TextureCubeArray_UInt64_texture_modifierValues;
-    TextureAtomicAnd_TextureCubeArray_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt64_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt64_value.name = "value"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt64.documentation = "Atomically AND a texel value in a texture"_c;
-    TextureAtomicAnd_TextureCubeArray_UInt64.name = TextureAtomicAnd_TextureCubeArray_UInt64_name;
-    TextureAtomicAnd_TextureCubeArray_UInt64.backendIndex = 3132;
-    TextureAtomicAnd_TextureCubeArray_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicAnd_TextureCubeArray_UInt64.parameters = TextureAtomicAnd_TextureCubeArray_UInt64_args;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt64_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt64_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt64)->signature = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt64)->name = "textureAtomicAnd(uniform *mutable textureCubeArray,i32x4,u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt64)->nameWithVarNames = "textureAtomicAnd(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicAnd_TextureCubeArray_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicOr with Texture1D, Int32, UInt32
-    TextureAtomicOr_Texture1D_UInt32_texture.name = "texture"_c;
-    TextureAtomicOr_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicOr_Texture1D_UInt32_texture.type.mut = true;
-    TextureAtomicOr_Texture1D_UInt32_texture.type.modifiers = TextureAtomicOr_Texture1D_UInt32_texture_modifiers;
-    TextureAtomicOr_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicOr_Texture1D_UInt32_texture_modifierValues;
-    TextureAtomicOr_Texture1D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture1D_UInt32_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicOr_Texture1D_UInt32_value.name = "value"_c;
-    TextureAtomicOr_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicOr_Texture1D_UInt32.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture1D_UInt32.name = TextureAtomicOr_Texture1D_UInt32_name;
-    TextureAtomicOr_Texture1D_UInt32.backendIndex = 3133;
-    TextureAtomicOr_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicOr_Texture1D_UInt32.parameters = TextureAtomicOr_Texture1D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32)->signature = "textureAtomicOr(uniform *mutable texture1D,i32,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32)->name = "textureAtomicOr(uniform *mutable texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicOr with Texture1D, Int32, Int32
-    TextureAtomicOr_Texture1D_Int32_texture.name = "texture"_c;
-    TextureAtomicOr_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicOr_Texture1D_Int32_texture.type.mut = true;
-    TextureAtomicOr_Texture1D_Int32_texture.type.modifiers = TextureAtomicOr_Texture1D_Int32_texture_modifiers;
-    TextureAtomicOr_Texture1D_Int32_texture.type.modifierValues = TextureAtomicOr_Texture1D_Int32_texture_modifierValues;
-    TextureAtomicOr_Texture1D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture1D_Int32_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicOr_Texture1D_Int32_value.name = "value"_c;
-    TextureAtomicOr_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicOr_Texture1D_Int32.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture1D_Int32.name = TextureAtomicOr_Texture1D_Int32_name;
-    TextureAtomicOr_Texture1D_Int32.backendIndex = 3134;
-    TextureAtomicOr_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicOr_Texture1D_Int32.parameters = TextureAtomicOr_Texture1D_Int32_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32)->signature = "textureAtomicOr(uniform *mutable texture1D,i32,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32)->name = "textureAtomicOr(uniform *mutable texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicOr with Texture1D, Int32, UInt16
-    TextureAtomicOr_Texture1D_UInt16_texture.name = "texture"_c;
-    TextureAtomicOr_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicOr_Texture1D_UInt16_texture.type.mut = true;
-    TextureAtomicOr_Texture1D_UInt16_texture.type.modifiers = TextureAtomicOr_Texture1D_UInt16_texture_modifiers;
-    TextureAtomicOr_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicOr_Texture1D_UInt16_texture_modifierValues;
-    TextureAtomicOr_Texture1D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture1D_UInt16_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicOr_Texture1D_UInt16_value.name = "value"_c;
-    TextureAtomicOr_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicOr_Texture1D_UInt16.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture1D_UInt16.name = TextureAtomicOr_Texture1D_UInt16_name;
-    TextureAtomicOr_Texture1D_UInt16.backendIndex = 3135;
-    TextureAtomicOr_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicOr_Texture1D_UInt16.parameters = TextureAtomicOr_Texture1D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16)->signature = "textureAtomicOr(uniform *mutable texture1D,i32,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16)->name = "textureAtomicOr(uniform *mutable texture1D,i32,u16)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicOr with Texture1D, Int32, Int16
-    TextureAtomicOr_Texture1D_Int16_texture.name = "texture"_c;
-    TextureAtomicOr_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicOr_Texture1D_Int16_texture.type.mut = true;
-    TextureAtomicOr_Texture1D_Int16_texture.type.modifiers = TextureAtomicOr_Texture1D_Int16_texture_modifiers;
-    TextureAtomicOr_Texture1D_Int16_texture.type.modifierValues = TextureAtomicOr_Texture1D_Int16_texture_modifierValues;
-    TextureAtomicOr_Texture1D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture1D_Int16_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicOr_Texture1D_Int16_value.name = "value"_c;
-    TextureAtomicOr_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicOr_Texture1D_Int16.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture1D_Int16.name = TextureAtomicOr_Texture1D_Int16_name;
-    TextureAtomicOr_Texture1D_Int16.backendIndex = 3136;
-    TextureAtomicOr_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicOr_Texture1D_Int16.parameters = TextureAtomicOr_Texture1D_Int16_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16)->signature = "textureAtomicOr(uniform *mutable texture1D,i32,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16)->name = "textureAtomicOr(uniform *mutable texture1D,i32,i16)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// textureAtomicOr with Texture1D, Int32, UInt64
-    TextureAtomicOr_Texture1D_UInt64_texture.name = "texture"_c;
-    TextureAtomicOr_Texture1D_UInt64_texture.type = Type::FullType{ Texture1DType.name };
-    TextureAtomicOr_Texture1D_UInt64_texture.type.mut = true;
-    TextureAtomicOr_Texture1D_UInt64_texture.type.modifiers = TextureAtomicOr_Texture1D_UInt64_texture_modifiers;
-    TextureAtomicOr_Texture1D_UInt64_texture.type.modifierValues = TextureAtomicOr_Texture1D_UInt64_texture_modifierValues;
-    TextureAtomicOr_Texture1D_UInt64_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture1D_UInt64_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureAtomicOr_Texture1D_UInt64_value.name = "value"_c;
-    TextureAtomicOr_Texture1D_UInt64_value.type = Type::FullType{ UInt64Type.name };
-    TextureAtomicOr_Texture1D_UInt64.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture1D_UInt64.name = TextureAtomicOr_Texture1D_UInt64_name;
-    TextureAtomicOr_Texture1D_UInt64.backendIndex = 3137;
-    TextureAtomicOr_Texture1D_UInt64.returnType = Type::FullType { UInt64Type.name };
-    TextureAtomicOr_Texture1D_UInt64.parameters = TextureAtomicOr_Texture1D_UInt64_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt64_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt64_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt64_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt64_value)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt64)->signature = "textureAtomicOr(uniform *mutable texture1D,i32,u64) u64"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt64)->name = "textureAtomicOr(uniform *mutable texture1D,i32,u64)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt64)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture1D, coordinate : i32, value : u64)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture1D_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// textureAtomicOr with Texture2D, Int32x2, UInt32
-    TextureAtomicOr_Texture2D_UInt32_texture.name = "texture"_c;
-    TextureAtomicOr_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicOr_Texture2D_UInt32_texture.type.mut = true;
-    TextureAtomicOr_Texture2D_UInt32_texture.type.modifiers = TextureAtomicOr_Texture2D_UInt32_texture_modifiers;
-    TextureAtomicOr_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicOr_Texture2D_UInt32_texture_modifierValues;
-    TextureAtomicOr_Texture2D_UInt32_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture2D_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicOr_Texture2D_UInt32_value.name = "value"_c;
-    TextureAtomicOr_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    TextureAtomicOr_Texture2D_UInt32.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture2D_UInt32.name = TextureAtomicOr_Texture2D_UInt32_name;
-    TextureAtomicOr_Texture2D_UInt32.backendIndex = 3138;
-    TextureAtomicOr_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
-    TextureAtomicOr_Texture2D_UInt32.parameters = TextureAtomicOr_Texture2D_UInt32_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32)->signature = "textureAtomicOr(uniform *mutable texture2D,i32x2,u32) u32"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32)->name = "textureAtomicOr(uniform *mutable texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// textureAtomicOr with Texture2D, Int32x2, Int32
-    TextureAtomicOr_Texture2D_Int32_texture.name = "texture"_c;
-    TextureAtomicOr_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicOr_Texture2D_Int32_texture.type.mut = true;
-    TextureAtomicOr_Texture2D_Int32_texture.type.modifiers = TextureAtomicOr_Texture2D_Int32_texture_modifiers;
-    TextureAtomicOr_Texture2D_Int32_texture.type.modifierValues = TextureAtomicOr_Texture2D_Int32_texture_modifierValues;
-    TextureAtomicOr_Texture2D_Int32_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture2D_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicOr_Texture2D_Int32_value.name = "value"_c;
-    TextureAtomicOr_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
-    TextureAtomicOr_Texture2D_Int32.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture2D_Int32.name = TextureAtomicOr_Texture2D_Int32_name;
-    TextureAtomicOr_Texture2D_Int32.backendIndex = 3139;
-    TextureAtomicOr_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
-    TextureAtomicOr_Texture2D_Int32.parameters = TextureAtomicOr_Texture2D_Int32_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32)->signature = "textureAtomicOr(uniform *mutable texture2D,i32x2,i32) i32"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32)->name = "textureAtomicOr(uniform *mutable texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// textureAtomicOr with Texture2D, Int32x2, UInt16
-    TextureAtomicOr_Texture2D_UInt16_texture.name = "texture"_c;
-    TextureAtomicOr_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicOr_Texture2D_UInt16_texture.type.mut = true;
-    TextureAtomicOr_Texture2D_UInt16_texture.type.modifiers = TextureAtomicOr_Texture2D_UInt16_texture_modifiers;
-    TextureAtomicOr_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicOr_Texture2D_UInt16_texture_modifierValues;
-    TextureAtomicOr_Texture2D_UInt16_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture2D_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicOr_Texture2D_UInt16_value.name = "value"_c;
-    TextureAtomicOr_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    TextureAtomicOr_Texture2D_UInt16.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture2D_UInt16.name = TextureAtomicOr_Texture2D_UInt16_name;
-    TextureAtomicOr_Texture2D_UInt16.backendIndex = 3140;
-    TextureAtomicOr_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
-    TextureAtomicOr_Texture2D_UInt16.parameters = TextureAtomicOr_Texture2D_UInt16_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16)->signature = "textureAtomicOr(uniform *mutable texture2D,i32x2,u16) u16"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16)->name = "textureAtomicOr(uniform *mutable texture2D,i32x2,u16)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// textureAtomicOr with Texture2D, Int32x2, Int16
-    TextureAtomicOr_Texture2D_Int16_texture.name = "texture"_c;
-    TextureAtomicOr_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
-    TextureAtomicOr_Texture2D_Int16_texture.type.mut = true;
-    TextureAtomicOr_Texture2D_Int16_texture.type.modifiers = TextureAtomicOr_Texture2D_Int16_texture_modifiers;
-    TextureAtomicOr_Texture2D_Int16_texture.type.modifierValues = TextureAtomicOr_Texture2D_Int16_texture_modifierValues;
-    TextureAtomicOr_Texture2D_Int16_coordinate.name = "coordinate"_c;
-    TextureAtomicOr_Texture2D_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureAtomicOr_Texture2D_Int16_value.name = "value"_c;
-    TextureAtomicOr_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
-    TextureAtomicOr_Texture2D_Int16.documentation = "Atomically OR a texel value in a texture"_c;
-    TextureAtomicOr_Texture2D_Int16.name = TextureAtomicOr_Texture2D_Int16_name;
-    TextureAtomicOr_Texture2D_Int16.backendIndex = 3141;
-    TextureAtomicOr_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
-    TextureAtomicOr_Texture2D_Int16.parameters = TextureAtomicOr_Texture2D_Int16_args;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16)->signature = "textureAtomicOr(uniform *mutable texture2D,i32x2,i16) i16"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16)->name = "textureAtomicOr(uniform *mutable texture2D,i32x2,i16)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16)->nameWithVarNames = "textureAtomicOr(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
-    Symbol::Resolved(&TextureAtomicOr_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
+    /// textureSampleCompareBias with Texture1DArray, Sampler, Float32x2, Float32, Float32
+    TextureSampleBiasCompare_Texture1DArray_texture.name = "texture"_c;
+    TextureSampleBiasCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureSampleBiasCompare_Texture1DArray_texture.type.modifiers = TextureSampleBiasCompare_Texture1DArray_texture_modifiers;
+    TextureSampleBiasCompare_Texture1DArray_texture.type.modifierValues = TextureSampleBiasCompare_Texture1DArray_texture_modifierValues;
+    TextureSampleBiasCompare_Texture1DArray_sampler.name = "sampler"_c;
+    TextureSampleBiasCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasCompare_Texture1DArray_sampler.type.modifiers = TextureSampleBiasCompare_Texture1DArray_sampler_modifiers;
+    TextureSampleBiasCompare_Texture1DArray_sampler.type.modifierValues = TextureSampleBiasCompare_Texture1DArray_sampler_modifierValues;
+    TextureSampleBiasCompare_Texture1DArray_coordinate.name = "coordinate"_c;
+    TextureSampleBiasCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasCompare_Texture1DArray_compare.name = "compare"_c;
+    TextureSampleBiasCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture1DArray_bias.name = "bias"_c;
+    TextureSampleBiasCompare_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
+    TextureSampleBiasCompare_Texture1DArray.name = TextureSampleBiasCompare_Texture1DArray_name;
+    TextureSampleBiasCompare_Texture1DArray.backendIndex = 3014;
+    TextureSampleBiasCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasCompare_Texture1DArray.parameters = TextureSampleBiasCompare_Texture1DArray_args;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray)->signature = "textureSampleCompareBias(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray)->name = "textureSampleCompareBias(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray)->nameWithVarNames = "textureSampleCompareBias(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBias with SampledTexture1DArray, Float32x2, Float32, Float32
+    SampledTextureSampleBiasCompare_Texture1DArray_texture.name = "texture"_c;
+    SampledTextureSampleBiasCompare_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
+    SampledTextureSampleBiasCompare_Texture1DArray_texture.type.modifiers = SampledTextureSampleBiasCompare_Texture1DArray_texture_modifiers;
+    SampledTextureSampleBiasCompare_Texture1DArray_texture.type.modifierValues = SampledTextureSampleBiasCompare_Texture1DArray_texture_modifierValues;
+    SampledTextureSampleBiasCompare_Texture1DArray_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasCompare_Texture1DArray_compare.name = "compare"_c;
+    SampledTextureSampleBiasCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture1DArray_bias.name = "bias"_c;
+    SampledTextureSampleBiasCompare_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
+    SampledTextureSampleBiasCompare_Texture1DArray.name = SampledTextureSampleBiasCompare_Texture1DArray_name;
+    SampledTextureSampleBiasCompare_Texture1DArray.backendIndex = 3015;
+    SampledTextureSampleBiasCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture1DArray.parameters = SampledTextureSampleBiasCompare_Texture1DArray_args;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray)->signature = "textureSampleCompareBias(uniform *textureSampled1DArray,f32x2,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray)->name = "textureSampleCompareBias(uniform *textureSampled1DArray,f32x2,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray)->nameWithVarNames = "textureSampleCompareBias(texture : uniform *textureSampled1DArray, coordinate : f32x2, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBias with Texture2DArray, Sampler, Float32x3, Float32, Float32
+    TextureSampleBiasCompare_Texture2DArray_texture.name = "texture"_c;
+    TextureSampleBiasCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureSampleBiasCompare_Texture2DArray_texture.type.modifiers = TextureSampleBiasCompare_Texture2DArray_texture_modifiers;
+    TextureSampleBiasCompare_Texture2DArray_texture.type.modifierValues = TextureSampleBiasCompare_Texture2DArray_texture_modifierValues;
+    TextureSampleBiasCompare_Texture2DArray_sampler.name = "sampler"_c;
+    TextureSampleBiasCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasCompare_Texture2DArray_sampler.type.modifiers = TextureSampleBiasCompare_Texture2DArray_sampler_modifiers;
+    TextureSampleBiasCompare_Texture2DArray_sampler.type.modifierValues = TextureSampleBiasCompare_Texture2DArray_sampler_modifierValues;
+    TextureSampleBiasCompare_Texture2DArray_coordinate.name = "coordinate"_c;
+    TextureSampleBiasCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasCompare_Texture2DArray_compare.name = "compare"_c;
+    TextureSampleBiasCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture2DArray_bias.name = "bias"_c;
+    TextureSampleBiasCompare_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
+    TextureSampleBiasCompare_Texture2DArray.name = TextureSampleBiasCompare_Texture2DArray_name;
+    TextureSampleBiasCompare_Texture2DArray.backendIndex = 3016;
+    TextureSampleBiasCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasCompare_Texture2DArray.parameters = TextureSampleBiasCompare_Texture2DArray_args;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray)->signature = "textureSampleCompareBias(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray)->name = "textureSampleCompareBias(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray)->nameWithVarNames = "textureSampleCompareBias(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBias with SampledTexture2DArray, Float32x3, Float32, Float32
+    SampledTextureSampleBiasCompare_Texture2DArray_texture.name = "texture"_c;
+    SampledTextureSampleBiasCompare_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
+    SampledTextureSampleBiasCompare_Texture2DArray_texture.type.modifiers = SampledTextureSampleBiasCompare_Texture2DArray_texture_modifiers;
+    SampledTextureSampleBiasCompare_Texture2DArray_texture.type.modifierValues = SampledTextureSampleBiasCompare_Texture2DArray_texture_modifierValues;
+    SampledTextureSampleBiasCompare_Texture2DArray_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasCompare_Texture2DArray_compare.name = "compare"_c;
+    SampledTextureSampleBiasCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture2DArray_bias.name = "bias"_c;
+    SampledTextureSampleBiasCompare_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
+    SampledTextureSampleBiasCompare_Texture2DArray.name = SampledTextureSampleBiasCompare_Texture2DArray_name;
+    SampledTextureSampleBiasCompare_Texture2DArray.backendIndex = 3017;
+    SampledTextureSampleBiasCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture2DArray.parameters = SampledTextureSampleBiasCompare_Texture2DArray_args;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray)->signature = "textureSampleCompareBias(uniform *textureSampled2DArray,f32x3,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray)->name = "textureSampleCompareBias(uniform *textureSampled2DArray,f32x3,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray)->nameWithVarNames = "textureSampleCompareBias(texture : uniform *textureSampled2DArray, coordinate : f32x3, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
+    TextureSampleBiasCompareOffset_Texture1D_texture.name = "texture"_c;
+    TextureSampleBiasCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureSampleBiasCompareOffset_Texture1D_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture1D_texture_modifierValues;
+    TextureSampleBiasCompareOffset_Texture1D_sampler.name = "sampler"_c;
+    TextureSampleBiasCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture1D_sampler_modifierValues;
+    TextureSampleBiasCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1D_compare.name = "compare"_c;
+    TextureSampleBiasCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1D_bias.name = "bias"_c;
+    TextureSampleBiasCompareOffset_Texture1D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1D_offset.name = "offset"_c;
+    TextureSampleBiasCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture1D.name = TextureSampleBiasCompareOffset_Texture1D_name;
+    TextureSampleBiasCompareOffset_Texture1D.backendIndex = 3018;
+    TextureSampleBiasCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1D.parameters = TextureSampleBiasCompareOffset_Texture1D_args;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D)->signature = "textureSampleCompareBiasOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D)->name = "textureSampleCompareBiasOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, compare : f32, bias : f32, offset : f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with SampledTexture1D, Float32, Float32, Float32, Float32
+    SampledTextureSampleBiasCompareOffset_Texture1D_texture.name = "texture"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
+    SampledTextureSampleBiasCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture1D_texture_modifierValues;
+    SampledTextureSampleBiasCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1D_compare.name = "compare"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1D_bias.name = "bias"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1D_offset.name = "offset"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1D.name = SampledTextureSampleBiasCompareOffset_Texture1D_name;
+    SampledTextureSampleBiasCompareOffset_Texture1D.backendIndex = 3019;
+    SampledTextureSampleBiasCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1D.parameters = SampledTextureSampleBiasCompareOffset_Texture1D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D)->signature = "textureSampleCompareBiasOffset(uniform *textureSampled1D,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D)->name = "textureSampleCompareBiasOffset(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *textureSampled1D, coordinate : f32, compare : f32, bias : f32, offset : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
+    TextureSampleBiasCompareOffset_Texture2D_texture.name = "texture"_c;
+    TextureSampleBiasCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureSampleBiasCompareOffset_Texture2D_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture2D_texture_modifierValues;
+    TextureSampleBiasCompareOffset_Texture2D_sampler.name = "sampler"_c;
+    TextureSampleBiasCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture2D_sampler_modifierValues;
+    TextureSampleBiasCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasCompareOffset_Texture2D_compare.name = "compare"_c;
+    TextureSampleBiasCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture2D_bias.name = "bias"_c;
+    TextureSampleBiasCompareOffset_Texture2D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture2D_offset.name = "offset"_c;
+    TextureSampleBiasCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture2D.name = TextureSampleBiasCompareOffset_Texture2D_name;
+    TextureSampleBiasCompareOffset_Texture2D.backendIndex = 3020;
+    TextureSampleBiasCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture2D.parameters = TextureSampleBiasCompareOffset_Texture2D_args;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D)->signature = "textureSampleCompareBiasOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D)->name = "textureSampleCompareBiasOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, compare : f32, bias : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
+    SampledTextureSampleBiasCompareOffset_Texture2D_texture.name = "texture"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
+    SampledTextureSampleBiasCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture2D_texture_modifierValues;
+    SampledTextureSampleBiasCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2D_compare.name = "compare"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2D_bias.name = "bias"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2D_offset.name = "offset"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2D.name = SampledTextureSampleBiasCompareOffset_Texture2D_name;
+    SampledTextureSampleBiasCompareOffset_Texture2D.backendIndex = 3021;
+    SampledTextureSampleBiasCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2D.parameters = SampledTextureSampleBiasCompareOffset_Texture2D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D)->signature = "textureSampleCompareBiasOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D)->name = "textureSampleCompareBiasOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *textureSampled2D, coordinate : f32x2, compare : f32, bias : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
+    TextureSampleBiasCompareOffset_Texture3D_texture.name = "texture"_c;
+    TextureSampleBiasCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureSampleBiasCompareOffset_Texture3D_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture3D_texture_modifierValues;
+    TextureSampleBiasCompareOffset_Texture3D_sampler.name = "sampler"_c;
+    TextureSampleBiasCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture3D_sampler_modifierValues;
+    TextureSampleBiasCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasCompareOffset_Texture3D_compare.name = "compare"_c;
+    TextureSampleBiasCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture3D_bias.name = "bias"_c;
+    TextureSampleBiasCompareOffset_Texture3D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture3D_offset.name = "offset"_c;
+    TextureSampleBiasCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture3D.name = TextureSampleBiasCompareOffset_Texture3D_name;
+    TextureSampleBiasCompareOffset_Texture3D.backendIndex = 3022;
+    TextureSampleBiasCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture3D.parameters = TextureSampleBiasCompareOffset_Texture3D_args;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D)->signature = "textureSampleCompareBiasOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D)->name = "textureSampleCompareBiasOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, compare : f32, bias : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
+    SampledTextureSampleBiasCompareOffset_Texture3D_texture.name = "texture"_c;
+    SampledTextureSampleBiasCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
+    SampledTextureSampleBiasCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture3D_texture_modifierValues;
+    SampledTextureSampleBiasCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture3D_compare.name = "compare"_c;
+    SampledTextureSampleBiasCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture3D_bias.name = "bias"_c;
+    SampledTextureSampleBiasCompareOffset_Texture3D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture3D_offset.name = "offset"_c;
+    SampledTextureSampleBiasCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture3D.name = SampledTextureSampleBiasCompareOffset_Texture3D_name;
+    SampledTextureSampleBiasCompareOffset_Texture3D.backendIndex = 3023;
+    SampledTextureSampleBiasCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture3D.parameters = SampledTextureSampleBiasCompareOffset_Texture3D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D)->signature = "textureSampleCompareBiasOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D)->name = "textureSampleCompareBiasOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *textureSampled3D, coordinate : f32x3, compare : f32, bias : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
+    TextureSampleBiasCompareOffset_Texture1DArray_texture.name = "texture"_c;
+    TextureSampleBiasCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture1DArray_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture1DArray_texture_modifierValues;
+    TextureSampleBiasCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
+    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture1DArray_sampler_modifierValues;
+    TextureSampleBiasCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasCompareOffset_Texture1DArray_compare.name = "compare"_c;
+    TextureSampleBiasCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1DArray_bias.name = "bias"_c;
+    TextureSampleBiasCompareOffset_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1DArray_offset.name = "offset"_c;
+    TextureSampleBiasCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture1DArray.name = TextureSampleBiasCompareOffset_Texture1DArray_name;
+    TextureSampleBiasCompareOffset_Texture1DArray.backendIndex = 3024;
+    TextureSampleBiasCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1DArray.parameters = TextureSampleBiasCompareOffset_Texture1DArray_args;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray)->signature = "textureSampleCompareBiasOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray)->name = "textureSampleCompareBiasOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2, compare : f32, bias : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.name = "texture"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture1DArray_texture_modifierValues;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_compare.name = "compare"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_bias.name = "bias"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_offset.name = "offset"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray.name = SampledTextureSampleBiasCompareOffset_Texture1DArray_name;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray.backendIndex = 3025;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1DArray.parameters = SampledTextureSampleBiasCompareOffset_Texture1DArray_args;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray)->signature = "textureSampleCompareBiasOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray)->name = "textureSampleCompareBiasOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *textureSampled1DArray, coordinate : f32x2, compare : f32, bias : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
+    TextureSampleBiasCompareOffset_Texture2DArray_texture.name = "texture"_c;
+    TextureSampleBiasCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture2DArray_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture2DArray_texture_modifierValues;
+    TextureSampleBiasCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
+    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture2DArray_sampler_modifierValues;
+    TextureSampleBiasCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasCompareOffset_Texture2DArray_compare.name = "compare"_c;
+    TextureSampleBiasCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture2DArray_bias.name = "bias"_c;
+    TextureSampleBiasCompareOffset_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture2DArray_offset.name = "offset"_c;
+    TextureSampleBiasCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    TextureSampleBiasCompareOffset_Texture2DArray.name = TextureSampleBiasCompareOffset_Texture2DArray_name;
+    TextureSampleBiasCompareOffset_Texture2DArray.backendIndex = 3026;
+    TextureSampleBiasCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture2DArray.parameters = TextureSampleBiasCompareOffset_Texture2DArray_args;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray)->signature = "textureSampleCompareBiasOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray)->name = "textureSampleCompareBiasOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, compare : f32, bias : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleCompareBiasOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.name = "texture"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture2DArray_texture_modifierValues;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_compare.name = "compare"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_bias.name = "bias"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_offset.name = "offset"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray.name = SampledTextureSampleBiasCompareOffset_Texture2DArray_name;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray.backendIndex = 3027;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2DArray.parameters = SampledTextureSampleBiasCompareOffset_Texture2DArray_args;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray)->signature = "textureSampleCompareBiasOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray)->name = "textureSampleCompareBiasOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray)->nameWithVarNames = "textureSampleCompareBiasOffset(texture : uniform *textureSampled2DArray, coordinate : f32x3, compare : f32, bias : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBias with Texture1D, Sampler, Float32, Float32, Float32, Float32
+    TextureSampleBiasProjCompare_Texture1D_texture.name = "texture"_c;
+    TextureSampleBiasProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureSampleBiasProjCompare_Texture1D_texture.type.modifiers = TextureSampleBiasProjCompare_Texture1D_texture_modifiers;
+    TextureSampleBiasProjCompare_Texture1D_texture.type.modifierValues = TextureSampleBiasProjCompare_Texture1D_texture_modifierValues;
+    TextureSampleBiasProjCompare_Texture1D_sampler.name = "sampler"_c;
+    TextureSampleBiasProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasProjCompare_Texture1D_sampler.type.modifiers = TextureSampleBiasProjCompare_Texture1D_sampler_modifiers;
+    TextureSampleBiasProjCompare_Texture1D_sampler.type.modifierValues = TextureSampleBiasProjCompare_Texture1D_sampler_modifierValues;
+    TextureSampleBiasProjCompare_Texture1D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture1D_proj.name = "proj"_c;
+    TextureSampleBiasProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture1D_compare.name = "compare"_c;
+    TextureSampleBiasProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture1D_bias.name = "bias"_c;
+    TextureSampleBiasProjCompare_Texture1D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
+    TextureSampleBiasProjCompare_Texture1D.name = TextureSampleBiasProjCompare_Texture1D_name;
+    TextureSampleBiasProjCompare_Texture1D.backendIndex = 3028;
+    TextureSampleBiasProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasProjCompare_Texture1D.parameters = TextureSampleBiasProjCompare_Texture1D_args;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D)->signature = "textureSampleProjCompareBias(uniform *texture1D,uniform *sampler,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D)->name = "textureSampleProjCompareBias(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D)->nameWithVarNames = "textureSampleProjCompareBias(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, proj : f32, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBias with SampledTexture1D, Float32, Float32, Float32, Float32
+    SampledTextureSampleBiasProjCompare_Texture1D_texture.name = "texture"_c;
+    SampledTextureSampleBiasProjCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
+    SampledTextureSampleBiasProjCompare_Texture1D_texture.type.modifiers = SampledTextureSampleBiasProjCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasProjCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasProjCompare_Texture1D_texture_modifierValues;
+    SampledTextureSampleBiasProjCompare_Texture1D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture1D_proj.name = "proj"_c;
+    SampledTextureSampleBiasProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture1D_compare.name = "compare"_c;
+    SampledTextureSampleBiasProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture1D_bias.name = "bias"_c;
+    SampledTextureSampleBiasProjCompare_Texture1D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
+    SampledTextureSampleBiasProjCompare_Texture1D.name = SampledTextureSampleBiasProjCompare_Texture1D_name;
+    SampledTextureSampleBiasProjCompare_Texture1D.backendIndex = 3029;
+    SampledTextureSampleBiasProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture1D.parameters = SampledTextureSampleBiasProjCompare_Texture1D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D)->signature = "textureSampleProjCompareBias(uniform *textureSampled1D,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D)->name = "textureSampleProjCompareBias(uniform *textureSampled1D,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D)->nameWithVarNames = "textureSampleProjCompareBias(texture : uniform *textureSampled1D, coordinate : f32, proj : f32, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBias with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
+    TextureSampleBiasProjCompare_Texture2D_texture.name = "texture"_c;
+    TextureSampleBiasProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureSampleBiasProjCompare_Texture2D_texture.type.modifiers = TextureSampleBiasProjCompare_Texture2D_texture_modifiers;
+    TextureSampleBiasProjCompare_Texture2D_texture.type.modifierValues = TextureSampleBiasProjCompare_Texture2D_texture_modifierValues;
+    TextureSampleBiasProjCompare_Texture2D_sampler.name = "sampler"_c;
+    TextureSampleBiasProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasProjCompare_Texture2D_sampler.type.modifiers = TextureSampleBiasProjCompare_Texture2D_sampler_modifiers;
+    TextureSampleBiasProjCompare_Texture2D_sampler.type.modifierValues = TextureSampleBiasProjCompare_Texture2D_sampler_modifierValues;
+    TextureSampleBiasProjCompare_Texture2D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProjCompare_Texture2D_proj.name = "proj"_c;
+    TextureSampleBiasProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture2D_compare.name = "compare"_c;
+    TextureSampleBiasProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture2D_bias.name = "bias"_c;
+    TextureSampleBiasProjCompare_Texture2D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
+    TextureSampleBiasProjCompare_Texture2D.name = TextureSampleBiasProjCompare_Texture2D_name;
+    TextureSampleBiasProjCompare_Texture2D.backendIndex = 3030;
+    TextureSampleBiasProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasProjCompare_Texture2D.parameters = TextureSampleBiasProjCompare_Texture2D_args;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D)->signature = "textureSampleProjCompareBias(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D)->name = "textureSampleProjCompareBias(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D)->nameWithVarNames = "textureSampleProjCompareBias(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, proj : f32, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBias with SampledTexture2D, Float32x2, Float32, Float32, Float32
+    SampledTextureSampleBiasProjCompare_Texture2D_texture.name = "texture"_c;
+    SampledTextureSampleBiasProjCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
+    SampledTextureSampleBiasProjCompare_Texture2D_texture.type.modifiers = SampledTextureSampleBiasProjCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasProjCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasProjCompare_Texture2D_texture_modifierValues;
+    SampledTextureSampleBiasProjCompare_Texture2D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProjCompare_Texture2D_proj.name = "proj"_c;
+    SampledTextureSampleBiasProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture2D_compare.name = "compare"_c;
+    SampledTextureSampleBiasProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture2D_bias.name = "bias"_c;
+    SampledTextureSampleBiasProjCompare_Texture2D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
+    SampledTextureSampleBiasProjCompare_Texture2D.name = SampledTextureSampleBiasProjCompare_Texture2D_name;
+    SampledTextureSampleBiasProjCompare_Texture2D.backendIndex = 3031;
+    SampledTextureSampleBiasProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture2D.parameters = SampledTextureSampleBiasProjCompare_Texture2D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D)->signature = "textureSampleProjCompareBias(uniform *textureSampled2D,f32x2,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D)->name = "textureSampleProjCompareBias(uniform *textureSampled2D,f32x2,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D)->nameWithVarNames = "textureSampleProjCompareBias(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBias with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
+    TextureSampleBiasProjCompare_Texture3D_texture.name = "texture"_c;
+    TextureSampleBiasProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureSampleBiasProjCompare_Texture3D_texture.type.modifiers = TextureSampleBiasProjCompare_Texture3D_texture_modifiers;
+    TextureSampleBiasProjCompare_Texture3D_texture.type.modifierValues = TextureSampleBiasProjCompare_Texture3D_texture_modifierValues;
+    TextureSampleBiasProjCompare_Texture3D_sampler.name = "sampler"_c;
+    TextureSampleBiasProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasProjCompare_Texture3D_sampler.type.modifiers = TextureSampleBiasProjCompare_Texture3D_sampler_modifiers;
+    TextureSampleBiasProjCompare_Texture3D_sampler.type.modifierValues = TextureSampleBiasProjCompare_Texture3D_sampler_modifierValues;
+    TextureSampleBiasProjCompare_Texture3D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasProjCompare_Texture3D_proj.name = "proj"_c;
+    TextureSampleBiasProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture3D_compare.name = "compare"_c;
+    TextureSampleBiasProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture3D_bias.name = "bias"_c;
+    TextureSampleBiasProjCompare_Texture3D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
+    TextureSampleBiasProjCompare_Texture3D.name = TextureSampleBiasProjCompare_Texture3D_name;
+    TextureSampleBiasProjCompare_Texture3D.backendIndex = 3032;
+    TextureSampleBiasProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasProjCompare_Texture3D.parameters = TextureSampleBiasProjCompare_Texture3D_args;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D)->signature = "textureSampleProjCompareBias(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D)->name = "textureSampleProjCompareBias(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D)->nameWithVarNames = "textureSampleProjCompareBias(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBias with SampledTexture3D, Float32x3, Float32, Float32, Float32
+    SampledTextureSampleBiasProjCompare_Texture3D_texture.name = "texture"_c;
+    SampledTextureSampleBiasProjCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
+    SampledTextureSampleBiasProjCompare_Texture3D_texture.type.modifiers = SampledTextureSampleBiasProjCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasProjCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasProjCompare_Texture3D_texture_modifierValues;
+    SampledTextureSampleBiasProjCompare_Texture3D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasProjCompare_Texture3D_proj.name = "proj"_c;
+    SampledTextureSampleBiasProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture3D_compare.name = "compare"_c;
+    SampledTextureSampleBiasProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture3D_bias.name = "bias"_c;
+    SampledTextureSampleBiasProjCompare_Texture3D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
+    SampledTextureSampleBiasProjCompare_Texture3D.name = SampledTextureSampleBiasProjCompare_Texture3D_name;
+    SampledTextureSampleBiasProjCompare_Texture3D.backendIndex = 3033;
+    SampledTextureSampleBiasProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture3D.parameters = SampledTextureSampleBiasProjCompare_Texture3D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D)->signature = "textureSampleProjCompareBias(uniform *textureSampled3D,f32x3,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D)->name = "textureSampleProjCompareBias(uniform *textureSampled3D,f32x3,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D)->nameWithVarNames = "textureSampleProjCompareBias(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, compare : f32, bias : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBiasOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
+    TextureSampleBiasProjCompareOffset_Texture1D_texture.name = "texture"_c;
+    TextureSampleBiasProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
+    TextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifiers = TextureSampleBiasProjCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture1D_texture_modifierValues;
+    TextureSampleBiasProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
+    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleBiasProjCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture1D_sampler_modifierValues;
+    TextureSampleBiasProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture1D_proj.name = "proj"_c;
+    TextureSampleBiasProjCompareOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture1D_compare.name = "compare"_c;
+    TextureSampleBiasProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture1D_bias.name = "bias"_c;
+    TextureSampleBiasProjCompareOffset_Texture1D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture1D_offset.name = "offset"_c;
+    TextureSampleBiasProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
+    TextureSampleBiasProjCompareOffset_Texture1D.name = TextureSampleBiasProjCompareOffset_Texture1D_name;
+    TextureSampleBiasProjCompareOffset_Texture1D.backendIndex = 3034;
+    TextureSampleBiasProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture1D.parameters = TextureSampleBiasProjCompareOffset_Texture1D_args;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D)->signature = "textureSampleProjCompareBiasOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D)->name = "textureSampleProjCompareBiasOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D)->nameWithVarNames = "textureSampleProjCompareBiasOffset(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32, proj : f32, compare : f32, bias : f32, offset : f32)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBiasOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.name = "texture"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleBiasProjCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasProjCompareOffset_Texture1D_texture_modifierValues;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_proj.name = "proj"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_compare.name = "compare"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_bias.name = "bias"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_offset.name = "offset"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D.name = SampledTextureSampleBiasProjCompareOffset_Texture1D_name;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D.backendIndex = 3035;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture1D.parameters = SampledTextureSampleBiasProjCompareOffset_Texture1D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D)->signature = "textureSampleProjCompareBiasOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D)->name = "textureSampleProjCompareBiasOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D)->nameWithVarNames = "textureSampleProjCompareBiasOffset(texture : uniform *textureSampled1D, coordinate : f32, proj : f32, compare : f32, bias : f32, offset : f32)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
+    TextureSampleBiasProjCompareOffset_Texture2D_texture.name = "texture"_c;
+    TextureSampleBiasProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
+    TextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifiers = TextureSampleBiasProjCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture2D_texture_modifierValues;
+    TextureSampleBiasProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
+    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleBiasProjCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture2D_sampler_modifierValues;
+    TextureSampleBiasProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProjCompareOffset_Texture2D_proj.name = "proj"_c;
+    TextureSampleBiasProjCompareOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture2D_compare.name = "compare"_c;
+    TextureSampleBiasProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture2D_bias.name = "bias"_c;
+    TextureSampleBiasProjCompareOffset_Texture2D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture2D_offset.name = "offset"_c;
+    TextureSampleBiasProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
+    TextureSampleBiasProjCompareOffset_Texture2D.name = TextureSampleBiasProjCompareOffset_Texture2D_name;
+    TextureSampleBiasProjCompareOffset_Texture2D.backendIndex = 3036;
+    TextureSampleBiasProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture2D.parameters = TextureSampleBiasProjCompareOffset_Texture2D_args;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D)->signature = "textureSampleProjCompareBiasOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D)->name = "textureSampleProjCompareBiasOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D)->nameWithVarNames = "textureSampleProjCompareBiasOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, proj : f32, compare : f32, bias : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBiasOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.name = "texture"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleBiasProjCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasProjCompareOffset_Texture2D_texture_modifierValues;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_proj.name = "proj"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_compare.name = "compare"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_bias.name = "bias"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_offset.name = "offset"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D.name = SampledTextureSampleBiasProjCompareOffset_Texture2D_name;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D.backendIndex = 3037;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture2D.parameters = SampledTextureSampleBiasProjCompareOffset_Texture2D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D)->signature = "textureSampleProjCompareBiasOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D)->name = "textureSampleProjCompareBiasOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D)->nameWithVarNames = "textureSampleProjCompareBiasOffset(texture : uniform *textureSampled2D, coordinate : f32x2, proj : f32, compare : f32, bias : f32, offset : f32x2)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
+    TextureSampleBiasProjCompareOffset_Texture3D_texture.name = "texture"_c;
+    TextureSampleBiasProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
+    TextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifiers = TextureSampleBiasProjCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture3D_texture_modifierValues;
+    TextureSampleBiasProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
+    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
+    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleBiasProjCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture3D_sampler_modifierValues;
+    TextureSampleBiasProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
+    TextureSampleBiasProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasProjCompareOffset_Texture3D_proj.name = "proj"_c;
+    TextureSampleBiasProjCompareOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture3D_compare.name = "compare"_c;
+    TextureSampleBiasProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture3D_bias.name = "bias"_c;
+    TextureSampleBiasProjCompareOffset_Texture3D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture3D_offset.name = "offset"_c;
+    TextureSampleBiasProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
+    TextureSampleBiasProjCompareOffset_Texture3D.name = TextureSampleBiasProjCompareOffset_Texture3D_name;
+    TextureSampleBiasProjCompareOffset_Texture3D.backendIndex = 3038;
+    TextureSampleBiasProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture3D.parameters = TextureSampleBiasProjCompareOffset_Texture3D_args;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D)->signature = "textureSampleProjCompareBiasOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D)->name = "textureSampleProjCompareBiasOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D)->nameWithVarNames = "textureSampleProjCompareBiasOffset(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3, proj : f32, compare : f32, bias : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D)->returnTypeSymbol = &Float32Type;
+
+    /// textureSampleProjCompareBiasOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.name = "texture"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleBiasProjCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasProjCompareOffset_Texture3D_texture_modifierValues;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_proj.name = "proj"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_compare.name = "compare"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_bias.name = "bias"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_offset.name = "offset"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D.name = SampledTextureSampleBiasProjCompareOffset_Texture3D_name;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D.backendIndex = 3039;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture3D.parameters = SampledTextureSampleBiasProjCompareOffset_Texture3D_args;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D_proj)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D_bias)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D)->signature = "textureSampleProjCompareBiasOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3) f32"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D)->name = "textureSampleProjCompareBiasOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D)->nameWithVarNames = "textureSampleProjCompareBiasOffset(texture : uniform *textureSampled3D, coordinate : f32x3, proj : f32, compare : f32, bias : f32, offset : f32x3)"_c;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicLoad with Texture1D, Int32, Float32
+    TextureAtomicLoad_Texture1D_Float32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1D_Float32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicLoad_Texture1D_Float32_texture.type.mut = true;
+    TextureAtomicLoad_Texture1D_Float32_texture.type.modifiers = TextureAtomicLoad_Texture1D_Float32_texture_modifiers;
+    TextureAtomicLoad_Texture1D_Float32_texture.type.modifierValues = TextureAtomicLoad_Texture1D_Float32_texture_modifierValues;
+    TextureAtomicLoad_Texture1D_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1D_Float32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1D_Float32_value.name = "value"_c;
+    TextureAtomicLoad_Texture1D_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicLoad_Texture1D_Float32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1D_Float32.name = TextureAtomicLoad_Texture1D_Float32_name;
+    TextureAtomicLoad_Texture1D_Float32.backendIndex = 3040;
+    TextureAtomicLoad_Texture1D_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicLoad_Texture1D_Float32.parameters = TextureAtomicLoad_Texture1D_Float32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32)->signature = "textureAtomicLoad(uniform *mutable texture1D,i32,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32)->name = "textureAtomicLoad(uniform *mutable texture1D,i32,f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1D, coordinate : i32, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicLoad with Texture1D, Int32, UInt32
+    TextureAtomicLoad_Texture1D_UInt32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicLoad_Texture1D_UInt32_texture.type.mut = true;
+    TextureAtomicLoad_Texture1D_UInt32_texture.type.modifiers = TextureAtomicLoad_Texture1D_UInt32_texture_modifiers;
+    TextureAtomicLoad_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicLoad_Texture1D_UInt32_texture_modifierValues;
+    TextureAtomicLoad_Texture1D_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1D_UInt32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1D_UInt32_value.name = "value"_c;
+    TextureAtomicLoad_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicLoad_Texture1D_UInt32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1D_UInt32.name = TextureAtomicLoad_Texture1D_UInt32_name;
+    TextureAtomicLoad_Texture1D_UInt32.backendIndex = 3041;
+    TextureAtomicLoad_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicLoad_Texture1D_UInt32.parameters = TextureAtomicLoad_Texture1D_UInt32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32)->signature = "textureAtomicLoad(uniform *mutable texture1D,i32,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32)->name = "textureAtomicLoad(uniform *mutable texture1D,i32,u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicLoad with Texture1D, Int32, Int32
+    TextureAtomicLoad_Texture1D_Int32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicLoad_Texture1D_Int32_texture.type.mut = true;
+    TextureAtomicLoad_Texture1D_Int32_texture.type.modifiers = TextureAtomicLoad_Texture1D_Int32_texture_modifiers;
+    TextureAtomicLoad_Texture1D_Int32_texture.type.modifierValues = TextureAtomicLoad_Texture1D_Int32_texture_modifierValues;
+    TextureAtomicLoad_Texture1D_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1D_Int32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1D_Int32_value.name = "value"_c;
+    TextureAtomicLoad_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1D_Int32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1D_Int32.name = TextureAtomicLoad_Texture1D_Int32_name;
+    TextureAtomicLoad_Texture1D_Int32.backendIndex = 3042;
+    TextureAtomicLoad_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicLoad_Texture1D_Int32.parameters = TextureAtomicLoad_Texture1D_Int32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32)->signature = "textureAtomicLoad(uniform *mutable texture1D,i32,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32)->name = "textureAtomicLoad(uniform *mutable texture1D,i32,i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicLoad with Texture1D, Int32, Float16
+    TextureAtomicLoad_Texture1D_Float16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1D_Float16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicLoad_Texture1D_Float16_texture.type.mut = true;
+    TextureAtomicLoad_Texture1D_Float16_texture.type.modifiers = TextureAtomicLoad_Texture1D_Float16_texture_modifiers;
+    TextureAtomicLoad_Texture1D_Float16_texture.type.modifierValues = TextureAtomicLoad_Texture1D_Float16_texture_modifierValues;
+    TextureAtomicLoad_Texture1D_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1D_Float16_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1D_Float16_value.name = "value"_c;
+    TextureAtomicLoad_Texture1D_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicLoad_Texture1D_Float16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1D_Float16.name = TextureAtomicLoad_Texture1D_Float16_name;
+    TextureAtomicLoad_Texture1D_Float16.backendIndex = 3043;
+    TextureAtomicLoad_Texture1D_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicLoad_Texture1D_Float16.parameters = TextureAtomicLoad_Texture1D_Float16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16)->signature = "textureAtomicLoad(uniform *mutable texture1D,i32,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16)->name = "textureAtomicLoad(uniform *mutable texture1D,i32,f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1D, coordinate : i32, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicLoad with Texture1D, Int32, UInt16
+    TextureAtomicLoad_Texture1D_UInt16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicLoad_Texture1D_UInt16_texture.type.mut = true;
+    TextureAtomicLoad_Texture1D_UInt16_texture.type.modifiers = TextureAtomicLoad_Texture1D_UInt16_texture_modifiers;
+    TextureAtomicLoad_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicLoad_Texture1D_UInt16_texture_modifierValues;
+    TextureAtomicLoad_Texture1D_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1D_UInt16_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1D_UInt16_value.name = "value"_c;
+    TextureAtomicLoad_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicLoad_Texture1D_UInt16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1D_UInt16.name = TextureAtomicLoad_Texture1D_UInt16_name;
+    TextureAtomicLoad_Texture1D_UInt16.backendIndex = 3044;
+    TextureAtomicLoad_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicLoad_Texture1D_UInt16.parameters = TextureAtomicLoad_Texture1D_UInt16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16)->signature = "textureAtomicLoad(uniform *mutable texture1D,i32,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16)->name = "textureAtomicLoad(uniform *mutable texture1D,i32,u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicLoad with Texture1D, Int32, Int16
+    TextureAtomicLoad_Texture1D_Int16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicLoad_Texture1D_Int16_texture.type.mut = true;
+    TextureAtomicLoad_Texture1D_Int16_texture.type.modifiers = TextureAtomicLoad_Texture1D_Int16_texture_modifiers;
+    TextureAtomicLoad_Texture1D_Int16_texture.type.modifierValues = TextureAtomicLoad_Texture1D_Int16_texture_modifierValues;
+    TextureAtomicLoad_Texture1D_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1D_Int16_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1D_Int16_value.name = "value"_c;
+    TextureAtomicLoad_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicLoad_Texture1D_Int16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1D_Int16.name = TextureAtomicLoad_Texture1D_Int16_name;
+    TextureAtomicLoad_Texture1D_Int16.backendIndex = 3045;
+    TextureAtomicLoad_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicLoad_Texture1D_Int16.parameters = TextureAtomicLoad_Texture1D_Int16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16)->signature = "textureAtomicLoad(uniform *mutable texture1D,i32,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16)->name = "textureAtomicLoad(uniform *mutable texture1D,i32,i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicLoad with Texture1D, Int32, UInt64
+    TextureAtomicLoad_Texture1D_UInt64_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1D_UInt64_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicLoad_Texture1D_UInt64_texture.type.mut = true;
+    TextureAtomicLoad_Texture1D_UInt64_texture.type.modifiers = TextureAtomicLoad_Texture1D_UInt64_texture_modifiers;
+    TextureAtomicLoad_Texture1D_UInt64_texture.type.modifierValues = TextureAtomicLoad_Texture1D_UInt64_texture_modifierValues;
+    TextureAtomicLoad_Texture1D_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1D_UInt64_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1D_UInt64_value.name = "value"_c;
+    TextureAtomicLoad_Texture1D_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicLoad_Texture1D_UInt64.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1D_UInt64.name = TextureAtomicLoad_Texture1D_UInt64_name;
+    TextureAtomicLoad_Texture1D_UInt64.backendIndex = 3046;
+    TextureAtomicLoad_Texture1D_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicLoad_Texture1D_UInt64.parameters = TextureAtomicLoad_Texture1D_UInt64_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt64_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt64_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt64)->signature = "textureAtomicLoad(uniform *mutable texture1D,i32,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt64)->name = "textureAtomicLoad(uniform *mutable texture1D,i32,u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt64)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1D, coordinate : i32, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1D_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicLoad with Texture2D, Int32x2, Float32
+    TextureAtomicLoad_Texture2D_Float32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2D_Float32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicLoad_Texture2D_Float32_texture.type.mut = true;
+    TextureAtomicLoad_Texture2D_Float32_texture.type.modifiers = TextureAtomicLoad_Texture2D_Float32_texture_modifiers;
+    TextureAtomicLoad_Texture2D_Float32_texture.type.modifierValues = TextureAtomicLoad_Texture2D_Float32_texture_modifierValues;
+    TextureAtomicLoad_Texture2D_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2D_Float32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture2D_Float32_value.name = "value"_c;
+    TextureAtomicLoad_Texture2D_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicLoad_Texture2D_Float32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2D_Float32.name = TextureAtomicLoad_Texture2D_Float32_name;
+    TextureAtomicLoad_Texture2D_Float32.backendIndex = 3047;
+    TextureAtomicLoad_Texture2D_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicLoad_Texture2D_Float32.parameters = TextureAtomicLoad_Texture2D_Float32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32)->signature = "textureAtomicLoad(uniform *mutable texture2D,i32x2,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32)->name = "textureAtomicLoad(uniform *mutable texture2D,i32x2,f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2D, coordinate : i32x2, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicLoad with Texture2D, Int32x2, UInt32
+    TextureAtomicLoad_Texture2D_UInt32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicLoad_Texture2D_UInt32_texture.type.mut = true;
+    TextureAtomicLoad_Texture2D_UInt32_texture.type.modifiers = TextureAtomicLoad_Texture2D_UInt32_texture_modifiers;
+    TextureAtomicLoad_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicLoad_Texture2D_UInt32_texture_modifierValues;
+    TextureAtomicLoad_Texture2D_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2D_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture2D_UInt32_value.name = "value"_c;
+    TextureAtomicLoad_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicLoad_Texture2D_UInt32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2D_UInt32.name = TextureAtomicLoad_Texture2D_UInt32_name;
+    TextureAtomicLoad_Texture2D_UInt32.backendIndex = 3048;
+    TextureAtomicLoad_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicLoad_Texture2D_UInt32.parameters = TextureAtomicLoad_Texture2D_UInt32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32)->signature = "textureAtomicLoad(uniform *mutable texture2D,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32)->name = "textureAtomicLoad(uniform *mutable texture2D,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicLoad with Texture2D, Int32x2, Int32
+    TextureAtomicLoad_Texture2D_Int32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicLoad_Texture2D_Int32_texture.type.mut = true;
+    TextureAtomicLoad_Texture2D_Int32_texture.type.modifiers = TextureAtomicLoad_Texture2D_Int32_texture_modifiers;
+    TextureAtomicLoad_Texture2D_Int32_texture.type.modifierValues = TextureAtomicLoad_Texture2D_Int32_texture_modifierValues;
+    TextureAtomicLoad_Texture2D_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2D_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture2D_Int32_value.name = "value"_c;
+    TextureAtomicLoad_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture2D_Int32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2D_Int32.name = TextureAtomicLoad_Texture2D_Int32_name;
+    TextureAtomicLoad_Texture2D_Int32.backendIndex = 3049;
+    TextureAtomicLoad_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicLoad_Texture2D_Int32.parameters = TextureAtomicLoad_Texture2D_Int32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32)->signature = "textureAtomicLoad(uniform *mutable texture2D,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32)->name = "textureAtomicLoad(uniform *mutable texture2D,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicLoad with Texture2D, Int32x2, Float16
+    TextureAtomicLoad_Texture2D_Float16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2D_Float16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicLoad_Texture2D_Float16_texture.type.mut = true;
+    TextureAtomicLoad_Texture2D_Float16_texture.type.modifiers = TextureAtomicLoad_Texture2D_Float16_texture_modifiers;
+    TextureAtomicLoad_Texture2D_Float16_texture.type.modifierValues = TextureAtomicLoad_Texture2D_Float16_texture_modifierValues;
+    TextureAtomicLoad_Texture2D_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2D_Float16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture2D_Float16_value.name = "value"_c;
+    TextureAtomicLoad_Texture2D_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicLoad_Texture2D_Float16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2D_Float16.name = TextureAtomicLoad_Texture2D_Float16_name;
+    TextureAtomicLoad_Texture2D_Float16.backendIndex = 3050;
+    TextureAtomicLoad_Texture2D_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicLoad_Texture2D_Float16.parameters = TextureAtomicLoad_Texture2D_Float16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16)->signature = "textureAtomicLoad(uniform *mutable texture2D,i32x2,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16)->name = "textureAtomicLoad(uniform *mutable texture2D,i32x2,f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2D, coordinate : i32x2, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicLoad with Texture2D, Int32x2, UInt16
+    TextureAtomicLoad_Texture2D_UInt16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicLoad_Texture2D_UInt16_texture.type.mut = true;
+    TextureAtomicLoad_Texture2D_UInt16_texture.type.modifiers = TextureAtomicLoad_Texture2D_UInt16_texture_modifiers;
+    TextureAtomicLoad_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicLoad_Texture2D_UInt16_texture_modifierValues;
+    TextureAtomicLoad_Texture2D_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2D_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture2D_UInt16_value.name = "value"_c;
+    TextureAtomicLoad_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicLoad_Texture2D_UInt16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2D_UInt16.name = TextureAtomicLoad_Texture2D_UInt16_name;
+    TextureAtomicLoad_Texture2D_UInt16.backendIndex = 3051;
+    TextureAtomicLoad_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicLoad_Texture2D_UInt16.parameters = TextureAtomicLoad_Texture2D_UInt16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16)->signature = "textureAtomicLoad(uniform *mutable texture2D,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16)->name = "textureAtomicLoad(uniform *mutable texture2D,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicLoad with Texture2D, Int32x2, Int16
+    TextureAtomicLoad_Texture2D_Int16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicLoad_Texture2D_Int16_texture.type.mut = true;
+    TextureAtomicLoad_Texture2D_Int16_texture.type.modifiers = TextureAtomicLoad_Texture2D_Int16_texture_modifiers;
+    TextureAtomicLoad_Texture2D_Int16_texture.type.modifierValues = TextureAtomicLoad_Texture2D_Int16_texture_modifierValues;
+    TextureAtomicLoad_Texture2D_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2D_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture2D_Int16_value.name = "value"_c;
+    TextureAtomicLoad_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicLoad_Texture2D_Int16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2D_Int16.name = TextureAtomicLoad_Texture2D_Int16_name;
+    TextureAtomicLoad_Texture2D_Int16.backendIndex = 3052;
+    TextureAtomicLoad_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicLoad_Texture2D_Int16.parameters = TextureAtomicLoad_Texture2D_Int16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16)->signature = "textureAtomicLoad(uniform *mutable texture2D,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16)->name = "textureAtomicLoad(uniform *mutable texture2D,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicLoad with Texture2D, Int32x2, UInt64
+    TextureAtomicLoad_Texture2D_UInt64_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2D_UInt64_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicLoad_Texture2D_UInt64_texture.type.mut = true;
+    TextureAtomicLoad_Texture2D_UInt64_texture.type.modifiers = TextureAtomicLoad_Texture2D_UInt64_texture_modifiers;
+    TextureAtomicLoad_Texture2D_UInt64_texture.type.modifierValues = TextureAtomicLoad_Texture2D_UInt64_texture_modifierValues;
+    TextureAtomicLoad_Texture2D_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2D_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture2D_UInt64_value.name = "value"_c;
+    TextureAtomicLoad_Texture2D_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicLoad_Texture2D_UInt64.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2D_UInt64.name = TextureAtomicLoad_Texture2D_UInt64_name;
+    TextureAtomicLoad_Texture2D_UInt64.backendIndex = 3053;
+    TextureAtomicLoad_Texture2D_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicLoad_Texture2D_UInt64.parameters = TextureAtomicLoad_Texture2D_UInt64_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt64_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt64_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt64)->signature = "textureAtomicLoad(uniform *mutable texture2D,i32x2,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt64)->name = "textureAtomicLoad(uniform *mutable texture2D,i32x2,u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt64)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2D, coordinate : i32x2, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2D_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicLoad with Texture3D, Int32x3, Float32
+    TextureAtomicLoad_Texture3D_Float32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture3D_Float32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicLoad_Texture3D_Float32_texture.type.mut = true;
+    TextureAtomicLoad_Texture3D_Float32_texture.type.modifiers = TextureAtomicLoad_Texture3D_Float32_texture_modifiers;
+    TextureAtomicLoad_Texture3D_Float32_texture.type.modifierValues = TextureAtomicLoad_Texture3D_Float32_texture_modifierValues;
+    TextureAtomicLoad_Texture3D_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture3D_Float32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture3D_Float32_value.name = "value"_c;
+    TextureAtomicLoad_Texture3D_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicLoad_Texture3D_Float32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture3D_Float32.name = TextureAtomicLoad_Texture3D_Float32_name;
+    TextureAtomicLoad_Texture3D_Float32.backendIndex = 3054;
+    TextureAtomicLoad_Texture3D_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicLoad_Texture3D_Float32.parameters = TextureAtomicLoad_Texture3D_Float32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32)->signature = "textureAtomicLoad(uniform *mutable texture3D,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32)->name = "textureAtomicLoad(uniform *mutable texture3D,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture3D, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicLoad with Texture3D, Int32x3, UInt32
+    TextureAtomicLoad_Texture3D_UInt32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicLoad_Texture3D_UInt32_texture.type.mut = true;
+    TextureAtomicLoad_Texture3D_UInt32_texture.type.modifiers = TextureAtomicLoad_Texture3D_UInt32_texture_modifiers;
+    TextureAtomicLoad_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicLoad_Texture3D_UInt32_texture_modifierValues;
+    TextureAtomicLoad_Texture3D_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture3D_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture3D_UInt32_value.name = "value"_c;
+    TextureAtomicLoad_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicLoad_Texture3D_UInt32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture3D_UInt32.name = TextureAtomicLoad_Texture3D_UInt32_name;
+    TextureAtomicLoad_Texture3D_UInt32.backendIndex = 3055;
+    TextureAtomicLoad_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicLoad_Texture3D_UInt32.parameters = TextureAtomicLoad_Texture3D_UInt32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32)->signature = "textureAtomicLoad(uniform *mutable texture3D,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32)->name = "textureAtomicLoad(uniform *mutable texture3D,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicLoad with Texture3D, Int32x3, Int32
+    TextureAtomicLoad_Texture3D_Int32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicLoad_Texture3D_Int32_texture.type.mut = true;
+    TextureAtomicLoad_Texture3D_Int32_texture.type.modifiers = TextureAtomicLoad_Texture3D_Int32_texture_modifiers;
+    TextureAtomicLoad_Texture3D_Int32_texture.type.modifierValues = TextureAtomicLoad_Texture3D_Int32_texture_modifierValues;
+    TextureAtomicLoad_Texture3D_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture3D_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture3D_Int32_value.name = "value"_c;
+    TextureAtomicLoad_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture3D_Int32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture3D_Int32.name = TextureAtomicLoad_Texture3D_Int32_name;
+    TextureAtomicLoad_Texture3D_Int32.backendIndex = 3056;
+    TextureAtomicLoad_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicLoad_Texture3D_Int32.parameters = TextureAtomicLoad_Texture3D_Int32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32)->signature = "textureAtomicLoad(uniform *mutable texture3D,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32)->name = "textureAtomicLoad(uniform *mutable texture3D,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicLoad with Texture3D, Int32x3, Float16
+    TextureAtomicLoad_Texture3D_Float16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture3D_Float16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicLoad_Texture3D_Float16_texture.type.mut = true;
+    TextureAtomicLoad_Texture3D_Float16_texture.type.modifiers = TextureAtomicLoad_Texture3D_Float16_texture_modifiers;
+    TextureAtomicLoad_Texture3D_Float16_texture.type.modifierValues = TextureAtomicLoad_Texture3D_Float16_texture_modifierValues;
+    TextureAtomicLoad_Texture3D_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture3D_Float16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture3D_Float16_value.name = "value"_c;
+    TextureAtomicLoad_Texture3D_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicLoad_Texture3D_Float16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture3D_Float16.name = TextureAtomicLoad_Texture3D_Float16_name;
+    TextureAtomicLoad_Texture3D_Float16.backendIndex = 3057;
+    TextureAtomicLoad_Texture3D_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicLoad_Texture3D_Float16.parameters = TextureAtomicLoad_Texture3D_Float16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16)->signature = "textureAtomicLoad(uniform *mutable texture3D,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16)->name = "textureAtomicLoad(uniform *mutable texture3D,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture3D, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicLoad with Texture3D, Int32x3, UInt16
+    TextureAtomicLoad_Texture3D_UInt16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicLoad_Texture3D_UInt16_texture.type.mut = true;
+    TextureAtomicLoad_Texture3D_UInt16_texture.type.modifiers = TextureAtomicLoad_Texture3D_UInt16_texture_modifiers;
+    TextureAtomicLoad_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicLoad_Texture3D_UInt16_texture_modifierValues;
+    TextureAtomicLoad_Texture3D_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture3D_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture3D_UInt16_value.name = "value"_c;
+    TextureAtomicLoad_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicLoad_Texture3D_UInt16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture3D_UInt16.name = TextureAtomicLoad_Texture3D_UInt16_name;
+    TextureAtomicLoad_Texture3D_UInt16.backendIndex = 3058;
+    TextureAtomicLoad_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicLoad_Texture3D_UInt16.parameters = TextureAtomicLoad_Texture3D_UInt16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16)->signature = "textureAtomicLoad(uniform *mutable texture3D,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16)->name = "textureAtomicLoad(uniform *mutable texture3D,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicLoad with Texture3D, Int32x3, Int16
+    TextureAtomicLoad_Texture3D_Int16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicLoad_Texture3D_Int16_texture.type.mut = true;
+    TextureAtomicLoad_Texture3D_Int16_texture.type.modifiers = TextureAtomicLoad_Texture3D_Int16_texture_modifiers;
+    TextureAtomicLoad_Texture3D_Int16_texture.type.modifierValues = TextureAtomicLoad_Texture3D_Int16_texture_modifierValues;
+    TextureAtomicLoad_Texture3D_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture3D_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture3D_Int16_value.name = "value"_c;
+    TextureAtomicLoad_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicLoad_Texture3D_Int16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture3D_Int16.name = TextureAtomicLoad_Texture3D_Int16_name;
+    TextureAtomicLoad_Texture3D_Int16.backendIndex = 3059;
+    TextureAtomicLoad_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicLoad_Texture3D_Int16.parameters = TextureAtomicLoad_Texture3D_Int16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16)->signature = "textureAtomicLoad(uniform *mutable texture3D,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16)->name = "textureAtomicLoad(uniform *mutable texture3D,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicLoad with Texture3D, Int32x3, UInt64
+    TextureAtomicLoad_Texture3D_UInt64_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture3D_UInt64_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicLoad_Texture3D_UInt64_texture.type.mut = true;
+    TextureAtomicLoad_Texture3D_UInt64_texture.type.modifiers = TextureAtomicLoad_Texture3D_UInt64_texture_modifiers;
+    TextureAtomicLoad_Texture3D_UInt64_texture.type.modifierValues = TextureAtomicLoad_Texture3D_UInt64_texture_modifierValues;
+    TextureAtomicLoad_Texture3D_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture3D_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture3D_UInt64_value.name = "value"_c;
+    TextureAtomicLoad_Texture3D_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicLoad_Texture3D_UInt64.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture3D_UInt64.name = TextureAtomicLoad_Texture3D_UInt64_name;
+    TextureAtomicLoad_Texture3D_UInt64.backendIndex = 3060;
+    TextureAtomicLoad_Texture3D_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicLoad_Texture3D_UInt64.parameters = TextureAtomicLoad_Texture3D_UInt64_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt64_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt64_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt64)->signature = "textureAtomicLoad(uniform *mutable texture3D,i32x3,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt64)->name = "textureAtomicLoad(uniform *mutable texture3D,i32x3,u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt64)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture3D, coordinate : i32x3, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture3D_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicLoad with TextureCube, Int32x3, Float32
+    TextureAtomicLoad_TextureCube_Float32_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCube_Float32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicLoad_TextureCube_Float32_texture.type.mut = true;
+    TextureAtomicLoad_TextureCube_Float32_texture.type.modifiers = TextureAtomicLoad_TextureCube_Float32_texture_modifiers;
+    TextureAtomicLoad_TextureCube_Float32_texture.type.modifierValues = TextureAtomicLoad_TextureCube_Float32_texture_modifierValues;
+    TextureAtomicLoad_TextureCube_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCube_Float32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_TextureCube_Float32_value.name = "value"_c;
+    TextureAtomicLoad_TextureCube_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicLoad_TextureCube_Float32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCube_Float32.name = TextureAtomicLoad_TextureCube_Float32_name;
+    TextureAtomicLoad_TextureCube_Float32.backendIndex = 3061;
+    TextureAtomicLoad_TextureCube_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicLoad_TextureCube_Float32.parameters = TextureAtomicLoad_TextureCube_Float32_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32)->signature = "textureAtomicLoad(uniform *mutable textureCube,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32)->name = "textureAtomicLoad(uniform *mutable textureCube,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCube, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicLoad with TextureCube, Int32x3, UInt32
+    TextureAtomicLoad_TextureCube_UInt32_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicLoad_TextureCube_UInt32_texture.type.mut = true;
+    TextureAtomicLoad_TextureCube_UInt32_texture.type.modifiers = TextureAtomicLoad_TextureCube_UInt32_texture_modifiers;
+    TextureAtomicLoad_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicLoad_TextureCube_UInt32_texture_modifierValues;
+    TextureAtomicLoad_TextureCube_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCube_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_TextureCube_UInt32_value.name = "value"_c;
+    TextureAtomicLoad_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicLoad_TextureCube_UInt32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCube_UInt32.name = TextureAtomicLoad_TextureCube_UInt32_name;
+    TextureAtomicLoad_TextureCube_UInt32.backendIndex = 3062;
+    TextureAtomicLoad_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicLoad_TextureCube_UInt32.parameters = TextureAtomicLoad_TextureCube_UInt32_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32)->signature = "textureAtomicLoad(uniform *mutable textureCube,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32)->name = "textureAtomicLoad(uniform *mutable textureCube,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicLoad with TextureCube, Int32x3, Int32
+    TextureAtomicLoad_TextureCube_Int32_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicLoad_TextureCube_Int32_texture.type.mut = true;
+    TextureAtomicLoad_TextureCube_Int32_texture.type.modifiers = TextureAtomicLoad_TextureCube_Int32_texture_modifiers;
+    TextureAtomicLoad_TextureCube_Int32_texture.type.modifierValues = TextureAtomicLoad_TextureCube_Int32_texture_modifierValues;
+    TextureAtomicLoad_TextureCube_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCube_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_TextureCube_Int32_value.name = "value"_c;
+    TextureAtomicLoad_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_TextureCube_Int32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCube_Int32.name = TextureAtomicLoad_TextureCube_Int32_name;
+    TextureAtomicLoad_TextureCube_Int32.backendIndex = 3063;
+    TextureAtomicLoad_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicLoad_TextureCube_Int32.parameters = TextureAtomicLoad_TextureCube_Int32_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32)->signature = "textureAtomicLoad(uniform *mutable textureCube,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32)->name = "textureAtomicLoad(uniform *mutable textureCube,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicLoad with TextureCube, Int32x3, Float16
+    TextureAtomicLoad_TextureCube_Float16_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCube_Float16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicLoad_TextureCube_Float16_texture.type.mut = true;
+    TextureAtomicLoad_TextureCube_Float16_texture.type.modifiers = TextureAtomicLoad_TextureCube_Float16_texture_modifiers;
+    TextureAtomicLoad_TextureCube_Float16_texture.type.modifierValues = TextureAtomicLoad_TextureCube_Float16_texture_modifierValues;
+    TextureAtomicLoad_TextureCube_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCube_Float16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_TextureCube_Float16_value.name = "value"_c;
+    TextureAtomicLoad_TextureCube_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicLoad_TextureCube_Float16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCube_Float16.name = TextureAtomicLoad_TextureCube_Float16_name;
+    TextureAtomicLoad_TextureCube_Float16.backendIndex = 3064;
+    TextureAtomicLoad_TextureCube_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicLoad_TextureCube_Float16.parameters = TextureAtomicLoad_TextureCube_Float16_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16)->signature = "textureAtomicLoad(uniform *mutable textureCube,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16)->name = "textureAtomicLoad(uniform *mutable textureCube,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCube, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicLoad with TextureCube, Int32x3, UInt16
+    TextureAtomicLoad_TextureCube_UInt16_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCube_UInt16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicLoad_TextureCube_UInt16_texture.type.mut = true;
+    TextureAtomicLoad_TextureCube_UInt16_texture.type.modifiers = TextureAtomicLoad_TextureCube_UInt16_texture_modifiers;
+    TextureAtomicLoad_TextureCube_UInt16_texture.type.modifierValues = TextureAtomicLoad_TextureCube_UInt16_texture_modifierValues;
+    TextureAtomicLoad_TextureCube_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCube_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_TextureCube_UInt16_value.name = "value"_c;
+    TextureAtomicLoad_TextureCube_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicLoad_TextureCube_UInt16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCube_UInt16.name = TextureAtomicLoad_TextureCube_UInt16_name;
+    TextureAtomicLoad_TextureCube_UInt16.backendIndex = 3065;
+    TextureAtomicLoad_TextureCube_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicLoad_TextureCube_UInt16.parameters = TextureAtomicLoad_TextureCube_UInt16_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16)->signature = "textureAtomicLoad(uniform *mutable textureCube,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16)->name = "textureAtomicLoad(uniform *mutable textureCube,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCube, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicLoad with TextureCube, Int32x3, Int16
+    TextureAtomicLoad_TextureCube_Int16_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCube_Int16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicLoad_TextureCube_Int16_texture.type.mut = true;
+    TextureAtomicLoad_TextureCube_Int16_texture.type.modifiers = TextureAtomicLoad_TextureCube_Int16_texture_modifiers;
+    TextureAtomicLoad_TextureCube_Int16_texture.type.modifierValues = TextureAtomicLoad_TextureCube_Int16_texture_modifierValues;
+    TextureAtomicLoad_TextureCube_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCube_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_TextureCube_Int16_value.name = "value"_c;
+    TextureAtomicLoad_TextureCube_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicLoad_TextureCube_Int16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCube_Int16.name = TextureAtomicLoad_TextureCube_Int16_name;
+    TextureAtomicLoad_TextureCube_Int16.backendIndex = 3066;
+    TextureAtomicLoad_TextureCube_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicLoad_TextureCube_Int16.parameters = TextureAtomicLoad_TextureCube_Int16_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16)->signature = "textureAtomicLoad(uniform *mutable textureCube,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16)->name = "textureAtomicLoad(uniform *mutable textureCube,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCube, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicLoad with TextureCube, Int32x3, UInt64
+    TextureAtomicLoad_TextureCube_UInt64_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCube_UInt64_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicLoad_TextureCube_UInt64_texture.type.mut = true;
+    TextureAtomicLoad_TextureCube_UInt64_texture.type.modifiers = TextureAtomicLoad_TextureCube_UInt64_texture_modifiers;
+    TextureAtomicLoad_TextureCube_UInt64_texture.type.modifierValues = TextureAtomicLoad_TextureCube_UInt64_texture_modifierValues;
+    TextureAtomicLoad_TextureCube_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCube_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_TextureCube_UInt64_value.name = "value"_c;
+    TextureAtomicLoad_TextureCube_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicLoad_TextureCube_UInt64.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCube_UInt64.name = TextureAtomicLoad_TextureCube_UInt64_name;
+    TextureAtomicLoad_TextureCube_UInt64.backendIndex = 3067;
+    TextureAtomicLoad_TextureCube_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicLoad_TextureCube_UInt64.parameters = TextureAtomicLoad_TextureCube_UInt64_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt64_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt64_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt64)->signature = "textureAtomicLoad(uniform *mutable textureCube,i32x3,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt64)->name = "textureAtomicLoad(uniform *mutable textureCube,i32x3,u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt64)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCube, coordinate : i32x3, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCube_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicLoad with Texture1DArray, Int32x2, Float32
+    TextureAtomicLoad_Texture1DArray_Float32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1DArray_Float32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicLoad_Texture1DArray_Float32_texture.type.mut = true;
+    TextureAtomicLoad_Texture1DArray_Float32_texture.type.modifiers = TextureAtomicLoad_Texture1DArray_Float32_texture_modifiers;
+    TextureAtomicLoad_Texture1DArray_Float32_texture.type.modifierValues = TextureAtomicLoad_Texture1DArray_Float32_texture_modifierValues;
+    TextureAtomicLoad_Texture1DArray_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1DArray_Float32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture1DArray_Float32_value.name = "value"_c;
+    TextureAtomicLoad_Texture1DArray_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicLoad_Texture1DArray_Float32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1DArray_Float32.name = TextureAtomicLoad_Texture1DArray_Float32_name;
+    TextureAtomicLoad_Texture1DArray_Float32.backendIndex = 3068;
+    TextureAtomicLoad_Texture1DArray_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicLoad_Texture1DArray_Float32.parameters = TextureAtomicLoad_Texture1DArray_Float32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32)->signature = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32)->name = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicLoad with Texture1DArray, Int32x2, UInt32
+    TextureAtomicLoad_Texture1DArray_UInt32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicLoad_Texture1DArray_UInt32_texture.type.mut = true;
+    TextureAtomicLoad_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicLoad_Texture1DArray_UInt32_texture_modifiers;
+    TextureAtomicLoad_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicLoad_Texture1DArray_UInt32_texture_modifierValues;
+    TextureAtomicLoad_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1DArray_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt32_value.name = "value"_c;
+    TextureAtomicLoad_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1DArray_UInt32.name = TextureAtomicLoad_Texture1DArray_UInt32_name;
+    TextureAtomicLoad_Texture1DArray_UInt32.backendIndex = 3069;
+    TextureAtomicLoad_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt32.parameters = TextureAtomicLoad_Texture1DArray_UInt32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32)->signature = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32)->name = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicLoad with Texture1DArray, Int32x2, Int32
+    TextureAtomicLoad_Texture1DArray_Int32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicLoad_Texture1DArray_Int32_texture.type.mut = true;
+    TextureAtomicLoad_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicLoad_Texture1DArray_Int32_texture_modifiers;
+    TextureAtomicLoad_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicLoad_Texture1DArray_Int32_texture_modifierValues;
+    TextureAtomicLoad_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1DArray_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture1DArray_Int32_value.name = "value"_c;
+    TextureAtomicLoad_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture1DArray_Int32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1DArray_Int32.name = TextureAtomicLoad_Texture1DArray_Int32_name;
+    TextureAtomicLoad_Texture1DArray_Int32.backendIndex = 3070;
+    TextureAtomicLoad_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicLoad_Texture1DArray_Int32.parameters = TextureAtomicLoad_Texture1DArray_Int32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32)->signature = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32)->name = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicLoad with Texture1DArray, Int32x2, Float16
+    TextureAtomicLoad_Texture1DArray_Float16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1DArray_Float16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicLoad_Texture1DArray_Float16_texture.type.mut = true;
+    TextureAtomicLoad_Texture1DArray_Float16_texture.type.modifiers = TextureAtomicLoad_Texture1DArray_Float16_texture_modifiers;
+    TextureAtomicLoad_Texture1DArray_Float16_texture.type.modifierValues = TextureAtomicLoad_Texture1DArray_Float16_texture_modifierValues;
+    TextureAtomicLoad_Texture1DArray_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1DArray_Float16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture1DArray_Float16_value.name = "value"_c;
+    TextureAtomicLoad_Texture1DArray_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicLoad_Texture1DArray_Float16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1DArray_Float16.name = TextureAtomicLoad_Texture1DArray_Float16_name;
+    TextureAtomicLoad_Texture1DArray_Float16.backendIndex = 3071;
+    TextureAtomicLoad_Texture1DArray_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicLoad_Texture1DArray_Float16.parameters = TextureAtomicLoad_Texture1DArray_Float16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16)->signature = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16)->name = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicLoad with Texture1DArray, Int32x2, UInt16
+    TextureAtomicLoad_Texture1DArray_UInt16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicLoad_Texture1DArray_UInt16_texture.type.mut = true;
+    TextureAtomicLoad_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicLoad_Texture1DArray_UInt16_texture_modifiers;
+    TextureAtomicLoad_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicLoad_Texture1DArray_UInt16_texture_modifierValues;
+    TextureAtomicLoad_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1DArray_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt16_value.name = "value"_c;
+    TextureAtomicLoad_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1DArray_UInt16.name = TextureAtomicLoad_Texture1DArray_UInt16_name;
+    TextureAtomicLoad_Texture1DArray_UInt16.backendIndex = 3072;
+    TextureAtomicLoad_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt16.parameters = TextureAtomicLoad_Texture1DArray_UInt16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16)->signature = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16)->name = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicLoad with Texture1DArray, Int32x2, Int16
+    TextureAtomicLoad_Texture1DArray_Int16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicLoad_Texture1DArray_Int16_texture.type.mut = true;
+    TextureAtomicLoad_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicLoad_Texture1DArray_Int16_texture_modifiers;
+    TextureAtomicLoad_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicLoad_Texture1DArray_Int16_texture_modifierValues;
+    TextureAtomicLoad_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1DArray_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture1DArray_Int16_value.name = "value"_c;
+    TextureAtomicLoad_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicLoad_Texture1DArray_Int16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1DArray_Int16.name = TextureAtomicLoad_Texture1DArray_Int16_name;
+    TextureAtomicLoad_Texture1DArray_Int16.backendIndex = 3073;
+    TextureAtomicLoad_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicLoad_Texture1DArray_Int16.parameters = TextureAtomicLoad_Texture1DArray_Int16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16)->signature = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16)->name = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicLoad with Texture1DArray, Int32x2, UInt64
+    TextureAtomicLoad_Texture1DArray_UInt64_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture1DArray_UInt64_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicLoad_Texture1DArray_UInt64_texture.type.mut = true;
+    TextureAtomicLoad_Texture1DArray_UInt64_texture.type.modifiers = TextureAtomicLoad_Texture1DArray_UInt64_texture_modifiers;
+    TextureAtomicLoad_Texture1DArray_UInt64_texture.type.modifierValues = TextureAtomicLoad_Texture1DArray_UInt64_texture_modifierValues;
+    TextureAtomicLoad_Texture1DArray_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture1DArray_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt64_value.name = "value"_c;
+    TextureAtomicLoad_Texture1DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt64.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture1DArray_UInt64.name = TextureAtomicLoad_Texture1DArray_UInt64_name;
+    TextureAtomicLoad_Texture1DArray_UInt64.backendIndex = 3074;
+    TextureAtomicLoad_Texture1DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicLoad_Texture1DArray_UInt64.parameters = TextureAtomicLoad_Texture1DArray_UInt64_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt64_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt64_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt64)->signature = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt64)->name = "textureAtomicLoad(uniform *mutable texture1DArray,i32x2,u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt64)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture1DArray_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicLoad with Texture2DArray, Int32x3, Float32
+    TextureAtomicLoad_Texture2DArray_Float32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2DArray_Float32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicLoad_Texture2DArray_Float32_texture.type.mut = true;
+    TextureAtomicLoad_Texture2DArray_Float32_texture.type.modifiers = TextureAtomicLoad_Texture2DArray_Float32_texture_modifiers;
+    TextureAtomicLoad_Texture2DArray_Float32_texture.type.modifierValues = TextureAtomicLoad_Texture2DArray_Float32_texture_modifierValues;
+    TextureAtomicLoad_Texture2DArray_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2DArray_Float32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture2DArray_Float32_value.name = "value"_c;
+    TextureAtomicLoad_Texture2DArray_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicLoad_Texture2DArray_Float32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2DArray_Float32.name = TextureAtomicLoad_Texture2DArray_Float32_name;
+    TextureAtomicLoad_Texture2DArray_Float32.backendIndex = 3075;
+    TextureAtomicLoad_Texture2DArray_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicLoad_Texture2DArray_Float32.parameters = TextureAtomicLoad_Texture2DArray_Float32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32)->signature = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32)->name = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicLoad with Texture2DArray, Int32x3, UInt32
+    TextureAtomicLoad_Texture2DArray_UInt32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicLoad_Texture2DArray_UInt32_texture.type.mut = true;
+    TextureAtomicLoad_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicLoad_Texture2DArray_UInt32_texture_modifiers;
+    TextureAtomicLoad_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicLoad_Texture2DArray_UInt32_texture_modifierValues;
+    TextureAtomicLoad_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2DArray_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt32_value.name = "value"_c;
+    TextureAtomicLoad_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2DArray_UInt32.name = TextureAtomicLoad_Texture2DArray_UInt32_name;
+    TextureAtomicLoad_Texture2DArray_UInt32.backendIndex = 3076;
+    TextureAtomicLoad_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt32.parameters = TextureAtomicLoad_Texture2DArray_UInt32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32)->signature = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32)->name = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicLoad with Texture2DArray, Int32x3, Int32
+    TextureAtomicLoad_Texture2DArray_Int32_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicLoad_Texture2DArray_Int32_texture.type.mut = true;
+    TextureAtomicLoad_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicLoad_Texture2DArray_Int32_texture_modifiers;
+    TextureAtomicLoad_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicLoad_Texture2DArray_Int32_texture_modifierValues;
+    TextureAtomicLoad_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2DArray_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture2DArray_Int32_value.name = "value"_c;
+    TextureAtomicLoad_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_Texture2DArray_Int32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2DArray_Int32.name = TextureAtomicLoad_Texture2DArray_Int32_name;
+    TextureAtomicLoad_Texture2DArray_Int32.backendIndex = 3077;
+    TextureAtomicLoad_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicLoad_Texture2DArray_Int32.parameters = TextureAtomicLoad_Texture2DArray_Int32_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32)->signature = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32)->name = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicLoad with Texture2DArray, Int32x3, Float16
+    TextureAtomicLoad_Texture2DArray_Float16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2DArray_Float16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicLoad_Texture2DArray_Float16_texture.type.mut = true;
+    TextureAtomicLoad_Texture2DArray_Float16_texture.type.modifiers = TextureAtomicLoad_Texture2DArray_Float16_texture_modifiers;
+    TextureAtomicLoad_Texture2DArray_Float16_texture.type.modifierValues = TextureAtomicLoad_Texture2DArray_Float16_texture_modifierValues;
+    TextureAtomicLoad_Texture2DArray_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2DArray_Float16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture2DArray_Float16_value.name = "value"_c;
+    TextureAtomicLoad_Texture2DArray_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicLoad_Texture2DArray_Float16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2DArray_Float16.name = TextureAtomicLoad_Texture2DArray_Float16_name;
+    TextureAtomicLoad_Texture2DArray_Float16.backendIndex = 3078;
+    TextureAtomicLoad_Texture2DArray_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicLoad_Texture2DArray_Float16.parameters = TextureAtomicLoad_Texture2DArray_Float16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16)->signature = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16)->name = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicLoad with Texture2DArray, Int32x3, UInt16
+    TextureAtomicLoad_Texture2DArray_UInt16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicLoad_Texture2DArray_UInt16_texture.type.mut = true;
+    TextureAtomicLoad_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicLoad_Texture2DArray_UInt16_texture_modifiers;
+    TextureAtomicLoad_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicLoad_Texture2DArray_UInt16_texture_modifierValues;
+    TextureAtomicLoad_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2DArray_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt16_value.name = "value"_c;
+    TextureAtomicLoad_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2DArray_UInt16.name = TextureAtomicLoad_Texture2DArray_UInt16_name;
+    TextureAtomicLoad_Texture2DArray_UInt16.backendIndex = 3079;
+    TextureAtomicLoad_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt16.parameters = TextureAtomicLoad_Texture2DArray_UInt16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16)->signature = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16)->name = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicLoad with Texture2DArray, Int32x3, Int16
+    TextureAtomicLoad_Texture2DArray_Int16_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicLoad_Texture2DArray_Int16_texture.type.mut = true;
+    TextureAtomicLoad_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicLoad_Texture2DArray_Int16_texture_modifiers;
+    TextureAtomicLoad_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicLoad_Texture2DArray_Int16_texture_modifierValues;
+    TextureAtomicLoad_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2DArray_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture2DArray_Int16_value.name = "value"_c;
+    TextureAtomicLoad_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicLoad_Texture2DArray_Int16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2DArray_Int16.name = TextureAtomicLoad_Texture2DArray_Int16_name;
+    TextureAtomicLoad_Texture2DArray_Int16.backendIndex = 3080;
+    TextureAtomicLoad_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicLoad_Texture2DArray_Int16.parameters = TextureAtomicLoad_Texture2DArray_Int16_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16)->signature = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16)->name = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicLoad with Texture2DArray, Int32x3, UInt64
+    TextureAtomicLoad_Texture2DArray_UInt64_texture.name = "texture"_c;
+    TextureAtomicLoad_Texture2DArray_UInt64_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicLoad_Texture2DArray_UInt64_texture.type.mut = true;
+    TextureAtomicLoad_Texture2DArray_UInt64_texture.type.modifiers = TextureAtomicLoad_Texture2DArray_UInt64_texture_modifiers;
+    TextureAtomicLoad_Texture2DArray_UInt64_texture.type.modifierValues = TextureAtomicLoad_Texture2DArray_UInt64_texture_modifierValues;
+    TextureAtomicLoad_Texture2DArray_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_Texture2DArray_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt64_value.name = "value"_c;
+    TextureAtomicLoad_Texture2DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt64.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_Texture2DArray_UInt64.name = TextureAtomicLoad_Texture2DArray_UInt64_name;
+    TextureAtomicLoad_Texture2DArray_UInt64.backendIndex = 3081;
+    TextureAtomicLoad_Texture2DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicLoad_Texture2DArray_UInt64.parameters = TextureAtomicLoad_Texture2DArray_UInt64_args;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt64_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt64_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt64)->signature = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt64)->name = "textureAtomicLoad(uniform *mutable texture2DArray,i32x3,u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt64)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_Texture2DArray_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicLoad with TextureCubeArray, Int32x4, Float32
+    TextureAtomicLoad_TextureCubeArray_Float32_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCubeArray_Float32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicLoad_TextureCubeArray_Float32_texture.type.mut = true;
+    TextureAtomicLoad_TextureCubeArray_Float32_texture.type.modifiers = TextureAtomicLoad_TextureCubeArray_Float32_texture_modifiers;
+    TextureAtomicLoad_TextureCubeArray_Float32_texture.type.modifierValues = TextureAtomicLoad_TextureCubeArray_Float32_texture_modifierValues;
+    TextureAtomicLoad_TextureCubeArray_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCubeArray_Float32_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicLoad_TextureCubeArray_Float32_value.name = "value"_c;
+    TextureAtomicLoad_TextureCubeArray_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicLoad_TextureCubeArray_Float32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCubeArray_Float32.name = TextureAtomicLoad_TextureCubeArray_Float32_name;
+    TextureAtomicLoad_TextureCubeArray_Float32.backendIndex = 3082;
+    TextureAtomicLoad_TextureCubeArray_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicLoad_TextureCubeArray_Float32.parameters = TextureAtomicLoad_TextureCubeArray_Float32_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32)->signature = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32)->name = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicLoad with TextureCubeArray, Int32x4, UInt32
+    TextureAtomicLoad_TextureCubeArray_UInt32_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicLoad_TextureCubeArray_UInt32_texture.type.mut = true;
+    TextureAtomicLoad_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicLoad_TextureCubeArray_UInt32_texture_modifiers;
+    TextureAtomicLoad_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicLoad_TextureCubeArray_UInt32_texture_modifierValues;
+    TextureAtomicLoad_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt32_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt32_value.name = "value"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt32.name = TextureAtomicLoad_TextureCubeArray_UInt32_name;
+    TextureAtomicLoad_TextureCubeArray_UInt32.backendIndex = 3083;
+    TextureAtomicLoad_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt32.parameters = TextureAtomicLoad_TextureCubeArray_UInt32_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32)->signature = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32)->name = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicLoad with TextureCubeArray, Int32x4, Int32
+    TextureAtomicLoad_TextureCubeArray_Int32_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicLoad_TextureCubeArray_Int32_texture.type.mut = true;
+    TextureAtomicLoad_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicLoad_TextureCubeArray_Int32_texture_modifiers;
+    TextureAtomicLoad_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicLoad_TextureCubeArray_Int32_texture_modifierValues;
+    TextureAtomicLoad_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCubeArray_Int32_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicLoad_TextureCubeArray_Int32_value.name = "value"_c;
+    TextureAtomicLoad_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicLoad_TextureCubeArray_Int32.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCubeArray_Int32.name = TextureAtomicLoad_TextureCubeArray_Int32_name;
+    TextureAtomicLoad_TextureCubeArray_Int32.backendIndex = 3084;
+    TextureAtomicLoad_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicLoad_TextureCubeArray_Int32.parameters = TextureAtomicLoad_TextureCubeArray_Int32_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32)->signature = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32)->name = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicLoad with TextureCubeArray, Int32x4, Float16
+    TextureAtomicLoad_TextureCubeArray_Float16_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCubeArray_Float16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicLoad_TextureCubeArray_Float16_texture.type.mut = true;
+    TextureAtomicLoad_TextureCubeArray_Float16_texture.type.modifiers = TextureAtomicLoad_TextureCubeArray_Float16_texture_modifiers;
+    TextureAtomicLoad_TextureCubeArray_Float16_texture.type.modifierValues = TextureAtomicLoad_TextureCubeArray_Float16_texture_modifierValues;
+    TextureAtomicLoad_TextureCubeArray_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCubeArray_Float16_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicLoad_TextureCubeArray_Float16_value.name = "value"_c;
+    TextureAtomicLoad_TextureCubeArray_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicLoad_TextureCubeArray_Float16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCubeArray_Float16.name = TextureAtomicLoad_TextureCubeArray_Float16_name;
+    TextureAtomicLoad_TextureCubeArray_Float16.backendIndex = 3085;
+    TextureAtomicLoad_TextureCubeArray_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicLoad_TextureCubeArray_Float16.parameters = TextureAtomicLoad_TextureCubeArray_Float16_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16)->signature = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16)->name = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicLoad with TextureCubeArray, Int32x4, UInt16
+    TextureAtomicLoad_TextureCubeArray_UInt16_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicLoad_TextureCubeArray_UInt16_texture.type.mut = true;
+    TextureAtomicLoad_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicLoad_TextureCubeArray_UInt16_texture_modifiers;
+    TextureAtomicLoad_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicLoad_TextureCubeArray_UInt16_texture_modifierValues;
+    TextureAtomicLoad_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt16_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt16_value.name = "value"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt16.name = TextureAtomicLoad_TextureCubeArray_UInt16_name;
+    TextureAtomicLoad_TextureCubeArray_UInt16.backendIndex = 3086;
+    TextureAtomicLoad_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt16.parameters = TextureAtomicLoad_TextureCubeArray_UInt16_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16)->signature = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16)->name = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicLoad with TextureCubeArray, Int32x4, Int16
+    TextureAtomicLoad_TextureCubeArray_Int16_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicLoad_TextureCubeArray_Int16_texture.type.mut = true;
+    TextureAtomicLoad_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicLoad_TextureCubeArray_Int16_texture_modifiers;
+    TextureAtomicLoad_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicLoad_TextureCubeArray_Int16_texture_modifierValues;
+    TextureAtomicLoad_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCubeArray_Int16_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicLoad_TextureCubeArray_Int16_value.name = "value"_c;
+    TextureAtomicLoad_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicLoad_TextureCubeArray_Int16.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCubeArray_Int16.name = TextureAtomicLoad_TextureCubeArray_Int16_name;
+    TextureAtomicLoad_TextureCubeArray_Int16.backendIndex = 3087;
+    TextureAtomicLoad_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicLoad_TextureCubeArray_Int16.parameters = TextureAtomicLoad_TextureCubeArray_Int16_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16)->signature = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16)->name = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicLoad with TextureCubeArray, Int32x4, UInt64
+    TextureAtomicLoad_TextureCubeArray_UInt64_texture.name = "texture"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt64_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicLoad_TextureCubeArray_UInt64_texture.type.mut = true;
+    TextureAtomicLoad_TextureCubeArray_UInt64_texture.type.modifiers = TextureAtomicLoad_TextureCubeArray_UInt64_texture_modifiers;
+    TextureAtomicLoad_TextureCubeArray_UInt64_texture.type.modifierValues = TextureAtomicLoad_TextureCubeArray_UInt64_texture_modifierValues;
+    TextureAtomicLoad_TextureCubeArray_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt64_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt64_value.name = "value"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt64.documentation = "Atomically load a texel value from a texture"_c;
+    TextureAtomicLoad_TextureCubeArray_UInt64.name = TextureAtomicLoad_TextureCubeArray_UInt64_name;
+    TextureAtomicLoad_TextureCubeArray_UInt64.backendIndex = 3088;
+    TextureAtomicLoad_TextureCubeArray_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicLoad_TextureCubeArray_UInt64.parameters = TextureAtomicLoad_TextureCubeArray_UInt64_args;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt64_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt64_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt64)->signature = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt64)->name = "textureAtomicLoad(uniform *mutable textureCubeArray,i32x4,u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt64)->nameWithVarNames = "textureAtomicLoad(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicLoad_TextureCubeArray_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicStore with Texture1D, Int32, Float32
+    TextureAtomicStore_Texture1D_Float32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1D_Float32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicStore_Texture1D_Float32_texture.type.mut = true;
+    TextureAtomicStore_Texture1D_Float32_texture.type.modifiers = TextureAtomicStore_Texture1D_Float32_texture_modifiers;
+    TextureAtomicStore_Texture1D_Float32_texture.type.modifierValues = TextureAtomicStore_Texture1D_Float32_texture_modifierValues;
+    TextureAtomicStore_Texture1D_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1D_Float32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1D_Float32_value.name = "value"_c;
+    TextureAtomicStore_Texture1D_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicStore_Texture1D_Float32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1D_Float32.name = TextureAtomicStore_Texture1D_Float32_name;
+    TextureAtomicStore_Texture1D_Float32.backendIndex = 3089;
+    TextureAtomicStore_Texture1D_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicStore_Texture1D_Float32.parameters = TextureAtomicStore_Texture1D_Float32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32)->signature = "textureAtomicStore(uniform *mutable texture1D,i32,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32)->name = "textureAtomicStore(uniform *mutable texture1D,i32,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1D, coordinate : i32, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicStore with Texture1D, Int32, UInt32
+    TextureAtomicStore_Texture1D_UInt32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicStore_Texture1D_UInt32_texture.type.mut = true;
+    TextureAtomicStore_Texture1D_UInt32_texture.type.modifiers = TextureAtomicStore_Texture1D_UInt32_texture_modifiers;
+    TextureAtomicStore_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicStore_Texture1D_UInt32_texture_modifierValues;
+    TextureAtomicStore_Texture1D_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1D_UInt32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1D_UInt32_value.name = "value"_c;
+    TextureAtomicStore_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicStore_Texture1D_UInt32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1D_UInt32.name = TextureAtomicStore_Texture1D_UInt32_name;
+    TextureAtomicStore_Texture1D_UInt32.backendIndex = 3090;
+    TextureAtomicStore_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicStore_Texture1D_UInt32.parameters = TextureAtomicStore_Texture1D_UInt32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32)->signature = "textureAtomicStore(uniform *mutable texture1D,i32,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32)->name = "textureAtomicStore(uniform *mutable texture1D,i32,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicStore with Texture1D, Int32, Int32
+    TextureAtomicStore_Texture1D_Int32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicStore_Texture1D_Int32_texture.type.mut = true;
+    TextureAtomicStore_Texture1D_Int32_texture.type.modifiers = TextureAtomicStore_Texture1D_Int32_texture_modifiers;
+    TextureAtomicStore_Texture1D_Int32_texture.type.modifierValues = TextureAtomicStore_Texture1D_Int32_texture_modifierValues;
+    TextureAtomicStore_Texture1D_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1D_Int32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1D_Int32_value.name = "value"_c;
+    TextureAtomicStore_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1D_Int32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1D_Int32.name = TextureAtomicStore_Texture1D_Int32_name;
+    TextureAtomicStore_Texture1D_Int32.backendIndex = 3091;
+    TextureAtomicStore_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicStore_Texture1D_Int32.parameters = TextureAtomicStore_Texture1D_Int32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32)->signature = "textureAtomicStore(uniform *mutable texture1D,i32,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32)->name = "textureAtomicStore(uniform *mutable texture1D,i32,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicStore with Texture1D, Int32, Float16
+    TextureAtomicStore_Texture1D_Float16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1D_Float16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicStore_Texture1D_Float16_texture.type.mut = true;
+    TextureAtomicStore_Texture1D_Float16_texture.type.modifiers = TextureAtomicStore_Texture1D_Float16_texture_modifiers;
+    TextureAtomicStore_Texture1D_Float16_texture.type.modifierValues = TextureAtomicStore_Texture1D_Float16_texture_modifierValues;
+    TextureAtomicStore_Texture1D_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1D_Float16_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1D_Float16_value.name = "value"_c;
+    TextureAtomicStore_Texture1D_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicStore_Texture1D_Float16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1D_Float16.name = TextureAtomicStore_Texture1D_Float16_name;
+    TextureAtomicStore_Texture1D_Float16.backendIndex = 3092;
+    TextureAtomicStore_Texture1D_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicStore_Texture1D_Float16.parameters = TextureAtomicStore_Texture1D_Float16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16)->signature = "textureAtomicStore(uniform *mutable texture1D,i32,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16)->name = "textureAtomicStore(uniform *mutable texture1D,i32,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1D, coordinate : i32, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicStore with Texture1D, Int32, UInt16
+    TextureAtomicStore_Texture1D_UInt16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1D_UInt16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicStore_Texture1D_UInt16_texture.type.mut = true;
+    TextureAtomicStore_Texture1D_UInt16_texture.type.modifiers = TextureAtomicStore_Texture1D_UInt16_texture_modifiers;
+    TextureAtomicStore_Texture1D_UInt16_texture.type.modifierValues = TextureAtomicStore_Texture1D_UInt16_texture_modifierValues;
+    TextureAtomicStore_Texture1D_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1D_UInt16_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1D_UInt16_value.name = "value"_c;
+    TextureAtomicStore_Texture1D_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicStore_Texture1D_UInt16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1D_UInt16.name = TextureAtomicStore_Texture1D_UInt16_name;
+    TextureAtomicStore_Texture1D_UInt16.backendIndex = 3093;
+    TextureAtomicStore_Texture1D_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicStore_Texture1D_UInt16.parameters = TextureAtomicStore_Texture1D_UInt16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16)->signature = "textureAtomicStore(uniform *mutable texture1D,i32,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16)->name = "textureAtomicStore(uniform *mutable texture1D,i32,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1D, coordinate : i32, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicStore with Texture1D, Int32, Int16
+    TextureAtomicStore_Texture1D_Int16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1D_Int16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicStore_Texture1D_Int16_texture.type.mut = true;
+    TextureAtomicStore_Texture1D_Int16_texture.type.modifiers = TextureAtomicStore_Texture1D_Int16_texture_modifiers;
+    TextureAtomicStore_Texture1D_Int16_texture.type.modifierValues = TextureAtomicStore_Texture1D_Int16_texture_modifierValues;
+    TextureAtomicStore_Texture1D_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1D_Int16_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1D_Int16_value.name = "value"_c;
+    TextureAtomicStore_Texture1D_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicStore_Texture1D_Int16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1D_Int16.name = TextureAtomicStore_Texture1D_Int16_name;
+    TextureAtomicStore_Texture1D_Int16.backendIndex = 3094;
+    TextureAtomicStore_Texture1D_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicStore_Texture1D_Int16.parameters = TextureAtomicStore_Texture1D_Int16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16)->signature = "textureAtomicStore(uniform *mutable texture1D,i32,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16)->name = "textureAtomicStore(uniform *mutable texture1D,i32,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1D, coordinate : i32, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicStore with Texture1D, Int32, UInt64
+    TextureAtomicStore_Texture1D_UInt64_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1D_UInt64_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicStore_Texture1D_UInt64_texture.type.mut = true;
+    TextureAtomicStore_Texture1D_UInt64_texture.type.modifiers = TextureAtomicStore_Texture1D_UInt64_texture_modifiers;
+    TextureAtomicStore_Texture1D_UInt64_texture.type.modifierValues = TextureAtomicStore_Texture1D_UInt64_texture_modifierValues;
+    TextureAtomicStore_Texture1D_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1D_UInt64_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1D_UInt64_value.name = "value"_c;
+    TextureAtomicStore_Texture1D_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicStore_Texture1D_UInt64.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1D_UInt64.name = TextureAtomicStore_Texture1D_UInt64_name;
+    TextureAtomicStore_Texture1D_UInt64.backendIndex = 3095;
+    TextureAtomicStore_Texture1D_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicStore_Texture1D_UInt64.parameters = TextureAtomicStore_Texture1D_UInt64_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt64_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt64_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt64)->signature = "textureAtomicStore(uniform *mutable texture1D,i32,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt64)->name = "textureAtomicStore(uniform *mutable texture1D,i32,u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt64)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1D, coordinate : i32, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1D_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicStore with Texture2D, Int32x2, Float32
+    TextureAtomicStore_Texture2D_Float32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2D_Float32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicStore_Texture2D_Float32_texture.type.mut = true;
+    TextureAtomicStore_Texture2D_Float32_texture.type.modifiers = TextureAtomicStore_Texture2D_Float32_texture_modifiers;
+    TextureAtomicStore_Texture2D_Float32_texture.type.modifierValues = TextureAtomicStore_Texture2D_Float32_texture_modifierValues;
+    TextureAtomicStore_Texture2D_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2D_Float32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture2D_Float32_value.name = "value"_c;
+    TextureAtomicStore_Texture2D_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicStore_Texture2D_Float32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2D_Float32.name = TextureAtomicStore_Texture2D_Float32_name;
+    TextureAtomicStore_Texture2D_Float32.backendIndex = 3096;
+    TextureAtomicStore_Texture2D_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicStore_Texture2D_Float32.parameters = TextureAtomicStore_Texture2D_Float32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32)->signature = "textureAtomicStore(uniform *mutable texture2D,i32x2,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32)->name = "textureAtomicStore(uniform *mutable texture2D,i32x2,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicStore with Texture2D, Int32x2, UInt32
+    TextureAtomicStore_Texture2D_UInt32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2D_UInt32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicStore_Texture2D_UInt32_texture.type.mut = true;
+    TextureAtomicStore_Texture2D_UInt32_texture.type.modifiers = TextureAtomicStore_Texture2D_UInt32_texture_modifiers;
+    TextureAtomicStore_Texture2D_UInt32_texture.type.modifierValues = TextureAtomicStore_Texture2D_UInt32_texture_modifierValues;
+    TextureAtomicStore_Texture2D_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2D_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture2D_UInt32_value.name = "value"_c;
+    TextureAtomicStore_Texture2D_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicStore_Texture2D_UInt32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2D_UInt32.name = TextureAtomicStore_Texture2D_UInt32_name;
+    TextureAtomicStore_Texture2D_UInt32.backendIndex = 3097;
+    TextureAtomicStore_Texture2D_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicStore_Texture2D_UInt32.parameters = TextureAtomicStore_Texture2D_UInt32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32)->signature = "textureAtomicStore(uniform *mutable texture2D,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32)->name = "textureAtomicStore(uniform *mutable texture2D,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicStore with Texture2D, Int32x2, Int32
+    TextureAtomicStore_Texture2D_Int32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2D_Int32_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicStore_Texture2D_Int32_texture.type.mut = true;
+    TextureAtomicStore_Texture2D_Int32_texture.type.modifiers = TextureAtomicStore_Texture2D_Int32_texture_modifiers;
+    TextureAtomicStore_Texture2D_Int32_texture.type.modifierValues = TextureAtomicStore_Texture2D_Int32_texture_modifierValues;
+    TextureAtomicStore_Texture2D_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2D_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture2D_Int32_value.name = "value"_c;
+    TextureAtomicStore_Texture2D_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture2D_Int32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2D_Int32.name = TextureAtomicStore_Texture2D_Int32_name;
+    TextureAtomicStore_Texture2D_Int32.backendIndex = 3098;
+    TextureAtomicStore_Texture2D_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicStore_Texture2D_Int32.parameters = TextureAtomicStore_Texture2D_Int32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32)->signature = "textureAtomicStore(uniform *mutable texture2D,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32)->name = "textureAtomicStore(uniform *mutable texture2D,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicStore with Texture2D, Int32x2, Float16
+    TextureAtomicStore_Texture2D_Float16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2D_Float16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicStore_Texture2D_Float16_texture.type.mut = true;
+    TextureAtomicStore_Texture2D_Float16_texture.type.modifiers = TextureAtomicStore_Texture2D_Float16_texture_modifiers;
+    TextureAtomicStore_Texture2D_Float16_texture.type.modifierValues = TextureAtomicStore_Texture2D_Float16_texture_modifierValues;
+    TextureAtomicStore_Texture2D_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2D_Float16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture2D_Float16_value.name = "value"_c;
+    TextureAtomicStore_Texture2D_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicStore_Texture2D_Float16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2D_Float16.name = TextureAtomicStore_Texture2D_Float16_name;
+    TextureAtomicStore_Texture2D_Float16.backendIndex = 3099;
+    TextureAtomicStore_Texture2D_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicStore_Texture2D_Float16.parameters = TextureAtomicStore_Texture2D_Float16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16)->signature = "textureAtomicStore(uniform *mutable texture2D,i32x2,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16)->name = "textureAtomicStore(uniform *mutable texture2D,i32x2,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicStore with Texture2D, Int32x2, UInt16
+    TextureAtomicStore_Texture2D_UInt16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2D_UInt16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicStore_Texture2D_UInt16_texture.type.mut = true;
+    TextureAtomicStore_Texture2D_UInt16_texture.type.modifiers = TextureAtomicStore_Texture2D_UInt16_texture_modifiers;
+    TextureAtomicStore_Texture2D_UInt16_texture.type.modifierValues = TextureAtomicStore_Texture2D_UInt16_texture_modifierValues;
+    TextureAtomicStore_Texture2D_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2D_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture2D_UInt16_value.name = "value"_c;
+    TextureAtomicStore_Texture2D_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicStore_Texture2D_UInt16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2D_UInt16.name = TextureAtomicStore_Texture2D_UInt16_name;
+    TextureAtomicStore_Texture2D_UInt16.backendIndex = 3100;
+    TextureAtomicStore_Texture2D_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicStore_Texture2D_UInt16.parameters = TextureAtomicStore_Texture2D_UInt16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16)->signature = "textureAtomicStore(uniform *mutable texture2D,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16)->name = "textureAtomicStore(uniform *mutable texture2D,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicStore with Texture2D, Int32x2, Int16
+    TextureAtomicStore_Texture2D_Int16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2D_Int16_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicStore_Texture2D_Int16_texture.type.mut = true;
+    TextureAtomicStore_Texture2D_Int16_texture.type.modifiers = TextureAtomicStore_Texture2D_Int16_texture_modifiers;
+    TextureAtomicStore_Texture2D_Int16_texture.type.modifierValues = TextureAtomicStore_Texture2D_Int16_texture_modifierValues;
+    TextureAtomicStore_Texture2D_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2D_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture2D_Int16_value.name = "value"_c;
+    TextureAtomicStore_Texture2D_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicStore_Texture2D_Int16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2D_Int16.name = TextureAtomicStore_Texture2D_Int16_name;
+    TextureAtomicStore_Texture2D_Int16.backendIndex = 3101;
+    TextureAtomicStore_Texture2D_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicStore_Texture2D_Int16.parameters = TextureAtomicStore_Texture2D_Int16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16)->signature = "textureAtomicStore(uniform *mutable texture2D,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16)->name = "textureAtomicStore(uniform *mutable texture2D,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicStore with Texture2D, Int32x2, UInt64
+    TextureAtomicStore_Texture2D_UInt64_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2D_UInt64_texture.type = Type::FullType{ Texture2DType.name };
+    TextureAtomicStore_Texture2D_UInt64_texture.type.mut = true;
+    TextureAtomicStore_Texture2D_UInt64_texture.type.modifiers = TextureAtomicStore_Texture2D_UInt64_texture_modifiers;
+    TextureAtomicStore_Texture2D_UInt64_texture.type.modifierValues = TextureAtomicStore_Texture2D_UInt64_texture_modifierValues;
+    TextureAtomicStore_Texture2D_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2D_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture2D_UInt64_value.name = "value"_c;
+    TextureAtomicStore_Texture2D_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicStore_Texture2D_UInt64.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2D_UInt64.name = TextureAtomicStore_Texture2D_UInt64_name;
+    TextureAtomicStore_Texture2D_UInt64.backendIndex = 3102;
+    TextureAtomicStore_Texture2D_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicStore_Texture2D_UInt64.parameters = TextureAtomicStore_Texture2D_UInt64_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt64_texture)->typeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt64_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt64)->signature = "textureAtomicStore(uniform *mutable texture2D,i32x2,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt64)->name = "textureAtomicStore(uniform *mutable texture2D,i32x2,u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt64)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2D_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicStore with Texture3D, Int32x3, Float32
+    TextureAtomicStore_Texture3D_Float32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture3D_Float32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicStore_Texture3D_Float32_texture.type.mut = true;
+    TextureAtomicStore_Texture3D_Float32_texture.type.modifiers = TextureAtomicStore_Texture3D_Float32_texture_modifiers;
+    TextureAtomicStore_Texture3D_Float32_texture.type.modifierValues = TextureAtomicStore_Texture3D_Float32_texture_modifierValues;
+    TextureAtomicStore_Texture3D_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture3D_Float32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture3D_Float32_value.name = "value"_c;
+    TextureAtomicStore_Texture3D_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicStore_Texture3D_Float32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture3D_Float32.name = TextureAtomicStore_Texture3D_Float32_name;
+    TextureAtomicStore_Texture3D_Float32.backendIndex = 3103;
+    TextureAtomicStore_Texture3D_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicStore_Texture3D_Float32.parameters = TextureAtomicStore_Texture3D_Float32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32)->signature = "textureAtomicStore(uniform *mutable texture3D,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32)->name = "textureAtomicStore(uniform *mutable texture3D,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicStore with Texture3D, Int32x3, UInt32
+    TextureAtomicStore_Texture3D_UInt32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture3D_UInt32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicStore_Texture3D_UInt32_texture.type.mut = true;
+    TextureAtomicStore_Texture3D_UInt32_texture.type.modifiers = TextureAtomicStore_Texture3D_UInt32_texture_modifiers;
+    TextureAtomicStore_Texture3D_UInt32_texture.type.modifierValues = TextureAtomicStore_Texture3D_UInt32_texture_modifierValues;
+    TextureAtomicStore_Texture3D_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture3D_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture3D_UInt32_value.name = "value"_c;
+    TextureAtomicStore_Texture3D_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicStore_Texture3D_UInt32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture3D_UInt32.name = TextureAtomicStore_Texture3D_UInt32_name;
+    TextureAtomicStore_Texture3D_UInt32.backendIndex = 3104;
+    TextureAtomicStore_Texture3D_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicStore_Texture3D_UInt32.parameters = TextureAtomicStore_Texture3D_UInt32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32)->signature = "textureAtomicStore(uniform *mutable texture3D,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32)->name = "textureAtomicStore(uniform *mutable texture3D,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicStore with Texture3D, Int32x3, Int32
+    TextureAtomicStore_Texture3D_Int32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture3D_Int32_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicStore_Texture3D_Int32_texture.type.mut = true;
+    TextureAtomicStore_Texture3D_Int32_texture.type.modifiers = TextureAtomicStore_Texture3D_Int32_texture_modifiers;
+    TextureAtomicStore_Texture3D_Int32_texture.type.modifierValues = TextureAtomicStore_Texture3D_Int32_texture_modifierValues;
+    TextureAtomicStore_Texture3D_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture3D_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture3D_Int32_value.name = "value"_c;
+    TextureAtomicStore_Texture3D_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture3D_Int32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture3D_Int32.name = TextureAtomicStore_Texture3D_Int32_name;
+    TextureAtomicStore_Texture3D_Int32.backendIndex = 3105;
+    TextureAtomicStore_Texture3D_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicStore_Texture3D_Int32.parameters = TextureAtomicStore_Texture3D_Int32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32)->signature = "textureAtomicStore(uniform *mutable texture3D,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32)->name = "textureAtomicStore(uniform *mutable texture3D,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicStore with Texture3D, Int32x3, Float16
+    TextureAtomicStore_Texture3D_Float16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture3D_Float16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicStore_Texture3D_Float16_texture.type.mut = true;
+    TextureAtomicStore_Texture3D_Float16_texture.type.modifiers = TextureAtomicStore_Texture3D_Float16_texture_modifiers;
+    TextureAtomicStore_Texture3D_Float16_texture.type.modifierValues = TextureAtomicStore_Texture3D_Float16_texture_modifierValues;
+    TextureAtomicStore_Texture3D_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture3D_Float16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture3D_Float16_value.name = "value"_c;
+    TextureAtomicStore_Texture3D_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicStore_Texture3D_Float16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture3D_Float16.name = TextureAtomicStore_Texture3D_Float16_name;
+    TextureAtomicStore_Texture3D_Float16.backendIndex = 3106;
+    TextureAtomicStore_Texture3D_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicStore_Texture3D_Float16.parameters = TextureAtomicStore_Texture3D_Float16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16)->signature = "textureAtomicStore(uniform *mutable texture3D,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16)->name = "textureAtomicStore(uniform *mutable texture3D,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicStore with Texture3D, Int32x3, UInt16
+    TextureAtomicStore_Texture3D_UInt16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture3D_UInt16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicStore_Texture3D_UInt16_texture.type.mut = true;
+    TextureAtomicStore_Texture3D_UInt16_texture.type.modifiers = TextureAtomicStore_Texture3D_UInt16_texture_modifiers;
+    TextureAtomicStore_Texture3D_UInt16_texture.type.modifierValues = TextureAtomicStore_Texture3D_UInt16_texture_modifierValues;
+    TextureAtomicStore_Texture3D_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture3D_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture3D_UInt16_value.name = "value"_c;
+    TextureAtomicStore_Texture3D_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicStore_Texture3D_UInt16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture3D_UInt16.name = TextureAtomicStore_Texture3D_UInt16_name;
+    TextureAtomicStore_Texture3D_UInt16.backendIndex = 3107;
+    TextureAtomicStore_Texture3D_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicStore_Texture3D_UInt16.parameters = TextureAtomicStore_Texture3D_UInt16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16)->signature = "textureAtomicStore(uniform *mutable texture3D,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16)->name = "textureAtomicStore(uniform *mutable texture3D,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicStore with Texture3D, Int32x3, Int16
+    TextureAtomicStore_Texture3D_Int16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture3D_Int16_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicStore_Texture3D_Int16_texture.type.mut = true;
+    TextureAtomicStore_Texture3D_Int16_texture.type.modifiers = TextureAtomicStore_Texture3D_Int16_texture_modifiers;
+    TextureAtomicStore_Texture3D_Int16_texture.type.modifierValues = TextureAtomicStore_Texture3D_Int16_texture_modifierValues;
+    TextureAtomicStore_Texture3D_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture3D_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture3D_Int16_value.name = "value"_c;
+    TextureAtomicStore_Texture3D_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicStore_Texture3D_Int16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture3D_Int16.name = TextureAtomicStore_Texture3D_Int16_name;
+    TextureAtomicStore_Texture3D_Int16.backendIndex = 3108;
+    TextureAtomicStore_Texture3D_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicStore_Texture3D_Int16.parameters = TextureAtomicStore_Texture3D_Int16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16)->signature = "textureAtomicStore(uniform *mutable texture3D,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16)->name = "textureAtomicStore(uniform *mutable texture3D,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicStore with Texture3D, Int32x3, UInt64
+    TextureAtomicStore_Texture3D_UInt64_texture.name = "texture"_c;
+    TextureAtomicStore_Texture3D_UInt64_texture.type = Type::FullType{ Texture3DType.name };
+    TextureAtomicStore_Texture3D_UInt64_texture.type.mut = true;
+    TextureAtomicStore_Texture3D_UInt64_texture.type.modifiers = TextureAtomicStore_Texture3D_UInt64_texture_modifiers;
+    TextureAtomicStore_Texture3D_UInt64_texture.type.modifierValues = TextureAtomicStore_Texture3D_UInt64_texture_modifierValues;
+    TextureAtomicStore_Texture3D_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture3D_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture3D_UInt64_value.name = "value"_c;
+    TextureAtomicStore_Texture3D_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicStore_Texture3D_UInt64.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture3D_UInt64.name = TextureAtomicStore_Texture3D_UInt64_name;
+    TextureAtomicStore_Texture3D_UInt64.backendIndex = 3109;
+    TextureAtomicStore_Texture3D_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicStore_Texture3D_UInt64.parameters = TextureAtomicStore_Texture3D_UInt64_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt64_texture)->typeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt64_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt64)->signature = "textureAtomicStore(uniform *mutable texture3D,i32x3,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt64)->name = "textureAtomicStore(uniform *mutable texture3D,i32x3,u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt64)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture3D_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicStore with TextureCube, Int32x3, Float32
+    TextureAtomicStore_TextureCube_Float32_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCube_Float32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicStore_TextureCube_Float32_texture.type.mut = true;
+    TextureAtomicStore_TextureCube_Float32_texture.type.modifiers = TextureAtomicStore_TextureCube_Float32_texture_modifiers;
+    TextureAtomicStore_TextureCube_Float32_texture.type.modifierValues = TextureAtomicStore_TextureCube_Float32_texture_modifierValues;
+    TextureAtomicStore_TextureCube_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCube_Float32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_TextureCube_Float32_value.name = "value"_c;
+    TextureAtomicStore_TextureCube_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicStore_TextureCube_Float32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCube_Float32.name = TextureAtomicStore_TextureCube_Float32_name;
+    TextureAtomicStore_TextureCube_Float32.backendIndex = 3110;
+    TextureAtomicStore_TextureCube_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicStore_TextureCube_Float32.parameters = TextureAtomicStore_TextureCube_Float32_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32)->signature = "textureAtomicStore(uniform *mutable textureCube,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32)->name = "textureAtomicStore(uniform *mutable textureCube,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicStore with TextureCube, Int32x3, UInt32
+    TextureAtomicStore_TextureCube_UInt32_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCube_UInt32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicStore_TextureCube_UInt32_texture.type.mut = true;
+    TextureAtomicStore_TextureCube_UInt32_texture.type.modifiers = TextureAtomicStore_TextureCube_UInt32_texture_modifiers;
+    TextureAtomicStore_TextureCube_UInt32_texture.type.modifierValues = TextureAtomicStore_TextureCube_UInt32_texture_modifierValues;
+    TextureAtomicStore_TextureCube_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCube_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_TextureCube_UInt32_value.name = "value"_c;
+    TextureAtomicStore_TextureCube_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicStore_TextureCube_UInt32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCube_UInt32.name = TextureAtomicStore_TextureCube_UInt32_name;
+    TextureAtomicStore_TextureCube_UInt32.backendIndex = 3111;
+    TextureAtomicStore_TextureCube_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicStore_TextureCube_UInt32.parameters = TextureAtomicStore_TextureCube_UInt32_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32)->signature = "textureAtomicStore(uniform *mutable textureCube,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32)->name = "textureAtomicStore(uniform *mutable textureCube,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicStore with TextureCube, Int32x3, Int32
+    TextureAtomicStore_TextureCube_Int32_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCube_Int32_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicStore_TextureCube_Int32_texture.type.mut = true;
+    TextureAtomicStore_TextureCube_Int32_texture.type.modifiers = TextureAtomicStore_TextureCube_Int32_texture_modifiers;
+    TextureAtomicStore_TextureCube_Int32_texture.type.modifierValues = TextureAtomicStore_TextureCube_Int32_texture_modifierValues;
+    TextureAtomicStore_TextureCube_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCube_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_TextureCube_Int32_value.name = "value"_c;
+    TextureAtomicStore_TextureCube_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_TextureCube_Int32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCube_Int32.name = TextureAtomicStore_TextureCube_Int32_name;
+    TextureAtomicStore_TextureCube_Int32.backendIndex = 3112;
+    TextureAtomicStore_TextureCube_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicStore_TextureCube_Int32.parameters = TextureAtomicStore_TextureCube_Int32_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32)->signature = "textureAtomicStore(uniform *mutable textureCube,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32)->name = "textureAtomicStore(uniform *mutable textureCube,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicStore with TextureCube, Int32x3, Float16
+    TextureAtomicStore_TextureCube_Float16_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCube_Float16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicStore_TextureCube_Float16_texture.type.mut = true;
+    TextureAtomicStore_TextureCube_Float16_texture.type.modifiers = TextureAtomicStore_TextureCube_Float16_texture_modifiers;
+    TextureAtomicStore_TextureCube_Float16_texture.type.modifierValues = TextureAtomicStore_TextureCube_Float16_texture_modifierValues;
+    TextureAtomicStore_TextureCube_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCube_Float16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_TextureCube_Float16_value.name = "value"_c;
+    TextureAtomicStore_TextureCube_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicStore_TextureCube_Float16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCube_Float16.name = TextureAtomicStore_TextureCube_Float16_name;
+    TextureAtomicStore_TextureCube_Float16.backendIndex = 3113;
+    TextureAtomicStore_TextureCube_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicStore_TextureCube_Float16.parameters = TextureAtomicStore_TextureCube_Float16_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16)->signature = "textureAtomicStore(uniform *mutable textureCube,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16)->name = "textureAtomicStore(uniform *mutable textureCube,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicStore with TextureCube, Int32x3, UInt16
+    TextureAtomicStore_TextureCube_UInt16_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCube_UInt16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicStore_TextureCube_UInt16_texture.type.mut = true;
+    TextureAtomicStore_TextureCube_UInt16_texture.type.modifiers = TextureAtomicStore_TextureCube_UInt16_texture_modifiers;
+    TextureAtomicStore_TextureCube_UInt16_texture.type.modifierValues = TextureAtomicStore_TextureCube_UInt16_texture_modifierValues;
+    TextureAtomicStore_TextureCube_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCube_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_TextureCube_UInt16_value.name = "value"_c;
+    TextureAtomicStore_TextureCube_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicStore_TextureCube_UInt16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCube_UInt16.name = TextureAtomicStore_TextureCube_UInt16_name;
+    TextureAtomicStore_TextureCube_UInt16.backendIndex = 3114;
+    TextureAtomicStore_TextureCube_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicStore_TextureCube_UInt16.parameters = TextureAtomicStore_TextureCube_UInt16_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16)->signature = "textureAtomicStore(uniform *mutable textureCube,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16)->name = "textureAtomicStore(uniform *mutable textureCube,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicStore with TextureCube, Int32x3, Int16
+    TextureAtomicStore_TextureCube_Int16_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCube_Int16_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicStore_TextureCube_Int16_texture.type.mut = true;
+    TextureAtomicStore_TextureCube_Int16_texture.type.modifiers = TextureAtomicStore_TextureCube_Int16_texture_modifiers;
+    TextureAtomicStore_TextureCube_Int16_texture.type.modifierValues = TextureAtomicStore_TextureCube_Int16_texture_modifierValues;
+    TextureAtomicStore_TextureCube_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCube_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_TextureCube_Int16_value.name = "value"_c;
+    TextureAtomicStore_TextureCube_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicStore_TextureCube_Int16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCube_Int16.name = TextureAtomicStore_TextureCube_Int16_name;
+    TextureAtomicStore_TextureCube_Int16.backendIndex = 3115;
+    TextureAtomicStore_TextureCube_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicStore_TextureCube_Int16.parameters = TextureAtomicStore_TextureCube_Int16_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16)->signature = "textureAtomicStore(uniform *mutable textureCube,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16)->name = "textureAtomicStore(uniform *mutable textureCube,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicStore with TextureCube, Int32x3, UInt64
+    TextureAtomicStore_TextureCube_UInt64_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCube_UInt64_texture.type = Type::FullType{ TextureCubeType.name };
+    TextureAtomicStore_TextureCube_UInt64_texture.type.mut = true;
+    TextureAtomicStore_TextureCube_UInt64_texture.type.modifiers = TextureAtomicStore_TextureCube_UInt64_texture_modifiers;
+    TextureAtomicStore_TextureCube_UInt64_texture.type.modifierValues = TextureAtomicStore_TextureCube_UInt64_texture_modifierValues;
+    TextureAtomicStore_TextureCube_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCube_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_TextureCube_UInt64_value.name = "value"_c;
+    TextureAtomicStore_TextureCube_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicStore_TextureCube_UInt64.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCube_UInt64.name = TextureAtomicStore_TextureCube_UInt64_name;
+    TextureAtomicStore_TextureCube_UInt64.backendIndex = 3116;
+    TextureAtomicStore_TextureCube_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicStore_TextureCube_UInt64.parameters = TextureAtomicStore_TextureCube_UInt64_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt64_texture)->typeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt64_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt64)->signature = "textureAtomicStore(uniform *mutable textureCube,i32x3,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt64)->name = "textureAtomicStore(uniform *mutable textureCube,i32x3,u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt64)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCube_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicStore with Texture1DArray, Int32x2, Float32
+    TextureAtomicStore_Texture1DArray_Float32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1DArray_Float32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_Float32_texture.type.mut = true;
+    TextureAtomicStore_Texture1DArray_Float32_texture.type.modifiers = TextureAtomicStore_Texture1DArray_Float32_texture_modifiers;
+    TextureAtomicStore_Texture1DArray_Float32_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_Float32_texture_modifierValues;
+    TextureAtomicStore_Texture1DArray_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1DArray_Float32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture1DArray_Float32_value.name = "value"_c;
+    TextureAtomicStore_Texture1DArray_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicStore_Texture1DArray_Float32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1DArray_Float32.name = TextureAtomicStore_Texture1DArray_Float32_name;
+    TextureAtomicStore_Texture1DArray_Float32.backendIndex = 3117;
+    TextureAtomicStore_Texture1DArray_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicStore_Texture1DArray_Float32.parameters = TextureAtomicStore_Texture1DArray_Float32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicStore with Texture1DArray, Int32x2, UInt32
+    TextureAtomicStore_Texture1DArray_UInt32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1DArray_UInt32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_UInt32_texture.type.mut = true;
+    TextureAtomicStore_Texture1DArray_UInt32_texture.type.modifiers = TextureAtomicStore_Texture1DArray_UInt32_texture_modifiers;
+    TextureAtomicStore_Texture1DArray_UInt32_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_UInt32_texture_modifierValues;
+    TextureAtomicStore_Texture1DArray_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1DArray_UInt32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture1DArray_UInt32_value.name = "value"_c;
+    TextureAtomicStore_Texture1DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicStore_Texture1DArray_UInt32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1DArray_UInt32.name = TextureAtomicStore_Texture1DArray_UInt32_name;
+    TextureAtomicStore_Texture1DArray_UInt32.backendIndex = 3118;
+    TextureAtomicStore_Texture1DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicStore_Texture1DArray_UInt32.parameters = TextureAtomicStore_Texture1DArray_UInt32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicStore with Texture1DArray, Int32x2, Int32
+    TextureAtomicStore_Texture1DArray_Int32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1DArray_Int32_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_Int32_texture.type.mut = true;
+    TextureAtomicStore_Texture1DArray_Int32_texture.type.modifiers = TextureAtomicStore_Texture1DArray_Int32_texture_modifiers;
+    TextureAtomicStore_Texture1DArray_Int32_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_Int32_texture_modifierValues;
+    TextureAtomicStore_Texture1DArray_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1DArray_Int32_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture1DArray_Int32_value.name = "value"_c;
+    TextureAtomicStore_Texture1DArray_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture1DArray_Int32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1DArray_Int32.name = TextureAtomicStore_Texture1DArray_Int32_name;
+    TextureAtomicStore_Texture1DArray_Int32.backendIndex = 3119;
+    TextureAtomicStore_Texture1DArray_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicStore_Texture1DArray_Int32.parameters = TextureAtomicStore_Texture1DArray_Int32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicStore with Texture1DArray, Int32x2, Float16
+    TextureAtomicStore_Texture1DArray_Float16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1DArray_Float16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_Float16_texture.type.mut = true;
+    TextureAtomicStore_Texture1DArray_Float16_texture.type.modifiers = TextureAtomicStore_Texture1DArray_Float16_texture_modifiers;
+    TextureAtomicStore_Texture1DArray_Float16_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_Float16_texture_modifierValues;
+    TextureAtomicStore_Texture1DArray_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1DArray_Float16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture1DArray_Float16_value.name = "value"_c;
+    TextureAtomicStore_Texture1DArray_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicStore_Texture1DArray_Float16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1DArray_Float16.name = TextureAtomicStore_Texture1DArray_Float16_name;
+    TextureAtomicStore_Texture1DArray_Float16.backendIndex = 3120;
+    TextureAtomicStore_Texture1DArray_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicStore_Texture1DArray_Float16.parameters = TextureAtomicStore_Texture1DArray_Float16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicStore with Texture1DArray, Int32x2, UInt16
+    TextureAtomicStore_Texture1DArray_UInt16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1DArray_UInt16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_UInt16_texture.type.mut = true;
+    TextureAtomicStore_Texture1DArray_UInt16_texture.type.modifiers = TextureAtomicStore_Texture1DArray_UInt16_texture_modifiers;
+    TextureAtomicStore_Texture1DArray_UInt16_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_UInt16_texture_modifierValues;
+    TextureAtomicStore_Texture1DArray_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1DArray_UInt16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture1DArray_UInt16_value.name = "value"_c;
+    TextureAtomicStore_Texture1DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicStore_Texture1DArray_UInt16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1DArray_UInt16.name = TextureAtomicStore_Texture1DArray_UInt16_name;
+    TextureAtomicStore_Texture1DArray_UInt16.backendIndex = 3121;
+    TextureAtomicStore_Texture1DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicStore_Texture1DArray_UInt16.parameters = TextureAtomicStore_Texture1DArray_UInt16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicStore with Texture1DArray, Int32x2, Int16
+    TextureAtomicStore_Texture1DArray_Int16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1DArray_Int16_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_Int16_texture.type.mut = true;
+    TextureAtomicStore_Texture1DArray_Int16_texture.type.modifiers = TextureAtomicStore_Texture1DArray_Int16_texture_modifiers;
+    TextureAtomicStore_Texture1DArray_Int16_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_Int16_texture_modifierValues;
+    TextureAtomicStore_Texture1DArray_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1DArray_Int16_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture1DArray_Int16_value.name = "value"_c;
+    TextureAtomicStore_Texture1DArray_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicStore_Texture1DArray_Int16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1DArray_Int16.name = TextureAtomicStore_Texture1DArray_Int16_name;
+    TextureAtomicStore_Texture1DArray_Int16.backendIndex = 3122;
+    TextureAtomicStore_Texture1DArray_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicStore_Texture1DArray_Int16.parameters = TextureAtomicStore_Texture1DArray_Int16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicStore with Texture1DArray, Int32x2, UInt64
+    TextureAtomicStore_Texture1DArray_UInt64_texture.name = "texture"_c;
+    TextureAtomicStore_Texture1DArray_UInt64_texture.type = Type::FullType{ Texture1DArrayType.name };
+    TextureAtomicStore_Texture1DArray_UInt64_texture.type.mut = true;
+    TextureAtomicStore_Texture1DArray_UInt64_texture.type.modifiers = TextureAtomicStore_Texture1DArray_UInt64_texture_modifiers;
+    TextureAtomicStore_Texture1DArray_UInt64_texture.type.modifierValues = TextureAtomicStore_Texture1DArray_UInt64_texture_modifierValues;
+    TextureAtomicStore_Texture1DArray_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture1DArray_UInt64_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureAtomicStore_Texture1DArray_UInt64_value.name = "value"_c;
+    TextureAtomicStore_Texture1DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicStore_Texture1DArray_UInt64.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture1DArray_UInt64.name = TextureAtomicStore_Texture1DArray_UInt64_name;
+    TextureAtomicStore_Texture1DArray_UInt64.backendIndex = 3123;
+    TextureAtomicStore_Texture1DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicStore_Texture1DArray_UInt64.parameters = TextureAtomicStore_Texture1DArray_UInt64_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt64_texture)->typeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt64_coordinate)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt64)->signature = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt64)->name = "textureAtomicStore(uniform *mutable texture1DArray,i32x2,u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt64)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture1DArray_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicStore with Texture2DArray, Int32x3, Float32
+    TextureAtomicStore_Texture2DArray_Float32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2DArray_Float32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_Float32_texture.type.mut = true;
+    TextureAtomicStore_Texture2DArray_Float32_texture.type.modifiers = TextureAtomicStore_Texture2DArray_Float32_texture_modifiers;
+    TextureAtomicStore_Texture2DArray_Float32_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_Float32_texture_modifierValues;
+    TextureAtomicStore_Texture2DArray_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2DArray_Float32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture2DArray_Float32_value.name = "value"_c;
+    TextureAtomicStore_Texture2DArray_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicStore_Texture2DArray_Float32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2DArray_Float32.name = TextureAtomicStore_Texture2DArray_Float32_name;
+    TextureAtomicStore_Texture2DArray_Float32.backendIndex = 3124;
+    TextureAtomicStore_Texture2DArray_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicStore_Texture2DArray_Float32.parameters = TextureAtomicStore_Texture2DArray_Float32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicStore with Texture2DArray, Int32x3, UInt32
+    TextureAtomicStore_Texture2DArray_UInt32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2DArray_UInt32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_UInt32_texture.type.mut = true;
+    TextureAtomicStore_Texture2DArray_UInt32_texture.type.modifiers = TextureAtomicStore_Texture2DArray_UInt32_texture_modifiers;
+    TextureAtomicStore_Texture2DArray_UInt32_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_UInt32_texture_modifierValues;
+    TextureAtomicStore_Texture2DArray_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2DArray_UInt32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture2DArray_UInt32_value.name = "value"_c;
+    TextureAtomicStore_Texture2DArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicStore_Texture2DArray_UInt32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2DArray_UInt32.name = TextureAtomicStore_Texture2DArray_UInt32_name;
+    TextureAtomicStore_Texture2DArray_UInt32.backendIndex = 3125;
+    TextureAtomicStore_Texture2DArray_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicStore_Texture2DArray_UInt32.parameters = TextureAtomicStore_Texture2DArray_UInt32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicStore with Texture2DArray, Int32x3, Int32
+    TextureAtomicStore_Texture2DArray_Int32_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2DArray_Int32_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_Int32_texture.type.mut = true;
+    TextureAtomicStore_Texture2DArray_Int32_texture.type.modifiers = TextureAtomicStore_Texture2DArray_Int32_texture_modifiers;
+    TextureAtomicStore_Texture2DArray_Int32_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_Int32_texture_modifierValues;
+    TextureAtomicStore_Texture2DArray_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2DArray_Int32_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture2DArray_Int32_value.name = "value"_c;
+    TextureAtomicStore_Texture2DArray_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_Texture2DArray_Int32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2DArray_Int32.name = TextureAtomicStore_Texture2DArray_Int32_name;
+    TextureAtomicStore_Texture2DArray_Int32.backendIndex = 3126;
+    TextureAtomicStore_Texture2DArray_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicStore_Texture2DArray_Int32.parameters = TextureAtomicStore_Texture2DArray_Int32_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicStore with Texture2DArray, Int32x3, Float16
+    TextureAtomicStore_Texture2DArray_Float16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2DArray_Float16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_Float16_texture.type.mut = true;
+    TextureAtomicStore_Texture2DArray_Float16_texture.type.modifiers = TextureAtomicStore_Texture2DArray_Float16_texture_modifiers;
+    TextureAtomicStore_Texture2DArray_Float16_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_Float16_texture_modifierValues;
+    TextureAtomicStore_Texture2DArray_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2DArray_Float16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture2DArray_Float16_value.name = "value"_c;
+    TextureAtomicStore_Texture2DArray_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicStore_Texture2DArray_Float16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2DArray_Float16.name = TextureAtomicStore_Texture2DArray_Float16_name;
+    TextureAtomicStore_Texture2DArray_Float16.backendIndex = 3127;
+    TextureAtomicStore_Texture2DArray_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicStore_Texture2DArray_Float16.parameters = TextureAtomicStore_Texture2DArray_Float16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicStore with Texture2DArray, Int32x3, UInt16
+    TextureAtomicStore_Texture2DArray_UInt16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2DArray_UInt16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_UInt16_texture.type.mut = true;
+    TextureAtomicStore_Texture2DArray_UInt16_texture.type.modifiers = TextureAtomicStore_Texture2DArray_UInt16_texture_modifiers;
+    TextureAtomicStore_Texture2DArray_UInt16_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_UInt16_texture_modifierValues;
+    TextureAtomicStore_Texture2DArray_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2DArray_UInt16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture2DArray_UInt16_value.name = "value"_c;
+    TextureAtomicStore_Texture2DArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicStore_Texture2DArray_UInt16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2DArray_UInt16.name = TextureAtomicStore_Texture2DArray_UInt16_name;
+    TextureAtomicStore_Texture2DArray_UInt16.backendIndex = 3128;
+    TextureAtomicStore_Texture2DArray_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicStore_Texture2DArray_UInt16.parameters = TextureAtomicStore_Texture2DArray_UInt16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicStore with Texture2DArray, Int32x3, Int16
+    TextureAtomicStore_Texture2DArray_Int16_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2DArray_Int16_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_Int16_texture.type.mut = true;
+    TextureAtomicStore_Texture2DArray_Int16_texture.type.modifiers = TextureAtomicStore_Texture2DArray_Int16_texture_modifiers;
+    TextureAtomicStore_Texture2DArray_Int16_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_Int16_texture_modifierValues;
+    TextureAtomicStore_Texture2DArray_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2DArray_Int16_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture2DArray_Int16_value.name = "value"_c;
+    TextureAtomicStore_Texture2DArray_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicStore_Texture2DArray_Int16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2DArray_Int16.name = TextureAtomicStore_Texture2DArray_Int16_name;
+    TextureAtomicStore_Texture2DArray_Int16.backendIndex = 3129;
+    TextureAtomicStore_Texture2DArray_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicStore_Texture2DArray_Int16.parameters = TextureAtomicStore_Texture2DArray_Int16_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicStore with Texture2DArray, Int32x3, UInt64
+    TextureAtomicStore_Texture2DArray_UInt64_texture.name = "texture"_c;
+    TextureAtomicStore_Texture2DArray_UInt64_texture.type = Type::FullType{ Texture2DArrayType.name };
+    TextureAtomicStore_Texture2DArray_UInt64_texture.type.mut = true;
+    TextureAtomicStore_Texture2DArray_UInt64_texture.type.modifiers = TextureAtomicStore_Texture2DArray_UInt64_texture_modifiers;
+    TextureAtomicStore_Texture2DArray_UInt64_texture.type.modifierValues = TextureAtomicStore_Texture2DArray_UInt64_texture_modifierValues;
+    TextureAtomicStore_Texture2DArray_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_Texture2DArray_UInt64_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureAtomicStore_Texture2DArray_UInt64_value.name = "value"_c;
+    TextureAtomicStore_Texture2DArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicStore_Texture2DArray_UInt64.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_Texture2DArray_UInt64.name = TextureAtomicStore_Texture2DArray_UInt64_name;
+    TextureAtomicStore_Texture2DArray_UInt64.backendIndex = 3130;
+    TextureAtomicStore_Texture2DArray_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicStore_Texture2DArray_UInt64.parameters = TextureAtomicStore_Texture2DArray_UInt64_args;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt64_texture)->typeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt64_coordinate)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt64)->signature = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt64)->name = "textureAtomicStore(uniform *mutable texture2DArray,i32x3,u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt64)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_Texture2DArray_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicStore with TextureCubeArray, Int32x4, Float32
+    TextureAtomicStore_TextureCubeArray_Float32_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCubeArray_Float32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_Float32_texture.type.mut = true;
+    TextureAtomicStore_TextureCubeArray_Float32_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_Float32_texture_modifiers;
+    TextureAtomicStore_TextureCubeArray_Float32_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_Float32_texture_modifierValues;
+    TextureAtomicStore_TextureCubeArray_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCubeArray_Float32_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicStore_TextureCubeArray_Float32_value.name = "value"_c;
+    TextureAtomicStore_TextureCubeArray_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicStore_TextureCubeArray_Float32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCubeArray_Float32.name = TextureAtomicStore_TextureCubeArray_Float32_name;
+    TextureAtomicStore_TextureCubeArray_Float32.backendIndex = 3131;
+    TextureAtomicStore_TextureCubeArray_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicStore_TextureCubeArray_Float32.parameters = TextureAtomicStore_TextureCubeArray_Float32_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicStore with TextureCubeArray, Int32x4, UInt32
+    TextureAtomicStore_TextureCubeArray_UInt32_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCubeArray_UInt32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_UInt32_texture.type.mut = true;
+    TextureAtomicStore_TextureCubeArray_UInt32_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_UInt32_texture_modifiers;
+    TextureAtomicStore_TextureCubeArray_UInt32_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_UInt32_texture_modifierValues;
+    TextureAtomicStore_TextureCubeArray_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCubeArray_UInt32_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt32_value.name = "value"_c;
+    TextureAtomicStore_TextureCubeArray_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCubeArray_UInt32.name = TextureAtomicStore_TextureCubeArray_UInt32_name;
+    TextureAtomicStore_TextureCubeArray_UInt32.backendIndex = 3132;
+    TextureAtomicStore_TextureCubeArray_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt32.parameters = TextureAtomicStore_TextureCubeArray_UInt32_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicStore with TextureCubeArray, Int32x4, Int32
+    TextureAtomicStore_TextureCubeArray_Int32_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCubeArray_Int32_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_Int32_texture.type.mut = true;
+    TextureAtomicStore_TextureCubeArray_Int32_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_Int32_texture_modifiers;
+    TextureAtomicStore_TextureCubeArray_Int32_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_Int32_texture_modifierValues;
+    TextureAtomicStore_TextureCubeArray_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCubeArray_Int32_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicStore_TextureCubeArray_Int32_value.name = "value"_c;
+    TextureAtomicStore_TextureCubeArray_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicStore_TextureCubeArray_Int32.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCubeArray_Int32.name = TextureAtomicStore_TextureCubeArray_Int32_name;
+    TextureAtomicStore_TextureCubeArray_Int32.backendIndex = 3133;
+    TextureAtomicStore_TextureCubeArray_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicStore_TextureCubeArray_Int32.parameters = TextureAtomicStore_TextureCubeArray_Int32_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicStore with TextureCubeArray, Int32x4, Float16
+    TextureAtomicStore_TextureCubeArray_Float16_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCubeArray_Float16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_Float16_texture.type.mut = true;
+    TextureAtomicStore_TextureCubeArray_Float16_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_Float16_texture_modifiers;
+    TextureAtomicStore_TextureCubeArray_Float16_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_Float16_texture_modifierValues;
+    TextureAtomicStore_TextureCubeArray_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCubeArray_Float16_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicStore_TextureCubeArray_Float16_value.name = "value"_c;
+    TextureAtomicStore_TextureCubeArray_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicStore_TextureCubeArray_Float16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCubeArray_Float16.name = TextureAtomicStore_TextureCubeArray_Float16_name;
+    TextureAtomicStore_TextureCubeArray_Float16.backendIndex = 3134;
+    TextureAtomicStore_TextureCubeArray_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicStore_TextureCubeArray_Float16.parameters = TextureAtomicStore_TextureCubeArray_Float16_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// textureAtomicStore with TextureCubeArray, Int32x4, UInt16
+    TextureAtomicStore_TextureCubeArray_UInt16_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCubeArray_UInt16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_UInt16_texture.type.mut = true;
+    TextureAtomicStore_TextureCubeArray_UInt16_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_UInt16_texture_modifiers;
+    TextureAtomicStore_TextureCubeArray_UInt16_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_UInt16_texture_modifierValues;
+    TextureAtomicStore_TextureCubeArray_UInt16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCubeArray_UInt16_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt16_value.name = "value"_c;
+    TextureAtomicStore_TextureCubeArray_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCubeArray_UInt16.name = TextureAtomicStore_TextureCubeArray_UInt16_name;
+    TextureAtomicStore_TextureCubeArray_UInt16.backendIndex = 3135;
+    TextureAtomicStore_TextureCubeArray_UInt16.returnType = Type::FullType { UInt16Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt16.parameters = TextureAtomicStore_TextureCubeArray_UInt16_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u16) u16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// textureAtomicStore with TextureCubeArray, Int32x4, Int16
+    TextureAtomicStore_TextureCubeArray_Int16_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCubeArray_Int16_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_Int16_texture.type.mut = true;
+    TextureAtomicStore_TextureCubeArray_Int16_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_Int16_texture_modifiers;
+    TextureAtomicStore_TextureCubeArray_Int16_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_Int16_texture_modifierValues;
+    TextureAtomicStore_TextureCubeArray_Int16_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCubeArray_Int16_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicStore_TextureCubeArray_Int16_value.name = "value"_c;
+    TextureAtomicStore_TextureCubeArray_Int16_value.type = Type::FullType{ Int16Type.name };
+    TextureAtomicStore_TextureCubeArray_Int16.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCubeArray_Int16.name = TextureAtomicStore_TextureCubeArray_Int16_name;
+    TextureAtomicStore_TextureCubeArray_Int16.backendIndex = 3136;
+    TextureAtomicStore_TextureCubeArray_Int16.returnType = Type::FullType { Int16Type.name };
+    TextureAtomicStore_TextureCubeArray_Int16.parameters = TextureAtomicStore_TextureCubeArray_Int16_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,i16) i16"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i16)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// textureAtomicStore with TextureCubeArray, Int32x4, UInt64
+    TextureAtomicStore_TextureCubeArray_UInt64_texture.name = "texture"_c;
+    TextureAtomicStore_TextureCubeArray_UInt64_texture.type = Type::FullType{ TextureCubeArrayType.name };
+    TextureAtomicStore_TextureCubeArray_UInt64_texture.type.mut = true;
+    TextureAtomicStore_TextureCubeArray_UInt64_texture.type.modifiers = TextureAtomicStore_TextureCubeArray_UInt64_texture_modifiers;
+    TextureAtomicStore_TextureCubeArray_UInt64_texture.type.modifierValues = TextureAtomicStore_TextureCubeArray_UInt64_texture_modifierValues;
+    TextureAtomicStore_TextureCubeArray_UInt64_coordinate.name = "coordinate"_c;
+    TextureAtomicStore_TextureCubeArray_UInt64_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt64_value.name = "value"_c;
+    TextureAtomicStore_TextureCubeArray_UInt64_value.type = Type::FullType{ UInt64Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt64.documentation = "Atomically store a texel value to a texture"_c;
+    TextureAtomicStore_TextureCubeArray_UInt64.name = TextureAtomicStore_TextureCubeArray_UInt64_name;
+    TextureAtomicStore_TextureCubeArray_UInt64.backendIndex = 3137;
+    TextureAtomicStore_TextureCubeArray_UInt64.returnType = Type::FullType { UInt64Type.name };
+    TextureAtomicStore_TextureCubeArray_UInt64.parameters = TextureAtomicStore_TextureCubeArray_UInt64_args;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt64_texture)->typeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt64_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt64_coordinate)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt64_value)->typeSymbol = &UInt64Type;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt64)->signature = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u64) u64"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt64)->name = "textureAtomicStore(uniform *mutable textureCubeArray,i32x4,u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt64)->nameWithVarNames = "textureAtomicStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u64)"_c;
+    Symbol::Resolved(&TextureAtomicStore_TextureCubeArray_UInt64)->returnTypeSymbol = &UInt64Type;
+
+    /// textureAtomicExchange with Texture1D, Int32, Float32
+    TextureAtomicExchange_Texture1D_Float32_texture.name = "texture"_c;
+    TextureAtomicExchange_Texture1D_Float32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_Float32_texture.type.mut = true;
+    TextureAtomicExchange_Texture1D_Float32_texture.type.modifiers = TextureAtomicExchange_Texture1D_Float32_texture_modifiers;
+    TextureAtomicExchange_Texture1D_Float32_texture.type.modifierValues = TextureAtomicExchange_Texture1D_Float32_texture_modifierValues;
+    TextureAtomicExchange_Texture1D_Float32_coordinate.name = "coordinate"_c;
+    TextureAtomicExchange_Texture1D_Float32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicExchange_Texture1D_Float32_value.name = "value"_c;
+    TextureAtomicExchange_Texture1D_Float32_value.type = Type::FullType{ Float32Type.name };
+    TextureAtomicExchange_Texture1D_Float32.documentation = "Atomically exchange a texel value in a texture"_c;
+    TextureAtomicExchange_Texture1D_Float32.name = TextureAtomicExchange_Texture1D_Float32_name;
+    TextureAtomicExchange_Texture1D_Float32.backendIndex = 3138;
+    TextureAtomicExchange_Texture1D_Float32.returnType = Type::FullType { Float32Type.name };
+    TextureAtomicExchange_Texture1D_Float32.parameters = TextureAtomicExchange_Texture1D_Float32_args;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,f32) f32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : f32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// textureAtomicExchange with Texture1D, Int32, UInt32
+    TextureAtomicExchange_Texture1D_UInt32_texture.name = "texture"_c;
+    TextureAtomicExchange_Texture1D_UInt32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_UInt32_texture.type.mut = true;
+    TextureAtomicExchange_Texture1D_UInt32_texture.type.modifiers = TextureAtomicExchange_Texture1D_UInt32_texture_modifiers;
+    TextureAtomicExchange_Texture1D_UInt32_texture.type.modifierValues = TextureAtomicExchange_Texture1D_UInt32_texture_modifierValues;
+    TextureAtomicExchange_Texture1D_UInt32_coordinate.name = "coordinate"_c;
+    TextureAtomicExchange_Texture1D_UInt32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicExchange_Texture1D_UInt32_value.name = "value"_c;
+    TextureAtomicExchange_Texture1D_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    TextureAtomicExchange_Texture1D_UInt32.documentation = "Atomically exchange a texel value in a texture"_c;
+    TextureAtomicExchange_Texture1D_UInt32.name = TextureAtomicExchange_Texture1D_UInt32_name;
+    TextureAtomicExchange_Texture1D_UInt32.backendIndex = 3139;
+    TextureAtomicExchange_Texture1D_UInt32.returnType = Type::FullType { UInt32Type.name };
+    TextureAtomicExchange_Texture1D_UInt32.parameters = TextureAtomicExchange_Texture1D_UInt32_args;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,u32) u32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : u32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// textureAtomicExchange with Texture1D, Int32, Int32
+    TextureAtomicExchange_Texture1D_Int32_texture.name = "texture"_c;
+    TextureAtomicExchange_Texture1D_Int32_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_Int32_texture.type.mut = true;
+    TextureAtomicExchange_Texture1D_Int32_texture.type.modifiers = TextureAtomicExchange_Texture1D_Int32_texture_modifiers;
+    TextureAtomicExchange_Texture1D_Int32_texture.type.modifierValues = TextureAtomicExchange_Texture1D_Int32_texture_modifierValues;
+    TextureAtomicExchange_Texture1D_Int32_coordinate.name = "coordinate"_c;
+    TextureAtomicExchange_Texture1D_Int32_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicExchange_Texture1D_Int32_value.name = "value"_c;
+    TextureAtomicExchange_Texture1D_Int32_value.type = Type::FullType{ Int32Type.name };
+    TextureAtomicExchange_Texture1D_Int32.documentation = "Atomically exchange a texel value in a texture"_c;
+    TextureAtomicExchange_Texture1D_Int32.name = TextureAtomicExchange_Texture1D_Int32_name;
+    TextureAtomicExchange_Texture1D_Int32.backendIndex = 3140;
+    TextureAtomicExchange_Texture1D_Int32.returnType = Type::FullType { Int32Type.name };
+    TextureAtomicExchange_Texture1D_Int32.parameters = TextureAtomicExchange_Texture1D_Int32_args;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,i32) i32"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : i32)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// textureAtomicExchange with Texture1D, Int32, Float16
+    TextureAtomicExchange_Texture1D_Float16_texture.name = "texture"_c;
+    TextureAtomicExchange_Texture1D_Float16_texture.type = Type::FullType{ Texture1DType.name };
+    TextureAtomicExchange_Texture1D_Float16_texture.type.mut = true;
+    TextureAtomicExchange_Texture1D_Float16_texture.type.modifiers = TextureAtomicExchange_Texture1D_Float16_texture_modifiers;
+    TextureAtomicExchange_Texture1D_Float16_texture.type.modifierValues = TextureAtomicExchange_Texture1D_Float16_texture_modifierValues;
+    TextureAtomicExchange_Texture1D_Float16_coordinate.name = "coordinate"_c;
+    TextureAtomicExchange_Texture1D_Float16_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureAtomicExchange_Texture1D_Float16_value.name = "value"_c;
+    TextureAtomicExchange_Texture1D_Float16_value.type = Type::FullType{ Float16Type.name };
+    TextureAtomicExchange_Texture1D_Float16.documentation = "Atomically exchange a texel value in a texture"_c;
+    TextureAtomicExchange_Texture1D_Float16.name = TextureAtomicExchange_Texture1D_Float16_name;
+    TextureAtomicExchange_Texture1D_Float16.backendIndex = 3141;
+    TextureAtomicExchange_Texture1D_Float16.returnType = Type::FullType { Float16Type.name };
+    TextureAtomicExchange_Texture1D_Float16.parameters = TextureAtomicExchange_Texture1D_Float16_args;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_texture)->typeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_texture)->storage = Storage::Uniform;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_coordinate)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->signature = "textureAtomicExchange(uniform *mutable texture1D,i32,f16) f16"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->name = "textureAtomicExchange(uniform *mutable texture1D,i32,f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->nameWithVarNames = "textureAtomicExchange(texture : uniform *mutable texture1D, coordinate : i32, value : f16)"_c;
+    Symbol::Resolved(&TextureAtomicExchange_Texture1D_Float16)->returnTypeSymbol = &Float16Type;
 
 }
 } // namespace GPULang

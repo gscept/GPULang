@@ -1671,6 +1671,17 @@ def generate_types():
     enums.append(enum)
 
     enum = Enumeration(
+        name = 'SubgroupOperation',
+        type_name = 'UInt32',
+        members=[
+            EnumMember('Reduce'),
+            EnumMember('Inclusive'),
+            EnumMember('Exclusive')
+        ]
+    )
+    enums.append(enum)
+
+    enum = Enumeration(
         name = 'RasterizationMode',
         type_name = 'UInt32',
         members=[
@@ -4197,7 +4208,6 @@ def generate_types():
             function_name = f'Subgroup{intrinsic}_{type}'
             value_argument_name = f'{function_name}_value'
 
-
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'subgroup{intrinsic}',
@@ -4217,6 +4227,130 @@ def generate_types():
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
 
+            fun.spirv = spirv_function
+            functions.append(fun)
+
+    intrinsics = ['Min', 'Max', 'Add', 'Mul']
+    docs = [
+        'Take the min of the value across subgroups',
+        'Take the max of the value across subgroups',
+        'Take the sum of the values across subgroups',
+        'Take the product of the values across subgroups'
+    ]
+    for intrinsic, doc in zip(intrinsics, docs):
+        for type in scalar_types:
+            function_name = f'Subgroup{intrinsic}_{type}'
+            value_argument_name = f'{function_name}_value'
+            op_argument_name = f'{function_name}_op'
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'subgroup{intrinsic}',
+                return_type = type,
+                documentation = doc,
+                parameters = [
+                    Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
+                    Variable(decl_name = op_argument_name, api_name = "operation", type_name='SubgroupOperation')
+                ]
+            )
+
+            spirv_op_type = ''
+            if type.startswith('Float'):
+                spirv_op_type = 'F'
+            elif type.startswith('Int'):
+                if intrinsic == 'Min' or intrinsic == 'Max':
+                    spirv_op_type = 'S'
+                else:
+                    spirv_op_type = 'I'
+            elif type.startswith('UInt'):
+                if intrinsic == 'Min' or intrinsic == 'Max':
+                    spirv_op_type = 'U'
+                else:
+                    spirv_op_type = 'I'
+            spirv_op = f'OpGroupNonUniform{spirv_op_type}{intrinsic}'
+
+            spirv_function = ''
+            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
+            spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, op, value);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            
+
+            fun.spirv = spirv_function
+            functions.append(fun)
+
+    intrinsics = ['And', 'Or', 'Xor', 'LogicalAnd', 'LogicalOr', 'LogicalXor']
+    spirv_bitwise_ops = ['OpGroupNonUniformBitwiseAnd', 'OpGroupNonUniformBitwiseOr', 'OpGroupNonUniformBitwiseXor', 'OpGroupNonUniformLogicalAnd', 'OpGroupNonUniformLogicalOr', 'OpGroupNonUniformLogicalXor']
+    docs = [
+        'Perform bitwise AND across all subgroups',
+        'Perform bitwise OR across all subgroups',
+        'Perform bitwise XOR across all subgroups',
+        'Perform logical AND across all subgroups',
+        'Perform logical OR across all subgroups',
+        'Perform logical XOR across all subgroups'
+    ]
+
+    for intrinsic, spirv_op, doc in zip(intrinsics, spirv_bitwise_ops, docs):
+        for type in integer_types:
+            function_name = f'Subgroup{intrinsic}_{type}'
+            value_argument_name = f'{function_name}_value'
+            op_argument_name = f'{function_name}_op'
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'subgroup{intrinsic}',
+                return_type = type,
+                documentation = doc,
+                parameters = [
+                    Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
+                    Variable(decl_name = op_argument_name, api_name = "operation", type_name='SubgroupOperation')
+                ]
+            )
+
+            spirv_function = ''
+            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
+            spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, op, value);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+
+            fun.spirv = spirv_function
+            functions.append(fun)
+
+    intrinsics = ['Shuffle', 'ShuffleXor', 'ShuffleUp', 'ShuffleDown']
+    spirv_shuffle_ops = ['OpGroupNonUniformShuffle', 'OpGroupNonUniformShuffleXor', 'OpGroupNonUniformShuffleUp', 'OpGroupNonUniformShuffleDown']
+    second_arg_names = ['id', 'mask', 'delta', 'delta']
+    docs = [
+        'Returns the version of the value for specified invocation',
+        'Returns the value identified by the current invocations ID XORed by the mask',
+        'Returns the value identified by the current invocations ID subtracted by the delta'
+        'Returns the value identified by the current invocations ID added by the delta'
+        ]
+    for intrinsic, doc, spirv_op, second_arg_name in zip(intrinsics, docs, spirv_shuffle_ops, second_arg_names):
+        for type in scalar_types:
+            function_name = f'Subgroup{intrinsic}_{type}'
+            value_argument_name = f'{function_name}_value'
+            second_argument_name = f'{function_name}_{second_arg_name}'
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'subgroup{intrinsic}',
+                return_type = type,
+                documentation = doc,
+                parameters = [
+                    Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
+                    Variable(decl_name = second_argument_name, api_name = second_arg_name, type_name='UInt32')
+                ]
+            )
+
+            spirv_function = ''
+            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
+            spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            
             fun.spirv = spirv_function
             functions.append(fun)
 

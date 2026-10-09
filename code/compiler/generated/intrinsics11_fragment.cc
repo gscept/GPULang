@@ -9,4355 +9,3071 @@
 #include "compiler.h"
 namespace GPULang
 {
-/// textureGetSizeMip with Texture3D, UInt32
-Variable TextureGetSizeMip_Texture3D_texture;
-inline constexpr std::array TextureGetSizeMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture3D_mip;
-Function TextureGetSizeMip_Texture3D;
-inline constexpr std::array TextureGetSizeMip_Texture3D_args = { &TextureGetSizeMip_Texture3D_texture, &TextureGetSizeMip_Texture3D_mip };
-
-/// textureGetSizeMip with TextureCube, UInt32
-Variable TextureGetSizeMip_TextureCube_texture;
-inline constexpr std::array TextureGetSizeMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_TextureCube_mip;
-Function TextureGetSizeMip_TextureCube;
-inline constexpr std::array TextureGetSizeMip_TextureCube_args = { &TextureGetSizeMip_TextureCube_texture, &TextureGetSizeMip_TextureCube_mip };
-
-/// textureGetSizeMip with Texture1DArray, UInt32
-Variable TextureGetSizeMip_Texture1DArray_texture;
-inline constexpr std::array TextureGetSizeMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture1DArray_mip;
-Function TextureGetSizeMip_Texture1DArray;
-inline constexpr std::array TextureGetSizeMip_Texture1DArray_args = { &TextureGetSizeMip_Texture1DArray_texture, &TextureGetSizeMip_Texture1DArray_mip };
-
-/// textureGetSizeMip with Texture2DArray, UInt32
-Variable TextureGetSizeMip_Texture2DArray_texture;
-inline constexpr std::array TextureGetSizeMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture2DArray_mip;
-Function TextureGetSizeMip_Texture2DArray;
-inline constexpr std::array TextureGetSizeMip_Texture2DArray_args = { &TextureGetSizeMip_Texture2DArray_texture, &TextureGetSizeMip_Texture2DArray_mip };
-
-/// textureGetSizeMip with TextureCubeArray, UInt32
-Variable TextureGetSizeMip_TextureCubeArray_texture;
-inline constexpr std::array TextureGetSizeMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_TextureCubeArray_mip;
-Function TextureGetSizeMip_TextureCubeArray;
-inline constexpr std::array TextureGetSizeMip_TextureCubeArray_args = { &TextureGetSizeMip_TextureCubeArray_texture, &TextureGetSizeMip_TextureCubeArray_mip };
-
-/// textureGetMips with Texture1D
-Variable TextureGetMips_Texture1D_texture;
-inline constexpr std::array TextureGetMips_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture1D;
-inline constexpr std::array TextureGetMips_Texture1D_args = { &TextureGetMips_Texture1D_texture };
-
-/// textureGetMips with Texture2D
-Variable TextureGetMips_Texture2D_texture;
-inline constexpr std::array TextureGetMips_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture2D;
-inline constexpr std::array TextureGetMips_Texture2D_args = { &TextureGetMips_Texture2D_texture };
-
-/// textureGetMips with Texture3D
-Variable TextureGetMips_Texture3D_texture;
-inline constexpr std::array TextureGetMips_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture3D;
-inline constexpr std::array TextureGetMips_Texture3D_args = { &TextureGetMips_Texture3D_texture };
-
-/// textureGetMips with TextureCube
-Variable TextureGetMips_TextureCube_texture;
-inline constexpr std::array TextureGetMips_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_TextureCube;
-inline constexpr std::array TextureGetMips_TextureCube_args = { &TextureGetMips_TextureCube_texture };
-
-/// textureGetMips with Texture1DArray
-Variable TextureGetMips_Texture1DArray_texture;
-inline constexpr std::array TextureGetMips_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture1DArray;
-inline constexpr std::array TextureGetMips_Texture1DArray_args = { &TextureGetMips_Texture1DArray_texture };
-
-/// textureGetMips with Texture2DArray
-Variable TextureGetMips_Texture2DArray_texture;
-inline constexpr std::array TextureGetMips_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_Texture2DArray;
-inline constexpr std::array TextureGetMips_Texture2DArray_args = { &TextureGetMips_Texture2DArray_texture };
-
-/// textureGetMips with TextureCubeArray
-Variable TextureGetMips_TextureCubeArray_texture;
-inline constexpr std::array TextureGetMips_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetMips_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetMips_TextureCubeArray;
-inline constexpr std::array TextureGetMips_TextureCubeArray_args = { &TextureGetMips_TextureCubeArray_texture };
-
-/// textureGetSamples with Texture2DMS
-Variable TextureGetSamples_Texture2DMS_texture;
-inline constexpr std::array TextureGetSamples_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSamples_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSamples_Texture2DMS;
-inline constexpr std::array TextureGetSamples_Texture2DMS_args = { &TextureGetSamples_Texture2DMS_texture };
-
-/// textureGetSamples with Texture2DMSArray
-Variable TextureGetSamples_Texture2DMSArray_texture;
-inline constexpr std::array TextureGetSamples_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSamples_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSamples_Texture2DMSArray;
-inline constexpr std::array TextureGetSamples_Texture2DMSArray_args = { &TextureGetSamples_Texture2DMSArray_texture };
-
-/// textureGetSampledMip with Texture1D, Sampler, Float32
-Variable TextureGetSampledMip_Texture1D_texture;
-inline constexpr std::array TextureGetSampledMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture1D_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture1D_coordinate;
-Function TextureGetSampledMip_Texture1D;
-inline constexpr std::array TextureGetSampledMip_Texture1D_args = { &TextureGetSampledMip_Texture1D_texture, &TextureGetSampledMip_Texture1D_sampler, &TextureGetSampledMip_Texture1D_coordinate };
-
-/// textureGetSampledMip with SampledTexture1D, Float32
-Variable SampledTextureGetSampledMip_Texture1D_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture1D_coordinate;
-Function SampledTextureGetSampledMip_Texture1D;
-inline constexpr std::array SampledTextureGetSampledMip_Texture1D_args = { &SampledTextureGetSampledMip_Texture1D_texture, &SampledTextureGetSampledMip_Texture1D_coordinate };
-
-/// textureGetSampledMip with Texture2D, Sampler, Float32x2
-Variable TextureGetSampledMip_Texture2D_texture;
-inline constexpr std::array TextureGetSampledMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture2D_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture2D_coordinate;
-Function TextureGetSampledMip_Texture2D;
-inline constexpr std::array TextureGetSampledMip_Texture2D_args = { &TextureGetSampledMip_Texture2D_texture, &TextureGetSampledMip_Texture2D_sampler, &TextureGetSampledMip_Texture2D_coordinate };
-
-/// textureGetSampledMip with SampledTexture2D, Float32x2
-Variable SampledTextureGetSampledMip_Texture2D_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture2D_coordinate;
-Function SampledTextureGetSampledMip_Texture2D;
-inline constexpr std::array SampledTextureGetSampledMip_Texture2D_args = { &SampledTextureGetSampledMip_Texture2D_texture, &SampledTextureGetSampledMip_Texture2D_coordinate };
-
-/// textureGetSampledMip with Texture3D, Sampler, Float32x3
-Variable TextureGetSampledMip_Texture3D_texture;
-inline constexpr std::array TextureGetSampledMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture3D_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture3D_coordinate;
-Function TextureGetSampledMip_Texture3D;
-inline constexpr std::array TextureGetSampledMip_Texture3D_args = { &TextureGetSampledMip_Texture3D_texture, &TextureGetSampledMip_Texture3D_sampler, &TextureGetSampledMip_Texture3D_coordinate };
-
-/// textureGetSampledMip with SampledTexture3D, Float32x3
-Variable SampledTextureGetSampledMip_Texture3D_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture3D_coordinate;
-Function SampledTextureGetSampledMip_Texture3D;
-inline constexpr std::array SampledTextureGetSampledMip_Texture3D_args = { &SampledTextureGetSampledMip_Texture3D_texture, &SampledTextureGetSampledMip_Texture3D_coordinate };
-
-/// textureGetSampledMip with TextureCube, Sampler, Float32x3
-Variable TextureGetSampledMip_TextureCube_texture;
-inline constexpr std::array TextureGetSampledMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_TextureCube_sampler;
-inline constexpr std::array TextureGetSampledMip_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_TextureCube_coordinate;
-Function TextureGetSampledMip_TextureCube;
-inline constexpr std::array TextureGetSampledMip_TextureCube_args = { &TextureGetSampledMip_TextureCube_texture, &TextureGetSampledMip_TextureCube_sampler, &TextureGetSampledMip_TextureCube_coordinate };
-
-/// textureGetSampledMip with SampledTextureCube, Float32x3
-Variable SampledTextureGetSampledMip_TextureCube_texture;
-inline constexpr std::array SampledTextureGetSampledMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_TextureCube_coordinate;
-Function SampledTextureGetSampledMip_TextureCube;
-inline constexpr std::array SampledTextureGetSampledMip_TextureCube_args = { &SampledTextureGetSampledMip_TextureCube_texture, &SampledTextureGetSampledMip_TextureCube_coordinate };
-
-/// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
-Variable TextureGetSampledMip_Texture1DArray_texture;
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture1DArray_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture1DArray_coordinate;
-Function TextureGetSampledMip_Texture1DArray;
-inline constexpr std::array TextureGetSampledMip_Texture1DArray_args = { &TextureGetSampledMip_Texture1DArray_texture, &TextureGetSampledMip_Texture1DArray_sampler, &TextureGetSampledMip_Texture1DArray_coordinate };
-
-/// textureGetSampledMip with SampledTexture1DArray, Float32x2
-Variable SampledTextureGetSampledMip_Texture1DArray_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture1DArray_coordinate;
-Function SampledTextureGetSampledMip_Texture1DArray;
-inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_args = { &SampledTextureGetSampledMip_Texture1DArray_texture, &SampledTextureGetSampledMip_Texture1DArray_coordinate };
-
-/// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
-Variable TextureGetSampledMip_Texture2DArray_texture;
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture2DArray_sampler;
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_Texture2DArray_coordinate;
-Function TextureGetSampledMip_Texture2DArray;
-inline constexpr std::array TextureGetSampledMip_Texture2DArray_args = { &TextureGetSampledMip_Texture2DArray_texture, &TextureGetSampledMip_Texture2DArray_sampler, &TextureGetSampledMip_Texture2DArray_coordinate };
-
-/// textureGetSampledMip with SampledTexture2DArray, Float32x3
-Variable SampledTextureGetSampledMip_Texture2DArray_texture;
-inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_Texture2DArray_coordinate;
-Function SampledTextureGetSampledMip_Texture2DArray;
-inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_args = { &SampledTextureGetSampledMip_Texture2DArray_texture, &SampledTextureGetSampledMip_Texture2DArray_coordinate };
-
-/// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
-Variable TextureGetSampledMip_TextureCubeArray_texture;
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_TextureCubeArray_sampler;
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSampledMip_TextureCubeArray_coordinate;
-Function TextureGetSampledMip_TextureCubeArray;
-inline constexpr std::array TextureGetSampledMip_TextureCubeArray_args = { &TextureGetSampledMip_TextureCubeArray_texture, &TextureGetSampledMip_TextureCubeArray_sampler, &TextureGetSampledMip_TextureCubeArray_coordinate };
-
-/// textureGetSampledMip with SampledTextureCubeArray, Float32x4
-Variable SampledTextureGetSampledMip_TextureCubeArray_texture;
-inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGetSampledMip_TextureCubeArray_coordinate;
-Function SampledTextureGetSampledMip_TextureCubeArray;
-inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_args = { &SampledTextureGetSampledMip_TextureCubeArray_texture, &SampledTextureGetSampledMip_TextureCubeArray_coordinate };
-
-/// textureLoad with Texture1D, Int32
-Variable TextureLoad_Texture1D_texture;
-inline constexpr std::array TextureLoad_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture1D_coordinate;
-Function TextureLoad_Texture1D;
-inline constexpr std::array TextureLoad_Texture1D_args = { &TextureLoad_Texture1D_texture, &TextureLoad_Texture1D_coordinate };
-
-/// textureLoadMip with Texture1D, Int32, Int32
-Variable TextureLoadMip_Texture1D_texture;
-inline constexpr std::array TextureLoadMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture1D_coordinate;
-Variable TextureLoadMip_Texture1D_mip;
-Function TextureLoadMip_Texture1D;
-inline constexpr std::array TextureLoadMip_Texture1D_args = { &TextureLoadMip_Texture1D_texture, &TextureLoadMip_Texture1D_coordinate, &TextureLoadMip_Texture1D_mip };
-
-/// textureLoad with Texture2D, Int32x2
-Variable TextureLoad_Texture2D_texture;
-inline constexpr std::array TextureLoad_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture2D_coordinate;
-Function TextureLoad_Texture2D;
-inline constexpr std::array TextureLoad_Texture2D_args = { &TextureLoad_Texture2D_texture, &TextureLoad_Texture2D_coordinate };
-
-/// textureLoadMip with Texture2D, Int32x2, Int32
-Variable TextureLoadMip_Texture2D_texture;
-inline constexpr std::array TextureLoadMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture2D_coordinate;
-Variable TextureLoadMip_Texture2D_mip;
-Function TextureLoadMip_Texture2D;
-inline constexpr std::array TextureLoadMip_Texture2D_args = { &TextureLoadMip_Texture2D_texture, &TextureLoadMip_Texture2D_coordinate, &TextureLoadMip_Texture2D_mip };
-
-/// textureLoad with Texture3D, Int32x3
-Variable TextureLoad_Texture3D_texture;
-inline constexpr std::array TextureLoad_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture3D_coordinate;
-Function TextureLoad_Texture3D;
-inline constexpr std::array TextureLoad_Texture3D_args = { &TextureLoad_Texture3D_texture, &TextureLoad_Texture3D_coordinate };
-
-/// textureLoadMip with Texture3D, Int32x3, Int32
-Variable TextureLoadMip_Texture3D_texture;
-inline constexpr std::array TextureLoadMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture3D_coordinate;
-Variable TextureLoadMip_Texture3D_mip;
-Function TextureLoadMip_Texture3D;
-inline constexpr std::array TextureLoadMip_Texture3D_args = { &TextureLoadMip_Texture3D_texture, &TextureLoadMip_Texture3D_coordinate, &TextureLoadMip_Texture3D_mip };
-
-/// textureLoad with TextureCube, Int32x3
-Variable TextureLoad_TextureCube_texture;
-inline constexpr std::array TextureLoad_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_TextureCube_coordinate;
-Function TextureLoad_TextureCube;
-inline constexpr std::array TextureLoad_TextureCube_args = { &TextureLoad_TextureCube_texture, &TextureLoad_TextureCube_coordinate };
-
-/// textureLoadMip with TextureCube, Int32x3, Int32
-Variable TextureLoadMip_TextureCube_texture;
-inline constexpr std::array TextureLoadMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_TextureCube_coordinate;
-Variable TextureLoadMip_TextureCube_mip;
-Function TextureLoadMip_TextureCube;
-inline constexpr std::array TextureLoadMip_TextureCube_args = { &TextureLoadMip_TextureCube_texture, &TextureLoadMip_TextureCube_coordinate, &TextureLoadMip_TextureCube_mip };
-
-/// textureLoad with Texture1DArray, Int32x2
-Variable TextureLoad_Texture1DArray_texture;
-inline constexpr std::array TextureLoad_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture1DArray_coordinate;
-Function TextureLoad_Texture1DArray;
-inline constexpr std::array TextureLoad_Texture1DArray_args = { &TextureLoad_Texture1DArray_texture, &TextureLoad_Texture1DArray_coordinate };
-
-/// textureLoadMip with Texture1DArray, Int32x2, Int32
-Variable TextureLoadMip_Texture1DArray_texture;
-inline constexpr std::array TextureLoadMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture1DArray_coordinate;
-Variable TextureLoadMip_Texture1DArray_mip;
-Function TextureLoadMip_Texture1DArray;
-inline constexpr std::array TextureLoadMip_Texture1DArray_args = { &TextureLoadMip_Texture1DArray_texture, &TextureLoadMip_Texture1DArray_coordinate, &TextureLoadMip_Texture1DArray_mip };
-
-/// textureLoad with Texture2DArray, Int32x3
-Variable TextureLoad_Texture2DArray_texture;
-inline constexpr std::array TextureLoad_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture2DArray_coordinate;
-Function TextureLoad_Texture2DArray;
-inline constexpr std::array TextureLoad_Texture2DArray_args = { &TextureLoad_Texture2DArray_texture, &TextureLoad_Texture2DArray_coordinate };
-
-/// textureLoadMip with Texture2DArray, Int32x3, Int32
-Variable TextureLoadMip_Texture2DArray_texture;
-inline constexpr std::array TextureLoadMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture2DArray_coordinate;
-Variable TextureLoadMip_Texture2DArray_mip;
-Function TextureLoadMip_Texture2DArray;
-inline constexpr std::array TextureLoadMip_Texture2DArray_args = { &TextureLoadMip_Texture2DArray_texture, &TextureLoadMip_Texture2DArray_coordinate, &TextureLoadMip_Texture2DArray_mip };
-
-/// textureLoad with TextureCubeArray, Int32x4
-Variable TextureLoad_TextureCubeArray_texture;
-inline constexpr std::array TextureLoad_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_TextureCubeArray_coordinate;
-Function TextureLoad_TextureCubeArray;
-inline constexpr std::array TextureLoad_TextureCubeArray_args = { &TextureLoad_TextureCubeArray_texture, &TextureLoad_TextureCubeArray_coordinate };
-
-/// textureLoadMip with TextureCubeArray, Int32x4, Int32
-Variable TextureLoadMip_TextureCubeArray_texture;
-inline constexpr std::array TextureLoadMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_TextureCubeArray_coordinate;
-Variable TextureLoadMip_TextureCubeArray_mip;
-Function TextureLoadMip_TextureCubeArray;
-inline constexpr std::array TextureLoadMip_TextureCubeArray_args = { &TextureLoadMip_TextureCubeArray_texture, &TextureLoadMip_TextureCubeArray_coordinate, &TextureLoadMip_TextureCubeArray_mip };
-
-/// textureLoad with Texture2DMS, Int32x2
-Variable TextureLoad_Texture2DMS_texture;
-inline constexpr std::array TextureLoad_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture2DMS_coordinate;
-Function TextureLoad_Texture2DMS;
-inline constexpr std::array TextureLoad_Texture2DMS_args = { &TextureLoad_Texture2DMS_texture, &TextureLoad_Texture2DMS_coordinate };
-
-/// textureLoadMip with Texture2DMS, Int32x2, Int32
-Variable TextureLoadMip_Texture2DMS_texture;
-inline constexpr std::array TextureLoadMip_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture2DMS_coordinate;
-Variable TextureLoadMip_Texture2DMS_mip;
-Function TextureLoadMip_Texture2DMS;
-inline constexpr std::array TextureLoadMip_Texture2DMS_args = { &TextureLoadMip_Texture2DMS_texture, &TextureLoadMip_Texture2DMS_coordinate, &TextureLoadMip_Texture2DMS_mip };
-
-/// textureLoad with Texture2DMSArray, Int32x3
-Variable TextureLoad_Texture2DMSArray_texture;
-inline constexpr std::array TextureLoad_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoad_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoad_Texture2DMSArray_coordinate;
-Function TextureLoad_Texture2DMSArray;
-inline constexpr std::array TextureLoad_Texture2DMSArray_args = { &TextureLoad_Texture2DMSArray_texture, &TextureLoad_Texture2DMSArray_coordinate };
-
-/// textureLoadMip with Texture2DMSArray, Int32x3, Int32
-Variable TextureLoadMip_Texture2DMSArray_texture;
-inline constexpr std::array TextureLoadMip_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureLoadMip_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureLoadMip_Texture2DMSArray_coordinate;
-Variable TextureLoadMip_Texture2DMSArray_mip;
-Function TextureLoadMip_Texture2DMSArray;
-inline constexpr std::array TextureLoadMip_Texture2DMSArray_args = { &TextureLoadMip_Texture2DMSArray_texture, &TextureLoadMip_Texture2DMSArray_coordinate, &TextureLoadMip_Texture2DMSArray_mip };
-
-/// textureStore with Texture1D, Int32, Float32x4
-Variable TextureStore_Texture1D_Float32x4_texture;
-inline constexpr std::array TextureStore_Texture1D_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture1D_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture1D_Float32x4_coordinate;
-Variable TextureStore_Texture1D_Float32x4_value;
-Function TextureStore_Texture1D_Float32x4;
-inline constexpr std::array TextureStore_Texture1D_Float32x4_args = { &TextureStore_Texture1D_Float32x4_texture, &TextureStore_Texture1D_Float32x4_coordinate, &TextureStore_Texture1D_Float32x4_value };
-
-/// textureStoreMip with Texture1D, Int32, Int32, Float32x4
-Variable TextureStoreMip_Texture1D_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture1D_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture1D_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture1D_Float32x4_coordinate;
-Variable TextureStoreMip_Texture1D_Float32x4_mip;
-Variable TextureStoreMip_Texture1D_Float32x4_value;
-Function TextureStoreMip_Texture1D_Float32x4;
-inline constexpr std::array TextureStoreMip_Texture1D_Float32x4_args = { &TextureStoreMip_Texture1D_Float32x4_texture, &TextureStoreMip_Texture1D_Float32x4_coordinate, &TextureStoreMip_Texture1D_Float32x4_mip, &TextureStoreMip_Texture1D_Float32x4_value };
-
-/// textureStore with Texture1D, Int32, Int32x4
-Variable TextureStore_Texture1D_Int32x4_texture;
-inline constexpr std::array TextureStore_Texture1D_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture1D_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture1D_Int32x4_coordinate;
-Variable TextureStore_Texture1D_Int32x4_value;
-Function TextureStore_Texture1D_Int32x4;
-inline constexpr std::array TextureStore_Texture1D_Int32x4_args = { &TextureStore_Texture1D_Int32x4_texture, &TextureStore_Texture1D_Int32x4_coordinate, &TextureStore_Texture1D_Int32x4_value };
-
-/// textureStoreMip with Texture1D, Int32, Int32, Int32x4
-Variable TextureStoreMip_Texture1D_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture1D_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture1D_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture1D_Int32x4_coordinate;
-Variable TextureStoreMip_Texture1D_Int32x4_mip;
-Variable TextureStoreMip_Texture1D_Int32x4_value;
-Function TextureStoreMip_Texture1D_Int32x4;
-inline constexpr std::array TextureStoreMip_Texture1D_Int32x4_args = { &TextureStoreMip_Texture1D_Int32x4_texture, &TextureStoreMip_Texture1D_Int32x4_coordinate, &TextureStoreMip_Texture1D_Int32x4_mip, &TextureStoreMip_Texture1D_Int32x4_value };
-
-/// textureStore with Texture1D, Int32, UInt32x4
-Variable TextureStore_Texture1D_UInt32x4_texture;
-inline constexpr std::array TextureStore_Texture1D_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture1D_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture1D_UInt32x4_coordinate;
-Variable TextureStore_Texture1D_UInt32x4_value;
-Function TextureStore_Texture1D_UInt32x4;
-inline constexpr std::array TextureStore_Texture1D_UInt32x4_args = { &TextureStore_Texture1D_UInt32x4_texture, &TextureStore_Texture1D_UInt32x4_coordinate, &TextureStore_Texture1D_UInt32x4_value };
-
-/// textureStoreMip with Texture1D, Int32, Int32, UInt32x4
-Variable TextureStoreMip_Texture1D_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture1D_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture1D_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture1D_UInt32x4_coordinate;
-Variable TextureStoreMip_Texture1D_UInt32x4_mip;
-Variable TextureStoreMip_Texture1D_UInt32x4_value;
-Function TextureStoreMip_Texture1D_UInt32x4;
-inline constexpr std::array TextureStoreMip_Texture1D_UInt32x4_args = { &TextureStoreMip_Texture1D_UInt32x4_texture, &TextureStoreMip_Texture1D_UInt32x4_coordinate, &TextureStoreMip_Texture1D_UInt32x4_mip, &TextureStoreMip_Texture1D_UInt32x4_value };
-
-/// textureStore with Texture2D, Int32x2, Float32x4
-Variable TextureStore_Texture2D_Float32x4_texture;
-inline constexpr std::array TextureStore_Texture2D_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2D_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2D_Float32x4_coordinate;
-Variable TextureStore_Texture2D_Float32x4_value;
-Function TextureStore_Texture2D_Float32x4;
-inline constexpr std::array TextureStore_Texture2D_Float32x4_args = { &TextureStore_Texture2D_Float32x4_texture, &TextureStore_Texture2D_Float32x4_coordinate, &TextureStore_Texture2D_Float32x4_value };
-
-/// textureStoreMip with Texture2D, Int32x2, Int32, Float32x4
-Variable TextureStoreMip_Texture2D_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2D_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2D_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2D_Float32x4_coordinate;
-Variable TextureStoreMip_Texture2D_Float32x4_mip;
-Variable TextureStoreMip_Texture2D_Float32x4_value;
-Function TextureStoreMip_Texture2D_Float32x4;
-inline constexpr std::array TextureStoreMip_Texture2D_Float32x4_args = { &TextureStoreMip_Texture2D_Float32x4_texture, &TextureStoreMip_Texture2D_Float32x4_coordinate, &TextureStoreMip_Texture2D_Float32x4_mip, &TextureStoreMip_Texture2D_Float32x4_value };
-
-/// textureStore with Texture2D, Int32x2, Int32x4
-Variable TextureStore_Texture2D_Int32x4_texture;
-inline constexpr std::array TextureStore_Texture2D_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2D_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2D_Int32x4_coordinate;
-Variable TextureStore_Texture2D_Int32x4_value;
-Function TextureStore_Texture2D_Int32x4;
-inline constexpr std::array TextureStore_Texture2D_Int32x4_args = { &TextureStore_Texture2D_Int32x4_texture, &TextureStore_Texture2D_Int32x4_coordinate, &TextureStore_Texture2D_Int32x4_value };
-
-/// textureStoreMip with Texture2D, Int32x2, Int32, Int32x4
-Variable TextureStoreMip_Texture2D_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2D_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2D_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2D_Int32x4_coordinate;
-Variable TextureStoreMip_Texture2D_Int32x4_mip;
-Variable TextureStoreMip_Texture2D_Int32x4_value;
-Function TextureStoreMip_Texture2D_Int32x4;
-inline constexpr std::array TextureStoreMip_Texture2D_Int32x4_args = { &TextureStoreMip_Texture2D_Int32x4_texture, &TextureStoreMip_Texture2D_Int32x4_coordinate, &TextureStoreMip_Texture2D_Int32x4_mip, &TextureStoreMip_Texture2D_Int32x4_value };
-
-/// textureStore with Texture2D, Int32x2, UInt32x4
-Variable TextureStore_Texture2D_UInt32x4_texture;
-inline constexpr std::array TextureStore_Texture2D_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2D_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2D_UInt32x4_coordinate;
-Variable TextureStore_Texture2D_UInt32x4_value;
-Function TextureStore_Texture2D_UInt32x4;
-inline constexpr std::array TextureStore_Texture2D_UInt32x4_args = { &TextureStore_Texture2D_UInt32x4_texture, &TextureStore_Texture2D_UInt32x4_coordinate, &TextureStore_Texture2D_UInt32x4_value };
-
-/// textureStoreMip with Texture2D, Int32x2, Int32, UInt32x4
-Variable TextureStoreMip_Texture2D_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2D_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2D_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2D_UInt32x4_coordinate;
-Variable TextureStoreMip_Texture2D_UInt32x4_mip;
-Variable TextureStoreMip_Texture2D_UInt32x4_value;
-Function TextureStoreMip_Texture2D_UInt32x4;
-inline constexpr std::array TextureStoreMip_Texture2D_UInt32x4_args = { &TextureStoreMip_Texture2D_UInt32x4_texture, &TextureStoreMip_Texture2D_UInt32x4_coordinate, &TextureStoreMip_Texture2D_UInt32x4_mip, &TextureStoreMip_Texture2D_UInt32x4_value };
-
-/// textureStore with Texture3D, Int32x3, Float32x4
-Variable TextureStore_Texture3D_Float32x4_texture;
-inline constexpr std::array TextureStore_Texture3D_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture3D_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture3D_Float32x4_coordinate;
-Variable TextureStore_Texture3D_Float32x4_value;
-Function TextureStore_Texture3D_Float32x4;
-inline constexpr std::array TextureStore_Texture3D_Float32x4_args = { &TextureStore_Texture3D_Float32x4_texture, &TextureStore_Texture3D_Float32x4_coordinate, &TextureStore_Texture3D_Float32x4_value };
-
-/// textureStoreMip with Texture3D, Int32x3, Int32, Float32x4
-Variable TextureStoreMip_Texture3D_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture3D_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture3D_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture3D_Float32x4_coordinate;
-Variable TextureStoreMip_Texture3D_Float32x4_mip;
-Variable TextureStoreMip_Texture3D_Float32x4_value;
-Function TextureStoreMip_Texture3D_Float32x4;
-inline constexpr std::array TextureStoreMip_Texture3D_Float32x4_args = { &TextureStoreMip_Texture3D_Float32x4_texture, &TextureStoreMip_Texture3D_Float32x4_coordinate, &TextureStoreMip_Texture3D_Float32x4_mip, &TextureStoreMip_Texture3D_Float32x4_value };
-
-/// textureStore with Texture3D, Int32x3, Int32x4
-Variable TextureStore_Texture3D_Int32x4_texture;
-inline constexpr std::array TextureStore_Texture3D_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture3D_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture3D_Int32x4_coordinate;
-Variable TextureStore_Texture3D_Int32x4_value;
-Function TextureStore_Texture3D_Int32x4;
-inline constexpr std::array TextureStore_Texture3D_Int32x4_args = { &TextureStore_Texture3D_Int32x4_texture, &TextureStore_Texture3D_Int32x4_coordinate, &TextureStore_Texture3D_Int32x4_value };
-
-/// textureStoreMip with Texture3D, Int32x3, Int32, Int32x4
-Variable TextureStoreMip_Texture3D_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture3D_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture3D_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture3D_Int32x4_coordinate;
-Variable TextureStoreMip_Texture3D_Int32x4_mip;
-Variable TextureStoreMip_Texture3D_Int32x4_value;
-Function TextureStoreMip_Texture3D_Int32x4;
-inline constexpr std::array TextureStoreMip_Texture3D_Int32x4_args = { &TextureStoreMip_Texture3D_Int32x4_texture, &TextureStoreMip_Texture3D_Int32x4_coordinate, &TextureStoreMip_Texture3D_Int32x4_mip, &TextureStoreMip_Texture3D_Int32x4_value };
-
-/// textureStore with Texture3D, Int32x3, UInt32x4
-Variable TextureStore_Texture3D_UInt32x4_texture;
-inline constexpr std::array TextureStore_Texture3D_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture3D_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture3D_UInt32x4_coordinate;
-Variable TextureStore_Texture3D_UInt32x4_value;
-Function TextureStore_Texture3D_UInt32x4;
-inline constexpr std::array TextureStore_Texture3D_UInt32x4_args = { &TextureStore_Texture3D_UInt32x4_texture, &TextureStore_Texture3D_UInt32x4_coordinate, &TextureStore_Texture3D_UInt32x4_value };
-
-/// textureStoreMip with Texture3D, Int32x3, Int32, UInt32x4
-Variable TextureStoreMip_Texture3D_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture3D_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture3D_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture3D_UInt32x4_coordinate;
-Variable TextureStoreMip_Texture3D_UInt32x4_mip;
-Variable TextureStoreMip_Texture3D_UInt32x4_value;
-Function TextureStoreMip_Texture3D_UInt32x4;
-inline constexpr std::array TextureStoreMip_Texture3D_UInt32x4_args = { &TextureStoreMip_Texture3D_UInt32x4_texture, &TextureStoreMip_Texture3D_UInt32x4_coordinate, &TextureStoreMip_Texture3D_UInt32x4_mip, &TextureStoreMip_Texture3D_UInt32x4_value };
-
-/// textureStore with TextureCube, Int32x3, Float32x4
-Variable TextureStore_TextureCube_Float32x4_texture;
-inline constexpr std::array TextureStore_TextureCube_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_TextureCube_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_TextureCube_Float32x4_coordinate;
-Variable TextureStore_TextureCube_Float32x4_value;
-Function TextureStore_TextureCube_Float32x4;
-inline constexpr std::array TextureStore_TextureCube_Float32x4_args = { &TextureStore_TextureCube_Float32x4_texture, &TextureStore_TextureCube_Float32x4_coordinate, &TextureStore_TextureCube_Float32x4_value };
-
-/// textureStoreMip with TextureCube, Int32x3, Int32, Float32x4
-Variable TextureStoreMip_TextureCube_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_TextureCube_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_TextureCube_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_TextureCube_Float32x4_coordinate;
-Variable TextureStoreMip_TextureCube_Float32x4_mip;
-Variable TextureStoreMip_TextureCube_Float32x4_value;
-Function TextureStoreMip_TextureCube_Float32x4;
-inline constexpr std::array TextureStoreMip_TextureCube_Float32x4_args = { &TextureStoreMip_TextureCube_Float32x4_texture, &TextureStoreMip_TextureCube_Float32x4_coordinate, &TextureStoreMip_TextureCube_Float32x4_mip, &TextureStoreMip_TextureCube_Float32x4_value };
-
-/// textureStore with TextureCube, Int32x3, Int32x4
-Variable TextureStore_TextureCube_Int32x4_texture;
-inline constexpr std::array TextureStore_TextureCube_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_TextureCube_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_TextureCube_Int32x4_coordinate;
-Variable TextureStore_TextureCube_Int32x4_value;
-Function TextureStore_TextureCube_Int32x4;
-inline constexpr std::array TextureStore_TextureCube_Int32x4_args = { &TextureStore_TextureCube_Int32x4_texture, &TextureStore_TextureCube_Int32x4_coordinate, &TextureStore_TextureCube_Int32x4_value };
-
-/// textureStoreMip with TextureCube, Int32x3, Int32, Int32x4
-Variable TextureStoreMip_TextureCube_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_TextureCube_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_TextureCube_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_TextureCube_Int32x4_coordinate;
-Variable TextureStoreMip_TextureCube_Int32x4_mip;
-Variable TextureStoreMip_TextureCube_Int32x4_value;
-Function TextureStoreMip_TextureCube_Int32x4;
-inline constexpr std::array TextureStoreMip_TextureCube_Int32x4_args = { &TextureStoreMip_TextureCube_Int32x4_texture, &TextureStoreMip_TextureCube_Int32x4_coordinate, &TextureStoreMip_TextureCube_Int32x4_mip, &TextureStoreMip_TextureCube_Int32x4_value };
-
-/// textureStore with TextureCube, Int32x3, UInt32x4
-Variable TextureStore_TextureCube_UInt32x4_texture;
-inline constexpr std::array TextureStore_TextureCube_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_TextureCube_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_TextureCube_UInt32x4_coordinate;
-Variable TextureStore_TextureCube_UInt32x4_value;
-Function TextureStore_TextureCube_UInt32x4;
-inline constexpr std::array TextureStore_TextureCube_UInt32x4_args = { &TextureStore_TextureCube_UInt32x4_texture, &TextureStore_TextureCube_UInt32x4_coordinate, &TextureStore_TextureCube_UInt32x4_value };
-
-/// textureStoreMip with TextureCube, Int32x3, Int32, UInt32x4
-Variable TextureStoreMip_TextureCube_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_TextureCube_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_TextureCube_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_TextureCube_UInt32x4_coordinate;
-Variable TextureStoreMip_TextureCube_UInt32x4_mip;
-Variable TextureStoreMip_TextureCube_UInt32x4_value;
-Function TextureStoreMip_TextureCube_UInt32x4;
-inline constexpr std::array TextureStoreMip_TextureCube_UInt32x4_args = { &TextureStoreMip_TextureCube_UInt32x4_texture, &TextureStoreMip_TextureCube_UInt32x4_coordinate, &TextureStoreMip_TextureCube_UInt32x4_mip, &TextureStoreMip_TextureCube_UInt32x4_value };
-
-/// textureStore with Texture1DArray, Int32x2, Float32x4
-Variable TextureStore_Texture1DArray_Float32x4_texture;
-inline constexpr std::array TextureStore_Texture1DArray_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture1DArray_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture1DArray_Float32x4_coordinate;
-Variable TextureStore_Texture1DArray_Float32x4_value;
-Function TextureStore_Texture1DArray_Float32x4;
-inline constexpr std::array TextureStore_Texture1DArray_Float32x4_args = { &TextureStore_Texture1DArray_Float32x4_texture, &TextureStore_Texture1DArray_Float32x4_coordinate, &TextureStore_Texture1DArray_Float32x4_value };
-
-/// textureStoreMip with Texture1DArray, Int32x2, Int32, Float32x4
-Variable TextureStoreMip_Texture1DArray_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture1DArray_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture1DArray_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture1DArray_Float32x4_coordinate;
-Variable TextureStoreMip_Texture1DArray_Float32x4_mip;
-Variable TextureStoreMip_Texture1DArray_Float32x4_value;
-Function TextureStoreMip_Texture1DArray_Float32x4;
-inline constexpr std::array TextureStoreMip_Texture1DArray_Float32x4_args = { &TextureStoreMip_Texture1DArray_Float32x4_texture, &TextureStoreMip_Texture1DArray_Float32x4_coordinate, &TextureStoreMip_Texture1DArray_Float32x4_mip, &TextureStoreMip_Texture1DArray_Float32x4_value };
-
-/// textureStore with Texture1DArray, Int32x2, Int32x4
-Variable TextureStore_Texture1DArray_Int32x4_texture;
-inline constexpr std::array TextureStore_Texture1DArray_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture1DArray_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture1DArray_Int32x4_coordinate;
-Variable TextureStore_Texture1DArray_Int32x4_value;
-Function TextureStore_Texture1DArray_Int32x4;
-inline constexpr std::array TextureStore_Texture1DArray_Int32x4_args = { &TextureStore_Texture1DArray_Int32x4_texture, &TextureStore_Texture1DArray_Int32x4_coordinate, &TextureStore_Texture1DArray_Int32x4_value };
-
-/// textureStoreMip with Texture1DArray, Int32x2, Int32, Int32x4
-Variable TextureStoreMip_Texture1DArray_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture1DArray_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture1DArray_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture1DArray_Int32x4_coordinate;
-Variable TextureStoreMip_Texture1DArray_Int32x4_mip;
-Variable TextureStoreMip_Texture1DArray_Int32x4_value;
-Function TextureStoreMip_Texture1DArray_Int32x4;
-inline constexpr std::array TextureStoreMip_Texture1DArray_Int32x4_args = { &TextureStoreMip_Texture1DArray_Int32x4_texture, &TextureStoreMip_Texture1DArray_Int32x4_coordinate, &TextureStoreMip_Texture1DArray_Int32x4_mip, &TextureStoreMip_Texture1DArray_Int32x4_value };
-
-/// textureStore with Texture1DArray, Int32x2, UInt32x4
-Variable TextureStore_Texture1DArray_UInt32x4_texture;
-inline constexpr std::array TextureStore_Texture1DArray_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture1DArray_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture1DArray_UInt32x4_coordinate;
-Variable TextureStore_Texture1DArray_UInt32x4_value;
-Function TextureStore_Texture1DArray_UInt32x4;
-inline constexpr std::array TextureStore_Texture1DArray_UInt32x4_args = { &TextureStore_Texture1DArray_UInt32x4_texture, &TextureStore_Texture1DArray_UInt32x4_coordinate, &TextureStore_Texture1DArray_UInt32x4_value };
-
-/// textureStoreMip with Texture1DArray, Int32x2, Int32, UInt32x4
-Variable TextureStoreMip_Texture1DArray_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture1DArray_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture1DArray_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture1DArray_UInt32x4_coordinate;
-Variable TextureStoreMip_Texture1DArray_UInt32x4_mip;
-Variable TextureStoreMip_Texture1DArray_UInt32x4_value;
-Function TextureStoreMip_Texture1DArray_UInt32x4;
-inline constexpr std::array TextureStoreMip_Texture1DArray_UInt32x4_args = { &TextureStoreMip_Texture1DArray_UInt32x4_texture, &TextureStoreMip_Texture1DArray_UInt32x4_coordinate, &TextureStoreMip_Texture1DArray_UInt32x4_mip, &TextureStoreMip_Texture1DArray_UInt32x4_value };
-
-/// textureStore with Texture2DArray, Int32x3, Float32x4
-Variable TextureStore_Texture2DArray_Float32x4_texture;
-inline constexpr std::array TextureStore_Texture2DArray_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DArray_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DArray_Float32x4_coordinate;
-Variable TextureStore_Texture2DArray_Float32x4_value;
-Function TextureStore_Texture2DArray_Float32x4;
-inline constexpr std::array TextureStore_Texture2DArray_Float32x4_args = { &TextureStore_Texture2DArray_Float32x4_texture, &TextureStore_Texture2DArray_Float32x4_coordinate, &TextureStore_Texture2DArray_Float32x4_value };
-
-/// textureStoreMip with Texture2DArray, Int32x3, Int32, Float32x4
-Variable TextureStoreMip_Texture2DArray_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DArray_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DArray_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DArray_Float32x4_coordinate;
-Variable TextureStoreMip_Texture2DArray_Float32x4_mip;
-Variable TextureStoreMip_Texture2DArray_Float32x4_value;
-Function TextureStoreMip_Texture2DArray_Float32x4;
-inline constexpr std::array TextureStoreMip_Texture2DArray_Float32x4_args = { &TextureStoreMip_Texture2DArray_Float32x4_texture, &TextureStoreMip_Texture2DArray_Float32x4_coordinate, &TextureStoreMip_Texture2DArray_Float32x4_mip, &TextureStoreMip_Texture2DArray_Float32x4_value };
-
-/// textureStore with Texture2DArray, Int32x3, Int32x4
-Variable TextureStore_Texture2DArray_Int32x4_texture;
-inline constexpr std::array TextureStore_Texture2DArray_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DArray_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DArray_Int32x4_coordinate;
-Variable TextureStore_Texture2DArray_Int32x4_value;
-Function TextureStore_Texture2DArray_Int32x4;
-inline constexpr std::array TextureStore_Texture2DArray_Int32x4_args = { &TextureStore_Texture2DArray_Int32x4_texture, &TextureStore_Texture2DArray_Int32x4_coordinate, &TextureStore_Texture2DArray_Int32x4_value };
-
-/// textureStoreMip with Texture2DArray, Int32x3, Int32, Int32x4
-Variable TextureStoreMip_Texture2DArray_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DArray_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DArray_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DArray_Int32x4_coordinate;
-Variable TextureStoreMip_Texture2DArray_Int32x4_mip;
-Variable TextureStoreMip_Texture2DArray_Int32x4_value;
-Function TextureStoreMip_Texture2DArray_Int32x4;
-inline constexpr std::array TextureStoreMip_Texture2DArray_Int32x4_args = { &TextureStoreMip_Texture2DArray_Int32x4_texture, &TextureStoreMip_Texture2DArray_Int32x4_coordinate, &TextureStoreMip_Texture2DArray_Int32x4_mip, &TextureStoreMip_Texture2DArray_Int32x4_value };
-
-/// textureStore with Texture2DArray, Int32x3, UInt32x4
-Variable TextureStore_Texture2DArray_UInt32x4_texture;
-inline constexpr std::array TextureStore_Texture2DArray_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DArray_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DArray_UInt32x4_coordinate;
-Variable TextureStore_Texture2DArray_UInt32x4_value;
-Function TextureStore_Texture2DArray_UInt32x4;
-inline constexpr std::array TextureStore_Texture2DArray_UInt32x4_args = { &TextureStore_Texture2DArray_UInt32x4_texture, &TextureStore_Texture2DArray_UInt32x4_coordinate, &TextureStore_Texture2DArray_UInt32x4_value };
-
-/// textureStoreMip with Texture2DArray, Int32x3, Int32, UInt32x4
-Variable TextureStoreMip_Texture2DArray_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DArray_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DArray_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DArray_UInt32x4_coordinate;
-Variable TextureStoreMip_Texture2DArray_UInt32x4_mip;
-Variable TextureStoreMip_Texture2DArray_UInt32x4_value;
-Function TextureStoreMip_Texture2DArray_UInt32x4;
-inline constexpr std::array TextureStoreMip_Texture2DArray_UInt32x4_args = { &TextureStoreMip_Texture2DArray_UInt32x4_texture, &TextureStoreMip_Texture2DArray_UInt32x4_coordinate, &TextureStoreMip_Texture2DArray_UInt32x4_mip, &TextureStoreMip_Texture2DArray_UInt32x4_value };
-
-/// textureStore with TextureCubeArray, Int32x4, Float32x4
-Variable TextureStore_TextureCubeArray_Float32x4_texture;
-inline constexpr std::array TextureStore_TextureCubeArray_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_TextureCubeArray_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_TextureCubeArray_Float32x4_coordinate;
-Variable TextureStore_TextureCubeArray_Float32x4_value;
-Function TextureStore_TextureCubeArray_Float32x4;
-inline constexpr std::array TextureStore_TextureCubeArray_Float32x4_args = { &TextureStore_TextureCubeArray_Float32x4_texture, &TextureStore_TextureCubeArray_Float32x4_coordinate, &TextureStore_TextureCubeArray_Float32x4_value };
-
-/// textureStoreMip with TextureCubeArray, Int32x4, Int32, Float32x4
-Variable TextureStoreMip_TextureCubeArray_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_TextureCubeArray_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_TextureCubeArray_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_TextureCubeArray_Float32x4_coordinate;
-Variable TextureStoreMip_TextureCubeArray_Float32x4_mip;
-Variable TextureStoreMip_TextureCubeArray_Float32x4_value;
-Function TextureStoreMip_TextureCubeArray_Float32x4;
-inline constexpr std::array TextureStoreMip_TextureCubeArray_Float32x4_args = { &TextureStoreMip_TextureCubeArray_Float32x4_texture, &TextureStoreMip_TextureCubeArray_Float32x4_coordinate, &TextureStoreMip_TextureCubeArray_Float32x4_mip, &TextureStoreMip_TextureCubeArray_Float32x4_value };
-
-/// textureStore with TextureCubeArray, Int32x4, Int32x4
-Variable TextureStore_TextureCubeArray_Int32x4_texture;
-inline constexpr std::array TextureStore_TextureCubeArray_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_TextureCubeArray_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_TextureCubeArray_Int32x4_coordinate;
-Variable TextureStore_TextureCubeArray_Int32x4_value;
-Function TextureStore_TextureCubeArray_Int32x4;
-inline constexpr std::array TextureStore_TextureCubeArray_Int32x4_args = { &TextureStore_TextureCubeArray_Int32x4_texture, &TextureStore_TextureCubeArray_Int32x4_coordinate, &TextureStore_TextureCubeArray_Int32x4_value };
-
-/// textureStoreMip with TextureCubeArray, Int32x4, Int32, Int32x4
-Variable TextureStoreMip_TextureCubeArray_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_TextureCubeArray_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_TextureCubeArray_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_TextureCubeArray_Int32x4_coordinate;
-Variable TextureStoreMip_TextureCubeArray_Int32x4_mip;
-Variable TextureStoreMip_TextureCubeArray_Int32x4_value;
-Function TextureStoreMip_TextureCubeArray_Int32x4;
-inline constexpr std::array TextureStoreMip_TextureCubeArray_Int32x4_args = { &TextureStoreMip_TextureCubeArray_Int32x4_texture, &TextureStoreMip_TextureCubeArray_Int32x4_coordinate, &TextureStoreMip_TextureCubeArray_Int32x4_mip, &TextureStoreMip_TextureCubeArray_Int32x4_value };
-
-/// textureStore with TextureCubeArray, Int32x4, UInt32x4
-Variable TextureStore_TextureCubeArray_UInt32x4_texture;
-inline constexpr std::array TextureStore_TextureCubeArray_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_TextureCubeArray_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_TextureCubeArray_UInt32x4_coordinate;
-Variable TextureStore_TextureCubeArray_UInt32x4_value;
-Function TextureStore_TextureCubeArray_UInt32x4;
-inline constexpr std::array TextureStore_TextureCubeArray_UInt32x4_args = { &TextureStore_TextureCubeArray_UInt32x4_texture, &TextureStore_TextureCubeArray_UInt32x4_coordinate, &TextureStore_TextureCubeArray_UInt32x4_value };
-
-/// textureStoreMip with TextureCubeArray, Int32x4, Int32, UInt32x4
-Variable TextureStoreMip_TextureCubeArray_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_TextureCubeArray_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_TextureCubeArray_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_TextureCubeArray_UInt32x4_coordinate;
-Variable TextureStoreMip_TextureCubeArray_UInt32x4_mip;
-Variable TextureStoreMip_TextureCubeArray_UInt32x4_value;
-Function TextureStoreMip_TextureCubeArray_UInt32x4;
-inline constexpr std::array TextureStoreMip_TextureCubeArray_UInt32x4_args = { &TextureStoreMip_TextureCubeArray_UInt32x4_texture, &TextureStoreMip_TextureCubeArray_UInt32x4_coordinate, &TextureStoreMip_TextureCubeArray_UInt32x4_mip, &TextureStoreMip_TextureCubeArray_UInt32x4_value };
-
-/// textureStore with Texture2DMS, Int32x2, Float32x4
-Variable TextureStore_Texture2DMS_Float32x4_texture;
-inline constexpr std::array TextureStore_Texture2DMS_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DMS_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DMS_Float32x4_coordinate;
-Variable TextureStore_Texture2DMS_Float32x4_value;
-Function TextureStore_Texture2DMS_Float32x4;
-inline constexpr std::array TextureStore_Texture2DMS_Float32x4_args = { &TextureStore_Texture2DMS_Float32x4_texture, &TextureStore_Texture2DMS_Float32x4_coordinate, &TextureStore_Texture2DMS_Float32x4_value };
-
-/// textureStoreMip with Texture2DMS, Int32x2, Int32, Float32x4
-Variable TextureStoreMip_Texture2DMS_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DMS_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DMS_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DMS_Float32x4_coordinate;
-Variable TextureStoreMip_Texture2DMS_Float32x4_mip;
-Variable TextureStoreMip_Texture2DMS_Float32x4_value;
-Function TextureStoreMip_Texture2DMS_Float32x4;
-inline constexpr std::array TextureStoreMip_Texture2DMS_Float32x4_args = { &TextureStoreMip_Texture2DMS_Float32x4_texture, &TextureStoreMip_Texture2DMS_Float32x4_coordinate, &TextureStoreMip_Texture2DMS_Float32x4_mip, &TextureStoreMip_Texture2DMS_Float32x4_value };
-
-/// textureStore with Texture2DMS, Int32x2, Int32x4
-Variable TextureStore_Texture2DMS_Int32x4_texture;
-inline constexpr std::array TextureStore_Texture2DMS_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DMS_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DMS_Int32x4_coordinate;
-Variable TextureStore_Texture2DMS_Int32x4_value;
-Function TextureStore_Texture2DMS_Int32x4;
-inline constexpr std::array TextureStore_Texture2DMS_Int32x4_args = { &TextureStore_Texture2DMS_Int32x4_texture, &TextureStore_Texture2DMS_Int32x4_coordinate, &TextureStore_Texture2DMS_Int32x4_value };
-
-/// textureStoreMip with Texture2DMS, Int32x2, Int32, Int32x4
-Variable TextureStoreMip_Texture2DMS_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DMS_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DMS_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DMS_Int32x4_coordinate;
-Variable TextureStoreMip_Texture2DMS_Int32x4_mip;
-Variable TextureStoreMip_Texture2DMS_Int32x4_value;
-Function TextureStoreMip_Texture2DMS_Int32x4;
-inline constexpr std::array TextureStoreMip_Texture2DMS_Int32x4_args = { &TextureStoreMip_Texture2DMS_Int32x4_texture, &TextureStoreMip_Texture2DMS_Int32x4_coordinate, &TextureStoreMip_Texture2DMS_Int32x4_mip, &TextureStoreMip_Texture2DMS_Int32x4_value };
-
-/// textureStore with Texture2DMS, Int32x2, UInt32x4
-Variable TextureStore_Texture2DMS_UInt32x4_texture;
-inline constexpr std::array TextureStore_Texture2DMS_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DMS_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DMS_UInt32x4_coordinate;
-Variable TextureStore_Texture2DMS_UInt32x4_value;
-Function TextureStore_Texture2DMS_UInt32x4;
-inline constexpr std::array TextureStore_Texture2DMS_UInt32x4_args = { &TextureStore_Texture2DMS_UInt32x4_texture, &TextureStore_Texture2DMS_UInt32x4_coordinate, &TextureStore_Texture2DMS_UInt32x4_value };
-
-/// textureStoreMip with Texture2DMS, Int32x2, Int32, UInt32x4
-Variable TextureStoreMip_Texture2DMS_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DMS_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DMS_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DMS_UInt32x4_coordinate;
-Variable TextureStoreMip_Texture2DMS_UInt32x4_mip;
-Variable TextureStoreMip_Texture2DMS_UInt32x4_value;
-Function TextureStoreMip_Texture2DMS_UInt32x4;
-inline constexpr std::array TextureStoreMip_Texture2DMS_UInt32x4_args = { &TextureStoreMip_Texture2DMS_UInt32x4_texture, &TextureStoreMip_Texture2DMS_UInt32x4_coordinate, &TextureStoreMip_Texture2DMS_UInt32x4_mip, &TextureStoreMip_Texture2DMS_UInt32x4_value };
-
-/// textureStore with Texture2DMSArray, Int32x3, Float32x4
-Variable TextureStore_Texture2DMSArray_Float32x4_texture;
-inline constexpr std::array TextureStore_Texture2DMSArray_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DMSArray_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DMSArray_Float32x4_coordinate;
-Variable TextureStore_Texture2DMSArray_Float32x4_value;
-Function TextureStore_Texture2DMSArray_Float32x4;
-inline constexpr std::array TextureStore_Texture2DMSArray_Float32x4_args = { &TextureStore_Texture2DMSArray_Float32x4_texture, &TextureStore_Texture2DMSArray_Float32x4_coordinate, &TextureStore_Texture2DMSArray_Float32x4_value };
-
-/// textureStoreMip with Texture2DMSArray, Int32x3, Int32, Float32x4
-Variable TextureStoreMip_Texture2DMSArray_Float32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_Float32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_Float32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DMSArray_Float32x4_coordinate;
-Variable TextureStoreMip_Texture2DMSArray_Float32x4_mip;
-Variable TextureStoreMip_Texture2DMSArray_Float32x4_value;
-Function TextureStoreMip_Texture2DMSArray_Float32x4;
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_Float32x4_args = { &TextureStoreMip_Texture2DMSArray_Float32x4_texture, &TextureStoreMip_Texture2DMSArray_Float32x4_coordinate, &TextureStoreMip_Texture2DMSArray_Float32x4_mip, &TextureStoreMip_Texture2DMSArray_Float32x4_value };
-
-/// textureStore with Texture2DMSArray, Int32x3, Int32x4
-Variable TextureStore_Texture2DMSArray_Int32x4_texture;
-inline constexpr std::array TextureStore_Texture2DMSArray_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DMSArray_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DMSArray_Int32x4_coordinate;
-Variable TextureStore_Texture2DMSArray_Int32x4_value;
-Function TextureStore_Texture2DMSArray_Int32x4;
-inline constexpr std::array TextureStore_Texture2DMSArray_Int32x4_args = { &TextureStore_Texture2DMSArray_Int32x4_texture, &TextureStore_Texture2DMSArray_Int32x4_coordinate, &TextureStore_Texture2DMSArray_Int32x4_value };
-
-/// textureStoreMip with Texture2DMSArray, Int32x3, Int32, Int32x4
-Variable TextureStoreMip_Texture2DMSArray_Int32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_Int32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_Int32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DMSArray_Int32x4_coordinate;
-Variable TextureStoreMip_Texture2DMSArray_Int32x4_mip;
-Variable TextureStoreMip_Texture2DMSArray_Int32x4_value;
-Function TextureStoreMip_Texture2DMSArray_Int32x4;
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_Int32x4_args = { &TextureStoreMip_Texture2DMSArray_Int32x4_texture, &TextureStoreMip_Texture2DMSArray_Int32x4_coordinate, &TextureStoreMip_Texture2DMSArray_Int32x4_mip, &TextureStoreMip_Texture2DMSArray_Int32x4_value };
-
-/// textureStore with Texture2DMSArray, Int32x3, UInt32x4
-Variable TextureStore_Texture2DMSArray_UInt32x4_texture;
-inline constexpr std::array TextureStore_Texture2DMSArray_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStore_Texture2DMSArray_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStore_Texture2DMSArray_UInt32x4_coordinate;
-Variable TextureStore_Texture2DMSArray_UInt32x4_value;
-Function TextureStore_Texture2DMSArray_UInt32x4;
-inline constexpr std::array TextureStore_Texture2DMSArray_UInt32x4_args = { &TextureStore_Texture2DMSArray_UInt32x4_texture, &TextureStore_Texture2DMSArray_UInt32x4_coordinate, &TextureStore_Texture2DMSArray_UInt32x4_value };
-
-/// textureStoreMip with Texture2DMSArray, Int32x3, Int32, UInt32x4
-Variable TextureStoreMip_Texture2DMSArray_UInt32x4_texture;
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_UInt32x4_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_UInt32x4_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureStoreMip_Texture2DMSArray_UInt32x4_coordinate;
-Variable TextureStoreMip_Texture2DMSArray_UInt32x4_mip;
-Variable TextureStoreMip_Texture2DMSArray_UInt32x4_value;
-Function TextureStoreMip_Texture2DMSArray_UInt32x4;
-inline constexpr std::array TextureStoreMip_Texture2DMSArray_UInt32x4_args = { &TextureStoreMip_Texture2DMSArray_UInt32x4_texture, &TextureStoreMip_Texture2DMSArray_UInt32x4_coordinate, &TextureStoreMip_Texture2DMSArray_UInt32x4_mip, &TextureStoreMip_Texture2DMSArray_UInt32x4_value };
-
-/// textureFetch with Texture1D, Int32, Int32
-Variable TextureFetch_Texture1D_texture;
-inline constexpr std::array TextureFetch_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetch_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetch_Texture1D_coordinate;
-Variable TextureFetch_Texture1D_mip;
-Function TextureFetch_Texture1D;
-inline constexpr std::array TextureFetch_Texture1D_args = { &TextureFetch_Texture1D_texture, &TextureFetch_Texture1D_coordinate, &TextureFetch_Texture1D_mip };
-
-/// textureFetchSample with Texture1D, Int32, UInt32
-Variable TextureFetchSample_Texture1D_texture;
-inline constexpr std::array TextureFetchSample_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetchSample_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetchSample_Texture1D_coordinate;
-Variable TextureFetchSample_Texture1D_sample;
-Function TextureFetchSample_Texture1D;
-inline constexpr std::array TextureFetchSample_Texture1D_args = { &TextureFetchSample_Texture1D_texture, &TextureFetchSample_Texture1D_coordinate, &TextureFetchSample_Texture1D_sample };
-
-/// textureFetch with Texture2D, Int32x2, Int32
-Variable TextureFetch_Texture2D_texture;
-inline constexpr std::array TextureFetch_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetch_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetch_Texture2D_coordinate;
-Variable TextureFetch_Texture2D_mip;
-Function TextureFetch_Texture2D;
-inline constexpr std::array TextureFetch_Texture2D_args = { &TextureFetch_Texture2D_texture, &TextureFetch_Texture2D_coordinate, &TextureFetch_Texture2D_mip };
-
-/// textureFetchSample with Texture2D, Int32x2, UInt32
-Variable TextureFetchSample_Texture2D_texture;
-inline constexpr std::array TextureFetchSample_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetchSample_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetchSample_Texture2D_coordinate;
-Variable TextureFetchSample_Texture2D_sample;
-Function TextureFetchSample_Texture2D;
-inline constexpr std::array TextureFetchSample_Texture2D_args = { &TextureFetchSample_Texture2D_texture, &TextureFetchSample_Texture2D_coordinate, &TextureFetchSample_Texture2D_sample };
-
-/// textureFetch with Texture3D, Int32x3, Int32
-Variable TextureFetch_Texture3D_texture;
-inline constexpr std::array TextureFetch_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetch_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetch_Texture3D_coordinate;
-Variable TextureFetch_Texture3D_mip;
-Function TextureFetch_Texture3D;
-inline constexpr std::array TextureFetch_Texture3D_args = { &TextureFetch_Texture3D_texture, &TextureFetch_Texture3D_coordinate, &TextureFetch_Texture3D_mip };
-
-/// textureFetchSample with Texture3D, Int32x3, UInt32
-Variable TextureFetchSample_Texture3D_texture;
-inline constexpr std::array TextureFetchSample_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetchSample_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetchSample_Texture3D_coordinate;
-Variable TextureFetchSample_Texture3D_sample;
-Function TextureFetchSample_Texture3D;
-inline constexpr std::array TextureFetchSample_Texture3D_args = { &TextureFetchSample_Texture3D_texture, &TextureFetchSample_Texture3D_coordinate, &TextureFetchSample_Texture3D_sample };
-
-/// textureFetch with Texture1DArray, Int32x2, Int32
-Variable TextureFetch_Texture1DArray_texture;
-inline constexpr std::array TextureFetch_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetch_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetch_Texture1DArray_coordinate;
-Variable TextureFetch_Texture1DArray_mip;
-Function TextureFetch_Texture1DArray;
-inline constexpr std::array TextureFetch_Texture1DArray_args = { &TextureFetch_Texture1DArray_texture, &TextureFetch_Texture1DArray_coordinate, &TextureFetch_Texture1DArray_mip };
-
-/// textureFetchSample with Texture1DArray, Int32x2, UInt32
-Variable TextureFetchSample_Texture1DArray_texture;
-inline constexpr std::array TextureFetchSample_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetchSample_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetchSample_Texture1DArray_coordinate;
-Variable TextureFetchSample_Texture1DArray_sample;
-Function TextureFetchSample_Texture1DArray;
-inline constexpr std::array TextureFetchSample_Texture1DArray_args = { &TextureFetchSample_Texture1DArray_texture, &TextureFetchSample_Texture1DArray_coordinate, &TextureFetchSample_Texture1DArray_sample };
-
-/// textureFetch with Texture2DArray, Int32x3, Int32
-Variable TextureFetch_Texture2DArray_texture;
-inline constexpr std::array TextureFetch_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetch_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetch_Texture2DArray_coordinate;
-Variable TextureFetch_Texture2DArray_mip;
-Function TextureFetch_Texture2DArray;
-inline constexpr std::array TextureFetch_Texture2DArray_args = { &TextureFetch_Texture2DArray_texture, &TextureFetch_Texture2DArray_coordinate, &TextureFetch_Texture2DArray_mip };
-
-/// textureFetchSample with Texture2DArray, Int32x3, UInt32
-Variable TextureFetchSample_Texture2DArray_texture;
-inline constexpr std::array TextureFetchSample_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetchSample_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetchSample_Texture2DArray_coordinate;
-Variable TextureFetchSample_Texture2DArray_sample;
-Function TextureFetchSample_Texture2DArray;
-inline constexpr std::array TextureFetchSample_Texture2DArray_args = { &TextureFetchSample_Texture2DArray_texture, &TextureFetchSample_Texture2DArray_coordinate, &TextureFetchSample_Texture2DArray_sample };
-
-/// textureFetchSample with Texture2DMS, Int32x2, UInt32
-Variable TextureFetchSample_Texture2DMS_texture;
-inline constexpr std::array TextureFetchSample_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetchSample_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetchSample_Texture2DMS_coordinate;
-Variable TextureFetchSample_Texture2DMS_sample;
-Function TextureFetchSample_Texture2DMS;
-inline constexpr std::array TextureFetchSample_Texture2DMS_args = { &TextureFetchSample_Texture2DMS_texture, &TextureFetchSample_Texture2DMS_coordinate, &TextureFetchSample_Texture2DMS_sample };
-
-/// textureFetchSample with Texture2DMSArray, Int32x3, UInt32
-Variable TextureFetchSample_Texture2DMSArray_texture;
-inline constexpr std::array TextureFetchSample_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureFetchSample_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureFetchSample_Texture2DMSArray_coordinate;
-Variable TextureFetchSample_Texture2DMSArray_sample;
-Function TextureFetchSample_Texture2DMSArray;
-inline constexpr std::array TextureFetchSample_Texture2DMSArray_args = { &TextureFetchSample_Texture2DMSArray_texture, &TextureFetchSample_Texture2DMSArray_coordinate, &TextureFetchSample_Texture2DMSArray_sample };
-
-/// textureGather with Texture2D, Sampler, Float32x2, Int32
-Variable TextureGather_Texture2D_texture;
-inline constexpr std::array TextureGather_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGather_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGather_Texture2D_sampler;
-inline constexpr std::array TextureGather_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGather_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGather_Texture2D_coordinate;
-Variable TextureGather_Texture2D_component;
-Function TextureGather_Texture2D;
-inline constexpr std::array TextureGather_Texture2D_args = { &TextureGather_Texture2D_texture, &TextureGather_Texture2D_sampler, &TextureGather_Texture2D_coordinate, &TextureGather_Texture2D_component };
-
-/// textureGather with SampledTexture2D, Float32x2, Int32
-Variable SampledTextureGather_Texture2D_texture;
-inline constexpr std::array SampledTextureGather_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGather_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGather_Texture2D_coordinate;
-Variable SampledTextureGather_Texture2D_component;
-Function SampledTextureGather_Texture2D;
-inline constexpr std::array SampledTextureGather_Texture2D_args = { &SampledTextureGather_Texture2D_texture, &SampledTextureGather_Texture2D_coordinate, &SampledTextureGather_Texture2D_component };
-
-/// textureGatherOffset with Texture2D, Sampler, Float32x2, Int32, Int32x2
-Variable TextureGatherOffset_Texture2D_texture;
-inline constexpr std::array TextureGatherOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGatherOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGatherOffset_Texture2D_sampler;
-inline constexpr std::array TextureGatherOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGatherOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGatherOffset_Texture2D_coordinate;
-Variable TextureGatherOffset_Texture2D_component;
-Variable TextureGatherOffset_Texture2D_offset;
-Function TextureGatherOffset_Texture2D;
-inline constexpr std::array TextureGatherOffset_Texture2D_args = { &TextureGatherOffset_Texture2D_texture, &TextureGatherOffset_Texture2D_sampler, &TextureGatherOffset_Texture2D_coordinate, &TextureGatherOffset_Texture2D_component, &TextureGatherOffset_Texture2D_offset };
-
-/// textureGatherOffset with SampledTexture2D, Float32x2, Int32, Int32x2
-Variable SampledTextureGatherOffset_Texture2D_texture;
-inline constexpr std::array SampledTextureGatherOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGatherOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGatherOffset_Texture2D_coordinate;
-Variable SampledTextureGatherOffset_Texture2D_component;
-Variable SampledTextureGatherOffset_Texture2D_offset;
-Function SampledTextureGatherOffset_Texture2D;
-inline constexpr std::array SampledTextureGatherOffset_Texture2D_args = { &SampledTextureGatherOffset_Texture2D_texture, &SampledTextureGatherOffset_Texture2D_coordinate, &SampledTextureGatherOffset_Texture2D_component, &SampledTextureGatherOffset_Texture2D_offset };
-
-/// textureGather with TextureCube, Sampler, Float32x3, Int32
-Variable TextureGather_TextureCube_texture;
-inline constexpr std::array TextureGather_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGather_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGather_TextureCube_sampler;
-inline constexpr std::array TextureGather_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGather_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGather_TextureCube_coordinate;
-Variable TextureGather_TextureCube_component;
-Function TextureGather_TextureCube;
-inline constexpr std::array TextureGather_TextureCube_args = { &TextureGather_TextureCube_texture, &TextureGather_TextureCube_sampler, &TextureGather_TextureCube_coordinate, &TextureGather_TextureCube_component };
-
-/// textureGather with SampledTextureCube, Float32x3, Int32
-Variable SampledTextureGather_TextureCube_texture;
-inline constexpr std::array SampledTextureGather_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGather_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGather_TextureCube_coordinate;
-Variable SampledTextureGather_TextureCube_component;
-Function SampledTextureGather_TextureCube;
-inline constexpr std::array SampledTextureGather_TextureCube_args = { &SampledTextureGather_TextureCube_texture, &SampledTextureGather_TextureCube_coordinate, &SampledTextureGather_TextureCube_component };
-
-/// textureGatherOffset with TextureCube, Sampler, Float32x3, Int32, Int32x2
-Variable TextureGatherOffset_TextureCube_texture;
-inline constexpr std::array TextureGatherOffset_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGatherOffset_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGatherOffset_TextureCube_sampler;
-inline constexpr std::array TextureGatherOffset_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGatherOffset_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGatherOffset_TextureCube_coordinate;
-Variable TextureGatherOffset_TextureCube_component;
-Variable TextureGatherOffset_TextureCube_offset;
-Function TextureGatherOffset_TextureCube;
-inline constexpr std::array TextureGatherOffset_TextureCube_args = { &TextureGatherOffset_TextureCube_texture, &TextureGatherOffset_TextureCube_sampler, &TextureGatherOffset_TextureCube_coordinate, &TextureGatherOffset_TextureCube_component, &TextureGatherOffset_TextureCube_offset };
-
-/// textureGatherOffset with SampledTextureCube, Float32x3, Int32, Int32x2
-Variable SampledTextureGatherOffset_TextureCube_texture;
-inline constexpr std::array SampledTextureGatherOffset_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGatherOffset_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGatherOffset_TextureCube_coordinate;
-Variable SampledTextureGatherOffset_TextureCube_component;
-Variable SampledTextureGatherOffset_TextureCube_offset;
-Function SampledTextureGatherOffset_TextureCube;
-inline constexpr std::array SampledTextureGatherOffset_TextureCube_args = { &SampledTextureGatherOffset_TextureCube_texture, &SampledTextureGatherOffset_TextureCube_coordinate, &SampledTextureGatherOffset_TextureCube_component, &SampledTextureGatherOffset_TextureCube_offset };
-
-/// textureGather with Texture2DArray, Sampler, Float32x3, Int32
-Variable TextureGather_Texture2DArray_texture;
-inline constexpr std::array TextureGather_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGather_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGather_Texture2DArray_sampler;
-inline constexpr std::array TextureGather_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGather_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGather_Texture2DArray_coordinate;
-Variable TextureGather_Texture2DArray_component;
-Function TextureGather_Texture2DArray;
-inline constexpr std::array TextureGather_Texture2DArray_args = { &TextureGather_Texture2DArray_texture, &TextureGather_Texture2DArray_sampler, &TextureGather_Texture2DArray_coordinate, &TextureGather_Texture2DArray_component };
-
-/// textureGather with SampledTexture2DArray, Float32x3, Int32
-Variable SampledTextureGather_Texture2DArray_texture;
-inline constexpr std::array SampledTextureGather_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGather_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGather_Texture2DArray_coordinate;
-Variable SampledTextureGather_Texture2DArray_component;
-Function SampledTextureGather_Texture2DArray;
-inline constexpr std::array SampledTextureGather_Texture2DArray_args = { &SampledTextureGather_Texture2DArray_texture, &SampledTextureGather_Texture2DArray_coordinate, &SampledTextureGather_Texture2DArray_component };
-
-/// textureGatherOffset with Texture2DArray, Sampler, Float32x3, Int32, Int32x2
-Variable TextureGatherOffset_Texture2DArray_texture;
-inline constexpr std::array TextureGatherOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGatherOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGatherOffset_Texture2DArray_sampler;
-inline constexpr std::array TextureGatherOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGatherOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGatherOffset_Texture2DArray_coordinate;
-Variable TextureGatherOffset_Texture2DArray_component;
-Variable TextureGatherOffset_Texture2DArray_offset;
-Function TextureGatherOffset_Texture2DArray;
-inline constexpr std::array TextureGatherOffset_Texture2DArray_args = { &TextureGatherOffset_Texture2DArray_texture, &TextureGatherOffset_Texture2DArray_sampler, &TextureGatherOffset_Texture2DArray_coordinate, &TextureGatherOffset_Texture2DArray_component, &TextureGatherOffset_Texture2DArray_offset };
-
-/// textureGatherOffset with SampledTexture2DArray, Float32x3, Int32, Int32x2
-Variable SampledTextureGatherOffset_Texture2DArray_texture;
-inline constexpr std::array SampledTextureGatherOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGatherOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGatherOffset_Texture2DArray_coordinate;
-Variable SampledTextureGatherOffset_Texture2DArray_component;
-Variable SampledTextureGatherOffset_Texture2DArray_offset;
-Function SampledTextureGatherOffset_Texture2DArray;
-inline constexpr std::array SampledTextureGatherOffset_Texture2DArray_args = { &SampledTextureGatherOffset_Texture2DArray_texture, &SampledTextureGatherOffset_Texture2DArray_coordinate, &SampledTextureGatherOffset_Texture2DArray_component, &SampledTextureGatherOffset_Texture2DArray_offset };
-
-/// textureGather with TextureCubeArray, Sampler, Float32x4, Int32
-Variable TextureGather_TextureCubeArray_texture;
-inline constexpr std::array TextureGather_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGather_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGather_TextureCubeArray_sampler;
-inline constexpr std::array TextureGather_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGather_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGather_TextureCubeArray_coordinate;
-Variable TextureGather_TextureCubeArray_component;
-Function TextureGather_TextureCubeArray;
-inline constexpr std::array TextureGather_TextureCubeArray_args = { &TextureGather_TextureCubeArray_texture, &TextureGather_TextureCubeArray_sampler, &TextureGather_TextureCubeArray_coordinate, &TextureGather_TextureCubeArray_component };
-
-/// textureGather with SampledTextureCubeArray, Float32x4, Int32
-Variable SampledTextureGather_TextureCubeArray_texture;
-inline constexpr std::array SampledTextureGather_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGather_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGather_TextureCubeArray_coordinate;
-Variable SampledTextureGather_TextureCubeArray_component;
-Function SampledTextureGather_TextureCubeArray;
-inline constexpr std::array SampledTextureGather_TextureCubeArray_args = { &SampledTextureGather_TextureCubeArray_texture, &SampledTextureGather_TextureCubeArray_coordinate, &SampledTextureGather_TextureCubeArray_component };
-
-/// textureGatherOffset with TextureCubeArray, Sampler, Float32x4, Int32, Int32x2
-Variable TextureGatherOffset_TextureCubeArray_texture;
-inline constexpr std::array TextureGatherOffset_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGatherOffset_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGatherOffset_TextureCubeArray_sampler;
-inline constexpr std::array TextureGatherOffset_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGatherOffset_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
-Variable TextureGatherOffset_TextureCubeArray_coordinate;
-Variable TextureGatherOffset_TextureCubeArray_component;
-Variable TextureGatherOffset_TextureCubeArray_offset;
-Function TextureGatherOffset_TextureCubeArray;
-inline constexpr std::array TextureGatherOffset_TextureCubeArray_args = { &TextureGatherOffset_TextureCubeArray_texture, &TextureGatherOffset_TextureCubeArray_sampler, &TextureGatherOffset_TextureCubeArray_coordinate, &TextureGatherOffset_TextureCubeArray_component, &TextureGatherOffset_TextureCubeArray_offset };
-
-/// textureGatherOffset with SampledTextureCubeArray, Float32x4, Int32, Int32x2
-Variable SampledTextureGatherOffset_TextureCubeArray_texture;
-inline constexpr std::array SampledTextureGatherOffset_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array SampledTextureGatherOffset_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Variable SampledTextureGatherOffset_TextureCubeArray_coordinate;
-Variable SampledTextureGatherOffset_TextureCubeArray_component;
-Variable SampledTextureGatherOffset_TextureCubeArray_offset;
-Function SampledTextureGatherOffset_TextureCubeArray;
-inline constexpr std::array SampledTextureGatherOffset_TextureCubeArray_args = { &SampledTextureGatherOffset_TextureCubeArray_texture, &SampledTextureGatherOffset_TextureCubeArray_coordinate, &SampledTextureGatherOffset_TextureCubeArray_component, &SampledTextureGatherOffset_TextureCubeArray_offset };
+/// subgroupLogicalAnd with Int16x4, SubgroupOperation
+Variable SubgroupLogicalAnd_Int16x4_value;
+Variable SubgroupLogicalAnd_Int16x4_op;
+Function SubgroupLogicalAnd_Int16x4;
+inline constexpr std::array SubgroupLogicalAnd_Int16x4_args = { &SubgroupLogicalAnd_Int16x4_value, &SubgroupLogicalAnd_Int16x4_op };
+
+/// subgroupLogicalAnd with UInt32, SubgroupOperation
+Variable SubgroupLogicalAnd_UInt32_value;
+Variable SubgroupLogicalAnd_UInt32_op;
+Function SubgroupLogicalAnd_UInt32;
+inline constexpr std::array SubgroupLogicalAnd_UInt32_args = { &SubgroupLogicalAnd_UInt32_value, &SubgroupLogicalAnd_UInt32_op };
+
+/// subgroupLogicalAnd with UInt32x2, SubgroupOperation
+Variable SubgroupLogicalAnd_UInt32x2_value;
+Variable SubgroupLogicalAnd_UInt32x2_op;
+Function SubgroupLogicalAnd_UInt32x2;
+inline constexpr std::array SubgroupLogicalAnd_UInt32x2_args = { &SubgroupLogicalAnd_UInt32x2_value, &SubgroupLogicalAnd_UInt32x2_op };
+
+/// subgroupLogicalAnd with UInt32x3, SubgroupOperation
+Variable SubgroupLogicalAnd_UInt32x3_value;
+Variable SubgroupLogicalAnd_UInt32x3_op;
+Function SubgroupLogicalAnd_UInt32x3;
+inline constexpr std::array SubgroupLogicalAnd_UInt32x3_args = { &SubgroupLogicalAnd_UInt32x3_value, &SubgroupLogicalAnd_UInt32x3_op };
+
+/// subgroupLogicalAnd with UInt32x4, SubgroupOperation
+Variable SubgroupLogicalAnd_UInt32x4_value;
+Variable SubgroupLogicalAnd_UInt32x4_op;
+Function SubgroupLogicalAnd_UInt32x4;
+inline constexpr std::array SubgroupLogicalAnd_UInt32x4_args = { &SubgroupLogicalAnd_UInt32x4_value, &SubgroupLogicalAnd_UInt32x4_op };
+
+/// subgroupLogicalAnd with UInt16, SubgroupOperation
+Variable SubgroupLogicalAnd_UInt16_value;
+Variable SubgroupLogicalAnd_UInt16_op;
+Function SubgroupLogicalAnd_UInt16;
+inline constexpr std::array SubgroupLogicalAnd_UInt16_args = { &SubgroupLogicalAnd_UInt16_value, &SubgroupLogicalAnd_UInt16_op };
+
+/// subgroupLogicalAnd with UInt16x2, SubgroupOperation
+Variable SubgroupLogicalAnd_UInt16x2_value;
+Variable SubgroupLogicalAnd_UInt16x2_op;
+Function SubgroupLogicalAnd_UInt16x2;
+inline constexpr std::array SubgroupLogicalAnd_UInt16x2_args = { &SubgroupLogicalAnd_UInt16x2_value, &SubgroupLogicalAnd_UInt16x2_op };
+
+/// subgroupLogicalAnd with UInt16x3, SubgroupOperation
+Variable SubgroupLogicalAnd_UInt16x3_value;
+Variable SubgroupLogicalAnd_UInt16x3_op;
+Function SubgroupLogicalAnd_UInt16x3;
+inline constexpr std::array SubgroupLogicalAnd_UInt16x3_args = { &SubgroupLogicalAnd_UInt16x3_value, &SubgroupLogicalAnd_UInt16x3_op };
+
+/// subgroupLogicalAnd with UInt16x4, SubgroupOperation
+Variable SubgroupLogicalAnd_UInt16x4_value;
+Variable SubgroupLogicalAnd_UInt16x4_op;
+Function SubgroupLogicalAnd_UInt16x4;
+inline constexpr std::array SubgroupLogicalAnd_UInt16x4_args = { &SubgroupLogicalAnd_UInt16x4_value, &SubgroupLogicalAnd_UInt16x4_op };
+
+/// subgroupLogicalOr with Int32, SubgroupOperation
+Variable SubgroupLogicalOr_Int32_value;
+Variable SubgroupLogicalOr_Int32_op;
+Function SubgroupLogicalOr_Int32;
+inline constexpr std::array SubgroupLogicalOr_Int32_args = { &SubgroupLogicalOr_Int32_value, &SubgroupLogicalOr_Int32_op };
+
+/// subgroupLogicalOr with Int32x2, SubgroupOperation
+Variable SubgroupLogicalOr_Int32x2_value;
+Variable SubgroupLogicalOr_Int32x2_op;
+Function SubgroupLogicalOr_Int32x2;
+inline constexpr std::array SubgroupLogicalOr_Int32x2_args = { &SubgroupLogicalOr_Int32x2_value, &SubgroupLogicalOr_Int32x2_op };
+
+/// subgroupLogicalOr with Int32x3, SubgroupOperation
+Variable SubgroupLogicalOr_Int32x3_value;
+Variable SubgroupLogicalOr_Int32x3_op;
+Function SubgroupLogicalOr_Int32x3;
+inline constexpr std::array SubgroupLogicalOr_Int32x3_args = { &SubgroupLogicalOr_Int32x3_value, &SubgroupLogicalOr_Int32x3_op };
+
+/// subgroupLogicalOr with Int32x4, SubgroupOperation
+Variable SubgroupLogicalOr_Int32x4_value;
+Variable SubgroupLogicalOr_Int32x4_op;
+Function SubgroupLogicalOr_Int32x4;
+inline constexpr std::array SubgroupLogicalOr_Int32x4_args = { &SubgroupLogicalOr_Int32x4_value, &SubgroupLogicalOr_Int32x4_op };
+
+/// subgroupLogicalOr with Int16, SubgroupOperation
+Variable SubgroupLogicalOr_Int16_value;
+Variable SubgroupLogicalOr_Int16_op;
+Function SubgroupLogicalOr_Int16;
+inline constexpr std::array SubgroupLogicalOr_Int16_args = { &SubgroupLogicalOr_Int16_value, &SubgroupLogicalOr_Int16_op };
+
+/// subgroupLogicalOr with Int16x2, SubgroupOperation
+Variable SubgroupLogicalOr_Int16x2_value;
+Variable SubgroupLogicalOr_Int16x2_op;
+Function SubgroupLogicalOr_Int16x2;
+inline constexpr std::array SubgroupLogicalOr_Int16x2_args = { &SubgroupLogicalOr_Int16x2_value, &SubgroupLogicalOr_Int16x2_op };
+
+/// subgroupLogicalOr with Int16x3, SubgroupOperation
+Variable SubgroupLogicalOr_Int16x3_value;
+Variable SubgroupLogicalOr_Int16x3_op;
+Function SubgroupLogicalOr_Int16x3;
+inline constexpr std::array SubgroupLogicalOr_Int16x3_args = { &SubgroupLogicalOr_Int16x3_value, &SubgroupLogicalOr_Int16x3_op };
+
+/// subgroupLogicalOr with Int16x4, SubgroupOperation
+Variable SubgroupLogicalOr_Int16x4_value;
+Variable SubgroupLogicalOr_Int16x4_op;
+Function SubgroupLogicalOr_Int16x4;
+inline constexpr std::array SubgroupLogicalOr_Int16x4_args = { &SubgroupLogicalOr_Int16x4_value, &SubgroupLogicalOr_Int16x4_op };
+
+/// subgroupLogicalOr with UInt32, SubgroupOperation
+Variable SubgroupLogicalOr_UInt32_value;
+Variable SubgroupLogicalOr_UInt32_op;
+Function SubgroupLogicalOr_UInt32;
+inline constexpr std::array SubgroupLogicalOr_UInt32_args = { &SubgroupLogicalOr_UInt32_value, &SubgroupLogicalOr_UInt32_op };
+
+/// subgroupLogicalOr with UInt32x2, SubgroupOperation
+Variable SubgroupLogicalOr_UInt32x2_value;
+Variable SubgroupLogicalOr_UInt32x2_op;
+Function SubgroupLogicalOr_UInt32x2;
+inline constexpr std::array SubgroupLogicalOr_UInt32x2_args = { &SubgroupLogicalOr_UInt32x2_value, &SubgroupLogicalOr_UInt32x2_op };
+
+/// subgroupLogicalOr with UInt32x3, SubgroupOperation
+Variable SubgroupLogicalOr_UInt32x3_value;
+Variable SubgroupLogicalOr_UInt32x3_op;
+Function SubgroupLogicalOr_UInt32x3;
+inline constexpr std::array SubgroupLogicalOr_UInt32x3_args = { &SubgroupLogicalOr_UInt32x3_value, &SubgroupLogicalOr_UInt32x3_op };
+
+/// subgroupLogicalOr with UInt32x4, SubgroupOperation
+Variable SubgroupLogicalOr_UInt32x4_value;
+Variable SubgroupLogicalOr_UInt32x4_op;
+Function SubgroupLogicalOr_UInt32x4;
+inline constexpr std::array SubgroupLogicalOr_UInt32x4_args = { &SubgroupLogicalOr_UInt32x4_value, &SubgroupLogicalOr_UInt32x4_op };
+
+/// subgroupLogicalOr with UInt16, SubgroupOperation
+Variable SubgroupLogicalOr_UInt16_value;
+Variable SubgroupLogicalOr_UInt16_op;
+Function SubgroupLogicalOr_UInt16;
+inline constexpr std::array SubgroupLogicalOr_UInt16_args = { &SubgroupLogicalOr_UInt16_value, &SubgroupLogicalOr_UInt16_op };
+
+/// subgroupLogicalOr with UInt16x2, SubgroupOperation
+Variable SubgroupLogicalOr_UInt16x2_value;
+Variable SubgroupLogicalOr_UInt16x2_op;
+Function SubgroupLogicalOr_UInt16x2;
+inline constexpr std::array SubgroupLogicalOr_UInt16x2_args = { &SubgroupLogicalOr_UInt16x2_value, &SubgroupLogicalOr_UInt16x2_op };
+
+/// subgroupLogicalOr with UInt16x3, SubgroupOperation
+Variable SubgroupLogicalOr_UInt16x3_value;
+Variable SubgroupLogicalOr_UInt16x3_op;
+Function SubgroupLogicalOr_UInt16x3;
+inline constexpr std::array SubgroupLogicalOr_UInt16x3_args = { &SubgroupLogicalOr_UInt16x3_value, &SubgroupLogicalOr_UInt16x3_op };
+
+/// subgroupLogicalOr with UInt16x4, SubgroupOperation
+Variable SubgroupLogicalOr_UInt16x4_value;
+Variable SubgroupLogicalOr_UInt16x4_op;
+Function SubgroupLogicalOr_UInt16x4;
+inline constexpr std::array SubgroupLogicalOr_UInt16x4_args = { &SubgroupLogicalOr_UInt16x4_value, &SubgroupLogicalOr_UInt16x4_op };
+
+/// subgroupLogicalXor with Int32, SubgroupOperation
+Variable SubgroupLogicalXor_Int32_value;
+Variable SubgroupLogicalXor_Int32_op;
+Function SubgroupLogicalXor_Int32;
+inline constexpr std::array SubgroupLogicalXor_Int32_args = { &SubgroupLogicalXor_Int32_value, &SubgroupLogicalXor_Int32_op };
+
+/// subgroupLogicalXor with Int32x2, SubgroupOperation
+Variable SubgroupLogicalXor_Int32x2_value;
+Variable SubgroupLogicalXor_Int32x2_op;
+Function SubgroupLogicalXor_Int32x2;
+inline constexpr std::array SubgroupLogicalXor_Int32x2_args = { &SubgroupLogicalXor_Int32x2_value, &SubgroupLogicalXor_Int32x2_op };
+
+/// subgroupLogicalXor with Int32x3, SubgroupOperation
+Variable SubgroupLogicalXor_Int32x3_value;
+Variable SubgroupLogicalXor_Int32x3_op;
+Function SubgroupLogicalXor_Int32x3;
+inline constexpr std::array SubgroupLogicalXor_Int32x3_args = { &SubgroupLogicalXor_Int32x3_value, &SubgroupLogicalXor_Int32x3_op };
+
+/// subgroupLogicalXor with Int32x4, SubgroupOperation
+Variable SubgroupLogicalXor_Int32x4_value;
+Variable SubgroupLogicalXor_Int32x4_op;
+Function SubgroupLogicalXor_Int32x4;
+inline constexpr std::array SubgroupLogicalXor_Int32x4_args = { &SubgroupLogicalXor_Int32x4_value, &SubgroupLogicalXor_Int32x4_op };
+
+/// subgroupLogicalXor with Int16, SubgroupOperation
+Variable SubgroupLogicalXor_Int16_value;
+Variable SubgroupLogicalXor_Int16_op;
+Function SubgroupLogicalXor_Int16;
+inline constexpr std::array SubgroupLogicalXor_Int16_args = { &SubgroupLogicalXor_Int16_value, &SubgroupLogicalXor_Int16_op };
+
+/// subgroupLogicalXor with Int16x2, SubgroupOperation
+Variable SubgroupLogicalXor_Int16x2_value;
+Variable SubgroupLogicalXor_Int16x2_op;
+Function SubgroupLogicalXor_Int16x2;
+inline constexpr std::array SubgroupLogicalXor_Int16x2_args = { &SubgroupLogicalXor_Int16x2_value, &SubgroupLogicalXor_Int16x2_op };
+
+/// subgroupLogicalXor with Int16x3, SubgroupOperation
+Variable SubgroupLogicalXor_Int16x3_value;
+Variable SubgroupLogicalXor_Int16x3_op;
+Function SubgroupLogicalXor_Int16x3;
+inline constexpr std::array SubgroupLogicalXor_Int16x3_args = { &SubgroupLogicalXor_Int16x3_value, &SubgroupLogicalXor_Int16x3_op };
+
+/// subgroupLogicalXor with Int16x4, SubgroupOperation
+Variable SubgroupLogicalXor_Int16x4_value;
+Variable SubgroupLogicalXor_Int16x4_op;
+Function SubgroupLogicalXor_Int16x4;
+inline constexpr std::array SubgroupLogicalXor_Int16x4_args = { &SubgroupLogicalXor_Int16x4_value, &SubgroupLogicalXor_Int16x4_op };
+
+/// subgroupLogicalXor with UInt32, SubgroupOperation
+Variable SubgroupLogicalXor_UInt32_value;
+Variable SubgroupLogicalXor_UInt32_op;
+Function SubgroupLogicalXor_UInt32;
+inline constexpr std::array SubgroupLogicalXor_UInt32_args = { &SubgroupLogicalXor_UInt32_value, &SubgroupLogicalXor_UInt32_op };
+
+/// subgroupLogicalXor with UInt32x2, SubgroupOperation
+Variable SubgroupLogicalXor_UInt32x2_value;
+Variable SubgroupLogicalXor_UInt32x2_op;
+Function SubgroupLogicalXor_UInt32x2;
+inline constexpr std::array SubgroupLogicalXor_UInt32x2_args = { &SubgroupLogicalXor_UInt32x2_value, &SubgroupLogicalXor_UInt32x2_op };
+
+/// subgroupLogicalXor with UInt32x3, SubgroupOperation
+Variable SubgroupLogicalXor_UInt32x3_value;
+Variable SubgroupLogicalXor_UInt32x3_op;
+Function SubgroupLogicalXor_UInt32x3;
+inline constexpr std::array SubgroupLogicalXor_UInt32x3_args = { &SubgroupLogicalXor_UInt32x3_value, &SubgroupLogicalXor_UInt32x3_op };
+
+/// subgroupLogicalXor with UInt32x4, SubgroupOperation
+Variable SubgroupLogicalXor_UInt32x4_value;
+Variable SubgroupLogicalXor_UInt32x4_op;
+Function SubgroupLogicalXor_UInt32x4;
+inline constexpr std::array SubgroupLogicalXor_UInt32x4_args = { &SubgroupLogicalXor_UInt32x4_value, &SubgroupLogicalXor_UInt32x4_op };
+
+/// subgroupLogicalXor with UInt16, SubgroupOperation
+Variable SubgroupLogicalXor_UInt16_value;
+Variable SubgroupLogicalXor_UInt16_op;
+Function SubgroupLogicalXor_UInt16;
+inline constexpr std::array SubgroupLogicalXor_UInt16_args = { &SubgroupLogicalXor_UInt16_value, &SubgroupLogicalXor_UInt16_op };
+
+/// subgroupLogicalXor with UInt16x2, SubgroupOperation
+Variable SubgroupLogicalXor_UInt16x2_value;
+Variable SubgroupLogicalXor_UInt16x2_op;
+Function SubgroupLogicalXor_UInt16x2;
+inline constexpr std::array SubgroupLogicalXor_UInt16x2_args = { &SubgroupLogicalXor_UInt16x2_value, &SubgroupLogicalXor_UInt16x2_op };
+
+/// subgroupLogicalXor with UInt16x3, SubgroupOperation
+Variable SubgroupLogicalXor_UInt16x3_value;
+Variable SubgroupLogicalXor_UInt16x3_op;
+Function SubgroupLogicalXor_UInt16x3;
+inline constexpr std::array SubgroupLogicalXor_UInt16x3_args = { &SubgroupLogicalXor_UInt16x3_value, &SubgroupLogicalXor_UInt16x3_op };
+
+/// subgroupLogicalXor with UInt16x4, SubgroupOperation
+Variable SubgroupLogicalXor_UInt16x4_value;
+Variable SubgroupLogicalXor_UInt16x4_op;
+Function SubgroupLogicalXor_UInt16x4;
+inline constexpr std::array SubgroupLogicalXor_UInt16x4_args = { &SubgroupLogicalXor_UInt16x4_value, &SubgroupLogicalXor_UInt16x4_op };
+
+/// subgroupShuffle with Float32, UInt32
+Variable SubgroupShuffle_Float32_value;
+Variable SubgroupShuffle_Float32_id;
+Function SubgroupShuffle_Float32;
+inline constexpr std::array SubgroupShuffle_Float32_args = { &SubgroupShuffle_Float32_value, &SubgroupShuffle_Float32_id };
+
+/// subgroupShuffle with Float32x2, UInt32
+Variable SubgroupShuffle_Float32x2_value;
+Variable SubgroupShuffle_Float32x2_id;
+Function SubgroupShuffle_Float32x2;
+inline constexpr std::array SubgroupShuffle_Float32x2_args = { &SubgroupShuffle_Float32x2_value, &SubgroupShuffle_Float32x2_id };
+
+/// subgroupShuffle with Float32x3, UInt32
+Variable SubgroupShuffle_Float32x3_value;
+Variable SubgroupShuffle_Float32x3_id;
+Function SubgroupShuffle_Float32x3;
+inline constexpr std::array SubgroupShuffle_Float32x3_args = { &SubgroupShuffle_Float32x3_value, &SubgroupShuffle_Float32x3_id };
+
+/// subgroupShuffle with Float32x4, UInt32
+Variable SubgroupShuffle_Float32x4_value;
+Variable SubgroupShuffle_Float32x4_id;
+Function SubgroupShuffle_Float32x4;
+inline constexpr std::array SubgroupShuffle_Float32x4_args = { &SubgroupShuffle_Float32x4_value, &SubgroupShuffle_Float32x4_id };
+
+/// subgroupShuffle with Float16, UInt32
+Variable SubgroupShuffle_Float16_value;
+Variable SubgroupShuffle_Float16_id;
+Function SubgroupShuffle_Float16;
+inline constexpr std::array SubgroupShuffle_Float16_args = { &SubgroupShuffle_Float16_value, &SubgroupShuffle_Float16_id };
+
+/// subgroupShuffle with Float16x2, UInt32
+Variable SubgroupShuffle_Float16x2_value;
+Variable SubgroupShuffle_Float16x2_id;
+Function SubgroupShuffle_Float16x2;
+inline constexpr std::array SubgroupShuffle_Float16x2_args = { &SubgroupShuffle_Float16x2_value, &SubgroupShuffle_Float16x2_id };
+
+/// subgroupShuffle with Float16x3, UInt32
+Variable SubgroupShuffle_Float16x3_value;
+Variable SubgroupShuffle_Float16x3_id;
+Function SubgroupShuffle_Float16x3;
+inline constexpr std::array SubgroupShuffle_Float16x3_args = { &SubgroupShuffle_Float16x3_value, &SubgroupShuffle_Float16x3_id };
+
+/// subgroupShuffle with Float16x4, UInt32
+Variable SubgroupShuffle_Float16x4_value;
+Variable SubgroupShuffle_Float16x4_id;
+Function SubgroupShuffle_Float16x4;
+inline constexpr std::array SubgroupShuffle_Float16x4_args = { &SubgroupShuffle_Float16x4_value, &SubgroupShuffle_Float16x4_id };
+
+/// subgroupShuffle with Int32, UInt32
+Variable SubgroupShuffle_Int32_value;
+Variable SubgroupShuffle_Int32_id;
+Function SubgroupShuffle_Int32;
+inline constexpr std::array SubgroupShuffle_Int32_args = { &SubgroupShuffle_Int32_value, &SubgroupShuffle_Int32_id };
+
+/// subgroupShuffle with Int32x2, UInt32
+Variable SubgroupShuffle_Int32x2_value;
+Variable SubgroupShuffle_Int32x2_id;
+Function SubgroupShuffle_Int32x2;
+inline constexpr std::array SubgroupShuffle_Int32x2_args = { &SubgroupShuffle_Int32x2_value, &SubgroupShuffle_Int32x2_id };
+
+/// subgroupShuffle with Int32x3, UInt32
+Variable SubgroupShuffle_Int32x3_value;
+Variable SubgroupShuffle_Int32x3_id;
+Function SubgroupShuffle_Int32x3;
+inline constexpr std::array SubgroupShuffle_Int32x3_args = { &SubgroupShuffle_Int32x3_value, &SubgroupShuffle_Int32x3_id };
+
+/// subgroupShuffle with Int32x4, UInt32
+Variable SubgroupShuffle_Int32x4_value;
+Variable SubgroupShuffle_Int32x4_id;
+Function SubgroupShuffle_Int32x4;
+inline constexpr std::array SubgroupShuffle_Int32x4_args = { &SubgroupShuffle_Int32x4_value, &SubgroupShuffle_Int32x4_id };
+
+/// subgroupShuffle with Int16, UInt32
+Variable SubgroupShuffle_Int16_value;
+Variable SubgroupShuffle_Int16_id;
+Function SubgroupShuffle_Int16;
+inline constexpr std::array SubgroupShuffle_Int16_args = { &SubgroupShuffle_Int16_value, &SubgroupShuffle_Int16_id };
+
+/// subgroupShuffle with Int16x2, UInt32
+Variable SubgroupShuffle_Int16x2_value;
+Variable SubgroupShuffle_Int16x2_id;
+Function SubgroupShuffle_Int16x2;
+inline constexpr std::array SubgroupShuffle_Int16x2_args = { &SubgroupShuffle_Int16x2_value, &SubgroupShuffle_Int16x2_id };
+
+/// subgroupShuffle with Int16x3, UInt32
+Variable SubgroupShuffle_Int16x3_value;
+Variable SubgroupShuffle_Int16x3_id;
+Function SubgroupShuffle_Int16x3;
+inline constexpr std::array SubgroupShuffle_Int16x3_args = { &SubgroupShuffle_Int16x3_value, &SubgroupShuffle_Int16x3_id };
+
+/// subgroupShuffle with Int16x4, UInt32
+Variable SubgroupShuffle_Int16x4_value;
+Variable SubgroupShuffle_Int16x4_id;
+Function SubgroupShuffle_Int16x4;
+inline constexpr std::array SubgroupShuffle_Int16x4_args = { &SubgroupShuffle_Int16x4_value, &SubgroupShuffle_Int16x4_id };
+
+/// subgroupShuffle with UInt32, UInt32
+Variable SubgroupShuffle_UInt32_value;
+Variable SubgroupShuffle_UInt32_id;
+Function SubgroupShuffle_UInt32;
+inline constexpr std::array SubgroupShuffle_UInt32_args = { &SubgroupShuffle_UInt32_value, &SubgroupShuffle_UInt32_id };
+
+/// subgroupShuffle with UInt32x2, UInt32
+Variable SubgroupShuffle_UInt32x2_value;
+Variable SubgroupShuffle_UInt32x2_id;
+Function SubgroupShuffle_UInt32x2;
+inline constexpr std::array SubgroupShuffle_UInt32x2_args = { &SubgroupShuffle_UInt32x2_value, &SubgroupShuffle_UInt32x2_id };
+
+/// subgroupShuffle with UInt32x3, UInt32
+Variable SubgroupShuffle_UInt32x3_value;
+Variable SubgroupShuffle_UInt32x3_id;
+Function SubgroupShuffle_UInt32x3;
+inline constexpr std::array SubgroupShuffle_UInt32x3_args = { &SubgroupShuffle_UInt32x3_value, &SubgroupShuffle_UInt32x3_id };
+
+/// subgroupShuffle with UInt32x4, UInt32
+Variable SubgroupShuffle_UInt32x4_value;
+Variable SubgroupShuffle_UInt32x4_id;
+Function SubgroupShuffle_UInt32x4;
+inline constexpr std::array SubgroupShuffle_UInt32x4_args = { &SubgroupShuffle_UInt32x4_value, &SubgroupShuffle_UInt32x4_id };
+
+/// subgroupShuffle with UInt16, UInt32
+Variable SubgroupShuffle_UInt16_value;
+Variable SubgroupShuffle_UInt16_id;
+Function SubgroupShuffle_UInt16;
+inline constexpr std::array SubgroupShuffle_UInt16_args = { &SubgroupShuffle_UInt16_value, &SubgroupShuffle_UInt16_id };
+
+/// subgroupShuffle with UInt16x2, UInt32
+Variable SubgroupShuffle_UInt16x2_value;
+Variable SubgroupShuffle_UInt16x2_id;
+Function SubgroupShuffle_UInt16x2;
+inline constexpr std::array SubgroupShuffle_UInt16x2_args = { &SubgroupShuffle_UInt16x2_value, &SubgroupShuffle_UInt16x2_id };
+
+/// subgroupShuffle with UInt16x3, UInt32
+Variable SubgroupShuffle_UInt16x3_value;
+Variable SubgroupShuffle_UInt16x3_id;
+Function SubgroupShuffle_UInt16x3;
+inline constexpr std::array SubgroupShuffle_UInt16x3_args = { &SubgroupShuffle_UInt16x3_value, &SubgroupShuffle_UInt16x3_id };
+
+/// subgroupShuffle with UInt16x4, UInt32
+Variable SubgroupShuffle_UInt16x4_value;
+Variable SubgroupShuffle_UInt16x4_id;
+Function SubgroupShuffle_UInt16x4;
+inline constexpr std::array SubgroupShuffle_UInt16x4_args = { &SubgroupShuffle_UInt16x4_value, &SubgroupShuffle_UInt16x4_id };
+
+/// subgroupShuffleXor with Float32, UInt32
+Variable SubgroupShuffleXor_Float32_value;
+Variable SubgroupShuffleXor_Float32_mask;
+Function SubgroupShuffleXor_Float32;
+inline constexpr std::array SubgroupShuffleXor_Float32_args = { &SubgroupShuffleXor_Float32_value, &SubgroupShuffleXor_Float32_mask };
+
+/// subgroupShuffleXor with Float32x2, UInt32
+Variable SubgroupShuffleXor_Float32x2_value;
+Variable SubgroupShuffleXor_Float32x2_mask;
+Function SubgroupShuffleXor_Float32x2;
+inline constexpr std::array SubgroupShuffleXor_Float32x2_args = { &SubgroupShuffleXor_Float32x2_value, &SubgroupShuffleXor_Float32x2_mask };
+
+/// subgroupShuffleXor with Float32x3, UInt32
+Variable SubgroupShuffleXor_Float32x3_value;
+Variable SubgroupShuffleXor_Float32x3_mask;
+Function SubgroupShuffleXor_Float32x3;
+inline constexpr std::array SubgroupShuffleXor_Float32x3_args = { &SubgroupShuffleXor_Float32x3_value, &SubgroupShuffleXor_Float32x3_mask };
+
+/// subgroupShuffleXor with Float32x4, UInt32
+Variable SubgroupShuffleXor_Float32x4_value;
+Variable SubgroupShuffleXor_Float32x4_mask;
+Function SubgroupShuffleXor_Float32x4;
+inline constexpr std::array SubgroupShuffleXor_Float32x4_args = { &SubgroupShuffleXor_Float32x4_value, &SubgroupShuffleXor_Float32x4_mask };
+
+/// subgroupShuffleXor with Float16, UInt32
+Variable SubgroupShuffleXor_Float16_value;
+Variable SubgroupShuffleXor_Float16_mask;
+Function SubgroupShuffleXor_Float16;
+inline constexpr std::array SubgroupShuffleXor_Float16_args = { &SubgroupShuffleXor_Float16_value, &SubgroupShuffleXor_Float16_mask };
+
+/// subgroupShuffleXor with Float16x2, UInt32
+Variable SubgroupShuffleXor_Float16x2_value;
+Variable SubgroupShuffleXor_Float16x2_mask;
+Function SubgroupShuffleXor_Float16x2;
+inline constexpr std::array SubgroupShuffleXor_Float16x2_args = { &SubgroupShuffleXor_Float16x2_value, &SubgroupShuffleXor_Float16x2_mask };
+
+/// subgroupShuffleXor with Float16x3, UInt32
+Variable SubgroupShuffleXor_Float16x3_value;
+Variable SubgroupShuffleXor_Float16x3_mask;
+Function SubgroupShuffleXor_Float16x3;
+inline constexpr std::array SubgroupShuffleXor_Float16x3_args = { &SubgroupShuffleXor_Float16x3_value, &SubgroupShuffleXor_Float16x3_mask };
+
+/// subgroupShuffleXor with Float16x4, UInt32
+Variable SubgroupShuffleXor_Float16x4_value;
+Variable SubgroupShuffleXor_Float16x4_mask;
+Function SubgroupShuffleXor_Float16x4;
+inline constexpr std::array SubgroupShuffleXor_Float16x4_args = { &SubgroupShuffleXor_Float16x4_value, &SubgroupShuffleXor_Float16x4_mask };
+
+/// subgroupShuffleXor with Int32, UInt32
+Variable SubgroupShuffleXor_Int32_value;
+Variable SubgroupShuffleXor_Int32_mask;
+Function SubgroupShuffleXor_Int32;
+inline constexpr std::array SubgroupShuffleXor_Int32_args = { &SubgroupShuffleXor_Int32_value, &SubgroupShuffleXor_Int32_mask };
+
+/// subgroupShuffleXor with Int32x2, UInt32
+Variable SubgroupShuffleXor_Int32x2_value;
+Variable SubgroupShuffleXor_Int32x2_mask;
+Function SubgroupShuffleXor_Int32x2;
+inline constexpr std::array SubgroupShuffleXor_Int32x2_args = { &SubgroupShuffleXor_Int32x2_value, &SubgroupShuffleXor_Int32x2_mask };
+
+/// subgroupShuffleXor with Int32x3, UInt32
+Variable SubgroupShuffleXor_Int32x3_value;
+Variable SubgroupShuffleXor_Int32x3_mask;
+Function SubgroupShuffleXor_Int32x3;
+inline constexpr std::array SubgroupShuffleXor_Int32x3_args = { &SubgroupShuffleXor_Int32x3_value, &SubgroupShuffleXor_Int32x3_mask };
+
+/// subgroupShuffleXor with Int32x4, UInt32
+Variable SubgroupShuffleXor_Int32x4_value;
+Variable SubgroupShuffleXor_Int32x4_mask;
+Function SubgroupShuffleXor_Int32x4;
+inline constexpr std::array SubgroupShuffleXor_Int32x4_args = { &SubgroupShuffleXor_Int32x4_value, &SubgroupShuffleXor_Int32x4_mask };
+
+/// subgroupShuffleXor with Int16, UInt32
+Variable SubgroupShuffleXor_Int16_value;
+Variable SubgroupShuffleXor_Int16_mask;
+Function SubgroupShuffleXor_Int16;
+inline constexpr std::array SubgroupShuffleXor_Int16_args = { &SubgroupShuffleXor_Int16_value, &SubgroupShuffleXor_Int16_mask };
+
+/// subgroupShuffleXor with Int16x2, UInt32
+Variable SubgroupShuffleXor_Int16x2_value;
+Variable SubgroupShuffleXor_Int16x2_mask;
+Function SubgroupShuffleXor_Int16x2;
+inline constexpr std::array SubgroupShuffleXor_Int16x2_args = { &SubgroupShuffleXor_Int16x2_value, &SubgroupShuffleXor_Int16x2_mask };
+
+/// subgroupShuffleXor with Int16x3, UInt32
+Variable SubgroupShuffleXor_Int16x3_value;
+Variable SubgroupShuffleXor_Int16x3_mask;
+Function SubgroupShuffleXor_Int16x3;
+inline constexpr std::array SubgroupShuffleXor_Int16x3_args = { &SubgroupShuffleXor_Int16x3_value, &SubgroupShuffleXor_Int16x3_mask };
+
+/// subgroupShuffleXor with Int16x4, UInt32
+Variable SubgroupShuffleXor_Int16x4_value;
+Variable SubgroupShuffleXor_Int16x4_mask;
+Function SubgroupShuffleXor_Int16x4;
+inline constexpr std::array SubgroupShuffleXor_Int16x4_args = { &SubgroupShuffleXor_Int16x4_value, &SubgroupShuffleXor_Int16x4_mask };
+
+/// subgroupShuffleXor with UInt32, UInt32
+Variable SubgroupShuffleXor_UInt32_value;
+Variable SubgroupShuffleXor_UInt32_mask;
+Function SubgroupShuffleXor_UInt32;
+inline constexpr std::array SubgroupShuffleXor_UInt32_args = { &SubgroupShuffleXor_UInt32_value, &SubgroupShuffleXor_UInt32_mask };
+
+/// subgroupShuffleXor with UInt32x2, UInt32
+Variable SubgroupShuffleXor_UInt32x2_value;
+Variable SubgroupShuffleXor_UInt32x2_mask;
+Function SubgroupShuffleXor_UInt32x2;
+inline constexpr std::array SubgroupShuffleXor_UInt32x2_args = { &SubgroupShuffleXor_UInt32x2_value, &SubgroupShuffleXor_UInt32x2_mask };
+
+/// subgroupShuffleXor with UInt32x3, UInt32
+Variable SubgroupShuffleXor_UInt32x3_value;
+Variable SubgroupShuffleXor_UInt32x3_mask;
+Function SubgroupShuffleXor_UInt32x3;
+inline constexpr std::array SubgroupShuffleXor_UInt32x3_args = { &SubgroupShuffleXor_UInt32x3_value, &SubgroupShuffleXor_UInt32x3_mask };
+
+/// subgroupShuffleXor with UInt32x4, UInt32
+Variable SubgroupShuffleXor_UInt32x4_value;
+Variable SubgroupShuffleXor_UInt32x4_mask;
+Function SubgroupShuffleXor_UInt32x4;
+inline constexpr std::array SubgroupShuffleXor_UInt32x4_args = { &SubgroupShuffleXor_UInt32x4_value, &SubgroupShuffleXor_UInt32x4_mask };
+
+/// subgroupShuffleXor with UInt16, UInt32
+Variable SubgroupShuffleXor_UInt16_value;
+Variable SubgroupShuffleXor_UInt16_mask;
+Function SubgroupShuffleXor_UInt16;
+inline constexpr std::array SubgroupShuffleXor_UInt16_args = { &SubgroupShuffleXor_UInt16_value, &SubgroupShuffleXor_UInt16_mask };
+
+/// subgroupShuffleXor with UInt16x2, UInt32
+Variable SubgroupShuffleXor_UInt16x2_value;
+Variable SubgroupShuffleXor_UInt16x2_mask;
+Function SubgroupShuffleXor_UInt16x2;
+inline constexpr std::array SubgroupShuffleXor_UInt16x2_args = { &SubgroupShuffleXor_UInt16x2_value, &SubgroupShuffleXor_UInt16x2_mask };
+
+/// subgroupShuffleXor with UInt16x3, UInt32
+Variable SubgroupShuffleXor_UInt16x3_value;
+Variable SubgroupShuffleXor_UInt16x3_mask;
+Function SubgroupShuffleXor_UInt16x3;
+inline constexpr std::array SubgroupShuffleXor_UInt16x3_args = { &SubgroupShuffleXor_UInt16x3_value, &SubgroupShuffleXor_UInt16x3_mask };
+
+/// subgroupShuffleXor with UInt16x4, UInt32
+Variable SubgroupShuffleXor_UInt16x4_value;
+Variable SubgroupShuffleXor_UInt16x4_mask;
+Function SubgroupShuffleXor_UInt16x4;
+inline constexpr std::array SubgroupShuffleXor_UInt16x4_args = { &SubgroupShuffleXor_UInt16x4_value, &SubgroupShuffleXor_UInt16x4_mask };
+
+/// subgroupShuffleUp with Float32, UInt32
+Variable SubgroupShuffleUp_Float32_value;
+Variable SubgroupShuffleUp_Float32_delta;
+Function SubgroupShuffleUp_Float32;
+inline constexpr std::array SubgroupShuffleUp_Float32_args = { &SubgroupShuffleUp_Float32_value, &SubgroupShuffleUp_Float32_delta };
+
+/// subgroupShuffleUp with Float32x2, UInt32
+Variable SubgroupShuffleUp_Float32x2_value;
+Variable SubgroupShuffleUp_Float32x2_delta;
+Function SubgroupShuffleUp_Float32x2;
+inline constexpr std::array SubgroupShuffleUp_Float32x2_args = { &SubgroupShuffleUp_Float32x2_value, &SubgroupShuffleUp_Float32x2_delta };
+
+/// subgroupShuffleUp with Float32x3, UInt32
+Variable SubgroupShuffleUp_Float32x3_value;
+Variable SubgroupShuffleUp_Float32x3_delta;
+Function SubgroupShuffleUp_Float32x3;
+inline constexpr std::array SubgroupShuffleUp_Float32x3_args = { &SubgroupShuffleUp_Float32x3_value, &SubgroupShuffleUp_Float32x3_delta };
+
+/// subgroupShuffleUp with Float32x4, UInt32
+Variable SubgroupShuffleUp_Float32x4_value;
+Variable SubgroupShuffleUp_Float32x4_delta;
+Function SubgroupShuffleUp_Float32x4;
+inline constexpr std::array SubgroupShuffleUp_Float32x4_args = { &SubgroupShuffleUp_Float32x4_value, &SubgroupShuffleUp_Float32x4_delta };
+
+/// subgroupShuffleUp with Float16, UInt32
+Variable SubgroupShuffleUp_Float16_value;
+Variable SubgroupShuffleUp_Float16_delta;
+Function SubgroupShuffleUp_Float16;
+inline constexpr std::array SubgroupShuffleUp_Float16_args = { &SubgroupShuffleUp_Float16_value, &SubgroupShuffleUp_Float16_delta };
+
+/// subgroupShuffleUp with Float16x2, UInt32
+Variable SubgroupShuffleUp_Float16x2_value;
+Variable SubgroupShuffleUp_Float16x2_delta;
+Function SubgroupShuffleUp_Float16x2;
+inline constexpr std::array SubgroupShuffleUp_Float16x2_args = { &SubgroupShuffleUp_Float16x2_value, &SubgroupShuffleUp_Float16x2_delta };
+
+/// subgroupShuffleUp with Float16x3, UInt32
+Variable SubgroupShuffleUp_Float16x3_value;
+Variable SubgroupShuffleUp_Float16x3_delta;
+Function SubgroupShuffleUp_Float16x3;
+inline constexpr std::array SubgroupShuffleUp_Float16x3_args = { &SubgroupShuffleUp_Float16x3_value, &SubgroupShuffleUp_Float16x3_delta };
+
+/// subgroupShuffleUp with Float16x4, UInt32
+Variable SubgroupShuffleUp_Float16x4_value;
+Variable SubgroupShuffleUp_Float16x4_delta;
+Function SubgroupShuffleUp_Float16x4;
+inline constexpr std::array SubgroupShuffleUp_Float16x4_args = { &SubgroupShuffleUp_Float16x4_value, &SubgroupShuffleUp_Float16x4_delta };
+
+/// subgroupShuffleUp with Int32, UInt32
+Variable SubgroupShuffleUp_Int32_value;
+Variable SubgroupShuffleUp_Int32_delta;
+Function SubgroupShuffleUp_Int32;
+inline constexpr std::array SubgroupShuffleUp_Int32_args = { &SubgroupShuffleUp_Int32_value, &SubgroupShuffleUp_Int32_delta };
+
+/// subgroupShuffleUp with Int32x2, UInt32
+Variable SubgroupShuffleUp_Int32x2_value;
+Variable SubgroupShuffleUp_Int32x2_delta;
+Function SubgroupShuffleUp_Int32x2;
+inline constexpr std::array SubgroupShuffleUp_Int32x2_args = { &SubgroupShuffleUp_Int32x2_value, &SubgroupShuffleUp_Int32x2_delta };
+
+/// subgroupShuffleUp with Int32x3, UInt32
+Variable SubgroupShuffleUp_Int32x3_value;
+Variable SubgroupShuffleUp_Int32x3_delta;
+Function SubgroupShuffleUp_Int32x3;
+inline constexpr std::array SubgroupShuffleUp_Int32x3_args = { &SubgroupShuffleUp_Int32x3_value, &SubgroupShuffleUp_Int32x3_delta };
+
+/// subgroupShuffleUp with Int32x4, UInt32
+Variable SubgroupShuffleUp_Int32x4_value;
+Variable SubgroupShuffleUp_Int32x4_delta;
+Function SubgroupShuffleUp_Int32x4;
+inline constexpr std::array SubgroupShuffleUp_Int32x4_args = { &SubgroupShuffleUp_Int32x4_value, &SubgroupShuffleUp_Int32x4_delta };
+
+/// subgroupShuffleUp with Int16, UInt32
+Variable SubgroupShuffleUp_Int16_value;
+Variable SubgroupShuffleUp_Int16_delta;
+Function SubgroupShuffleUp_Int16;
+inline constexpr std::array SubgroupShuffleUp_Int16_args = { &SubgroupShuffleUp_Int16_value, &SubgroupShuffleUp_Int16_delta };
+
+/// subgroupShuffleUp with Int16x2, UInt32
+Variable SubgroupShuffleUp_Int16x2_value;
+Variable SubgroupShuffleUp_Int16x2_delta;
+Function SubgroupShuffleUp_Int16x2;
+inline constexpr std::array SubgroupShuffleUp_Int16x2_args = { &SubgroupShuffleUp_Int16x2_value, &SubgroupShuffleUp_Int16x2_delta };
+
+/// subgroupShuffleUp with Int16x3, UInt32
+Variable SubgroupShuffleUp_Int16x3_value;
+Variable SubgroupShuffleUp_Int16x3_delta;
+Function SubgroupShuffleUp_Int16x3;
+inline constexpr std::array SubgroupShuffleUp_Int16x3_args = { &SubgroupShuffleUp_Int16x3_value, &SubgroupShuffleUp_Int16x3_delta };
+
+/// subgroupShuffleUp with Int16x4, UInt32
+Variable SubgroupShuffleUp_Int16x4_value;
+Variable SubgroupShuffleUp_Int16x4_delta;
+Function SubgroupShuffleUp_Int16x4;
+inline constexpr std::array SubgroupShuffleUp_Int16x4_args = { &SubgroupShuffleUp_Int16x4_value, &SubgroupShuffleUp_Int16x4_delta };
+
+/// subgroupShuffleUp with UInt32, UInt32
+Variable SubgroupShuffleUp_UInt32_value;
+Variable SubgroupShuffleUp_UInt32_delta;
+Function SubgroupShuffleUp_UInt32;
+inline constexpr std::array SubgroupShuffleUp_UInt32_args = { &SubgroupShuffleUp_UInt32_value, &SubgroupShuffleUp_UInt32_delta };
+
+/// subgroupShuffleUp with UInt32x2, UInt32
+Variable SubgroupShuffleUp_UInt32x2_value;
+Variable SubgroupShuffleUp_UInt32x2_delta;
+Function SubgroupShuffleUp_UInt32x2;
+inline constexpr std::array SubgroupShuffleUp_UInt32x2_args = { &SubgroupShuffleUp_UInt32x2_value, &SubgroupShuffleUp_UInt32x2_delta };
+
+/// subgroupShuffleUp with UInt32x3, UInt32
+Variable SubgroupShuffleUp_UInt32x3_value;
+Variable SubgroupShuffleUp_UInt32x3_delta;
+Function SubgroupShuffleUp_UInt32x3;
+inline constexpr std::array SubgroupShuffleUp_UInt32x3_args = { &SubgroupShuffleUp_UInt32x3_value, &SubgroupShuffleUp_UInt32x3_delta };
+
+/// subgroupShuffleUp with UInt32x4, UInt32
+Variable SubgroupShuffleUp_UInt32x4_value;
+Variable SubgroupShuffleUp_UInt32x4_delta;
+Function SubgroupShuffleUp_UInt32x4;
+inline constexpr std::array SubgroupShuffleUp_UInt32x4_args = { &SubgroupShuffleUp_UInt32x4_value, &SubgroupShuffleUp_UInt32x4_delta };
+
+/// subgroupShuffleUp with UInt16, UInt32
+Variable SubgroupShuffleUp_UInt16_value;
+Variable SubgroupShuffleUp_UInt16_delta;
+Function SubgroupShuffleUp_UInt16;
+inline constexpr std::array SubgroupShuffleUp_UInt16_args = { &SubgroupShuffleUp_UInt16_value, &SubgroupShuffleUp_UInt16_delta };
+
+/// subgroupShuffleUp with UInt16x2, UInt32
+Variable SubgroupShuffleUp_UInt16x2_value;
+Variable SubgroupShuffleUp_UInt16x2_delta;
+Function SubgroupShuffleUp_UInt16x2;
+inline constexpr std::array SubgroupShuffleUp_UInt16x2_args = { &SubgroupShuffleUp_UInt16x2_value, &SubgroupShuffleUp_UInt16x2_delta };
+
+/// subgroupShuffleUp with UInt16x3, UInt32
+Variable SubgroupShuffleUp_UInt16x3_value;
+Variable SubgroupShuffleUp_UInt16x3_delta;
+Function SubgroupShuffleUp_UInt16x3;
+inline constexpr std::array SubgroupShuffleUp_UInt16x3_args = { &SubgroupShuffleUp_UInt16x3_value, &SubgroupShuffleUp_UInt16x3_delta };
+
+/// subgroupShuffleUp with UInt16x4, UInt32
+Variable SubgroupShuffleUp_UInt16x4_value;
+Variable SubgroupShuffleUp_UInt16x4_delta;
+Function SubgroupShuffleUp_UInt16x4;
+inline constexpr std::array SubgroupShuffleUp_UInt16x4_args = { &SubgroupShuffleUp_UInt16x4_value, &SubgroupShuffleUp_UInt16x4_delta };
+
+/// atomicLoad with UInt32, MemorySemantics
+Variable AtomicLoad_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicLoad_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_UInt32_semantics;
+Function AtomicLoad_Uniform_UInt32;
+inline constexpr std::array AtomicLoad_Uniform_UInt32_args = { &AtomicLoad_Uniform_UInt32_ptr, &AtomicLoad_Uniform_UInt32_semantics };
+
+/// atomicLoad with UInt32, MemorySemantics
+Variable AtomicLoad_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_UInt32_semantics;
+Function AtomicLoad_Workgroup_UInt32;
+inline constexpr std::array AtomicLoad_Workgroup_UInt32_args = { &AtomicLoad_Workgroup_UInt32_ptr, &AtomicLoad_Workgroup_UInt32_semantics };
+
+/// atomicIncrement with UInt32, MemorySemantics
+Variable AtomicIncrement_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicIncrement_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Uniform_UInt32_semantics;
+Function AtomicIncrement_Uniform_UInt32;
+inline constexpr std::array AtomicIncrement_Uniform_UInt32_args = { &AtomicIncrement_Uniform_UInt32_ptr, &AtomicIncrement_Uniform_UInt32_semantics };
+
+/// atomicIncrement with UInt32, MemorySemantics
+Variable AtomicIncrement_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicIncrement_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Workgroup_UInt32_semantics;
+Function AtomicIncrement_Workgroup_UInt32;
+inline constexpr std::array AtomicIncrement_Workgroup_UInt32_args = { &AtomicIncrement_Workgroup_UInt32_ptr, &AtomicIncrement_Workgroup_UInt32_semantics };
+
+/// atomicDecrement with UInt32, MemorySemantics
+Variable AtomicDecrement_Uniform_UInt32_ptr;
+inline constexpr std::array AtomicDecrement_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Uniform_UInt32_semantics;
+Function AtomicDecrement_Uniform_UInt32;
+inline constexpr std::array AtomicDecrement_Uniform_UInt32_args = { &AtomicDecrement_Uniform_UInt32_ptr, &AtomicDecrement_Uniform_UInt32_semantics };
+
+/// atomicDecrement with UInt32, MemorySemantics
+Variable AtomicDecrement_Workgroup_UInt32_ptr;
+inline constexpr std::array AtomicDecrement_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Workgroup_UInt32_semantics;
+Function AtomicDecrement_Workgroup_UInt32;
+inline constexpr std::array AtomicDecrement_Workgroup_UInt32_args = { &AtomicDecrement_Workgroup_UInt32_ptr, &AtomicDecrement_Workgroup_UInt32_semantics };
+
+/// atomicLoad with Int32, MemorySemantics
+Variable AtomicLoad_Uniform_Int32_ptr;
+inline constexpr std::array AtomicLoad_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_Int32_semantics;
+Function AtomicLoad_Uniform_Int32;
+inline constexpr std::array AtomicLoad_Uniform_Int32_args = { &AtomicLoad_Uniform_Int32_ptr, &AtomicLoad_Uniform_Int32_semantics };
+
+/// atomicLoad with Int32, MemorySemantics
+Variable AtomicLoad_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_Int32_semantics;
+Function AtomicLoad_Workgroup_Int32;
+inline constexpr std::array AtomicLoad_Workgroup_Int32_args = { &AtomicLoad_Workgroup_Int32_ptr, &AtomicLoad_Workgroup_Int32_semantics };
+
+/// atomicIncrement with Int32, MemorySemantics
+Variable AtomicIncrement_Uniform_Int32_ptr;
+inline constexpr std::array AtomicIncrement_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Uniform_Int32_semantics;
+Function AtomicIncrement_Uniform_Int32;
+inline constexpr std::array AtomicIncrement_Uniform_Int32_args = { &AtomicIncrement_Uniform_Int32_ptr, &AtomicIncrement_Uniform_Int32_semantics };
+
+/// atomicIncrement with Int32, MemorySemantics
+Variable AtomicIncrement_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicIncrement_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Workgroup_Int32_semantics;
+Function AtomicIncrement_Workgroup_Int32;
+inline constexpr std::array AtomicIncrement_Workgroup_Int32_args = { &AtomicIncrement_Workgroup_Int32_ptr, &AtomicIncrement_Workgroup_Int32_semantics };
+
+/// atomicDecrement with Int32, MemorySemantics
+Variable AtomicDecrement_Uniform_Int32_ptr;
+inline constexpr std::array AtomicDecrement_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Uniform_Int32_semantics;
+Function AtomicDecrement_Uniform_Int32;
+inline constexpr std::array AtomicDecrement_Uniform_Int32_args = { &AtomicDecrement_Uniform_Int32_ptr, &AtomicDecrement_Uniform_Int32_semantics };
+
+/// atomicDecrement with Int32, MemorySemantics
+Variable AtomicDecrement_Workgroup_Int32_ptr;
+inline constexpr std::array AtomicDecrement_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicDecrement_Workgroup_Int32_semantics;
+Function AtomicDecrement_Workgroup_Int32;
+inline constexpr std::array AtomicDecrement_Workgroup_Int32_args = { &AtomicDecrement_Workgroup_Int32_ptr, &AtomicDecrement_Workgroup_Int32_semantics };
+
+/// atomicLoad with UInt16, MemorySemantics
+Variable AtomicLoad_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicLoad_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Uniform_UInt16_semantics;
+Function AtomicLoad_Uniform_UInt16;
+inline constexpr std::array AtomicLoad_Uniform_UInt16_args = { &AtomicLoad_Uniform_UInt16_ptr, &AtomicLoad_Uniform_UInt16_semantics };
+
+/// atomicLoad with UInt16, MemorySemantics
+Variable AtomicLoad_Workgroup_UInt16_ptr;
+inline constexpr std::array AtomicLoad_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicLoad_Workgroup_UInt16_semantics;
+Function AtomicLoad_Workgroup_UInt16;
+inline constexpr std::array AtomicLoad_Workgroup_UInt16_args = { &AtomicLoad_Workgroup_UInt16_ptr, &AtomicLoad_Workgroup_UInt16_semantics };
+
+/// atomicIncrement with UInt16, MemorySemantics
+Variable AtomicIncrement_Uniform_UInt16_ptr;
+inline constexpr std::array AtomicIncrement_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
+Variable AtomicIncrement_Uniform_UInt16_semantics;
+Function AtomicIncrement_Uniform_UInt16;
+inline constexpr std::array AtomicIncrement_Uniform_UInt16_args = { &AtomicIncrement_Uniform_UInt16_ptr, &AtomicIncrement_Uniform_UInt16_semantics };
 
 void SetupIntrinsics11()
 {
-    /// textureGetSizeMip with Texture3D, UInt32
-    TextureGetSizeMip_Texture3D_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSizeMip_Texture3D_texture.type.strict = true;
-    TextureGetSizeMip_Texture3D_texture.type.modifiers = TextureGetSizeMip_Texture3D_texture_modifiers;
-    TextureGetSizeMip_Texture3D_texture.type.modifierValues = TextureGetSizeMip_Texture3D_texture_modifierValues;
-    TextureGetSizeMip_Texture3D_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture3D_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture3D.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture3D.name = TextureGetSizeMip_Texture3D_name;
-    TextureGetSizeMip_Texture3D.backendIndex = 2374;
-    TextureGetSizeMip_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSizeMip_Texture3D.parameters = TextureGetSizeMip_Texture3D_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->signature = "textureGetSizeMip(uniform *texture3D,u32) u32x3"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->name = "textureGetSizeMip(uniform *texture3D,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture3D, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSizeMip with TextureCube, UInt32
-    TextureGetSizeMip_TextureCube_texture.name = "texture"_c;
-    TextureGetSizeMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSizeMip_TextureCube_texture.type.strict = true;
-    TextureGetSizeMip_TextureCube_texture.type.modifiers = TextureGetSizeMip_TextureCube_texture_modifiers;
-    TextureGetSizeMip_TextureCube_texture.type.modifierValues = TextureGetSizeMip_TextureCube_texture_modifierValues;
-    TextureGetSizeMip_TextureCube_mip.name = "mip"_c;
-    TextureGetSizeMip_TextureCube_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_TextureCube.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_TextureCube.name = TextureGetSizeMip_TextureCube_name;
-    TextureGetSizeMip_TextureCube.backendIndex = 2375;
-    TextureGetSizeMip_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSizeMip_TextureCube.parameters = TextureGetSizeMip_TextureCube_args;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->signature = "textureGetSizeMip(uniform *textureCube,u32) u32x3"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->name = "textureGetSizeMip(uniform *textureCube,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->nameWithVarNames = "textureGetSizeMip(texture : uniform *textureCube, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSizeMip with Texture1DArray, UInt32
-    TextureGetSizeMip_Texture1DArray_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSizeMip_Texture1DArray_texture.type.strict = true;
-    TextureGetSizeMip_Texture1DArray_texture.type.modifiers = TextureGetSizeMip_Texture1DArray_texture_modifiers;
-    TextureGetSizeMip_Texture1DArray_texture.type.modifierValues = TextureGetSizeMip_Texture1DArray_texture_modifierValues;
-    TextureGetSizeMip_Texture1DArray_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture1DArray_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture1DArray.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture1DArray.name = TextureGetSizeMip_Texture1DArray_name;
-    TextureGetSizeMip_Texture1DArray.backendIndex = 2376;
-    TextureGetSizeMip_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
-    TextureGetSizeMip_Texture1DArray.parameters = TextureGetSizeMip_Texture1DArray_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->signature = "textureGetSizeMip(uniform *texture1DArray,u32) u32x2"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->name = "textureGetSizeMip(uniform *texture1DArray,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture1DArray, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->returnTypeSymbol = &UInt32x2Type;
-
-    /// textureGetSizeMip with Texture2DArray, UInt32
-    TextureGetSizeMip_Texture2DArray_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSizeMip_Texture2DArray_texture.type.strict = true;
-    TextureGetSizeMip_Texture2DArray_texture.type.modifiers = TextureGetSizeMip_Texture2DArray_texture_modifiers;
-    TextureGetSizeMip_Texture2DArray_texture.type.modifierValues = TextureGetSizeMip_Texture2DArray_texture_modifierValues;
-    TextureGetSizeMip_Texture2DArray_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture2DArray_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture2DArray.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture2DArray.name = TextureGetSizeMip_Texture2DArray_name;
-    TextureGetSizeMip_Texture2DArray.backendIndex = 2377;
-    TextureGetSizeMip_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSizeMip_Texture2DArray.parameters = TextureGetSizeMip_Texture2DArray_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->signature = "textureGetSizeMip(uniform *texture2DArray,u32) u32x3"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->name = "textureGetSizeMip(uniform *texture2DArray,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture2DArray, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSizeMip with TextureCubeArray, UInt32
-    TextureGetSizeMip_TextureCubeArray_texture.name = "texture"_c;
-    TextureGetSizeMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSizeMip_TextureCubeArray_texture.type.strict = true;
-    TextureGetSizeMip_TextureCubeArray_texture.type.modifiers = TextureGetSizeMip_TextureCubeArray_texture_modifiers;
-    TextureGetSizeMip_TextureCubeArray_texture.type.modifierValues = TextureGetSizeMip_TextureCubeArray_texture_modifierValues;
-    TextureGetSizeMip_TextureCubeArray_mip.name = "mip"_c;
-    TextureGetSizeMip_TextureCubeArray_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_TextureCubeArray.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_TextureCubeArray.name = TextureGetSizeMip_TextureCubeArray_name;
-    TextureGetSizeMip_TextureCubeArray.backendIndex = 2378;
-    TextureGetSizeMip_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
-    TextureGetSizeMip_TextureCubeArray.parameters = TextureGetSizeMip_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->signature = "textureGetSizeMip(uniform *textureCubeArray,u32) u32x4"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->name = "textureGetSizeMip(uniform *textureCubeArray,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->nameWithVarNames = "textureGetSizeMip(texture : uniform *textureCubeArray, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->returnTypeSymbol = &UInt32x4Type;
-
-    /// textureGetMips with Texture1D
-    TextureGetMips_Texture1D_texture.name = "texture"_c;
-    TextureGetMips_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetMips_Texture1D_texture.type.modifiers = TextureGetMips_Texture1D_texture_modifiers;
-    TextureGetMips_Texture1D_texture.type.modifierValues = TextureGetMips_Texture1D_texture_modifierValues;
-    TextureGetMips_Texture1D.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture1D.name = TextureGetMips_Texture1D_name;
-    TextureGetMips_Texture1D.backendIndex = 2379;
-    TextureGetMips_Texture1D.returnType = Type::FullType { Texture1DType.name };
-    TextureGetMips_Texture1D.parameters = TextureGetMips_Texture1D_args;
-    Symbol::Resolved(&TextureGetMips_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureGetMips_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture1D)->signature = "textureGetMips(uniform *texture1D) texture1D"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1D)->name = "textureGetMips(uniform *texture1D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1D)->nameWithVarNames = "textureGetMips(texture : uniform *texture1D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1D)->returnTypeSymbol = &Texture1DType;
-
-    /// textureGetMips with Texture2D
-    TextureGetMips_Texture2D_texture.name = "texture"_c;
-    TextureGetMips_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetMips_Texture2D_texture.type.modifiers = TextureGetMips_Texture2D_texture_modifiers;
-    TextureGetMips_Texture2D_texture.type.modifierValues = TextureGetMips_Texture2D_texture_modifierValues;
-    TextureGetMips_Texture2D.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture2D.name = TextureGetMips_Texture2D_name;
-    TextureGetMips_Texture2D.backendIndex = 2380;
-    TextureGetMips_Texture2D.returnType = Type::FullType { Texture2DType.name };
-    TextureGetMips_Texture2D.parameters = TextureGetMips_Texture2D_args;
-    Symbol::Resolved(&TextureGetMips_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGetMips_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture2D)->signature = "textureGetMips(uniform *texture2D) texture2D"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2D)->name = "textureGetMips(uniform *texture2D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2D)->nameWithVarNames = "textureGetMips(texture : uniform *texture2D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2D)->returnTypeSymbol = &Texture2DType;
-
-    /// textureGetMips with Texture3D
-    TextureGetMips_Texture3D_texture.name = "texture"_c;
-    TextureGetMips_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetMips_Texture3D_texture.type.modifiers = TextureGetMips_Texture3D_texture_modifiers;
-    TextureGetMips_Texture3D_texture.type.modifierValues = TextureGetMips_Texture3D_texture_modifierValues;
-    TextureGetMips_Texture3D.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture3D.name = TextureGetMips_Texture3D_name;
-    TextureGetMips_Texture3D.backendIndex = 2381;
-    TextureGetMips_Texture3D.returnType = Type::FullType { Texture3DType.name };
-    TextureGetMips_Texture3D.parameters = TextureGetMips_Texture3D_args;
-    Symbol::Resolved(&TextureGetMips_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureGetMips_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture3D)->signature = "textureGetMips(uniform *texture3D) texture3D"_c;
-    Symbol::Resolved(&TextureGetMips_Texture3D)->name = "textureGetMips(uniform *texture3D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture3D)->nameWithVarNames = "textureGetMips(texture : uniform *texture3D)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture3D)->returnTypeSymbol = &Texture3DType;
-
-    /// textureGetMips with TextureCube
-    TextureGetMips_TextureCube_texture.name = "texture"_c;
-    TextureGetMips_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetMips_TextureCube_texture.type.modifiers = TextureGetMips_TextureCube_texture_modifiers;
-    TextureGetMips_TextureCube_texture.type.modifierValues = TextureGetMips_TextureCube_texture_modifierValues;
-    TextureGetMips_TextureCube.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_TextureCube.name = TextureGetMips_TextureCube_name;
-    TextureGetMips_TextureCube.backendIndex = 2382;
-    TextureGetMips_TextureCube.returnType = Type::FullType { TextureCubeType.name };
-    TextureGetMips_TextureCube.parameters = TextureGetMips_TextureCube_args;
-    Symbol::Resolved(&TextureGetMips_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGetMips_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_TextureCube)->signature = "textureGetMips(uniform *textureCube) textureCube"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCube)->name = "textureGetMips(uniform *textureCube)"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCube)->nameWithVarNames = "textureGetMips(texture : uniform *textureCube)"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCube)->returnTypeSymbol = &TextureCubeType;
-
-    /// textureGetMips with Texture1DArray
-    TextureGetMips_Texture1DArray_texture.name = "texture"_c;
-    TextureGetMips_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetMips_Texture1DArray_texture.type.modifiers = TextureGetMips_Texture1DArray_texture_modifiers;
-    TextureGetMips_Texture1DArray_texture.type.modifierValues = TextureGetMips_Texture1DArray_texture_modifierValues;
-    TextureGetMips_Texture1DArray.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture1DArray.name = TextureGetMips_Texture1DArray_name;
-    TextureGetMips_Texture1DArray.backendIndex = 2383;
-    TextureGetMips_Texture1DArray.returnType = Type::FullType { Texture1DArrayType.name };
-    TextureGetMips_Texture1DArray.parameters = TextureGetMips_Texture1DArray_args;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray)->signature = "textureGetMips(uniform *texture1DArray) texture1DArray"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray)->name = "textureGetMips(uniform *texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray)->nameWithVarNames = "textureGetMips(texture : uniform *texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture1DArray)->returnTypeSymbol = &Texture1DArrayType;
-
-    /// textureGetMips with Texture2DArray
-    TextureGetMips_Texture2DArray_texture.name = "texture"_c;
-    TextureGetMips_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetMips_Texture2DArray_texture.type.modifiers = TextureGetMips_Texture2DArray_texture_modifiers;
-    TextureGetMips_Texture2DArray_texture.type.modifierValues = TextureGetMips_Texture2DArray_texture_modifierValues;
-    TextureGetMips_Texture2DArray.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_Texture2DArray.name = TextureGetMips_Texture2DArray_name;
-    TextureGetMips_Texture2DArray.backendIndex = 2384;
-    TextureGetMips_Texture2DArray.returnType = Type::FullType { Texture2DArrayType.name };
-    TextureGetMips_Texture2DArray.parameters = TextureGetMips_Texture2DArray_args;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray)->signature = "textureGetMips(uniform *texture2DArray) texture2DArray"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray)->name = "textureGetMips(uniform *texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray)->nameWithVarNames = "textureGetMips(texture : uniform *texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetMips_Texture2DArray)->returnTypeSymbol = &Texture2DArrayType;
-
-    /// textureGetMips with TextureCubeArray
-    TextureGetMips_TextureCubeArray_texture.name = "texture"_c;
-    TextureGetMips_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetMips_TextureCubeArray_texture.type.modifiers = TextureGetMips_TextureCubeArray_texture_modifiers;
-    TextureGetMips_TextureCubeArray_texture.type.modifierValues = TextureGetMips_TextureCubeArray_texture_modifierValues;
-    TextureGetMips_TextureCubeArray.documentation = "Get the number of mips in a texture"_c;
-    TextureGetMips_TextureCubeArray.name = TextureGetMips_TextureCubeArray_name;
-    TextureGetMips_TextureCubeArray.backendIndex = 2385;
-    TextureGetMips_TextureCubeArray.returnType = Type::FullType { TextureCubeArrayType.name };
-    TextureGetMips_TextureCubeArray.parameters = TextureGetMips_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray)->signature = "textureGetMips(uniform *textureCubeArray) textureCubeArray"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray)->name = "textureGetMips(uniform *textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray)->nameWithVarNames = "textureGetMips(texture : uniform *textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetMips_TextureCubeArray)->returnTypeSymbol = &TextureCubeArrayType;
-
-    /// textureGetSamples with Texture2DMS
-    TextureGetSamples_Texture2DMS_texture.name = "texture"_c;
-    TextureGetSamples_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureGetSamples_Texture2DMS_texture.type.modifiers = TextureGetSamples_Texture2DMS_texture_modifiers;
-    TextureGetSamples_Texture2DMS_texture.type.modifierValues = TextureGetSamples_Texture2DMS_texture_modifierValues;
-    TextureGetSamples_Texture2DMS.documentation = "Get the number of samples in a multisampled texture"_c;
-    TextureGetSamples_Texture2DMS.name = TextureGetSamples_Texture2DMS_name;
-    TextureGetSamples_Texture2DMS.backendIndex = 2386;
-    TextureGetSamples_Texture2DMS.returnType = Type::FullType { Texture2DMSType.name };
-    TextureGetSamples_Texture2DMS.parameters = TextureGetSamples_Texture2DMS_args;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS)->signature = "textureGetSamples(uniform *texture2DMS) texture2DMS"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS)->name = "textureGetSamples(uniform *texture2DMS)"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS)->nameWithVarNames = "textureGetSamples(texture : uniform *texture2DMS)"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMS)->returnTypeSymbol = &Texture2DMSType;
-
-    /// textureGetSamples with Texture2DMSArray
-    TextureGetSamples_Texture2DMSArray_texture.name = "texture"_c;
-    TextureGetSamples_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureGetSamples_Texture2DMSArray_texture.type.modifiers = TextureGetSamples_Texture2DMSArray_texture_modifiers;
-    TextureGetSamples_Texture2DMSArray_texture.type.modifierValues = TextureGetSamples_Texture2DMSArray_texture_modifierValues;
-    TextureGetSamples_Texture2DMSArray.documentation = "Get the number of samples in a multisampled texture"_c;
-    TextureGetSamples_Texture2DMSArray.name = TextureGetSamples_Texture2DMSArray_name;
-    TextureGetSamples_Texture2DMSArray.backendIndex = 2387;
-    TextureGetSamples_Texture2DMSArray.returnType = Type::FullType { Texture2DMSArrayType.name };
-    TextureGetSamples_Texture2DMSArray.parameters = TextureGetSamples_Texture2DMSArray_args;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->signature = "textureGetSamples(uniform *texture2DMSArray) texture2DMSArray"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->name = "textureGetSamples(uniform *texture2DMSArray)"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->nameWithVarNames = "textureGetSamples(texture : uniform *texture2DMSArray)"_c;
-    Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->returnTypeSymbol = &Texture2DMSArrayType;
-
-    /// textureGetSampledMip with Texture1D, Sampler, Float32
-    TextureGetSampledMip_Texture1D_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSampledMip_Texture1D_texture.type.modifiers = TextureGetSampledMip_Texture1D_texture_modifiers;
-    TextureGetSampledMip_Texture1D_texture.type.modifierValues = TextureGetSampledMip_Texture1D_texture_modifierValues;
-    TextureGetSampledMip_Texture1D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture1D_sampler.type.modifiers = TextureGetSampledMip_Texture1D_sampler_modifiers;
-    TextureGetSampledMip_Texture1D_sampler.type.modifierValues = TextureGetSampledMip_Texture1D_sampler_modifierValues;
-    TextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    TextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture1D.name = TextureGetSampledMip_Texture1D_name;
-    TextureGetSampledMip_Texture1D.backendIndex = 2388;
-    TextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture1D.parameters = TextureGetSampledMip_Texture1D_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D)->signature = "textureGetSampledMip(uniform *texture1D,uniform *sampler,f32) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D)->name = "textureGetSampledMip(uniform *texture1D,uniform *sampler,f32)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture1D, sampler : uniform *sampler, coordinate : f32)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture1D, Float32
-    SampledTextureGetSampledMip_Texture1D_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureGetSampledMip_Texture1D_texture.type.modifiers = SampledTextureGetSampledMip_Texture1D_texture_modifiers;
-    SampledTextureGetSampledMip_Texture1D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture1D_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
-    SampledTextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture1D.name = SampledTextureGetSampledMip_Texture1D_name;
-    SampledTextureGetSampledMip_Texture1D.backendIndex = 2389;
-    SampledTextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture1D.parameters = SampledTextureGetSampledMip_Texture1D_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_texture)->typeSymbol = &SampledTexture1DType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->signature = "textureGetSampledMip(uniform *textureSampled1D,f32) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->name = "textureGetSampledMip(uniform *textureSampled1D,f32)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled1D, coordinate : f32)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with Texture2D, Sampler, Float32x2
-    TextureGetSampledMip_Texture2D_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSampledMip_Texture2D_texture.type.modifiers = TextureGetSampledMip_Texture2D_texture_modifiers;
-    TextureGetSampledMip_Texture2D_texture.type.modifierValues = TextureGetSampledMip_Texture2D_texture_modifierValues;
-    TextureGetSampledMip_Texture2D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture2D_sampler.type.modifiers = TextureGetSampledMip_Texture2D_sampler_modifiers;
-    TextureGetSampledMip_Texture2D_sampler.type.modifierValues = TextureGetSampledMip_Texture2D_sampler_modifierValues;
-    TextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture2D.name = TextureGetSampledMip_Texture2D_name;
-    TextureGetSampledMip_Texture2D.backendIndex = 2390;
-    TextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture2D.parameters = TextureGetSampledMip_Texture2D_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D)->signature = "textureGetSampledMip(uniform *texture2D,uniform *sampler,f32x2) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D)->name = "textureGetSampledMip(uniform *texture2D,uniform *sampler,f32x2)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture2D, Float32x2
-    SampledTextureGetSampledMip_Texture2D_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureGetSampledMip_Texture2D_texture.type.modifiers = SampledTextureGetSampledMip_Texture2D_texture_modifiers;
-    SampledTextureGetSampledMip_Texture2D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture2D_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture2D.name = SampledTextureGetSampledMip_Texture2D_name;
-    SampledTextureGetSampledMip_Texture2D.backendIndex = 2391;
-    SampledTextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture2D.parameters = SampledTextureGetSampledMip_Texture2D_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->signature = "textureGetSampledMip(uniform *textureSampled2D,f32x2) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->name = "textureGetSampledMip(uniform *textureSampled2D,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled2D, coordinate : f32x2)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with Texture3D, Sampler, Float32x3
-    TextureGetSampledMip_Texture3D_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSampledMip_Texture3D_texture.type.modifiers = TextureGetSampledMip_Texture3D_texture_modifiers;
-    TextureGetSampledMip_Texture3D_texture.type.modifierValues = TextureGetSampledMip_Texture3D_texture_modifierValues;
-    TextureGetSampledMip_Texture3D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture3D_sampler.type.modifiers = TextureGetSampledMip_Texture3D_sampler_modifiers;
-    TextureGetSampledMip_Texture3D_sampler.type.modifierValues = TextureGetSampledMip_Texture3D_sampler_modifierValues;
-    TextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture3D.name = TextureGetSampledMip_Texture3D_name;
-    TextureGetSampledMip_Texture3D.backendIndex = 2392;
-    TextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture3D.parameters = TextureGetSampledMip_Texture3D_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D)->signature = "textureGetSampledMip(uniform *texture3D,uniform *sampler,f32x3) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D)->name = "textureGetSampledMip(uniform *texture3D,uniform *sampler,f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture3D, sampler : uniform *sampler, coordinate : f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture3D, Float32x3
-    SampledTextureGetSampledMip_Texture3D_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureGetSampledMip_Texture3D_texture.type.modifiers = SampledTextureGetSampledMip_Texture3D_texture_modifiers;
-    SampledTextureGetSampledMip_Texture3D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture3D_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture3D.name = SampledTextureGetSampledMip_Texture3D_name;
-    SampledTextureGetSampledMip_Texture3D.backendIndex = 2393;
-    SampledTextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture3D.parameters = SampledTextureGetSampledMip_Texture3D_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_texture)->typeSymbol = &SampledTexture3DType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->signature = "textureGetSampledMip(uniform *textureSampled3D,f32x3) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->name = "textureGetSampledMip(uniform *textureSampled3D,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled3D, coordinate : f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with TextureCube, Sampler, Float32x3
-    TextureGetSampledMip_TextureCube_texture.name = "texture"_c;
-    TextureGetSampledMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSampledMip_TextureCube_texture.type.modifiers = TextureGetSampledMip_TextureCube_texture_modifiers;
-    TextureGetSampledMip_TextureCube_texture.type.modifierValues = TextureGetSampledMip_TextureCube_texture_modifierValues;
-    TextureGetSampledMip_TextureCube_sampler.name = "sampler"_c;
-    TextureGetSampledMip_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_TextureCube_sampler.type.modifiers = TextureGetSampledMip_TextureCube_sampler_modifiers;
-    TextureGetSampledMip_TextureCube_sampler.type.modifierValues = TextureGetSampledMip_TextureCube_sampler_modifierValues;
-    TextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_TextureCube.name = TextureGetSampledMip_TextureCube_name;
-    TextureGetSampledMip_TextureCube.backendIndex = 2394;
-    TextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_TextureCube.parameters = TextureGetSampledMip_TextureCube_args;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube)->signature = "textureGetSampledMip(uniform *textureCube,uniform *sampler,f32x3) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube)->name = "textureGetSampledMip(uniform *textureCube,uniform *sampler,f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureCube, sampler : uniform *sampler, coordinate : f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTextureCube, Float32x3
-    SampledTextureGetSampledMip_TextureCube_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureGetSampledMip_TextureCube_texture.type.modifiers = SampledTextureGetSampledMip_TextureCube_texture_modifiers;
-    SampledTextureGetSampledMip_TextureCube_texture.type.modifierValues = SampledTextureGetSampledMip_TextureCube_texture_modifierValues;
-    SampledTextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_TextureCube.name = SampledTextureGetSampledMip_TextureCube_name;
-    SampledTextureGetSampledMip_TextureCube.backendIndex = 2395;
-    SampledTextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_TextureCube.parameters = SampledTextureGetSampledMip_TextureCube_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->signature = "textureGetSampledMip(uniform *textureSampledCube,f32x3) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->name = "textureGetSampledMip(uniform *textureSampledCube,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampledCube, coordinate : f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
-    TextureGetSampledMip_Texture1DArray_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSampledMip_Texture1DArray_texture.type.modifiers = TextureGetSampledMip_Texture1DArray_texture_modifiers;
-    TextureGetSampledMip_Texture1DArray_texture.type.modifierValues = TextureGetSampledMip_Texture1DArray_texture_modifierValues;
-    TextureGetSampledMip_Texture1DArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture1DArray_sampler.type.modifiers = TextureGetSampledMip_Texture1DArray_sampler_modifiers;
-    TextureGetSampledMip_Texture1DArray_sampler.type.modifierValues = TextureGetSampledMip_Texture1DArray_sampler_modifierValues;
-    TextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture1DArray.name = TextureGetSampledMip_Texture1DArray_name;
-    TextureGetSampledMip_Texture1DArray.backendIndex = 2396;
-    TextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture1DArray.parameters = TextureGetSampledMip_Texture1DArray_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->signature = "textureGetSampledMip(uniform *texture1DArray,uniform *sampler,f32x2) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->name = "textureGetSampledMip(uniform *texture1DArray,uniform *sampler,f32x2)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture1DArray, sampler : uniform *sampler, coordinate : f32x2)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture1DArray, Float32x2
-    SampledTextureGetSampledMip_Texture1DArray_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureGetSampledMip_Texture1DArray_texture.type.modifiers = SampledTextureGetSampledMip_Texture1DArray_texture_modifiers;
-    SampledTextureGetSampledMip_Texture1DArray_texture.type.modifierValues = SampledTextureGetSampledMip_Texture1DArray_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture1DArray.name = SampledTextureGetSampledMip_Texture1DArray_name;
-    SampledTextureGetSampledMip_Texture1DArray.backendIndex = 2397;
-    SampledTextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture1DArray.parameters = SampledTextureGetSampledMip_Texture1DArray_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &SampledTexture1DArrayType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->signature = "textureGetSampledMip(uniform *textureSampled1DArray,f32x2) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->name = "textureGetSampledMip(uniform *textureSampled1DArray,f32x2)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled1DArray, coordinate : f32x2)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
-    TextureGetSampledMip_Texture2DArray_texture.name = "texture"_c;
-    TextureGetSampledMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSampledMip_Texture2DArray_texture.type.modifiers = TextureGetSampledMip_Texture2DArray_texture_modifiers;
-    TextureGetSampledMip_Texture2DArray_texture.type.modifierValues = TextureGetSampledMip_Texture2DArray_texture_modifierValues;
-    TextureGetSampledMip_Texture2DArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture2DArray_sampler.type.modifiers = TextureGetSampledMip_Texture2DArray_sampler_modifiers;
-    TextureGetSampledMip_Texture2DArray_sampler.type.modifierValues = TextureGetSampledMip_Texture2DArray_sampler_modifierValues;
-    TextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_Texture2DArray.name = TextureGetSampledMip_Texture2DArray_name;
-    TextureGetSampledMip_Texture2DArray.backendIndex = 2398;
-    TextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_Texture2DArray.parameters = TextureGetSampledMip_Texture2DArray_args;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->signature = "textureGetSampledMip(uniform *texture2DArray,uniform *sampler,f32x3) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->name = "textureGetSampledMip(uniform *texture2DArray,uniform *sampler,f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTexture2DArray, Float32x3
-    SampledTextureGetSampledMip_Texture2DArray_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureGetSampledMip_Texture2DArray_texture.type.modifiers = SampledTextureGetSampledMip_Texture2DArray_texture_modifiers;
-    SampledTextureGetSampledMip_Texture2DArray_texture.type.modifierValues = SampledTextureGetSampledMip_Texture2DArray_texture_modifierValues;
-    SampledTextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_Texture2DArray.name = SampledTextureGetSampledMip_Texture2DArray_name;
-    SampledTextureGetSampledMip_Texture2DArray.backendIndex = 2399;
-    SampledTextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_Texture2DArray.parameters = SampledTextureGetSampledMip_Texture2DArray_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->signature = "textureGetSampledMip(uniform *textureSampled2DArray,f32x3) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->name = "textureGetSampledMip(uniform *textureSampled2DArray,f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampled2DArray, coordinate : f32x3)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
-    TextureGetSampledMip_TextureCubeArray_texture.name = "texture"_c;
-    TextureGetSampledMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSampledMip_TextureCubeArray_texture.type.modifiers = TextureGetSampledMip_TextureCubeArray_texture_modifiers;
-    TextureGetSampledMip_TextureCubeArray_texture.type.modifierValues = TextureGetSampledMip_TextureCubeArray_texture_modifierValues;
-    TextureGetSampledMip_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_TextureCubeArray_sampler.type.modifiers = TextureGetSampledMip_TextureCubeArray_sampler_modifiers;
-    TextureGetSampledMip_TextureCubeArray_sampler.type.modifierValues = TextureGetSampledMip_TextureCubeArray_sampler_modifierValues;
-    TextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
-    TextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
-    TextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    TextureGetSampledMip_TextureCubeArray.name = TextureGetSampledMip_TextureCubeArray_name;
-    TextureGetSampledMip_TextureCubeArray.backendIndex = 2400;
-    TextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
-    TextureGetSampledMip_TextureCubeArray.parameters = TextureGetSampledMip_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->signature = "textureGetSampledMip(uniform *textureCubeArray,uniform *sampler,f32x4) f32x2"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->name = "textureGetSampledMip(uniform *textureCubeArray,uniform *sampler,f32x4)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureCubeArray, sampler : uniform *sampler, coordinate : f32x4)"_c;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureGetSampledMip with SampledTextureCubeArray, Float32x4
-    SampledTextureGetSampledMip_TextureCubeArray_texture.name = "texture"_c;
-    SampledTextureGetSampledMip_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureGetSampledMip_TextureCubeArray_texture.type.modifiers = SampledTextureGetSampledMip_TextureCubeArray_texture_modifiers;
-    SampledTextureGetSampledMip_TextureCubeArray_texture.type.modifierValues = SampledTextureGetSampledMip_TextureCubeArray_texture_modifierValues;
-    SampledTextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
-    SampledTextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
-    SampledTextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
-    SampledTextureGetSampledMip_TextureCubeArray.name = SampledTextureGetSampledMip_TextureCubeArray_name;
-    SampledTextureGetSampledMip_TextureCubeArray.backendIndex = 2401;
-    SampledTextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
-    SampledTextureGetSampledMip_TextureCubeArray.parameters = SampledTextureGetSampledMip_TextureCubeArray_args;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray)->signature = "textureGetSampledMip(uniform *textureSampledCubeArray,f32x4) f32x2"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray)->name = "textureGetSampledMip(uniform *textureSampledCubeArray,f32x4)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray)->nameWithVarNames = "textureGetSampledMip(texture : uniform *textureSampledCubeArray, coordinate : f32x4)"_c;
-    Symbol::Resolved(&SampledTextureGetSampledMip_TextureCubeArray)->returnTypeSymbol = &Float32x2Type;
-
-    /// textureLoad with Texture1D, Int32
-    TextureLoad_Texture1D_texture.name = "texture"_c;
-    TextureLoad_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureLoad_Texture1D_texture.type.strict = true;
-    TextureLoad_Texture1D_texture.type.mut = true;
-    TextureLoad_Texture1D_texture.type.modifiers = TextureLoad_Texture1D_texture_modifiers;
-    TextureLoad_Texture1D_texture.type.modifierValues = TextureLoad_Texture1D_texture_modifierValues;
-    TextureLoad_Texture1D_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureLoad_Texture1D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture1D.name = TextureLoad_Texture1D_name;
-    TextureLoad_Texture1D.backendIndex = 2402;
-    TextureLoad_Texture1D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture1D.parameters = TextureLoad_Texture1D_args;
-    Symbol::Resolved(&TextureLoad_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureLoad_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture1D_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoad_Texture1D)->signature = "textureLoad(uniform *mutable texture1D,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture1D)->name = "textureLoad(uniform *mutable texture1D,i32)"_c;
-    Symbol::Resolved(&TextureLoad_Texture1D)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture1D, coordinate : i32)"_c;
-    Symbol::Resolved(&TextureLoad_Texture1D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture1D, Int32, Int32
-    TextureLoadMip_Texture1D_texture.name = "texture"_c;
-    TextureLoadMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureLoadMip_Texture1D_texture.type.strict = true;
-    TextureLoadMip_Texture1D_texture.type.mut = true;
-    TextureLoadMip_Texture1D_texture.type.modifiers = TextureLoadMip_Texture1D_texture_modifiers;
-    TextureLoadMip_Texture1D_texture.type.modifierValues = TextureLoadMip_Texture1D_texture_modifierValues;
-    TextureLoadMip_Texture1D_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture1D_mip.name = "mip"_c;
-    TextureLoadMip_Texture1D_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture1D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture1D.name = TextureLoadMip_Texture1D_name;
-    TextureLoadMip_Texture1D.backendIndex = 2403;
-    TextureLoadMip_Texture1D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture1D.parameters = TextureLoadMip_Texture1D_args;
-    Symbol::Resolved(&TextureLoadMip_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureLoadMip_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture1D_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture1D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture1D)->signature = "textureLoadMip(uniform *mutable texture1D,i32,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1D)->name = "textureLoadMip(uniform *mutable texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1D)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture1D, coordinate : i32, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoad with Texture2D, Int32x2
-    TextureLoad_Texture2D_texture.name = "texture"_c;
-    TextureLoad_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureLoad_Texture2D_texture.type.strict = true;
-    TextureLoad_Texture2D_texture.type.mut = true;
-    TextureLoad_Texture2D_texture.type.modifiers = TextureLoad_Texture2D_texture_modifiers;
-    TextureLoad_Texture2D_texture.type.modifierValues = TextureLoad_Texture2D_texture_modifierValues;
-    TextureLoad_Texture2D_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoad_Texture2D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture2D.name = TextureLoad_Texture2D_name;
-    TextureLoad_Texture2D.backendIndex = 2404;
-    TextureLoad_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture2D.parameters = TextureLoad_Texture2D_args;
-    Symbol::Resolved(&TextureLoad_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureLoad_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoad_Texture2D)->signature = "textureLoad(uniform *mutable texture2D,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture2D)->name = "textureLoad(uniform *mutable texture2D,i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2D)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture2D, coordinate : i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture2D, Int32x2, Int32
-    TextureLoadMip_Texture2D_texture.name = "texture"_c;
-    TextureLoadMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureLoadMip_Texture2D_texture.type.strict = true;
-    TextureLoadMip_Texture2D_texture.type.mut = true;
-    TextureLoadMip_Texture2D_texture.type.modifiers = TextureLoadMip_Texture2D_texture_modifiers;
-    TextureLoadMip_Texture2D_texture.type.modifierValues = TextureLoadMip_Texture2D_texture_modifierValues;
-    TextureLoadMip_Texture2D_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoadMip_Texture2D_mip.name = "mip"_c;
-    TextureLoadMip_Texture2D_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture2D.name = TextureLoadMip_Texture2D_name;
-    TextureLoadMip_Texture2D.backendIndex = 2405;
-    TextureLoadMip_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture2D.parameters = TextureLoadMip_Texture2D_args;
-    Symbol::Resolved(&TextureLoadMip_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureLoadMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2D)->signature = "textureLoadMip(uniform *mutable texture2D,i32x2,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2D)->name = "textureLoadMip(uniform *mutable texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2D)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture2D, coordinate : i32x2, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoad with Texture3D, Int32x3
-    TextureLoad_Texture3D_texture.name = "texture"_c;
-    TextureLoad_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureLoad_Texture3D_texture.type.strict = true;
-    TextureLoad_Texture3D_texture.type.mut = true;
-    TextureLoad_Texture3D_texture.type.modifiers = TextureLoad_Texture3D_texture_modifiers;
-    TextureLoad_Texture3D_texture.type.modifierValues = TextureLoad_Texture3D_texture_modifierValues;
-    TextureLoad_Texture3D_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_Texture3D.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture3D.name = TextureLoad_Texture3D_name;
-    TextureLoad_Texture3D.backendIndex = 2406;
-    TextureLoad_Texture3D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture3D.parameters = TextureLoad_Texture3D_args;
-    Symbol::Resolved(&TextureLoad_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureLoad_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture3D_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoad_Texture3D)->signature = "textureLoad(uniform *mutable texture3D,i32x3) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture3D)->name = "textureLoad(uniform *mutable texture3D,i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture3D)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture3D, coordinate : i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture3D, Int32x3, Int32
-    TextureLoadMip_Texture3D_texture.name = "texture"_c;
-    TextureLoadMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureLoadMip_Texture3D_texture.type.strict = true;
-    TextureLoadMip_Texture3D_texture.type.mut = true;
-    TextureLoadMip_Texture3D_texture.type.modifiers = TextureLoadMip_Texture3D_texture_modifiers;
-    TextureLoadMip_Texture3D_texture.type.modifierValues = TextureLoadMip_Texture3D_texture_modifierValues;
-    TextureLoadMip_Texture3D_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoadMip_Texture3D_mip.name = "mip"_c;
-    TextureLoadMip_Texture3D_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture3D.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture3D.name = TextureLoadMip_Texture3D_name;
-    TextureLoadMip_Texture3D.backendIndex = 2407;
-    TextureLoadMip_Texture3D.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture3D.parameters = TextureLoadMip_Texture3D_args;
-    Symbol::Resolved(&TextureLoadMip_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureLoadMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture3D_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoadMip_Texture3D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture3D)->signature = "textureLoadMip(uniform *mutable texture3D,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture3D)->name = "textureLoadMip(uniform *mutable texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture3D)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture3D, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoad with TextureCube, Int32x3
-    TextureLoad_TextureCube_texture.name = "texture"_c;
-    TextureLoad_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureLoad_TextureCube_texture.type.strict = true;
-    TextureLoad_TextureCube_texture.type.mut = true;
-    TextureLoad_TextureCube_texture.type.modifiers = TextureLoad_TextureCube_texture_modifiers;
-    TextureLoad_TextureCube_texture.type.modifierValues = TextureLoad_TextureCube_texture_modifierValues;
-    TextureLoad_TextureCube_coordinate.name = "coordinate"_c;
-    TextureLoad_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_TextureCube.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_TextureCube.name = TextureLoad_TextureCube_name;
-    TextureLoad_TextureCube.backendIndex = 2408;
-    TextureLoad_TextureCube.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_TextureCube.parameters = TextureLoad_TextureCube_args;
-    Symbol::Resolved(&TextureLoad_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureLoad_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_TextureCube_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoad_TextureCube)->signature = "textureLoad(uniform *mutable textureCube,i32x3) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_TextureCube)->name = "textureLoad(uniform *mutable textureCube,i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_TextureCube)->nameWithVarNames = "textureLoad(texture : uniform *mutable textureCube, coordinate : i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with TextureCube, Int32x3, Int32
-    TextureLoadMip_TextureCube_texture.name = "texture"_c;
-    TextureLoadMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureLoadMip_TextureCube_texture.type.strict = true;
-    TextureLoadMip_TextureCube_texture.type.mut = true;
-    TextureLoadMip_TextureCube_texture.type.modifiers = TextureLoadMip_TextureCube_texture_modifiers;
-    TextureLoadMip_TextureCube_texture.type.modifierValues = TextureLoadMip_TextureCube_texture_modifierValues;
-    TextureLoadMip_TextureCube_coordinate.name = "coordinate"_c;
-    TextureLoadMip_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoadMip_TextureCube_mip.name = "mip"_c;
-    TextureLoadMip_TextureCube_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_TextureCube.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_TextureCube.name = TextureLoadMip_TextureCube_name;
-    TextureLoadMip_TextureCube.backendIndex = 2409;
-    TextureLoadMip_TextureCube.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_TextureCube.parameters = TextureLoadMip_TextureCube_args;
-    Symbol::Resolved(&TextureLoadMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureLoadMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_TextureCube_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoadMip_TextureCube_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_TextureCube)->signature = "textureLoadMip(uniform *mutable textureCube,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCube)->name = "textureLoadMip(uniform *mutable textureCube,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCube)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable textureCube, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoad with Texture1DArray, Int32x2
-    TextureLoad_Texture1DArray_texture.name = "texture"_c;
-    TextureLoad_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureLoad_Texture1DArray_texture.type.strict = true;
-    TextureLoad_Texture1DArray_texture.type.mut = true;
-    TextureLoad_Texture1DArray_texture.type.modifiers = TextureLoad_Texture1DArray_texture_modifiers;
-    TextureLoad_Texture1DArray_texture.type.modifierValues = TextureLoad_Texture1DArray_texture_modifierValues;
-    TextureLoad_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoad_Texture1DArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture1DArray.name = TextureLoad_Texture1DArray_name;
-    TextureLoad_Texture1DArray.backendIndex = 2410;
-    TextureLoad_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture1DArray.parameters = TextureLoad_Texture1DArray_args;
-    Symbol::Resolved(&TextureLoad_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureLoad_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture1DArray_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoad_Texture1DArray)->signature = "textureLoad(uniform *mutable texture1DArray,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture1DArray)->name = "textureLoad(uniform *mutable texture1DArray,i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture1DArray)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture1DArray, coordinate : i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture1DArray, Int32x2, Int32
-    TextureLoadMip_Texture1DArray_texture.name = "texture"_c;
-    TextureLoadMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureLoadMip_Texture1DArray_texture.type.strict = true;
-    TextureLoadMip_Texture1DArray_texture.type.mut = true;
-    TextureLoadMip_Texture1DArray_texture.type.modifiers = TextureLoadMip_Texture1DArray_texture_modifiers;
-    TextureLoadMip_Texture1DArray_texture.type.modifierValues = TextureLoadMip_Texture1DArray_texture_modifierValues;
-    TextureLoadMip_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoadMip_Texture1DArray_mip.name = "mip"_c;
-    TextureLoadMip_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture1DArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture1DArray.name = TextureLoadMip_Texture1DArray_name;
-    TextureLoadMip_Texture1DArray.backendIndex = 2411;
-    TextureLoadMip_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture1DArray.parameters = TextureLoadMip_Texture1DArray_args;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray)->signature = "textureLoadMip(uniform *mutable texture1DArray,i32x2,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray)->name = "textureLoadMip(uniform *mutable texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture1DArray, coordinate : i32x2, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoad with Texture2DArray, Int32x3
-    TextureLoad_Texture2DArray_texture.name = "texture"_c;
-    TextureLoad_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureLoad_Texture2DArray_texture.type.strict = true;
-    TextureLoad_Texture2DArray_texture.type.mut = true;
-    TextureLoad_Texture2DArray_texture.type.modifiers = TextureLoad_Texture2DArray_texture_modifiers;
-    TextureLoad_Texture2DArray_texture.type.modifierValues = TextureLoad_Texture2DArray_texture_modifierValues;
-    TextureLoad_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_Texture2DArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture2DArray.name = TextureLoad_Texture2DArray_name;
-    TextureLoad_Texture2DArray.backendIndex = 2412;
-    TextureLoad_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture2DArray.parameters = TextureLoad_Texture2DArray_args;
-    Symbol::Resolved(&TextureLoad_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureLoad_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture2DArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoad_Texture2DArray)->signature = "textureLoad(uniform *mutable texture2DArray,i32x3) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DArray)->name = "textureLoad(uniform *mutable texture2DArray,i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DArray)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture2DArray, coordinate : i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture2DArray, Int32x3, Int32
-    TextureLoadMip_Texture2DArray_texture.name = "texture"_c;
-    TextureLoadMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureLoadMip_Texture2DArray_texture.type.strict = true;
-    TextureLoadMip_Texture2DArray_texture.type.mut = true;
-    TextureLoadMip_Texture2DArray_texture.type.modifiers = TextureLoadMip_Texture2DArray_texture_modifiers;
-    TextureLoadMip_Texture2DArray_texture.type.modifierValues = TextureLoadMip_Texture2DArray_texture_modifierValues;
-    TextureLoadMip_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoadMip_Texture2DArray_mip.name = "mip"_c;
-    TextureLoadMip_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2DArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture2DArray.name = TextureLoadMip_Texture2DArray_name;
-    TextureLoadMip_Texture2DArray.backendIndex = 2413;
-    TextureLoadMip_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture2DArray.parameters = TextureLoadMip_Texture2DArray_args;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray)->signature = "textureLoadMip(uniform *mutable texture2DArray,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray)->name = "textureLoadMip(uniform *mutable texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture2DArray, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoad with TextureCubeArray, Int32x4
-    TextureLoad_TextureCubeArray_texture.name = "texture"_c;
-    TextureLoad_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureLoad_TextureCubeArray_texture.type.strict = true;
-    TextureLoad_TextureCubeArray_texture.type.mut = true;
-    TextureLoad_TextureCubeArray_texture.type.modifiers = TextureLoad_TextureCubeArray_texture_modifiers;
-    TextureLoad_TextureCubeArray_texture.type.modifierValues = TextureLoad_TextureCubeArray_texture_modifierValues;
-    TextureLoad_TextureCubeArray_coordinate.name = "coordinate"_c;
-    TextureLoad_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureLoad_TextureCubeArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_TextureCubeArray.name = TextureLoad_TextureCubeArray_name;
-    TextureLoad_TextureCubeArray.backendIndex = 2414;
-    TextureLoad_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_TextureCubeArray.parameters = TextureLoad_TextureCubeArray_args;
-    Symbol::Resolved(&TextureLoad_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureLoad_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_TextureCubeArray_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureLoad_TextureCubeArray)->signature = "textureLoad(uniform *mutable textureCubeArray,i32x4) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_TextureCubeArray)->name = "textureLoad(uniform *mutable textureCubeArray,i32x4)"_c;
-    Symbol::Resolved(&TextureLoad_TextureCubeArray)->nameWithVarNames = "textureLoad(texture : uniform *mutable textureCubeArray, coordinate : i32x4)"_c;
-    Symbol::Resolved(&TextureLoad_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with TextureCubeArray, Int32x4, Int32
-    TextureLoadMip_TextureCubeArray_texture.name = "texture"_c;
-    TextureLoadMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureLoadMip_TextureCubeArray_texture.type.strict = true;
-    TextureLoadMip_TextureCubeArray_texture.type.mut = true;
-    TextureLoadMip_TextureCubeArray_texture.type.modifiers = TextureLoadMip_TextureCubeArray_texture_modifiers;
-    TextureLoadMip_TextureCubeArray_texture.type.modifierValues = TextureLoadMip_TextureCubeArray_texture_modifierValues;
-    TextureLoadMip_TextureCubeArray_coordinate.name = "coordinate"_c;
-    TextureLoadMip_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureLoadMip_TextureCubeArray_mip.name = "mip"_c;
-    TextureLoadMip_TextureCubeArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_TextureCubeArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_TextureCubeArray.name = TextureLoadMip_TextureCubeArray_name;
-    TextureLoadMip_TextureCubeArray.backendIndex = 2415;
-    TextureLoadMip_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_TextureCubeArray.parameters = TextureLoadMip_TextureCubeArray_args;
-    Symbol::Resolved(&TextureLoadMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureLoadMip_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_TextureCubeArray_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureLoadMip_TextureCubeArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_TextureCubeArray)->signature = "textureLoadMip(uniform *mutable textureCubeArray,i32x4,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCubeArray)->name = "textureLoadMip(uniform *mutable textureCubeArray,i32x4,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCubeArray)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable textureCubeArray, coordinate : i32x4, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoad with Texture2DMS, Int32x2
-    TextureLoad_Texture2DMS_texture.name = "texture"_c;
-    TextureLoad_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureLoad_Texture2DMS_texture.type.strict = true;
-    TextureLoad_Texture2DMS_texture.type.mut = true;
-    TextureLoad_Texture2DMS_texture.type.modifiers = TextureLoad_Texture2DMS_texture_modifiers;
-    TextureLoad_Texture2DMS_texture.type.modifierValues = TextureLoad_Texture2DMS_texture_modifierValues;
-    TextureLoad_Texture2DMS_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoad_Texture2DMS.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture2DMS.name = TextureLoad_Texture2DMS_name;
-    TextureLoad_Texture2DMS.backendIndex = 2416;
-    TextureLoad_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture2DMS.parameters = TextureLoad_Texture2DMS_args;
-    Symbol::Resolved(&TextureLoad_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureLoad_Texture2DMS_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture2DMS_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoad_Texture2DMS)->signature = "textureLoad(uniform *mutable texture2DMS,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DMS)->name = "textureLoad(uniform *mutable texture2DMS,i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DMS)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture2DMS, coordinate : i32x2)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DMS)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture2DMS, Int32x2, Int32
-    TextureLoadMip_Texture2DMS_texture.name = "texture"_c;
-    TextureLoadMip_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureLoadMip_Texture2DMS_texture.type.strict = true;
-    TextureLoadMip_Texture2DMS_texture.type.mut = true;
-    TextureLoadMip_Texture2DMS_texture.type.modifiers = TextureLoadMip_Texture2DMS_texture_modifiers;
-    TextureLoadMip_Texture2DMS_texture.type.modifierValues = TextureLoadMip_Texture2DMS_texture_modifierValues;
-    TextureLoadMip_Texture2DMS_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureLoadMip_Texture2DMS_mip.name = "mip"_c;
-    TextureLoadMip_Texture2DMS_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2DMS.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture2DMS.name = TextureLoadMip_Texture2DMS_name;
-    TextureLoadMip_Texture2DMS.backendIndex = 2417;
-    TextureLoadMip_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture2DMS.parameters = TextureLoadMip_Texture2DMS_args;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMS_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMS_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMS_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMS)->signature = "textureLoadMip(uniform *mutable texture2DMS,i32x2,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMS)->name = "textureLoadMip(uniform *mutable texture2DMS,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMS)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture2DMS, coordinate : i32x2, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMS)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoad with Texture2DMSArray, Int32x3
-    TextureLoad_Texture2DMSArray_texture.name = "texture"_c;
-    TextureLoad_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureLoad_Texture2DMSArray_texture.type.strict = true;
-    TextureLoad_Texture2DMSArray_texture.type.mut = true;
-    TextureLoad_Texture2DMSArray_texture.type.modifiers = TextureLoad_Texture2DMSArray_texture_modifiers;
-    TextureLoad_Texture2DMSArray_texture.type.modifierValues = TextureLoad_Texture2DMSArray_texture_modifierValues;
-    TextureLoad_Texture2DMSArray_coordinate.name = "coordinate"_c;
-    TextureLoad_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoad_Texture2DMSArray.documentation = "Load a single texel at an absolute non-normalized coordinate"_c;
-    TextureLoad_Texture2DMSArray.name = TextureLoad_Texture2DMSArray_name;
-    TextureLoad_Texture2DMSArray.backendIndex = 2418;
-    TextureLoad_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoad_Texture2DMSArray.parameters = TextureLoad_Texture2DMSArray_args;
-    Symbol::Resolved(&TextureLoad_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureLoad_Texture2DMSArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoad_Texture2DMSArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoad_Texture2DMSArray)->signature = "textureLoad(uniform *mutable texture2DMSArray,i32x3) f32x4"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DMSArray)->name = "textureLoad(uniform *mutable texture2DMSArray,i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DMSArray)->nameWithVarNames = "textureLoad(texture : uniform *mutable texture2DMSArray, coordinate : i32x3)"_c;
-    Symbol::Resolved(&TextureLoad_Texture2DMSArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureLoadMip with Texture2DMSArray, Int32x3, Int32
-    TextureLoadMip_Texture2DMSArray_texture.name = "texture"_c;
-    TextureLoadMip_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureLoadMip_Texture2DMSArray_texture.type.strict = true;
-    TextureLoadMip_Texture2DMSArray_texture.type.mut = true;
-    TextureLoadMip_Texture2DMSArray_texture.type.modifiers = TextureLoadMip_Texture2DMSArray_texture_modifiers;
-    TextureLoadMip_Texture2DMSArray_texture.type.modifierValues = TextureLoadMip_Texture2DMSArray_texture_modifierValues;
-    TextureLoadMip_Texture2DMSArray_coordinate.name = "coordinate"_c;
-    TextureLoadMip_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureLoadMip_Texture2DMSArray_mip.name = "mip"_c;
-    TextureLoadMip_Texture2DMSArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureLoadMip_Texture2DMSArray.documentation = "Load a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureLoadMip_Texture2DMSArray.name = TextureLoadMip_Texture2DMSArray_name;
-    TextureLoadMip_Texture2DMSArray.backendIndex = 2419;
-    TextureLoadMip_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureLoadMip_Texture2DMSArray.parameters = TextureLoadMip_Texture2DMSArray_args;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMSArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMSArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMSArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMSArray)->signature = "textureLoadMip(uniform *mutable texture2DMSArray,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMSArray)->name = "textureLoadMip(uniform *mutable texture2DMSArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMSArray)->nameWithVarNames = "textureLoadMip(texture : uniform *mutable texture2DMSArray, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureLoadMip_Texture2DMSArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureStore with Texture1D, Int32, Float32x4
-    TextureStore_Texture1D_Float32x4_texture.name = "texture"_c;
-    TextureStore_Texture1D_Float32x4_texture.type = Type::FullType{ Texture1DType.name };
-    TextureStore_Texture1D_Float32x4_texture.type.strict = true;
-    TextureStore_Texture1D_Float32x4_texture.type.mut = true;
-    TextureStore_Texture1D_Float32x4_texture.type.modifiers = TextureStore_Texture1D_Float32x4_texture_modifiers;
-    TextureStore_Texture1D_Float32x4_texture.type.modifierValues = TextureStore_Texture1D_Float32x4_texture_modifierValues;
-    TextureStore_Texture1D_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture1D_Float32x4_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureStore_Texture1D_Float32x4_value.name = "value"_c;
-    TextureStore_Texture1D_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture1D_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture1D_Float32x4.name = TextureStore_Texture1D_Float32x4_name;
-    TextureStore_Texture1D_Float32x4.backendIndex = 2420;
-    TextureStore_Texture1D_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture1D_Float32x4.parameters = TextureStore_Texture1D_Float32x4_args;
-    Symbol::Resolved(&TextureStore_Texture1D_Float32x4_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureStore_Texture1D_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture1D_Float32x4_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStore_Texture1D_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture1D_Float32x4)->signature = "textureStore(uniform *mutable texture1D,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_Float32x4)->name = "textureStore(uniform *mutable texture1D,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture1D, coordinate : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture1D, Int32, Int32, Float32x4
-    TextureStoreMip_Texture1D_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture1D_Float32x4_texture.type = Type::FullType{ Texture1DType.name };
-    TextureStoreMip_Texture1D_Float32x4_texture.type.strict = true;
-    TextureStoreMip_Texture1D_Float32x4_texture.type.mut = true;
-    TextureStoreMip_Texture1D_Float32x4_texture.type.modifiers = TextureStoreMip_Texture1D_Float32x4_texture_modifiers;
-    TextureStoreMip_Texture1D_Float32x4_texture.type.modifierValues = TextureStoreMip_Texture1D_Float32x4_texture_modifierValues;
-    TextureStoreMip_Texture1D_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture1D_Float32x4_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1D_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture1D_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1D_Float32x4_value.name = "value"_c;
-    TextureStoreMip_Texture1D_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture1D_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture1D_Float32x4.name = TextureStoreMip_Texture1D_Float32x4_name;
-    TextureStoreMip_Texture1D_Float32x4.backendIndex = 2421;
-    TextureStoreMip_Texture1D_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture1D_Float32x4.parameters = TextureStoreMip_Texture1D_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4)->signature = "textureStoreMip(uniform *mutable texture1D,i32,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4)->name = "textureStoreMip(uniform *mutable texture1D,i32,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture1D, coordinate : i32, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture1D, Int32, Int32x4
-    TextureStore_Texture1D_Int32x4_texture.name = "texture"_c;
-    TextureStore_Texture1D_Int32x4_texture.type = Type::FullType{ Texture1DType.name };
-    TextureStore_Texture1D_Int32x4_texture.type.strict = true;
-    TextureStore_Texture1D_Int32x4_texture.type.mut = true;
-    TextureStore_Texture1D_Int32x4_texture.type.modifiers = TextureStore_Texture1D_Int32x4_texture_modifiers;
-    TextureStore_Texture1D_Int32x4_texture.type.modifierValues = TextureStore_Texture1D_Int32x4_texture_modifierValues;
-    TextureStore_Texture1D_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture1D_Int32x4_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureStore_Texture1D_Int32x4_value.name = "value"_c;
-    TextureStore_Texture1D_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_Texture1D_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture1D_Int32x4.name = TextureStore_Texture1D_Int32x4_name;
-    TextureStore_Texture1D_Int32x4.backendIndex = 2422;
-    TextureStore_Texture1D_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture1D_Int32x4.parameters = TextureStore_Texture1D_Int32x4_args;
-    Symbol::Resolved(&TextureStore_Texture1D_Int32x4_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureStore_Texture1D_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture1D_Int32x4_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStore_Texture1D_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_Texture1D_Int32x4)->signature = "textureStore(uniform *mutable texture1D,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_Int32x4)->name = "textureStore(uniform *mutable texture1D,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture1D, coordinate : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture1D, Int32, Int32, Int32x4
-    TextureStoreMip_Texture1D_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture1D_Int32x4_texture.type = Type::FullType{ Texture1DType.name };
-    TextureStoreMip_Texture1D_Int32x4_texture.type.strict = true;
-    TextureStoreMip_Texture1D_Int32x4_texture.type.mut = true;
-    TextureStoreMip_Texture1D_Int32x4_texture.type.modifiers = TextureStoreMip_Texture1D_Int32x4_texture_modifiers;
-    TextureStoreMip_Texture1D_Int32x4_texture.type.modifierValues = TextureStoreMip_Texture1D_Int32x4_texture_modifierValues;
-    TextureStoreMip_Texture1D_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture1D_Int32x4_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1D_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture1D_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1D_Int32x4_value.name = "value"_c;
-    TextureStoreMip_Texture1D_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_Texture1D_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture1D_Int32x4.name = TextureStoreMip_Texture1D_Int32x4_name;
-    TextureStoreMip_Texture1D_Int32x4.backendIndex = 2423;
-    TextureStoreMip_Texture1D_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture1D_Int32x4.parameters = TextureStoreMip_Texture1D_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4)->signature = "textureStoreMip(uniform *mutable texture1D,i32,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4)->name = "textureStoreMip(uniform *mutable texture1D,i32,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture1D, coordinate : i32, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture1D, Int32, UInt32x4
-    TextureStore_Texture1D_UInt32x4_texture.name = "texture"_c;
-    TextureStore_Texture1D_UInt32x4_texture.type = Type::FullType{ Texture1DType.name };
-    TextureStore_Texture1D_UInt32x4_texture.type.strict = true;
-    TextureStore_Texture1D_UInt32x4_texture.type.mut = true;
-    TextureStore_Texture1D_UInt32x4_texture.type.modifiers = TextureStore_Texture1D_UInt32x4_texture_modifiers;
-    TextureStore_Texture1D_UInt32x4_texture.type.modifierValues = TextureStore_Texture1D_UInt32x4_texture_modifierValues;
-    TextureStore_Texture1D_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture1D_UInt32x4_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureStore_Texture1D_UInt32x4_value.name = "value"_c;
-    TextureStore_Texture1D_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_Texture1D_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture1D_UInt32x4.name = TextureStore_Texture1D_UInt32x4_name;
-    TextureStore_Texture1D_UInt32x4.backendIndex = 2424;
-    TextureStore_Texture1D_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture1D_UInt32x4.parameters = TextureStore_Texture1D_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_Texture1D_UInt32x4_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureStore_Texture1D_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture1D_UInt32x4_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStore_Texture1D_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_Texture1D_UInt32x4)->signature = "textureStore(uniform *mutable texture1D,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_UInt32x4)->name = "textureStore(uniform *mutable texture1D,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture1D, coordinate : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1D_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture1D, Int32, Int32, UInt32x4
-    TextureStoreMip_Texture1D_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture1D_UInt32x4_texture.type = Type::FullType{ Texture1DType.name };
-    TextureStoreMip_Texture1D_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_Texture1D_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_Texture1D_UInt32x4_texture.type.modifiers = TextureStoreMip_Texture1D_UInt32x4_texture_modifiers;
-    TextureStoreMip_Texture1D_UInt32x4_texture.type.modifierValues = TextureStoreMip_Texture1D_UInt32x4_texture_modifierValues;
-    TextureStoreMip_Texture1D_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture1D_UInt32x4_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1D_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture1D_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1D_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_Texture1D_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_Texture1D_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture1D_UInt32x4.name = TextureStoreMip_Texture1D_UInt32x4_name;
-    TextureStoreMip_Texture1D_UInt32x4.backendIndex = 2425;
-    TextureStoreMip_Texture1D_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture1D_UInt32x4.parameters = TextureStoreMip_Texture1D_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4)->signature = "textureStoreMip(uniform *mutable texture1D,i32,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4)->name = "textureStoreMip(uniform *mutable texture1D,i32,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture1D, coordinate : i32, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1D_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2D, Int32x2, Float32x4
-    TextureStore_Texture2D_Float32x4_texture.name = "texture"_c;
-    TextureStore_Texture2D_Float32x4_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStore_Texture2D_Float32x4_texture.type.strict = true;
-    TextureStore_Texture2D_Float32x4_texture.type.mut = true;
-    TextureStore_Texture2D_Float32x4_texture.type.modifiers = TextureStore_Texture2D_Float32x4_texture_modifiers;
-    TextureStore_Texture2D_Float32x4_texture.type.modifierValues = TextureStore_Texture2D_Float32x4_texture_modifierValues;
-    TextureStore_Texture2D_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2D_Float32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture2D_Float32x4_value.name = "value"_c;
-    TextureStore_Texture2D_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2D_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2D_Float32x4.name = TextureStore_Texture2D_Float32x4_name;
-    TextureStore_Texture2D_Float32x4.backendIndex = 2426;
-    TextureStore_Texture2D_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2D_Float32x4.parameters = TextureStore_Texture2D_Float32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2D_Float32x4_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureStore_Texture2D_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2D_Float32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture2D_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2D_Float32x4)->signature = "textureStore(uniform *mutable texture2D,i32x2,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_Float32x4)->name = "textureStore(uniform *mutable texture2D,i32x2,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2D, Int32x2, Int32, Float32x4
-    TextureStoreMip_Texture2D_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2D_Float32x4_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStoreMip_Texture2D_Float32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2D_Float32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2D_Float32x4_texture.type.modifiers = TextureStoreMip_Texture2D_Float32x4_texture_modifiers;
-    TextureStoreMip_Texture2D_Float32x4_texture.type.modifierValues = TextureStoreMip_Texture2D_Float32x4_texture_modifierValues;
-    TextureStoreMip_Texture2D_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2D_Float32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture2D_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2D_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2D_Float32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2D_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2D_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2D_Float32x4.name = TextureStoreMip_Texture2D_Float32x4_name;
-    TextureStoreMip_Texture2D_Float32x4.backendIndex = 2427;
-    TextureStoreMip_Texture2D_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2D_Float32x4.parameters = TextureStoreMip_Texture2D_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4)->signature = "textureStoreMip(uniform *mutable texture2D,i32x2,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4)->name = "textureStoreMip(uniform *mutable texture2D,i32x2,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2D, coordinate : i32x2, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2D, Int32x2, Int32x4
-    TextureStore_Texture2D_Int32x4_texture.name = "texture"_c;
-    TextureStore_Texture2D_Int32x4_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStore_Texture2D_Int32x4_texture.type.strict = true;
-    TextureStore_Texture2D_Int32x4_texture.type.mut = true;
-    TextureStore_Texture2D_Int32x4_texture.type.modifiers = TextureStore_Texture2D_Int32x4_texture_modifiers;
-    TextureStore_Texture2D_Int32x4_texture.type.modifierValues = TextureStore_Texture2D_Int32x4_texture_modifierValues;
-    TextureStore_Texture2D_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2D_Int32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture2D_Int32x4_value.name = "value"_c;
-    TextureStore_Texture2D_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_Texture2D_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2D_Int32x4.name = TextureStore_Texture2D_Int32x4_name;
-    TextureStore_Texture2D_Int32x4.backendIndex = 2428;
-    TextureStore_Texture2D_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2D_Int32x4.parameters = TextureStore_Texture2D_Int32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2D_Int32x4_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureStore_Texture2D_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2D_Int32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture2D_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2D_Int32x4)->signature = "textureStore(uniform *mutable texture2D,i32x2,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_Int32x4)->name = "textureStore(uniform *mutable texture2D,i32x2,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2D, Int32x2, Int32, Int32x4
-    TextureStoreMip_Texture2D_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2D_Int32x4_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStoreMip_Texture2D_Int32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2D_Int32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2D_Int32x4_texture.type.modifiers = TextureStoreMip_Texture2D_Int32x4_texture_modifiers;
-    TextureStoreMip_Texture2D_Int32x4_texture.type.modifierValues = TextureStoreMip_Texture2D_Int32x4_texture_modifierValues;
-    TextureStoreMip_Texture2D_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2D_Int32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture2D_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2D_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2D_Int32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2D_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_Texture2D_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2D_Int32x4.name = TextureStoreMip_Texture2D_Int32x4_name;
-    TextureStoreMip_Texture2D_Int32x4.backendIndex = 2429;
-    TextureStoreMip_Texture2D_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2D_Int32x4.parameters = TextureStoreMip_Texture2D_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4)->signature = "textureStoreMip(uniform *mutable texture2D,i32x2,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4)->name = "textureStoreMip(uniform *mutable texture2D,i32x2,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2D, coordinate : i32x2, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2D, Int32x2, UInt32x4
-    TextureStore_Texture2D_UInt32x4_texture.name = "texture"_c;
-    TextureStore_Texture2D_UInt32x4_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStore_Texture2D_UInt32x4_texture.type.strict = true;
-    TextureStore_Texture2D_UInt32x4_texture.type.mut = true;
-    TextureStore_Texture2D_UInt32x4_texture.type.modifiers = TextureStore_Texture2D_UInt32x4_texture_modifiers;
-    TextureStore_Texture2D_UInt32x4_texture.type.modifierValues = TextureStore_Texture2D_UInt32x4_texture_modifierValues;
-    TextureStore_Texture2D_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2D_UInt32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture2D_UInt32x4_value.name = "value"_c;
-    TextureStore_Texture2D_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_Texture2D_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2D_UInt32x4.name = TextureStore_Texture2D_UInt32x4_name;
-    TextureStore_Texture2D_UInt32x4.backendIndex = 2430;
-    TextureStore_Texture2D_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2D_UInt32x4.parameters = TextureStore_Texture2D_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2D_UInt32x4_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureStore_Texture2D_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2D_UInt32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture2D_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2D_UInt32x4)->signature = "textureStore(uniform *mutable texture2D,i32x2,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_UInt32x4)->name = "textureStore(uniform *mutable texture2D,i32x2,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2D, coordinate : i32x2, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2D_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2D, Int32x2, Int32, UInt32x4
-    TextureStoreMip_Texture2D_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2D_UInt32x4_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStoreMip_Texture2D_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2D_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2D_UInt32x4_texture.type.modifiers = TextureStoreMip_Texture2D_UInt32x4_texture_modifiers;
-    TextureStoreMip_Texture2D_UInt32x4_texture.type.modifierValues = TextureStoreMip_Texture2D_UInt32x4_texture_modifierValues;
-    TextureStoreMip_Texture2D_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2D_UInt32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture2D_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2D_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2D_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2D_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_Texture2D_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2D_UInt32x4.name = TextureStoreMip_Texture2D_UInt32x4_name;
-    TextureStoreMip_Texture2D_UInt32x4.backendIndex = 2431;
-    TextureStoreMip_Texture2D_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2D_UInt32x4.parameters = TextureStoreMip_Texture2D_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4)->signature = "textureStoreMip(uniform *mutable texture2D,i32x2,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4)->name = "textureStoreMip(uniform *mutable texture2D,i32x2,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2D, coordinate : i32x2, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2D_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture3D, Int32x3, Float32x4
-    TextureStore_Texture3D_Float32x4_texture.name = "texture"_c;
-    TextureStore_Texture3D_Float32x4_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStore_Texture3D_Float32x4_texture.type.strict = true;
-    TextureStore_Texture3D_Float32x4_texture.type.mut = true;
-    TextureStore_Texture3D_Float32x4_texture.type.modifiers = TextureStore_Texture3D_Float32x4_texture_modifiers;
-    TextureStore_Texture3D_Float32x4_texture.type.modifierValues = TextureStore_Texture3D_Float32x4_texture_modifierValues;
-    TextureStore_Texture3D_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture3D_Float32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture3D_Float32x4_value.name = "value"_c;
-    TextureStore_Texture3D_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture3D_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture3D_Float32x4.name = TextureStore_Texture3D_Float32x4_name;
-    TextureStore_Texture3D_Float32x4.backendIndex = 2432;
-    TextureStore_Texture3D_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture3D_Float32x4.parameters = TextureStore_Texture3D_Float32x4_args;
-    Symbol::Resolved(&TextureStore_Texture3D_Float32x4_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureStore_Texture3D_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture3D_Float32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture3D_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture3D_Float32x4)->signature = "textureStore(uniform *mutable texture3D,i32x3,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_Float32x4)->name = "textureStore(uniform *mutable texture3D,i32x3,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture3D, Int32x3, Int32, Float32x4
-    TextureStoreMip_Texture3D_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture3D_Float32x4_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStoreMip_Texture3D_Float32x4_texture.type.strict = true;
-    TextureStoreMip_Texture3D_Float32x4_texture.type.mut = true;
-    TextureStoreMip_Texture3D_Float32x4_texture.type.modifiers = TextureStoreMip_Texture3D_Float32x4_texture_modifiers;
-    TextureStoreMip_Texture3D_Float32x4_texture.type.modifierValues = TextureStoreMip_Texture3D_Float32x4_texture_modifierValues;
-    TextureStoreMip_Texture3D_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture3D_Float32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture3D_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture3D_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture3D_Float32x4_value.name = "value"_c;
-    TextureStoreMip_Texture3D_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture3D_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture3D_Float32x4.name = TextureStoreMip_Texture3D_Float32x4_name;
-    TextureStoreMip_Texture3D_Float32x4.backendIndex = 2433;
-    TextureStoreMip_Texture3D_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture3D_Float32x4.parameters = TextureStoreMip_Texture3D_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4)->signature = "textureStoreMip(uniform *mutable texture3D,i32x3,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4)->name = "textureStoreMip(uniform *mutable texture3D,i32x3,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture3D, coordinate : i32x3, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture3D, Int32x3, Int32x4
-    TextureStore_Texture3D_Int32x4_texture.name = "texture"_c;
-    TextureStore_Texture3D_Int32x4_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStore_Texture3D_Int32x4_texture.type.strict = true;
-    TextureStore_Texture3D_Int32x4_texture.type.mut = true;
-    TextureStore_Texture3D_Int32x4_texture.type.modifiers = TextureStore_Texture3D_Int32x4_texture_modifiers;
-    TextureStore_Texture3D_Int32x4_texture.type.modifierValues = TextureStore_Texture3D_Int32x4_texture_modifierValues;
-    TextureStore_Texture3D_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture3D_Int32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture3D_Int32x4_value.name = "value"_c;
-    TextureStore_Texture3D_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_Texture3D_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture3D_Int32x4.name = TextureStore_Texture3D_Int32x4_name;
-    TextureStore_Texture3D_Int32x4.backendIndex = 2434;
-    TextureStore_Texture3D_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture3D_Int32x4.parameters = TextureStore_Texture3D_Int32x4_args;
-    Symbol::Resolved(&TextureStore_Texture3D_Int32x4_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureStore_Texture3D_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture3D_Int32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture3D_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_Texture3D_Int32x4)->signature = "textureStore(uniform *mutable texture3D,i32x3,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_Int32x4)->name = "textureStore(uniform *mutable texture3D,i32x3,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture3D, Int32x3, Int32, Int32x4
-    TextureStoreMip_Texture3D_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture3D_Int32x4_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStoreMip_Texture3D_Int32x4_texture.type.strict = true;
-    TextureStoreMip_Texture3D_Int32x4_texture.type.mut = true;
-    TextureStoreMip_Texture3D_Int32x4_texture.type.modifiers = TextureStoreMip_Texture3D_Int32x4_texture_modifiers;
-    TextureStoreMip_Texture3D_Int32x4_texture.type.modifierValues = TextureStoreMip_Texture3D_Int32x4_texture_modifierValues;
-    TextureStoreMip_Texture3D_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture3D_Int32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture3D_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture3D_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture3D_Int32x4_value.name = "value"_c;
-    TextureStoreMip_Texture3D_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_Texture3D_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture3D_Int32x4.name = TextureStoreMip_Texture3D_Int32x4_name;
-    TextureStoreMip_Texture3D_Int32x4.backendIndex = 2435;
-    TextureStoreMip_Texture3D_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture3D_Int32x4.parameters = TextureStoreMip_Texture3D_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4)->signature = "textureStoreMip(uniform *mutable texture3D,i32x3,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4)->name = "textureStoreMip(uniform *mutable texture3D,i32x3,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture3D, coordinate : i32x3, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture3D, Int32x3, UInt32x4
-    TextureStore_Texture3D_UInt32x4_texture.name = "texture"_c;
-    TextureStore_Texture3D_UInt32x4_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStore_Texture3D_UInt32x4_texture.type.strict = true;
-    TextureStore_Texture3D_UInt32x4_texture.type.mut = true;
-    TextureStore_Texture3D_UInt32x4_texture.type.modifiers = TextureStore_Texture3D_UInt32x4_texture_modifiers;
-    TextureStore_Texture3D_UInt32x4_texture.type.modifierValues = TextureStore_Texture3D_UInt32x4_texture_modifierValues;
-    TextureStore_Texture3D_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture3D_UInt32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture3D_UInt32x4_value.name = "value"_c;
-    TextureStore_Texture3D_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_Texture3D_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture3D_UInt32x4.name = TextureStore_Texture3D_UInt32x4_name;
-    TextureStore_Texture3D_UInt32x4.backendIndex = 2436;
-    TextureStore_Texture3D_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture3D_UInt32x4.parameters = TextureStore_Texture3D_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_Texture3D_UInt32x4_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureStore_Texture3D_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture3D_UInt32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture3D_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_Texture3D_UInt32x4)->signature = "textureStore(uniform *mutable texture3D,i32x3,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_UInt32x4)->name = "textureStore(uniform *mutable texture3D,i32x3,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture3D, coordinate : i32x3, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture3D_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture3D, Int32x3, Int32, UInt32x4
-    TextureStoreMip_Texture3D_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture3D_UInt32x4_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStoreMip_Texture3D_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_Texture3D_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_Texture3D_UInt32x4_texture.type.modifiers = TextureStoreMip_Texture3D_UInt32x4_texture_modifiers;
-    TextureStoreMip_Texture3D_UInt32x4_texture.type.modifierValues = TextureStoreMip_Texture3D_UInt32x4_texture_modifierValues;
-    TextureStoreMip_Texture3D_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture3D_UInt32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture3D_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture3D_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture3D_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_Texture3D_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_Texture3D_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture3D_UInt32x4.name = TextureStoreMip_Texture3D_UInt32x4_name;
-    TextureStoreMip_Texture3D_UInt32x4.backendIndex = 2437;
-    TextureStoreMip_Texture3D_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture3D_UInt32x4.parameters = TextureStoreMip_Texture3D_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4)->signature = "textureStoreMip(uniform *mutable texture3D,i32x3,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4)->name = "textureStoreMip(uniform *mutable texture3D,i32x3,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture3D, coordinate : i32x3, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture3D_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with TextureCube, Int32x3, Float32x4
-    TextureStore_TextureCube_Float32x4_texture.name = "texture"_c;
-    TextureStore_TextureCube_Float32x4_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStore_TextureCube_Float32x4_texture.type.strict = true;
-    TextureStore_TextureCube_Float32x4_texture.type.mut = true;
-    TextureStore_TextureCube_Float32x4_texture.type.modifiers = TextureStore_TextureCube_Float32x4_texture_modifiers;
-    TextureStore_TextureCube_Float32x4_texture.type.modifierValues = TextureStore_TextureCube_Float32x4_texture_modifierValues;
-    TextureStore_TextureCube_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_TextureCube_Float32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_TextureCube_Float32x4_value.name = "value"_c;
-    TextureStore_TextureCube_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_TextureCube_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_TextureCube_Float32x4.name = TextureStore_TextureCube_Float32x4_name;
-    TextureStore_TextureCube_Float32x4.backendIndex = 2438;
-    TextureStore_TextureCube_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_TextureCube_Float32x4.parameters = TextureStore_TextureCube_Float32x4_args;
-    Symbol::Resolved(&TextureStore_TextureCube_Float32x4_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureStore_TextureCube_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_TextureCube_Float32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_TextureCube_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCube_Float32x4)->signature = "textureStore(uniform *mutable textureCube,i32x3,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_Float32x4)->name = "textureStore(uniform *mutable textureCube,i32x3,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with TextureCube, Int32x3, Int32, Float32x4
-    TextureStoreMip_TextureCube_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_TextureCube_Float32x4_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStoreMip_TextureCube_Float32x4_texture.type.strict = true;
-    TextureStoreMip_TextureCube_Float32x4_texture.type.mut = true;
-    TextureStoreMip_TextureCube_Float32x4_texture.type.modifiers = TextureStoreMip_TextureCube_Float32x4_texture_modifiers;
-    TextureStoreMip_TextureCube_Float32x4_texture.type.modifierValues = TextureStoreMip_TextureCube_Float32x4_texture_modifierValues;
-    TextureStoreMip_TextureCube_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_TextureCube_Float32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_TextureCube_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_TextureCube_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_TextureCube_Float32x4_value.name = "value"_c;
-    TextureStoreMip_TextureCube_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_TextureCube_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_TextureCube_Float32x4.name = TextureStoreMip_TextureCube_Float32x4_name;
-    TextureStoreMip_TextureCube_Float32x4.backendIndex = 2439;
-    TextureStoreMip_TextureCube_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_TextureCube_Float32x4.parameters = TextureStoreMip_TextureCube_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4)->signature = "textureStoreMip(uniform *mutable textureCube,i32x3,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4)->name = "textureStoreMip(uniform *mutable textureCube,i32x3,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable textureCube, coordinate : i32x3, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with TextureCube, Int32x3, Int32x4
-    TextureStore_TextureCube_Int32x4_texture.name = "texture"_c;
-    TextureStore_TextureCube_Int32x4_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStore_TextureCube_Int32x4_texture.type.strict = true;
-    TextureStore_TextureCube_Int32x4_texture.type.mut = true;
-    TextureStore_TextureCube_Int32x4_texture.type.modifiers = TextureStore_TextureCube_Int32x4_texture_modifiers;
-    TextureStore_TextureCube_Int32x4_texture.type.modifierValues = TextureStore_TextureCube_Int32x4_texture_modifierValues;
-    TextureStore_TextureCube_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_TextureCube_Int32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_TextureCube_Int32x4_value.name = "value"_c;
-    TextureStore_TextureCube_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_TextureCube_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_TextureCube_Int32x4.name = TextureStore_TextureCube_Int32x4_name;
-    TextureStore_TextureCube_Int32x4.backendIndex = 2440;
-    TextureStore_TextureCube_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_TextureCube_Int32x4.parameters = TextureStore_TextureCube_Int32x4_args;
-    Symbol::Resolved(&TextureStore_TextureCube_Int32x4_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureStore_TextureCube_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_TextureCube_Int32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_TextureCube_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCube_Int32x4)->signature = "textureStore(uniform *mutable textureCube,i32x3,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_Int32x4)->name = "textureStore(uniform *mutable textureCube,i32x3,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with TextureCube, Int32x3, Int32, Int32x4
-    TextureStoreMip_TextureCube_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_TextureCube_Int32x4_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStoreMip_TextureCube_Int32x4_texture.type.strict = true;
-    TextureStoreMip_TextureCube_Int32x4_texture.type.mut = true;
-    TextureStoreMip_TextureCube_Int32x4_texture.type.modifiers = TextureStoreMip_TextureCube_Int32x4_texture_modifiers;
-    TextureStoreMip_TextureCube_Int32x4_texture.type.modifierValues = TextureStoreMip_TextureCube_Int32x4_texture_modifierValues;
-    TextureStoreMip_TextureCube_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_TextureCube_Int32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_TextureCube_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_TextureCube_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_TextureCube_Int32x4_value.name = "value"_c;
-    TextureStoreMip_TextureCube_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_TextureCube_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_TextureCube_Int32x4.name = TextureStoreMip_TextureCube_Int32x4_name;
-    TextureStoreMip_TextureCube_Int32x4.backendIndex = 2441;
-    TextureStoreMip_TextureCube_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_TextureCube_Int32x4.parameters = TextureStoreMip_TextureCube_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4)->signature = "textureStoreMip(uniform *mutable textureCube,i32x3,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4)->name = "textureStoreMip(uniform *mutable textureCube,i32x3,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable textureCube, coordinate : i32x3, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with TextureCube, Int32x3, UInt32x4
-    TextureStore_TextureCube_UInt32x4_texture.name = "texture"_c;
-    TextureStore_TextureCube_UInt32x4_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStore_TextureCube_UInt32x4_texture.type.strict = true;
-    TextureStore_TextureCube_UInt32x4_texture.type.mut = true;
-    TextureStore_TextureCube_UInt32x4_texture.type.modifiers = TextureStore_TextureCube_UInt32x4_texture_modifiers;
-    TextureStore_TextureCube_UInt32x4_texture.type.modifierValues = TextureStore_TextureCube_UInt32x4_texture_modifierValues;
-    TextureStore_TextureCube_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_TextureCube_UInt32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_TextureCube_UInt32x4_value.name = "value"_c;
-    TextureStore_TextureCube_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_TextureCube_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_TextureCube_UInt32x4.name = TextureStore_TextureCube_UInt32x4_name;
-    TextureStore_TextureCube_UInt32x4.backendIndex = 2442;
-    TextureStore_TextureCube_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_TextureCube_UInt32x4.parameters = TextureStore_TextureCube_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_TextureCube_UInt32x4_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureStore_TextureCube_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_TextureCube_UInt32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_TextureCube_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCube_UInt32x4)->signature = "textureStore(uniform *mutable textureCube,i32x3,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_UInt32x4)->name = "textureStore(uniform *mutable textureCube,i32x3,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable textureCube, coordinate : i32x3, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCube_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with TextureCube, Int32x3, Int32, UInt32x4
-    TextureStoreMip_TextureCube_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_TextureCube_UInt32x4_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStoreMip_TextureCube_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_TextureCube_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_TextureCube_UInt32x4_texture.type.modifiers = TextureStoreMip_TextureCube_UInt32x4_texture_modifiers;
-    TextureStoreMip_TextureCube_UInt32x4_texture.type.modifierValues = TextureStoreMip_TextureCube_UInt32x4_texture_modifierValues;
-    TextureStoreMip_TextureCube_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_TextureCube_UInt32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_TextureCube_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_TextureCube_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_TextureCube_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_TextureCube_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_TextureCube_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_TextureCube_UInt32x4.name = TextureStoreMip_TextureCube_UInt32x4_name;
-    TextureStoreMip_TextureCube_UInt32x4.backendIndex = 2443;
-    TextureStoreMip_TextureCube_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_TextureCube_UInt32x4.parameters = TextureStoreMip_TextureCube_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4)->signature = "textureStoreMip(uniform *mutable textureCube,i32x3,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4)->name = "textureStoreMip(uniform *mutable textureCube,i32x3,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable textureCube, coordinate : i32x3, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCube_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture1DArray, Int32x2, Float32x4
-    TextureStore_Texture1DArray_Float32x4_texture.name = "texture"_c;
-    TextureStore_Texture1DArray_Float32x4_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStore_Texture1DArray_Float32x4_texture.type.strict = true;
-    TextureStore_Texture1DArray_Float32x4_texture.type.mut = true;
-    TextureStore_Texture1DArray_Float32x4_texture.type.modifiers = TextureStore_Texture1DArray_Float32x4_texture_modifiers;
-    TextureStore_Texture1DArray_Float32x4_texture.type.modifierValues = TextureStore_Texture1DArray_Float32x4_texture_modifierValues;
-    TextureStore_Texture1DArray_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture1DArray_Float32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture1DArray_Float32x4_value.name = "value"_c;
-    TextureStore_Texture1DArray_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture1DArray_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture1DArray_Float32x4.name = TextureStore_Texture1DArray_Float32x4_name;
-    TextureStore_Texture1DArray_Float32x4.backendIndex = 2444;
-    TextureStore_Texture1DArray_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture1DArray_Float32x4.parameters = TextureStore_Texture1DArray_Float32x4_args;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Float32x4_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Float32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Float32x4)->signature = "textureStore(uniform *mutable texture1DArray,i32x2,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Float32x4)->name = "textureStore(uniform *mutable texture1DArray,i32x2,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture1DArray, Int32x2, Int32, Float32x4
-    TextureStoreMip_Texture1DArray_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture1DArray_Float32x4_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStoreMip_Texture1DArray_Float32x4_texture.type.strict = true;
-    TextureStoreMip_Texture1DArray_Float32x4_texture.type.mut = true;
-    TextureStoreMip_Texture1DArray_Float32x4_texture.type.modifiers = TextureStoreMip_Texture1DArray_Float32x4_texture_modifiers;
-    TextureStoreMip_Texture1DArray_Float32x4_texture.type.modifierValues = TextureStoreMip_Texture1DArray_Float32x4_texture_modifierValues;
-    TextureStoreMip_Texture1DArray_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture1DArray_Float32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture1DArray_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture1DArray_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1DArray_Float32x4_value.name = "value"_c;
-    TextureStoreMip_Texture1DArray_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture1DArray_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture1DArray_Float32x4.name = TextureStoreMip_Texture1DArray_Float32x4_name;
-    TextureStoreMip_Texture1DArray_Float32x4.backendIndex = 2445;
-    TextureStoreMip_Texture1DArray_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture1DArray_Float32x4.parameters = TextureStoreMip_Texture1DArray_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4)->signature = "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4)->name = "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture1DArray, coordinate : i32x2, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture1DArray, Int32x2, Int32x4
-    TextureStore_Texture1DArray_Int32x4_texture.name = "texture"_c;
-    TextureStore_Texture1DArray_Int32x4_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStore_Texture1DArray_Int32x4_texture.type.strict = true;
-    TextureStore_Texture1DArray_Int32x4_texture.type.mut = true;
-    TextureStore_Texture1DArray_Int32x4_texture.type.modifiers = TextureStore_Texture1DArray_Int32x4_texture_modifiers;
-    TextureStore_Texture1DArray_Int32x4_texture.type.modifierValues = TextureStore_Texture1DArray_Int32x4_texture_modifierValues;
-    TextureStore_Texture1DArray_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture1DArray_Int32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture1DArray_Int32x4_value.name = "value"_c;
-    TextureStore_Texture1DArray_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_Texture1DArray_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture1DArray_Int32x4.name = TextureStore_Texture1DArray_Int32x4_name;
-    TextureStore_Texture1DArray_Int32x4.backendIndex = 2446;
-    TextureStore_Texture1DArray_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture1DArray_Int32x4.parameters = TextureStore_Texture1DArray_Int32x4_args;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Int32x4_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Int32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Int32x4)->signature = "textureStore(uniform *mutable texture1DArray,i32x2,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Int32x4)->name = "textureStore(uniform *mutable texture1DArray,i32x2,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture1DArray, Int32x2, Int32, Int32x4
-    TextureStoreMip_Texture1DArray_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture1DArray_Int32x4_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStoreMip_Texture1DArray_Int32x4_texture.type.strict = true;
-    TextureStoreMip_Texture1DArray_Int32x4_texture.type.mut = true;
-    TextureStoreMip_Texture1DArray_Int32x4_texture.type.modifiers = TextureStoreMip_Texture1DArray_Int32x4_texture_modifiers;
-    TextureStoreMip_Texture1DArray_Int32x4_texture.type.modifierValues = TextureStoreMip_Texture1DArray_Int32x4_texture_modifierValues;
-    TextureStoreMip_Texture1DArray_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture1DArray_Int32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture1DArray_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture1DArray_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1DArray_Int32x4_value.name = "value"_c;
-    TextureStoreMip_Texture1DArray_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_Texture1DArray_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture1DArray_Int32x4.name = TextureStoreMip_Texture1DArray_Int32x4_name;
-    TextureStoreMip_Texture1DArray_Int32x4.backendIndex = 2447;
-    TextureStoreMip_Texture1DArray_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture1DArray_Int32x4.parameters = TextureStoreMip_Texture1DArray_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4)->signature = "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4)->name = "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture1DArray, coordinate : i32x2, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture1DArray, Int32x2, UInt32x4
-    TextureStore_Texture1DArray_UInt32x4_texture.name = "texture"_c;
-    TextureStore_Texture1DArray_UInt32x4_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStore_Texture1DArray_UInt32x4_texture.type.strict = true;
-    TextureStore_Texture1DArray_UInt32x4_texture.type.mut = true;
-    TextureStore_Texture1DArray_UInt32x4_texture.type.modifiers = TextureStore_Texture1DArray_UInt32x4_texture_modifiers;
-    TextureStore_Texture1DArray_UInt32x4_texture.type.modifierValues = TextureStore_Texture1DArray_UInt32x4_texture_modifierValues;
-    TextureStore_Texture1DArray_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture1DArray_UInt32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture1DArray_UInt32x4_value.name = "value"_c;
-    TextureStore_Texture1DArray_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_Texture1DArray_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture1DArray_UInt32x4.name = TextureStore_Texture1DArray_UInt32x4_name;
-    TextureStore_Texture1DArray_UInt32x4.backendIndex = 2448;
-    TextureStore_Texture1DArray_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture1DArray_UInt32x4.parameters = TextureStore_Texture1DArray_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_Texture1DArray_UInt32x4_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureStore_Texture1DArray_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture1DArray_UInt32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture1DArray_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_Texture1DArray_UInt32x4)->signature = "textureStore(uniform *mutable texture1DArray,i32x2,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_UInt32x4)->name = "textureStore(uniform *mutable texture1DArray,i32x2,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture1DArray, coordinate : i32x2, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture1DArray_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture1DArray, Int32x2, Int32, UInt32x4
-    TextureStoreMip_Texture1DArray_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture1DArray_UInt32x4_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStoreMip_Texture1DArray_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_Texture1DArray_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_Texture1DArray_UInt32x4_texture.type.modifiers = TextureStoreMip_Texture1DArray_UInt32x4_texture_modifiers;
-    TextureStoreMip_Texture1DArray_UInt32x4_texture.type.modifierValues = TextureStoreMip_Texture1DArray_UInt32x4_texture_modifierValues;
-    TextureStoreMip_Texture1DArray_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture1DArray_UInt32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture1DArray_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture1DArray_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture1DArray_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_Texture1DArray_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_Texture1DArray_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture1DArray_UInt32x4.name = TextureStoreMip_Texture1DArray_UInt32x4_name;
-    TextureStoreMip_Texture1DArray_UInt32x4.backendIndex = 2449;
-    TextureStoreMip_Texture1DArray_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture1DArray_UInt32x4.parameters = TextureStoreMip_Texture1DArray_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4)->signature = "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4)->name = "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture1DArray, coordinate : i32x2, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture1DArray_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DArray, Int32x3, Float32x4
-    TextureStore_Texture2DArray_Float32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DArray_Float32x4_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureStore_Texture2DArray_Float32x4_texture.type.strict = true;
-    TextureStore_Texture2DArray_Float32x4_texture.type.mut = true;
-    TextureStore_Texture2DArray_Float32x4_texture.type.modifiers = TextureStore_Texture2DArray_Float32x4_texture_modifiers;
-    TextureStore_Texture2DArray_Float32x4_texture.type.modifierValues = TextureStore_Texture2DArray_Float32x4_texture_modifierValues;
-    TextureStore_Texture2DArray_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DArray_Float32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture2DArray_Float32x4_value.name = "value"_c;
-    TextureStore_Texture2DArray_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2DArray_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DArray_Float32x4.name = TextureStore_Texture2DArray_Float32x4_name;
-    TextureStore_Texture2DArray_Float32x4.backendIndex = 2450;
-    TextureStore_Texture2DArray_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DArray_Float32x4.parameters = TextureStore_Texture2DArray_Float32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Float32x4_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Float32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Float32x4)->signature = "textureStore(uniform *mutable texture2DArray,i32x3,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Float32x4)->name = "textureStore(uniform *mutable texture2DArray,i32x3,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DArray, Int32x3, Int32, Float32x4
-    TextureStoreMip_Texture2DArray_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DArray_Float32x4_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureStoreMip_Texture2DArray_Float32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DArray_Float32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DArray_Float32x4_texture.type.modifiers = TextureStoreMip_Texture2DArray_Float32x4_texture_modifiers;
-    TextureStoreMip_Texture2DArray_Float32x4_texture.type.modifierValues = TextureStoreMip_Texture2DArray_Float32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DArray_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DArray_Float32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture2DArray_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DArray_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DArray_Float32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DArray_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2DArray_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DArray_Float32x4.name = TextureStoreMip_Texture2DArray_Float32x4_name;
-    TextureStoreMip_Texture2DArray_Float32x4.backendIndex = 2451;
-    TextureStoreMip_Texture2DArray_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DArray_Float32x4.parameters = TextureStoreMip_Texture2DArray_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4)->signature = "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4)->name = "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DArray, coordinate : i32x3, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DArray, Int32x3, Int32x4
-    TextureStore_Texture2DArray_Int32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DArray_Int32x4_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureStore_Texture2DArray_Int32x4_texture.type.strict = true;
-    TextureStore_Texture2DArray_Int32x4_texture.type.mut = true;
-    TextureStore_Texture2DArray_Int32x4_texture.type.modifiers = TextureStore_Texture2DArray_Int32x4_texture_modifiers;
-    TextureStore_Texture2DArray_Int32x4_texture.type.modifierValues = TextureStore_Texture2DArray_Int32x4_texture_modifierValues;
-    TextureStore_Texture2DArray_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DArray_Int32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture2DArray_Int32x4_value.name = "value"_c;
-    TextureStore_Texture2DArray_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_Texture2DArray_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DArray_Int32x4.name = TextureStore_Texture2DArray_Int32x4_name;
-    TextureStore_Texture2DArray_Int32x4.backendIndex = 2452;
-    TextureStore_Texture2DArray_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DArray_Int32x4.parameters = TextureStore_Texture2DArray_Int32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Int32x4_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Int32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Int32x4)->signature = "textureStore(uniform *mutable texture2DArray,i32x3,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Int32x4)->name = "textureStore(uniform *mutable texture2DArray,i32x3,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DArray, Int32x3, Int32, Int32x4
-    TextureStoreMip_Texture2DArray_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DArray_Int32x4_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureStoreMip_Texture2DArray_Int32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DArray_Int32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DArray_Int32x4_texture.type.modifiers = TextureStoreMip_Texture2DArray_Int32x4_texture_modifiers;
-    TextureStoreMip_Texture2DArray_Int32x4_texture.type.modifierValues = TextureStoreMip_Texture2DArray_Int32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DArray_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DArray_Int32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture2DArray_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DArray_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DArray_Int32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DArray_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_Texture2DArray_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DArray_Int32x4.name = TextureStoreMip_Texture2DArray_Int32x4_name;
-    TextureStoreMip_Texture2DArray_Int32x4.backendIndex = 2453;
-    TextureStoreMip_Texture2DArray_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DArray_Int32x4.parameters = TextureStoreMip_Texture2DArray_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4)->signature = "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4)->name = "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DArray, coordinate : i32x3, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DArray, Int32x3, UInt32x4
-    TextureStore_Texture2DArray_UInt32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DArray_UInt32x4_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureStore_Texture2DArray_UInt32x4_texture.type.strict = true;
-    TextureStore_Texture2DArray_UInt32x4_texture.type.mut = true;
-    TextureStore_Texture2DArray_UInt32x4_texture.type.modifiers = TextureStore_Texture2DArray_UInt32x4_texture_modifiers;
-    TextureStore_Texture2DArray_UInt32x4_texture.type.modifierValues = TextureStore_Texture2DArray_UInt32x4_texture_modifierValues;
-    TextureStore_Texture2DArray_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DArray_UInt32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture2DArray_UInt32x4_value.name = "value"_c;
-    TextureStore_Texture2DArray_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_Texture2DArray_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DArray_UInt32x4.name = TextureStore_Texture2DArray_UInt32x4_name;
-    TextureStore_Texture2DArray_UInt32x4.backendIndex = 2454;
-    TextureStore_Texture2DArray_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DArray_UInt32x4.parameters = TextureStore_Texture2DArray_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DArray_UInt32x4_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureStore_Texture2DArray_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DArray_UInt32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture2DArray_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DArray_UInt32x4)->signature = "textureStore(uniform *mutable texture2DArray,i32x3,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_UInt32x4)->name = "textureStore(uniform *mutable texture2DArray,i32x3,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DArray, coordinate : i32x3, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DArray_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DArray, Int32x3, Int32, UInt32x4
-    TextureStoreMip_Texture2DArray_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DArray_UInt32x4_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureStoreMip_Texture2DArray_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DArray_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DArray_UInt32x4_texture.type.modifiers = TextureStoreMip_Texture2DArray_UInt32x4_texture_modifiers;
-    TextureStoreMip_Texture2DArray_UInt32x4_texture.type.modifierValues = TextureStoreMip_Texture2DArray_UInt32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DArray_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DArray_UInt32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture2DArray_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DArray_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DArray_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DArray_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_Texture2DArray_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DArray_UInt32x4.name = TextureStoreMip_Texture2DArray_UInt32x4_name;
-    TextureStoreMip_Texture2DArray_UInt32x4.backendIndex = 2455;
-    TextureStoreMip_Texture2DArray_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DArray_UInt32x4.parameters = TextureStoreMip_Texture2DArray_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4)->signature = "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4)->name = "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DArray, coordinate : i32x3, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DArray_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with TextureCubeArray, Int32x4, Float32x4
-    TextureStore_TextureCubeArray_Float32x4_texture.name = "texture"_c;
-    TextureStore_TextureCubeArray_Float32x4_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureStore_TextureCubeArray_Float32x4_texture.type.strict = true;
-    TextureStore_TextureCubeArray_Float32x4_texture.type.mut = true;
-    TextureStore_TextureCubeArray_Float32x4_texture.type.modifiers = TextureStore_TextureCubeArray_Float32x4_texture_modifiers;
-    TextureStore_TextureCubeArray_Float32x4_texture.type.modifierValues = TextureStore_TextureCubeArray_Float32x4_texture_modifierValues;
-    TextureStore_TextureCubeArray_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_TextureCubeArray_Float32x4_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_TextureCubeArray_Float32x4_value.name = "value"_c;
-    TextureStore_TextureCubeArray_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_TextureCubeArray_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_TextureCubeArray_Float32x4.name = TextureStore_TextureCubeArray_Float32x4_name;
-    TextureStore_TextureCubeArray_Float32x4.backendIndex = 2456;
-    TextureStore_TextureCubeArray_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_TextureCubeArray_Float32x4.parameters = TextureStore_TextureCubeArray_Float32x4_args;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Float32x4_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Float32x4_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Float32x4)->signature = "textureStore(uniform *mutable textureCubeArray,i32x4,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Float32x4)->name = "textureStore(uniform *mutable textureCubeArray,i32x4,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with TextureCubeArray, Int32x4, Int32, Float32x4
-    TextureStoreMip_TextureCubeArray_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_TextureCubeArray_Float32x4_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureStoreMip_TextureCubeArray_Float32x4_texture.type.strict = true;
-    TextureStoreMip_TextureCubeArray_Float32x4_texture.type.mut = true;
-    TextureStoreMip_TextureCubeArray_Float32x4_texture.type.modifiers = TextureStoreMip_TextureCubeArray_Float32x4_texture_modifiers;
-    TextureStoreMip_TextureCubeArray_Float32x4_texture.type.modifierValues = TextureStoreMip_TextureCubeArray_Float32x4_texture_modifierValues;
-    TextureStoreMip_TextureCubeArray_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_TextureCubeArray_Float32x4_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_TextureCubeArray_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_TextureCubeArray_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_TextureCubeArray_Float32x4_value.name = "value"_c;
-    TextureStoreMip_TextureCubeArray_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_TextureCubeArray_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_TextureCubeArray_Float32x4.name = TextureStoreMip_TextureCubeArray_Float32x4_name;
-    TextureStoreMip_TextureCubeArray_Float32x4.backendIndex = 2457;
-    TextureStoreMip_TextureCubeArray_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_TextureCubeArray_Float32x4.parameters = TextureStoreMip_TextureCubeArray_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4)->signature = "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4)->name = "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable textureCubeArray, coordinate : i32x4, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with TextureCubeArray, Int32x4, Int32x4
-    TextureStore_TextureCubeArray_Int32x4_texture.name = "texture"_c;
-    TextureStore_TextureCubeArray_Int32x4_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureStore_TextureCubeArray_Int32x4_texture.type.strict = true;
-    TextureStore_TextureCubeArray_Int32x4_texture.type.mut = true;
-    TextureStore_TextureCubeArray_Int32x4_texture.type.modifiers = TextureStore_TextureCubeArray_Int32x4_texture_modifiers;
-    TextureStore_TextureCubeArray_Int32x4_texture.type.modifierValues = TextureStore_TextureCubeArray_Int32x4_texture_modifierValues;
-    TextureStore_TextureCubeArray_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_TextureCubeArray_Int32x4_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_TextureCubeArray_Int32x4_value.name = "value"_c;
-    TextureStore_TextureCubeArray_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_TextureCubeArray_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_TextureCubeArray_Int32x4.name = TextureStore_TextureCubeArray_Int32x4_name;
-    TextureStore_TextureCubeArray_Int32x4.backendIndex = 2458;
-    TextureStore_TextureCubeArray_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_TextureCubeArray_Int32x4.parameters = TextureStore_TextureCubeArray_Int32x4_args;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Int32x4_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Int32x4_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Int32x4)->signature = "textureStore(uniform *mutable textureCubeArray,i32x4,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Int32x4)->name = "textureStore(uniform *mutable textureCubeArray,i32x4,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with TextureCubeArray, Int32x4, Int32, Int32x4
-    TextureStoreMip_TextureCubeArray_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_TextureCubeArray_Int32x4_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureStoreMip_TextureCubeArray_Int32x4_texture.type.strict = true;
-    TextureStoreMip_TextureCubeArray_Int32x4_texture.type.mut = true;
-    TextureStoreMip_TextureCubeArray_Int32x4_texture.type.modifiers = TextureStoreMip_TextureCubeArray_Int32x4_texture_modifiers;
-    TextureStoreMip_TextureCubeArray_Int32x4_texture.type.modifierValues = TextureStoreMip_TextureCubeArray_Int32x4_texture_modifierValues;
-    TextureStoreMip_TextureCubeArray_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_TextureCubeArray_Int32x4_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_TextureCubeArray_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_TextureCubeArray_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_TextureCubeArray_Int32x4_value.name = "value"_c;
-    TextureStoreMip_TextureCubeArray_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_TextureCubeArray_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_TextureCubeArray_Int32x4.name = TextureStoreMip_TextureCubeArray_Int32x4_name;
-    TextureStoreMip_TextureCubeArray_Int32x4.backendIndex = 2459;
-    TextureStoreMip_TextureCubeArray_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_TextureCubeArray_Int32x4.parameters = TextureStoreMip_TextureCubeArray_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4)->signature = "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4)->name = "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable textureCubeArray, coordinate : i32x4, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with TextureCubeArray, Int32x4, UInt32x4
-    TextureStore_TextureCubeArray_UInt32x4_texture.name = "texture"_c;
-    TextureStore_TextureCubeArray_UInt32x4_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureStore_TextureCubeArray_UInt32x4_texture.type.strict = true;
-    TextureStore_TextureCubeArray_UInt32x4_texture.type.mut = true;
-    TextureStore_TextureCubeArray_UInt32x4_texture.type.modifiers = TextureStore_TextureCubeArray_UInt32x4_texture_modifiers;
-    TextureStore_TextureCubeArray_UInt32x4_texture.type.modifierValues = TextureStore_TextureCubeArray_UInt32x4_texture_modifierValues;
-    TextureStore_TextureCubeArray_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_TextureCubeArray_UInt32x4_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_TextureCubeArray_UInt32x4_value.name = "value"_c;
-    TextureStore_TextureCubeArray_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_TextureCubeArray_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_TextureCubeArray_UInt32x4.name = TextureStore_TextureCubeArray_UInt32x4_name;
-    TextureStore_TextureCubeArray_UInt32x4.backendIndex = 2460;
-    TextureStore_TextureCubeArray_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_TextureCubeArray_UInt32x4.parameters = TextureStore_TextureCubeArray_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_UInt32x4_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_UInt32x4_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_UInt32x4)->signature = "textureStore(uniform *mutable textureCubeArray,i32x4,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_UInt32x4)->name = "textureStore(uniform *mutable textureCubeArray,i32x4,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable textureCubeArray, coordinate : i32x4, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_TextureCubeArray_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with TextureCubeArray, Int32x4, Int32, UInt32x4
-    TextureStoreMip_TextureCubeArray_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_TextureCubeArray_UInt32x4_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureStoreMip_TextureCubeArray_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_TextureCubeArray_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_TextureCubeArray_UInt32x4_texture.type.modifiers = TextureStoreMip_TextureCubeArray_UInt32x4_texture_modifiers;
-    TextureStoreMip_TextureCubeArray_UInt32x4_texture.type.modifierValues = TextureStoreMip_TextureCubeArray_UInt32x4_texture_modifierValues;
-    TextureStoreMip_TextureCubeArray_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_TextureCubeArray_UInt32x4_coordinate.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_TextureCubeArray_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_TextureCubeArray_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_TextureCubeArray_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_TextureCubeArray_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_TextureCubeArray_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_TextureCubeArray_UInt32x4.name = TextureStoreMip_TextureCubeArray_UInt32x4_name;
-    TextureStoreMip_TextureCubeArray_UInt32x4.backendIndex = 2461;
-    TextureStoreMip_TextureCubeArray_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_TextureCubeArray_UInt32x4.parameters = TextureStoreMip_TextureCubeArray_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4_coordinate)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4)->signature = "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4)->name = "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable textureCubeArray, coordinate : i32x4, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_TextureCubeArray_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DMS, Int32x2, Float32x4
-    TextureStore_Texture2DMS_Float32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DMS_Float32x4_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureStore_Texture2DMS_Float32x4_texture.type.strict = true;
-    TextureStore_Texture2DMS_Float32x4_texture.type.mut = true;
-    TextureStore_Texture2DMS_Float32x4_texture.type.modifiers = TextureStore_Texture2DMS_Float32x4_texture_modifiers;
-    TextureStore_Texture2DMS_Float32x4_texture.type.modifierValues = TextureStore_Texture2DMS_Float32x4_texture_modifierValues;
-    TextureStore_Texture2DMS_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DMS_Float32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture2DMS_Float32x4_value.name = "value"_c;
-    TextureStore_Texture2DMS_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2DMS_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DMS_Float32x4.name = TextureStore_Texture2DMS_Float32x4_name;
-    TextureStore_Texture2DMS_Float32x4.backendIndex = 2462;
-    TextureStore_Texture2DMS_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DMS_Float32x4.parameters = TextureStore_Texture2DMS_Float32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Float32x4_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Float32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Float32x4)->signature = "textureStore(uniform *mutable texture2DMS,i32x2,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Float32x4)->name = "textureStore(uniform *mutable texture2DMS,i32x2,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DMS, coordinate : i32x2, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DMS, Int32x2, Int32, Float32x4
-    TextureStoreMip_Texture2DMS_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DMS_Float32x4_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureStoreMip_Texture2DMS_Float32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DMS_Float32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DMS_Float32x4_texture.type.modifiers = TextureStoreMip_Texture2DMS_Float32x4_texture_modifiers;
-    TextureStoreMip_Texture2DMS_Float32x4_texture.type.modifierValues = TextureStoreMip_Texture2DMS_Float32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DMS_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DMS_Float32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture2DMS_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DMS_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DMS_Float32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DMS_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2DMS_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DMS_Float32x4.name = TextureStoreMip_Texture2DMS_Float32x4_name;
-    TextureStoreMip_Texture2DMS_Float32x4.backendIndex = 2463;
-    TextureStoreMip_Texture2DMS_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DMS_Float32x4.parameters = TextureStoreMip_Texture2DMS_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4)->signature = "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4)->name = "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DMS, coordinate : i32x2, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DMS, Int32x2, Int32x4
-    TextureStore_Texture2DMS_Int32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DMS_Int32x4_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureStore_Texture2DMS_Int32x4_texture.type.strict = true;
-    TextureStore_Texture2DMS_Int32x4_texture.type.mut = true;
-    TextureStore_Texture2DMS_Int32x4_texture.type.modifiers = TextureStore_Texture2DMS_Int32x4_texture_modifiers;
-    TextureStore_Texture2DMS_Int32x4_texture.type.modifierValues = TextureStore_Texture2DMS_Int32x4_texture_modifierValues;
-    TextureStore_Texture2DMS_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DMS_Int32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture2DMS_Int32x4_value.name = "value"_c;
-    TextureStore_Texture2DMS_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_Texture2DMS_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DMS_Int32x4.name = TextureStore_Texture2DMS_Int32x4_name;
-    TextureStore_Texture2DMS_Int32x4.backendIndex = 2464;
-    TextureStore_Texture2DMS_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DMS_Int32x4.parameters = TextureStore_Texture2DMS_Int32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Int32x4_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Int32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Int32x4)->signature = "textureStore(uniform *mutable texture2DMS,i32x2,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Int32x4)->name = "textureStore(uniform *mutable texture2DMS,i32x2,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DMS, coordinate : i32x2, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DMS, Int32x2, Int32, Int32x4
-    TextureStoreMip_Texture2DMS_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DMS_Int32x4_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureStoreMip_Texture2DMS_Int32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DMS_Int32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DMS_Int32x4_texture.type.modifiers = TextureStoreMip_Texture2DMS_Int32x4_texture_modifiers;
-    TextureStoreMip_Texture2DMS_Int32x4_texture.type.modifierValues = TextureStoreMip_Texture2DMS_Int32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DMS_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DMS_Int32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture2DMS_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DMS_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DMS_Int32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DMS_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_Texture2DMS_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DMS_Int32x4.name = TextureStoreMip_Texture2DMS_Int32x4_name;
-    TextureStoreMip_Texture2DMS_Int32x4.backendIndex = 2465;
-    TextureStoreMip_Texture2DMS_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DMS_Int32x4.parameters = TextureStoreMip_Texture2DMS_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4)->signature = "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4)->name = "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DMS, coordinate : i32x2, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DMS, Int32x2, UInt32x4
-    TextureStore_Texture2DMS_UInt32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DMS_UInt32x4_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureStore_Texture2DMS_UInt32x4_texture.type.strict = true;
-    TextureStore_Texture2DMS_UInt32x4_texture.type.mut = true;
-    TextureStore_Texture2DMS_UInt32x4_texture.type.modifiers = TextureStore_Texture2DMS_UInt32x4_texture_modifiers;
-    TextureStore_Texture2DMS_UInt32x4_texture.type.modifierValues = TextureStore_Texture2DMS_UInt32x4_texture_modifierValues;
-    TextureStore_Texture2DMS_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DMS_UInt32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStore_Texture2DMS_UInt32x4_value.name = "value"_c;
-    TextureStore_Texture2DMS_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_Texture2DMS_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DMS_UInt32x4.name = TextureStore_Texture2DMS_UInt32x4_name;
-    TextureStore_Texture2DMS_UInt32x4.backendIndex = 2466;
-    TextureStore_Texture2DMS_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DMS_UInt32x4.parameters = TextureStore_Texture2DMS_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DMS_UInt32x4_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureStore_Texture2DMS_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DMS_UInt32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStore_Texture2DMS_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DMS_UInt32x4)->signature = "textureStore(uniform *mutable texture2DMS,i32x2,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_UInt32x4)->name = "textureStore(uniform *mutable texture2DMS,i32x2,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DMS, coordinate : i32x2, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMS_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DMS, Int32x2, Int32, UInt32x4
-    TextureStoreMip_Texture2DMS_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DMS_UInt32x4_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureStoreMip_Texture2DMS_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DMS_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DMS_UInt32x4_texture.type.modifiers = TextureStoreMip_Texture2DMS_UInt32x4_texture_modifiers;
-    TextureStoreMip_Texture2DMS_UInt32x4_texture.type.modifierValues = TextureStoreMip_Texture2DMS_UInt32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DMS_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DMS_UInt32x4_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureStoreMip_Texture2DMS_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DMS_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DMS_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DMS_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_Texture2DMS_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DMS_UInt32x4.name = TextureStoreMip_Texture2DMS_UInt32x4_name;
-    TextureStoreMip_Texture2DMS_UInt32x4.backendIndex = 2467;
-    TextureStoreMip_Texture2DMS_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DMS_UInt32x4.parameters = TextureStoreMip_Texture2DMS_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4)->signature = "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4)->name = "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DMS, coordinate : i32x2, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMS_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DMSArray, Int32x3, Float32x4
-    TextureStore_Texture2DMSArray_Float32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DMSArray_Float32x4_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureStore_Texture2DMSArray_Float32x4_texture.type.strict = true;
-    TextureStore_Texture2DMSArray_Float32x4_texture.type.mut = true;
-    TextureStore_Texture2DMSArray_Float32x4_texture.type.modifiers = TextureStore_Texture2DMSArray_Float32x4_texture_modifiers;
-    TextureStore_Texture2DMSArray_Float32x4_texture.type.modifierValues = TextureStore_Texture2DMSArray_Float32x4_texture_modifierValues;
-    TextureStore_Texture2DMSArray_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DMSArray_Float32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture2DMSArray_Float32x4_value.name = "value"_c;
-    TextureStore_Texture2DMSArray_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStore_Texture2DMSArray_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DMSArray_Float32x4.name = TextureStore_Texture2DMSArray_Float32x4_name;
-    TextureStore_Texture2DMSArray_Float32x4.backendIndex = 2468;
-    TextureStore_Texture2DMSArray_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DMSArray_Float32x4.parameters = TextureStore_Texture2DMSArray_Float32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Float32x4_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Float32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Float32x4)->signature = "textureStore(uniform *mutable texture2DMSArray,i32x3,f32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Float32x4)->name = "textureStore(uniform *mutable texture2DMSArray,i32x3,f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Float32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DMSArray, coordinate : i32x3, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DMSArray, Int32x3, Int32, Float32x4
-    TextureStoreMip_Texture2DMSArray_Float32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DMSArray_Float32x4_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureStoreMip_Texture2DMSArray_Float32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DMSArray_Float32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DMSArray_Float32x4_texture.type.modifiers = TextureStoreMip_Texture2DMSArray_Float32x4_texture_modifiers;
-    TextureStoreMip_Texture2DMSArray_Float32x4_texture.type.modifierValues = TextureStoreMip_Texture2DMSArray_Float32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DMSArray_Float32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DMSArray_Float32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture2DMSArray_Float32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DMSArray_Float32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DMSArray_Float32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DMSArray_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    TextureStoreMip_Texture2DMSArray_Float32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DMSArray_Float32x4.name = TextureStoreMip_Texture2DMSArray_Float32x4_name;
-    TextureStoreMip_Texture2DMSArray_Float32x4.backendIndex = 2469;
-    TextureStoreMip_Texture2DMSArray_Float32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DMSArray_Float32x4.parameters = TextureStoreMip_Texture2DMSArray_Float32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4_value)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4)->signature = "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,f32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4)->name = "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DMSArray, coordinate : i32x3, mip : i32, value : f32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Float32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DMSArray, Int32x3, Int32x4
-    TextureStore_Texture2DMSArray_Int32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DMSArray_Int32x4_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureStore_Texture2DMSArray_Int32x4_texture.type.strict = true;
-    TextureStore_Texture2DMSArray_Int32x4_texture.type.mut = true;
-    TextureStore_Texture2DMSArray_Int32x4_texture.type.modifiers = TextureStore_Texture2DMSArray_Int32x4_texture_modifiers;
-    TextureStore_Texture2DMSArray_Int32x4_texture.type.modifierValues = TextureStore_Texture2DMSArray_Int32x4_texture_modifierValues;
-    TextureStore_Texture2DMSArray_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DMSArray_Int32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture2DMSArray_Int32x4_value.name = "value"_c;
-    TextureStore_Texture2DMSArray_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStore_Texture2DMSArray_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DMSArray_Int32x4.name = TextureStore_Texture2DMSArray_Int32x4_name;
-    TextureStore_Texture2DMSArray_Int32x4.backendIndex = 2470;
-    TextureStore_Texture2DMSArray_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DMSArray_Int32x4.parameters = TextureStore_Texture2DMSArray_Int32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Int32x4_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Int32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Int32x4)->signature = "textureStore(uniform *mutable texture2DMSArray,i32x3,i32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Int32x4)->name = "textureStore(uniform *mutable texture2DMSArray,i32x3,i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Int32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DMSArray, coordinate : i32x3, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DMSArray, Int32x3, Int32, Int32x4
-    TextureStoreMip_Texture2DMSArray_Int32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DMSArray_Int32x4_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureStoreMip_Texture2DMSArray_Int32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DMSArray_Int32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DMSArray_Int32x4_texture.type.modifiers = TextureStoreMip_Texture2DMSArray_Int32x4_texture_modifiers;
-    TextureStoreMip_Texture2DMSArray_Int32x4_texture.type.modifierValues = TextureStoreMip_Texture2DMSArray_Int32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DMSArray_Int32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DMSArray_Int32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture2DMSArray_Int32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DMSArray_Int32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DMSArray_Int32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DMSArray_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    TextureStoreMip_Texture2DMSArray_Int32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DMSArray_Int32x4.name = TextureStoreMip_Texture2DMSArray_Int32x4_name;
-    TextureStoreMip_Texture2DMSArray_Int32x4.backendIndex = 2471;
-    TextureStoreMip_Texture2DMSArray_Int32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DMSArray_Int32x4.parameters = TextureStoreMip_Texture2DMSArray_Int32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4_value)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4)->signature = "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,i32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4)->name = "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DMSArray, coordinate : i32x3, mip : i32, value : i32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_Int32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStore with Texture2DMSArray, Int32x3, UInt32x4
-    TextureStore_Texture2DMSArray_UInt32x4_texture.name = "texture"_c;
-    TextureStore_Texture2DMSArray_UInt32x4_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureStore_Texture2DMSArray_UInt32x4_texture.type.strict = true;
-    TextureStore_Texture2DMSArray_UInt32x4_texture.type.mut = true;
-    TextureStore_Texture2DMSArray_UInt32x4_texture.type.modifiers = TextureStore_Texture2DMSArray_UInt32x4_texture_modifiers;
-    TextureStore_Texture2DMSArray_UInt32x4_texture.type.modifierValues = TextureStore_Texture2DMSArray_UInt32x4_texture_modifierValues;
-    TextureStore_Texture2DMSArray_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStore_Texture2DMSArray_UInt32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStore_Texture2DMSArray_UInt32x4_value.name = "value"_c;
-    TextureStore_Texture2DMSArray_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStore_Texture2DMSArray_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate"_c;
-    TextureStore_Texture2DMSArray_UInt32x4.name = TextureStore_Texture2DMSArray_UInt32x4_name;
-    TextureStore_Texture2DMSArray_UInt32x4.backendIndex = 2472;
-    TextureStore_Texture2DMSArray_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStore_Texture2DMSArray_UInt32x4.parameters = TextureStore_Texture2DMSArray_UInt32x4_args;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_UInt32x4_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_UInt32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_UInt32x4)->signature = "textureStore(uniform *mutable texture2DMSArray,i32x3,u32x4) void"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_UInt32x4)->name = "textureStore(uniform *mutable texture2DMSArray,i32x3,u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_UInt32x4)->nameWithVarNames = "textureStore(texture : uniform *mutable texture2DMSArray, coordinate : i32x3, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStore_Texture2DMSArray_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureStoreMip with Texture2DMSArray, Int32x3, Int32, UInt32x4
-    TextureStoreMip_Texture2DMSArray_UInt32x4_texture.name = "texture"_c;
-    TextureStoreMip_Texture2DMSArray_UInt32x4_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureStoreMip_Texture2DMSArray_UInt32x4_texture.type.strict = true;
-    TextureStoreMip_Texture2DMSArray_UInt32x4_texture.type.mut = true;
-    TextureStoreMip_Texture2DMSArray_UInt32x4_texture.type.modifiers = TextureStoreMip_Texture2DMSArray_UInt32x4_texture_modifiers;
-    TextureStoreMip_Texture2DMSArray_UInt32x4_texture.type.modifierValues = TextureStoreMip_Texture2DMSArray_UInt32x4_texture_modifierValues;
-    TextureStoreMip_Texture2DMSArray_UInt32x4_coordinate.name = "coordinate"_c;
-    TextureStoreMip_Texture2DMSArray_UInt32x4_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureStoreMip_Texture2DMSArray_UInt32x4_mip.name = "mip"_c;
-    TextureStoreMip_Texture2DMSArray_UInt32x4_mip.type = Type::FullType{ Int32Type.name };
-    TextureStoreMip_Texture2DMSArray_UInt32x4_value.name = "value"_c;
-    TextureStoreMip_Texture2DMSArray_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    TextureStoreMip_Texture2DMSArray_UInt32x4.documentation = "Store a single texel at an absolute non-normalized coordinate at a specific mip level"_c;
-    TextureStoreMip_Texture2DMSArray_UInt32x4.name = TextureStoreMip_Texture2DMSArray_UInt32x4_name;
-    TextureStoreMip_Texture2DMSArray_UInt32x4.backendIndex = 2473;
-    TextureStoreMip_Texture2DMSArray_UInt32x4.returnType = Type::FullType { VoidType.name };
-    TextureStoreMip_Texture2DMSArray_UInt32x4.parameters = TextureStoreMip_Texture2DMSArray_UInt32x4_args;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4_value)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4)->signature = "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,u32x4) void"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4)->name = "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4)->nameWithVarNames = "textureStoreMip(texture : uniform *mutable texture2DMSArray, coordinate : i32x3, mip : i32, value : u32x4)"_c;
-    Symbol::Resolved(&TextureStoreMip_Texture2DMSArray_UInt32x4)->returnTypeSymbol = &VoidType;
-
-    /// textureFetch with Texture1D, Int32, Int32
-    TextureFetch_Texture1D_texture.name = "texture"_c;
-    TextureFetch_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureFetch_Texture1D_texture.type.strict = true;
-    TextureFetch_Texture1D_texture.type.modifiers = TextureFetch_Texture1D_texture_modifiers;
-    TextureFetch_Texture1D_texture.type.modifierValues = TextureFetch_Texture1D_texture_modifierValues;
-    TextureFetch_Texture1D_coordinate.name = "coordinate"_c;
-    TextureFetch_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureFetch_Texture1D_mip.name = "mip"_c;
-    TextureFetch_Texture1D_mip.type = Type::FullType{ Int32Type.name };
-    TextureFetch_Texture1D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
-    TextureFetch_Texture1D.name = TextureFetch_Texture1D_name;
-    TextureFetch_Texture1D.backendIndex = 2474;
-    TextureFetch_Texture1D.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetch_Texture1D.parameters = TextureFetch_Texture1D_args;
-    Symbol::Resolved(&TextureFetch_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureFetch_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetch_Texture1D_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureFetch_Texture1D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureFetch_Texture1D)->signature = "textureFetch(uniform *texture1D,i32,i32) f32x4"_c;
-    Symbol::Resolved(&TextureFetch_Texture1D)->name = "textureFetch(uniform *texture1D,i32,i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture1D)->nameWithVarNames = "textureFetch(texture : uniform *texture1D, coordinate : i32, mip : i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture1D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetchSample with Texture1D, Int32, UInt32
-    TextureFetchSample_Texture1D_texture.name = "texture"_c;
-    TextureFetchSample_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureFetchSample_Texture1D_texture.type.strict = true;
-    TextureFetchSample_Texture1D_texture.type.modifiers = TextureFetchSample_Texture1D_texture_modifiers;
-    TextureFetchSample_Texture1D_texture.type.modifierValues = TextureFetchSample_Texture1D_texture_modifierValues;
-    TextureFetchSample_Texture1D_coordinate.name = "coordinate"_c;
-    TextureFetchSample_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
-    TextureFetchSample_Texture1D_sample.name = "sample"_c;
-    TextureFetchSample_Texture1D_sample.type = Type::FullType{ UInt32Type.name };
-    TextureFetchSample_Texture1D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
-    TextureFetchSample_Texture1D.name = TextureFetchSample_Texture1D_name;
-    TextureFetchSample_Texture1D.backendIndex = 2475;
-    TextureFetchSample_Texture1D.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetchSample_Texture1D.parameters = TextureFetchSample_Texture1D_args;
-    Symbol::Resolved(&TextureFetchSample_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureFetchSample_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetchSample_Texture1D_coordinate)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureFetchSample_Texture1D_sample)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureFetchSample_Texture1D)->signature = "textureFetchSample(uniform *texture1D,i32,u32) f32x4"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture1D)->name = "textureFetchSample(uniform *texture1D,i32,u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture1D)->nameWithVarNames = "textureFetchSample(texture : uniform *texture1D, coordinate : i32, sample : u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture1D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetch with Texture2D, Int32x2, Int32
-    TextureFetch_Texture2D_texture.name = "texture"_c;
-    TextureFetch_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureFetch_Texture2D_texture.type.strict = true;
-    TextureFetch_Texture2D_texture.type.modifiers = TextureFetch_Texture2D_texture_modifiers;
-    TextureFetch_Texture2D_texture.type.modifierValues = TextureFetch_Texture2D_texture_modifierValues;
-    TextureFetch_Texture2D_coordinate.name = "coordinate"_c;
-    TextureFetch_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureFetch_Texture2D_mip.name = "mip"_c;
-    TextureFetch_Texture2D_mip.type = Type::FullType{ Int32Type.name };
-    TextureFetch_Texture2D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
-    TextureFetch_Texture2D.name = TextureFetch_Texture2D_name;
-    TextureFetch_Texture2D.backendIndex = 2476;
-    TextureFetch_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetch_Texture2D.parameters = TextureFetch_Texture2D_args;
-    Symbol::Resolved(&TextureFetch_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureFetch_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetch_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureFetch_Texture2D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureFetch_Texture2D)->signature = "textureFetch(uniform *texture2D,i32x2,i32) f32x4"_c;
-    Symbol::Resolved(&TextureFetch_Texture2D)->name = "textureFetch(uniform *texture2D,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture2D)->nameWithVarNames = "textureFetch(texture : uniform *texture2D, coordinate : i32x2, mip : i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetchSample with Texture2D, Int32x2, UInt32
-    TextureFetchSample_Texture2D_texture.name = "texture"_c;
-    TextureFetchSample_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureFetchSample_Texture2D_texture.type.strict = true;
-    TextureFetchSample_Texture2D_texture.type.modifiers = TextureFetchSample_Texture2D_texture_modifiers;
-    TextureFetchSample_Texture2D_texture.type.modifierValues = TextureFetchSample_Texture2D_texture_modifierValues;
-    TextureFetchSample_Texture2D_coordinate.name = "coordinate"_c;
-    TextureFetchSample_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureFetchSample_Texture2D_sample.name = "sample"_c;
-    TextureFetchSample_Texture2D_sample.type = Type::FullType{ UInt32Type.name };
-    TextureFetchSample_Texture2D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
-    TextureFetchSample_Texture2D.name = TextureFetchSample_Texture2D_name;
-    TextureFetchSample_Texture2D.backendIndex = 2477;
-    TextureFetchSample_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetchSample_Texture2D.parameters = TextureFetchSample_Texture2D_args;
-    Symbol::Resolved(&TextureFetchSample_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureFetchSample_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetchSample_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureFetchSample_Texture2D_sample)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureFetchSample_Texture2D)->signature = "textureFetchSample(uniform *texture2D,i32x2,u32) f32x4"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2D)->name = "textureFetchSample(uniform *texture2D,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2D)->nameWithVarNames = "textureFetchSample(texture : uniform *texture2D, coordinate : i32x2, sample : u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetch with Texture3D, Int32x3, Int32
-    TextureFetch_Texture3D_texture.name = "texture"_c;
-    TextureFetch_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureFetch_Texture3D_texture.type.strict = true;
-    TextureFetch_Texture3D_texture.type.modifiers = TextureFetch_Texture3D_texture_modifiers;
-    TextureFetch_Texture3D_texture.type.modifierValues = TextureFetch_Texture3D_texture_modifierValues;
-    TextureFetch_Texture3D_coordinate.name = "coordinate"_c;
-    TextureFetch_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureFetch_Texture3D_mip.name = "mip"_c;
-    TextureFetch_Texture3D_mip.type = Type::FullType{ Int32Type.name };
-    TextureFetch_Texture3D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
-    TextureFetch_Texture3D.name = TextureFetch_Texture3D_name;
-    TextureFetch_Texture3D.backendIndex = 2478;
-    TextureFetch_Texture3D.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetch_Texture3D.parameters = TextureFetch_Texture3D_args;
-    Symbol::Resolved(&TextureFetch_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureFetch_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetch_Texture3D_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureFetch_Texture3D_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureFetch_Texture3D)->signature = "textureFetch(uniform *texture3D,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureFetch_Texture3D)->name = "textureFetch(uniform *texture3D,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture3D)->nameWithVarNames = "textureFetch(texture : uniform *texture3D, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetchSample with Texture3D, Int32x3, UInt32
-    TextureFetchSample_Texture3D_texture.name = "texture"_c;
-    TextureFetchSample_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureFetchSample_Texture3D_texture.type.strict = true;
-    TextureFetchSample_Texture3D_texture.type.modifiers = TextureFetchSample_Texture3D_texture_modifiers;
-    TextureFetchSample_Texture3D_texture.type.modifierValues = TextureFetchSample_Texture3D_texture_modifierValues;
-    TextureFetchSample_Texture3D_coordinate.name = "coordinate"_c;
-    TextureFetchSample_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureFetchSample_Texture3D_sample.name = "sample"_c;
-    TextureFetchSample_Texture3D_sample.type = Type::FullType{ UInt32Type.name };
-    TextureFetchSample_Texture3D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
-    TextureFetchSample_Texture3D.name = TextureFetchSample_Texture3D_name;
-    TextureFetchSample_Texture3D.backendIndex = 2479;
-    TextureFetchSample_Texture3D.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetchSample_Texture3D.parameters = TextureFetchSample_Texture3D_args;
-    Symbol::Resolved(&TextureFetchSample_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureFetchSample_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetchSample_Texture3D_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureFetchSample_Texture3D_sample)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureFetchSample_Texture3D)->signature = "textureFetchSample(uniform *texture3D,i32x3,u32) f32x4"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture3D)->name = "textureFetchSample(uniform *texture3D,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture3D)->nameWithVarNames = "textureFetchSample(texture : uniform *texture3D, coordinate : i32x3, sample : u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetch with Texture1DArray, Int32x2, Int32
-    TextureFetch_Texture1DArray_texture.name = "texture"_c;
-    TextureFetch_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureFetch_Texture1DArray_texture.type.strict = true;
-    TextureFetch_Texture1DArray_texture.type.modifiers = TextureFetch_Texture1DArray_texture_modifiers;
-    TextureFetch_Texture1DArray_texture.type.modifierValues = TextureFetch_Texture1DArray_texture_modifierValues;
-    TextureFetch_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureFetch_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureFetch_Texture1DArray_mip.name = "mip"_c;
-    TextureFetch_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureFetch_Texture1DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
-    TextureFetch_Texture1DArray.name = TextureFetch_Texture1DArray_name;
-    TextureFetch_Texture1DArray.backendIndex = 2480;
-    TextureFetch_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetch_Texture1DArray.parameters = TextureFetch_Texture1DArray_args;
-    Symbol::Resolved(&TextureFetch_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureFetch_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetch_Texture1DArray_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureFetch_Texture1DArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureFetch_Texture1DArray)->signature = "textureFetch(uniform *texture1DArray,i32x2,i32) f32x4"_c;
-    Symbol::Resolved(&TextureFetch_Texture1DArray)->name = "textureFetch(uniform *texture1DArray,i32x2,i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture1DArray)->nameWithVarNames = "textureFetch(texture : uniform *texture1DArray, coordinate : i32x2, mip : i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetchSample with Texture1DArray, Int32x2, UInt32
-    TextureFetchSample_Texture1DArray_texture.name = "texture"_c;
-    TextureFetchSample_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureFetchSample_Texture1DArray_texture.type.strict = true;
-    TextureFetchSample_Texture1DArray_texture.type.modifiers = TextureFetchSample_Texture1DArray_texture_modifiers;
-    TextureFetchSample_Texture1DArray_texture.type.modifierValues = TextureFetchSample_Texture1DArray_texture_modifierValues;
-    TextureFetchSample_Texture1DArray_coordinate.name = "coordinate"_c;
-    TextureFetchSample_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureFetchSample_Texture1DArray_sample.name = "sample"_c;
-    TextureFetchSample_Texture1DArray_sample.type = Type::FullType{ UInt32Type.name };
-    TextureFetchSample_Texture1DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
-    TextureFetchSample_Texture1DArray.name = TextureFetchSample_Texture1DArray_name;
-    TextureFetchSample_Texture1DArray.backendIndex = 2481;
-    TextureFetchSample_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetchSample_Texture1DArray.parameters = TextureFetchSample_Texture1DArray_args;
-    Symbol::Resolved(&TextureFetchSample_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureFetchSample_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetchSample_Texture1DArray_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureFetchSample_Texture1DArray_sample)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureFetchSample_Texture1DArray)->signature = "textureFetchSample(uniform *texture1DArray,i32x2,u32) f32x4"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture1DArray)->name = "textureFetchSample(uniform *texture1DArray,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture1DArray)->nameWithVarNames = "textureFetchSample(texture : uniform *texture1DArray, coordinate : i32x2, sample : u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetch with Texture2DArray, Int32x3, Int32
-    TextureFetch_Texture2DArray_texture.name = "texture"_c;
-    TextureFetch_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureFetch_Texture2DArray_texture.type.strict = true;
-    TextureFetch_Texture2DArray_texture.type.modifiers = TextureFetch_Texture2DArray_texture_modifiers;
-    TextureFetch_Texture2DArray_texture.type.modifierValues = TextureFetch_Texture2DArray_texture_modifierValues;
-    TextureFetch_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureFetch_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureFetch_Texture2DArray_mip.name = "mip"_c;
-    TextureFetch_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
-    TextureFetch_Texture2DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific mip level"_c;
-    TextureFetch_Texture2DArray.name = TextureFetch_Texture2DArray_name;
-    TextureFetch_Texture2DArray.backendIndex = 2482;
-    TextureFetch_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetch_Texture2DArray.parameters = TextureFetch_Texture2DArray_args;
-    Symbol::Resolved(&TextureFetch_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureFetch_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetch_Texture2DArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureFetch_Texture2DArray_mip)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureFetch_Texture2DArray)->signature = "textureFetch(uniform *texture2DArray,i32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureFetch_Texture2DArray)->name = "textureFetch(uniform *texture2DArray,i32x3,i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture2DArray)->nameWithVarNames = "textureFetch(texture : uniform *texture2DArray, coordinate : i32x3, mip : i32)"_c;
-    Symbol::Resolved(&TextureFetch_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetchSample with Texture2DArray, Int32x3, UInt32
-    TextureFetchSample_Texture2DArray_texture.name = "texture"_c;
-    TextureFetchSample_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureFetchSample_Texture2DArray_texture.type.strict = true;
-    TextureFetchSample_Texture2DArray_texture.type.modifiers = TextureFetchSample_Texture2DArray_texture_modifiers;
-    TextureFetchSample_Texture2DArray_texture.type.modifierValues = TextureFetchSample_Texture2DArray_texture_modifierValues;
-    TextureFetchSample_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureFetchSample_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureFetchSample_Texture2DArray_sample.name = "sample"_c;
-    TextureFetchSample_Texture2DArray_sample.type = Type::FullType{ UInt32Type.name };
-    TextureFetchSample_Texture2DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
-    TextureFetchSample_Texture2DArray.name = TextureFetchSample_Texture2DArray_name;
-    TextureFetchSample_Texture2DArray.backendIndex = 2483;
-    TextureFetchSample_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetchSample_Texture2DArray.parameters = TextureFetchSample_Texture2DArray_args;
-    Symbol::Resolved(&TextureFetchSample_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureFetchSample_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetchSample_Texture2DArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureFetchSample_Texture2DArray_sample)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureFetchSample_Texture2DArray)->signature = "textureFetchSample(uniform *texture2DArray,i32x3,u32) f32x4"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DArray)->name = "textureFetchSample(uniform *texture2DArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DArray)->nameWithVarNames = "textureFetchSample(texture : uniform *texture2DArray, coordinate : i32x3, sample : u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetchSample with Texture2DMS, Int32x2, UInt32
-    TextureFetchSample_Texture2DMS_texture.name = "texture"_c;
-    TextureFetchSample_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureFetchSample_Texture2DMS_texture.type.strict = true;
-    TextureFetchSample_Texture2DMS_texture.type.modifiers = TextureFetchSample_Texture2DMS_texture_modifiers;
-    TextureFetchSample_Texture2DMS_texture.type.modifierValues = TextureFetchSample_Texture2DMS_texture_modifierValues;
-    TextureFetchSample_Texture2DMS_coordinate.name = "coordinate"_c;
-    TextureFetchSample_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
-    TextureFetchSample_Texture2DMS_sample.name = "sample"_c;
-    TextureFetchSample_Texture2DMS_sample.type = Type::FullType{ UInt32Type.name };
-    TextureFetchSample_Texture2DMS.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
-    TextureFetchSample_Texture2DMS.name = TextureFetchSample_Texture2DMS_name;
-    TextureFetchSample_Texture2DMS.backendIndex = 2484;
-    TextureFetchSample_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetchSample_Texture2DMS.parameters = TextureFetchSample_Texture2DMS_args;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMS_texture)->typeSymbol = &Texture2DMSType;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMS_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMS_coordinate)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMS_sample)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMS)->signature = "textureFetchSample(uniform *texture2DMS,i32x2,u32) f32x4"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMS)->name = "textureFetchSample(uniform *texture2DMS,i32x2,u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMS)->nameWithVarNames = "textureFetchSample(texture : uniform *texture2DMS, coordinate : i32x2, sample : u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMS)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureFetchSample with Texture2DMSArray, Int32x3, UInt32
-    TextureFetchSample_Texture2DMSArray_texture.name = "texture"_c;
-    TextureFetchSample_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureFetchSample_Texture2DMSArray_texture.type.strict = true;
-    TextureFetchSample_Texture2DMSArray_texture.type.modifiers = TextureFetchSample_Texture2DMSArray_texture_modifiers;
-    TextureFetchSample_Texture2DMSArray_texture.type.modifierValues = TextureFetchSample_Texture2DMSArray_texture_modifierValues;
-    TextureFetchSample_Texture2DMSArray_coordinate.name = "coordinate"_c;
-    TextureFetchSample_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
-    TextureFetchSample_Texture2DMSArray_sample.name = "sample"_c;
-    TextureFetchSample_Texture2DMSArray_sample.type = Type::FullType{ UInt32Type.name };
-    TextureFetchSample_Texture2DMSArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
-    TextureFetchSample_Texture2DMSArray.name = TextureFetchSample_Texture2DMSArray_name;
-    TextureFetchSample_Texture2DMSArray.backendIndex = 2485;
-    TextureFetchSample_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureFetchSample_Texture2DMSArray.parameters = TextureFetchSample_Texture2DMSArray_args;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMSArray_texture)->typeSymbol = &Texture2DMSArrayType;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMSArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMSArray_coordinate)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMSArray_sample)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMSArray)->signature = "textureFetchSample(uniform *texture2DMSArray,i32x3,u32) f32x4"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMSArray)->name = "textureFetchSample(uniform *texture2DMSArray,i32x3,u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMSArray)->nameWithVarNames = "textureFetchSample(texture : uniform *texture2DMSArray, coordinate : i32x3, sample : u32)"_c;
-    Symbol::Resolved(&TextureFetchSample_Texture2DMSArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGather with Texture2D, Sampler, Float32x2, Int32
-    TextureGather_Texture2D_texture.name = "texture"_c;
-    TextureGather_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGather_Texture2D_texture.type.modifiers = TextureGather_Texture2D_texture_modifiers;
-    TextureGather_Texture2D_texture.type.modifierValues = TextureGather_Texture2D_texture_modifierValues;
-    TextureGather_Texture2D_sampler.name = "sampler"_c;
-    TextureGather_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGather_Texture2D_sampler.type.modifiers = TextureGather_Texture2D_sampler_modifiers;
-    TextureGather_Texture2D_sampler.type.modifierValues = TextureGather_Texture2D_sampler_modifierValues;
-    TextureGather_Texture2D_coordinate.name = "coordinate"_c;
-    TextureGather_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureGather_Texture2D_component.name = "component"_c;
-    TextureGather_Texture2D_component.type = Type::FullType{ Int32Type.name };
-    TextureGather_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
-    TextureGather_Texture2D.name = TextureGather_Texture2D_name;
-    TextureGather_Texture2D.backendIndex = 2486;
-    TextureGather_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    TextureGather_Texture2D.parameters = TextureGather_Texture2D_args;
-    Symbol::Resolved(&TextureGather_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGather_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_Texture2D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGather_Texture2D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureGather_Texture2D_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureGather_Texture2D)->signature = "textureGather(uniform *texture2D,uniform *sampler,f32x2,i32) f32x4"_c;
-    Symbol::Resolved(&TextureGather_Texture2D)->name = "textureGather(uniform *texture2D,uniform *sampler,f32x2,i32)"_c;
-    Symbol::Resolved(&TextureGather_Texture2D)->nameWithVarNames = "textureGather(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, component : i32)"_c;
-    Symbol::Resolved(&TextureGather_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGather with SampledTexture2D, Float32x2, Int32
-    SampledTextureGather_Texture2D_texture.name = "texture"_c;
-    SampledTextureGather_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureGather_Texture2D_texture.type.modifiers = SampledTextureGather_Texture2D_texture_modifiers;
-    SampledTextureGather_Texture2D_texture.type.modifierValues = SampledTextureGather_Texture2D_texture_modifierValues;
-    SampledTextureGather_Texture2D_coordinate.name = "coordinate"_c;
-    SampledTextureGather_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureGather_Texture2D_component.name = "component"_c;
-    SampledTextureGather_Texture2D_component.type = Type::FullType{ Int32Type.name };
-    SampledTextureGather_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
-    SampledTextureGather_Texture2D.name = SampledTextureGather_Texture2D_name;
-    SampledTextureGather_Texture2D.backendIndex = 2487;
-    SampledTextureGather_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureGather_Texture2D.parameters = SampledTextureGather_Texture2D_args;
-    Symbol::Resolved(&SampledTextureGather_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
-    Symbol::Resolved(&SampledTextureGather_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGather_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureGather_Texture2D_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SampledTextureGather_Texture2D)->signature = "textureGather(uniform *textureSampled2D,f32x2,i32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureGather_Texture2D)->name = "textureGather(uniform *textureSampled2D,f32x2,i32)"_c;
-    Symbol::Resolved(&SampledTextureGather_Texture2D)->nameWithVarNames = "textureGather(texture : uniform *textureSampled2D, coordinate : f32x2, component : i32)"_c;
-    Symbol::Resolved(&SampledTextureGather_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGatherOffset with Texture2D, Sampler, Float32x2, Int32, Int32x2
-    TextureGatherOffset_Texture2D_texture.name = "texture"_c;
-    TextureGatherOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGatherOffset_Texture2D_texture.type.modifiers = TextureGatherOffset_Texture2D_texture_modifiers;
-    TextureGatherOffset_Texture2D_texture.type.modifierValues = TextureGatherOffset_Texture2D_texture_modifierValues;
-    TextureGatherOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureGatherOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGatherOffset_Texture2D_sampler.type.modifiers = TextureGatherOffset_Texture2D_sampler_modifiers;
-    TextureGatherOffset_Texture2D_sampler.type.modifierValues = TextureGatherOffset_Texture2D_sampler_modifierValues;
-    TextureGatherOffset_Texture2D_coordinate.name = "coordinate"_c;
-    TextureGatherOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    TextureGatherOffset_Texture2D_component.name = "component"_c;
-    TextureGatherOffset_Texture2D_component.type = Type::FullType{ Int32Type.name };
-    TextureGatherOffset_Texture2D_offset.name = "offset"_c;
-    TextureGatherOffset_Texture2D_offset.type = Type::FullType{ Int32x2Type.name };
-    TextureGatherOffset_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
-    TextureGatherOffset_Texture2D.name = TextureGatherOffset_Texture2D_name;
-    TextureGatherOffset_Texture2D.backendIndex = 2488;
-    TextureGatherOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    TextureGatherOffset_Texture2D.parameters = TextureGatherOffset_Texture2D_args;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D)->signature = "textureGatherOffset(uniform *texture2D,uniform *sampler,f32x2,i32,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D)->name = "textureGatherOffset(uniform *texture2D,uniform *sampler,f32x2,i32,i32x2)"_c;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D)->nameWithVarNames = "textureGatherOffset(texture : uniform *texture2D, sampler : uniform *sampler, coordinate : f32x2, component : i32, offset : i32x2)"_c;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGatherOffset with SampledTexture2D, Float32x2, Int32, Int32x2
-    SampledTextureGatherOffset_Texture2D_texture.name = "texture"_c;
-    SampledTextureGatherOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureGatherOffset_Texture2D_texture.type.modifiers = SampledTextureGatherOffset_Texture2D_texture_modifiers;
-    SampledTextureGatherOffset_Texture2D_texture.type.modifierValues = SampledTextureGatherOffset_Texture2D_texture_modifierValues;
-    SampledTextureGatherOffset_Texture2D_coordinate.name = "coordinate"_c;
-    SampledTextureGatherOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureGatherOffset_Texture2D_component.name = "component"_c;
-    SampledTextureGatherOffset_Texture2D_component.type = Type::FullType{ Int32Type.name };
-    SampledTextureGatherOffset_Texture2D_offset.name = "offset"_c;
-    SampledTextureGatherOffset_Texture2D_offset.type = Type::FullType{ Int32x2Type.name };
-    SampledTextureGatherOffset_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
-    SampledTextureGatherOffset_Texture2D.name = SampledTextureGatherOffset_Texture2D_name;
-    SampledTextureGatherOffset_Texture2D.backendIndex = 2489;
-    SampledTextureGatherOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureGatherOffset_Texture2D.parameters = SampledTextureGatherOffset_Texture2D_args;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D_texture)->typeSymbol = &SampledTexture2DType;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D)->signature = "textureGatherOffset(uniform *textureSampled2D,f32x2,i32,i32x2) f32x4"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D)->name = "textureGatherOffset(uniform *textureSampled2D,f32x2,i32,i32x2)"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D)->nameWithVarNames = "textureGatherOffset(texture : uniform *textureSampled2D, coordinate : f32x2, component : i32, offset : i32x2)"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGather with TextureCube, Sampler, Float32x3, Int32
-    TextureGather_TextureCube_texture.name = "texture"_c;
-    TextureGather_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGather_TextureCube_texture.type.modifiers = TextureGather_TextureCube_texture_modifiers;
-    TextureGather_TextureCube_texture.type.modifierValues = TextureGather_TextureCube_texture_modifierValues;
-    TextureGather_TextureCube_sampler.name = "sampler"_c;
-    TextureGather_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGather_TextureCube_sampler.type.modifiers = TextureGather_TextureCube_sampler_modifiers;
-    TextureGather_TextureCube_sampler.type.modifierValues = TextureGather_TextureCube_sampler_modifierValues;
-    TextureGather_TextureCube_coordinate.name = "coordinate"_c;
-    TextureGather_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGather_TextureCube_component.name = "component"_c;
-    TextureGather_TextureCube_component.type = Type::FullType{ Int32Type.name };
-    TextureGather_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
-    TextureGather_TextureCube.name = TextureGather_TextureCube_name;
-    TextureGather_TextureCube.backendIndex = 2490;
-    TextureGather_TextureCube.returnType = Type::FullType { Float32x4Type.name };
-    TextureGather_TextureCube.parameters = TextureGather_TextureCube_args;
-    Symbol::Resolved(&TextureGather_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGather_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_TextureCube_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGather_TextureCube_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGather_TextureCube_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureGather_TextureCube)->signature = "textureGather(uniform *textureCube,uniform *sampler,f32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureGather_TextureCube)->name = "textureGather(uniform *textureCube,uniform *sampler,f32x3,i32)"_c;
-    Symbol::Resolved(&TextureGather_TextureCube)->nameWithVarNames = "textureGather(texture : uniform *textureCube, sampler : uniform *sampler, coordinate : f32x3, component : i32)"_c;
-    Symbol::Resolved(&TextureGather_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGather with SampledTextureCube, Float32x3, Int32
-    SampledTextureGather_TextureCube_texture.name = "texture"_c;
-    SampledTextureGather_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureGather_TextureCube_texture.type.modifiers = SampledTextureGather_TextureCube_texture_modifiers;
-    SampledTextureGather_TextureCube_texture.type.modifierValues = SampledTextureGather_TextureCube_texture_modifierValues;
-    SampledTextureGather_TextureCube_coordinate.name = "coordinate"_c;
-    SampledTextureGather_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGather_TextureCube_component.name = "component"_c;
-    SampledTextureGather_TextureCube_component.type = Type::FullType{ Int32Type.name };
-    SampledTextureGather_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
-    SampledTextureGather_TextureCube.name = SampledTextureGather_TextureCube_name;
-    SampledTextureGather_TextureCube.backendIndex = 2491;
-    SampledTextureGather_TextureCube.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureGather_TextureCube.parameters = SampledTextureGather_TextureCube_args;
-    Symbol::Resolved(&SampledTextureGather_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
-    Symbol::Resolved(&SampledTextureGather_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGather_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGather_TextureCube_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SampledTextureGather_TextureCube)->signature = "textureGather(uniform *textureSampledCube,f32x3,i32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureGather_TextureCube)->name = "textureGather(uniform *textureSampledCube,f32x3,i32)"_c;
-    Symbol::Resolved(&SampledTextureGather_TextureCube)->nameWithVarNames = "textureGather(texture : uniform *textureSampledCube, coordinate : f32x3, component : i32)"_c;
-    Symbol::Resolved(&SampledTextureGather_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGatherOffset with TextureCube, Sampler, Float32x3, Int32, Int32x2
-    TextureGatherOffset_TextureCube_texture.name = "texture"_c;
-    TextureGatherOffset_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGatherOffset_TextureCube_texture.type.modifiers = TextureGatherOffset_TextureCube_texture_modifiers;
-    TextureGatherOffset_TextureCube_texture.type.modifierValues = TextureGatherOffset_TextureCube_texture_modifierValues;
-    TextureGatherOffset_TextureCube_sampler.name = "sampler"_c;
-    TextureGatherOffset_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGatherOffset_TextureCube_sampler.type.modifiers = TextureGatherOffset_TextureCube_sampler_modifiers;
-    TextureGatherOffset_TextureCube_sampler.type.modifierValues = TextureGatherOffset_TextureCube_sampler_modifierValues;
-    TextureGatherOffset_TextureCube_coordinate.name = "coordinate"_c;
-    TextureGatherOffset_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGatherOffset_TextureCube_component.name = "component"_c;
-    TextureGatherOffset_TextureCube_component.type = Type::FullType{ Int32Type.name };
-    TextureGatherOffset_TextureCube_offset.name = "offset"_c;
-    TextureGatherOffset_TextureCube_offset.type = Type::FullType{ Int32x2Type.name };
-    TextureGatherOffset_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
-    TextureGatherOffset_TextureCube.name = TextureGatherOffset_TextureCube_name;
-    TextureGatherOffset_TextureCube.backendIndex = 2492;
-    TextureGatherOffset_TextureCube.returnType = Type::FullType { Float32x4Type.name };
-    TextureGatherOffset_TextureCube.parameters = TextureGatherOffset_TextureCube_args;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube)->signature = "textureGatherOffset(uniform *textureCube,uniform *sampler,f32x3,i32,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube)->name = "textureGatherOffset(uniform *textureCube,uniform *sampler,f32x3,i32,i32x2)"_c;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube)->nameWithVarNames = "textureGatherOffset(texture : uniform *textureCube, sampler : uniform *sampler, coordinate : f32x3, component : i32, offset : i32x2)"_c;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGatherOffset with SampledTextureCube, Float32x3, Int32, Int32x2
-    SampledTextureGatherOffset_TextureCube_texture.name = "texture"_c;
-    SampledTextureGatherOffset_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureGatherOffset_TextureCube_texture.type.modifiers = SampledTextureGatherOffset_TextureCube_texture_modifiers;
-    SampledTextureGatherOffset_TextureCube_texture.type.modifierValues = SampledTextureGatherOffset_TextureCube_texture_modifierValues;
-    SampledTextureGatherOffset_TextureCube_coordinate.name = "coordinate"_c;
-    SampledTextureGatherOffset_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGatherOffset_TextureCube_component.name = "component"_c;
-    SampledTextureGatherOffset_TextureCube_component.type = Type::FullType{ Int32Type.name };
-    SampledTextureGatherOffset_TextureCube_offset.name = "offset"_c;
-    SampledTextureGatherOffset_TextureCube_offset.type = Type::FullType{ Int32x2Type.name };
-    SampledTextureGatherOffset_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
-    SampledTextureGatherOffset_TextureCube.name = SampledTextureGatherOffset_TextureCube_name;
-    SampledTextureGatherOffset_TextureCube.backendIndex = 2493;
-    SampledTextureGatherOffset_TextureCube.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureGatherOffset_TextureCube.parameters = SampledTextureGatherOffset_TextureCube_args;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube_texture)->typeSymbol = &SampledTextureCubeType;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube)->signature = "textureGatherOffset(uniform *textureSampledCube,f32x3,i32,i32x2) f32x4"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube)->name = "textureGatherOffset(uniform *textureSampledCube,f32x3,i32,i32x2)"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube)->nameWithVarNames = "textureGatherOffset(texture : uniform *textureSampledCube, coordinate : f32x3, component : i32, offset : i32x2)"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGather with Texture2DArray, Sampler, Float32x3, Int32
-    TextureGather_Texture2DArray_texture.name = "texture"_c;
-    TextureGather_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGather_Texture2DArray_texture.type.modifiers = TextureGather_Texture2DArray_texture_modifiers;
-    TextureGather_Texture2DArray_texture.type.modifierValues = TextureGather_Texture2DArray_texture_modifierValues;
-    TextureGather_Texture2DArray_sampler.name = "sampler"_c;
-    TextureGather_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGather_Texture2DArray_sampler.type.modifiers = TextureGather_Texture2DArray_sampler_modifiers;
-    TextureGather_Texture2DArray_sampler.type.modifierValues = TextureGather_Texture2DArray_sampler_modifierValues;
-    TextureGather_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureGather_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGather_Texture2DArray_component.name = "component"_c;
-    TextureGather_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
-    TextureGather_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
-    TextureGather_Texture2DArray.name = TextureGather_Texture2DArray_name;
-    TextureGather_Texture2DArray.backendIndex = 2494;
-    TextureGather_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureGather_Texture2DArray.parameters = TextureGather_Texture2DArray_args;
-    Symbol::Resolved(&TextureGather_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGather_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_Texture2DArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGather_Texture2DArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGather_Texture2DArray_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureGather_Texture2DArray)->signature = "textureGather(uniform *texture2DArray,uniform *sampler,f32x3,i32) f32x4"_c;
-    Symbol::Resolved(&TextureGather_Texture2DArray)->name = "textureGather(uniform *texture2DArray,uniform *sampler,f32x3,i32)"_c;
-    Symbol::Resolved(&TextureGather_Texture2DArray)->nameWithVarNames = "textureGather(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, component : i32)"_c;
-    Symbol::Resolved(&TextureGather_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGather with SampledTexture2DArray, Float32x3, Int32
-    SampledTextureGather_Texture2DArray_texture.name = "texture"_c;
-    SampledTextureGather_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureGather_Texture2DArray_texture.type.modifiers = SampledTextureGather_Texture2DArray_texture_modifiers;
-    SampledTextureGather_Texture2DArray_texture.type.modifierValues = SampledTextureGather_Texture2DArray_texture_modifierValues;
-    SampledTextureGather_Texture2DArray_coordinate.name = "coordinate"_c;
-    SampledTextureGather_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGather_Texture2DArray_component.name = "component"_c;
-    SampledTextureGather_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
-    SampledTextureGather_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
-    SampledTextureGather_Texture2DArray.name = SampledTextureGather_Texture2DArray_name;
-    SampledTextureGather_Texture2DArray.backendIndex = 2495;
-    SampledTextureGather_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureGather_Texture2DArray.parameters = SampledTextureGather_Texture2DArray_args;
-    Symbol::Resolved(&SampledTextureGather_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
-    Symbol::Resolved(&SampledTextureGather_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGather_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGather_Texture2DArray_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SampledTextureGather_Texture2DArray)->signature = "textureGather(uniform *textureSampled2DArray,f32x3,i32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureGather_Texture2DArray)->name = "textureGather(uniform *textureSampled2DArray,f32x3,i32)"_c;
-    Symbol::Resolved(&SampledTextureGather_Texture2DArray)->nameWithVarNames = "textureGather(texture : uniform *textureSampled2DArray, coordinate : f32x3, component : i32)"_c;
-    Symbol::Resolved(&SampledTextureGather_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGatherOffset with Texture2DArray, Sampler, Float32x3, Int32, Int32x2
-    TextureGatherOffset_Texture2DArray_texture.name = "texture"_c;
-    TextureGatherOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGatherOffset_Texture2DArray_texture.type.modifiers = TextureGatherOffset_Texture2DArray_texture_modifiers;
-    TextureGatherOffset_Texture2DArray_texture.type.modifierValues = TextureGatherOffset_Texture2DArray_texture_modifierValues;
-    TextureGatherOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureGatherOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGatherOffset_Texture2DArray_sampler.type.modifiers = TextureGatherOffset_Texture2DArray_sampler_modifiers;
-    TextureGatherOffset_Texture2DArray_sampler.type.modifierValues = TextureGatherOffset_Texture2DArray_sampler_modifierValues;
-    TextureGatherOffset_Texture2DArray_coordinate.name = "coordinate"_c;
-    TextureGatherOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureGatherOffset_Texture2DArray_component.name = "component"_c;
-    TextureGatherOffset_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
-    TextureGatherOffset_Texture2DArray_offset.name = "offset"_c;
-    TextureGatherOffset_Texture2DArray_offset.type = Type::FullType{ Int32x2Type.name };
-    TextureGatherOffset_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
-    TextureGatherOffset_Texture2DArray.name = TextureGatherOffset_Texture2DArray_name;
-    TextureGatherOffset_Texture2DArray.backendIndex = 2496;
-    TextureGatherOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureGatherOffset_Texture2DArray.parameters = TextureGatherOffset_Texture2DArray_args;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray)->signature = "textureGatherOffset(uniform *texture2DArray,uniform *sampler,f32x3,i32,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray)->name = "textureGatherOffset(uniform *texture2DArray,uniform *sampler,f32x3,i32,i32x2)"_c;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray)->nameWithVarNames = "textureGatherOffset(texture : uniform *texture2DArray, sampler : uniform *sampler, coordinate : f32x3, component : i32, offset : i32x2)"_c;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGatherOffset with SampledTexture2DArray, Float32x3, Int32, Int32x2
-    SampledTextureGatherOffset_Texture2DArray_texture.name = "texture"_c;
-    SampledTextureGatherOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureGatherOffset_Texture2DArray_texture.type.modifiers = SampledTextureGatherOffset_Texture2DArray_texture_modifiers;
-    SampledTextureGatherOffset_Texture2DArray_texture.type.modifierValues = SampledTextureGatherOffset_Texture2DArray_texture_modifierValues;
-    SampledTextureGatherOffset_Texture2DArray_coordinate.name = "coordinate"_c;
-    SampledTextureGatherOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureGatherOffset_Texture2DArray_component.name = "component"_c;
-    SampledTextureGatherOffset_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
-    SampledTextureGatherOffset_Texture2DArray_offset.name = "offset"_c;
-    SampledTextureGatherOffset_Texture2DArray_offset.type = Type::FullType{ Int32x2Type.name };
-    SampledTextureGatherOffset_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
-    SampledTextureGatherOffset_Texture2DArray.name = SampledTextureGatherOffset_Texture2DArray_name;
-    SampledTextureGatherOffset_Texture2DArray.backendIndex = 2497;
-    SampledTextureGatherOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureGatherOffset_Texture2DArray.parameters = SampledTextureGatherOffset_Texture2DArray_args;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray_texture)->typeSymbol = &SampledTexture2DArrayType;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray)->signature = "textureGatherOffset(uniform *textureSampled2DArray,f32x3,i32,i32x2) f32x4"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray)->name = "textureGatherOffset(uniform *textureSampled2DArray,f32x3,i32,i32x2)"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray)->nameWithVarNames = "textureGatherOffset(texture : uniform *textureSampled2DArray, coordinate : f32x3, component : i32, offset : i32x2)"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGather with TextureCubeArray, Sampler, Float32x4, Int32
-    TextureGather_TextureCubeArray_texture.name = "texture"_c;
-    TextureGather_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGather_TextureCubeArray_texture.type.modifiers = TextureGather_TextureCubeArray_texture_modifiers;
-    TextureGather_TextureCubeArray_texture.type.modifierValues = TextureGather_TextureCubeArray_texture_modifierValues;
-    TextureGather_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureGather_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGather_TextureCubeArray_sampler.type.modifiers = TextureGather_TextureCubeArray_sampler_modifiers;
-    TextureGather_TextureCubeArray_sampler.type.modifierValues = TextureGather_TextureCubeArray_sampler_modifierValues;
-    TextureGather_TextureCubeArray_coordinate.name = "coordinate"_c;
-    TextureGather_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
-    TextureGather_TextureCubeArray_component.name = "component"_c;
-    TextureGather_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
-    TextureGather_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
-    TextureGather_TextureCubeArray.name = TextureGather_TextureCubeArray_name;
-    TextureGather_TextureCubeArray.backendIndex = 2498;
-    TextureGather_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureGather_TextureCubeArray.parameters = TextureGather_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGather_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGather_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGather_TextureCubeArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureGather_TextureCubeArray_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureGather_TextureCubeArray)->signature = "textureGather(uniform *textureCubeArray,uniform *sampler,f32x4,i32) f32x4"_c;
-    Symbol::Resolved(&TextureGather_TextureCubeArray)->name = "textureGather(uniform *textureCubeArray,uniform *sampler,f32x4,i32)"_c;
-    Symbol::Resolved(&TextureGather_TextureCubeArray)->nameWithVarNames = "textureGather(texture : uniform *textureCubeArray, sampler : uniform *sampler, coordinate : f32x4, component : i32)"_c;
-    Symbol::Resolved(&TextureGather_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGather with SampledTextureCubeArray, Float32x4, Int32
-    SampledTextureGather_TextureCubeArray_texture.name = "texture"_c;
-    SampledTextureGather_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureGather_TextureCubeArray_texture.type.modifiers = SampledTextureGather_TextureCubeArray_texture_modifiers;
-    SampledTextureGather_TextureCubeArray_texture.type.modifierValues = SampledTextureGather_TextureCubeArray_texture_modifierValues;
-    SampledTextureGather_TextureCubeArray_coordinate.name = "coordinate"_c;
-    SampledTextureGather_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
-    SampledTextureGather_TextureCubeArray_component.name = "component"_c;
-    SampledTextureGather_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
-    SampledTextureGather_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
-    SampledTextureGather_TextureCubeArray.name = SampledTextureGather_TextureCubeArray_name;
-    SampledTextureGather_TextureCubeArray.backendIndex = 2499;
-    SampledTextureGather_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureGather_TextureCubeArray.parameters = SampledTextureGather_TextureCubeArray_args;
-    Symbol::Resolved(&SampledTextureGather_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
-    Symbol::Resolved(&SampledTextureGather_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGather_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&SampledTextureGather_TextureCubeArray_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SampledTextureGather_TextureCubeArray)->signature = "textureGather(uniform *textureSampledCubeArray,f32x4,i32) f32x4"_c;
-    Symbol::Resolved(&SampledTextureGather_TextureCubeArray)->name = "textureGather(uniform *textureSampledCubeArray,f32x4,i32)"_c;
-    Symbol::Resolved(&SampledTextureGather_TextureCubeArray)->nameWithVarNames = "textureGather(texture : uniform *textureSampledCubeArray, coordinate : f32x4, component : i32)"_c;
-    Symbol::Resolved(&SampledTextureGather_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGatherOffset with TextureCubeArray, Sampler, Float32x4, Int32, Int32x2
-    TextureGatherOffset_TextureCubeArray_texture.name = "texture"_c;
-    TextureGatherOffset_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGatherOffset_TextureCubeArray_texture.type.modifiers = TextureGatherOffset_TextureCubeArray_texture_modifiers;
-    TextureGatherOffset_TextureCubeArray_texture.type.modifierValues = TextureGatherOffset_TextureCubeArray_texture_modifierValues;
-    TextureGatherOffset_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureGatherOffset_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGatherOffset_TextureCubeArray_sampler.type.modifiers = TextureGatherOffset_TextureCubeArray_sampler_modifiers;
-    TextureGatherOffset_TextureCubeArray_sampler.type.modifierValues = TextureGatherOffset_TextureCubeArray_sampler_modifierValues;
-    TextureGatherOffset_TextureCubeArray_coordinate.name = "coordinate"_c;
-    TextureGatherOffset_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
-    TextureGatherOffset_TextureCubeArray_component.name = "component"_c;
-    TextureGatherOffset_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
-    TextureGatherOffset_TextureCubeArray_offset.name = "offset"_c;
-    TextureGatherOffset_TextureCubeArray_offset.type = Type::FullType{ Int32x2Type.name };
-    TextureGatherOffset_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
-    TextureGatherOffset_TextureCubeArray.name = TextureGatherOffset_TextureCubeArray_name;
-    TextureGatherOffset_TextureCubeArray.backendIndex = 2500;
-    TextureGatherOffset_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
-    TextureGatherOffset_TextureCubeArray.parameters = TextureGatherOffset_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_sampler)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray)->signature = "textureGatherOffset(uniform *textureCubeArray,uniform *sampler,f32x4,i32,i32x2) f32x4"_c;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray)->name = "textureGatherOffset(uniform *textureCubeArray,uniform *sampler,f32x4,i32,i32x2)"_c;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray)->nameWithVarNames = "textureGatherOffset(texture : uniform *textureCubeArray, sampler : uniform *sampler, coordinate : f32x4, component : i32, offset : i32x2)"_c;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
-
-    /// textureGatherOffset with SampledTextureCubeArray, Float32x4, Int32, Int32x2
-    SampledTextureGatherOffset_TextureCubeArray_texture.name = "texture"_c;
-    SampledTextureGatherOffset_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureGatherOffset_TextureCubeArray_texture.type.modifiers = SampledTextureGatherOffset_TextureCubeArray_texture_modifiers;
-    SampledTextureGatherOffset_TextureCubeArray_texture.type.modifierValues = SampledTextureGatherOffset_TextureCubeArray_texture_modifierValues;
-    SampledTextureGatherOffset_TextureCubeArray_coordinate.name = "coordinate"_c;
-    SampledTextureGatherOffset_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
-    SampledTextureGatherOffset_TextureCubeArray_component.name = "component"_c;
-    SampledTextureGatherOffset_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
-    SampledTextureGatherOffset_TextureCubeArray_offset.name = "offset"_c;
-    SampledTextureGatherOffset_TextureCubeArray_offset.type = Type::FullType{ Int32x2Type.name };
-    SampledTextureGatherOffset_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
-    SampledTextureGatherOffset_TextureCubeArray.name = SampledTextureGatherOffset_TextureCubeArray_name;
-    SampledTextureGatherOffset_TextureCubeArray.backendIndex = 2501;
-    SampledTextureGatherOffset_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
-    SampledTextureGatherOffset_TextureCubeArray.parameters = SampledTextureGatherOffset_TextureCubeArray_args;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray_texture)->typeSymbol = &SampledTextureCubeArrayType;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray_component)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray)->signature = "textureGatherOffset(uniform *textureSampledCubeArray,f32x4,i32,i32x2) f32x4"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray)->name = "textureGatherOffset(uniform *textureSampledCubeArray,f32x4,i32,i32x2)"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray)->nameWithVarNames = "textureGatherOffset(texture : uniform *textureSampledCubeArray, coordinate : f32x4, component : i32, offset : i32x2)"_c;
-    Symbol::Resolved(&SampledTextureGatherOffset_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
+    /// subgroupLogicalAnd with Int16x4, SubgroupOperation
+    SubgroupLogicalAnd_Int16x4_value.name = "value"_c;
+    SubgroupLogicalAnd_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupLogicalAnd_Int16x4_op.name = "operation"_c;
+    SubgroupLogicalAnd_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int16x4.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_Int16x4.name = SubgroupLogicalAnd_Int16x4_name;
+    SubgroupLogicalAnd_Int16x4.backendIndex = 2374;
+    SubgroupLogicalAnd_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupLogicalAnd_Int16x4.parameters = SubgroupLogicalAnd_Int16x4_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->signature = "subgroupLogicalAnd(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->name = "subgroupLogicalAnd(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->nameWithVarNames = "subgroupLogicalAnd(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupLogicalAnd with UInt32, SubgroupOperation
+    SubgroupLogicalAnd_UInt32_value.name = "value"_c;
+    SubgroupLogicalAnd_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupLogicalAnd_UInt32_op.name = "operation"_c;
+    SubgroupLogicalAnd_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt32.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_UInt32.name = SubgroupLogicalAnd_UInt32_name;
+    SubgroupLogicalAnd_UInt32.backendIndex = 2375;
+    SubgroupLogicalAnd_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupLogicalAnd_UInt32.parameters = SubgroupLogicalAnd_UInt32_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->signature = "subgroupLogicalAnd(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->name = "subgroupLogicalAnd(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->nameWithVarNames = "subgroupLogicalAnd(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupLogicalAnd with UInt32x2, SubgroupOperation
+    SubgroupLogicalAnd_UInt32x2_value.name = "value"_c;
+    SubgroupLogicalAnd_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupLogicalAnd_UInt32x2_op.name = "operation"_c;
+    SubgroupLogicalAnd_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt32x2.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_UInt32x2.name = SubgroupLogicalAnd_UInt32x2_name;
+    SubgroupLogicalAnd_UInt32x2.backendIndex = 2376;
+    SubgroupLogicalAnd_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupLogicalAnd_UInt32x2.parameters = SubgroupLogicalAnd_UInt32x2_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->signature = "subgroupLogicalAnd(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->name = "subgroupLogicalAnd(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->nameWithVarNames = "subgroupLogicalAnd(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupLogicalAnd with UInt32x3, SubgroupOperation
+    SubgroupLogicalAnd_UInt32x3_value.name = "value"_c;
+    SubgroupLogicalAnd_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupLogicalAnd_UInt32x3_op.name = "operation"_c;
+    SubgroupLogicalAnd_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt32x3.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_UInt32x3.name = SubgroupLogicalAnd_UInt32x3_name;
+    SubgroupLogicalAnd_UInt32x3.backendIndex = 2377;
+    SubgroupLogicalAnd_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupLogicalAnd_UInt32x3.parameters = SubgroupLogicalAnd_UInt32x3_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->signature = "subgroupLogicalAnd(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->name = "subgroupLogicalAnd(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->nameWithVarNames = "subgroupLogicalAnd(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupLogicalAnd with UInt32x4, SubgroupOperation
+    SubgroupLogicalAnd_UInt32x4_value.name = "value"_c;
+    SubgroupLogicalAnd_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupLogicalAnd_UInt32x4_op.name = "operation"_c;
+    SubgroupLogicalAnd_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt32x4.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_UInt32x4.name = SubgroupLogicalAnd_UInt32x4_name;
+    SubgroupLogicalAnd_UInt32x4.backendIndex = 2378;
+    SubgroupLogicalAnd_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupLogicalAnd_UInt32x4.parameters = SubgroupLogicalAnd_UInt32x4_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->signature = "subgroupLogicalAnd(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->name = "subgroupLogicalAnd(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->nameWithVarNames = "subgroupLogicalAnd(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupLogicalAnd with UInt16, SubgroupOperation
+    SubgroupLogicalAnd_UInt16_value.name = "value"_c;
+    SubgroupLogicalAnd_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupLogicalAnd_UInt16_op.name = "operation"_c;
+    SubgroupLogicalAnd_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt16.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_UInt16.name = SubgroupLogicalAnd_UInt16_name;
+    SubgroupLogicalAnd_UInt16.backendIndex = 2379;
+    SubgroupLogicalAnd_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupLogicalAnd_UInt16.parameters = SubgroupLogicalAnd_UInt16_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->signature = "subgroupLogicalAnd(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->name = "subgroupLogicalAnd(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->nameWithVarNames = "subgroupLogicalAnd(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupLogicalAnd with UInt16x2, SubgroupOperation
+    SubgroupLogicalAnd_UInt16x2_value.name = "value"_c;
+    SubgroupLogicalAnd_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupLogicalAnd_UInt16x2_op.name = "operation"_c;
+    SubgroupLogicalAnd_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt16x2.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_UInt16x2.name = SubgroupLogicalAnd_UInt16x2_name;
+    SubgroupLogicalAnd_UInt16x2.backendIndex = 2380;
+    SubgroupLogicalAnd_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupLogicalAnd_UInt16x2.parameters = SubgroupLogicalAnd_UInt16x2_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->signature = "subgroupLogicalAnd(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->name = "subgroupLogicalAnd(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->nameWithVarNames = "subgroupLogicalAnd(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupLogicalAnd with UInt16x3, SubgroupOperation
+    SubgroupLogicalAnd_UInt16x3_value.name = "value"_c;
+    SubgroupLogicalAnd_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupLogicalAnd_UInt16x3_op.name = "operation"_c;
+    SubgroupLogicalAnd_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt16x3.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_UInt16x3.name = SubgroupLogicalAnd_UInt16x3_name;
+    SubgroupLogicalAnd_UInt16x3.backendIndex = 2381;
+    SubgroupLogicalAnd_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupLogicalAnd_UInt16x3.parameters = SubgroupLogicalAnd_UInt16x3_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->signature = "subgroupLogicalAnd(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->name = "subgroupLogicalAnd(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->nameWithVarNames = "subgroupLogicalAnd(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupLogicalAnd with UInt16x4, SubgroupOperation
+    SubgroupLogicalAnd_UInt16x4_value.name = "value"_c;
+    SubgroupLogicalAnd_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupLogicalAnd_UInt16x4_op.name = "operation"_c;
+    SubgroupLogicalAnd_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt16x4.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_UInt16x4.name = SubgroupLogicalAnd_UInt16x4_name;
+    SubgroupLogicalAnd_UInt16x4.backendIndex = 2382;
+    SubgroupLogicalAnd_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupLogicalAnd_UInt16x4.parameters = SubgroupLogicalAnd_UInt16x4_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->signature = "subgroupLogicalAnd(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->name = "subgroupLogicalAnd(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->nameWithVarNames = "subgroupLogicalAnd(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupLogicalOr with Int32, SubgroupOperation
+    SubgroupLogicalOr_Int32_value.name = "value"_c;
+    SubgroupLogicalOr_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupLogicalOr_Int32_op.name = "operation"_c;
+    SubgroupLogicalOr_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int32.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_Int32.name = SubgroupLogicalOr_Int32_name;
+    SubgroupLogicalOr_Int32.backendIndex = 2383;
+    SubgroupLogicalOr_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupLogicalOr_Int32.parameters = SubgroupLogicalOr_Int32_args;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32)->signature = "subgroupLogicalOr(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32)->name = "subgroupLogicalOr(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32)->nameWithVarNames = "subgroupLogicalOr(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupLogicalOr with Int32x2, SubgroupOperation
+    SubgroupLogicalOr_Int32x2_value.name = "value"_c;
+    SubgroupLogicalOr_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupLogicalOr_Int32x2_op.name = "operation"_c;
+    SubgroupLogicalOr_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int32x2.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_Int32x2.name = SubgroupLogicalOr_Int32x2_name;
+    SubgroupLogicalOr_Int32x2.backendIndex = 2384;
+    SubgroupLogicalOr_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupLogicalOr_Int32x2.parameters = SubgroupLogicalOr_Int32x2_args;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->signature = "subgroupLogicalOr(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->name = "subgroupLogicalOr(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->nameWithVarNames = "subgroupLogicalOr(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupLogicalOr with Int32x3, SubgroupOperation
+    SubgroupLogicalOr_Int32x3_value.name = "value"_c;
+    SubgroupLogicalOr_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupLogicalOr_Int32x3_op.name = "operation"_c;
+    SubgroupLogicalOr_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int32x3.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_Int32x3.name = SubgroupLogicalOr_Int32x3_name;
+    SubgroupLogicalOr_Int32x3.backendIndex = 2385;
+    SubgroupLogicalOr_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupLogicalOr_Int32x3.parameters = SubgroupLogicalOr_Int32x3_args;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->signature = "subgroupLogicalOr(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->name = "subgroupLogicalOr(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->nameWithVarNames = "subgroupLogicalOr(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupLogicalOr with Int32x4, SubgroupOperation
+    SubgroupLogicalOr_Int32x4_value.name = "value"_c;
+    SubgroupLogicalOr_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupLogicalOr_Int32x4_op.name = "operation"_c;
+    SubgroupLogicalOr_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int32x4.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_Int32x4.name = SubgroupLogicalOr_Int32x4_name;
+    SubgroupLogicalOr_Int32x4.backendIndex = 2386;
+    SubgroupLogicalOr_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupLogicalOr_Int32x4.parameters = SubgroupLogicalOr_Int32x4_args;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->signature = "subgroupLogicalOr(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->name = "subgroupLogicalOr(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->nameWithVarNames = "subgroupLogicalOr(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupLogicalOr with Int16, SubgroupOperation
+    SubgroupLogicalOr_Int16_value.name = "value"_c;
+    SubgroupLogicalOr_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupLogicalOr_Int16_op.name = "operation"_c;
+    SubgroupLogicalOr_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int16.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_Int16.name = SubgroupLogicalOr_Int16_name;
+    SubgroupLogicalOr_Int16.backendIndex = 2387;
+    SubgroupLogicalOr_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupLogicalOr_Int16.parameters = SubgroupLogicalOr_Int16_args;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16)->signature = "subgroupLogicalOr(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16)->name = "subgroupLogicalOr(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16)->nameWithVarNames = "subgroupLogicalOr(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupLogicalOr with Int16x2, SubgroupOperation
+    SubgroupLogicalOr_Int16x2_value.name = "value"_c;
+    SubgroupLogicalOr_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupLogicalOr_Int16x2_op.name = "operation"_c;
+    SubgroupLogicalOr_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int16x2.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_Int16x2.name = SubgroupLogicalOr_Int16x2_name;
+    SubgroupLogicalOr_Int16x2.backendIndex = 2388;
+    SubgroupLogicalOr_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupLogicalOr_Int16x2.parameters = SubgroupLogicalOr_Int16x2_args;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->signature = "subgroupLogicalOr(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->name = "subgroupLogicalOr(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->nameWithVarNames = "subgroupLogicalOr(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupLogicalOr with Int16x3, SubgroupOperation
+    SubgroupLogicalOr_Int16x3_value.name = "value"_c;
+    SubgroupLogicalOr_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupLogicalOr_Int16x3_op.name = "operation"_c;
+    SubgroupLogicalOr_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int16x3.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_Int16x3.name = SubgroupLogicalOr_Int16x3_name;
+    SubgroupLogicalOr_Int16x3.backendIndex = 2389;
+    SubgroupLogicalOr_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupLogicalOr_Int16x3.parameters = SubgroupLogicalOr_Int16x3_args;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->signature = "subgroupLogicalOr(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->name = "subgroupLogicalOr(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->nameWithVarNames = "subgroupLogicalOr(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupLogicalOr with Int16x4, SubgroupOperation
+    SubgroupLogicalOr_Int16x4_value.name = "value"_c;
+    SubgroupLogicalOr_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupLogicalOr_Int16x4_op.name = "operation"_c;
+    SubgroupLogicalOr_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int16x4.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_Int16x4.name = SubgroupLogicalOr_Int16x4_name;
+    SubgroupLogicalOr_Int16x4.backendIndex = 2390;
+    SubgroupLogicalOr_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupLogicalOr_Int16x4.parameters = SubgroupLogicalOr_Int16x4_args;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->signature = "subgroupLogicalOr(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->name = "subgroupLogicalOr(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->nameWithVarNames = "subgroupLogicalOr(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupLogicalOr with UInt32, SubgroupOperation
+    SubgroupLogicalOr_UInt32_value.name = "value"_c;
+    SubgroupLogicalOr_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupLogicalOr_UInt32_op.name = "operation"_c;
+    SubgroupLogicalOr_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt32.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_UInt32.name = SubgroupLogicalOr_UInt32_name;
+    SubgroupLogicalOr_UInt32.backendIndex = 2391;
+    SubgroupLogicalOr_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupLogicalOr_UInt32.parameters = SubgroupLogicalOr_UInt32_args;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->signature = "subgroupLogicalOr(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->name = "subgroupLogicalOr(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->nameWithVarNames = "subgroupLogicalOr(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupLogicalOr with UInt32x2, SubgroupOperation
+    SubgroupLogicalOr_UInt32x2_value.name = "value"_c;
+    SubgroupLogicalOr_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupLogicalOr_UInt32x2_op.name = "operation"_c;
+    SubgroupLogicalOr_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt32x2.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_UInt32x2.name = SubgroupLogicalOr_UInt32x2_name;
+    SubgroupLogicalOr_UInt32x2.backendIndex = 2392;
+    SubgroupLogicalOr_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupLogicalOr_UInt32x2.parameters = SubgroupLogicalOr_UInt32x2_args;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->signature = "subgroupLogicalOr(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->name = "subgroupLogicalOr(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->nameWithVarNames = "subgroupLogicalOr(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupLogicalOr with UInt32x3, SubgroupOperation
+    SubgroupLogicalOr_UInt32x3_value.name = "value"_c;
+    SubgroupLogicalOr_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupLogicalOr_UInt32x3_op.name = "operation"_c;
+    SubgroupLogicalOr_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt32x3.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_UInt32x3.name = SubgroupLogicalOr_UInt32x3_name;
+    SubgroupLogicalOr_UInt32x3.backendIndex = 2393;
+    SubgroupLogicalOr_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupLogicalOr_UInt32x3.parameters = SubgroupLogicalOr_UInt32x3_args;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->signature = "subgroupLogicalOr(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->name = "subgroupLogicalOr(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->nameWithVarNames = "subgroupLogicalOr(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupLogicalOr with UInt32x4, SubgroupOperation
+    SubgroupLogicalOr_UInt32x4_value.name = "value"_c;
+    SubgroupLogicalOr_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupLogicalOr_UInt32x4_op.name = "operation"_c;
+    SubgroupLogicalOr_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt32x4.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_UInt32x4.name = SubgroupLogicalOr_UInt32x4_name;
+    SubgroupLogicalOr_UInt32x4.backendIndex = 2394;
+    SubgroupLogicalOr_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupLogicalOr_UInt32x4.parameters = SubgroupLogicalOr_UInt32x4_args;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->signature = "subgroupLogicalOr(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->name = "subgroupLogicalOr(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->nameWithVarNames = "subgroupLogicalOr(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupLogicalOr with UInt16, SubgroupOperation
+    SubgroupLogicalOr_UInt16_value.name = "value"_c;
+    SubgroupLogicalOr_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupLogicalOr_UInt16_op.name = "operation"_c;
+    SubgroupLogicalOr_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt16.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_UInt16.name = SubgroupLogicalOr_UInt16_name;
+    SubgroupLogicalOr_UInt16.backendIndex = 2395;
+    SubgroupLogicalOr_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupLogicalOr_UInt16.parameters = SubgroupLogicalOr_UInt16_args;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->signature = "subgroupLogicalOr(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->name = "subgroupLogicalOr(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->nameWithVarNames = "subgroupLogicalOr(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupLogicalOr with UInt16x2, SubgroupOperation
+    SubgroupLogicalOr_UInt16x2_value.name = "value"_c;
+    SubgroupLogicalOr_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupLogicalOr_UInt16x2_op.name = "operation"_c;
+    SubgroupLogicalOr_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt16x2.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_UInt16x2.name = SubgroupLogicalOr_UInt16x2_name;
+    SubgroupLogicalOr_UInt16x2.backendIndex = 2396;
+    SubgroupLogicalOr_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupLogicalOr_UInt16x2.parameters = SubgroupLogicalOr_UInt16x2_args;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->signature = "subgroupLogicalOr(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->name = "subgroupLogicalOr(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->nameWithVarNames = "subgroupLogicalOr(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupLogicalOr with UInt16x3, SubgroupOperation
+    SubgroupLogicalOr_UInt16x3_value.name = "value"_c;
+    SubgroupLogicalOr_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupLogicalOr_UInt16x3_op.name = "operation"_c;
+    SubgroupLogicalOr_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt16x3.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_UInt16x3.name = SubgroupLogicalOr_UInt16x3_name;
+    SubgroupLogicalOr_UInt16x3.backendIndex = 2397;
+    SubgroupLogicalOr_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupLogicalOr_UInt16x3.parameters = SubgroupLogicalOr_UInt16x3_args;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->signature = "subgroupLogicalOr(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->name = "subgroupLogicalOr(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->nameWithVarNames = "subgroupLogicalOr(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupLogicalOr with UInt16x4, SubgroupOperation
+    SubgroupLogicalOr_UInt16x4_value.name = "value"_c;
+    SubgroupLogicalOr_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupLogicalOr_UInt16x4_op.name = "operation"_c;
+    SubgroupLogicalOr_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt16x4.documentation = "Perform logical OR across all subgroups"_c;
+    SubgroupLogicalOr_UInt16x4.name = SubgroupLogicalOr_UInt16x4_name;
+    SubgroupLogicalOr_UInt16x4.backendIndex = 2398;
+    SubgroupLogicalOr_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupLogicalOr_UInt16x4.parameters = SubgroupLogicalOr_UInt16x4_args;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->signature = "subgroupLogicalOr(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->name = "subgroupLogicalOr(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->nameWithVarNames = "subgroupLogicalOr(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupLogicalXor with Int32, SubgroupOperation
+    SubgroupLogicalXor_Int32_value.name = "value"_c;
+    SubgroupLogicalXor_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupLogicalXor_Int32_op.name = "operation"_c;
+    SubgroupLogicalXor_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int32.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_Int32.name = SubgroupLogicalXor_Int32_name;
+    SubgroupLogicalXor_Int32.backendIndex = 2399;
+    SubgroupLogicalXor_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupLogicalXor_Int32.parameters = SubgroupLogicalXor_Int32_args;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32)->signature = "subgroupLogicalXor(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32)->name = "subgroupLogicalXor(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32)->nameWithVarNames = "subgroupLogicalXor(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupLogicalXor with Int32x2, SubgroupOperation
+    SubgroupLogicalXor_Int32x2_value.name = "value"_c;
+    SubgroupLogicalXor_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupLogicalXor_Int32x2_op.name = "operation"_c;
+    SubgroupLogicalXor_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int32x2.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_Int32x2.name = SubgroupLogicalXor_Int32x2_name;
+    SubgroupLogicalXor_Int32x2.backendIndex = 2400;
+    SubgroupLogicalXor_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupLogicalXor_Int32x2.parameters = SubgroupLogicalXor_Int32x2_args;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->signature = "subgroupLogicalXor(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->name = "subgroupLogicalXor(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->nameWithVarNames = "subgroupLogicalXor(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupLogicalXor with Int32x3, SubgroupOperation
+    SubgroupLogicalXor_Int32x3_value.name = "value"_c;
+    SubgroupLogicalXor_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupLogicalXor_Int32x3_op.name = "operation"_c;
+    SubgroupLogicalXor_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int32x3.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_Int32x3.name = SubgroupLogicalXor_Int32x3_name;
+    SubgroupLogicalXor_Int32x3.backendIndex = 2401;
+    SubgroupLogicalXor_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupLogicalXor_Int32x3.parameters = SubgroupLogicalXor_Int32x3_args;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->signature = "subgroupLogicalXor(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->name = "subgroupLogicalXor(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->nameWithVarNames = "subgroupLogicalXor(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupLogicalXor with Int32x4, SubgroupOperation
+    SubgroupLogicalXor_Int32x4_value.name = "value"_c;
+    SubgroupLogicalXor_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupLogicalXor_Int32x4_op.name = "operation"_c;
+    SubgroupLogicalXor_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int32x4.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_Int32x4.name = SubgroupLogicalXor_Int32x4_name;
+    SubgroupLogicalXor_Int32x4.backendIndex = 2402;
+    SubgroupLogicalXor_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupLogicalXor_Int32x4.parameters = SubgroupLogicalXor_Int32x4_args;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->signature = "subgroupLogicalXor(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->name = "subgroupLogicalXor(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->nameWithVarNames = "subgroupLogicalXor(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupLogicalXor with Int16, SubgroupOperation
+    SubgroupLogicalXor_Int16_value.name = "value"_c;
+    SubgroupLogicalXor_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupLogicalXor_Int16_op.name = "operation"_c;
+    SubgroupLogicalXor_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int16.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_Int16.name = SubgroupLogicalXor_Int16_name;
+    SubgroupLogicalXor_Int16.backendIndex = 2403;
+    SubgroupLogicalXor_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupLogicalXor_Int16.parameters = SubgroupLogicalXor_Int16_args;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16)->signature = "subgroupLogicalXor(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16)->name = "subgroupLogicalXor(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16)->nameWithVarNames = "subgroupLogicalXor(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupLogicalXor with Int16x2, SubgroupOperation
+    SubgroupLogicalXor_Int16x2_value.name = "value"_c;
+    SubgroupLogicalXor_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupLogicalXor_Int16x2_op.name = "operation"_c;
+    SubgroupLogicalXor_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int16x2.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_Int16x2.name = SubgroupLogicalXor_Int16x2_name;
+    SubgroupLogicalXor_Int16x2.backendIndex = 2404;
+    SubgroupLogicalXor_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupLogicalXor_Int16x2.parameters = SubgroupLogicalXor_Int16x2_args;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->signature = "subgroupLogicalXor(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->name = "subgroupLogicalXor(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->nameWithVarNames = "subgroupLogicalXor(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupLogicalXor with Int16x3, SubgroupOperation
+    SubgroupLogicalXor_Int16x3_value.name = "value"_c;
+    SubgroupLogicalXor_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupLogicalXor_Int16x3_op.name = "operation"_c;
+    SubgroupLogicalXor_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int16x3.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_Int16x3.name = SubgroupLogicalXor_Int16x3_name;
+    SubgroupLogicalXor_Int16x3.backendIndex = 2405;
+    SubgroupLogicalXor_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupLogicalXor_Int16x3.parameters = SubgroupLogicalXor_Int16x3_args;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->signature = "subgroupLogicalXor(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->name = "subgroupLogicalXor(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->nameWithVarNames = "subgroupLogicalXor(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupLogicalXor with Int16x4, SubgroupOperation
+    SubgroupLogicalXor_Int16x4_value.name = "value"_c;
+    SubgroupLogicalXor_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupLogicalXor_Int16x4_op.name = "operation"_c;
+    SubgroupLogicalXor_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int16x4.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_Int16x4.name = SubgroupLogicalXor_Int16x4_name;
+    SubgroupLogicalXor_Int16x4.backendIndex = 2406;
+    SubgroupLogicalXor_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupLogicalXor_Int16x4.parameters = SubgroupLogicalXor_Int16x4_args;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->signature = "subgroupLogicalXor(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->name = "subgroupLogicalXor(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->nameWithVarNames = "subgroupLogicalXor(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupLogicalXor with UInt32, SubgroupOperation
+    SubgroupLogicalXor_UInt32_value.name = "value"_c;
+    SubgroupLogicalXor_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupLogicalXor_UInt32_op.name = "operation"_c;
+    SubgroupLogicalXor_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt32.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_UInt32.name = SubgroupLogicalXor_UInt32_name;
+    SubgroupLogicalXor_UInt32.backendIndex = 2407;
+    SubgroupLogicalXor_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupLogicalXor_UInt32.parameters = SubgroupLogicalXor_UInt32_args;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->signature = "subgroupLogicalXor(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->name = "subgroupLogicalXor(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->nameWithVarNames = "subgroupLogicalXor(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupLogicalXor with UInt32x2, SubgroupOperation
+    SubgroupLogicalXor_UInt32x2_value.name = "value"_c;
+    SubgroupLogicalXor_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupLogicalXor_UInt32x2_op.name = "operation"_c;
+    SubgroupLogicalXor_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt32x2.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_UInt32x2.name = SubgroupLogicalXor_UInt32x2_name;
+    SubgroupLogicalXor_UInt32x2.backendIndex = 2408;
+    SubgroupLogicalXor_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupLogicalXor_UInt32x2.parameters = SubgroupLogicalXor_UInt32x2_args;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->signature = "subgroupLogicalXor(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->name = "subgroupLogicalXor(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->nameWithVarNames = "subgroupLogicalXor(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupLogicalXor with UInt32x3, SubgroupOperation
+    SubgroupLogicalXor_UInt32x3_value.name = "value"_c;
+    SubgroupLogicalXor_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupLogicalXor_UInt32x3_op.name = "operation"_c;
+    SubgroupLogicalXor_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt32x3.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_UInt32x3.name = SubgroupLogicalXor_UInt32x3_name;
+    SubgroupLogicalXor_UInt32x3.backendIndex = 2409;
+    SubgroupLogicalXor_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupLogicalXor_UInt32x3.parameters = SubgroupLogicalXor_UInt32x3_args;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->signature = "subgroupLogicalXor(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->name = "subgroupLogicalXor(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->nameWithVarNames = "subgroupLogicalXor(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupLogicalXor with UInt32x4, SubgroupOperation
+    SubgroupLogicalXor_UInt32x4_value.name = "value"_c;
+    SubgroupLogicalXor_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupLogicalXor_UInt32x4_op.name = "operation"_c;
+    SubgroupLogicalXor_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt32x4.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_UInt32x4.name = SubgroupLogicalXor_UInt32x4_name;
+    SubgroupLogicalXor_UInt32x4.backendIndex = 2410;
+    SubgroupLogicalXor_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupLogicalXor_UInt32x4.parameters = SubgroupLogicalXor_UInt32x4_args;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->signature = "subgroupLogicalXor(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->name = "subgroupLogicalXor(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->nameWithVarNames = "subgroupLogicalXor(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupLogicalXor with UInt16, SubgroupOperation
+    SubgroupLogicalXor_UInt16_value.name = "value"_c;
+    SubgroupLogicalXor_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupLogicalXor_UInt16_op.name = "operation"_c;
+    SubgroupLogicalXor_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt16.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_UInt16.name = SubgroupLogicalXor_UInt16_name;
+    SubgroupLogicalXor_UInt16.backendIndex = 2411;
+    SubgroupLogicalXor_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupLogicalXor_UInt16.parameters = SubgroupLogicalXor_UInt16_args;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->signature = "subgroupLogicalXor(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->name = "subgroupLogicalXor(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->nameWithVarNames = "subgroupLogicalXor(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupLogicalXor with UInt16x2, SubgroupOperation
+    SubgroupLogicalXor_UInt16x2_value.name = "value"_c;
+    SubgroupLogicalXor_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupLogicalXor_UInt16x2_op.name = "operation"_c;
+    SubgroupLogicalXor_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt16x2.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_UInt16x2.name = SubgroupLogicalXor_UInt16x2_name;
+    SubgroupLogicalXor_UInt16x2.backendIndex = 2412;
+    SubgroupLogicalXor_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupLogicalXor_UInt16x2.parameters = SubgroupLogicalXor_UInt16x2_args;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->signature = "subgroupLogicalXor(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->name = "subgroupLogicalXor(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->nameWithVarNames = "subgroupLogicalXor(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupLogicalXor with UInt16x3, SubgroupOperation
+    SubgroupLogicalXor_UInt16x3_value.name = "value"_c;
+    SubgroupLogicalXor_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupLogicalXor_UInt16x3_op.name = "operation"_c;
+    SubgroupLogicalXor_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt16x3.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_UInt16x3.name = SubgroupLogicalXor_UInt16x3_name;
+    SubgroupLogicalXor_UInt16x3.backendIndex = 2413;
+    SubgroupLogicalXor_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupLogicalXor_UInt16x3.parameters = SubgroupLogicalXor_UInt16x3_args;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->signature = "subgroupLogicalXor(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->name = "subgroupLogicalXor(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->nameWithVarNames = "subgroupLogicalXor(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupLogicalXor with UInt16x4, SubgroupOperation
+    SubgroupLogicalXor_UInt16x4_value.name = "value"_c;
+    SubgroupLogicalXor_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupLogicalXor_UInt16x4_op.name = "operation"_c;
+    SubgroupLogicalXor_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt16x4.documentation = "Perform logical XOR across all subgroups"_c;
+    SubgroupLogicalXor_UInt16x4.name = SubgroupLogicalXor_UInt16x4_name;
+    SubgroupLogicalXor_UInt16x4.backendIndex = 2414;
+    SubgroupLogicalXor_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupLogicalXor_UInt16x4.parameters = SubgroupLogicalXor_UInt16x4_args;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->signature = "subgroupLogicalXor(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->name = "subgroupLogicalXor(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->nameWithVarNames = "subgroupLogicalXor(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupShuffle with Float32, UInt32
+    SubgroupShuffle_Float32_value.name = "value"_c;
+    SubgroupShuffle_Float32_value.type = Type::FullType{ Float32Type.name };
+    SubgroupShuffle_Float32_id.name = "id"_c;
+    SubgroupShuffle_Float32_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Float32.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Float32.name = SubgroupShuffle_Float32_name;
+    SubgroupShuffle_Float32.backendIndex = 2415;
+    SubgroupShuffle_Float32.returnType = Type::FullType { Float32Type.name };
+    SubgroupShuffle_Float32.parameters = SubgroupShuffle_Float32_args;
+    Symbol::Resolved(&SubgroupShuffle_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float32_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float32)->signature = "subgroupShuffle(f32,u32) f32"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32)->name = "subgroupShuffle(f32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32)->nameWithVarNames = "subgroupShuffle(value : f32, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// subgroupShuffle with Float32x2, UInt32
+    SubgroupShuffle_Float32x2_value.name = "value"_c;
+    SubgroupShuffle_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
+    SubgroupShuffle_Float32x2_id.name = "id"_c;
+    SubgroupShuffle_Float32x2_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Float32x2.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Float32x2.name = SubgroupShuffle_Float32x2_name;
+    SubgroupShuffle_Float32x2.backendIndex = 2416;
+    SubgroupShuffle_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    SubgroupShuffle_Float32x2.parameters = SubgroupShuffle_Float32x2_args;
+    Symbol::Resolved(&SubgroupShuffle_Float32x2_value)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupShuffle_Float32x2_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float32x2)->signature = "subgroupShuffle(f32x2,u32) f32x2"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x2)->name = "subgroupShuffle(f32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x2)->nameWithVarNames = "subgroupShuffle(value : f32x2, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// subgroupShuffle with Float32x3, UInt32
+    SubgroupShuffle_Float32x3_value.name = "value"_c;
+    SubgroupShuffle_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
+    SubgroupShuffle_Float32x3_id.name = "id"_c;
+    SubgroupShuffle_Float32x3_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Float32x3.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Float32x3.name = SubgroupShuffle_Float32x3_name;
+    SubgroupShuffle_Float32x3.backendIndex = 2417;
+    SubgroupShuffle_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    SubgroupShuffle_Float32x3.parameters = SubgroupShuffle_Float32x3_args;
+    Symbol::Resolved(&SubgroupShuffle_Float32x3_value)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupShuffle_Float32x3_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float32x3)->signature = "subgroupShuffle(f32x3,u32) f32x3"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x3)->name = "subgroupShuffle(f32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x3)->nameWithVarNames = "subgroupShuffle(value : f32x3, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// subgroupShuffle with Float32x4, UInt32
+    SubgroupShuffle_Float32x4_value.name = "value"_c;
+    SubgroupShuffle_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupShuffle_Float32x4_id.name = "id"_c;
+    SubgroupShuffle_Float32x4_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Float32x4.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Float32x4.name = SubgroupShuffle_Float32x4_name;
+    SubgroupShuffle_Float32x4.backendIndex = 2418;
+    SubgroupShuffle_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    SubgroupShuffle_Float32x4.parameters = SubgroupShuffle_Float32x4_args;
+    Symbol::Resolved(&SubgroupShuffle_Float32x4_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupShuffle_Float32x4_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float32x4)->signature = "subgroupShuffle(f32x4,u32) f32x4"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x4)->name = "subgroupShuffle(f32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x4)->nameWithVarNames = "subgroupShuffle(value : f32x4, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// subgroupShuffle with Float16, UInt32
+    SubgroupShuffle_Float16_value.name = "value"_c;
+    SubgroupShuffle_Float16_value.type = Type::FullType{ Float16Type.name };
+    SubgroupShuffle_Float16_id.name = "id"_c;
+    SubgroupShuffle_Float16_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Float16.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Float16.name = SubgroupShuffle_Float16_name;
+    SubgroupShuffle_Float16.backendIndex = 2419;
+    SubgroupShuffle_Float16.returnType = Type::FullType { Float16Type.name };
+    SubgroupShuffle_Float16.parameters = SubgroupShuffle_Float16_args;
+    Symbol::Resolved(&SubgroupShuffle_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupShuffle_Float16_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float16)->signature = "subgroupShuffle(f16,u32) f16"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16)->name = "subgroupShuffle(f16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16)->nameWithVarNames = "subgroupShuffle(value : f16, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// subgroupShuffle with Float16x2, UInt32
+    SubgroupShuffle_Float16x2_value.name = "value"_c;
+    SubgroupShuffle_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupShuffle_Float16x2_id.name = "id"_c;
+    SubgroupShuffle_Float16x2_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Float16x2.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Float16x2.name = SubgroupShuffle_Float16x2_name;
+    SubgroupShuffle_Float16x2.backendIndex = 2420;
+    SubgroupShuffle_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    SubgroupShuffle_Float16x2.parameters = SubgroupShuffle_Float16x2_args;
+    Symbol::Resolved(&SubgroupShuffle_Float16x2_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupShuffle_Float16x2_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float16x2)->signature = "subgroupShuffle(f16x2,u32) f16x2"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x2)->name = "subgroupShuffle(f16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x2)->nameWithVarNames = "subgroupShuffle(value : f16x2, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// subgroupShuffle with Float16x3, UInt32
+    SubgroupShuffle_Float16x3_value.name = "value"_c;
+    SubgroupShuffle_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupShuffle_Float16x3_id.name = "id"_c;
+    SubgroupShuffle_Float16x3_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Float16x3.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Float16x3.name = SubgroupShuffle_Float16x3_name;
+    SubgroupShuffle_Float16x3.backendIndex = 2421;
+    SubgroupShuffle_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    SubgroupShuffle_Float16x3.parameters = SubgroupShuffle_Float16x3_args;
+    Symbol::Resolved(&SubgroupShuffle_Float16x3_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupShuffle_Float16x3_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float16x3)->signature = "subgroupShuffle(f16x3,u32) f16x3"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x3)->name = "subgroupShuffle(f16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x3)->nameWithVarNames = "subgroupShuffle(value : f16x3, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// subgroupShuffle with Float16x4, UInt32
+    SubgroupShuffle_Float16x4_value.name = "value"_c;
+    SubgroupShuffle_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupShuffle_Float16x4_id.name = "id"_c;
+    SubgroupShuffle_Float16x4_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Float16x4.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Float16x4.name = SubgroupShuffle_Float16x4_name;
+    SubgroupShuffle_Float16x4.backendIndex = 2422;
+    SubgroupShuffle_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    SubgroupShuffle_Float16x4.parameters = SubgroupShuffle_Float16x4_args;
+    Symbol::Resolved(&SubgroupShuffle_Float16x4_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupShuffle_Float16x4_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Float16x4)->signature = "subgroupShuffle(f16x4,u32) f16x4"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x4)->name = "subgroupShuffle(f16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x4)->nameWithVarNames = "subgroupShuffle(value : f16x4, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
+    /// subgroupShuffle with Int32, UInt32
+    SubgroupShuffle_Int32_value.name = "value"_c;
+    SubgroupShuffle_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupShuffle_Int32_id.name = "id"_c;
+    SubgroupShuffle_Int32_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Int32.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Int32.name = SubgroupShuffle_Int32_name;
+    SubgroupShuffle_Int32.backendIndex = 2423;
+    SubgroupShuffle_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupShuffle_Int32.parameters = SubgroupShuffle_Int32_args;
+    Symbol::Resolved(&SubgroupShuffle_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int32_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int32)->signature = "subgroupShuffle(i32,u32) i32"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32)->name = "subgroupShuffle(i32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32)->nameWithVarNames = "subgroupShuffle(value : i32, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupShuffle with Int32x2, UInt32
+    SubgroupShuffle_Int32x2_value.name = "value"_c;
+    SubgroupShuffle_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupShuffle_Int32x2_id.name = "id"_c;
+    SubgroupShuffle_Int32x2_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Int32x2.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Int32x2.name = SubgroupShuffle_Int32x2_name;
+    SubgroupShuffle_Int32x2.backendIndex = 2424;
+    SubgroupShuffle_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupShuffle_Int32x2.parameters = SubgroupShuffle_Int32x2_args;
+    Symbol::Resolved(&SubgroupShuffle_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupShuffle_Int32x2_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int32x2)->signature = "subgroupShuffle(i32x2,u32) i32x2"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x2)->name = "subgroupShuffle(i32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x2)->nameWithVarNames = "subgroupShuffle(value : i32x2, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupShuffle with Int32x3, UInt32
+    SubgroupShuffle_Int32x3_value.name = "value"_c;
+    SubgroupShuffle_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupShuffle_Int32x3_id.name = "id"_c;
+    SubgroupShuffle_Int32x3_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Int32x3.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Int32x3.name = SubgroupShuffle_Int32x3_name;
+    SubgroupShuffle_Int32x3.backendIndex = 2425;
+    SubgroupShuffle_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupShuffle_Int32x3.parameters = SubgroupShuffle_Int32x3_args;
+    Symbol::Resolved(&SubgroupShuffle_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupShuffle_Int32x3_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int32x3)->signature = "subgroupShuffle(i32x3,u32) i32x3"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x3)->name = "subgroupShuffle(i32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x3)->nameWithVarNames = "subgroupShuffle(value : i32x3, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupShuffle with Int32x4, UInt32
+    SubgroupShuffle_Int32x4_value.name = "value"_c;
+    SubgroupShuffle_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupShuffle_Int32x4_id.name = "id"_c;
+    SubgroupShuffle_Int32x4_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Int32x4.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Int32x4.name = SubgroupShuffle_Int32x4_name;
+    SubgroupShuffle_Int32x4.backendIndex = 2426;
+    SubgroupShuffle_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupShuffle_Int32x4.parameters = SubgroupShuffle_Int32x4_args;
+    Symbol::Resolved(&SubgroupShuffle_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupShuffle_Int32x4_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int32x4)->signature = "subgroupShuffle(i32x4,u32) i32x4"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x4)->name = "subgroupShuffle(i32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x4)->nameWithVarNames = "subgroupShuffle(value : i32x4, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupShuffle with Int16, UInt32
+    SubgroupShuffle_Int16_value.name = "value"_c;
+    SubgroupShuffle_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupShuffle_Int16_id.name = "id"_c;
+    SubgroupShuffle_Int16_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Int16.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Int16.name = SubgroupShuffle_Int16_name;
+    SubgroupShuffle_Int16.backendIndex = 2427;
+    SubgroupShuffle_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupShuffle_Int16.parameters = SubgroupShuffle_Int16_args;
+    Symbol::Resolved(&SubgroupShuffle_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupShuffle_Int16_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int16)->signature = "subgroupShuffle(i16,u32) i16"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16)->name = "subgroupShuffle(i16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16)->nameWithVarNames = "subgroupShuffle(value : i16, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupShuffle with Int16x2, UInt32
+    SubgroupShuffle_Int16x2_value.name = "value"_c;
+    SubgroupShuffle_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupShuffle_Int16x2_id.name = "id"_c;
+    SubgroupShuffle_Int16x2_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Int16x2.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Int16x2.name = SubgroupShuffle_Int16x2_name;
+    SubgroupShuffle_Int16x2.backendIndex = 2428;
+    SubgroupShuffle_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupShuffle_Int16x2.parameters = SubgroupShuffle_Int16x2_args;
+    Symbol::Resolved(&SubgroupShuffle_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupShuffle_Int16x2_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int16x2)->signature = "subgroupShuffle(i16x2,u32) i16x2"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x2)->name = "subgroupShuffle(i16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x2)->nameWithVarNames = "subgroupShuffle(value : i16x2, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupShuffle with Int16x3, UInt32
+    SubgroupShuffle_Int16x3_value.name = "value"_c;
+    SubgroupShuffle_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupShuffle_Int16x3_id.name = "id"_c;
+    SubgroupShuffle_Int16x3_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Int16x3.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Int16x3.name = SubgroupShuffle_Int16x3_name;
+    SubgroupShuffle_Int16x3.backendIndex = 2429;
+    SubgroupShuffle_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupShuffle_Int16x3.parameters = SubgroupShuffle_Int16x3_args;
+    Symbol::Resolved(&SubgroupShuffle_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupShuffle_Int16x3_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int16x3)->signature = "subgroupShuffle(i16x3,u32) i16x3"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x3)->name = "subgroupShuffle(i16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x3)->nameWithVarNames = "subgroupShuffle(value : i16x3, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupShuffle with Int16x4, UInt32
+    SubgroupShuffle_Int16x4_value.name = "value"_c;
+    SubgroupShuffle_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupShuffle_Int16x4_id.name = "id"_c;
+    SubgroupShuffle_Int16x4_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_Int16x4.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_Int16x4.name = SubgroupShuffle_Int16x4_name;
+    SubgroupShuffle_Int16x4.backendIndex = 2430;
+    SubgroupShuffle_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupShuffle_Int16x4.parameters = SubgroupShuffle_Int16x4_args;
+    Symbol::Resolved(&SubgroupShuffle_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupShuffle_Int16x4_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_Int16x4)->signature = "subgroupShuffle(i16x4,u32) i16x4"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x4)->name = "subgroupShuffle(i16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x4)->nameWithVarNames = "subgroupShuffle(value : i16x4, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupShuffle with UInt32, UInt32
+    SubgroupShuffle_UInt32_value.name = "value"_c;
+    SubgroupShuffle_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt32_id.name = "id"_c;
+    SubgroupShuffle_UInt32_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt32.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_UInt32.name = SubgroupShuffle_UInt32_name;
+    SubgroupShuffle_UInt32.backendIndex = 2431;
+    SubgroupShuffle_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupShuffle_UInt32.parameters = SubgroupShuffle_UInt32_args;
+    Symbol::Resolved(&SubgroupShuffle_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt32_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt32)->signature = "subgroupShuffle(u32,u32) u32"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32)->name = "subgroupShuffle(u32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32)->nameWithVarNames = "subgroupShuffle(value : u32, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupShuffle with UInt32x2, UInt32
+    SubgroupShuffle_UInt32x2_value.name = "value"_c;
+    SubgroupShuffle_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupShuffle_UInt32x2_id.name = "id"_c;
+    SubgroupShuffle_UInt32x2_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt32x2.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_UInt32x2.name = SubgroupShuffle_UInt32x2_name;
+    SubgroupShuffle_UInt32x2.backendIndex = 2432;
+    SubgroupShuffle_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupShuffle_UInt32x2.parameters = SubgroupShuffle_UInt32x2_args;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x2_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x2)->signature = "subgroupShuffle(u32x2,u32) u32x2"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x2)->name = "subgroupShuffle(u32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x2)->nameWithVarNames = "subgroupShuffle(value : u32x2, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupShuffle with UInt32x3, UInt32
+    SubgroupShuffle_UInt32x3_value.name = "value"_c;
+    SubgroupShuffle_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupShuffle_UInt32x3_id.name = "id"_c;
+    SubgroupShuffle_UInt32x3_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt32x3.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_UInt32x3.name = SubgroupShuffle_UInt32x3_name;
+    SubgroupShuffle_UInt32x3.backendIndex = 2433;
+    SubgroupShuffle_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupShuffle_UInt32x3.parameters = SubgroupShuffle_UInt32x3_args;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x3_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x3)->signature = "subgroupShuffle(u32x3,u32) u32x3"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x3)->name = "subgroupShuffle(u32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x3)->nameWithVarNames = "subgroupShuffle(value : u32x3, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupShuffle with UInt32x4, UInt32
+    SubgroupShuffle_UInt32x4_value.name = "value"_c;
+    SubgroupShuffle_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupShuffle_UInt32x4_id.name = "id"_c;
+    SubgroupShuffle_UInt32x4_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt32x4.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_UInt32x4.name = SubgroupShuffle_UInt32x4_name;
+    SubgroupShuffle_UInt32x4.backendIndex = 2434;
+    SubgroupShuffle_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupShuffle_UInt32x4.parameters = SubgroupShuffle_UInt32x4_args;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x4_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x4)->signature = "subgroupShuffle(u32x4,u32) u32x4"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x4)->name = "subgroupShuffle(u32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x4)->nameWithVarNames = "subgroupShuffle(value : u32x4, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupShuffle with UInt16, UInt32
+    SubgroupShuffle_UInt16_value.name = "value"_c;
+    SubgroupShuffle_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupShuffle_UInt16_id.name = "id"_c;
+    SubgroupShuffle_UInt16_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt16.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_UInt16.name = SubgroupShuffle_UInt16_name;
+    SubgroupShuffle_UInt16.backendIndex = 2435;
+    SubgroupShuffle_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupShuffle_UInt16.parameters = SubgroupShuffle_UInt16_args;
+    Symbol::Resolved(&SubgroupShuffle_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt16_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt16)->signature = "subgroupShuffle(u16,u32) u16"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16)->name = "subgroupShuffle(u16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16)->nameWithVarNames = "subgroupShuffle(value : u16, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupShuffle with UInt16x2, UInt32
+    SubgroupShuffle_UInt16x2_value.name = "value"_c;
+    SubgroupShuffle_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupShuffle_UInt16x2_id.name = "id"_c;
+    SubgroupShuffle_UInt16x2_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt16x2.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_UInt16x2.name = SubgroupShuffle_UInt16x2_name;
+    SubgroupShuffle_UInt16x2.backendIndex = 2436;
+    SubgroupShuffle_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupShuffle_UInt16x2.parameters = SubgroupShuffle_UInt16x2_args;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x2_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x2)->signature = "subgroupShuffle(u16x2,u32) u16x2"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x2)->name = "subgroupShuffle(u16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x2)->nameWithVarNames = "subgroupShuffle(value : u16x2, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupShuffle with UInt16x3, UInt32
+    SubgroupShuffle_UInt16x3_value.name = "value"_c;
+    SubgroupShuffle_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupShuffle_UInt16x3_id.name = "id"_c;
+    SubgroupShuffle_UInt16x3_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt16x3.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_UInt16x3.name = SubgroupShuffle_UInt16x3_name;
+    SubgroupShuffle_UInt16x3.backendIndex = 2437;
+    SubgroupShuffle_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupShuffle_UInt16x3.parameters = SubgroupShuffle_UInt16x3_args;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x3_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x3)->signature = "subgroupShuffle(u16x3,u32) u16x3"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x3)->name = "subgroupShuffle(u16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x3)->nameWithVarNames = "subgroupShuffle(value : u16x3, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupShuffle with UInt16x4, UInt32
+    SubgroupShuffle_UInt16x4_value.name = "value"_c;
+    SubgroupShuffle_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupShuffle_UInt16x4_id.name = "id"_c;
+    SubgroupShuffle_UInt16x4_id.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffle_UInt16x4.documentation = "Returns the version of the value for specified invocation"_c;
+    SubgroupShuffle_UInt16x4.name = SubgroupShuffle_UInt16x4_name;
+    SubgroupShuffle_UInt16x4.backendIndex = 2438;
+    SubgroupShuffle_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupShuffle_UInt16x4.parameters = SubgroupShuffle_UInt16x4_args;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x4_id)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x4)->signature = "subgroupShuffle(u16x4,u32) u16x4"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x4)->name = "subgroupShuffle(u16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x4)->nameWithVarNames = "subgroupShuffle(value : u16x4, id : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffle_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupShuffleXor with Float32, UInt32
+    SubgroupShuffleXor_Float32_value.name = "value"_c;
+    SubgroupShuffleXor_Float32_value.type = Type::FullType{ Float32Type.name };
+    SubgroupShuffleXor_Float32_mask.name = "mask"_c;
+    SubgroupShuffleXor_Float32_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Float32.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Float32.name = SubgroupShuffleXor_Float32_name;
+    SubgroupShuffleXor_Float32.backendIndex = 2439;
+    SubgroupShuffleXor_Float32.returnType = Type::FullType { Float32Type.name };
+    SubgroupShuffleXor_Float32.parameters = SubgroupShuffleXor_Float32_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32)->signature = "subgroupShuffleXor(f32,u32) f32"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32)->name = "subgroupShuffleXor(f32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32)->nameWithVarNames = "subgroupShuffleXor(value : f32, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// subgroupShuffleXor with Float32x2, UInt32
+    SubgroupShuffleXor_Float32x2_value.name = "value"_c;
+    SubgroupShuffleXor_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
+    SubgroupShuffleXor_Float32x2_mask.name = "mask"_c;
+    SubgroupShuffleXor_Float32x2_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Float32x2.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Float32x2.name = SubgroupShuffleXor_Float32x2_name;
+    SubgroupShuffleXor_Float32x2.backendIndex = 2440;
+    SubgroupShuffleXor_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    SubgroupShuffleXor_Float32x2.parameters = SubgroupShuffleXor_Float32x2_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x2_value)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x2_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x2)->signature = "subgroupShuffleXor(f32x2,u32) f32x2"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x2)->name = "subgroupShuffleXor(f32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x2)->nameWithVarNames = "subgroupShuffleXor(value : f32x2, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// subgroupShuffleXor with Float32x3, UInt32
+    SubgroupShuffleXor_Float32x3_value.name = "value"_c;
+    SubgroupShuffleXor_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
+    SubgroupShuffleXor_Float32x3_mask.name = "mask"_c;
+    SubgroupShuffleXor_Float32x3_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Float32x3.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Float32x3.name = SubgroupShuffleXor_Float32x3_name;
+    SubgroupShuffleXor_Float32x3.backendIndex = 2441;
+    SubgroupShuffleXor_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    SubgroupShuffleXor_Float32x3.parameters = SubgroupShuffleXor_Float32x3_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x3_value)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x3_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x3)->signature = "subgroupShuffleXor(f32x3,u32) f32x3"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x3)->name = "subgroupShuffleXor(f32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x3)->nameWithVarNames = "subgroupShuffleXor(value : f32x3, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// subgroupShuffleXor with Float32x4, UInt32
+    SubgroupShuffleXor_Float32x4_value.name = "value"_c;
+    SubgroupShuffleXor_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupShuffleXor_Float32x4_mask.name = "mask"_c;
+    SubgroupShuffleXor_Float32x4_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Float32x4.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Float32x4.name = SubgroupShuffleXor_Float32x4_name;
+    SubgroupShuffleXor_Float32x4.backendIndex = 2442;
+    SubgroupShuffleXor_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    SubgroupShuffleXor_Float32x4.parameters = SubgroupShuffleXor_Float32x4_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x4_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x4_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x4)->signature = "subgroupShuffleXor(f32x4,u32) f32x4"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x4)->name = "subgroupShuffleXor(f32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x4)->nameWithVarNames = "subgroupShuffleXor(value : f32x4, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// subgroupShuffleXor with Float16, UInt32
+    SubgroupShuffleXor_Float16_value.name = "value"_c;
+    SubgroupShuffleXor_Float16_value.type = Type::FullType{ Float16Type.name };
+    SubgroupShuffleXor_Float16_mask.name = "mask"_c;
+    SubgroupShuffleXor_Float16_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Float16.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Float16.name = SubgroupShuffleXor_Float16_name;
+    SubgroupShuffleXor_Float16.backendIndex = 2443;
+    SubgroupShuffleXor_Float16.returnType = Type::FullType { Float16Type.name };
+    SubgroupShuffleXor_Float16.parameters = SubgroupShuffleXor_Float16_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16)->signature = "subgroupShuffleXor(f16,u32) f16"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16)->name = "subgroupShuffleXor(f16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16)->nameWithVarNames = "subgroupShuffleXor(value : f16, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// subgroupShuffleXor with Float16x2, UInt32
+    SubgroupShuffleXor_Float16x2_value.name = "value"_c;
+    SubgroupShuffleXor_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupShuffleXor_Float16x2_mask.name = "mask"_c;
+    SubgroupShuffleXor_Float16x2_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Float16x2.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Float16x2.name = SubgroupShuffleXor_Float16x2_name;
+    SubgroupShuffleXor_Float16x2.backendIndex = 2444;
+    SubgroupShuffleXor_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    SubgroupShuffleXor_Float16x2.parameters = SubgroupShuffleXor_Float16x2_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x2_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x2_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x2)->signature = "subgroupShuffleXor(f16x2,u32) f16x2"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x2)->name = "subgroupShuffleXor(f16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x2)->nameWithVarNames = "subgroupShuffleXor(value : f16x2, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// subgroupShuffleXor with Float16x3, UInt32
+    SubgroupShuffleXor_Float16x3_value.name = "value"_c;
+    SubgroupShuffleXor_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupShuffleXor_Float16x3_mask.name = "mask"_c;
+    SubgroupShuffleXor_Float16x3_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Float16x3.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Float16x3.name = SubgroupShuffleXor_Float16x3_name;
+    SubgroupShuffleXor_Float16x3.backendIndex = 2445;
+    SubgroupShuffleXor_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    SubgroupShuffleXor_Float16x3.parameters = SubgroupShuffleXor_Float16x3_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x3_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x3_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x3)->signature = "subgroupShuffleXor(f16x3,u32) f16x3"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x3)->name = "subgroupShuffleXor(f16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x3)->nameWithVarNames = "subgroupShuffleXor(value : f16x3, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// subgroupShuffleXor with Float16x4, UInt32
+    SubgroupShuffleXor_Float16x4_value.name = "value"_c;
+    SubgroupShuffleXor_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupShuffleXor_Float16x4_mask.name = "mask"_c;
+    SubgroupShuffleXor_Float16x4_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Float16x4.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Float16x4.name = SubgroupShuffleXor_Float16x4_name;
+    SubgroupShuffleXor_Float16x4.backendIndex = 2446;
+    SubgroupShuffleXor_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    SubgroupShuffleXor_Float16x4.parameters = SubgroupShuffleXor_Float16x4_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x4_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x4_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x4)->signature = "subgroupShuffleXor(f16x4,u32) f16x4"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x4)->name = "subgroupShuffleXor(f16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x4)->nameWithVarNames = "subgroupShuffleXor(value : f16x4, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
+    /// subgroupShuffleXor with Int32, UInt32
+    SubgroupShuffleXor_Int32_value.name = "value"_c;
+    SubgroupShuffleXor_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupShuffleXor_Int32_mask.name = "mask"_c;
+    SubgroupShuffleXor_Int32_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Int32.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Int32.name = SubgroupShuffleXor_Int32_name;
+    SubgroupShuffleXor_Int32.backendIndex = 2447;
+    SubgroupShuffleXor_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupShuffleXor_Int32.parameters = SubgroupShuffleXor_Int32_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32)->signature = "subgroupShuffleXor(i32,u32) i32"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32)->name = "subgroupShuffleXor(i32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32)->nameWithVarNames = "subgroupShuffleXor(value : i32, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupShuffleXor with Int32x2, UInt32
+    SubgroupShuffleXor_Int32x2_value.name = "value"_c;
+    SubgroupShuffleXor_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupShuffleXor_Int32x2_mask.name = "mask"_c;
+    SubgroupShuffleXor_Int32x2_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Int32x2.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Int32x2.name = SubgroupShuffleXor_Int32x2_name;
+    SubgroupShuffleXor_Int32x2.backendIndex = 2448;
+    SubgroupShuffleXor_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupShuffleXor_Int32x2.parameters = SubgroupShuffleXor_Int32x2_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x2_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x2)->signature = "subgroupShuffleXor(i32x2,u32) i32x2"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x2)->name = "subgroupShuffleXor(i32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x2)->nameWithVarNames = "subgroupShuffleXor(value : i32x2, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupShuffleXor with Int32x3, UInt32
+    SubgroupShuffleXor_Int32x3_value.name = "value"_c;
+    SubgroupShuffleXor_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupShuffleXor_Int32x3_mask.name = "mask"_c;
+    SubgroupShuffleXor_Int32x3_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Int32x3.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Int32x3.name = SubgroupShuffleXor_Int32x3_name;
+    SubgroupShuffleXor_Int32x3.backendIndex = 2449;
+    SubgroupShuffleXor_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupShuffleXor_Int32x3.parameters = SubgroupShuffleXor_Int32x3_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x3_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x3)->signature = "subgroupShuffleXor(i32x3,u32) i32x3"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x3)->name = "subgroupShuffleXor(i32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x3)->nameWithVarNames = "subgroupShuffleXor(value : i32x3, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupShuffleXor with Int32x4, UInt32
+    SubgroupShuffleXor_Int32x4_value.name = "value"_c;
+    SubgroupShuffleXor_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupShuffleXor_Int32x4_mask.name = "mask"_c;
+    SubgroupShuffleXor_Int32x4_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Int32x4.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Int32x4.name = SubgroupShuffleXor_Int32x4_name;
+    SubgroupShuffleXor_Int32x4.backendIndex = 2450;
+    SubgroupShuffleXor_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupShuffleXor_Int32x4.parameters = SubgroupShuffleXor_Int32x4_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x4_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x4)->signature = "subgroupShuffleXor(i32x4,u32) i32x4"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x4)->name = "subgroupShuffleXor(i32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x4)->nameWithVarNames = "subgroupShuffleXor(value : i32x4, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupShuffleXor with Int16, UInt32
+    SubgroupShuffleXor_Int16_value.name = "value"_c;
+    SubgroupShuffleXor_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupShuffleXor_Int16_mask.name = "mask"_c;
+    SubgroupShuffleXor_Int16_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Int16.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Int16.name = SubgroupShuffleXor_Int16_name;
+    SubgroupShuffleXor_Int16.backendIndex = 2451;
+    SubgroupShuffleXor_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupShuffleXor_Int16.parameters = SubgroupShuffleXor_Int16_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16)->signature = "subgroupShuffleXor(i16,u32) i16"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16)->name = "subgroupShuffleXor(i16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16)->nameWithVarNames = "subgroupShuffleXor(value : i16, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupShuffleXor with Int16x2, UInt32
+    SubgroupShuffleXor_Int16x2_value.name = "value"_c;
+    SubgroupShuffleXor_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupShuffleXor_Int16x2_mask.name = "mask"_c;
+    SubgroupShuffleXor_Int16x2_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Int16x2.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Int16x2.name = SubgroupShuffleXor_Int16x2_name;
+    SubgroupShuffleXor_Int16x2.backendIndex = 2452;
+    SubgroupShuffleXor_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupShuffleXor_Int16x2.parameters = SubgroupShuffleXor_Int16x2_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x2_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x2)->signature = "subgroupShuffleXor(i16x2,u32) i16x2"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x2)->name = "subgroupShuffleXor(i16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x2)->nameWithVarNames = "subgroupShuffleXor(value : i16x2, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupShuffleXor with Int16x3, UInt32
+    SubgroupShuffleXor_Int16x3_value.name = "value"_c;
+    SubgroupShuffleXor_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupShuffleXor_Int16x3_mask.name = "mask"_c;
+    SubgroupShuffleXor_Int16x3_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Int16x3.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Int16x3.name = SubgroupShuffleXor_Int16x3_name;
+    SubgroupShuffleXor_Int16x3.backendIndex = 2453;
+    SubgroupShuffleXor_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupShuffleXor_Int16x3.parameters = SubgroupShuffleXor_Int16x3_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x3_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x3)->signature = "subgroupShuffleXor(i16x3,u32) i16x3"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x3)->name = "subgroupShuffleXor(i16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x3)->nameWithVarNames = "subgroupShuffleXor(value : i16x3, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupShuffleXor with Int16x4, UInt32
+    SubgroupShuffleXor_Int16x4_value.name = "value"_c;
+    SubgroupShuffleXor_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupShuffleXor_Int16x4_mask.name = "mask"_c;
+    SubgroupShuffleXor_Int16x4_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_Int16x4.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_Int16x4.name = SubgroupShuffleXor_Int16x4_name;
+    SubgroupShuffleXor_Int16x4.backendIndex = 2454;
+    SubgroupShuffleXor_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupShuffleXor_Int16x4.parameters = SubgroupShuffleXor_Int16x4_args;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x4_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x4)->signature = "subgroupShuffleXor(i16x4,u32) i16x4"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x4)->name = "subgroupShuffleXor(i16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x4)->nameWithVarNames = "subgroupShuffleXor(value : i16x4, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupShuffleXor with UInt32, UInt32
+    SubgroupShuffleXor_UInt32_value.name = "value"_c;
+    SubgroupShuffleXor_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt32_mask.name = "mask"_c;
+    SubgroupShuffleXor_UInt32_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt32.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_UInt32.name = SubgroupShuffleXor_UInt32_name;
+    SubgroupShuffleXor_UInt32.backendIndex = 2455;
+    SubgroupShuffleXor_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupShuffleXor_UInt32.parameters = SubgroupShuffleXor_UInt32_args;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32)->signature = "subgroupShuffleXor(u32,u32) u32"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32)->name = "subgroupShuffleXor(u32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32)->nameWithVarNames = "subgroupShuffleXor(value : u32, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupShuffleXor with UInt32x2, UInt32
+    SubgroupShuffleXor_UInt32x2_value.name = "value"_c;
+    SubgroupShuffleXor_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupShuffleXor_UInt32x2_mask.name = "mask"_c;
+    SubgroupShuffleXor_UInt32x2_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt32x2.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_UInt32x2.name = SubgroupShuffleXor_UInt32x2_name;
+    SubgroupShuffleXor_UInt32x2.backendIndex = 2456;
+    SubgroupShuffleXor_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupShuffleXor_UInt32x2.parameters = SubgroupShuffleXor_UInt32x2_args;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x2_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x2)->signature = "subgroupShuffleXor(u32x2,u32) u32x2"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x2)->name = "subgroupShuffleXor(u32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x2)->nameWithVarNames = "subgroupShuffleXor(value : u32x2, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupShuffleXor with UInt32x3, UInt32
+    SubgroupShuffleXor_UInt32x3_value.name = "value"_c;
+    SubgroupShuffleXor_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupShuffleXor_UInt32x3_mask.name = "mask"_c;
+    SubgroupShuffleXor_UInt32x3_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt32x3.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_UInt32x3.name = SubgroupShuffleXor_UInt32x3_name;
+    SubgroupShuffleXor_UInt32x3.backendIndex = 2457;
+    SubgroupShuffleXor_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupShuffleXor_UInt32x3.parameters = SubgroupShuffleXor_UInt32x3_args;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x3_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x3)->signature = "subgroupShuffleXor(u32x3,u32) u32x3"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x3)->name = "subgroupShuffleXor(u32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x3)->nameWithVarNames = "subgroupShuffleXor(value : u32x3, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupShuffleXor with UInt32x4, UInt32
+    SubgroupShuffleXor_UInt32x4_value.name = "value"_c;
+    SubgroupShuffleXor_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupShuffleXor_UInt32x4_mask.name = "mask"_c;
+    SubgroupShuffleXor_UInt32x4_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt32x4.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_UInt32x4.name = SubgroupShuffleXor_UInt32x4_name;
+    SubgroupShuffleXor_UInt32x4.backendIndex = 2458;
+    SubgroupShuffleXor_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupShuffleXor_UInt32x4.parameters = SubgroupShuffleXor_UInt32x4_args;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x4_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x4)->signature = "subgroupShuffleXor(u32x4,u32) u32x4"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x4)->name = "subgroupShuffleXor(u32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x4)->nameWithVarNames = "subgroupShuffleXor(value : u32x4, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupShuffleXor with UInt16, UInt32
+    SubgroupShuffleXor_UInt16_value.name = "value"_c;
+    SubgroupShuffleXor_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupShuffleXor_UInt16_mask.name = "mask"_c;
+    SubgroupShuffleXor_UInt16_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt16.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_UInt16.name = SubgroupShuffleXor_UInt16_name;
+    SubgroupShuffleXor_UInt16.backendIndex = 2459;
+    SubgroupShuffleXor_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupShuffleXor_UInt16.parameters = SubgroupShuffleXor_UInt16_args;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16)->signature = "subgroupShuffleXor(u16,u32) u16"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16)->name = "subgroupShuffleXor(u16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16)->nameWithVarNames = "subgroupShuffleXor(value : u16, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupShuffleXor with UInt16x2, UInt32
+    SubgroupShuffleXor_UInt16x2_value.name = "value"_c;
+    SubgroupShuffleXor_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupShuffleXor_UInt16x2_mask.name = "mask"_c;
+    SubgroupShuffleXor_UInt16x2_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt16x2.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_UInt16x2.name = SubgroupShuffleXor_UInt16x2_name;
+    SubgroupShuffleXor_UInt16x2.backendIndex = 2460;
+    SubgroupShuffleXor_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupShuffleXor_UInt16x2.parameters = SubgroupShuffleXor_UInt16x2_args;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x2_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x2)->signature = "subgroupShuffleXor(u16x2,u32) u16x2"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x2)->name = "subgroupShuffleXor(u16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x2)->nameWithVarNames = "subgroupShuffleXor(value : u16x2, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupShuffleXor with UInt16x3, UInt32
+    SubgroupShuffleXor_UInt16x3_value.name = "value"_c;
+    SubgroupShuffleXor_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupShuffleXor_UInt16x3_mask.name = "mask"_c;
+    SubgroupShuffleXor_UInt16x3_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt16x3.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_UInt16x3.name = SubgroupShuffleXor_UInt16x3_name;
+    SubgroupShuffleXor_UInt16x3.backendIndex = 2461;
+    SubgroupShuffleXor_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupShuffleXor_UInt16x3.parameters = SubgroupShuffleXor_UInt16x3_args;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x3_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x3)->signature = "subgroupShuffleXor(u16x3,u32) u16x3"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x3)->name = "subgroupShuffleXor(u16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x3)->nameWithVarNames = "subgroupShuffleXor(value : u16x3, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupShuffleXor with UInt16x4, UInt32
+    SubgroupShuffleXor_UInt16x4_value.name = "value"_c;
+    SubgroupShuffleXor_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupShuffleXor_UInt16x4_mask.name = "mask"_c;
+    SubgroupShuffleXor_UInt16x4_mask.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleXor_UInt16x4.documentation = "Returns the value identified by the current invocations ID XORed by the mask"_c;
+    SubgroupShuffleXor_UInt16x4.name = SubgroupShuffleXor_UInt16x4_name;
+    SubgroupShuffleXor_UInt16x4.backendIndex = 2462;
+    SubgroupShuffleXor_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupShuffleXor_UInt16x4.parameters = SubgroupShuffleXor_UInt16x4_args;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x4_mask)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x4)->signature = "subgroupShuffleXor(u16x4,u32) u16x4"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x4)->name = "subgroupShuffleXor(u16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x4)->nameWithVarNames = "subgroupShuffleXor(value : u16x4, mask : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleXor_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupShuffleUp with Float32, UInt32
+    SubgroupShuffleUp_Float32_value.name = "value"_c;
+    SubgroupShuffleUp_Float32_value.type = Type::FullType{ Float32Type.name };
+    SubgroupShuffleUp_Float32_delta.name = "delta"_c;
+    SubgroupShuffleUp_Float32_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Float32.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Float32.name = SubgroupShuffleUp_Float32_name;
+    SubgroupShuffleUp_Float32.backendIndex = 2463;
+    SubgroupShuffleUp_Float32.returnType = Type::FullType { Float32Type.name };
+    SubgroupShuffleUp_Float32.parameters = SubgroupShuffleUp_Float32_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32)->signature = "subgroupShuffleUp(f32,u32) f32"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32)->name = "subgroupShuffleUp(f32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32)->nameWithVarNames = "subgroupShuffleUp(value : f32, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// subgroupShuffleUp with Float32x2, UInt32
+    SubgroupShuffleUp_Float32x2_value.name = "value"_c;
+    SubgroupShuffleUp_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
+    SubgroupShuffleUp_Float32x2_delta.name = "delta"_c;
+    SubgroupShuffleUp_Float32x2_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Float32x2.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Float32x2.name = SubgroupShuffleUp_Float32x2_name;
+    SubgroupShuffleUp_Float32x2.backendIndex = 2464;
+    SubgroupShuffleUp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    SubgroupShuffleUp_Float32x2.parameters = SubgroupShuffleUp_Float32x2_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x2_value)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x2_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x2)->signature = "subgroupShuffleUp(f32x2,u32) f32x2"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x2)->name = "subgroupShuffleUp(f32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x2)->nameWithVarNames = "subgroupShuffleUp(value : f32x2, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// subgroupShuffleUp with Float32x3, UInt32
+    SubgroupShuffleUp_Float32x3_value.name = "value"_c;
+    SubgroupShuffleUp_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
+    SubgroupShuffleUp_Float32x3_delta.name = "delta"_c;
+    SubgroupShuffleUp_Float32x3_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Float32x3.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Float32x3.name = SubgroupShuffleUp_Float32x3_name;
+    SubgroupShuffleUp_Float32x3.backendIndex = 2465;
+    SubgroupShuffleUp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    SubgroupShuffleUp_Float32x3.parameters = SubgroupShuffleUp_Float32x3_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x3_value)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x3_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x3)->signature = "subgroupShuffleUp(f32x3,u32) f32x3"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x3)->name = "subgroupShuffleUp(f32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x3)->nameWithVarNames = "subgroupShuffleUp(value : f32x3, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// subgroupShuffleUp with Float32x4, UInt32
+    SubgroupShuffleUp_Float32x4_value.name = "value"_c;
+    SubgroupShuffleUp_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupShuffleUp_Float32x4_delta.name = "delta"_c;
+    SubgroupShuffleUp_Float32x4_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Float32x4.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Float32x4.name = SubgroupShuffleUp_Float32x4_name;
+    SubgroupShuffleUp_Float32x4.backendIndex = 2466;
+    SubgroupShuffleUp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    SubgroupShuffleUp_Float32x4.parameters = SubgroupShuffleUp_Float32x4_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x4_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x4_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x4)->signature = "subgroupShuffleUp(f32x4,u32) f32x4"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x4)->name = "subgroupShuffleUp(f32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x4)->nameWithVarNames = "subgroupShuffleUp(value : f32x4, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// subgroupShuffleUp with Float16, UInt32
+    SubgroupShuffleUp_Float16_value.name = "value"_c;
+    SubgroupShuffleUp_Float16_value.type = Type::FullType{ Float16Type.name };
+    SubgroupShuffleUp_Float16_delta.name = "delta"_c;
+    SubgroupShuffleUp_Float16_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Float16.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Float16.name = SubgroupShuffleUp_Float16_name;
+    SubgroupShuffleUp_Float16.backendIndex = 2467;
+    SubgroupShuffleUp_Float16.returnType = Type::FullType { Float16Type.name };
+    SubgroupShuffleUp_Float16.parameters = SubgroupShuffleUp_Float16_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16)->signature = "subgroupShuffleUp(f16,u32) f16"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16)->name = "subgroupShuffleUp(f16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16)->nameWithVarNames = "subgroupShuffleUp(value : f16, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// subgroupShuffleUp with Float16x2, UInt32
+    SubgroupShuffleUp_Float16x2_value.name = "value"_c;
+    SubgroupShuffleUp_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupShuffleUp_Float16x2_delta.name = "delta"_c;
+    SubgroupShuffleUp_Float16x2_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Float16x2.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Float16x2.name = SubgroupShuffleUp_Float16x2_name;
+    SubgroupShuffleUp_Float16x2.backendIndex = 2468;
+    SubgroupShuffleUp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    SubgroupShuffleUp_Float16x2.parameters = SubgroupShuffleUp_Float16x2_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x2_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x2_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x2)->signature = "subgroupShuffleUp(f16x2,u32) f16x2"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x2)->name = "subgroupShuffleUp(f16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x2)->nameWithVarNames = "subgroupShuffleUp(value : f16x2, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// subgroupShuffleUp with Float16x3, UInt32
+    SubgroupShuffleUp_Float16x3_value.name = "value"_c;
+    SubgroupShuffleUp_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupShuffleUp_Float16x3_delta.name = "delta"_c;
+    SubgroupShuffleUp_Float16x3_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Float16x3.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Float16x3.name = SubgroupShuffleUp_Float16x3_name;
+    SubgroupShuffleUp_Float16x3.backendIndex = 2469;
+    SubgroupShuffleUp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    SubgroupShuffleUp_Float16x3.parameters = SubgroupShuffleUp_Float16x3_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x3_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x3_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x3)->signature = "subgroupShuffleUp(f16x3,u32) f16x3"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x3)->name = "subgroupShuffleUp(f16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x3)->nameWithVarNames = "subgroupShuffleUp(value : f16x3, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// subgroupShuffleUp with Float16x4, UInt32
+    SubgroupShuffleUp_Float16x4_value.name = "value"_c;
+    SubgroupShuffleUp_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupShuffleUp_Float16x4_delta.name = "delta"_c;
+    SubgroupShuffleUp_Float16x4_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Float16x4.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Float16x4.name = SubgroupShuffleUp_Float16x4_name;
+    SubgroupShuffleUp_Float16x4.backendIndex = 2470;
+    SubgroupShuffleUp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    SubgroupShuffleUp_Float16x4.parameters = SubgroupShuffleUp_Float16x4_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x4_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x4_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x4)->signature = "subgroupShuffleUp(f16x4,u32) f16x4"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x4)->name = "subgroupShuffleUp(f16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x4)->nameWithVarNames = "subgroupShuffleUp(value : f16x4, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
+    /// subgroupShuffleUp with Int32, UInt32
+    SubgroupShuffleUp_Int32_value.name = "value"_c;
+    SubgroupShuffleUp_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupShuffleUp_Int32_delta.name = "delta"_c;
+    SubgroupShuffleUp_Int32_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Int32.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Int32.name = SubgroupShuffleUp_Int32_name;
+    SubgroupShuffleUp_Int32.backendIndex = 2471;
+    SubgroupShuffleUp_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupShuffleUp_Int32.parameters = SubgroupShuffleUp_Int32_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32)->signature = "subgroupShuffleUp(i32,u32) i32"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32)->name = "subgroupShuffleUp(i32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32)->nameWithVarNames = "subgroupShuffleUp(value : i32, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupShuffleUp with Int32x2, UInt32
+    SubgroupShuffleUp_Int32x2_value.name = "value"_c;
+    SubgroupShuffleUp_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupShuffleUp_Int32x2_delta.name = "delta"_c;
+    SubgroupShuffleUp_Int32x2_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Int32x2.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Int32x2.name = SubgroupShuffleUp_Int32x2_name;
+    SubgroupShuffleUp_Int32x2.backendIndex = 2472;
+    SubgroupShuffleUp_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupShuffleUp_Int32x2.parameters = SubgroupShuffleUp_Int32x2_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x2_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x2)->signature = "subgroupShuffleUp(i32x2,u32) i32x2"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x2)->name = "subgroupShuffleUp(i32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x2)->nameWithVarNames = "subgroupShuffleUp(value : i32x2, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupShuffleUp with Int32x3, UInt32
+    SubgroupShuffleUp_Int32x3_value.name = "value"_c;
+    SubgroupShuffleUp_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupShuffleUp_Int32x3_delta.name = "delta"_c;
+    SubgroupShuffleUp_Int32x3_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Int32x3.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Int32x3.name = SubgroupShuffleUp_Int32x3_name;
+    SubgroupShuffleUp_Int32x3.backendIndex = 2473;
+    SubgroupShuffleUp_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupShuffleUp_Int32x3.parameters = SubgroupShuffleUp_Int32x3_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x3_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x3)->signature = "subgroupShuffleUp(i32x3,u32) i32x3"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x3)->name = "subgroupShuffleUp(i32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x3)->nameWithVarNames = "subgroupShuffleUp(value : i32x3, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupShuffleUp with Int32x4, UInt32
+    SubgroupShuffleUp_Int32x4_value.name = "value"_c;
+    SubgroupShuffleUp_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupShuffleUp_Int32x4_delta.name = "delta"_c;
+    SubgroupShuffleUp_Int32x4_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Int32x4.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Int32x4.name = SubgroupShuffleUp_Int32x4_name;
+    SubgroupShuffleUp_Int32x4.backendIndex = 2474;
+    SubgroupShuffleUp_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupShuffleUp_Int32x4.parameters = SubgroupShuffleUp_Int32x4_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x4_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x4)->signature = "subgroupShuffleUp(i32x4,u32) i32x4"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x4)->name = "subgroupShuffleUp(i32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x4)->nameWithVarNames = "subgroupShuffleUp(value : i32x4, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupShuffleUp with Int16, UInt32
+    SubgroupShuffleUp_Int16_value.name = "value"_c;
+    SubgroupShuffleUp_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupShuffleUp_Int16_delta.name = "delta"_c;
+    SubgroupShuffleUp_Int16_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Int16.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Int16.name = SubgroupShuffleUp_Int16_name;
+    SubgroupShuffleUp_Int16.backendIndex = 2475;
+    SubgroupShuffleUp_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupShuffleUp_Int16.parameters = SubgroupShuffleUp_Int16_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16)->signature = "subgroupShuffleUp(i16,u32) i16"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16)->name = "subgroupShuffleUp(i16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16)->nameWithVarNames = "subgroupShuffleUp(value : i16, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupShuffleUp with Int16x2, UInt32
+    SubgroupShuffleUp_Int16x2_value.name = "value"_c;
+    SubgroupShuffleUp_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupShuffleUp_Int16x2_delta.name = "delta"_c;
+    SubgroupShuffleUp_Int16x2_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Int16x2.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Int16x2.name = SubgroupShuffleUp_Int16x2_name;
+    SubgroupShuffleUp_Int16x2.backendIndex = 2476;
+    SubgroupShuffleUp_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupShuffleUp_Int16x2.parameters = SubgroupShuffleUp_Int16x2_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x2_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x2)->signature = "subgroupShuffleUp(i16x2,u32) i16x2"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x2)->name = "subgroupShuffleUp(i16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x2)->nameWithVarNames = "subgroupShuffleUp(value : i16x2, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupShuffleUp with Int16x3, UInt32
+    SubgroupShuffleUp_Int16x3_value.name = "value"_c;
+    SubgroupShuffleUp_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupShuffleUp_Int16x3_delta.name = "delta"_c;
+    SubgroupShuffleUp_Int16x3_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Int16x3.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Int16x3.name = SubgroupShuffleUp_Int16x3_name;
+    SubgroupShuffleUp_Int16x3.backendIndex = 2477;
+    SubgroupShuffleUp_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupShuffleUp_Int16x3.parameters = SubgroupShuffleUp_Int16x3_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x3_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x3)->signature = "subgroupShuffleUp(i16x3,u32) i16x3"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x3)->name = "subgroupShuffleUp(i16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x3)->nameWithVarNames = "subgroupShuffleUp(value : i16x3, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupShuffleUp with Int16x4, UInt32
+    SubgroupShuffleUp_Int16x4_value.name = "value"_c;
+    SubgroupShuffleUp_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupShuffleUp_Int16x4_delta.name = "delta"_c;
+    SubgroupShuffleUp_Int16x4_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_Int16x4.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_Int16x4.name = SubgroupShuffleUp_Int16x4_name;
+    SubgroupShuffleUp_Int16x4.backendIndex = 2478;
+    SubgroupShuffleUp_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupShuffleUp_Int16x4.parameters = SubgroupShuffleUp_Int16x4_args;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x4_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x4)->signature = "subgroupShuffleUp(i16x4,u32) i16x4"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x4)->name = "subgroupShuffleUp(i16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x4)->nameWithVarNames = "subgroupShuffleUp(value : i16x4, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupShuffleUp with UInt32, UInt32
+    SubgroupShuffleUp_UInt32_value.name = "value"_c;
+    SubgroupShuffleUp_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt32_delta.name = "delta"_c;
+    SubgroupShuffleUp_UInt32_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt32.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_UInt32.name = SubgroupShuffleUp_UInt32_name;
+    SubgroupShuffleUp_UInt32.backendIndex = 2479;
+    SubgroupShuffleUp_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupShuffleUp_UInt32.parameters = SubgroupShuffleUp_UInt32_args;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32)->signature = "subgroupShuffleUp(u32,u32) u32"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32)->name = "subgroupShuffleUp(u32,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32)->nameWithVarNames = "subgroupShuffleUp(value : u32, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupShuffleUp with UInt32x2, UInt32
+    SubgroupShuffleUp_UInt32x2_value.name = "value"_c;
+    SubgroupShuffleUp_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupShuffleUp_UInt32x2_delta.name = "delta"_c;
+    SubgroupShuffleUp_UInt32x2_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt32x2.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_UInt32x2.name = SubgroupShuffleUp_UInt32x2_name;
+    SubgroupShuffleUp_UInt32x2.backendIndex = 2480;
+    SubgroupShuffleUp_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupShuffleUp_UInt32x2.parameters = SubgroupShuffleUp_UInt32x2_args;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x2_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x2)->signature = "subgroupShuffleUp(u32x2,u32) u32x2"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x2)->name = "subgroupShuffleUp(u32x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x2)->nameWithVarNames = "subgroupShuffleUp(value : u32x2, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupShuffleUp with UInt32x3, UInt32
+    SubgroupShuffleUp_UInt32x3_value.name = "value"_c;
+    SubgroupShuffleUp_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupShuffleUp_UInt32x3_delta.name = "delta"_c;
+    SubgroupShuffleUp_UInt32x3_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt32x3.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_UInt32x3.name = SubgroupShuffleUp_UInt32x3_name;
+    SubgroupShuffleUp_UInt32x3.backendIndex = 2481;
+    SubgroupShuffleUp_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupShuffleUp_UInt32x3.parameters = SubgroupShuffleUp_UInt32x3_args;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x3_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x3)->signature = "subgroupShuffleUp(u32x3,u32) u32x3"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x3)->name = "subgroupShuffleUp(u32x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x3)->nameWithVarNames = "subgroupShuffleUp(value : u32x3, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupShuffleUp with UInt32x4, UInt32
+    SubgroupShuffleUp_UInt32x4_value.name = "value"_c;
+    SubgroupShuffleUp_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupShuffleUp_UInt32x4_delta.name = "delta"_c;
+    SubgroupShuffleUp_UInt32x4_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt32x4.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_UInt32x4.name = SubgroupShuffleUp_UInt32x4_name;
+    SubgroupShuffleUp_UInt32x4.backendIndex = 2482;
+    SubgroupShuffleUp_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupShuffleUp_UInt32x4.parameters = SubgroupShuffleUp_UInt32x4_args;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x4_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x4)->signature = "subgroupShuffleUp(u32x4,u32) u32x4"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x4)->name = "subgroupShuffleUp(u32x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x4)->nameWithVarNames = "subgroupShuffleUp(value : u32x4, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupShuffleUp with UInt16, UInt32
+    SubgroupShuffleUp_UInt16_value.name = "value"_c;
+    SubgroupShuffleUp_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupShuffleUp_UInt16_delta.name = "delta"_c;
+    SubgroupShuffleUp_UInt16_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt16.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_UInt16.name = SubgroupShuffleUp_UInt16_name;
+    SubgroupShuffleUp_UInt16.backendIndex = 2483;
+    SubgroupShuffleUp_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupShuffleUp_UInt16.parameters = SubgroupShuffleUp_UInt16_args;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16)->signature = "subgroupShuffleUp(u16,u32) u16"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16)->name = "subgroupShuffleUp(u16,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16)->nameWithVarNames = "subgroupShuffleUp(value : u16, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupShuffleUp with UInt16x2, UInt32
+    SubgroupShuffleUp_UInt16x2_value.name = "value"_c;
+    SubgroupShuffleUp_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupShuffleUp_UInt16x2_delta.name = "delta"_c;
+    SubgroupShuffleUp_UInt16x2_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt16x2.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_UInt16x2.name = SubgroupShuffleUp_UInt16x2_name;
+    SubgroupShuffleUp_UInt16x2.backendIndex = 2484;
+    SubgroupShuffleUp_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupShuffleUp_UInt16x2.parameters = SubgroupShuffleUp_UInt16x2_args;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x2_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x2)->signature = "subgroupShuffleUp(u16x2,u32) u16x2"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x2)->name = "subgroupShuffleUp(u16x2,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x2)->nameWithVarNames = "subgroupShuffleUp(value : u16x2, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupShuffleUp with UInt16x3, UInt32
+    SubgroupShuffleUp_UInt16x3_value.name = "value"_c;
+    SubgroupShuffleUp_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupShuffleUp_UInt16x3_delta.name = "delta"_c;
+    SubgroupShuffleUp_UInt16x3_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt16x3.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_UInt16x3.name = SubgroupShuffleUp_UInt16x3_name;
+    SubgroupShuffleUp_UInt16x3.backendIndex = 2485;
+    SubgroupShuffleUp_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupShuffleUp_UInt16x3.parameters = SubgroupShuffleUp_UInt16x3_args;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x3_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x3)->signature = "subgroupShuffleUp(u16x3,u32) u16x3"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x3)->name = "subgroupShuffleUp(u16x3,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x3)->nameWithVarNames = "subgroupShuffleUp(value : u16x3, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupShuffleUp with UInt16x4, UInt32
+    SubgroupShuffleUp_UInt16x4_value.name = "value"_c;
+    SubgroupShuffleUp_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupShuffleUp_UInt16x4_delta.name = "delta"_c;
+    SubgroupShuffleUp_UInt16x4_delta.type = Type::FullType{ UInt32Type.name };
+    SubgroupShuffleUp_UInt16x4.documentation = "Returns the value identified by the current invocations ID subtracted by the deltaReturns the value identified by the current invocations ID added by the delta"_c;
+    SubgroupShuffleUp_UInt16x4.name = SubgroupShuffleUp_UInt16x4_name;
+    SubgroupShuffleUp_UInt16x4.backendIndex = 2486;
+    SubgroupShuffleUp_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupShuffleUp_UInt16x4.parameters = SubgroupShuffleUp_UInt16x4_args;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x4_delta)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x4)->signature = "subgroupShuffleUp(u16x4,u32) u16x4"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x4)->name = "subgroupShuffleUp(u16x4,u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x4)->nameWithVarNames = "subgroupShuffleUp(value : u16x4, delta : u32)"_c;
+    Symbol::Resolved(&SubgroupShuffleUp_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// atomicLoad with UInt32, MemorySemantics
+    AtomicLoad_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicLoad_Uniform_UInt32_ptr.type.strict = true;
+    AtomicLoad_Uniform_UInt32_ptr.type.mut = true;
+    AtomicLoad_Uniform_UInt32_ptr.type.modifiers = AtomicLoad_Uniform_UInt32_ptr_modifiers;
+    AtomicLoad_Uniform_UInt32_ptr.type.modifierValues = AtomicLoad_Uniform_UInt32_ptr_modifierValues;
+    AtomicLoad_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_UInt32_semantics.type.literal = true;
+    AtomicLoad_Uniform_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_UInt32.name = AtomicLoad_Uniform_UInt32_name;
+    AtomicLoad_Uniform_UInt32.backendIndex = 2487;
+    AtomicLoad_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicLoad_Uniform_UInt32.parameters = AtomicLoad_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->signature = "atomicLoad(uniform *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->name = "atomicLoad(uniform *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicLoad with UInt32, MemorySemantics
+    AtomicLoad_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicLoad_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicLoad_Workgroup_UInt32_ptr.type.mut = true;
+    AtomicLoad_Workgroup_UInt32_ptr.type.modifiers = AtomicLoad_Workgroup_UInt32_ptr_modifiers;
+    AtomicLoad_Workgroup_UInt32_ptr.type.modifierValues = AtomicLoad_Workgroup_UInt32_ptr_modifierValues;
+    AtomicLoad_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicLoad_Workgroup_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_UInt32.name = AtomicLoad_Workgroup_UInt32_name;
+    AtomicLoad_Workgroup_UInt32.backendIndex = 2488;
+    AtomicLoad_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicLoad_Workgroup_UInt32.parameters = AtomicLoad_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->signature = "atomicLoad(workgroup *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->name = "atomicLoad(workgroup *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicIncrement with UInt32, MemorySemantics
+    AtomicIncrement_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicIncrement_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicIncrement_Uniform_UInt32_ptr.type.strict = true;
+    AtomicIncrement_Uniform_UInt32_ptr.type.mut = true;
+    AtomicIncrement_Uniform_UInt32_ptr.type.modifiers = AtomicIncrement_Uniform_UInt32_ptr_modifiers;
+    AtomicIncrement_Uniform_UInt32_ptr.type.modifierValues = AtomicIncrement_Uniform_UInt32_ptr_modifierValues;
+    AtomicIncrement_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicIncrement_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Uniform_UInt32_semantics.type.literal = true;
+    AtomicIncrement_Uniform_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Uniform_UInt32.name = AtomicIncrement_Uniform_UInt32_name;
+    AtomicIncrement_Uniform_UInt32.backendIndex = 2489;
+    AtomicIncrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicIncrement_Uniform_UInt32.parameters = AtomicIncrement_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->signature = "atomicIncrement(uniform *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->name = "atomicIncrement(uniform *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicIncrement with UInt32, MemorySemantics
+    AtomicIncrement_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicIncrement_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicIncrement_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_UInt32_ptr.type.mut = true;
+    AtomicIncrement_Workgroup_UInt32_ptr.type.modifiers = AtomicIncrement_Workgroup_UInt32_ptr_modifiers;
+    AtomicIncrement_Workgroup_UInt32_ptr.type.modifierValues = AtomicIncrement_Workgroup_UInt32_ptr_modifierValues;
+    AtomicIncrement_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicIncrement_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicIncrement_Workgroup_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Workgroup_UInt32.name = AtomicIncrement_Workgroup_UInt32_name;
+    AtomicIncrement_Workgroup_UInt32.backendIndex = 2490;
+    AtomicIncrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicIncrement_Workgroup_UInt32.parameters = AtomicIncrement_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->signature = "atomicIncrement(workgroup *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->name = "atomicIncrement(workgroup *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicDecrement with UInt32, MemorySemantics
+    AtomicDecrement_Uniform_UInt32_ptr.name = "ptr"_c;
+    AtomicDecrement_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicDecrement_Uniform_UInt32_ptr.type.strict = true;
+    AtomicDecrement_Uniform_UInt32_ptr.type.mut = true;
+    AtomicDecrement_Uniform_UInt32_ptr.type.modifiers = AtomicDecrement_Uniform_UInt32_ptr_modifiers;
+    AtomicDecrement_Uniform_UInt32_ptr.type.modifierValues = AtomicDecrement_Uniform_UInt32_ptr_modifierValues;
+    AtomicDecrement_Uniform_UInt32_semantics.name = "semantics"_c;
+    AtomicDecrement_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Uniform_UInt32_semantics.type.literal = true;
+    AtomicDecrement_Uniform_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Uniform_UInt32.name = AtomicDecrement_Uniform_UInt32_name;
+    AtomicDecrement_Uniform_UInt32.backendIndex = 2491;
+    AtomicDecrement_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicDecrement_Uniform_UInt32.parameters = AtomicDecrement_Uniform_UInt32_args;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->signature = "atomicDecrement(uniform *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->name = "atomicDecrement(uniform *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicDecrement with UInt32, MemorySemantics
+    AtomicDecrement_Workgroup_UInt32_ptr.name = "ptr"_c;
+    AtomicDecrement_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
+    AtomicDecrement_Workgroup_UInt32_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_UInt32_ptr.type.mut = true;
+    AtomicDecrement_Workgroup_UInt32_ptr.type.modifiers = AtomicDecrement_Workgroup_UInt32_ptr_modifiers;
+    AtomicDecrement_Workgroup_UInt32_ptr.type.modifierValues = AtomicDecrement_Workgroup_UInt32_ptr_modifierValues;
+    AtomicDecrement_Workgroup_UInt32_semantics.name = "semantics"_c;
+    AtomicDecrement_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Workgroup_UInt32_semantics.type.literal = true;
+    AtomicDecrement_Workgroup_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Workgroup_UInt32.name = AtomicDecrement_Workgroup_UInt32_name;
+    AtomicDecrement_Workgroup_UInt32.backendIndex = 2492;
+    AtomicDecrement_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
+    AtomicDecrement_Workgroup_UInt32.parameters = AtomicDecrement_Workgroup_UInt32_args;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->signature = "atomicDecrement(workgroup *mutable u32,literal MemorySemantics) u32"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->name = "atomicDecrement(workgroup *mutable u32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable u32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// atomicLoad with Int32, MemorySemantics
+    AtomicLoad_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicLoad_Uniform_Int32_ptr.type.strict = true;
+    AtomicLoad_Uniform_Int32_ptr.type.mut = true;
+    AtomicLoad_Uniform_Int32_ptr.type.modifiers = AtomicLoad_Uniform_Int32_ptr_modifiers;
+    AtomicLoad_Uniform_Int32_ptr.type.modifierValues = AtomicLoad_Uniform_Int32_ptr_modifierValues;
+    AtomicLoad_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_Int32_semantics.type.literal = true;
+    AtomicLoad_Uniform_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_Int32.name = AtomicLoad_Uniform_Int32_name;
+    AtomicLoad_Uniform_Int32.backendIndex = 2493;
+    AtomicLoad_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicLoad_Uniform_Int32.parameters = AtomicLoad_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->signature = "atomicLoad(uniform *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->name = "atomicLoad(uniform *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicLoad with Int32, MemorySemantics
+    AtomicLoad_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicLoad_Workgroup_Int32_ptr.type.strict = true;
+    AtomicLoad_Workgroup_Int32_ptr.type.mut = true;
+    AtomicLoad_Workgroup_Int32_ptr.type.modifiers = AtomicLoad_Workgroup_Int32_ptr_modifiers;
+    AtomicLoad_Workgroup_Int32_ptr.type.modifierValues = AtomicLoad_Workgroup_Int32_ptr_modifierValues;
+    AtomicLoad_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_Int32_semantics.type.literal = true;
+    AtomicLoad_Workgroup_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_Int32.name = AtomicLoad_Workgroup_Int32_name;
+    AtomicLoad_Workgroup_Int32.backendIndex = 2494;
+    AtomicLoad_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicLoad_Workgroup_Int32.parameters = AtomicLoad_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->signature = "atomicLoad(workgroup *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->name = "atomicLoad(workgroup *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicIncrement with Int32, MemorySemantics
+    AtomicIncrement_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicIncrement_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicIncrement_Uniform_Int32_ptr.type.strict = true;
+    AtomicIncrement_Uniform_Int32_ptr.type.mut = true;
+    AtomicIncrement_Uniform_Int32_ptr.type.modifiers = AtomicIncrement_Uniform_Int32_ptr_modifiers;
+    AtomicIncrement_Uniform_Int32_ptr.type.modifierValues = AtomicIncrement_Uniform_Int32_ptr_modifierValues;
+    AtomicIncrement_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicIncrement_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Uniform_Int32_semantics.type.literal = true;
+    AtomicIncrement_Uniform_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Uniform_Int32.name = AtomicIncrement_Uniform_Int32_name;
+    AtomicIncrement_Uniform_Int32.backendIndex = 2495;
+    AtomicIncrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicIncrement_Uniform_Int32.parameters = AtomicIncrement_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->signature = "atomicIncrement(uniform *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->name = "atomicIncrement(uniform *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicIncrement with Int32, MemorySemantics
+    AtomicIncrement_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicIncrement_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicIncrement_Workgroup_Int32_ptr.type.strict = true;
+    AtomicIncrement_Workgroup_Int32_ptr.type.mut = true;
+    AtomicIncrement_Workgroup_Int32_ptr.type.modifiers = AtomicIncrement_Workgroup_Int32_ptr_modifiers;
+    AtomicIncrement_Workgroup_Int32_ptr.type.modifierValues = AtomicIncrement_Workgroup_Int32_ptr_modifierValues;
+    AtomicIncrement_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicIncrement_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Workgroup_Int32_semantics.type.literal = true;
+    AtomicIncrement_Workgroup_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Workgroup_Int32.name = AtomicIncrement_Workgroup_Int32_name;
+    AtomicIncrement_Workgroup_Int32.backendIndex = 2496;
+    AtomicIncrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicIncrement_Workgroup_Int32.parameters = AtomicIncrement_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->signature = "atomicIncrement(workgroup *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->name = "atomicIncrement(workgroup *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->nameWithVarNames = "atomicIncrement(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicDecrement with Int32, MemorySemantics
+    AtomicDecrement_Uniform_Int32_ptr.name = "ptr"_c;
+    AtomicDecrement_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicDecrement_Uniform_Int32_ptr.type.strict = true;
+    AtomicDecrement_Uniform_Int32_ptr.type.mut = true;
+    AtomicDecrement_Uniform_Int32_ptr.type.modifiers = AtomicDecrement_Uniform_Int32_ptr_modifiers;
+    AtomicDecrement_Uniform_Int32_ptr.type.modifierValues = AtomicDecrement_Uniform_Int32_ptr_modifierValues;
+    AtomicDecrement_Uniform_Int32_semantics.name = "semantics"_c;
+    AtomicDecrement_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Uniform_Int32_semantics.type.literal = true;
+    AtomicDecrement_Uniform_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Uniform_Int32.name = AtomicDecrement_Uniform_Int32_name;
+    AtomicDecrement_Uniform_Int32.backendIndex = 2497;
+    AtomicDecrement_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicDecrement_Uniform_Int32.parameters = AtomicDecrement_Uniform_Int32_args;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->signature = "atomicDecrement(uniform *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->name = "atomicDecrement(uniform *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->nameWithVarNames = "atomicDecrement(ptr : uniform *mutable i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Uniform_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicDecrement with Int32, MemorySemantics
+    AtomicDecrement_Workgroup_Int32_ptr.name = "ptr"_c;
+    AtomicDecrement_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
+    AtomicDecrement_Workgroup_Int32_ptr.type.strict = true;
+    AtomicDecrement_Workgroup_Int32_ptr.type.mut = true;
+    AtomicDecrement_Workgroup_Int32_ptr.type.modifiers = AtomicDecrement_Workgroup_Int32_ptr_modifiers;
+    AtomicDecrement_Workgroup_Int32_ptr.type.modifierValues = AtomicDecrement_Workgroup_Int32_ptr_modifierValues;
+    AtomicDecrement_Workgroup_Int32_semantics.name = "semantics"_c;
+    AtomicDecrement_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicDecrement_Workgroup_Int32_semantics.type.literal = true;
+    AtomicDecrement_Workgroup_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicDecrement_Workgroup_Int32.name = AtomicDecrement_Workgroup_Int32_name;
+    AtomicDecrement_Workgroup_Int32.backendIndex = 2498;
+    AtomicDecrement_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
+    AtomicDecrement_Workgroup_Int32.parameters = AtomicDecrement_Workgroup_Int32_args;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->signature = "atomicDecrement(workgroup *mutable i32,literal MemorySemantics) i32"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->name = "atomicDecrement(workgroup *mutable i32,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable i32, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicDecrement_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// atomicLoad with UInt16, MemorySemantics
+    AtomicLoad_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicLoad_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicLoad_Uniform_UInt16_ptr.type.strict = true;
+    AtomicLoad_Uniform_UInt16_ptr.type.mut = true;
+    AtomicLoad_Uniform_UInt16_ptr.type.modifiers = AtomicLoad_Uniform_UInt16_ptr_modifiers;
+    AtomicLoad_Uniform_UInt16_ptr.type.modifierValues = AtomicLoad_Uniform_UInt16_ptr_modifierValues;
+    AtomicLoad_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicLoad_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Uniform_UInt16_semantics.type.literal = true;
+    AtomicLoad_Uniform_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Uniform_UInt16.name = AtomicLoad_Uniform_UInt16_name;
+    AtomicLoad_Uniform_UInt16.backendIndex = 2499;
+    AtomicLoad_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicLoad_Uniform_UInt16.parameters = AtomicLoad_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->signature = "atomicLoad(uniform *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->name = "atomicLoad(uniform *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicLoad with UInt16, MemorySemantics
+    AtomicLoad_Workgroup_UInt16_ptr.name = "ptr"_c;
+    AtomicLoad_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicLoad_Workgroup_UInt16_ptr.type.strict = true;
+    AtomicLoad_Workgroup_UInt16_ptr.type.mut = true;
+    AtomicLoad_Workgroup_UInt16_ptr.type.modifiers = AtomicLoad_Workgroup_UInt16_ptr_modifiers;
+    AtomicLoad_Workgroup_UInt16_ptr.type.modifierValues = AtomicLoad_Workgroup_UInt16_ptr_modifierValues;
+    AtomicLoad_Workgroup_UInt16_semantics.name = "semantics"_c;
+    AtomicLoad_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicLoad_Workgroup_UInt16_semantics.type.literal = true;
+    AtomicLoad_Workgroup_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
+    AtomicLoad_Workgroup_UInt16.name = AtomicLoad_Workgroup_UInt16_name;
+    AtomicLoad_Workgroup_UInt16.backendIndex = 2500;
+    AtomicLoad_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicLoad_Workgroup_UInt16.parameters = AtomicLoad_Workgroup_UInt16_args;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->signature = "atomicLoad(workgroup *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->name = "atomicLoad(workgroup *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicLoad_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// atomicIncrement with UInt16, MemorySemantics
+    AtomicIncrement_Uniform_UInt16_ptr.name = "ptr"_c;
+    AtomicIncrement_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
+    AtomicIncrement_Uniform_UInt16_ptr.type.strict = true;
+    AtomicIncrement_Uniform_UInt16_ptr.type.mut = true;
+    AtomicIncrement_Uniform_UInt16_ptr.type.modifiers = AtomicIncrement_Uniform_UInt16_ptr_modifiers;
+    AtomicIncrement_Uniform_UInt16_ptr.type.modifierValues = AtomicIncrement_Uniform_UInt16_ptr_modifierValues;
+    AtomicIncrement_Uniform_UInt16_semantics.name = "semantics"_c;
+    AtomicIncrement_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
+    AtomicIncrement_Uniform_UInt16_semantics.type.literal = true;
+    AtomicIncrement_Uniform_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
+    AtomicIncrement_Uniform_UInt16.name = AtomicIncrement_Uniform_UInt16_name;
+    AtomicIncrement_Uniform_UInt16.backendIndex = 2501;
+    AtomicIncrement_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
+    AtomicIncrement_Uniform_UInt16.parameters = AtomicIncrement_Uniform_UInt16_args;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_ptr)->storage = Storage::Uniform;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->signature = "atomicIncrement(uniform *mutable u16,literal MemorySemantics) u16"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->name = "atomicIncrement(uniform *mutable u16,literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->nameWithVarNames = "atomicIncrement(ptr : uniform *mutable u16, semantics : literal MemorySemantics)"_c;
+    Symbol::Resolved(&AtomicIncrement_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
 
 }
 } // namespace GPULang

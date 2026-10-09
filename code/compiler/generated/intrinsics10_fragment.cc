@@ -9,3974 +9,2951 @@
 #include "compiler.h"
 namespace GPULang
 {
-/// atomicDecrement with Int16, MemorySemantics
-Variable AtomicDecrement_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicDecrement_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicDecrement_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicDecrement_Workgroup_Int16_semantics;
-Function AtomicDecrement_Workgroup_Int16;
-inline constexpr std::array AtomicDecrement_Workgroup_Int16_args = { &AtomicDecrement_Workgroup_Int16_ptr, &AtomicDecrement_Workgroup_Int16_semantics };
-
-/// atomicLoad with Float32, MemorySemantics
-Variable AtomicLoad_Uniform_Float32_ptr;
-inline constexpr std::array AtomicLoad_Uniform_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Uniform_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Uniform_Float32_semantics;
-Function AtomicLoad_Uniform_Float32;
-inline constexpr std::array AtomicLoad_Uniform_Float32_args = { &AtomicLoad_Uniform_Float32_ptr, &AtomicLoad_Uniform_Float32_semantics };
-
-/// atomicLoad with Float32, MemorySemantics
-Variable AtomicLoad_Workgroup_Float32_ptr;
-inline constexpr std::array AtomicLoad_Workgroup_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Workgroup_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Workgroup_Float32_semantics;
-Function AtomicLoad_Workgroup_Float32;
-inline constexpr std::array AtomicLoad_Workgroup_Float32_args = { &AtomicLoad_Workgroup_Float32_ptr, &AtomicLoad_Workgroup_Float32_semantics };
-
-/// atomicLoad with Float16, MemorySemantics
-Variable AtomicLoad_Uniform_Float16_ptr;
-inline constexpr std::array AtomicLoad_Uniform_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Uniform_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Uniform_Float16_semantics;
-Function AtomicLoad_Uniform_Float16;
-inline constexpr std::array AtomicLoad_Uniform_Float16_args = { &AtomicLoad_Uniform_Float16_ptr, &AtomicLoad_Uniform_Float16_semantics };
-
-/// atomicLoad with Float16, MemorySemantics
-Variable AtomicLoad_Workgroup_Float16_ptr;
-inline constexpr std::array AtomicLoad_Workgroup_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicLoad_Workgroup_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicLoad_Workgroup_Float16_semantics;
-Function AtomicLoad_Workgroup_Float16;
-inline constexpr std::array AtomicLoad_Workgroup_Float16_args = { &AtomicLoad_Workgroup_Float16_ptr, &AtomicLoad_Workgroup_Float16_semantics };
-
-/// atomicStore with UInt32, UInt32, MemorySemantics
-Variable AtomicStore_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicStore_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Uniform_UInt32_value;
-Variable AtomicStore_Uniform_UInt32_semantics;
-Function AtomicStore_Uniform_UInt32;
-inline constexpr std::array AtomicStore_Uniform_UInt32_args = { &AtomicStore_Uniform_UInt32_ptr, &AtomicStore_Uniform_UInt32_value, &AtomicStore_Uniform_UInt32_semantics };
-
-/// atomicStore with UInt32, UInt32, MemorySemantics
-Variable AtomicStore_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicStore_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Workgroup_UInt32_value;
-Variable AtomicStore_Workgroup_UInt32_semantics;
-Function AtomicStore_Workgroup_UInt32;
-inline constexpr std::array AtomicStore_Workgroup_UInt32_args = { &AtomicStore_Workgroup_UInt32_ptr, &AtomicStore_Workgroup_UInt32_value, &AtomicStore_Workgroup_UInt32_semantics };
-
-/// atomicExchange with UInt32, UInt32, MemorySemantics
-Variable AtomicExchange_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicExchange_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Uniform_UInt32_value;
-Variable AtomicExchange_Uniform_UInt32_semantics;
-Function AtomicExchange_Uniform_UInt32;
-inline constexpr std::array AtomicExchange_Uniform_UInt32_args = { &AtomicExchange_Uniform_UInt32_ptr, &AtomicExchange_Uniform_UInt32_value, &AtomicExchange_Uniform_UInt32_semantics };
-
-/// atomicExchange with UInt32, UInt32, MemorySemantics
-Variable AtomicExchange_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicExchange_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Workgroup_UInt32_value;
-Variable AtomicExchange_Workgroup_UInt32_semantics;
-Function AtomicExchange_Workgroup_UInt32;
-inline constexpr std::array AtomicExchange_Workgroup_UInt32_args = { &AtomicExchange_Workgroup_UInt32_ptr, &AtomicExchange_Workgroup_UInt32_value, &AtomicExchange_Workgroup_UInt32_semantics };
-
-/// atomicAdd with UInt32, UInt32, MemorySemantics
-Variable AtomicAdd_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicAdd_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Uniform_UInt32_value;
-Variable AtomicAdd_Uniform_UInt32_semantics;
-Function AtomicAdd_Uniform_UInt32;
-inline constexpr std::array AtomicAdd_Uniform_UInt32_args = { &AtomicAdd_Uniform_UInt32_ptr, &AtomicAdd_Uniform_UInt32_value, &AtomicAdd_Uniform_UInt32_semantics };
-
-/// atomicAdd with UInt32, UInt32, MemorySemantics
-Variable AtomicAdd_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicAdd_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Workgroup_UInt32_value;
-Variable AtomicAdd_Workgroup_UInt32_semantics;
-Function AtomicAdd_Workgroup_UInt32;
-inline constexpr std::array AtomicAdd_Workgroup_UInt32_args = { &AtomicAdd_Workgroup_UInt32_ptr, &AtomicAdd_Workgroup_UInt32_value, &AtomicAdd_Workgroup_UInt32_semantics };
-
-/// atomicSubtract with UInt32, UInt32, MemorySemantics
-Variable AtomicSubtract_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicSubtract_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Uniform_UInt32_value;
-Variable AtomicSubtract_Uniform_UInt32_semantics;
-Function AtomicSubtract_Uniform_UInt32;
-inline constexpr std::array AtomicSubtract_Uniform_UInt32_args = { &AtomicSubtract_Uniform_UInt32_ptr, &AtomicSubtract_Uniform_UInt32_value, &AtomicSubtract_Uniform_UInt32_semantics };
-
-/// atomicSubtract with UInt32, UInt32, MemorySemantics
-Variable AtomicSubtract_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicSubtract_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Workgroup_UInt32_value;
-Variable AtomicSubtract_Workgroup_UInt32_semantics;
-Function AtomicSubtract_Workgroup_UInt32;
-inline constexpr std::array AtomicSubtract_Workgroup_UInt32_args = { &AtomicSubtract_Workgroup_UInt32_ptr, &AtomicSubtract_Workgroup_UInt32_value, &AtomicSubtract_Workgroup_UInt32_semantics };
-
-/// atomicAnd with UInt32, UInt32, MemorySemantics
-Variable AtomicAnd_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicAnd_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Uniform_UInt32_value;
-Variable AtomicAnd_Uniform_UInt32_semantics;
-Function AtomicAnd_Uniform_UInt32;
-inline constexpr std::array AtomicAnd_Uniform_UInt32_args = { &AtomicAnd_Uniform_UInt32_ptr, &AtomicAnd_Uniform_UInt32_value, &AtomicAnd_Uniform_UInt32_semantics };
-
-/// atomicAnd with UInt32, UInt32, MemorySemantics
-Variable AtomicAnd_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicAnd_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Workgroup_UInt32_value;
-Variable AtomicAnd_Workgroup_UInt32_semantics;
-Function AtomicAnd_Workgroup_UInt32;
-inline constexpr std::array AtomicAnd_Workgroup_UInt32_args = { &AtomicAnd_Workgroup_UInt32_ptr, &AtomicAnd_Workgroup_UInt32_value, &AtomicAnd_Workgroup_UInt32_semantics };
-
-/// atomicOr with UInt32, UInt32, MemorySemantics
-Variable AtomicOr_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicOr_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Uniform_UInt32_value;
-Variable AtomicOr_Uniform_UInt32_semantics;
-Function AtomicOr_Uniform_UInt32;
-inline constexpr std::array AtomicOr_Uniform_UInt32_args = { &AtomicOr_Uniform_UInt32_ptr, &AtomicOr_Uniform_UInt32_value, &AtomicOr_Uniform_UInt32_semantics };
-
-/// atomicOr with UInt32, UInt32, MemorySemantics
-Variable AtomicOr_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicOr_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Workgroup_UInt32_value;
-Variable AtomicOr_Workgroup_UInt32_semantics;
-Function AtomicOr_Workgroup_UInt32;
-inline constexpr std::array AtomicOr_Workgroup_UInt32_args = { &AtomicOr_Workgroup_UInt32_ptr, &AtomicOr_Workgroup_UInt32_value, &AtomicOr_Workgroup_UInt32_semantics };
-
-/// atomicXor with UInt32, UInt32, MemorySemantics
-Variable AtomicXor_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicXor_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Uniform_UInt32_value;
-Variable AtomicXor_Uniform_UInt32_semantics;
-Function AtomicXor_Uniform_UInt32;
-inline constexpr std::array AtomicXor_Uniform_UInt32_args = { &AtomicXor_Uniform_UInt32_ptr, &AtomicXor_Uniform_UInt32_value, &AtomicXor_Uniform_UInt32_semantics };
-
-/// atomicXor with UInt32, UInt32, MemorySemantics
-Variable AtomicXor_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicXor_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Workgroup_UInt32_value;
-Variable AtomicXor_Workgroup_UInt32_semantics;
-Function AtomicXor_Workgroup_UInt32;
-inline constexpr std::array AtomicXor_Workgroup_UInt32_args = { &AtomicXor_Workgroup_UInt32_ptr, &AtomicXor_Workgroup_UInt32_value, &AtomicXor_Workgroup_UInt32_semantics };
-
-/// atomicStore with Int32, Int32, MemorySemantics
-Variable AtomicStore_Uniform_Int32_ptr;
-inline constexpr std::array AtomicStore_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Uniform_Int32_value;
-Variable AtomicStore_Uniform_Int32_semantics;
-Function AtomicStore_Uniform_Int32;
-inline constexpr std::array AtomicStore_Uniform_Int32_args = { &AtomicStore_Uniform_Int32_ptr, &AtomicStore_Uniform_Int32_value, &AtomicStore_Uniform_Int32_semantics };
-
-/// atomicStore with Int32, Int32, MemorySemantics
-Variable AtomicStore_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicStore_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Workgroup_Int32_value;
-Variable AtomicStore_Workgroup_Int32_semantics;
-Function AtomicStore_Workgroup_Int32;
-inline constexpr std::array AtomicStore_Workgroup_Int32_args = { &AtomicStore_Workgroup_Int32_ptr, &AtomicStore_Workgroup_Int32_value, &AtomicStore_Workgroup_Int32_semantics };
-
-/// atomicExchange with Int32, Int32, MemorySemantics
-Variable AtomicExchange_Uniform_Int32_ptr;
-inline constexpr std::array AtomicExchange_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Uniform_Int32_value;
-Variable AtomicExchange_Uniform_Int32_semantics;
-Function AtomicExchange_Uniform_Int32;
-inline constexpr std::array AtomicExchange_Uniform_Int32_args = { &AtomicExchange_Uniform_Int32_ptr, &AtomicExchange_Uniform_Int32_value, &AtomicExchange_Uniform_Int32_semantics };
-
-/// atomicExchange with Int32, Int32, MemorySemantics
-Variable AtomicExchange_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicExchange_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Workgroup_Int32_value;
-Variable AtomicExchange_Workgroup_Int32_semantics;
-Function AtomicExchange_Workgroup_Int32;
-inline constexpr std::array AtomicExchange_Workgroup_Int32_args = { &AtomicExchange_Workgroup_Int32_ptr, &AtomicExchange_Workgroup_Int32_value, &AtomicExchange_Workgroup_Int32_semantics };
-
-/// atomicAdd with Int32, Int32, MemorySemantics
-Variable AtomicAdd_Uniform_Int32_ptr;
-inline constexpr std::array AtomicAdd_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Uniform_Int32_value;
-Variable AtomicAdd_Uniform_Int32_semantics;
-Function AtomicAdd_Uniform_Int32;
-inline constexpr std::array AtomicAdd_Uniform_Int32_args = { &AtomicAdd_Uniform_Int32_ptr, &AtomicAdd_Uniform_Int32_value, &AtomicAdd_Uniform_Int32_semantics };
-
-/// atomicAdd with Int32, Int32, MemorySemantics
-Variable AtomicAdd_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicAdd_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Workgroup_Int32_value;
-Variable AtomicAdd_Workgroup_Int32_semantics;
-Function AtomicAdd_Workgroup_Int32;
-inline constexpr std::array AtomicAdd_Workgroup_Int32_args = { &AtomicAdd_Workgroup_Int32_ptr, &AtomicAdd_Workgroup_Int32_value, &AtomicAdd_Workgroup_Int32_semantics };
-
-/// atomicSubtract with Int32, Int32, MemorySemantics
-Variable AtomicSubtract_Uniform_Int32_ptr;
-inline constexpr std::array AtomicSubtract_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Uniform_Int32_value;
-Variable AtomicSubtract_Uniform_Int32_semantics;
-Function AtomicSubtract_Uniform_Int32;
-inline constexpr std::array AtomicSubtract_Uniform_Int32_args = { &AtomicSubtract_Uniform_Int32_ptr, &AtomicSubtract_Uniform_Int32_value, &AtomicSubtract_Uniform_Int32_semantics };
-
-/// atomicSubtract with Int32, Int32, MemorySemantics
-Variable AtomicSubtract_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicSubtract_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Workgroup_Int32_value;
-Variable AtomicSubtract_Workgroup_Int32_semantics;
-Function AtomicSubtract_Workgroup_Int32;
-inline constexpr std::array AtomicSubtract_Workgroup_Int32_args = { &AtomicSubtract_Workgroup_Int32_ptr, &AtomicSubtract_Workgroup_Int32_value, &AtomicSubtract_Workgroup_Int32_semantics };
-
-/// atomicAnd with Int32, Int32, MemorySemantics
-Variable AtomicAnd_Uniform_Int32_ptr;
-inline constexpr std::array AtomicAnd_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Uniform_Int32_value;
-Variable AtomicAnd_Uniform_Int32_semantics;
-Function AtomicAnd_Uniform_Int32;
-inline constexpr std::array AtomicAnd_Uniform_Int32_args = { &AtomicAnd_Uniform_Int32_ptr, &AtomicAnd_Uniform_Int32_value, &AtomicAnd_Uniform_Int32_semantics };
-
-/// atomicAnd with Int32, Int32, MemorySemantics
-Variable AtomicAnd_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicAnd_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Workgroup_Int32_value;
-Variable AtomicAnd_Workgroup_Int32_semantics;
-Function AtomicAnd_Workgroup_Int32;
-inline constexpr std::array AtomicAnd_Workgroup_Int32_args = { &AtomicAnd_Workgroup_Int32_ptr, &AtomicAnd_Workgroup_Int32_value, &AtomicAnd_Workgroup_Int32_semantics };
-
-/// atomicOr with Int32, Int32, MemorySemantics
-Variable AtomicOr_Uniform_Int32_ptr;
-inline constexpr std::array AtomicOr_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Uniform_Int32_value;
-Variable AtomicOr_Uniform_Int32_semantics;
-Function AtomicOr_Uniform_Int32;
-inline constexpr std::array AtomicOr_Uniform_Int32_args = { &AtomicOr_Uniform_Int32_ptr, &AtomicOr_Uniform_Int32_value, &AtomicOr_Uniform_Int32_semantics };
-
-/// atomicOr with Int32, Int32, MemorySemantics
-Variable AtomicOr_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicOr_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Workgroup_Int32_value;
-Variable AtomicOr_Workgroup_Int32_semantics;
-Function AtomicOr_Workgroup_Int32;
-inline constexpr std::array AtomicOr_Workgroup_Int32_args = { &AtomicOr_Workgroup_Int32_ptr, &AtomicOr_Workgroup_Int32_value, &AtomicOr_Workgroup_Int32_semantics };
-
-/// atomicXor with Int32, Int32, MemorySemantics
-Variable AtomicXor_Uniform_Int32_ptr;
-inline constexpr std::array AtomicXor_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Uniform_Int32_value;
-Variable AtomicXor_Uniform_Int32_semantics;
-Function AtomicXor_Uniform_Int32;
-inline constexpr std::array AtomicXor_Uniform_Int32_args = { &AtomicXor_Uniform_Int32_ptr, &AtomicXor_Uniform_Int32_value, &AtomicXor_Uniform_Int32_semantics };
-
-/// atomicXor with Int32, Int32, MemorySemantics
-Variable AtomicXor_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicXor_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Workgroup_Int32_value;
-Variable AtomicXor_Workgroup_Int32_semantics;
-Function AtomicXor_Workgroup_Int32;
-inline constexpr std::array AtomicXor_Workgroup_Int32_args = { &AtomicXor_Workgroup_Int32_ptr, &AtomicXor_Workgroup_Int32_value, &AtomicXor_Workgroup_Int32_semantics };
-
-/// atomicStore with UInt16, UInt16, MemorySemantics
-Variable AtomicStore_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicStore_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Uniform_UInt16_value;
-Variable AtomicStore_Uniform_UInt16_semantics;
-Function AtomicStore_Uniform_UInt16;
-inline constexpr std::array AtomicStore_Uniform_UInt16_args = { &AtomicStore_Uniform_UInt16_ptr, &AtomicStore_Uniform_UInt16_value, &AtomicStore_Uniform_UInt16_semantics };
-
-/// atomicStore with UInt16, UInt16, MemorySemantics
-Variable AtomicStore_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicStore_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Workgroup_UInt16_value;
-Variable AtomicStore_Workgroup_UInt16_semantics;
-Function AtomicStore_Workgroup_UInt16;
-inline constexpr std::array AtomicStore_Workgroup_UInt16_args = { &AtomicStore_Workgroup_UInt16_ptr, &AtomicStore_Workgroup_UInt16_value, &AtomicStore_Workgroup_UInt16_semantics };
-
-/// atomicExchange with UInt16, UInt16, MemorySemantics
-Variable AtomicExchange_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicExchange_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Uniform_UInt16_value;
-Variable AtomicExchange_Uniform_UInt16_semantics;
-Function AtomicExchange_Uniform_UInt16;
-inline constexpr std::array AtomicExchange_Uniform_UInt16_args = { &AtomicExchange_Uniform_UInt16_ptr, &AtomicExchange_Uniform_UInt16_value, &AtomicExchange_Uniform_UInt16_semantics };
-
-/// atomicExchange with UInt16, UInt16, MemorySemantics
-Variable AtomicExchange_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicExchange_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Workgroup_UInt16_value;
-Variable AtomicExchange_Workgroup_UInt16_semantics;
-Function AtomicExchange_Workgroup_UInt16;
-inline constexpr std::array AtomicExchange_Workgroup_UInt16_args = { &AtomicExchange_Workgroup_UInt16_ptr, &AtomicExchange_Workgroup_UInt16_value, &AtomicExchange_Workgroup_UInt16_semantics };
-
-/// atomicAdd with UInt16, UInt16, MemorySemantics
-Variable AtomicAdd_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicAdd_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Uniform_UInt16_value;
-Variable AtomicAdd_Uniform_UInt16_semantics;
-Function AtomicAdd_Uniform_UInt16;
-inline constexpr std::array AtomicAdd_Uniform_UInt16_args = { &AtomicAdd_Uniform_UInt16_ptr, &AtomicAdd_Uniform_UInt16_value, &AtomicAdd_Uniform_UInt16_semantics };
-
-/// atomicAdd with UInt16, UInt16, MemorySemantics
-Variable AtomicAdd_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicAdd_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Workgroup_UInt16_value;
-Variable AtomicAdd_Workgroup_UInt16_semantics;
-Function AtomicAdd_Workgroup_UInt16;
-inline constexpr std::array AtomicAdd_Workgroup_UInt16_args = { &AtomicAdd_Workgroup_UInt16_ptr, &AtomicAdd_Workgroup_UInt16_value, &AtomicAdd_Workgroup_UInt16_semantics };
-
-/// atomicSubtract with UInt16, UInt16, MemorySemantics
-Variable AtomicSubtract_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicSubtract_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Uniform_UInt16_value;
-Variable AtomicSubtract_Uniform_UInt16_semantics;
-Function AtomicSubtract_Uniform_UInt16;
-inline constexpr std::array AtomicSubtract_Uniform_UInt16_args = { &AtomicSubtract_Uniform_UInt16_ptr, &AtomicSubtract_Uniform_UInt16_value, &AtomicSubtract_Uniform_UInt16_semantics };
-
-/// atomicSubtract with UInt16, UInt16, MemorySemantics
-Variable AtomicSubtract_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicSubtract_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Workgroup_UInt16_value;
-Variable AtomicSubtract_Workgroup_UInt16_semantics;
-Function AtomicSubtract_Workgroup_UInt16;
-inline constexpr std::array AtomicSubtract_Workgroup_UInt16_args = { &AtomicSubtract_Workgroup_UInt16_ptr, &AtomicSubtract_Workgroup_UInt16_value, &AtomicSubtract_Workgroup_UInt16_semantics };
-
-/// atomicAnd with UInt16, UInt16, MemorySemantics
-Variable AtomicAnd_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicAnd_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Uniform_UInt16_value;
-Variable AtomicAnd_Uniform_UInt16_semantics;
-Function AtomicAnd_Uniform_UInt16;
-inline constexpr std::array AtomicAnd_Uniform_UInt16_args = { &AtomicAnd_Uniform_UInt16_ptr, &AtomicAnd_Uniform_UInt16_value, &AtomicAnd_Uniform_UInt16_semantics };
-
-/// atomicAnd with UInt16, UInt16, MemorySemantics
-Variable AtomicAnd_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicAnd_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Workgroup_UInt16_value;
-Variable AtomicAnd_Workgroup_UInt16_semantics;
-Function AtomicAnd_Workgroup_UInt16;
-inline constexpr std::array AtomicAnd_Workgroup_UInt16_args = { &AtomicAnd_Workgroup_UInt16_ptr, &AtomicAnd_Workgroup_UInt16_value, &AtomicAnd_Workgroup_UInt16_semantics };
-
-/// atomicOr with UInt16, UInt16, MemorySemantics
-Variable AtomicOr_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicOr_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Uniform_UInt16_value;
-Variable AtomicOr_Uniform_UInt16_semantics;
-Function AtomicOr_Uniform_UInt16;
-inline constexpr std::array AtomicOr_Uniform_UInt16_args = { &AtomicOr_Uniform_UInt16_ptr, &AtomicOr_Uniform_UInt16_value, &AtomicOr_Uniform_UInt16_semantics };
-
-/// atomicOr with UInt16, UInt16, MemorySemantics
-Variable AtomicOr_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicOr_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Workgroup_UInt16_value;
-Variable AtomicOr_Workgroup_UInt16_semantics;
-Function AtomicOr_Workgroup_UInt16;
-inline constexpr std::array AtomicOr_Workgroup_UInt16_args = { &AtomicOr_Workgroup_UInt16_ptr, &AtomicOr_Workgroup_UInt16_value, &AtomicOr_Workgroup_UInt16_semantics };
-
-/// atomicXor with UInt16, UInt16, MemorySemantics
-Variable AtomicXor_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicXor_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Uniform_UInt16_value;
-Variable AtomicXor_Uniform_UInt16_semantics;
-Function AtomicXor_Uniform_UInt16;
-inline constexpr std::array AtomicXor_Uniform_UInt16_args = { &AtomicXor_Uniform_UInt16_ptr, &AtomicXor_Uniform_UInt16_value, &AtomicXor_Uniform_UInt16_semantics };
-
-/// atomicXor with UInt16, UInt16, MemorySemantics
-Variable AtomicXor_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicXor_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Workgroup_UInt16_value;
-Variable AtomicXor_Workgroup_UInt16_semantics;
-Function AtomicXor_Workgroup_UInt16;
-inline constexpr std::array AtomicXor_Workgroup_UInt16_args = { &AtomicXor_Workgroup_UInt16_ptr, &AtomicXor_Workgroup_UInt16_value, &AtomicXor_Workgroup_UInt16_semantics };
-
-/// atomicStore with Int16, Int16, MemorySemantics
-Variable AtomicStore_Uniform_Int16_ptr;
-inline constexpr std::array AtomicStore_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Uniform_Int16_value;
-Variable AtomicStore_Uniform_Int16_semantics;
-Function AtomicStore_Uniform_Int16;
-inline constexpr std::array AtomicStore_Uniform_Int16_args = { &AtomicStore_Uniform_Int16_ptr, &AtomicStore_Uniform_Int16_value, &AtomicStore_Uniform_Int16_semantics };
-
-/// atomicStore with Int16, Int16, MemorySemantics
-Variable AtomicStore_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicStore_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Workgroup_Int16_value;
-Variable AtomicStore_Workgroup_Int16_semantics;
-Function AtomicStore_Workgroup_Int16;
-inline constexpr std::array AtomicStore_Workgroup_Int16_args = { &AtomicStore_Workgroup_Int16_ptr, &AtomicStore_Workgroup_Int16_value, &AtomicStore_Workgroup_Int16_semantics };
-
-/// atomicExchange with Int16, Int16, MemorySemantics
-Variable AtomicExchange_Uniform_Int16_ptr;
-inline constexpr std::array AtomicExchange_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Uniform_Int16_value;
-Variable AtomicExchange_Uniform_Int16_semantics;
-Function AtomicExchange_Uniform_Int16;
-inline constexpr std::array AtomicExchange_Uniform_Int16_args = { &AtomicExchange_Uniform_Int16_ptr, &AtomicExchange_Uniform_Int16_value, &AtomicExchange_Uniform_Int16_semantics };
-
-/// atomicExchange with Int16, Int16, MemorySemantics
-Variable AtomicExchange_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicExchange_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Workgroup_Int16_value;
-Variable AtomicExchange_Workgroup_Int16_semantics;
-Function AtomicExchange_Workgroup_Int16;
-inline constexpr std::array AtomicExchange_Workgroup_Int16_args = { &AtomicExchange_Workgroup_Int16_ptr, &AtomicExchange_Workgroup_Int16_value, &AtomicExchange_Workgroup_Int16_semantics };
-
-/// atomicAdd with Int16, Int16, MemorySemantics
-Variable AtomicAdd_Uniform_Int16_ptr;
-inline constexpr std::array AtomicAdd_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Uniform_Int16_value;
-Variable AtomicAdd_Uniform_Int16_semantics;
-Function AtomicAdd_Uniform_Int16;
-inline constexpr std::array AtomicAdd_Uniform_Int16_args = { &AtomicAdd_Uniform_Int16_ptr, &AtomicAdd_Uniform_Int16_value, &AtomicAdd_Uniform_Int16_semantics };
-
-/// atomicAdd with Int16, Int16, MemorySemantics
-Variable AtomicAdd_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicAdd_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAdd_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAdd_Workgroup_Int16_value;
-Variable AtomicAdd_Workgroup_Int16_semantics;
-Function AtomicAdd_Workgroup_Int16;
-inline constexpr std::array AtomicAdd_Workgroup_Int16_args = { &AtomicAdd_Workgroup_Int16_ptr, &AtomicAdd_Workgroup_Int16_value, &AtomicAdd_Workgroup_Int16_semantics };
-
-/// atomicSubtract with Int16, Int16, MemorySemantics
-Variable AtomicSubtract_Uniform_Int16_ptr;
-inline constexpr std::array AtomicSubtract_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Uniform_Int16_value;
-Variable AtomicSubtract_Uniform_Int16_semantics;
-Function AtomicSubtract_Uniform_Int16;
-inline constexpr std::array AtomicSubtract_Uniform_Int16_args = { &AtomicSubtract_Uniform_Int16_ptr, &AtomicSubtract_Uniform_Int16_value, &AtomicSubtract_Uniform_Int16_semantics };
-
-/// atomicSubtract with Int16, Int16, MemorySemantics
-Variable AtomicSubtract_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicSubtract_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicSubtract_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicSubtract_Workgroup_Int16_value;
-Variable AtomicSubtract_Workgroup_Int16_semantics;
-Function AtomicSubtract_Workgroup_Int16;
-inline constexpr std::array AtomicSubtract_Workgroup_Int16_args = { &AtomicSubtract_Workgroup_Int16_ptr, &AtomicSubtract_Workgroup_Int16_value, &AtomicSubtract_Workgroup_Int16_semantics };
-
-/// atomicAnd with Int16, Int16, MemorySemantics
-Variable AtomicAnd_Uniform_Int16_ptr;
-inline constexpr std::array AtomicAnd_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Uniform_Int16_value;
-Variable AtomicAnd_Uniform_Int16_semantics;
-Function AtomicAnd_Uniform_Int16;
-inline constexpr std::array AtomicAnd_Uniform_Int16_args = { &AtomicAnd_Uniform_Int16_ptr, &AtomicAnd_Uniform_Int16_value, &AtomicAnd_Uniform_Int16_semantics };
-
-/// atomicAnd with Int16, Int16, MemorySemantics
-Variable AtomicAnd_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicAnd_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicAnd_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicAnd_Workgroup_Int16_value;
-Variable AtomicAnd_Workgroup_Int16_semantics;
-Function AtomicAnd_Workgroup_Int16;
-inline constexpr std::array AtomicAnd_Workgroup_Int16_args = { &AtomicAnd_Workgroup_Int16_ptr, &AtomicAnd_Workgroup_Int16_value, &AtomicAnd_Workgroup_Int16_semantics };
-
-/// atomicOr with Int16, Int16, MemorySemantics
-Variable AtomicOr_Uniform_Int16_ptr;
-inline constexpr std::array AtomicOr_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Uniform_Int16_value;
-Variable AtomicOr_Uniform_Int16_semantics;
-Function AtomicOr_Uniform_Int16;
-inline constexpr std::array AtomicOr_Uniform_Int16_args = { &AtomicOr_Uniform_Int16_ptr, &AtomicOr_Uniform_Int16_value, &AtomicOr_Uniform_Int16_semantics };
-
-/// atomicOr with Int16, Int16, MemorySemantics
-Variable AtomicOr_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicOr_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicOr_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicOr_Workgroup_Int16_value;
-Variable AtomicOr_Workgroup_Int16_semantics;
-Function AtomicOr_Workgroup_Int16;
-inline constexpr std::array AtomicOr_Workgroup_Int16_args = { &AtomicOr_Workgroup_Int16_ptr, &AtomicOr_Workgroup_Int16_value, &AtomicOr_Workgroup_Int16_semantics };
-
-/// atomicXor with Int16, Int16, MemorySemantics
-Variable AtomicXor_Uniform_Int16_ptr;
-inline constexpr std::array AtomicXor_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Uniform_Int16_value;
-Variable AtomicXor_Uniform_Int16_semantics;
-Function AtomicXor_Uniform_Int16;
-inline constexpr std::array AtomicXor_Uniform_Int16_args = { &AtomicXor_Uniform_Int16_ptr, &AtomicXor_Uniform_Int16_value, &AtomicXor_Uniform_Int16_semantics };
-
-/// atomicXor with Int16, Int16, MemorySemantics
-Variable AtomicXor_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicXor_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicXor_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicXor_Workgroup_Int16_value;
-Variable AtomicXor_Workgroup_Int16_semantics;
-Function AtomicXor_Workgroup_Int16;
-inline constexpr std::array AtomicXor_Workgroup_Int16_args = { &AtomicXor_Workgroup_Int16_ptr, &AtomicXor_Workgroup_Int16_value, &AtomicXor_Workgroup_Int16_semantics };
-
-/// atomicStore with Float32, Float32, MemorySemantics
-Variable AtomicStore_Uniform_Float32_ptr;
-inline constexpr std::array AtomicStore_Uniform_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Uniform_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Uniform_Float32_value;
-Variable AtomicStore_Uniform_Float32_semantics;
-Function AtomicStore_Uniform_Float32;
-inline constexpr std::array AtomicStore_Uniform_Float32_args = { &AtomicStore_Uniform_Float32_ptr, &AtomicStore_Uniform_Float32_value, &AtomicStore_Uniform_Float32_semantics };
-
-/// atomicStore with Float32, Float32, MemorySemantics
-Variable AtomicStore_Workgroup_Float32_ptr;
-inline constexpr std::array AtomicStore_Workgroup_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Workgroup_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Workgroup_Float32_value;
-Variable AtomicStore_Workgroup_Float32_semantics;
-Function AtomicStore_Workgroup_Float32;
-inline constexpr std::array AtomicStore_Workgroup_Float32_args = { &AtomicStore_Workgroup_Float32_ptr, &AtomicStore_Workgroup_Float32_value, &AtomicStore_Workgroup_Float32_semantics };
-
-/// atomicExchange with Float32, Float32, MemorySemantics
-Variable AtomicExchange_Uniform_Float32_ptr;
-inline constexpr std::array AtomicExchange_Uniform_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Uniform_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Uniform_Float32_value;
-Variable AtomicExchange_Uniform_Float32_semantics;
-Function AtomicExchange_Uniform_Float32;
-inline constexpr std::array AtomicExchange_Uniform_Float32_args = { &AtomicExchange_Uniform_Float32_ptr, &AtomicExchange_Uniform_Float32_value, &AtomicExchange_Uniform_Float32_semantics };
-
-/// atomicExchange with Float32, Float32, MemorySemantics
-Variable AtomicExchange_Workgroup_Float32_ptr;
-inline constexpr std::array AtomicExchange_Workgroup_Float32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Workgroup_Float32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Workgroup_Float32_value;
-Variable AtomicExchange_Workgroup_Float32_semantics;
-Function AtomicExchange_Workgroup_Float32;
-inline constexpr std::array AtomicExchange_Workgroup_Float32_args = { &AtomicExchange_Workgroup_Float32_ptr, &AtomicExchange_Workgroup_Float32_value, &AtomicExchange_Workgroup_Float32_semantics };
-
-/// atomicStore with Float16, Float16, MemorySemantics
-Variable AtomicStore_Uniform_Float16_ptr;
-inline constexpr std::array AtomicStore_Uniform_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Uniform_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Uniform_Float16_value;
-Variable AtomicStore_Uniform_Float16_semantics;
-Function AtomicStore_Uniform_Float16;
-inline constexpr std::array AtomicStore_Uniform_Float16_args = { &AtomicStore_Uniform_Float16_ptr, &AtomicStore_Uniform_Float16_value, &AtomicStore_Uniform_Float16_semantics };
-
-/// atomicStore with Float16, Float16, MemorySemantics
-Variable AtomicStore_Workgroup_Float16_ptr;
-inline constexpr std::array AtomicStore_Workgroup_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicStore_Workgroup_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicStore_Workgroup_Float16_value;
-Variable AtomicStore_Workgroup_Float16_semantics;
-Function AtomicStore_Workgroup_Float16;
-inline constexpr std::array AtomicStore_Workgroup_Float16_args = { &AtomicStore_Workgroup_Float16_ptr, &AtomicStore_Workgroup_Float16_value, &AtomicStore_Workgroup_Float16_semantics };
-
-/// atomicExchange with Float16, Float16, MemorySemantics
-Variable AtomicExchange_Uniform_Float16_ptr;
-inline constexpr std::array AtomicExchange_Uniform_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Uniform_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Uniform_Float16_value;
-Variable AtomicExchange_Uniform_Float16_semantics;
-Function AtomicExchange_Uniform_Float16;
-inline constexpr std::array AtomicExchange_Uniform_Float16_args = { &AtomicExchange_Uniform_Float16_ptr, &AtomicExchange_Uniform_Float16_value, &AtomicExchange_Uniform_Float16_semantics };
-
-/// atomicExchange with Float16, Float16, MemorySemantics
-Variable AtomicExchange_Workgroup_Float16_ptr;
-inline constexpr std::array AtomicExchange_Workgroup_Float16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicExchange_Workgroup_Float16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicExchange_Workgroup_Float16_value;
-Variable AtomicExchange_Workgroup_Float16_semantics;
-Function AtomicExchange_Workgroup_Float16;
-inline constexpr std::array AtomicExchange_Workgroup_Float16_args = { &AtomicExchange_Workgroup_Float16_ptr, &AtomicExchange_Workgroup_Float16_value, &AtomicExchange_Workgroup_Float16_semantics };
-
-/// atomicMin with UInt32, UInt32, MemorySemantics
-Variable AtomicMin_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicMin_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Uniform_UInt32_compare;
-Variable AtomicMin_Uniform_UInt32_semantics;
-Function AtomicMin_Uniform_UInt32;
-inline constexpr std::array AtomicMin_Uniform_UInt32_args = { &AtomicMin_Uniform_UInt32_ptr, &AtomicMin_Uniform_UInt32_compare, &AtomicMin_Uniform_UInt32_semantics };
-
-/// atomicMin with UInt32, UInt32, MemorySemantics
-Variable AtomicMin_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicMin_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Workgroup_UInt32_compare;
-Variable AtomicMin_Workgroup_UInt32_semantics;
-Function AtomicMin_Workgroup_UInt32;
-inline constexpr std::array AtomicMin_Workgroup_UInt32_args = { &AtomicMin_Workgroup_UInt32_ptr, &AtomicMin_Workgroup_UInt32_compare, &AtomicMin_Workgroup_UInt32_semantics };
-
-/// atomicMax with UInt32, UInt32, MemorySemantics
-Variable AtomicMax_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicMax_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Uniform_UInt32_compare;
-Variable AtomicMax_Uniform_UInt32_semantics;
-Function AtomicMax_Uniform_UInt32;
-inline constexpr std::array AtomicMax_Uniform_UInt32_args = { &AtomicMax_Uniform_UInt32_ptr, &AtomicMax_Uniform_UInt32_compare, &AtomicMax_Uniform_UInt32_semantics };
-
-/// atomicMax with UInt32, UInt32, MemorySemantics
-Variable AtomicMax_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicMax_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Workgroup_UInt32_compare;
-Variable AtomicMax_Workgroup_UInt32_semantics;
-Function AtomicMax_Workgroup_UInt32;
-inline constexpr std::array AtomicMax_Workgroup_UInt32_args = { &AtomicMax_Workgroup_UInt32_ptr, &AtomicMax_Workgroup_UInt32_compare, &AtomicMax_Workgroup_UInt32_semantics };
-
-/// atomicMin with Int32, Int32, MemorySemantics
-Variable AtomicMin_Uniform_Int32_ptr;
-inline constexpr std::array AtomicMin_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Uniform_Int32_compare;
-Variable AtomicMin_Uniform_Int32_semantics;
-Function AtomicMin_Uniform_Int32;
-inline constexpr std::array AtomicMin_Uniform_Int32_args = { &AtomicMin_Uniform_Int32_ptr, &AtomicMin_Uniform_Int32_compare, &AtomicMin_Uniform_Int32_semantics };
-
-/// atomicMin with Int32, Int32, MemorySemantics
-Variable AtomicMin_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicMin_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Workgroup_Int32_compare;
-Variable AtomicMin_Workgroup_Int32_semantics;
-Function AtomicMin_Workgroup_Int32;
-inline constexpr std::array AtomicMin_Workgroup_Int32_args = { &AtomicMin_Workgroup_Int32_ptr, &AtomicMin_Workgroup_Int32_compare, &AtomicMin_Workgroup_Int32_semantics };
-
-/// atomicMax with Int32, Int32, MemorySemantics
-Variable AtomicMax_Uniform_Int32_ptr;
-inline constexpr std::array AtomicMax_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Uniform_Int32_compare;
-Variable AtomicMax_Uniform_Int32_semantics;
-Function AtomicMax_Uniform_Int32;
-inline constexpr std::array AtomicMax_Uniform_Int32_args = { &AtomicMax_Uniform_Int32_ptr, &AtomicMax_Uniform_Int32_compare, &AtomicMax_Uniform_Int32_semantics };
-
-/// atomicMax with Int32, Int32, MemorySemantics
-Variable AtomicMax_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicMax_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Workgroup_Int32_compare;
-Variable AtomicMax_Workgroup_Int32_semantics;
-Function AtomicMax_Workgroup_Int32;
-inline constexpr std::array AtomicMax_Workgroup_Int32_args = { &AtomicMax_Workgroup_Int32_ptr, &AtomicMax_Workgroup_Int32_compare, &AtomicMax_Workgroup_Int32_semantics };
-
-/// atomicMin with UInt16, UInt16, MemorySemantics
-Variable AtomicMin_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicMin_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Uniform_UInt16_compare;
-Variable AtomicMin_Uniform_UInt16_semantics;
-Function AtomicMin_Uniform_UInt16;
-inline constexpr std::array AtomicMin_Uniform_UInt16_args = { &AtomicMin_Uniform_UInt16_ptr, &AtomicMin_Uniform_UInt16_compare, &AtomicMin_Uniform_UInt16_semantics };
-
-/// atomicMin with UInt16, UInt16, MemorySemantics
-Variable AtomicMin_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicMin_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Workgroup_UInt16_compare;
-Variable AtomicMin_Workgroup_UInt16_semantics;
-Function AtomicMin_Workgroup_UInt16;
-inline constexpr std::array AtomicMin_Workgroup_UInt16_args = { &AtomicMin_Workgroup_UInt16_ptr, &AtomicMin_Workgroup_UInt16_compare, &AtomicMin_Workgroup_UInt16_semantics };
-
-/// atomicMax with UInt16, UInt16, MemorySemantics
-Variable AtomicMax_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicMax_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Uniform_UInt16_compare;
-Variable AtomicMax_Uniform_UInt16_semantics;
-Function AtomicMax_Uniform_UInt16;
-inline constexpr std::array AtomicMax_Uniform_UInt16_args = { &AtomicMax_Uniform_UInt16_ptr, &AtomicMax_Uniform_UInt16_compare, &AtomicMax_Uniform_UInt16_semantics };
-
-/// atomicMax with UInt16, UInt16, MemorySemantics
-Variable AtomicMax_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicMax_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Workgroup_UInt16_compare;
-Variable AtomicMax_Workgroup_UInt16_semantics;
-Function AtomicMax_Workgroup_UInt16;
-inline constexpr std::array AtomicMax_Workgroup_UInt16_args = { &AtomicMax_Workgroup_UInt16_ptr, &AtomicMax_Workgroup_UInt16_compare, &AtomicMax_Workgroup_UInt16_semantics };
-
-/// atomicMin with Int16, Int16, MemorySemantics
-Variable AtomicMin_Uniform_Int16_ptr;
-inline constexpr std::array AtomicMin_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Uniform_Int16_compare;
-Variable AtomicMin_Uniform_Int16_semantics;
-Function AtomicMin_Uniform_Int16;
-inline constexpr std::array AtomicMin_Uniform_Int16_args = { &AtomicMin_Uniform_Int16_ptr, &AtomicMin_Uniform_Int16_compare, &AtomicMin_Uniform_Int16_semantics };
-
-/// atomicMin with Int16, Int16, MemorySemantics
-Variable AtomicMin_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicMin_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMin_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMin_Workgroup_Int16_compare;
-Variable AtomicMin_Workgroup_Int16_semantics;
-Function AtomicMin_Workgroup_Int16;
-inline constexpr std::array AtomicMin_Workgroup_Int16_args = { &AtomicMin_Workgroup_Int16_ptr, &AtomicMin_Workgroup_Int16_compare, &AtomicMin_Workgroup_Int16_semantics };
-
-/// atomicMax with Int16, Int16, MemorySemantics
-Variable AtomicMax_Uniform_Int16_ptr;
-inline constexpr std::array AtomicMax_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Uniform_Int16_compare;
-Variable AtomicMax_Uniform_Int16_semantics;
-Function AtomicMax_Uniform_Int16;
-inline constexpr std::array AtomicMax_Uniform_Int16_args = { &AtomicMax_Uniform_Int16_ptr, &AtomicMax_Uniform_Int16_compare, &AtomicMax_Uniform_Int16_semantics };
-
-/// atomicMax with Int16, Int16, MemorySemantics
-Variable AtomicMax_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicMax_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicMax_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicMax_Workgroup_Int16_compare;
-Variable AtomicMax_Workgroup_Int16_semantics;
-Function AtomicMax_Workgroup_Int16;
-inline constexpr std::array AtomicMax_Workgroup_Int16_args = { &AtomicMax_Workgroup_Int16_ptr, &AtomicMax_Workgroup_Int16_compare, &AtomicMax_Workgroup_Int16_semantics };
-
-/// atomicCompareExchange with UInt32, UInt32, UInt32, MemorySemantics
-Variable AtomicCompareExchange_Uniform_UInt32_ptr;
-inline constexpr std::array AtomicCompareExchange_Uniform_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Uniform_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Uniform_UInt32_value;
-Variable AtomicCompareExchange_Uniform_UInt32_compare;
-Variable AtomicCompareExchange_Uniform_UInt32_semantics;
-Function AtomicCompareExchange_Uniform_UInt32;
-inline constexpr std::array AtomicCompareExchange_Uniform_UInt32_args = { &AtomicCompareExchange_Uniform_UInt32_ptr, &AtomicCompareExchange_Uniform_UInt32_value, &AtomicCompareExchange_Uniform_UInt32_compare, &AtomicCompareExchange_Uniform_UInt32_semantics };
-
-/// atomicCompareExchange with UInt32, UInt32, UInt32, MemorySemantics
-Variable AtomicCompareExchange_Workgroup_UInt32_ptr;
-inline constexpr std::array AtomicCompareExchange_Workgroup_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Workgroup_UInt32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Workgroup_UInt32_value;
-Variable AtomicCompareExchange_Workgroup_UInt32_compare;
-Variable AtomicCompareExchange_Workgroup_UInt32_semantics;
-Function AtomicCompareExchange_Workgroup_UInt32;
-inline constexpr std::array AtomicCompareExchange_Workgroup_UInt32_args = { &AtomicCompareExchange_Workgroup_UInt32_ptr, &AtomicCompareExchange_Workgroup_UInt32_value, &AtomicCompareExchange_Workgroup_UInt32_compare, &AtomicCompareExchange_Workgroup_UInt32_semantics };
-
-/// atomicCompareExchange with Int32, Int32, Int32, MemorySemantics
-Variable AtomicCompareExchange_Uniform_Int32_ptr;
-inline constexpr std::array AtomicCompareExchange_Uniform_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Uniform_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Uniform_Int32_value;
-Variable AtomicCompareExchange_Uniform_Int32_compare;
-Variable AtomicCompareExchange_Uniform_Int32_semantics;
-Function AtomicCompareExchange_Uniform_Int32;
-inline constexpr std::array AtomicCompareExchange_Uniform_Int32_args = { &AtomicCompareExchange_Uniform_Int32_ptr, &AtomicCompareExchange_Uniform_Int32_value, &AtomicCompareExchange_Uniform_Int32_compare, &AtomicCompareExchange_Uniform_Int32_semantics };
-
-/// atomicCompareExchange with Int32, Int32, Int32, MemorySemantics
-Variable AtomicCompareExchange_Workgroup_Int32_ptr;
-inline constexpr std::array AtomicCompareExchange_Workgroup_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Workgroup_Int32_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Workgroup_Int32_value;
-Variable AtomicCompareExchange_Workgroup_Int32_compare;
-Variable AtomicCompareExchange_Workgroup_Int32_semantics;
-Function AtomicCompareExchange_Workgroup_Int32;
-inline constexpr std::array AtomicCompareExchange_Workgroup_Int32_args = { &AtomicCompareExchange_Workgroup_Int32_ptr, &AtomicCompareExchange_Workgroup_Int32_value, &AtomicCompareExchange_Workgroup_Int32_compare, &AtomicCompareExchange_Workgroup_Int32_semantics };
-
-/// atomicCompareExchange with UInt16, UInt16, UInt16, MemorySemantics
-Variable AtomicCompareExchange_Uniform_UInt16_ptr;
-inline constexpr std::array AtomicCompareExchange_Uniform_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Uniform_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Uniform_UInt16_value;
-Variable AtomicCompareExchange_Uniform_UInt16_compare;
-Variable AtomicCompareExchange_Uniform_UInt16_semantics;
-Function AtomicCompareExchange_Uniform_UInt16;
-inline constexpr std::array AtomicCompareExchange_Uniform_UInt16_args = { &AtomicCompareExchange_Uniform_UInt16_ptr, &AtomicCompareExchange_Uniform_UInt16_value, &AtomicCompareExchange_Uniform_UInt16_compare, &AtomicCompareExchange_Uniform_UInt16_semantics };
-
-/// atomicCompareExchange with UInt16, UInt16, UInt16, MemorySemantics
-Variable AtomicCompareExchange_Workgroup_UInt16_ptr;
-inline constexpr std::array AtomicCompareExchange_Workgroup_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Workgroup_UInt16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Workgroup_UInt16_value;
-Variable AtomicCompareExchange_Workgroup_UInt16_compare;
-Variable AtomicCompareExchange_Workgroup_UInt16_semantics;
-Function AtomicCompareExchange_Workgroup_UInt16;
-inline constexpr std::array AtomicCompareExchange_Workgroup_UInt16_args = { &AtomicCompareExchange_Workgroup_UInt16_ptr, &AtomicCompareExchange_Workgroup_UInt16_value, &AtomicCompareExchange_Workgroup_UInt16_compare, &AtomicCompareExchange_Workgroup_UInt16_semantics };
-
-/// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
-Variable AtomicCompareExchange_Uniform_Int16_ptr;
-inline constexpr std::array AtomicCompareExchange_Uniform_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Uniform_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Uniform_Int16_value;
-Variable AtomicCompareExchange_Uniform_Int16_compare;
-Variable AtomicCompareExchange_Uniform_Int16_semantics;
-Function AtomicCompareExchange_Uniform_Int16;
-inline constexpr std::array AtomicCompareExchange_Uniform_Int16_args = { &AtomicCompareExchange_Uniform_Int16_ptr, &AtomicCompareExchange_Uniform_Int16_value, &AtomicCompareExchange_Uniform_Int16_compare, &AtomicCompareExchange_Uniform_Int16_semantics };
-
-/// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
-Variable AtomicCompareExchange_Workgroup_Int16_ptr;
-inline constexpr std::array AtomicCompareExchange_Workgroup_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array AtomicCompareExchange_Workgroup_Int16_ptr_modifierValues = {(Expression*)nullptr};
-Variable AtomicCompareExchange_Workgroup_Int16_value;
-Variable AtomicCompareExchange_Workgroup_Int16_compare;
-Variable AtomicCompareExchange_Workgroup_Int16_semantics;
-Function AtomicCompareExchange_Workgroup_Int16;
-inline constexpr std::array AtomicCompareExchange_Workgroup_Int16_args = { &AtomicCompareExchange_Workgroup_Int16_ptr, &AtomicCompareExchange_Workgroup_Int16_value, &AtomicCompareExchange_Workgroup_Int16_compare, &AtomicCompareExchange_Workgroup_Int16_semantics };
-
-/// bitInsert with UInt16, UInt16, UInt16, UInt16
-Variable BitInsert_UInt16_base;
-Variable BitInsert_UInt16_value;
-Variable BitInsert_UInt16_offset;
-Variable BitInsert_UInt16_count;
-Function BitInsert_UInt16;
-inline constexpr std::array BitInsert_UInt16_args = { &BitInsert_UInt16_base, &BitInsert_UInt16_value, &BitInsert_UInt16_offset, &BitInsert_UInt16_count };
-
-/// bitInsert with UInt32, UInt32, UInt32, UInt32
-Variable BitInsert_UInt32_base;
-Variable BitInsert_UInt32_value;
-Variable BitInsert_UInt32_offset;
-Variable BitInsert_UInt32_count;
-Function BitInsert_UInt32;
-inline constexpr std::array BitInsert_UInt32_args = { &BitInsert_UInt32_base, &BitInsert_UInt32_value, &BitInsert_UInt32_offset, &BitInsert_UInt32_count };
-
-/// bitExtract with UInt32, UInt32, UInt32
-Variable BitExtract_UInt32_base;
-Variable BitExtract_UInt32_offset;
-Variable BitExtract_UInt32_count;
-Function BitExtract_UInt32;
-inline constexpr std::array BitExtract_UInt32_args = { &BitExtract_UInt32_base, &BitExtract_UInt32_offset, &BitExtract_UInt32_count };
-
-/// bitExtract with Int32, Int32, Int32
-Variable BitExtract_Int32_base;
-Variable BitExtract_Int32_offset;
-Variable BitExtract_Int32_count;
-Function BitExtract_Int32;
-inline constexpr std::array BitExtract_Int32_args = { &BitExtract_Int32_base, &BitExtract_Int32_offset, &BitExtract_Int32_count };
-
-/// bitExtract with UInt16, UInt16, UInt16
-Variable BitExtract_UInt16_base;
-Variable BitExtract_UInt16_offset;
-Variable BitExtract_UInt16_count;
-Function BitExtract_UInt16;
-inline constexpr std::array BitExtract_UInt16_args = { &BitExtract_UInt16_base, &BitExtract_UInt16_offset, &BitExtract_UInt16_count };
-
-/// bitExtract with Int16, Int16, Int16
-Variable BitExtract_Int16_base;
-Variable BitExtract_Int16_offset;
-Variable BitExtract_Int16_count;
-Function BitExtract_Int16;
-inline constexpr std::array BitExtract_Int16_args = { &BitExtract_Int16_base, &BitExtract_Int16_offset, &BitExtract_Int16_count };
-
-/// bitExtract with UInt64, UInt64, UInt64
-Variable BitExtract_UInt64_base;
-Variable BitExtract_UInt64_offset;
-Variable BitExtract_UInt64_count;
-Function BitExtract_UInt64;
-inline constexpr std::array BitExtract_UInt64_args = { &BitExtract_UInt64_base, &BitExtract_UInt64_offset, &BitExtract_UInt64_count };
-
-/// bitReverse with UInt32
-Variable BitReverse_UInt32_base;
-Function BitReverse_UInt32;
-inline constexpr std::array BitReverse_UInt32_args = { &BitReverse_UInt32_base };
-
-/// bitReverse with Int32
-Variable BitReverse_Int32_base;
-Function BitReverse_Int32;
-inline constexpr std::array BitReverse_Int32_args = { &BitReverse_Int32_base };
-
-/// bitReverse with UInt16
-Variable BitReverse_UInt16_base;
-Function BitReverse_UInt16;
-inline constexpr std::array BitReverse_UInt16_args = { &BitReverse_UInt16_base };
-
-/// bitReverse with Int16
-Variable BitReverse_Int16_base;
-Function BitReverse_Int16;
-inline constexpr std::array BitReverse_Int16_args = { &BitReverse_Int16_base };
-
-/// bitReverse with UInt64
-Variable BitReverse_UInt64_base;
-Function BitReverse_UInt64;
-inline constexpr std::array BitReverse_UInt64_args = { &BitReverse_UInt64_base };
-
-/// bitCount with UInt32
-Variable BitCount_UInt32_base;
-Function BitCount_UInt32;
-inline constexpr std::array BitCount_UInt32_args = { &BitCount_UInt32_base };
-
-/// bitCount with Int32
-Variable BitCount_Int32_base;
-Function BitCount_Int32;
-inline constexpr std::array BitCount_Int32_args = { &BitCount_Int32_base };
-
-/// bitCount with UInt16
-Variable BitCount_UInt16_base;
-Function BitCount_UInt16;
-inline constexpr std::array BitCount_UInt16_args = { &BitCount_UInt16_base };
-
-/// bitCount with Int16
-Variable BitCount_Int16_base;
-Function BitCount_Int16;
-inline constexpr std::array BitCount_Int16_args = { &BitCount_Int16_base };
-
-/// bitCount with UInt64
-Variable BitCount_UInt64_base;
-Function BitCount_UInt64;
-inline constexpr std::array BitCount_UInt64_args = { &BitCount_UInt64_base };
-
-/// executionBarrier
-Function ExecutionBarrier;
-
-/// executionBarrierSubgroup
-Function ExecutionBarrierSubgroup;
-
-/// executionBarrierWorkgroup
-Function ExecutionBarrierWorkgroup;
-
-/// memoryBarrier
-Function MemoryBarrier;
-
-/// memoryBarrierBuffer
-Function MemoryBarrierBuffer;
-
-/// memoryBarrierTexture
-Function MemoryBarrierTexture;
-
-/// memoryBarrierAtomic
-Function MemoryBarrierAtomic;
-
-/// memoryBarrierSubgroup
-Function MemoryBarrierSubgroup;
-
-/// memoryBarrierWorkgroup
-Function MemoryBarrierWorkgroup;
-
-/// textureGetSize with Texture1D
-Variable TextureGetSize_Texture1D_texture;
-inline constexpr std::array TextureGetSize_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture1D;
-inline constexpr std::array TextureGetSize_Texture1D_args = { &TextureGetSize_Texture1D_texture };
-
-/// textureGetSize with Texture2D
-Variable TextureGetSize_Texture2D_texture;
-inline constexpr std::array TextureGetSize_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture2D;
-inline constexpr std::array TextureGetSize_Texture2D_args = { &TextureGetSize_Texture2D_texture };
-
-/// textureGetSize with Texture3D
-Variable TextureGetSize_Texture3D_texture;
-inline constexpr std::array TextureGetSize_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture3D_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture3D;
-inline constexpr std::array TextureGetSize_Texture3D_args = { &TextureGetSize_Texture3D_texture };
-
-/// textureGetSize with TextureCube
-Variable TextureGetSize_TextureCube_texture;
-inline constexpr std::array TextureGetSize_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_TextureCube_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_TextureCube;
-inline constexpr std::array TextureGetSize_TextureCube_args = { &TextureGetSize_TextureCube_texture };
-
-/// textureGetSize with Texture1DArray
-Variable TextureGetSize_Texture1DArray_texture;
-inline constexpr std::array TextureGetSize_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture1DArray;
-inline constexpr std::array TextureGetSize_Texture1DArray_args = { &TextureGetSize_Texture1DArray_texture };
-
-/// textureGetSize with Texture2DArray
-Variable TextureGetSize_Texture2DArray_texture;
-inline constexpr std::array TextureGetSize_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_Texture2DArray;
-inline constexpr std::array TextureGetSize_Texture2DArray_args = { &TextureGetSize_Texture2DArray_texture };
-
-/// textureGetSize with TextureCubeArray
-Variable TextureGetSize_TextureCubeArray_texture;
-inline constexpr std::array TextureGetSize_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSize_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
-Function TextureGetSize_TextureCubeArray;
-inline constexpr std::array TextureGetSize_TextureCubeArray_args = { &TextureGetSize_TextureCubeArray_texture };
-
-/// textureGetSizeMip with Texture1D, UInt32
-Variable TextureGetSizeMip_Texture1D_texture;
-inline constexpr std::array TextureGetSizeMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture1D_mip;
-Function TextureGetSizeMip_Texture1D;
-inline constexpr std::array TextureGetSizeMip_Texture1D_args = { &TextureGetSizeMip_Texture1D_texture, &TextureGetSizeMip_Texture1D_mip };
-
-/// textureGetSizeMip with Texture2D, UInt32
-Variable TextureGetSizeMip_Texture2D_texture;
-inline constexpr std::array TextureGetSizeMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
-inline constexpr std::array TextureGetSizeMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
-Variable TextureGetSizeMip_Texture2D_mip;
-Function TextureGetSizeMip_Texture2D;
-inline constexpr std::array TextureGetSizeMip_Texture2D_args = { &TextureGetSizeMip_Texture2D_texture, &TextureGetSizeMip_Texture2D_mip };
+/// subgroupMin with UInt16x4, SubgroupOperation
+Variable SubgroupMin_UInt16x4_value;
+Variable SubgroupMin_UInt16x4_op;
+Function SubgroupMin_UInt16x4;
+inline constexpr std::array SubgroupMin_UInt16x4_args = { &SubgroupMin_UInt16x4_value, &SubgroupMin_UInt16x4_op };
+
+/// subgroupMax with Float32, SubgroupOperation
+Variable SubgroupMax_Float32_value;
+Variable SubgroupMax_Float32_op;
+Function SubgroupMax_Float32;
+inline constexpr std::array SubgroupMax_Float32_args = { &SubgroupMax_Float32_value, &SubgroupMax_Float32_op };
+
+/// subgroupMax with Float32x2, SubgroupOperation
+Variable SubgroupMax_Float32x2_value;
+Variable SubgroupMax_Float32x2_op;
+Function SubgroupMax_Float32x2;
+inline constexpr std::array SubgroupMax_Float32x2_args = { &SubgroupMax_Float32x2_value, &SubgroupMax_Float32x2_op };
+
+/// subgroupMax with Float32x3, SubgroupOperation
+Variable SubgroupMax_Float32x3_value;
+Variable SubgroupMax_Float32x3_op;
+Function SubgroupMax_Float32x3;
+inline constexpr std::array SubgroupMax_Float32x3_args = { &SubgroupMax_Float32x3_value, &SubgroupMax_Float32x3_op };
+
+/// subgroupMax with Float32x4, SubgroupOperation
+Variable SubgroupMax_Float32x4_value;
+Variable SubgroupMax_Float32x4_op;
+Function SubgroupMax_Float32x4;
+inline constexpr std::array SubgroupMax_Float32x4_args = { &SubgroupMax_Float32x4_value, &SubgroupMax_Float32x4_op };
+
+/// subgroupMax with Float16, SubgroupOperation
+Variable SubgroupMax_Float16_value;
+Variable SubgroupMax_Float16_op;
+Function SubgroupMax_Float16;
+inline constexpr std::array SubgroupMax_Float16_args = { &SubgroupMax_Float16_value, &SubgroupMax_Float16_op };
+
+/// subgroupMax with Float16x2, SubgroupOperation
+Variable SubgroupMax_Float16x2_value;
+Variable SubgroupMax_Float16x2_op;
+Function SubgroupMax_Float16x2;
+inline constexpr std::array SubgroupMax_Float16x2_args = { &SubgroupMax_Float16x2_value, &SubgroupMax_Float16x2_op };
+
+/// subgroupMax with Float16x3, SubgroupOperation
+Variable SubgroupMax_Float16x3_value;
+Variable SubgroupMax_Float16x3_op;
+Function SubgroupMax_Float16x3;
+inline constexpr std::array SubgroupMax_Float16x3_args = { &SubgroupMax_Float16x3_value, &SubgroupMax_Float16x3_op };
+
+/// subgroupMax with Float16x4, SubgroupOperation
+Variable SubgroupMax_Float16x4_value;
+Variable SubgroupMax_Float16x4_op;
+Function SubgroupMax_Float16x4;
+inline constexpr std::array SubgroupMax_Float16x4_args = { &SubgroupMax_Float16x4_value, &SubgroupMax_Float16x4_op };
+
+/// subgroupMax with Int32, SubgroupOperation
+Variable SubgroupMax_Int32_value;
+Variable SubgroupMax_Int32_op;
+Function SubgroupMax_Int32;
+inline constexpr std::array SubgroupMax_Int32_args = { &SubgroupMax_Int32_value, &SubgroupMax_Int32_op };
+
+/// subgroupMax with Int32x2, SubgroupOperation
+Variable SubgroupMax_Int32x2_value;
+Variable SubgroupMax_Int32x2_op;
+Function SubgroupMax_Int32x2;
+inline constexpr std::array SubgroupMax_Int32x2_args = { &SubgroupMax_Int32x2_value, &SubgroupMax_Int32x2_op };
+
+/// subgroupMax with Int32x3, SubgroupOperation
+Variable SubgroupMax_Int32x3_value;
+Variable SubgroupMax_Int32x3_op;
+Function SubgroupMax_Int32x3;
+inline constexpr std::array SubgroupMax_Int32x3_args = { &SubgroupMax_Int32x3_value, &SubgroupMax_Int32x3_op };
+
+/// subgroupMax with Int32x4, SubgroupOperation
+Variable SubgroupMax_Int32x4_value;
+Variable SubgroupMax_Int32x4_op;
+Function SubgroupMax_Int32x4;
+inline constexpr std::array SubgroupMax_Int32x4_args = { &SubgroupMax_Int32x4_value, &SubgroupMax_Int32x4_op };
+
+/// subgroupMax with Int16, SubgroupOperation
+Variable SubgroupMax_Int16_value;
+Variable SubgroupMax_Int16_op;
+Function SubgroupMax_Int16;
+inline constexpr std::array SubgroupMax_Int16_args = { &SubgroupMax_Int16_value, &SubgroupMax_Int16_op };
+
+/// subgroupMax with Int16x2, SubgroupOperation
+Variable SubgroupMax_Int16x2_value;
+Variable SubgroupMax_Int16x2_op;
+Function SubgroupMax_Int16x2;
+inline constexpr std::array SubgroupMax_Int16x2_args = { &SubgroupMax_Int16x2_value, &SubgroupMax_Int16x2_op };
+
+/// subgroupMax with Int16x3, SubgroupOperation
+Variable SubgroupMax_Int16x3_value;
+Variable SubgroupMax_Int16x3_op;
+Function SubgroupMax_Int16x3;
+inline constexpr std::array SubgroupMax_Int16x3_args = { &SubgroupMax_Int16x3_value, &SubgroupMax_Int16x3_op };
+
+/// subgroupMax with Int16x4, SubgroupOperation
+Variable SubgroupMax_Int16x4_value;
+Variable SubgroupMax_Int16x4_op;
+Function SubgroupMax_Int16x4;
+inline constexpr std::array SubgroupMax_Int16x4_args = { &SubgroupMax_Int16x4_value, &SubgroupMax_Int16x4_op };
+
+/// subgroupMax with UInt32, SubgroupOperation
+Variable SubgroupMax_UInt32_value;
+Variable SubgroupMax_UInt32_op;
+Function SubgroupMax_UInt32;
+inline constexpr std::array SubgroupMax_UInt32_args = { &SubgroupMax_UInt32_value, &SubgroupMax_UInt32_op };
+
+/// subgroupMax with UInt32x2, SubgroupOperation
+Variable SubgroupMax_UInt32x2_value;
+Variable SubgroupMax_UInt32x2_op;
+Function SubgroupMax_UInt32x2;
+inline constexpr std::array SubgroupMax_UInt32x2_args = { &SubgroupMax_UInt32x2_value, &SubgroupMax_UInt32x2_op };
+
+/// subgroupMax with UInt32x3, SubgroupOperation
+Variable SubgroupMax_UInt32x3_value;
+Variable SubgroupMax_UInt32x3_op;
+Function SubgroupMax_UInt32x3;
+inline constexpr std::array SubgroupMax_UInt32x3_args = { &SubgroupMax_UInt32x3_value, &SubgroupMax_UInt32x3_op };
+
+/// subgroupMax with UInt32x4, SubgroupOperation
+Variable SubgroupMax_UInt32x4_value;
+Variable SubgroupMax_UInt32x4_op;
+Function SubgroupMax_UInt32x4;
+inline constexpr std::array SubgroupMax_UInt32x4_args = { &SubgroupMax_UInt32x4_value, &SubgroupMax_UInt32x4_op };
+
+/// subgroupMax with UInt16, SubgroupOperation
+Variable SubgroupMax_UInt16_value;
+Variable SubgroupMax_UInt16_op;
+Function SubgroupMax_UInt16;
+inline constexpr std::array SubgroupMax_UInt16_args = { &SubgroupMax_UInt16_value, &SubgroupMax_UInt16_op };
+
+/// subgroupMax with UInt16x2, SubgroupOperation
+Variable SubgroupMax_UInt16x2_value;
+Variable SubgroupMax_UInt16x2_op;
+Function SubgroupMax_UInt16x2;
+inline constexpr std::array SubgroupMax_UInt16x2_args = { &SubgroupMax_UInt16x2_value, &SubgroupMax_UInt16x2_op };
+
+/// subgroupMax with UInt16x3, SubgroupOperation
+Variable SubgroupMax_UInt16x3_value;
+Variable SubgroupMax_UInt16x3_op;
+Function SubgroupMax_UInt16x3;
+inline constexpr std::array SubgroupMax_UInt16x3_args = { &SubgroupMax_UInt16x3_value, &SubgroupMax_UInt16x3_op };
+
+/// subgroupMax with UInt16x4, SubgroupOperation
+Variable SubgroupMax_UInt16x4_value;
+Variable SubgroupMax_UInt16x4_op;
+Function SubgroupMax_UInt16x4;
+inline constexpr std::array SubgroupMax_UInt16x4_args = { &SubgroupMax_UInt16x4_value, &SubgroupMax_UInt16x4_op };
+
+/// subgroupAdd with Float32, SubgroupOperation
+Variable SubgroupAdd_Float32_value;
+Variable SubgroupAdd_Float32_op;
+Function SubgroupAdd_Float32;
+inline constexpr std::array SubgroupAdd_Float32_args = { &SubgroupAdd_Float32_value, &SubgroupAdd_Float32_op };
+
+/// subgroupAdd with Float32x2, SubgroupOperation
+Variable SubgroupAdd_Float32x2_value;
+Variable SubgroupAdd_Float32x2_op;
+Function SubgroupAdd_Float32x2;
+inline constexpr std::array SubgroupAdd_Float32x2_args = { &SubgroupAdd_Float32x2_value, &SubgroupAdd_Float32x2_op };
+
+/// subgroupAdd with Float32x3, SubgroupOperation
+Variable SubgroupAdd_Float32x3_value;
+Variable SubgroupAdd_Float32x3_op;
+Function SubgroupAdd_Float32x3;
+inline constexpr std::array SubgroupAdd_Float32x3_args = { &SubgroupAdd_Float32x3_value, &SubgroupAdd_Float32x3_op };
+
+/// subgroupAdd with Float32x4, SubgroupOperation
+Variable SubgroupAdd_Float32x4_value;
+Variable SubgroupAdd_Float32x4_op;
+Function SubgroupAdd_Float32x4;
+inline constexpr std::array SubgroupAdd_Float32x4_args = { &SubgroupAdd_Float32x4_value, &SubgroupAdd_Float32x4_op };
+
+/// subgroupAdd with Float16, SubgroupOperation
+Variable SubgroupAdd_Float16_value;
+Variable SubgroupAdd_Float16_op;
+Function SubgroupAdd_Float16;
+inline constexpr std::array SubgroupAdd_Float16_args = { &SubgroupAdd_Float16_value, &SubgroupAdd_Float16_op };
+
+/// subgroupAdd with Float16x2, SubgroupOperation
+Variable SubgroupAdd_Float16x2_value;
+Variable SubgroupAdd_Float16x2_op;
+Function SubgroupAdd_Float16x2;
+inline constexpr std::array SubgroupAdd_Float16x2_args = { &SubgroupAdd_Float16x2_value, &SubgroupAdd_Float16x2_op };
+
+/// subgroupAdd with Float16x3, SubgroupOperation
+Variable SubgroupAdd_Float16x3_value;
+Variable SubgroupAdd_Float16x3_op;
+Function SubgroupAdd_Float16x3;
+inline constexpr std::array SubgroupAdd_Float16x3_args = { &SubgroupAdd_Float16x3_value, &SubgroupAdd_Float16x3_op };
+
+/// subgroupAdd with Float16x4, SubgroupOperation
+Variable SubgroupAdd_Float16x4_value;
+Variable SubgroupAdd_Float16x4_op;
+Function SubgroupAdd_Float16x4;
+inline constexpr std::array SubgroupAdd_Float16x4_args = { &SubgroupAdd_Float16x4_value, &SubgroupAdd_Float16x4_op };
+
+/// subgroupAdd with Int32, SubgroupOperation
+Variable SubgroupAdd_Int32_value;
+Variable SubgroupAdd_Int32_op;
+Function SubgroupAdd_Int32;
+inline constexpr std::array SubgroupAdd_Int32_args = { &SubgroupAdd_Int32_value, &SubgroupAdd_Int32_op };
+
+/// subgroupAdd with Int32x2, SubgroupOperation
+Variable SubgroupAdd_Int32x2_value;
+Variable SubgroupAdd_Int32x2_op;
+Function SubgroupAdd_Int32x2;
+inline constexpr std::array SubgroupAdd_Int32x2_args = { &SubgroupAdd_Int32x2_value, &SubgroupAdd_Int32x2_op };
+
+/// subgroupAdd with Int32x3, SubgroupOperation
+Variable SubgroupAdd_Int32x3_value;
+Variable SubgroupAdd_Int32x3_op;
+Function SubgroupAdd_Int32x3;
+inline constexpr std::array SubgroupAdd_Int32x3_args = { &SubgroupAdd_Int32x3_value, &SubgroupAdd_Int32x3_op };
+
+/// subgroupAdd with Int32x4, SubgroupOperation
+Variable SubgroupAdd_Int32x4_value;
+Variable SubgroupAdd_Int32x4_op;
+Function SubgroupAdd_Int32x4;
+inline constexpr std::array SubgroupAdd_Int32x4_args = { &SubgroupAdd_Int32x4_value, &SubgroupAdd_Int32x4_op };
+
+/// subgroupAdd with Int16, SubgroupOperation
+Variable SubgroupAdd_Int16_value;
+Variable SubgroupAdd_Int16_op;
+Function SubgroupAdd_Int16;
+inline constexpr std::array SubgroupAdd_Int16_args = { &SubgroupAdd_Int16_value, &SubgroupAdd_Int16_op };
+
+/// subgroupAdd with Int16x2, SubgroupOperation
+Variable SubgroupAdd_Int16x2_value;
+Variable SubgroupAdd_Int16x2_op;
+Function SubgroupAdd_Int16x2;
+inline constexpr std::array SubgroupAdd_Int16x2_args = { &SubgroupAdd_Int16x2_value, &SubgroupAdd_Int16x2_op };
+
+/// subgroupAdd with Int16x3, SubgroupOperation
+Variable SubgroupAdd_Int16x3_value;
+Variable SubgroupAdd_Int16x3_op;
+Function SubgroupAdd_Int16x3;
+inline constexpr std::array SubgroupAdd_Int16x3_args = { &SubgroupAdd_Int16x3_value, &SubgroupAdd_Int16x3_op };
+
+/// subgroupAdd with Int16x4, SubgroupOperation
+Variable SubgroupAdd_Int16x4_value;
+Variable SubgroupAdd_Int16x4_op;
+Function SubgroupAdd_Int16x4;
+inline constexpr std::array SubgroupAdd_Int16x4_args = { &SubgroupAdd_Int16x4_value, &SubgroupAdd_Int16x4_op };
+
+/// subgroupAdd with UInt32, SubgroupOperation
+Variable SubgroupAdd_UInt32_value;
+Variable SubgroupAdd_UInt32_op;
+Function SubgroupAdd_UInt32;
+inline constexpr std::array SubgroupAdd_UInt32_args = { &SubgroupAdd_UInt32_value, &SubgroupAdd_UInt32_op };
+
+/// subgroupAdd with UInt32x2, SubgroupOperation
+Variable SubgroupAdd_UInt32x2_value;
+Variable SubgroupAdd_UInt32x2_op;
+Function SubgroupAdd_UInt32x2;
+inline constexpr std::array SubgroupAdd_UInt32x2_args = { &SubgroupAdd_UInt32x2_value, &SubgroupAdd_UInt32x2_op };
+
+/// subgroupAdd with UInt32x3, SubgroupOperation
+Variable SubgroupAdd_UInt32x3_value;
+Variable SubgroupAdd_UInt32x3_op;
+Function SubgroupAdd_UInt32x3;
+inline constexpr std::array SubgroupAdd_UInt32x3_args = { &SubgroupAdd_UInt32x3_value, &SubgroupAdd_UInt32x3_op };
+
+/// subgroupAdd with UInt32x4, SubgroupOperation
+Variable SubgroupAdd_UInt32x4_value;
+Variable SubgroupAdd_UInt32x4_op;
+Function SubgroupAdd_UInt32x4;
+inline constexpr std::array SubgroupAdd_UInt32x4_args = { &SubgroupAdd_UInt32x4_value, &SubgroupAdd_UInt32x4_op };
+
+/// subgroupAdd with UInt16, SubgroupOperation
+Variable SubgroupAdd_UInt16_value;
+Variable SubgroupAdd_UInt16_op;
+Function SubgroupAdd_UInt16;
+inline constexpr std::array SubgroupAdd_UInt16_args = { &SubgroupAdd_UInt16_value, &SubgroupAdd_UInt16_op };
+
+/// subgroupAdd with UInt16x2, SubgroupOperation
+Variable SubgroupAdd_UInt16x2_value;
+Variable SubgroupAdd_UInt16x2_op;
+Function SubgroupAdd_UInt16x2;
+inline constexpr std::array SubgroupAdd_UInt16x2_args = { &SubgroupAdd_UInt16x2_value, &SubgroupAdd_UInt16x2_op };
+
+/// subgroupAdd with UInt16x3, SubgroupOperation
+Variable SubgroupAdd_UInt16x3_value;
+Variable SubgroupAdd_UInt16x3_op;
+Function SubgroupAdd_UInt16x3;
+inline constexpr std::array SubgroupAdd_UInt16x3_args = { &SubgroupAdd_UInt16x3_value, &SubgroupAdd_UInt16x3_op };
+
+/// subgroupAdd with UInt16x4, SubgroupOperation
+Variable SubgroupAdd_UInt16x4_value;
+Variable SubgroupAdd_UInt16x4_op;
+Function SubgroupAdd_UInt16x4;
+inline constexpr std::array SubgroupAdd_UInt16x4_args = { &SubgroupAdd_UInt16x4_value, &SubgroupAdd_UInt16x4_op };
+
+/// subgroupMul with Float32, SubgroupOperation
+Variable SubgroupMul_Float32_value;
+Variable SubgroupMul_Float32_op;
+Function SubgroupMul_Float32;
+inline constexpr std::array SubgroupMul_Float32_args = { &SubgroupMul_Float32_value, &SubgroupMul_Float32_op };
+
+/// subgroupMul with Float32x2, SubgroupOperation
+Variable SubgroupMul_Float32x2_value;
+Variable SubgroupMul_Float32x2_op;
+Function SubgroupMul_Float32x2;
+inline constexpr std::array SubgroupMul_Float32x2_args = { &SubgroupMul_Float32x2_value, &SubgroupMul_Float32x2_op };
+
+/// subgroupMul with Float32x3, SubgroupOperation
+Variable SubgroupMul_Float32x3_value;
+Variable SubgroupMul_Float32x3_op;
+Function SubgroupMul_Float32x3;
+inline constexpr std::array SubgroupMul_Float32x3_args = { &SubgroupMul_Float32x3_value, &SubgroupMul_Float32x3_op };
+
+/// subgroupMul with Float32x4, SubgroupOperation
+Variable SubgroupMul_Float32x4_value;
+Variable SubgroupMul_Float32x4_op;
+Function SubgroupMul_Float32x4;
+inline constexpr std::array SubgroupMul_Float32x4_args = { &SubgroupMul_Float32x4_value, &SubgroupMul_Float32x4_op };
+
+/// subgroupMul with Float16, SubgroupOperation
+Variable SubgroupMul_Float16_value;
+Variable SubgroupMul_Float16_op;
+Function SubgroupMul_Float16;
+inline constexpr std::array SubgroupMul_Float16_args = { &SubgroupMul_Float16_value, &SubgroupMul_Float16_op };
+
+/// subgroupMul with Float16x2, SubgroupOperation
+Variable SubgroupMul_Float16x2_value;
+Variable SubgroupMul_Float16x2_op;
+Function SubgroupMul_Float16x2;
+inline constexpr std::array SubgroupMul_Float16x2_args = { &SubgroupMul_Float16x2_value, &SubgroupMul_Float16x2_op };
+
+/// subgroupMul with Float16x3, SubgroupOperation
+Variable SubgroupMul_Float16x3_value;
+Variable SubgroupMul_Float16x3_op;
+Function SubgroupMul_Float16x3;
+inline constexpr std::array SubgroupMul_Float16x3_args = { &SubgroupMul_Float16x3_value, &SubgroupMul_Float16x3_op };
+
+/// subgroupMul with Float16x4, SubgroupOperation
+Variable SubgroupMul_Float16x4_value;
+Variable SubgroupMul_Float16x4_op;
+Function SubgroupMul_Float16x4;
+inline constexpr std::array SubgroupMul_Float16x4_args = { &SubgroupMul_Float16x4_value, &SubgroupMul_Float16x4_op };
+
+/// subgroupMul with Int32, SubgroupOperation
+Variable SubgroupMul_Int32_value;
+Variable SubgroupMul_Int32_op;
+Function SubgroupMul_Int32;
+inline constexpr std::array SubgroupMul_Int32_args = { &SubgroupMul_Int32_value, &SubgroupMul_Int32_op };
+
+/// subgroupMul with Int32x2, SubgroupOperation
+Variable SubgroupMul_Int32x2_value;
+Variable SubgroupMul_Int32x2_op;
+Function SubgroupMul_Int32x2;
+inline constexpr std::array SubgroupMul_Int32x2_args = { &SubgroupMul_Int32x2_value, &SubgroupMul_Int32x2_op };
+
+/// subgroupMul with Int32x3, SubgroupOperation
+Variable SubgroupMul_Int32x3_value;
+Variable SubgroupMul_Int32x3_op;
+Function SubgroupMul_Int32x3;
+inline constexpr std::array SubgroupMul_Int32x3_args = { &SubgroupMul_Int32x3_value, &SubgroupMul_Int32x3_op };
+
+/// subgroupMul with Int32x4, SubgroupOperation
+Variable SubgroupMul_Int32x4_value;
+Variable SubgroupMul_Int32x4_op;
+Function SubgroupMul_Int32x4;
+inline constexpr std::array SubgroupMul_Int32x4_args = { &SubgroupMul_Int32x4_value, &SubgroupMul_Int32x4_op };
+
+/// subgroupMul with Int16, SubgroupOperation
+Variable SubgroupMul_Int16_value;
+Variable SubgroupMul_Int16_op;
+Function SubgroupMul_Int16;
+inline constexpr std::array SubgroupMul_Int16_args = { &SubgroupMul_Int16_value, &SubgroupMul_Int16_op };
+
+/// subgroupMul with Int16x2, SubgroupOperation
+Variable SubgroupMul_Int16x2_value;
+Variable SubgroupMul_Int16x2_op;
+Function SubgroupMul_Int16x2;
+inline constexpr std::array SubgroupMul_Int16x2_args = { &SubgroupMul_Int16x2_value, &SubgroupMul_Int16x2_op };
+
+/// subgroupMul with Int16x3, SubgroupOperation
+Variable SubgroupMul_Int16x3_value;
+Variable SubgroupMul_Int16x3_op;
+Function SubgroupMul_Int16x3;
+inline constexpr std::array SubgroupMul_Int16x3_args = { &SubgroupMul_Int16x3_value, &SubgroupMul_Int16x3_op };
+
+/// subgroupMul with Int16x4, SubgroupOperation
+Variable SubgroupMul_Int16x4_value;
+Variable SubgroupMul_Int16x4_op;
+Function SubgroupMul_Int16x4;
+inline constexpr std::array SubgroupMul_Int16x4_args = { &SubgroupMul_Int16x4_value, &SubgroupMul_Int16x4_op };
+
+/// subgroupMul with UInt32, SubgroupOperation
+Variable SubgroupMul_UInt32_value;
+Variable SubgroupMul_UInt32_op;
+Function SubgroupMul_UInt32;
+inline constexpr std::array SubgroupMul_UInt32_args = { &SubgroupMul_UInt32_value, &SubgroupMul_UInt32_op };
+
+/// subgroupMul with UInt32x2, SubgroupOperation
+Variable SubgroupMul_UInt32x2_value;
+Variable SubgroupMul_UInt32x2_op;
+Function SubgroupMul_UInt32x2;
+inline constexpr std::array SubgroupMul_UInt32x2_args = { &SubgroupMul_UInt32x2_value, &SubgroupMul_UInt32x2_op };
+
+/// subgroupMul with UInt32x3, SubgroupOperation
+Variable SubgroupMul_UInt32x3_value;
+Variable SubgroupMul_UInt32x3_op;
+Function SubgroupMul_UInt32x3;
+inline constexpr std::array SubgroupMul_UInt32x3_args = { &SubgroupMul_UInt32x3_value, &SubgroupMul_UInt32x3_op };
+
+/// subgroupMul with UInt32x4, SubgroupOperation
+Variable SubgroupMul_UInt32x4_value;
+Variable SubgroupMul_UInt32x4_op;
+Function SubgroupMul_UInt32x4;
+inline constexpr std::array SubgroupMul_UInt32x4_args = { &SubgroupMul_UInt32x4_value, &SubgroupMul_UInt32x4_op };
+
+/// subgroupMul with UInt16, SubgroupOperation
+Variable SubgroupMul_UInt16_value;
+Variable SubgroupMul_UInt16_op;
+Function SubgroupMul_UInt16;
+inline constexpr std::array SubgroupMul_UInt16_args = { &SubgroupMul_UInt16_value, &SubgroupMul_UInt16_op };
+
+/// subgroupMul with UInt16x2, SubgroupOperation
+Variable SubgroupMul_UInt16x2_value;
+Variable SubgroupMul_UInt16x2_op;
+Function SubgroupMul_UInt16x2;
+inline constexpr std::array SubgroupMul_UInt16x2_args = { &SubgroupMul_UInt16x2_value, &SubgroupMul_UInt16x2_op };
+
+/// subgroupMul with UInt16x3, SubgroupOperation
+Variable SubgroupMul_UInt16x3_value;
+Variable SubgroupMul_UInt16x3_op;
+Function SubgroupMul_UInt16x3;
+inline constexpr std::array SubgroupMul_UInt16x3_args = { &SubgroupMul_UInt16x3_value, &SubgroupMul_UInt16x3_op };
+
+/// subgroupMul with UInt16x4, SubgroupOperation
+Variable SubgroupMul_UInt16x4_value;
+Variable SubgroupMul_UInt16x4_op;
+Function SubgroupMul_UInt16x4;
+inline constexpr std::array SubgroupMul_UInt16x4_args = { &SubgroupMul_UInt16x4_value, &SubgroupMul_UInt16x4_op };
+
+/// subgroupAnd with Int32, SubgroupOperation
+Variable SubgroupAnd_Int32_value;
+Variable SubgroupAnd_Int32_op;
+Function SubgroupAnd_Int32;
+inline constexpr std::array SubgroupAnd_Int32_args = { &SubgroupAnd_Int32_value, &SubgroupAnd_Int32_op };
+
+/// subgroupAnd with Int32x2, SubgroupOperation
+Variable SubgroupAnd_Int32x2_value;
+Variable SubgroupAnd_Int32x2_op;
+Function SubgroupAnd_Int32x2;
+inline constexpr std::array SubgroupAnd_Int32x2_args = { &SubgroupAnd_Int32x2_value, &SubgroupAnd_Int32x2_op };
+
+/// subgroupAnd with Int32x3, SubgroupOperation
+Variable SubgroupAnd_Int32x3_value;
+Variable SubgroupAnd_Int32x3_op;
+Function SubgroupAnd_Int32x3;
+inline constexpr std::array SubgroupAnd_Int32x3_args = { &SubgroupAnd_Int32x3_value, &SubgroupAnd_Int32x3_op };
+
+/// subgroupAnd with Int32x4, SubgroupOperation
+Variable SubgroupAnd_Int32x4_value;
+Variable SubgroupAnd_Int32x4_op;
+Function SubgroupAnd_Int32x4;
+inline constexpr std::array SubgroupAnd_Int32x4_args = { &SubgroupAnd_Int32x4_value, &SubgroupAnd_Int32x4_op };
+
+/// subgroupAnd with Int16, SubgroupOperation
+Variable SubgroupAnd_Int16_value;
+Variable SubgroupAnd_Int16_op;
+Function SubgroupAnd_Int16;
+inline constexpr std::array SubgroupAnd_Int16_args = { &SubgroupAnd_Int16_value, &SubgroupAnd_Int16_op };
+
+/// subgroupAnd with Int16x2, SubgroupOperation
+Variable SubgroupAnd_Int16x2_value;
+Variable SubgroupAnd_Int16x2_op;
+Function SubgroupAnd_Int16x2;
+inline constexpr std::array SubgroupAnd_Int16x2_args = { &SubgroupAnd_Int16x2_value, &SubgroupAnd_Int16x2_op };
+
+/// subgroupAnd with Int16x3, SubgroupOperation
+Variable SubgroupAnd_Int16x3_value;
+Variable SubgroupAnd_Int16x3_op;
+Function SubgroupAnd_Int16x3;
+inline constexpr std::array SubgroupAnd_Int16x3_args = { &SubgroupAnd_Int16x3_value, &SubgroupAnd_Int16x3_op };
+
+/// subgroupAnd with Int16x4, SubgroupOperation
+Variable SubgroupAnd_Int16x4_value;
+Variable SubgroupAnd_Int16x4_op;
+Function SubgroupAnd_Int16x4;
+inline constexpr std::array SubgroupAnd_Int16x4_args = { &SubgroupAnd_Int16x4_value, &SubgroupAnd_Int16x4_op };
+
+/// subgroupAnd with UInt32, SubgroupOperation
+Variable SubgroupAnd_UInt32_value;
+Variable SubgroupAnd_UInt32_op;
+Function SubgroupAnd_UInt32;
+inline constexpr std::array SubgroupAnd_UInt32_args = { &SubgroupAnd_UInt32_value, &SubgroupAnd_UInt32_op };
+
+/// subgroupAnd with UInt32x2, SubgroupOperation
+Variable SubgroupAnd_UInt32x2_value;
+Variable SubgroupAnd_UInt32x2_op;
+Function SubgroupAnd_UInt32x2;
+inline constexpr std::array SubgroupAnd_UInt32x2_args = { &SubgroupAnd_UInt32x2_value, &SubgroupAnd_UInt32x2_op };
+
+/// subgroupAnd with UInt32x3, SubgroupOperation
+Variable SubgroupAnd_UInt32x3_value;
+Variable SubgroupAnd_UInt32x3_op;
+Function SubgroupAnd_UInt32x3;
+inline constexpr std::array SubgroupAnd_UInt32x3_args = { &SubgroupAnd_UInt32x3_value, &SubgroupAnd_UInt32x3_op };
+
+/// subgroupAnd with UInt32x4, SubgroupOperation
+Variable SubgroupAnd_UInt32x4_value;
+Variable SubgroupAnd_UInt32x4_op;
+Function SubgroupAnd_UInt32x4;
+inline constexpr std::array SubgroupAnd_UInt32x4_args = { &SubgroupAnd_UInt32x4_value, &SubgroupAnd_UInt32x4_op };
+
+/// subgroupAnd with UInt16, SubgroupOperation
+Variable SubgroupAnd_UInt16_value;
+Variable SubgroupAnd_UInt16_op;
+Function SubgroupAnd_UInt16;
+inline constexpr std::array SubgroupAnd_UInt16_args = { &SubgroupAnd_UInt16_value, &SubgroupAnd_UInt16_op };
+
+/// subgroupAnd with UInt16x2, SubgroupOperation
+Variable SubgroupAnd_UInt16x2_value;
+Variable SubgroupAnd_UInt16x2_op;
+Function SubgroupAnd_UInt16x2;
+inline constexpr std::array SubgroupAnd_UInt16x2_args = { &SubgroupAnd_UInt16x2_value, &SubgroupAnd_UInt16x2_op };
+
+/// subgroupAnd with UInt16x3, SubgroupOperation
+Variable SubgroupAnd_UInt16x3_value;
+Variable SubgroupAnd_UInt16x3_op;
+Function SubgroupAnd_UInt16x3;
+inline constexpr std::array SubgroupAnd_UInt16x3_args = { &SubgroupAnd_UInt16x3_value, &SubgroupAnd_UInt16x3_op };
+
+/// subgroupAnd with UInt16x4, SubgroupOperation
+Variable SubgroupAnd_UInt16x4_value;
+Variable SubgroupAnd_UInt16x4_op;
+Function SubgroupAnd_UInt16x4;
+inline constexpr std::array SubgroupAnd_UInt16x4_args = { &SubgroupAnd_UInt16x4_value, &SubgroupAnd_UInt16x4_op };
+
+/// subgroupOr with Int32, SubgroupOperation
+Variable SubgroupOr_Int32_value;
+Variable SubgroupOr_Int32_op;
+Function SubgroupOr_Int32;
+inline constexpr std::array SubgroupOr_Int32_args = { &SubgroupOr_Int32_value, &SubgroupOr_Int32_op };
+
+/// subgroupOr with Int32x2, SubgroupOperation
+Variable SubgroupOr_Int32x2_value;
+Variable SubgroupOr_Int32x2_op;
+Function SubgroupOr_Int32x2;
+inline constexpr std::array SubgroupOr_Int32x2_args = { &SubgroupOr_Int32x2_value, &SubgroupOr_Int32x2_op };
+
+/// subgroupOr with Int32x3, SubgroupOperation
+Variable SubgroupOr_Int32x3_value;
+Variable SubgroupOr_Int32x3_op;
+Function SubgroupOr_Int32x3;
+inline constexpr std::array SubgroupOr_Int32x3_args = { &SubgroupOr_Int32x3_value, &SubgroupOr_Int32x3_op };
+
+/// subgroupOr with Int32x4, SubgroupOperation
+Variable SubgroupOr_Int32x4_value;
+Variable SubgroupOr_Int32x4_op;
+Function SubgroupOr_Int32x4;
+inline constexpr std::array SubgroupOr_Int32x4_args = { &SubgroupOr_Int32x4_value, &SubgroupOr_Int32x4_op };
+
+/// subgroupOr with Int16, SubgroupOperation
+Variable SubgroupOr_Int16_value;
+Variable SubgroupOr_Int16_op;
+Function SubgroupOr_Int16;
+inline constexpr std::array SubgroupOr_Int16_args = { &SubgroupOr_Int16_value, &SubgroupOr_Int16_op };
+
+/// subgroupOr with Int16x2, SubgroupOperation
+Variable SubgroupOr_Int16x2_value;
+Variable SubgroupOr_Int16x2_op;
+Function SubgroupOr_Int16x2;
+inline constexpr std::array SubgroupOr_Int16x2_args = { &SubgroupOr_Int16x2_value, &SubgroupOr_Int16x2_op };
+
+/// subgroupOr with Int16x3, SubgroupOperation
+Variable SubgroupOr_Int16x3_value;
+Variable SubgroupOr_Int16x3_op;
+Function SubgroupOr_Int16x3;
+inline constexpr std::array SubgroupOr_Int16x3_args = { &SubgroupOr_Int16x3_value, &SubgroupOr_Int16x3_op };
+
+/// subgroupOr with Int16x4, SubgroupOperation
+Variable SubgroupOr_Int16x4_value;
+Variable SubgroupOr_Int16x4_op;
+Function SubgroupOr_Int16x4;
+inline constexpr std::array SubgroupOr_Int16x4_args = { &SubgroupOr_Int16x4_value, &SubgroupOr_Int16x4_op };
+
+/// subgroupOr with UInt32, SubgroupOperation
+Variable SubgroupOr_UInt32_value;
+Variable SubgroupOr_UInt32_op;
+Function SubgroupOr_UInt32;
+inline constexpr std::array SubgroupOr_UInt32_args = { &SubgroupOr_UInt32_value, &SubgroupOr_UInt32_op };
+
+/// subgroupOr with UInt32x2, SubgroupOperation
+Variable SubgroupOr_UInt32x2_value;
+Variable SubgroupOr_UInt32x2_op;
+Function SubgroupOr_UInt32x2;
+inline constexpr std::array SubgroupOr_UInt32x2_args = { &SubgroupOr_UInt32x2_value, &SubgroupOr_UInt32x2_op };
+
+/// subgroupOr with UInt32x3, SubgroupOperation
+Variable SubgroupOr_UInt32x3_value;
+Variable SubgroupOr_UInt32x3_op;
+Function SubgroupOr_UInt32x3;
+inline constexpr std::array SubgroupOr_UInt32x3_args = { &SubgroupOr_UInt32x3_value, &SubgroupOr_UInt32x3_op };
+
+/// subgroupOr with UInt32x4, SubgroupOperation
+Variable SubgroupOr_UInt32x4_value;
+Variable SubgroupOr_UInt32x4_op;
+Function SubgroupOr_UInt32x4;
+inline constexpr std::array SubgroupOr_UInt32x4_args = { &SubgroupOr_UInt32x4_value, &SubgroupOr_UInt32x4_op };
+
+/// subgroupOr with UInt16, SubgroupOperation
+Variable SubgroupOr_UInt16_value;
+Variable SubgroupOr_UInt16_op;
+Function SubgroupOr_UInt16;
+inline constexpr std::array SubgroupOr_UInt16_args = { &SubgroupOr_UInt16_value, &SubgroupOr_UInt16_op };
+
+/// subgroupOr with UInt16x2, SubgroupOperation
+Variable SubgroupOr_UInt16x2_value;
+Variable SubgroupOr_UInt16x2_op;
+Function SubgroupOr_UInt16x2;
+inline constexpr std::array SubgroupOr_UInt16x2_args = { &SubgroupOr_UInt16x2_value, &SubgroupOr_UInt16x2_op };
+
+/// subgroupOr with UInt16x3, SubgroupOperation
+Variable SubgroupOr_UInt16x3_value;
+Variable SubgroupOr_UInt16x3_op;
+Function SubgroupOr_UInt16x3;
+inline constexpr std::array SubgroupOr_UInt16x3_args = { &SubgroupOr_UInt16x3_value, &SubgroupOr_UInt16x3_op };
+
+/// subgroupOr with UInt16x4, SubgroupOperation
+Variable SubgroupOr_UInt16x4_value;
+Variable SubgroupOr_UInt16x4_op;
+Function SubgroupOr_UInt16x4;
+inline constexpr std::array SubgroupOr_UInt16x4_args = { &SubgroupOr_UInt16x4_value, &SubgroupOr_UInt16x4_op };
+
+/// subgroupXor with Int32, SubgroupOperation
+Variable SubgroupXor_Int32_value;
+Variable SubgroupXor_Int32_op;
+Function SubgroupXor_Int32;
+inline constexpr std::array SubgroupXor_Int32_args = { &SubgroupXor_Int32_value, &SubgroupXor_Int32_op };
+
+/// subgroupXor with Int32x2, SubgroupOperation
+Variable SubgroupXor_Int32x2_value;
+Variable SubgroupXor_Int32x2_op;
+Function SubgroupXor_Int32x2;
+inline constexpr std::array SubgroupXor_Int32x2_args = { &SubgroupXor_Int32x2_value, &SubgroupXor_Int32x2_op };
+
+/// subgroupXor with Int32x3, SubgroupOperation
+Variable SubgroupXor_Int32x3_value;
+Variable SubgroupXor_Int32x3_op;
+Function SubgroupXor_Int32x3;
+inline constexpr std::array SubgroupXor_Int32x3_args = { &SubgroupXor_Int32x3_value, &SubgroupXor_Int32x3_op };
+
+/// subgroupXor with Int32x4, SubgroupOperation
+Variable SubgroupXor_Int32x4_value;
+Variable SubgroupXor_Int32x4_op;
+Function SubgroupXor_Int32x4;
+inline constexpr std::array SubgroupXor_Int32x4_args = { &SubgroupXor_Int32x4_value, &SubgroupXor_Int32x4_op };
+
+/// subgroupXor with Int16, SubgroupOperation
+Variable SubgroupXor_Int16_value;
+Variable SubgroupXor_Int16_op;
+Function SubgroupXor_Int16;
+inline constexpr std::array SubgroupXor_Int16_args = { &SubgroupXor_Int16_value, &SubgroupXor_Int16_op };
+
+/// subgroupXor with Int16x2, SubgroupOperation
+Variable SubgroupXor_Int16x2_value;
+Variable SubgroupXor_Int16x2_op;
+Function SubgroupXor_Int16x2;
+inline constexpr std::array SubgroupXor_Int16x2_args = { &SubgroupXor_Int16x2_value, &SubgroupXor_Int16x2_op };
+
+/// subgroupXor with Int16x3, SubgroupOperation
+Variable SubgroupXor_Int16x3_value;
+Variable SubgroupXor_Int16x3_op;
+Function SubgroupXor_Int16x3;
+inline constexpr std::array SubgroupXor_Int16x3_args = { &SubgroupXor_Int16x3_value, &SubgroupXor_Int16x3_op };
+
+/// subgroupXor with Int16x4, SubgroupOperation
+Variable SubgroupXor_Int16x4_value;
+Variable SubgroupXor_Int16x4_op;
+Function SubgroupXor_Int16x4;
+inline constexpr std::array SubgroupXor_Int16x4_args = { &SubgroupXor_Int16x4_value, &SubgroupXor_Int16x4_op };
+
+/// subgroupXor with UInt32, SubgroupOperation
+Variable SubgroupXor_UInt32_value;
+Variable SubgroupXor_UInt32_op;
+Function SubgroupXor_UInt32;
+inline constexpr std::array SubgroupXor_UInt32_args = { &SubgroupXor_UInt32_value, &SubgroupXor_UInt32_op };
+
+/// subgroupXor with UInt32x2, SubgroupOperation
+Variable SubgroupXor_UInt32x2_value;
+Variable SubgroupXor_UInt32x2_op;
+Function SubgroupXor_UInt32x2;
+inline constexpr std::array SubgroupXor_UInt32x2_args = { &SubgroupXor_UInt32x2_value, &SubgroupXor_UInt32x2_op };
+
+/// subgroupXor with UInt32x3, SubgroupOperation
+Variable SubgroupXor_UInt32x3_value;
+Variable SubgroupXor_UInt32x3_op;
+Function SubgroupXor_UInt32x3;
+inline constexpr std::array SubgroupXor_UInt32x3_args = { &SubgroupXor_UInt32x3_value, &SubgroupXor_UInt32x3_op };
+
+/// subgroupXor with UInt32x4, SubgroupOperation
+Variable SubgroupXor_UInt32x4_value;
+Variable SubgroupXor_UInt32x4_op;
+Function SubgroupXor_UInt32x4;
+inline constexpr std::array SubgroupXor_UInt32x4_args = { &SubgroupXor_UInt32x4_value, &SubgroupXor_UInt32x4_op };
+
+/// subgroupXor with UInt16, SubgroupOperation
+Variable SubgroupXor_UInt16_value;
+Variable SubgroupXor_UInt16_op;
+Function SubgroupXor_UInt16;
+inline constexpr std::array SubgroupXor_UInt16_args = { &SubgroupXor_UInt16_value, &SubgroupXor_UInt16_op };
+
+/// subgroupXor with UInt16x2, SubgroupOperation
+Variable SubgroupXor_UInt16x2_value;
+Variable SubgroupXor_UInt16x2_op;
+Function SubgroupXor_UInt16x2;
+inline constexpr std::array SubgroupXor_UInt16x2_args = { &SubgroupXor_UInt16x2_value, &SubgroupXor_UInt16x2_op };
+
+/// subgroupXor with UInt16x3, SubgroupOperation
+Variable SubgroupXor_UInt16x3_value;
+Variable SubgroupXor_UInt16x3_op;
+Function SubgroupXor_UInt16x3;
+inline constexpr std::array SubgroupXor_UInt16x3_args = { &SubgroupXor_UInt16x3_value, &SubgroupXor_UInt16x3_op };
+
+/// subgroupXor with UInt16x4, SubgroupOperation
+Variable SubgroupXor_UInt16x4_value;
+Variable SubgroupXor_UInt16x4_op;
+Function SubgroupXor_UInt16x4;
+inline constexpr std::array SubgroupXor_UInt16x4_args = { &SubgroupXor_UInt16x4_value, &SubgroupXor_UInt16x4_op };
+
+/// subgroupLogicalAnd with Int32, SubgroupOperation
+Variable SubgroupLogicalAnd_Int32_value;
+Variable SubgroupLogicalAnd_Int32_op;
+Function SubgroupLogicalAnd_Int32;
+inline constexpr std::array SubgroupLogicalAnd_Int32_args = { &SubgroupLogicalAnd_Int32_value, &SubgroupLogicalAnd_Int32_op };
+
+/// subgroupLogicalAnd with Int32x2, SubgroupOperation
+Variable SubgroupLogicalAnd_Int32x2_value;
+Variable SubgroupLogicalAnd_Int32x2_op;
+Function SubgroupLogicalAnd_Int32x2;
+inline constexpr std::array SubgroupLogicalAnd_Int32x2_args = { &SubgroupLogicalAnd_Int32x2_value, &SubgroupLogicalAnd_Int32x2_op };
+
+/// subgroupLogicalAnd with Int32x3, SubgroupOperation
+Variable SubgroupLogicalAnd_Int32x3_value;
+Variable SubgroupLogicalAnd_Int32x3_op;
+Function SubgroupLogicalAnd_Int32x3;
+inline constexpr std::array SubgroupLogicalAnd_Int32x3_args = { &SubgroupLogicalAnd_Int32x3_value, &SubgroupLogicalAnd_Int32x3_op };
+
+/// subgroupLogicalAnd with Int32x4, SubgroupOperation
+Variable SubgroupLogicalAnd_Int32x4_value;
+Variable SubgroupLogicalAnd_Int32x4_op;
+Function SubgroupLogicalAnd_Int32x4;
+inline constexpr std::array SubgroupLogicalAnd_Int32x4_args = { &SubgroupLogicalAnd_Int32x4_value, &SubgroupLogicalAnd_Int32x4_op };
+
+/// subgroupLogicalAnd with Int16, SubgroupOperation
+Variable SubgroupLogicalAnd_Int16_value;
+Variable SubgroupLogicalAnd_Int16_op;
+Function SubgroupLogicalAnd_Int16;
+inline constexpr std::array SubgroupLogicalAnd_Int16_args = { &SubgroupLogicalAnd_Int16_value, &SubgroupLogicalAnd_Int16_op };
+
+/// subgroupLogicalAnd with Int16x2, SubgroupOperation
+Variable SubgroupLogicalAnd_Int16x2_value;
+Variable SubgroupLogicalAnd_Int16x2_op;
+Function SubgroupLogicalAnd_Int16x2;
+inline constexpr std::array SubgroupLogicalAnd_Int16x2_args = { &SubgroupLogicalAnd_Int16x2_value, &SubgroupLogicalAnd_Int16x2_op };
+
+/// subgroupLogicalAnd with Int16x3, SubgroupOperation
+Variable SubgroupLogicalAnd_Int16x3_value;
+Variable SubgroupLogicalAnd_Int16x3_op;
+Function SubgroupLogicalAnd_Int16x3;
+inline constexpr std::array SubgroupLogicalAnd_Int16x3_args = { &SubgroupLogicalAnd_Int16x3_value, &SubgroupLogicalAnd_Int16x3_op };
 
 void SetupIntrinsics10()
 {
-    /// atomicDecrement with Int16, MemorySemantics
-    AtomicDecrement_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicDecrement_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicDecrement_Workgroup_Int16_ptr.type.strict = true;
-    AtomicDecrement_Workgroup_Int16_ptr.type.mut = true;
-    AtomicDecrement_Workgroup_Int16_ptr.type.modifiers = AtomicDecrement_Workgroup_Int16_ptr_modifiers;
-    AtomicDecrement_Workgroup_Int16_ptr.type.modifierValues = AtomicDecrement_Workgroup_Int16_ptr_modifierValues;
-    AtomicDecrement_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicDecrement_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Workgroup_Int16_semantics.type.literal = true;
-    AtomicDecrement_Workgroup_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicDecrement_Workgroup_Int16.name = AtomicDecrement_Workgroup_Int16_name;
-    AtomicDecrement_Workgroup_Int16.backendIndex = 2246;
-    AtomicDecrement_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicDecrement_Workgroup_Int16.parameters = AtomicDecrement_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->signature = "atomicDecrement(workgroup *mutable i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->name = "atomicDecrement(workgroup *mutable i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->nameWithVarNames = "atomicDecrement(ptr : workgroup *mutable i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicDecrement_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicLoad with Float32, MemorySemantics
-    AtomicLoad_Uniform_Float32_ptr.name = "ptr"_c;
-    AtomicLoad_Uniform_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicLoad_Uniform_Float32_ptr.type.strict = true;
-    AtomicLoad_Uniform_Float32_ptr.type.mut = true;
-    AtomicLoad_Uniform_Float32_ptr.type.modifiers = AtomicLoad_Uniform_Float32_ptr_modifiers;
-    AtomicLoad_Uniform_Float32_ptr.type.modifierValues = AtomicLoad_Uniform_Float32_ptr_modifierValues;
-    AtomicLoad_Uniform_Float32_semantics.name = "semantics"_c;
-    AtomicLoad_Uniform_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Uniform_Float32_semantics.type.literal = true;
-    AtomicLoad_Uniform_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Uniform_Float32.name = AtomicLoad_Uniform_Float32_name;
-    AtomicLoad_Uniform_Float32.backendIndex = 2247;
-    AtomicLoad_Uniform_Float32.returnType = Type::FullType { Float32Type.name };
-    AtomicLoad_Uniform_Float32.parameters = AtomicLoad_Uniform_Float32_args;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->signature = "atomicLoad(uniform *mutable f32,literal MemorySemantics) f32"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->name = "atomicLoad(uniform *mutable f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// atomicLoad with Float32, MemorySemantics
-    AtomicLoad_Workgroup_Float32_ptr.name = "ptr"_c;
-    AtomicLoad_Workgroup_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicLoad_Workgroup_Float32_ptr.type.strict = true;
-    AtomicLoad_Workgroup_Float32_ptr.type.mut = true;
-    AtomicLoad_Workgroup_Float32_ptr.type.modifiers = AtomicLoad_Workgroup_Float32_ptr_modifiers;
-    AtomicLoad_Workgroup_Float32_ptr.type.modifierValues = AtomicLoad_Workgroup_Float32_ptr_modifierValues;
-    AtomicLoad_Workgroup_Float32_semantics.name = "semantics"_c;
-    AtomicLoad_Workgroup_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Workgroup_Float32_semantics.type.literal = true;
-    AtomicLoad_Workgroup_Float32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Workgroup_Float32.name = AtomicLoad_Workgroup_Float32_name;
-    AtomicLoad_Workgroup_Float32.backendIndex = 2248;
-    AtomicLoad_Workgroup_Float32.returnType = Type::FullType { Float32Type.name };
-    AtomicLoad_Workgroup_Float32.parameters = AtomicLoad_Workgroup_Float32_args;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->signature = "atomicLoad(workgroup *mutable f32,literal MemorySemantics) f32"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->name = "atomicLoad(workgroup *mutable f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// atomicLoad with Float16, MemorySemantics
-    AtomicLoad_Uniform_Float16_ptr.name = "ptr"_c;
-    AtomicLoad_Uniform_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicLoad_Uniform_Float16_ptr.type.strict = true;
-    AtomicLoad_Uniform_Float16_ptr.type.mut = true;
-    AtomicLoad_Uniform_Float16_ptr.type.modifiers = AtomicLoad_Uniform_Float16_ptr_modifiers;
-    AtomicLoad_Uniform_Float16_ptr.type.modifierValues = AtomicLoad_Uniform_Float16_ptr_modifierValues;
-    AtomicLoad_Uniform_Float16_semantics.name = "semantics"_c;
-    AtomicLoad_Uniform_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Uniform_Float16_semantics.type.literal = true;
-    AtomicLoad_Uniform_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Uniform_Float16.name = AtomicLoad_Uniform_Float16_name;
-    AtomicLoad_Uniform_Float16.backendIndex = 2249;
-    AtomicLoad_Uniform_Float16.returnType = Type::FullType { Float16Type.name };
-    AtomicLoad_Uniform_Float16.parameters = AtomicLoad_Uniform_Float16_args;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->signature = "atomicLoad(uniform *mutable f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->name = "atomicLoad(uniform *mutable f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->nameWithVarNames = "atomicLoad(ptr : uniform *mutable f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Uniform_Float16)->returnTypeSymbol = &Float16Type;
-
-    /// atomicLoad with Float16, MemorySemantics
-    AtomicLoad_Workgroup_Float16_ptr.name = "ptr"_c;
-    AtomicLoad_Workgroup_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicLoad_Workgroup_Float16_ptr.type.strict = true;
-    AtomicLoad_Workgroup_Float16_ptr.type.mut = true;
-    AtomicLoad_Workgroup_Float16_ptr.type.modifiers = AtomicLoad_Workgroup_Float16_ptr_modifiers;
-    AtomicLoad_Workgroup_Float16_ptr.type.modifierValues = AtomicLoad_Workgroup_Float16_ptr_modifierValues;
-    AtomicLoad_Workgroup_Float16_semantics.name = "semantics"_c;
-    AtomicLoad_Workgroup_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Workgroup_Float16_semantics.type.literal = true;
-    AtomicLoad_Workgroup_Float16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
-    AtomicLoad_Workgroup_Float16.name = AtomicLoad_Workgroup_Float16_name;
-    AtomicLoad_Workgroup_Float16.backendIndex = 2250;
-    AtomicLoad_Workgroup_Float16.returnType = Type::FullType { Float16Type.name };
-    AtomicLoad_Workgroup_Float16.parameters = AtomicLoad_Workgroup_Float16_args;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->signature = "atomicLoad(workgroup *mutable f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->name = "atomicLoad(workgroup *mutable f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->nameWithVarNames = "atomicLoad(ptr : workgroup *mutable f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicLoad_Workgroup_Float16)->returnTypeSymbol = &Float16Type;
-
-    /// atomicStore with UInt32, UInt32, MemorySemantics
-    AtomicStore_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicStore_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_Uniform_UInt32_ptr.type.strict = true;
-    AtomicStore_Uniform_UInt32_ptr.type.mut = true;
-    AtomicStore_Uniform_UInt32_ptr.type.modifiers = AtomicStore_Uniform_UInt32_ptr_modifiers;
-    AtomicStore_Uniform_UInt32_ptr.type.modifierValues = AtomicStore_Uniform_UInt32_ptr_modifierValues;
-    AtomicStore_Uniform_UInt32_value.name = "value"_c;
-    AtomicStore_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicStore_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Uniform_UInt32_semantics.type.literal = true;
-    AtomicStore_Uniform_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Uniform_UInt32.name = AtomicStore_Uniform_UInt32_name;
-    AtomicStore_Uniform_UInt32.backendIndex = 2251;
-    AtomicStore_Uniform_UInt32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Uniform_UInt32.parameters = AtomicStore_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt32)->signature = "atomicStore(uniform *mutable u32,u32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt32)->name = "atomicStore(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt32)->nameWithVarNames = "atomicStore(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt32)->returnTypeSymbol = &VoidType;
-
-    /// atomicStore with UInt32, UInt32, MemorySemantics
-    AtomicStore_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicStore_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicStore_Workgroup_UInt32_ptr.type.modifiers = AtomicStore_Workgroup_UInt32_ptr_modifiers;
-    AtomicStore_Workgroup_UInt32_ptr.type.modifierValues = AtomicStore_Workgroup_UInt32_ptr_modifierValues;
-    AtomicStore_Workgroup_UInt32_value.name = "value"_c;
-    AtomicStore_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicStore_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicStore_Workgroup_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Workgroup_UInt32.name = AtomicStore_Workgroup_UInt32_name;
-    AtomicStore_Workgroup_UInt32.backendIndex = 2252;
-    AtomicStore_Workgroup_UInt32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Workgroup_UInt32.parameters = AtomicStore_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->signature = "atomicStore(workgroup *u32,u32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->name = "atomicStore(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->nameWithVarNames = "atomicStore(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt32)->returnTypeSymbol = &VoidType;
-
-    /// atomicExchange with UInt32, UInt32, MemorySemantics
-    AtomicExchange_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicExchange_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_Uniform_UInt32_ptr.type.strict = true;
-    AtomicExchange_Uniform_UInt32_ptr.type.mut = true;
-    AtomicExchange_Uniform_UInt32_ptr.type.modifiers = AtomicExchange_Uniform_UInt32_ptr_modifiers;
-    AtomicExchange_Uniform_UInt32_ptr.type.modifierValues = AtomicExchange_Uniform_UInt32_ptr_modifierValues;
-    AtomicExchange_Uniform_UInt32_value.name = "value"_c;
-    AtomicExchange_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicExchange_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Uniform_UInt32_semantics.type.literal = true;
-    AtomicExchange_Uniform_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Uniform_UInt32.name = AtomicExchange_Uniform_UInt32_name;
-    AtomicExchange_Uniform_UInt32.backendIndex = 2253;
-    AtomicExchange_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicExchange_Uniform_UInt32.parameters = AtomicExchange_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->signature = "atomicExchange(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->name = "atomicExchange(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicExchange with UInt32, UInt32, MemorySemantics
-    AtomicExchange_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicExchange_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicExchange_Workgroup_UInt32_ptr.type.modifiers = AtomicExchange_Workgroup_UInt32_ptr_modifiers;
-    AtomicExchange_Workgroup_UInt32_ptr.type.modifierValues = AtomicExchange_Workgroup_UInt32_ptr_modifierValues;
-    AtomicExchange_Workgroup_UInt32_value.name = "value"_c;
-    AtomicExchange_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicExchange_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicExchange_Workgroup_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Workgroup_UInt32.name = AtomicExchange_Workgroup_UInt32_name;
-    AtomicExchange_Workgroup_UInt32.backendIndex = 2254;
-    AtomicExchange_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicExchange_Workgroup_UInt32.parameters = AtomicExchange_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->signature = "atomicExchange(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->name = "atomicExchange(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->nameWithVarNames = "atomicExchange(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicAdd with UInt32, UInt32, MemorySemantics
-    AtomicAdd_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicAdd_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_Uniform_UInt32_ptr.type.strict = true;
-    AtomicAdd_Uniform_UInt32_ptr.type.mut = true;
-    AtomicAdd_Uniform_UInt32_ptr.type.modifiers = AtomicAdd_Uniform_UInt32_ptr_modifiers;
-    AtomicAdd_Uniform_UInt32_ptr.type.modifierValues = AtomicAdd_Uniform_UInt32_ptr_modifierValues;
-    AtomicAdd_Uniform_UInt32_value.name = "value"_c;
-    AtomicAdd_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicAdd_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Uniform_UInt32_semantics.type.literal = true;
-    AtomicAdd_Uniform_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Uniform_UInt32.name = AtomicAdd_Uniform_UInt32_name;
-    AtomicAdd_Uniform_UInt32.backendIndex = 2255;
-    AtomicAdd_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAdd_Uniform_UInt32.parameters = AtomicAdd_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->signature = "atomicAdd(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->name = "atomicAdd(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicAdd with UInt32, UInt32, MemorySemantics
-    AtomicAdd_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicAdd_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicAdd_Workgroup_UInt32_ptr.type.modifiers = AtomicAdd_Workgroup_UInt32_ptr_modifiers;
-    AtomicAdd_Workgroup_UInt32_ptr.type.modifierValues = AtomicAdd_Workgroup_UInt32_ptr_modifierValues;
-    AtomicAdd_Workgroup_UInt32_value.name = "value"_c;
-    AtomicAdd_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicAdd_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicAdd_Workgroup_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Workgroup_UInt32.name = AtomicAdd_Workgroup_UInt32_name;
-    AtomicAdd_Workgroup_UInt32.backendIndex = 2256;
-    AtomicAdd_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAdd_Workgroup_UInt32.parameters = AtomicAdd_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->signature = "atomicAdd(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->name = "atomicAdd(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->nameWithVarNames = "atomicAdd(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicSubtract with UInt32, UInt32, MemorySemantics
-    AtomicSubtract_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicSubtract_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_Uniform_UInt32_ptr.type.strict = true;
-    AtomicSubtract_Uniform_UInt32_ptr.type.mut = true;
-    AtomicSubtract_Uniform_UInt32_ptr.type.modifiers = AtomicSubtract_Uniform_UInt32_ptr_modifiers;
-    AtomicSubtract_Uniform_UInt32_ptr.type.modifierValues = AtomicSubtract_Uniform_UInt32_ptr_modifierValues;
-    AtomicSubtract_Uniform_UInt32_value.name = "value"_c;
-    AtomicSubtract_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicSubtract_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Uniform_UInt32_semantics.type.literal = true;
-    AtomicSubtract_Uniform_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Uniform_UInt32.name = AtomicSubtract_Uniform_UInt32_name;
-    AtomicSubtract_Uniform_UInt32.backendIndex = 2257;
-    AtomicSubtract_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicSubtract_Uniform_UInt32.parameters = AtomicSubtract_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->signature = "atomicSubtract(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->name = "atomicSubtract(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicSubtract with UInt32, UInt32, MemorySemantics
-    AtomicSubtract_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicSubtract_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicSubtract_Workgroup_UInt32_ptr.type.modifiers = AtomicSubtract_Workgroup_UInt32_ptr_modifiers;
-    AtomicSubtract_Workgroup_UInt32_ptr.type.modifierValues = AtomicSubtract_Workgroup_UInt32_ptr_modifierValues;
-    AtomicSubtract_Workgroup_UInt32_value.name = "value"_c;
-    AtomicSubtract_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicSubtract_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicSubtract_Workgroup_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Workgroup_UInt32.name = AtomicSubtract_Workgroup_UInt32_name;
-    AtomicSubtract_Workgroup_UInt32.backendIndex = 2258;
-    AtomicSubtract_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicSubtract_Workgroup_UInt32.parameters = AtomicSubtract_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->signature = "atomicSubtract(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->name = "atomicSubtract(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->nameWithVarNames = "atomicSubtract(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicAnd with UInt32, UInt32, MemorySemantics
-    AtomicAnd_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicAnd_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_Uniform_UInt32_ptr.type.strict = true;
-    AtomicAnd_Uniform_UInt32_ptr.type.mut = true;
-    AtomicAnd_Uniform_UInt32_ptr.type.modifiers = AtomicAnd_Uniform_UInt32_ptr_modifiers;
-    AtomicAnd_Uniform_UInt32_ptr.type.modifierValues = AtomicAnd_Uniform_UInt32_ptr_modifierValues;
-    AtomicAnd_Uniform_UInt32_value.name = "value"_c;
-    AtomicAnd_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicAnd_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Uniform_UInt32_semantics.type.literal = true;
-    AtomicAnd_Uniform_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Uniform_UInt32.name = AtomicAnd_Uniform_UInt32_name;
-    AtomicAnd_Uniform_UInt32.backendIndex = 2259;
-    AtomicAnd_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAnd_Uniform_UInt32.parameters = AtomicAnd_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->signature = "atomicAnd(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->name = "atomicAnd(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicAnd with UInt32, UInt32, MemorySemantics
-    AtomicAnd_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicAnd_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicAnd_Workgroup_UInt32_ptr.type.modifiers = AtomicAnd_Workgroup_UInt32_ptr_modifiers;
-    AtomicAnd_Workgroup_UInt32_ptr.type.modifierValues = AtomicAnd_Workgroup_UInt32_ptr_modifierValues;
-    AtomicAnd_Workgroup_UInt32_value.name = "value"_c;
-    AtomicAnd_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicAnd_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicAnd_Workgroup_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Workgroup_UInt32.name = AtomicAnd_Workgroup_UInt32_name;
-    AtomicAnd_Workgroup_UInt32.backendIndex = 2260;
-    AtomicAnd_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicAnd_Workgroup_UInt32.parameters = AtomicAnd_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->signature = "atomicAnd(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->name = "atomicAnd(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->nameWithVarNames = "atomicAnd(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicOr with UInt32, UInt32, MemorySemantics
-    AtomicOr_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicOr_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_Uniform_UInt32_ptr.type.strict = true;
-    AtomicOr_Uniform_UInt32_ptr.type.mut = true;
-    AtomicOr_Uniform_UInt32_ptr.type.modifiers = AtomicOr_Uniform_UInt32_ptr_modifiers;
-    AtomicOr_Uniform_UInt32_ptr.type.modifierValues = AtomicOr_Uniform_UInt32_ptr_modifierValues;
-    AtomicOr_Uniform_UInt32_value.name = "value"_c;
-    AtomicOr_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicOr_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Uniform_UInt32_semantics.type.literal = true;
-    AtomicOr_Uniform_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Uniform_UInt32.name = AtomicOr_Uniform_UInt32_name;
-    AtomicOr_Uniform_UInt32.backendIndex = 2261;
-    AtomicOr_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicOr_Uniform_UInt32.parameters = AtomicOr_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->signature = "atomicOr(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->name = "atomicOr(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->nameWithVarNames = "atomicOr(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicOr with UInt32, UInt32, MemorySemantics
-    AtomicOr_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicOr_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicOr_Workgroup_UInt32_ptr.type.modifiers = AtomicOr_Workgroup_UInt32_ptr_modifiers;
-    AtomicOr_Workgroup_UInt32_ptr.type.modifierValues = AtomicOr_Workgroup_UInt32_ptr_modifierValues;
-    AtomicOr_Workgroup_UInt32_value.name = "value"_c;
-    AtomicOr_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicOr_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicOr_Workgroup_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Workgroup_UInt32.name = AtomicOr_Workgroup_UInt32_name;
-    AtomicOr_Workgroup_UInt32.backendIndex = 2262;
-    AtomicOr_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicOr_Workgroup_UInt32.parameters = AtomicOr_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->signature = "atomicOr(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->name = "atomicOr(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->nameWithVarNames = "atomicOr(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicXor with UInt32, UInt32, MemorySemantics
-    AtomicXor_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicXor_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_Uniform_UInt32_ptr.type.strict = true;
-    AtomicXor_Uniform_UInt32_ptr.type.mut = true;
-    AtomicXor_Uniform_UInt32_ptr.type.modifiers = AtomicXor_Uniform_UInt32_ptr_modifiers;
-    AtomicXor_Uniform_UInt32_ptr.type.modifierValues = AtomicXor_Uniform_UInt32_ptr_modifierValues;
-    AtomicXor_Uniform_UInt32_value.name = "value"_c;
-    AtomicXor_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicXor_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Uniform_UInt32_semantics.type.literal = true;
-    AtomicXor_Uniform_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Uniform_UInt32.name = AtomicXor_Uniform_UInt32_name;
-    AtomicXor_Uniform_UInt32.backendIndex = 2263;
-    AtomicXor_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicXor_Uniform_UInt32.parameters = AtomicXor_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->signature = "atomicXor(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->name = "atomicXor(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->nameWithVarNames = "atomicXor(ptr : uniform *mutable u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicXor with UInt32, UInt32, MemorySemantics
-    AtomicXor_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicXor_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicXor_Workgroup_UInt32_ptr.type.modifiers = AtomicXor_Workgroup_UInt32_ptr_modifiers;
-    AtomicXor_Workgroup_UInt32_ptr.type.modifierValues = AtomicXor_Workgroup_UInt32_ptr_modifierValues;
-    AtomicXor_Workgroup_UInt32_value.name = "value"_c;
-    AtomicXor_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicXor_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicXor_Workgroup_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Workgroup_UInt32.name = AtomicXor_Workgroup_UInt32_name;
-    AtomicXor_Workgroup_UInt32.backendIndex = 2264;
-    AtomicXor_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicXor_Workgroup_UInt32.parameters = AtomicXor_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->signature = "atomicXor(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->name = "atomicXor(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->nameWithVarNames = "atomicXor(ptr : workgroup *u32, value : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicStore with Int32, Int32, MemorySemantics
-    AtomicStore_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicStore_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Uniform_Int32_ptr.type.strict = true;
-    AtomicStore_Uniform_Int32_ptr.type.mut = true;
-    AtomicStore_Uniform_Int32_ptr.type.modifiers = AtomicStore_Uniform_Int32_ptr_modifiers;
-    AtomicStore_Uniform_Int32_ptr.type.modifierValues = AtomicStore_Uniform_Int32_ptr_modifierValues;
-    AtomicStore_Uniform_Int32_value.name = "value"_c;
-    AtomicStore_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicStore_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Uniform_Int32_semantics.type.literal = true;
-    AtomicStore_Uniform_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Uniform_Int32.name = AtomicStore_Uniform_Int32_name;
-    AtomicStore_Uniform_Int32.backendIndex = 2265;
-    AtomicStore_Uniform_Int32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Uniform_Int32.parameters = AtomicStore_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32)->signature = "atomicStore(uniform *mutable i32,i32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32)->name = "atomicStore(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32)->nameWithVarNames = "atomicStore(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int32)->returnTypeSymbol = &VoidType;
-
-    /// atomicStore with Int32, Int32, MemorySemantics
-    AtomicStore_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicStore_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Workgroup_Int32_ptr.type.strict = true;
-    AtomicStore_Workgroup_Int32_ptr.type.modifiers = AtomicStore_Workgroup_Int32_ptr_modifiers;
-    AtomicStore_Workgroup_Int32_ptr.type.modifierValues = AtomicStore_Workgroup_Int32_ptr_modifierValues;
-    AtomicStore_Workgroup_Int32_value.name = "value"_c;
-    AtomicStore_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicStore_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Workgroup_Int32_semantics.type.literal = true;
-    AtomicStore_Workgroup_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Workgroup_Int32.name = AtomicStore_Workgroup_Int32_name;
-    AtomicStore_Workgroup_Int32.backendIndex = 2266;
-    AtomicStore_Workgroup_Int32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Workgroup_Int32.parameters = AtomicStore_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->signature = "atomicStore(workgroup *i32,i32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->name = "atomicStore(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->nameWithVarNames = "atomicStore(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int32)->returnTypeSymbol = &VoidType;
-
-    /// atomicExchange with Int32, Int32, MemorySemantics
-    AtomicExchange_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicExchange_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Uniform_Int32_ptr.type.strict = true;
-    AtomicExchange_Uniform_Int32_ptr.type.mut = true;
-    AtomicExchange_Uniform_Int32_ptr.type.modifiers = AtomicExchange_Uniform_Int32_ptr_modifiers;
-    AtomicExchange_Uniform_Int32_ptr.type.modifierValues = AtomicExchange_Uniform_Int32_ptr_modifierValues;
-    AtomicExchange_Uniform_Int32_value.name = "value"_c;
-    AtomicExchange_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicExchange_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Uniform_Int32_semantics.type.literal = true;
-    AtomicExchange_Uniform_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Uniform_Int32.name = AtomicExchange_Uniform_Int32_name;
-    AtomicExchange_Uniform_Int32.backendIndex = 2267;
-    AtomicExchange_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicExchange_Uniform_Int32.parameters = AtomicExchange_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->signature = "atomicExchange(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->name = "atomicExchange(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicExchange with Int32, Int32, MemorySemantics
-    AtomicExchange_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicExchange_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Workgroup_Int32_ptr.type.strict = true;
-    AtomicExchange_Workgroup_Int32_ptr.type.modifiers = AtomicExchange_Workgroup_Int32_ptr_modifiers;
-    AtomicExchange_Workgroup_Int32_ptr.type.modifierValues = AtomicExchange_Workgroup_Int32_ptr_modifierValues;
-    AtomicExchange_Workgroup_Int32_value.name = "value"_c;
-    AtomicExchange_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicExchange_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Workgroup_Int32_semantics.type.literal = true;
-    AtomicExchange_Workgroup_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Workgroup_Int32.name = AtomicExchange_Workgroup_Int32_name;
-    AtomicExchange_Workgroup_Int32.backendIndex = 2268;
-    AtomicExchange_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicExchange_Workgroup_Int32.parameters = AtomicExchange_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->signature = "atomicExchange(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->name = "atomicExchange(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->nameWithVarNames = "atomicExchange(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicAdd with Int32, Int32, MemorySemantics
-    AtomicAdd_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicAdd_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Uniform_Int32_ptr.type.strict = true;
-    AtomicAdd_Uniform_Int32_ptr.type.mut = true;
-    AtomicAdd_Uniform_Int32_ptr.type.modifiers = AtomicAdd_Uniform_Int32_ptr_modifiers;
-    AtomicAdd_Uniform_Int32_ptr.type.modifierValues = AtomicAdd_Uniform_Int32_ptr_modifierValues;
-    AtomicAdd_Uniform_Int32_value.name = "value"_c;
-    AtomicAdd_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicAdd_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Uniform_Int32_semantics.type.literal = true;
-    AtomicAdd_Uniform_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Uniform_Int32.name = AtomicAdd_Uniform_Int32_name;
-    AtomicAdd_Uniform_Int32.backendIndex = 2269;
-    AtomicAdd_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicAdd_Uniform_Int32.parameters = AtomicAdd_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->signature = "atomicAdd(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->name = "atomicAdd(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicAdd with Int32, Int32, MemorySemantics
-    AtomicAdd_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicAdd_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Workgroup_Int32_ptr.type.strict = true;
-    AtomicAdd_Workgroup_Int32_ptr.type.modifiers = AtomicAdd_Workgroup_Int32_ptr_modifiers;
-    AtomicAdd_Workgroup_Int32_ptr.type.modifierValues = AtomicAdd_Workgroup_Int32_ptr_modifierValues;
-    AtomicAdd_Workgroup_Int32_value.name = "value"_c;
-    AtomicAdd_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicAdd_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Workgroup_Int32_semantics.type.literal = true;
-    AtomicAdd_Workgroup_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Workgroup_Int32.name = AtomicAdd_Workgroup_Int32_name;
-    AtomicAdd_Workgroup_Int32.backendIndex = 2270;
-    AtomicAdd_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicAdd_Workgroup_Int32.parameters = AtomicAdd_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int32)->signature = "atomicAdd(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int32)->name = "atomicAdd(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int32)->nameWithVarNames = "atomicAdd(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicSubtract with Int32, Int32, MemorySemantics
-    AtomicSubtract_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicSubtract_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicSubtract_Uniform_Int32_ptr.type.strict = true;
-    AtomicSubtract_Uniform_Int32_ptr.type.mut = true;
-    AtomicSubtract_Uniform_Int32_ptr.type.modifiers = AtomicSubtract_Uniform_Int32_ptr_modifiers;
-    AtomicSubtract_Uniform_Int32_ptr.type.modifierValues = AtomicSubtract_Uniform_Int32_ptr_modifierValues;
-    AtomicSubtract_Uniform_Int32_value.name = "value"_c;
-    AtomicSubtract_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicSubtract_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicSubtract_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Uniform_Int32_semantics.type.literal = true;
-    AtomicSubtract_Uniform_Int32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Uniform_Int32.name = AtomicSubtract_Uniform_Int32_name;
-    AtomicSubtract_Uniform_Int32.backendIndex = 2271;
-    AtomicSubtract_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicSubtract_Uniform_Int32.parameters = AtomicSubtract_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int32)->signature = "atomicSubtract(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int32)->name = "atomicSubtract(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int32)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicSubtract with Int32, Int32, MemorySemantics
-    AtomicSubtract_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicSubtract_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicSubtract_Workgroup_Int32_ptr.type.strict = true;
-    AtomicSubtract_Workgroup_Int32_ptr.type.modifiers = AtomicSubtract_Workgroup_Int32_ptr_modifiers;
-    AtomicSubtract_Workgroup_Int32_ptr.type.modifierValues = AtomicSubtract_Workgroup_Int32_ptr_modifierValues;
-    AtomicSubtract_Workgroup_Int32_value.name = "value"_c;
-    AtomicSubtract_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicSubtract_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicSubtract_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Workgroup_Int32_semantics.type.literal = true;
-    AtomicSubtract_Workgroup_Int32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Workgroup_Int32.name = AtomicSubtract_Workgroup_Int32_name;
-    AtomicSubtract_Workgroup_Int32.backendIndex = 2272;
-    AtomicSubtract_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicSubtract_Workgroup_Int32.parameters = AtomicSubtract_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32)->signature = "atomicSubtract(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32)->name = "atomicSubtract(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32)->nameWithVarNames = "atomicSubtract(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicAnd with Int32, Int32, MemorySemantics
-    AtomicAnd_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicAnd_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAnd_Uniform_Int32_ptr.type.strict = true;
-    AtomicAnd_Uniform_Int32_ptr.type.mut = true;
-    AtomicAnd_Uniform_Int32_ptr.type.modifiers = AtomicAnd_Uniform_Int32_ptr_modifiers;
-    AtomicAnd_Uniform_Int32_ptr.type.modifierValues = AtomicAnd_Uniform_Int32_ptr_modifierValues;
-    AtomicAnd_Uniform_Int32_value.name = "value"_c;
-    AtomicAnd_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicAnd_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicAnd_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Uniform_Int32_semantics.type.literal = true;
-    AtomicAnd_Uniform_Int32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Uniform_Int32.name = AtomicAnd_Uniform_Int32_name;
-    AtomicAnd_Uniform_Int32.backendIndex = 2273;
-    AtomicAnd_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicAnd_Uniform_Int32.parameters = AtomicAnd_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int32)->signature = "atomicAnd(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int32)->name = "atomicAnd(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int32)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicAnd with Int32, Int32, MemorySemantics
-    AtomicAnd_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicAnd_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAnd_Workgroup_Int32_ptr.type.strict = true;
-    AtomicAnd_Workgroup_Int32_ptr.type.modifiers = AtomicAnd_Workgroup_Int32_ptr_modifiers;
-    AtomicAnd_Workgroup_Int32_ptr.type.modifierValues = AtomicAnd_Workgroup_Int32_ptr_modifierValues;
-    AtomicAnd_Workgroup_Int32_value.name = "value"_c;
-    AtomicAnd_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicAnd_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicAnd_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Workgroup_Int32_semantics.type.literal = true;
-    AtomicAnd_Workgroup_Int32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Workgroup_Int32.name = AtomicAnd_Workgroup_Int32_name;
-    AtomicAnd_Workgroup_Int32.backendIndex = 2274;
-    AtomicAnd_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicAnd_Workgroup_Int32.parameters = AtomicAnd_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int32)->signature = "atomicAnd(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int32)->name = "atomicAnd(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int32)->nameWithVarNames = "atomicAnd(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicOr with Int32, Int32, MemorySemantics
-    AtomicOr_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicOr_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicOr_Uniform_Int32_ptr.type.strict = true;
-    AtomicOr_Uniform_Int32_ptr.type.mut = true;
-    AtomicOr_Uniform_Int32_ptr.type.modifiers = AtomicOr_Uniform_Int32_ptr_modifiers;
-    AtomicOr_Uniform_Int32_ptr.type.modifierValues = AtomicOr_Uniform_Int32_ptr_modifierValues;
-    AtomicOr_Uniform_Int32_value.name = "value"_c;
-    AtomicOr_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicOr_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicOr_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Uniform_Int32_semantics.type.literal = true;
-    AtomicOr_Uniform_Int32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Uniform_Int32.name = AtomicOr_Uniform_Int32_name;
-    AtomicOr_Uniform_Int32.backendIndex = 2275;
-    AtomicOr_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicOr_Uniform_Int32.parameters = AtomicOr_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicOr_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicOr_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicOr_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicOr_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Uniform_Int32)->signature = "atomicOr(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_Int32)->name = "atomicOr(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_Int32)->nameWithVarNames = "atomicOr(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicOr with Int32, Int32, MemorySemantics
-    AtomicOr_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicOr_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicOr_Workgroup_Int32_ptr.type.strict = true;
-    AtomicOr_Workgroup_Int32_ptr.type.modifiers = AtomicOr_Workgroup_Int32_ptr_modifiers;
-    AtomicOr_Workgroup_Int32_ptr.type.modifierValues = AtomicOr_Workgroup_Int32_ptr_modifierValues;
-    AtomicOr_Workgroup_Int32_value.name = "value"_c;
-    AtomicOr_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicOr_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicOr_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Workgroup_Int32_semantics.type.literal = true;
-    AtomicOr_Workgroup_Int32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Workgroup_Int32.name = AtomicOr_Workgroup_Int32_name;
-    AtomicOr_Workgroup_Int32.backendIndex = 2276;
-    AtomicOr_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicOr_Workgroup_Int32.parameters = AtomicOr_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int32)->signature = "atomicOr(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int32)->name = "atomicOr(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int32)->nameWithVarNames = "atomicOr(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicXor with Int32, Int32, MemorySemantics
-    AtomicXor_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicXor_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicXor_Uniform_Int32_ptr.type.strict = true;
-    AtomicXor_Uniform_Int32_ptr.type.mut = true;
-    AtomicXor_Uniform_Int32_ptr.type.modifiers = AtomicXor_Uniform_Int32_ptr_modifiers;
-    AtomicXor_Uniform_Int32_ptr.type.modifierValues = AtomicXor_Uniform_Int32_ptr_modifierValues;
-    AtomicXor_Uniform_Int32_value.name = "value"_c;
-    AtomicXor_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicXor_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicXor_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Uniform_Int32_semantics.type.literal = true;
-    AtomicXor_Uniform_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Uniform_Int32.name = AtomicXor_Uniform_Int32_name;
-    AtomicXor_Uniform_Int32.backendIndex = 2277;
-    AtomicXor_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicXor_Uniform_Int32.parameters = AtomicXor_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicXor_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicXor_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicXor_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicXor_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Uniform_Int32)->signature = "atomicXor(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_Int32)->name = "atomicXor(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_Int32)->nameWithVarNames = "atomicXor(ptr : uniform *mutable i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicXor with Int32, Int32, MemorySemantics
-    AtomicXor_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicXor_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicXor_Workgroup_Int32_ptr.type.strict = true;
-    AtomicXor_Workgroup_Int32_ptr.type.modifiers = AtomicXor_Workgroup_Int32_ptr_modifiers;
-    AtomicXor_Workgroup_Int32_ptr.type.modifierValues = AtomicXor_Workgroup_Int32_ptr_modifierValues;
-    AtomicXor_Workgroup_Int32_value.name = "value"_c;
-    AtomicXor_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicXor_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicXor_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Workgroup_Int32_semantics.type.literal = true;
-    AtomicXor_Workgroup_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Workgroup_Int32.name = AtomicXor_Workgroup_Int32_name;
-    AtomicXor_Workgroup_Int32.backendIndex = 2278;
-    AtomicXor_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicXor_Workgroup_Int32.parameters = AtomicXor_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->signature = "atomicXor(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->name = "atomicXor(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->nameWithVarNames = "atomicXor(ptr : workgroup *i32, value : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicStore with UInt16, UInt16, MemorySemantics
-    AtomicStore_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicStore_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicStore_Uniform_UInt16_ptr.type.strict = true;
-    AtomicStore_Uniform_UInt16_ptr.type.mut = true;
-    AtomicStore_Uniform_UInt16_ptr.type.modifiers = AtomicStore_Uniform_UInt16_ptr_modifiers;
-    AtomicStore_Uniform_UInt16_ptr.type.modifierValues = AtomicStore_Uniform_UInt16_ptr_modifierValues;
-    AtomicStore_Uniform_UInt16_value.name = "value"_c;
-    AtomicStore_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicStore_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicStore_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Uniform_UInt16_semantics.type.literal = true;
-    AtomicStore_Uniform_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Uniform_UInt16.name = AtomicStore_Uniform_UInt16_name;
-    AtomicStore_Uniform_UInt16.backendIndex = 2279;
-    AtomicStore_Uniform_UInt16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Uniform_UInt16.parameters = AtomicStore_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->signature = "atomicStore(uniform *mutable u16,u16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->name = "atomicStore(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->nameWithVarNames = "atomicStore(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_UInt16)->returnTypeSymbol = &VoidType;
-
-    /// atomicStore with UInt16, UInt16, MemorySemantics
-    AtomicStore_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicStore_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicStore_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicStore_Workgroup_UInt16_ptr.type.modifiers = AtomicStore_Workgroup_UInt16_ptr_modifiers;
-    AtomicStore_Workgroup_UInt16_ptr.type.modifierValues = AtomicStore_Workgroup_UInt16_ptr_modifierValues;
-    AtomicStore_Workgroup_UInt16_value.name = "value"_c;
-    AtomicStore_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicStore_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicStore_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicStore_Workgroup_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Workgroup_UInt16.name = AtomicStore_Workgroup_UInt16_name;
-    AtomicStore_Workgroup_UInt16.backendIndex = 2280;
-    AtomicStore_Workgroup_UInt16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Workgroup_UInt16.parameters = AtomicStore_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->signature = "atomicStore(workgroup *u16,u16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->name = "atomicStore(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->nameWithVarNames = "atomicStore(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_UInt16)->returnTypeSymbol = &VoidType;
-
-    /// atomicExchange with UInt16, UInt16, MemorySemantics
-    AtomicExchange_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicExchange_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicExchange_Uniform_UInt16_ptr.type.strict = true;
-    AtomicExchange_Uniform_UInt16_ptr.type.mut = true;
-    AtomicExchange_Uniform_UInt16_ptr.type.modifiers = AtomicExchange_Uniform_UInt16_ptr_modifiers;
-    AtomicExchange_Uniform_UInt16_ptr.type.modifierValues = AtomicExchange_Uniform_UInt16_ptr_modifierValues;
-    AtomicExchange_Uniform_UInt16_value.name = "value"_c;
-    AtomicExchange_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicExchange_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicExchange_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Uniform_UInt16_semantics.type.literal = true;
-    AtomicExchange_Uniform_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Uniform_UInt16.name = AtomicExchange_Uniform_UInt16_name;
-    AtomicExchange_Uniform_UInt16.backendIndex = 2281;
-    AtomicExchange_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicExchange_Uniform_UInt16.parameters = AtomicExchange_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->signature = "atomicExchange(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->name = "atomicExchange(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicExchange with UInt16, UInt16, MemorySemantics
-    AtomicExchange_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicExchange_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicExchange_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicExchange_Workgroup_UInt16_ptr.type.modifiers = AtomicExchange_Workgroup_UInt16_ptr_modifiers;
-    AtomicExchange_Workgroup_UInt16_ptr.type.modifierValues = AtomicExchange_Workgroup_UInt16_ptr_modifierValues;
-    AtomicExchange_Workgroup_UInt16_value.name = "value"_c;
-    AtomicExchange_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicExchange_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicExchange_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicExchange_Workgroup_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Workgroup_UInt16.name = AtomicExchange_Workgroup_UInt16_name;
-    AtomicExchange_Workgroup_UInt16.backendIndex = 2282;
-    AtomicExchange_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicExchange_Workgroup_UInt16.parameters = AtomicExchange_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->signature = "atomicExchange(workgroup *u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->name = "atomicExchange(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->nameWithVarNames = "atomicExchange(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicAdd with UInt16, UInt16, MemorySemantics
-    AtomicAdd_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicAdd_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicAdd_Uniform_UInt16_ptr.type.strict = true;
-    AtomicAdd_Uniform_UInt16_ptr.type.mut = true;
-    AtomicAdd_Uniform_UInt16_ptr.type.modifiers = AtomicAdd_Uniform_UInt16_ptr_modifiers;
-    AtomicAdd_Uniform_UInt16_ptr.type.modifierValues = AtomicAdd_Uniform_UInt16_ptr_modifierValues;
-    AtomicAdd_Uniform_UInt16_value.name = "value"_c;
-    AtomicAdd_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicAdd_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicAdd_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Uniform_UInt16_semantics.type.literal = true;
-    AtomicAdd_Uniform_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Uniform_UInt16.name = AtomicAdd_Uniform_UInt16_name;
-    AtomicAdd_Uniform_UInt16.backendIndex = 2283;
-    AtomicAdd_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicAdd_Uniform_UInt16.parameters = AtomicAdd_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->signature = "atomicAdd(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->name = "atomicAdd(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicAdd with UInt16, UInt16, MemorySemantics
-    AtomicAdd_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicAdd_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicAdd_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicAdd_Workgroup_UInt16_ptr.type.modifiers = AtomicAdd_Workgroup_UInt16_ptr_modifiers;
-    AtomicAdd_Workgroup_UInt16_ptr.type.modifierValues = AtomicAdd_Workgroup_UInt16_ptr_modifierValues;
-    AtomicAdd_Workgroup_UInt16_value.name = "value"_c;
-    AtomicAdd_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicAdd_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicAdd_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicAdd_Workgroup_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Workgroup_UInt16.name = AtomicAdd_Workgroup_UInt16_name;
-    AtomicAdd_Workgroup_UInt16.backendIndex = 2284;
-    AtomicAdd_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicAdd_Workgroup_UInt16.parameters = AtomicAdd_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->signature = "atomicAdd(workgroup *u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->name = "atomicAdd(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->nameWithVarNames = "atomicAdd(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicSubtract with UInt16, UInt16, MemorySemantics
-    AtomicSubtract_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicSubtract_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicSubtract_Uniform_UInt16_ptr.type.strict = true;
-    AtomicSubtract_Uniform_UInt16_ptr.type.mut = true;
-    AtomicSubtract_Uniform_UInt16_ptr.type.modifiers = AtomicSubtract_Uniform_UInt16_ptr_modifiers;
-    AtomicSubtract_Uniform_UInt16_ptr.type.modifierValues = AtomicSubtract_Uniform_UInt16_ptr_modifierValues;
-    AtomicSubtract_Uniform_UInt16_value.name = "value"_c;
-    AtomicSubtract_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicSubtract_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicSubtract_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Uniform_UInt16_semantics.type.literal = true;
-    AtomicSubtract_Uniform_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Uniform_UInt16.name = AtomicSubtract_Uniform_UInt16_name;
-    AtomicSubtract_Uniform_UInt16.backendIndex = 2285;
-    AtomicSubtract_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicSubtract_Uniform_UInt16.parameters = AtomicSubtract_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->signature = "atomicSubtract(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->name = "atomicSubtract(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicSubtract with UInt16, UInt16, MemorySemantics
-    AtomicSubtract_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicSubtract_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicSubtract_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicSubtract_Workgroup_UInt16_ptr.type.modifiers = AtomicSubtract_Workgroup_UInt16_ptr_modifiers;
-    AtomicSubtract_Workgroup_UInt16_ptr.type.modifierValues = AtomicSubtract_Workgroup_UInt16_ptr_modifierValues;
-    AtomicSubtract_Workgroup_UInt16_value.name = "value"_c;
-    AtomicSubtract_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicSubtract_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicSubtract_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicSubtract_Workgroup_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Workgroup_UInt16.name = AtomicSubtract_Workgroup_UInt16_name;
-    AtomicSubtract_Workgroup_UInt16.backendIndex = 2286;
-    AtomicSubtract_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicSubtract_Workgroup_UInt16.parameters = AtomicSubtract_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->signature = "atomicSubtract(workgroup *u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->name = "atomicSubtract(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->nameWithVarNames = "atomicSubtract(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicAnd with UInt16, UInt16, MemorySemantics
-    AtomicAnd_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicAnd_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicAnd_Uniform_UInt16_ptr.type.strict = true;
-    AtomicAnd_Uniform_UInt16_ptr.type.mut = true;
-    AtomicAnd_Uniform_UInt16_ptr.type.modifiers = AtomicAnd_Uniform_UInt16_ptr_modifiers;
-    AtomicAnd_Uniform_UInt16_ptr.type.modifierValues = AtomicAnd_Uniform_UInt16_ptr_modifierValues;
-    AtomicAnd_Uniform_UInt16_value.name = "value"_c;
-    AtomicAnd_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicAnd_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicAnd_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Uniform_UInt16_semantics.type.literal = true;
-    AtomicAnd_Uniform_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Uniform_UInt16.name = AtomicAnd_Uniform_UInt16_name;
-    AtomicAnd_Uniform_UInt16.backendIndex = 2287;
-    AtomicAnd_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicAnd_Uniform_UInt16.parameters = AtomicAnd_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->signature = "atomicAnd(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->name = "atomicAnd(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicAnd with UInt16, UInt16, MemorySemantics
-    AtomicAnd_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicAnd_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicAnd_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicAnd_Workgroup_UInt16_ptr.type.modifiers = AtomicAnd_Workgroup_UInt16_ptr_modifiers;
-    AtomicAnd_Workgroup_UInt16_ptr.type.modifierValues = AtomicAnd_Workgroup_UInt16_ptr_modifierValues;
-    AtomicAnd_Workgroup_UInt16_value.name = "value"_c;
-    AtomicAnd_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicAnd_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicAnd_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicAnd_Workgroup_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Workgroup_UInt16.name = AtomicAnd_Workgroup_UInt16_name;
-    AtomicAnd_Workgroup_UInt16.backendIndex = 2288;
-    AtomicAnd_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicAnd_Workgroup_UInt16.parameters = AtomicAnd_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->signature = "atomicAnd(workgroup *u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->name = "atomicAnd(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->nameWithVarNames = "atomicAnd(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicOr with UInt16, UInt16, MemorySemantics
-    AtomicOr_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicOr_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicOr_Uniform_UInt16_ptr.type.strict = true;
-    AtomicOr_Uniform_UInt16_ptr.type.mut = true;
-    AtomicOr_Uniform_UInt16_ptr.type.modifiers = AtomicOr_Uniform_UInt16_ptr_modifiers;
-    AtomicOr_Uniform_UInt16_ptr.type.modifierValues = AtomicOr_Uniform_UInt16_ptr_modifierValues;
-    AtomicOr_Uniform_UInt16_value.name = "value"_c;
-    AtomicOr_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicOr_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicOr_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Uniform_UInt16_semantics.type.literal = true;
-    AtomicOr_Uniform_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Uniform_UInt16.name = AtomicOr_Uniform_UInt16_name;
-    AtomicOr_Uniform_UInt16.backendIndex = 2289;
-    AtomicOr_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicOr_Uniform_UInt16.parameters = AtomicOr_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->signature = "atomicOr(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->name = "atomicOr(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->nameWithVarNames = "atomicOr(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicOr with UInt16, UInt16, MemorySemantics
-    AtomicOr_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicOr_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicOr_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicOr_Workgroup_UInt16_ptr.type.modifiers = AtomicOr_Workgroup_UInt16_ptr_modifiers;
-    AtomicOr_Workgroup_UInt16_ptr.type.modifierValues = AtomicOr_Workgroup_UInt16_ptr_modifierValues;
-    AtomicOr_Workgroup_UInt16_value.name = "value"_c;
-    AtomicOr_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicOr_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicOr_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicOr_Workgroup_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Workgroup_UInt16.name = AtomicOr_Workgroup_UInt16_name;
-    AtomicOr_Workgroup_UInt16.backendIndex = 2290;
-    AtomicOr_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicOr_Workgroup_UInt16.parameters = AtomicOr_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->signature = "atomicOr(workgroup *u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->name = "atomicOr(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->nameWithVarNames = "atomicOr(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicXor with UInt16, UInt16, MemorySemantics
-    AtomicXor_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicXor_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicXor_Uniform_UInt16_ptr.type.strict = true;
-    AtomicXor_Uniform_UInt16_ptr.type.mut = true;
-    AtomicXor_Uniform_UInt16_ptr.type.modifiers = AtomicXor_Uniform_UInt16_ptr_modifiers;
-    AtomicXor_Uniform_UInt16_ptr.type.modifierValues = AtomicXor_Uniform_UInt16_ptr_modifierValues;
-    AtomicXor_Uniform_UInt16_value.name = "value"_c;
-    AtomicXor_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicXor_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicXor_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Uniform_UInt16_semantics.type.literal = true;
-    AtomicXor_Uniform_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Uniform_UInt16.name = AtomicXor_Uniform_UInt16_name;
-    AtomicXor_Uniform_UInt16.backendIndex = 2291;
-    AtomicXor_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicXor_Uniform_UInt16.parameters = AtomicXor_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->signature = "atomicXor(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->name = "atomicXor(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->nameWithVarNames = "atomicXor(ptr : uniform *mutable u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicXor with UInt16, UInt16, MemorySemantics
-    AtomicXor_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicXor_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicXor_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicXor_Workgroup_UInt16_ptr.type.modifiers = AtomicXor_Workgroup_UInt16_ptr_modifiers;
-    AtomicXor_Workgroup_UInt16_ptr.type.modifierValues = AtomicXor_Workgroup_UInt16_ptr_modifierValues;
-    AtomicXor_Workgroup_UInt16_value.name = "value"_c;
-    AtomicXor_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicXor_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicXor_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicXor_Workgroup_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Workgroup_UInt16.name = AtomicXor_Workgroup_UInt16_name;
-    AtomicXor_Workgroup_UInt16.backendIndex = 2292;
-    AtomicXor_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicXor_Workgroup_UInt16.parameters = AtomicXor_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->signature = "atomicXor(workgroup *u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->name = "atomicXor(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->nameWithVarNames = "atomicXor(ptr : workgroup *u16, value : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicStore with Int16, Int16, MemorySemantics
-    AtomicStore_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicStore_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicStore_Uniform_Int16_ptr.type.strict = true;
-    AtomicStore_Uniform_Int16_ptr.type.mut = true;
-    AtomicStore_Uniform_Int16_ptr.type.modifiers = AtomicStore_Uniform_Int16_ptr_modifiers;
-    AtomicStore_Uniform_Int16_ptr.type.modifierValues = AtomicStore_Uniform_Int16_ptr_modifierValues;
-    AtomicStore_Uniform_Int16_value.name = "value"_c;
-    AtomicStore_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicStore_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicStore_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Uniform_Int16_semantics.type.literal = true;
-    AtomicStore_Uniform_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Uniform_Int16.name = AtomicStore_Uniform_Int16_name;
-    AtomicStore_Uniform_Int16.backendIndex = 2293;
-    AtomicStore_Uniform_Int16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Uniform_Int16.parameters = AtomicStore_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicStore_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicStore_Uniform_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Uniform_Int16)->signature = "atomicStore(uniform *mutable i16,i16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int16)->name = "atomicStore(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int16)->nameWithVarNames = "atomicStore(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Int16)->returnTypeSymbol = &VoidType;
-
-    /// atomicStore with Int16, Int16, MemorySemantics
-    AtomicStore_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicStore_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicStore_Workgroup_Int16_ptr.type.strict = true;
-    AtomicStore_Workgroup_Int16_ptr.type.modifiers = AtomicStore_Workgroup_Int16_ptr_modifiers;
-    AtomicStore_Workgroup_Int16_ptr.type.modifierValues = AtomicStore_Workgroup_Int16_ptr_modifierValues;
-    AtomicStore_Workgroup_Int16_value.name = "value"_c;
-    AtomicStore_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicStore_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicStore_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Workgroup_Int16_semantics.type.literal = true;
-    AtomicStore_Workgroup_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Workgroup_Int16.name = AtomicStore_Workgroup_Int16_name;
-    AtomicStore_Workgroup_Int16.backendIndex = 2294;
-    AtomicStore_Workgroup_Int16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Workgroup_Int16.parameters = AtomicStore_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int16)->signature = "atomicStore(workgroup *i16,i16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int16)->name = "atomicStore(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int16)->nameWithVarNames = "atomicStore(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Int16)->returnTypeSymbol = &VoidType;
-
-    /// atomicExchange with Int16, Int16, MemorySemantics
-    AtomicExchange_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicExchange_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicExchange_Uniform_Int16_ptr.type.strict = true;
-    AtomicExchange_Uniform_Int16_ptr.type.mut = true;
-    AtomicExchange_Uniform_Int16_ptr.type.modifiers = AtomicExchange_Uniform_Int16_ptr_modifiers;
-    AtomicExchange_Uniform_Int16_ptr.type.modifierValues = AtomicExchange_Uniform_Int16_ptr_modifierValues;
-    AtomicExchange_Uniform_Int16_value.name = "value"_c;
-    AtomicExchange_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicExchange_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicExchange_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Uniform_Int16_semantics.type.literal = true;
-    AtomicExchange_Uniform_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Uniform_Int16.name = AtomicExchange_Uniform_Int16_name;
-    AtomicExchange_Uniform_Int16.backendIndex = 2295;
-    AtomicExchange_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicExchange_Uniform_Int16.parameters = AtomicExchange_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int16)->signature = "atomicExchange(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int16)->name = "atomicExchange(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int16)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicExchange with Int16, Int16, MemorySemantics
-    AtomicExchange_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicExchange_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicExchange_Workgroup_Int16_ptr.type.strict = true;
-    AtomicExchange_Workgroup_Int16_ptr.type.modifiers = AtomicExchange_Workgroup_Int16_ptr_modifiers;
-    AtomicExchange_Workgroup_Int16_ptr.type.modifierValues = AtomicExchange_Workgroup_Int16_ptr_modifierValues;
-    AtomicExchange_Workgroup_Int16_value.name = "value"_c;
-    AtomicExchange_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicExchange_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicExchange_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Workgroup_Int16_semantics.type.literal = true;
-    AtomicExchange_Workgroup_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Workgroup_Int16.name = AtomicExchange_Workgroup_Int16_name;
-    AtomicExchange_Workgroup_Int16.backendIndex = 2296;
-    AtomicExchange_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicExchange_Workgroup_Int16.parameters = AtomicExchange_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int16)->signature = "atomicExchange(workgroup *i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int16)->name = "atomicExchange(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int16)->nameWithVarNames = "atomicExchange(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicAdd with Int16, Int16, MemorySemantics
-    AtomicAdd_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicAdd_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicAdd_Uniform_Int16_ptr.type.strict = true;
-    AtomicAdd_Uniform_Int16_ptr.type.mut = true;
-    AtomicAdd_Uniform_Int16_ptr.type.modifiers = AtomicAdd_Uniform_Int16_ptr_modifiers;
-    AtomicAdd_Uniform_Int16_ptr.type.modifierValues = AtomicAdd_Uniform_Int16_ptr_modifierValues;
-    AtomicAdd_Uniform_Int16_value.name = "value"_c;
-    AtomicAdd_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicAdd_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicAdd_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Uniform_Int16_semantics.type.literal = true;
-    AtomicAdd_Uniform_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Uniform_Int16.name = AtomicAdd_Uniform_Int16_name;
-    AtomicAdd_Uniform_Int16.backendIndex = 2297;
-    AtomicAdd_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicAdd_Uniform_Int16.parameters = AtomicAdd_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int16)->signature = "atomicAdd(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int16)->name = "atomicAdd(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int16)->nameWithVarNames = "atomicAdd(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicAdd with Int16, Int16, MemorySemantics
-    AtomicAdd_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicAdd_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicAdd_Workgroup_Int16_ptr.type.strict = true;
-    AtomicAdd_Workgroup_Int16_ptr.type.modifiers = AtomicAdd_Workgroup_Int16_ptr_modifiers;
-    AtomicAdd_Workgroup_Int16_ptr.type.modifierValues = AtomicAdd_Workgroup_Int16_ptr_modifierValues;
-    AtomicAdd_Workgroup_Int16_value.name = "value"_c;
-    AtomicAdd_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicAdd_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicAdd_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Workgroup_Int16_semantics.type.literal = true;
-    AtomicAdd_Workgroup_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAdd_Workgroup_Int16.name = AtomicAdd_Workgroup_Int16_name;
-    AtomicAdd_Workgroup_Int16.backendIndex = 2298;
-    AtomicAdd_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicAdd_Workgroup_Int16.parameters = AtomicAdd_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int16)->signature = "atomicAdd(workgroup *i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int16)->name = "atomicAdd(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int16)->nameWithVarNames = "atomicAdd(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAdd_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicSubtract with Int16, Int16, MemorySemantics
-    AtomicSubtract_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicSubtract_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicSubtract_Uniform_Int16_ptr.type.strict = true;
-    AtomicSubtract_Uniform_Int16_ptr.type.mut = true;
-    AtomicSubtract_Uniform_Int16_ptr.type.modifiers = AtomicSubtract_Uniform_Int16_ptr_modifiers;
-    AtomicSubtract_Uniform_Int16_ptr.type.modifierValues = AtomicSubtract_Uniform_Int16_ptr_modifierValues;
-    AtomicSubtract_Uniform_Int16_value.name = "value"_c;
-    AtomicSubtract_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicSubtract_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicSubtract_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Uniform_Int16_semantics.type.literal = true;
-    AtomicSubtract_Uniform_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Uniform_Int16.name = AtomicSubtract_Uniform_Int16_name;
-    AtomicSubtract_Uniform_Int16.backendIndex = 2299;
-    AtomicSubtract_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicSubtract_Uniform_Int16.parameters = AtomicSubtract_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int16)->signature = "atomicSubtract(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int16)->name = "atomicSubtract(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int16)->nameWithVarNames = "atomicSubtract(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicSubtract with Int16, Int16, MemorySemantics
-    AtomicSubtract_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicSubtract_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicSubtract_Workgroup_Int16_ptr.type.strict = true;
-    AtomicSubtract_Workgroup_Int16_ptr.type.modifiers = AtomicSubtract_Workgroup_Int16_ptr_modifiers;
-    AtomicSubtract_Workgroup_Int16_ptr.type.modifierValues = AtomicSubtract_Workgroup_Int16_ptr_modifierValues;
-    AtomicSubtract_Workgroup_Int16_value.name = "value"_c;
-    AtomicSubtract_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicSubtract_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicSubtract_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Workgroup_Int16_semantics.type.literal = true;
-    AtomicSubtract_Workgroup_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicSubtract_Workgroup_Int16.name = AtomicSubtract_Workgroup_Int16_name;
-    AtomicSubtract_Workgroup_Int16.backendIndex = 2300;
-    AtomicSubtract_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicSubtract_Workgroup_Int16.parameters = AtomicSubtract_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16)->signature = "atomicSubtract(workgroup *i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16)->name = "atomicSubtract(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16)->nameWithVarNames = "atomicSubtract(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicSubtract_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicAnd with Int16, Int16, MemorySemantics
-    AtomicAnd_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicAnd_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicAnd_Uniform_Int16_ptr.type.strict = true;
-    AtomicAnd_Uniform_Int16_ptr.type.mut = true;
-    AtomicAnd_Uniform_Int16_ptr.type.modifiers = AtomicAnd_Uniform_Int16_ptr_modifiers;
-    AtomicAnd_Uniform_Int16_ptr.type.modifierValues = AtomicAnd_Uniform_Int16_ptr_modifierValues;
-    AtomicAnd_Uniform_Int16_value.name = "value"_c;
-    AtomicAnd_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicAnd_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicAnd_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Uniform_Int16_semantics.type.literal = true;
-    AtomicAnd_Uniform_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Uniform_Int16.name = AtomicAnd_Uniform_Int16_name;
-    AtomicAnd_Uniform_Int16.backendIndex = 2301;
-    AtomicAnd_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicAnd_Uniform_Int16.parameters = AtomicAnd_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int16)->signature = "atomicAnd(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int16)->name = "atomicAnd(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int16)->nameWithVarNames = "atomicAnd(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicAnd with Int16, Int16, MemorySemantics
-    AtomicAnd_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicAnd_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicAnd_Workgroup_Int16_ptr.type.strict = true;
-    AtomicAnd_Workgroup_Int16_ptr.type.modifiers = AtomicAnd_Workgroup_Int16_ptr_modifiers;
-    AtomicAnd_Workgroup_Int16_ptr.type.modifierValues = AtomicAnd_Workgroup_Int16_ptr_modifierValues;
-    AtomicAnd_Workgroup_Int16_value.name = "value"_c;
-    AtomicAnd_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicAnd_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicAnd_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Workgroup_Int16_semantics.type.literal = true;
-    AtomicAnd_Workgroup_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicAnd_Workgroup_Int16.name = AtomicAnd_Workgroup_Int16_name;
-    AtomicAnd_Workgroup_Int16.backendIndex = 2302;
-    AtomicAnd_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicAnd_Workgroup_Int16.parameters = AtomicAnd_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int16)->signature = "atomicAnd(workgroup *i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int16)->name = "atomicAnd(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int16)->nameWithVarNames = "atomicAnd(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicAnd_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicOr with Int16, Int16, MemorySemantics
-    AtomicOr_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicOr_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicOr_Uniform_Int16_ptr.type.strict = true;
-    AtomicOr_Uniform_Int16_ptr.type.mut = true;
-    AtomicOr_Uniform_Int16_ptr.type.modifiers = AtomicOr_Uniform_Int16_ptr_modifiers;
-    AtomicOr_Uniform_Int16_ptr.type.modifierValues = AtomicOr_Uniform_Int16_ptr_modifierValues;
-    AtomicOr_Uniform_Int16_value.name = "value"_c;
-    AtomicOr_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicOr_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicOr_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Uniform_Int16_semantics.type.literal = true;
-    AtomicOr_Uniform_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Uniform_Int16.name = AtomicOr_Uniform_Int16_name;
-    AtomicOr_Uniform_Int16.backendIndex = 2303;
-    AtomicOr_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicOr_Uniform_Int16.parameters = AtomicOr_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicOr_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicOr_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicOr_Uniform_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicOr_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Uniform_Int16)->signature = "atomicOr(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_Int16)->name = "atomicOr(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_Int16)->nameWithVarNames = "atomicOr(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicOr with Int16, Int16, MemorySemantics
-    AtomicOr_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicOr_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicOr_Workgroup_Int16_ptr.type.strict = true;
-    AtomicOr_Workgroup_Int16_ptr.type.modifiers = AtomicOr_Workgroup_Int16_ptr_modifiers;
-    AtomicOr_Workgroup_Int16_ptr.type.modifierValues = AtomicOr_Workgroup_Int16_ptr_modifierValues;
-    AtomicOr_Workgroup_Int16_value.name = "value"_c;
-    AtomicOr_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicOr_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicOr_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Workgroup_Int16_semantics.type.literal = true;
-    AtomicOr_Workgroup_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicOr_Workgroup_Int16.name = AtomicOr_Workgroup_Int16_name;
-    AtomicOr_Workgroup_Int16.backendIndex = 2304;
-    AtomicOr_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicOr_Workgroup_Int16.parameters = AtomicOr_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int16)->signature = "atomicOr(workgroup *i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int16)->name = "atomicOr(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int16)->nameWithVarNames = "atomicOr(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicOr_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicXor with Int16, Int16, MemorySemantics
-    AtomicXor_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicXor_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicXor_Uniform_Int16_ptr.type.strict = true;
-    AtomicXor_Uniform_Int16_ptr.type.mut = true;
-    AtomicXor_Uniform_Int16_ptr.type.modifiers = AtomicXor_Uniform_Int16_ptr_modifiers;
-    AtomicXor_Uniform_Int16_ptr.type.modifierValues = AtomicXor_Uniform_Int16_ptr_modifierValues;
-    AtomicXor_Uniform_Int16_value.name = "value"_c;
-    AtomicXor_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicXor_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicXor_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Uniform_Int16_semantics.type.literal = true;
-    AtomicXor_Uniform_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Uniform_Int16.name = AtomicXor_Uniform_Int16_name;
-    AtomicXor_Uniform_Int16.backendIndex = 2305;
-    AtomicXor_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicXor_Uniform_Int16.parameters = AtomicXor_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicXor_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicXor_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicXor_Uniform_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicXor_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Uniform_Int16)->signature = "atomicXor(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_Int16)->name = "atomicXor(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_Int16)->nameWithVarNames = "atomicXor(ptr : uniform *mutable i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicXor with Int16, Int16, MemorySemantics
-    AtomicXor_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicXor_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicXor_Workgroup_Int16_ptr.type.strict = true;
-    AtomicXor_Workgroup_Int16_ptr.type.modifiers = AtomicXor_Workgroup_Int16_ptr_modifiers;
-    AtomicXor_Workgroup_Int16_ptr.type.modifierValues = AtomicXor_Workgroup_Int16_ptr_modifierValues;
-    AtomicXor_Workgroup_Int16_value.name = "value"_c;
-    AtomicXor_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicXor_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicXor_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Workgroup_Int16_semantics.type.literal = true;
-    AtomicXor_Workgroup_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicXor_Workgroup_Int16.name = AtomicXor_Workgroup_Int16_name;
-    AtomicXor_Workgroup_Int16.backendIndex = 2306;
-    AtomicXor_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicXor_Workgroup_Int16.parameters = AtomicXor_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int16)->signature = "atomicXor(workgroup *i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int16)->name = "atomicXor(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int16)->nameWithVarNames = "atomicXor(ptr : workgroup *i16, value : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicXor_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicStore with Float32, Float32, MemorySemantics
-    AtomicStore_Uniform_Float32_ptr.name = "ptr"_c;
-    AtomicStore_Uniform_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicStore_Uniform_Float32_ptr.type.strict = true;
-    AtomicStore_Uniform_Float32_ptr.type.mut = true;
-    AtomicStore_Uniform_Float32_ptr.type.modifiers = AtomicStore_Uniform_Float32_ptr_modifiers;
-    AtomicStore_Uniform_Float32_ptr.type.modifierValues = AtomicStore_Uniform_Float32_ptr_modifierValues;
-    AtomicStore_Uniform_Float32_value.name = "value"_c;
-    AtomicStore_Uniform_Float32_value.type = Type::FullType{ Float32Type.name };
-    AtomicStore_Uniform_Float32_semantics.name = "semantics"_c;
-    AtomicStore_Uniform_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Uniform_Float32_semantics.type.literal = true;
-    AtomicStore_Uniform_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Uniform_Float32.name = AtomicStore_Uniform_Float32_name;
-    AtomicStore_Uniform_Float32.backendIndex = 2307;
-    AtomicStore_Uniform_Float32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Uniform_Float32.parameters = AtomicStore_Uniform_Float32_args;
-    Symbol::Resolved(&AtomicStore_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Float32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicStore_Uniform_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Uniform_Float32)->signature = "atomicStore(uniform *mutable f32,f32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Float32)->name = "atomicStore(uniform *mutable f32,f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Float32)->nameWithVarNames = "atomicStore(ptr : uniform *mutable f32, value : f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Float32)->returnTypeSymbol = &VoidType;
-
-    /// atomicStore with Float32, Float32, MemorySemantics
-    AtomicStore_Workgroup_Float32_ptr.name = "ptr"_c;
-    AtomicStore_Workgroup_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicStore_Workgroup_Float32_ptr.type.strict = true;
-    AtomicStore_Workgroup_Float32_ptr.type.modifiers = AtomicStore_Workgroup_Float32_ptr_modifiers;
-    AtomicStore_Workgroup_Float32_ptr.type.modifierValues = AtomicStore_Workgroup_Float32_ptr_modifierValues;
-    AtomicStore_Workgroup_Float32_value.name = "value"_c;
-    AtomicStore_Workgroup_Float32_value.type = Type::FullType{ Float32Type.name };
-    AtomicStore_Workgroup_Float32_semantics.name = "semantics"_c;
-    AtomicStore_Workgroup_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Workgroup_Float32_semantics.type.literal = true;
-    AtomicStore_Workgroup_Float32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Workgroup_Float32.name = AtomicStore_Workgroup_Float32_name;
-    AtomicStore_Workgroup_Float32.backendIndex = 2308;
-    AtomicStore_Workgroup_Float32.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Workgroup_Float32.parameters = AtomicStore_Workgroup_Float32_args;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float32)->signature = "atomicStore(workgroup *f32,f32,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float32)->name = "atomicStore(workgroup *f32,f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float32)->nameWithVarNames = "atomicStore(ptr : workgroup *f32, value : f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float32)->returnTypeSymbol = &VoidType;
-
-    /// atomicExchange with Float32, Float32, MemorySemantics
-    AtomicExchange_Uniform_Float32_ptr.name = "ptr"_c;
-    AtomicExchange_Uniform_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicExchange_Uniform_Float32_ptr.type.strict = true;
-    AtomicExchange_Uniform_Float32_ptr.type.mut = true;
-    AtomicExchange_Uniform_Float32_ptr.type.modifiers = AtomicExchange_Uniform_Float32_ptr_modifiers;
-    AtomicExchange_Uniform_Float32_ptr.type.modifierValues = AtomicExchange_Uniform_Float32_ptr_modifierValues;
-    AtomicExchange_Uniform_Float32_value.name = "value"_c;
-    AtomicExchange_Uniform_Float32_value.type = Type::FullType{ Float32Type.name };
-    AtomicExchange_Uniform_Float32_semantics.name = "semantics"_c;
-    AtomicExchange_Uniform_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Uniform_Float32_semantics.type.literal = true;
-    AtomicExchange_Uniform_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Uniform_Float32.name = AtomicExchange_Uniform_Float32_name;
-    AtomicExchange_Uniform_Float32.backendIndex = 2309;
-    AtomicExchange_Uniform_Float32.returnType = Type::FullType { Float32Type.name };
-    AtomicExchange_Uniform_Float32.parameters = AtomicExchange_Uniform_Float32_args;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float32)->signature = "atomicExchange(uniform *mutable f32,f32,literal MemorySemantics) f32"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float32)->name = "atomicExchange(uniform *mutable f32,f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float32)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable f32, value : f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// atomicExchange with Float32, Float32, MemorySemantics
-    AtomicExchange_Workgroup_Float32_ptr.name = "ptr"_c;
-    AtomicExchange_Workgroup_Float32_ptr.type = Type::FullType{ Float32Type.name };
-    AtomicExchange_Workgroup_Float32_ptr.type.strict = true;
-    AtomicExchange_Workgroup_Float32_ptr.type.modifiers = AtomicExchange_Workgroup_Float32_ptr_modifiers;
-    AtomicExchange_Workgroup_Float32_ptr.type.modifierValues = AtomicExchange_Workgroup_Float32_ptr_modifierValues;
-    AtomicExchange_Workgroup_Float32_value.name = "value"_c;
-    AtomicExchange_Workgroup_Float32_value.type = Type::FullType{ Float32Type.name };
-    AtomicExchange_Workgroup_Float32_semantics.name = "semantics"_c;
-    AtomicExchange_Workgroup_Float32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Workgroup_Float32_semantics.type.literal = true;
-    AtomicExchange_Workgroup_Float32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Workgroup_Float32.name = AtomicExchange_Workgroup_Float32_name;
-    AtomicExchange_Workgroup_Float32.backendIndex = 2310;
-    AtomicExchange_Workgroup_Float32.returnType = Type::FullType { Float32Type.name };
-    AtomicExchange_Workgroup_Float32.parameters = AtomicExchange_Workgroup_Float32_args;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float32_ptr)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float32_value)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float32)->signature = "atomicExchange(workgroup *f32,f32,literal MemorySemantics) f32"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float32)->name = "atomicExchange(workgroup *f32,f32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float32)->nameWithVarNames = "atomicExchange(ptr : workgroup *f32, value : f32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float32)->returnTypeSymbol = &Float32Type;
-
-    /// atomicStore with Float16, Float16, MemorySemantics
-    AtomicStore_Uniform_Float16_ptr.name = "ptr"_c;
-    AtomicStore_Uniform_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicStore_Uniform_Float16_ptr.type.strict = true;
-    AtomicStore_Uniform_Float16_ptr.type.mut = true;
-    AtomicStore_Uniform_Float16_ptr.type.modifiers = AtomicStore_Uniform_Float16_ptr_modifiers;
-    AtomicStore_Uniform_Float16_ptr.type.modifierValues = AtomicStore_Uniform_Float16_ptr_modifierValues;
-    AtomicStore_Uniform_Float16_value.name = "value"_c;
-    AtomicStore_Uniform_Float16_value.type = Type::FullType{ Float16Type.name };
-    AtomicStore_Uniform_Float16_semantics.name = "semantics"_c;
-    AtomicStore_Uniform_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Uniform_Float16_semantics.type.literal = true;
-    AtomicStore_Uniform_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Uniform_Float16.name = AtomicStore_Uniform_Float16_name;
-    AtomicStore_Uniform_Float16.backendIndex = 2311;
-    AtomicStore_Uniform_Float16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Uniform_Float16.parameters = AtomicStore_Uniform_Float16_args;
-    Symbol::Resolved(&AtomicStore_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Float16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicStore_Uniform_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicStore_Uniform_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Uniform_Float16)->signature = "atomicStore(uniform *mutable f16,f16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Float16)->name = "atomicStore(uniform *mutable f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Float16)->nameWithVarNames = "atomicStore(ptr : uniform *mutable f16, value : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Uniform_Float16)->returnTypeSymbol = &VoidType;
-
-    /// atomicStore with Float16, Float16, MemorySemantics
-    AtomicStore_Workgroup_Float16_ptr.name = "ptr"_c;
-    AtomicStore_Workgroup_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicStore_Workgroup_Float16_ptr.type.strict = true;
-    AtomicStore_Workgroup_Float16_ptr.type.modifiers = AtomicStore_Workgroup_Float16_ptr_modifiers;
-    AtomicStore_Workgroup_Float16_ptr.type.modifierValues = AtomicStore_Workgroup_Float16_ptr_modifierValues;
-    AtomicStore_Workgroup_Float16_value.name = "value"_c;
-    AtomicStore_Workgroup_Float16_value.type = Type::FullType{ Float16Type.name };
-    AtomicStore_Workgroup_Float16_semantics.name = "semantics"_c;
-    AtomicStore_Workgroup_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Workgroup_Float16_semantics.type.literal = true;
-    AtomicStore_Workgroup_Float16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
-    AtomicStore_Workgroup_Float16.name = AtomicStore_Workgroup_Float16_name;
-    AtomicStore_Workgroup_Float16.backendIndex = 2312;
-    AtomicStore_Workgroup_Float16.returnType = Type::FullType { VoidType.name };
-    AtomicStore_Workgroup_Float16.parameters = AtomicStore_Workgroup_Float16_args;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float16)->signature = "atomicStore(workgroup *f16,f16,literal MemorySemantics) void"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float16)->name = "atomicStore(workgroup *f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float16)->nameWithVarNames = "atomicStore(ptr : workgroup *f16, value : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicStore_Workgroup_Float16)->returnTypeSymbol = &VoidType;
-
-    /// atomicExchange with Float16, Float16, MemorySemantics
-    AtomicExchange_Uniform_Float16_ptr.name = "ptr"_c;
-    AtomicExchange_Uniform_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicExchange_Uniform_Float16_ptr.type.strict = true;
-    AtomicExchange_Uniform_Float16_ptr.type.mut = true;
-    AtomicExchange_Uniform_Float16_ptr.type.modifiers = AtomicExchange_Uniform_Float16_ptr_modifiers;
-    AtomicExchange_Uniform_Float16_ptr.type.modifierValues = AtomicExchange_Uniform_Float16_ptr_modifierValues;
-    AtomicExchange_Uniform_Float16_value.name = "value"_c;
-    AtomicExchange_Uniform_Float16_value.type = Type::FullType{ Float16Type.name };
-    AtomicExchange_Uniform_Float16_semantics.name = "semantics"_c;
-    AtomicExchange_Uniform_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Uniform_Float16_semantics.type.literal = true;
-    AtomicExchange_Uniform_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Uniform_Float16.name = AtomicExchange_Uniform_Float16_name;
-    AtomicExchange_Uniform_Float16.backendIndex = 2313;
-    AtomicExchange_Uniform_Float16.returnType = Type::FullType { Float16Type.name };
-    AtomicExchange_Uniform_Float16.parameters = AtomicExchange_Uniform_Float16_args;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float16)->signature = "atomicExchange(uniform *mutable f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float16)->name = "atomicExchange(uniform *mutable f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float16)->nameWithVarNames = "atomicExchange(ptr : uniform *mutable f16, value : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Uniform_Float16)->returnTypeSymbol = &Float16Type;
-
-    /// atomicExchange with Float16, Float16, MemorySemantics
-    AtomicExchange_Workgroup_Float16_ptr.name = "ptr"_c;
-    AtomicExchange_Workgroup_Float16_ptr.type = Type::FullType{ Float16Type.name };
-    AtomicExchange_Workgroup_Float16_ptr.type.strict = true;
-    AtomicExchange_Workgroup_Float16_ptr.type.modifiers = AtomicExchange_Workgroup_Float16_ptr_modifiers;
-    AtomicExchange_Workgroup_Float16_ptr.type.modifierValues = AtomicExchange_Workgroup_Float16_ptr_modifierValues;
-    AtomicExchange_Workgroup_Float16_value.name = "value"_c;
-    AtomicExchange_Workgroup_Float16_value.type = Type::FullType{ Float16Type.name };
-    AtomicExchange_Workgroup_Float16_semantics.name = "semantics"_c;
-    AtomicExchange_Workgroup_Float16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Workgroup_Float16_semantics.type.literal = true;
-    AtomicExchange_Workgroup_Float16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
-    AtomicExchange_Workgroup_Float16.name = AtomicExchange_Workgroup_Float16_name;
-    AtomicExchange_Workgroup_Float16.backendIndex = 2314;
-    AtomicExchange_Workgroup_Float16.returnType = Type::FullType { Float16Type.name };
-    AtomicExchange_Workgroup_Float16.parameters = AtomicExchange_Workgroup_Float16_args;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float16_ptr)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float16_value)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float16)->signature = "atomicExchange(workgroup *f16,f16,literal MemorySemantics) f16"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float16)->name = "atomicExchange(workgroup *f16,f16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float16)->nameWithVarNames = "atomicExchange(ptr : workgroup *f16, value : f16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicExchange_Workgroup_Float16)->returnTypeSymbol = &Float16Type;
-
-    /// atomicMin with UInt32, UInt32, MemorySemantics
-    AtomicMin_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicMin_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicMin_Uniform_UInt32_ptr.type.strict = true;
-    AtomicMin_Uniform_UInt32_ptr.type.mut = true;
-    AtomicMin_Uniform_UInt32_ptr.type.modifiers = AtomicMin_Uniform_UInt32_ptr_modifiers;
-    AtomicMin_Uniform_UInt32_ptr.type.modifierValues = AtomicMin_Uniform_UInt32_ptr_modifierValues;
-    AtomicMin_Uniform_UInt32_compare.name = "compare"_c;
-    AtomicMin_Uniform_UInt32_compare.type = Type::FullType{ UInt32Type.name };
-    AtomicMin_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicMin_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Uniform_UInt32_semantics.type.literal = true;
-    AtomicMin_Uniform_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Uniform_UInt32.name = AtomicMin_Uniform_UInt32_name;
-    AtomicMin_Uniform_UInt32.backendIndex = 2315;
-    AtomicMin_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicMin_Uniform_UInt32.parameters = AtomicMin_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt32_compare)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt32)->signature = "atomicMin(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt32)->name = "atomicMin(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt32)->nameWithVarNames = "atomicMin(ptr : uniform *mutable u32, compare : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicMin with UInt32, UInt32, MemorySemantics
-    AtomicMin_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicMin_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicMin_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicMin_Workgroup_UInt32_ptr.type.modifiers = AtomicMin_Workgroup_UInt32_ptr_modifiers;
-    AtomicMin_Workgroup_UInt32_ptr.type.modifierValues = AtomicMin_Workgroup_UInt32_ptr_modifierValues;
-    AtomicMin_Workgroup_UInt32_compare.name = "compare"_c;
-    AtomicMin_Workgroup_UInt32_compare.type = Type::FullType{ UInt32Type.name };
-    AtomicMin_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicMin_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicMin_Workgroup_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Workgroup_UInt32.name = AtomicMin_Workgroup_UInt32_name;
-    AtomicMin_Workgroup_UInt32.backendIndex = 2316;
-    AtomicMin_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicMin_Workgroup_UInt32.parameters = AtomicMin_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt32_compare)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt32)->signature = "atomicMin(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt32)->name = "atomicMin(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt32)->nameWithVarNames = "atomicMin(ptr : workgroup *u32, compare : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicMax with UInt32, UInt32, MemorySemantics
-    AtomicMax_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicMax_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicMax_Uniform_UInt32_ptr.type.strict = true;
-    AtomicMax_Uniform_UInt32_ptr.type.mut = true;
-    AtomicMax_Uniform_UInt32_ptr.type.modifiers = AtomicMax_Uniform_UInt32_ptr_modifiers;
-    AtomicMax_Uniform_UInt32_ptr.type.modifierValues = AtomicMax_Uniform_UInt32_ptr_modifierValues;
-    AtomicMax_Uniform_UInt32_compare.name = "compare"_c;
-    AtomicMax_Uniform_UInt32_compare.type = Type::FullType{ UInt32Type.name };
-    AtomicMax_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicMax_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Uniform_UInt32_semantics.type.literal = true;
-    AtomicMax_Uniform_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Uniform_UInt32.name = AtomicMax_Uniform_UInt32_name;
-    AtomicMax_Uniform_UInt32.backendIndex = 2317;
-    AtomicMax_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicMax_Uniform_UInt32.parameters = AtomicMax_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt32_compare)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt32)->signature = "atomicMax(uniform *mutable u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt32)->name = "atomicMax(uniform *mutable u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt32)->nameWithVarNames = "atomicMax(ptr : uniform *mutable u32, compare : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicMax with UInt32, UInt32, MemorySemantics
-    AtomicMax_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicMax_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicMax_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicMax_Workgroup_UInt32_ptr.type.modifiers = AtomicMax_Workgroup_UInt32_ptr_modifiers;
-    AtomicMax_Workgroup_UInt32_ptr.type.modifierValues = AtomicMax_Workgroup_UInt32_ptr_modifierValues;
-    AtomicMax_Workgroup_UInt32_compare.name = "compare"_c;
-    AtomicMax_Workgroup_UInt32_compare.type = Type::FullType{ UInt32Type.name };
-    AtomicMax_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicMax_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicMax_Workgroup_UInt32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Workgroup_UInt32.name = AtomicMax_Workgroup_UInt32_name;
-    AtomicMax_Workgroup_UInt32.backendIndex = 2318;
-    AtomicMax_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicMax_Workgroup_UInt32.parameters = AtomicMax_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt32_compare)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt32)->signature = "atomicMax(workgroup *u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt32)->name = "atomicMax(workgroup *u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt32)->nameWithVarNames = "atomicMax(ptr : workgroup *u32, compare : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicMin with Int32, Int32, MemorySemantics
-    AtomicMin_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicMin_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicMin_Uniform_Int32_ptr.type.strict = true;
-    AtomicMin_Uniform_Int32_ptr.type.mut = true;
-    AtomicMin_Uniform_Int32_ptr.type.modifiers = AtomicMin_Uniform_Int32_ptr_modifiers;
-    AtomicMin_Uniform_Int32_ptr.type.modifierValues = AtomicMin_Uniform_Int32_ptr_modifierValues;
-    AtomicMin_Uniform_Int32_compare.name = "compare"_c;
-    AtomicMin_Uniform_Int32_compare.type = Type::FullType{ Int32Type.name };
-    AtomicMin_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicMin_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Uniform_Int32_semantics.type.literal = true;
-    AtomicMin_Uniform_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Uniform_Int32.name = AtomicMin_Uniform_Int32_name;
-    AtomicMin_Uniform_Int32.backendIndex = 2319;
-    AtomicMin_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicMin_Uniform_Int32.parameters = AtomicMin_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicMin_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicMin_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicMin_Uniform_Int32_compare)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicMin_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Uniform_Int32)->signature = "atomicMin(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_Int32)->name = "atomicMin(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_Int32)->nameWithVarNames = "atomicMin(ptr : uniform *mutable i32, compare : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicMin with Int32, Int32, MemorySemantics
-    AtomicMin_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicMin_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicMin_Workgroup_Int32_ptr.type.strict = true;
-    AtomicMin_Workgroup_Int32_ptr.type.modifiers = AtomicMin_Workgroup_Int32_ptr_modifiers;
-    AtomicMin_Workgroup_Int32_ptr.type.modifierValues = AtomicMin_Workgroup_Int32_ptr_modifierValues;
-    AtomicMin_Workgroup_Int32_compare.name = "compare"_c;
-    AtomicMin_Workgroup_Int32_compare.type = Type::FullType{ Int32Type.name };
-    AtomicMin_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicMin_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Workgroup_Int32_semantics.type.literal = true;
-    AtomicMin_Workgroup_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Workgroup_Int32.name = AtomicMin_Workgroup_Int32_name;
-    AtomicMin_Workgroup_Int32.backendIndex = 2320;
-    AtomicMin_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicMin_Workgroup_Int32.parameters = AtomicMin_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int32_compare)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int32)->signature = "atomicMin(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int32)->name = "atomicMin(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int32)->nameWithVarNames = "atomicMin(ptr : workgroup *i32, compare : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicMax with Int32, Int32, MemorySemantics
-    AtomicMax_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicMax_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicMax_Uniform_Int32_ptr.type.strict = true;
-    AtomicMax_Uniform_Int32_ptr.type.mut = true;
-    AtomicMax_Uniform_Int32_ptr.type.modifiers = AtomicMax_Uniform_Int32_ptr_modifiers;
-    AtomicMax_Uniform_Int32_ptr.type.modifierValues = AtomicMax_Uniform_Int32_ptr_modifierValues;
-    AtomicMax_Uniform_Int32_compare.name = "compare"_c;
-    AtomicMax_Uniform_Int32_compare.type = Type::FullType{ Int32Type.name };
-    AtomicMax_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicMax_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Uniform_Int32_semantics.type.literal = true;
-    AtomicMax_Uniform_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Uniform_Int32.name = AtomicMax_Uniform_Int32_name;
-    AtomicMax_Uniform_Int32.backendIndex = 2321;
-    AtomicMax_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicMax_Uniform_Int32.parameters = AtomicMax_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicMax_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicMax_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicMax_Uniform_Int32_compare)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicMax_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Uniform_Int32)->signature = "atomicMax(uniform *mutable i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_Int32)->name = "atomicMax(uniform *mutable i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_Int32)->nameWithVarNames = "atomicMax(ptr : uniform *mutable i32, compare : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicMax with Int32, Int32, MemorySemantics
-    AtomicMax_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicMax_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicMax_Workgroup_Int32_ptr.type.strict = true;
-    AtomicMax_Workgroup_Int32_ptr.type.modifiers = AtomicMax_Workgroup_Int32_ptr_modifiers;
-    AtomicMax_Workgroup_Int32_ptr.type.modifierValues = AtomicMax_Workgroup_Int32_ptr_modifierValues;
-    AtomicMax_Workgroup_Int32_compare.name = "compare"_c;
-    AtomicMax_Workgroup_Int32_compare.type = Type::FullType{ Int32Type.name };
-    AtomicMax_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicMax_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Workgroup_Int32_semantics.type.literal = true;
-    AtomicMax_Workgroup_Int32.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Workgroup_Int32.name = AtomicMax_Workgroup_Int32_name;
-    AtomicMax_Workgroup_Int32.backendIndex = 2322;
-    AtomicMax_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicMax_Workgroup_Int32.parameters = AtomicMax_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int32_compare)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int32)->signature = "atomicMax(workgroup *i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int32)->name = "atomicMax(workgroup *i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int32)->nameWithVarNames = "atomicMax(ptr : workgroup *i32, compare : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicMin with UInt16, UInt16, MemorySemantics
-    AtomicMin_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicMin_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicMin_Uniform_UInt16_ptr.type.strict = true;
-    AtomicMin_Uniform_UInt16_ptr.type.mut = true;
-    AtomicMin_Uniform_UInt16_ptr.type.modifiers = AtomicMin_Uniform_UInt16_ptr_modifiers;
-    AtomicMin_Uniform_UInt16_ptr.type.modifierValues = AtomicMin_Uniform_UInt16_ptr_modifierValues;
-    AtomicMin_Uniform_UInt16_compare.name = "compare"_c;
-    AtomicMin_Uniform_UInt16_compare.type = Type::FullType{ UInt16Type.name };
-    AtomicMin_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicMin_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Uniform_UInt16_semantics.type.literal = true;
-    AtomicMin_Uniform_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Uniform_UInt16.name = AtomicMin_Uniform_UInt16_name;
-    AtomicMin_Uniform_UInt16.backendIndex = 2323;
-    AtomicMin_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicMin_Uniform_UInt16.parameters = AtomicMin_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt16_compare)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt16)->signature = "atomicMin(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt16)->name = "atomicMin(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt16)->nameWithVarNames = "atomicMin(ptr : uniform *mutable u16, compare : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicMin with UInt16, UInt16, MemorySemantics
-    AtomicMin_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicMin_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicMin_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicMin_Workgroup_UInt16_ptr.type.modifiers = AtomicMin_Workgroup_UInt16_ptr_modifiers;
-    AtomicMin_Workgroup_UInt16_ptr.type.modifierValues = AtomicMin_Workgroup_UInt16_ptr_modifierValues;
-    AtomicMin_Workgroup_UInt16_compare.name = "compare"_c;
-    AtomicMin_Workgroup_UInt16_compare.type = Type::FullType{ UInt16Type.name };
-    AtomicMin_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicMin_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicMin_Workgroup_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Workgroup_UInt16.name = AtomicMin_Workgroup_UInt16_name;
-    AtomicMin_Workgroup_UInt16.backendIndex = 2324;
-    AtomicMin_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicMin_Workgroup_UInt16.parameters = AtomicMin_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt16_compare)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt16)->signature = "atomicMin(workgroup *u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt16)->name = "atomicMin(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt16)->nameWithVarNames = "atomicMin(ptr : workgroup *u16, compare : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicMax with UInt16, UInt16, MemorySemantics
-    AtomicMax_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicMax_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicMax_Uniform_UInt16_ptr.type.strict = true;
-    AtomicMax_Uniform_UInt16_ptr.type.mut = true;
-    AtomicMax_Uniform_UInt16_ptr.type.modifiers = AtomicMax_Uniform_UInt16_ptr_modifiers;
-    AtomicMax_Uniform_UInt16_ptr.type.modifierValues = AtomicMax_Uniform_UInt16_ptr_modifierValues;
-    AtomicMax_Uniform_UInt16_compare.name = "compare"_c;
-    AtomicMax_Uniform_UInt16_compare.type = Type::FullType{ UInt16Type.name };
-    AtomicMax_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicMax_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Uniform_UInt16_semantics.type.literal = true;
-    AtomicMax_Uniform_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Uniform_UInt16.name = AtomicMax_Uniform_UInt16_name;
-    AtomicMax_Uniform_UInt16.backendIndex = 2325;
-    AtomicMax_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicMax_Uniform_UInt16.parameters = AtomicMax_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt16_compare)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt16)->signature = "atomicMax(uniform *mutable u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt16)->name = "atomicMax(uniform *mutable u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt16)->nameWithVarNames = "atomicMax(ptr : uniform *mutable u16, compare : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicMax with UInt16, UInt16, MemorySemantics
-    AtomicMax_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicMax_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicMax_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicMax_Workgroup_UInt16_ptr.type.modifiers = AtomicMax_Workgroup_UInt16_ptr_modifiers;
-    AtomicMax_Workgroup_UInt16_ptr.type.modifierValues = AtomicMax_Workgroup_UInt16_ptr_modifierValues;
-    AtomicMax_Workgroup_UInt16_compare.name = "compare"_c;
-    AtomicMax_Workgroup_UInt16_compare.type = Type::FullType{ UInt16Type.name };
-    AtomicMax_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicMax_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicMax_Workgroup_UInt16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Workgroup_UInt16.name = AtomicMax_Workgroup_UInt16_name;
-    AtomicMax_Workgroup_UInt16.backendIndex = 2326;
-    AtomicMax_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicMax_Workgroup_UInt16.parameters = AtomicMax_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt16_compare)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt16)->signature = "atomicMax(workgroup *u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt16)->name = "atomicMax(workgroup *u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt16)->nameWithVarNames = "atomicMax(ptr : workgroup *u16, compare : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicMin with Int16, Int16, MemorySemantics
-    AtomicMin_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicMin_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicMin_Uniform_Int16_ptr.type.strict = true;
-    AtomicMin_Uniform_Int16_ptr.type.mut = true;
-    AtomicMin_Uniform_Int16_ptr.type.modifiers = AtomicMin_Uniform_Int16_ptr_modifiers;
-    AtomicMin_Uniform_Int16_ptr.type.modifierValues = AtomicMin_Uniform_Int16_ptr_modifierValues;
-    AtomicMin_Uniform_Int16_compare.name = "compare"_c;
-    AtomicMin_Uniform_Int16_compare.type = Type::FullType{ Int16Type.name };
-    AtomicMin_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicMin_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Uniform_Int16_semantics.type.literal = true;
-    AtomicMin_Uniform_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Uniform_Int16.name = AtomicMin_Uniform_Int16_name;
-    AtomicMin_Uniform_Int16.backendIndex = 2327;
-    AtomicMin_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicMin_Uniform_Int16.parameters = AtomicMin_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicMin_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicMin_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicMin_Uniform_Int16_compare)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicMin_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Uniform_Int16)->signature = "atomicMin(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_Int16)->name = "atomicMin(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_Int16)->nameWithVarNames = "atomicMin(ptr : uniform *mutable i16, compare : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicMin with Int16, Int16, MemorySemantics
-    AtomicMin_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicMin_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicMin_Workgroup_Int16_ptr.type.strict = true;
-    AtomicMin_Workgroup_Int16_ptr.type.modifiers = AtomicMin_Workgroup_Int16_ptr_modifiers;
-    AtomicMin_Workgroup_Int16_ptr.type.modifierValues = AtomicMin_Workgroup_Int16_ptr_modifierValues;
-    AtomicMin_Workgroup_Int16_compare.name = "compare"_c;
-    AtomicMin_Workgroup_Int16_compare.type = Type::FullType{ Int16Type.name };
-    AtomicMin_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicMin_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMin_Workgroup_Int16_semantics.type.literal = true;
-    AtomicMin_Workgroup_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the smallest value in the pointer, returns old value"_c;
-    AtomicMin_Workgroup_Int16.name = AtomicMin_Workgroup_Int16_name;
-    AtomicMin_Workgroup_Int16.backendIndex = 2328;
-    AtomicMin_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicMin_Workgroup_Int16.parameters = AtomicMin_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int16_compare)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int16)->signature = "atomicMin(workgroup *i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int16)->name = "atomicMin(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int16)->nameWithVarNames = "atomicMin(ptr : workgroup *i16, compare : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMin_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicMax with Int16, Int16, MemorySemantics
-    AtomicMax_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicMax_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicMax_Uniform_Int16_ptr.type.strict = true;
-    AtomicMax_Uniform_Int16_ptr.type.mut = true;
-    AtomicMax_Uniform_Int16_ptr.type.modifiers = AtomicMax_Uniform_Int16_ptr_modifiers;
-    AtomicMax_Uniform_Int16_ptr.type.modifierValues = AtomicMax_Uniform_Int16_ptr_modifierValues;
-    AtomicMax_Uniform_Int16_compare.name = "compare"_c;
-    AtomicMax_Uniform_Int16_compare.type = Type::FullType{ Int16Type.name };
-    AtomicMax_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicMax_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Uniform_Int16_semantics.type.literal = true;
-    AtomicMax_Uniform_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Uniform_Int16.name = AtomicMax_Uniform_Int16_name;
-    AtomicMax_Uniform_Int16.backendIndex = 2329;
-    AtomicMax_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicMax_Uniform_Int16.parameters = AtomicMax_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicMax_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicMax_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicMax_Uniform_Int16_compare)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicMax_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Uniform_Int16)->signature = "atomicMax(uniform *mutable i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_Int16)->name = "atomicMax(uniform *mutable i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_Int16)->nameWithVarNames = "atomicMax(ptr : uniform *mutable i16, compare : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicMax with Int16, Int16, MemorySemantics
-    AtomicMax_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicMax_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicMax_Workgroup_Int16_ptr.type.strict = true;
-    AtomicMax_Workgroup_Int16_ptr.type.modifiers = AtomicMax_Workgroup_Int16_ptr_modifiers;
-    AtomicMax_Workgroup_Int16_ptr.type.modifierValues = AtomicMax_Workgroup_Int16_ptr_modifierValues;
-    AtomicMax_Workgroup_Int16_compare.name = "compare"_c;
-    AtomicMax_Workgroup_Int16_compare.type = Type::FullType{ Int16Type.name };
-    AtomicMax_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicMax_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicMax_Workgroup_Int16_semantics.type.literal = true;
-    AtomicMax_Workgroup_Int16.documentation = "Compares the value at the pointer with the comparand, and stores the largest value in the pointer, returns old value"_c;
-    AtomicMax_Workgroup_Int16.name = AtomicMax_Workgroup_Int16_name;
-    AtomicMax_Workgroup_Int16.backendIndex = 2330;
-    AtomicMax_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicMax_Workgroup_Int16.parameters = AtomicMax_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int16_compare)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int16)->signature = "atomicMax(workgroup *i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int16)->name = "atomicMax(workgroup *i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int16)->nameWithVarNames = "atomicMax(ptr : workgroup *i16, compare : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicMax_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicCompareExchange with UInt32, UInt32, UInt32, MemorySemantics
-    AtomicCompareExchange_Uniform_UInt32_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Uniform_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicCompareExchange_Uniform_UInt32_ptr.type.strict = true;
-    AtomicCompareExchange_Uniform_UInt32_ptr.type.mut = true;
-    AtomicCompareExchange_Uniform_UInt32_ptr.type.modifiers = AtomicCompareExchange_Uniform_UInt32_ptr_modifiers;
-    AtomicCompareExchange_Uniform_UInt32_ptr.type.modifierValues = AtomicCompareExchange_Uniform_UInt32_ptr_modifierValues;
-    AtomicCompareExchange_Uniform_UInt32_value.name = "value"_c;
-    AtomicCompareExchange_Uniform_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicCompareExchange_Uniform_UInt32_compare.name = "compare"_c;
-    AtomicCompareExchange_Uniform_UInt32_compare.type = Type::FullType{ UInt32Type.name };
-    AtomicCompareExchange_Uniform_UInt32_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Uniform_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Uniform_UInt32_semantics.type.literal = true;
-    AtomicCompareExchange_Uniform_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Uniform_UInt32.name = AtomicCompareExchange_Uniform_UInt32_name;
-    AtomicCompareExchange_Uniform_UInt32.backendIndex = 2331;
-    AtomicCompareExchange_Uniform_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicCompareExchange_Uniform_UInt32.parameters = AtomicCompareExchange_Uniform_UInt32_args;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_compare)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32)->signature = "atomicCompareExchange(uniform *mutable u32,u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32)->name = "atomicCompareExchange(uniform *mutable u32,u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32)->nameWithVarNames = "atomicCompareExchange(ptr : uniform *mutable u32, value : u32, compare : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicCompareExchange with UInt32, UInt32, UInt32, MemorySemantics
-    AtomicCompareExchange_Workgroup_UInt32_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Workgroup_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicCompareExchange_Workgroup_UInt32_ptr.type.strict = true;
-    AtomicCompareExchange_Workgroup_UInt32_ptr.type.modifiers = AtomicCompareExchange_Workgroup_UInt32_ptr_modifiers;
-    AtomicCompareExchange_Workgroup_UInt32_ptr.type.modifierValues = AtomicCompareExchange_Workgroup_UInt32_ptr_modifierValues;
-    AtomicCompareExchange_Workgroup_UInt32_value.name = "value"_c;
-    AtomicCompareExchange_Workgroup_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    AtomicCompareExchange_Workgroup_UInt32_compare.name = "compare"_c;
-    AtomicCompareExchange_Workgroup_UInt32_compare.type = Type::FullType{ UInt32Type.name };
-    AtomicCompareExchange_Workgroup_UInt32_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Workgroup_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Workgroup_UInt32_semantics.type.literal = true;
-    AtomicCompareExchange_Workgroup_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Workgroup_UInt32.name = AtomicCompareExchange_Workgroup_UInt32_name;
-    AtomicCompareExchange_Workgroup_UInt32.backendIndex = 2332;
-    AtomicCompareExchange_Workgroup_UInt32.returnType = Type::FullType { UInt32Type.name };
-    AtomicCompareExchange_Workgroup_UInt32.parameters = AtomicCompareExchange_Workgroup_UInt32_args;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_ptr)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_compare)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32)->signature = "atomicCompareExchange(workgroup *u32,u32,u32,literal MemorySemantics) u32"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32)->name = "atomicCompareExchange(workgroup *u32,u32,u32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *u32, value : u32, compare : u32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// atomicCompareExchange with Int32, Int32, Int32, MemorySemantics
-    AtomicCompareExchange_Uniform_Int32_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Uniform_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicCompareExchange_Uniform_Int32_ptr.type.strict = true;
-    AtomicCompareExchange_Uniform_Int32_ptr.type.mut = true;
-    AtomicCompareExchange_Uniform_Int32_ptr.type.modifiers = AtomicCompareExchange_Uniform_Int32_ptr_modifiers;
-    AtomicCompareExchange_Uniform_Int32_ptr.type.modifierValues = AtomicCompareExchange_Uniform_Int32_ptr_modifierValues;
-    AtomicCompareExchange_Uniform_Int32_value.name = "value"_c;
-    AtomicCompareExchange_Uniform_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicCompareExchange_Uniform_Int32_compare.name = "compare"_c;
-    AtomicCompareExchange_Uniform_Int32_compare.type = Type::FullType{ Int32Type.name };
-    AtomicCompareExchange_Uniform_Int32_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Uniform_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Uniform_Int32_semantics.type.literal = true;
-    AtomicCompareExchange_Uniform_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Uniform_Int32.name = AtomicCompareExchange_Uniform_Int32_name;
-    AtomicCompareExchange_Uniform_Int32.backendIndex = 2333;
-    AtomicCompareExchange_Uniform_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicCompareExchange_Uniform_Int32.parameters = AtomicCompareExchange_Uniform_Int32_args;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_compare)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32)->signature = "atomicCompareExchange(uniform *mutable i32,i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32)->name = "atomicCompareExchange(uniform *mutable i32,i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32)->nameWithVarNames = "atomicCompareExchange(ptr : uniform *mutable i32, value : i32, compare : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicCompareExchange with Int32, Int32, Int32, MemorySemantics
-    AtomicCompareExchange_Workgroup_Int32_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Workgroup_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicCompareExchange_Workgroup_Int32_ptr.type.strict = true;
-    AtomicCompareExchange_Workgroup_Int32_ptr.type.modifiers = AtomicCompareExchange_Workgroup_Int32_ptr_modifiers;
-    AtomicCompareExchange_Workgroup_Int32_ptr.type.modifierValues = AtomicCompareExchange_Workgroup_Int32_ptr_modifierValues;
-    AtomicCompareExchange_Workgroup_Int32_value.name = "value"_c;
-    AtomicCompareExchange_Workgroup_Int32_value.type = Type::FullType{ Int32Type.name };
-    AtomicCompareExchange_Workgroup_Int32_compare.name = "compare"_c;
-    AtomicCompareExchange_Workgroup_Int32_compare.type = Type::FullType{ Int32Type.name };
-    AtomicCompareExchange_Workgroup_Int32_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Workgroup_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Workgroup_Int32_semantics.type.literal = true;
-    AtomicCompareExchange_Workgroup_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Workgroup_Int32.name = AtomicCompareExchange_Workgroup_Int32_name;
-    AtomicCompareExchange_Workgroup_Int32.backendIndex = 2334;
-    AtomicCompareExchange_Workgroup_Int32.returnType = Type::FullType { Int32Type.name };
-    AtomicCompareExchange_Workgroup_Int32.parameters = AtomicCompareExchange_Workgroup_Int32_args;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_ptr)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_value)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_compare)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32)->signature = "atomicCompareExchange(workgroup *i32,i32,i32,literal MemorySemantics) i32"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32)->name = "atomicCompareExchange(workgroup *i32,i32,i32,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *i32, value : i32, compare : i32, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// atomicCompareExchange with UInt16, UInt16, UInt16, MemorySemantics
-    AtomicCompareExchange_Uniform_UInt16_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Uniform_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicCompareExchange_Uniform_UInt16_ptr.type.strict = true;
-    AtomicCompareExchange_Uniform_UInt16_ptr.type.mut = true;
-    AtomicCompareExchange_Uniform_UInt16_ptr.type.modifiers = AtomicCompareExchange_Uniform_UInt16_ptr_modifiers;
-    AtomicCompareExchange_Uniform_UInt16_ptr.type.modifierValues = AtomicCompareExchange_Uniform_UInt16_ptr_modifierValues;
-    AtomicCompareExchange_Uniform_UInt16_value.name = "value"_c;
-    AtomicCompareExchange_Uniform_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicCompareExchange_Uniform_UInt16_compare.name = "compare"_c;
-    AtomicCompareExchange_Uniform_UInt16_compare.type = Type::FullType{ UInt16Type.name };
-    AtomicCompareExchange_Uniform_UInt16_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Uniform_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Uniform_UInt16_semantics.type.literal = true;
-    AtomicCompareExchange_Uniform_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Uniform_UInt16.name = AtomicCompareExchange_Uniform_UInt16_name;
-    AtomicCompareExchange_Uniform_UInt16.backendIndex = 2335;
-    AtomicCompareExchange_Uniform_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicCompareExchange_Uniform_UInt16.parameters = AtomicCompareExchange_Uniform_UInt16_args;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_compare)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16)->signature = "atomicCompareExchange(uniform *mutable u16,u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16)->name = "atomicCompareExchange(uniform *mutable u16,u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16)->nameWithVarNames = "atomicCompareExchange(ptr : uniform *mutable u16, value : u16, compare : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicCompareExchange with UInt16, UInt16, UInt16, MemorySemantics
-    AtomicCompareExchange_Workgroup_UInt16_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Workgroup_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicCompareExchange_Workgroup_UInt16_ptr.type.strict = true;
-    AtomicCompareExchange_Workgroup_UInt16_ptr.type.modifiers = AtomicCompareExchange_Workgroup_UInt16_ptr_modifiers;
-    AtomicCompareExchange_Workgroup_UInt16_ptr.type.modifierValues = AtomicCompareExchange_Workgroup_UInt16_ptr_modifierValues;
-    AtomicCompareExchange_Workgroup_UInt16_value.name = "value"_c;
-    AtomicCompareExchange_Workgroup_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    AtomicCompareExchange_Workgroup_UInt16_compare.name = "compare"_c;
-    AtomicCompareExchange_Workgroup_UInt16_compare.type = Type::FullType{ UInt16Type.name };
-    AtomicCompareExchange_Workgroup_UInt16_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Workgroup_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Workgroup_UInt16_semantics.type.literal = true;
-    AtomicCompareExchange_Workgroup_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Workgroup_UInt16.name = AtomicCompareExchange_Workgroup_UInt16_name;
-    AtomicCompareExchange_Workgroup_UInt16.backendIndex = 2336;
-    AtomicCompareExchange_Workgroup_UInt16.returnType = Type::FullType { UInt16Type.name };
-    AtomicCompareExchange_Workgroup_UInt16.parameters = AtomicCompareExchange_Workgroup_UInt16_args;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_ptr)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_compare)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16)->signature = "atomicCompareExchange(workgroup *u16,u16,u16,literal MemorySemantics) u16"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16)->name = "atomicCompareExchange(workgroup *u16,u16,u16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *u16, value : u16, compare : u16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
-    AtomicCompareExchange_Uniform_Int16_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Uniform_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_Uniform_Int16_ptr.type.strict = true;
-    AtomicCompareExchange_Uniform_Int16_ptr.type.mut = true;
-    AtomicCompareExchange_Uniform_Int16_ptr.type.modifiers = AtomicCompareExchange_Uniform_Int16_ptr_modifiers;
-    AtomicCompareExchange_Uniform_Int16_ptr.type.modifierValues = AtomicCompareExchange_Uniform_Int16_ptr_modifierValues;
-    AtomicCompareExchange_Uniform_Int16_value.name = "value"_c;
-    AtomicCompareExchange_Uniform_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_Uniform_Int16_compare.name = "compare"_c;
-    AtomicCompareExchange_Uniform_Int16_compare.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_Uniform_Int16_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Uniform_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Uniform_Int16_semantics.type.literal = true;
-    AtomicCompareExchange_Uniform_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Uniform_Int16.name = AtomicCompareExchange_Uniform_Int16_name;
-    AtomicCompareExchange_Uniform_Int16.backendIndex = 2337;
-    AtomicCompareExchange_Uniform_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicCompareExchange_Uniform_Int16.parameters = AtomicCompareExchange_Uniform_Int16_args;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_ptr)->storage = Storage::Uniform;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_compare)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16)->signature = "atomicCompareExchange(uniform *mutable i16,i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16)->name = "atomicCompareExchange(uniform *mutable i16,i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16)->nameWithVarNames = "atomicCompareExchange(ptr : uniform *mutable i16, value : i16, compare : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Uniform_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
-    AtomicCompareExchange_Workgroup_Int16_ptr.name = "ptr"_c;
-    AtomicCompareExchange_Workgroup_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_Workgroup_Int16_ptr.type.strict = true;
-    AtomicCompareExchange_Workgroup_Int16_ptr.type.modifiers = AtomicCompareExchange_Workgroup_Int16_ptr_modifiers;
-    AtomicCompareExchange_Workgroup_Int16_ptr.type.modifierValues = AtomicCompareExchange_Workgroup_Int16_ptr_modifierValues;
-    AtomicCompareExchange_Workgroup_Int16_value.name = "value"_c;
-    AtomicCompareExchange_Workgroup_Int16_value.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_Workgroup_Int16_compare.name = "compare"_c;
-    AtomicCompareExchange_Workgroup_Int16_compare.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_Workgroup_Int16_semantics.name = "semantics"_c;
-    AtomicCompareExchange_Workgroup_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Workgroup_Int16_semantics.type.literal = true;
-    AtomicCompareExchange_Workgroup_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
-    AtomicCompareExchange_Workgroup_Int16.name = AtomicCompareExchange_Workgroup_Int16_name;
-    AtomicCompareExchange_Workgroup_Int16.backendIndex = 2338;
-    AtomicCompareExchange_Workgroup_Int16.returnType = Type::FullType { Int16Type.name };
-    AtomicCompareExchange_Workgroup_Int16.parameters = AtomicCompareExchange_Workgroup_Int16_args;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_ptr)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_ptr)->storage = Storage::Workgroup;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_value)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_compare)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16_semantics)->typeSymbol = &MemorySemanticsType;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->signature = "atomicCompareExchange(workgroup *i16,i16,i16,literal MemorySemantics) i16"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->name = "atomicCompareExchange(workgroup *i16,i16,i16,literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->nameWithVarNames = "atomicCompareExchange(ptr : workgroup *i16, value : i16, compare : i16, semantics : literal MemorySemantics)"_c;
-    Symbol::Resolved(&AtomicCompareExchange_Workgroup_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitInsert with UInt16, UInt16, UInt16, UInt16
-    BitInsert_UInt16_base.name = "base"_c;
-    BitInsert_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitInsert_UInt16_value.name = "value"_c;
-    BitInsert_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    BitInsert_UInt16_offset.name = "offset"_c;
-    BitInsert_UInt16_offset.type = Type::FullType{ UInt16Type.name };
-    BitInsert_UInt16_count.name = "count"_c;
-    BitInsert_UInt16_count.type = Type::FullType{ UInt16Type.name };
-    BitInsert_UInt16.documentation = "Insert bit into bitmask"_c;
-    BitInsert_UInt16.name = BitInsert_UInt16_name;
-    BitInsert_UInt16.backendIndex = 2339;
-    BitInsert_UInt16.returnType = Type::FullType { UInt16Type.name };
-    BitInsert_UInt16.parameters = BitInsert_UInt16_args;
-    Symbol::Resolved(&BitInsert_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitInsert_UInt16_value)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitInsert_UInt16_offset)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitInsert_UInt16_count)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitInsert_UInt16)->signature = "bitInsert(u16,u16,u16,u16) u16"_c;
-    Symbol::Resolved(&BitInsert_UInt16)->name = "bitInsert(u16,u16,u16,u16)"_c;
-    Symbol::Resolved(&BitInsert_UInt16)->nameWithVarNames = "bitInsert(base : u16, value : u16, offset : u16, count : u16)"_c;
-    Symbol::Resolved(&BitInsert_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// bitInsert with UInt32, UInt32, UInt32, UInt32
-    BitInsert_UInt32_base.name = "base"_c;
-    BitInsert_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitInsert_UInt32_value.name = "value"_c;
-    BitInsert_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    BitInsert_UInt32_offset.name = "offset"_c;
-    BitInsert_UInt32_offset.type = Type::FullType{ UInt32Type.name };
-    BitInsert_UInt32_count.name = "count"_c;
-    BitInsert_UInt32_count.type = Type::FullType{ UInt32Type.name };
-    BitInsert_UInt32.documentation = "Insert bit into bitmask"_c;
-    BitInsert_UInt32.name = BitInsert_UInt32_name;
-    BitInsert_UInt32.backendIndex = 2340;
-    BitInsert_UInt32.returnType = Type::FullType { UInt32Type.name };
-    BitInsert_UInt32.parameters = BitInsert_UInt32_args;
-    Symbol::Resolved(&BitInsert_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitInsert_UInt32_value)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitInsert_UInt32_offset)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitInsert_UInt32_count)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitInsert_UInt32)->signature = "bitInsert(u32,u32,u32,u32) u32"_c;
-    Symbol::Resolved(&BitInsert_UInt32)->name = "bitInsert(u32,u32,u32,u32)"_c;
-    Symbol::Resolved(&BitInsert_UInt32)->nameWithVarNames = "bitInsert(base : u32, value : u32, offset : u32, count : u32)"_c;
-    Symbol::Resolved(&BitInsert_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// bitExtract with UInt32, UInt32, UInt32
-    BitExtract_UInt32_base.name = "base"_c;
-    BitExtract_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt32_offset.name = "offset"_c;
-    BitExtract_UInt32_offset.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt32_count.name = "count"_c;
-    BitExtract_UInt32_count.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt32.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt32.name = BitExtract_UInt32_name;
-    BitExtract_UInt32.backendIndex = 2341;
-    BitExtract_UInt32.returnType = Type::FullType { UInt32Type.name };
-    BitExtract_UInt32.parameters = BitExtract_UInt32_args;
-    Symbol::Resolved(&BitExtract_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt32_offset)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt32_count)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt32)->signature = "bitExtract(u32,u32,u32) u32"_c;
-    Symbol::Resolved(&BitExtract_UInt32)->name = "bitExtract(u32,u32,u32)"_c;
-    Symbol::Resolved(&BitExtract_UInt32)->nameWithVarNames = "bitExtract(base : u32, offset : u32, count : u32)"_c;
-    Symbol::Resolved(&BitExtract_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// bitExtract with Int32, Int32, Int32
-    BitExtract_Int32_base.name = "base"_c;
-    BitExtract_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32_offset.name = "offset"_c;
-    BitExtract_Int32_offset.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32_count.name = "count"_c;
-    BitExtract_Int32_count.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int32.name = BitExtract_Int32_name;
-    BitExtract_Int32.backendIndex = 2342;
-    BitExtract_Int32.returnType = Type::FullType { Int32Type.name };
-    BitExtract_Int32.parameters = BitExtract_Int32_args;
-    Symbol::Resolved(&BitExtract_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32_offset)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32_count)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32)->signature = "bitExtract(i32,i32,i32) i32"_c;
-    Symbol::Resolved(&BitExtract_Int32)->name = "bitExtract(i32,i32,i32)"_c;
-    Symbol::Resolved(&BitExtract_Int32)->nameWithVarNames = "bitExtract(base : i32, offset : i32, count : i32)"_c;
-    Symbol::Resolved(&BitExtract_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitExtract with UInt16, UInt16, UInt16
-    BitExtract_UInt16_base.name = "base"_c;
-    BitExtract_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16_offset.name = "offset"_c;
-    BitExtract_UInt16_offset.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16_count.name = "count"_c;
-    BitExtract_UInt16_count.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt16.name = BitExtract_UInt16_name;
-    BitExtract_UInt16.backendIndex = 2343;
-    BitExtract_UInt16.returnType = Type::FullType { UInt16Type.name };
-    BitExtract_UInt16.parameters = BitExtract_UInt16_args;
-    Symbol::Resolved(&BitExtract_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16_offset)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16_count)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16)->signature = "bitExtract(u16,u16,u16) u16"_c;
-    Symbol::Resolved(&BitExtract_UInt16)->name = "bitExtract(u16,u16,u16)"_c;
-    Symbol::Resolved(&BitExtract_UInt16)->nameWithVarNames = "bitExtract(base : u16, offset : u16, count : u16)"_c;
-    Symbol::Resolved(&BitExtract_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// bitExtract with Int16, Int16, Int16
-    BitExtract_Int16_base.name = "base"_c;
-    BitExtract_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16_offset.name = "offset"_c;
-    BitExtract_Int16_offset.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16_count.name = "count"_c;
-    BitExtract_Int16_count.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int16.name = BitExtract_Int16_name;
-    BitExtract_Int16.backendIndex = 2344;
-    BitExtract_Int16.returnType = Type::FullType { Int16Type.name };
-    BitExtract_Int16.parameters = BitExtract_Int16_args;
-    Symbol::Resolved(&BitExtract_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16_offset)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16_count)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16)->signature = "bitExtract(i16,i16,i16) i16"_c;
-    Symbol::Resolved(&BitExtract_Int16)->name = "bitExtract(i16,i16,i16)"_c;
-    Symbol::Resolved(&BitExtract_Int16)->nameWithVarNames = "bitExtract(base : i16, offset : i16, count : i16)"_c;
-    Symbol::Resolved(&BitExtract_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitExtract with UInt64, UInt64, UInt64
-    BitExtract_UInt64_base.name = "base"_c;
-    BitExtract_UInt64_base.type = Type::FullType{ UInt64Type.name };
-    BitExtract_UInt64_offset.name = "offset"_c;
-    BitExtract_UInt64_offset.type = Type::FullType{ UInt64Type.name };
-    BitExtract_UInt64_count.name = "count"_c;
-    BitExtract_UInt64_count.type = Type::FullType{ UInt64Type.name };
-    BitExtract_UInt64.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt64.name = BitExtract_UInt64_name;
-    BitExtract_UInt64.backendIndex = 2345;
-    BitExtract_UInt64.returnType = Type::FullType { UInt64Type.name };
-    BitExtract_UInt64.parameters = BitExtract_UInt64_args;
-    Symbol::Resolved(&BitExtract_UInt64_base)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&BitExtract_UInt64_offset)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&BitExtract_UInt64_count)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&BitExtract_UInt64)->signature = "bitExtract(u64,u64,u64) u64"_c;
-    Symbol::Resolved(&BitExtract_UInt64)->name = "bitExtract(u64,u64,u64)"_c;
-    Symbol::Resolved(&BitExtract_UInt64)->nameWithVarNames = "bitExtract(base : u64, offset : u64, count : u64)"_c;
-    Symbol::Resolved(&BitExtract_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// bitReverse with UInt32
-    BitReverse_UInt32_base.name = "base"_c;
-    BitReverse_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitReverse_UInt32.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_UInt32.name = BitReverse_UInt32_name;
-    BitReverse_UInt32.backendIndex = 2346;
-    BitReverse_UInt32.returnType = Type::FullType { UInt32Type.name };
-    BitReverse_UInt32.parameters = BitReverse_UInt32_args;
-    Symbol::Resolved(&BitReverse_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitReverse_UInt32)->signature = "bitReverse(u32) u32"_c;
-    Symbol::Resolved(&BitReverse_UInt32)->name = "bitReverse(u32)"_c;
-    Symbol::Resolved(&BitReverse_UInt32)->nameWithVarNames = "bitReverse(base : u32)"_c;
-    Symbol::Resolved(&BitReverse_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// bitReverse with Int32
-    BitReverse_Int32_base.name = "base"_c;
-    BitReverse_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitReverse_Int32.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_Int32.name = BitReverse_Int32_name;
-    BitReverse_Int32.backendIndex = 2347;
-    BitReverse_Int32.returnType = Type::FullType { Int32Type.name };
-    BitReverse_Int32.parameters = BitReverse_Int32_args;
-    Symbol::Resolved(&BitReverse_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitReverse_Int32)->signature = "bitReverse(i32) i32"_c;
-    Symbol::Resolved(&BitReverse_Int32)->name = "bitReverse(i32)"_c;
-    Symbol::Resolved(&BitReverse_Int32)->nameWithVarNames = "bitReverse(base : i32)"_c;
-    Symbol::Resolved(&BitReverse_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitReverse with UInt16
-    BitReverse_UInt16_base.name = "base"_c;
-    BitReverse_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitReverse_UInt16.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_UInt16.name = BitReverse_UInt16_name;
-    BitReverse_UInt16.backendIndex = 2348;
-    BitReverse_UInt16.returnType = Type::FullType { UInt16Type.name };
-    BitReverse_UInt16.parameters = BitReverse_UInt16_args;
-    Symbol::Resolved(&BitReverse_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitReverse_UInt16)->signature = "bitReverse(u16) u16"_c;
-    Symbol::Resolved(&BitReverse_UInt16)->name = "bitReverse(u16)"_c;
-    Symbol::Resolved(&BitReverse_UInt16)->nameWithVarNames = "bitReverse(base : u16)"_c;
-    Symbol::Resolved(&BitReverse_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// bitReverse with Int16
-    BitReverse_Int16_base.name = "base"_c;
-    BitReverse_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitReverse_Int16.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_Int16.name = BitReverse_Int16_name;
-    BitReverse_Int16.backendIndex = 2349;
-    BitReverse_Int16.returnType = Type::FullType { Int16Type.name };
-    BitReverse_Int16.parameters = BitReverse_Int16_args;
-    Symbol::Resolved(&BitReverse_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitReverse_Int16)->signature = "bitReverse(i16) i16"_c;
-    Symbol::Resolved(&BitReverse_Int16)->name = "bitReverse(i16)"_c;
-    Symbol::Resolved(&BitReverse_Int16)->nameWithVarNames = "bitReverse(base : i16)"_c;
-    Symbol::Resolved(&BitReverse_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitReverse with UInt64
-    BitReverse_UInt64_base.name = "base"_c;
-    BitReverse_UInt64_base.type = Type::FullType{ UInt64Type.name };
-    BitReverse_UInt64.documentation = "Reverses the bits in a bitmask"_c;
-    BitReverse_UInt64.name = BitReverse_UInt64_name;
-    BitReverse_UInt64.backendIndex = 2350;
-    BitReverse_UInt64.returnType = Type::FullType { UInt64Type.name };
-    BitReverse_UInt64.parameters = BitReverse_UInt64_args;
-    Symbol::Resolved(&BitReverse_UInt64_base)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&BitReverse_UInt64)->signature = "bitReverse(u64) u64"_c;
-    Symbol::Resolved(&BitReverse_UInt64)->name = "bitReverse(u64)"_c;
-    Symbol::Resolved(&BitReverse_UInt64)->nameWithVarNames = "bitReverse(base : u64)"_c;
-    Symbol::Resolved(&BitReverse_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// bitCount with UInt32
-    BitCount_UInt32_base.name = "base"_c;
-    BitCount_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitCount_UInt32.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_UInt32.name = BitCount_UInt32_name;
-    BitCount_UInt32.backendIndex = 2351;
-    BitCount_UInt32.returnType = Type::FullType { UInt32Type.name };
-    BitCount_UInt32.parameters = BitCount_UInt32_args;
-    Symbol::Resolved(&BitCount_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitCount_UInt32)->signature = "bitCount(u32) u32"_c;
-    Symbol::Resolved(&BitCount_UInt32)->name = "bitCount(u32)"_c;
-    Symbol::Resolved(&BitCount_UInt32)->nameWithVarNames = "bitCount(base : u32)"_c;
-    Symbol::Resolved(&BitCount_UInt32)->returnTypeSymbol = &UInt32Type;
-
-    /// bitCount with Int32
-    BitCount_Int32_base.name = "base"_c;
-    BitCount_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitCount_Int32.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_Int32.name = BitCount_Int32_name;
-    BitCount_Int32.backendIndex = 2352;
-    BitCount_Int32.returnType = Type::FullType { Int32Type.name };
-    BitCount_Int32.parameters = BitCount_Int32_args;
-    Symbol::Resolved(&BitCount_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitCount_Int32)->signature = "bitCount(i32) i32"_c;
-    Symbol::Resolved(&BitCount_Int32)->name = "bitCount(i32)"_c;
-    Symbol::Resolved(&BitCount_Int32)->nameWithVarNames = "bitCount(base : i32)"_c;
-    Symbol::Resolved(&BitCount_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitCount with UInt16
-    BitCount_UInt16_base.name = "base"_c;
-    BitCount_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitCount_UInt16.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_UInt16.name = BitCount_UInt16_name;
-    BitCount_UInt16.backendIndex = 2353;
-    BitCount_UInt16.returnType = Type::FullType { UInt16Type.name };
-    BitCount_UInt16.parameters = BitCount_UInt16_args;
-    Symbol::Resolved(&BitCount_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitCount_UInt16)->signature = "bitCount(u16) u16"_c;
-    Symbol::Resolved(&BitCount_UInt16)->name = "bitCount(u16)"_c;
-    Symbol::Resolved(&BitCount_UInt16)->nameWithVarNames = "bitCount(base : u16)"_c;
-    Symbol::Resolved(&BitCount_UInt16)->returnTypeSymbol = &UInt16Type;
-
-    /// bitCount with Int16
-    BitCount_Int16_base.name = "base"_c;
-    BitCount_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitCount_Int16.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_Int16.name = BitCount_Int16_name;
-    BitCount_Int16.backendIndex = 2354;
-    BitCount_Int16.returnType = Type::FullType { Int16Type.name };
-    BitCount_Int16.parameters = BitCount_Int16_args;
-    Symbol::Resolved(&BitCount_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitCount_Int16)->signature = "bitCount(i16) i16"_c;
-    Symbol::Resolved(&BitCount_Int16)->name = "bitCount(i16)"_c;
-    Symbol::Resolved(&BitCount_Int16)->nameWithVarNames = "bitCount(base : i16)"_c;
-    Symbol::Resolved(&BitCount_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitCount with UInt64
-    BitCount_UInt64_base.name = "base"_c;
-    BitCount_UInt64_base.type = Type::FullType{ UInt64Type.name };
-    BitCount_UInt64.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
-    BitCount_UInt64.name = BitCount_UInt64_name;
-    BitCount_UInt64.backendIndex = 2355;
-    BitCount_UInt64.returnType = Type::FullType { UInt64Type.name };
-    BitCount_UInt64.parameters = BitCount_UInt64_args;
-    Symbol::Resolved(&BitCount_UInt64_base)->typeSymbol = &UInt64Type;
-    Symbol::Resolved(&BitCount_UInt64)->signature = "bitCount(u64) u64"_c;
-    Symbol::Resolved(&BitCount_UInt64)->name = "bitCount(u64)"_c;
-    Symbol::Resolved(&BitCount_UInt64)->nameWithVarNames = "bitCount(base : u64)"_c;
-    Symbol::Resolved(&BitCount_UInt64)->returnTypeSymbol = &UInt64Type;
-
-    /// executionBarrier
-    ExecutionBarrier.documentation = "Execution barrier to ensure all threads have reached this point before proceeding"_c;
-    ExecutionBarrier.name = ExecutionBarrier_name;
-    ExecutionBarrier.backendIndex = 2356;
-    ExecutionBarrier.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&ExecutionBarrier)->signature = "executionBarrier() void"_c;
-    Symbol::Resolved(&ExecutionBarrier)->name = "executionBarrier()"_c;
-    Symbol::Resolved(&ExecutionBarrier)->nameWithVarNames = "executionBarrier()"_c;
-    Symbol::Resolved(&ExecutionBarrier)->returnTypeSymbol = &VoidType;
-
-    /// executionBarrierSubgroup
-    ExecutionBarrierSubgroup.documentation = "Execution barrier to ensure all threads in the subgroup have reached this point before proceeding"_c;
-    ExecutionBarrierSubgroup.name = ExecutionBarrierSubgroup_name;
-    ExecutionBarrierSubgroup.backendIndex = 2357;
-    ExecutionBarrierSubgroup.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->signature = "executionBarrierSubgroup() void"_c;
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->name = "executionBarrierSubgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->nameWithVarNames = "executionBarrierSubgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->returnTypeSymbol = &VoidType;
-
-    /// executionBarrierWorkgroup
-    ExecutionBarrierWorkgroup.documentation = "Execution barrier to ensure all threads in the workgroup have reached this point before proceeding"_c;
-    ExecutionBarrierWorkgroup.name = ExecutionBarrierWorkgroup_name;
-    ExecutionBarrierWorkgroup.backendIndex = 2358;
-    ExecutionBarrierWorkgroup.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->signature = "executionBarrierWorkgroup() void"_c;
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->name = "executionBarrierWorkgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->nameWithVarNames = "executionBarrierWorkgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrier
-    MemoryBarrier.documentation = "Memory barrier to ensure memory operations are completed before proceeding"_c;
-    MemoryBarrier.name = MemoryBarrier_name;
-    MemoryBarrier.backendIndex = 2359;
-    MemoryBarrier.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrier)->signature = "memoryBarrier() void"_c;
-    Symbol::Resolved(&MemoryBarrier)->name = "memoryBarrier()"_c;
-    Symbol::Resolved(&MemoryBarrier)->nameWithVarNames = "memoryBarrier()"_c;
-    Symbol::Resolved(&MemoryBarrier)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierBuffer
-    MemoryBarrierBuffer.documentation = "Memory barrier to ensure buffer memory operations are completed before proceeding"_c;
-    MemoryBarrierBuffer.name = MemoryBarrierBuffer_name;
-    MemoryBarrierBuffer.backendIndex = 2360;
-    MemoryBarrierBuffer.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierBuffer)->signature = "memoryBarrierBuffer() void"_c;
-    Symbol::Resolved(&MemoryBarrierBuffer)->name = "memoryBarrierBuffer()"_c;
-    Symbol::Resolved(&MemoryBarrierBuffer)->nameWithVarNames = "memoryBarrierBuffer()"_c;
-    Symbol::Resolved(&MemoryBarrierBuffer)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierTexture
-    MemoryBarrierTexture.documentation = "Memory barrier to ensure texture memory operations are completed before proceeding"_c;
-    MemoryBarrierTexture.name = MemoryBarrierTexture_name;
-    MemoryBarrierTexture.backendIndex = 2361;
-    MemoryBarrierTexture.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierTexture)->signature = "memoryBarrierTexture() void"_c;
-    Symbol::Resolved(&MemoryBarrierTexture)->name = "memoryBarrierTexture()"_c;
-    Symbol::Resolved(&MemoryBarrierTexture)->nameWithVarNames = "memoryBarrierTexture()"_c;
-    Symbol::Resolved(&MemoryBarrierTexture)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierAtomic
-    MemoryBarrierAtomic.documentation = "Memory barrier to ensure atomic memory operations are completed before proceeding"_c;
-    MemoryBarrierAtomic.name = MemoryBarrierAtomic_name;
-    MemoryBarrierAtomic.backendIndex = 2362;
-    MemoryBarrierAtomic.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierAtomic)->signature = "memoryBarrierAtomic() void"_c;
-    Symbol::Resolved(&MemoryBarrierAtomic)->name = "memoryBarrierAtomic()"_c;
-    Symbol::Resolved(&MemoryBarrierAtomic)->nameWithVarNames = "memoryBarrierAtomic()"_c;
-    Symbol::Resolved(&MemoryBarrierAtomic)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierSubgroup
-    MemoryBarrierSubgroup.documentation = "Memory barrier to ensure subgroup memory operations are completed before proceeding"_c;
-    MemoryBarrierSubgroup.name = MemoryBarrierSubgroup_name;
-    MemoryBarrierSubgroup.backendIndex = 2363;
-    MemoryBarrierSubgroup.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierSubgroup)->signature = "memoryBarrierSubgroup() void"_c;
-    Symbol::Resolved(&MemoryBarrierSubgroup)->name = "memoryBarrierSubgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierSubgroup)->nameWithVarNames = "memoryBarrierSubgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierSubgroup)->returnTypeSymbol = &VoidType;
-
-    /// memoryBarrierWorkgroup
-    MemoryBarrierWorkgroup.documentation = "Memory barrier to ensure workgroup memory operations are completed before proceeding"_c;
-    MemoryBarrierWorkgroup.name = MemoryBarrierWorkgroup_name;
-    MemoryBarrierWorkgroup.backendIndex = 2364;
-    MemoryBarrierWorkgroup.returnType = Type::FullType { VoidType.name };
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->signature = "memoryBarrierWorkgroup() void"_c;
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->name = "memoryBarrierWorkgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->nameWithVarNames = "memoryBarrierWorkgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->returnTypeSymbol = &VoidType;
-
-    /// textureGetSize with Texture1D
-    TextureGetSize_Texture1D_texture.name = "texture"_c;
-    TextureGetSize_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSize_Texture1D_texture.type.strict = true;
-    TextureGetSize_Texture1D_texture.type.mut = true;
-    TextureGetSize_Texture1D_texture.type.modifiers = TextureGetSize_Texture1D_texture_modifiers;
-    TextureGetSize_Texture1D_texture.type.modifierValues = TextureGetSize_Texture1D_texture_modifierValues;
-    TextureGetSize_Texture1D.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture1D.name = TextureGetSize_Texture1D_name;
-    TextureGetSize_Texture1D.backendIndex = 2365;
-    TextureGetSize_Texture1D.returnType = Type::FullType { UInt32Type.name };
-    TextureGetSize_Texture1D.parameters = TextureGetSize_Texture1D_args;
-    Symbol::Resolved(&TextureGetSize_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureGetSize_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->signature = "textureGetSize(uniform *mutable texture1D) u32"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->name = "textureGetSize(uniform *mutable texture1D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture1D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->returnTypeSymbol = &UInt32Type;
-
-    /// textureGetSize with Texture2D
-    TextureGetSize_Texture2D_texture.name = "texture"_c;
-    TextureGetSize_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSize_Texture2D_texture.type.strict = true;
-    TextureGetSize_Texture2D_texture.type.mut = true;
-    TextureGetSize_Texture2D_texture.type.modifiers = TextureGetSize_Texture2D_texture_modifiers;
-    TextureGetSize_Texture2D_texture.type.modifierValues = TextureGetSize_Texture2D_texture_modifierValues;
-    TextureGetSize_Texture2D.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture2D.name = TextureGetSize_Texture2D_name;
-    TextureGetSize_Texture2D.backendIndex = 2366;
-    TextureGetSize_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
-    TextureGetSize_Texture2D.parameters = TextureGetSize_Texture2D_args;
-    Symbol::Resolved(&TextureGetSize_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGetSize_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->signature = "textureGetSize(uniform *mutable texture2D) u32x2"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->name = "textureGetSize(uniform *mutable texture2D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture2D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->returnTypeSymbol = &UInt32x2Type;
-
-    /// textureGetSize with Texture3D
-    TextureGetSize_Texture3D_texture.name = "texture"_c;
-    TextureGetSize_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSize_Texture3D_texture.type.strict = true;
-    TextureGetSize_Texture3D_texture.type.mut = true;
-    TextureGetSize_Texture3D_texture.type.modifiers = TextureGetSize_Texture3D_texture_modifiers;
-    TextureGetSize_Texture3D_texture.type.modifierValues = TextureGetSize_Texture3D_texture_modifierValues;
-    TextureGetSize_Texture3D.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture3D.name = TextureGetSize_Texture3D_name;
-    TextureGetSize_Texture3D.backendIndex = 2367;
-    TextureGetSize_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSize_Texture3D.parameters = TextureGetSize_Texture3D_args;
-    Symbol::Resolved(&TextureGetSize_Texture3D_texture)->typeSymbol = &Texture3DType;
-    Symbol::Resolved(&TextureGetSize_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->signature = "textureGetSize(uniform *mutable texture3D) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->name = "textureGetSize(uniform *mutable texture3D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture3D)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSize with TextureCube
-    TextureGetSize_TextureCube_texture.name = "texture"_c;
-    TextureGetSize_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSize_TextureCube_texture.type.strict = true;
-    TextureGetSize_TextureCube_texture.type.mut = true;
-    TextureGetSize_TextureCube_texture.type.modifiers = TextureGetSize_TextureCube_texture_modifiers;
-    TextureGetSize_TextureCube_texture.type.modifierValues = TextureGetSize_TextureCube_texture_modifierValues;
-    TextureGetSize_TextureCube.documentation = "Get the size of a texture"_c;
-    TextureGetSize_TextureCube.name = TextureGetSize_TextureCube_name;
-    TextureGetSize_TextureCube.backendIndex = 2368;
-    TextureGetSize_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSize_TextureCube.parameters = TextureGetSize_TextureCube_args;
-    Symbol::Resolved(&TextureGetSize_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureGetSize_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->signature = "textureGetSize(uniform *mutable textureCube) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->name = "textureGetSize(uniform *mutable textureCube)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->nameWithVarNames = "textureGetSize(texture : uniform *mutable textureCube)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSize with Texture1DArray
-    TextureGetSize_Texture1DArray_texture.name = "texture"_c;
-    TextureGetSize_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSize_Texture1DArray_texture.type.strict = true;
-    TextureGetSize_Texture1DArray_texture.type.mut = true;
-    TextureGetSize_Texture1DArray_texture.type.modifiers = TextureGetSize_Texture1DArray_texture_modifiers;
-    TextureGetSize_Texture1DArray_texture.type.modifierValues = TextureGetSize_Texture1DArray_texture_modifierValues;
-    TextureGetSize_Texture1DArray.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture1DArray.name = TextureGetSize_Texture1DArray_name;
-    TextureGetSize_Texture1DArray.backendIndex = 2369;
-    TextureGetSize_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
-    TextureGetSize_Texture1DArray.parameters = TextureGetSize_Texture1DArray_args;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->signature = "textureGetSize(uniform *mutable texture1DArray) u32x2"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->name = "textureGetSize(uniform *mutable texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture1DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->returnTypeSymbol = &UInt32x2Type;
-
-    /// textureGetSize with Texture2DArray
-    TextureGetSize_Texture2DArray_texture.name = "texture"_c;
-    TextureGetSize_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSize_Texture2DArray_texture.type.strict = true;
-    TextureGetSize_Texture2DArray_texture.type.mut = true;
-    TextureGetSize_Texture2DArray_texture.type.modifiers = TextureGetSize_Texture2DArray_texture_modifiers;
-    TextureGetSize_Texture2DArray_texture.type.modifierValues = TextureGetSize_Texture2DArray_texture_modifierValues;
-    TextureGetSize_Texture2DArray.documentation = "Get the size of a texture"_c;
-    TextureGetSize_Texture2DArray.name = TextureGetSize_Texture2DArray_name;
-    TextureGetSize_Texture2DArray.backendIndex = 2370;
-    TextureGetSize_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
-    TextureGetSize_Texture2DArray.parameters = TextureGetSize_Texture2DArray_args;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->signature = "textureGetSize(uniform *mutable texture2DArray) u32x3"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->name = "textureGetSize(uniform *mutable texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable texture2DArray)"_c;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->returnTypeSymbol = &UInt32x3Type;
-
-    /// textureGetSize with TextureCubeArray
-    TextureGetSize_TextureCubeArray_texture.name = "texture"_c;
-    TextureGetSize_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSize_TextureCubeArray_texture.type.strict = true;
-    TextureGetSize_TextureCubeArray_texture.type.mut = true;
-    TextureGetSize_TextureCubeArray_texture.type.modifiers = TextureGetSize_TextureCubeArray_texture_modifiers;
-    TextureGetSize_TextureCubeArray_texture.type.modifierValues = TextureGetSize_TextureCubeArray_texture_modifierValues;
-    TextureGetSize_TextureCubeArray.documentation = "Get the size of a texture"_c;
-    TextureGetSize_TextureCubeArray.name = TextureGetSize_TextureCubeArray_name;
-    TextureGetSize_TextureCubeArray.backendIndex = 2371;
-    TextureGetSize_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
-    TextureGetSize_TextureCubeArray.parameters = TextureGetSize_TextureCubeArray_args;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->signature = "textureGetSize(uniform *mutable textureCubeArray) u32x4"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->name = "textureGetSize(uniform *mutable textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->nameWithVarNames = "textureGetSize(texture : uniform *mutable textureCubeArray)"_c;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->returnTypeSymbol = &UInt32x4Type;
-
-    /// textureGetSizeMip with Texture1D, UInt32
-    TextureGetSizeMip_Texture1D_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSizeMip_Texture1D_texture.type.strict = true;
-    TextureGetSizeMip_Texture1D_texture.type.modifiers = TextureGetSizeMip_Texture1D_texture_modifiers;
-    TextureGetSizeMip_Texture1D_texture.type.modifierValues = TextureGetSizeMip_Texture1D_texture_modifierValues;
-    TextureGetSizeMip_Texture1D_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture1D_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture1D.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture1D.name = TextureGetSizeMip_Texture1D_name;
-    TextureGetSizeMip_Texture1D.backendIndex = 2372;
-    TextureGetSizeMip_Texture1D.returnType = Type::FullType { UInt32Type.name };
-    TextureGetSizeMip_Texture1D.parameters = TextureGetSizeMip_Texture1D_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D_texture)->typeSymbol = &Texture1DType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->signature = "textureGetSizeMip(uniform *texture1D,u32) u32"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->name = "textureGetSizeMip(uniform *texture1D,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture1D, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->returnTypeSymbol = &UInt32Type;
-
-    /// textureGetSizeMip with Texture2D, UInt32
-    TextureGetSizeMip_Texture2D_texture.name = "texture"_c;
-    TextureGetSizeMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSizeMip_Texture2D_texture.type.strict = true;
-    TextureGetSizeMip_Texture2D_texture.type.modifiers = TextureGetSizeMip_Texture2D_texture_modifiers;
-    TextureGetSizeMip_Texture2D_texture.type.modifierValues = TextureGetSizeMip_Texture2D_texture_modifierValues;
-    TextureGetSizeMip_Texture2D_mip.name = "mip"_c;
-    TextureGetSizeMip_Texture2D_mip.type = Type::FullType{ UInt32Type.name };
-    TextureGetSizeMip_Texture2D.documentation = "Get the size of a texture at a specific mip level"_c;
-    TextureGetSizeMip_Texture2D.name = TextureGetSizeMip_Texture2D_name;
-    TextureGetSizeMip_Texture2D.backendIndex = 2373;
-    TextureGetSizeMip_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
-    TextureGetSizeMip_Texture2D.parameters = TextureGetSizeMip_Texture2D_args;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D_texture)->typeSymbol = &Texture2DType;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->signature = "textureGetSizeMip(uniform *texture2D,u32) u32x2"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->name = "textureGetSizeMip(uniform *texture2D,u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->nameWithVarNames = "textureGetSizeMip(texture : uniform *texture2D, mip : u32)"_c;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->returnTypeSymbol = &UInt32x2Type;
+    /// subgroupMin with UInt16x4, SubgroupOperation
+    SubgroupMin_UInt16x4_value.name = "value"_c;
+    SubgroupMin_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupMin_UInt16x4_op.name = "operation"_c;
+    SubgroupMin_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt16x4.documentation = "Take the min of the value across subgroups"_c;
+    SubgroupMin_UInt16x4.name = SubgroupMin_UInt16x4_name;
+    SubgroupMin_UInt16x4.backendIndex = 2246;
+    SubgroupMin_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupMin_UInt16x4.parameters = SubgroupMin_UInt16x4_args;
+    Symbol::Resolved(&SubgroupMin_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupMin_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMin_UInt16x4)->signature = "subgroupMin(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x4)->name = "subgroupMin(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x4)->nameWithVarNames = "subgroupMin(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupMax with Float32, SubgroupOperation
+    SubgroupMax_Float32_value.name = "value"_c;
+    SubgroupMax_Float32_value.type = Type::FullType{ Float32Type.name };
+    SubgroupMax_Float32_op.name = "operation"_c;
+    SubgroupMax_Float32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Float32.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Float32.name = SubgroupMax_Float32_name;
+    SubgroupMax_Float32.backendIndex = 2247;
+    SubgroupMax_Float32.returnType = Type::FullType { Float32Type.name };
+    SubgroupMax_Float32.parameters = SubgroupMax_Float32_args;
+    Symbol::Resolved(&SubgroupMax_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupMax_Float32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Float32)->signature = "subgroupMax(f32,SubgroupOperation) f32"_c;
+    Symbol::Resolved(&SubgroupMax_Float32)->name = "subgroupMax(f32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float32)->nameWithVarNames = "subgroupMax(value : f32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// subgroupMax with Float32x2, SubgroupOperation
+    SubgroupMax_Float32x2_value.name = "value"_c;
+    SubgroupMax_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
+    SubgroupMax_Float32x2_op.name = "operation"_c;
+    SubgroupMax_Float32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Float32x2.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Float32x2.name = SubgroupMax_Float32x2_name;
+    SubgroupMax_Float32x2.backendIndex = 2248;
+    SubgroupMax_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    SubgroupMax_Float32x2.parameters = SubgroupMax_Float32x2_args;
+    Symbol::Resolved(&SubgroupMax_Float32x2_value)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupMax_Float32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Float32x2)->signature = "subgroupMax(f32x2,SubgroupOperation) f32x2"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x2)->name = "subgroupMax(f32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x2)->nameWithVarNames = "subgroupMax(value : f32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// subgroupMax with Float32x3, SubgroupOperation
+    SubgroupMax_Float32x3_value.name = "value"_c;
+    SubgroupMax_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
+    SubgroupMax_Float32x3_op.name = "operation"_c;
+    SubgroupMax_Float32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Float32x3.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Float32x3.name = SubgroupMax_Float32x3_name;
+    SubgroupMax_Float32x3.backendIndex = 2249;
+    SubgroupMax_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    SubgroupMax_Float32x3.parameters = SubgroupMax_Float32x3_args;
+    Symbol::Resolved(&SubgroupMax_Float32x3_value)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupMax_Float32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Float32x3)->signature = "subgroupMax(f32x3,SubgroupOperation) f32x3"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x3)->name = "subgroupMax(f32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x3)->nameWithVarNames = "subgroupMax(value : f32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// subgroupMax with Float32x4, SubgroupOperation
+    SubgroupMax_Float32x4_value.name = "value"_c;
+    SubgroupMax_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupMax_Float32x4_op.name = "operation"_c;
+    SubgroupMax_Float32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Float32x4.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Float32x4.name = SubgroupMax_Float32x4_name;
+    SubgroupMax_Float32x4.backendIndex = 2250;
+    SubgroupMax_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    SubgroupMax_Float32x4.parameters = SubgroupMax_Float32x4_args;
+    Symbol::Resolved(&SubgroupMax_Float32x4_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupMax_Float32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Float32x4)->signature = "subgroupMax(f32x4,SubgroupOperation) f32x4"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x4)->name = "subgroupMax(f32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x4)->nameWithVarNames = "subgroupMax(value : f32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// subgroupMax with Float16, SubgroupOperation
+    SubgroupMax_Float16_value.name = "value"_c;
+    SubgroupMax_Float16_value.type = Type::FullType{ Float16Type.name };
+    SubgroupMax_Float16_op.name = "operation"_c;
+    SubgroupMax_Float16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Float16.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Float16.name = SubgroupMax_Float16_name;
+    SubgroupMax_Float16.backendIndex = 2251;
+    SubgroupMax_Float16.returnType = Type::FullType { Float16Type.name };
+    SubgroupMax_Float16.parameters = SubgroupMax_Float16_args;
+    Symbol::Resolved(&SubgroupMax_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupMax_Float16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Float16)->signature = "subgroupMax(f16,SubgroupOperation) f16"_c;
+    Symbol::Resolved(&SubgroupMax_Float16)->name = "subgroupMax(f16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float16)->nameWithVarNames = "subgroupMax(value : f16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// subgroupMax with Float16x2, SubgroupOperation
+    SubgroupMax_Float16x2_value.name = "value"_c;
+    SubgroupMax_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupMax_Float16x2_op.name = "operation"_c;
+    SubgroupMax_Float16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Float16x2.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Float16x2.name = SubgroupMax_Float16x2_name;
+    SubgroupMax_Float16x2.backendIndex = 2252;
+    SubgroupMax_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    SubgroupMax_Float16x2.parameters = SubgroupMax_Float16x2_args;
+    Symbol::Resolved(&SubgroupMax_Float16x2_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupMax_Float16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Float16x2)->signature = "subgroupMax(f16x2,SubgroupOperation) f16x2"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x2)->name = "subgroupMax(f16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x2)->nameWithVarNames = "subgroupMax(value : f16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// subgroupMax with Float16x3, SubgroupOperation
+    SubgroupMax_Float16x3_value.name = "value"_c;
+    SubgroupMax_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupMax_Float16x3_op.name = "operation"_c;
+    SubgroupMax_Float16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Float16x3.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Float16x3.name = SubgroupMax_Float16x3_name;
+    SubgroupMax_Float16x3.backendIndex = 2253;
+    SubgroupMax_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    SubgroupMax_Float16x3.parameters = SubgroupMax_Float16x3_args;
+    Symbol::Resolved(&SubgroupMax_Float16x3_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupMax_Float16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Float16x3)->signature = "subgroupMax(f16x3,SubgroupOperation) f16x3"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x3)->name = "subgroupMax(f16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x3)->nameWithVarNames = "subgroupMax(value : f16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// subgroupMax with Float16x4, SubgroupOperation
+    SubgroupMax_Float16x4_value.name = "value"_c;
+    SubgroupMax_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupMax_Float16x4_op.name = "operation"_c;
+    SubgroupMax_Float16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Float16x4.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Float16x4.name = SubgroupMax_Float16x4_name;
+    SubgroupMax_Float16x4.backendIndex = 2254;
+    SubgroupMax_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    SubgroupMax_Float16x4.parameters = SubgroupMax_Float16x4_args;
+    Symbol::Resolved(&SubgroupMax_Float16x4_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupMax_Float16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Float16x4)->signature = "subgroupMax(f16x4,SubgroupOperation) f16x4"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x4)->name = "subgroupMax(f16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x4)->nameWithVarNames = "subgroupMax(value : f16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
+    /// subgroupMax with Int32, SubgroupOperation
+    SubgroupMax_Int32_value.name = "value"_c;
+    SubgroupMax_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupMax_Int32_op.name = "operation"_c;
+    SubgroupMax_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Int32.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Int32.name = SubgroupMax_Int32_name;
+    SubgroupMax_Int32.backendIndex = 2255;
+    SubgroupMax_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupMax_Int32.parameters = SubgroupMax_Int32_args;
+    Symbol::Resolved(&SubgroupMax_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupMax_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Int32)->signature = "subgroupMax(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupMax_Int32)->name = "subgroupMax(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int32)->nameWithVarNames = "subgroupMax(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupMax with Int32x2, SubgroupOperation
+    SubgroupMax_Int32x2_value.name = "value"_c;
+    SubgroupMax_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupMax_Int32x2_op.name = "operation"_c;
+    SubgroupMax_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Int32x2.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Int32x2.name = SubgroupMax_Int32x2_name;
+    SubgroupMax_Int32x2.backendIndex = 2256;
+    SubgroupMax_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupMax_Int32x2.parameters = SubgroupMax_Int32x2_args;
+    Symbol::Resolved(&SubgroupMax_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupMax_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Int32x2)->signature = "subgroupMax(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x2)->name = "subgroupMax(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x2)->nameWithVarNames = "subgroupMax(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupMax with Int32x3, SubgroupOperation
+    SubgroupMax_Int32x3_value.name = "value"_c;
+    SubgroupMax_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupMax_Int32x3_op.name = "operation"_c;
+    SubgroupMax_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Int32x3.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Int32x3.name = SubgroupMax_Int32x3_name;
+    SubgroupMax_Int32x3.backendIndex = 2257;
+    SubgroupMax_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupMax_Int32x3.parameters = SubgroupMax_Int32x3_args;
+    Symbol::Resolved(&SubgroupMax_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupMax_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Int32x3)->signature = "subgroupMax(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x3)->name = "subgroupMax(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x3)->nameWithVarNames = "subgroupMax(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupMax with Int32x4, SubgroupOperation
+    SubgroupMax_Int32x4_value.name = "value"_c;
+    SubgroupMax_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupMax_Int32x4_op.name = "operation"_c;
+    SubgroupMax_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Int32x4.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Int32x4.name = SubgroupMax_Int32x4_name;
+    SubgroupMax_Int32x4.backendIndex = 2258;
+    SubgroupMax_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupMax_Int32x4.parameters = SubgroupMax_Int32x4_args;
+    Symbol::Resolved(&SubgroupMax_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupMax_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Int32x4)->signature = "subgroupMax(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x4)->name = "subgroupMax(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x4)->nameWithVarNames = "subgroupMax(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupMax with Int16, SubgroupOperation
+    SubgroupMax_Int16_value.name = "value"_c;
+    SubgroupMax_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupMax_Int16_op.name = "operation"_c;
+    SubgroupMax_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Int16.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Int16.name = SubgroupMax_Int16_name;
+    SubgroupMax_Int16.backendIndex = 2259;
+    SubgroupMax_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupMax_Int16.parameters = SubgroupMax_Int16_args;
+    Symbol::Resolved(&SubgroupMax_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupMax_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Int16)->signature = "subgroupMax(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupMax_Int16)->name = "subgroupMax(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int16)->nameWithVarNames = "subgroupMax(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupMax with Int16x2, SubgroupOperation
+    SubgroupMax_Int16x2_value.name = "value"_c;
+    SubgroupMax_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupMax_Int16x2_op.name = "operation"_c;
+    SubgroupMax_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Int16x2.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Int16x2.name = SubgroupMax_Int16x2_name;
+    SubgroupMax_Int16x2.backendIndex = 2260;
+    SubgroupMax_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupMax_Int16x2.parameters = SubgroupMax_Int16x2_args;
+    Symbol::Resolved(&SubgroupMax_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupMax_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Int16x2)->signature = "subgroupMax(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x2)->name = "subgroupMax(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x2)->nameWithVarNames = "subgroupMax(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupMax with Int16x3, SubgroupOperation
+    SubgroupMax_Int16x3_value.name = "value"_c;
+    SubgroupMax_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupMax_Int16x3_op.name = "operation"_c;
+    SubgroupMax_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Int16x3.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Int16x3.name = SubgroupMax_Int16x3_name;
+    SubgroupMax_Int16x3.backendIndex = 2261;
+    SubgroupMax_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupMax_Int16x3.parameters = SubgroupMax_Int16x3_args;
+    Symbol::Resolved(&SubgroupMax_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupMax_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Int16x3)->signature = "subgroupMax(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x3)->name = "subgroupMax(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x3)->nameWithVarNames = "subgroupMax(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupMax with Int16x4, SubgroupOperation
+    SubgroupMax_Int16x4_value.name = "value"_c;
+    SubgroupMax_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupMax_Int16x4_op.name = "operation"_c;
+    SubgroupMax_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_Int16x4.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_Int16x4.name = SubgroupMax_Int16x4_name;
+    SubgroupMax_Int16x4.backendIndex = 2262;
+    SubgroupMax_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupMax_Int16x4.parameters = SubgroupMax_Int16x4_args;
+    Symbol::Resolved(&SubgroupMax_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupMax_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_Int16x4)->signature = "subgroupMax(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x4)->name = "subgroupMax(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x4)->nameWithVarNames = "subgroupMax(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupMax with UInt32, SubgroupOperation
+    SubgroupMax_UInt32_value.name = "value"_c;
+    SubgroupMax_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupMax_UInt32_op.name = "operation"_c;
+    SubgroupMax_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_UInt32.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_UInt32.name = SubgroupMax_UInt32_name;
+    SubgroupMax_UInt32.backendIndex = 2263;
+    SubgroupMax_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupMax_UInt32.parameters = SubgroupMax_UInt32_args;
+    Symbol::Resolved(&SubgroupMax_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupMax_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_UInt32)->signature = "subgroupMax(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32)->name = "subgroupMax(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32)->nameWithVarNames = "subgroupMax(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupMax with UInt32x2, SubgroupOperation
+    SubgroupMax_UInt32x2_value.name = "value"_c;
+    SubgroupMax_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupMax_UInt32x2_op.name = "operation"_c;
+    SubgroupMax_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_UInt32x2.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_UInt32x2.name = SubgroupMax_UInt32x2_name;
+    SubgroupMax_UInt32x2.backendIndex = 2264;
+    SubgroupMax_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupMax_UInt32x2.parameters = SubgroupMax_UInt32x2_args;
+    Symbol::Resolved(&SubgroupMax_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupMax_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_UInt32x2)->signature = "subgroupMax(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x2)->name = "subgroupMax(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x2)->nameWithVarNames = "subgroupMax(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupMax with UInt32x3, SubgroupOperation
+    SubgroupMax_UInt32x3_value.name = "value"_c;
+    SubgroupMax_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupMax_UInt32x3_op.name = "operation"_c;
+    SubgroupMax_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_UInt32x3.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_UInt32x3.name = SubgroupMax_UInt32x3_name;
+    SubgroupMax_UInt32x3.backendIndex = 2265;
+    SubgroupMax_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupMax_UInt32x3.parameters = SubgroupMax_UInt32x3_args;
+    Symbol::Resolved(&SubgroupMax_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupMax_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_UInt32x3)->signature = "subgroupMax(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x3)->name = "subgroupMax(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x3)->nameWithVarNames = "subgroupMax(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupMax with UInt32x4, SubgroupOperation
+    SubgroupMax_UInt32x4_value.name = "value"_c;
+    SubgroupMax_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupMax_UInt32x4_op.name = "operation"_c;
+    SubgroupMax_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_UInt32x4.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_UInt32x4.name = SubgroupMax_UInt32x4_name;
+    SubgroupMax_UInt32x4.backendIndex = 2266;
+    SubgroupMax_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupMax_UInt32x4.parameters = SubgroupMax_UInt32x4_args;
+    Symbol::Resolved(&SubgroupMax_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupMax_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_UInt32x4)->signature = "subgroupMax(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x4)->name = "subgroupMax(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x4)->nameWithVarNames = "subgroupMax(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupMax with UInt16, SubgroupOperation
+    SubgroupMax_UInt16_value.name = "value"_c;
+    SubgroupMax_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupMax_UInt16_op.name = "operation"_c;
+    SubgroupMax_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_UInt16.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_UInt16.name = SubgroupMax_UInt16_name;
+    SubgroupMax_UInt16.backendIndex = 2267;
+    SubgroupMax_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupMax_UInt16.parameters = SubgroupMax_UInt16_args;
+    Symbol::Resolved(&SubgroupMax_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupMax_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_UInt16)->signature = "subgroupMax(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16)->name = "subgroupMax(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16)->nameWithVarNames = "subgroupMax(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupMax with UInt16x2, SubgroupOperation
+    SubgroupMax_UInt16x2_value.name = "value"_c;
+    SubgroupMax_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupMax_UInt16x2_op.name = "operation"_c;
+    SubgroupMax_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_UInt16x2.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_UInt16x2.name = SubgroupMax_UInt16x2_name;
+    SubgroupMax_UInt16x2.backendIndex = 2268;
+    SubgroupMax_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupMax_UInt16x2.parameters = SubgroupMax_UInt16x2_args;
+    Symbol::Resolved(&SubgroupMax_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupMax_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_UInt16x2)->signature = "subgroupMax(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x2)->name = "subgroupMax(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x2)->nameWithVarNames = "subgroupMax(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupMax with UInt16x3, SubgroupOperation
+    SubgroupMax_UInt16x3_value.name = "value"_c;
+    SubgroupMax_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupMax_UInt16x3_op.name = "operation"_c;
+    SubgroupMax_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_UInt16x3.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_UInt16x3.name = SubgroupMax_UInt16x3_name;
+    SubgroupMax_UInt16x3.backendIndex = 2269;
+    SubgroupMax_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupMax_UInt16x3.parameters = SubgroupMax_UInt16x3_args;
+    Symbol::Resolved(&SubgroupMax_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupMax_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_UInt16x3)->signature = "subgroupMax(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x3)->name = "subgroupMax(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x3)->nameWithVarNames = "subgroupMax(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupMax with UInt16x4, SubgroupOperation
+    SubgroupMax_UInt16x4_value.name = "value"_c;
+    SubgroupMax_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupMax_UInt16x4_op.name = "operation"_c;
+    SubgroupMax_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMax_UInt16x4.documentation = "Take the max of the value across subgroups"_c;
+    SubgroupMax_UInt16x4.name = SubgroupMax_UInt16x4_name;
+    SubgroupMax_UInt16x4.backendIndex = 2270;
+    SubgroupMax_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupMax_UInt16x4.parameters = SubgroupMax_UInt16x4_args;
+    Symbol::Resolved(&SubgroupMax_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupMax_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMax_UInt16x4)->signature = "subgroupMax(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x4)->name = "subgroupMax(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x4)->nameWithVarNames = "subgroupMax(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMax_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupAdd with Float32, SubgroupOperation
+    SubgroupAdd_Float32_value.name = "value"_c;
+    SubgroupAdd_Float32_value.type = Type::FullType{ Float32Type.name };
+    SubgroupAdd_Float32_op.name = "operation"_c;
+    SubgroupAdd_Float32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Float32.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Float32.name = SubgroupAdd_Float32_name;
+    SubgroupAdd_Float32.backendIndex = 2271;
+    SubgroupAdd_Float32.returnType = Type::FullType { Float32Type.name };
+    SubgroupAdd_Float32.parameters = SubgroupAdd_Float32_args;
+    Symbol::Resolved(&SubgroupAdd_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupAdd_Float32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Float32)->signature = "subgroupAdd(f32,SubgroupOperation) f32"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32)->name = "subgroupAdd(f32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32)->nameWithVarNames = "subgroupAdd(value : f32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// subgroupAdd with Float32x2, SubgroupOperation
+    SubgroupAdd_Float32x2_value.name = "value"_c;
+    SubgroupAdd_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
+    SubgroupAdd_Float32x2_op.name = "operation"_c;
+    SubgroupAdd_Float32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Float32x2.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Float32x2.name = SubgroupAdd_Float32x2_name;
+    SubgroupAdd_Float32x2.backendIndex = 2272;
+    SubgroupAdd_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    SubgroupAdd_Float32x2.parameters = SubgroupAdd_Float32x2_args;
+    Symbol::Resolved(&SubgroupAdd_Float32x2_value)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupAdd_Float32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Float32x2)->signature = "subgroupAdd(f32x2,SubgroupOperation) f32x2"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x2)->name = "subgroupAdd(f32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x2)->nameWithVarNames = "subgroupAdd(value : f32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// subgroupAdd with Float32x3, SubgroupOperation
+    SubgroupAdd_Float32x3_value.name = "value"_c;
+    SubgroupAdd_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
+    SubgroupAdd_Float32x3_op.name = "operation"_c;
+    SubgroupAdd_Float32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Float32x3.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Float32x3.name = SubgroupAdd_Float32x3_name;
+    SubgroupAdd_Float32x3.backendIndex = 2273;
+    SubgroupAdd_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    SubgroupAdd_Float32x3.parameters = SubgroupAdd_Float32x3_args;
+    Symbol::Resolved(&SubgroupAdd_Float32x3_value)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupAdd_Float32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Float32x3)->signature = "subgroupAdd(f32x3,SubgroupOperation) f32x3"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x3)->name = "subgroupAdd(f32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x3)->nameWithVarNames = "subgroupAdd(value : f32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// subgroupAdd with Float32x4, SubgroupOperation
+    SubgroupAdd_Float32x4_value.name = "value"_c;
+    SubgroupAdd_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupAdd_Float32x4_op.name = "operation"_c;
+    SubgroupAdd_Float32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Float32x4.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Float32x4.name = SubgroupAdd_Float32x4_name;
+    SubgroupAdd_Float32x4.backendIndex = 2274;
+    SubgroupAdd_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    SubgroupAdd_Float32x4.parameters = SubgroupAdd_Float32x4_args;
+    Symbol::Resolved(&SubgroupAdd_Float32x4_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupAdd_Float32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Float32x4)->signature = "subgroupAdd(f32x4,SubgroupOperation) f32x4"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x4)->name = "subgroupAdd(f32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x4)->nameWithVarNames = "subgroupAdd(value : f32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// subgroupAdd with Float16, SubgroupOperation
+    SubgroupAdd_Float16_value.name = "value"_c;
+    SubgroupAdd_Float16_value.type = Type::FullType{ Float16Type.name };
+    SubgroupAdd_Float16_op.name = "operation"_c;
+    SubgroupAdd_Float16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Float16.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Float16.name = SubgroupAdd_Float16_name;
+    SubgroupAdd_Float16.backendIndex = 2275;
+    SubgroupAdd_Float16.returnType = Type::FullType { Float16Type.name };
+    SubgroupAdd_Float16.parameters = SubgroupAdd_Float16_args;
+    Symbol::Resolved(&SubgroupAdd_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupAdd_Float16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Float16)->signature = "subgroupAdd(f16,SubgroupOperation) f16"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16)->name = "subgroupAdd(f16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16)->nameWithVarNames = "subgroupAdd(value : f16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// subgroupAdd with Float16x2, SubgroupOperation
+    SubgroupAdd_Float16x2_value.name = "value"_c;
+    SubgroupAdd_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupAdd_Float16x2_op.name = "operation"_c;
+    SubgroupAdd_Float16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Float16x2.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Float16x2.name = SubgroupAdd_Float16x2_name;
+    SubgroupAdd_Float16x2.backendIndex = 2276;
+    SubgroupAdd_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    SubgroupAdd_Float16x2.parameters = SubgroupAdd_Float16x2_args;
+    Symbol::Resolved(&SubgroupAdd_Float16x2_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupAdd_Float16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Float16x2)->signature = "subgroupAdd(f16x2,SubgroupOperation) f16x2"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x2)->name = "subgroupAdd(f16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x2)->nameWithVarNames = "subgroupAdd(value : f16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// subgroupAdd with Float16x3, SubgroupOperation
+    SubgroupAdd_Float16x3_value.name = "value"_c;
+    SubgroupAdd_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupAdd_Float16x3_op.name = "operation"_c;
+    SubgroupAdd_Float16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Float16x3.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Float16x3.name = SubgroupAdd_Float16x3_name;
+    SubgroupAdd_Float16x3.backendIndex = 2277;
+    SubgroupAdd_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    SubgroupAdd_Float16x3.parameters = SubgroupAdd_Float16x3_args;
+    Symbol::Resolved(&SubgroupAdd_Float16x3_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupAdd_Float16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Float16x3)->signature = "subgroupAdd(f16x3,SubgroupOperation) f16x3"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x3)->name = "subgroupAdd(f16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x3)->nameWithVarNames = "subgroupAdd(value : f16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// subgroupAdd with Float16x4, SubgroupOperation
+    SubgroupAdd_Float16x4_value.name = "value"_c;
+    SubgroupAdd_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupAdd_Float16x4_op.name = "operation"_c;
+    SubgroupAdd_Float16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Float16x4.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Float16x4.name = SubgroupAdd_Float16x4_name;
+    SubgroupAdd_Float16x4.backendIndex = 2278;
+    SubgroupAdd_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    SubgroupAdd_Float16x4.parameters = SubgroupAdd_Float16x4_args;
+    Symbol::Resolved(&SubgroupAdd_Float16x4_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupAdd_Float16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Float16x4)->signature = "subgroupAdd(f16x4,SubgroupOperation) f16x4"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x4)->name = "subgroupAdd(f16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x4)->nameWithVarNames = "subgroupAdd(value : f16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
+    /// subgroupAdd with Int32, SubgroupOperation
+    SubgroupAdd_Int32_value.name = "value"_c;
+    SubgroupAdd_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupAdd_Int32_op.name = "operation"_c;
+    SubgroupAdd_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Int32.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Int32.name = SubgroupAdd_Int32_name;
+    SubgroupAdd_Int32.backendIndex = 2279;
+    SubgroupAdd_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupAdd_Int32.parameters = SubgroupAdd_Int32_args;
+    Symbol::Resolved(&SubgroupAdd_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupAdd_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Int32)->signature = "subgroupAdd(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32)->name = "subgroupAdd(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32)->nameWithVarNames = "subgroupAdd(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupAdd with Int32x2, SubgroupOperation
+    SubgroupAdd_Int32x2_value.name = "value"_c;
+    SubgroupAdd_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupAdd_Int32x2_op.name = "operation"_c;
+    SubgroupAdd_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Int32x2.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Int32x2.name = SubgroupAdd_Int32x2_name;
+    SubgroupAdd_Int32x2.backendIndex = 2280;
+    SubgroupAdd_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupAdd_Int32x2.parameters = SubgroupAdd_Int32x2_args;
+    Symbol::Resolved(&SubgroupAdd_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupAdd_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Int32x2)->signature = "subgroupAdd(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x2)->name = "subgroupAdd(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x2)->nameWithVarNames = "subgroupAdd(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupAdd with Int32x3, SubgroupOperation
+    SubgroupAdd_Int32x3_value.name = "value"_c;
+    SubgroupAdd_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupAdd_Int32x3_op.name = "operation"_c;
+    SubgroupAdd_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Int32x3.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Int32x3.name = SubgroupAdd_Int32x3_name;
+    SubgroupAdd_Int32x3.backendIndex = 2281;
+    SubgroupAdd_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupAdd_Int32x3.parameters = SubgroupAdd_Int32x3_args;
+    Symbol::Resolved(&SubgroupAdd_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupAdd_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Int32x3)->signature = "subgroupAdd(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x3)->name = "subgroupAdd(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x3)->nameWithVarNames = "subgroupAdd(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupAdd with Int32x4, SubgroupOperation
+    SubgroupAdd_Int32x4_value.name = "value"_c;
+    SubgroupAdd_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupAdd_Int32x4_op.name = "operation"_c;
+    SubgroupAdd_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Int32x4.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Int32x4.name = SubgroupAdd_Int32x4_name;
+    SubgroupAdd_Int32x4.backendIndex = 2282;
+    SubgroupAdd_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupAdd_Int32x4.parameters = SubgroupAdd_Int32x4_args;
+    Symbol::Resolved(&SubgroupAdd_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupAdd_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Int32x4)->signature = "subgroupAdd(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x4)->name = "subgroupAdd(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x4)->nameWithVarNames = "subgroupAdd(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupAdd with Int16, SubgroupOperation
+    SubgroupAdd_Int16_value.name = "value"_c;
+    SubgroupAdd_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupAdd_Int16_op.name = "operation"_c;
+    SubgroupAdd_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Int16.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Int16.name = SubgroupAdd_Int16_name;
+    SubgroupAdd_Int16.backendIndex = 2283;
+    SubgroupAdd_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupAdd_Int16.parameters = SubgroupAdd_Int16_args;
+    Symbol::Resolved(&SubgroupAdd_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupAdd_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Int16)->signature = "subgroupAdd(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16)->name = "subgroupAdd(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16)->nameWithVarNames = "subgroupAdd(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupAdd with Int16x2, SubgroupOperation
+    SubgroupAdd_Int16x2_value.name = "value"_c;
+    SubgroupAdd_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupAdd_Int16x2_op.name = "operation"_c;
+    SubgroupAdd_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Int16x2.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Int16x2.name = SubgroupAdd_Int16x2_name;
+    SubgroupAdd_Int16x2.backendIndex = 2284;
+    SubgroupAdd_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupAdd_Int16x2.parameters = SubgroupAdd_Int16x2_args;
+    Symbol::Resolved(&SubgroupAdd_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupAdd_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Int16x2)->signature = "subgroupAdd(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x2)->name = "subgroupAdd(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x2)->nameWithVarNames = "subgroupAdd(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupAdd with Int16x3, SubgroupOperation
+    SubgroupAdd_Int16x3_value.name = "value"_c;
+    SubgroupAdd_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupAdd_Int16x3_op.name = "operation"_c;
+    SubgroupAdd_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Int16x3.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Int16x3.name = SubgroupAdd_Int16x3_name;
+    SubgroupAdd_Int16x3.backendIndex = 2285;
+    SubgroupAdd_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupAdd_Int16x3.parameters = SubgroupAdd_Int16x3_args;
+    Symbol::Resolved(&SubgroupAdd_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupAdd_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Int16x3)->signature = "subgroupAdd(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x3)->name = "subgroupAdd(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x3)->nameWithVarNames = "subgroupAdd(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupAdd with Int16x4, SubgroupOperation
+    SubgroupAdd_Int16x4_value.name = "value"_c;
+    SubgroupAdd_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupAdd_Int16x4_op.name = "operation"_c;
+    SubgroupAdd_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_Int16x4.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_Int16x4.name = SubgroupAdd_Int16x4_name;
+    SubgroupAdd_Int16x4.backendIndex = 2286;
+    SubgroupAdd_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupAdd_Int16x4.parameters = SubgroupAdd_Int16x4_args;
+    Symbol::Resolved(&SubgroupAdd_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupAdd_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_Int16x4)->signature = "subgroupAdd(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x4)->name = "subgroupAdd(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x4)->nameWithVarNames = "subgroupAdd(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupAdd with UInt32, SubgroupOperation
+    SubgroupAdd_UInt32_value.name = "value"_c;
+    SubgroupAdd_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupAdd_UInt32_op.name = "operation"_c;
+    SubgroupAdd_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_UInt32.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_UInt32.name = SubgroupAdd_UInt32_name;
+    SubgroupAdd_UInt32.backendIndex = 2287;
+    SubgroupAdd_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupAdd_UInt32.parameters = SubgroupAdd_UInt32_args;
+    Symbol::Resolved(&SubgroupAdd_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupAdd_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_UInt32)->signature = "subgroupAdd(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32)->name = "subgroupAdd(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32)->nameWithVarNames = "subgroupAdd(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupAdd with UInt32x2, SubgroupOperation
+    SubgroupAdd_UInt32x2_value.name = "value"_c;
+    SubgroupAdd_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupAdd_UInt32x2_op.name = "operation"_c;
+    SubgroupAdd_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_UInt32x2.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_UInt32x2.name = SubgroupAdd_UInt32x2_name;
+    SubgroupAdd_UInt32x2.backendIndex = 2288;
+    SubgroupAdd_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupAdd_UInt32x2.parameters = SubgroupAdd_UInt32x2_args;
+    Symbol::Resolved(&SubgroupAdd_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupAdd_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_UInt32x2)->signature = "subgroupAdd(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x2)->name = "subgroupAdd(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x2)->nameWithVarNames = "subgroupAdd(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupAdd with UInt32x3, SubgroupOperation
+    SubgroupAdd_UInt32x3_value.name = "value"_c;
+    SubgroupAdd_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupAdd_UInt32x3_op.name = "operation"_c;
+    SubgroupAdd_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_UInt32x3.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_UInt32x3.name = SubgroupAdd_UInt32x3_name;
+    SubgroupAdd_UInt32x3.backendIndex = 2289;
+    SubgroupAdd_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupAdd_UInt32x3.parameters = SubgroupAdd_UInt32x3_args;
+    Symbol::Resolved(&SubgroupAdd_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupAdd_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_UInt32x3)->signature = "subgroupAdd(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x3)->name = "subgroupAdd(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x3)->nameWithVarNames = "subgroupAdd(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupAdd with UInt32x4, SubgroupOperation
+    SubgroupAdd_UInt32x4_value.name = "value"_c;
+    SubgroupAdd_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupAdd_UInt32x4_op.name = "operation"_c;
+    SubgroupAdd_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_UInt32x4.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_UInt32x4.name = SubgroupAdd_UInt32x4_name;
+    SubgroupAdd_UInt32x4.backendIndex = 2290;
+    SubgroupAdd_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupAdd_UInt32x4.parameters = SubgroupAdd_UInt32x4_args;
+    Symbol::Resolved(&SubgroupAdd_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupAdd_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_UInt32x4)->signature = "subgroupAdd(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x4)->name = "subgroupAdd(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x4)->nameWithVarNames = "subgroupAdd(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupAdd with UInt16, SubgroupOperation
+    SubgroupAdd_UInt16_value.name = "value"_c;
+    SubgroupAdd_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupAdd_UInt16_op.name = "operation"_c;
+    SubgroupAdd_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_UInt16.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_UInt16.name = SubgroupAdd_UInt16_name;
+    SubgroupAdd_UInt16.backendIndex = 2291;
+    SubgroupAdd_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupAdd_UInt16.parameters = SubgroupAdd_UInt16_args;
+    Symbol::Resolved(&SubgroupAdd_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupAdd_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_UInt16)->signature = "subgroupAdd(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16)->name = "subgroupAdd(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16)->nameWithVarNames = "subgroupAdd(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupAdd with UInt16x2, SubgroupOperation
+    SubgroupAdd_UInt16x2_value.name = "value"_c;
+    SubgroupAdd_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupAdd_UInt16x2_op.name = "operation"_c;
+    SubgroupAdd_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_UInt16x2.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_UInt16x2.name = SubgroupAdd_UInt16x2_name;
+    SubgroupAdd_UInt16x2.backendIndex = 2292;
+    SubgroupAdd_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupAdd_UInt16x2.parameters = SubgroupAdd_UInt16x2_args;
+    Symbol::Resolved(&SubgroupAdd_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupAdd_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_UInt16x2)->signature = "subgroupAdd(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x2)->name = "subgroupAdd(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x2)->nameWithVarNames = "subgroupAdd(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupAdd with UInt16x3, SubgroupOperation
+    SubgroupAdd_UInt16x3_value.name = "value"_c;
+    SubgroupAdd_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupAdd_UInt16x3_op.name = "operation"_c;
+    SubgroupAdd_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_UInt16x3.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_UInt16x3.name = SubgroupAdd_UInt16x3_name;
+    SubgroupAdd_UInt16x3.backendIndex = 2293;
+    SubgroupAdd_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupAdd_UInt16x3.parameters = SubgroupAdd_UInt16x3_args;
+    Symbol::Resolved(&SubgroupAdd_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupAdd_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_UInt16x3)->signature = "subgroupAdd(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x3)->name = "subgroupAdd(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x3)->nameWithVarNames = "subgroupAdd(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupAdd with UInt16x4, SubgroupOperation
+    SubgroupAdd_UInt16x4_value.name = "value"_c;
+    SubgroupAdd_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupAdd_UInt16x4_op.name = "operation"_c;
+    SubgroupAdd_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAdd_UInt16x4.documentation = "Take the sum of the values across subgroups"_c;
+    SubgroupAdd_UInt16x4.name = SubgroupAdd_UInt16x4_name;
+    SubgroupAdd_UInt16x4.backendIndex = 2294;
+    SubgroupAdd_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupAdd_UInt16x4.parameters = SubgroupAdd_UInt16x4_args;
+    Symbol::Resolved(&SubgroupAdd_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupAdd_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAdd_UInt16x4)->signature = "subgroupAdd(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x4)->name = "subgroupAdd(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x4)->nameWithVarNames = "subgroupAdd(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAdd_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupMul with Float32, SubgroupOperation
+    SubgroupMul_Float32_value.name = "value"_c;
+    SubgroupMul_Float32_value.type = Type::FullType{ Float32Type.name };
+    SubgroupMul_Float32_op.name = "operation"_c;
+    SubgroupMul_Float32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Float32.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Float32.name = SubgroupMul_Float32_name;
+    SubgroupMul_Float32.backendIndex = 2295;
+    SubgroupMul_Float32.returnType = Type::FullType { Float32Type.name };
+    SubgroupMul_Float32.parameters = SubgroupMul_Float32_args;
+    Symbol::Resolved(&SubgroupMul_Float32_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupMul_Float32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Float32)->signature = "subgroupMul(f32,SubgroupOperation) f32"_c;
+    Symbol::Resolved(&SubgroupMul_Float32)->name = "subgroupMul(f32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float32)->nameWithVarNames = "subgroupMul(value : f32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float32)->returnTypeSymbol = &Float32Type;
+
+    /// subgroupMul with Float32x2, SubgroupOperation
+    SubgroupMul_Float32x2_value.name = "value"_c;
+    SubgroupMul_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
+    SubgroupMul_Float32x2_op.name = "operation"_c;
+    SubgroupMul_Float32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Float32x2.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Float32x2.name = SubgroupMul_Float32x2_name;
+    SubgroupMul_Float32x2.backendIndex = 2296;
+    SubgroupMul_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    SubgroupMul_Float32x2.parameters = SubgroupMul_Float32x2_args;
+    Symbol::Resolved(&SubgroupMul_Float32x2_value)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupMul_Float32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Float32x2)->signature = "subgroupMul(f32x2,SubgroupOperation) f32x2"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x2)->name = "subgroupMul(f32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x2)->nameWithVarNames = "subgroupMul(value : f32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// subgroupMul with Float32x3, SubgroupOperation
+    SubgroupMul_Float32x3_value.name = "value"_c;
+    SubgroupMul_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
+    SubgroupMul_Float32x3_op.name = "operation"_c;
+    SubgroupMul_Float32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Float32x3.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Float32x3.name = SubgroupMul_Float32x3_name;
+    SubgroupMul_Float32x3.backendIndex = 2297;
+    SubgroupMul_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    SubgroupMul_Float32x3.parameters = SubgroupMul_Float32x3_args;
+    Symbol::Resolved(&SubgroupMul_Float32x3_value)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupMul_Float32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Float32x3)->signature = "subgroupMul(f32x3,SubgroupOperation) f32x3"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x3)->name = "subgroupMul(f32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x3)->nameWithVarNames = "subgroupMul(value : f32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// subgroupMul with Float32x4, SubgroupOperation
+    SubgroupMul_Float32x4_value.name = "value"_c;
+    SubgroupMul_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupMul_Float32x4_op.name = "operation"_c;
+    SubgroupMul_Float32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Float32x4.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Float32x4.name = SubgroupMul_Float32x4_name;
+    SubgroupMul_Float32x4.backendIndex = 2298;
+    SubgroupMul_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    SubgroupMul_Float32x4.parameters = SubgroupMul_Float32x4_args;
+    Symbol::Resolved(&SubgroupMul_Float32x4_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupMul_Float32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Float32x4)->signature = "subgroupMul(f32x4,SubgroupOperation) f32x4"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x4)->name = "subgroupMul(f32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x4)->nameWithVarNames = "subgroupMul(value : f32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// subgroupMul with Float16, SubgroupOperation
+    SubgroupMul_Float16_value.name = "value"_c;
+    SubgroupMul_Float16_value.type = Type::FullType{ Float16Type.name };
+    SubgroupMul_Float16_op.name = "operation"_c;
+    SubgroupMul_Float16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Float16.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Float16.name = SubgroupMul_Float16_name;
+    SubgroupMul_Float16.backendIndex = 2299;
+    SubgroupMul_Float16.returnType = Type::FullType { Float16Type.name };
+    SubgroupMul_Float16.parameters = SubgroupMul_Float16_args;
+    Symbol::Resolved(&SubgroupMul_Float16_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupMul_Float16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Float16)->signature = "subgroupMul(f16,SubgroupOperation) f16"_c;
+    Symbol::Resolved(&SubgroupMul_Float16)->name = "subgroupMul(f16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float16)->nameWithVarNames = "subgroupMul(value : f16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float16)->returnTypeSymbol = &Float16Type;
+
+    /// subgroupMul with Float16x2, SubgroupOperation
+    SubgroupMul_Float16x2_value.name = "value"_c;
+    SubgroupMul_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupMul_Float16x2_op.name = "operation"_c;
+    SubgroupMul_Float16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Float16x2.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Float16x2.name = SubgroupMul_Float16x2_name;
+    SubgroupMul_Float16x2.backendIndex = 2300;
+    SubgroupMul_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    SubgroupMul_Float16x2.parameters = SubgroupMul_Float16x2_args;
+    Symbol::Resolved(&SubgroupMul_Float16x2_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupMul_Float16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Float16x2)->signature = "subgroupMul(f16x2,SubgroupOperation) f16x2"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x2)->name = "subgroupMul(f16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x2)->nameWithVarNames = "subgroupMul(value : f16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// subgroupMul with Float16x3, SubgroupOperation
+    SubgroupMul_Float16x3_value.name = "value"_c;
+    SubgroupMul_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupMul_Float16x3_op.name = "operation"_c;
+    SubgroupMul_Float16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Float16x3.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Float16x3.name = SubgroupMul_Float16x3_name;
+    SubgroupMul_Float16x3.backendIndex = 2301;
+    SubgroupMul_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    SubgroupMul_Float16x3.parameters = SubgroupMul_Float16x3_args;
+    Symbol::Resolved(&SubgroupMul_Float16x3_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupMul_Float16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Float16x3)->signature = "subgroupMul(f16x3,SubgroupOperation) f16x3"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x3)->name = "subgroupMul(f16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x3)->nameWithVarNames = "subgroupMul(value : f16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// subgroupMul with Float16x4, SubgroupOperation
+    SubgroupMul_Float16x4_value.name = "value"_c;
+    SubgroupMul_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupMul_Float16x4_op.name = "operation"_c;
+    SubgroupMul_Float16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Float16x4.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Float16x4.name = SubgroupMul_Float16x4_name;
+    SubgroupMul_Float16x4.backendIndex = 2302;
+    SubgroupMul_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    SubgroupMul_Float16x4.parameters = SubgroupMul_Float16x4_args;
+    Symbol::Resolved(&SubgroupMul_Float16x4_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupMul_Float16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Float16x4)->signature = "subgroupMul(f16x4,SubgroupOperation) f16x4"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x4)->name = "subgroupMul(f16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x4)->nameWithVarNames = "subgroupMul(value : f16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
+    /// subgroupMul with Int32, SubgroupOperation
+    SubgroupMul_Int32_value.name = "value"_c;
+    SubgroupMul_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupMul_Int32_op.name = "operation"_c;
+    SubgroupMul_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Int32.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Int32.name = SubgroupMul_Int32_name;
+    SubgroupMul_Int32.backendIndex = 2303;
+    SubgroupMul_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupMul_Int32.parameters = SubgroupMul_Int32_args;
+    Symbol::Resolved(&SubgroupMul_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupMul_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Int32)->signature = "subgroupMul(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupMul_Int32)->name = "subgroupMul(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int32)->nameWithVarNames = "subgroupMul(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupMul with Int32x2, SubgroupOperation
+    SubgroupMul_Int32x2_value.name = "value"_c;
+    SubgroupMul_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupMul_Int32x2_op.name = "operation"_c;
+    SubgroupMul_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Int32x2.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Int32x2.name = SubgroupMul_Int32x2_name;
+    SubgroupMul_Int32x2.backendIndex = 2304;
+    SubgroupMul_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupMul_Int32x2.parameters = SubgroupMul_Int32x2_args;
+    Symbol::Resolved(&SubgroupMul_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupMul_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Int32x2)->signature = "subgroupMul(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x2)->name = "subgroupMul(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x2)->nameWithVarNames = "subgroupMul(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupMul with Int32x3, SubgroupOperation
+    SubgroupMul_Int32x3_value.name = "value"_c;
+    SubgroupMul_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupMul_Int32x3_op.name = "operation"_c;
+    SubgroupMul_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Int32x3.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Int32x3.name = SubgroupMul_Int32x3_name;
+    SubgroupMul_Int32x3.backendIndex = 2305;
+    SubgroupMul_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupMul_Int32x3.parameters = SubgroupMul_Int32x3_args;
+    Symbol::Resolved(&SubgroupMul_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupMul_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Int32x3)->signature = "subgroupMul(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x3)->name = "subgroupMul(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x3)->nameWithVarNames = "subgroupMul(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupMul with Int32x4, SubgroupOperation
+    SubgroupMul_Int32x4_value.name = "value"_c;
+    SubgroupMul_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupMul_Int32x4_op.name = "operation"_c;
+    SubgroupMul_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Int32x4.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Int32x4.name = SubgroupMul_Int32x4_name;
+    SubgroupMul_Int32x4.backendIndex = 2306;
+    SubgroupMul_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupMul_Int32x4.parameters = SubgroupMul_Int32x4_args;
+    Symbol::Resolved(&SubgroupMul_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupMul_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Int32x4)->signature = "subgroupMul(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x4)->name = "subgroupMul(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x4)->nameWithVarNames = "subgroupMul(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupMul with Int16, SubgroupOperation
+    SubgroupMul_Int16_value.name = "value"_c;
+    SubgroupMul_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupMul_Int16_op.name = "operation"_c;
+    SubgroupMul_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Int16.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Int16.name = SubgroupMul_Int16_name;
+    SubgroupMul_Int16.backendIndex = 2307;
+    SubgroupMul_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupMul_Int16.parameters = SubgroupMul_Int16_args;
+    Symbol::Resolved(&SubgroupMul_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupMul_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Int16)->signature = "subgroupMul(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupMul_Int16)->name = "subgroupMul(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int16)->nameWithVarNames = "subgroupMul(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupMul with Int16x2, SubgroupOperation
+    SubgroupMul_Int16x2_value.name = "value"_c;
+    SubgroupMul_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupMul_Int16x2_op.name = "operation"_c;
+    SubgroupMul_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Int16x2.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Int16x2.name = SubgroupMul_Int16x2_name;
+    SubgroupMul_Int16x2.backendIndex = 2308;
+    SubgroupMul_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupMul_Int16x2.parameters = SubgroupMul_Int16x2_args;
+    Symbol::Resolved(&SubgroupMul_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupMul_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Int16x2)->signature = "subgroupMul(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x2)->name = "subgroupMul(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x2)->nameWithVarNames = "subgroupMul(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupMul with Int16x3, SubgroupOperation
+    SubgroupMul_Int16x3_value.name = "value"_c;
+    SubgroupMul_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupMul_Int16x3_op.name = "operation"_c;
+    SubgroupMul_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Int16x3.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Int16x3.name = SubgroupMul_Int16x3_name;
+    SubgroupMul_Int16x3.backendIndex = 2309;
+    SubgroupMul_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupMul_Int16x3.parameters = SubgroupMul_Int16x3_args;
+    Symbol::Resolved(&SubgroupMul_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupMul_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Int16x3)->signature = "subgroupMul(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x3)->name = "subgroupMul(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x3)->nameWithVarNames = "subgroupMul(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupMul with Int16x4, SubgroupOperation
+    SubgroupMul_Int16x4_value.name = "value"_c;
+    SubgroupMul_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupMul_Int16x4_op.name = "operation"_c;
+    SubgroupMul_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_Int16x4.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_Int16x4.name = SubgroupMul_Int16x4_name;
+    SubgroupMul_Int16x4.backendIndex = 2310;
+    SubgroupMul_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupMul_Int16x4.parameters = SubgroupMul_Int16x4_args;
+    Symbol::Resolved(&SubgroupMul_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupMul_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_Int16x4)->signature = "subgroupMul(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x4)->name = "subgroupMul(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x4)->nameWithVarNames = "subgroupMul(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupMul with UInt32, SubgroupOperation
+    SubgroupMul_UInt32_value.name = "value"_c;
+    SubgroupMul_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupMul_UInt32_op.name = "operation"_c;
+    SubgroupMul_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_UInt32.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_UInt32.name = SubgroupMul_UInt32_name;
+    SubgroupMul_UInt32.backendIndex = 2311;
+    SubgroupMul_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupMul_UInt32.parameters = SubgroupMul_UInt32_args;
+    Symbol::Resolved(&SubgroupMul_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupMul_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_UInt32)->signature = "subgroupMul(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32)->name = "subgroupMul(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32)->nameWithVarNames = "subgroupMul(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupMul with UInt32x2, SubgroupOperation
+    SubgroupMul_UInt32x2_value.name = "value"_c;
+    SubgroupMul_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupMul_UInt32x2_op.name = "operation"_c;
+    SubgroupMul_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_UInt32x2.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_UInt32x2.name = SubgroupMul_UInt32x2_name;
+    SubgroupMul_UInt32x2.backendIndex = 2312;
+    SubgroupMul_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupMul_UInt32x2.parameters = SubgroupMul_UInt32x2_args;
+    Symbol::Resolved(&SubgroupMul_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupMul_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_UInt32x2)->signature = "subgroupMul(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x2)->name = "subgroupMul(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x2)->nameWithVarNames = "subgroupMul(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupMul with UInt32x3, SubgroupOperation
+    SubgroupMul_UInt32x3_value.name = "value"_c;
+    SubgroupMul_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupMul_UInt32x3_op.name = "operation"_c;
+    SubgroupMul_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_UInt32x3.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_UInt32x3.name = SubgroupMul_UInt32x3_name;
+    SubgroupMul_UInt32x3.backendIndex = 2313;
+    SubgroupMul_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupMul_UInt32x3.parameters = SubgroupMul_UInt32x3_args;
+    Symbol::Resolved(&SubgroupMul_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupMul_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_UInt32x3)->signature = "subgroupMul(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x3)->name = "subgroupMul(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x3)->nameWithVarNames = "subgroupMul(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupMul with UInt32x4, SubgroupOperation
+    SubgroupMul_UInt32x4_value.name = "value"_c;
+    SubgroupMul_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupMul_UInt32x4_op.name = "operation"_c;
+    SubgroupMul_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_UInt32x4.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_UInt32x4.name = SubgroupMul_UInt32x4_name;
+    SubgroupMul_UInt32x4.backendIndex = 2314;
+    SubgroupMul_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupMul_UInt32x4.parameters = SubgroupMul_UInt32x4_args;
+    Symbol::Resolved(&SubgroupMul_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupMul_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_UInt32x4)->signature = "subgroupMul(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x4)->name = "subgroupMul(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x4)->nameWithVarNames = "subgroupMul(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupMul with UInt16, SubgroupOperation
+    SubgroupMul_UInt16_value.name = "value"_c;
+    SubgroupMul_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupMul_UInt16_op.name = "operation"_c;
+    SubgroupMul_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_UInt16.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_UInt16.name = SubgroupMul_UInt16_name;
+    SubgroupMul_UInt16.backendIndex = 2315;
+    SubgroupMul_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupMul_UInt16.parameters = SubgroupMul_UInt16_args;
+    Symbol::Resolved(&SubgroupMul_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupMul_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_UInt16)->signature = "subgroupMul(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16)->name = "subgroupMul(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16)->nameWithVarNames = "subgroupMul(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupMul with UInt16x2, SubgroupOperation
+    SubgroupMul_UInt16x2_value.name = "value"_c;
+    SubgroupMul_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupMul_UInt16x2_op.name = "operation"_c;
+    SubgroupMul_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_UInt16x2.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_UInt16x2.name = SubgroupMul_UInt16x2_name;
+    SubgroupMul_UInt16x2.backendIndex = 2316;
+    SubgroupMul_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupMul_UInt16x2.parameters = SubgroupMul_UInt16x2_args;
+    Symbol::Resolved(&SubgroupMul_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupMul_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_UInt16x2)->signature = "subgroupMul(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x2)->name = "subgroupMul(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x2)->nameWithVarNames = "subgroupMul(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupMul with UInt16x3, SubgroupOperation
+    SubgroupMul_UInt16x3_value.name = "value"_c;
+    SubgroupMul_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupMul_UInt16x3_op.name = "operation"_c;
+    SubgroupMul_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_UInt16x3.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_UInt16x3.name = SubgroupMul_UInt16x3_name;
+    SubgroupMul_UInt16x3.backendIndex = 2317;
+    SubgroupMul_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupMul_UInt16x3.parameters = SubgroupMul_UInt16x3_args;
+    Symbol::Resolved(&SubgroupMul_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupMul_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_UInt16x3)->signature = "subgroupMul(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x3)->name = "subgroupMul(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x3)->nameWithVarNames = "subgroupMul(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupMul with UInt16x4, SubgroupOperation
+    SubgroupMul_UInt16x4_value.name = "value"_c;
+    SubgroupMul_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupMul_UInt16x4_op.name = "operation"_c;
+    SubgroupMul_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMul_UInt16x4.documentation = "Take the product of the values across subgroups"_c;
+    SubgroupMul_UInt16x4.name = SubgroupMul_UInt16x4_name;
+    SubgroupMul_UInt16x4.backendIndex = 2318;
+    SubgroupMul_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupMul_UInt16x4.parameters = SubgroupMul_UInt16x4_args;
+    Symbol::Resolved(&SubgroupMul_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupMul_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupMul_UInt16x4)->signature = "subgroupMul(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x4)->name = "subgroupMul(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x4)->nameWithVarNames = "subgroupMul(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMul_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupAnd with Int32, SubgroupOperation
+    SubgroupAnd_Int32_value.name = "value"_c;
+    SubgroupAnd_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupAnd_Int32_op.name = "operation"_c;
+    SubgroupAnd_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_Int32.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_Int32.name = SubgroupAnd_Int32_name;
+    SubgroupAnd_Int32.backendIndex = 2319;
+    SubgroupAnd_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupAnd_Int32.parameters = SubgroupAnd_Int32_args;
+    Symbol::Resolved(&SubgroupAnd_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupAnd_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_Int32)->signature = "subgroupAnd(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32)->name = "subgroupAnd(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32)->nameWithVarNames = "subgroupAnd(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupAnd with Int32x2, SubgroupOperation
+    SubgroupAnd_Int32x2_value.name = "value"_c;
+    SubgroupAnd_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupAnd_Int32x2_op.name = "operation"_c;
+    SubgroupAnd_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_Int32x2.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_Int32x2.name = SubgroupAnd_Int32x2_name;
+    SubgroupAnd_Int32x2.backendIndex = 2320;
+    SubgroupAnd_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupAnd_Int32x2.parameters = SubgroupAnd_Int32x2_args;
+    Symbol::Resolved(&SubgroupAnd_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupAnd_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_Int32x2)->signature = "subgroupAnd(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x2)->name = "subgroupAnd(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x2)->nameWithVarNames = "subgroupAnd(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupAnd with Int32x3, SubgroupOperation
+    SubgroupAnd_Int32x3_value.name = "value"_c;
+    SubgroupAnd_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupAnd_Int32x3_op.name = "operation"_c;
+    SubgroupAnd_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_Int32x3.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_Int32x3.name = SubgroupAnd_Int32x3_name;
+    SubgroupAnd_Int32x3.backendIndex = 2321;
+    SubgroupAnd_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupAnd_Int32x3.parameters = SubgroupAnd_Int32x3_args;
+    Symbol::Resolved(&SubgroupAnd_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupAnd_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_Int32x3)->signature = "subgroupAnd(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x3)->name = "subgroupAnd(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x3)->nameWithVarNames = "subgroupAnd(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupAnd with Int32x4, SubgroupOperation
+    SubgroupAnd_Int32x4_value.name = "value"_c;
+    SubgroupAnd_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupAnd_Int32x4_op.name = "operation"_c;
+    SubgroupAnd_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_Int32x4.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_Int32x4.name = SubgroupAnd_Int32x4_name;
+    SubgroupAnd_Int32x4.backendIndex = 2322;
+    SubgroupAnd_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupAnd_Int32x4.parameters = SubgroupAnd_Int32x4_args;
+    Symbol::Resolved(&SubgroupAnd_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupAnd_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_Int32x4)->signature = "subgroupAnd(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x4)->name = "subgroupAnd(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x4)->nameWithVarNames = "subgroupAnd(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupAnd with Int16, SubgroupOperation
+    SubgroupAnd_Int16_value.name = "value"_c;
+    SubgroupAnd_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupAnd_Int16_op.name = "operation"_c;
+    SubgroupAnd_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_Int16.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_Int16.name = SubgroupAnd_Int16_name;
+    SubgroupAnd_Int16.backendIndex = 2323;
+    SubgroupAnd_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupAnd_Int16.parameters = SubgroupAnd_Int16_args;
+    Symbol::Resolved(&SubgroupAnd_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupAnd_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_Int16)->signature = "subgroupAnd(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16)->name = "subgroupAnd(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16)->nameWithVarNames = "subgroupAnd(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupAnd with Int16x2, SubgroupOperation
+    SubgroupAnd_Int16x2_value.name = "value"_c;
+    SubgroupAnd_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupAnd_Int16x2_op.name = "operation"_c;
+    SubgroupAnd_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_Int16x2.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_Int16x2.name = SubgroupAnd_Int16x2_name;
+    SubgroupAnd_Int16x2.backendIndex = 2324;
+    SubgroupAnd_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupAnd_Int16x2.parameters = SubgroupAnd_Int16x2_args;
+    Symbol::Resolved(&SubgroupAnd_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupAnd_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_Int16x2)->signature = "subgroupAnd(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x2)->name = "subgroupAnd(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x2)->nameWithVarNames = "subgroupAnd(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupAnd with Int16x3, SubgroupOperation
+    SubgroupAnd_Int16x3_value.name = "value"_c;
+    SubgroupAnd_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupAnd_Int16x3_op.name = "operation"_c;
+    SubgroupAnd_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_Int16x3.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_Int16x3.name = SubgroupAnd_Int16x3_name;
+    SubgroupAnd_Int16x3.backendIndex = 2325;
+    SubgroupAnd_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupAnd_Int16x3.parameters = SubgroupAnd_Int16x3_args;
+    Symbol::Resolved(&SubgroupAnd_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupAnd_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_Int16x3)->signature = "subgroupAnd(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x3)->name = "subgroupAnd(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x3)->nameWithVarNames = "subgroupAnd(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupAnd with Int16x4, SubgroupOperation
+    SubgroupAnd_Int16x4_value.name = "value"_c;
+    SubgroupAnd_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupAnd_Int16x4_op.name = "operation"_c;
+    SubgroupAnd_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_Int16x4.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_Int16x4.name = SubgroupAnd_Int16x4_name;
+    SubgroupAnd_Int16x4.backendIndex = 2326;
+    SubgroupAnd_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupAnd_Int16x4.parameters = SubgroupAnd_Int16x4_args;
+    Symbol::Resolved(&SubgroupAnd_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupAnd_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_Int16x4)->signature = "subgroupAnd(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x4)->name = "subgroupAnd(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x4)->nameWithVarNames = "subgroupAnd(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupAnd with UInt32, SubgroupOperation
+    SubgroupAnd_UInt32_value.name = "value"_c;
+    SubgroupAnd_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupAnd_UInt32_op.name = "operation"_c;
+    SubgroupAnd_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_UInt32.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_UInt32.name = SubgroupAnd_UInt32_name;
+    SubgroupAnd_UInt32.backendIndex = 2327;
+    SubgroupAnd_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupAnd_UInt32.parameters = SubgroupAnd_UInt32_args;
+    Symbol::Resolved(&SubgroupAnd_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupAnd_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_UInt32)->signature = "subgroupAnd(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32)->name = "subgroupAnd(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32)->nameWithVarNames = "subgroupAnd(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupAnd with UInt32x2, SubgroupOperation
+    SubgroupAnd_UInt32x2_value.name = "value"_c;
+    SubgroupAnd_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupAnd_UInt32x2_op.name = "operation"_c;
+    SubgroupAnd_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_UInt32x2.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_UInt32x2.name = SubgroupAnd_UInt32x2_name;
+    SubgroupAnd_UInt32x2.backendIndex = 2328;
+    SubgroupAnd_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupAnd_UInt32x2.parameters = SubgroupAnd_UInt32x2_args;
+    Symbol::Resolved(&SubgroupAnd_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupAnd_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_UInt32x2)->signature = "subgroupAnd(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x2)->name = "subgroupAnd(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x2)->nameWithVarNames = "subgroupAnd(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupAnd with UInt32x3, SubgroupOperation
+    SubgroupAnd_UInt32x3_value.name = "value"_c;
+    SubgroupAnd_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupAnd_UInt32x3_op.name = "operation"_c;
+    SubgroupAnd_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_UInt32x3.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_UInt32x3.name = SubgroupAnd_UInt32x3_name;
+    SubgroupAnd_UInt32x3.backendIndex = 2329;
+    SubgroupAnd_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupAnd_UInt32x3.parameters = SubgroupAnd_UInt32x3_args;
+    Symbol::Resolved(&SubgroupAnd_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupAnd_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_UInt32x3)->signature = "subgroupAnd(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x3)->name = "subgroupAnd(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x3)->nameWithVarNames = "subgroupAnd(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupAnd with UInt32x4, SubgroupOperation
+    SubgroupAnd_UInt32x4_value.name = "value"_c;
+    SubgroupAnd_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupAnd_UInt32x4_op.name = "operation"_c;
+    SubgroupAnd_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_UInt32x4.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_UInt32x4.name = SubgroupAnd_UInt32x4_name;
+    SubgroupAnd_UInt32x4.backendIndex = 2330;
+    SubgroupAnd_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupAnd_UInt32x4.parameters = SubgroupAnd_UInt32x4_args;
+    Symbol::Resolved(&SubgroupAnd_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupAnd_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_UInt32x4)->signature = "subgroupAnd(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x4)->name = "subgroupAnd(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x4)->nameWithVarNames = "subgroupAnd(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupAnd with UInt16, SubgroupOperation
+    SubgroupAnd_UInt16_value.name = "value"_c;
+    SubgroupAnd_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupAnd_UInt16_op.name = "operation"_c;
+    SubgroupAnd_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_UInt16.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_UInt16.name = SubgroupAnd_UInt16_name;
+    SubgroupAnd_UInt16.backendIndex = 2331;
+    SubgroupAnd_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupAnd_UInt16.parameters = SubgroupAnd_UInt16_args;
+    Symbol::Resolved(&SubgroupAnd_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupAnd_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_UInt16)->signature = "subgroupAnd(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16)->name = "subgroupAnd(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16)->nameWithVarNames = "subgroupAnd(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupAnd with UInt16x2, SubgroupOperation
+    SubgroupAnd_UInt16x2_value.name = "value"_c;
+    SubgroupAnd_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupAnd_UInt16x2_op.name = "operation"_c;
+    SubgroupAnd_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_UInt16x2.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_UInt16x2.name = SubgroupAnd_UInt16x2_name;
+    SubgroupAnd_UInt16x2.backendIndex = 2332;
+    SubgroupAnd_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupAnd_UInt16x2.parameters = SubgroupAnd_UInt16x2_args;
+    Symbol::Resolved(&SubgroupAnd_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupAnd_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_UInt16x2)->signature = "subgroupAnd(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x2)->name = "subgroupAnd(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x2)->nameWithVarNames = "subgroupAnd(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupAnd with UInt16x3, SubgroupOperation
+    SubgroupAnd_UInt16x3_value.name = "value"_c;
+    SubgroupAnd_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupAnd_UInt16x3_op.name = "operation"_c;
+    SubgroupAnd_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_UInt16x3.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_UInt16x3.name = SubgroupAnd_UInt16x3_name;
+    SubgroupAnd_UInt16x3.backendIndex = 2333;
+    SubgroupAnd_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupAnd_UInt16x3.parameters = SubgroupAnd_UInt16x3_args;
+    Symbol::Resolved(&SubgroupAnd_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupAnd_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_UInt16x3)->signature = "subgroupAnd(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x3)->name = "subgroupAnd(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x3)->nameWithVarNames = "subgroupAnd(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupAnd with UInt16x4, SubgroupOperation
+    SubgroupAnd_UInt16x4_value.name = "value"_c;
+    SubgroupAnd_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupAnd_UInt16x4_op.name = "operation"_c;
+    SubgroupAnd_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupAnd_UInt16x4.documentation = "Perform bitwise AND across all subgroups"_c;
+    SubgroupAnd_UInt16x4.name = SubgroupAnd_UInt16x4_name;
+    SubgroupAnd_UInt16x4.backendIndex = 2334;
+    SubgroupAnd_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupAnd_UInt16x4.parameters = SubgroupAnd_UInt16x4_args;
+    Symbol::Resolved(&SubgroupAnd_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupAnd_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupAnd_UInt16x4)->signature = "subgroupAnd(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x4)->name = "subgroupAnd(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x4)->nameWithVarNames = "subgroupAnd(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupAnd_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupOr with Int32, SubgroupOperation
+    SubgroupOr_Int32_value.name = "value"_c;
+    SubgroupOr_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupOr_Int32_op.name = "operation"_c;
+    SubgroupOr_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_Int32.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_Int32.name = SubgroupOr_Int32_name;
+    SubgroupOr_Int32.backendIndex = 2335;
+    SubgroupOr_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupOr_Int32.parameters = SubgroupOr_Int32_args;
+    Symbol::Resolved(&SubgroupOr_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupOr_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_Int32)->signature = "subgroupOr(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupOr_Int32)->name = "subgroupOr(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int32)->nameWithVarNames = "subgroupOr(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupOr with Int32x2, SubgroupOperation
+    SubgroupOr_Int32x2_value.name = "value"_c;
+    SubgroupOr_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupOr_Int32x2_op.name = "operation"_c;
+    SubgroupOr_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_Int32x2.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_Int32x2.name = SubgroupOr_Int32x2_name;
+    SubgroupOr_Int32x2.backendIndex = 2336;
+    SubgroupOr_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupOr_Int32x2.parameters = SubgroupOr_Int32x2_args;
+    Symbol::Resolved(&SubgroupOr_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupOr_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_Int32x2)->signature = "subgroupOr(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x2)->name = "subgroupOr(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x2)->nameWithVarNames = "subgroupOr(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupOr with Int32x3, SubgroupOperation
+    SubgroupOr_Int32x3_value.name = "value"_c;
+    SubgroupOr_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupOr_Int32x3_op.name = "operation"_c;
+    SubgroupOr_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_Int32x3.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_Int32x3.name = SubgroupOr_Int32x3_name;
+    SubgroupOr_Int32x3.backendIndex = 2337;
+    SubgroupOr_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupOr_Int32x3.parameters = SubgroupOr_Int32x3_args;
+    Symbol::Resolved(&SubgroupOr_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupOr_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_Int32x3)->signature = "subgroupOr(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x3)->name = "subgroupOr(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x3)->nameWithVarNames = "subgroupOr(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupOr with Int32x4, SubgroupOperation
+    SubgroupOr_Int32x4_value.name = "value"_c;
+    SubgroupOr_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupOr_Int32x4_op.name = "operation"_c;
+    SubgroupOr_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_Int32x4.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_Int32x4.name = SubgroupOr_Int32x4_name;
+    SubgroupOr_Int32x4.backendIndex = 2338;
+    SubgroupOr_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupOr_Int32x4.parameters = SubgroupOr_Int32x4_args;
+    Symbol::Resolved(&SubgroupOr_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupOr_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_Int32x4)->signature = "subgroupOr(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x4)->name = "subgroupOr(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x4)->nameWithVarNames = "subgroupOr(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupOr with Int16, SubgroupOperation
+    SubgroupOr_Int16_value.name = "value"_c;
+    SubgroupOr_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupOr_Int16_op.name = "operation"_c;
+    SubgroupOr_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_Int16.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_Int16.name = SubgroupOr_Int16_name;
+    SubgroupOr_Int16.backendIndex = 2339;
+    SubgroupOr_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupOr_Int16.parameters = SubgroupOr_Int16_args;
+    Symbol::Resolved(&SubgroupOr_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupOr_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_Int16)->signature = "subgroupOr(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupOr_Int16)->name = "subgroupOr(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int16)->nameWithVarNames = "subgroupOr(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupOr with Int16x2, SubgroupOperation
+    SubgroupOr_Int16x2_value.name = "value"_c;
+    SubgroupOr_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupOr_Int16x2_op.name = "operation"_c;
+    SubgroupOr_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_Int16x2.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_Int16x2.name = SubgroupOr_Int16x2_name;
+    SubgroupOr_Int16x2.backendIndex = 2340;
+    SubgroupOr_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupOr_Int16x2.parameters = SubgroupOr_Int16x2_args;
+    Symbol::Resolved(&SubgroupOr_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupOr_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_Int16x2)->signature = "subgroupOr(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x2)->name = "subgroupOr(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x2)->nameWithVarNames = "subgroupOr(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupOr with Int16x3, SubgroupOperation
+    SubgroupOr_Int16x3_value.name = "value"_c;
+    SubgroupOr_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupOr_Int16x3_op.name = "operation"_c;
+    SubgroupOr_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_Int16x3.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_Int16x3.name = SubgroupOr_Int16x3_name;
+    SubgroupOr_Int16x3.backendIndex = 2341;
+    SubgroupOr_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupOr_Int16x3.parameters = SubgroupOr_Int16x3_args;
+    Symbol::Resolved(&SubgroupOr_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupOr_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_Int16x3)->signature = "subgroupOr(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x3)->name = "subgroupOr(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x3)->nameWithVarNames = "subgroupOr(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupOr with Int16x4, SubgroupOperation
+    SubgroupOr_Int16x4_value.name = "value"_c;
+    SubgroupOr_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupOr_Int16x4_op.name = "operation"_c;
+    SubgroupOr_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_Int16x4.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_Int16x4.name = SubgroupOr_Int16x4_name;
+    SubgroupOr_Int16x4.backendIndex = 2342;
+    SubgroupOr_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupOr_Int16x4.parameters = SubgroupOr_Int16x4_args;
+    Symbol::Resolved(&SubgroupOr_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupOr_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_Int16x4)->signature = "subgroupOr(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x4)->name = "subgroupOr(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x4)->nameWithVarNames = "subgroupOr(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupOr with UInt32, SubgroupOperation
+    SubgroupOr_UInt32_value.name = "value"_c;
+    SubgroupOr_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupOr_UInt32_op.name = "operation"_c;
+    SubgroupOr_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_UInt32.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_UInt32.name = SubgroupOr_UInt32_name;
+    SubgroupOr_UInt32.backendIndex = 2343;
+    SubgroupOr_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupOr_UInt32.parameters = SubgroupOr_UInt32_args;
+    Symbol::Resolved(&SubgroupOr_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupOr_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_UInt32)->signature = "subgroupOr(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32)->name = "subgroupOr(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32)->nameWithVarNames = "subgroupOr(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupOr with UInt32x2, SubgroupOperation
+    SubgroupOr_UInt32x2_value.name = "value"_c;
+    SubgroupOr_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupOr_UInt32x2_op.name = "operation"_c;
+    SubgroupOr_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_UInt32x2.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_UInt32x2.name = SubgroupOr_UInt32x2_name;
+    SubgroupOr_UInt32x2.backendIndex = 2344;
+    SubgroupOr_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupOr_UInt32x2.parameters = SubgroupOr_UInt32x2_args;
+    Symbol::Resolved(&SubgroupOr_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupOr_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_UInt32x2)->signature = "subgroupOr(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x2)->name = "subgroupOr(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x2)->nameWithVarNames = "subgroupOr(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupOr with UInt32x3, SubgroupOperation
+    SubgroupOr_UInt32x3_value.name = "value"_c;
+    SubgroupOr_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupOr_UInt32x3_op.name = "operation"_c;
+    SubgroupOr_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_UInt32x3.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_UInt32x3.name = SubgroupOr_UInt32x3_name;
+    SubgroupOr_UInt32x3.backendIndex = 2345;
+    SubgroupOr_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupOr_UInt32x3.parameters = SubgroupOr_UInt32x3_args;
+    Symbol::Resolved(&SubgroupOr_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupOr_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_UInt32x3)->signature = "subgroupOr(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x3)->name = "subgroupOr(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x3)->nameWithVarNames = "subgroupOr(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupOr with UInt32x4, SubgroupOperation
+    SubgroupOr_UInt32x4_value.name = "value"_c;
+    SubgroupOr_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupOr_UInt32x4_op.name = "operation"_c;
+    SubgroupOr_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_UInt32x4.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_UInt32x4.name = SubgroupOr_UInt32x4_name;
+    SubgroupOr_UInt32x4.backendIndex = 2346;
+    SubgroupOr_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupOr_UInt32x4.parameters = SubgroupOr_UInt32x4_args;
+    Symbol::Resolved(&SubgroupOr_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupOr_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_UInt32x4)->signature = "subgroupOr(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x4)->name = "subgroupOr(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x4)->nameWithVarNames = "subgroupOr(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupOr with UInt16, SubgroupOperation
+    SubgroupOr_UInt16_value.name = "value"_c;
+    SubgroupOr_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupOr_UInt16_op.name = "operation"_c;
+    SubgroupOr_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_UInt16.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_UInt16.name = SubgroupOr_UInt16_name;
+    SubgroupOr_UInt16.backendIndex = 2347;
+    SubgroupOr_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupOr_UInt16.parameters = SubgroupOr_UInt16_args;
+    Symbol::Resolved(&SubgroupOr_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupOr_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_UInt16)->signature = "subgroupOr(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16)->name = "subgroupOr(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16)->nameWithVarNames = "subgroupOr(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupOr with UInt16x2, SubgroupOperation
+    SubgroupOr_UInt16x2_value.name = "value"_c;
+    SubgroupOr_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupOr_UInt16x2_op.name = "operation"_c;
+    SubgroupOr_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_UInt16x2.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_UInt16x2.name = SubgroupOr_UInt16x2_name;
+    SubgroupOr_UInt16x2.backendIndex = 2348;
+    SubgroupOr_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupOr_UInt16x2.parameters = SubgroupOr_UInt16x2_args;
+    Symbol::Resolved(&SubgroupOr_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupOr_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_UInt16x2)->signature = "subgroupOr(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x2)->name = "subgroupOr(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x2)->nameWithVarNames = "subgroupOr(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupOr with UInt16x3, SubgroupOperation
+    SubgroupOr_UInt16x3_value.name = "value"_c;
+    SubgroupOr_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupOr_UInt16x3_op.name = "operation"_c;
+    SubgroupOr_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_UInt16x3.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_UInt16x3.name = SubgroupOr_UInt16x3_name;
+    SubgroupOr_UInt16x3.backendIndex = 2349;
+    SubgroupOr_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupOr_UInt16x3.parameters = SubgroupOr_UInt16x3_args;
+    Symbol::Resolved(&SubgroupOr_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupOr_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_UInt16x3)->signature = "subgroupOr(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x3)->name = "subgroupOr(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x3)->nameWithVarNames = "subgroupOr(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupOr with UInt16x4, SubgroupOperation
+    SubgroupOr_UInt16x4_value.name = "value"_c;
+    SubgroupOr_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupOr_UInt16x4_op.name = "operation"_c;
+    SubgroupOr_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupOr_UInt16x4.documentation = "Perform bitwise OR across all subgroups"_c;
+    SubgroupOr_UInt16x4.name = SubgroupOr_UInt16x4_name;
+    SubgroupOr_UInt16x4.backendIndex = 2350;
+    SubgroupOr_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupOr_UInt16x4.parameters = SubgroupOr_UInt16x4_args;
+    Symbol::Resolved(&SubgroupOr_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupOr_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupOr_UInt16x4)->signature = "subgroupOr(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x4)->name = "subgroupOr(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x4)->nameWithVarNames = "subgroupOr(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupOr_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupXor with Int32, SubgroupOperation
+    SubgroupXor_Int32_value.name = "value"_c;
+    SubgroupXor_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupXor_Int32_op.name = "operation"_c;
+    SubgroupXor_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_Int32.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_Int32.name = SubgroupXor_Int32_name;
+    SubgroupXor_Int32.backendIndex = 2351;
+    SubgroupXor_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupXor_Int32.parameters = SubgroupXor_Int32_args;
+    Symbol::Resolved(&SubgroupXor_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupXor_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_Int32)->signature = "subgroupXor(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupXor_Int32)->name = "subgroupXor(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int32)->nameWithVarNames = "subgroupXor(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupXor with Int32x2, SubgroupOperation
+    SubgroupXor_Int32x2_value.name = "value"_c;
+    SubgroupXor_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupXor_Int32x2_op.name = "operation"_c;
+    SubgroupXor_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_Int32x2.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_Int32x2.name = SubgroupXor_Int32x2_name;
+    SubgroupXor_Int32x2.backendIndex = 2352;
+    SubgroupXor_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupXor_Int32x2.parameters = SubgroupXor_Int32x2_args;
+    Symbol::Resolved(&SubgroupXor_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupXor_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_Int32x2)->signature = "subgroupXor(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x2)->name = "subgroupXor(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x2)->nameWithVarNames = "subgroupXor(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupXor with Int32x3, SubgroupOperation
+    SubgroupXor_Int32x3_value.name = "value"_c;
+    SubgroupXor_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupXor_Int32x3_op.name = "operation"_c;
+    SubgroupXor_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_Int32x3.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_Int32x3.name = SubgroupXor_Int32x3_name;
+    SubgroupXor_Int32x3.backendIndex = 2353;
+    SubgroupXor_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupXor_Int32x3.parameters = SubgroupXor_Int32x3_args;
+    Symbol::Resolved(&SubgroupXor_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupXor_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_Int32x3)->signature = "subgroupXor(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x3)->name = "subgroupXor(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x3)->nameWithVarNames = "subgroupXor(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupXor with Int32x4, SubgroupOperation
+    SubgroupXor_Int32x4_value.name = "value"_c;
+    SubgroupXor_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupXor_Int32x4_op.name = "operation"_c;
+    SubgroupXor_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_Int32x4.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_Int32x4.name = SubgroupXor_Int32x4_name;
+    SubgroupXor_Int32x4.backendIndex = 2354;
+    SubgroupXor_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupXor_Int32x4.parameters = SubgroupXor_Int32x4_args;
+    Symbol::Resolved(&SubgroupXor_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupXor_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_Int32x4)->signature = "subgroupXor(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x4)->name = "subgroupXor(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x4)->nameWithVarNames = "subgroupXor(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupXor with Int16, SubgroupOperation
+    SubgroupXor_Int16_value.name = "value"_c;
+    SubgroupXor_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupXor_Int16_op.name = "operation"_c;
+    SubgroupXor_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_Int16.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_Int16.name = SubgroupXor_Int16_name;
+    SubgroupXor_Int16.backendIndex = 2355;
+    SubgroupXor_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupXor_Int16.parameters = SubgroupXor_Int16_args;
+    Symbol::Resolved(&SubgroupXor_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupXor_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_Int16)->signature = "subgroupXor(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupXor_Int16)->name = "subgroupXor(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int16)->nameWithVarNames = "subgroupXor(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupXor with Int16x2, SubgroupOperation
+    SubgroupXor_Int16x2_value.name = "value"_c;
+    SubgroupXor_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupXor_Int16x2_op.name = "operation"_c;
+    SubgroupXor_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_Int16x2.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_Int16x2.name = SubgroupXor_Int16x2_name;
+    SubgroupXor_Int16x2.backendIndex = 2356;
+    SubgroupXor_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupXor_Int16x2.parameters = SubgroupXor_Int16x2_args;
+    Symbol::Resolved(&SubgroupXor_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupXor_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_Int16x2)->signature = "subgroupXor(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x2)->name = "subgroupXor(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x2)->nameWithVarNames = "subgroupXor(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupXor with Int16x3, SubgroupOperation
+    SubgroupXor_Int16x3_value.name = "value"_c;
+    SubgroupXor_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupXor_Int16x3_op.name = "operation"_c;
+    SubgroupXor_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_Int16x3.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_Int16x3.name = SubgroupXor_Int16x3_name;
+    SubgroupXor_Int16x3.backendIndex = 2357;
+    SubgroupXor_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupXor_Int16x3.parameters = SubgroupXor_Int16x3_args;
+    Symbol::Resolved(&SubgroupXor_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupXor_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_Int16x3)->signature = "subgroupXor(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x3)->name = "subgroupXor(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x3)->nameWithVarNames = "subgroupXor(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x3)->returnTypeSymbol = &Int16x3Type;
+
+    /// subgroupXor with Int16x4, SubgroupOperation
+    SubgroupXor_Int16x4_value.name = "value"_c;
+    SubgroupXor_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupXor_Int16x4_op.name = "operation"_c;
+    SubgroupXor_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_Int16x4.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_Int16x4.name = SubgroupXor_Int16x4_name;
+    SubgroupXor_Int16x4.backendIndex = 2358;
+    SubgroupXor_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    SubgroupXor_Int16x4.parameters = SubgroupXor_Int16x4_args;
+    Symbol::Resolved(&SubgroupXor_Int16x4_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupXor_Int16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_Int16x4)->signature = "subgroupXor(i16x4,SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x4)->name = "subgroupXor(i16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x4)->nameWithVarNames = "subgroupXor(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_Int16x4)->returnTypeSymbol = &Int16x4Type;
+
+    /// subgroupXor with UInt32, SubgroupOperation
+    SubgroupXor_UInt32_value.name = "value"_c;
+    SubgroupXor_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupXor_UInt32_op.name = "operation"_c;
+    SubgroupXor_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_UInt32.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_UInt32.name = SubgroupXor_UInt32_name;
+    SubgroupXor_UInt32.backendIndex = 2359;
+    SubgroupXor_UInt32.returnType = Type::FullType { UInt32Type.name };
+    SubgroupXor_UInt32.parameters = SubgroupXor_UInt32_args;
+    Symbol::Resolved(&SubgroupXor_UInt32_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupXor_UInt32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_UInt32)->signature = "subgroupXor(u32,SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32)->name = "subgroupXor(u32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32)->nameWithVarNames = "subgroupXor(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32)->returnTypeSymbol = &UInt32Type;
+
+    /// subgroupXor with UInt32x2, SubgroupOperation
+    SubgroupXor_UInt32x2_value.name = "value"_c;
+    SubgroupXor_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupXor_UInt32x2_op.name = "operation"_c;
+    SubgroupXor_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_UInt32x2.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_UInt32x2.name = SubgroupXor_UInt32x2_name;
+    SubgroupXor_UInt32x2.backendIndex = 2360;
+    SubgroupXor_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    SubgroupXor_UInt32x2.parameters = SubgroupXor_UInt32x2_args;
+    Symbol::Resolved(&SubgroupXor_UInt32x2_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupXor_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_UInt32x2)->signature = "subgroupXor(u32x2,SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x2)->name = "subgroupXor(u32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x2)->nameWithVarNames = "subgroupXor(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+
+    /// subgroupXor with UInt32x3, SubgroupOperation
+    SubgroupXor_UInt32x3_value.name = "value"_c;
+    SubgroupXor_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupXor_UInt32x3_op.name = "operation"_c;
+    SubgroupXor_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_UInt32x3.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_UInt32x3.name = SubgroupXor_UInt32x3_name;
+    SubgroupXor_UInt32x3.backendIndex = 2361;
+    SubgroupXor_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    SubgroupXor_UInt32x3.parameters = SubgroupXor_UInt32x3_args;
+    Symbol::Resolved(&SubgroupXor_UInt32x3_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupXor_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_UInt32x3)->signature = "subgroupXor(u32x3,SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x3)->name = "subgroupXor(u32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x3)->nameWithVarNames = "subgroupXor(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+
+    /// subgroupXor with UInt32x4, SubgroupOperation
+    SubgroupXor_UInt32x4_value.name = "value"_c;
+    SubgroupXor_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupXor_UInt32x4_op.name = "operation"_c;
+    SubgroupXor_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_UInt32x4.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_UInt32x4.name = SubgroupXor_UInt32x4_name;
+    SubgroupXor_UInt32x4.backendIndex = 2362;
+    SubgroupXor_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    SubgroupXor_UInt32x4.parameters = SubgroupXor_UInt32x4_args;
+    Symbol::Resolved(&SubgroupXor_UInt32x4_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupXor_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_UInt32x4)->signature = "subgroupXor(u32x4,SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x4)->name = "subgroupXor(u32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x4)->nameWithVarNames = "subgroupXor(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+
+    /// subgroupXor with UInt16, SubgroupOperation
+    SubgroupXor_UInt16_value.name = "value"_c;
+    SubgroupXor_UInt16_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupXor_UInt16_op.name = "operation"_c;
+    SubgroupXor_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_UInt16.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_UInt16.name = SubgroupXor_UInt16_name;
+    SubgroupXor_UInt16.backendIndex = 2363;
+    SubgroupXor_UInt16.returnType = Type::FullType { UInt16Type.name };
+    SubgroupXor_UInt16.parameters = SubgroupXor_UInt16_args;
+    Symbol::Resolved(&SubgroupXor_UInt16_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupXor_UInt16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_UInt16)->signature = "subgroupXor(u16,SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16)->name = "subgroupXor(u16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16)->nameWithVarNames = "subgroupXor(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16)->returnTypeSymbol = &UInt16Type;
+
+    /// subgroupXor with UInt16x2, SubgroupOperation
+    SubgroupXor_UInt16x2_value.name = "value"_c;
+    SubgroupXor_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupXor_UInt16x2_op.name = "operation"_c;
+    SubgroupXor_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_UInt16x2.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_UInt16x2.name = SubgroupXor_UInt16x2_name;
+    SubgroupXor_UInt16x2.backendIndex = 2364;
+    SubgroupXor_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    SubgroupXor_UInt16x2.parameters = SubgroupXor_UInt16x2_args;
+    Symbol::Resolved(&SubgroupXor_UInt16x2_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupXor_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_UInt16x2)->signature = "subgroupXor(u16x2,SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x2)->name = "subgroupXor(u16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x2)->nameWithVarNames = "subgroupXor(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+
+    /// subgroupXor with UInt16x3, SubgroupOperation
+    SubgroupXor_UInt16x3_value.name = "value"_c;
+    SubgroupXor_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupXor_UInt16x3_op.name = "operation"_c;
+    SubgroupXor_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_UInt16x3.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_UInt16x3.name = SubgroupXor_UInt16x3_name;
+    SubgroupXor_UInt16x3.backendIndex = 2365;
+    SubgroupXor_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    SubgroupXor_UInt16x3.parameters = SubgroupXor_UInt16x3_args;
+    Symbol::Resolved(&SubgroupXor_UInt16x3_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupXor_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_UInt16x3)->signature = "subgroupXor(u16x3,SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x3)->name = "subgroupXor(u16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x3)->nameWithVarNames = "subgroupXor(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+
+    /// subgroupXor with UInt16x4, SubgroupOperation
+    SubgroupXor_UInt16x4_value.name = "value"_c;
+    SubgroupXor_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupXor_UInt16x4_op.name = "operation"_c;
+    SubgroupXor_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupXor_UInt16x4.documentation = "Perform bitwise XOR across all subgroups"_c;
+    SubgroupXor_UInt16x4.name = SubgroupXor_UInt16x4_name;
+    SubgroupXor_UInt16x4.backendIndex = 2366;
+    SubgroupXor_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    SubgroupXor_UInt16x4.parameters = SubgroupXor_UInt16x4_args;
+    Symbol::Resolved(&SubgroupXor_UInt16x4_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupXor_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupXor_UInt16x4)->signature = "subgroupXor(u16x4,SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x4)->name = "subgroupXor(u16x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x4)->nameWithVarNames = "subgroupXor(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupXor_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+
+    /// subgroupLogicalAnd with Int32, SubgroupOperation
+    SubgroupLogicalAnd_Int32_value.name = "value"_c;
+    SubgroupLogicalAnd_Int32_value.type = Type::FullType{ Int32Type.name };
+    SubgroupLogicalAnd_Int32_op.name = "operation"_c;
+    SubgroupLogicalAnd_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int32.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_Int32.name = SubgroupLogicalAnd_Int32_name;
+    SubgroupLogicalAnd_Int32.backendIndex = 2367;
+    SubgroupLogicalAnd_Int32.returnType = Type::FullType { Int32Type.name };
+    SubgroupLogicalAnd_Int32.parameters = SubgroupLogicalAnd_Int32_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32)->signature = "subgroupLogicalAnd(i32,SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32)->name = "subgroupLogicalAnd(i32,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32)->nameWithVarNames = "subgroupLogicalAnd(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32)->returnTypeSymbol = &Int32Type;
+
+    /// subgroupLogicalAnd with Int32x2, SubgroupOperation
+    SubgroupLogicalAnd_Int32x2_value.name = "value"_c;
+    SubgroupLogicalAnd_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupLogicalAnd_Int32x2_op.name = "operation"_c;
+    SubgroupLogicalAnd_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int32x2.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_Int32x2.name = SubgroupLogicalAnd_Int32x2_name;
+    SubgroupLogicalAnd_Int32x2.backendIndex = 2368;
+    SubgroupLogicalAnd_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    SubgroupLogicalAnd_Int32x2.parameters = SubgroupLogicalAnd_Int32x2_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x2_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x2)->signature = "subgroupLogicalAnd(i32x2,SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x2)->name = "subgroupLogicalAnd(i32x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x2)->nameWithVarNames = "subgroupLogicalAnd(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x2)->returnTypeSymbol = &Int32x2Type;
+
+    /// subgroupLogicalAnd with Int32x3, SubgroupOperation
+    SubgroupLogicalAnd_Int32x3_value.name = "value"_c;
+    SubgroupLogicalAnd_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupLogicalAnd_Int32x3_op.name = "operation"_c;
+    SubgroupLogicalAnd_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int32x3.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_Int32x3.name = SubgroupLogicalAnd_Int32x3_name;
+    SubgroupLogicalAnd_Int32x3.backendIndex = 2369;
+    SubgroupLogicalAnd_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    SubgroupLogicalAnd_Int32x3.parameters = SubgroupLogicalAnd_Int32x3_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x3_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x3)->signature = "subgroupLogicalAnd(i32x3,SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x3)->name = "subgroupLogicalAnd(i32x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x3)->nameWithVarNames = "subgroupLogicalAnd(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x3)->returnTypeSymbol = &Int32x3Type;
+
+    /// subgroupLogicalAnd with Int32x4, SubgroupOperation
+    SubgroupLogicalAnd_Int32x4_value.name = "value"_c;
+    SubgroupLogicalAnd_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupLogicalAnd_Int32x4_op.name = "operation"_c;
+    SubgroupLogicalAnd_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int32x4.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_Int32x4.name = SubgroupLogicalAnd_Int32x4_name;
+    SubgroupLogicalAnd_Int32x4.backendIndex = 2370;
+    SubgroupLogicalAnd_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    SubgroupLogicalAnd_Int32x4.parameters = SubgroupLogicalAnd_Int32x4_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x4_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x4_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x4)->signature = "subgroupLogicalAnd(i32x4,SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x4)->name = "subgroupLogicalAnd(i32x4,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x4)->nameWithVarNames = "subgroupLogicalAnd(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int32x4)->returnTypeSymbol = &Int32x4Type;
+
+    /// subgroupLogicalAnd with Int16, SubgroupOperation
+    SubgroupLogicalAnd_Int16_value.name = "value"_c;
+    SubgroupLogicalAnd_Int16_value.type = Type::FullType{ Int16Type.name };
+    SubgroupLogicalAnd_Int16_op.name = "operation"_c;
+    SubgroupLogicalAnd_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int16.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_Int16.name = SubgroupLogicalAnd_Int16_name;
+    SubgroupLogicalAnd_Int16.backendIndex = 2371;
+    SubgroupLogicalAnd_Int16.returnType = Type::FullType { Int16Type.name };
+    SubgroupLogicalAnd_Int16.parameters = SubgroupLogicalAnd_Int16_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16)->signature = "subgroupLogicalAnd(i16,SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16)->name = "subgroupLogicalAnd(i16,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16)->nameWithVarNames = "subgroupLogicalAnd(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16)->returnTypeSymbol = &Int16Type;
+
+    /// subgroupLogicalAnd with Int16x2, SubgroupOperation
+    SubgroupLogicalAnd_Int16x2_value.name = "value"_c;
+    SubgroupLogicalAnd_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupLogicalAnd_Int16x2_op.name = "operation"_c;
+    SubgroupLogicalAnd_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int16x2.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_Int16x2.name = SubgroupLogicalAnd_Int16x2_name;
+    SubgroupLogicalAnd_Int16x2.backendIndex = 2372;
+    SubgroupLogicalAnd_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    SubgroupLogicalAnd_Int16x2.parameters = SubgroupLogicalAnd_Int16x2_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x2_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x2_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x2)->signature = "subgroupLogicalAnd(i16x2,SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x2)->name = "subgroupLogicalAnd(i16x2,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x2)->nameWithVarNames = "subgroupLogicalAnd(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x2)->returnTypeSymbol = &Int16x2Type;
+
+    /// subgroupLogicalAnd with Int16x3, SubgroupOperation
+    SubgroupLogicalAnd_Int16x3_value.name = "value"_c;
+    SubgroupLogicalAnd_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupLogicalAnd_Int16x3_op.name = "operation"_c;
+    SubgroupLogicalAnd_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int16x3.documentation = "Perform logical AND across all subgroups"_c;
+    SubgroupLogicalAnd_Int16x3.name = SubgroupLogicalAnd_Int16x3_name;
+    SubgroupLogicalAnd_Int16x3.backendIndex = 2373;
+    SubgroupLogicalAnd_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    SubgroupLogicalAnd_Int16x3.parameters = SubgroupLogicalAnd_Int16x3_args;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x3_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x3_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x3)->signature = "subgroupLogicalAnd(i16x3,SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x3)->name = "subgroupLogicalAnd(i16x3,SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x3)->nameWithVarNames = "subgroupLogicalAnd(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
 }
 } // namespace GPULang

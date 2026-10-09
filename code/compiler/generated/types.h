@@ -6388,6 +6388,18 @@ inline constexpr auto MemorySemanticsSequentiallyConsistent_value = 0x8;
 extern EnumExpression MemorySemanticsSequentiallyConsistent;
 inline constexpr auto MemorySemanticsRelaxed_value = 0x10;
 extern EnumExpression MemorySemanticsRelaxed;
+struct SubgroupOperation : public Enumeration
+{
+    SubgroupOperation();
+};
+extern SubgroupOperation SubgroupOperationType;
+
+inline constexpr auto SubgroupOperationReduce_value = 0x0;
+extern EnumExpression SubgroupOperationReduce;
+inline constexpr auto SubgroupOperationInclusive_value = 0x1;
+extern EnumExpression SubgroupOperationInclusive;
+inline constexpr auto SubgroupOperationExclusive_value = 0x2;
+extern EnumExpression SubgroupOperationExclusive;
 struct RasterizationMode : public Enumeration
 {
     RasterizationMode();

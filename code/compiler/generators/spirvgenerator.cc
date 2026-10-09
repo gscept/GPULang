@@ -614,8 +614,29 @@ SPV_INSTRUCTION(OpGroupNonUniformBallotBitExtract, 341, 6, false)
 SPV_INSTRUCTION(OpGroupNonUniformBallotBitCount, 342, 6, false)
 SPV_INSTRUCTION(OpGroupNonUniformBallotFindLSB, 343, 5, false)
 SPV_INSTRUCTION(OpGroupNonUniformBallotFindMSB, 344, 5, false)
-SPV_INSTRUCTION(OpCopyLogical, 400, 4, false);
+SPV_INSTRUCTION(OpGroupNonUniformShuffle, 345, 6, false)
+SPV_INSTRUCTION(OpGroupNonUniformShuffleXor, 346, 6, false)
+SPV_INSTRUCTION(OpGroupNonUniformShuffleUp, 347, 6, false)
+SPV_INSTRUCTION(OpGroupNonUniformShuffleDown, 348, 6, false)
+SPV_INSTRUCTION(OpGroupNonUniformIAdd, 349, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformFAdd, 350, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformIMul, 351, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformFMul, 352, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformSMin, 353, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformUMin, 354, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformFMin, 355, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformSMax, 356, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformUMax, 357, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformFMax, 358, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformBitwiseAnd, 359, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformBitwiseOr, 360, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformBitwiseXor, 361, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformLogicalAnd, 362, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformLogicalOr, 363, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformLogicalXor, 364, 6, true)
+SPV_INSTRUCTION(OpGroupNonUniformQuadBroadcast, 365, 6, false)
 SPV_INSTRUCTION(OpGroupNonUniformQuadSwap, 366, 6, false)
+SPV_INSTRUCTION(OpCopyLogical, 400, 4, false);
 SPV_INSTRUCTION(OpTerminateInvocation, 4416, 1, false)
 SPV_INSTRUCTION(OpTraceRayKHR, 4445, 12, false)
 SPV_INSTRUCTION(OpExecuteCallableKHR, 4446, 3, false)
@@ -2477,7 +2498,7 @@ GenerateBaseTypeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, TypeC
     uint32_t baseType = AddType(generator, str, op, args);
     TStr type = std::get<0>(it->second);
 
-    if (code == TypeCode::UInt64)
+    if (code == TypeCode::UInt64 || code == TypeCode::Int64)
         generator->writer->Capability(Capabilities::Int64);
     if (code == TypeCode::Float16)
         generator->writer->Capability(Capabilities::Float16);
