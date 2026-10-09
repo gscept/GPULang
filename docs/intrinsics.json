@@ -3850,76 +3850,76 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupAdd(value: f32, operation: SubgroupOperation) f32"
+                "signature": "subgroupAdd(value: f32, operation: literal SubgroupOperation) f32"
             },
             {
-                "signature": "subgroupAdd(value: f32x2, operation: SubgroupOperation) f32x2"
+                "signature": "subgroupAdd(value: f32x2, operation: literal SubgroupOperation) f32x2"
             },
             {
-                "signature": "subgroupAdd(value: f32x3, operation: SubgroupOperation) f32x3"
+                "signature": "subgroupAdd(value: f32x3, operation: literal SubgroupOperation) f32x3"
             },
             {
-                "signature": "subgroupAdd(value: f32x4, operation: SubgroupOperation) f32x4"
+                "signature": "subgroupAdd(value: f32x4, operation: literal SubgroupOperation) f32x4"
             },
             {
-                "signature": "subgroupAdd(value: f16, operation: SubgroupOperation) f16"
+                "signature": "subgroupAdd(value: f16, operation: literal SubgroupOperation) f16"
             },
             {
-                "signature": "subgroupAdd(value: f16x2, operation: SubgroupOperation) f16x2"
+                "signature": "subgroupAdd(value: f16x2, operation: literal SubgroupOperation) f16x2"
             },
             {
-                "signature": "subgroupAdd(value: f16x3, operation: SubgroupOperation) f16x3"
+                "signature": "subgroupAdd(value: f16x3, operation: literal SubgroupOperation) f16x3"
             },
             {
-                "signature": "subgroupAdd(value: f16x4, operation: SubgroupOperation) f16x4"
+                "signature": "subgroupAdd(value: f16x4, operation: literal SubgroupOperation) f16x4"
             },
             {
-                "signature": "subgroupAdd(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupAdd(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupAdd(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupAdd(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupAdd(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupAdd(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupAdd(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupAdd(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupAdd(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupAdd(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupAdd(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupAdd(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupAdd(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupAdd(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupAdd(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupAdd(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupAdd(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupAdd(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupAdd(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupAdd(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupAdd(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupAdd(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupAdd(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupAdd(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupAdd(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupAdd(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupAdd(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupAdd(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupAdd(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupAdd(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupAdd(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupAdd(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -3934,52 +3934,52 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupAnd(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupAnd(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupAnd(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupAnd(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupAnd(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupAnd(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupAnd(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupAnd(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupAnd(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupAnd(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupAnd(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupAnd(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupAnd(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupAnd(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupAnd(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupAnd(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupAnd(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupAnd(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupAnd(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupAnd(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupAnd(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupAnd(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupAnd(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupAnd(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupAnd(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupAnd(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupAnd(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupAnd(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupAnd(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupAnd(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupAnd(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupAnd(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -4024,7 +4024,7 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupBallotBitCount(value: u32x4) u32"
+                "signature": "subgroupBallotBitCount(value: u32x4, operation: literal SubgroupOperation) u32"
             }
         ]
     },
@@ -4183,7 +4183,7 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupGetId() u32x3"
+                "signature": "subgroupGetId() u32"
             }
         ]
     },
@@ -4213,7 +4213,7 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupGetNum() u32x3"
+                "signature": "subgroupGetNum() u32"
             }
         ]
     },
@@ -4228,7 +4228,7 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupGetSize() u32x3"
+                "signature": "subgroupGetSize() u32"
             }
         ]
     },
@@ -4303,52 +4303,52 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupLogicalAnd(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupLogicalAnd(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupLogicalAnd(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupLogicalAnd(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupLogicalAnd(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupLogicalAnd(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupLogicalAnd(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupLogicalAnd(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupLogicalAnd(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupLogicalAnd(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupLogicalAnd(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupLogicalAnd(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupLogicalAnd(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupLogicalAnd(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupLogicalAnd(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupLogicalAnd(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupLogicalAnd(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupLogicalAnd(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupLogicalAnd(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupLogicalAnd(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupLogicalAnd(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupLogicalAnd(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupLogicalAnd(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupLogicalAnd(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupLogicalAnd(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupLogicalAnd(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupLogicalAnd(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupLogicalAnd(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupLogicalAnd(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupLogicalAnd(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupLogicalAnd(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupLogicalAnd(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -4363,52 +4363,52 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupLogicalOr(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupLogicalOr(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupLogicalOr(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupLogicalOr(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupLogicalOr(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupLogicalOr(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupLogicalOr(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupLogicalOr(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupLogicalOr(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupLogicalOr(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupLogicalOr(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupLogicalOr(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupLogicalOr(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupLogicalOr(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupLogicalOr(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupLogicalOr(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupLogicalOr(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupLogicalOr(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupLogicalOr(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupLogicalOr(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupLogicalOr(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupLogicalOr(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupLogicalOr(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupLogicalOr(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupLogicalOr(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupLogicalOr(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupLogicalOr(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupLogicalOr(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupLogicalOr(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupLogicalOr(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupLogicalOr(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupLogicalOr(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -4423,52 +4423,52 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupLogicalXor(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupLogicalXor(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupLogicalXor(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupLogicalXor(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupLogicalXor(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupLogicalXor(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupLogicalXor(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupLogicalXor(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupLogicalXor(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupLogicalXor(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupLogicalXor(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupLogicalXor(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupLogicalXor(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupLogicalXor(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupLogicalXor(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupLogicalXor(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupLogicalXor(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupLogicalXor(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupLogicalXor(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupLogicalXor(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupLogicalXor(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupLogicalXor(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupLogicalXor(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupLogicalXor(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupLogicalXor(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupLogicalXor(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupLogicalXor(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupLogicalXor(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupLogicalXor(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupLogicalXor(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupLogicalXor(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupLogicalXor(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -4483,76 +4483,76 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupMax(value: f32, operation: SubgroupOperation) f32"
+                "signature": "subgroupMax(value: f32, operation: literal SubgroupOperation) f32"
             },
             {
-                "signature": "subgroupMax(value: f32x2, operation: SubgroupOperation) f32x2"
+                "signature": "subgroupMax(value: f32x2, operation: literal SubgroupOperation) f32x2"
             },
             {
-                "signature": "subgroupMax(value: f32x3, operation: SubgroupOperation) f32x3"
+                "signature": "subgroupMax(value: f32x3, operation: literal SubgroupOperation) f32x3"
             },
             {
-                "signature": "subgroupMax(value: f32x4, operation: SubgroupOperation) f32x4"
+                "signature": "subgroupMax(value: f32x4, operation: literal SubgroupOperation) f32x4"
             },
             {
-                "signature": "subgroupMax(value: f16, operation: SubgroupOperation) f16"
+                "signature": "subgroupMax(value: f16, operation: literal SubgroupOperation) f16"
             },
             {
-                "signature": "subgroupMax(value: f16x2, operation: SubgroupOperation) f16x2"
+                "signature": "subgroupMax(value: f16x2, operation: literal SubgroupOperation) f16x2"
             },
             {
-                "signature": "subgroupMax(value: f16x3, operation: SubgroupOperation) f16x3"
+                "signature": "subgroupMax(value: f16x3, operation: literal SubgroupOperation) f16x3"
             },
             {
-                "signature": "subgroupMax(value: f16x4, operation: SubgroupOperation) f16x4"
+                "signature": "subgroupMax(value: f16x4, operation: literal SubgroupOperation) f16x4"
             },
             {
-                "signature": "subgroupMax(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupMax(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupMax(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupMax(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupMax(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupMax(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupMax(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupMax(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupMax(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupMax(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupMax(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupMax(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupMax(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupMax(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupMax(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupMax(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupMax(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupMax(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupMax(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupMax(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupMax(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupMax(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupMax(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupMax(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupMax(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupMax(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupMax(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupMax(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupMax(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupMax(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupMax(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupMax(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -4567,76 +4567,76 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupMin(value: f32, operation: SubgroupOperation) f32"
+                "signature": "subgroupMin(value: f32, operation: literal SubgroupOperation) f32"
             },
             {
-                "signature": "subgroupMin(value: f32x2, operation: SubgroupOperation) f32x2"
+                "signature": "subgroupMin(value: f32x2, operation: literal SubgroupOperation) f32x2"
             },
             {
-                "signature": "subgroupMin(value: f32x3, operation: SubgroupOperation) f32x3"
+                "signature": "subgroupMin(value: f32x3, operation: literal SubgroupOperation) f32x3"
             },
             {
-                "signature": "subgroupMin(value: f32x4, operation: SubgroupOperation) f32x4"
+                "signature": "subgroupMin(value: f32x4, operation: literal SubgroupOperation) f32x4"
             },
             {
-                "signature": "subgroupMin(value: f16, operation: SubgroupOperation) f16"
+                "signature": "subgroupMin(value: f16, operation: literal SubgroupOperation) f16"
             },
             {
-                "signature": "subgroupMin(value: f16x2, operation: SubgroupOperation) f16x2"
+                "signature": "subgroupMin(value: f16x2, operation: literal SubgroupOperation) f16x2"
             },
             {
-                "signature": "subgroupMin(value: f16x3, operation: SubgroupOperation) f16x3"
+                "signature": "subgroupMin(value: f16x3, operation: literal SubgroupOperation) f16x3"
             },
             {
-                "signature": "subgroupMin(value: f16x4, operation: SubgroupOperation) f16x4"
+                "signature": "subgroupMin(value: f16x4, operation: literal SubgroupOperation) f16x4"
             },
             {
-                "signature": "subgroupMin(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupMin(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupMin(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupMin(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupMin(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupMin(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupMin(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupMin(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupMin(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupMin(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupMin(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupMin(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupMin(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupMin(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupMin(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupMin(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupMin(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupMin(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupMin(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupMin(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupMin(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupMin(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupMin(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupMin(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupMin(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupMin(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupMin(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupMin(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupMin(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupMin(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupMin(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupMin(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -4651,76 +4651,76 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupMul(value: f32, operation: SubgroupOperation) f32"
+                "signature": "subgroupMul(value: f32, operation: literal SubgroupOperation) f32"
             },
             {
-                "signature": "subgroupMul(value: f32x2, operation: SubgroupOperation) f32x2"
+                "signature": "subgroupMul(value: f32x2, operation: literal SubgroupOperation) f32x2"
             },
             {
-                "signature": "subgroupMul(value: f32x3, operation: SubgroupOperation) f32x3"
+                "signature": "subgroupMul(value: f32x3, operation: literal SubgroupOperation) f32x3"
             },
             {
-                "signature": "subgroupMul(value: f32x4, operation: SubgroupOperation) f32x4"
+                "signature": "subgroupMul(value: f32x4, operation: literal SubgroupOperation) f32x4"
             },
             {
-                "signature": "subgroupMul(value: f16, operation: SubgroupOperation) f16"
+                "signature": "subgroupMul(value: f16, operation: literal SubgroupOperation) f16"
             },
             {
-                "signature": "subgroupMul(value: f16x2, operation: SubgroupOperation) f16x2"
+                "signature": "subgroupMul(value: f16x2, operation: literal SubgroupOperation) f16x2"
             },
             {
-                "signature": "subgroupMul(value: f16x3, operation: SubgroupOperation) f16x3"
+                "signature": "subgroupMul(value: f16x3, operation: literal SubgroupOperation) f16x3"
             },
             {
-                "signature": "subgroupMul(value: f16x4, operation: SubgroupOperation) f16x4"
+                "signature": "subgroupMul(value: f16x4, operation: literal SubgroupOperation) f16x4"
             },
             {
-                "signature": "subgroupMul(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupMul(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupMul(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupMul(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupMul(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupMul(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupMul(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupMul(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupMul(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupMul(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupMul(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupMul(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupMul(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupMul(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupMul(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupMul(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupMul(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupMul(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupMul(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupMul(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupMul(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupMul(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupMul(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupMul(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupMul(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupMul(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupMul(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupMul(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupMul(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupMul(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupMul(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupMul(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -4735,52 +4735,52 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupOr(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupOr(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupOr(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupOr(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupOr(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupOr(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupOr(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupOr(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupOr(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupOr(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupOr(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupOr(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupOr(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupOr(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupOr(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupOr(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupOr(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupOr(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupOr(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupOr(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupOr(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupOr(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupOr(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupOr(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupOr(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupOr(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupOr(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupOr(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupOr(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupOr(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupOr(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupOr(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },
@@ -5299,52 +5299,52 @@
         ],
         "overloads": [
             {
-                "signature": "subgroupXor(value: i32, operation: SubgroupOperation) i32"
+                "signature": "subgroupXor(value: i32, operation: literal SubgroupOperation) i32"
             },
             {
-                "signature": "subgroupXor(value: i32x2, operation: SubgroupOperation) i32x2"
+                "signature": "subgroupXor(value: i32x2, operation: literal SubgroupOperation) i32x2"
             },
             {
-                "signature": "subgroupXor(value: i32x3, operation: SubgroupOperation) i32x3"
+                "signature": "subgroupXor(value: i32x3, operation: literal SubgroupOperation) i32x3"
             },
             {
-                "signature": "subgroupXor(value: i32x4, operation: SubgroupOperation) i32x4"
+                "signature": "subgroupXor(value: i32x4, operation: literal SubgroupOperation) i32x4"
             },
             {
-                "signature": "subgroupXor(value: i16, operation: SubgroupOperation) i16"
+                "signature": "subgroupXor(value: i16, operation: literal SubgroupOperation) i16"
             },
             {
-                "signature": "subgroupXor(value: i16x2, operation: SubgroupOperation) i16x2"
+                "signature": "subgroupXor(value: i16x2, operation: literal SubgroupOperation) i16x2"
             },
             {
-                "signature": "subgroupXor(value: i16x3, operation: SubgroupOperation) i16x3"
+                "signature": "subgroupXor(value: i16x3, operation: literal SubgroupOperation) i16x3"
             },
             {
-                "signature": "subgroupXor(value: i16x4, operation: SubgroupOperation) i16x4"
+                "signature": "subgroupXor(value: i16x4, operation: literal SubgroupOperation) i16x4"
             },
             {
-                "signature": "subgroupXor(value: u32, operation: SubgroupOperation) u32"
+                "signature": "subgroupXor(value: u32, operation: literal SubgroupOperation) u32"
             },
             {
-                "signature": "subgroupXor(value: u32x2, operation: SubgroupOperation) u32x2"
+                "signature": "subgroupXor(value: u32x2, operation: literal SubgroupOperation) u32x2"
             },
             {
-                "signature": "subgroupXor(value: u32x3, operation: SubgroupOperation) u32x3"
+                "signature": "subgroupXor(value: u32x3, operation: literal SubgroupOperation) u32x3"
             },
             {
-                "signature": "subgroupXor(value: u32x4, operation: SubgroupOperation) u32x4"
+                "signature": "subgroupXor(value: u32x4, operation: literal SubgroupOperation) u32x4"
             },
             {
-                "signature": "subgroupXor(value: u16, operation: SubgroupOperation) u16"
+                "signature": "subgroupXor(value: u16, operation: literal SubgroupOperation) u16"
             },
             {
-                "signature": "subgroupXor(value: u16x2, operation: SubgroupOperation) u16x2"
+                "signature": "subgroupXor(value: u16x2, operation: literal SubgroupOperation) u16x2"
             },
             {
-                "signature": "subgroupXor(value: u16x3, operation: SubgroupOperation) u16x3"
+                "signature": "subgroupXor(value: u16x3, operation: literal SubgroupOperation) u16x3"
             },
             {
-                "signature": "subgroupXor(value: u16x4, operation: SubgroupOperation) u16x4"
+                "signature": "subgroupXor(value: u16x4, operation: literal SubgroupOperation) u16x4"
             }
         ]
     },

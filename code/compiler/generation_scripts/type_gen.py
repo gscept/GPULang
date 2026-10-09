@@ -2297,6 +2297,15 @@ def generate_types():
     spirv_atomic_tables += "};\n\n"
     spirv_intrinsics.write(spirv_atomic_tables)
 
+
+    # For other backends, we have to translate, but for now subgroup operations map to SPIRV    
+    spirv_subgroup_tables = ""
+    spirv_subgroup_tables += "static const uint32_t SubgroupOperationsToSPIRV(const uint32_t sem)\n"
+    spirv_subgroup_tables += "{\n"
+    spirv_subgroup_tables += "    return sem;\n"
+    spirv_subgroup_tables += "}\n\n"
+    spirv_intrinsics.write(spirv_subgroup_tables)
+
     source_file.write(namer.definition())
     source_file.write('} // namespace GPULang\n\n')
 
@@ -3958,13 +3967,14 @@ def generate_types():
         'Returns the size of the subgroup',
         'Returns the number of subgroups in the workgroup'
     ]
+
     for intrinsic, spirv_builtin, doc in zip(subgroup_builtin_getters, subgroup_builtin_getters_spirv, subgroup_builtin_getters_docs):
         function_name = f'Subgroup{intrinsic}'
 
         fun = Function( 
             decl_name = function_name,
             api_name = f'subgroup{intrinsic}',
-            return_type = 'UInt32x3',
+            return_type = 'UInt32',
             documentation = doc,
             parameters = [
             ]
@@ -3972,8 +3982,8 @@ def generate_types():
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
-        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);\n'
-        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
         spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
         spirv_function += f'    g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
@@ -4036,7 +4046,8 @@ def generate_types():
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
-    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup);\n'
+    spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, scope);\n'
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     
 
@@ -4060,7 +4071,8 @@ def generate_types():
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+        spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         
 
@@ -4094,7 +4106,8 @@ def generate_types():
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(Op{spirv}, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+        spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(Op{spirv}, SPVWriter::Section::LocalFunction, returnType, scope, loaded);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         
 
@@ -4110,14 +4123,17 @@ def generate_types():
         return_type = 'UInt32',
         documentation = 'Returns the number of bits set to 1 in a 128 bit subgroup thread mask',
         parameters = [
-            Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
+            Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4'),
+            Variable(decl_name = f'{function_name}_op', api_name = "operation", type_name='SubgroupOperation', literal=True)
         ]
     )
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
     spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitCount, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, 0, loaded);\n'
+    spirv_function += '    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);\n'
+    spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitCount, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, loaded);\n'
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     
 
@@ -4140,7 +4156,8 @@ def generate_types():
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
     spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindLSB, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+    spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindLSB, SPVWriter::Section::LocalFunction, returnType, scope, loaded);\n'
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     
 
@@ -4163,7 +4180,8 @@ def generate_types():
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
     spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindMSB, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+    spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindMSB, SPVWriter::Section::LocalFunction, returnType, scope, loaded);\n'
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     
 
@@ -4189,7 +4207,8 @@ def generate_types():
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
     spirv_function += '    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);\n'
     spirv_function += '    SPIRVResult bit = LoadValueSPIRV(c, g, args[1]);\n'
-    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, bit);\n'
+    spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, scope, mask, bit);\n'
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     
 
@@ -4249,7 +4268,7 @@ def generate_types():
                 documentation = doc,
                 parameters = [
                     Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
-                    Variable(decl_name = op_argument_name, api_name = "operation", type_name='SubgroupOperation')
+                    Variable(decl_name = op_argument_name, api_name = "operation", type_name='SubgroupOperation', literal=True)
                 ]
             )
 
@@ -4269,11 +4288,11 @@ def generate_types():
             spirv_op = f'OpGroupNonUniform{spirv_op_type}{intrinsic}'
 
             spirv_function = ''
-            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
+            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);\n'
             spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);\n'
-            spirv_function += '    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);\n'
             spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
-            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, op, value);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
 
@@ -4303,16 +4322,16 @@ def generate_types():
                 documentation = doc,
                 parameters = [
                     Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
-                    Variable(decl_name = op_argument_name, api_name = "operation", type_name='SubgroupOperation')
+                    Variable(decl_name = op_argument_name, api_name = "operation", type_name='SubgroupOperation', literal=True)
                 ]
             )
 
             spirv_function = ''
-            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
+            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);\n'
             spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);\n'
-            spirv_function += '    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);\n'
             spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
-            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, op, value);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
 
             fun.spirv = spirv_function
@@ -4344,11 +4363,12 @@ def generate_types():
             )
 
             spirv_function = ''
-            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
+            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformShuffle);\n'
+            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);\n'
             spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[0]);\n'
             spirv_function += '    SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);\n'
             spirv_function += '    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));\n'
-            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             
             fun.spirv = spirv_function

@@ -814,6 +814,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupLogicalAnd_Int16x4_op.name = "operation"_c;
     SubgroupLogicalAnd_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_Int16x4_op.type.literal = true;
     SubgroupLogicalAnd_Int16x4.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_Int16x4.name = SubgroupLogicalAnd_Int16x4_name;
     SubgroupLogicalAnd_Int16x4.backendIndex = 2374;
@@ -821,9 +822,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_Int16x4.parameters = SubgroupLogicalAnd_Int16x4_args;
     Symbol::Resolved(&SubgroupLogicalAnd_Int16x4_value)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&SubgroupLogicalAnd_Int16x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->signature = "subgroupLogicalAnd(i16x4,SubgroupOperation) i16x4"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->name = "subgroupLogicalAnd(i16x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->nameWithVarNames = "subgroupLogicalAnd(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->signature = "subgroupLogicalAnd(i16x4,literal SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->name = "subgroupLogicalAnd(i16x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->nameWithVarNames = "subgroupLogicalAnd(value : i16x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// subgroupLogicalAnd with UInt32, SubgroupOperation
@@ -831,6 +832,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupLogicalAnd_UInt32_op.name = "operation"_c;
     SubgroupLogicalAnd_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt32_op.type.literal = true;
     SubgroupLogicalAnd_UInt32.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_UInt32.name = SubgroupLogicalAnd_UInt32_name;
     SubgroupLogicalAnd_UInt32.backendIndex = 2375;
@@ -838,9 +840,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt32.parameters = SubgroupLogicalAnd_UInt32_args;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32_value)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->signature = "subgroupLogicalAnd(u32,SubgroupOperation) u32"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->name = "subgroupLogicalAnd(u32,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->nameWithVarNames = "subgroupLogicalAnd(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->signature = "subgroupLogicalAnd(u32,literal SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->name = "subgroupLogicalAnd(u32,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->nameWithVarNames = "subgroupLogicalAnd(value : u32, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupLogicalAnd with UInt32x2, SubgroupOperation
@@ -848,6 +850,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupLogicalAnd_UInt32x2_op.name = "operation"_c;
     SubgroupLogicalAnd_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt32x2_op.type.literal = true;
     SubgroupLogicalAnd_UInt32x2.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_UInt32x2.name = SubgroupLogicalAnd_UInt32x2_name;
     SubgroupLogicalAnd_UInt32x2.backendIndex = 2376;
@@ -855,9 +858,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt32x2.parameters = SubgroupLogicalAnd_UInt32x2_args;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2_value)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->signature = "subgroupLogicalAnd(u32x2,SubgroupOperation) u32x2"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->name = "subgroupLogicalAnd(u32x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->nameWithVarNames = "subgroupLogicalAnd(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->signature = "subgroupLogicalAnd(u32x2,literal SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->name = "subgroupLogicalAnd(u32x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->nameWithVarNames = "subgroupLogicalAnd(value : u32x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// subgroupLogicalAnd with UInt32x3, SubgroupOperation
@@ -865,6 +868,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupLogicalAnd_UInt32x3_op.name = "operation"_c;
     SubgroupLogicalAnd_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt32x3_op.type.literal = true;
     SubgroupLogicalAnd_UInt32x3.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_UInt32x3.name = SubgroupLogicalAnd_UInt32x3_name;
     SubgroupLogicalAnd_UInt32x3.backendIndex = 2377;
@@ -872,9 +876,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt32x3.parameters = SubgroupLogicalAnd_UInt32x3_args;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3_value)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->signature = "subgroupLogicalAnd(u32x3,SubgroupOperation) u32x3"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->name = "subgroupLogicalAnd(u32x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->nameWithVarNames = "subgroupLogicalAnd(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->signature = "subgroupLogicalAnd(u32x3,literal SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->name = "subgroupLogicalAnd(u32x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->nameWithVarNames = "subgroupLogicalAnd(value : u32x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupLogicalAnd with UInt32x4, SubgroupOperation
@@ -882,6 +886,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupLogicalAnd_UInt32x4_op.name = "operation"_c;
     SubgroupLogicalAnd_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt32x4_op.type.literal = true;
     SubgroupLogicalAnd_UInt32x4.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_UInt32x4.name = SubgroupLogicalAnd_UInt32x4_name;
     SubgroupLogicalAnd_UInt32x4.backendIndex = 2378;
@@ -889,9 +894,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt32x4.parameters = SubgroupLogicalAnd_UInt32x4_args;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4_value)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->signature = "subgroupLogicalAnd(u32x4,SubgroupOperation) u32x4"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->name = "subgroupLogicalAnd(u32x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->nameWithVarNames = "subgroupLogicalAnd(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->signature = "subgroupLogicalAnd(u32x4,literal SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->name = "subgroupLogicalAnd(u32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->nameWithVarNames = "subgroupLogicalAnd(value : u32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupLogicalAnd with UInt16, SubgroupOperation
@@ -899,6 +904,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupLogicalAnd_UInt16_op.name = "operation"_c;
     SubgroupLogicalAnd_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt16_op.type.literal = true;
     SubgroupLogicalAnd_UInt16.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_UInt16.name = SubgroupLogicalAnd_UInt16_name;
     SubgroupLogicalAnd_UInt16.backendIndex = 2379;
@@ -906,9 +912,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt16.parameters = SubgroupLogicalAnd_UInt16_args;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16_value)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->signature = "subgroupLogicalAnd(u16,SubgroupOperation) u16"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->name = "subgroupLogicalAnd(u16,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->nameWithVarNames = "subgroupLogicalAnd(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->signature = "subgroupLogicalAnd(u16,literal SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->name = "subgroupLogicalAnd(u16,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->nameWithVarNames = "subgroupLogicalAnd(value : u16, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// subgroupLogicalAnd with UInt16x2, SubgroupOperation
@@ -916,6 +922,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupLogicalAnd_UInt16x2_op.name = "operation"_c;
     SubgroupLogicalAnd_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt16x2_op.type.literal = true;
     SubgroupLogicalAnd_UInt16x2.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_UInt16x2.name = SubgroupLogicalAnd_UInt16x2_name;
     SubgroupLogicalAnd_UInt16x2.backendIndex = 2380;
@@ -923,9 +930,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt16x2.parameters = SubgroupLogicalAnd_UInt16x2_args;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2_value)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->signature = "subgroupLogicalAnd(u16x2,SubgroupOperation) u16x2"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->name = "subgroupLogicalAnd(u16x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->nameWithVarNames = "subgroupLogicalAnd(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->signature = "subgroupLogicalAnd(u16x2,literal SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->name = "subgroupLogicalAnd(u16x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->nameWithVarNames = "subgroupLogicalAnd(value : u16x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// subgroupLogicalAnd with UInt16x3, SubgroupOperation
@@ -933,6 +940,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupLogicalAnd_UInt16x3_op.name = "operation"_c;
     SubgroupLogicalAnd_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt16x3_op.type.literal = true;
     SubgroupLogicalAnd_UInt16x3.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_UInt16x3.name = SubgroupLogicalAnd_UInt16x3_name;
     SubgroupLogicalAnd_UInt16x3.backendIndex = 2381;
@@ -940,9 +948,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt16x3.parameters = SubgroupLogicalAnd_UInt16x3_args;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3_value)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->signature = "subgroupLogicalAnd(u16x3,SubgroupOperation) u16x3"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->name = "subgroupLogicalAnd(u16x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->nameWithVarNames = "subgroupLogicalAnd(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->signature = "subgroupLogicalAnd(u16x3,literal SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->name = "subgroupLogicalAnd(u16x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->nameWithVarNames = "subgroupLogicalAnd(value : u16x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// subgroupLogicalAnd with UInt16x4, SubgroupOperation
@@ -950,6 +958,7 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupLogicalAnd_UInt16x4_op.name = "operation"_c;
     SubgroupLogicalAnd_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalAnd_UInt16x4_op.type.literal = true;
     SubgroupLogicalAnd_UInt16x4.documentation = "Perform logical AND across all subgroups"_c;
     SubgroupLogicalAnd_UInt16x4.name = SubgroupLogicalAnd_UInt16x4_name;
     SubgroupLogicalAnd_UInt16x4.backendIndex = 2382;
@@ -957,9 +966,9 @@ void SetupIntrinsics11()
     SubgroupLogicalAnd_UInt16x4.parameters = SubgroupLogicalAnd_UInt16x4_args;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4_value)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->signature = "subgroupLogicalAnd(u16x4,SubgroupOperation) u16x4"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->name = "subgroupLogicalAnd(u16x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->nameWithVarNames = "subgroupLogicalAnd(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->signature = "subgroupLogicalAnd(u16x4,literal SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->name = "subgroupLogicalAnd(u16x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->nameWithVarNames = "subgroupLogicalAnd(value : u16x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalAnd_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// subgroupLogicalOr with Int32, SubgroupOperation
@@ -967,6 +976,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupLogicalOr_Int32_op.name = "operation"_c;
     SubgroupLogicalOr_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int32_op.type.literal = true;
     SubgroupLogicalOr_Int32.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_Int32.name = SubgroupLogicalOr_Int32_name;
     SubgroupLogicalOr_Int32.backendIndex = 2383;
@@ -974,9 +984,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int32.parameters = SubgroupLogicalOr_Int32_args;
     Symbol::Resolved(&SubgroupLogicalOr_Int32_value)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SubgroupLogicalOr_Int32_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32)->signature = "subgroupLogicalOr(i32,SubgroupOperation) i32"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32)->name = "subgroupLogicalOr(i32,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32)->nameWithVarNames = "subgroupLogicalOr(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32)->signature = "subgroupLogicalOr(i32,literal SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32)->name = "subgroupLogicalOr(i32,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32)->nameWithVarNames = "subgroupLogicalOr(value : i32, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_Int32)->returnTypeSymbol = &Int32Type;
 
     /// subgroupLogicalOr with Int32x2, SubgroupOperation
@@ -984,6 +994,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupLogicalOr_Int32x2_op.name = "operation"_c;
     SubgroupLogicalOr_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int32x2_op.type.literal = true;
     SubgroupLogicalOr_Int32x2.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_Int32x2.name = SubgroupLogicalOr_Int32x2_name;
     SubgroupLogicalOr_Int32x2.backendIndex = 2384;
@@ -991,9 +1002,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int32x2.parameters = SubgroupLogicalOr_Int32x2_args;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x2_value)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->signature = "subgroupLogicalOr(i32x2,SubgroupOperation) i32x2"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->name = "subgroupLogicalOr(i32x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->nameWithVarNames = "subgroupLogicalOr(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->signature = "subgroupLogicalOr(i32x2,literal SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->name = "subgroupLogicalOr(i32x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->nameWithVarNames = "subgroupLogicalOr(value : i32x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// subgroupLogicalOr with Int32x3, SubgroupOperation
@@ -1001,6 +1012,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupLogicalOr_Int32x3_op.name = "operation"_c;
     SubgroupLogicalOr_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int32x3_op.type.literal = true;
     SubgroupLogicalOr_Int32x3.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_Int32x3.name = SubgroupLogicalOr_Int32x3_name;
     SubgroupLogicalOr_Int32x3.backendIndex = 2385;
@@ -1008,9 +1020,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int32x3.parameters = SubgroupLogicalOr_Int32x3_args;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x3_value)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->signature = "subgroupLogicalOr(i32x3,SubgroupOperation) i32x3"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->name = "subgroupLogicalOr(i32x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->nameWithVarNames = "subgroupLogicalOr(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->signature = "subgroupLogicalOr(i32x3,literal SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->name = "subgroupLogicalOr(i32x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->nameWithVarNames = "subgroupLogicalOr(value : i32x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// subgroupLogicalOr with Int32x4, SubgroupOperation
@@ -1018,6 +1030,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupLogicalOr_Int32x4_op.name = "operation"_c;
     SubgroupLogicalOr_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int32x4_op.type.literal = true;
     SubgroupLogicalOr_Int32x4.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_Int32x4.name = SubgroupLogicalOr_Int32x4_name;
     SubgroupLogicalOr_Int32x4.backendIndex = 2386;
@@ -1025,9 +1038,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int32x4.parameters = SubgroupLogicalOr_Int32x4_args;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x4_value)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->signature = "subgroupLogicalOr(i32x4,SubgroupOperation) i32x4"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->name = "subgroupLogicalOr(i32x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->nameWithVarNames = "subgroupLogicalOr(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->signature = "subgroupLogicalOr(i32x4,literal SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->name = "subgroupLogicalOr(i32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->nameWithVarNames = "subgroupLogicalOr(value : i32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// subgroupLogicalOr with Int16, SubgroupOperation
@@ -1035,6 +1048,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupLogicalOr_Int16_op.name = "operation"_c;
     SubgroupLogicalOr_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int16_op.type.literal = true;
     SubgroupLogicalOr_Int16.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_Int16.name = SubgroupLogicalOr_Int16_name;
     SubgroupLogicalOr_Int16.backendIndex = 2387;
@@ -1042,9 +1056,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int16.parameters = SubgroupLogicalOr_Int16_args;
     Symbol::Resolved(&SubgroupLogicalOr_Int16_value)->typeSymbol = &Int16Type;
     Symbol::Resolved(&SubgroupLogicalOr_Int16_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16)->signature = "subgroupLogicalOr(i16,SubgroupOperation) i16"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16)->name = "subgroupLogicalOr(i16,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16)->nameWithVarNames = "subgroupLogicalOr(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16)->signature = "subgroupLogicalOr(i16,literal SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16)->name = "subgroupLogicalOr(i16,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16)->nameWithVarNames = "subgroupLogicalOr(value : i16, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_Int16)->returnTypeSymbol = &Int16Type;
 
     /// subgroupLogicalOr with Int16x2, SubgroupOperation
@@ -1052,6 +1066,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupLogicalOr_Int16x2_op.name = "operation"_c;
     SubgroupLogicalOr_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int16x2_op.type.literal = true;
     SubgroupLogicalOr_Int16x2.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_Int16x2.name = SubgroupLogicalOr_Int16x2_name;
     SubgroupLogicalOr_Int16x2.backendIndex = 2388;
@@ -1059,9 +1074,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int16x2.parameters = SubgroupLogicalOr_Int16x2_args;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x2_value)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->signature = "subgroupLogicalOr(i16x2,SubgroupOperation) i16x2"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->name = "subgroupLogicalOr(i16x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->nameWithVarNames = "subgroupLogicalOr(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->signature = "subgroupLogicalOr(i16x2,literal SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->name = "subgroupLogicalOr(i16x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->nameWithVarNames = "subgroupLogicalOr(value : i16x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// subgroupLogicalOr with Int16x3, SubgroupOperation
@@ -1069,6 +1084,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupLogicalOr_Int16x3_op.name = "operation"_c;
     SubgroupLogicalOr_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int16x3_op.type.literal = true;
     SubgroupLogicalOr_Int16x3.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_Int16x3.name = SubgroupLogicalOr_Int16x3_name;
     SubgroupLogicalOr_Int16x3.backendIndex = 2389;
@@ -1076,9 +1092,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int16x3.parameters = SubgroupLogicalOr_Int16x3_args;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x3_value)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->signature = "subgroupLogicalOr(i16x3,SubgroupOperation) i16x3"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->name = "subgroupLogicalOr(i16x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->nameWithVarNames = "subgroupLogicalOr(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->signature = "subgroupLogicalOr(i16x3,literal SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->name = "subgroupLogicalOr(i16x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->nameWithVarNames = "subgroupLogicalOr(value : i16x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// subgroupLogicalOr with Int16x4, SubgroupOperation
@@ -1086,6 +1102,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupLogicalOr_Int16x4_op.name = "operation"_c;
     SubgroupLogicalOr_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_Int16x4_op.type.literal = true;
     SubgroupLogicalOr_Int16x4.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_Int16x4.name = SubgroupLogicalOr_Int16x4_name;
     SubgroupLogicalOr_Int16x4.backendIndex = 2390;
@@ -1093,9 +1110,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_Int16x4.parameters = SubgroupLogicalOr_Int16x4_args;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x4_value)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->signature = "subgroupLogicalOr(i16x4,SubgroupOperation) i16x4"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->name = "subgroupLogicalOr(i16x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->nameWithVarNames = "subgroupLogicalOr(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->signature = "subgroupLogicalOr(i16x4,literal SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->name = "subgroupLogicalOr(i16x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->nameWithVarNames = "subgroupLogicalOr(value : i16x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// subgroupLogicalOr with UInt32, SubgroupOperation
@@ -1103,6 +1120,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupLogicalOr_UInt32_op.name = "operation"_c;
     SubgroupLogicalOr_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt32_op.type.literal = true;
     SubgroupLogicalOr_UInt32.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_UInt32.name = SubgroupLogicalOr_UInt32_name;
     SubgroupLogicalOr_UInt32.backendIndex = 2391;
@@ -1110,9 +1128,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt32.parameters = SubgroupLogicalOr_UInt32_args;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32_value)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->signature = "subgroupLogicalOr(u32,SubgroupOperation) u32"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->name = "subgroupLogicalOr(u32,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->nameWithVarNames = "subgroupLogicalOr(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->signature = "subgroupLogicalOr(u32,literal SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->name = "subgroupLogicalOr(u32,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32)->nameWithVarNames = "subgroupLogicalOr(value : u32, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupLogicalOr with UInt32x2, SubgroupOperation
@@ -1120,6 +1138,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupLogicalOr_UInt32x2_op.name = "operation"_c;
     SubgroupLogicalOr_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt32x2_op.type.literal = true;
     SubgroupLogicalOr_UInt32x2.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_UInt32x2.name = SubgroupLogicalOr_UInt32x2_name;
     SubgroupLogicalOr_UInt32x2.backendIndex = 2392;
@@ -1127,9 +1146,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt32x2.parameters = SubgroupLogicalOr_UInt32x2_args;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x2_value)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->signature = "subgroupLogicalOr(u32x2,SubgroupOperation) u32x2"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->name = "subgroupLogicalOr(u32x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->nameWithVarNames = "subgroupLogicalOr(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->signature = "subgroupLogicalOr(u32x2,literal SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->name = "subgroupLogicalOr(u32x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->nameWithVarNames = "subgroupLogicalOr(value : u32x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// subgroupLogicalOr with UInt32x3, SubgroupOperation
@@ -1137,6 +1156,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupLogicalOr_UInt32x3_op.name = "operation"_c;
     SubgroupLogicalOr_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt32x3_op.type.literal = true;
     SubgroupLogicalOr_UInt32x3.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_UInt32x3.name = SubgroupLogicalOr_UInt32x3_name;
     SubgroupLogicalOr_UInt32x3.backendIndex = 2393;
@@ -1144,9 +1164,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt32x3.parameters = SubgroupLogicalOr_UInt32x3_args;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x3_value)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->signature = "subgroupLogicalOr(u32x3,SubgroupOperation) u32x3"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->name = "subgroupLogicalOr(u32x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->nameWithVarNames = "subgroupLogicalOr(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->signature = "subgroupLogicalOr(u32x3,literal SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->name = "subgroupLogicalOr(u32x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->nameWithVarNames = "subgroupLogicalOr(value : u32x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupLogicalOr with UInt32x4, SubgroupOperation
@@ -1154,6 +1174,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupLogicalOr_UInt32x4_op.name = "operation"_c;
     SubgroupLogicalOr_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt32x4_op.type.literal = true;
     SubgroupLogicalOr_UInt32x4.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_UInt32x4.name = SubgroupLogicalOr_UInt32x4_name;
     SubgroupLogicalOr_UInt32x4.backendIndex = 2394;
@@ -1161,9 +1182,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt32x4.parameters = SubgroupLogicalOr_UInt32x4_args;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x4_value)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->signature = "subgroupLogicalOr(u32x4,SubgroupOperation) u32x4"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->name = "subgroupLogicalOr(u32x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->nameWithVarNames = "subgroupLogicalOr(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->signature = "subgroupLogicalOr(u32x4,literal SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->name = "subgroupLogicalOr(u32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->nameWithVarNames = "subgroupLogicalOr(value : u32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupLogicalOr with UInt16, SubgroupOperation
@@ -1171,6 +1192,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupLogicalOr_UInt16_op.name = "operation"_c;
     SubgroupLogicalOr_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt16_op.type.literal = true;
     SubgroupLogicalOr_UInt16.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_UInt16.name = SubgroupLogicalOr_UInt16_name;
     SubgroupLogicalOr_UInt16.backendIndex = 2395;
@@ -1178,9 +1200,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt16.parameters = SubgroupLogicalOr_UInt16_args;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16_value)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->signature = "subgroupLogicalOr(u16,SubgroupOperation) u16"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->name = "subgroupLogicalOr(u16,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->nameWithVarNames = "subgroupLogicalOr(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->signature = "subgroupLogicalOr(u16,literal SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->name = "subgroupLogicalOr(u16,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16)->nameWithVarNames = "subgroupLogicalOr(value : u16, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// subgroupLogicalOr with UInt16x2, SubgroupOperation
@@ -1188,6 +1210,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupLogicalOr_UInt16x2_op.name = "operation"_c;
     SubgroupLogicalOr_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt16x2_op.type.literal = true;
     SubgroupLogicalOr_UInt16x2.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_UInt16x2.name = SubgroupLogicalOr_UInt16x2_name;
     SubgroupLogicalOr_UInt16x2.backendIndex = 2396;
@@ -1195,9 +1218,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt16x2.parameters = SubgroupLogicalOr_UInt16x2_args;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x2_value)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->signature = "subgroupLogicalOr(u16x2,SubgroupOperation) u16x2"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->name = "subgroupLogicalOr(u16x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->nameWithVarNames = "subgroupLogicalOr(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->signature = "subgroupLogicalOr(u16x2,literal SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->name = "subgroupLogicalOr(u16x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->nameWithVarNames = "subgroupLogicalOr(value : u16x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// subgroupLogicalOr with UInt16x3, SubgroupOperation
@@ -1205,6 +1228,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupLogicalOr_UInt16x3_op.name = "operation"_c;
     SubgroupLogicalOr_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt16x3_op.type.literal = true;
     SubgroupLogicalOr_UInt16x3.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_UInt16x3.name = SubgroupLogicalOr_UInt16x3_name;
     SubgroupLogicalOr_UInt16x3.backendIndex = 2397;
@@ -1212,9 +1236,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt16x3.parameters = SubgroupLogicalOr_UInt16x3_args;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x3_value)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->signature = "subgroupLogicalOr(u16x3,SubgroupOperation) u16x3"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->name = "subgroupLogicalOr(u16x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->nameWithVarNames = "subgroupLogicalOr(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->signature = "subgroupLogicalOr(u16x3,literal SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->name = "subgroupLogicalOr(u16x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->nameWithVarNames = "subgroupLogicalOr(value : u16x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// subgroupLogicalOr with UInt16x4, SubgroupOperation
@@ -1222,6 +1246,7 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupLogicalOr_UInt16x4_op.name = "operation"_c;
     SubgroupLogicalOr_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalOr_UInt16x4_op.type.literal = true;
     SubgroupLogicalOr_UInt16x4.documentation = "Perform logical OR across all subgroups"_c;
     SubgroupLogicalOr_UInt16x4.name = SubgroupLogicalOr_UInt16x4_name;
     SubgroupLogicalOr_UInt16x4.backendIndex = 2398;
@@ -1229,9 +1254,9 @@ void SetupIntrinsics11()
     SubgroupLogicalOr_UInt16x4.parameters = SubgroupLogicalOr_UInt16x4_args;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x4_value)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->signature = "subgroupLogicalOr(u16x4,SubgroupOperation) u16x4"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->name = "subgroupLogicalOr(u16x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->nameWithVarNames = "subgroupLogicalOr(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->signature = "subgroupLogicalOr(u16x4,literal SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->name = "subgroupLogicalOr(u16x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->nameWithVarNames = "subgroupLogicalOr(value : u16x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalOr_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// subgroupLogicalXor with Int32, SubgroupOperation
@@ -1239,6 +1264,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupLogicalXor_Int32_op.name = "operation"_c;
     SubgroupLogicalXor_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int32_op.type.literal = true;
     SubgroupLogicalXor_Int32.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_Int32.name = SubgroupLogicalXor_Int32_name;
     SubgroupLogicalXor_Int32.backendIndex = 2399;
@@ -1246,9 +1272,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int32.parameters = SubgroupLogicalXor_Int32_args;
     Symbol::Resolved(&SubgroupLogicalXor_Int32_value)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SubgroupLogicalXor_Int32_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32)->signature = "subgroupLogicalXor(i32,SubgroupOperation) i32"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32)->name = "subgroupLogicalXor(i32,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32)->nameWithVarNames = "subgroupLogicalXor(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32)->signature = "subgroupLogicalXor(i32,literal SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32)->name = "subgroupLogicalXor(i32,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32)->nameWithVarNames = "subgroupLogicalXor(value : i32, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_Int32)->returnTypeSymbol = &Int32Type;
 
     /// subgroupLogicalXor with Int32x2, SubgroupOperation
@@ -1256,6 +1282,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupLogicalXor_Int32x2_op.name = "operation"_c;
     SubgroupLogicalXor_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int32x2_op.type.literal = true;
     SubgroupLogicalXor_Int32x2.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_Int32x2.name = SubgroupLogicalXor_Int32x2_name;
     SubgroupLogicalXor_Int32x2.backendIndex = 2400;
@@ -1263,9 +1290,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int32x2.parameters = SubgroupLogicalXor_Int32x2_args;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x2_value)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->signature = "subgroupLogicalXor(i32x2,SubgroupOperation) i32x2"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->name = "subgroupLogicalXor(i32x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->nameWithVarNames = "subgroupLogicalXor(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->signature = "subgroupLogicalXor(i32x2,literal SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->name = "subgroupLogicalXor(i32x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->nameWithVarNames = "subgroupLogicalXor(value : i32x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// subgroupLogicalXor with Int32x3, SubgroupOperation
@@ -1273,6 +1300,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupLogicalXor_Int32x3_op.name = "operation"_c;
     SubgroupLogicalXor_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int32x3_op.type.literal = true;
     SubgroupLogicalXor_Int32x3.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_Int32x3.name = SubgroupLogicalXor_Int32x3_name;
     SubgroupLogicalXor_Int32x3.backendIndex = 2401;
@@ -1280,9 +1308,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int32x3.parameters = SubgroupLogicalXor_Int32x3_args;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x3_value)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->signature = "subgroupLogicalXor(i32x3,SubgroupOperation) i32x3"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->name = "subgroupLogicalXor(i32x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->nameWithVarNames = "subgroupLogicalXor(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->signature = "subgroupLogicalXor(i32x3,literal SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->name = "subgroupLogicalXor(i32x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->nameWithVarNames = "subgroupLogicalXor(value : i32x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// subgroupLogicalXor with Int32x4, SubgroupOperation
@@ -1290,6 +1318,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupLogicalXor_Int32x4_op.name = "operation"_c;
     SubgroupLogicalXor_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int32x4_op.type.literal = true;
     SubgroupLogicalXor_Int32x4.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_Int32x4.name = SubgroupLogicalXor_Int32x4_name;
     SubgroupLogicalXor_Int32x4.backendIndex = 2402;
@@ -1297,9 +1326,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int32x4.parameters = SubgroupLogicalXor_Int32x4_args;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x4_value)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->signature = "subgroupLogicalXor(i32x4,SubgroupOperation) i32x4"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->name = "subgroupLogicalXor(i32x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->nameWithVarNames = "subgroupLogicalXor(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->signature = "subgroupLogicalXor(i32x4,literal SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->name = "subgroupLogicalXor(i32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->nameWithVarNames = "subgroupLogicalXor(value : i32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// subgroupLogicalXor with Int16, SubgroupOperation
@@ -1307,6 +1336,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupLogicalXor_Int16_op.name = "operation"_c;
     SubgroupLogicalXor_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int16_op.type.literal = true;
     SubgroupLogicalXor_Int16.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_Int16.name = SubgroupLogicalXor_Int16_name;
     SubgroupLogicalXor_Int16.backendIndex = 2403;
@@ -1314,9 +1344,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int16.parameters = SubgroupLogicalXor_Int16_args;
     Symbol::Resolved(&SubgroupLogicalXor_Int16_value)->typeSymbol = &Int16Type;
     Symbol::Resolved(&SubgroupLogicalXor_Int16_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16)->signature = "subgroupLogicalXor(i16,SubgroupOperation) i16"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16)->name = "subgroupLogicalXor(i16,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16)->nameWithVarNames = "subgroupLogicalXor(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16)->signature = "subgroupLogicalXor(i16,literal SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16)->name = "subgroupLogicalXor(i16,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16)->nameWithVarNames = "subgroupLogicalXor(value : i16, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_Int16)->returnTypeSymbol = &Int16Type;
 
     /// subgroupLogicalXor with Int16x2, SubgroupOperation
@@ -1324,6 +1354,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupLogicalXor_Int16x2_op.name = "operation"_c;
     SubgroupLogicalXor_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int16x2_op.type.literal = true;
     SubgroupLogicalXor_Int16x2.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_Int16x2.name = SubgroupLogicalXor_Int16x2_name;
     SubgroupLogicalXor_Int16x2.backendIndex = 2404;
@@ -1331,9 +1362,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int16x2.parameters = SubgroupLogicalXor_Int16x2_args;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x2_value)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->signature = "subgroupLogicalXor(i16x2,SubgroupOperation) i16x2"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->name = "subgroupLogicalXor(i16x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->nameWithVarNames = "subgroupLogicalXor(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->signature = "subgroupLogicalXor(i16x2,literal SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->name = "subgroupLogicalXor(i16x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->nameWithVarNames = "subgroupLogicalXor(value : i16x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// subgroupLogicalXor with Int16x3, SubgroupOperation
@@ -1341,6 +1372,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupLogicalXor_Int16x3_op.name = "operation"_c;
     SubgroupLogicalXor_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int16x3_op.type.literal = true;
     SubgroupLogicalXor_Int16x3.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_Int16x3.name = SubgroupLogicalXor_Int16x3_name;
     SubgroupLogicalXor_Int16x3.backendIndex = 2405;
@@ -1348,9 +1380,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int16x3.parameters = SubgroupLogicalXor_Int16x3_args;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x3_value)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->signature = "subgroupLogicalXor(i16x3,SubgroupOperation) i16x3"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->name = "subgroupLogicalXor(i16x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->nameWithVarNames = "subgroupLogicalXor(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->signature = "subgroupLogicalXor(i16x3,literal SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->name = "subgroupLogicalXor(i16x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->nameWithVarNames = "subgroupLogicalXor(value : i16x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// subgroupLogicalXor with Int16x4, SubgroupOperation
@@ -1358,6 +1390,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupLogicalXor_Int16x4_op.name = "operation"_c;
     SubgroupLogicalXor_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_Int16x4_op.type.literal = true;
     SubgroupLogicalXor_Int16x4.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_Int16x4.name = SubgroupLogicalXor_Int16x4_name;
     SubgroupLogicalXor_Int16x4.backendIndex = 2406;
@@ -1365,9 +1398,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_Int16x4.parameters = SubgroupLogicalXor_Int16x4_args;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x4_value)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->signature = "subgroupLogicalXor(i16x4,SubgroupOperation) i16x4"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->name = "subgroupLogicalXor(i16x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->nameWithVarNames = "subgroupLogicalXor(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->signature = "subgroupLogicalXor(i16x4,literal SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->name = "subgroupLogicalXor(i16x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->nameWithVarNames = "subgroupLogicalXor(value : i16x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// subgroupLogicalXor with UInt32, SubgroupOperation
@@ -1375,6 +1408,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupLogicalXor_UInt32_op.name = "operation"_c;
     SubgroupLogicalXor_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt32_op.type.literal = true;
     SubgroupLogicalXor_UInt32.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_UInt32.name = SubgroupLogicalXor_UInt32_name;
     SubgroupLogicalXor_UInt32.backendIndex = 2407;
@@ -1382,9 +1416,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt32.parameters = SubgroupLogicalXor_UInt32_args;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32_value)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->signature = "subgroupLogicalXor(u32,SubgroupOperation) u32"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->name = "subgroupLogicalXor(u32,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->nameWithVarNames = "subgroupLogicalXor(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->signature = "subgroupLogicalXor(u32,literal SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->name = "subgroupLogicalXor(u32,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32)->nameWithVarNames = "subgroupLogicalXor(value : u32, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupLogicalXor with UInt32x2, SubgroupOperation
@@ -1392,6 +1426,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupLogicalXor_UInt32x2_op.name = "operation"_c;
     SubgroupLogicalXor_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt32x2_op.type.literal = true;
     SubgroupLogicalXor_UInt32x2.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_UInt32x2.name = SubgroupLogicalXor_UInt32x2_name;
     SubgroupLogicalXor_UInt32x2.backendIndex = 2408;
@@ -1399,9 +1434,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt32x2.parameters = SubgroupLogicalXor_UInt32x2_args;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x2_value)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->signature = "subgroupLogicalXor(u32x2,SubgroupOperation) u32x2"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->name = "subgroupLogicalXor(u32x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->nameWithVarNames = "subgroupLogicalXor(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->signature = "subgroupLogicalXor(u32x2,literal SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->name = "subgroupLogicalXor(u32x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->nameWithVarNames = "subgroupLogicalXor(value : u32x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// subgroupLogicalXor with UInt32x3, SubgroupOperation
@@ -1409,6 +1444,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupLogicalXor_UInt32x3_op.name = "operation"_c;
     SubgroupLogicalXor_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt32x3_op.type.literal = true;
     SubgroupLogicalXor_UInt32x3.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_UInt32x3.name = SubgroupLogicalXor_UInt32x3_name;
     SubgroupLogicalXor_UInt32x3.backendIndex = 2409;
@@ -1416,9 +1452,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt32x3.parameters = SubgroupLogicalXor_UInt32x3_args;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x3_value)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->signature = "subgroupLogicalXor(u32x3,SubgroupOperation) u32x3"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->name = "subgroupLogicalXor(u32x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->nameWithVarNames = "subgroupLogicalXor(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->signature = "subgroupLogicalXor(u32x3,literal SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->name = "subgroupLogicalXor(u32x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->nameWithVarNames = "subgroupLogicalXor(value : u32x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupLogicalXor with UInt32x4, SubgroupOperation
@@ -1426,6 +1462,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupLogicalXor_UInt32x4_op.name = "operation"_c;
     SubgroupLogicalXor_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt32x4_op.type.literal = true;
     SubgroupLogicalXor_UInt32x4.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_UInt32x4.name = SubgroupLogicalXor_UInt32x4_name;
     SubgroupLogicalXor_UInt32x4.backendIndex = 2410;
@@ -1433,9 +1470,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt32x4.parameters = SubgroupLogicalXor_UInt32x4_args;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x4_value)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->signature = "subgroupLogicalXor(u32x4,SubgroupOperation) u32x4"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->name = "subgroupLogicalXor(u32x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->nameWithVarNames = "subgroupLogicalXor(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->signature = "subgroupLogicalXor(u32x4,literal SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->name = "subgroupLogicalXor(u32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->nameWithVarNames = "subgroupLogicalXor(value : u32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupLogicalXor with UInt16, SubgroupOperation
@@ -1443,6 +1480,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupLogicalXor_UInt16_op.name = "operation"_c;
     SubgroupLogicalXor_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt16_op.type.literal = true;
     SubgroupLogicalXor_UInt16.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_UInt16.name = SubgroupLogicalXor_UInt16_name;
     SubgroupLogicalXor_UInt16.backendIndex = 2411;
@@ -1450,9 +1488,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt16.parameters = SubgroupLogicalXor_UInt16_args;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16_value)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->signature = "subgroupLogicalXor(u16,SubgroupOperation) u16"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->name = "subgroupLogicalXor(u16,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->nameWithVarNames = "subgroupLogicalXor(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->signature = "subgroupLogicalXor(u16,literal SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->name = "subgroupLogicalXor(u16,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16)->nameWithVarNames = "subgroupLogicalXor(value : u16, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// subgroupLogicalXor with UInt16x2, SubgroupOperation
@@ -1460,6 +1498,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupLogicalXor_UInt16x2_op.name = "operation"_c;
     SubgroupLogicalXor_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt16x2_op.type.literal = true;
     SubgroupLogicalXor_UInt16x2.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_UInt16x2.name = SubgroupLogicalXor_UInt16x2_name;
     SubgroupLogicalXor_UInt16x2.backendIndex = 2412;
@@ -1467,9 +1506,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt16x2.parameters = SubgroupLogicalXor_UInt16x2_args;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x2_value)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->signature = "subgroupLogicalXor(u16x2,SubgroupOperation) u16x2"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->name = "subgroupLogicalXor(u16x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->nameWithVarNames = "subgroupLogicalXor(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->signature = "subgroupLogicalXor(u16x2,literal SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->name = "subgroupLogicalXor(u16x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->nameWithVarNames = "subgroupLogicalXor(value : u16x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// subgroupLogicalXor with UInt16x3, SubgroupOperation
@@ -1477,6 +1516,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupLogicalXor_UInt16x3_op.name = "operation"_c;
     SubgroupLogicalXor_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt16x3_op.type.literal = true;
     SubgroupLogicalXor_UInt16x3.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_UInt16x3.name = SubgroupLogicalXor_UInt16x3_name;
     SubgroupLogicalXor_UInt16x3.backendIndex = 2413;
@@ -1484,9 +1524,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt16x3.parameters = SubgroupLogicalXor_UInt16x3_args;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x3_value)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->signature = "subgroupLogicalXor(u16x3,SubgroupOperation) u16x3"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->name = "subgroupLogicalXor(u16x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->nameWithVarNames = "subgroupLogicalXor(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->signature = "subgroupLogicalXor(u16x3,literal SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->name = "subgroupLogicalXor(u16x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->nameWithVarNames = "subgroupLogicalXor(value : u16x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// subgroupLogicalXor with UInt16x4, SubgroupOperation
@@ -1494,6 +1534,7 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupLogicalXor_UInt16x4_op.name = "operation"_c;
     SubgroupLogicalXor_UInt16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupLogicalXor_UInt16x4_op.type.literal = true;
     SubgroupLogicalXor_UInt16x4.documentation = "Perform logical XOR across all subgroups"_c;
     SubgroupLogicalXor_UInt16x4.name = SubgroupLogicalXor_UInt16x4_name;
     SubgroupLogicalXor_UInt16x4.backendIndex = 2414;
@@ -1501,9 +1542,9 @@ void SetupIntrinsics11()
     SubgroupLogicalXor_UInt16x4.parameters = SubgroupLogicalXor_UInt16x4_args;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x4_value)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->signature = "subgroupLogicalXor(u16x4,SubgroupOperation) u16x4"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->name = "subgroupLogicalXor(u16x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->nameWithVarNames = "subgroupLogicalXor(value : u16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->signature = "subgroupLogicalXor(u16x4,literal SubgroupOperation) u16x4"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->name = "subgroupLogicalXor(u16x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->nameWithVarNames = "subgroupLogicalXor(value : u16x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupLogicalXor_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// subgroupShuffle with Float32, UInt32

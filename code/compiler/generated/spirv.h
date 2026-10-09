@@ -1235,6 +1235,11 @@ static auto ScopeToMemorySemantics = [](SPIRVResult::Storage scope) -> uint32_t
     return 0x0;
 };
 
+static const uint32_t SubgroupOperationsToSPIRV(const uint32_t sem)
+{
+    return sem;
+}
+
 SPIRVResult SPIRV_Float32_from_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[0]);
@@ -19863,8 +19868,8 @@ SPIRVResult SPIRV_ComputeGetIndexInWorkgroup(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_SubgroupGetId(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::GroupNonUniform);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetId"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupId);
     g->interfaceVariables.Insert(ret);
@@ -19876,8 +19881,8 @@ SPIRVResult SPIRV_SubgroupGetId(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_SubgroupGetSize(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::GroupNonUniform);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetSize"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::SubgroupSize);
     g->interfaceVariables.Insert(ret);
@@ -19889,8 +19894,8 @@ SPIRVResult SPIRV_SubgroupGetSize(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_SubgroupGetNum(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::GroupNonUniform);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetNum"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->writer->Decorate(SPVArg(ret), Decorations::BuiltIn, Builtins::NumSubgroups);
     g->interfaceVariables.Insert(ret);
@@ -19967,7 +19972,8 @@ SPIRVResult SPIRV_SubgroupGetGreaterMask(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_SubgroupGetFirstActiveThread(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::GroupNonUniform);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, scope);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19975,7 +19981,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float32(const Compiler* c, 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19983,7 +19990,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float32x2(const Compiler* c
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19991,7 +19999,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float32x3(const Compiler* c
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19999,7 +20008,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float32x4(const Compiler* c
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20007,7 +20017,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float16(const Compiler* c, 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20015,7 +20026,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float16x2(const Compiler* c
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20023,7 +20035,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float16x3(const Compiler* c
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20031,7 +20044,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float16x4(const Compiler* c
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20039,7 +20053,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int32(const Compiler* c, SP
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20047,7 +20062,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int32x2(const Compiler* c, 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20055,7 +20071,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int32x3(const Compiler* c, 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20063,7 +20080,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int32x4(const Compiler* c, 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20071,7 +20089,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int16(const Compiler* c, SP
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20079,7 +20098,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int16x2(const Compiler* c, 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20087,7 +20107,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int16x3(const Compiler* c, 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20095,7 +20116,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int16x4(const Compiler* c, 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20103,7 +20125,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt32(const Compiler* c, S
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20111,7 +20134,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x2(const Compiler* c,
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20119,7 +20143,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x3(const Compiler* c,
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20127,7 +20152,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x4(const Compiler* c,
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20135,7 +20161,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt16(const Compiler* c, S
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20143,7 +20170,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x2(const Compiler* c,
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20151,7 +20179,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x3(const Compiler* c,
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20159,7 +20188,8 @@ SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x4(const Compiler* c,
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20167,7 +20197,8 @@ SPIRVResult SPIRV_SubgroupBallot(const Compiler* c, SPIRVGenerator* g, uint32_t 
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallot, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallot, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20175,7 +20206,8 @@ SPIRVResult SPIRV_SubgroupInverseBallot(const Compiler* c, SPIRVGenerator* g, ui
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformInverseBallot, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformInverseBallot, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20183,7 +20215,9 @@ SPIRVResult SPIRV_SubgroupBallotBitCount(const Compiler* c, SPIRVGenerator* g, u
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitCount, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, 0, loaded);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitCount, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20191,7 +20225,8 @@ SPIRVResult SPIRV_SubgroupBallotFirstOne(const Compiler* c, SPIRVGenerator* g, u
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindLSB, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindLSB, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20199,7 +20234,8 @@ SPIRVResult SPIRV_SubgroupBallotLastOne(const Compiler* c, SPIRVGenerator* g, ui
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindMSB, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindMSB, SPVWriter::Section::LocalFunction, returnType, scope, loaded);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20208,7 +20244,8 @@ SPIRVResult SPIRV_SubgroupBallotBit(const Compiler* c, SPIRVGenerator* g, uint32
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult bit = LoadValueSPIRV(c, g, args[1]);
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, bit);
+    SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, scope, mask, bit);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -20934,2641 +20971,2713 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt16x4(const Compiler* c, SPIRVGenera
 
 SPIRVResult SPIRV_SubgroupMin_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMin_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMin, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformSMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMax_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformUMax, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAdd_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIAdd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformFMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupMul_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformIMul, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupAnd_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupOr_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupXor_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBitwiseXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalAnd_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalAnd, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalOr_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalOr, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupLogicalXor_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformArithmetic);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult op = LoadValueSPIRV(c, g, args[1]);
+    uint32_t subgroupOp = SubgroupOperationsToSPIRV(args[1].literalValue.ui);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, op, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformLogicalXor, SPVWriter::Section::LocalFunction, returnType, scope, subgroupOp, value);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffle_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffle, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleXor_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleXor, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_SubgroupShuffleUp_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffle);
+    g->writer->Capability(Capabilities::GroupNonUniformShuffleRelative);
     SPIRVResult value = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult picker = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult scope = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(ExecutionScopes::Subgroup.c));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, picker, value);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformShuffleUp, SPVWriter::Section::LocalFunction, returnType, scope, value, picker);
     return SPIRVResult(ret, returnType, true);
 }
 

@@ -2745,31 +2745,31 @@ void SetupIntrinsics8()
     SubgroupGetId.documentation = "Returns the subgroup ID of the current thread"_c;
     SubgroupGetId.name = SubgroupGetId_name;
     SubgroupGetId.backendIndex = 2112;
-    SubgroupGetId.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&SubgroupGetId)->signature = "subgroupGetId() u32x3"_c;
+    SubgroupGetId.returnType = Type::FullType { UInt32Type.name };
+    Symbol::Resolved(&SubgroupGetId)->signature = "subgroupGetId() u32"_c;
     Symbol::Resolved(&SubgroupGetId)->name = "subgroupGetId()"_c;
     Symbol::Resolved(&SubgroupGetId)->nameWithVarNames = "subgroupGetId()"_c;
-    Symbol::Resolved(&SubgroupGetId)->returnTypeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupGetId)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupGetSize
     SubgroupGetSize.documentation = "Returns the size of the subgroup"_c;
     SubgroupGetSize.name = SubgroupGetSize_name;
     SubgroupGetSize.backendIndex = 2113;
-    SubgroupGetSize.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&SubgroupGetSize)->signature = "subgroupGetSize() u32x3"_c;
+    SubgroupGetSize.returnType = Type::FullType { UInt32Type.name };
+    Symbol::Resolved(&SubgroupGetSize)->signature = "subgroupGetSize() u32"_c;
     Symbol::Resolved(&SubgroupGetSize)->name = "subgroupGetSize()"_c;
     Symbol::Resolved(&SubgroupGetSize)->nameWithVarNames = "subgroupGetSize()"_c;
-    Symbol::Resolved(&SubgroupGetSize)->returnTypeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupGetSize)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupGetNum
     SubgroupGetNum.documentation = "Returns the number of subgroups in the workgroup"_c;
     SubgroupGetNum.name = SubgroupGetNum_name;
     SubgroupGetNum.backendIndex = 2114;
-    SubgroupGetNum.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&SubgroupGetNum)->signature = "subgroupGetNum() u32x3"_c;
+    SubgroupGetNum.returnType = Type::FullType { UInt32Type.name };
+    Symbol::Resolved(&SubgroupGetNum)->signature = "subgroupGetNum() u32"_c;
     Symbol::Resolved(&SubgroupGetNum)->name = "subgroupGetNum()"_c;
     Symbol::Resolved(&SubgroupGetNum)->nameWithVarNames = "subgroupGetNum()"_c;
-    Symbol::Resolved(&SubgroupGetNum)->returnTypeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupGetNum)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupGetThreadMask
     SubgroupGetThreadMask.documentation = "Returns a 128 bit subgroup mask where the current thread is active"_c;

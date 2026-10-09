@@ -148,10 +148,11 @@ Variable SubgroupInverseBallot_predicate;
 Function SubgroupInverseBallot;
 inline constexpr std::array SubgroupInverseBallot_args = { &SubgroupInverseBallot_predicate };
 
-/// subgroupBallotBitCount with UInt32x4
+/// subgroupBallotBitCount with UInt32x4, SubgroupOperation
 Variable SubgroupBallotBitCount_mask;
+Variable SubgroupBallotBitCount_op;
 Function SubgroupBallotBitCount;
-inline constexpr std::array SubgroupBallotBitCount_args = { &SubgroupBallotBitCount_mask };
+inline constexpr std::array SubgroupBallotBitCount_args = { &SubgroupBallotBitCount_mask, &SubgroupBallotBitCount_op };
 
 /// subgroupBallotFirstOne with UInt32x4
 Variable SubgroupBallotFirstOne_mask;
@@ -1063,18 +1064,22 @@ void SetupIntrinsics9()
     Symbol::Resolved(&SubgroupInverseBallot)->nameWithVarNames = "subgroupInverseBallot(predicate : b8)"_c;
     Symbol::Resolved(&SubgroupInverseBallot)->returnTypeSymbol = &UInt32x4Type;
 
-    /// subgroupBallotBitCount with UInt32x4
+    /// subgroupBallotBitCount with UInt32x4, SubgroupOperation
     SubgroupBallotBitCount_mask.name = "value"_c;
     SubgroupBallotBitCount_mask.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupBallotBitCount_op.name = "operation"_c;
+    SubgroupBallotBitCount_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupBallotBitCount_op.type.literal = true;
     SubgroupBallotBitCount.documentation = "Returns the number of bits set to 1 in a 128 bit subgroup thread mask"_c;
     SubgroupBallotBitCount.name = SubgroupBallotBitCount_name;
     SubgroupBallotBitCount.backendIndex = 2147;
     SubgroupBallotBitCount.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotBitCount.parameters = SubgroupBallotBitCount_args;
     Symbol::Resolved(&SubgroupBallotBitCount_mask)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&SubgroupBallotBitCount)->signature = "subgroupBallotBitCount(u32x4) u32"_c;
-    Symbol::Resolved(&SubgroupBallotBitCount)->name = "subgroupBallotBitCount(u32x4)"_c;
-    Symbol::Resolved(&SubgroupBallotBitCount)->nameWithVarNames = "subgroupBallotBitCount(value : u32x4)"_c;
+    Symbol::Resolved(&SubgroupBallotBitCount_op)->typeSymbol = &SubgroupOperationType;
+    Symbol::Resolved(&SubgroupBallotBitCount)->signature = "subgroupBallotBitCount(u32x4,literal SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupBallotBitCount)->name = "subgroupBallotBitCount(u32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupBallotBitCount)->nameWithVarNames = "subgroupBallotBitCount(value : u32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupBallotBitCount)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupBallotFirstOne with UInt32x4
@@ -2136,6 +2141,7 @@ void SetupIntrinsics9()
     SubgroupMin_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupMin_Float32_op.name = "operation"_c;
     SubgroupMin_Float32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float32_op.type.literal = true;
     SubgroupMin_Float32.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Float32.name = SubgroupMin_Float32_name;
     SubgroupMin_Float32.backendIndex = 2223;
@@ -2143,9 +2149,9 @@ void SetupIntrinsics9()
     SubgroupMin_Float32.parameters = SubgroupMin_Float32_args;
     Symbol::Resolved(&SubgroupMin_Float32_value)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SubgroupMin_Float32_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Float32)->signature = "subgroupMin(f32,SubgroupOperation) f32"_c;
-    Symbol::Resolved(&SubgroupMin_Float32)->name = "subgroupMin(f32,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Float32)->nameWithVarNames = "subgroupMin(value : f32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32)->signature = "subgroupMin(f32,literal SubgroupOperation) f32"_c;
+    Symbol::Resolved(&SubgroupMin_Float32)->name = "subgroupMin(f32,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32)->nameWithVarNames = "subgroupMin(value : f32, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Float32)->returnTypeSymbol = &Float32Type;
 
     /// subgroupMin with Float32x2, SubgroupOperation
@@ -2153,6 +2159,7 @@ void SetupIntrinsics9()
     SubgroupMin_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupMin_Float32x2_op.name = "operation"_c;
     SubgroupMin_Float32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float32x2_op.type.literal = true;
     SubgroupMin_Float32x2.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Float32x2.name = SubgroupMin_Float32x2_name;
     SubgroupMin_Float32x2.backendIndex = 2224;
@@ -2160,9 +2167,9 @@ void SetupIntrinsics9()
     SubgroupMin_Float32x2.parameters = SubgroupMin_Float32x2_args;
     Symbol::Resolved(&SubgroupMin_Float32x2_value)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SubgroupMin_Float32x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Float32x2)->signature = "subgroupMin(f32x2,SubgroupOperation) f32x2"_c;
-    Symbol::Resolved(&SubgroupMin_Float32x2)->name = "subgroupMin(f32x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Float32x2)->nameWithVarNames = "subgroupMin(value : f32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x2)->signature = "subgroupMin(f32x2,literal SubgroupOperation) f32x2"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x2)->name = "subgroupMin(f32x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x2)->nameWithVarNames = "subgroupMin(value : f32x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
     /// subgroupMin with Float32x3, SubgroupOperation
@@ -2170,6 +2177,7 @@ void SetupIntrinsics9()
     SubgroupMin_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupMin_Float32x3_op.name = "operation"_c;
     SubgroupMin_Float32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float32x3_op.type.literal = true;
     SubgroupMin_Float32x3.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Float32x3.name = SubgroupMin_Float32x3_name;
     SubgroupMin_Float32x3.backendIndex = 2225;
@@ -2177,9 +2185,9 @@ void SetupIntrinsics9()
     SubgroupMin_Float32x3.parameters = SubgroupMin_Float32x3_args;
     Symbol::Resolved(&SubgroupMin_Float32x3_value)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SubgroupMin_Float32x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Float32x3)->signature = "subgroupMin(f32x3,SubgroupOperation) f32x3"_c;
-    Symbol::Resolved(&SubgroupMin_Float32x3)->name = "subgroupMin(f32x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Float32x3)->nameWithVarNames = "subgroupMin(value : f32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x3)->signature = "subgroupMin(f32x3,literal SubgroupOperation) f32x3"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x3)->name = "subgroupMin(f32x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x3)->nameWithVarNames = "subgroupMin(value : f32x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
     /// subgroupMin with Float32x4, SubgroupOperation
@@ -2187,6 +2195,7 @@ void SetupIntrinsics9()
     SubgroupMin_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupMin_Float32x4_op.name = "operation"_c;
     SubgroupMin_Float32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float32x4_op.type.literal = true;
     SubgroupMin_Float32x4.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Float32x4.name = SubgroupMin_Float32x4_name;
     SubgroupMin_Float32x4.backendIndex = 2226;
@@ -2194,9 +2203,9 @@ void SetupIntrinsics9()
     SubgroupMin_Float32x4.parameters = SubgroupMin_Float32x4_args;
     Symbol::Resolved(&SubgroupMin_Float32x4_value)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&SubgroupMin_Float32x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Float32x4)->signature = "subgroupMin(f32x4,SubgroupOperation) f32x4"_c;
-    Symbol::Resolved(&SubgroupMin_Float32x4)->name = "subgroupMin(f32x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Float32x4)->nameWithVarNames = "subgroupMin(value : f32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x4)->signature = "subgroupMin(f32x4,literal SubgroupOperation) f32x4"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x4)->name = "subgroupMin(f32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float32x4)->nameWithVarNames = "subgroupMin(value : f32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// subgroupMin with Float16, SubgroupOperation
@@ -2204,6 +2213,7 @@ void SetupIntrinsics9()
     SubgroupMin_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupMin_Float16_op.name = "operation"_c;
     SubgroupMin_Float16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float16_op.type.literal = true;
     SubgroupMin_Float16.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Float16.name = SubgroupMin_Float16_name;
     SubgroupMin_Float16.backendIndex = 2227;
@@ -2211,9 +2221,9 @@ void SetupIntrinsics9()
     SubgroupMin_Float16.parameters = SubgroupMin_Float16_args;
     Symbol::Resolved(&SubgroupMin_Float16_value)->typeSymbol = &Float16Type;
     Symbol::Resolved(&SubgroupMin_Float16_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Float16)->signature = "subgroupMin(f16,SubgroupOperation) f16"_c;
-    Symbol::Resolved(&SubgroupMin_Float16)->name = "subgroupMin(f16,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Float16)->nameWithVarNames = "subgroupMin(value : f16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16)->signature = "subgroupMin(f16,literal SubgroupOperation) f16"_c;
+    Symbol::Resolved(&SubgroupMin_Float16)->name = "subgroupMin(f16,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16)->nameWithVarNames = "subgroupMin(value : f16, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Float16)->returnTypeSymbol = &Float16Type;
 
     /// subgroupMin with Float16x2, SubgroupOperation
@@ -2221,6 +2231,7 @@ void SetupIntrinsics9()
     SubgroupMin_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupMin_Float16x2_op.name = "operation"_c;
     SubgroupMin_Float16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float16x2_op.type.literal = true;
     SubgroupMin_Float16x2.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Float16x2.name = SubgroupMin_Float16x2_name;
     SubgroupMin_Float16x2.backendIndex = 2228;
@@ -2228,9 +2239,9 @@ void SetupIntrinsics9()
     SubgroupMin_Float16x2.parameters = SubgroupMin_Float16x2_args;
     Symbol::Resolved(&SubgroupMin_Float16x2_value)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&SubgroupMin_Float16x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Float16x2)->signature = "subgroupMin(f16x2,SubgroupOperation) f16x2"_c;
-    Symbol::Resolved(&SubgroupMin_Float16x2)->name = "subgroupMin(f16x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Float16x2)->nameWithVarNames = "subgroupMin(value : f16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x2)->signature = "subgroupMin(f16x2,literal SubgroupOperation) f16x2"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x2)->name = "subgroupMin(f16x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x2)->nameWithVarNames = "subgroupMin(value : f16x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
     /// subgroupMin with Float16x3, SubgroupOperation
@@ -2238,6 +2249,7 @@ void SetupIntrinsics9()
     SubgroupMin_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupMin_Float16x3_op.name = "operation"_c;
     SubgroupMin_Float16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float16x3_op.type.literal = true;
     SubgroupMin_Float16x3.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Float16x3.name = SubgroupMin_Float16x3_name;
     SubgroupMin_Float16x3.backendIndex = 2229;
@@ -2245,9 +2257,9 @@ void SetupIntrinsics9()
     SubgroupMin_Float16x3.parameters = SubgroupMin_Float16x3_args;
     Symbol::Resolved(&SubgroupMin_Float16x3_value)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&SubgroupMin_Float16x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Float16x3)->signature = "subgroupMin(f16x3,SubgroupOperation) f16x3"_c;
-    Symbol::Resolved(&SubgroupMin_Float16x3)->name = "subgroupMin(f16x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Float16x3)->nameWithVarNames = "subgroupMin(value : f16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x3)->signature = "subgroupMin(f16x3,literal SubgroupOperation) f16x3"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x3)->name = "subgroupMin(f16x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x3)->nameWithVarNames = "subgroupMin(value : f16x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
     /// subgroupMin with Float16x4, SubgroupOperation
@@ -2255,6 +2267,7 @@ void SetupIntrinsics9()
     SubgroupMin_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupMin_Float16x4_op.name = "operation"_c;
     SubgroupMin_Float16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Float16x4_op.type.literal = true;
     SubgroupMin_Float16x4.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Float16x4.name = SubgroupMin_Float16x4_name;
     SubgroupMin_Float16x4.backendIndex = 2230;
@@ -2262,9 +2275,9 @@ void SetupIntrinsics9()
     SubgroupMin_Float16x4.parameters = SubgroupMin_Float16x4_args;
     Symbol::Resolved(&SubgroupMin_Float16x4_value)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&SubgroupMin_Float16x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Float16x4)->signature = "subgroupMin(f16x4,SubgroupOperation) f16x4"_c;
-    Symbol::Resolved(&SubgroupMin_Float16x4)->name = "subgroupMin(f16x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Float16x4)->nameWithVarNames = "subgroupMin(value : f16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x4)->signature = "subgroupMin(f16x4,literal SubgroupOperation) f16x4"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x4)->name = "subgroupMin(f16x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Float16x4)->nameWithVarNames = "subgroupMin(value : f16x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// subgroupMin with Int32, SubgroupOperation
@@ -2272,6 +2285,7 @@ void SetupIntrinsics9()
     SubgroupMin_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupMin_Int32_op.name = "operation"_c;
     SubgroupMin_Int32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int32_op.type.literal = true;
     SubgroupMin_Int32.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Int32.name = SubgroupMin_Int32_name;
     SubgroupMin_Int32.backendIndex = 2231;
@@ -2279,9 +2293,9 @@ void SetupIntrinsics9()
     SubgroupMin_Int32.parameters = SubgroupMin_Int32_args;
     Symbol::Resolved(&SubgroupMin_Int32_value)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SubgroupMin_Int32_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Int32)->signature = "subgroupMin(i32,SubgroupOperation) i32"_c;
-    Symbol::Resolved(&SubgroupMin_Int32)->name = "subgroupMin(i32,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Int32)->nameWithVarNames = "subgroupMin(value : i32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32)->signature = "subgroupMin(i32,literal SubgroupOperation) i32"_c;
+    Symbol::Resolved(&SubgroupMin_Int32)->name = "subgroupMin(i32,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32)->nameWithVarNames = "subgroupMin(value : i32, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Int32)->returnTypeSymbol = &Int32Type;
 
     /// subgroupMin with Int32x2, SubgroupOperation
@@ -2289,6 +2303,7 @@ void SetupIntrinsics9()
     SubgroupMin_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupMin_Int32x2_op.name = "operation"_c;
     SubgroupMin_Int32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int32x2_op.type.literal = true;
     SubgroupMin_Int32x2.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Int32x2.name = SubgroupMin_Int32x2_name;
     SubgroupMin_Int32x2.backendIndex = 2232;
@@ -2296,9 +2311,9 @@ void SetupIntrinsics9()
     SubgroupMin_Int32x2.parameters = SubgroupMin_Int32x2_args;
     Symbol::Resolved(&SubgroupMin_Int32x2_value)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&SubgroupMin_Int32x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Int32x2)->signature = "subgroupMin(i32x2,SubgroupOperation) i32x2"_c;
-    Symbol::Resolved(&SubgroupMin_Int32x2)->name = "subgroupMin(i32x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Int32x2)->nameWithVarNames = "subgroupMin(value : i32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x2)->signature = "subgroupMin(i32x2,literal SubgroupOperation) i32x2"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x2)->name = "subgroupMin(i32x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x2)->nameWithVarNames = "subgroupMin(value : i32x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// subgroupMin with Int32x3, SubgroupOperation
@@ -2306,6 +2321,7 @@ void SetupIntrinsics9()
     SubgroupMin_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupMin_Int32x3_op.name = "operation"_c;
     SubgroupMin_Int32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int32x3_op.type.literal = true;
     SubgroupMin_Int32x3.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Int32x3.name = SubgroupMin_Int32x3_name;
     SubgroupMin_Int32x3.backendIndex = 2233;
@@ -2313,9 +2329,9 @@ void SetupIntrinsics9()
     SubgroupMin_Int32x3.parameters = SubgroupMin_Int32x3_args;
     Symbol::Resolved(&SubgroupMin_Int32x3_value)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&SubgroupMin_Int32x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Int32x3)->signature = "subgroupMin(i32x3,SubgroupOperation) i32x3"_c;
-    Symbol::Resolved(&SubgroupMin_Int32x3)->name = "subgroupMin(i32x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Int32x3)->nameWithVarNames = "subgroupMin(value : i32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x3)->signature = "subgroupMin(i32x3,literal SubgroupOperation) i32x3"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x3)->name = "subgroupMin(i32x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x3)->nameWithVarNames = "subgroupMin(value : i32x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// subgroupMin with Int32x4, SubgroupOperation
@@ -2323,6 +2339,7 @@ void SetupIntrinsics9()
     SubgroupMin_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupMin_Int32x4_op.name = "operation"_c;
     SubgroupMin_Int32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int32x4_op.type.literal = true;
     SubgroupMin_Int32x4.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Int32x4.name = SubgroupMin_Int32x4_name;
     SubgroupMin_Int32x4.backendIndex = 2234;
@@ -2330,9 +2347,9 @@ void SetupIntrinsics9()
     SubgroupMin_Int32x4.parameters = SubgroupMin_Int32x4_args;
     Symbol::Resolved(&SubgroupMin_Int32x4_value)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&SubgroupMin_Int32x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Int32x4)->signature = "subgroupMin(i32x4,SubgroupOperation) i32x4"_c;
-    Symbol::Resolved(&SubgroupMin_Int32x4)->name = "subgroupMin(i32x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Int32x4)->nameWithVarNames = "subgroupMin(value : i32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x4)->signature = "subgroupMin(i32x4,literal SubgroupOperation) i32x4"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x4)->name = "subgroupMin(i32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int32x4)->nameWithVarNames = "subgroupMin(value : i32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// subgroupMin with Int16, SubgroupOperation
@@ -2340,6 +2357,7 @@ void SetupIntrinsics9()
     SubgroupMin_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupMin_Int16_op.name = "operation"_c;
     SubgroupMin_Int16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int16_op.type.literal = true;
     SubgroupMin_Int16.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Int16.name = SubgroupMin_Int16_name;
     SubgroupMin_Int16.backendIndex = 2235;
@@ -2347,9 +2365,9 @@ void SetupIntrinsics9()
     SubgroupMin_Int16.parameters = SubgroupMin_Int16_args;
     Symbol::Resolved(&SubgroupMin_Int16_value)->typeSymbol = &Int16Type;
     Symbol::Resolved(&SubgroupMin_Int16_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Int16)->signature = "subgroupMin(i16,SubgroupOperation) i16"_c;
-    Symbol::Resolved(&SubgroupMin_Int16)->name = "subgroupMin(i16,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Int16)->nameWithVarNames = "subgroupMin(value : i16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16)->signature = "subgroupMin(i16,literal SubgroupOperation) i16"_c;
+    Symbol::Resolved(&SubgroupMin_Int16)->name = "subgroupMin(i16,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16)->nameWithVarNames = "subgroupMin(value : i16, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Int16)->returnTypeSymbol = &Int16Type;
 
     /// subgroupMin with Int16x2, SubgroupOperation
@@ -2357,6 +2375,7 @@ void SetupIntrinsics9()
     SubgroupMin_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupMin_Int16x2_op.name = "operation"_c;
     SubgroupMin_Int16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int16x2_op.type.literal = true;
     SubgroupMin_Int16x2.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Int16x2.name = SubgroupMin_Int16x2_name;
     SubgroupMin_Int16x2.backendIndex = 2236;
@@ -2364,9 +2383,9 @@ void SetupIntrinsics9()
     SubgroupMin_Int16x2.parameters = SubgroupMin_Int16x2_args;
     Symbol::Resolved(&SubgroupMin_Int16x2_value)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&SubgroupMin_Int16x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Int16x2)->signature = "subgroupMin(i16x2,SubgroupOperation) i16x2"_c;
-    Symbol::Resolved(&SubgroupMin_Int16x2)->name = "subgroupMin(i16x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Int16x2)->nameWithVarNames = "subgroupMin(value : i16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x2)->signature = "subgroupMin(i16x2,literal SubgroupOperation) i16x2"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x2)->name = "subgroupMin(i16x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x2)->nameWithVarNames = "subgroupMin(value : i16x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// subgroupMin with Int16x3, SubgroupOperation
@@ -2374,6 +2393,7 @@ void SetupIntrinsics9()
     SubgroupMin_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupMin_Int16x3_op.name = "operation"_c;
     SubgroupMin_Int16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int16x3_op.type.literal = true;
     SubgroupMin_Int16x3.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Int16x3.name = SubgroupMin_Int16x3_name;
     SubgroupMin_Int16x3.backendIndex = 2237;
@@ -2381,9 +2401,9 @@ void SetupIntrinsics9()
     SubgroupMin_Int16x3.parameters = SubgroupMin_Int16x3_args;
     Symbol::Resolved(&SubgroupMin_Int16x3_value)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&SubgroupMin_Int16x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Int16x3)->signature = "subgroupMin(i16x3,SubgroupOperation) i16x3"_c;
-    Symbol::Resolved(&SubgroupMin_Int16x3)->name = "subgroupMin(i16x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Int16x3)->nameWithVarNames = "subgroupMin(value : i16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x3)->signature = "subgroupMin(i16x3,literal SubgroupOperation) i16x3"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x3)->name = "subgroupMin(i16x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x3)->nameWithVarNames = "subgroupMin(value : i16x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// subgroupMin with Int16x4, SubgroupOperation
@@ -2391,6 +2411,7 @@ void SetupIntrinsics9()
     SubgroupMin_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupMin_Int16x4_op.name = "operation"_c;
     SubgroupMin_Int16x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_Int16x4_op.type.literal = true;
     SubgroupMin_Int16x4.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_Int16x4.name = SubgroupMin_Int16x4_name;
     SubgroupMin_Int16x4.backendIndex = 2238;
@@ -2398,9 +2419,9 @@ void SetupIntrinsics9()
     SubgroupMin_Int16x4.parameters = SubgroupMin_Int16x4_args;
     Symbol::Resolved(&SubgroupMin_Int16x4_value)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&SubgroupMin_Int16x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_Int16x4)->signature = "subgroupMin(i16x4,SubgroupOperation) i16x4"_c;
-    Symbol::Resolved(&SubgroupMin_Int16x4)->name = "subgroupMin(i16x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_Int16x4)->nameWithVarNames = "subgroupMin(value : i16x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x4)->signature = "subgroupMin(i16x4,literal SubgroupOperation) i16x4"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x4)->name = "subgroupMin(i16x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_Int16x4)->nameWithVarNames = "subgroupMin(value : i16x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// subgroupMin with UInt32, SubgroupOperation
@@ -2408,6 +2429,7 @@ void SetupIntrinsics9()
     SubgroupMin_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupMin_UInt32_op.name = "operation"_c;
     SubgroupMin_UInt32_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt32_op.type.literal = true;
     SubgroupMin_UInt32.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_UInt32.name = SubgroupMin_UInt32_name;
     SubgroupMin_UInt32.backendIndex = 2239;
@@ -2415,9 +2437,9 @@ void SetupIntrinsics9()
     SubgroupMin_UInt32.parameters = SubgroupMin_UInt32_args;
     Symbol::Resolved(&SubgroupMin_UInt32_value)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SubgroupMin_UInt32_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_UInt32)->signature = "subgroupMin(u32,SubgroupOperation) u32"_c;
-    Symbol::Resolved(&SubgroupMin_UInt32)->name = "subgroupMin(u32,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_UInt32)->nameWithVarNames = "subgroupMin(value : u32, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32)->signature = "subgroupMin(u32,literal SubgroupOperation) u32"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32)->name = "subgroupMin(u32,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32)->nameWithVarNames = "subgroupMin(value : u32, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupMin with UInt32x2, SubgroupOperation
@@ -2425,6 +2447,7 @@ void SetupIntrinsics9()
     SubgroupMin_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupMin_UInt32x2_op.name = "operation"_c;
     SubgroupMin_UInt32x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt32x2_op.type.literal = true;
     SubgroupMin_UInt32x2.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_UInt32x2.name = SubgroupMin_UInt32x2_name;
     SubgroupMin_UInt32x2.backendIndex = 2240;
@@ -2432,9 +2455,9 @@ void SetupIntrinsics9()
     SubgroupMin_UInt32x2.parameters = SubgroupMin_UInt32x2_args;
     Symbol::Resolved(&SubgroupMin_UInt32x2_value)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&SubgroupMin_UInt32x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_UInt32x2)->signature = "subgroupMin(u32x2,SubgroupOperation) u32x2"_c;
-    Symbol::Resolved(&SubgroupMin_UInt32x2)->name = "subgroupMin(u32x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_UInt32x2)->nameWithVarNames = "subgroupMin(value : u32x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x2)->signature = "subgroupMin(u32x2,literal SubgroupOperation) u32x2"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x2)->name = "subgroupMin(u32x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x2)->nameWithVarNames = "subgroupMin(value : u32x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// subgroupMin with UInt32x3, SubgroupOperation
@@ -2442,6 +2465,7 @@ void SetupIntrinsics9()
     SubgroupMin_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupMin_UInt32x3_op.name = "operation"_c;
     SubgroupMin_UInt32x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt32x3_op.type.literal = true;
     SubgroupMin_UInt32x3.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_UInt32x3.name = SubgroupMin_UInt32x3_name;
     SubgroupMin_UInt32x3.backendIndex = 2241;
@@ -2449,9 +2473,9 @@ void SetupIntrinsics9()
     SubgroupMin_UInt32x3.parameters = SubgroupMin_UInt32x3_args;
     Symbol::Resolved(&SubgroupMin_UInt32x3_value)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&SubgroupMin_UInt32x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_UInt32x3)->signature = "subgroupMin(u32x3,SubgroupOperation) u32x3"_c;
-    Symbol::Resolved(&SubgroupMin_UInt32x3)->name = "subgroupMin(u32x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_UInt32x3)->nameWithVarNames = "subgroupMin(value : u32x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x3)->signature = "subgroupMin(u32x3,literal SubgroupOperation) u32x3"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x3)->name = "subgroupMin(u32x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x3)->nameWithVarNames = "subgroupMin(value : u32x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupMin with UInt32x4, SubgroupOperation
@@ -2459,6 +2483,7 @@ void SetupIntrinsics9()
     SubgroupMin_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupMin_UInt32x4_op.name = "operation"_c;
     SubgroupMin_UInt32x4_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt32x4_op.type.literal = true;
     SubgroupMin_UInt32x4.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_UInt32x4.name = SubgroupMin_UInt32x4_name;
     SubgroupMin_UInt32x4.backendIndex = 2242;
@@ -2466,9 +2491,9 @@ void SetupIntrinsics9()
     SubgroupMin_UInt32x4.parameters = SubgroupMin_UInt32x4_args;
     Symbol::Resolved(&SubgroupMin_UInt32x4_value)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&SubgroupMin_UInt32x4_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_UInt32x4)->signature = "subgroupMin(u32x4,SubgroupOperation) u32x4"_c;
-    Symbol::Resolved(&SubgroupMin_UInt32x4)->name = "subgroupMin(u32x4,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_UInt32x4)->nameWithVarNames = "subgroupMin(value : u32x4, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x4)->signature = "subgroupMin(u32x4,literal SubgroupOperation) u32x4"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x4)->name = "subgroupMin(u32x4,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt32x4)->nameWithVarNames = "subgroupMin(value : u32x4, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupMin with UInt16, SubgroupOperation
@@ -2476,6 +2501,7 @@ void SetupIntrinsics9()
     SubgroupMin_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupMin_UInt16_op.name = "operation"_c;
     SubgroupMin_UInt16_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt16_op.type.literal = true;
     SubgroupMin_UInt16.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_UInt16.name = SubgroupMin_UInt16_name;
     SubgroupMin_UInt16.backendIndex = 2243;
@@ -2483,9 +2509,9 @@ void SetupIntrinsics9()
     SubgroupMin_UInt16.parameters = SubgroupMin_UInt16_args;
     Symbol::Resolved(&SubgroupMin_UInt16_value)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&SubgroupMin_UInt16_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_UInt16)->signature = "subgroupMin(u16,SubgroupOperation) u16"_c;
-    Symbol::Resolved(&SubgroupMin_UInt16)->name = "subgroupMin(u16,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_UInt16)->nameWithVarNames = "subgroupMin(value : u16, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16)->signature = "subgroupMin(u16,literal SubgroupOperation) u16"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16)->name = "subgroupMin(u16,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16)->nameWithVarNames = "subgroupMin(value : u16, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// subgroupMin with UInt16x2, SubgroupOperation
@@ -2493,6 +2519,7 @@ void SetupIntrinsics9()
     SubgroupMin_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupMin_UInt16x2_op.name = "operation"_c;
     SubgroupMin_UInt16x2_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt16x2_op.type.literal = true;
     SubgroupMin_UInt16x2.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_UInt16x2.name = SubgroupMin_UInt16x2_name;
     SubgroupMin_UInt16x2.backendIndex = 2244;
@@ -2500,9 +2527,9 @@ void SetupIntrinsics9()
     SubgroupMin_UInt16x2.parameters = SubgroupMin_UInt16x2_args;
     Symbol::Resolved(&SubgroupMin_UInt16x2_value)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&SubgroupMin_UInt16x2_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_UInt16x2)->signature = "subgroupMin(u16x2,SubgroupOperation) u16x2"_c;
-    Symbol::Resolved(&SubgroupMin_UInt16x2)->name = "subgroupMin(u16x2,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_UInt16x2)->nameWithVarNames = "subgroupMin(value : u16x2, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x2)->signature = "subgroupMin(u16x2,literal SubgroupOperation) u16x2"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x2)->name = "subgroupMin(u16x2,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x2)->nameWithVarNames = "subgroupMin(value : u16x2, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// subgroupMin with UInt16x3, SubgroupOperation
@@ -2510,6 +2537,7 @@ void SetupIntrinsics9()
     SubgroupMin_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupMin_UInt16x3_op.name = "operation"_c;
     SubgroupMin_UInt16x3_op.type = Type::FullType{ SubgroupOperationType.name };
+    SubgroupMin_UInt16x3_op.type.literal = true;
     SubgroupMin_UInt16x3.documentation = "Take the min of the value across subgroups"_c;
     SubgroupMin_UInt16x3.name = SubgroupMin_UInt16x3_name;
     SubgroupMin_UInt16x3.backendIndex = 2245;
@@ -2517,9 +2545,9 @@ void SetupIntrinsics9()
     SubgroupMin_UInt16x3.parameters = SubgroupMin_UInt16x3_args;
     Symbol::Resolved(&SubgroupMin_UInt16x3_value)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&SubgroupMin_UInt16x3_op)->typeSymbol = &SubgroupOperationType;
-    Symbol::Resolved(&SubgroupMin_UInt16x3)->signature = "subgroupMin(u16x3,SubgroupOperation) u16x3"_c;
-    Symbol::Resolved(&SubgroupMin_UInt16x3)->name = "subgroupMin(u16x3,SubgroupOperation)"_c;
-    Symbol::Resolved(&SubgroupMin_UInt16x3)->nameWithVarNames = "subgroupMin(value : u16x3, operation : SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x3)->signature = "subgroupMin(u16x3,literal SubgroupOperation) u16x3"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x3)->name = "subgroupMin(u16x3,literal SubgroupOperation)"_c;
+    Symbol::Resolved(&SubgroupMin_UInt16x3)->nameWithVarNames = "subgroupMin(value : u16x3, operation : literal SubgroupOperation)"_c;
     Symbol::Resolved(&SubgroupMin_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
 }
