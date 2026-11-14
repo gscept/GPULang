@@ -3533,7 +3533,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 Type::FullType conditionType;
                 statement->condition->EvalType(conditionType);
                 Type* typeSymbol = compiler->GetType(conditionType);
-                if (typeSymbol->baseType != TypeCode::Bool)
+                if (typeSymbol != &Bool8Type)
                 {
                     Symbol* conversionFunction = compiler->GetSymbol(Format("b8(%s)", conditionType.name.c_str()));
                     if (conversionFunction == nullptr)
@@ -3571,7 +3571,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             Type* typeSymbol;
             statement->condition->EvalTypeSymbol(typeSymbol);
             
-            if (typeSymbol->baseType != TypeCode::Bool)
+            if (typeSymbol != &Bool8Type)
             {
                 Symbol* conversionFunction = compiler->GetSymbol(Format("b8(%s)", conditionType.name.c_str()));
                 if (conversionFunction == nullptr)
@@ -3841,7 +3841,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 statement->condition->EvalType(conditionType);
                 Type* typeSymbol;
                 statement->condition->EvalTypeSymbol(typeSymbol);
-                if (typeSymbol->baseType != TypeCode::Bool)
+                if (typeSymbol != &Bool8Type)
                 {
                     Symbol* conversionFunction = compiler->GetSymbol(Format("b8(%s)", conditionType.name.c_str()));
                     if (conversionFunction == nullptr)
