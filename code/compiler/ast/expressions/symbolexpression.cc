@@ -123,6 +123,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->fullType = Type::FullType{ "sampler"_c };
             thisResolved->fullType.modifiers = { Type::FullType::Modifier::Pointer };
             thisResolved->fullType.modifierValues = { nullptr };
+            thisResolved->storage = Storage::Uniform;
             thisResolved->type = &SamplerType;
             thisResolved->domain = Domain::Device;
             return true;

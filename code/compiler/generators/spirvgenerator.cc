@@ -3367,7 +3367,7 @@ struct IndirectionState
     Any subsequent indirection unroll will peel of one more pointer type from the stack. If the resulting indirection list is empty, then the final type is the data type.
 */
 uint32_t
-IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t name, uint32_t& type, SPIRVResult::Storage& storage, std::vector<SPIRVResult::Indirection>& chain, IndirectionState& state)
+IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t name, uint32_t& type, SPIRVResult::Storage& storage, std::vector<SPIRVResult::Indirection>& chain, IndirectionState& state, uint32_t unrollType)
 {
     uint32_t val = name;
 
@@ -3396,10 +3396,26 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
         {
             // The last pointer in the list will be the type loaded by the rest of the expression
             startType = it;
+
+            if (unrollType == indirection.pointerInfo.ptrType)
+            {
+                type = indirection.pointerInfo.ptrType;
+                break;
+            }
+            else if (unrollType == indirection.pointerInfo.dataType)
+            {
+                type = indirection.pointerInfo.dataType;
+                ptrType = indirection.pointerInfo.ptrType;
+                storage = (SPIRVResult::Storage)indirection.pointerInfo.storage;
+                state.needsLoad = true;
+                break;
+            }
+
             type = indirection.pointerInfo.dataType;
             ptrType = indirection.pointerInfo.ptrType;
             storage = (SPIRVResult::Storage)indirection.pointerInfo.storage;
             state.needsLoad = true;
+
             //val = generator->writer->MappedInstruction(OpLoad, SPVWriter::Section::LocalFunction, indirection.pointerInfo.dataType, SPVArg(val));
         }
         else if (indirection.type == SPIRVResult::Indirection::Type::Access)
@@ -3419,6 +3435,13 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
             {
                 val = generator->writer->MappedInstruction(OpAccessChain, SPVWriter::Section::LocalFunction, ptrType, SPVArg(val), SPVArgList(accessChain));
                 accessChain.Clear();
+            }
+
+            // If we need the pointer type, block access as we already have a pointer to the value
+            if (ptrType == unrollType)
+            {
+                state.needsLoad = false;
+                type = ptrType;
             }
             //state.needsLoad = false;
         }
@@ -3444,10 +3467,27 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
             if (offset != 0xFFFFFFFF)
                 val = generator->writer->MappedInstruction(OpIAdd, SPVWriter::Section::LocalFunction, type, SPVArg(val), SPVArg(offset));
             val = generator->writer->MappedInstruction(OpConvertUToPtr, SPVWriter::Section::LocalFunction, ptrType, SPVArg(val));
+            
+            if (unrollType == indirection.addressInfo.ptrType)
+            {
+                type = indirection.addressInfo.ptrType;
+                break;
+            }
+            else if (unrollType == indirection.addressInfo.dataType)
+            {
+                type = indirection.addressInfo.dataType;
+                ptrType = indirection.addressInfo.ptrType;
+                state.needsLoad = true;
+                state.needsAlignment = true;
+                break;
+            }
 
             type = indirection.addressInfo.dataType;
-            state.needsAlignment = true;
+            ptrType = indirection.addressInfo.ptrType;
             state.needsLoad = true;
+            state.needsAlignment = true;
+
+            type = indirection.addressInfo.dataType;
         }
         it++;
 
@@ -3465,7 +3505,7 @@ IndirectionUnrollSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
 /**
 */
 SPIRVResult
-LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
+LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg, uint32_t unrollType = 0xFFFFFFFF)
 {
     if (arg.isLiteral)
     {
@@ -3505,7 +3545,7 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
     bool isValue = arg.isValue;
 
     IndirectionState state;
-    val = IndirectionUnrollSPIRV(compiler, generator, val, type, storage, arg.indirections, state);
+    val = IndirectionUnrollSPIRV(compiler, generator, val, type, storage, arg.indirections, state, unrollType);
 
     TransientArray<SPVEnum> memOps(2);
     if (state.volatileData)
@@ -3568,7 +3608,7 @@ StoreValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult
     IndirectionState state;
     assert(target.indirections.size() > 0);
     auto indirections = target.indirections;
-    val = IndirectionUnrollSPIRV(compiler, generator, val, type, storage, indirections, state);
+    val = IndirectionUnrollSPIRV(compiler, generator, val, type, storage, indirections, state, 0xFFFFFFFF);
     assert(state.needsLoad); // For Store operations, we assume the value is a pointer (needs loading)
 
     TransientArray<SPVEnum> memOps(2);
@@ -4775,8 +4815,9 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
 
             generator->typeState.storage = SPIRVResult::Storage::Function;
 
-            if (!resolvedCall->argumentTypes[i].IsPointer() && paramResolved->storage != Storage::Output)
-                arg = LoadValueSPIRV(compiler, generator, arg);
+            // This is used to avoid peeling off pointer indirections when the argument is a pointer
+            if (paramResolved->storage != Storage::Output)
+                arg = LoadValueSPIRV(compiler, generator, arg, typeName.typeName);
 
             generator->literalExtract = false;
 
@@ -5634,12 +5675,14 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
 struct UnaryOperator
 {
     char bit;
+    char width;
     bool sign;
     char elements;
     SPVOp addOp, subOp, negateOp;
     
     constexpr UnaryOperator()
         : bit('\0')
+        , width(32)
         , sign(false)
         , elements(0)
         , addOp(OpNop)
@@ -5647,8 +5690,9 @@ struct UnaryOperator
         , negateOp(OpNop)
     {}
     
-    constexpr UnaryOperator(char bit, bool sign, int elements, SPVOp addOp, SPVOp subOp, SPVOp negateOp)
+    constexpr UnaryOperator(char bit, char width, bool sign, int elements, SPVOp addOp, SPVOp subOp, SPVOp negateOp)
         : bit(bit)
+        , width(width)
         , sign(sign)
         , elements(elements)
         , addOp(addOp)
@@ -5896,7 +5940,6 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             return SPIRVResult(loaded.name, rhs.typeName, true);
         }
         case '!':
-        case '~':
         {
             assert(value != UnaryOperatorTable.end());
             const char op = value->second.bit;

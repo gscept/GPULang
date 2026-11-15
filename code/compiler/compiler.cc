@@ -737,7 +737,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
                         signature.Append(var->type.ToString());
                         signature.Append(resolved->usageBits.bits);
                         signature.Append(resolved->accessBits.bits);
-                        signature.Append(resolved->storage);
+                        signature.Append((uint32_t)resolved->storage);
                         signature.Append(resolved->group);
                         signature.Append(resolved->binding);
                         signature.Append(resolved->inBinding);
@@ -747,7 +747,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
                         signature.Append(resolved->structureOffset);
                         signature.Append(resolved->elementPadding);
                         signature.Append(resolved->startPadding);
-                        signature.Append(resolved->domain);
+                        signature.Append((uint32_t)resolved->domain);
                     }
                 }
             }
