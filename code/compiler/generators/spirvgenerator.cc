@@ -5670,22 +5670,30 @@ struct UnaryOperator
 // TODO: Add support for looking up SPVOps as well
 static const StaticMap UnaryOperatorTable =
 std::array{
-    std::pair{ "f32"_c, UnaryOperator{ 'F', true, 1, OpFAdd, OpFSub, OpFNegate } }
-    , std::pair{ "f32x2"_c, UnaryOperator{ 'F', true, 2, OpFAdd, OpFSub, OpFNegate } }
-    , std::pair{ "f32x3"_c, UnaryOperator{ 'F', true, 3, OpFAdd, OpFSub, OpFNegate } }
-    , std::pair{ "f32x4"_c, UnaryOperator{ 'F', true, 4, OpFAdd, OpFSub, OpFNegate } }
-    , std::pair{ "i32"_c, UnaryOperator{ 'S', true, 1, OpIAdd, OpISub, OpSNegate } }
-    , std::pair{ "i32x2"_c, UnaryOperator{ 'S', true, 2, OpIAdd, OpISub, OpSNegate } }
-    , std::pair{ "i32x3"_c, UnaryOperator{ 'S', true, 3, OpIAdd, OpISub, OpSNegate } }
-    , std::pair{ "i32x4"_c, UnaryOperator{ 'S', true, 4, OpIAdd, OpISub, OpSNegate } }
-    , std::pair{ "u32"_c, UnaryOperator{ 'U', false, 1, OpIAdd, OpISub, OpNop } }
-    , std::pair{ "u32x2"_c, UnaryOperator{ 'U', false, 2, OpIAdd, OpISub, OpNop } }
-    , std::pair{ "u32x3"_c, UnaryOperator{ 'U', false, 3, OpIAdd, OpISub, OpNop } }
-    , std::pair{ "u32x4"_c, UnaryOperator{ 'U', false, 4, OpIAdd, OpISub, OpNop } }
-    , std::pair{ "b8"_c, UnaryOperator{ 'B', false, 1, OpNop, OpNop, OpNop } }
-    , std::pair{ "b8x2"_c, UnaryOperator{ 'B', false, 2, OpNop, OpNop, OpNop } }
-    , std::pair{ "b8x3"_c, UnaryOperator{ 'B', false, 3, OpNop, OpNop, OpNop } }
-    , std::pair{ "b8x4"_c, UnaryOperator{ 'B', false, 4, OpNop, OpNop, OpNop } }
+    std::pair{ "f32"_c, UnaryOperator{ 'F', 32, true, 1, OpFAdd, OpFSub, OpFNegate } }
+    , std::pair{ "f32x2"_c, UnaryOperator{ 'F', 32, true, 2, OpFAdd, OpFSub, OpFNegate } }
+    , std::pair{ "f32x3"_c, UnaryOperator{ 'F', 32, true, 3, OpFAdd, OpFSub, OpFNegate } }
+    , std::pair{ "f32x4"_c, UnaryOperator{ 'F', 32, true, 4, OpFAdd, OpFSub, OpFNegate } }
+    , std::pair{ "i32"_c, UnaryOperator{ 'S', 32, true, 1, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i32x2"_c, UnaryOperator{ 'S', 32, true, 2, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i32x3"_c, UnaryOperator{ 'S', 32, true, 3, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i32x4"_c, UnaryOperator{ 'S', 32, true, 4, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "u32"_c, UnaryOperator{ 'U', 32, false, 1, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u32x2"_c, UnaryOperator{ 'U', 32, false, 2, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u32x3"_c, UnaryOperator{ 'U', 32, false, 3, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u32x4"_c, UnaryOperator{ 'U', 32, false, 4, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "i64"_c, UnaryOperator{ 'S', 64, true, 1, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i64x2"_c, UnaryOperator{ 'S', 64, true, 2, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i64x3"_c, UnaryOperator{ 'S', 64, true, 3, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i64x4"_c, UnaryOperator{ 'S', 64, true, 4, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "u64"_c, UnaryOperator{ 'U', 64, false, 1, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u64x2"_c, UnaryOperator{ 'U', 64, false, 2, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u64x3"_c, UnaryOperator{ 'U', 64, false, 3, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u64x4"_c, UnaryOperator{ 'U', 64, false, 4, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "b8"_c, UnaryOperator{ 'B', 8, false, 1, OpNop, OpNop, OpNop } }
+    , std::pair{ "b8x2"_c, UnaryOperator{ 'B', 8, false, 2, OpNop, OpNop, OpNop } }
+    , std::pair{ "b8x3"_c, UnaryOperator{ 'B', 8, false, 3, OpNop, OpNop, OpNop } }
+    , std::pair{ "b8x4"_c, UnaryOperator{ 'B', 8, false, 4, OpNop, OpNop, OpNop } }
 };
 
 //------------------------------------------------------------------------------
@@ -5705,7 +5713,9 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     auto value = UnaryOperatorTable.Find(unaryExpressionResolved->fullType.name);
-    auto [op, sign, vectorSize, addOp, subOp, negOp] = value->second;
+    auto [op, width, sign, vectorSize, addOp, subOp, negOp] = value->second;
+
+    // TODO: Make sure <width> is considered too
     switch (unaryExpression->op)
     {
         case '++':
@@ -5892,7 +5902,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             const char op = value->second.bit;
             bool isSigned = value->second.sign;
             uint32_t vectorSize = value->second.elements;
-            
+
             if (rhs.isLiteral)
             {
                 if (op == 'B')
@@ -5910,8 +5920,42 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
                 }
                 else
                 {
-                    loaded.name = generator->writer->MappedInstruction(OpNot, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
+                    
+                    // Complex, create zero and one, test if uint is either 0 or 1, and flip the value w
+                    SPIRVResult zero, one;
+                    if (isSigned)
+                    {
+                        zero = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int(0), vectorSize);
+                        one = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int(1), vectorSize);
+                    }
+                    else
+                    {
+                        zero = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(0), vectorSize);
+                        one = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(1), vectorSize);
+                    }
+                    uint32_t boolType = GeneratePODTypeSPIRV(compiler, generator, GPULang::TypeCode::Bool8);
+                    uint32_t condition = generator->writer->MappedInstruction(OpIEqual, SPVWriter::Section::LocalFunction, boolType, loaded, zero);
+                    loaded.name = generator->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, loaded.typeName, SPVArg{ condition }, one, zero);
                 }
+                return loaded;
+            }
+        }
+        case '~':
+        {
+            assert(value != UnaryOperatorTable.end());
+            const char op = value->second.bit;
+            bool isSigned = value->second.sign;
+            uint32_t vectorSize = value->second.elements;
+            
+            if (rhs.isLiteral)
+            {
+                rhs.literalValue.ui = ~rhs.literalValue.ui;
+                return rhs;
+            }
+            else
+            {
+                SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+                loaded.name = generator->writer->MappedInstruction(OpNot, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
                 return loaded;
             }
         }
