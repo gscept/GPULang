@@ -94,16 +94,16 @@ jobs:
 
   # Rolling prerelease that always holds the newest master build where every
   # platform compiled. Download URL:
-  #   https://github.com/<owner>/GPULang/releases/download/nightly/gpulangc-<platform>.tar.gz
-  publish-nightly:
-    name: Publish nightly
+  #   https://github.com/<owner>/GPULang/releases/download/continuous/gpulangc-<platform>.tar.gz
+  publish-continuous:
+    name: Publish continuous
     needs: [build]
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     concurrency:
-      group: publish-nightly
+      group: publish-continuous
       cancel-in-progress: false
     steps:
     - name: Download compiler packages
@@ -113,30 +113,30 @@ jobs:
         merge-multiple: true
         path: dist
 
-    - name: Update nightly release
+    - name: Update continuous release
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REPO: ${{ github.repository }}
       run: |
         set -euo pipefail
         # A slower run for an older commit must not overwrite a newer build.
-        status=$(gh api "repos/$GH_REPO/compare/$GITHUB_SHA...nightly" --jq .status 2>/dev/null || echo missing)
+        status=$(gh api "repos/$GH_REPO/compare/$GITHUB_SHA...continuous" --jq .status 2>/dev/null || echo missing)
         if [ "$status" = "ahead" ]; then
-          echo "nightly already points at a newer commit, skipping"
+          echo "continuous already points at a newer commit, skipping"
           exit 0
         fi
 
-        if gh api "repos/$GH_REPO/git/ref/tags/nightly" >/dev/null 2>&1; then
-          gh api -X PATCH "repos/$GH_REPO/git/refs/tags/nightly" -f sha="$GITHUB_SHA" -F force=true >/dev/null
+        if gh api "repos/$GH_REPO/git/ref/tags/continuous" >/dev/null 2>&1; then
+          gh api -X PATCH "repos/$GH_REPO/git/refs/tags/continuous" -f sha="$GITHUB_SHA" -F force=true >/dev/null
         else
-          gh api -X POST "repos/$GH_REPO/git/refs" -f ref=refs/tags/nightly -f sha="$GITHUB_SHA" >/dev/null
+          gh api -X POST "repos/$GH_REPO/git/refs" -f ref=refs/tags/continuous -f sha="$GITHUB_SHA" >/dev/null
         fi
 
-        if ! gh release view nightly >/dev/null 2>&1; then
-          gh release create nightly --prerelease --latest=false --title "Nightly (master)" --notes "pending"
+        if ! gh api "repos/$GH_REPO/releases/tags/continuous" >/dev/null 2>&1; then
+          gh release create continuous --prerelease --latest=false --title "Continuous (master)" --notes "pending"
         fi
-        gh release upload nightly dist/*.tar.gz --clobber
-        gh release edit nightly --notes "Rolling build of master at $GITHUB_SHA. Each archive contains the compiler and a COMMIT file with the source revision it was built from."
+        gh release upload continuous dist/*.tar.gz --clobber
+        gh release edit continuous --notes "Rolling build of master at $GITHUB_SHA. Each archive contains the compiler and a COMMIT file with the source revision it was built from."
 
 
   notify:
