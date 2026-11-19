@@ -22,12 +22,18 @@ jobs:
           - name: windows-latest
             os: windows-latest
             config: win64
+            sdk_name: windows-x86_64
+            exe: .exe
           - name: ubuntu-latest
             os: ubuntu-latest
             config: linux
+            sdk_name: linux-x86_64
+            exe: ''
           - name: macos-latest
             os: macos-latest
             config: macos
+            sdk_name: macos-aarch64
+            exe: ''
 
     steps:
     - uses: actions/checkout@v4
@@ -65,6 +71,72 @@ jobs:
     - name: Build
       run: |
         python fips build
+
+    # Package the compiler together with the commit it was built from, so
+    # consumers (e.g. nebula CI) can check out the matching runtime sources.
+    - name: Package compiler
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      shell: bash
+      run: |
+        set -euo pipefail
+        mkdir -p dist/pkg
+        cp "../fips-deploy/$(basename "$GITHUB_WORKSPACE")/${{ matrix.config }}/gpulangc${{ matrix.exe }}" dist/pkg/
+        echo "$GITHUB_SHA" > dist/pkg/COMMIT
+        tar -czf "dist/gpulangc-${{ matrix.sdk_name }}.tar.gz" -C dist/pkg .
+
+    - name: Upload compiler package
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      uses: actions/upload-artifact@v4
+      with:
+        name: gpulangc-${{ matrix.sdk_name }}
+        path: dist/gpulangc-${{ matrix.sdk_name }}.tar.gz
+        retention-days: 7
+
+  # Rolling prerelease that always holds the newest master build where every
+  # platform compiled. Download URL:
+  #   https://github.com/<owner>/GPULang/releases/download/nightly/gpulangc-<platform>.tar.gz
+  publish-nightly:
+    name: Publish nightly
+    needs: [build]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: publish-nightly
+      cancel-in-progress: false
+    steps:
+    - name: Download compiler packages
+      uses: actions/download-artifact@v4
+      with:
+        pattern: gpulangc-*
+        merge-multiple: true
+        path: dist
+
+    - name: Update nightly release
+      env:
+        GH_TOKEN: ${{ github.token }}
+        GH_REPO: ${{ github.repository }}
+      run: |
+        set -euo pipefail
+        # A slower run for an older commit must not overwrite a newer build.
+        status=$(gh api "repos/$GH_REPO/compare/$GITHUB_SHA...nightly" --jq .status 2>/dev/null || echo missing)
+        if [ "$status" = "ahead" ]; then
+          echo "nightly already points at a newer commit, skipping"
+          exit 0
+        fi
+
+        if gh api "repos/$GH_REPO/git/ref/tags/nightly" >/dev/null 2>&1; then
+          gh api -X PATCH "repos/$GH_REPO/git/refs/tags/nightly" -f sha="$GITHUB_SHA" -F force=true >/dev/null
+        else
+          gh api -X POST "repos/$GH_REPO/git/refs" -f ref=refs/tags/nightly -f sha="$GITHUB_SHA" >/dev/null
+        fi
+
+        if ! gh release view nightly >/dev/null 2>&1; then
+          gh release create nightly --prerelease --latest=false --title "Nightly (master)" --notes "pending"
+        fi
+        gh release upload nightly dist/*.tar.gz --clobber
+        gh release edit nightly --notes "Rolling build of master at $GITHUB_SHA. Each archive contains the compiler and a COMMIT file with the source revision it was built from."
 
 
   notify:
